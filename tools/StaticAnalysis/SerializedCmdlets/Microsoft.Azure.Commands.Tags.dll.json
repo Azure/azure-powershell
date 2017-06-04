@@ -16,8 +16,10 @@
             "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
-              "System.String": "System.String"
+              "Values": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
+              "Name": "System.String",
+              "ValuesTable": "System.String",
+              "Count": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -281,8 +283,10 @@
             "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
-              "System.String": "System.String"
+              "Values": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
+              "Name": "System.String",
+              "ValuesTable": "System.String",
+              "Count": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -508,7 +512,8 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue, Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String",
+        "Count": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -518,8 +523,10 @@
       "Name": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag, Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
-        "System.String": "System.String"
+        "Values": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTagValue]",
+        "Name": "System.String",
+        "ValuesTable": "System.String",
+        "Count": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

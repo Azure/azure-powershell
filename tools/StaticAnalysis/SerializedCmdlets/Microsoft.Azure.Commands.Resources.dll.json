@@ -16,7 +16,11 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "Operation": "System.String",
+              "OperationName": "System.String",
+              "ProviderNamespace": "System.String",
+              "ResourceName": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3543,8 +3547,14 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "ObjectId": "System.Guid",
+              "RoleAssignmentId": "System.String",
+              "Scope": "System.String",
+              "DisplayName": "System.String",
+              "SignInName": "System.String",
+              "RoleDefinitionName": "System.String",
+              "RoleDefinitionId": "System.String",
+              "ObjectType": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5056,9 +5066,13 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "IsCustom": "System.Boolean",
+              "Actions": "System.Collections.Generic.List`1[System.String]",
+              "NotActions": "System.Collections.Generic.List`1[System.String]",
+              "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5093,9 +5107,13 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "IsCustom": "System.Boolean",
+              "Actions": "System.Collections.Generic.List`1[System.String]",
+              "NotActions": "System.Collections.Generic.List`1[System.String]",
+              "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5146,9 +5164,13 @@
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Boolean": "System.Boolean",
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.String": "System.String"
+                    "IsCustom": "System.Boolean",
+                    "Actions": "System.Collections.Generic.List`1[System.String]",
+                    "NotActions": "System.Collections.Generic.List`1[System.String]",
+                    "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Description": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5184,9 +5206,13 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "IsCustom": "System.Boolean",
+              "Actions": "System.Collections.Generic.List`1[System.String]",
+              "NotActions": "System.Collections.Generic.List`1[System.String]",
+              "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5221,9 +5247,13 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "IsCustom": "System.Boolean",
+              "Actions": "System.Collections.Generic.List`1[System.String]",
+              "NotActions": "System.Collections.Generic.List`1[System.String]",
+              "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Description": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5274,9 +5304,13 @@
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "System.Boolean": "System.Boolean",
-                    "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-                    "System.String": "System.String"
+                    "IsCustom": "System.Boolean",
+                    "Actions": "System.Collections.Generic.List`1[System.String]",
+                    "NotActions": "System.Collections.Generic.List`1[System.String]",
+                    "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Description": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5657,7 +5691,10 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "StartDate": "System.String",
+              "EndDate": "System.String",
+              "KeyId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6393,7 +6430,10 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "StartDate": "System.String",
+              "EndDate": "System.String",
+              "KeyId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6748,7 +6788,10 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "StartDate": "System.String",
+              "EndDate": "System.String",
+              "KeyId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7297,7 +7340,10 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADCredential, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "StartDate": "System.String",
+              "EndDate": "System.String",
+              "KeyId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7858,8 +7904,10 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "Id": "System.Guid",
+              "UserPrincipalName": "System.String",
+              "DisplayName": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8590,10 +8638,15 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "AvailableToOtherTenants": "System.Boolean",
+              "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
+              "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
+              "ReplyUrls": "System.Collections.Generic.IList`1[System.String]",
+              "ObjectId": "System.Guid",
+              "ApplicationId": "System.Guid",
+              "DisplayName": "System.String",
+              "HomePage": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9552,9 +9605,11 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Guid": "System.Guid",
-              "System.String": "System.String",
-              "System.String[]": "System.String[]"
+              "ApplicationId": "System.Guid",
+              "Id": "System.Guid",
+              "DisplayName": "System.String",
+              "Type": "System.String",
+              "ServicePrincipalNames": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9758,9 +9813,11 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Guid": "System.Guid",
-              "System.String": "System.String",
-              "System.String[]": "System.String[]"
+              "ApplicationId": "System.Guid",
+              "Id": "System.Guid",
+              "DisplayName": "System.String",
+              "Type": "System.String",
+              "ServicePrincipalNames": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11046,10 +11103,15 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "AvailableToOtherTenants": "System.Boolean",
+              "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
+              "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
+              "ReplyUrls": "System.Collections.Generic.IList`1[System.String]",
+              "ObjectId": "System.Guid",
+              "ApplicationId": "System.Guid",
+              "DisplayName": "System.String",
+              "HomePage": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11637,8 +11699,10 @@
             "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Guid": "System.Guid",
-              "System.String": "System.String"
+              "Id": "System.Guid",
+              "UserPrincipalName": "System.String",
+              "DisplayName": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -11972,8 +12036,14 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Guid": "System.Guid",
-        "System.String": "System.String"
+        "ObjectId": "System.Guid",
+        "RoleAssignmentId": "System.String",
+        "Scope": "System.String",
+        "DisplayName": "System.String",
+        "SignInName": "System.String",
+        "RoleDefinitionName": "System.String",
+        "RoleDefinitionId": "System.String",
+        "ObjectType": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11991,9 +12061,13 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-        "System.String": "System.String"
+        "IsCustom": "System.Boolean",
+        "Actions": "System.Collections.Generic.List`1[System.String]",
+        "NotActions": "System.Collections.Generic.List`1[System.String]",
+        "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+        "Name": "System.String",
+        "Id": "System.String",
+        "Description": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12013,10 +12087,15 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.Guid": "System.Guid",
-        "System.String": "System.String"
+        "AvailableToOtherTenants": "System.Boolean",
+        "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
+        "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
+        "ReplyUrls": "System.Collections.Generic.IList`1[System.String]",
+        "ObjectId": "System.Guid",
+        "ApplicationId": "System.Guid",
+        "DisplayName": "System.String",
+        "HomePage": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12036,8 +12115,9 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADObject",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Guid": "System.Guid",
-        "System.String": "System.String"
+        "Id": "System.Guid",
+        "DisplayName": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12047,9 +12127,10 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADGroup",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Guid": "System.Guid",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.String": "System.String"
+        "Id": "System.Guid",
+        "SecurityEnabled": "System.Nullable`1[System.Boolean]",
+        "DisplayName": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12069,9 +12150,11 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Guid": "System.Guid",
-        "System.String": "System.String",
-        "System.String[]": "System.String[]"
+        "ApplicationId": "System.Guid",
+        "Id": "System.Guid",
+        "DisplayName": "System.String",
+        "Type": "System.String",
+        "ServicePrincipalNames": "System.String[]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12089,8 +12172,10 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Guid": "System.Guid",
-        "System.String": "System.String"
+        "Id": "System.Guid",
+        "UserPrincipalName": "System.String",
+        "DisplayName": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12100,9 +12185,10 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADPasswordCredential, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.Guid": "System.Guid",
-        "System.String": "System.String"
+        "StartDate": "System.DateTime",
+        "EndDate": "System.DateTime",
+        "KeyId": "System.Guid",
+        "Password": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -12120,9 +12206,10 @@
       "Name": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential, Microsoft.Azure.Commands.Resources, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.Guid": "System.Guid",
-        "System.String": "System.String"
+        "StartDate": "System.DateTime",
+        "EndDate": "System.DateTime",
+        "KeyId": "System.Guid",
+        "CertValue": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

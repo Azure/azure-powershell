@@ -16,10 +16,16 @@
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
+              "State": "System.String",
+              "ProvisioningState": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ServerFullName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -172,10 +178,16 @@
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
+              "State": "System.String",
+              "ProvisioningState": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ServerFullName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -443,10 +455,16 @@
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
+              "State": "System.String",
+              "ProvisioningState": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ServerFullName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -599,10 +617,16 @@
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
+              "State": "System.String",
+              "ProvisioningState": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ServerFullName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -996,10 +1020,16 @@
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
+              "State": "System.String",
+              "ProvisioningState": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ServerFullName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1417,7 +1447,8 @@
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String",
+        "Tier": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -1448,10 +1479,16 @@
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Collections.Generic.List`1[System.String]": "System.Collections.Generic.List`1[System.String]",
-        "System.String": "System.String"
+        "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+        "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
+        "State": "System.String",
+        "ProvisioningState": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String",
+        "ServerFullName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

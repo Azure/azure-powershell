@@ -16,8 +16,8 @@
             "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureProfile, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
-              "System.Collections.Hashtable": "System.Collections.Hashtable"
+              "Context": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
+              "Environments": "System.Collections.Hashtable"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -348,9 +348,9 @@
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureContext, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
-        "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
-        "System.Byte[]": "System.Byte[]"
+        "Account": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
+        "Environment": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
+        "TokenCache": "System.Byte[]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -360,7 +360,9 @@
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureAccount, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Id": "System.String",
+        "UniqueId": "System.String",
+        "Tenant": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -370,8 +372,8 @@
       "Name": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Dataplane.AsAzureEnvironment, Microsoft.Azure.Commands.AnalysisServices.Dataplane, Version=0.3.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Hashtable": "System.Collections.Hashtable",
-        "System.String": "System.String"
+        "Endpoints": "System.Collections.Hashtable",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

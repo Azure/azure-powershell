@@ -175,7 +175,8 @@
             "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKey",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKey, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "Key": "System.String",
+              "KeyType": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -332,7 +333,11 @@
             "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryAuthEndpoint": "System.String",
+              "SecondaryAuthEndpoint": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "Scope": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -451,8 +456,9 @@
             "Name": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.String": "System.String"
+              "NameAvailable": "System.Boolean",
+              "Reason": "System.String",
+              "Message": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -482,8 +488,10 @@
             "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "IsPrimary": "System.Nullable`1[System.Boolean]",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "AccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -668,10 +676,14 @@
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-              "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String"
+              "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
+              "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
+              "Tags": "System.Collections.Hashtable",
+              "Id": "System.String",
+              "AccountName": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1069,10 +1081,14 @@
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-              "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String"
+              "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
+              "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
+              "Tags": "System.Collections.Hashtable",
+              "Id": "System.String",
+              "AccountName": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1218,10 +1234,14 @@
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-              "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
-              "System.Collections.Hashtable": "System.Collections.Hashtable",
-              "System.String": "System.String"
+              "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
+              "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
+              "Tags": "System.Collections.Hashtable",
+              "Id": "System.String",
+              "AccountName": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1539,7 +1559,8 @@
       "Name": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Endpoint": "System.String",
+        "MajorVersion": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -1559,8 +1580,10 @@
       "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.6.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.String": "System.String"
+        "IsPrimary": "System.Nullable`1[System.Boolean]",
+        "Id": "System.String",
+        "ResourceGroupName": "System.String",
+        "AccountName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

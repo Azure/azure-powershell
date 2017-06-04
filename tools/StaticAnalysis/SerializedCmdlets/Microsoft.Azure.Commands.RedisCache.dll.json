@@ -127,9 +127,9 @@
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Int32": "System.Int32",
-              "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-              "System.String": "System.String"
+              "StartHourUtc": "System.Int32",
+              "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
+              "DayOfWeek": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1629,11 +1629,26 @@
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Int32": "System.Int32",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "EnableNonSslPort": "System.Boolean",
+              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Port": "System.Int32",
+              "SslPort": "System.Int32",
+              "ShardCount": "System.Nullable`1[System.Int32]",
+              "PrimaryKey": "System.String",
+              "Sku": "System.String",
+              "Size": "System.String",
+              "RedisVersion": "System.String",
+              "ProvisioningState": "System.String",
+              "HostName": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "SecondaryKey": "System.String",
+              "SubnetId": "System.String",
+              "StaticIP": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2252,7 +2267,8 @@
             "Name": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2447,7 +2463,8 @@
             "Name": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Redis.Models.RedisAccessKeys, Microsoft.Azure.Management.Redis, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.String": "System.String"
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2887,11 +2904,26 @@
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Int32": "System.Int32",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "EnableNonSslPort": "System.Boolean",
+              "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Port": "System.Int32",
+              "SslPort": "System.Int32",
+              "ShardCount": "System.Nullable`1[System.Int32]",
+              "PrimaryKey": "System.String",
+              "Sku": "System.String",
+              "Size": "System.String",
+              "RedisVersion": "System.String",
+              "ProvisioningState": "System.String",
+              "HostName": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "SecondaryKey": "System.String",
+              "SubnetId": "System.String",
+              "StaticIP": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3673,9 +3705,9 @@
       "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Int32": "System.Int32",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String"
+        "StartHourUtc": "System.Int32",
+        "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
+        "DayOfWeek": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3706,11 +3738,24 @@
       "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Int32": "System.Int32",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.String": "System.String"
+        "EnableNonSslPort": "System.Boolean",
+        "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "SslPort": "System.Int32",
+        "Port": "System.Int32",
+        "ShardCount": "System.Nullable`1[System.Int32]",
+        "Sku": "System.String",
+        "Size": "System.String",
+        "RedisVersion": "System.String",
+        "ResourceGroupName": "System.String",
+        "ProvisioningState": "System.String",
+        "HostName": "System.String",
+        "Type": "System.String",
+        "Name": "System.String",
+        "Location": "System.String",
+        "Id": "System.String",
+        "SubnetId": "System.String",
+        "StaticIP": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

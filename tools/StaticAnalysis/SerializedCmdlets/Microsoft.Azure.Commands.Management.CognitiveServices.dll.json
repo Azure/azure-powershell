@@ -16,10 +16,17 @@
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.CognitiveServices.Models.Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
+              "ResourceGroupName": "System.String",
+              "AccountName": "System.String",
+              "Id": "System.String",
+              "Endpoint": "System.String",
+              "Location": "System.String",
+              "AccountType": "System.String",
+              "ResourceType": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -165,7 +172,8 @@
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "Key1": "System.String",
+              "Key2": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -284,7 +292,7 @@
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IEnumerable`1[System.String]": "System.Collections.Generic.IEnumerable`1[System.String]"
+              "List": "System.Collections.Generic.IEnumerable`1[System.String]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -403,10 +411,17 @@
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.CognitiveServices.Models.Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
+              "ResourceGroupName": "System.String",
+              "AccountName": "System.String",
+              "Id": "System.String",
+              "Endpoint": "System.String",
+              "Location": "System.String",
+              "AccountType": "System.String",
+              "ResourceType": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -727,7 +742,8 @@
             "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys, Microsoft.Azure.Management.CognitiveServices, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "System.String": "System.String"
+              "Key1": "System.String",
+              "Key2": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1063,10 +1079,17 @@
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.7.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.CognitiveServices.Models.Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
-              "System.String": "System.String"
+              "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
+              "ResourceGroupName": "System.String",
+              "AccountName": "System.String",
+              "Id": "System.String",
+              "Endpoint": "System.String",
+              "Location": "System.String",
+              "AccountType": "System.String",
+              "ResourceType": "System.String",
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1406,8 +1429,8 @@
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]",
-        "System.String": "System.String"
+        "Tier": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

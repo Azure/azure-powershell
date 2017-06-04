@@ -415,10 +415,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -623,10 +633,13 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "ActionHistory": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "Retry": "System.Nullable`1[System.Int32]",
+              "Occurence": "System.Nullable`1[System.Int32]",
+              "JobName": "System.String",
+              "Status": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -829,7 +842,14 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "Location": "System.String",
+              "Plan": "System.String",
+              "State": "System.String",
+              "MaxJobCount": "System.String",
+              "MaxRecurrence": "System.String",
+              "Uri": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1168,10 +1188,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1850,10 +1880,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2556,10 +2596,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3262,10 +3312,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4206,10 +4266,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4888,7 +4958,14 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "Location": "System.String",
+              "Plan": "System.String",
+              "State": "System.String",
+              "MaxJobCount": "System.String",
+              "MaxRecurrence": "System.String",
+              "Uri": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5227,10 +5304,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5933,10 +6020,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6639,10 +6736,20 @@
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.String": "System.String"
+              "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
+              "Lastrun": "System.Nullable`1[System.DateTime]",
+              "Nextrun": "System.Nullable`1[System.DateTime]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "Failures": "System.Nullable`1[System.Int32]",
+              "Faults": "System.Nullable`1[System.Int32]",
+              "Executions": "System.Nullable`1[System.Int32]",
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "JobName": "System.String",
+              "Status": "System.String",
+              "Recurrence": "System.String",
+              "EndSchedule": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7366,7 +7473,7 @@
       "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[Microsoft.Azure.Management.Scheduler.Models.JobActionType]": "System.Nullable`1[Microsoft.Azure.Management.Scheduler.Models.JobActionType]"
+        "JobActionType": "System.Nullable`1[Microsoft.Azure.Management.Scheduler.Models.JobActionType]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -7422,7 +7529,10 @@
       "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory, Microsoft.Azure.Commands.Scheduler, Version=0.14.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "JobActionType": "System.String",
+        "JobHistoryActionName": "System.String",
+        "Response": "System.String",
+        "ResponseBody": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

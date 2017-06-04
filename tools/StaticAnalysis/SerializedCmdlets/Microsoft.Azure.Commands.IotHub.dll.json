@@ -16,8 +16,10 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
-              "System.String": "System.String"
+              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+              "KeyName": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -456,8 +458,10 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
-              "System.String": "System.String"
+              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+              "KeyName": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -623,9 +627,13 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
+              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+              "JobId": "System.String",
+              "Type": "System.String",
+              "FailureReason": "System.String",
+              "StatusMessage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -791,8 +799,10 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
-              "System.String": "System.String"
+              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+              "KeyName": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1071,10 +1081,15 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
+              "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "Subscriptionid": "System.String",
+              "Resourcegroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1652,10 +1667,15 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
+              "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "Subscriptionid": "System.String",
+              "Resourcegroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1754,15 +1774,15 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
-              "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-              "System.String": "System.String"
+              "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
+              "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
+              "OperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
+              "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
+              "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+              "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
+              "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+              "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
+              "Comments": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1896,15 +1916,15 @@
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
-                    "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-                    "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
-                    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
-                    "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-                    "System.String": "System.String"
+                    "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
+                    "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
+                    "OperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
+                    "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
+                    "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+                    "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
+                    "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+                    "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
+                    "Comments": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1940,9 +1960,13 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
+              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+              "JobId": "System.String",
+              "Type": "System.String",
+              "FailureReason": "System.String",
+              "StatusMessage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2093,9 +2117,13 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
+              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+              "JobId": "System.String",
+              "Type": "System.String",
+              "FailureReason": "System.String",
+              "StatusMessage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2729,10 +2757,15 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
+              "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "Subscriptionid": "System.String",
+              "Resourcegroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2929,9 +2962,9 @@
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
-              "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-              "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+              "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+              "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3367,9 +3400,9 @@
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
-                    "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-                    "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+                    "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
+                    "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+                    "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3631,8 +3664,10 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
-        "System.String": "System.String"
+        "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+        "KeyName": "System.String",
+        "PrimaryKey": "System.String",
+        "SecondaryKey": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3678,9 +3713,13 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
+        "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+        "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+        "JobId": "System.String",
+        "Type": "System.String",
+        "FailureReason": "System.String",
+        "StatusMessage": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3690,7 +3729,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String",
+        "CurrentValue": "System.String",
+        "MaxValue": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3700,15 +3741,16 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]",
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
-        "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.String": "System.String"
+        "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
+        "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
+        "OperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
+        "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]",
+        "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+        "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
+        "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+        "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
+        "HostName": "System.String",
+        "Comments": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3726,9 +3768,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+        "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
+        "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+        "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3738,8 +3780,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+        "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+        "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
+        "LockDurationAsIso8601": "System.Nullable`1[System.TimeSpan]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3796,10 +3839,11 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-        "System.String": "System.String"
+        "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+        "PartitionCount": "System.Nullable`1[System.Int32]",
+        "RetentionTimeInDays": "System.Nullable`1[System.Int64]",
+        "Path": "System.String",
+        "Endpoint": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3840,8 +3884,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+        "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+        "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
+        "LockDurationAsIso8601": "System.Nullable`1[System.TimeSpan]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3862,8 +3907,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String"
+        "SasTtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
+        "ConnectionString": "System.String",
+        "ContainerName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3893,9 +3939,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]"
+        "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
+        "Tier": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier",
+        "Capacity": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3932,10 +3978,15 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
+        "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String",
+        "Subscriptionid": "System.String",
+        "Resourcegroup": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3945,7 +3996,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]"
+        "TotalDeviceCount": "System.Nullable`1[System.Int64]",
+        "EnabledDeviceCount": "System.Nullable`1[System.Int64]",
+        "DisabledDeviceCount": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3955,9 +4008,9 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity",
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-        "System.String": "System.String"
+        "Capacity": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity",
+        "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
+        "ResourceType": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -3967,8 +4020,10 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]"
+        "ScaleType": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]",
+        "Minimum": "System.Nullable`1[System.Int64]",
+        "Maximum": "System.Nullable`1[System.Int64]",
+        "DefaultProperty": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4007,8 +4062,8 @@
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]"
+        "PartitionCount": "System.Nullable`1[System.Int32]",
+        "RetentionTimeInDays": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []

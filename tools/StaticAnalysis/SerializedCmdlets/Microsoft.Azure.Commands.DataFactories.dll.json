@@ -37,9 +37,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -168,9 +172,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -274,9 +282,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -364,9 +376,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -623,9 +639,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -784,9 +804,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1003,7 +1027,11 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSRunLogInfo",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSRunLogInfo, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "SasUri": "System.String",
+              "StorageAccountName": "System.String",
+              "Container": "System.String",
+              "Directory": "System.String",
+              "SasToken": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1022,9 +1050,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1128,9 +1160,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1492,9 +1528,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1706,9 +1746,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2048,9 +2092,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2249,9 +2297,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2733,8 +2785,17 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "CreateTime": "System.Nullable`1[System.DateTime]",
+              "RegisterTime": "System.Nullable`1[System.DateTime]",
+              "LastConnectTime": "System.Nullable`1[System.DateTime]",
+              "ExpiryTime": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Description": "System.String",
+              "Version": "System.String",
+              "Status": "System.String",
+              "VersionStatus": "System.String",
+              "ProvisioningState": "System.String",
+              "Key": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2753,9 +2814,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2827,9 +2892,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2985,8 +3054,17 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "CreateTime": "System.Nullable`1[System.DateTime]",
+              "RegisterTime": "System.Nullable`1[System.DateTime]",
+              "LastConnectTime": "System.Nullable`1[System.DateTime]",
+              "ExpiryTime": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Description": "System.String",
+              "Version": "System.String",
+              "Status": "System.String",
+              "VersionStatus": "System.String",
+              "ProvisioningState": "System.String",
+              "Key": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3005,9 +3083,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3095,9 +3177,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3319,7 +3405,7 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayKey",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayKey, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.String": "System.String"
+              "GatewayKey": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3338,9 +3424,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3412,9 +3502,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3587,9 +3681,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3677,9 +3775,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3901,8 +4003,17 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-              "System.String": "System.String"
+              "CreateTime": "System.Nullable`1[System.DateTime]",
+              "RegisterTime": "System.Nullable`1[System.DateTime]",
+              "LastConnectTime": "System.Nullable`1[System.DateTime]",
+              "ExpiryTime": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Description": "System.String",
+              "Version": "System.String",
+              "Status": "System.String",
+              "VersionStatus": "System.String",
+              "ProvisioningState": "System.String",
+              "Key": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3921,9 +4032,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4011,9 +4126,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4250,8 +4369,11 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSHub",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSHub, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
+              "HubName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4286,9 +4408,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4371,9 +4497,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4502,8 +4632,11 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSHub",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSHub, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
+              "HubName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4570,9 +4703,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4699,9 +4836,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4969,9 +5110,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5078,9 +5223,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5272,8 +5421,11 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
+              "LinkedServiceName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5292,9 +5444,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5366,9 +5522,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -5543,9 +5703,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -5803,9 +5967,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6717,8 +6885,11 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
+              "LinkedServiceName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6737,9 +6908,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -6843,9 +7018,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -7152,9 +7331,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7279,9 +7462,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -7473,9 +7660,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7615,9 +7806,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7952,8 +8147,11 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
+              "PipelineName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7988,9 +8186,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8073,9 +8275,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8204,8 +8410,11 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
+              "PipelineName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8240,9 +8449,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8401,9 +8614,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8657,9 +8874,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8766,9 +8987,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -8980,9 +9205,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9067,9 +9296,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -9237,9 +9470,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9476,9 +9713,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -9822,9 +10063,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -9909,9 +10154,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10059,12 +10308,15 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Common.Models.Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
-              "Microsoft.Azure.Management.DataFactories.Common.Models.Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
-              "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
-              "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
-              "System.String": "System.String"
+              "Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
+              "Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
+              "Location": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
+              "Structure": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
+              "DatasetName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10083,9 +10335,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10157,9 +10413,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10315,12 +10575,15 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Common.Models.Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
-              "Microsoft.Azure.Management.DataFactories.Common.Models.Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
-              "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
-              "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
-              "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
-              "System.String": "System.String"
+              "Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
+              "Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
+              "Location": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
+              "Structure": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
+              "DatasetName": "System.String",
+              "ResourceGroupName": "System.String",
+              "DataFactoryName": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10339,9 +10602,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10445,9 +10712,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -10754,9 +11025,13 @@
             "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "DataFactoryName": "System.String",
+              "DataFactoryId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -10881,9 +11156,13 @@
                   "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "DataFactoryName": "System.String",
+                    "DataFactoryId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -11163,7 +11442,9 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "DataFactoryId": "System.String",
+        "ErrorMessage": "System.String",
+        "ProvisioningState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11184,10 +11465,23 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSliceRun",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSliceRun, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.DateTime": "System.DateTime",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "DataSliceEnd": "System.DateTime",
+        "ProcessingStartTime": "System.DateTime",
+        "ProcessingEndTime": "System.DateTime",
+        "DataSliceStart": "System.DateTime",
+        "Timestamp": "System.DateTime",
+        "PercentComplete": "System.Int32",
+        "RetryAttempt": "System.Int32",
+        "ActivityName": "System.String",
+        "ErrorMessage": "System.String",
+        "Id": "System.String",
+        "PipelineName": "System.String",
+        "DatasetName": "System.String",
+        "DataFactoryName": "System.String",
+        "ResourceGroupName": "System.String",
+        "Status": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11205,9 +11499,16 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSlice",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataSlice, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.Int32": "System.Int32",
-        "System.String": "System.String"
+        "Start": "System.DateTime",
+        "End": "System.DateTime",
+        "RetryCount": "System.Int32",
+        "LongRetryCount": "System.Int32",
+        "ResourceGroupName": "System.String",
+        "DataFactoryName": "System.String",
+        "DatasetName": "System.String",
+        "State": "System.String",
+        "SubState": "System.String",
+        "LatencyStatus": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11217,8 +11518,17 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "CreateTime": "System.Nullable`1[System.DateTime]",
+        "RegisterTime": "System.Nullable`1[System.DateTime]",
+        "LastConnectTime": "System.Nullable`1[System.DateTime]",
+        "ExpiryTime": "System.Nullable`1[System.DateTime]",
+        "Name": "System.String",
+        "Description": "System.String",
+        "Version": "System.String",
+        "Status": "System.String",
+        "VersionStatus": "System.String",
+        "ProvisioningState": "System.String",
+        "Key": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11238,8 +11548,11 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSHub",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSHub, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
+        "HubName": "System.String",
+        "ResourceGroupName": "System.String",
+        "DataFactoryName": "System.String",
+        "ProvisioningState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11249,7 +11562,8 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Models.HubBaseProperties, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "HubId": "System.String",
+        "ProvisioningState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11259,8 +11573,11 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
+        "LinkedServiceName": "System.String",
+        "ResourceGroupName": "System.String",
+        "DataFactoryName": "System.String",
+        "ProvisioningState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11270,8 +11587,12 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceProperties, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceTypeProperties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceTypeProperties",
-        "System.String": "System.String"
+        "TypeProperties": "Microsoft.Azure.Management.DataFactories.Models.LinkedServiceTypeProperties",
+        "Description": "System.String",
+        "ErrorMessage": "System.String",
+        "HubName": "System.String",
+        "ProvisioningState": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11289,13 +11610,23 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSActivityWindow",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSActivityWindow, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.DateTime": "System.DateTime",
-        "System.Int32": "System.Int32",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String"
+        "OutputDatasets": "System.Collections.Generic.IList`1[System.String]",
+        "InputDatasets": "System.Collections.Generic.IList`1[System.String]",
+        "WindowEnd": "System.DateTime",
+        "WindowStart": "System.DateTime",
+        "RunAttempts": "System.Int32",
+        "RunEnd": "System.Nullable`1[System.DateTime]",
+        "RunStart": "System.Nullable`1[System.DateTime]",
+        "PercentComplete": "System.Nullable`1[System.Int32]",
+        "Duration": "System.Nullable`1[System.TimeSpan]",
+        "WindowState": "System.String",
+        "LinkedServiceName": "System.String",
+        "ActivityType": "System.String",
+        "ActivityName": "System.String",
+        "PipelineName": "System.String",
+        "DataFactoryName": "System.String",
+        "WindowSubstate": "System.String",
+        "ResourceGroupName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11343,9 +11674,13 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "DataFactoryName": "System.String",
+        "DataFactoryId": "System.String",
+        "ResourceGroupName": "System.String",
+        "Location": "System.String",
+        "ProvisioningState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11355,8 +11690,11 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSPipeline, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
+        "PipelineName": "System.String",
+        "ResourceGroupName": "System.String",
+        "DataFactoryName": "System.String",
+        "ProvisioningState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11366,13 +11704,18 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Models.PipelineProperties, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Common.Models.PipelineRuntimeInfo": "Microsoft.Azure.Management.DataFactories.Common.Models.PipelineRuntimeInfo",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Models.Activity]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Models.Activity]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Models.Dataset]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Models.Dataset]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String"
+        "RuntimeInfo": "Microsoft.Azure.Management.DataFactories.Common.Models.PipelineRuntimeInfo",
+        "Activities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Models.Activity]",
+        "Datasets": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Models.Dataset]",
+        "IsPaused": "System.Nullable`1[System.Boolean]",
+        "Start": "System.Nullable`1[System.DateTime]",
+        "End": "System.Nullable`1[System.DateTime]",
+        "ExpirationTime": "System.Nullable`1[System.TimeSpan]",
+        "Description": "System.String",
+        "ProvisioningState": "System.String",
+        "ErrorMessage": "System.String",
+        "HubName": "System.String",
+        "PipelineMode": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11382,8 +11725,8 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.PipelineRuntimeInfo",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.PipelineRuntimeInfo, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.DateTime": "System.DateTime",
-        "System.String": "System.String"
+        "DeploymentTime": "System.DateTime",
+        "PipelineState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11403,12 +11746,15 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Models.Activity",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Models.Activity, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityPolicy": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityPolicy",
-        "Microsoft.Azure.Management.DataFactories.Common.Models.Scheduler": "Microsoft.Azure.Management.DataFactories.Common.Models.Scheduler",
-        "Microsoft.Azure.Management.DataFactories.Models.ActivityTypeProperties": "Microsoft.Azure.Management.DataFactories.Models.ActivityTypeProperties",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.ActivityInput]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.ActivityInput]",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.ActivityOutput]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.ActivityOutput]",
-        "System.String": "System.String"
+        "Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityPolicy",
+        "Scheduler": "Microsoft.Azure.Management.DataFactories.Common.Models.Scheduler",
+        "TypeProperties": "Microsoft.Azure.Management.DataFactories.Models.ActivityTypeProperties",
+        "Inputs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.ActivityInput]",
+        "Outputs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.ActivityOutput]",
+        "Name": "System.String",
+        "Description": "System.String",
+        "LinkedServiceName": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11418,10 +11764,13 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityPolicy, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.Nullable`1[System.UInt32]": "System.Nullable`1[System.UInt32]",
-        "System.String": "System.String"
+        "LongRetry": "System.Nullable`1[System.Int32]",
+        "Retry": "System.Nullable`1[System.Int32]",
+        "Delay": "System.Nullable`1[System.TimeSpan]",
+        "LongRetryInterval": "System.Nullable`1[System.TimeSpan]",
+        "Timeout": "System.Nullable`1[System.TimeSpan]",
+        "Concurrency": "System.Nullable`1[System.UInt32]",
+        "ExecutionPriorityOrder": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11441,10 +11790,11 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.Scheduler",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.Scheduler, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String",
-        "System.UInt32": "System.UInt32"
+        "AnchorDateTime": "System.Nullable`1[System.DateTime]",
+        "Offset": "System.Nullable`1[System.TimeSpan]",
+        "Frequency": "System.String",
+        "Style": "System.String",
+        "Interval": "System.UInt32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11472,8 +11822,10 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityInput",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityInput, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String"
+        "Length": "System.Nullable`1[System.TimeSpan]",
+        "EndTime": "System.String",
+        "Name": "System.String",
+        "StartTime": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11493,7 +11845,7 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityOutput",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.ActivityOutput, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11513,8 +11865,8 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Models.Dataset",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Models.Dataset, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
-        "System.String": "System.String"
+        "Properties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11524,13 +11876,17 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Common.Models.Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
-        "Microsoft.Azure.Management.DataFactories.Common.Models.Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
-        "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
-        "System.Nullable`1[System.Boolean]": "System.Nullable`1[System.Boolean]",
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.String": "System.String"
+        "Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
+        "Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
+        "TypeProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
+        "Structure": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
+        "External": "System.Nullable`1[System.Boolean]",
+        "CreateTime": "System.Nullable`1[System.DateTime]",
+        "LinkedServiceName": "System.String",
+        "Description": "System.String",
+        "ProvisioningState": "System.String",
+        "ErrorMessage": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11540,10 +11896,11 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.DateTime]": "System.Nullable`1[System.DateTime]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]",
-        "System.String": "System.String",
-        "System.UInt32": "System.UInt32"
+        "AnchorDateTime": "System.Nullable`1[System.DateTime]",
+        "Offset": "System.Nullable`1[System.TimeSpan]",
+        "Frequency": "System.String",
+        "Style": "System.String",
+        "Interval": "System.UInt32"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11553,9 +11910,9 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Common.Models.ExternalDataPolicy": "Microsoft.Azure.Management.DataFactories.Common.Models.ExternalDataPolicy",
-        "Microsoft.Azure.Management.DataFactories.Common.Models.LatencyPolicy": "Microsoft.Azure.Management.DataFactories.Common.Models.LatencyPolicy",
-        "Microsoft.Azure.Management.DataFactories.Common.Models.ValidationPolicy": "Microsoft.Azure.Management.DataFactories.Common.Models.ValidationPolicy"
+        "ExternalData": "Microsoft.Azure.Management.DataFactories.Common.Models.ExternalDataPolicy",
+        "Latency": "Microsoft.Azure.Management.DataFactories.Common.Models.LatencyPolicy",
+        "Validation": "Microsoft.Azure.Management.DataFactories.Common.Models.ValidationPolicy"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11565,8 +11922,10 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.ExternalDataPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.ExternalDataPolicy, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]",
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+        "MaximumRetry": "System.Nullable`1[System.Int32]",
+        "DataDelay": "System.Nullable`1[System.TimeSpan]",
+        "RetryInterval": "System.Nullable`1[System.TimeSpan]",
+        "RetryTimeout": "System.Nullable`1[System.TimeSpan]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11576,7 +11935,7 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.LatencyPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.LatencyPolicy, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.TimeSpan]": "System.Nullable`1[System.TimeSpan]"
+        "LatencyLength": "System.Nullable`1[System.TimeSpan]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11586,9 +11945,9 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.ValidationPolicy",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.ValidationPolicy, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.Nullable`1[System.Double]": "System.Nullable`1[System.Double]",
-        "System.Nullable`1[System.Int64]": "System.Nullable`1[System.Int64]",
-        "System.String": "System.String"
+        "MinimumSizeMB": "System.Nullable`1[System.Double]",
+        "MinimumRows": "System.Nullable`1[System.Int64]",
+        "ValidationPriorityOrder": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11636,7 +11995,11 @@
       "Name": "Microsoft.Azure.Management.DataFactories.Common.Models.DataElement",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactories.Common.Models.DataElement, Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "System.String": "System.String"
+        "Culture": "System.String",
+        "Description": "System.String",
+        "Format": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -11656,12 +12019,15 @@
       "Name": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataFactories.Models.PSDataset, Microsoft.Azure.Commands.DataFactories, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Management.DataFactories.Common.Models.Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
-        "Microsoft.Azure.Management.DataFactories.Common.Models.Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
-        "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
-        "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
-        "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
-        "System.String": "System.String"
+        "Availability": "Microsoft.Azure.Management.DataFactories.Common.Models.Availability",
+        "Policy": "Microsoft.Azure.Management.DataFactories.Common.Models.Policy",
+        "Properties": "Microsoft.Azure.Management.DataFactories.Models.DatasetProperties",
+        "Location": "Microsoft.Azure.Management.DataFactories.Models.DatasetTypeProperties",
+        "Structure": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactories.Common.Models.DataElement]",
+        "DatasetName": "System.String",
+        "ResourceGroupName": "System.String",
+        "DataFactoryName": "System.String",
+        "ProvisioningState": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

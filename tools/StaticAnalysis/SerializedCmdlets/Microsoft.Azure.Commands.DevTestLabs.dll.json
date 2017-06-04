@@ -16,8 +16,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Description": "System.String",
+              "EvaluatorType": "System.String",
+              "FactData": "System.String",
+              "FactName": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "Threshold": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -130,11 +140,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
+              "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
+              "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "TaskType": "System.String",
+              "TimeZoneId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -247,11 +264,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
+              "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
+              "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "TaskType": "System.String",
+              "TimeZoneId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -364,8 +388,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Description": "System.String",
+              "EvaluatorType": "System.String",
+              "FactData": "System.String",
+              "FactName": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "Threshold": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -478,8 +512,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Description": "System.String",
+              "EvaluatorType": "System.String",
+              "FactData": "System.String",
+              "FactName": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "Threshold": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -592,11 +636,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
+              "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
+              "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "TaskType": "System.String",
+              "TimeZoneId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1055,11 +1106,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
-              "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "DailyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
+              "HourlyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
+              "WeeklyRecurrence": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "TaskType": "System.String",
+              "TimeZoneId": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1436,8 +1494,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Description": "System.String",
+              "EvaluatorType": "System.String",
+              "FactData": "System.String",
+              "FactName": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "Threshold": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1814,8 +1882,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Description": "System.String",
+              "EvaluatorType": "System.String",
+              "FactData": "System.String",
+              "FactName": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "Threshold": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2184,8 +2262,18 @@
             "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Description": "System.String",
+              "EvaluatorType": "System.String",
+              "FactData": "System.String",
+              "FactName": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "ProvisioningState": "System.String",
+              "Status": "System.String",
+              "Threshold": "System.String",
+              "Type": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2676,7 +2764,7 @@
       "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSDayDetails, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Time": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2686,7 +2774,7 @@
       "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSHourDetails, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Nullable`1[System.Int32]": "System.Nullable`1[System.Int32]"
+        "Minute": "System.Nullable`1[System.Int32]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2706,8 +2794,8 @@
       "Name": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevTestLabs.Models.PSWeekDetails, Microsoft.Azure.Commands.DevTestLabs, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.String": "System.String"
+        "Weekdays": "System.Collections.Generic.IList`1[System.String]",
+        "Time": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

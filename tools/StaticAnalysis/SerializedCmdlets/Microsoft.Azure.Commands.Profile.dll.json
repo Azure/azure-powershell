@@ -44,10 +44,28 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
+              "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+              "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "AzureKeyVaultDnsSuffix": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
+              "GraphEndpointResourceId": "System.String",
+              "GraphUrl": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "StorageEndpointSuffix": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -122,10 +140,28 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
+              "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+              "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "AzureKeyVaultDnsSuffix": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
+              "GraphEndpointResourceId": "System.String",
+              "GraphUrl": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "StorageEndpointSuffix": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -200,10 +236,28 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
+              "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+              "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "AzureKeyVaultDnsSuffix": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
+              "GraphEndpointResourceId": "System.String",
+              "GraphUrl": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "StorageEndpointSuffix": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1008,10 +1062,28 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-              "System.String": "System.String"
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
+              "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+              "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "AzureKeyVaultDnsSuffix": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
+              "GraphEndpointResourceId": "System.String",
+              "GraphUrl": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "StorageEndpointSuffix": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1844,8 +1916,12 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "State": "System.String",
+              "TenantId": "System.String",
+              "CurrentStorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2023,8 +2099,8 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Profile.Models.PSAzureContext": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
+              "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+              "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3203,13 +3279,13 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+              "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+              "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+              "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+              "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfile": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3239,13 +3315,13 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+              "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+              "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+              "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+              "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfile": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3280,13 +3356,13 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+              "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+              "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+              "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+              "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfile": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3395,13 +3471,13 @@
                   "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-                    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-                    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-                    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-                    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.String": "System.String"
+                    "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+                    "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+                    "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+                    "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+                    "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "VersionProfile": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3490,8 +3566,8 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Profile.Models.PSAzureContext": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
+              "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+              "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3512,14 +3588,14 @@
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-              "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-              "System.String": "System.String"
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+              "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
+              "ProfilePath": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3561,14 +3637,14 @@
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-                    "System.String": "System.String"
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+                    "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
+                    "ProfilePath": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3631,8 +3707,8 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Profile.Models.PSAzureContext": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
+              "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+              "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3651,14 +3727,14 @@
             "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
-              "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-              "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-              "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-              "System.String": "System.String"
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+              "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
+              "ProfilePath": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3714,14 +3790,14 @@
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
-                    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-                    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-                    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-                    "System.String": "System.String"
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+                    "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
+                    "ProfilePath": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3801,8 +3877,9 @@
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "System.String": "System.String"
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Directory": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3885,10 +3962,10 @@
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Management.Automation.ErrorCategoryInfo": "System.Management.Automation.ErrorCategoryInfo",
-              "System.Management.Automation.ErrorDetails": "System.Management.Automation.ErrorDetails",
-              "System.Management.Automation.InvocationInfo": "System.Management.Automation.InvocationInfo",
-              "System.String": "System.String"
+              "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
+              "ErrorDetails": "System.Management.Automation.ErrorDetails",
+              "InvocationInfo": "System.Management.Automation.InvocationInfo",
+              "ScriptStackTrace": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3903,12 +3980,15 @@
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "System.Boolean": "System.Boolean",
-              "System.Exception": "System.Exception",
-              "System.Management.Automation.ErrorCategoryInfo": "System.Management.Automation.ErrorCategoryInfo",
-              "System.Management.Automation.ErrorDetails": "System.Management.Automation.ErrorDetails",
-              "System.Management.Automation.InvocationInfo": "System.Management.Automation.InvocationInfo",
-              "System.String": "System.String"
+              "InnerException": "System.Boolean",
+              "Exception": "System.Exception",
+              "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
+              "ErrorDetails": "System.Management.Automation.ErrorDetails",
+              "InvocationInfo": "System.Management.Automation.InvocationInfo",
+              "Message": "System.String",
+              "StackTrace": "System.String",
+              "HelpLink": "System.String",
+              "ScriptStackTrace": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3923,14 +4003,19 @@
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
-              "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
-              "System.Boolean": "System.Boolean",
-              "System.Exception": "System.Exception",
-              "System.Management.Automation.ErrorCategoryInfo": "System.Management.Automation.ErrorCategoryInfo",
-              "System.Management.Automation.ErrorDetails": "System.Management.Automation.ErrorDetails",
-              "System.Management.Automation.InvocationInfo": "System.Management.Automation.InvocationInfo",
-              "System.String": "System.String"
+              "RequestMessage": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
+              "ServerResponse": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
+              "InnerException": "System.Boolean",
+              "Exception": "System.Exception",
+              "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
+              "ErrorDetails": "System.Management.Automation.ErrorDetails",
+              "InvocationInfo": "System.Management.Automation.InvocationInfo",
+              "ServerMessage": "System.String",
+              "RequestId": "System.String",
+              "Message": "System.String",
+              "StackTrace": "System.String",
+              "HelpLink": "System.String",
+              "ScriptStackTrace": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4174,13 +4259,13 @@
       "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.String": "System.String"
+        "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+        "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+        "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+        "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+        "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+        "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "VersionProfile": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4190,8 +4275,10 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.String": "System.String"
+        "TenantMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Id": "System.String",
+        "Credential": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4201,9 +4288,26 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.String": "System.String"
+        "OnPremise": "System.Boolean",
+        "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "GraphEndpointResourceId": "System.String",
+        "AzureKeyVaultServiceEndpointResourceId": "System.String",
+        "AzureKeyVaultDnsSuffix": "System.String",
+        "TrafficManagerDnsSuffix": "System.String",
+        "SqlDatabaseDnsSuffix": "System.String",
+        "StorageEndpointSuffix": "System.String",
+        "ActiveDirectoryServiceEndpointResourceId": "System.String",
+        "GraphUrl": "System.String",
+        "GalleryUrl": "System.String",
+        "ActiveDirectoryAuthority": "System.String",
+        "PublishSettingsFileUrl": "System.String",
+        "ManagementPortalUrl": "System.String",
+        "ResourceManagerUrl": "System.String",
+        "ServiceManagementUrl": "System.String",
+        "AdTenant": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4213,7 +4317,9 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Id": "System.String",
+        "Name": "System.String",
+        "State": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4223,7 +4329,8 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.String": "System.String"
+        "Id": "System.String",
+        "Directory": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4233,7 +4340,7 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Byte[]": "System.Byte[]"
+        "CacheData": "System.Byte[]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4262,10 +4369,28 @@
       "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Boolean": "System.Boolean",
-        "System.Collections.Generic.IDictionary`2[System.String,System.String]": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "System.Collections.Generic.IList`1[System.String]": "System.Collections.Generic.IList`1[System.String]",
-        "System.String": "System.String"
+        "EnableAdfsAuthentication": "System.Boolean",
+        "OnPremise": "System.Boolean",
+        "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "AzureKeyVaultServiceEndpointResourceId": "System.String",
+        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+        "AzureKeyVaultDnsSuffix": "System.String",
+        "TrafficManagerDnsSuffix": "System.String",
+        "GraphEndpointResourceId": "System.String",
+        "GraphUrl": "System.String",
+        "ActiveDirectoryAuthority": "System.String",
+        "SqlDatabaseDnsSuffix": "System.String",
+        "ResourceManagerUrl": "System.String",
+        "PublishSettingsFileUrl": "System.String",
+        "ServiceManagementUrl": "System.String",
+        "ManagementPortalUrl": "System.String",
+        "GalleryUrl": "System.String",
+        "AdTenant": "System.String",
+        "ActiveDirectoryServiceEndpointResourceId": "System.String",
+        "StorageEndpointSuffix": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4275,12 +4400,12 @@
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-        "System.String": "System.String"
+        "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+        "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+        "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+        "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+        "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+        "VersionProfile": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4374,9 +4499,10 @@
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
-        "System.String": "System.String",
-        "System.Uri": "System.Uri"
+        "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
+        "Verb": "System.String",
+        "Body": "System.String",
+        "Uri": "System.Uri"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4415,8 +4541,9 @@
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
-        "System.String": "System.String"
+        "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
+        "ResponseStatusCode": "System.String",
+        "Body": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
