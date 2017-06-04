@@ -30,7 +30,7 @@ Gets the Quota Metric information for the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -Name
-Name of the IoT hub.
+Name of the IoT hub. 
 
 ```yaml
 Type: String
@@ -45,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of hte resource group.
+Resource Group Name
 
 ```yaml
 Type: String
