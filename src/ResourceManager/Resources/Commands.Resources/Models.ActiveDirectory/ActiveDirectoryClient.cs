@@ -218,9 +218,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public List<PSADObject> ListUserGroups(string principal)
         {
             List<PSADObject> result = new List<PSADObject>();
-            Guid objectId = GetObjectId(new ADObjectFilterOptions { UPN = principal });
-            PSADObject user = GetADObject(new ADObjectFilterOptions { Id = objectId.ToString() });
-            var groupsIds = GraphClient.User.GetMemberGroups(new UserGetMemberGroupsParameters { ObjectId = user.Id.ToString() }).ObjectIds;
+            string objectId = GetObjectId(new ADObjectFilterOptions { UPN = principal });
+            PSADObject user = GetADObject(new ADObjectFilterOptions { Id = objectId });
+            var groupsIds = GraphClient.User.GetMemberGroups(new UserGetMemberGroupsParameters { ObjectId = user.Id }).ObjectIds;
             var groupsResult = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { Ids = groupsIds });
             result.AddRange(groupsResult.AADObject.Select(g => g.ToPSADGroup()));
 
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     if (string.IsNullOrEmpty(options.NextLink))
                     {
-                        result = GraphClient.Group.GetGroupMembers(group.Id.ToString());
+                        result = GraphClient.Group.GetGroupMembers(group.Id);
                     }
                     else
                     {
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 }
                 else
                 {
-                    result = GraphClient.Group.GetGroupMembers(group.Id.ToString());
+                    result = GraphClient.Group.GetGroupMembers(group.Id);
                     members.AddRange(result.AADObject.Select(u => u.ToPSADObject()));
 
                     while (!string.IsNullOrEmpty(result.NextLink))
@@ -331,13 +331,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return members;
         }
 
-        public Guid GetObjectId(ADObjectFilterOptions options)
+        public string GetObjectId(ADObjectFilterOptions options)
         {
-            Guid principalId;
-            if (options != null && options.Id != null
-                && Guid.TryParse(options.Id, out principalId))
+            string principalId;
+            if (options != null && options.Id != null)
             {
-                // do nothing, we have parsed the guid
+                principalId = options.Id;
             }
             else
             {
