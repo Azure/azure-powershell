@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Upgrade SRP SDK to 6.3.1
-* Add IdentityType setting support to resource mode storage account cmdlets
+* Add AssignIdentity setting support to resource mode storage account cmdlets
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
 * Add Customer Key Support to resource mode storage account cmdlets
