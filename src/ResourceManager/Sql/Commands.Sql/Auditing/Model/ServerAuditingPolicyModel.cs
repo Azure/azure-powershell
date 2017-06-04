@@ -19,9 +19,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// </summary>
     public class ServerAuditingPolicyModel : BaseTableAuditingPolicyModel
     {
-        /// <summary>
-        /// Gets or sets the audit type
-        /// </summary>
-        public AuditType AuditType { get; set; }
     }
 }

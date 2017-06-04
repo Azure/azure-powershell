@@ -33,10 +33,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the use server default property
         /// </summary>
         public UseServerDefaultOptions UseServerDefault { get; set; }
-
-        /// <summary>
-        /// Gets or sets the audit type
-        /// </summary>
-        public AuditType AuditType { get; set; }
     }
 }
