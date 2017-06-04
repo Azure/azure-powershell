@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         public string ServerName { get; set; }
 
         /// <summary>
+        /// Gets or sets the audit type
+        /// </summary>
+        public AuditType AuditType { get; set; }
+
+        /// <summary>
         /// Gets or sets the audit state
         /// </summary>
         public AuditStateType AuditState { get; set; }
