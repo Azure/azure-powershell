@@ -19,50 +19,19 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public const string Prefix = "AzS";
         public const string StoragePrefix = "Storage";
 
+        // Metrics
         public const string Metric = "Metric";
-
         public const string MetricDefinition = "MetricDefinition";
 
-
         // farm
-        public const string AdminFarm = Prefix + "Farm";
-
+        public const string AdminFarm = Prefix + StoragePrefix + "Farm";
         public const string AdminFarmMetric = AdminFarm + Metric;
-
         public const string AdminFarmMetricDefinition = AdminFarm + MetricDefinition;
 
-        public const string AdminFarmEvent = Prefix + "Event";
-
-        public const string AdminFarmEventQuery = Prefix + "EventQuery";
-
-        // LogCollect
-        public const string Log = Prefix + "Log";
-
-        // node
-        public const string AdminNode = Prefix + "Node";
-
-        public const string AdminNodeMetric = AdminNode + Metric;
-
-        public const string AdminNodeMetricDefinition = AdminNode + MetricDefinition;
-
-        // blob server role instance
-        public const string AdminBlobServerRoleInstance = Prefix + "BlobServerRoleInstance";
-
-        // role instance
-        public const string AdminRoleInstance = Prefix + "RoleInstance";
-
-        // role instance
-        public const string AdminRoleInstanceSettingsPullNow = Prefix + "RoleInstancePullSettings";
-
-        public const string AdminRoleInstanceMetric = AdminRoleInstance + Metric;
-
-        public const string AdminRoleInstanceMetricDefinition = AdminRoleInstance + MetricDefinition;
-
-        // service
+        // service Metrics
         public const string AdminTableService = Prefix + "TableService";
         public const string AdminQueueService = Prefix + "QueueService";
         public const string AdminBlobService = Prefix + "BlobService";
-        public const string AdminManagementService = Prefix + "ManagementService";
 
         public const string AdminTableServiceMetric = AdminTableService + Metric;
         public const string AdminTableServiceMetricDefinition = AdminTableService + MetricDefinition;
@@ -73,24 +42,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public const string AdminBlobServiceMetric = AdminBlobService + Metric;
         public const string AdminBlobServiceMetricDefinition = AdminBlobService + MetricDefinition;
 
-        public const string AdminManagementServiceMetric = AdminManagementService + Metric;
-        public const string AdminManagementServiceMetricDefinition = AdminManagementService + MetricDefinition;
-
         // share 
-        public const string AdminShare = Prefix + "Share";
-
+        public const string AdminShare = Prefix + StoragePrefix + "Share";
         public const string AdminShareMetric = AdminShare + Metric;
-
         public const string AdminShareMetricDefinition = AdminShare + MetricDefinition;
-
-        // fault 
-        public const string AdminFault = Prefix + "Fault";
-
-        // fault history
-        public const string AdminFaultHistory = Prefix + "FaultHistory";
-
-        // role instance
-        public const string AdminInstance = Prefix + "Instance";
 
         // storage account
         public const string AdminStorageAccount = Prefix + "StorageAccount";
@@ -98,7 +53,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public const string AdminOnDemandGcStatus = Prefix + "ReclaimStorageCapacityStatus";
 
         // acquisition
-        public const string AdminAcquisition = Prefix + "Acquisition";
+        public const string AdminAcquisition = Prefix + StoragePrefix + "Acquisition";
 
         // storage account deletion operation
         public const string AdminStorageAccountDeletion = Prefix + "DeletedStorageAccount";
@@ -110,6 +65,5 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public const string AdminContainer                      = Prefix + StoragePrefix + "Container";
         public const string AdminContainerMigration             = Prefix + StoragePrefix + "ContainerMigration";
         public const string AdminContainerMigrationStatus       = Prefix + StoragePrefix + "ContainerMigrationStatus";
-        public const string AdminDestinationShareForContainer   = Prefix + "SharesForMigration";
     }
 }
