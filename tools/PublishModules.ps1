@@ -276,6 +276,7 @@ if ([string]::IsNullOrEmpty($nugetExe))
 }
 
 Write-Host "Publishing $scope package(and its dependencies)" 
+Get-PackageProvider -Name NuGet -Force
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
@@ -295,6 +296,7 @@ if ($publishToLocal)
 }
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+$env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
 try {
 	$modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal
