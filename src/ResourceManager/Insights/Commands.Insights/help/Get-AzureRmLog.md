@@ -259,14 +259,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MaxRecords
+### -MaxEvents
 Specifies the total number of records to fetch for the specified filter.
 The default value is 1000 and the maximum value accepted is 100000. Negative values and 0 are ignored and the default value will be used.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: MaxEvents
+Aliases: MaxRecords
 
 Required: False
 Position: Named
