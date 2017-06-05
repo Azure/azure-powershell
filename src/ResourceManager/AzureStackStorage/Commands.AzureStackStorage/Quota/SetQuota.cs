@@ -63,6 +63,11 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         protected override void Execute()
         {
             Name = base.ParseNameForQuota(Name);
+
+            // try to fetch the quota. 
+            // if the quota doesnt exist, this will throw an exception
+            QuotaGetResponse getResponse = Client.Quotas.Get(Location, Name);
+
             if (ShouldProcess(
                 Resources.SetQuotaDescription.FormatInvariantCulture(Name),
                 Resources.SetQuotaWarning.FormatInvariantCulture(Name),
