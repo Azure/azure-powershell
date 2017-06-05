@@ -50,7 +50,7 @@ namespace Microsoft.AzureStack.Commands
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.SubscriptionId));
-                return client.ManagedSubscriptions.Delete(this.SubscriptionId.ToString());
+                return client.TenantSubscriptions.Delete(this.SubscriptionId.ToString());
             }
         }
     }

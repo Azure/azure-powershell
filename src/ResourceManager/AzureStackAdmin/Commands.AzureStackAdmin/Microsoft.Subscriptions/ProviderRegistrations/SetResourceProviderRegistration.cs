@@ -63,7 +63,7 @@ namespace Microsoft.AzureStack.Commands
                         ProviderRegistration = this.ProviderRegistration
                     };  
 
-                this.WriteVerbose(Resources.AddingResourceProviderRegistration.FormatArgs(parameters.ProviderRegistration.Properties.DisplayName));
+                this.WriteVerbose(Resources.AddingResourceProviderManifest.FormatArgs(parameters.ProviderRegistration.Properties.DisplayName));
 
                 this.ValidatePrerequisites(client, parameters);
 

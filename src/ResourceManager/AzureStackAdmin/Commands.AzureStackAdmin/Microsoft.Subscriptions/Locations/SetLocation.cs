@@ -47,7 +47,7 @@ namespace Microsoft.AzureStack.Commands
 
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.UpdatingManagedLocation.FormatArgs(this.Location.Name));
+                this.WriteVerbose(Resources.UpdatingLocation.FormatArgs(this.Location.Name));
                 var parameters = new ManagedLocationCreateOrUpdateParameters(this.Location);
                 return client.ManagedLocations.CreateOrUpdate(parameters).Location;
             }

@@ -75,7 +75,7 @@ namespace Microsoft.AzureStack.Commands
 
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.CreatingNewManagedLocation.FormatArgs(this.Name));
+                this.WriteVerbose(Resources.CreatingNewLocation.FormatArgs(this.Name));
                 var parameters = new ManagedLocationCreateOrUpdateParameters()
                     {
                         Location = new Location()
@@ -90,7 +90,7 @@ namespace Microsoft.AzureStack.Commands
                 if (client.ManagedLocations.List()
                         .Locations.Any(location => location.Name.EqualsInsensitively(parameters.Location.Name)))
                 {
-                    throw new PSInvalidOperationException(Resources.ManagedLocationAlreadyExists.FormatArgs(parameters.Location.Name));
+                    throw new PSInvalidOperationException(Resources.LocationAlreadyExists.FormatArgs(parameters.Location.Name));
                 }
 
                 return client.ManagedLocations.CreateOrUpdate(parameters).Location;

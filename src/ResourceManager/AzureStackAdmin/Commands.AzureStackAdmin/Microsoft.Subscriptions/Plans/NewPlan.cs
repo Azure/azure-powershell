@@ -123,7 +123,7 @@ namespace Microsoft.AzureStack.Commands
                 if (client.ManagedPlans.List(this.ResourceGroupName, includeDetails: false).Plans
                     .Any(p => string.Equals(p.Properties.Name, parameters.Plan.Properties.Name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new PSInvalidOperationException(Resources.ManagedPlanAlreadyExists.FormatArgs(parameters.Plan.Properties.Name, this.ResourceGroupName));
+                    throw new PSInvalidOperationException(Resources.PlanAlreadyExists.FormatArgs(parameters.Plan.Properties.Name, this.ResourceGroupName));
                 }
 
                 return client.ManagedPlans.CreateOrUpdate(this.ResourceGroupName, parameters).Plan;

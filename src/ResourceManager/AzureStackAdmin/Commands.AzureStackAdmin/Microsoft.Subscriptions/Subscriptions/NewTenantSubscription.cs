@@ -95,8 +95,8 @@ namespace Microsoft.AzureStack.Commands
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
-                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
-                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
+                var parameters = new SubscriptionCreateOrUpdateAsAdminParameters(this.GetSubscriptionDefinition());
+                return client.TenantSubscriptions.CreateOrUpdate(parameters).Subscription;
             }
         }
     }

@@ -51,8 +51,8 @@ namespace Microsoft.AzureStack.Commands
                     Resources.UpdatingManagedSubscription.FormatArgs(
                         this.Subscription.SubscriptionId));
 
-                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.Subscription);
-                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
+                var parameters = new SubscriptionCreateOrUpdateAsAdminParameters(this.Subscription);
+                return client.TenantSubscriptions.CreateOrUpdate(parameters).Subscription;
             }
         }
     }

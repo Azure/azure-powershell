@@ -186,7 +186,7 @@ namespace Microsoft.AzureStack.Commands
                     };
                 }
                 
-                this.WriteVerbose(Resources.AddingResourceProviderRegistration.FormatArgs(registrationParams.ProviderRegistration.Properties.DisplayName));
+                this.WriteVerbose(Resources.AddingResourceProviderManifest.FormatArgs(registrationParams.ProviderRegistration.Properties.DisplayName));
 
                 this.ValidatePrerequisites(client, registrationParams);
 

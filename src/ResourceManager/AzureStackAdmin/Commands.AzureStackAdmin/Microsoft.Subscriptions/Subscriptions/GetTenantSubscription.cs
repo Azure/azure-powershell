@@ -49,13 +49,13 @@ namespace Microsoft.AzureStack.Commands
             {
                 if (this.SubscriptionId == Guid.Empty)
                 {
-                    this.WriteVerbose(Resources.ListingManagedSubscriptions);
-                    return client.ManagedSubscriptions.List(includeDetails: true).Subscriptions;
+                    this.WriteVerbose(Resources.ListingTenantSubscriptions);
+                    return client.TenantSubscriptions.List(includeDetails: true).Subscriptions;
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingSubscriptionByID.FormatArgs(this.SubscriptionId));
-                    return client.ManagedSubscriptions.Get(this.SubscriptionId.ToString()).Subscription;
+                    return client.TenantSubscriptions.Get(this.SubscriptionId.ToString()).Subscription;
                 }
             }
         }

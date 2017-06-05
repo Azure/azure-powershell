@@ -50,7 +50,7 @@ namespace Microsoft.AzureStack.Commands
 
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.RemovingManagedLocation.FormatArgs(this.Name));
+                this.WriteVerbose(Resources.RemovingLocation.FormatArgs(this.Name));
                 return client.ManagedLocations.Delete(this.Name);
             }
         }

@@ -57,12 +57,12 @@ namespace Microsoft.AzureStack.Commands
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
-                    this.WriteVerbose(Resources.ListingResourceProviderRegistration);
+                    this.WriteVerbose(Resources.ListingResourceProviderManifests);
                     return client.ProviderRegistrations.List(this.ResourceGroupName).ProviderRegistrations;
                 }
                 else
                 {
-                    this.WriteVerbose(Resources.GettingResourceProviderRegistration.FormatArgs(this.Name));
+                    this.WriteVerbose(Resources.GettingResourceProviderManifest.FormatArgs(this.Name));
                     return client.ProviderRegistrations.Get(this.ResourceGroupName, this.Name).ProviderRegistration;
                 }
             }

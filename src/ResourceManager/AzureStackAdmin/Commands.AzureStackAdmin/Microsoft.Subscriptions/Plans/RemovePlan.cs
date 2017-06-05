@@ -57,7 +57,7 @@ namespace Microsoft.AzureStack.Commands
 
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.RemovingManagedPlan.FormatArgs(this.Name, this.ResourceGroupName));
+                this.WriteVerbose(Resources.RemovingPlan.FormatArgs(this.Name, this.ResourceGroupName));
                 return client.ManagedPlans.Delete(this.ResourceGroupName, this.Name);
             }
         }

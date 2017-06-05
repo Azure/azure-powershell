@@ -70,12 +70,12 @@ namespace Microsoft.AzureStack.Commands
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
-                    this.WriteVerbose(Resources.ListingManagedPlans.FormatArgs(this.ResourceGroupName));
+                    this.WriteVerbose(Resources.ListingPlans.FormatArgs(this.ResourceGroupName));
                     return client.ManagedPlans.List(this.ResourceGroupName, includeDetails: true).Plans;
                 }
                 else
                 {
-                    this.WriteVerbose(Resources.GettingManagedPlan.FormatArgs(this.Name, this.ResourceGroupName));
+                    this.WriteVerbose(Resources.GettingPlan.FormatArgs(this.Name, this.ResourceGroupName));
                     return client.ManagedPlans.Get(this.ResourceGroupName, this.Name).Plan;
                 }
             }

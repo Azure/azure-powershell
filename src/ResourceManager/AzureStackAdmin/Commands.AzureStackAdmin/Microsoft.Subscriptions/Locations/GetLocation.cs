@@ -51,12 +51,12 @@ namespace Microsoft.AzureStack.Commands
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
-                    this.WriteVerbose(Resources.ListingManagedLocations);
+                    this.WriteVerbose(Resources.ListingLocations);
                     return client.ManagedLocations.List().Locations;
                 }
                 else
                 {
-                    this.WriteVerbose(Resources.GettingManagedLocation.FormatArgs(this.Name));
+                    this.WriteVerbose(Resources.GettingLocation.FormatArgs(this.Name));
                     return client.ManagedLocations.Get(this.Name).Location;
                 }
             }
