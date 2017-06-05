@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update detailed display of license agreements when creatign Cognitive Services resources
 
 ## Version 0.7.1
 

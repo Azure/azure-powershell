@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Transparent Update to NotificationHubs cmdlets for new API
 
 ## Version 3.0.1
 

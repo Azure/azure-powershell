@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Routing support for IoTHub cmdlets
 
 ## Version 2.0.1
 

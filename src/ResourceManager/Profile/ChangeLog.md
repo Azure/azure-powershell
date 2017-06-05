@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Resolve-AzureRmError
+  * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
+* Send-Feedback
+  * Enabled sending feedback without logging in
 
 ## Version 3.0.1
 * Add-AzureRmAccount
