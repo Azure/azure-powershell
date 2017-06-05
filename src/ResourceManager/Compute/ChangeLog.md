@@ -21,6 +21,7 @@
 * Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
 * Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
 * Add-AzureRmVhd: The size limit on vhd is increased to 4TB.
+* Stop-AzureRmVM: Clarify documentation for STayProvisioned parameter
 
 ## Version 3.0.1
 
