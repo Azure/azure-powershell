@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.New, "AzureIPTag"), OutputType(typeof(IPTag))]
+    [Cmdlet(VerbsCommon.New, "AzureIPTag", SupportsShouldProcess = true), OutputType(typeof(IPTag))]
     public class NewAzureIPTagCommand : Cmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "IP Tag Type of desired IP address")]

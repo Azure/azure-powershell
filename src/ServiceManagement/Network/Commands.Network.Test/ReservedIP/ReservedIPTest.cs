@@ -405,7 +405,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
         }
 
         [Fact]
-        [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureReservedIPWithIPTags()
         {
@@ -443,7 +442,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Reserve
         }
 
         [Fact]
-        [Trait(Category.Service, Category.Network)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureIPTagTestSimple()
         {
