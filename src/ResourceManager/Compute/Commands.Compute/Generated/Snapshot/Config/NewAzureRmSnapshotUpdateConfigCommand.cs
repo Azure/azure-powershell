@@ -59,26 +59,46 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  CreateOption cannot be changed during updating a snapshot." +
+            "This parameter was added due to a bug." +
+            "To set CreateOption of a snapshot, use New-AzureRmSnapshotConfig command.",
+            false)]
         public DiskCreateOption? CreateOption { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  StorageAccountId cannot be changed during updating a snapshot." +
+            "This parameter was added due to a bug." +
+            "To set StorageAccountId of a snapshot, use New-AzureRmSnapshotConfig command.",
+            false)]
         public string StorageAccountId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  ImageReference cannot be changed during updating a snapshot." +
+            "This parameter was added due to a bug." +
+            "To set ImageReference of a snapshot, use New-AzureRmSnapshotConfig command.",
+            false)]
         public ImageDiskReference ImageReference { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  SourceUri cannot be changed during updating a snapshot." +
+            "This parameter was added due to a bug." +
+            "To set SourceUri of a snapshot, use New-AzureRmSnapshotConfig command.",
+            false)]
         public string SourceUri { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  SourceResourceId cannot be changed during updating a snapshot." +
+            "This parameter was added due to a bug." +
+            "To set SourceResourceId of a snapshot, use New-AzureRmSnapshotConfig command.",
+            false)]
         public string SourceResourceId { get; set; }
 
         [Parameter(
