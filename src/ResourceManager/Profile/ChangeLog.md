@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.1.0
 * Resolve-AzureRmError
   * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
 * Send-Feedback
