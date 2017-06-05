@@ -1,4 +1,4 @@
-﻿## June2017 - Version 4.1.0
+﻿## 2017.06.07 - Version 4.1.0
 * AnalysisServices
     * New SKUs added: B1, B2, S0
     * Scale up/down support added
