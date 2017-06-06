@@ -28,9 +28,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Obsolete("This cmdlet will be removed in the upcoming release.  Updating image reference of a disk is not supported." +
-        "This cmdlet was auto-generated because of a bug in the Swagger spec." +
-        "To set image reference of a disk, please use Set-AzureRmDiskImageReference command." )]
+    [Obsolete("This cmdlet will be removed in an upcoming release.  Updating the image reference of a disk is not supported." +
+        "To set the image reference of a disk, please use Set-AzureRmDiskImageReference command." )]
     [Cmdlet("Set", "AzureRmDiskUpdateImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(DiskUpdate))]
     public class SetAzureRmDiskUpdateImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
