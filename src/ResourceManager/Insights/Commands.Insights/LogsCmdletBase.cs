@@ -107,10 +107,8 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         protected virtual void SetMaxEventsIfPresent(string currentQueryFilter, int value)
         {
-            if (value > 0 && value <= 100000)
-            {
-                this.MaxRecords = value;
-            }
+            // If value is not acceptable this forces the use of the default value
+            this.MaxRecords = (value > 0 && value <= 100000) ? value : 0;
         }
 
         /// <summary>
@@ -204,6 +202,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteDebug("Processing parameters");
             string queryFilter = this.ProcessParameters();
 
             // Retrieve the records
@@ -214,6 +213,7 @@ namespace Microsoft.Azure.Commands.Insights
 
             // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
+            WriteDebug("First call");
             var query = new ODataQuery<EventData>(queryFilter);
             IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, select: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
             var records = new List<IPSEventData>();
@@ -224,15 +224,20 @@ namespace Microsoft.Azure.Commands.Insights
             // Adding a safety check to stop returning records if too many have been read already.
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
+                WriteDebug("Following continuation token");
                 response = this.MonitorClient.ActivityLogs.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
                 enumerator = response.GetEnumerator();
+                WriteDebug(string.Format("Merging records with {0} records", records.Count));
                 enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
+                WriteDebug(string.Format("Merged records. Now with {0} records", records.Count));
                 nextLink = response.NextPageLink;
             }
 
+            WriteDebug("Done following continuation token");
             var recordsReturned = new List<IPSEventData>();
             if (records.Count > maxNumberOfRecords)
             {
+                WriteDebug("Complying with maxNumberOfRecords");
                 recordsReturned.AddRange(records.Take(maxNumberOfRecords));
             }
             else
