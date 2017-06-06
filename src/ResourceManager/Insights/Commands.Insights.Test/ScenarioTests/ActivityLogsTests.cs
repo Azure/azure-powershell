@@ -72,14 +72,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSubscriptionIdLogPaged()
         {
-            try
-            {
-                TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogPaged");
-            } catch (Exception ex)
-            {
-                int r = 0;
-                r++;
-            }
+            TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogPaged");
         }
     }
 }
