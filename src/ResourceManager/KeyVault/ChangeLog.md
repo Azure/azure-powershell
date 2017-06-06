@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.1.0
+
+## Version 3.0.1
+
 ## Version 3.0.0
 * Adding backup/restore support for KeyVault secrets
     - Secrets can be backed up and restored, matching the functionality currently supported for Keys

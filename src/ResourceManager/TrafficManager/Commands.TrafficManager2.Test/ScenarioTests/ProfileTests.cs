@@ -136,5 +136,33 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-ProfileDisableNonExisting");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorDefault()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorDefaults");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorCustom()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorCustom");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorProtocol()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorProtocol");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorParameterAliases()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorParameterAliases");
+        }
     }
 }
