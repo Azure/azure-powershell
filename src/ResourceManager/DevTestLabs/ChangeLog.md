@@ -19,6 +19,9 @@
 -->
 ## Current Release
 * Update cmdlets to work with current and updated DevTest Lasbs API version.
+
+## Version 3.0.1
+
 ## Version 3.0.0
 
 ## Version 2.8.0

@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.3.1
+
 ## Version 0.3.0
 * Bug fix : 
 	- Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName' 

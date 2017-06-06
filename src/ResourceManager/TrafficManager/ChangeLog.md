@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+* New Monitor settings 'MonitorIntervalInSeconds', 'MonitorTimeoutInSeconds', 'MonitorToleratedNumberOfFailures'
+* New Monitor protocol 'TCP'
+
+## Version 3.0.1
+
 ## Version 3.0.0
 
 ## Version 2.8.0

@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTier = storageAccount.AccessTier;
             this.CreationTime = storageAccount.CreationTime;
             this.CustomDomain = storageAccount.CustomDomain;
+            this.Identity = storageAccount.Identity;
             this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
             this.PrimaryEndpoints = storageAccount.PrimaryEndpoints;
             this.PrimaryLocation = storageAccount.PrimaryLocation;
@@ -66,6 +67,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public DateTime? CreationTime { get; set; }
 
         public CustomDomain CustomDomain { get; set; }
+
+        public Identity Identity { get; set; }
 
         public DateTime? LastGeoFailoverTime { get; set; }
 

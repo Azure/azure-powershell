@@ -13,7 +13,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -30,7 +30,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -46,7 +46,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -66,7 +66,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -82,7 +82,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -98,23 +98,23 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -129,7 +129,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -151,7 +151,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -173,7 +173,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -199,7 +199,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -221,7 +221,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -243,7 +243,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -270,23 +270,23 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "EndpointMonitorStatus": "System.String",
-                    "EndpointStatus": "System.String",
                     "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-                    "Name": "System.String",
+                    "Weight": "System.Nullable`1[System.UInt32]",
                     "Priority": "System.Nullable`1[System.UInt32]",
+                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+                    "Id": "System.String",
+                    "Name": "System.String",
                     "ProfileName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Target": "System.String",
-                    "TargetResourceId": "System.String",
                     "Type": "System.String",
-                    "Weight": "System.Nullable`1[System.UInt32]"
+                    "TargetResourceId": "System.String",
+                    "Target": "System.String",
+                    "EndpointStatus": "System.String",
+                    "Location": "System.String",
+                    "EndpointMonitorStatus": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -307,7 +307,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -334,7 +334,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -368,7 +368,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -385,7 +385,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -401,7 +401,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -421,7 +421,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -437,7 +437,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -453,23 +453,23 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -490,7 +490,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -512,7 +512,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -538,7 +538,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -560,7 +560,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -587,23 +587,23 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "EndpointMonitorStatus": "System.String",
-                    "EndpointStatus": "System.String",
                     "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-                    "Name": "System.String",
+                    "Weight": "System.Nullable`1[System.UInt32]",
                     "Priority": "System.Nullable`1[System.UInt32]",
+                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+                    "Id": "System.String",
+                    "Name": "System.String",
                     "ProfileName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Target": "System.String",
-                    "TargetResourceId": "System.String",
                     "Type": "System.String",
-                    "Weight": "System.Nullable`1[System.UInt32]"
+                    "TargetResourceId": "System.String",
+                    "Target": "System.String",
+                    "EndpointStatus": "System.String",
+                    "Location": "System.String",
+                    "EndpointMonitorStatus": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -636,23 +636,23 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -668,23 +668,23 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -705,23 +705,23 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "EndpointMonitorStatus": "System.String",
-                    "EndpointStatus": "System.String",
                     "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-                    "Name": "System.String",
+                    "Weight": "System.Nullable`1[System.UInt32]",
                     "Priority": "System.Nullable`1[System.UInt32]",
+                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+                    "Id": "System.String",
+                    "Name": "System.String",
                     "ProfileName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Target": "System.String",
-                    "TargetResourceId": "System.String",
                     "Type": "System.String",
-                    "Weight": "System.Nullable`1[System.UInt32]"
+                    "TargetResourceId": "System.String",
+                    "Target": "System.String",
+                    "EndpointStatus": "System.String",
+                    "Location": "System.String",
+                    "EndpointMonitorStatus": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -754,23 +754,23 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -786,7 +786,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -802,7 +802,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -822,7 +822,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -838,7 +838,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -854,23 +854,23 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -891,7 +891,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -913,7 +913,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -939,7 +939,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -961,7 +961,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -988,23 +988,23 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "EndpointMonitorStatus": "System.String",
-                    "EndpointStatus": "System.String",
                     "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-                    "Name": "System.String",
+                    "Weight": "System.Nullable`1[System.UInt32]",
                     "Priority": "System.Nullable`1[System.UInt32]",
+                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+                    "Id": "System.String",
+                    "Name": "System.String",
                     "ProfileName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Target": "System.String",
-                    "TargetResourceId": "System.String",
                     "Type": "System.String",
-                    "Weight": "System.Nullable`1[System.UInt32]"
+                    "TargetResourceId": "System.String",
+                    "Target": "System.String",
+                    "EndpointStatus": "System.String",
+                    "Location": "System.String",
+                    "EndpointMonitorStatus": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1037,7 +1037,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1054,7 +1054,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1070,7 +1070,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1090,7 +1090,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1106,7 +1106,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1122,23 +1122,23 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1153,7 +1153,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1175,7 +1175,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1197,7 +1197,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1223,7 +1223,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1245,7 +1245,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1267,7 +1267,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1294,23 +1294,23 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "EndpointMonitorStatus": "System.String",
-                    "EndpointStatus": "System.String",
                     "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-                    "Name": "System.String",
+                    "Weight": "System.Nullable`1[System.UInt32]",
                     "Priority": "System.Nullable`1[System.UInt32]",
+                    "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+                    "Id": "System.String",
+                    "Name": "System.String",
                     "ProfileName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Target": "System.String",
-                    "TargetResourceId": "System.String",
                     "Type": "System.String",
-                    "Weight": "System.Nullable`1[System.UInt32]"
+                    "TargetResourceId": "System.String",
+                    "Target": "System.String",
+                    "EndpointStatus": "System.String",
+                    "Location": "System.String",
+                    "EndpointMonitorStatus": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1331,7 +1331,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1358,7 +1358,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1392,23 +1392,23 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndpointMonitorStatus": "System.String",
-              "EndpointStatus": "System.String",
               "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-              "Name": "System.String",
+              "Weight": "System.Nullable`1[System.UInt32]",
               "Priority": "System.Nullable`1[System.UInt32]",
+              "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+              "Id": "System.String",
+              "Name": "System.String",
               "ProfileName": "System.String",
               "ResourceGroupName": "System.String",
-              "Target": "System.String",
-              "TargetResourceId": "System.String",
               "Type": "System.String",
-              "Weight": "System.Nullable`1[System.UInt32]"
+              "TargetResourceId": "System.String",
+              "Target": "System.String",
+              "EndpointStatus": "System.String",
+              "Location": "System.String",
+              "EndpointMonitorStatus": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1424,7 +1424,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1440,7 +1440,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1456,7 +1456,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1472,7 +1472,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1492,7 +1492,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1508,7 +1508,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1524,7 +1524,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1543,7 +1543,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.UInt32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1561,7 +1561,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.UInt32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1579,7 +1579,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1595,7 +1595,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.UInt32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1613,7 +1613,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1637,7 +1637,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1659,7 +1659,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1681,7 +1681,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1703,7 +1703,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1729,7 +1729,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1751,7 +1751,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1773,7 +1773,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1798,7 +1798,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.UInt32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1822,7 +1822,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.UInt32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1846,7 +1846,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1868,7 +1868,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.UInt32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1892,7 +1892,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.String]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1928,20 +1928,20 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1957,7 +1957,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1973,20 +1973,20 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2007,7 +2007,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2029,20 +2029,20 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
-                    "MonitorPath": "System.String",
-                    "MonitorPort": "System.UInt32",
-                    "MonitorProtocol": "System.String",
                     "Name": "System.String",
-                    "ProfileStatus": "System.String",
-                    "RelativeDnsName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "RelativeDnsName": "System.String",
+                    "ProfileStatus": "System.String",
                     "TrafficRoutingMethod": "System.String",
-                    "Ttl": "System.UInt32"
+                    "MonitorProtocol": "System.String",
+                    "MonitorPath": "System.String",
+                    "Ttl": "System.UInt32",
+                    "MonitorPort": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2075,20 +2075,20 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2104,7 +2104,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2120,20 +2120,20 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2148,7 +2148,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2168,7 +2168,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2184,7 +2184,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2200,7 +2200,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2219,7 +2219,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.UInt32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2237,7 +2237,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.UInt32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2255,7 +2255,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2271,7 +2271,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.UInt32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2289,7 +2289,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2313,7 +2313,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2335,20 +2335,20 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
-                    "MonitorPath": "System.String",
-                    "MonitorPort": "System.UInt32",
-                    "MonitorProtocol": "System.String",
                     "Name": "System.String",
-                    "ProfileStatus": "System.String",
-                    "RelativeDnsName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "RelativeDnsName": "System.String",
+                    "ProfileStatus": "System.String",
                     "TrafficRoutingMethod": "System.String",
-                    "Ttl": "System.UInt32"
+                    "MonitorProtocol": "System.String",
+                    "MonitorPath": "System.String",
+                    "Ttl": "System.UInt32",
+                    "MonitorPort": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2369,7 +2369,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2395,7 +2395,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2417,7 +2417,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2439,7 +2439,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2464,7 +2464,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.UInt32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2488,7 +2488,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.UInt32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2512,7 +2512,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2534,7 +2534,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.UInt32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2558,7 +2558,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.String]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2594,7 +2594,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2611,7 +2611,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2627,7 +2627,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2643,20 +2643,20 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2671,7 +2671,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2693,7 +2693,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2715,7 +2715,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2737,7 +2737,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2764,20 +2764,20 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
-                    "MonitorPath": "System.String",
-                    "MonitorPort": "System.UInt32",
-                    "MonitorProtocol": "System.String",
                     "Name": "System.String",
-                    "ProfileStatus": "System.String",
-                    "RelativeDnsName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "RelativeDnsName": "System.String",
+                    "ProfileStatus": "System.String",
                     "TrafficRoutingMethod": "System.String",
-                    "Ttl": "System.UInt32"
+                    "MonitorProtocol": "System.String",
+                    "MonitorPath": "System.String",
+                    "Ttl": "System.UInt32",
+                    "MonitorPort": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2798,7 +2798,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2825,7 +2825,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2859,7 +2859,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2876,7 +2876,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2892,7 +2892,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2908,20 +2908,20 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2942,7 +2942,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2964,7 +2964,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2991,20 +2991,20 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
-                    "MonitorPath": "System.String",
-                    "MonitorPort": "System.UInt32",
-                    "MonitorProtocol": "System.String",
                     "Name": "System.String",
-                    "ProfileStatus": "System.String",
-                    "RelativeDnsName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "RelativeDnsName": "System.String",
+                    "ProfileStatus": "System.String",
                     "TrafficRoutingMethod": "System.String",
-                    "Ttl": "System.UInt32"
+                    "MonitorProtocol": "System.String",
+                    "MonitorPath": "System.String",
+                    "Ttl": "System.UInt32",
+                    "MonitorPort": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3037,7 +3037,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3054,7 +3054,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3070,7 +3070,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3086,20 +3086,20 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3114,7 +3114,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3136,7 +3136,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3158,7 +3158,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3180,7 +3180,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3207,20 +3207,20 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
-                    "MonitorPath": "System.String",
-                    "MonitorPort": "System.UInt32",
-                    "MonitorProtocol": "System.String",
                     "Name": "System.String",
-                    "ProfileStatus": "System.String",
-                    "RelativeDnsName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "RelativeDnsName": "System.String",
+                    "ProfileStatus": "System.String",
                     "TrafficRoutingMethod": "System.String",
-                    "Ttl": "System.UInt32"
+                    "MonitorProtocol": "System.String",
+                    "MonitorPath": "System.String",
+                    "Ttl": "System.UInt32",
+                    "MonitorPort": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3241,7 +3241,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3268,7 +3268,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3302,20 +3302,20 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3331,20 +3331,20 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3365,20 +3365,20 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-                  "Name": "TrafficManagerProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
                     "Id": "System.String",
-                    "MonitorPath": "System.String",
-                    "MonitorPort": "System.UInt32",
-                    "MonitorProtocol": "System.String",
                     "Name": "System.String",
-                    "ProfileStatus": "System.String",
-                    "RelativeDnsName": "System.String",
                     "ResourceGroupName": "System.String",
+                    "RelativeDnsName": "System.String",
+                    "ProfileStatus": "System.String",
                     "TrafficRoutingMethod": "System.String",
-                    "Ttl": "System.UInt32"
+                    "MonitorProtocol": "System.String",
+                    "MonitorPath": "System.String",
+                    "Ttl": "System.UInt32",
+                    "MonitorPort": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3411,20 +3411,20 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3440,7 +3440,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3456,7 +3456,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3478,7 +3478,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3500,7 +3500,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3534,20 +3534,20 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-            "Name": "TrafficManagerProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
               "Id": "System.String",
-              "MonitorPath": "System.String",
-              "MonitorPort": "System.UInt32",
-              "MonitorProtocol": "System.String",
               "Name": "System.String",
-              "ProfileStatus": "System.String",
-              "RelativeDnsName": "System.String",
               "ResourceGroupName": "System.String",
+              "RelativeDnsName": "System.String",
+              "ProfileStatus": "System.String",
               "TrafficRoutingMethod": "System.String",
-              "Ttl": "System.UInt32"
+              "MonitorProtocol": "System.String",
+              "MonitorPath": "System.String",
+              "Ttl": "System.UInt32",
+              "MonitorPort": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3563,7 +3563,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3579,7 +3579,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3595,7 +3595,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3614,7 +3614,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3630,7 +3630,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt32",
+            "Name": "System.UInt32",
             "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3646,7 +3646,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3667,7 +3667,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3686,7 +3686,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt32",
+            "Name": "System.UInt32",
             "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3702,7 +3702,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3720,7 +3720,7 @@
           ],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3742,7 +3742,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3764,7 +3764,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3786,7 +3786,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3811,7 +3811,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3833,7 +3833,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt32",
+                  "Name": "System.UInt32",
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3855,7 +3855,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3882,7 +3882,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3907,7 +3907,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt32",
+                  "Name": "System.UInt32",
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3929,7 +3929,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3953,7 +3953,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4090,7 +4090,7 @@
     },
     "System.Collections.Generic.List`1[System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
+      "Name": "System.Collections.Generic.List`1[System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4100,7 +4100,7 @@
     },
     "System.Nullable`1[System.UInt32]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.UInt32]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4110,8 +4110,8 @@
     },
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4120,23 +4120,23 @@
     },
     "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.TrafficManager.Models",
-      "Name": "TrafficManagerEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.Azure.Commands.TrafficManager, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "EndpointMonitorStatus": "System.String",
-        "EndpointStatus": "System.String",
         "GeoMapping": "System.Collections.Generic.List`1[System.String]",
-        "Id": "System.String",
-        "Location": "System.String",
-        "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
-        "Name": "System.String",
+        "Weight": "System.Nullable`1[System.UInt32]",
         "Priority": "System.Nullable`1[System.UInt32]",
+        "MinChildEndpoints": "System.Nullable`1[System.UInt32]",
+        "Id": "System.String",
+        "Name": "System.String",
         "ProfileName": "System.String",
         "ResourceGroupName": "System.String",
-        "Target": "System.String",
-        "TargetResourceId": "System.String",
         "Type": "System.String",
-        "Weight": "System.Nullable`1[System.UInt32]"
+        "TargetResourceId": "System.String",
+        "Target": "System.String",
+        "EndpointStatus": "System.String",
+        "Location": "System.String",
+        "EndpointMonitorStatus": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
