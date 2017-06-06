@@ -106,7 +106,7 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -186,6 +186,7 @@
     <Compile Include="ScenarioTests\RouteTableTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\TestDnsAvailabilityTest.cs" />
+    <Compile Include="ScenarioTests\UsageTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkGatewayTests.cs" />
@@ -236,6 +237,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TestDnsAvailabilityTest.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\UsageTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualNetworkTests.ps1">
@@ -457,6 +461,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LocalNetworkGatewayTests\TestLocalNetworkGatewayCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.UsageTests\TestNetworkUsage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>  
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayConnectionCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
