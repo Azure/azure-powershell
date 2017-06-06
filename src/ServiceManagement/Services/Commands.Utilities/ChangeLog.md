@@ -21,6 +21,7 @@
 
 ## Version 4.1.0
 * Add-AzureVhd: The size limit on vhd is increased to 4TB.
+* Application Gateway classic, fixed certificate list to work with certificate collections
 * New-AzureBGPPeering: Support LegacyMode
 
 ## Version 4.0.2
