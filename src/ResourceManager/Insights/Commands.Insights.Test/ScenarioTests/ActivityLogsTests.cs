@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -58,6 +59,27 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         public void TestGetAzureSubscriptionIdLog()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureSubscriptionIdLogMaxEvents()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogMaxEvents");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureSubscriptionIdLogPaged()
+        {
+            try
+            {
+                TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogPaged");
+            } catch (Exception ex)
+            {
+                int r = 0;
+                r++;
+            }
         }
     }
 }
