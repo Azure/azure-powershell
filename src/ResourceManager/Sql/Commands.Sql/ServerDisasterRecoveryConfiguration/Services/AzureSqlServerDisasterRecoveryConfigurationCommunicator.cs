@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Services
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// </summary>
         public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Get(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.Get(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName).ServerDisasterRecoveryConfiguration;
+            return GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.Get(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName).ServerDisasterRecoveryConfiguration;
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.List(resourceGroupName, serverName).ServerDisasterRecoveryConfigurations;
+            return GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.List(resourceGroupName, serverName).ServerDisasterRecoveryConfigurations;
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// </summary>
         public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Create(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId, ServerDisasterRecoveryConfigurationCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.CreateOrUpdate(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName, parameters).ServerDisasterRecoveryConfiguration;
+            return GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.CreateOrUpdate(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName, parameters).ServerDisasterRecoveryConfiguration;
         }
 
         /// <summary>
@@ -88,11 +87,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         {
             if (allowDataLoss)
             {
-                GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.FailoverAllowDataLoss(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
+                GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.FailoverAllowDataLoss(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
             }
             else
             {
-                GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.Failover(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
+                GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.Failover(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
             }
         }
 
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// </summary>
         public void Remove(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).ServerDisasterRecoveryConfigurations.Delete(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
+            GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.Delete(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
         }
 
         /// <summary>
@@ -109,15 +108,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

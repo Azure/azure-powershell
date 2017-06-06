@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.ReplicationLink GetLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseReplicationLinks.Get(resourceGroupName, serverName, databaseName, linkId.ToString()).ReplicationLink;
+            return GetCurrentSqlClient().DatabaseReplicationLinks.Get(resourceGroupName, serverName, databaseName, linkId.ToString()).ReplicationLink;
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.ReplicationLink> ListLinks(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseReplicationLinks.List(resourceGroupName, serverName, databaseName).ReplicationLinks;
+            return GetCurrentSqlClient().DatabaseReplicationLinks.List(resourceGroupName, serverName, databaseName).ReplicationLinks;
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.DatabaseCreateOrUpdateResponse CreateCopy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
+            return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         public void RemoveLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).DatabaseReplicationLinks.Delete(resourceGroupName, serverName, databaseName, linkId.ToString());
+            GetCurrentSqlClient().DatabaseReplicationLinks.Delete(resourceGroupName, serverName, databaseName, linkId.ToString());
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         public void FailoverLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).DatabaseReplicationLinks.Failover(resourceGroupName, serverName, databaseName, linkId.ToString());
+            GetCurrentSqlClient().DatabaseReplicationLinks.Failover(resourceGroupName, serverName, databaseName, linkId.ToString());
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         public void FailoverLinkAllowDataLoss(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).DatabaseReplicationLinks.FailoverAllowDataLoss(resourceGroupName, serverName, databaseName, linkId.ToString());
+            GetCurrentSqlClient().DatabaseReplicationLinks.FailoverAllowDataLoss(resourceGroupName, serverName, databaseName, linkId.ToString());
         }
 
         /// <summary>
@@ -113,15 +113,13 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }
