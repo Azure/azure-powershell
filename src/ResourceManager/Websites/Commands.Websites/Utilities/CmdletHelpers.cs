@@ -76,7 +76,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             bool result = false;
             qualifiedSiteName = webSiteName;
+#if !NETSTANDARD
             var siteNamePattern = "{0}({1})";
+#else
+            var siteNamePattern = "{0}/{1}";
+#endif
             if (!string.IsNullOrEmpty(slotName) && !string.Equals(slotName, "Production", StringComparison.OrdinalIgnoreCase))
             {
                 result = true;
