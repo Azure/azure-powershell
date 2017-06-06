@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.1.0
+
+* Update help for parameters that accept wildcard characters and update StorageContext type
+
 ## Version 3.0.2
 
 ## Version 3.0.1

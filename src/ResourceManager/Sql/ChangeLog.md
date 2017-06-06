@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 3.1.0
+* Restore-AzureRmSqlDatabase: Update documentation examples
+
 ## Version 3.0.1
 
 ## Version 3.0.0
