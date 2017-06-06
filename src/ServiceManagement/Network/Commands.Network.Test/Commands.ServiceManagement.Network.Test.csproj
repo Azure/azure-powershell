@@ -166,6 +166,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationGateway\GetApplicationGatewayCertificateTests.cs" />
     <Compile Include="IPForwarding\GetIPForwardingTests.cs" />
     <Compile Include="IPForwarding\SetIPForwardingTests.cs" />
     <Compile Include="Multivip\MultivipTests.cs" />
