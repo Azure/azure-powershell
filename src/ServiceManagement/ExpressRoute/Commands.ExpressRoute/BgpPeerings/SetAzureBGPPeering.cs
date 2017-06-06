@@ -36,10 +36,10 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public string AdvertisedPublicPrefixesIpv6;
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number")]
-        public UInt32 CustomerAsn { get; set; }
+        public UInt32? CustomerAsn { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number for Ipv6")]
-        public UInt32 CustomerAsnIpv6 { get; set; }
+        public UInt32? CustomerAsnIpv6 { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Peer Asn")]
@@ -83,11 +83,15 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             try
             {
                 var route = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, AccessType);
-                var updatedRoute = ExpressRouteClient.UpdateAzureBGPPeering(ServiceKey, AccessType, CustomerAsn, CustomerAsnIpv6,
+
+                var updatedRoute = ExpressRouteClient.UpdateAzureBGPPeering(ServiceKey, AccessType,
+                    AdvertisedPublicPrefixes ?? route.AdvertisedPublicPrefixes, AdvertisedPublicPrefixesIpv6 ?? route.AdvertisedPublicPrefixesIpv6,
+                    (CustomerAsn.HasValue) ? CustomerAsn.Value : route.CustomerAutonomousSystemNumber, (CustomerAsnIpv6.HasValue) ? CustomerAsnIpv6.Value : route.CustomerAutonomousSystemNumberIpv6,
                     PeerAsn.HasValue ? PeerAsn.Value : route.PeerAsn, PrimaryPeerSubnet ?? route.PrimaryPeerSubnet, PrimaryPeerSubnetIpv6 ?? route.PrimaryPeerSubnetIpv6,
-                    RoutingRegistryName, RoutingRegistryNameIpv6, SecondaryPeerSubnet ?? route.SecondaryPeerSubnet, SecondaryPeerSubnetIpv6 ?? route.SecondaryPeerSubnetIpv6,
+                    RoutingRegistryName ?? route.RoutingRegistryName, RoutingRegistryNameIpv6 ?? RoutingRegistryNameIpv6,
+                    SecondaryPeerSubnet ?? route.SecondaryPeerSubnet, SecondaryPeerSubnetIpv6 ?? route.SecondaryPeerSubnetIpv6,
                     VlanId.HasValue ? VlanId.Value : route.VlanId,
-                    SharedKey.Trim());
+                    string.IsNullOrWhiteSpace(SharedKey) ? null : SharedKey.Trim());
                 WriteObject(updatedRoute, false);
             }
             catch
@@ -112,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                     throw new ArgumentException(Resources.SecondaryPeerSubnetRequired);
                 }
 
-                var newRoute = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, AdvertisedPublicPrefixesIpv6, CustomerAsn, CustomerAsnIpv6,
+                var newRoute = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, AdvertisedPublicPrefixesIpv6, CustomerAsn.Value, CustomerAsnIpv6.Value,
                     PeerAsn.Value, PrimaryPeerSubnet, PrimaryPeerSubnetIpv6, RoutingRegistryName, RoutingRegistryNameIpv6, SecondaryPeerSubnet, SecondaryPeerSubnetIpv6,
                     VlanId.Value, AccessType, SharedKey);
                 WriteObject(newRoute);

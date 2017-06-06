@@ -111,18 +111,20 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             }
         }
 
-        public bool RemoveAzureBGPPeering(Guid serviceKey, BgpPeeringAccessType accessType, BgpPeerAdddressType peerAddressType)
+        public bool RemoveAzureBGPPeering(Guid serviceKey, BgpPeeringAccessType accessType, BgpPeerAddressType peerAddressType)
         {
             var result = Client.BorderGatewayProtocolPeerings.Remove(serviceKey.ToString(), accessType, peerAddressType);
             return result.HttpStatusCode.Equals(HttpStatusCode.OK);
         }
 
         public AzureBgpPeering UpdateAzureBGPPeering(Guid serviceKey,
-            BgpPeeringAccessType accessType, UInt32 customerAsn, UInt32 customerAsnIpv6, UInt32 peerAsn, string primaryPeerSubnet, string primaryPeerSubnetIpv6,
+            BgpPeeringAccessType accessType, string advertisedPublicPrefixes, string advertisedPublicPrefixesIpv6, UInt32 customerAsn, UInt32 customerAsnIpv6, UInt32 peerAsn, string primaryPeerSubnet, string primaryPeerSubnetIpv6,
             string routingRegistryName, string routingRegistryNameIpv6, string secondaryPeerSubnet, string secondaryPeerSubnetIpv6, UInt32 vlanId, string sharedKey)
         {
             var result = Client.BorderGatewayProtocolPeerings.Update(serviceKey.ToString(), accessType, new BorderGatewayProtocolPeeringUpdateParameters()
             {
+                AdvertisedPublicPrefixes = advertisedPublicPrefixes,
+                AdvertisedPublicPrefixesIpv6 = advertisedPublicPrefixesIpv6,
                 CustomerAutonomousSystemNumber = customerAsn,
                 CustomerAutonomousSystemNumberIpv6 = customerAsnIpv6,
                 PeerAutonomousSystemNumber = peerAsn,

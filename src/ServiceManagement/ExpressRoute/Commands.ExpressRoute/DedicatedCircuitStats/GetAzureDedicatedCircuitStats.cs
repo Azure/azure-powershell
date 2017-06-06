@@ -21,7 +21,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitStats"), OutputType(typeof(AzureDedicatedCircuitPeeringStats), typeof(IEnumerable<AzureDedicatedCircuitPeeringStats>))]
+    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitStats"), OutputType(typeof(AzureDedicatedCircuitStats), typeof(IEnumerable<AzureDedicatedCircuitStats>))]
     public class GetAzureDedicatedCircuitPeeringStatsCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
