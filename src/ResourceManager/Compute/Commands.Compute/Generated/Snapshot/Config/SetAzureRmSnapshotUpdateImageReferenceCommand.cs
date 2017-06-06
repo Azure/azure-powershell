@@ -28,8 +28,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Obsolete("This cmdlet will be removed in the upcoming release.  Updating image reference of a snapshot is not supported." +
-        "This cmdlet was auto-generated because of a bug in the Swagger spec." +
+    [Obsolete("This cmdlet will be removed in the upcoming release.  Updating the image reference of a snapshot is not supported." +
         "To set image reference of a snapshot, please use Set-AzureRmSnapshotImageReference command.")]
     [Cmdlet("Set", "AzureRmSnapshotUpdateImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(SnapshotUpdate))]
