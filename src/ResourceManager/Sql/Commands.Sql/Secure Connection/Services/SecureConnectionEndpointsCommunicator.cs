@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// Get the secure connection policy for a specific database
         /// </summary>
-        public DatabaseSecureConnectionPolicy GetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public DatabaseSecureConnectionPolicy GetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName)
         {
             ISecureConnectionPolicyOperations operations = GetCurrentSqlClient().SecureConnection;
             DatabaseSecureConnectionPolicyGetResponse response = operations.GetDatabasePolicy(resourceGroupName, serverName, databaseName);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// Set (or create) the secure connection policy for a specific database
         /// </summary>
-        public void SetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecureConnectionPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseSecureConnectionPolicyCreateOrUpdateParameters parameters)
         {
             ISecureConnectionPolicyOperations operations = GetCurrentSqlClient().SecureConnection;
             operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);

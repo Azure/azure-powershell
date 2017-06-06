@@ -59,9 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// Gets the Location Capabilities for the specified region for the current subscription.
         /// </summary>
         /// <param name="locationName">The name of the region for which to get the location capabilities</param>
-        /// <param name="clientRequestId">The client request ID to use</param>
         /// <returns>The location capabilities for the region</returns>
-        public LocationCapabilities Get(string locationName, string clientRequestId)
+        public LocationCapabilities Get(string locationName)
         {
             return GetCurrentSqlClient().Capabilities.ListByLocation(locationName);
         }

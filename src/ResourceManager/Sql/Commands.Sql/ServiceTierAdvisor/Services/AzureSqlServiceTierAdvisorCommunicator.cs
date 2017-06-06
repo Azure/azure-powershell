@@ -63,9 +63,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <param name="serverName">The name of Azure Sql server</param>
         /// <param name="databaseName">Database name</param>
         /// <param name="expand">Expand string</param>
-        /// <param name="clientRequestId">Request identifier</param>
         /// <returns></returns>
-        public Management.Sql.LegacySdk.Models.Database GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName, string expand, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName, string expand)
         {
             return GetCurrentSqlClient().Databases.GetExpanded(resourceGroupName, serverName, databaseName, expand).Database;
         }
@@ -76,9 +75,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of Azure Sql server</param>
         /// <param name="expand">Expand string</param>
-        /// <param name="clientRequestId">Request identifier</param>
         /// <returns>List of databases</returns>
-        public IList<Management.Sql.LegacySdk.Models.Database> ListDatabasesExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Database> ListDatabasesExpanded(string resourceGroupName, string serverName, string expand)
         {
             return GetCurrentSqlClient().Databases.ListExpanded(resourceGroupName, serverName, expand).Databases;
         }
@@ -88,9 +86,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of Azure Sql server</param>
-        /// <param name="clientRequestId">Request identifier</param>
         /// <returns>List of recommended elastic pools</returns>
-        public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> GetRecommendedElasticPoolsExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> GetRecommendedElasticPoolsExpanded(string resourceGroupName, string serverName, string expand)
         {
             return GetCurrentSqlClient().RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }

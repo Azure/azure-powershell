@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(IsModelOfRule), clientRequestId);
+            ModelAdapter.SetDatabaseDataMaskingRule(rules.First(IsModelOfRule));
             return null;
         }
 

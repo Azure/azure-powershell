@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Get the data masking policy for a specific database
         /// </summary>
-        public DataMaskingPolicy GetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public DataMaskingPolicy GetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             DataMaskingPolicyGetResponse response = operations.GetPolicy(resourceGroupName, serverName, databaseName);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Set (or create) the data masking policy for a specific database
         /// </summary>
-        public void SetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DataMaskingPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, DataMaskingPolicyCreateOrUpdateParameters parameters)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.CreateOrUpdatePolicy(resourceGroupName, serverName, databaseName, parameters);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Calls to list all the data masking rules for a specific database
         /// </summary>
-        public IList<DataMaskingRule> ListDataMaskingRules(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public IList<DataMaskingRule> ListDataMaskingRules(string resourceGroupName, string serverName, string databaseName)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             DataMaskingRuleListResponse response = operations.List(resourceGroupName, serverName, databaseName);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Sets the data masking rules for a specific database
         /// </summary>
-        public void SetDatabaseDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId, DataMaskingRuleCreateOrUpdateParameters parameters)
+        public void SetDatabaseDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, DataMaskingRuleCreateOrUpdateParameters parameters)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.CreateOrUpdateRule(resourceGroupName, serverName, databaseName, ruleId, parameters);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Deletes a data masking rule from the list of rules of a specific database
         /// </summary>
-        public void DeleteDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId)
+        public void DeleteDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId)
         {
             IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.Delete(resourceGroupName, serverName, databaseName, ruleId);

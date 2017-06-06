@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Gets the Azure Sql Database Server FirewallRules
         /// </summary>
-        public Management.Sql.LegacySdk.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName)
         {
             return GetCurrentSqlClient().FirewallRules.Get(resourceGroupName, serverName, firewallRuleName).FirewallRule;
         }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Lists Azure Sql Databases Server FirewallRules
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.FirewallRule> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.FirewallRule> List(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().FirewallRules.List(resourceGroupName, serverName).FirewallRules;
         }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Creates or updates an Azure Sql Database Server FirewallRule
         /// </summary>
-        public Management.Sql.LegacySdk.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId, FirewallRuleCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, FirewallRuleCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters).FirewallRule;
         }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Deletes an Azure Sql Database Server FirewallRule
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string firewallRuleName)
         {
             GetCurrentSqlClient().FirewallRules.Delete(resourceGroupName, serverName, firewallRuleName);
         }

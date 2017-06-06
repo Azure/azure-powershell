@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Gets a server communication link
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ServerCommunicationLink Get(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ServerCommunicationLink Get(string resourceGroupName, string serverName, string communicationLinkName)
         {
             return GetCurrentSqlClient().CommunicationLinks.Get(resourceGroupName, serverName, communicationLinkName).ServerCommunicationLink;
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Lists server communication links
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.ServerCommunicationLink> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ServerCommunicationLink> List(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().CommunicationLinks.List(resourceGroupName, serverName).ServerCommunicationLinks;
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Creates or updates a server communication link
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ServerCommunicationLink CreateOrUpdate(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId, ServerCommunicationLinkCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.ServerCommunicationLink CreateOrUpdate(string resourceGroupName, string serverName, string communicationLinkName, ServerCommunicationLinkCreateOrUpdateParameters parameters)
         {
             var resp = GetCurrentSqlClient().CommunicationLinks.CreateOrUpdate(resourceGroupName, serverName, communicationLinkName, parameters);
             return resp.ServerCommunicationLink;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Deletes a server communication link
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string communicationLinkName)
         {
             GetCurrentSqlClient().CommunicationLinks.Delete(resourceGroupName, serverName, communicationLinkName);
         }

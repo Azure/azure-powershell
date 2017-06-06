@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Model;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Service
@@ -70,21 +69,20 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <param name="resourceGroupName">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="databaseName">Database name</param>
-        /// <param name="clientRequestId">Request id</param>
         /// <returns>List of all recommended indexes for specified server</returns>
-        public List<IndexRecommendation> ListRecommendedIndexes(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public List<IndexRecommendation> ListRecommendedIndexes(string resourceGroupName, string serverName, string databaseName)
         {
             var databases = new List<Management.Sql.LegacySdk.Models.Database>();
 
             var recommendedIndexes = new List<IndexRecommendation>();
             if (string.IsNullOrEmpty(databaseName))
             {
-                var response = GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, Expand);
+                var response = GetCurrentSqlClient().Databases.ListExpanded(resourceGroupName, serverName, Expand);
                 databases.AddRange(response.Databases);
             }
             else
             {
-                var response = GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, Expand);
+                var response = GetCurrentSqlClient().Databases.GetExpanded(resourceGroupName, serverName, databaseName, Expand);
                 databases.Add(response.Database);
             }
 
@@ -117,10 +115,9 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <param name="table">Table name</param>
         /// <param name="recommendedIndexName">Recommended index</param>
         /// <param name="state">State</param>
-        /// <param name="clientRequestId">Request id</param>
-        public void UpdateRecommendedIndexState(string resourceGroupName, string serverName, string databaseName, string schema, string table, string recommendedIndexName, string state, string clientRequestId)
+        public void UpdateRecommendedIndexState(string resourceGroupName, string serverName, string databaseName, string schema, string table, string recommendedIndexName, string state)
         {
-            GetCurrentSqlClient(clientRequestId).RecommendedIndexes.Update(resourceGroupName, serverName, databaseName, schema, table, recommendedIndexName,
+            GetCurrentSqlClient().RecommendedIndexes.Update(resourceGroupName, serverName, databaseName, schema, table, recommendedIndexName,
                     new RecommendedIndexUpdateParameters
                     {
                         Properties = new RecommendedIndexUpdateProperties()
@@ -135,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)

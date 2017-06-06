@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        protected SqlManagementClient GetCurrentSqlClient(string clientRequestId)
+        protected SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
