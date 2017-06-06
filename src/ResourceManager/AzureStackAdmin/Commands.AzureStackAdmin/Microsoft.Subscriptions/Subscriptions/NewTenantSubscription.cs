@@ -54,6 +54,20 @@ namespace Microsoft.AzureStack.Commands
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets the subscription identifier optional.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNull]
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the display name.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNull]
+        public string DelegatedProviderSubscriptionId { get; set; }
+
+        /// <summary>
         /// This queue is used by the tests to assign fixed SubscritionIds
         /// every time the test runs
         /// </summary>
@@ -69,16 +83,23 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected AdminSubscriptionDefinition GetSubscriptionDefinition()
         {
+            if (NewTenantSubscription.SubscriptionIds.Count != 0)
+            {
+                this.SubscriptionId = NewTenantSubscription.SubscriptionIds.Dequeue().ToString();
+            }
+            else if (string.IsNullOrEmpty(this.SubscriptionId))
+            {
+                this.SubscriptionId = Guid.NewGuid().ToString();
+            }
+
             return new AdminSubscriptionDefinition()
                    {
-                       // ToDo: Make the SubscriptionId as an optional parameter 
-                       SubscriptionId = (NewTenantSubscription.SubscriptionIds.Count == 0
-                           ? Guid.NewGuid()
-                           : NewTenantSubscription.SubscriptionIds.Dequeue()).ToString(),
+                       SubscriptionId = this.SubscriptionId,
+                       DelegatedProviderSubscriptionId = this.DelegatedProviderSubscriptionId ?? this.DefaultContext.Subscription.Id.ToString(),
                        DisplayName = this.DisplayName,
                        OfferId = this.OfferId,
                        Owner = this.Owner,
-                       State = SubscriptionState.Enabled,
+                       State = SubscriptionState.Enabled
                    };
         }
 
