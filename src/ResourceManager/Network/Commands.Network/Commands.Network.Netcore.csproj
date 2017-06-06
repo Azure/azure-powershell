@@ -24,7 +24,7 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
     <PackageReference Include="Microsoft.Azure.Common" Version="2.1.4" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.2.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="10.1.0-preview" />
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
