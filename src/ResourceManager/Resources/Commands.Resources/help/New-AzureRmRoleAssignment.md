@@ -115,14 +115,14 @@ PS C:\> Get-AzureRMADGroup -SearchString "Christine Koch Team"
           -----------                    ----                           --------
           Christine Koch Team                                           2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb
 
-          PS C:\> New-AzureRmRoleAssignment -ObjectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb -RoleDefinitionName Contributor  -ResourceGroupName rg1
+PS C:\> New-AzureRmRoleAssignment -ObjectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb -RoleDefinitionName Contributor  -ResourceGroupName rg1
 ```
 
 Grant access to a security group
 
 ### --------------------------  Example 3  --------------------------
 ```
-PS C:\> New-AzureRmRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscription/86f81fc3-b00f-48cd-8218-3879f51ff362/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
+PS C:\> New-AzureRmRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscriptions/86f81fc3-b00f-48cd-8218-3879f51ff362/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
 
 Grant access to a user at a resource (website)
