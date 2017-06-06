@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccountKey,
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High,
+        ConfirmImpact = ConfirmImpact.Medium,
         HelpUri = Constants.KeyVaultHelpUri )]
     [OutputType( typeof( ManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
