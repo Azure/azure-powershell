@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Managed Availability Set")]
+        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
         public SwitchParameter Managed { get; set; }
 
         public override void ExecuteCmdlet()
