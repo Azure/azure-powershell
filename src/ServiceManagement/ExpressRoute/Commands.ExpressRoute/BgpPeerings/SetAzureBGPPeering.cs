@@ -31,15 +31,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [ValidateNotNullOrEmpty]
         public string AdvertisedPublicPrefixes;
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Advertised Public Prefixes for Ipv6")]
-        [ValidateNotNullOrEmpty]
-        public string AdvertisedPublicPrefixesIpv6;
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number")]
-        public UInt32 CustomerAsn { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number for Ipv6")]
-        public UInt32 CustomerAsnIpv6 { get; set; }
+        public UInt32? CustomerAsn { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Peer Asn")]
@@ -49,23 +42,12 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [ValidateNotNullOrEmpty]
         public string PrimaryPeerSubnet { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet for Ipv6")]
-        [ValidateNotNullOrEmpty]
-        public string PrimaryPeerSubnetIpv6 { get; set; }
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Routing Registry Name for Prefix Validation")]
         public string RoutingRegistryName { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Routing Registry Name for Prefix Validation for Ipv6")]
-        public string RoutingRegistryNameIpv6 { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Secondary Peer Subnet")]
         [ValidateNotNullOrEmpty]
         public string SecondaryPeerSubnet { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Secondary Peer Subnet for Ipv6")]
-        [ValidateNotNullOrEmpty]
-        public string SecondaryPeerSubnetIpv6 { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Shared Key")]
         [ValidateNotNullOrEmpty]
@@ -75,19 +57,30 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public UInt32? VlanId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Microsoft, Public or Private")]
+        [ValidateSet("Microsoft", "Public", "Private")]
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Bgp Peer Address Type: IPv4, IPv6")]
+        [ValidateSet("IPv4", "IPv6")]
+        [DefaultValue("IPv4")]
+        public PeerAddressTypeValues PeerAddressType { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
                 var route = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, AccessType);
-                var updatedRoute = ExpressRouteClient.UpdateAzureBGPPeering(ServiceKey, AccessType, CustomerAsn, CustomerAsnIpv6,
-                    PeerAsn.HasValue ? PeerAsn.Value : route.PeerAsn, PrimaryPeerSubnet ?? route.PrimaryPeerSubnet, PrimaryPeerSubnetIpv6 ?? route.PrimaryPeerSubnetIpv6,
-                    RoutingRegistryName, RoutingRegistryNameIpv6, SecondaryPeerSubnet ?? route.SecondaryPeerSubnet, SecondaryPeerSubnetIpv6 ?? route.SecondaryPeerSubnetIpv6,
-                    VlanId.HasValue ? VlanId.Value : route.VlanId,
-                    SharedKey.Trim());
+
+                var advertisedPublicPrefixes = AdvertisedPublicPrefixes ?? ((PeerAddressType == PeerAddressTypeValues.IPv4) ? route.AdvertisedPublicPrefixes : route.AdvertisedPublicPrefixesIpv6);
+                var routingRegistryName = RoutingRegistryName ?? ((PeerAddressType == PeerAddressTypeValues.IPv4) ? route.RoutingRegistryName : route.RoutingRegistryNameIpv6);
+                var customerAsn = (CustomerAsn.HasValue) ? CustomerAsn.Value : ((PeerAddressType == PeerAddressTypeValues.IPv4) ? route.CustomerAutonomousSystemNumber : route.CustomerAutonomousSystemNumberIpv6);
+
+                var updatedRoute = ExpressRouteClient.UpdateAzureBGPPeering(ServiceKey, PeerAddressType, AccessType,
+                    advertisedPublicPrefixes, customerAsn, PeerAsn.HasValue ? PeerAsn.Value : route.PeerAsn, PrimaryPeerSubnet,
+                    routingRegistryName, SecondaryPeerSubnet, VlanId.HasValue ? VlanId.Value : route.VlanId,
+                    string.IsNullOrWhiteSpace(SharedKey) ? null : SharedKey.Trim());
+
                 WriteObject(updatedRoute, false);
             }
             catch
@@ -102,18 +95,17 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                     throw new ArgumentException(Resources.VlanIdRequired);
                 }
 
-                if (PrimaryPeerSubnet == null && PrimaryPeerSubnetIpv6 == null)
+                if (PrimaryPeerSubnet == null)
                 {
                     throw new ArgumentException(Resources.PrimaryPeerSubnetRequired);
                 }
 
-                if (SecondaryPeerSubnet == null && SecondaryPeerSubnetIpv6 == null)
+                if (SecondaryPeerSubnet == null)
                 {
                     throw new ArgumentException(Resources.SecondaryPeerSubnetRequired);
                 }
 
-                var newRoute = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, AdvertisedPublicPrefixesIpv6, CustomerAsn, CustomerAsnIpv6,
-                    PeerAsn.Value, PrimaryPeerSubnet, PrimaryPeerSubnetIpv6, RoutingRegistryName, RoutingRegistryNameIpv6, SecondaryPeerSubnet, SecondaryPeerSubnetIpv6,
+                var newRoute = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, PeerAddressType, AdvertisedPublicPrefixes, CustomerAsn.Value, PeerAsn.Value, PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet,
                     VlanId.Value, AccessType, SharedKey);
                 WriteObject(newRoute);
             }
