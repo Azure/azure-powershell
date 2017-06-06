@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates new export request
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters)
         {
             return GetCurrentSqlClient().ImportExport.Export(resourceGroupName, serverName, databaseName, parameters);
         }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates new import request
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ImportExportResponse Import(string resourceGroupName, string serverName, ImportRequestParameters parameters, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Import(string resourceGroupName, string serverName, ImportRequestParameters parameters)
         {
             return GetCurrentSqlClient().ImportExport.Import(resourceGroupName, serverName, parameters);
         }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the status of an import/export operations
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ImportExportOperationStatusResponse GetStatus(string operationStatusLink, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportOperationStatusResponse GetStatus(string operationStatusLink)
         {
             return GetCurrentSqlClient().ImportExport.GetImportExportOperationStatus(operationStatusLink);
         }

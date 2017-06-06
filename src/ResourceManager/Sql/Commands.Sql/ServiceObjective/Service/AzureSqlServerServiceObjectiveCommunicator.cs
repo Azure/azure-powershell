@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// <summary>
         /// Gets the Azure Sql Database Server ServiceObjective
         /// </summary>
-        public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName, string clientRequestId)
+        public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName)
         {
             return GetCurrentSqlClient().Servers.GetServiceObjective(resourceGroupName, serverName, serviceObjectiveName);
         }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// <summary>
         /// Lists Azure Sql Databases Server ServiceObjective
         /// </summary>
-        public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().Servers.ListServiceObjectives(resourceGroupName, serverName).ToList();
         }

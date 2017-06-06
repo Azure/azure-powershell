@@ -62,9 +62,8 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <param name="resourceGroupName">Resource group name</param>
         /// <param name="serverName">Server name</param>
         /// <param name="expand">Expanded properties</param>
-        /// <param name="clientRequestId">Request id</param>
         /// <returns>IList of RecommendedElasticPool</returns>
-        public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> ListExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> ListExpanded(string resourceGroupName, string serverName, string expand)
         {
             return GetCurrentSqlClient().RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }

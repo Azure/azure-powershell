@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, out DatabaseAuditingPolicy policy)
+        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out DatabaseAuditingPolicy policy)
         {
             IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             DatabaseAuditingPolicyGetResponse response = operations.GetDatabasePolicy(resourceGroupName, serverName, databaseName);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets the database server auditing policy for the given database server in the given resource group
         /// </summary>
-        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, out ServerAuditingPolicy policy)
+        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, out ServerAuditingPolicy policy)
         {
             IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             ServerAuditingPolicyGetResponse response = operations.GetServerPolicy(resourceGroupName, serverName);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Calls the set audit APIs for the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
         {
             IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Sets the database server auditing policy of the given database server in the given resource group
         /// </summary>
-        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerAuditingPolicyCreateOrUpdateParameters parameters)
+        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, ServerAuditingPolicyCreateOrUpdateParameters parameters)
         {
             IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets the database blob auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, out BlobAuditingPolicy policy)
+        public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, out BlobAuditingPolicy policy)
         {
             var operations = GetCurrentSqlClient().BlobAuditing;
             var response = operations.GetDatabaseBlobAuditingPolicy(resourceGroupName, serverName, databaseName);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets the database server blob auditing policy for the given database server in the given resource group
         /// </summary>
-        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, out BlobAuditingPolicy policy)
+        public void GetServerAuditingPolicy(string resourceGroupName, string serverName, out BlobAuditingPolicy policy)
         {
             var operations = GetCurrentSqlClient().BlobAuditing;
             var response = operations.GetServerPolicy(resourceGroupName, serverName);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Calls the set blob audit APIs for the database auditing policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, BlobAuditingCreateOrUpdateParameters parameters)
+        public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, BlobAuditingCreateOrUpdateParameters parameters)
         {
             var operations = GetCurrentSqlClient().BlobAuditing;
             operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Sets the database server blob auditing policy of the given database server in the given resource group
         /// </summary>
-        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, BlobAuditingCreateOrUpdateParameters parameters)
+        public void SetServerAuditingPolicy(string resourceGroupName, string serverName, BlobAuditingCreateOrUpdateParameters parameters)
         {
             var operations = GetCurrentSqlClient().BlobAuditing;
             var statusLink =  operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters).OperationStatusLink;
             for (var iterationCount = 0; iterationCount < 1800; iterationCount++) // wait for at most an hour
             {
-                var status = GetServerCreateOrUpdateOperationStatus(statusLink, clientRequestId);
+                var status = GetServerCreateOrUpdateOperationStatus(statusLink);
                 if (status == OperationStatus.Succeeded)
                 {
                     break;
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Returns the operation status of a server create or update operation
         /// </summary>
-        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink, string clientRequestId)
+        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink)
         {
             var operations = GetCurrentSqlClient().BlobAuditing;
             return operations.GetOperationStatus(operationStatusLink).OperationResult.Properties.State;

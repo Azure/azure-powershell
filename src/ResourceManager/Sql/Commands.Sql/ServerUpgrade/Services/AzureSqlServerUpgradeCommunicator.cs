@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Start an Azure Sql Database Server Upgrade
         /// </summary>
-        public void Start(string resourceGroupName, string serverName, ServerUpgradeStartParameters parameters, string clientRequestId)
+        public void Start(string resourceGroupName, string serverName, ServerUpgradeStartParameters parameters)
         {
             GetCurrentSqlClient().ServerUpgrades.Start(resourceGroupName, serverName, parameters);
         }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Cancel an Azure Sql Database Server Upgrade
         /// </summary>
-        public void Cancel(string resourceGroupName, string serverName, string clientRequestId)
+        public void Cancel(string resourceGroupName, string serverName)
         {
             GetCurrentSqlClient().ServerUpgrades.Cancel(resourceGroupName, serverName);
         }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Gets the Azure Sql Database Server Upgrade status
         /// </summary>
-        public ServerUpgradeGetResponse GetUpgrade(string resourceGroupName, string serverName, string clientRequestId)
+        public ServerUpgradeGetResponse GetUpgrade(string resourceGroupName, string serverName)
         {
             try
             {

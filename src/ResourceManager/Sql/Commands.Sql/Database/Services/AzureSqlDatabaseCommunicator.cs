@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the Azure Sql Database
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database Get(string resourceGroupName, string serverName, string databaseName)
         {
             return GetLegacySqlClient().Databases.Get(resourceGroupName, serverName, databaseName).Database;
         }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the Azure Sql Database expanded additional details.
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database GetExpanded(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database GetExpanded(string resourceGroupName, string serverName, string databaseName)
         {
             return GetLegacySqlClient().Databases.GetExpanded(resourceGroupName, serverName, databaseName, ExpandDatabase).Database;
         }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Lists Azure Sql Databases
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.Database> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Database> List(string resourceGroupName, string serverName)
         {
             return GetLegacySqlClient().Databases.List(resourceGroupName, serverName).Databases;
         }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Lists Azure Sql Databases expanded with additional details.
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.Database> ListExpanded(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Database> ListExpanded(string resourceGroupName, string serverName)
         {
             return GetLegacySqlClient().Databases.ListExpanded(resourceGroupName, serverName, ExpandDatabase).Databases;
         }
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates or updates a database
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, DatabaseCreateOrUpdateParameters parameters)
         {
             return GetLegacySqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
         }
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates or updates a database
         /// </summary>
-        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, Management.Sql.Models.Database parameters)
+        public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database parameters)
         {
             return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Deletes a database
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string databaseName)
         {
             GetLegacySqlClient().Databases.Delete(resourceGroupName, serverName, databaseName);
         }

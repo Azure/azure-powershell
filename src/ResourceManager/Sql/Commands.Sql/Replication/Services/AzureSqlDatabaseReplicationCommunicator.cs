@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Gets the Azure SQL Database
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ReplicationLink GetLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ReplicationLink GetLink(string resourceGroupName, string serverName, string databaseName, Guid linkId)
         {
             return GetCurrentSqlClient().DatabaseReplicationLinks.Get(resourceGroupName, serverName, databaseName, linkId.ToString()).ReplicationLink;
         }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Lists Azure SQL Databases
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.ReplicationLink> ListLinks(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ReplicationLink> ListLinks(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().DatabaseReplicationLinks.List(resourceGroupName, serverName, databaseName).ReplicationLinks;
         }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Creates a copy of a Azure SQL Database
         /// </summary>
-        public Management.Sql.LegacySdk.Models.DatabaseCreateOrUpdateResponse CreateCopy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.DatabaseCreateOrUpdateResponse CreateCopy(string resourceGroupName, string serverName, string databaseName, DatabaseCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Deletes a Replication Link
         /// </summary>
-        public void RemoveLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
+        public void RemoveLink(string resourceGroupName, string serverName, string databaseName, Guid linkId)
         {
             GetCurrentSqlClient().DatabaseReplicationLinks.Delete(resourceGroupName, serverName, databaseName, linkId.ToString());
         }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Fails over a Replication Link without data loss
         /// </summary>
-        public void FailoverLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
+        public void FailoverLink(string resourceGroupName, string serverName, string databaseName, Guid linkId)
         {
             GetCurrentSqlClient().DatabaseReplicationLinks.Failover(resourceGroupName, serverName, databaseName, linkId.ToString());
         }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Fails over a Replication Link with data loss
         /// </summary>
-        public void FailoverLinkAllowDataLoss(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
+        public void FailoverLinkAllowDataLoss(string resourceGroupName, string serverName, string databaseName, Guid linkId)
         {
             GetCurrentSqlClient().DatabaseReplicationLinks.FailoverAllowDataLoss(resourceGroupName, serverName, databaseName, linkId.ToString());
         }

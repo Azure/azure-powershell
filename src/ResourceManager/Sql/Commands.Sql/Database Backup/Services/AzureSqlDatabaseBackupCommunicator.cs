@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
-        public IList<Management.Sql.LegacySdk.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().DatabaseBackup.ListRestorePoints(resourceGroupName, serverName, databaseName).RestorePoints;
         }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <returns>List of restore points</returns>
-        public IList<Management.Sql.LegacySdk.Models.GeoBackup> ListGeoBackups(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.GeoBackup> ListGeoBackups(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().DatabaseBackup.ListGeoBackups(resourceGroupName, serverName).GeoBackups;
         }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <returns>List of restore points</returns>
-        public IList<Management.Sql.LegacySdk.Models.DeletedDatabaseBackup> ListDeletedDatabaseBackups(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.DeletedDatabaseBackup> ListDeletedDatabaseBackups(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().DatabaseBackup.ListDeletedDatabaseBackups(resourceGroupName, serverName).DeletedDatabaseBackups;
         }
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
-        public Management.Sql.LegacySdk.Models.GeoBackup GetGeoBackup(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.GeoBackup GetGeoBackup(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().DatabaseBackup.GetGeoBackup(resourceGroupName, serverName, databaseName).GeoBackup;
         }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
-        public Management.Sql.LegacySdk.Models.DeletedDatabaseBackup GetDeletedDatabaseBackup(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.DeletedDatabaseBackup GetDeletedDatabaseBackup(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().DatabaseBackup.GetDeletedDatabaseBackup(resourceGroupName, serverName, databaseName).DeletedDatabaseBackup;
         }
@@ -125,8 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public Management.Sql.LegacySdk.Models.BackupLongTermRetentionVault GetBackupLongTermRetentionVault(
             string resourceGroupName, 
             string serverName, 
-            string baVaultName, 
-            string clientRequestId)
+            string baVaultName)
         {
             return GetCurrentSqlClient().DatabaseBackup.GetBackupLongTermRetentionVault(
                 resourceGroupName, 
@@ -145,8 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string resourceGroupName, 
             string serverName, 
             string databaseName, 
-            string baPolicyName, 
-            string clientRequestId)
+            string baPolicyName)
         {
             return GetCurrentSqlClient().DatabaseBackup.GetDatabaseBackupLongTermRetentionPolicy(
                 resourceGroupName, 
@@ -162,7 +160,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string resourceGroupName, 
             string serverName, 
             string baVaultName, 
-            string clientRequestId, 
             BackupLongTermRetentionVaultCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().DatabaseBackup.CreateOrUpdateBackupLongTermRetentionVault(
@@ -180,7 +177,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string serverName, 
             string databaseName, 
             string baPolicyName, 
-            string clientRequestId, 
             DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().DatabaseBackup.CreateOrUpdateDatabaseBackupLongTermRetentionPolicy(
@@ -202,8 +198,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string resourceGroupName,
             string serverName,
             string databaseName,
-            string policyName,
-            string clientRequestId)
+            string policyName)
         {
             return GetCurrentSqlClient().DatabaseBackup.GetGeoBackupPolicy(
                 resourceGroupName,
@@ -220,7 +215,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string serverName,
             string databaseName,
             string policyName,
-            string clientRequestId,
             GeoBackupPolicyCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().DatabaseBackup.CreateOrUpdateGeoBackupPolicy(
@@ -239,7 +233,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <param name="parameters">Parameters describing the database restore request</param>
         /// <returns>Restored database object</returns>
-        public Management.Sql.LegacySdk.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, DatabaseCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
         }

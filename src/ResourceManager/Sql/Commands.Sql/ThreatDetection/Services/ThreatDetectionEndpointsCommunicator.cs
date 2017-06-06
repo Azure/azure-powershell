@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets the server security alert policy for the given server in the given resource group
         /// </summary>
-        public ServerSecurityAlertPolicy GetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId)
+        public ServerSecurityAlertPolicy GetServerSecurityAlertPolicy(string resourceGroupName, string serverName)
         {
             ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             var response = operations.GetServerSecurityAlertPolicy(resourceGroupName, serverName);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Calls the set security alert APIs for the server security alert policy in the given resource group
         /// </summary>
-        public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerSecurityAlertPolicyCreateOrUpdateParameters parameters)
+        public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, ServerSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
             ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             var statusLink = operations.CreateOrUpdateServerSecurityAlertPolicy(resourceGroupName, serverName, parameters).OperationStatusLink;
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             }
             for (var iterationCount = 0; iterationCount < 1800; iterationCount++) // wait for at most an hour
             {
-                var status = GetServerCreateOrUpdateOperationStatus(statusLink, clientRequestId);
+                var status = GetServerCreateOrUpdateOperationStatus(statusLink);
                 if (status == OperationStatus.Succeeded)
                 {
                     break;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Returns the operation status of a server create or update operation
         /// </summary>
-        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink, string clientRequestId)
+        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink)
         {
             var operations = GetCurrentSqlClient().SecurityAlertPolicy;
             return operations.GetOperationStatus(operationStatusLink).OperationResult.Properties.State;
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Gets the database security alert policy for the given database in the given database server in the given resource group
         /// </summary>
-        public DatabaseSecurityAlertPolicy GetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public DatabaseSecurityAlertPolicy GetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName)
         {
             ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             DatabaseSecurityAlertPolicyGetResponse response = operations.GetDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Calls the set security alert APIs for the database security alert policy for the given database in the given database server in the given resource group
         /// </summary>
-        public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
             ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             operations.CreateOrUpdateDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName, parameters);

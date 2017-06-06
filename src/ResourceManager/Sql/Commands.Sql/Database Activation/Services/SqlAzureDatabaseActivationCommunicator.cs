@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <summary>
         /// Pause a Azure SQL Data Warehouse database.
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database Pause(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database Pause(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().DatabaseActivation.Pause(resourceGroupName, serverName, databaseName).Database;
         }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <summary>
         /// Resume a Azure SQL Data Warehouse database.
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database Resume(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database Resume(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().DatabaseActivation.Resume(resourceGroupName, serverName, databaseName).Database;
         }

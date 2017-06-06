@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string clientRequestId)
+        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName);
         }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Lists Azure Sql Database Servers
         /// </summary>
-        public IList<Management.Sql.Models.Server> List(string resourceGroupName, string clientRequestId)
+        public IList<Management.Sql.Models.Server> List(string resourceGroupName)
         {
             return GetCurrentSqlClient().Servers.ListByResourceGroup(resourceGroupName).ToList();
         }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, string clientRequestId, Management.Sql.Models.Server parameters)
+        public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, Management.Sql.Models.Server parameters)
         {
             return GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, parameters);
         }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Deletes a Azure Sql Database SErver
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName)
         {
             GetCurrentSqlClient().Servers.Delete(resourceGroupName, serverName);
         }

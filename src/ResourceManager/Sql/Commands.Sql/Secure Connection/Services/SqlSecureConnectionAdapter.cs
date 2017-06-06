@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// Provides the cmdlet model representation of a specific database secure connection policy
         /// </summary>
-        public DatabaseSecureConnectionPolicyModel GetDatabaseSecureConnectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
+        public DatabaseSecureConnectionPolicyModel GetDatabaseSecureConnectionPolicy(string resourceGroup, string serverName, string databaseName)
         {
-            DatabaseSecureConnectionPolicy policy = Communicator.GetDatabaseSecureConnectionPolicy(resourceGroup, serverName, databaseName, requestId);
+            DatabaseSecureConnectionPolicy policy = Communicator.GetDatabaseSecureConnectionPolicy(resourceGroup, serverName, databaseName);
             DatabaseSecureConnectionPolicyModel dbPolicyModel = ModelizeDatabaseSecureConnectionPolicy(policy);
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;

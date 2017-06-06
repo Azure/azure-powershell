@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Gets the Azure Sql Database Transparent Data Encryption
         /// </summary>
-        public Management.Sql.LegacySdk.Models.TransparentDataEncryption Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.TransparentDataEncryption Get(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().TransparentDataEncryption.Get(resourceGroupName, serverName, databaseName).TransparentDataEncryption;
         }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Creates or updates an Azure Sql Database Transparent Data Encryption
         /// </summary>
-        public Management.Sql.LegacySdk.Models.TransparentDataEncryption CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, TransparentDataEncryptionCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.TransparentDataEncryption CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, TransparentDataEncryptionCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().TransparentDataEncryption.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).TransparentDataEncryption;
         }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Gets Azure Sql Database Transparent Data Encryption Activity
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.TransparentDataEncryptionActivity> ListActivity(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.TransparentDataEncryptionActivity> ListActivity(string resourceGroupName, string serverName, string databaseName)
         {
             return GetCurrentSqlClient().TransparentDataEncryption.ListActivity(resourceGroupName, serverName, databaseName).TransparentDataEncryptionActivities;
         }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Gets Azure Sql Database Transparent Data Encryption Protector
         /// </summary>
-        public Management.Sql.LegacySdk.Models.EncryptionProtector GetEncryptionProtector(string resourceGroupName, string serverName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.EncryptionProtector GetEncryptionProtector(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().TransparentDataEncryption.GetEncryptionProtector(resourceGroupName, serverName).EncryptionProtector;
         }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Creates or updates an Azure Sql Database Transparent Data Encryption Protector
         /// </summary>
-        public Management.Sql.LegacySdk.Models.EncryptionProtector CreateOrUpdateEncryptionProtector(string resourceGroupName, string serverName, string clientRequestId, EncryptionProtectorCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.EncryptionProtector CreateOrUpdateEncryptionProtector(string resourceGroupName, string serverName, EncryptionProtectorCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().TransparentDataEncryption.CreateOrUpdateEncryptionProtector(resourceGroupName, serverName, parameters).EncryptionProtector;
         }

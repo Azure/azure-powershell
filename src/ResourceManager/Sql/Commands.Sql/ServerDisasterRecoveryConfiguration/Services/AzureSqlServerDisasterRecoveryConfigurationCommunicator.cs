@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Gets the Azure Sql Server Disaster Recovery Configuration
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Get(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Get(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName)
         {
             return GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.Get(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName).ServerDisasterRecoveryConfiguration;
         }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Lists Azure Sql Server Disaster Recovery Configurations
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration> List(string resourceGroupName, string serverName)
         {
             return GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.List(resourceGroupName, serverName).ServerDisasterRecoveryConfigurations;
         }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Creates a Disaster Recovery Configuration
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Create(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId, ServerDisasterRecoveryConfigurationCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration Create(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, ServerDisasterRecoveryConfigurationCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.CreateOrUpdate(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName, parameters).ServerDisasterRecoveryConfiguration;
         }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Failover a Disaster Recovery Configuration
         /// </summary>
-        public void Failover(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, bool allowDataLoss, string clientRequestId)
+        public void Failover(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, bool allowDataLoss)
         {
             if (allowDataLoss)
             {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Deletes a Server Disaster Recovery Configuration
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName)
         {
             GetCurrentSqlClient().ServerDisasterRecoveryConfigurations.Delete(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
         }
