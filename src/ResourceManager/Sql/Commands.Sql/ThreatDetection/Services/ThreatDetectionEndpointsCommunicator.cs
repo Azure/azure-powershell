@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         public ServerSecurityAlertPolicy GetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             var response = operations.GetServerSecurityAlertPolicy(resourceGroupName, serverName);
             return response.SecurityAlertPolicy;
         }
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             var statusLink = operations.CreateOrUpdateServerSecurityAlertPolicy(resourceGroupName, serverName, parameters).OperationStatusLink;
             if (string.IsNullOrEmpty(statusLink))
             {
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink, string clientRequestId)
         {
-            var operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            var operations = GetCurrentSqlClient().SecurityAlertPolicy;
             return operations.GetOperationStatus(operationStatusLink).OperationResult.Properties.State;
         }
 
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         public DatabaseSecurityAlertPolicy GetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             DatabaseSecurityAlertPolicyGetResponse response = operations.GetDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName);
             return response.SecurityAlertPolicy;
         }
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         public void SetDatabaseSecurityAlertPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecurityAlertPolicyCreateOrUpdateParameters parameters)
         {
-            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient().SecurityAlertPolicy;
             operations.CreateOrUpdateDatabaseSecurityAlertPolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
@@ -119,15 +118,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

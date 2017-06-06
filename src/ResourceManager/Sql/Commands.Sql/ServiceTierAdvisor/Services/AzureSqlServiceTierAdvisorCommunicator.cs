@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <returns></returns>
         public Management.Sql.LegacySdk.Models.Database GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName, string expand, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.GetExpanded(resourceGroupName, serverName, databaseName, expand).Database;
+            return GetCurrentSqlClient().Databases.GetExpanded(resourceGroupName, serverName, databaseName, expand).Database;
         }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <returns>List of databases</returns>
         public IList<Management.Sql.LegacySdk.Models.Database> ListDatabasesExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.ListExpanded(resourceGroupName, serverName, expand).Databases;
+            return GetCurrentSqlClient().Databases.ListExpanded(resourceGroupName, serverName, expand).Databases;
         }
 
         /// <summary>
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <returns>List of recommended elastic pools</returns>
         public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> GetRecommendedElasticPoolsExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
+            return GetCurrentSqlClient().RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }
 
         /// <summary>
@@ -101,15 +100,13 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public DataMaskingPolicy GetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             DataMaskingPolicyGetResponse response = operations.GetPolicy(resourceGroupName, serverName, databaseName);
             return response.DataMaskingPolicy;
         }
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void SetDatabaseDataMaskingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DataMaskingPolicyCreateOrUpdateParameters parameters)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.CreateOrUpdatePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public IList<DataMaskingRule> ListDataMaskingRules(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             DataMaskingRuleListResponse response = operations.List(resourceGroupName, serverName, databaseName);
             return response.DataMaskingRules;
         }
@@ -87,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void SetDatabaseDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId, DataMaskingRuleCreateOrUpdateParameters parameters)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.CreateOrUpdateRule(resourceGroupName, serverName, databaseName, ruleId, parameters);
         }
 
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void DeleteDataMaskingRule(string resourceGroupName, string serverName, string databaseName, string ruleId, string clientRequestId)
         {
-            IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
+            IDataMaskingOperations operations = GetCurrentSqlClient().DataMasking;
             operations.Delete(resourceGroupName, serverName, databaseName, ruleId);
         }
 
@@ -105,15 +104,13 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

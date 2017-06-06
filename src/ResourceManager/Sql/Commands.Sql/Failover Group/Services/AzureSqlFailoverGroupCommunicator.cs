@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.FailoverGroup Get(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).FailoverGroups.Get(resourceGroupName, serverName, FailoverGroupName).FailoverGroup;
+            return GetCurrentSqlClient().FailoverGroups.Get(resourceGroupName, serverName, FailoverGroupName).FailoverGroup;
         }
 
         /// <summary>
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.FailoverGroup> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).FailoverGroups.List(resourceGroupName, serverName).FailoverGroups;
+            return GetCurrentSqlClient().FailoverGroups.List(resourceGroupName, serverName).FailoverGroups;
         }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.FailoverGroup CreateOrUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupCreateOrUpdateParameters parameters)
         {
-            var resp = GetCurrentSqlClient(clientRequestId).FailoverGroups.CreateOrUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
+            var resp = GetCurrentSqlClient().FailoverGroups.CreateOrUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
             return resp.FailoverGroup;
         }
 
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public void Remove(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).FailoverGroups.Delete(resourceGroupName, serverName, FailoverGroupName);
+            GetCurrentSqlClient().FailoverGroups.Delete(resourceGroupName, serverName, FailoverGroupName);
         }
 
         /// <summary>
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public void Failover(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).FailoverGroups.Failover(resourceGroupName, serverName, FailoverGroupName);
+            GetCurrentSqlClient().FailoverGroups.Failover(resourceGroupName, serverName, FailoverGroupName);
         }
 
         /// <summary>
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public void ForceFailoverAllowDataLoss(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).FailoverGroups.ForceFailoverAllowDataLoss(resourceGroupName, serverName, FailoverGroupName);
+            GetCurrentSqlClient().FailoverGroups.ForceFailoverAllowDataLoss(resourceGroupName, serverName, FailoverGroupName);
         }
 
         /// <summary>
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.FailoverGroup PatchUpdate(string resourceGroupName, string serverName, string FailoverGroupName, string clientRequestId, FailoverGroupPatchUpdateParameters parameters)
         {
-            var resp = GetCurrentSqlClient(clientRequestId).FailoverGroups.PatchUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
+            var resp = GetCurrentSqlClient().FailoverGroups.PatchUpdate(resourceGroupName, serverName, FailoverGroupName, parameters);
             return resp.FailoverGroup;
         }
 
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.Database> ListDatabasesOnServer(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Databases.List(resourceGroupName, serverName).Databases;
+            return GetCurrentSqlClient().Databases.List(resourceGroupName, serverName).Databases;
         }
 
         /// <summary>
@@ -132,15 +131,13 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
 

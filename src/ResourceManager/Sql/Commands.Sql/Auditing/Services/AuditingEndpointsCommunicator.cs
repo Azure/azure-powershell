@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, out DatabaseAuditingPolicy policy)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
+            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             DatabaseAuditingPolicyGetResponse response = operations.GetDatabasePolicy(resourceGroupName, serverName, databaseName);
             policy = response.AuditingPolicy;
         }
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void GetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, out ServerAuditingPolicy policy)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
+            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             ServerAuditingPolicyGetResponse response = operations.GetServerPolicy(resourceGroupName, serverName);
             policy = response.AuditingPolicy;
         }
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseAuditingPolicyCreateOrUpdateParameters parameters)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
+            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
@@ -87,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void SetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerAuditingPolicyCreateOrUpdateParameters parameters)
         {
-            IAuditingPolicyOperations operations = GetCurrentSqlClient(clientRequestId).AuditingPolicy;
+            IAuditingPolicyOperations operations = GetCurrentSqlClient().AuditingPolicy;
             operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters);
         }
 
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void GetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, out BlobAuditingPolicy policy)
         {
-            var operations = GetCurrentSqlClient(clientRequestId).BlobAuditing;
+            var operations = GetCurrentSqlClient().BlobAuditing;
             var response = operations.GetDatabaseBlobAuditingPolicy(resourceGroupName, serverName, databaseName);
             policy = response.AuditingPolicy;
         }
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void GetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, out BlobAuditingPolicy policy)
         {
-            var operations = GetCurrentSqlClient(clientRequestId).BlobAuditing;
+            var operations = GetCurrentSqlClient().BlobAuditing;
             var response = operations.GetServerPolicy(resourceGroupName, serverName);
             policy = response.AuditingPolicy;
         }
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void SetDatabaseAuditingPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, BlobAuditingCreateOrUpdateParameters parameters)
         {
-            var operations = GetCurrentSqlClient(clientRequestId).BlobAuditing;
+            var operations = GetCurrentSqlClient().BlobAuditing;
             operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public void SetServerAuditingPolicy(string resourceGroupName, string serverName, string clientRequestId, BlobAuditingCreateOrUpdateParameters parameters)
         {
-            var operations = GetCurrentSqlClient(clientRequestId).BlobAuditing;
+            var operations = GetCurrentSqlClient().BlobAuditing;
             var statusLink =  operations.CreateOrUpdateServerPolicy(resourceGroupName, serverName, parameters).OperationStatusLink;
             for (var iterationCount = 0; iterationCount < 1800; iterationCount++) // wait for at most an hour
             {
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink, string clientRequestId)
         {
-            var operations = GetCurrentSqlClient(clientRequestId).BlobAuditing;
+            var operations = GetCurrentSqlClient().BlobAuditing;
             return operations.GetOperationStatus(operationStatusLink).OperationResult.Properties.State;
         }
 
@@ -152,15 +151,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

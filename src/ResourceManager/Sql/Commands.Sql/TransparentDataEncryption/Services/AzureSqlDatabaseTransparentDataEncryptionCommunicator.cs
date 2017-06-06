@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.TransparentDataEncryption Get(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.Get(resourceGroupName, serverName, databaseName).TransparentDataEncryption;
+            return GetCurrentSqlClient().TransparentDataEncryption.Get(resourceGroupName, serverName, databaseName).TransparentDataEncryption;
         }
 
         /// <summary>
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.TransparentDataEncryption CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, string clientRequestId, TransparentDataEncryptionCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).TransparentDataEncryption;
+            return GetCurrentSqlClient().TransparentDataEncryption.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).TransparentDataEncryption;
         }
 
         /// <summary>
@@ -80,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.TransparentDataEncryptionActivity> ListActivity(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.ListActivity(resourceGroupName, serverName, databaseName).TransparentDataEncryptionActivities;
+            return GetCurrentSqlClient().TransparentDataEncryption.ListActivity(resourceGroupName, serverName, databaseName).TransparentDataEncryptionActivities;
         }
 
         /// <summary>
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.EncryptionProtector GetEncryptionProtector(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.GetEncryptionProtector(resourceGroupName, serverName).EncryptionProtector;
+            return GetCurrentSqlClient().TransparentDataEncryption.GetEncryptionProtector(resourceGroupName, serverName).EncryptionProtector;
         }
 
         /// <summary>
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// </summary>
         public Management.Sql.LegacySdk.Models.EncryptionProtector CreateOrUpdateEncryptionProtector(string resourceGroupName, string serverName, string clientRequestId, EncryptionProtectorCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).TransparentDataEncryption.CreateOrUpdateEncryptionProtector(resourceGroupName, serverName, parameters).EncryptionProtector;
+            return GetCurrentSqlClient().TransparentDataEncryption.CreateOrUpdateEncryptionProtector(resourceGroupName, serverName, parameters).EncryptionProtector;
         }
 
         /// <summary>
@@ -104,15 +103,13 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// </summary>
         public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName);
+            return GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName);
         }
 
         /// <summary>
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// </summary>
         public IList<Management.Sql.Models.Server> List(string resourceGroupName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).Servers.ListByResourceGroup(resourceGroupName).ToList();
+            return GetCurrentSqlClient().Servers.ListByResourceGroup(resourceGroupName).ToList();
         }
 
         /// <summary>
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// </summary>
         public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, string clientRequestId, Management.Sql.Models.Server parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).Servers.CreateOrUpdate(resourceGroupName, serverName, parameters);
+            return GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// </summary>
         public void Remove(string resourceGroupName, string serverName, string clientRequestId)
         {
-            GetCurrentSqlClient(clientRequestId).Servers.Delete(resourceGroupName, serverName);
+            GetCurrentSqlClient().Servers.Delete(resourceGroupName, serverName);
         }
 
         /// <summary>
@@ -98,15 +97,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }
