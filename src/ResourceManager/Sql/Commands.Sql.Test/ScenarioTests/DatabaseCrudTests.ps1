@@ -25,7 +25,7 @@ function Test-CreateDatabase
 	.SYNOPSIS
 	Tests creating a database
 #>
-function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
+function Test-CreateDatabaseInternal ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -141,7 +141,7 @@ function Test-UpdateDatabase
 	.SYNOPSIS
 	Tests updating a database
 #>
-function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
+function Test-UpdateDatabaseInternal ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -242,7 +242,7 @@ function Test-GetDatabase
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
+function Test-GetDatabaseInternal  ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -319,7 +319,7 @@ function Test-RemoveDatabase
 	.SYNOPSIS
 	Tests Deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
+function Test-RemoveDatabaseInternal  ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest

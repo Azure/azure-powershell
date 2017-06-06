@@ -64,7 +64,7 @@ function Test-DatabasePauseResume
 function Test-DatabasePauseResumePiped
 {
 	# Setup
-	$location = "Japan East"
+	$location = "westcentralus"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
