@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 3.1.0
+* Resolve-AzureRmError
+  * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
+* Send-Feedback
+  * Enabled sending feedback without logging in
+
 ## Version 3.0.1
 * Add-AzureRmAccount
   * Added `-EnvironmentName` parameter alis for backward compatibility with 2.x versions of AzureRM.profile

@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 4.1.0
+* Enable-AzureRmDataLakeStoreKeyVault (Enable-AdlStoreKeyVault)
+  * Enable KeyVault managed encryption for a DataLake Store
+
 ## Version 4.0.1
 
 ## Version 4.0.0

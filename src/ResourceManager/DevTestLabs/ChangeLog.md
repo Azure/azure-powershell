@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Update cmdlets to work with current and updated DevTest Lasbs API version.
+
+## Version 3.1.0
+* Update cmdlets to work with current and updated DevTest Labs API version.
 
 ## Version 3.0.1
 

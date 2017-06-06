@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.0
 * Add-AzureVhd: The size limit on vhd is increased to 4TB.
+* New-AzureBGPPeering: Support LegacyMode
 
 ## Version 4.0.2
 
