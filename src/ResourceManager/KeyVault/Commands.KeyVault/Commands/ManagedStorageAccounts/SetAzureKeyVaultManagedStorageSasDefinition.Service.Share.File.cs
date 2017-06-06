@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ParameterSetStoredPolicyServiceFileSas = "StoredPolicyServiceFileSas";
 
         private const string PathHelpMessage = "Path to the cloud file to generate sas token against.";
+
         [Parameter( Mandatory = true, HelpMessage = PathHelpMessage, ParameterSetName = ParameterSetAdhocServiceFileSas )]
         [Parameter( Mandatory = true, HelpMessage = PathHelpMessage, ParameterSetName = ParameterSetStoredPolicyServiceFileSas )]
-
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             get
             {
                 if ( string.IsNullOrWhiteSpace( Path ) ) return null;
+
                 return new KeyValuePair<string, string>( SasDefinitionParameterConstants.PathName, Path );
             }
         }

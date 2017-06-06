@@ -19,12 +19,12 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.New, CmdletNoun.AzureKeyVaultManagedStorageAccountKey,
+    [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccountKey,
         SupportsShouldProcess = true,
-         ConfirmImpact = ConfirmImpact.High,
+        ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri )]
     [OutputType( typeof( ManagedStorageAccount ) )]
-    public class NewAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
+    public class UpdateAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
         [Parameter( Mandatory = true,
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter( Mandatory = false, HelpMessage = "Do not ask for confirmation." )]
         public SwitchParameter Force { get; set; }
 
-        [Parameter( Mandatory = false,
+        [ Parameter( Mandatory = false,
             HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, cmdlet returns the managed storage account." )]
         public SwitchParameter PassThru { get; set; }
 

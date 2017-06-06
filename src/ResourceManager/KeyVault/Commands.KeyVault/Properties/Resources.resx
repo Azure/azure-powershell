@@ -345,8 +345,8 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="SetSecretAttribute" xml:space="preserve">
     <value>Set  secret attribute</value>
   </data>
-  <data name="SetManagedStorageAccount" xml:space="preserve">
-    <value>Set Key Vault managed Storage Account</value>
+  <data name="AddManagedStorageAccount" xml:space="preserve">
+    <value>Add Key Vault managed Storage Account</value>
   </data>
   <data name="SetManagedStorageAccountKeysAttribute" xml:space="preserve">
     <value>Set Key Vault managed Storage Account attribute</value>
@@ -413,5 +413,5 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="InvalidSasPermission" xml:space="preserve">
     <value>Invalid Sas permission '{0}'.</value>
-  </data>  
+  </data>
 </root>
