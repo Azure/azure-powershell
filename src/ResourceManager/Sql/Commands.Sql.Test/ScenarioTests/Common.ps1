@@ -336,7 +336,7 @@ function Get-ProviderLocation($provider)
 	.SYNOPSIS
 	Creates a resource group for tests
 #>
-function Create-ResourceGroupForTest ($location = "Japan East")
+function Create-ResourceGroupForTest ($location = "westcentralus")
 {
 	$rgName = Get-ResourceGroupName
 	
@@ -358,7 +358,7 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "westcentralus")
 {
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
