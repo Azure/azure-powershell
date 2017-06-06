@@ -19,11 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Set, CmdletNoun.AzureKeyVaultManagedStorageAccount,
+    [Cmdlet( VerbsCommon.Add, CmdletNoun.AzureKeyVaultManagedStorageAccount,
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(ManagedStorageAccount))]
-    public class SetAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
+    public class AddAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
         [Parameter(Mandatory = true,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if ( ShouldProcess( AccountName, Properties.Resources.SetManagedStorageAccount ) )
+            if ( ShouldProcess( AccountName, Properties.Resources.AddManagedStorageAccount ) )
             {
                 var managedStorageAccount = DataServiceClient.SetManagedStorageAccount(
                     VaultName,

@@ -56,11 +56,11 @@
     <Compile Include="Commands\ManagedStorageAccounts\GetAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\GetAzureKeyVaultManagedStorageSasDefinition.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\NewAzureKeyVaultManagedStorageAccountKey.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\UpdateAzureKeyVaultManagedStorageAccountKey.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\RemoveAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\RemoveAzureKeyVaultManagedStorageSasDefinition.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\SasDefinitionParameterConstants.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageAccount.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\AddAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\UpdateAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Account.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.cs" />

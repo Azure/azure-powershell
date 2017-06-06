@@ -10,8 +10,8 @@
 
 namespace Microsoft.Azure.Commands.KeyVault.Properties {
     using System;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -84,6 +84,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string AddKey {
             get {
                 return ResourceManager.GetString("AddKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Key Vault managed Storage Account.
+        /// </summary>
+        internal static string AddManagedStorageAccount {
+            get {
+                return ResourceManager.GetString("AddManagedStorageAccount", resourceCulture);
             }
         }
         
@@ -574,7 +583,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
             get {
                 return ResourceManager.GetString("RecoverVault", resourceCulture);
             }
-        }		
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to regenerate &apos;{0}&apos; of storage account &apos;{1}&apos; and make it an active key of Key Vault managed Storage Account..
@@ -593,7 +602,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
                 return ResourceManager.GetString("RegenerateManagedStorageAccountKeyWhatIfMessage", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Remove certificate contact.
         /// </summary>
@@ -825,15 +834,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string SetKeyAttribute {
             get {
                 return ResourceManager.GetString("SetKeyAttribute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set Key Vault managed Storage Account.
-        /// </summary>
-        internal static string SetManagedStorageAccount {
-            get {
-                return ResourceManager.GetString("SetManagedStorageAccount", resourceCulture);
             }
         }
         

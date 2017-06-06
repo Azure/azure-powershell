@@ -21,7 +21,7 @@ function CreateAKVManagedStorageAccount(
     [string] $managedStorageAccountName)
 {
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
-    $createdManagedStorageAccount = Set-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
+    $createdManagedStorageAccount = Add-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
     return $createdManagedStorageAccount
 }
 
@@ -31,7 +31,7 @@ function CreateAKVManagedStorageSasDefinition(
     [string] $managedStorageSasDefinitionName)
 {
     $storageAccountResourceId = Get-KeyVaultManagedStorageResourceId
-    Set-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
+    Add-AzureKeyVaultManagedStorageAccount $keyVault $managedStorageAccountName $storageAccountResourceId 'key1' -DisableAutoRegenerateKey
     $createdManagedStorageSasDefinition = Set-AzureKeyVaultManagedStorageSasDefinition $keyVault $managedStorageAccountName $managedStorageSasDefinitionName -Parameter @{"sasType"="service";"serviceSasType"="blob";"signedResourceTypes"="b";"signedVersion"="2016-05-31";"signedProtocols"="https";"signedIp"="168.1.5.60-168.1.5.70";"validityPeriod"="P30D";"signedPermissions"="ra";"blobName"="blob1";"containerName"="container1";"rscd"="";"rscc"=""}
     return $createdManagedStorageSasDefinition
 }

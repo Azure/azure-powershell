@@ -4,7 +4,7 @@ online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
 schema: 2.0.0
 ---
 
-# New-AzureKeyVaultManagedStorageAccountKey
+# Update-AzureKeyVaultManagedStorageAccountKey
 
 ## SYNOPSIS
 Regenerates the specified key of Key Vault managed Azure Storage Account.
@@ -12,7 +12,7 @@ Regenerates the specified key of Key Vault managed Azure Storage Account.
 ## SYNTAX
 
 ```
-New-AzureKeyVaultManagedStorageAccountKey [-VaultName] <String> [-AccountName] <String> [-KeyName] <String>
+Update-AzureKeyVaultManagedStorageAccountKey [-VaultName] <String> [-AccountName] <String> [-KeyName] <String>
  [-Force] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Regenerates the specified key of Key Vault managed Azure Storage Account and set
 
 ### Example 1: Regenerate a key
 ```
-PS C:\> New-AzureKeyVaultManagedStorageAccountKey -VaultName 'myvault' -AccountName 'mystorageaccount' -KeyName 'key1'
+PS C:\> Update-AzureKeyVaultManagedStorageAccountKey -VaultName 'myvault' -AccountName 'mystorageaccount' -KeyName 'key1'
 ```
 
 Regenerates 'key1' of account 'mystorageaccount' and sets 'key1' as the active of the Key Vault managed Azure Storage Account.

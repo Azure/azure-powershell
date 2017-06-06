@@ -4,28 +4,28 @@ online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
 schema: 2.0.0
 ---
 
-# Set-AzureKeyVaultManagedStorageAccount
+# Add-AzureKeyVaultManagedStorageAccount
 
 ## SYNOPSIS
-Sets an existing Azure Storage Account with Key Vault for its keys to be managed by Key Vault.
+Adds an existing Azure Storage Account to the specified key vault for its keys to be managed by the Key Vault service.
 
 ## SYNTAX
 
 ```
-Set-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
+Add-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
  [-AccountResourceId] <String> [-ActiveKeyName] <String> [-DisableAutoRegenerateKey]
  [-RegenerationPeriod <TimeSpan>] [-Disable] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Sets an existing Azure Storage Account with Key Vault for Storage Account keys to be managed by Key Vault. The Storage Account must already exist. The Storage Keys are never exposed to caller. Key Vault auto regenerates and switches the active key based on the regeneration period.  
+Sets up an existing Azure Storage Account with Key Vault for Storage Account keys to be managed by Key Vault. The Storage Account must already exist. The Storage Keys are never exposed to caller. Key Vault auto regenerates and switches the active key based on the regeneration period.  
 
 ## EXAMPLES
 
 ### Example 1: Set an Azure Storage Account with Key Vault to manage its keys
 ```
 PS C:\> $regenerationPeriod = [System.Timespan]::FromDays(90)
-PS C:\> Set-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -ResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/provide
+PS C:\> Add-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -ResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/provide
 rs/Microsoft.Storage/storageAccounts/mystorageaccount' -ActiveKeyName 'key1' -RegenerationPeriod $regenerationPeriod
 ```
 
@@ -34,7 +34,7 @@ Sets a Storage Account with Key Vault for its keys to be managed by Key Vault. T
 ### Example 2: Set a Classic Azure Storage Account with Key Vault to manage its keys
 ```
 PS C:\> $regenerationPeriod = [System.Timespan]::FromDays(90)
-PS C:\> Set-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -ResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/provide
+PS C:\> Add-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -ResourceId '/subscriptions/<subscription id>/resourceGroups/myresourcegroup/provide
 rs/Microsoft.ClassicStorage/storageAccounts/mystorageaccount' -ActiveKeyName 'Primary' -RegenerationPeriod $regenerationPeriod
 ```
 
