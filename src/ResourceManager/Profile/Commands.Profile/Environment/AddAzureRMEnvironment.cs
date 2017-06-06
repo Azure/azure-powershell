@@ -121,11 +121,6 @@ namespace Microsoft.Azure.Commands.Profile
         public override void ExecuteCmdlet()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-            var result = profileClient.ListEnvironments(Name).Select(s => (PSAzureEnvironment)s).ToList();
-            if (result.Count != 0)
-            {
-                throw new InvalidOperationException("The specified environment already exists. Use a different name to create a new environment.");
-            }
 
             if (this.ParameterSetName.Equals(ArmParameterSet, StringComparison.Ordinal))
             {

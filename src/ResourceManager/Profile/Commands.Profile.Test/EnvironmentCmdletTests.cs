@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ThrowsForAddingDuplicatedEnvironment()
+        public void IgnoresAddingDuplicatedEnvironment()
         {
             var profile = new AzureSMProfile();
             var commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -225,7 +225,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Add again
             cmdlet.Name = "kAtAl";
-            Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess("kAtAl", It.IsAny<string>())).Returns(true);
+            cmdlet.ExecuteCmdlet();
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env.Name, cmdlet.Name);
         }
 
         [Fact]
@@ -239,6 +242,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 Name = EnvironmentName.AzureCloud,
                 PublishSettingsFileUrl = "http://microsoft.com"
             };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(EnvironmentName.AzureCloud, It.IsAny<string>())).Returns(true);
 
             Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
         }
