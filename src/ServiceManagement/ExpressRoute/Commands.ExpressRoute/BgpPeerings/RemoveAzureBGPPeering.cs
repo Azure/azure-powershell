@@ -20,19 +20,22 @@ using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureBGPPeering"),OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureBGPPeering", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureBGPPeeringCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key associated with the Azure BGP Peering to be removed")]
         public Guid ServiceKey { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Public or Private")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Microsoft, Public or Private")]
+        [ValidateSet("Microsoft", "Public", "Private")]
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Bgp Peer Address Type: IPv4 or IPv6")]
-        public BgpPeerAdddressType? PeerAddressType { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peer Address Type: IPv4, IPv6, All")]
+        [ValidateSet("IPv4", "IPv6", "All")]
+        [DefaultValue("IPv4")]
+        public BgpPeerAddressType PeerAddressType { get; set; }
 
         [Parameter(HelpMessage = "Do not confirm Azure BGP Peering deletion")]
         public SwitchParameter Force { get; set; }
@@ -49,9 +52,9 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 ServiceKey.ToString(),
                 () =>
                 {
-                    if (!PeerAddressType.HasValue || PeerAddressType == BgpPeerAdddressType.All || AccessType != BgpPeeringAccessType.Microsoft)
+                    if (PeerAddressType == BgpPeerAddressType.All || AccessType != BgpPeeringAccessType.Microsoft)
                     {
-                        if (!ExpressRouteClient.RemoveAzureBGPPeering(ServiceKey, AccessType, BgpPeerAdddressType.All))
+                        if (!ExpressRouteClient.RemoveAzureBGPPeering(ServiceKey, AccessType, BgpPeerAddressType.All))
                         {
                             throw new Exception(Resources.RemoveAzureBGPPeeringFailed);
                         }
@@ -66,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                     }
                     else
                     {
-                            if (!ExpressRouteClient.RemoveAzureBGPPeering(ServiceKey, AccessType, (BgpPeerAdddressType)PeerAddressType))
+                            if (!ExpressRouteClient.RemoveAzureBGPPeering(ServiceKey, AccessType, (BgpPeerAddressType)PeerAddressType))
                             {
                                 throw new Exception(Resources.RemoveAzureBGPPeeringFailed);
                             }
