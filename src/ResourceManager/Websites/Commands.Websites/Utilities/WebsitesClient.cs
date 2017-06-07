@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 #if !NETSTANDARD
                 ServerFarmWithRichSkuName = appServicePlanName,
 #else
-                AppServicePlanName = appServicePlanName,
+                Name = appServicePlanName,
 #endif
                 Sku = sku,
                 AdminSiteName = adminSiteName,
