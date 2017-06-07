@@ -20,6 +20,15 @@
 ## Current Release
 
 ## Version 3.1.0
+* New Cmdlets to support KeyVault Managed Storage Account Keys
+  * Get-AzureKeyVaultManagedStorageAccount
+  * Add-AzureKeyVaultManagedStorageAccount
+  * Remove-AzureKeyVaultManagedStorageAccount
+  * Update-AzureKeyVaultManagedStorageAccount
+  * Update-AzureKeyVaultManagedStorageAccountKey
+  * Get-AzureKeyVaultManagedStorageSasDefinition
+  * Set-AzureKeyVaultManagedStorageSasDefinition
+  * Remove-AzureKeyVaultManagedStorageSasDefinition
 
 ## Version 3.0.1
 

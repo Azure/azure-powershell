@@ -127,49 +127,69 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // EncryptionSettings
             Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
 
+#pragma warning disable CS0618 // Type or member is obsolete
             if (this.CreateOption.HasValue)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 if (vCreationData == null)
                 {
                     vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
                 }
+#pragma warning disable CS0618 // Type or member is obsolete
                 vCreationData.CreateOption = this.CreateOption.Value;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             if (this.StorageAccountId != null)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 if (vCreationData == null)
                 {
                     vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
                 }
+#pragma warning disable CS0618 // Type or member is obsolete
                 vCreationData.StorageAccountId = this.StorageAccountId;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             if (this.ImageReference != null)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 if (vCreationData == null)
                 {
                     vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
                 }
+#pragma warning disable CS0618 // Type or member is obsolete
                 vCreationData.ImageReference = this.ImageReference;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             if (this.SourceUri != null)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 if (vCreationData == null)
                 {
                     vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
                 }
+#pragma warning disable CS0618 // Type or member is obsolete
                 vCreationData.SourceUri = this.SourceUri;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             if (this.SourceResourceId != null)
+#pragma warning restore CS0618 // Type or member is obsolete
             {
                 if (vCreationData == null)
                 {
                     vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
                 }
+#pragma warning disable CS0618 // Type or member is obsolete
                 vCreationData.SourceResourceId = this.SourceResourceId;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
 
             if (this.EncryptionSettingsEnabled != null)

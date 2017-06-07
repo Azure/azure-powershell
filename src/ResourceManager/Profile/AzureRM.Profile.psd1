@@ -116,6 +116,8 @@ PrivateData = @{
   * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
 * Send-Feedback
   * Enabled sending feedback without logging in
+* Get-AzureRmSubscription
+  * Fix bug in retrieving CSP subscriptions
 '
 
         # External dependent modules of this module
