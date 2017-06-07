@@ -1815,8 +1815,8 @@
                         <Component Id="cmp94E5A53E75966774C5E70C6345053377" Guid="*">
                             <File Id="filFC7FF006A46D6369663DA5B146A5165F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Azure.Management.MachineLearning.dll" />
                         </Component>
-                        <Component Id="cmpA40EB11031167885698706959D701AC2" Guid="*">
-                            <File Id="fil82F5C198128F36E1643A145A7B2FD3D8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\microsoft.rest.clientruntime.azure.dll" />
+                        <Component Id="cmp6B5FA45E9F246D33F9A9E52F8319CE9B" Guid="*">
+                            <File Id="fil2A83F5F6F96A70350A0A332AE9D82C04" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Rest.ClientRuntime.Azure.dll" />
                         </Component>
                         <Component Id="cmp51E3C65B2F3F17518527B3A918539456" Guid="*">
                             <File Id="fil93A2C25B1489CEF6A426222A4F03EE10" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.MachineLearning\Microsoft.Rest.ClientRuntime.dll" />
@@ -2587,9 +2587,6 @@
                         </Component>
                         <Component Id="cmp1A60CA28CF5A7EEC83D41C0AD4CB700B" Guid="*">
                             <File Id="filD49D9C0F3C36B33F4A8E5BE0BE3EA9CD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Relay\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-                        </Component>
-                        <Component Id="cmpDFAA7DB18574765F15C56D1A5F143905" Guid="*">
-                            <File Id="fil277FC607898AE5D2B75D57075ED6FCE1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Relay\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
                         <Component Id="cmpCDF66A32268EF3CBC2F3FD398CD3B10A" Guid="*">
                             <File Id="fil745117E01AEE1888848C48D6E8E855DE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Relay\Microsoft.Rest.ClientRuntime.Azure.dll" />
@@ -6052,7 +6049,7 @@
             <ComponentRef Id="cmp9195553C2F963156791B7E498358919E" />
             <ComponentRef Id="cmpE30D1CC3A7EEB6038E38C3A342340796" />
             <ComponentRef Id="cmp94E5A53E75966774C5E70C6345053377" />
-            <ComponentRef Id="cmpA40EB11031167885698706959D701AC2" />
+            <ComponentRef Id="cmp6B5FA45E9F246D33F9A9E52F8319CE9B" />
             <ComponentRef Id="cmp51E3C65B2F3F17518527B3A918539456" />
             <ComponentRef Id="cmpCE57E791762E3631B8C38599B6593102" />
             <ComponentRef Id="cmp36DA913DCCBFEBBECE97C7D4555B463A" />
@@ -6303,7 +6300,6 @@
             <ComponentRef Id="cmpFF97CB337911CDA95213B09CB6142CF4" />
             <ComponentRef Id="cmp6E18656C92AB65DD212CB350AC106D3E" />
             <ComponentRef Id="cmp1A60CA28CF5A7EEC83D41C0AD4CB700B" />
-            <ComponentRef Id="cmpDFAA7DB18574765F15C56D1A5F143905" />
             <ComponentRef Id="cmpCDF66A32268EF3CBC2F3FD398CD3B10A" />
             <ComponentRef Id="cmp01D2B5F41A42302EED360C68ACAA8AFF" />
             <ComponentRef Id="cmpD3121C6840C9F0BE9F3C0A25C7A74C98" />
