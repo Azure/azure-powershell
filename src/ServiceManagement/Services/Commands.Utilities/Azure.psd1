@@ -559,6 +559,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Add-AzureVhd: The size limit on vhd is increased to 4TB.
+* Application Gateway classic, fixed certificate list to work with certificate collections
 * New-AzureBGPPeering: Support LegacyMode
 '
 

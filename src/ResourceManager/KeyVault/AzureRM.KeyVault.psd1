@@ -142,7 +142,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* New Cmdlets to support KeyVault Managed Storage Account Keys
+  * Get-AzureKeyVaultManagedStorageAccount
+  * Add-AzureKeyVaultManagedStorageAccount
+  * Remove-AzureKeyVaultManagedStorageAccount
+  * Update-AzureKeyVaultManagedStorageAccount
+  * Update-AzureKeyVaultManagedStorageAccountKey
+  * Get-AzureKeyVaultManagedStorageSasDefinition
+  * Set-AzureKeyVaultManagedStorageSasDefinition
+  * Remove-AzureKeyVaultManagedStorageSasDefinition
+'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
