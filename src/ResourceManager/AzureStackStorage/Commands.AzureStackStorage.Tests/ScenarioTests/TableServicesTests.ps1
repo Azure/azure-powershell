@@ -25,7 +25,7 @@ function Test-GetTableService
 
     try 
     {
-	    $orgin = Get-ACSTableService -ResourceGroupName $rgname  -FarmName $farmName
+	    $orgin = Get-ACSTableService 
 		Assert-AreEqual $orgin.HealthStatus "Unknown"
 		Assert-AreEqual $orgin.FarmName "82ba752f-0fac-47e2-8477-5731f9f5db34"	
 		Assert-AreEqual $orgin.Id "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/82ba752f-0fac-47e2-8477-5731f9f5db34/tableservices/default"	

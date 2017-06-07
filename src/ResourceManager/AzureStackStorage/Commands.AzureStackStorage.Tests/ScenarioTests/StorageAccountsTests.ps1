@@ -26,7 +26,7 @@ function Test-GetStorageAccount
 
     try 
     {
-        $actual = Get-ACSStorageAccount -ResourceGroupName $rgname  -FarmName $farmName -AccountId $accountId -Detail
+        $actual = Get-AzSStorageAccount -AccountId $accountId -Detail
 
         Assert-AreEqual $actual.Count 1
         Assert-AreEqual $actual.AccountId 1
@@ -42,18 +42,15 @@ function Test-GetStorageAccount
         Assert-AreEqual $actual.CreationTime 'Tue, 13 Oct 2015 05:42:48 GMT'
         Assert-AreEqual $actual.AlternateName $null
         Assert-AreEqual $actual.StatusOfPrimary 'Available'
-        Assert-AreEqual $actual.TenantSubscriptionId '177fbbce-fd6a-4f11-bfa4-52c2f3a21918'
-        Assert-AreEqual $actual.TenantAccountName 'demo007'
-        Assert-AreEqual $actual.TenantResourceGroupName $rgname
+        Assert-AreEqual $actual.SubscriptionId '177fbbce-fd6a-4f11-bfa4-52c2f3a21918'
+        Assert-AreEqual $actual.StorageAccountName 'demo007'
+        Assert-AreEqual $actual.ResourceGroupName $rgname
         Assert-AreEqual $actual.CurrentOperation 'None'
         Assert-AreEqual $actual.CustomDomain $null
         Assert-AreEqual $actual.AcquisitionOperationCount 0
         Assert-AreEqual $actual.DeletedTime $null
         Assert-AreEqual $actual.AccountStatus 'Active'
-        Assert-AreEqual $actual.RecoveredTime.ToString("yyyy-MM-dd HH:mm:ss") '2015-10-13 05:44:29'
         Assert-AreEqual $actual.RecycledTime $null
-        Assert-AreEqual $actual.Permissions $null
-        #TODO: verify WacAccountId, WacInternalState etc
         Assert-AreEqual $actual.FarmName $farmName
     }
     finally
@@ -78,7 +75,7 @@ function Test-ListStorageAccounts
 
     try 
     {
-        $actual = Get-ACSStorageAccount -ResourceGroupName $rgname  -FarmName $farmName `
+        $actual = Get-AzSStorageAccount `
         -PartialAccountName $partialAccountName `
         -TenantSubscriptionId $tenantSubscriptionId
 
@@ -96,17 +93,17 @@ function Test-ListStorageAccounts
         Assert-AreEqual $actual[0].CreationTime 'Tue, 13 Oct 2015 05:42:48 GMT'
         Assert-AreEqual $actual[0].AlternateName $null
         Assert-AreEqual $actual[0].StatusOfPrimary 'Available'
-        Assert-AreEqual $actual[0].TenantSubscriptionId '177fbbce-fd6a-4f11-bfa4-52c2f3a21918'
-        Assert-AreEqual $actual[0].TenantAccountName 'demo007'
-        Assert-AreEqual $actual[0].TenantResourceGroupName $rgname
+        Assert-AreEqual $actual[0].SubscriptionId '177fbbce-fd6a-4f11-bfa4-52c2f3a21918'
+        Assert-AreEqual $actual[0].StorageAccountName 'demo007'
+        Assert-AreEqual $actual[0].ResourceGroupName $rgname
         Assert-AreEqual $actual[0].CurrentOperation 'None'
         Assert-AreEqual $actual[0].CustomDomain $null
         Assert-AreEqual $actual[0].AcquisitionOperationCount 0
         Assert-AreEqual $actual[0].DeletedTime $null
         Assert-AreEqual $actual[0].AccountStatus 'Active'
-        Assert-AreEqual $actual[0].RecoveredTime.ToString("yyyy-MM-dd HH:mm:ss") '2015-10-13 05:44:29'
+        #Assert-AreEqual $actual[0].RecoveredTime.ToString("yyyy-MM-dd HH:mm:ss") '2015-10-13 05:44:29'
         Assert-AreEqual $actual[0].RecycledTime $null
-        Assert-AreEqual $actual[0].Permissions $null
+        #Assert-AreEqual $actual[0].Permissions $null
         #TODO: verify WacAccountId, WacInternalState etc
         Assert-AreEqual $actual[0].FarmName $farmName
     }
@@ -133,7 +130,7 @@ function Test-UndoStorageAccountDeletion
 
     try 
     {
-        $actual = Undo-ACSStorageAccountDeletion -ResourceGroupName $rgname  -FarmName $farmName `
+        $actual = Undo-AzSDeletedStorageAccount `
         -AccountId $accountId -NewAccountName $newAccountName -ResourceAdminApiVersion 1.0
     }
     finally
@@ -158,8 +155,8 @@ function Test-StorageAccountPipeline
 
     try 
     {
-        $actual = Get-ACSStorageAccount -ResourceGroupName $rgname  -FarmName $farmName -AccountId $accountId -Detail `
-            | Undo-ACSStorageAccountDeletion -NewAccountName $newAccountName -ResourceAdminApiVersion 1.0
+        $actual = Get-AzSStorageAccount -AccountId $accountId -Detail `
+            | Undo-AzSDeletedStorageAccount -NewAccountName $newAccountName -ResourceAdminApiVersion 1.0
     }
     finally
     {

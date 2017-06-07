@@ -54,9 +54,16 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.Gallery">
+      <HintPath>..\..\..\Packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -195,9 +202,6 @@
     <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.BlobServicesTests\TestGetBlobService.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.BlobServicesTests\TestSetBlobService.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.FarmsTests\TestGetFarm.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -205,57 +209,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.FarmsTests\TestSetFarm.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.FaultsTests\TestGetCurrentFaults.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.FaultsTests\TestGetFault.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.FaultsTests\TestGetHistoricFaults.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.FaultsTests\TestResolveFault.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.ManagementServicesTests\TestGetManagementService.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.ManagementServicesTests\TestSetManagementService.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.NodesTests\TestDisableNode.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.NodesTests\TestEnableNode.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.NodesTests\TestGetNode.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.NodesTests\TestListNodes.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.NodesTests\TestSetFarm.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.RoleInstancesTests\TestGetRoleInstance.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.RoleInstancesTests\TestListRoleInstances.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.RoleInstancesTests\TestRestartRoleInstance.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.RoleInstancesTests\TestRoleInstancePipeline.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.RoleInstancesTests\TestStartRoleInstance.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.RoleInstancesTests\TestStopRoleInstance.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.SharesTests\TestGetShare.json">
@@ -277,12 +230,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.TableServicesTests\TestGetTableService.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.TableServicesTests\TestListNodes.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests.TableServicesTests\TestSetTableService.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
