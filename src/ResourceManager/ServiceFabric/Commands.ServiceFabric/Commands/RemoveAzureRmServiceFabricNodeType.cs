@@ -87,10 +87,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} ", this.NodeType)))
             {
-                this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
-
                 cluster = RemoveNodeTypeFromSfrp();
-
+                this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
                 WriteObject((PSCluster)cluster, true);
             }
         }
