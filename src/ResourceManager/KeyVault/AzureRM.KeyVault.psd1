@@ -100,8 +100,15 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate',
                'Get-AzureKeyVaultCertificatePolicy', 
                'New-AzureKeyVaultCertificateAdministratorDetails', 
                'New-AzureKeyVaultCertificateOrganizationDetails', 
-               'Backup-AzureKeyVaultSecret', 'Restore-AzureKeyVaultSecret'
-
+               'Backup-AzureKeyVaultSecret', 'Restore-AzureKeyVaultSecret',
+               'Get-AzureKeyVaultManagedStorageAccount',
+               'Add-AzureKeyVaultManagedStorageAccount',
+               'Remove-AzureKeyVaultManagedStorageAccount',
+               'Update-AzureKeyVaultManagedStorageAccount',
+               'Update-AzureKeyVaultManagedStorageAccountKey',
+               'Get-AzureKeyVaultManagedStorageSasDefinition',
+               'Set-AzureKeyVaultManagedStorageSasDefinition',
+               'Remove-AzureKeyVaultManagedStorageSasDefinition'
 # Variables to export from this module
 # VariablesToExport = @()
 
