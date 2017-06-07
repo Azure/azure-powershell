@@ -228,6 +228,7 @@
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1">
       <Link>ScenarioTests\AzureRM.Storage.ps1</Link>
     </None>
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\RedisCacheTests.ps1">
