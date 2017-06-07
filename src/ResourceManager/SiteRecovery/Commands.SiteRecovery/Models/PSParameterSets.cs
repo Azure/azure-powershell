@@ -260,6 +260,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         internal const string ByParam = "ByParam";
 
         /// <summary>
+        /// To define parameter set containing network object.
+        /// </summary>
+        internal const string ByNetworkObject = "ByNetworkObject";
+
+        /// <summary>
         /// Mapping between Enterprise to Enterprise.
         /// </summary>
         internal const string EnterpriseToEnterprise = "EnterpriseToEnterprise";

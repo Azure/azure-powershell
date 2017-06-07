@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -83,20 +83,20 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             bool found = false;
 
-            ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+            var protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
             ProtectableItem protectableItem = 
-                protectableItemListResponse.ProtectableItems.SingleOrDefault(t => 
+                protectableItemListResponse.SingleOrDefault(t => 
                 string.Compare(t.Properties.FriendlyName, this.FriendlyName, StringComparison.OrdinalIgnoreCase) == 0);
 
             if (protectableItem != null)
             {
-                ProtectableItemResponse protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+                var protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                     Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                     this.ProtectionContainer.Name,
                     protectableItem.Name);
-                WriteProtectableItem(protectableItemResponse.ProtectableItem);
+                WriteProtectableItem(protectableItemResponse);
 
                 found = true;
             }
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.ProtectionContainer.Name,
                     this.Name);
 
-                if (protectableItemResponse.ProtectableItem != null)
+                if (protectableItemResponse != null)
                 {
-                    WriteProtectableItem(protectableItemResponse.ProtectableItem);
+                    WriteProtectableItem(protectableItemResponse);
                 }
             }
             catch (CloudException ex)
@@ -150,11 +150,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            ProtectableItemListResponse protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+            var protectableItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
 
-            WriteProtectableItems(protectableItemListResponse.ProtectableItems);
+            WriteProtectableItems(protectableItemListResponse);
         }
 
         /// <summary>

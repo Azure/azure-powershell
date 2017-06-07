@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.ReplicationProtectedItem.Name,
                     this.Name);
 
-                if (recoveryPointResponse.RecoveryPoint != null)
+                if (recoveryPointResponse != null)
                 {
-                    WriteRecoveryPoint(recoveryPointResponse.RecoveryPoint);
+                    WriteRecoveryPoint(recoveryPointResponse);
                 }
             }
             catch (CloudException ex)
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
                 this.ReplicationProtectedItem.Name);
 
-            WriteRecoveryPoints(recoveryPointListResponse.RecoveryPoints);
+            WriteRecoveryPoints(recoveryPointListResponse);
         }
 
         /// <summary>

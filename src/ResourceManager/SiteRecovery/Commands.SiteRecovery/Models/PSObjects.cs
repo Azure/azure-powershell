@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Management.SiteRecoveryVault.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using System;
 using System.Collections.Generic;
@@ -93,91 +92,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.ID = provider.Id;
             this.Name = provider.Name;
             this.FriendlyName = provider.Properties.FriendlyName;
-            if (provider.Properties.LastHeartbeat != null)
+            if (provider.Properties.LastHeartBeat != null)
             {
-                this.LastHeartbeat = (DateTime)provider.Properties.LastHeartbeat;
-            }
-            this.ProviderVersion = provider.Properties.ProviderVersion;
-            this.ServerVersion = provider.Properties.ServerVersion;
-            this.Connected = provider.Properties.ConnectionStatus.ToLower().CompareTo("connected") == 0 ? true : false;
-            this.FabricType = provider.Properties.FabricType;
-            this.Type = provider.Type;
-        }
-
-        #region Properties
-        /// <summary>
-        /// Gets or sets Name of the Server.
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Name of the Server.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Server ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Type of Management entity – VMM, V-Center.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of Server - VMM.
-        /// </summary>
-        public string FabricType { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether server is connected or not.
-        /// </summary>
-        public bool Connected { get; set; }
-
-        /// <summary>
-        /// Gets or sets Last communicated time.
-        /// </summary>
-        public DateTime LastHeartbeat { get; set; }
-
-        /// <summary>
-        /// Gets or sets Provider version.
-        /// </summary>
-        public string ProviderVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets Server version.
-        /// </summary>
-        public string ServerVersion { get; set; }
-
-        #endregion
-    }
-
-    /// <summary>
-    /// Azure Site Recovery Server.
-    /// </summary>
-    public class ASRServer
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRServer" /> class.
-        /// </summary>
-        public ASRServer()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRServer" /> class with required 
-        /// parameters.
-        /// </summary>
-        /// <param name="server">Server object</param>
-        public ASRServer(Fabric fabric, RecoveryServicesProvider provider)
-        {
-            this.ID = provider.Id;
-            this.Name = provider.Name;
-            this.FriendlyName = provider.Properties.FriendlyName;
-            if (provider.Properties.LastHeartbeat != null)
-            {
-                this.LastHeartbeat = (DateTime)provider.Properties.LastHeartbeat;
+                this.LastHeartbeat = (DateTime)provider.Properties.LastHeartBeat;
             }
             this.ProviderVersion = provider.Properties.ProviderVersion;
             this.ServerVersion = provider.Properties.ServerVersion;
@@ -258,8 +175,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.Name = fabric.Name;
             this.FriendlyName = fabric.Properties.FriendlyName;
             this.ID = fabric.Id;
-            this.Type = fabric.Properties.CustomDetails.InstanceType;
+            //this.Type = fabric.Properties.CustomDetails.InstanceType;
             this.SiteIdentifier = fabric.Properties.InternalIdentifier;
+            this.fabricSpecificDetails = fabric.Properties.CustomDetails;
         }
 
         #endregion
@@ -290,63 +208,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public string SiteIdentifier { get; set; }
 
-        #endregion
-    }
-
-    /// <summary>
-    /// Azure Site Recovery Site object.
-    /// </summary>
-    public class ASRSite
-    {
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRSite" /> class.
-        /// </summary>
-        public ASRSite()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRSite" /> class.
-        /// </summary>
-        /// <param name="site">Hydra site object.</param>
-        public ASRSite(Fabric fabric)
-        {
-            this.Name = fabric.Name;
-            this.FriendlyName = fabric.Properties.FriendlyName;
-            this.ID = fabric.Id;
-            this.Type = fabric.Properties.CustomDetails.InstanceType;
-            this.SiteIdentifier = fabric.Properties.InternalIdentifier;
-        }
-
-        #endregion
-
-        #region Properties
-        /// <summary>
-        /// Gets or sets display name.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets friendly name.
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets site type.
-        /// </summary>
-        public string Type { get; set; }
-
         /// <summary>
         /// Gets or sets site SiteIdentifier.
         /// </summary>
-        public string SiteIdentifier { get; set; }
+        public FabricSpecificDetails fabricSpecificDetails { get; set; }
 
         #endregion
     }
@@ -529,32 +394,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
-    /// Policy association details.
-    /// </summary>
-    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class ASRPolicyAssociationDetails
-    {
-        /// <summary>
-        /// Gets or sets the PrimaryProtectionContainerId.
-        /// </summary>
-        [DataMember(Order = 1)]
-        public string PrimaryProtectionContainerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the RecoveryProtectionContainerId.
-        /// </summary>
-        [DataMember(Order = 2)]
-        public string RecoveryProtectionContainerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the association status. This is a string representation of the 
-        /// enumeration type <see cref="CloudPairingStatus"/>.
-        /// </summary>
-        [DataMember(Order = 3)]
-        public string AssociationStatus { get; set; }
-    }
-
-    /// <summary>
     /// Azure Site Recovery Policy.
     /// </summary>
     public class ASRPolicy
@@ -577,20 +416,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.Name = policy.Name;
             this.FriendlyName = policy.Properties.FriendlyName;
             this.Type = policy.Type;
-            this.ReplicationProvider = policy.Properties.ProviderSpecificDetails.InstanceType;
+            
 
-            if (policy.Properties.ProviderSpecificDetails.InstanceType == Constants.HyperVReplica2012)
+            if (policy.Properties.ProviderSpecificDetails is HyperVReplicaBluePolicyDetails)
             {
-                HyperVReplica2012PolicyDetails details =
-                    (HyperVReplica2012PolicyDetails)policy.Properties.ProviderSpecificDetails;
+                HyperVReplicaBluePolicyDetails details =
+                    (HyperVReplicaBluePolicyDetails)policy.Properties.ProviderSpecificDetails;
 
                 ASRHyperVReplicaPolicyDetails replicationProviderSettings =
                     new ASRHyperVReplicaPolicyDetails();
 
+                this.ReplicationProvider = Constants.HyperVReplica2012R2;
                 replicationProviderSettings.ReplicaDeletionOption =
                     details.ReplicaDeletionOption;
                 replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours =
-                    details.ApplicationConsistentSnapshotFrequencyInHours;
+                    (int)details.ApplicationConsistentSnapshotFrequencyInHours;
                 replicationProviderSettings.Compression =
                     details.Compression;
                 replicationProviderSettings.ReplicationFrequencyInSeconds =
@@ -599,47 +439,46 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     (details.AllowedAuthenticationType == 1) ?
                     Constants.AuthenticationTypeKerberos :
                     Constants.AuthenticationTypeCertificate;
-                replicationProviderSettings.RecoveryPoints = details.RecoveryPoints;
+                replicationProviderSettings.RecoveryPoints = (int)details.RecoveryPoints;
                 replicationProviderSettings.InitialReplicationMethod =
                     (string.Compare(details.InitialReplicationMethod, "OverNetwork", StringComparison.OrdinalIgnoreCase) == 0) ?
                     Constants.OnlineReplicationMethod :
                     Constants.OfflineReplicationMethod;
-                replicationProviderSettings.ReplicationPort = details.ReplicationPort;
-                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime;
+                replicationProviderSettings.ReplicationPort = (ushort)details.ReplicationPort;
+                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime == null ? (TimeSpan?)null : TimeSpan.Parse(details.OnlineReplicationStartTime);
 
                 this.ReplicationProviderSettings = replicationProviderSettings;
             }
-            else if (policy.Properties.ProviderSpecificDetails.InstanceType == Constants.HyperVReplica2012R2)
+            else if (policy.Properties.ProviderSpecificDetails is HyperVReplicaPolicyDetails)
             {
-                HyperVReplica2012R2PolicyDetails details =
-                    (HyperVReplica2012R2PolicyDetails)policy.Properties.ProviderSpecificDetails;
+                HyperVReplicaPolicyDetails details =
+                    (HyperVReplicaPolicyDetails)policy.Properties.ProviderSpecificDetails;
 
                 ASRHyperVReplicaPolicyDetails replicationProviderSettings =
                     new ASRHyperVReplicaPolicyDetails();
 
+                this.ReplicationProvider = Constants.HyperVReplica2012;
                 replicationProviderSettings.ReplicaDeletionOption =
                     details.ReplicaDeletionOption;
                 replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours =
-                    details.ApplicationConsistentSnapshotFrequencyInHours;
+                    (int)details.ApplicationConsistentSnapshotFrequencyInHours;
                 replicationProviderSettings.Compression =
                     details.Compression;
-                replicationProviderSettings.ReplicationFrequencyInSeconds =
-                    details.ReplicationFrequencyInSeconds;
                 replicationProviderSettings.AllowedAuthenticationType =
                     (details.AllowedAuthenticationType == 1) ?
                     Constants.AuthenticationTypeKerberos :
                     Constants.AuthenticationTypeCertificate;
-                replicationProviderSettings.RecoveryPoints = details.RecoveryPoints;
+                replicationProviderSettings.RecoveryPoints = (int)details.RecoveryPoints;
                 replicationProviderSettings.InitialReplicationMethod =
                     (string.Compare(details.InitialReplicationMethod, "OverNetwork", StringComparison.OrdinalIgnoreCase) == 0) ?
                     Constants.OnlineReplicationMethod :
                     Constants.OfflineReplicationMethod;
-                replicationProviderSettings.ReplicationPort = details.ReplicationPort;
-                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime;
+                replicationProviderSettings.ReplicationPort = (ushort)details.ReplicationPort;
+                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime == null ? (TimeSpan?)null : TimeSpan.Parse(details.OnlineReplicationStartTime);
 
                 this.ReplicationProviderSettings = replicationProviderSettings;
             }
-            else if (policy.Properties.ProviderSpecificDetails.InstanceType == Constants.HyperVReplicaAzure)
+            else if (policy.Properties.ProviderSpecificDetails is HyperVReplicaAzurePolicyDetails)
             {
                 HyperVReplicaAzurePolicyDetails details =
                     (HyperVReplicaAzurePolicyDetails)policy.Properties.ProviderSpecificDetails;
@@ -647,11 +486,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 ASRHyperVReplicaAzurePolicyDetails replicationProviderSettings =
                     new ASRHyperVReplicaAzurePolicyDetails();
 
+                this.ReplicationProvider = Constants.HyperVReplicaAzure;
                 replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours =
-                    details.ApplicationConsistentSnapshotFrequencyInHours;
-                replicationProviderSettings.ReplicationFrequencyInSeconds = details.ReplicationInterval;
-                replicationProviderSettings.RecoveryPoints = details.RecoveryPointHistoryDurationInHours;
-                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime;
+                    (int)details.ApplicationConsistentSnapshotFrequencyInHours;
+                replicationProviderSettings.ReplicationFrequencyInSeconds = (int)details.ReplicationInterval;
+                replicationProviderSettings.RecoveryPoints = (int)details.RecoveryPointHistoryDurationInHours;
+                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime == null ? (TimeSpan?)null : TimeSpan.Parse(details.OnlineReplicationStartTime);
                 replicationProviderSettings.Encryption = details.Encryption;
                 replicationProviderSettings.ActiveStorageAccountId =
                     details.ActiveStorageAccountId;
@@ -783,22 +623,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
-    /// ASR Customer Storage Account.
-    /// </summary>
-    public class ASRCustomerStorageAccount
-    {
-        /// <summary>
-        /// Name of the storage account.
-        /// </summary>
-        public string StorageAccountName { get; set; }
-
-        /// <summary>
-        /// Subscription ID to which the Storage Account is associated.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-    }
-
-    /// <summary>
     /// ASR VM Nic Details
     /// </summary>
     public class ASRVMNicDetails
@@ -866,82 +690,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string SelectionType { get; set; }
     }
 
-    public class ASRVirtualMachine : ASRProtectionEntity
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVirtualMachine" /> class.
-        /// </summary>
-        public ASRVirtualMachine()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVirtualMachine" /> class when it is not protected
-        /// </summary>
-        /// <param name="pi">Protectable Item to read values from</param>
-        public ASRVirtualMachine(ProtectableItem pi)
-            : base(pi)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVirtualMachine" /> class when it is protected
-        /// </summary>
-        /// <param name="pi">Protectable Item to read values from</param>
-        /// <param name="rpi">Replication Protected Item to read values from</param>
-        public ASRVirtualMachine(ProtectableItem pi, ReplicationProtectedItem rpi, Policy policy = null)
-            : base(pi, rpi, policy)
-        {
-            if (0 == string.Compare(
-                    rpi.Properties.ProviderSpecificDetails.InstanceType,
-                    Constants.HyperVReplicaAzure,
-                    StringComparison.OrdinalIgnoreCase))
-            {
-                HyperVReplicaAzureReplicationDetails providerSpecificDetails =
-                           (HyperVReplicaAzureReplicationDetails)rpi.Properties.ProviderSpecificDetails;
-
-                RecoveryAzureVMName = providerSpecificDetails.RecoveryAzureVMName;
-                RecoveryAzureVMSize = providerSpecificDetails.RecoveryAzureVMSize;
-                RecoveryAzureStorageAccount = providerSpecificDetails.RecoveryAzureStorageAccount;
-                SelectedRecoveryAzureNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
-                if (providerSpecificDetails.VMNics != null)
-                {
-                    NicDetailsList = new List<ASRVMNicDetails>();
-                    foreach (VMNicDetails n in providerSpecificDetails.VMNics)
-                    {
-                        NicDetailsList.Add(new ASRVMNicDetails(n));
-                    }
-                }
-            }           
-        }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure VM Name of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureVMName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure VM Size of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureVMSize { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure Storage Account of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureStorageAccount { get; set; }
-
-        /// <summary>
-        /// Gets or sets Selected Recovery Azure Network Id of the Virtual machine.
-        /// </summary>
-        public string SelectedRecoveryAzureNetworkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Nic Details of the Virtual machine.
-        /// </summary>
-        public List<ASRVMNicDetails> NicDetailsList { get; set; }
-
-    }
-
     /// <summary>
     /// Azure Site Recovery Protectable Item
     /// </summary>
@@ -969,19 +717,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.SupportedReplicationProviders = pi.Properties.SupportedReplicationProviders;
             if (pi.Properties.CustomDetails != null)
             {
-                if (0 == string.Compare(
-                    pi.Properties.CustomDetails.InstanceType,
-                    "HyperVVirtualMachine",
-                    StringComparison.OrdinalIgnoreCase))
+                if (pi.Properties.CustomDetails is HyperVVirtualMachineDetails)
                 {
                     if (pi.Properties.CustomDetails is HyperVVirtualMachineDetails)
                     {
                         HyperVVirtualMachineDetails providerSettings =
                             (HyperVVirtualMachineDetails)pi.Properties.CustomDetails;
 
-                        IList<DiskDetails> diskDetails = providerSettings.DiskDetailsList;
+                        IList<DiskDetails> diskDetails = providerSettings.DiskDetails;
                         this.UpdateDiskDetails(diskDetails);
-                        this.OS = providerSettings.OSDetails == null ? null : providerSettings.OSDetails.OsType;
+                        this.OS = providerSettings.OsDetails == null ? null : providerSettings.OsDetails.OsType;
                         this.FabricObjectId = providerSettings.SourceItemId;
                     }
                 }
@@ -1097,13 +842,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.Type = rpi.Type;
             this.ActiveLocation = rpi.Properties.ActiveLocation;
             this.AllowedOperations = rpi.Properties.AllowedOperations;
-            this.ReplicationProvider = rpi.Properties.ProviderSpecificDetails.InstanceType;
             this.CurrentScenario = rpi.Properties.CurrentScenario;
             this.FailoverRecoveryPointId = rpi.Properties.FailoverRecoveryPointId;
             this.LastSuccessfulFailoverTime = rpi.Properties.LastSuccessfulFailoverTime;
             this.LastSuccessfulTestFailoverTime = rpi.Properties.LastSuccessfulTestFailoverTime;
             this.PolicyFriendlyName = rpi.Properties.PolicyFriendlyName;
-            this.PolicyID = rpi.Properties.PolicyID;
+            this.PolicyID = rpi.Properties.PolicyId;
             this.PrimaryFabricFriendlyName = rpi.Properties.PrimaryFabricFriendlyName;
             this.PrimaryProtectionContainerFriendlyName = rpi.Properties.PrimaryProtectionContainerFriendlyName;
             this.ProtectableItemId = rpi.Properties.ProtectableItemId;
@@ -1119,27 +863,45 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.TestFailoverState = rpi.Properties.TestFailoverState;
             this.TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
 
-            if (0 == string.Compare(
-                    rpi.Properties.ProviderSpecificDetails.InstanceType,
-                    Constants.HyperVReplicaAzure,
-                    StringComparison.OrdinalIgnoreCase))
+            if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaAzureReplicationDetails)
             {
                 HyperVReplicaAzureReplicationDetails providerSpecificDetails =
                            (HyperVReplicaAzureReplicationDetails)rpi.Properties.ProviderSpecificDetails;
 
+                this.ReplicationProvider = Constants.HyperVReplicaAzure;
                 RecoveryAzureVMName = providerSpecificDetails.RecoveryAzureVMName;
                 RecoveryAzureVMSize = providerSpecificDetails.RecoveryAzureVMSize;
                 RecoveryAzureStorageAccount = providerSpecificDetails.RecoveryAzureStorageAccount;
                 SelectedRecoveryAzureNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
-                if (providerSpecificDetails.VMNics != null)
+                if (providerSpecificDetails.VmNics != null)
                 {
                     NicDetailsList = new List<ASRVMNicDetails>();
-                    foreach (VMNicDetails n in providerSpecificDetails.VMNics)
+                    foreach (VMNicDetails n in providerSpecificDetails.VmNics)
                     {
                         NicDetailsList.Add(new ASRVMNicDetails(n));
                     }
                 }
-            }         
+            }    
+            else if(rpi.Properties.ProviderSpecificDetails is HyperVReplicaReplicationDetails) 
+            {
+                this.ReplicationProvider = Constants.HyperVReplica2012;
+            }    
+            else if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaBlueReplicationDetails) 
+            {
+                this.ReplicationProvider = Constants.HyperVReplica2012R2;
+            }
+            else if (rpi.Properties.ProviderSpecificDetails is InMageAzureV2ReplicationDetails)
+            {
+                this.ReplicationProvider = Constants.InMageAzureV2;
+            }
+            else if (rpi.Properties.ProviderSpecificDetails is InMageReplicationDetails)
+            {
+                this.ReplicationProvider = Constants.InMage;
+            }
+            else if (rpi.Properties.ProviderSpecificDetails is A2AReplicationDetails)
+            {
+                this.ReplicationProvider = Constants.InMage;
+            }
         }
 
         /// <summary>
@@ -1309,195 +1071,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
-    /// Azure Site Recovery Protection Entity.
-    /// </summary>
-    public class ASRProtectionEntity
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectionEntity" /> class.
-        /// </summary>
-        public ASRProtectionEntity()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectionEntity" /> class when it is not protected
-        /// </summary>
-        /// <param name="pi">Protectable Item to read values from</param>
-        public ASRProtectionEntity(ProtectableItem pi)
-        {
-            this.ID = pi.Id;
-            this.ProtectionContainerId = Utilities.GetValueFromArmId(pi.Id, ARMResourceTypeConstants.ReplicationProtectionContainers);
-            this.Name = pi.Name;
-            this.FriendlyName = pi.Properties.FriendlyName;
-            this.ProtectionStatus = pi.Properties.ProtectionStatus;   
-            if (pi.Properties.CustomDetails != null)
-            {
-                if (0 == string.Compare(
-                    pi.Properties.CustomDetails.InstanceType,
-                    "HyperVVirtualMachine",
-                    StringComparison.OrdinalIgnoreCase))
-                {
-                    if (pi.Properties.CustomDetails is HyperVVirtualMachineDetails)
-                    {
-                        HyperVVirtualMachineDetails providerSettings =
-                            (HyperVVirtualMachineDetails)pi.Properties.CustomDetails;
-
-                        IList<DiskDetails> diskDetails = providerSettings.DiskDetailsList;
-                        this.UpdateDiskDetails(diskDetails);
-                        this.OS = providerSettings.OSDetails == null ? null : providerSettings.OSDetails.OsType;
-                        this.FabricObjectId = providerSettings.SourceItemId;
-                    }
-
-                }                
-            } 
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectionEntity" /> class when it is protected
-        /// </summary>
-        /// <param name="pi">Protectable Item to read values from</param>
-        /// <param name="rpi">Replication Protected Item to read values from</param>
-        public ASRProtectionEntity(ProtectableItem pi, ReplicationProtectedItem rpi, Policy policy = null) : this(pi)
-        {
-            this.Type = rpi.Type;
-            this.ProtectionStateDescription = rpi.Properties.ProtectionStateDescription;
-
-            if (rpi.Properties.AllowedOperations != null)
-            {
-                this.AllowedOperations = new List<string>();
-                foreach (String op in rpi.Properties.AllowedOperations)
-                {
-                    AllowedOperations.Add(op);
-                }
-            }
-            this.ReplicationProvider = rpi.Properties.ProviderSpecificDetails.InstanceType;
-            this.ActiveLocation = rpi.Properties.ActiveLocation;
-            this.ReplicationHealth = rpi.Properties.ReplicationHealth;
-            this.TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
-            this.ProtectionStatus = rpi.Properties.ProtectionState;
-            if (policy != null)
-            {
-                this.Policy = new ASRPolicy(policy);
-            }
-            this.ReplicationProtectedItemId = rpi.Id;
-        }
-
-        private void UpdateDiskDetails(IList<DiskDetails> diskDetails)
-        {
-            this.Disks = new List<VirtualHardDisk>();
-            foreach (var disk in diskDetails)
-            {
-                VirtualHardDisk hd = new VirtualHardDisk();
-                hd.Id = disk.VhdId;
-                hd.Name = disk.VhdName;
-                this.Disks.Add(hd);
-            }
-            DiskDetails OSDisk = diskDetails.SingleOrDefault(d => string.Compare(d.VhdType, "OperatingSystem", StringComparison.OrdinalIgnoreCase) == 0);
-            if (OSDisk != null)
-            {
-                this.OSDiskId = OSDisk.VhdId;
-                this.OSDiskName = OSDisk.VhdName;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets Friendly Name of the Protection entity.
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Name of the Protection entity.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection entity ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets type of the Protection entity.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets fabric object ID.
-        /// </summary>
-        public string FabricObjectId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection container ID.
-        /// </summary>
-        public string ProtectionContainerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether it is protected or not.
-        /// </summary>
-        public string ProtectionStatus { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value that lists allowed operations.
-        /// </summary>
-        public IList<string> AllowedOperations { get; set; }
-
-        /// <summary>
-        /// Gets or sets a active location of protection entity.
-        /// </summary>
-        public string ActiveLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets protection state.
-        /// </summary>
-        public string ProtectionStateDescription { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication health.
-        /// </summary>
-        public string ReplicationHealth { get; set; }
-
-        /// <summary>
-        /// Gets or sets test failover state.
-        /// </summary>
-        public string TestFailoverStateDescription { get; set; }
-
-        /// <summary>
-        /// Gets or sets Policy.
-        /// </summary>
-        public ASRPolicy Policy { get; set; }
-
-        /// <summary>
-        /// Gets or sets OSDiskVHDId.
-        /// </summary>
-        public string OSDiskId { get; set; }
-
-        /// <summary>
-        /// Gets or sets OS DiskName.
-        /// </summary>
-        public string OSDiskName { get; set; }
-
-        /// <summary>
-        /// Gets or sets OS.
-        /// </summary>
-        public string OS { get; set; }
-
-        /// <summary>
-        /// Gets or sets OS.
-        /// </summary>
-        public List<VirtualHardDisk> Disks { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication provider.
-        /// </summary>
-        public string ReplicationProvider { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication protected item id.
-        /// </summary>
-        public string ReplicationProtectedItemId { get; set; }
-    }
-
-    /// <summary>
     /// PS Recovery Point Class.
     /// </summary>
     public class ASRRecoveryPoint
@@ -1540,7 +1113,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Recovery Point Time.
         /// </summary>
-        public DateTime RecoveryPointTime { get; set; }
+        public DateTime? RecoveryPointTime { get; set; }
 
         /// <summary>
         /// Gets or sets Recovery Point Type.
@@ -1566,7 +1139,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="task">Task details to load values from.</param>
         public ASRGroupTaskDetails(GroupTaskDetails groupTaskDetails)
         {
-            this.Type = groupTaskDetails.Type;
+            //this.Type = groupTaskDetails.Type;
             ChildTasks = new List<ASRTaskBase>();
             if (groupTaskDetails.ChildTasks != null)
             {
@@ -1601,18 +1174,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Initializes a new instance of the <see cref="ASRTaskBase" /> class.
         /// </summary>
         /// <param name="task">Base task details to load values from.</param>
-        public ASRTaskBase(AsrTaskBase taskBase)
+        public ASRTaskBase(Management.RecoveryServices.SiteRecovery.Models.ASRTask taskBase)
         {
-            this.ID = taskBase.ID;
-            this.Name = taskBase.TaskFriendlyName;
+            this.ID = taskBase.Name;
+            this.Name = taskBase.FriendlyName;
             if (taskBase.EndTime != null)
             {
-                this.EndTime = taskBase.EndTime.ToLocalTime();
+                this.EndTime = ((DateTime)taskBase.EndTime).ToLocalTime();
             }
 
             if (taskBase.StartTime != null)
             {
-                this.StartTime = taskBase.StartTime.ToLocalTime();
+                this.StartTime = ((DateTime)taskBase.StartTime).ToLocalTime();
             }
 
             this.State = taskBase.State;
@@ -1666,17 +1239,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Initializes a new instance of the <see cref="ASRTask" /> class.
         /// </summary>
         /// <param name="task">Task details to load values from.</param>
-        public ASRTask(AsrTask task)
+        public ASRTask(Management.RecoveryServices.SiteRecovery.Models.ASRTask task)
         {
-            this.ID = task.ID;
+            this.ID = task.Name;
             if (task.EndTime != null)
             {
-                this.EndTime = task.EndTime.ToLocalTime();
+                this.EndTime = ((DateTime)task.EndTime).ToLocalTime();
             }
-            this.Name = task.TaskFriendlyName;
+            this.Name = task.FriendlyName;
             if (task.StartTime != null)
             {
-                this.StartTime = task.StartTime.ToLocalTime();
+                this.StartTime = ((DateTime)task.StartTime).ToLocalTime();
             }
             this.State = task.State;
             this.StateDescription = task.StateDescription;
@@ -1870,108 +1443,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
-    /// Azure Site Recovery Vault.
-    /// </summary>
-    public class ASRVault
-    {
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVault" /> class.
-        /// </summary>
-        public ASRVault()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVault" /> class.
-        /// </summary>
-        /// <param name="vault">vault object</param>
-        public ASRVault(Vault vault)
-        {
-            this.ID = vault.Id;
-            this.Name = vault.Name;
-            this.Type = vault.Type;
-            this.Location = vault.Location;
-            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
-            this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
-            this.Properties = new ASRVaultProperties();
-            this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVault" /> class.
-        /// </summary>
-        /// <param name="vault">vault object</param>
-        public ASRVault(VaultCreateResponse vault)
-        {
-            this.ID = vault.Id;
-            this.Name = vault.Name;
-            this.Type = vault.Type;
-            this.Location = vault.Location;
-            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
-            this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
-            this.Properties = new ASRVaultProperties();
-            this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
-        }
-
-        #endregion
-
-        #region Properties
-        /// <summary>
-        /// Gets or sets Vault Name.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Vault ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets type.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets location.
-        /// </summary>
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets Resource group name.
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Subscription.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Properties.
-        /// </summary>
-        public ASRVaultProperties Properties { get; set; }
-
-        #endregion
-    }
-
-    /// <summary>
-    /// Azure Site Recovery Vault properties.
-    /// </summary>
-    public class ASRVaultProperties
-    {
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets Provisioning State.
-        /// </summary>
-        public string ProvisioningState { get; set; }
-
-        #endregion
-    }
-
-    /// <summary>
     /// This class contains the error details per object.
     /// </summary>
     public class ASRErrorDetails
@@ -2015,58 +1486,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     }
 
     /// <summary>
-    /// Class to define the output of the vault settings file generation.
-    /// </summary>
-    public class VaultSettingsFilePath
-    {
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VaultSettingsFilePath" /> class
-        /// </summary>
-        public VaultSettingsFilePath()
-        {
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets the path of generated credential file.
-        /// </summary>
-        public string FilePath { get; set; }
-
-        #endregion
-    }
-
-    /// <summary>
-    /// Class to define the output object for the vault operations.
-    /// </summary>
-    public class VaultOperationOutput
-    {
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VaultOperationOutput" /> class
-        /// </summary>
-        public VaultOperationOutput()
-        {
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets the operation tracking id of the operation performed.
-        /// </summary>
-        public string Response { get; set; }
-
-        #endregion
-    }
-
-    /// <summary>
     /// This class contains the provider error details per object.
     /// </summary>
     public class ASRProviderError
@@ -2085,7 +1504,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRProviderError(ProviderError error)
         {
             //this.CreationTimeUtc = error.CreationTimeUtc;
-            this.ErrorCode = error.ErrorCode;
+            this.ErrorCode = (int)error.ErrorCode;
             this.ErrorId = error.ErrorId;
             this.ErrorMessage = error.ErrorMessage;
         }

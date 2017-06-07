@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.ProtectionContainer.Name,
                     this.Name);
 
-                if (protectionContainerMappingResponse.ProtectionContainerMapping != null)
+                if (protectionContainerMappingResponse != null)
                 {
-                    this.WriteProtectionContainerMapping(protectionContainerMappingResponse.ProtectionContainerMapping);
+                    this.WriteProtectionContainerMapping(protectionContainerMappingResponse);
                 }
             }
             catch (CloudException ex)
@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            ProtectionContainerMappingListResponse protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
+            var protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
                 Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
                 this.ProtectionContainer.Name);
 
-            WriteProtectionContainerMappings(protectionContainerMappingListResponse.ProtectionContainerMappings);
+            WriteProtectionContainerMappings(protectionContainerMappingListResponse);
         }
 
         /// <summary>

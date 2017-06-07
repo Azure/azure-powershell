@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     // <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryStorageClassificationMapping")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets primary storage classification.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRStorageClassificationMapping StorageClassificationMapping { get; set; }
         #endregion
@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 fabricName: tokens[0],
                 storageClassificationName: tokens[1],
                 mappingName: tokens[2]);
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
                 PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
 
-            base.WriteObject(new ASRJob(jobResponse.Job));
+            base.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

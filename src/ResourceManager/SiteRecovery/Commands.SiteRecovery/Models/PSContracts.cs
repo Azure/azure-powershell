@@ -13,7 +13,7 @@
 //// ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,6 +23,27 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
+    public class PSSiteRecoveryLongRunningOperation
+    {
+        public string ClientRequestId { get; set; }
+
+        public string CorrelationRequestId { get; set; }
+
+        public string Date { get; set; }
+
+        public string ContentType { get; set; }
+
+        public string Location { get; set; }
+
+        public string RetryAfter { get; set; }
+
+        public string AsyncOperation { get; set; }
+
+        public OperationStatus Status { get; set; }
+
+        public string Culture { get; set; }
+    }
+
     /// <summary>
     /// Hash functions which can be used to calculate CIK HMAC.
     /// </summary>
@@ -353,7 +374,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Data contract version.
         /// </summary>
         [DataMember(Name = "Version")]
-        public Version Version { get; set; }
+        public System.Version Version { get; set; }
 
         /// <summary>
         /// Gets or sets property bag. This property bag is introduced to support addition of any 
@@ -425,27 +446,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Status Suspended value.
         /// </summary>
         public static readonly string Suspended = "Suspended";
-    }
-}
-
-//// TODO: Remove this once we get nuget
-namespace Microsoft.Azure.Commands.SiteRecovery.RestApiInfra
-{
-    /// <summary>
-    /// Class to define the error for RP
-    /// </summary>
-    [SuppressMessage(
-    "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-    "SA1402:FileMayOnlyContainASingleClass",
-    Justification = "Keeping all contracts together.")]
-    [DataContract(Namespace = "http://schemas.microsoft.com/wars")]
-    public class Error
-    {
-        /// <summary>
-        /// Gets or sets the value for the error as string.
-        /// </summary>
-        [DataMember]
-        public string ErrorCode { get; set; }
     }
 }
 
@@ -634,17 +634,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     public class AcsNamespace
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AcsNamespace"/> class.
-        /// </summary>
-        /// <param name="acsDetails">authenticating service Details name</param>
-        public AcsNamespace(UploadCertificateResponse acsDetails)
-        {
-            this.HostName = acsDetails.Properties.GlobalAcsHostName;
-            this.Namespace = acsDetails.Properties.GlobalAcsNamespace;
-            this.ResourceProviderRealm = acsDetails.Properties.GlobalAcsRPRealm;
-        }
-
-        /// <summary>
         /// Gets or sets Host name
         /// </summary>
         [DataMember(Order = 0)]
@@ -661,171 +650,5 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 0)]
         public string ResourceProviderRealm { get; set; }
-    }
-
-    /// <summary>
-    /// Azure Site Recovery Policy HyperVReplicaProviderSettings.
-    /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-        "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all related objects together.")]
-    public class HyperVReplicaProviderSettings
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HyperVReplicaProviderSettings" /> class.
-        /// </summary>
-        public HyperVReplicaProviderSettings()
-        {
-        }
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets Replication Method.
-        /// </summary>
-        public string ReplicationMethod { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether profile can be dissociated or not.
-        /// </summary>
-        public bool CanDissociate { get; set; }
-
-        /// <summary>
-        /// Gets or sets Association Details.
-        /// </summary>
-        public List<ASRPolicyAssociationDetails> AssociationDetail { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication Frequency in seconds.
-        /// </summary>
-        public ushort ReplicationFrequencyInSeconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Points.
-        /// </summary>
-        public int RecoveryPoints { get; set; }
-
-        /// <summary>
-        /// Gets or sets Application Consistent Snapshot Frequency in hours.
-        /// </summary>
-        public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Compression is Enabled.
-        /// </summary>
-        public bool CompressionEnabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets the replication port.
-        /// </summary>
-        public ushort ReplicationPort { get; set; }
-
-        /// <summary>
-        /// Gets or sets the allowed authentication type.
-        /// </summary>
-        public string Authentication { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication Start Time.
-        /// </summary>
-        public TimeSpan? ReplicationStartTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Replica Deletion should be enabled.
-        /// </summary>
-        public bool AllowReplicaDeletion { get; set; }
-
-        #endregion
-    }
-}
-
-namespace Microsoft.Azure.Portal.HybridServicesCore
-{
-    /// <summary>
-    /// The ResourceExtendedInfo which represents the xml info stored in RP.
-    /// </summary>
-    [DataContract]
-    public class ResourceExtendedInfo
-    {
-        #region properties
-
-        /// <summary>
-        /// Gets or sets the version
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string Version { get; set; }
-
-        /// <summary>
-        /// Gets or sets the channel integrity key
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string ChannelIntegrityKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Channel encryption key
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string ChannelEncryptionKey { get; set; }
-
-        /// <summary>
-        /// Gets or sets the channel encryption key thumbprint
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string ChannelEncryptionKeyThumbprint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the portal certificate thumbprint
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string PortalCertificateThumbprint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the algorithm used to encrypt the data.
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public string Algorithm { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tag to be sent while updating the resource extended info.
-        /// </summary>
-        [IgnoreDataMember]
-        public string Etag { get; set; }
-
-        #endregion
-
-        #region Public methods
-
-        /// <summary>
-        /// Returns the Xml representation of this object.
-        /// </summary>
-        /// <returns>the xml as string</returns>
-        public ResourceExtendedInformationArgs Translate()
-        {
-            if (string.IsNullOrEmpty(this.Etag))
-            {
-                this.Etag = Guid.NewGuid().ToString();
-            }
-
-            string serializedInfo = Utilities.Serialize<ResourceExtendedInfo>(this);
-            ResourceExtendedInformationArgs extendedInfoArgs = new ResourceExtendedInformationArgs(
-                Constants.VaultExtendedInfoContractVersion,
-                serializedInfo,
-                this.Etag);
-
-            return extendedInfoArgs;
-        }
-
-        /// <summary>
-        /// Method to generate security information
-        /// </summary>
-        public void GenerateSecurityInfo()
-        {
-            this.ChannelIntegrityKey = Utilities.GenerateRandomKey(128);
-            this.Version = Constants.VaultSecurityInfoVersion;
-            this.Algorithm = CryptoAlgorithm.None.ToString();
-        }
-
-        #endregion
     }
 }

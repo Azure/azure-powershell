@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using AutoMapper;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -26,9 +28,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets Azure Site Recovery Policy.
         /// </summary>
         /// <returns>Policy list response</returns>
-        public PolicyListResponse GetAzureSiteRecoveryPolicy()
+        public List<Policy> GetAzureSiteRecoveryPolicy()
         {
-            return this.GetSiteRecoveryClient().Policies.List(this.GetRequestHeaders());
+            var firstPage = this.GetSiteRecoveryClient().ReplicationPolicies.ListWithHttpMessagesAsync(this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationPolicies.ListNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
+
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -36,12 +42,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="PolicyId">Policy ID</param>
         /// <returns>Policy response</returns>
-        public PolicyResponse GetAzureSiteRecoveryPolicy(
+        public Policy GetAzureSiteRecoveryPolicy(
             string PolicyId)
         {
-            return this.GetSiteRecoveryClient().Policies.Get(
-                PolicyId,
-                this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().ReplicationPolicies.GetWithHttpMessagesAsync(
+                PolicyId, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
         }
 
         /// <summary>
@@ -50,12 +55,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="policyName">Policy name</param>
         /// <param name="CreatePolicyInput">Policy Input</param>
         /// <returns>Long operation response</returns>
-        public LongRunningOperationResponse CreatePolicy(string policyName,
-            CreatePolicyInput Policy)
+        public PSSiteRecoveryLongRunningOperation CreatePolicy(string policyName,
+            CreatePolicyInput input)
         {
-            return this.GetSiteRecoveryClient().Policies.BeginCreating(policyName,
-                Policy,
-                this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationPolicies.BeginCreateWithHttpMessagesAsync(policyName,
+                input, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
 
         /// <summary>
@@ -64,12 +70,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="UpdatePolicyInput">Policy Input</param>
         /// <param name="policyName">Policy Name</param>
         /// <returns>Long operation response</returns>
-        public LongRunningOperationResponse UpdatePolicy(string policyName, UpdatePolicyInput input)
+        public PSSiteRecoveryLongRunningOperation UpdatePolicy(string policyName, UpdatePolicyInput input)
         {
-            return this.GetSiteRecoveryClient().Policies.BeginUpdating(
-                input,
-                policyName,
-                this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationPolicies.BeginUpdateWithHttpMessagesAsync(policyName,
+                input, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
 
         /// <summary>
@@ -77,11 +83,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         /// <param name="createAndAssociatePolicyInput">Policy Input</param>
         /// <returns>Long operation response</returns>
-        public LongRunningOperationResponse DeletePolicy(string profile)
+        public PSSiteRecoveryLongRunningOperation DeletePolicy(string policyName)
         {
-            return this.GetSiteRecoveryClient().Policies.BeginDeleting(
-                profile,
-                this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationPolicies.BeginDeleteWithHttpMessagesAsync(policyName, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+﻿using AutoMapper;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,79 +11,29 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Gets all storage classifications associated with a vault.
+        /// Gets Azure Site Recovery Storage Classification.
         /// </summary>
-        /// <param name="callback">Callback to execute on the result.</param>
-        /// <returns>Task object tracking async operation.</returns>
-        public Task EnumerateStorageClassificationsAsync(Action<IEnumerable<StorageClassification>> callback)
+        /// <returns>Storage classification list response</returns>
+        public List<StorageClassification> GetAzureSiteRecoveryStorageClassification()
         {
-            CancellationToken cancellationToken = new CancellationToken();
+            var firstPage = this.GetSiteRecoveryClient().ReplicationStorageClassifications.ListWithHttpMessagesAsync(this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationStorageClassifications.ListNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
 
-            Task backgroundTask = new Task(new Action(() =>
-                {
-                    Task<StorageClassificationListResponse> storageTask =
-                        this.GetSiteRecoveryClient().StorageClassification.ListAllAsync(
-                        this.GetRequestHeaders(),
-                        cancellationToken);
-
-                    Task.WaitAll(storageTask);
-
-                    callback(storageTask.Result.StorageClassifications);
-
-                    while (!string.IsNullOrEmpty(storageTask.Result.NextLink))
-                    {
-                        storageTask =
-                            this.GetSiteRecoveryClient().StorageClassification.ListNextAsync(
-                            storageTask.Result.NextLink,
-                            this.GetRequestHeaders(),
-                            cancellationToken);
-
-                        Task.WaitAll(storageTask);
-
-                        callback(storageTask.Result.StorageClassifications);
-                    }
-                }));
-
-            backgroundTask.Start();
-            return backgroundTask;
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
-        /// Gets all storage classifications associated with a vault.
+        /// Gets Azure Site Recovery Storage Classification Mappings.
         /// </summary>
-        /// <param name="callback">Callback to execute on the result.</param>
-        /// <returns>Task object tracking async operation.</returns>
-        public Task EnumerateStorageClassificationMappingsAsync(Action<IEnumerable<StorageClassificationMapping>> callback)
+        /// <returns>Storage classification Mapping list response</returns>
+        public List<StorageClassificationMapping> GetAzureSiteRecoveryStorageClassificationMapping()
         {
-            CancellationToken cancellationToken = new CancellationToken();
+            var firstPage = this.GetSiteRecoveryClient().ReplicationStorageClassificationMappings.ListWithHttpMessagesAsync(this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationStorageClassificationMappings.ListNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
 
-            Task backgroundTask = new Task(new Action(() =>
-            {
-                Task<StorageClassificationMappingListResponse> storageTask =
-                    this.GetSiteRecoveryClient().StorageClassificationMapping.ListAllAsync(
-                    this.GetRequestHeaders(),
-                    cancellationToken);
-
-                Task.WaitAll(storageTask);
-
-                callback(storageTask.Result.StorageClassificationMappings);
-
-                while (!string.IsNullOrEmpty(storageTask.Result.NextLink))
-                {
-                    storageTask =
-                        this.GetSiteRecoveryClient().StorageClassificationMapping.ListNextAsync(
-                        storageTask.Result.NextLink,
-                        this.GetRequestHeaders(),
-                        cancellationToken);
-
-                    Task.WaitAll(storageTask);
-
-                    callback(storageTask.Result.StorageClassificationMappings);
-                }
-            }));
-
-            backgroundTask.Start();
-            return backgroundTask;
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -92,17 +43,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="storageClassificationName">Storage classification name.</param>
         /// <param name="mappingName">Classification mapping name.</param>
         /// <returns>Operation result.</returns>
-        public LongRunningOperationResponse UnmapStorageClassifications(
+        public PSSiteRecoveryLongRunningOperation UnmapStorageClassifications(
             string fabricName,
             string storageClassificationName,
             string mappingName)
         {
-            return this.GetSiteRecoveryClient().StorageClassificationMapping
-                .BeginUnpairStorageClassification(
-                fabricName,
-                storageClassificationName,
-                mappingName,
-                customRequestHeaders: this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationStorageClassificationMappings.BeginDeleteWithHttpMessagesAsync(fabricName, storageClassificationName, mappingName, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
 
         /// <summary>
@@ -112,7 +60,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="input">Mapping input.</param>
         /// <param name="armName">Optional. ARM name of the mapping.</param>
         /// <returns>Operation response.</returns>
-        public LongRunningOperationResponse MapStorageClassification(
+        public PSSiteRecoveryLongRunningOperation MapStorageClassification(
             ASRStorageClassification primaryClassification,
             StorageClassificationMappingInput input,
             string armName)
@@ -120,13 +68,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             string[] tokens = primaryClassification.Id.UnFormatArmId(
                 ARMResourceIdPaths.StorageClassificationResourceIdPath);
 
-            return this.GetSiteRecoveryClient().StorageClassificationMapping
-                .BeginPairStorageClassification(
-                tokens[0],
-                tokens[1],
-                armName,
-                input,
-                this.GetRequestHeaders());
+            var op = this.GetSiteRecoveryClient().ReplicationStorageClassificationMappings.BeginCreateWithHttpMessagesAsync(tokens[0], tokens[1], armName, input, this.GetRequestHeaders(true)).GetAwaiter().GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
         }
     }
 

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Management.Automation;
 
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryStorageClassificationMapping")]
+    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -56,11 +56,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            string mappingName = string.IsNullOrEmpty(this.Name) ?
-                string.Format("StrgMap_{0}_{1}_{2}", PrimaryStorageClassification.Name, RecoveryStorageClassification.Name, Guid.NewGuid()) :
-                this.Name;
+            string mappingName = this.Name;
 
-            var props = new StorageClassificationMappingInputProperties()
+            var props = new StorageMappingInputProperties()
             {
                 TargetStorageClassificationId = RecoveryStorageClassification.Id
             };
@@ -70,17 +68,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Properties = props
             };
 
-            LongRunningOperationResponse operationResponse =
+            PSSiteRecoveryLongRunningOperation operationResponse =
                 RecoveryServicesClient.MapStorageClassification(
                 PrimaryStorageClassification,
                 input,
                 mappingName);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
                 PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
 
-            base.WriteObject(new ASRJob(jobResponse.Job));
+            base.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

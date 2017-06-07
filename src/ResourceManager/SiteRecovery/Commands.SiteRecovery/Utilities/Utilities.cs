@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -23,6 +23,11 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Collections;
+using Microsoft.Rest.Azure;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -31,6 +36,104 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     public static class Utilities
     {
+        public static List<T> IpageToList<T>(List<IPage<T>> pages)
+        {
+            var result = new List<T>();
+
+            foreach (var page in pages)
+            {
+                foreach (var item in page)
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        public static List<IPage<T>> GetAllFurtherPages<T>(
+            Func<string, Dictionary<string, List<string>>, CancellationToken, Task<AzureOperationResponse<IPage<T>>>> getNextPage,
+            string NextPageLink,
+            Dictionary<string, List<string>> customHeaders = null)
+        {
+            var result = new List<IPage<T>>();
+
+            while (NextPageLink != null && getNextPage != null)
+            {
+                var page = getNextPage(NextPageLink, customHeaders, default(CancellationToken)).GetAwaiter().GetResult().Body;
+                result.Add(page);
+                NextPageLink = page.NextPageLink;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts Query object to query string to pass on.
+        /// </summary>
+        /// <param name="queryObject">Query object</param>
+        /// <returns>Qeury string</returns>
+        public static string ToQueryString(this object queryObject)
+        {
+            if (queryObject == null)
+            {
+                return string.Empty;
+            }
+
+            Type objType = queryObject.GetType();
+            PropertyInfo[] properties = objType.GetProperties();
+
+            System.Text.StringBuilder queryString = new System.Text.StringBuilder();
+            List<string> propQuery = new List<string>();
+            foreach (PropertyInfo property in properties)
+            {
+                object propValue = property.GetValue(queryObject, null);
+                if (propValue != null)
+                {
+                    // IList is the only one we are handling
+                    var elems = propValue as IList;
+                    if (elems != null && elems.Count != 0)
+                    {
+                        int itemCount = 0;
+                        string[] multiPropQuery = new string[elems.Count];
+                        foreach (var item in elems)
+                        {
+                            multiPropQuery[itemCount] =
+                                new System.Text.StringBuilder()
+                                .Append(property.Name)
+                                .Append(" eq '")
+                                .Append(item.ToString())
+                                .Append("'")
+                                .ToString();
+
+                            itemCount++;
+                        }
+                        propQuery.Add("( " + string.Join(" or ", multiPropQuery) + " )");
+                    }
+                    /*Add DateTime, others if required*/
+                    else
+                    {
+                        if (propValue.ToString().Contains("Hyak.Common.LazyList"))
+                        {
+                            // Just skip the property.
+                        }
+                        else
+                        {
+                            propQuery.Add(
+                                new System.Text.StringBuilder()
+                                .Append(property.Name)
+                                .Append(" eq '")
+                                .Append(propValue.ToString())
+                                .Append("'")
+                                .ToString());
+                        }
+                    }
+                }
+            }
+            queryString.Append(string.Join(" and ", propQuery));
+            return queryString.ToString();
+        }
+
         /// <summary>
         /// Serialize the T as xml using DataContract Serializer
         /// </summary>
@@ -292,6 +395,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             return string.Format(
                 ARMResourceIdPaths.SRSArmUrlPattern,
                 data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern));
+        }
+
+        /// <summary>
+        /// Returns provider namespace from ARM id.
+        /// </summary>
+        /// <param name="data">ARM Id of the resource.</param>
+        /// <returns>Provider namespace.</returns>
+        public static string GetProviderNameSpaceFromArmId(this string data)
+        {
+            return (data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern))[2];
         }
     }
 

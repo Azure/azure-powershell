@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class RestartAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
         #region Parameters
+
         /// <summary>
         /// Gets or sets Job ID.
         /// </summary>
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRJob Job { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -65,13 +67,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void RestartByName()
         {
-            LongRunningOperationResponse response = RecoveryServicesClient.RestartAzureSiteRecoveryJob(this.Name);
+            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.RestartAzureSiteRecoveryJob(this.Name);
 
-            JobResponse jobResponse =
+            var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

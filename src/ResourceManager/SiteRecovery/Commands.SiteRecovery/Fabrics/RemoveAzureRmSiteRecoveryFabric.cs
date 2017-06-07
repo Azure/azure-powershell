@@ -15,7 +15,7 @@
 using System;
 using System.ComponentModel;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             if (ShouldProcess(this.Fabric.FriendlyName, VerbsCommon.Remove))
             {
-                LongRunningOperationResponse response;
+                PSSiteRecoveryLongRunningOperation response;
 
                 if (!this.Force.IsPresent)
                 {
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     response = RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Fabric.Name);
                 }
 
-                JobResponse jobResponse =
+                var jobResponse =
                     RecoveryServicesClient
                     .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-                WriteObject(new ASRJob(jobResponse.Job));
+                WriteObject(new ASRJob(jobResponse));
             }
         }
     }

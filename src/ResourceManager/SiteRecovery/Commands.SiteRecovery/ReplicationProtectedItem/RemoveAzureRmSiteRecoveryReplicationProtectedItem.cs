@@ -15,7 +15,7 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Long Running Operation Response
         /// </summary>
-        private LongRunningOperationResponse response = null;
+        private PSSiteRecoveryLongRunningOperation response = null;
 
         /// <summary>
         /// Job Response
         /// </summary>
-        private JobResponse jobResponse = null;
+        private Management.RecoveryServices.SiteRecovery.Models.Job jobResponse = null;
 
         /// <summary>
         /// Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     DisableProtectionInput input = new DisableProtectionInput();
                     input.Properties = new DisableProtectionInputProperties()
                     {
-                        ProviderSettings = new DisableProtectionProviderSpecificInput()
+                        ReplicationProviderInput = new DisableProtectionProviderSpecificInput()
                     };
                     this.response =
                         RecoveryServicesClient.DisableProtection(
@@ -104,17 +104,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     RecoveryServicesClient
                     .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-                WriteObject(new ASRJob(jobResponse.Job));
+                WriteObject(new ASRJob(jobResponse));
 
                 if (this.WaitForCompletion.IsPresent)
                 {
-                    this.WaitForJobCompletion(this.jobResponse.Job.Name);
+                    this.WaitForJobCompletion(this.jobResponse.Name);
 
                     jobResponse =
                     RecoveryServicesClient
                     .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-                    WriteObject(new ASRJob(jobResponse.Job));
+                    WriteObject(new ASRJob(jobResponse));
                 }
             }
         }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Writes Job.
         /// </summary>
         /// <param name="job">JOB object</param>
-        private void WriteJob(Microsoft.Azure.Management.SiteRecovery.Models.Job job)
+        private void WriteJob(Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job job)
         {
             this.WriteObject(new ASRJob(job));
         }

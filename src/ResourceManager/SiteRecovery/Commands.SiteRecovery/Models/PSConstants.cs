@@ -172,6 +172,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public const string InMageAzureV2 = "InMageAzureV2";
 
         /// <summary>
+        /// Represents InMage string constant.
+        /// </summary>
+        public const string InMage = "InMage";
+
+        /// <summary>
+        /// Represents A2A string constant.
+        /// </summary>
+        public const string A2A = "A2A";
+
+        /// <summary>
         /// Represents HyperVReplicaAzureReplicationDetails string constant.
         /// </summary>
         public const string HyperVReplicaAzureReplicationDetails = "HyperVReplicaAzureReplicationDetails";
@@ -322,6 +332,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public const string VMware = "VMware";
 
         /// <summary>
+        /// Represents AzureToAzure string constant.
+        /// </summary>
+        public const string AzureToAzureFabric = "AzureToAzure";
+
+        /// <summary>
+        /// Represents VmmToAzureFabric string constant.
+        /// </summary>
+        public const string VmmToAzureFabric = "VmmToAzure";
+
+        /// <summary>
+        /// Represents VmmToVmmFabric string constant.
+        /// </summary>
+        public const string VmmToVmmFabric = "VmmToVmm";
+
+        /// <summary>
         /// Nic Selection Type - NotSelected
         /// </summary>
         public const string NotSelected = "NotSelected";
@@ -414,6 +439,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public const string Providers = "providers";
 
         /// <summary>
+        /// SiteRecovery Resource ProviderNameSpace
+        /// </summary>
+        public const string SiteRecoveryResourceProviderNameSpace = "Microsoft.SiteRecovery";
+
+        /// <summary>
+        /// RecoveryServices Resource ProviderNameSpace
+        /// </summary>
+        public const string RecoveryServicesResourceProviderNameSpace = "Microsoft.RecoveryServices";
+
+        /// <summary>
         /// Site Recovery Vault
         /// </summary>
         public const string SiteRecoveryVault = "SiteRecoveryVault";
@@ -421,7 +456,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Recovery Services Vault
         /// </summary>
-        public const string RecoveryServicesVault = "Vaults";
+        public const string RecoveryServicesVault = "vaults";
 
         /// <summary>
         /// Replication Policies
@@ -452,6 +487,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Virtual Networks
         /// </summary>
         public const string VirtualNetworks = "virtualNetworks";
+
+        /// <summary>
+        /// Azure Network.
+        /// </summary>
+        public const string AzureNetwork = "azureNetwork";
 
         /// <summary>
         /// Recovery provider resource name.

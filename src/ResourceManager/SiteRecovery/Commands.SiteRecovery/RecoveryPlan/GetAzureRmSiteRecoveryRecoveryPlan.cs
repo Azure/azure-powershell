@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -78,15 +78,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByFriendlyName()
         {
-            RecoveryPlanListResponse recoveryPlanListResponse =
+            var recoveryPlanListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan();
             bool found = false;
 
-            foreach (RecoveryPlan recoveryPlan in recoveryPlanListResponse.RecoveryPlans)
+            foreach (RecoveryPlan recoveryPlan in recoveryPlanListResponse)
             {
                 if (0 == string.Compare(this.FriendlyName, recoveryPlan.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
                 {
-                    var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name).RecoveryPlan;
+                    var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name);
                     this.WriteRecoveryPlan(rp);
                     if (!string.IsNullOrEmpty(this.Path))
                     {
@@ -117,13 +117,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 var recoveryPlanResponse =
                     RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.Name);
 
-                if (recoveryPlanResponse.RecoveryPlan != null)
+                if (recoveryPlanResponse != null)
                 {
-                    this.WriteRecoveryPlan(recoveryPlanResponse.RecoveryPlan);
+                    this.WriteRecoveryPlan(recoveryPlanResponse);
 
                     if (!string.IsNullOrEmpty(this.Path))
                     {
-                        GetRecoveryPlanFile(recoveryPlanResponse.RecoveryPlan);
+                        GetRecoveryPlanFile(recoveryPlanResponse);
                     }
                 }
             }
@@ -149,15 +149,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            RecoveryPlanListResponse recoveryPlanListResponse =
+            var recoveryPlanListResponse =
                  RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan();
 
-            this.WriteRecoveryPlans(recoveryPlanListResponse.RecoveryPlans);
+            this.WriteRecoveryPlans(recoveryPlanListResponse);
         }
 
         private void GetRecoveryPlanFile(RecoveryPlan recoveryPlan)
         {
-            recoveryPlan = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name).RecoveryPlan;
+            recoveryPlan = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name);
 
             if (string.IsNullOrEmpty(this.Path) || !Directory.Exists(System.IO.Path.GetDirectoryName(this.Path)))
             {
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             foreach (RecoveryPlan recoveryPlan in recoveryPlanList)
             {
                 var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
-                asrRecoveryPlans.Add(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse.ReplicationProtectedItems));
+                asrRecoveryPlans.Add(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse));
             }
 
             this.WriteObject(asrRecoveryPlans, true);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private void WriteRecoveryPlan(RecoveryPlan recoveryPlan)
         {
             var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
-            this.WriteObject(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse.ReplicationProtectedItems));
+            this.WriteObject(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse));
         }
     }
 }

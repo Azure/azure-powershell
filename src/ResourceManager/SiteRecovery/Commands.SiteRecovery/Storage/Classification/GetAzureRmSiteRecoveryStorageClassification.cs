@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery storage classification.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryStorageClassification", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryStorageClassification", DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
     public class GetAzureRmSiteRecoveryStorageClassification : SiteRecoveryCmdletBase
     {
@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByFabricObject, Mandatory = true, ValueFromPipeline = true)]
         public ASRFabric Fabric { get; set; }
 
-        /// <summary>
-        /// Gets or sets friendly name of classification.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByServerObject, Mandatory = true, ValueFromPipeline = true)]
-        public ASRServer Server { get; set; }
         #endregion
 
         /// <summary>
@@ -63,15 +58,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            List<StorageClassification> storageClassifications = new List<StorageClassification>();
-
-            Task storageClassificationTask =
-                RecoveryServicesClient.EnumerateStorageClassificationsAsync((entities) =>
-                {
-                    storageClassifications.AddRange(entities);
-                });
-
-            Task.WaitAll(storageClassificationTask);
+            List<StorageClassification> storageClassifications = RecoveryServicesClient.GetAzureSiteRecoveryStorageClassification();
 
             switch (this.ParameterSetName)
             {
@@ -88,11 +75,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                             this.Name,
                             StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
-                    break;
-                case ASRParameterSets.ByServerObject:
-                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
-                    storageClassifications = storageClassifications.Where(item =>
-                        item.GetFabricId().ToLower().Equals(this.Fabric.ID.ToLower())).ToList();
                     break;
                 case ASRParameterSets.ByFabricObject:
                     storageClassifications = storageClassifications.Where(item =>

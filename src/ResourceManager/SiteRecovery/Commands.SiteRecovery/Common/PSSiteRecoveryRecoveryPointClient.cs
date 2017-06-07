@@ -14,8 +14,8 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -31,17 +31,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="protectionContainerName">Protection container name.</param>
         /// <param name="replicationProtectedItemName">Replication protected item name.</param>
         /// <returns>List of recovery points.</returns>
-        public RecoveryPointListResponse GetAzureSiteRecoveryRecoveryPoint(string fabricName,
+        public List<RecoveryPoint> GetAzureSiteRecoveryRecoveryPoint(string fabricName,
             string protectionContainerName,
             string replicationProtectedItemName)
         {
-            return this.
-                GetSiteRecoveryClient().
-                RecoveryPoint.
-                List(fabricName, 
-                    protectionContainerName, 
-                    replicationProtectedItemName,
-                    this.GetRequestHeaders());
+            var firstPage = this.GetSiteRecoveryClient().RecoveryPoints.ListByReplicationProtectedItemsWithHttpMessagesAsync(fabricName, protectionContainerName, replicationProtectedItemName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().RecoveryPoints.ListByReplicationProtectedItemsNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
+            pages.Insert(0, firstPage);
+
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -52,19 +50,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="replicationProtectedItemName">Replication protected item name.</param>
         /// <param name="recoveryPointName">Recovery point name.</param>
         /// <returns>Recovery point.</returns>
-        public RecoveryPointResponse GetAzureSiteRecoveryRecoveryPoint(string fabricName,
+        public RecoveryPoint GetAzureSiteRecoveryRecoveryPoint(string fabricName,
             string protectionContainerName,
             string replicationProtectedItemName,
             string recoveryPointName)
         {
-            return this.
-                GetSiteRecoveryClient().
-                RecoveryPoint.
-                Get(fabricName,
-                    protectionContainerName,
-                    replicationProtectedItemName,
-                    recoveryPointName,
-                    this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().RecoveryPoints.GetWithHttpMessagesAsync(fabricName, protectionContainerName, replicationProtectedItemName, recoveryPointName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
         }
     }
 }

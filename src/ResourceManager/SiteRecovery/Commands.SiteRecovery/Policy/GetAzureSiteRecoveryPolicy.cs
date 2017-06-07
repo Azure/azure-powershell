@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class GetAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Parameters
+
         /// <summary>
         /// Gets or sets name of the Policy.
         /// </summary>
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -72,15 +74,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByFriendlyName()
         {
-            PolicyListResponse profileListResponse =
+            var profileListResponse =
                  RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
             bool found = false;
 
-            foreach (Policy policy in profileListResponse.Policies)
+            foreach (Policy policy in profileListResponse)
             {
                 if (0 == string.Compare(this.FriendlyName, policy.Properties.FriendlyName, true))
                 {
-                    var policyByName = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name).Policy;
+                    var policyByName = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name);
                     this.WritePolicy(policyByName);
 
                     found = true;
@@ -108,9 +110,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 var policyResponse =
                     RecoveryServicesClient.GetAzureSiteRecoveryPolicy(this.Name);
 
-                if (policyResponse.Policy != null)
+                if (policyResponse != null)
                 {
-                    this.WritePolicy(policyResponse.Policy);
+                    this.WritePolicy(policyResponse);
                 }
             }
             catch (CloudException ex)
@@ -135,10 +137,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-            PolicyListResponse policyListResponse =
+            var policyListResponse =
                  RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
 
-            this.WritePolicies(policyListResponse.Policies);
+            this.WritePolicies(policyListResponse);
         }
 
         /// <summary>

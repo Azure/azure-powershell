@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Rest.Azure.OData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     public class GetAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
         #region Parameters
+
         /// <summary>
         /// Gets or sets Job Name.
         /// </summary>
@@ -112,7 +114,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            this.WriteJob(RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(this.Name).Job);
+            this.WriteJob(RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(this.Name));
         }
 
         /// <summary>
@@ -138,10 +140,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 jqp.JobStatus.Add(this.State);
             }
 
-            IList<Management.SiteRecovery.Models.Job> completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp).Jobs;
+            var completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp);
 
             // Filtering TargetObjectId
-            IEnumerable<Management.SiteRecovery.Models.Job> filteredJobsList = completeJobsList.ToArray().AsEnumerable();
+            IEnumerable<Management.RecoveryServices.SiteRecovery.Models.Job> filteredJobsList = completeJobsList.ToArray().AsEnumerable();
             if (this.TargetObjectId != null)
             {
                 filteredJobsList = filteredJobsList.Where(j => 0 == string.Compare(j.Properties.TargetObjectId.ToString(),
@@ -155,7 +157,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Writes Job.
         /// </summary>
         /// <param name="job">JOB object</param>
-        private void WriteJob(Microsoft.Azure.Management.SiteRecovery.Models.Job job)
+        private void WriteJob(Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job job)
         {
             this.WriteObject(new ASRJob(job));
         }
@@ -164,7 +166,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Writes Jobs.
         /// </summary>
         /// <param name="jobs">Job objects</param>
-        private void WriteJobs(IList<Microsoft.Azure.Management.SiteRecovery.Models.Job> jobs)
+        private void WriteJobs(IList<Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job> jobs)
         {
             this.WriteObject(jobs.Select(j => new ASRJob(j)), true);
         }

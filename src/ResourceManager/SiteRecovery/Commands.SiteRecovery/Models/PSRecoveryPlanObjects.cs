@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             if (recoveryPlanGroup != null)
             {
-                this.GroupType = recoveryPlanGroup.GroupType;
+                this.GroupType = recoveryPlanGroup.GroupType.ToString(); //TODO
                 this.StartGroupActions = recoveryPlanGroup.StartGroupActions;
                 this.EndGroupActions = recoveryPlanGroup.EndGroupActions;
 
@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.Name = groupName;
         }
 
+
         /// <summary>
         /// Gets or sets Recovery plan group Name.
         /// </summary>
@@ -60,6 +61,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         // Summary:
         //     Optional. Recovery plan end group actions.
         public IList<RecoveryPlanAction> EndGroupActions { get; set; }
+
         //
         // Summary:
         //     Required. Group type.
@@ -110,14 +112,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 switch (recoveryPlanGroup.GroupType)
                 {
-                    case Constants.Boot:
+                    case RecoveryPlanGroupType.Boot:
                         groupCount++;
                         groupName = "Group " + groupCount.ToString();
                         break;
-                    case Constants.Failover:
+                    case RecoveryPlanGroupType.Failover:
                         groupName = Constants.Failover;
                         break;
-                    case Constants.Shutdown:
+                    case RecoveryPlanGroupType.Shutdown:
                         groupName = Constants.Shutdown;
                         break;
                 }
