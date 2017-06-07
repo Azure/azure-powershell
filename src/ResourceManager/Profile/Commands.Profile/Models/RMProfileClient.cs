@@ -248,13 +248,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<AzureTenant> ListTenants(string tenant = "")
         {
-            if (!string.IsNullOrWhiteSpace(tenant))
+            if (!string.IsNullOrEmpty(tenant))
             {
                 return new List<AzureTenant>() { CreateTenant(tenant) };
             }
 
             List<AzureTenant> tenants = ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null, ShowDialog.Never);
-            return tenants.Where(t => tenant == null ||
+            return tenants.Where(t => string.IsNullOrEmpty(tenant) ||
                                          tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
                                          tenant.Equals(t.Directory, StringComparison.OrdinalIgnoreCase))
                                  .ToList();
