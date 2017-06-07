@@ -200,7 +200,12 @@ PrivateData = @{
 * Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
 * Add-AzureRmVhd: The size limit on vhd is increased to 4TB.
 * Stop-AzureRmVM: Clarify documentation for STayProvisioned parameter
-'
+* New-AzureRmDiskUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmDiskUpdateImageReference: Deprecated cmdlet
+* New-AzureRmSnapshotUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmSnapshotUpdateImageReference: Deprecated Cmdlet'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

@@ -9,6 +9,12 @@
     * Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
     * Add-AzureRmVhd: The size limit on vhd is increased to 4TB.
     * Stop-AzureRmVM: Clarify documentation for STayProvisioned parameter
+    * New-AzureRmDiskUpdateConfig
+      * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+    * Set-AzureRmDiskUpdateImageReference: Deprecated cmdlet
+    * New-AzureRmSnapshotUpdateConfig
+      * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+    * Set-AzureRmSnapshotUpdateImageReference: Deprecated Cmdlet
 * DataLakeStore
     * Enable-AzureRmDataLakeStoreKeyVault (Enable-AdlStoreKeyVault)
       * Enable KeyVault managed encryption for a DataLake Store
@@ -16,6 +22,16 @@
     * Update cmdlets to work with current and updated DevTest Labs API version.
 * IotHub
     * Add Routing support for IoTHub cmdlets
+* KeyVault
+  * New Cmdlets to support KeyVault Managed Storage Account Keys
+    * Get-AzureKeyVaultManagedStorageAccount
+    * Add-AzureKeyVaultManagedStorageAccount
+    * Remove-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccountKey
+    * Get-AzureKeyVaultManagedStorageSasDefinition
+    * Set-AzureKeyVaultManagedStorageSasDefinition
+    * Remove-AzureKeyVaultManagedStorageSasDefinition
 * Network
     * Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
     * Added new GatewaySku options for VirtualNetworkGateways
@@ -29,6 +45,8 @@
       * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
     * Send-Feedback
       * Enabled sending feedback without logging in
+    * Get-AzureRmSubscription
+      * Fix bug in retreiving CSP subscriptions
 * Resources
     * Fixed issue where Get-AzureRMRoleAssignment would result in a Bad Request if the number of roleassignments where greater than 1000
         * Users can now use Get-AzureRMRoleAssignment even if the roleassignments to be returned is greater than 1000
