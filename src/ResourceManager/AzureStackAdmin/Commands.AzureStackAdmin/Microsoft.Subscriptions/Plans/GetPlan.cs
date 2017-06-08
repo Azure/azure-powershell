@@ -31,14 +31,16 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets or sets the Plan name.
         /// </summary>
+        [Parameter]
         [ValidateNotNull]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group.
         /// </summary>
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
+        [Parameter(Mandatory = true)]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
@@ -46,6 +48,7 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets a switch indicating whether to return managed plans.
         /// Plan is exposed only to the service admin now. This parameter will be deprecated
         /// </summary>
+        [Parameter]
         public SwitchParameter Managed { get; set; }
 
         /// <summary>

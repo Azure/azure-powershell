@@ -23,7 +23,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Get Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.Subscription)]
+    [Cmdlet(VerbsCommon.Get, Nouns.TenantSubscription)]
     [OutputType(typeof(SubscriptionDefinition))]
     [Alias("Get-AzureRMManagedSubscription")]
     public class GetTenantSubscription : AdminApiCmdlet 

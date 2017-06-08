@@ -88,7 +88,7 @@ function Test-TenantSubscription
     $publicOffer = Get-Offer -OfferName $offerName
 	
 	#
-	[Microsoft.AzureStack.Commands.NewManagedSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AB2-44A1-94D8-F7BC8E12645E")
+	[Microsoft.AzureStack.Commands.NewTenantSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AB2-44A1-94D8-F7BC8E12645E")
     # Creating subscription as an admin
     $subscription = New-Subscription -SubscriptionUser $SubscriptionUser -OfferId $offer.Id
 
@@ -164,7 +164,7 @@ function Test-TenantSubscribeToOffer
     # Get the created offer as the tenant
     $tenantOffer = Get-Offer -OfferName $offerName
 
-	[Microsoft.AzureStack.Commands.NewManagedSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AA2-44A1-94D8-F7BC8E12645E")
+	[Microsoft.AzureStack.Commands.NewTenantSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AA2-44A1-94D8-F7BC8E12645E")
     # Subscribing to the offer as tenant
     $subscription = New-Subscription -OfferId $tenantOffer.Id
 
@@ -638,7 +638,7 @@ function Test-ManagedLocation
 
     try
     {
-        $loc = New-AzureRMManagedLocation -Name $Location -DisplayName $Location -Latitude 80.5 -Longitude -45.5
+        $loc = New-AzSLocation -Name $Location -DisplayName $Location -Latitude 80.5 -Longitude -45.5
 
         Assert-NotNull $loc
         Assert-AreEqual $loc.Name $Location
@@ -646,7 +646,7 @@ function Test-ManagedLocation
         Assert-AreEqual $loc.Longitude $longitude
         Assert-AreEqual $loc.DisplayName $Location
 
-        $loc2 = Get-AzureRMManagedLocation -Name $Location
+        $loc2 = Get-AzSLocation -Name $Location
 
         Assert-AreEqual $loc2.Name $Location
         Assert-AreEqual $loc2.Latitude $lattitude
@@ -656,10 +656,10 @@ function Test-ManagedLocation
         $lattitude = 90.0 
 
         $loc2.Latitude = $lattitude
-        $loc2 | Set-AzureRMManagedLocation
+        $loc2 | Set-AzSLocation
 
 
-        $loc3 = Get-AzureRMManagedLocation -Name $Location
+        $loc3 = Get-AzSLocation -Name $Location
 
         Assert-AreEqual $loc3.Name $Location
         Assert-AreEqual $loc3.Latitude $lattitude
@@ -668,8 +668,8 @@ function Test-ManagedLocation
     }
     finally
     {
-        Remove-AzureRMManagedLocation -Name $Location
-        Assert-Throws {Get-AzureRMManagedLocation -Name $Location }
+        Remove-AzSLocation -Name $Location
+        Assert-Throws {Get-AzSLocation -Name $Location }
     }
 }
 
@@ -710,22 +710,21 @@ function Test-GalleryItem
 {
     $resourceGroupName = "GalleryItems"
     $galleryItemName = "Microsoft.SimpleVMTemplate.1.0.0"
-    $galleryApiVersion = "2015-04-01"
 
     try
     {
         New-AzureRmResourceGroup -Name $resourceGroupName  -Location local -Force
 		
 		[Microsoft.AzureStack.Commands.AddGalleryItem]::GalleryPackageIds.Enqueue("1988820c-2bcc-4682-9991-bec44e6b8324")
-        $galleryItem = Add-AzureRMGalleryItem -ResourceGroup $resourceGroupName  -Name $galleryItemName -Path "Microsoft.SimpleVMTemplate.1.0.0.azpkg"  -Apiversion $GalleryApiVersion  –Verbose
+        $galleryItem = Add-AzSGalleryItem -ResourceGroupName $resourceGroupName  -Name $galleryItemName -Path "Microsoft.SimpleVMTemplate.1.0.0.azpkg"  –Verbose
         Assert-NotNull $galleryItem
 
-        $galleryItem  = Get-AzureRMGalleryItem -Name $galleryItemName -ResourceGroup  $resourceGroupName -ApiVersion $galleryApiVersion
+        $galleryItem  = Get-AzSGalleryItem -Name $galleryItemName -ResourceGroupName  $resourceGroupName
         Assert-AreEqual $galleryItem.Name $galleryItemName
     }
     finally
     {
-        Remove-AzureRMGalleryItem -Name $GalleryItemName -ResourceGroup  $resourceGroupName -ApiVersion $galleryApiVersion
+        Remove-AzSGalleryItem -Name $GalleryItemName -ResourceGroupName  $resourceGroupName
 		Remove-ResourceGroup -ResourceGroupName $resourceGroupName
     }
 }

@@ -30,6 +30,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [ValidateLength(1, 128)]
         [ValidateNotNull]
+        [Parameter]
         public string Name { get; set; }
 
         /// <summary>

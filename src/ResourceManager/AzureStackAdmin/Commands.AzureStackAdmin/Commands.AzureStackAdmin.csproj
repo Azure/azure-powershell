@@ -136,10 +136,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Compile Include="CommonPSConst.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\GetManagedLocation.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\NewManagedLocation.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\RemoveManagedLocation.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\SetManagedLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\GetLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\NewLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\RemoveLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\SetLocation.cs" />
     <Compile Include="Microsoft.Gallery\GalleryItems\AddGalleryItem.cs" />
     <Compile Include="Microsoft.Gallery\GalleryItems\GetGalleryItem.cs" />
     <Compile Include="Microsoft.Gallery\GalleryItems\RemoveGalleryItem.cs" />
