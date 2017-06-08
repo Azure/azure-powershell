@@ -67,18 +67,12 @@ function Test-RecoveryServicesVaultCredFileDownloadTest
 	$file = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vaultCreationResponse -Backup -Path $path
 	Assert-True { Test-Path $file.FilePath }
 	$fileContent = Get-Content $file.FilePath
-	Assert-ContainsWord($fileContent, $vaultCreationResponse.Name)
-	Assert-ContainsWord($fileContent, $vaultCreationResponse.ResourceGroupName)
-	Assert-ContainsWord($fileContent, $vaultCreationResponse.Location)
+	Assert-Contains($fileContent, $vaultCreationResponse.Name)
+	Assert-Contains($fileContent, $vaultCreationResponse.ResourceGroupName)
+	Assert-Contains($fileContent, $vaultCreationResponse.Location)
 
 	# Remove Vault
 	Remove-AzureRmRecoveryServicesVault -Vault $vaultCreationResponse
 	$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName RsvTestRG -Name rsv1
 	Assert-True { $vaults.Count -eq 0 }
-}
-
-function Assert-ContainsWord($fileContent, $word)
-{
-	$contains = $fileContent | %{$_ -match $word}
-	Assert-True { $contains -contains $true }
 }
