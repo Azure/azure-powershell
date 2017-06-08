@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             if (cloudException.Response.StatusCode.Equals(HttpStatusCode.OK)
                 && cloudException.Response.Content != null)
             {
-                var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(cloudException.Response.Content);
+                var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(cloudException.Response.Content.ReadAsStringAsync().Result);
 
                 sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
                 sb.AppendLine().AppendFormat("EndTime: {0}", errorReturned.EndTime);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
                 sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
                 if (cloudException.Response.Headers == null
-                    || !cloudException.Response.Headers.ContainsKey(RequestIdHeaderInResponse))
+                    || !cloudException.Response.Headers.Contains(RequestIdHeaderInResponse))
                 {
                     return sb.ToString();
                 }
