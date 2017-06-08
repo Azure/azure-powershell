@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void VaultCredFileDownloadTest()
         {
             TestController.NewInstance.RunPsTest("Test-RecoveryServicesVaultCredFileDownloadTest");
