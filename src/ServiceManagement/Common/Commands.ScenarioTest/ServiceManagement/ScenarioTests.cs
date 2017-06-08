@@ -196,6 +196,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.RunPowerShellTest("Test-MigrationAzureReservedIP");
         }
 
+        [Fact]        
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureReservedIPWithIPTags()
+        {
+            this.RunPowerShellTest("Test-AzureReservedIPWithIPTags");
+        }
+
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
