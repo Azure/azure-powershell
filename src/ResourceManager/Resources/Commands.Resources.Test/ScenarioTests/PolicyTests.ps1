@@ -35,7 +35,7 @@ function Test-PolicyDefinitionCRUD
 
 	New-AzureRMPolicyDefinition -Name test2 -Policy "{""if"":{""source"":""action"",""equals"":""blah""},""then"":{""effect"":""deny""}}"
 	$list = Get-AzureRMPolicyDefinition
-	Assert-AreEqual 2 @($list).Count
+	Assert-AreEqual 83 @($list).Count
 
 	$remove = Remove-AzureRMPolicyDefinition -Name $policyName -Force
 	Assert-AreEqual True $remove

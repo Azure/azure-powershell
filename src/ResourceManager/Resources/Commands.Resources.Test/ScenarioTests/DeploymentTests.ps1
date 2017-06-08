@@ -21,7 +21,7 @@ function Test-ValidateDeployment
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
 
 	# Test
@@ -42,7 +42,7 @@ function Test-NewDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -77,7 +77,7 @@ function Test-CrossResourceGroupDeploymentFromTemplateFile
 	$rgname = Get-ResourceGroupName
 	$rgname2 = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -117,7 +117,7 @@ function Test-NestedErrorsDisplayed
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -147,7 +147,7 @@ function Test-NestedDeploymentFromTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -181,7 +181,7 @@ function Test-SaveDeploymentTemplateFile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -216,7 +216,7 @@ function Test-NewDeploymentWithKeyVaultReference
 	$rname = Get-ResourceName
 	$keyVaultname = Get-ResourceName
 	$secretName = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
 	$hostplanName = "xDeploymentTestHost26668"
 
@@ -270,7 +270,7 @@ function Test-NewDeploymentWithComplexPramaters
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -304,7 +304,7 @@ function Test-NewDeploymentWithParameterObject
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -338,7 +338,7 @@ function Test-NewDeploymentWithDynamicParameters
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
@@ -372,7 +372,7 @@ function Test-NewDeploymentWithInvalidParameters
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = "CentralUSEUAP"
+	$rglocation = "centralus"
 
 	try
 	{
