@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Management.IotHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.IotHub;
-using Microsoft.Azure.Management.IotHub.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.IotHub;
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     public class IotHubBaseCmdlet : AzureRMCmdlet
     {
-        protected const string ArmApiVersion = "2016-02-03";
+        protected const string ArmApiVersion = "2017-01-19";
 
         private IIotHubClient iothubClient;
 

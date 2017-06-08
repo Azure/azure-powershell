@@ -137,6 +137,12 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
             Mapper.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
 
+            // Usage
+            Mapper.CreateMap<CNM.PSUsage, MNM.Usage>();
+            Mapper.CreateMap<MNM.Usage, CNM.PSUsage>();
+            Mapper.CreateMap<CNM.PSUsageName, MNM.UsageName>();
+            Mapper.CreateMap<MNM.UsageName, CNM.PSUsageName>();
+
             // NetworkWatcher
             // CNM to MNM
             Mapper.CreateMap<CNM.PSNetworkWatcher, MNM.NetworkWatcher>();
