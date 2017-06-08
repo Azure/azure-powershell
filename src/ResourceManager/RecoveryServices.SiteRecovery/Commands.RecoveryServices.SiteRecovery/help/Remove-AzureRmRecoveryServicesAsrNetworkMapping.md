@@ -1,0 +1,64 @@
+---
+external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+online version: 
+schema: 2.0.0
+---
+
+# Remove-AzureRmRecoveryServicesAsrNetworkMapping
+
+## SYNOPSIS
+Removes a network mapping from the current Site Recovery vault.
+
+## SYNTAX
+
+```
+Remove-AzureRmRecoveryServicesAsrNetworkMapping -NetworkMapping <ASRNetworkMapping> [<CommonParameters>]
+```
+
+## DESCRIPTION
+The **Remove-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet removes a network mapping from the current Azure Site Recovery vault.
+
+## EXAMPLES
+
+### Example 1
+```
+PS C:\> {{ Add example code here }}
+```
+
+{{ Add example description here }}
+
+## PARAMETERS
+
+### -NetworkMapping
+Specifies the network mapping object.
+
+```yaml
+Type: ASRNetworkMapping
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+
+## NOTES
+
+## RELATED LINKS
+
+[Get-AzureRmRecoveryServicesAsrNetworkMapping](./Get-AzureRmRecoveryServicesAsrNetworkMapping.md)
+
+[New-AzureRmRecoveryServicesAsrNetworkMapping](./New-AzureRmRecoveryServicesAsrNetworkMapping.md)

@@ -1,0 +1,89 @@
+---
+external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
+online version: 
+schema: 2.0.0
+---
+
+# Update-AzureRmRecoveryServicesAsrRecoveryPlan
+
+## SYNOPSIS
+Updates a recovery plan in Site Recovery.
+
+## SYNTAX
+
+### ByRPObject (Default)
+```
+Update-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan <ASRRecoveryPlan> [<CommonParameters>]
+```
+
+### ByRPFile
+```
+Update-AzureRmRecoveryServicesAsrRecoveryPlan -Path <String> [<CommonParameters>]
+```
+
+## DESCRIPTION
+The **Update-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet updates a recovery plan in Azure Site Recovery and then publishes it.
+
+## EXAMPLES
+
+### Example 1: Update a recovery plan
+```
+PS C:\> {{ Add example code here }}
+```
+
+{{ Add example description here }}
+
+## PARAMETERS
+
+### -Path
+Specifies the path of the recovery plan file of the recovery plan that this cmdlet updates.
+
+```yaml
+Type: String
+Parameter Sets: ByRPFile
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryPlan
+Specifies a recovery plan that this cmdlet updates.
+
+```yaml
+Type: ASRRecoveryPlan
+Parameter Sets: ByRPObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
+
+## OUTPUTS
+
+### System.Object
+
+## NOTES
+
+## RELATED LINKS
+
+[Get-AzureRmRecoveryServicesAsrRecoveryPlan](./Get-AzureRmRecoveryServicesAsrRecoveryPlan.md)
+
+[New-AzureRmRecoveryServicesAsrRecoveryPlan](./New-AzureRmRecoveryServicesAsrRecoveryPlan.md)
+
+[Remove-AzureRmRecoveryServicesAsrRecoveryPlan](./Remove-AzureRmRecoveryServicesAsrRecoveryPlan.md)
+
+
