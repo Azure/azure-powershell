@@ -85,7 +85,7 @@ Run-TestProtected { Test-RemoveDeployment } "Test-RemoveDeployment"
 Run-TestProtected { Test-MoveAzureResource } "Test-MoveAzureResource" 
 
 # Active Directory tests
-Run-TestProtected { Test-GetADGroupWithSearchString "Azure SDK Code Review" } "Test-GetADGroupWithSearchString" 
+Run-TestProtected { Test-GetADGroupWithSearchString "Azure DevEx Powershell team" } "Test-GetADGroupWithSearchString" 
 Run-TestProtected { Test-GetADGroupWithBadSearchString } "Test-GetADGroupWithBadSearchString" 
 Run-TestProtected { Test-GetADGroupWithObjectId "25cda556-8965-4159-aea3-a9391398cc7a" } "Test-GetADGroupWithObjectId" 
 Run-TestProtected { Test-GetADServicePrincipalWithObjectId "00901ac3-b9b7-4f5e-b89e-178c9266894b" } "Test-GetADServicePrincipalWithObjectId" 
