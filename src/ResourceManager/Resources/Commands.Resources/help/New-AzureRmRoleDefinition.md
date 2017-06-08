@@ -153,11 +153,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[Get-AzureRmProviderOperation]()
+[Get-AzureRmProviderOperation](./Get-AzureRmProviderOperation.md)
 
-[Get-AzureRmRoleDefinition]()
+[Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
 
-[Set-AzureRmRoleDefinition]()
+[Set-AzureRmRoleDefinition](./Set-AzureRmRoleDefinition.md)
 
-[Remove-AzureRmRoleDefinition]()
+[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleDefinition.md)
 

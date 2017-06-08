@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.EventHub;
+
 namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 {
     using System;
@@ -47,6 +49,8 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public IotHubClient IotHubClient { get; private set; }
+
+        public EventHubManagementClient EHClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -103,6 +107,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                     initialize(this.csmTestFactory);
                 }
                 SetupManagementClients(context);
+
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
@@ -115,6 +120,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
+                    helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
@@ -144,11 +150,13 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             IotHubClient = GetIotHubClient(context);
+            EHClient = GetEHClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 IotHubClient,
+                EHClient,
                 AuthorizationManagementClient
                 );
         }
@@ -171,6 +179,10 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         private IotHubClient GetIotHubClient(MockContext context)
         {
             return context.GetServiceClient<IotHubClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+        private EventHubManagementClient GetEHClient(MockContext context)
+        {
+            return context.GetServiceClient<EventHubManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

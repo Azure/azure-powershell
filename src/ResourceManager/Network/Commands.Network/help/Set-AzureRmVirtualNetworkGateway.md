@@ -108,12 +108,15 @@ The acceptable values for this parameter are:
 - Basic
 - Standard
 - HighPerformance
+- VpnGw1
+- VpnGw2
+- VpnGw3
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3
 
 Required: False
 Position: Named

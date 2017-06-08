@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
     using Microsoft.Azure.Commands.Management.IotHub.Models;
@@ -30,6 +31,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         const string UpdateFileUploadPropertiesParameterSet = "UpdateFileUploadProperties";
         const string UpdateCloudToDevicePropertiesParameterSet = "UpdateCloudToDeviceProperties";
         const string UpdateOperationsMonitoringPropertiesParameterSet = "UpdateOperationsMonitoringProperties";
+        const string UpdateRoutingPropertiesParameterSet = "UpdateRoutingProperties";        
+        const string UpdateRoutePropertiesParameterSet = "UpdateRouteProperties";
+        const string UpdateFallbackRoutePropertyParameterSet = "UpdateFallbackRouteProperty";
 
         [Parameter(
             Mandatory = true,
@@ -69,42 +73,42 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadStorageConnectionString")]
+            HelpMessage = "Provide File upload storage connectionstring")]
         [ValidateNotNullOrEmpty]
         public string FileUploadStorageConnectionString { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadContainerName")]
+            HelpMessage = "Provide the containerName for FileUpload")]
         [ValidateNotNullOrEmpty]
         public string FileUploadContainerName { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadSasUriTtl")]
+            HelpMessage = "Provide sas uri ttl for FileUpload")]
         [ValidateNotNullOrEmpty]
         public TimeSpan FileUploadSasUriTtl { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "FileUploadNotificationTtl")]
+            HelpMessage = "Provide notificationTtl for FileUpload")]
         [ValidateNotNullOrEmpty]
         public TimeSpan FileUploadNotificationTtl { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = false,
-            HelpMessage = "fileUploadNotificationMaxDeliveryCount")]
+            HelpMessage = "Provide notificationMaxDeliveryCount for FileUpload")]
         [ValidateNotNullOrEmpty]
         public int? FileUploadNotificationMaxDeliveryCount { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFileUploadPropertiesParameterSet,
             Mandatory = true,
-            HelpMessage = "EnableFileUploadNotifications")]
+            HelpMessage = "Set notifications for FileUpload")]
         [ValidateNotNullOrEmpty]
         public bool EnableFileUploadNotifications { get; set; }
 
@@ -118,9 +122,30 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(
             ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,
-            HelpMessage = "OperationsMonitoringProperties")]
+            HelpMessage = "Set Operations Monitoring Properties")]
         [ValidateNotNullOrEmpty]
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
+
+        [Parameter(
+            ParameterSetName = UpdateRoutingPropertiesParameterSet,
+            Mandatory = false,
+            HelpMessage = "Set Routing Properties")]
+        [ValidateNotNullOrEmpty]
+        public PSRoutingProperties RoutingProperties { get; set; }
+
+        [Parameter(
+            ParameterSetName = UpdateRoutePropertiesParameterSet,
+            Mandatory = false,
+            HelpMessage = "Add Routes")]
+        [ValidateNotNullOrEmpty]
+        public List<PSRouteMetadata> Routes { get; set; }
+
+        [Parameter(
+            ParameterSetName = UpdateFallbackRoutePropertyParameterSet,
+            Mandatory = false,
+            HelpMessage = "Set Fallback Route")]
+        [ValidateNotNullOrEmpty]
+        public PSFallbackRouteMetadata FallbackRoute { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -191,6 +216,34 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         }
 
                         break;
+                    case UpdateRoutingPropertiesParameterSet:
+
+                        if (this.RoutingProperties != null)
+                        {
+                            iotHubDescription.Properties.Routing = IotHubUtils.ToRoutingProperties(this.RoutingProperties);
+                        }
+
+                        break;
+
+                    case UpdateRoutePropertiesParameterSet:
+
+                        if (this.Routes != null)
+                        {
+                            iotHubDescription.Properties.Routing.Routes = IotHubUtils.ToRouteProperties(this.Routes);
+                        }
+
+                        break;
+
+                    case UpdateFallbackRoutePropertyParameterSet:
+
+                        if (this.FallbackRoute != null)
+                        {
+                            iotHubDescription.Properties.Routing.FallbackRoute = IotHubUtils.ToFallbackRouteProperty(this.FallbackRoute);
+                        }
+
+                        break;
+
+
                     default:
                         throw new ArgumentException("BadParameterSetName");
                 }

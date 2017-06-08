@@ -20,6 +20,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
+using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -69,7 +70,20 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Listissuers,
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
-            CertPerms.Setissuers
+            CertPerms.Setissuers,
+        };
+
+        private readonly string[] StorageAllExpansion = {
+            StoragePerms.Delete,
+            StoragePerms.Deletesas,
+            StoragePerms.Get,
+            StoragePerms.Getsas,
+            StoragePerms.List,
+            StoragePerms.Listsas,
+            StoragePerms.Regeneratekey,
+            StoragePerms.Set,
+            StoragePerms.Setsas,
+            StoragePerms.Update,
         };
 
         #region Parameter Set Names
@@ -198,6 +212,24 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "all")]
         public string[] PermissionsToCertificates { get; set; }
 
+        /// <summary>
+        /// Permissions to Storage
+        /// </summary>
+        [Parameter( Mandatory = false,
+            ParameterSetName = ByObjectId,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies managed storage account and sas definition operation permissions to grant to a user or service principal." )]
+        [Parameter( Mandatory = false,
+            ParameterSetName = ByServicePrincipalName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies managed storage account and sas definition operation permissions to grant to a user or service principal." )]
+        [Parameter( Mandatory = false,
+            ParameterSetName = ByUserPrincipalName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies managed storage account and sas definition operation permissions to grant to a user or service principal." )]
+        [ValidateSet( "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas", "all" )]
+        public string[] PermissionsToStorage { get; set; }
+
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
             ValueFromPipelineByPropertyName = true,
@@ -273,7 +305,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidApplicationId);
 
                     //All permission arrays cannot be null
-                    if (PermissionsToKeys == null && PermissionsToSecrets == null && PermissionsToCertificates == null)
+                    if ( PermissionsToKeys == null && PermissionsToSecrets == null && PermissionsToCertificates == null && PermissionsToStorage == null )
                         throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);
                     else
                     {
@@ -288,6 +320,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         PermissionsToKeys = ExpandPermissionSet(PermissionsToKeys, KeyAllExpansion);
                         PermissionsToSecrets = ExpandPermissionSet(PermissionsToSecrets, SecretAllExpansion);
                         PermissionsToCertificates = ExpandPermissionSet(PermissionsToCertificates, CertificateAllExpansion);
+                        PermissionsToStorage = ExpandPermissionSet(PermissionsToStorage, StorageAllExpansion);
 
                         //Is there an existing policy for this policy identity?
                         var existingPolicy = vault.AccessPolicies.FirstOrDefault(ap => MatchVaultAccessPolicyIdentity(ap, objId, ApplicationId));
@@ -303,11 +336,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                         var certificates = PermissionsToCertificates ?? (existingPolicy != null && existingPolicy.PermissionsToCertificates != null ?
                             existingPolicy.PermissionsToCertificates.ToArray() : null);
 
+                        var managedStorage = PermissionsToStorage ?? ( existingPolicy != null && existingPolicy.PermissionsToStorage != null ?
+                            existingPolicy.PermissionsToStorage.ToArray() : null );
+
                         //Remove old policies for this policy identity and add a new one with the right permissions, iff there were some non-empty permissions
                         updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => !MatchVaultAccessPolicyIdentity(ap, objId, this.ApplicationId)).ToArray();
-                        if ((keys != null && keys.Length > 0) || (secrets != null && secrets.Length > 0) || (certificates != null && certificates.Length > 0))
+                        if ( ( keys != null && keys.Length > 0 ) || ( secrets != null && secrets.Length > 0 ) || ( certificates != null && certificates.Length > 0 ) || ( managedStorage != null && managedStorage.Length > 0 ) )
                         {
-                            var policy = new PSKeyVaultModels.PSVaultAccessPolicy(vault.TenantId, objId, this.ApplicationId, keys, secrets, certificates);
+                            var policy = new PSKeyVaultModels.PSVaultAccessPolicy( vault.TenantId, objId, this.ApplicationId, keys, secrets, certificates, managedStorage );
                             updatedListOfAccessPolicies = updatedListOfAccessPolicies.Concat(new[] { policy }).ToArray();
                         }
 
