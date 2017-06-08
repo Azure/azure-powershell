@@ -57,27 +57,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string tenantId,
             string subscriptionId,
             string subscriptionName,
-            SecureString password
-#if NETSTANDARD
-            , Action<string> promptBehavior
-#endif
-            )
+            SecureString password, 
+            Action<string> promptAction)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
-#if !NETSTANDARD
             string promptBehavior =
                 (password == null &&
                  account.Type != AzureAccount.AccountType.AccessToken &&
                  !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
-#endif
+
             // (tenant and subscription are present) OR
             // (tenant is present and subscription is not provided)
             if (!string.IsNullOrEmpty(tenantId))
             {
-                var token = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
-                if (TryGetTenantSubscription(token, account, environment, tenantId, subscriptionId, subscriptionName, out newSubscription, out newTenant))
+                var token = AcquireAccessToken(
+                    account, 
+                    environment, 
+                    tenantId, 
+                    password, 
+                    promptBehavior,
+                    promptAction);
+                if (TryGetTenantSubscription(
+                    token, 
+                    account, 
+                    environment, 
+                    tenantId, 
+                    subscriptionId, 
+                    subscriptionName, 
+                    out newSubscription, 
+                    out newTenant))
                 {
                     account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { newTenant.Id.ToString() });
                 }
@@ -86,7 +96,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             // (tenant is not provided and subscription is not provided)
             else
             {
-                var tenants = ListAccountTenants(account, environment, password, promptBehavior).Select(s => s.Id.ToString()).ToArray();
+                var tenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction)
+                    .Select(s => s.Id.ToString()).ToArray();
                 account.SetProperty(AzureAccount.Property.Tenants, null);
                 string accountId = null;
 
@@ -101,13 +112,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                     try
                     {
-                        token = AcquireAccessToken(account, environment, tenant, password,
-#if !NETSTANDARD
-                            ShowDialog.Auto);
-#else
-                            null);
-#endif
-
+                        token = AcquireAccessToken(account, environment, tenant, password, ShowDialog.Auto, null);
                         if (accountId == null)
                         {
                             accountId = account.Id;
@@ -261,12 +266,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<AzureTenant> ListTenants(string tenant = "")
         {
-            List<AzureTenant> tenants = ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null, 
-#if !NETSTANDARD
-                ShowDialog.Never);
-#else
+            List<AzureTenant> tenants = ListAccountTenants(
+                _profile.DefaultContext.Account, 
+                _profile.DefaultContext.Environment, 
+                null, 
+                ShowDialog.Never,
                 null);
-#endif
             if (!string.IsNullOrWhiteSpace(tenant))
             {
                 tenants = tenants.Where(t => tenant == null ||
@@ -371,12 +376,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public IAccessToken AcquireAccessToken(string tenantId, Action<string> promptAction = null)
         {
-            return AcquireAccessToken(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, tenantId, null, 
-#if !NETSTANDARD
-                ShowDialog.Auto);
-#else
-                 promptAction);
-#endif
+            return AcquireAccessToken(
+                _profile.DefaultContext.Account, 
+                _profile.DefaultContext.Environment, 
+                tenantId, null,
+                ShowDialog.Auto, 
+                promptAction);
         }
 
         public IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
@@ -467,11 +472,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAzureEnvironment environment,
             string tenantId,
             SecureString password,
-#if !NETSTANDARD
-            string promptBehavior)
-#else
-            Action<string> promptBehavior)
-#endif			
+            string promptBehavior,
+            Action<string> promptAction)
         {
             if (account.Type == AzureAccount.AccountType.AccessToken)
             {
@@ -485,6 +487,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 tenantId,
                 password,
                 promptBehavior,
+                promptAction,
                 _cache);
         }
 
@@ -590,17 +593,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 			IAzureAccount account, 
 			IAzureEnvironment environment, 
 			SecureString password, 
-#if !NETSTANDARD			
-			string promptBehavior)
-#else		
-			Action<string> promptBehavior)
-#endif			
+			string promptBehavior,
+			Action<string> promptAction)
         {
             List<AzureTenant> result = new List<AzureTenant>();
             try
             {
-                var commonTenantToken = AcquireAccessToken(account, environment, AuthenticationFactory.CommonAdTenant,
-                    password, promptBehavior);
+                var commonTenantToken = AcquireAccessToken(
+                    account, 
+                    environment, 
+                    AuthenticationFactory.CommonAdTenant,
+                    password, 
+                    promptBehavior,
+                    promptAction);
 
                 SubscriptionClient subscriptionClient = null;
                 try
@@ -667,11 +672,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IAccessToken accessToken = null;
             try
             {
-#if !NETSTANDARD
-                accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
-#else
-                accessToken = AcquireAccessToken(account, environment, tenantId, password, null);
-#endif
+                accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior, null);
             }
             catch
             {

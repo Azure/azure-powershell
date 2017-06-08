@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
+            string promptBehavior,
             Action<string> promptAction,
             string userId,
             SecureString password,

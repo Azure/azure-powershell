@@ -321,7 +321,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                                             account,
                                             environment,
                                             password,
-                                            password == null ? ShowDialog.Always : ShowDialog.Never).ToList();
+                                            password == null ? ShowDialog.Always : ShowDialog.Never,
+                                            null).ToList();
 
             // If account id is null the login failed
             if (account.Id != null)
@@ -700,7 +701,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 if (account.Type != AzureAccount.AccountType.Certificate)
                 {
-                    subscriptions.AddRange(ListSubscriptionsFromServer(account, environment, null, ShowDialog.Never));
+                    subscriptions.AddRange(ListSubscriptionsFromServer(account, environment, null, ShowDialog.Never, null));
                 }
 
                 AddOrSetAccount(account);
@@ -716,14 +717,19 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        private IEnumerable<IAzureSubscription> ListSubscriptionsFromServer(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior)
+        private IEnumerable<IAzureSubscription> ListSubscriptionsFromServer(
+            IAzureAccount account, 
+            IAzureEnvironment environment, 
+            SecureString password, 
+            string promptBehavior,
+            Action<string> promptAction)
         {
             string[] tenants = null;
             try
             {
                 if (!account.IsPropertySet(AzureAccount.Property.Tenants))
                 {
-                    tenants = LoadAccountTenants(account, environment, password, promptBehavior);
+                    tenants = LoadAccountTenants(account, environment, password, promptBehavior, promptAction);
                 }
                 else
                 {
@@ -731,8 +737,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     if (account.Type == AzureAccount.AccountType.User && storedTenants.Count() == 1)
                     {
                         TracingAdapter.Information(Resources.AuthenticatingForSingleTenant, account.Id, storedTenants[0]);
-                        AzureSession.Instance.AuthenticationFactory.Authenticate(account, environment, storedTenants[0], password,
-                            promptBehavior);
+                        AzureSession.Instance.AuthenticationFactory.Authenticate(
+                            account, 
+                            environment, 
+                            storedTenants[0], 
+                            password,
+                            promptBehavior, 
+                            promptAction);
                     }
                 }
             }
@@ -745,8 +756,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             try
             {
                 tenants = tenants ?? account.GetTenants();
-                List<IAzureSubscription> rdfeSubscriptions = ListServiceManagementSubscriptions(account, environment,
-                    password, ShowDialog.Never, tenants).ToList();
+                List<IAzureSubscription> rdfeSubscriptions = ListServiceManagementSubscriptions(
+                    account, environment, password, tenants).ToList();
 
                 // Set user ID
                 foreach (var subscription in rdfeSubscriptions)
@@ -770,10 +781,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        private string[] LoadAccountTenants(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior)
+        private string[] LoadAccountTenants(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior,
+            Action<string> promptAction)
         {
             var commonTenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(account, environment,
-                AuthenticationFactory.CommonAdTenant, password, promptBehavior);
+                AuthenticationFactory.CommonAdTenant, password, promptBehavior, promptAction);
 
             using (SubscriptionClient SubscriptionClient = AzureSession.Instance.ClientFactory
                         .CreateCustomClient<SubscriptionClient>(
@@ -911,7 +923,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             targetAccount.Type = sourceAccount.Type;
         }
 
-        private IEnumerable<IAzureSubscription> ListServiceManagementSubscriptions(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior, string[] tenants)
+        private IEnumerable<IAzureSubscription> ListServiceManagementSubscriptions(
+            IAzureAccount account, 
+            IAzureEnvironment environment, 
+            SecureString password, 
+            string[] tenants)
         {
             List<AzureSubscription> result = new List<AzureSubscription>();
 
@@ -926,7 +942,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     IAzureAccount tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
-                    var tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
+                    var tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
+                        tenantAccount, 
+                        environment, 
+                        tenant, 
+                        password, 
+                        ShowDialog.Never,
+                        null);
                     if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
                     {
                         tenantAccount = account;

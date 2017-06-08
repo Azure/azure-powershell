@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="tenant">The AD tenant in most cases should be 'common'</param>
         /// <param name="password">The AD account password</param>
         /// <param name="promptBehavior">The prompt behavior</param>
+        /// <param name="promptAction">The prompt action used in DeviceFlow authentication</param>
         /// <param name="tokenCache">Token Cache</param>
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
@@ -39,11 +40,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
-#if !NETSTANDARD
             string promptBehavior,
-#else
             Action<string> promptAction,
-#endif
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
@@ -55,6 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="tenant">The AD tenant in most cases should be 'common'</param>
         /// <param name="password">The AD account password</param>
         /// <param name="promptBehavior">The prompt behavior</param>
+        /// <param name="promptAction">The prompt action used in DeviceFlow authentication</param>
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
         IAccessToken Authenticate(
@@ -62,11 +61,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
-#if !NETSTANDARD
             string promptBehavior,
-#else
             Action<string> promptAction,
-#endif
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
 
         /// <summary>

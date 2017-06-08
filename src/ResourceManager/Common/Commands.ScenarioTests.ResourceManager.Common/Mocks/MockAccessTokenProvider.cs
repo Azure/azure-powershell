@@ -39,11 +39,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
-#if !NETSTANDARD
             string promptBehavior,
-#else
             Action<string> promptAction,
-#endif 
             string userId, 
             SecureString password,
             string credentialType)

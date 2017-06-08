@@ -241,11 +241,8 @@ namespace Microsoft.Azure.Commands.Profile
 					TenantId, 
 					SubscriptionId,
                     SubscriptionName, 
-                    password
-#if NETSTANDARD
-                    , (s) => WriteWarning(s)
-#endif
-                    ));
+                    password, 
+                    (s) => WriteWarning(s)));
             }
         }
 

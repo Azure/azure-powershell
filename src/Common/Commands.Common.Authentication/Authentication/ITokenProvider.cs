@@ -30,17 +30,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <param name="config">Configuration.</param>
         /// <param name="promptBehavior">Prompt behavior.</param>
+        /// <param name="promptAction">Prompt action for device flow.</param>
         /// <param name="userId">User ID/Service principal to get the token for.</param>
         /// <param name="password">Secure strings with password/service principal key.</param>
         /// <param name="credentialType">Credential type.</param>
         /// <returns>An access token.</returns>
         IAccessToken GetAccessToken(
             AdalConfiguration config,
-#if !NETSTANDARD
             string promptBehavior,
-#else		
 			Action<string> promptAction,
-#endif
             string userId,
             SecureString password,
             string credentialType);

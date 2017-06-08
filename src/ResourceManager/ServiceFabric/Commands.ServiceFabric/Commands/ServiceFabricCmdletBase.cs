@@ -506,6 +506,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 GetTenantId(DefaultContext).ToString(),
                 null,
                 ShowDialog.Never,
+                null,
                 AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
             var tokenStr = string.Empty;
             accesstoken.AuthorizeRequest((tokenType, tokenValue) =>

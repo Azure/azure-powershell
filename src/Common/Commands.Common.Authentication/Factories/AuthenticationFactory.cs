@@ -40,11 +40,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
-#if !NETSTANDARD
             string promptBehavior,
-#else
             Action<string> promptAction,
-#endif
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -76,11 +73,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             else
             {
-#if !NETSTANDARD
-                token = TokenProvider.GetAccessToken(configuration, promptBehavior, account.Id, password, account.Type);
-#else
-                token = TokenProvider.GetAccessToken(configuration, promptAction, account.Id, password, account.Type);
-#endif
+                token = TokenProvider.GetAccessToken(configuration, promptBehavior, promptAction, account.Id, password, account.Type);
             }
 
             account.Id = token.UserId;
@@ -92,18 +85,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureEnvironment environment,
             string tenant,
             SecureString password,
-#if !NETSTANDARD
             string promptBehavior,
-#else
             Action<string> promptAction,
-#endif
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-#if !NETSTANDARD
-            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
-#else
-            return Authenticate(account, environment, tenant, password, promptAction, AzureSession.Instance.TokenCache, resourceId);
-#endif
+            return Authenticate(
+                account, 
+                environment, 
+                tenant, password, 
+                promptBehavior, 
+                promptAction, 
+                AzureSession.Instance.TokenCache, 
+                resourceId);
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
@@ -180,11 +173,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 context.Environment,
                                 tenant,
                                 null,
-#if !NETSTANDARD
                                 ShowDialog.Never,
-#else
                                 null,
-#endif
                                 tokenCache,
                                 context.Environment.GetTokenAudience(targetEndpoint));
 

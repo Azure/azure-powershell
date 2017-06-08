@@ -324,7 +324,8 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                                             account,
                                             environment,
                                             password,
-                                            password == null ? ShowDialog.Always : ShowDialog.Never).ToList();
+                                            password == null ? ShowDialog.Always : ShowDialog.Never,
+                                            null).ToList();
 
             if (subscriptionsFromServer == null ||
                 subscriptionsFromServer.Count ==0 )
@@ -752,7 +753,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
                 if (account.Type != AzureAccount.AccountType.Certificate)
                 {
-                    subscriptions.AddRange(ListSubscriptionsFromServer(account, environment, null, ShowDialog.Never));
+                    subscriptions.AddRange(ListSubscriptionsFromServer(account, environment, null, ShowDialog.Never, null));
                 }
 
                 AddOrSetAccount(account);
@@ -768,14 +769,19 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        private IEnumerable<AzureSubscription> ListSubscriptionsFromServer(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior)
+        private IEnumerable<AzureSubscription> ListSubscriptionsFromServer(
+            IAzureAccount account, 
+            IAzureEnvironment environment, 
+            SecureString password, 
+            string promptBehavior,
+            Action<string> promptAction)
         {
             string[] tenants = null;
             try
             {
                 if (!account.IsPropertySet(AzureAccount.Property.Tenants))
                 {
-                    tenants = LoadAccountTenants(account, environment, password, promptBehavior);
+                    tenants = LoadAccountTenants(account, environment, password, promptBehavior, promptAction);
                 }
                 else
                 {
@@ -783,8 +789,13 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     if (account.Type == AzureAccount.AccountType.User && storedTenants.Count() == 1)
                     {
                         TracingAdapter.Information(Resources.AuthenticatingForSingleTenant, account.Id, storedTenants[0]);
-                        AzureSession.Instance.AuthenticationFactory.Authenticate(account, environment, storedTenants[0], password,
-                            promptBehavior);
+                        AzureSession.Instance.AuthenticationFactory.Authenticate(
+                            account, 
+                            environment, 
+                            storedTenants[0], 
+                            password,
+                            promptBehavior,
+                            promptAction);
                     }
                 }
             }
@@ -797,8 +808,13 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             try
             {
                 tenants = tenants ?? account.GetPropertyAsArray(AzureAccount.Property.Tenants);
-                List<AzureSubscription> rdfeSubscriptions = ListServiceManagementSubscriptions(account, environment,
-                    password, ShowDialog.Never, tenants).ToList();
+                List<AzureSubscription> rdfeSubscriptions = ListServiceManagementSubscriptions(
+                    account, 
+                    environment,
+                    password, 
+                    ShowDialog.Never, 
+                    null,
+                    tenants).ToList();
 
                 // Set user ID
                 foreach (var subscription in rdfeSubscriptions)
@@ -822,10 +838,20 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
         }
 
-        private string[] LoadAccountTenants(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior)
+        private string[] LoadAccountTenants(
+            IAzureAccount account, 
+            IAzureEnvironment environment,
+            SecureString password, 
+            string promptBehavior,
+            Action<string> promptAction)
         {
-            var commonTenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(account, environment,
-                environment.AdTenant, password, promptBehavior);
+            var commonTenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
+                account, 
+                environment,
+                environment.AdTenant, 
+                password, 
+                promptBehavior,
+                promptAction);
 
             using (SubscriptionClient SubscriptionClient = AzureSession.Instance.ClientFactory
                         .CreateCustomClient<SubscriptionClient>(
@@ -1002,7 +1028,13 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             targetAccount.Type = sourceAccount.Type;
         }
 
-        private IEnumerable<AzureSubscription> ListServiceManagementSubscriptions(IAzureAccount account, IAzureEnvironment environment, SecureString password, string promptBehavior, string[] tenants)
+        private IEnumerable<AzureSubscription> ListServiceManagementSubscriptions(
+            IAzureAccount account,
+            IAzureEnvironment environment, 
+            SecureString password, 
+            string promptBehavior,
+            Action<string> promptAction, 
+            string[] tenants)
         {
             List<AzureSubscription> result = new List<AzureSubscription>();
 
@@ -1017,7 +1049,13 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 {
                     IAzureAccount tenantAccount = new AzureAccount();
                     CopyAccount(account, tenantAccount);
-                    var tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(tenantAccount, environment, tenant, password, ShowDialog.Never);
+                    var tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
+                        tenantAccount, 
+                        environment, 
+                        tenant, 
+                        password, 
+                        ShowDialog.Never,
+                        null);
                     if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
                     {
                         tenantAccount = account;
