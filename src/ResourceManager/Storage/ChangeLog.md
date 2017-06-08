@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 3.1.0
+* Add AssignIdentity setting support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+* Add Customer Key Support to resource mode storage account cmdlets
+    - Set-AzureRmStorageAccount
+    - New-AzureRmStorageAccountEncryptionKeySource
+
 ## Version 3.0.2
 
 ## Version 3.0.0

@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Managed Availability Set")]
+        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
         public SwitchParameter Managed { get; set; }
 
         public override void ExecuteCmdlet()
@@ -85,17 +87,23 @@ namespace Microsoft.Azure.Commands.Compute
                     Location = this.Location,
                     PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
                     PlatformFaultDomainCount = this.PlatformFaultDomainCount,
+#pragma warning disable CS0618 // Type or member is obsolete
                     Managed = this.Managed.IsPresent ? (bool?) true : null
+#pragma warning restore CS0618 // Type or member is obsolete
                 };
 
+#pragma warning disable CS0618 // Type or member is obsolete
                 if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
+#pragma warning restore CS0618 // Type or member is obsolete
                 {
                     avSetParams.Sku = new Sku();
                     if (!string.IsNullOrEmpty(this.Sku))
                     {
                         avSetParams.Sku.Name = this.Sku;
                     }
+#pragma warning disable CS0618 // Type or member is obsolete
                     if (this.Managed.IsPresent)
+#pragma warning restore CS0618 // Type or member is obsolete
                     {
                         avSetParams.Sku.Name = "Aligned";
                     }

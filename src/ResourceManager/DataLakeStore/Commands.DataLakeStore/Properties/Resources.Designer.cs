@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enabling user supplied KeyVault to the Data Lake Store Account: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string EnableKeyVault {
+            get {
+                return ResourceManager.GetString("EnableKeyVault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find account: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it..
         /// </summary>
         internal static string FailedToDiscoverResourceGroup {

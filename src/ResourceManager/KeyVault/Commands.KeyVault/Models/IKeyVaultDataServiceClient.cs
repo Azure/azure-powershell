@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -114,6 +116,28 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
               
         IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName);
         
+        #endregion
+
+        #region Managed Storage actions
+        IEnumerable<ManagedStorageAccountListItem> GetManagedStorageAccounts( KeyVaultObjectFilterOptions options );
+
+        ManagedStorageAccount GetManagedStorageAccount( string vaultName, string managedStorageAccountName );
+
+        ManagedStorageAccount SetManagedStorageAccount( string vaultName, string managedStorageAccountName, string storageResourceId, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, ManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
+
+        ManagedStorageAccount UpdateManagedStorageAccount( string vaultName, string managedStorageAccountName, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, ManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
+
+        ManagedStorageAccount DeleteManagedStorageAccount( string vaultName, string managedStorageAccountName );
+
+        ManagedStorageAccount RegenerateManagedStorageAccountKey( string vaultName, string managedStorageAccountName, string keyName );
+
+        ManagedStorageSasDefinition GetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
+
+        IEnumerable<ManagedStorageSasDefinitionListItem> GetManagedStorageSasDefinitions( KeyVaultStorageSasDefinitiontFilterOptions options );
+
+        ManagedStorageSasDefinition SetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName, IDictionary<string, string> parameters, ManagedStorageSasDefinitionAttributes sasDefinitionAttributes, Hashtable tags );
+
+        ManagedStorageSasDefinition DeleteManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
         #endregion
     }
 }

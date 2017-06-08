@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class TrafficManagerEndpoint
     {
@@ -56,18 +57,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
             {
                 Id = this.Id,
                 Name = this.Name,
-                Type = TrafficManagerEndpoint.ToSDKEndpointType(this.Type),
-                Properties = new EndpointProperties
-                {
-                    EndpointLocation = this.Location,
-                    EndpointStatus = this.EndpointStatus,
-                    GeoMapping = this.GeoMapping,
-                    MinChildEndpoints = this.MinChildEndpoints,
-                    Priority = this.Priority,
-                    Target = this.Target,
-                    TargetResourceId = this.TargetResourceId,                   
-                    Weight = this.Weight,
-                }
+                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
+                EndpointLocation = this.Location,
+                EndpointStatus = this.EndpointStatus,
+                GeoMapping = this.GeoMapping,
+                MinChildEndpoints = this.MinChildEndpoints,
+                Priority = this.Priority,
+                Target = this.Target,
+                TargetResourceId = this.TargetResourceId,                   
+                Weight = this.Weight,
             };
         }
 
@@ -77,19 +75,25 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
             {
                 Id = this.Id,
                 Name = this.Name,
-                Type = TrafficManagerEndpoint.ToSDKEndpointType(this.Type),
-                Properties = new EndpointProperties
-                {                    
-                }
+                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
             };
         }
 
-        public static string ToSDKEndpointType(string type)
+        public static string ToFullEndpointType(string endpointType)
         {
             return
-                !type.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) ?
-                string.Format("{0}/{1}", Constants.ProfileType, type) :
-                type;
+                !endpointType.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) 
+                    ? string.Format("{0}/{1}", Constants.ProfileType, endpointType) 
+                    : endpointType;
+        }
+
+        public static string ToShortEndpointType(string endpointType)
+        {
+            string prefix = Constants.ProfileType + "/";
+            return 
+                endpointType.StartsWith(Constants.ProfileType + "/", StringComparison.OrdinalIgnoreCase) ?
+                    endpointType.Substring(startIndex: prefix.Length) :
+                    endpointType;
         }
     }
 }

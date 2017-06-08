@@ -167,7 +167,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                             {
                                 Keys = a.PermissionsToKeys.ToArray(),
                                 Secrets = a.PermissionsToSecrets.ToArray(),
-                                Certificates = a.PermissionsToCertificates.ToArray()
+                                Certificates = a.PermissionsToCertificates.ToArray(),
+                                Storage = a.PermissionsToStorage.ToArray(),
                             }
                         }).ToList();
 

@@ -1,4 +1,75 @@
-﻿## 2017.05.23 - Version 4.0.2
+﻿## 2017.06.07 - Version 4.1.0
+* AnalysisServices
+    * New SKUs added: B1, B2, S0
+    * Scale up/down support added
+* CognitiveServices
+    * Update detailed display of license agreements when creating Cognitive Services resources
+* Compute
+    * Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
+    * Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
+    * Add-AzureRmVhd: The size limit on vhd is increased to 4TB.
+    * Stop-AzureRmVM: Clarify documentation for STayProvisioned parameter
+    * New-AzureRmDiskUpdateConfig
+      * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+    * Set-AzureRmDiskUpdateImageReference: Deprecated cmdlet
+    * New-AzureRmSnapshotUpdateConfig
+      * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+    * Set-AzureRmSnapshotUpdateImageReference: Deprecated Cmdlet
+* DataLakeStore
+    * Enable-AzureRmDataLakeStoreKeyVault (Enable-AdlStoreKeyVault)
+      * Enable KeyVault managed encryption for a DataLake Store
+* DevTestLabs
+    * Update cmdlets to work with current and updated DevTest Labs API version.
+* IotHub
+    * Add Routing support for IoTHub cmdlets
+* KeyVault
+  * New Cmdlets to support KeyVault Managed Storage Account Keys
+    * Get-AzureKeyVaultManagedStorageAccount
+    * Add-AzureKeyVaultManagedStorageAccount
+    * Remove-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccountKey
+    * Get-AzureKeyVaultManagedStorageSasDefinition
+    * Set-AzureKeyVaultManagedStorageSasDefinition
+    * Remove-AzureKeyVaultManagedStorageSasDefinition
+* Network
+    * Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
+    * Added new GatewaySku options for VirtualNetworkGateways
+        * VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
+    * Set-AzureRmNetworkWatcherConfigFlowLog
+      * Fixed  help examples
+* NotificationHubs
+    * Transparent Update to NotificationHubs cmdlets for new API
+* Profile
+    * Resolve-AzureRmError
+      * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
+    * Send-Feedback
+      * Enabled sending feedback without logging in
+    * Get-AzureRmSubscription
+      * Fix bug in retreiving CSP subscriptions
+* Resources
+    * Fixed issue where Get-AzureRMRoleAssignment would result in a Bad Request if the number of roleassignments where greater than 1000
+        * Users can now use Get-AzureRMRoleAssignment even if the roleassignments to be returned is greater than 1000
+* Sql
+    * Restore-AzureRmSqlDatabase: Update documentation example
+* Storage
+    * Add AssignIdentity setting support to resource mode storage account cmdlets
+        * New-AzureRmStorageAccount
+        * Set-AzureRmStorageAccount
+    * Add Customer Key Support to resource mode storage account cmdlets
+        * Set-AzureRmStorageAccount
+        * New-AzureRmStorageAccountEncryptionKeySource
+* TrafficManager
+    
+    * New Monitor settings 'MonitorIntervalInSeconds', 'MonitorTimeoutInSeconds', 'MonitorToleratedNumberOfFailures'
+    * New Monitor protocol 'TCP'
+* ServiceManagement
+    * Add-AzureVhd: The size limit on vhd is increased to 4TB.
+    * New-AzureBGPPeering: Support LegacyMode
+* Azure.Storage
+    * Update help for parameters that accept wildcard characters and update StorageContext type
+
+## 2017.05.23 - Version 4.0.2
 * Profile
     * Add-AzureRmAccount
       * Added `-EnvironmentName` parameter alis for backward compatibility with 2.x versions of AzureRM.profile

@@ -1,5 +1,7 @@
-﻿using StaticAnalysis.ProblemIds;
+﻿using StaticAnalysis.BreakingChangeAnalyzer;
+using StaticAnalysis.ProblemIds;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -672,8 +674,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]
@@ -698,8 +700,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]
@@ -776,8 +778,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]
@@ -802,8 +804,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]

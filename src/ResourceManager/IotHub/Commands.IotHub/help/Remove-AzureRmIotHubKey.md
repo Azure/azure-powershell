@@ -17,7 +17,8 @@ Remove-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName
 ```
 
 ## DESCRIPTION
-Removes an IotHub Key. If there are multiple keys with the same name the first one in the list is removed.
+Removes an IotHub Key.
+If there are multiple keys with the same name the first one in the list is removed.
 
 ## EXAMPLES
 
@@ -31,7 +32,7 @@ Removes the key named iothubowner1 from the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -KeyName
-Name of the key.
+Name of the Key
 
 ```yaml
 Type: String
@@ -46,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -61,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of hte resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -85,13 +86,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -100,7 +102,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
