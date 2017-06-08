@@ -5,6 +5,7 @@
     <AssemblyName>Authentication.Abstractions</AssemblyName>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Abstractions</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

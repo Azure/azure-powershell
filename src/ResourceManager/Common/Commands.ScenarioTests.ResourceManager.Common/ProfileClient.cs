@@ -11,7 +11,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ---------------------------------------------------------------------------------
-#if !NETSTANDARD
 using Hyak.Common;
 using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -1119,4 +1118,3 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endregion
     }
 }
-#endif

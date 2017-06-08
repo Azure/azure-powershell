@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             destination.Flush();
         }
 
-#if !NETSTANDARD
+
         public static IAsyncResult BeginCreateFixedVhdFile(Stream destination, long size, AsyncCallback callback, object state)
         {
             return AsyncMachine.BeginAsyncMachine(CreateFixedVhdFileAtAsync, destination, size, callback, state);
@@ -57,6 +57,5 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             destination.EndWrite(machine.CompletionResult);
             destination.Flush();
         }
-#endif
     }
 }

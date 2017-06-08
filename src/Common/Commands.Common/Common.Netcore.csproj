@@ -5,6 +5,7 @@
     <AssemblyName>Common</AssemblyName>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Common</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -27,6 +28,10 @@
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
     <PackageReference Include="System.Management.Automation" Version="6.0.0-beta.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Extensions\SecureStringExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>

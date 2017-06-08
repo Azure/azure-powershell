@@ -17,14 +17,12 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-#if !NETSTANDARD
 [assembly: AssemblyTitle("Microsoft Azure Powershell - Resource Manager")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 [assembly: AssemblyVersion("4.0.0")]
 [assembly: AssemblyFileVersion("4.0.0")]
-#endif
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]

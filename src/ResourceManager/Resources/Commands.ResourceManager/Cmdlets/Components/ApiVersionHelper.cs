@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-#if !NETSTANDARD	
+    using System.Threading;
+    using System.Threading.Tasks;
+#if !NETSTANDARD    
     using System.Runtime.Caching;
 #else
     using Microsoft.Extensions.Caching.Memory;
-#endif	
-    using System.Threading;
-    using System.Threading.Tasks;
-
+#endif  
+    
     /// <summary>
     /// Helper class for determining the API version
     /// </summary>

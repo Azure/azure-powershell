@@ -5,6 +5,7 @@
     <AssemblyName>Authentication</AssemblyName>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -29,6 +30,13 @@
     <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Authentication\ConsoleParentWindow.cs" />
+    <Compile Remove="Authentication\ServicePrincipalKeyStore.cs" />
+    <Compile Remove="Authentication\UserTokenProvider.cs" />
+    <Compile Remove="Utilities\AdalTokenCache.cs" />
   </ItemGroup>
 
   <ItemGroup>

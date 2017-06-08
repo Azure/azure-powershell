@@ -5,6 +5,7 @@
     <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Cmdlets</AssemblyName>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Cmdlets</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

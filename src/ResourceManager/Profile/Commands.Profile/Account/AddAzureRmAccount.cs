@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Profile
                     SubscriptionName, 
                     password
 #if NETSTANDARD
-                    , (s) => WriteWarning(s)
+                    , (s) => WriteProgress(new ProgressRecord(99, s, "...Waiting for user manual authentication..."))
 #endif
                     ));
             }
@@ -268,14 +268,12 @@ namespace Microsoft.Azure.Commands.Profile
 #if DEBUG
                 }
 #endif
-#if !NETSTANDARD
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "AzureRmProfileStartup.ps1")));
                 invoker.Invoke();
-#endif
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

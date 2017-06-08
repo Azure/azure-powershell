@@ -69,7 +69,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public void OnImport()
         {
-#if !NETSTANDARD
             try
             {
                 System.Management.Automation.PowerShell invoker = null;
@@ -84,7 +83,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 // need to fix exception in WriteDebug
                 // this.WriteDebug("Exception on importing ResourceManagerStartup.ps1: " + e.Message);
             }
-#endif
         }
     }
 }

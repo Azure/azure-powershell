@@ -150,20 +150,21 @@ function Test-AzureTagsEndToEnd
     $tag1 = "tagNameOne"
     $tag2 = "tagNameTwo"
 
+    $tagInitial = Get-AzureRmTag
+
     # Create tag without values
     New-AzureRmTag $tag1
 
     $tag = Get-AzureRmTag $tag1
     Assert-AreEqual $tag1 $tag.Name
 
-    $tagInitial = Get-AzureRmTag $tag1
     # Add value to the tag (adding same value should pass)
     New-AzureRmTag $tag1 value1
     New-AzureRmTag $tag1 value1
     New-AzureRmTag $tag1 value2
 
     $tag = Get-AzureRmTag $tag1
-    Assert-AreEqual 2 ($tag.Values.Count - $tagInitial)
+    Assert-AreEqual 2 $tag.Values.Count
 
     # Create tag with values
     New-AzureRmTag $tag2 value1
@@ -171,19 +172,16 @@ function Test-AzureTagsEndToEnd
     New-AzureRmTag $tag2 value3
 
     $tags = Get-AzureRmTag
-    Assert-AreEqual 2 ($tag.Values.Count - $tagInitial)
+    Assert-AreEqual 2 $tag.Values.Count
 
     # Remove entire tag
     $tag = Remove-AzureRmTag $tag1
-
-    $tags = Get-AzureRmTag
-    Assert-AreEqual $tag1 $tag.Name
 
     # Remove tag value
     $tag = Remove-AzureRmTag $tag2 value1
 
     $tags = Get-AzureRmTag
-    Assert-AreEqual 0 $tags.Count
+    Assert-AreEqual 0 ([int]$tags.Count - [int]$tagInitial.Count)
 
     # Get a non-existing tag
     Assert-Throws { Get-AzureRmTag "non-existing" }

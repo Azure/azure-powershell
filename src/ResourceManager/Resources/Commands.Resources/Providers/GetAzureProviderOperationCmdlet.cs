@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Management.Authorization.Models;
+using Operation = Microsoft.Azure.Management.Authorization.Models.ProviderOperation;
 #endif
 
 namespace Microsoft.Azure.Commands.Resources
@@ -139,19 +140,11 @@ namespace Microsoft.Azure.Commands.Resources
             return operations;
         }
 
-#if !NETSTANDARD
         private static bool IsUserOperation(Operation operation)
-#else
-        private static bool IsUserOperation(ProviderOperation operation)
-#endif
         {
             return operation.Origin == null || operation.Origin.Contains("user");
         }
-#if !NETSTANDARD
         private static PSResourceProviderOperation ToPSResourceProviderOperation(Operation operation, string provider, string resource = null)
-#else
-        private static PSResourceProviderOperation ToPSResourceProviderOperation(ProviderOperation operation, string provider, string resource = null)
-#endif
         {
             PSResourceProviderOperation psOperation = new PSResourceProviderOperation();
             psOperation.Operation = operation.Name;

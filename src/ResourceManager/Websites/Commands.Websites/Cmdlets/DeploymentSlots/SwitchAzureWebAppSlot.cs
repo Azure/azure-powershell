@@ -130,7 +130,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         /// </summary>
         public void OnImport()
         {
-#if !NETSTANDARD
             try
             {
                 System.Management.Automation.PowerShell invoker = null;
@@ -144,7 +143,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             {
                 // This will throw exception for tests, ignore.
             }
-#endif
         }
     }
 }

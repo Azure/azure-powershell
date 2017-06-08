@@ -16,14 +16,14 @@ using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-#if !NETSTANDARD
+
 [assembly: AssemblyTitle("Microsoft Azure Powershell - Azure WebApp")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
 [assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
 [assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
 [assembly: AssemblyVersion("3.0.0")]
 [assembly: AssemblyFileVersion("3.0.0")]
-#endif
+
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("76158def-441b-472a-9b1a-a75726a813f4")]

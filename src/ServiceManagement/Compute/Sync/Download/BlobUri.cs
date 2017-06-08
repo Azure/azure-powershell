@@ -408,12 +408,10 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
         {
         }
 
-#if !NETSTANDARD
         protected HttpValueCollection(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
-#endif
 
         internal HttpValueCollection(string str, bool readOnly, bool urlencoded, Encoding encoding)
             : base(StringComparer.OrdinalIgnoreCase)

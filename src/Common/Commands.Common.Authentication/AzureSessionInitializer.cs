@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
                 ProfileDirectory = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                Resources.AzureDirectoryName),
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    Resources.AzureDirectoryName),
                 ProfileFile = "AzureProfile.json",
                 TokenCacheFile = "TokenCache.dat"
             };

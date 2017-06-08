@@ -178,7 +178,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <param name="dnsName">The dns name to check</param>
         public static void ValidateDnsDoesNotExist(string dnsName)
         {
-#if !NETSTANDARD
             try
             {
                 Dns.GetHostEntry(dnsName);
@@ -190,9 +189,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 // Dns doesn't exist
             }
-#else
-			throw new NotSupportedException();			
-#endif
         }
 
 #if !NETSTANDARD

@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <AssemblyName>Microsoft.Azure.Commands.Compute</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Compute</RootNamespace>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
