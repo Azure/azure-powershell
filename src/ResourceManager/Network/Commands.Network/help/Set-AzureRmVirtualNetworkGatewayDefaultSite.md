@@ -78,6 +78,24 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -VirtualNetworkGateway
+Specifies an object reference to the virtual network gateway where the default site will be assigned.
+You can create an object reference to a virtual network gateway by using the **Get-AzureRmVirtualNetworkGateway** and specifying the name of the gateway.
+
+The variable $VirtualGateway can then be used as the parameter value for the *VirtualNetworkGateway* parameter:
+
+```yaml
+Type: PSVirtualNetworkGateway
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 

@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="pool">The service response</param>
         /// <returns>The converted model</returns>
-        private AzureSqlElasticPoolModel CreateElasticPoolModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ElasticPool pool)
+        private AzureSqlElasticPoolModel CreateElasticPoolModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ElasticPool pool)
         {
             DatabaseEdition edition = DatabaseEdition.None;
             Enum.TryParse<DatabaseEdition>(pool.Edition, out edition);
