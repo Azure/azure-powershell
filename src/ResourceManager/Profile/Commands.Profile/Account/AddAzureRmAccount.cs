@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.Profile
                     SubscriptionName, 
                     password
 #if NETSTANDARD
-                    , (s) => WriteProgress(new ProgressRecord(99, s, "...Waiting for user manual authentication..."))
+                    , (s) => WriteWarning(s)
 #endif
                     ));
             }
