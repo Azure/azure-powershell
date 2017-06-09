@@ -73,7 +73,7 @@
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AzureStack.Management">
-      <HintPath>..\..\..\..\packages\Microsoft.AzureStack.Management.0.10.7-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
+      <HintPath>..\..\..\..\packages\Microsoft.AzureStack.Management.0.10.8-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
     </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\..\packages\Hyak.Common.1.0.3\lib\net40\Hyak.Common.dll</HintPath>

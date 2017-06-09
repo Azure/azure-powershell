@@ -73,7 +73,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AzureStack.Management">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.0.10.7-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.0.10.8-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
     </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net40\Hyak.Common.dll</HintPath>
