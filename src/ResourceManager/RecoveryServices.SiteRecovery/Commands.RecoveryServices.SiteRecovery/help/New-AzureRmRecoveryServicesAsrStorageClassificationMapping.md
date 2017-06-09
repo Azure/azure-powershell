@@ -24,10 +24,10 @@ The **New-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet create
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrStorageClassificationMapping -Name $StrorageClassificationMappingName -PrimaryStorageClassification $PrimaryStorageClassification -RecoveryStorageClassification $RecoveryStorageClassification 
 ```
 
-{{ Add example description here }}
+Starts the storage classification mapping creation with passed parameters and returns the job for tracking.
 
 ## PARAMETERS
 

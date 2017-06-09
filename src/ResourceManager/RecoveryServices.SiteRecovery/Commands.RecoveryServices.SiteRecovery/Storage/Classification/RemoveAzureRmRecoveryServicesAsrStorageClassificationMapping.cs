@@ -15,6 +15,8 @@
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -64,6 +66,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             try
             {
+                AzureSessionInitializer.InitializeAzureSession();
+                ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(

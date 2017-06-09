@@ -28,10 +28,10 @@ The **Get-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet gets information abo
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $Networkmappings = Get-AzureRmRecoveryServicesAsrNetworkMapping -Network $Network
 ```
 
-{{ Add example description here }}
+Gets all networks mappings for the passed Network.
 
 ## PARAMETERS
 

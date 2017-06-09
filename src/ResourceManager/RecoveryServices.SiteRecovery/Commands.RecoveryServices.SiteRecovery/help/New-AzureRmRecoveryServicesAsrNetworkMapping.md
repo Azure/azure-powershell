@@ -30,15 +30,15 @@ The **New-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet creates a mapping be
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMapName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
 ```
 
-{{ Add example description here }}
+Starts the network mapping creation with passed name, primary and recovery networks and returns the job for tracking.
 
 ## PARAMETERS
 
 ### -Name
-{{Fill Name Description}}
+Name of the network mapping.
 
 ```yaml
 Type: String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAzureNetworkId
-{{Fill RecoveryAzureNetworkId Description}}
+Specified recovery azure network Id.
 
 ```yaml
 Type: String

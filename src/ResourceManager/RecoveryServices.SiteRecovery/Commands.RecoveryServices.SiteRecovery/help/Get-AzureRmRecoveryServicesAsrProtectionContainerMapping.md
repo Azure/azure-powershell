@@ -30,10 +30,10 @@ The **Get-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet gets inf
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $ProtectionContainerMappings = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container
 ```
 
-{{ Add example description here }}
+Gets all container mappings for a container.
 
 ## PARAMETERS
 

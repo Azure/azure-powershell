@@ -30,10 +30,10 @@ The **Get-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet gets a
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $StorageClassificationMappings = Get-AzureRmRecoveryServicesAsrStorageClassificationMapping -StorageClassification $StorageClassification
 ```
 
-{{ Add example description here }}
+List all storage classification mappings in a given storage classification.
 
 ## PARAMETERS
 

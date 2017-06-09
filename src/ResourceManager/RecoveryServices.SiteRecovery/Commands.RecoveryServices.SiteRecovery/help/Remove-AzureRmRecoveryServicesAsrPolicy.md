@@ -22,10 +22,10 @@ The **Remove-AzureRmRecoveryServicesAsrPolicy** cmdlet removes an Azure Site Rec
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrPolicy -Policy $Policy
 ```
 
-{{ Add example description here }}
+Starts the deletion of passed policy and returns the job for tracking.
 
 ## PARAMETERS
 

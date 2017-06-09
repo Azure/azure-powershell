@@ -28,10 +28,10 @@ The **Resume-AzureRmRecoveryServicesAsrJob** cmdlet resumes a suspended Azure Si
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Resume-AzureRmRecoveryServicesAsrJob -Job $Job
 ```
 
-{{ Add example description here }}
+Resume the passed job in waiting or suspended state and returns the job for tracking.
 
 ## PARAMETERS
 

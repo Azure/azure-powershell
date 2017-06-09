@@ -28,10 +28,10 @@ The **Stop-AzureRmRecoveryServicesAsrJob** cmdlet stops an Azure Site Recovery j
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Stop-AzureRmRecoveryServicesAsrJob -Job $Job
 ```
 
-{{ Add example description here }}
+Starts stopping the passed job and returns the job for tracking.
 
 ## PARAMETERS
 

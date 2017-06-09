@@ -23,10 +23,10 @@ The **Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet rem
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping -StorageClassificationMapping $StorageClassificationMapping
 ```
 
-{{ Add example description here }}
+Starts the deletion of passed storage classification mapping and returns the job for tracking.
 
 ## PARAMETERS
 

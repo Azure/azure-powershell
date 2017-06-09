@@ -33,10 +33,10 @@ The **Get-AzureRmRecoveryServicesAsrPolicy** cmdlet gets the list of configured 
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
 ```
 
-{{ Add example description here }}
+Retruns a policy with the passed name.
 
 ## PARAMETERS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Import-AzureRmRecoveryServicesAsrVaultSettingsFile
 
 ## SYNOPSIS
-Imports a Site Recovery vault settings file.
+Imports a Recovery Services vault settings file.
 
 ## SYNTAX
 
@@ -22,10 +22,10 @@ The **Import-AzureRmRecoveryServicesAsrVaultSettingsFile** cmdlet imports an Azu
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $VaultSettings = Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $FilePath
 ```
 
-{{ Add example description here }}
+Imports the passed Recovery Services vault settings file and returns settings of the imported vault.
 
 ## PARAMETERS
 

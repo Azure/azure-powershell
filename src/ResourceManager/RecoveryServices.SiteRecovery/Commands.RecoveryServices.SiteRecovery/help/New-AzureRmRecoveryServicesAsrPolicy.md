@@ -35,10 +35,10 @@ The replication policy is used to specify replication settings such as the repli
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $PolicyName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
 ```
 
-{{ Add example description here }}
+Starts the policy creation with passed parameters and returns the job for tracking.
 
 ## PARAMETERS
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Encryption
-{{Fill Encryption Description}}
+Specify if encryption needs to be enabled or disabled.
 
 ```yaml
 Type: String

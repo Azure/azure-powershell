@@ -28,10 +28,10 @@ The **Update-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet updates a network
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrNetworkMapping -Mapping $NetworkMapping -RecoveryNetwork $RecoveryNetwork
 ```
 
-{{ Add example description here }}
+Starts updating network mapping with passed recovery network and returns the job for tracking.
 
 ## PARAMETERS
 

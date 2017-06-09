@@ -33,10 +33,10 @@ The **Get-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet gets a recovery plan i
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $RP = Get-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RPName
 ```
 
-{{ Add example description here }}
+Gets a recovery plan with the passed name.
 
 ## PARAMETERS
 

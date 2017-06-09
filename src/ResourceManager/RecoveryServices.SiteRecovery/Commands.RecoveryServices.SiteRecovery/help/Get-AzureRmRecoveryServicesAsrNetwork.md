@@ -33,15 +33,15 @@ The **Get-AzureRmRecoveryServicesAsrNetwork** cmdlet gets information about Azur
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $Networks = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $Fabric 
 ```
 
-{{ Add example description here }}
+Gets all networks in passed fabric.
 
 ## PARAMETERS
 
 ### -Fabric
-{{Fill Fabric Description}}
+Fabric object
 
 ```yaml
 Type: ASRFabric
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-{{Fill FriendlyName Description}}
+Friendly name of network.
 
 ```yaml
 Type: String
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+Name of object.
 
 ```yaml
 Type: String

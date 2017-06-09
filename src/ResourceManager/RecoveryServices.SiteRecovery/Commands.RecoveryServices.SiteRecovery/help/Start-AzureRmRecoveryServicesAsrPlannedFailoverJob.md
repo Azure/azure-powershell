@@ -34,10 +34,10 @@ You can check whether the job succeeds by using the Get-AzureRmRecoveryServicesA
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrPlannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
 ```
 
-{{ Add example description here }}
+Starts the planned failover for the passed recovery plan and returns the job for tracking.
 
 ## PARAMETERS
 

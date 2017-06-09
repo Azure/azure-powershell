@@ -25,10 +25,10 @@ This operation causes replication to stop for the protected item.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
-{{ Add example description here }}
+Starts the deletion of passed replication protected item and returns the job for tracking.
 
 ## PARAMETERS
 

@@ -35,10 +35,10 @@ The **Update-AzureRmRecoveryServicesAsrProtectionDirection** cmdlet updates the 
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrProtectionDirection -RecoveryPlan $RP -Direction PrimaryToRecovery
 ```
 
-{{ Add example description here }}
+Starts updating the direction of protection for recovery plan and returns job for tracking.
 
 ## PARAMETERS
 
