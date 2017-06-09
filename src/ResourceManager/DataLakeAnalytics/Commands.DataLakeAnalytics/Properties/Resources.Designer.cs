@@ -232,6 +232,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -MaxDegreeOfParallelismPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy..
+        /// </summary>
+        internal static string MissingComputePolicyField {
+            get {
+                return ResourceManager.GetString("MissingComputePolicyField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More than {0} jobs exist in the account. Specify -Top with a larger value to retrieve more jobs. Note that large values of -Top will take time to retrieve all items..
         /// </summary>
         internal static string MoreJobsToGetWarning {
@@ -318,6 +327,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemoveDataLakeAnalyticsCatalogSecrets {
             get {
                 return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogSecrets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics compute policy: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsComputePolicy {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsComputePolicy", resourceCulture);
             }
         }
         

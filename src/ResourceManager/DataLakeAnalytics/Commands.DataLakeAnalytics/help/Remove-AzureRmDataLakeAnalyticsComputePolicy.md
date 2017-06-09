@@ -4,34 +4,34 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataLakeAnalyticsFirewallRule
+# Remove-AzureRmDataLakeAnalyticsComputePolicy
 
 ## SYNOPSIS
-Removes a firewall rule from a Data Lake Analytics account.
+Removes a specified Azure Data Lake Analytics compute policy
 
 ## SYNTAX
 
 ```
-Remove-AzureRmDataLakeAnalyticsFirewallRule [-Account] <String> [[-Name] <String>] [-PassThru]
- [-ResourceGroupName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmDataLakeAnalyticsComputePolicy [-ResourceGroupName <String>] [-Account] <String> [-Name] <String>
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataLakeAnalyticsFirewallRule** cmdlet removes a firewall rule from an Azure Data Lake Analytics account.
+The **Remove-AzureRmDataLakeAnalyticsComputePolicy** removes a specified Azure Data Lake Analytics compute policy.
 
 ## EXAMPLES
 
-### Example 1: Remove a firewall rule
+### Example 1: Remove a compute policy
 ```
-PS C:\>Remove-AzureRmDataLakeAnalyticsFirewallRule -Account "ContosoAdlAcct" -Name "My firewall rule"
+PS C:\>Remove-AzureRmDataLakeAnalyticsComputePolicy -Account "contosoadla" -Name myPolicy
 ```
 
-This command removes the firewall rule named "my firewall rule" from account "ContosoAdlAcct"
+This command removes the specified compute policy with name 'myPolicy' in account 'contosoadla'.
 
 ## PARAMETERS
 
 ### -Account
-The Data Lake Analytics account to remove the firewall rule from
+Name of the account to remove the compute policy from.
 
 ```yaml
 Type: String
@@ -46,14 +46,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the firewall rule.
+Name of the compute policy to remove.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ComputePolicyName
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -61,9 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates a boolean response should be returned indicating the result of the delete operation.
-
-```yaml
+Return true upon successful deletion.```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -71,12 +69,13 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of resource group under which want to retrieve the account.
+Name of resource group under which you the account exists.
+Optional and will attempt to discover if not provided.
 
 ```yaml
 Type: String
@@ -127,7 +126,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
