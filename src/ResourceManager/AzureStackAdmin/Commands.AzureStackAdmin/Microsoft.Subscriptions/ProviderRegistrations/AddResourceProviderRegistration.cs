@@ -115,6 +115,13 @@ namespace Microsoft.AzureStack.Commands
         public string ResourceTypes { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource provider registration display name.
+        /// </summary>
+        [ValidateNotNullOrEmpty]
+        [Parameter]
+        public string Signature { get; set; }
+
+        /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
@@ -157,7 +164,8 @@ namespace Microsoft.AzureStack.Commands
                                                                            }
                                                                        }
                                                       },
-                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
+                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>(),
+                                Signature = this.Signature
                             }
                         }
                     };
@@ -180,7 +188,8 @@ namespace Microsoft.AzureStack.Commands
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
                                 ExtensionCollection = (this.Extensions == null) ? null : this.Extensions.FromJson<ExtensionCollectionDefinition>(),
-                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
+                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>(),
+                                Signature = this.Signature
                             }
                         }
                     };
