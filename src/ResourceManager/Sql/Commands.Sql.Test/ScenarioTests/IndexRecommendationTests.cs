@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -30,14 +31,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIndexRecommendation()
         {
-            RunPowerShellTest("Test-GetIndexRecommendations");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-GetIndexRecommendations");
+            }
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateIndex()
         {
-            RunPowerShellTest("Test-CreateIndex");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-CreateIndex");
+            }
         }
     }
 }
