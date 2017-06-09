@@ -2,9 +2,6 @@
 <Include xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="PowerShellFolder">
-            <Component Id="cmpDC507D3B034FD0F9887EC67302B6F5A0" Guid="*">
-                <File Id="filBF2E03D229851ADE6748EBFCE4288A27" KeyPath="yes" Source="$(var.sourceDir)\PowerShellSetup.Test.dll" />
-            </Component>
             <Directory Id="dirB60B5B1F56FA5598EFFC960CA393FDCE" Name="ResourceManager">
                 <Directory Id="dir9E409EB63EF03736275B51044C819FD8" Name="AzureResourceManager">
                     <Directory Id="dirF9A46FF3188BA8C006D8942FCEFE5108" Name="Azure.Storage">
@@ -4817,7 +4814,6 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="azurecmdfiles">
-            <ComponentRef Id="cmpDC507D3B034FD0F9887EC67302B6F5A0" />
             <ComponentRef Id="cmp0761C025FCF8EF027A5BC23C72777C52" />
             <ComponentRef Id="cmpCC0D4240D3640D2D425852E0F2A4D31E" />
             <ComponentRef Id="cmp658F4F28B5894F240AF3AE214E228C7A" />
