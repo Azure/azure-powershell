@@ -42,10 +42,10 @@ The **Get-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet gets the p
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $ReplicationProtectedItems = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryContainer
 ```
 
-{{ Add example description here }}
+Lists all replication protected items in the passed container.
 
 ## PARAMETERS
 

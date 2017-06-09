@@ -23,10 +23,10 @@ The **Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet remov
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
 ```
 
-{{ Add example description here }}
+Starts the deletion of passed protection container mapping and returns the job for tracking.
 
 ## PARAMETERS
 

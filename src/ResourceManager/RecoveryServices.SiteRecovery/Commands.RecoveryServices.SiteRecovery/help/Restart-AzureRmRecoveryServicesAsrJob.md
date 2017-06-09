@@ -28,10 +28,10 @@ The **Restart-AzureRmRecoveryServicesAsrJob** cmdlet restarts an Azure Site Reco
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Restart-AzureRmRecoveryServicesAsrJob -Job $Job
 ```
 
-{{ Add example description here }}
+Restarts the passed job and returns the job for tracking.
 
 ## PARAMETERS
 

@@ -29,10 +29,10 @@ The **Start-AzureRmRecoveryServicesAsrCommitFailoverJob** cmdlet starts the comm
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrCommitFailoverJob -RecoveryPlan $RP
 ```
 
-{{ Add example description here }}
+Starts the commit failover for the passed recovery plan and returns the job for tracking.
 
 ## PARAMETERS
 

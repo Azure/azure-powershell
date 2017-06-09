@@ -22,10 +22,10 @@ The **Remove-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet removes a network
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrNetworkMapping -NetworkMapping $networkmapping
 ```
 
-{{ Add example description here }}
+Starts the deletion of passed network mapping and returns the job for tracking.
 
 ## PARAMETERS
 

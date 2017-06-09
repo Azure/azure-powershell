@@ -47,10 +47,10 @@ Use this cmdlet to enable replication for a protectable item.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping
 ```
 
-{{ Add example description here }}
+Starts the replication protected item creation with passed parameters and returns the job for tracking.
 
 ## PARAMETERS
 

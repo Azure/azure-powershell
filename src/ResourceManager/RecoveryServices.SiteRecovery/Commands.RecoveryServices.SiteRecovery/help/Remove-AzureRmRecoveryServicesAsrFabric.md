@@ -22,10 +22,10 @@ The **Remove-AzureRmRecoveryServicesAsrFabric** cmdlet removes an Azure Site Rec
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrFabric -Fabric $Fabric
 ```
 
-{{ Add example description here }}
+Starts the deletion of passed fabric and returns the job for tracking.
 
 ## PARAMETERS
 

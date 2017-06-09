@@ -33,10 +33,10 @@ The **Get-AzureRmRecoveryServicesAsrFabric** cmdlet gets the properties of a spe
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $fabrics = Get-AzureRmRecoveryServicesAsrFabric 
 ```
 
-{{ Add example description here }}
+Returns all the Azure Site Recovery fabrics.
 
 ## PARAMETERS
 

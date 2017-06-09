@@ -33,10 +33,10 @@ The **Get-AzureRmRecoveryServicesAsrServicesProvider** cmdlet gets information o
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $RSPs = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrServicesProvider
 ```
 
-{{ Add example description here }}
+List all repliaction services providers for all piped fabrics.
 
 ## PARAMETERS
 

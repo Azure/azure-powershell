@@ -36,10 +36,10 @@ Protection policies define replication settings for protected items and can be a
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $ProtectionContainers = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrProtectionContainer
 ```
 
-{{ Add example description here }}
+Gets all containers in all piped fabrics.
 
 ## PARAMETERS
 

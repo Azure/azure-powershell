@@ -38,15 +38,15 @@ A recovery plan gathers virtual machines in a group for the purposes of failover
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric -ReplicationProtectedItem $RPI
 ```
 
-{{ Add example description here }}
+Starts the recovery plan creation with passed parameters and returns the job for tracking.
 
 ## PARAMETERS
 
 ### -Azure
-{{Fill Azure Description}}
+To be passed if recovery is Azure.
 
 ```yaml
 Type: SwitchParameter
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -FailoverDeploymentModel
-{{Fill FailoverDeploymentModel Description}}
+Model of recovery plan.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+Name for the new Recovery plan.
 
 ```yaml
 Type: String

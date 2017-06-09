@@ -24,10 +24,10 @@ You can use this cmdlet to trigger a refresh of the information received from th
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrServicesProvider -ServicesProvider $ServicesProvider
 ```
 
-{{ Add example description here }}
+Starts updating the passed services provider and returns the job for tracking. 
 
 ## PARAMETERS
 

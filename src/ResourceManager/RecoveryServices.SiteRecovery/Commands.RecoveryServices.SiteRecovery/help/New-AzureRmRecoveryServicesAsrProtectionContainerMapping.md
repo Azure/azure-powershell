@@ -31,10 +31,10 @@ The **New-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet creates 
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ContainerMappingName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
 ```
 
-{{ Add example description here }}
+Starts the creation of protection container mapping with passed name and returns the job for tracking.
 
 ## PARAMETERS
 

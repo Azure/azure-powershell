@@ -28,10 +28,10 @@ The **Update-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet updates a recovery 
 
 ### Example 1: Update a recovery plan
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
 ```
 
-{{ Add example description here }}
+Starts updating the recovery plan in service as per the passed in memory recovery plan and returns the job for tracking.
 
 ## PARAMETERS
 

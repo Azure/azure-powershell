@@ -35,10 +35,10 @@ You can use this cmdlet to view the operation information for the current Site R
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $jobs = Get-AzureRmRecoveryServicesAsrJob -TargetObjectId $ASRObjectId
 ```
 
-{{ Add example description here }}
+Returns all the jobs specific to a particular target ASR object Id.
 
 ## PARAMETERS
 

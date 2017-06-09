@@ -41,15 +41,15 @@ The **Edit-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet edits an Azure Site R
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $RP = Edit-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP -AppendGroup
 ```
 
-{{ Add example description here }}
+Appends a group to existing Azure Site Recovery recovery plan and returns the in-memory updated recovery plan. 
 
 ## PARAMETERS
 
 ### -AddProtectedItems
-{{Fill AddProtectedItems Description}}
+Protected items to be added or removed.
 
 ```yaml
 Type: ASRReplicationProtectedItem[]

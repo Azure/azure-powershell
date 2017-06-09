@@ -24,10 +24,10 @@ The **Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint** changes a recovery po
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint -RecoveryPoint $RecoveryPoint -ReplicationProtectedItem $RPI
 ```
 
-{{ Add example description here }}
+Starts applying the passed recovery point to passed replication protected item and returns the job for tracking.
 
 ## PARAMETERS
 

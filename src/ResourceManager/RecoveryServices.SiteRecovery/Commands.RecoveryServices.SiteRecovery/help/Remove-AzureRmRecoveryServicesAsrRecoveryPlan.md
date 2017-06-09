@@ -28,10 +28,10 @@ The **Remove-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet removes a site reco
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
 ```
 
-{{ Add example description here }}
+Starts the deletion of passed recovery plan and returns the job for tracking.
 
 ## PARAMETERS
 

@@ -25,10 +25,10 @@ The **Set-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet sets the r
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $RPI -PrimaryNic $NicId -RecoveryNetworkId $AzureNetworkID -RecoveryNicSubnetName $subnetName
 ```
 
-{{ Add example description here }}
+Starts setting passed properties of replication protected items and returns the job for tracking.
 
 ## PARAMETERS
 

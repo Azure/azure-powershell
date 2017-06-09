@@ -22,10 +22,10 @@ The **Get-AzureRmRecoveryServicesAsrVaultSettings** cmdlet gets settings informa
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $VaultSettings = Get-AzureRmRecoveryServicesAsrVaultSettings 
 ```
 
-{{ Add example description here }}
+Gets currently set vault settings.
 
 ## PARAMETERS
 

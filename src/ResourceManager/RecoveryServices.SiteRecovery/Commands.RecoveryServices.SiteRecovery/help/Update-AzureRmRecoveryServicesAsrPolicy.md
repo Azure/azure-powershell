@@ -26,10 +26,10 @@ The **Update-AzureRmRecoveryServicesAsrPolicy** cmdlet updates the Azure Site Re
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrPolicy -Policy $Policy -ReplicationFrequencyInSeconds 900
 ```
 
-{{ Add example description here }}
+Starts updating policy with passed parameters and returns job for tracking.
 
 ## PARAMETERS
 

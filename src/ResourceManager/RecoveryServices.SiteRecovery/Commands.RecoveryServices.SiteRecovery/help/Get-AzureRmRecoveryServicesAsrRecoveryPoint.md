@@ -30,10 +30,10 @@ The **Get-AzureRmRecoveryServicesAsrRecoveryPoint** cmdlet gets the list of avai
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $RecoveryPoints = Get-AzureRmRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
-{{ Add example description here }}
+Gets recovery points for the passed replication protected item.
 
 ## PARAMETERS
 

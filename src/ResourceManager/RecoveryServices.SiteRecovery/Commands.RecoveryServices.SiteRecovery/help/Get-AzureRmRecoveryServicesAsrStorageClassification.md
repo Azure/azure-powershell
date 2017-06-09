@@ -34,10 +34,10 @@ The **Get-AzureRmRecoveryServicesAsrStorageClassification** cmdlet gets storage 
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $StorageClassifications = Get-AzureRmRecoveryServicesAsrStorageClassification -Fabric $Fabric
 ```
 
-{{ Add example description here }}
+List storage classifications in passed fabric. 
 
 ## PARAMETERS
 

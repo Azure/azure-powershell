@@ -23,10 +23,10 @@ This does not apply to recovery services vaults.
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $vaultSettings = Set-AzureRmRecoveryServicesAsrVaultSettings -Vault $RecoveryServicesVault
 ```
 
-{{ Add example description here }}
+Sets the passed recovery services vault context for further Azure Site Recovery cmdlets and returns the set vault settings.
 
 ## PARAMETERS
 
