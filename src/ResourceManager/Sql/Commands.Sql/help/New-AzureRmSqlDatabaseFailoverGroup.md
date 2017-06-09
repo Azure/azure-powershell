@@ -12,9 +12,10 @@ This command creates a new Azure SQL Database Failover Group.
 ## SYNTAX
 
 ```
-New-AzureRmSqlDatabaseFailoverGroup -ServerName <String> -FailoverGroupName <String>
+New-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> -FailoverGroupName <String>
  [-PartnerResourceGroupName <String>] -PartnerServerName <String> [-FailoverPolicy <FailoverPolicy>]
- [-GracePeriodWithDataLossHours <Int32>] -ResourceGroupName <String> [<CommonParameters>]
+ [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
+ [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,7 @@ Whether an outage on the secondary server should trigger automatic failover of t
 Type: AllowReadOnlyFailoverToPrimary
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
