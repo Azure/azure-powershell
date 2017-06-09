@@ -49,7 +49,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2014-04-01",
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMj9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -103,7 +103,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2014-04-01",
+      "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2015-05-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMj9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
