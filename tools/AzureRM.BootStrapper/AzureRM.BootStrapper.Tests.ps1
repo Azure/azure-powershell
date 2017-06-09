@@ -759,6 +759,34 @@ Describe "Invoke-CommandWithRetry" {
     }   
 }
 
+Describe "Get-LatestModuleVersion" {
+    InModuleScope AzureRM.Bootstrapper {
+        Context "Returns latest version in a version array" {
+            $versionarray = @("2.0", "1.5", "1.0")
+            It "Should return the latest version" {
+                $result = Get-LatestModuleVersion -versions $versionarray
+                $result | Should Be "2.0"
+            }
+        }
+    }
+}
+
+Describe "Get-ScriptBlock" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+        Mock Get-LatestModuleVersion {"1.0"}
+        Context "Creates a script block" {
+            $RollupModule = "Module1"
+            It "Should return script block" {
+                $result = Get-ScriptBlock -armProfile "Profile1"
+                $result.GetType().name | Should Be "ScriptBlock"
+                $result.ToString().contains("MyInvocation.Line.ToLower().Contains") | Should Be $true
+                Assert-VerifiableMocks
+            }
+        }
+    }
+}
+
 Describe "Add-ScopeParam" {
     InModuleScope AzureRM.Bootstrapper {
         $params = New-Object -Type System.Management.Automation.RuntimeDefinedParameterDictionary
@@ -1229,9 +1257,13 @@ Describe "Set-BootstrapRepo" {
 
 Describe "Set-AzureRmDefaultProfile" {
     InModuleScope AzureRM.Bootstrapper {
-        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
+        $sb = {
+            if ($MyInvocation.Line.Contains("Module1")) { "1.0"}
+        }
+        Mock Get-ScriptBlock -Verifiable { $sb }
         Mock Invoke-CommandWithRetry -Verifiable {}
         Mock Select-Profile -verifiable {}
+        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
 
         Context "New default profile value is given" {
             It "Setting default profile succeeds" {
