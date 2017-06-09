@@ -58,7 +58,7 @@ Specifies the name of the firewall rule that this cmdlet modifies.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: 2
