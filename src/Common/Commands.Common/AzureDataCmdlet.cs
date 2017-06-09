@@ -20,9 +20,8 @@ using System;
 using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Host;
-#if !NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common.Properties;
-#endif
+
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
@@ -93,6 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return result;
             }
         }
+#endif
 
         protected override void SaveDataCollectionProfile()
         {
@@ -154,9 +154,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 SaveDataCollectionProfile();
             }
         }
+
         protected override void InitializeQosEvent()
         {
         }
-#endif
     }
 }

@@ -29,12 +29,10 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             // Do not call base.BeginProcessing(), as context is not required for this cmdlet.
-#if !NETSTANDARD
             if (!this.CheckIfInteractive())
             {
                 throw new PSInvalidOperationException(String.Format(Resources.SendFeedbackNonInteractiveMessage, nameof(SendFeedbackCommand)));
             }
-#endif
         }
 
         public override void ExecuteCmdlet()
@@ -74,11 +72,9 @@ namespace Microsoft.Azure.Commands.Profile
             };
 
             this.Host.UI.WriteLine();
-
-#if !NETSTANDARD
+            
             // Log the event with force since the user specifically issued this command to provide feedback.
             this._metricHelper.LogCustomEvent(_eventName, feedbackPayload, true /* force */);
-#endif
         }
 
         private void WriteQuestion(string question)

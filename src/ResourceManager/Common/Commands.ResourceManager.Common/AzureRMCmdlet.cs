@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             ConfirmAction(force, continueMessage, actionName, string.Format(Resources.ResourceIdConfirmTarget,
                 resourceId), action, promptForContinuation);
         }
-#if !NETSTANDARD
+
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _qosEvent.Uid = "defaultid";
             }
         }
-#endif
+
         protected override void LogCmdletStartInvocationInfo()
         {
             base.LogCmdletStartInvocationInfo();

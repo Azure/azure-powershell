@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class TelemetryTests
     {
-#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void HashOfNullValueThrowsAppropriateException()
@@ -39,6 +38,5 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.True(hash.Length > 0);
             Assert.NotEqual<string>(inputValue, hash, StringComparer.OrdinalIgnoreCase);
         }
-#endif
     }
 }

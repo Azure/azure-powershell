@@ -38,11 +38,9 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected void SetDataCollectionProfile(bool enable)
         {
-#if !NETSTANDARD		
             var profile = GetDataCollectionProfile();
             profile.EnableAzureDataCollection = enable;
-            SaveDataCollectionProfile();
-#endif			
+            SaveDataCollectionProfile();	
         }
     }
 }
