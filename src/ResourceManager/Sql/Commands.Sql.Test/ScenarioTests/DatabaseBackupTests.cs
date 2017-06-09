@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -36,43 +37,71 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreGeoBackup()
         {
-            RunPowerShellTest("Test-RestoreGeoBackup");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-RestoreGeoBackup");
+            }
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedDatabaseBackup()
         {
-            RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
+            }
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestorePointInTimeBackup()
         {
-            RunPowerShellTest("Test-RestorePointInTimeBackup");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-RestorePointInTimeBackup");
+            }
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerBackupLongTermRetentionVault()
         {
-            RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
+            }
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseBackupLongTermRetentionPolicy()
         {
-            RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
+            }
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreLongTermRetentionBackup()
         {
-            RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
+            }
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGeoBackupPolicy()
         {
-            RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
+            }
         }
     }
 }
