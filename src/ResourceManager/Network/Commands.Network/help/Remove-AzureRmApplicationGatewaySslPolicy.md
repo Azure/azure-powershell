@@ -109,9 +109,9 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Set-AzureRmApplicationGatewaySslPolicy]()
+[Set-AzureRmApplicationGatewaySslPolicy](./Set-AzureRmApplicationGatewaySslPolicy.md)
 
-[New-AzureRmApplicationGatewaySslPolicy]()
+[New-AzureRmApplicationGatewaySslPolicy](./New-AzureRmApplicationGatewaySslPolicy.md)
 
-[Get-AzureRmApplicationGatewaySslPolicy]()
+[Get-AzureRmApplicationGatewaySslPolicy](./Get-AzureRmApplicationGatewaySslPolicy.md)
 

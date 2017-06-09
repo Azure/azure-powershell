@@ -21,8 +21,11 @@ function Test-ProfileCrud
 	$profileName = getAssetName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
-	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
+	
+	try
+	{
+	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	Assert-NotNull $createdProfile
 	Assert-AreEqual $profileName $createdProfile.Name 
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName 
@@ -48,6 +51,12 @@ function Test-ProfileCrud
 	Assert-True { $removed }
 
 	Assert-Throws { Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName }
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -59,6 +68,9 @@ function Test-ProfileCrudWithPiping
 	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
+	
+	try
+	{
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	$createdProfile.TrafficRoutingMethod = "Priority"
@@ -68,6 +80,12 @@ function Test-ProfileCrudWithPiping
 	Assert-True { $removed }
 
 	Assert-Throws { Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -79,6 +97,9 @@ function Test-CreateDeleteUsingProfile
 	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
+	
+	try
+	{
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	Assert-NotNull $createdProfile
@@ -89,6 +110,12 @@ function Test-CreateDeleteUsingProfile
 	Remove-AzureRmTrafficManagerProfile -TrafficManagerProfile $createdProfile -Force
 
 	Assert-Throws { Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -100,6 +127,9 @@ function Test-CrudWithEndpoint
 	$profileName = getAssetName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
+	
+	try
+	{
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	$profileWithEndpoint = Add-AzureRmTrafficManagerEndpointConfig -EndpointName "MyExternalEndpoint" -TrafficManagerProfile $createdProfile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
@@ -107,6 +137,12 @@ function Test-CrudWithEndpoint
 	$updatedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $profileWithEndpoint
 
 	Assert-AreEqual 1 $updatedProfile.Endpoints.Count
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -118,6 +154,9 @@ function Test-CrudWithEndpointGeo
 	$profileName = getAssetName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
+	
+	try
+	{
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Geographic" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	$profileWithEndpoint = Add-AzureRmTrafficManagerEndpointConfig -GeoMapping "RE","RO","RU","RW" -EndpointName "MyExternalEndpoint" -TrafficManagerProfile $createdProfile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" 
@@ -135,6 +174,12 @@ function Test-CrudWithEndpointGeo
 	Assert-AreEqual "RO" $retrievedProfile.Endpoints[0].GeoMapping[1]
 	Assert-AreEqual "RU" $retrievedProfile.Endpoints[0].GeoMapping[2]
 	Assert-AreEqual "RW" $retrievedProfile.Endpoints[0].GeoMapping[3]
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -146,11 +191,20 @@ function Test-ListProfilesInResourceGroup
 	$profileName = getAssetName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
+	
+	try
+	{
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	$profiles = Get-AzureRmTrafficManagerProfile -ResourceGroupName $resourceGroup.ResourceGroupName
 
 	Assert-AreEqual 1 $profiles.Count
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -162,11 +216,20 @@ function Test-ListProfilesInSubscription
 	$profileName = getAssetName
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$relativeName = getAssetName
+	
+	try
+	{
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	$profiles = Get-AzureRmTrafficManagerProfile
 
 	Assert-NotNull $profiles
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -183,6 +246,9 @@ function Test-ListProfilesWhereObject
 	$profileName2 = getAssetName
 	$relativeName2 = getAssetName
 		
+	
+	try
+	{
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName1 -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName2 -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
@@ -193,6 +259,12 @@ function Test-ListProfilesWhereObject
 
 	Assert-AreEqual $profileName2 $profile2.Name
 	Assert-AreEqual $relativeName2 $profile2.RelativeDnsName
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -204,7 +276,10 @@ function Test-ProfileNewAlreadyExists
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$profileName = getAssetName
 
-    $createdProfile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
+    
+	try
+	{
+	$createdProfile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 	$resourceGroupName = $createdProfile.ResourceGroupName
 
 	Assert-NotNull $createdProfile
@@ -212,6 +287,12 @@ function Test-ProfileNewAlreadyExists
 	Assert-Throws { TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName } 
 
 	$createdProfile | Remove-AzureRmTrafficManagerProfile -Force
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -223,8 +304,17 @@ function Test-ProfileRemoveNonExisting
 	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
+	
+	try
+	{
 	$removed = Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force 
 	Assert-False { $removed }
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -237,6 +327,9 @@ function Test-ProfileEnable
 	$relativeName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
+	
+	try
+	{
 	$disabledProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Disabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	Assert-AreEqual "Disabled" $disabledProfile.ProfileStatus
 
@@ -245,6 +338,12 @@ function Test-ProfileEnable
     $updatedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-AreEqual "Enabled" $updatedProfile.ProfileStatus
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -257,6 +356,9 @@ function Test-ProfileEnablePipeline
 	$relativeName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
+	
+	try
+	{
 	$disabledProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Disabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	Assert-AreEqual "Disabled" $disabledProfile.ProfileStatus
 
@@ -265,6 +367,12 @@ function Test-ProfileEnablePipeline
     $updatedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-AreEqual "Enabled" $updatedProfile.ProfileStatus
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -276,7 +384,16 @@ function Test-ProfileEnableNonExisting
 	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 
-    Assert-Throws { Enable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
+    
+	try
+	{
+	Assert-Throws { Enable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } 
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -289,6 +406,9 @@ function Test-ProfileDisable
 	$relativeName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
+	
+	try
+	{
 	$enabledProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Enabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	
 	Assert-AreEqual "Enabled" $enabledProfile.ProfileStatus
@@ -298,6 +418,12 @@ function Test-ProfileDisable
     $updatedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-AreEqual "Disabled" $updatedProfile.ProfileStatus
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -310,6 +436,9 @@ function Test-ProfileDisablePipeline
 	$relativeName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
+	
+	try
+	{
 	$enabledProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -ProfileStatus "Enabled" -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 	Assert-AreEqual "Enabled" $enabledProfile.ProfileStatus
 
@@ -318,6 +447,12 @@ function Test-ProfileDisablePipeline
     $updatedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-AreEqual "Disabled" $updatedProfile.ProfileStatus
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }
 
 <#
@@ -329,5 +464,195 @@ function Test-ProfileDisableNonExisting
 	$profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 
-    Assert-Throws { Disable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force } 
+	try
+	{
+	Assert-Throws { Disable-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force } 
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Create profile without specifying optional Monitor settings
+#>
+function Test-ProfileMonitorDefaults
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	
+	try
+	{
+	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -Ttl 30 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"  
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual 30 $createdProfile.MonitorIntervalInSeconds 
+	Assert-AreEqual 10 $createdProfile.MonitorTimeoutInSeconds 
+	Assert-AreEqual 3 $createdProfile.MonitorToleratedNumberOfFailures
+
+	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual 30 $retrievedProfile.MonitorIntervalInSeconds 
+	Assert-AreEqual 10 $retrievedProfile.MonitorTimeoutInSeconds 
+	Assert-AreEqual 3 $retrievedProfile.MonitorToleratedNumberOfFailures
+
+	Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Create profile specifying optional Monitor settings
+#>
+function Test-ProfileMonitorCustom
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	
+	try
+	{
+	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorIntervalInSeconds 10 -MonitorTimeoutInSeconds 7 -MonitorToleratedNumberOfFailures 1 -Ttl 0 -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"  
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual 10 $createdProfile.MonitorIntervalInSeconds 
+	Assert-AreEqual 7 $createdProfile.MonitorTimeoutInSeconds 
+	Assert-AreEqual 1 $createdProfile.MonitorToleratedNumberOfFailures
+	Assert-AreEqual 0 $createdProfile.Ttl
+
+	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual 10 $retrievedProfile.MonitorIntervalInSeconds 
+	Assert-AreEqual 7 $retrievedProfile.MonitorTimeoutInSeconds 
+	Assert-AreEqual 1 $retrievedProfile.MonitorToleratedNumberOfFailures
+	Assert-AreEqual 0 $retrievedProfile.Ttl 
+
+    $retrievedProfile.MonitorIntervalInSeconds = 30
+	$retrievedProfile.MonitorTimeoutInSeconds = 8
+	$retrievedProfile.MonitorToleratedNumberOfFailures = 0
+	$retrievedProfile.Ttl = 5
+
+	$updatedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $retrievedProfile
+
+	Assert-NotNull $updatedProfile
+	Assert-AreEqual 30 $updatedProfile.MonitorIntervalInSeconds 
+	Assert-AreEqual 8 $updatedProfile.MonitorTimeoutInSeconds 
+	Assert-AreEqual 0 $updatedProfile.MonitorToleratedNumberOfFailures
+	Assert-AreEqual 5 $updatedProfile.Ttl 
+
+	Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Create profile specifying TCP Monitor Protocol
+#>
+function Test-ProfileMonitorProtocol
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+
+	try
+	{
+	$createdProfile = New-AzureRmTrafficManagerProfile -MonitorProtocol "TCP" -MonitorPort 8080 -Ttl 50 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"
+
+	Assert-NotNull $createdProfile
+	Assert-AreEqual "TCP" $createdProfile.MonitorProtocol 
+	Assert-AreEqual 8080 $createdProfile.MonitorPort 
+	Assert-Null $createdProfile.MonitorPath
+
+	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $retrievedProfile
+	Assert-AreEqual "TCP" $retrievedProfile.MonitorProtocol 
+	Assert-AreEqual 8080 $retrievedProfile.MonitorPort 
+	Assert-Null $retrievedProfile.MonitorPath
+
+    $retrievedProfile.MonitorPort = 81
+	$retrievedProfile.MonitorProtocol = "HTTP"
+	$retrievedProfile.MonitorPath = "/health.htm"
+
+	$updatedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $retrievedProfile
+
+	Assert-NotNull $updatedProfile
+	Assert-AreEqual "HTTP" $updatedProfile.MonitorProtocol 
+	Assert-AreEqual 81 $updatedProfile.MonitorPort 
+	Assert-AreEqual "/health.htm" $retrievedProfile.MonitorPath
+
+    $updatedProfile.MonitorPort = 8086
+	$updatedProfile.MonitorProtocol = "TCP"
+	$updatedProfile.MonitorPath = $null
+
+	$revertedProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $updatedProfile
+
+	Assert-NotNull $revertedProfile
+	Assert-AreEqual "TCP" $revertedProfile.MonitorProtocol 
+	Assert-AreEqual 8086 $revertedProfile.MonitorPort 
+
+	Assert-True { Remove-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force }
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Create profile specifying optional Monitor settings
+#>
+function Test-ProfileMonitorParameterAliases
+{
+	$profileName = getAssetName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$relativeName = getAssetName
+	
+	try
+	{
+		$createdProfile = New-AzureRmTrafficManagerProfile -ProtocolForMonitor "HTTPS" -PortForMonitor 85 -PathForMonitor "/test" -IntervalInSecondsForMonitor 10 -TimeoutInSecondsForMonitor 9 -ToleratedNumberOfFailuresForMonitor 5 -Ttl 1 -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -TrafficRoutingMethod "Weighted"  
+
+		Assert-NotNull $createdProfile
+		Assert-AreEqual "HTTPS" $createdProfile.MonitorProtocol
+		Assert-AreEqual "85" $createdProfile.MonitorPort
+		Assert-AreEqual "/test" $createdProfile.MonitorPath
+		Assert-AreEqual 10 $createdProfile.MonitorIntervalInSeconds 
+		Assert-AreEqual 9 $createdProfile.MonitorTimeoutInSeconds 
+		Assert-AreEqual 5 $createdProfile.MonitorToleratedNumberOfFailures
+		Assert-AreEqual 1 $createdProfile.Ttl
+
+		$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+		Assert-NotNull $retrievedProfile
+		Assert-AreEqual "HTTPS" $retrievedProfile.MonitorProtocol
+		Assert-AreEqual "85" $retrievedProfile.MonitorPort
+		Assert-AreEqual "/test" $retrievedProfile.MonitorPath
+		Assert-AreEqual 10 $retrievedProfile.MonitorIntervalInSeconds 
+		Assert-AreEqual 9 $retrievedProfile.MonitorTimeoutInSeconds 
+		Assert-AreEqual 5 $retrievedProfile.MonitorToleratedNumberOfFailures
+		Assert-AreEqual 1 $retrievedProfile.Ttl
+	}
+    finally
+    {
+        # Cleanup
+        TestCleanup-RemoveResourceGroup $resourceGroup.ResourceGroupName
+    }
 }

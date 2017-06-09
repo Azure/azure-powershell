@@ -69,6 +69,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public PSOperationsMonitoringProperties OperationsMonitoringProperties { get; set; }
 
         /// <summary>
+        /// </summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "routing")]
+        public PSRoutingProperties Routing { get; set; }
+
+        /// <summary>
         /// The Capabilities/Features that need to be enabled for the Hub.
         /// Possible values include: 'None', 'DeviceManagement'
         /// </summary>

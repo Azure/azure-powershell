@@ -77,13 +77,13 @@ CmdletsToExport = 'Disable-AzureRmDataCollection', 'Enable-AzureRmDataCollection
                'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
                'Get-AzureRmSubscription', 'Add-AzureRmAccount', 'Get-AzureRmContext', 
                'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
-               'Get-AzureRmTenant'
+               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription'
+AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -112,11 +112,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* *Obsolete*: Save-AzureRmProfile is renamed to Save-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
-* *Obsolete*: Select-AzureRmProfile is renamed to Import-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
-* The PSAzureContext and PSAzureProfile output types of profile cmdlets will be changed in the next release.
-* The Save-AzureRmContext cmdlet will have no OutputType in the next release.
-* Fix bug in cmdlet common code to use FIPS-compliant algorithm for data hashes: https://github.com/Azure/azure-powershell/issues/3651 
+        ReleaseNotes = '* Resolve-AzureRmError
+  * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
+* Send-Feedback
+  * Enabled sending feedback without logging in
+* Get-AzureRmSubscription
+  * Fix bug in retrieving CSP subscriptions
 '
 
         # External dependent modules of this module

@@ -84,6 +84,19 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ## PARAMETERS
 
+### -InRemovedState
+Specifies whether to show the previously deleted keys in the output.```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedKey
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a key.
 The current version of a key is the first one on the list.
@@ -94,19 +107,6 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByKeyVersions
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InRemovedState
-Specifies whether to show the previously deleted keys in the output.```yaml
-Type: SwitchParameter
-Parameter Sets: ByDeletedKey
 Aliases: 
 
 Required: True

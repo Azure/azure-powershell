@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             {
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
                 {
-                    Sku = existingServer.Sku,
+                    Sku = skuName == null ? existingServer.Sku : GetResourceSkuFromName(skuName),
                     Tags = tags,
                     AsAdministrators = new ServerAdministrators(adminList)
                 };
@@ -183,7 +183,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         private ResourceSku GetResourceSkuFromName(string skuName)
         {
-            return new ResourceSku(skuName, skuName.StartsWith("D") ? SkuTier.Development : SkuTier.Standard);
+            var tier = skuName.StartsWith("D") ? SkuTier.Development
+                : skuName.StartsWith("B") ? SkuTier.Basic
+                : SkuTier.Standard;
+            return new ResourceSku(skuName, tier);
         }
 
         public void SuspendServer(string resourceGroupName, string serverName)

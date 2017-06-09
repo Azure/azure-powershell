@@ -1034,6 +1034,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BgpPeeringAccessType</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>LegacyMode</maml:name>
+          <maml:description>
+            <maml:para>Legacy mode can be either False or True. False (the default value) sets up a BGP session which advertised no routes. True sets up a BGP session which advertised all routes.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BgpPeeringAccessType</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -1128,6 +1135,19 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>LegacyMode</maml:name>
+        <maml:description>
+          <maml:para>Specifies the legacy mode of the bgp peering.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -1179,9 +1199,9 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt; C:\PS&gt;New-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab" -VlanId 100 -PeerAsn 65014 -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30"</dev:code>
+        <dev:code>PS C:\&gt; C:\PS&gt;New-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab" -VlanId 100 -PeerAsn 65014 -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -LegacyMode True</dev:code>
         <dev:remarks>
-          <maml:para>Creates a new BGP session for an ExpressRoute circuit with service key "12345678-1234-1234-abcd-1234567890ab". The BGP session with AS number 65014 is established on VLAN ID 100.</maml:para>
+          <maml:para>Creates a new BGP session for an ExpressRoute circuit with service key "12345678-1234-1234-abcd-1234567890ab". The BGP session with AS number 65014 is established on VLAN ID 100 which advertised all routes for microsoft peering</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>

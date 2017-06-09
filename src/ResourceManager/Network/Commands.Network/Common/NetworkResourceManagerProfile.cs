@@ -101,6 +101,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
                 cfg.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
 
+                // Usage
+                cfg.CreateMap<CNM.PSUsage, MNM.Usage>();
+                cfg.CreateMap<MNM.Usage, CNM.PSUsage>();
+                cfg.CreateMap<CNM.PSUsageName, MNM.UsageName>();
+                cfg.CreateMap<MNM.UsageName, CNM.PSUsageName>();
+
                 // NetworkWatcher
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNetworkWatcher, MNM.NetworkWatcher>();

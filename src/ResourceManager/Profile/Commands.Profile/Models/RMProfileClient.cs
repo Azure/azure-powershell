@@ -266,21 +266,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public List<AzureTenant> ListTenants(string tenant = "")
         {
-            List<AzureTenant> tenants = ListAccountTenants(
-                _profile.DefaultContext.Account, 
-                _profile.DefaultContext.Environment, 
-                null, 
-                ShowDialog.Never,
-                null);
-            if (!string.IsNullOrWhiteSpace(tenant))
+            if (!string.IsNullOrEmpty(tenant))
             {
-                tenants = tenants.Where(t => tenant == null ||
-                                             tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
-                                             tenant.Equals(t.Directory, StringComparison.OrdinalIgnoreCase))
-                                 .ToList();
+                return new List<AzureTenant>() { CreateTenant(tenant) };
             }
 
-            return tenants;
+            List<AzureTenant> tenants = ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null, ShowDialog.Never, null);
+            return tenants.Where(t => string.IsNullOrEmpty(tenant) ||
+                                         tenant.Equals(t.Id.ToString(), StringComparison.OrdinalIgnoreCase) ||
+                                         tenant.Equals(t.Directory, StringComparison.OrdinalIgnoreCase))
+                                 .ToList();
         }
 
         public bool TryGetSubscriptionById(string tenantId, string subscriptionId, out IAzureSubscription subscription)

@@ -141,6 +141,9 @@
   <data name="DownloadFileDataMessage" xml:space="preserve">
     <value>Download file data</value>
   </data>
+  <data name="EnableKeyVault" xml:space="preserve">
+    <value>Enabling user supplied KeyVault to the Data Lake Store Account: '{0}' ...</value>
+  </data>
   <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
     <value>Could not find account: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it.</value>
   </data>

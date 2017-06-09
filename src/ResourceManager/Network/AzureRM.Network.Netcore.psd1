@@ -290,7 +290,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetwork', 'New-AzureRmVirtualNetwork', 
                'Get-AzureRmVirtualNetworkGatewayBgpPeerStatus', 
                'Get-AzureRmVirtualNetworkGatewayAdvertisedRoute', 
-               'Get-AzureRmVirtualNetworkGatewayLearnedRoute'
+               'Get-AzureRmVirtualNetworkGatewayLearnedRoute', 
+               'Get-AzureRmNetworkUsage'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -325,9 +326,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added Test-AzureRmNetworkWatcherConnectivity cmdlet
-    - Returns connectivity information for a specified source VM and a destination
-    - If connectivity between the source and destination cannot be established, the cmdlet returns details about the issue
+        ReleaseNotes = '* Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
+* Added new GatewaySku options for VirtualNetworkGateways
+    - VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
+* Set-AzureRmNetworkWatcherConfigFlowLog
+  * Fixed  help examples
 '
 
         # External dependent modules of this module

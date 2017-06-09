@@ -160,3 +160,4 @@ This cmdlet returns a **ReplicationLink** object.
 
 ## RELATED LINKS
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

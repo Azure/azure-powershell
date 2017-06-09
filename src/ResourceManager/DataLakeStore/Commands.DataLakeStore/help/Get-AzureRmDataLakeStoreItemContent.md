@@ -21,13 +21,13 @@ Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePa
 
 ### Preview file rows from the head of the file
 ```
-Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Head <Int32>]
+Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Head] <Int32>]
  [[-Encoding] <FileSystemCmdletProviderEncoding>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Preview file rows from the tail of the file
 ```
-Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Tail <Int32>]
+Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Tail] <Int32>]
  [[-Encoding] <FileSystemCmdletProviderEncoding>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Parameter Sets: Preview file rows from the head of the file
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -176,7 +176,7 @@ Parameter Sets: Preview file rows from the tail of the file
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

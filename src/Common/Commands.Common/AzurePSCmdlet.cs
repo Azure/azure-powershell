@@ -100,14 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Gets PowerShell module version used for user agent header.
         /// </summary>
-        protected string ModuleVersion
-        {
-            get
-            {
-                return Assembly.GetCallingAssembly()
-                        .GetName().Version.ToString();
-            }
-        }
+        protected string ModuleVersion { get { return AzurePowerShell.AssemblyVersion; } }
 
         /// <summary>
         /// The context for management cmdlet requests - includes account, tenant, subscription, 

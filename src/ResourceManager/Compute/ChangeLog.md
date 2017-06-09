@@ -19,6 +19,20 @@
 -->
 ## Current Release
 
+## Version 3.1.0
+* Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
+* Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
+* Add-AzureRmVhd: The size limit on vhd is increased to 4TB.
+* Stop-AzureRmVM: Clarify documentation for STayProvisioned parameter
+* New-AzureRmDiskUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmDiskUpdateImageReference: Deprecated cmdlet
+* New-AzureRmSnapshotUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmSnapshotUpdateImageReference: Deprecated Cmdlet
+
+## Version 3.0.1
+
 ## Version 3.0.0
 * Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks
 * Backup encryption settings for IaaS VMs and restore on failure
