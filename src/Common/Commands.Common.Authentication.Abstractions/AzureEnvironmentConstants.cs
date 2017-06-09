@@ -120,5 +120,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         public const string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "azuredatalakeanalytics.net";
         public const string AzureDataLakeStoreFileSystemEndpointSuffix = "azuredatalakestore.net";
+
+        /// <summary>
+        /// The token audience for authorizing DataLake requests
+        /// </summary>
+        public const string AzureDataLakeServiceEndpointResourceId = "https://datalake.azure.net";
     }
 }

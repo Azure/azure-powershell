@@ -14,49 +14,46 @@
 
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using Microsoft.Rest.Azure;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AdlAnalyticsFirewallRule")]
-    public class RemoveAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsComputePolicy"), OutputType(typeof(PSDataLakeAnalyticsComputePolicy), typeof(IEnumerable<PSDataLakeAnalyticsComputePolicy>))]
+    [Alias("Get-AdlAnalyticsComputePolicy")]
+    public class GetAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Name of resource group under which you the account exists. Optional and will attempt to discover if not provided.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "The Data Lake Analytics account to remove the firewall rule from")]
+            HelpMessage = "Name of the account to get the compute policy or policies from.")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
-            HelpMessage = "The name of the firewall rule.")]
+            HelpMessage = "Name of the compute policy to get.")]
         [ValidateNotNullOrEmpty]
+        [Alias("ComputePolicyName")]
         public string Name { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage =
-                "Indicates a boolean response should be returned indicating the result of the delete operation."
-            )]
-        public SwitchParameter PassThru { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Name of resource group under which want to retrieve the account.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
-                string.Format(Resources.RemoveDataLakeAnalyticsFirewallRule, Name),
-                Name,
-                () =>
-                {
-                    DataLakeAnalyticsClient.DeleteFirewallRule(ResourceGroupName, Account, Name, this);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
-                });
+            if (string.IsNullOrEmpty(Name))
+            {
+                WriteObject(DataLakeAnalyticsClient.ListComputePolicy(ResourceGroupName, Account), true);
+            }
+            else
+            {
+                WriteObject(DataLakeAnalyticsClient.GetComputePolicy(ResourceGroupName, Account, Name));
+            }
         }
     }
 }
