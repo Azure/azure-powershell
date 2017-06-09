@@ -46,7 +46,7 @@ function Test-ListDatabaseRestorePoints
 		$restorePoint = $restorePoints[0]
 		Assert-AreEqual $restorePoint.RestorePointType Continuous
 		Assert-Null $restorePoint.RestorePointCreationDate
-		Assert-True { $restorePoint.EarliestRestoreDate -le [DateTime]::UtcNow }
+		Assert-AreEqual $restorePoint.EarliestRestoreDate.Kind Utc
 	}
 	finally
 	{
