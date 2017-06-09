@@ -459,7 +459,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 #endif
         }
 		
-#if !NETSTANDARD
         public static string DownloadFile(string uri)
         {
             string contents = null;
@@ -478,25 +477,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return contents;
         }
-#else
-        public static string DownloadFile(string uri)
-        {
-            HttpClient client = new HttpClient();
-            var stream = client.GetStreamAsync(uri).GetAwaiter().GetResult();
-            StringBuilder result = new StringBuilder();
-            byte[] buffer = new byte[1024];
-            int offset = 0, readBytes = 0;
-            do
-            {
-                readBytes = stream.Read(buffer, 0, buffer.Length);
-                if (readBytes > 0)
-                {
-                    result.Append(Encoding.UTF8.GetString(buffer, 0, readBytes));
-                }
-            } while (readBytes >= buffer.Length);
-
-            return result.ToString();
-        }
-#endif		
     }
 }

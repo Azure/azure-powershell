@@ -335,7 +335,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             return module.ToString().Replace("Azure", "");
         }
 		
-#if !NETSTANDARD
         /// <summary>
         /// Get the directory path to the given directory in the paltform-appropriate program files path
         /// </summary>
@@ -371,6 +370,5 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 }
             }
         }
-#endif		
     }
 }

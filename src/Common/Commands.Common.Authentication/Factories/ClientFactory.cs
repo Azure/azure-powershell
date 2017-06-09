@@ -26,10 +26,6 @@ using System.Net.Http.Headers;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
-#if NETSTANDARD
-using Microsoft.PowerShell.CoreClr.Stubs;
-#endif
-
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class ClientFactory : IClientFactory

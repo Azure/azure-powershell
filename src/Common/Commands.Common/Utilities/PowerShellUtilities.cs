@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             return dynamicParameters.Values.Where(dp => MyInvocation.BoundParameters.Keys.Any(bp => bp.Equals(dp.Name)));
         }
-#if !NETSTANDARD		
+	
         public static void RemoveModuleFromPSModulePath(string modulePath)
         {
             EditPSModulePath(list => list.Where(p => !p.Equals(modulePath, StringComparison.OrdinalIgnoreCase)), EnvironmentVariableTarget.Process);
@@ -94,6 +94,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 Environment.SetEnvironmentVariable(PSModulePathName, psModulePath, target);
             }
         }		
-#endif
     }
 }

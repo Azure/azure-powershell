@@ -22,10 +22,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 
-#if NETSTANDARD
-using Microsoft.PowerShell.CoreClr.Stubs;
-#endif
-
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     public class RPRegistrationDelegatingHandler : DelegatingHandler, ICloneable

@@ -41,6 +41,7 @@
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.6\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs" Link="Common\AzureContextAdapterExtensions.cs" />
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs" Link="Common\LazyAzureStorageContext.cs" />
   </ItemGroup>
 
   <ItemGroup>
