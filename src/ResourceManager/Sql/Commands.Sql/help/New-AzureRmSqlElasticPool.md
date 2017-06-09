@@ -117,8 +117,6 @@ The acceptable values for this parameter are:
 - Basic 
 - Standard
 
-For the current preview, the edition must be Standard.
-
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: (All)
