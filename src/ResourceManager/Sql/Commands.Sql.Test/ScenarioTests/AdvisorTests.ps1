@@ -28,7 +28,7 @@ function Test-ListServerAdvisors
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName
 		Assert-NotNull $response
-		Assert-AreEqual 4 $response.Count
+		ValidateAdvisorCount $response
 		foreach($advisor in $response)
 		{
 			ValidateServer $advisor $server
@@ -58,7 +58,7 @@ function Test-ListServerAdvisorsExpanded
 			-ResourceGroupName $server.ResourceGroupName `
 			-ServerName $server.ServerName -ExpandRecommendedActions
 		Assert-NotNull $response
-		Assert-AreEqual 4 $response.Count
+		ValidateAdvisorCount $response
 		foreach($advisor in $response)
 		{
 			ValidateServer $advisor $server
@@ -143,7 +143,7 @@ function Test-ListDatabaseAdvisors
 			-ServerName $db.ServerName `
 			-DatabaseName $db.DatabaseName 
 		Assert-NotNull $response
-		Assert-AreEqual 4 $response.Count
+		ValidateAdvisorCount $response
 		foreach($advisor in $response)
 		{
 			ValidateDatabase $advisor $db
@@ -175,7 +175,7 @@ function Test-ListDatabaseAdvisorsExpanded
 			-DatabaseName $db.DatabaseName `
 			-ExpandRecommendedActions
 		Assert-NotNull $response
-		Assert-AreEqual 4 $response.Count
+		ValidateAdvisorCount $response
 		foreach($advisor in $response)
 		{
 			ValidateDatabase $advisor $db
@@ -262,7 +262,7 @@ function Test-ListElasticPoolAdvisors
 			-ServerName $ep.ServerName`
 			-ElasticPoolName $ep.ElasticPoolName
 		Assert-NotNull $response
-		Assert-AreEqual 4 $response.Count
+		ValidateAdvisorCount $response
 		foreach($advisor in $response)
 		{
 			ValidateElasticPool $advisor $ep
@@ -294,7 +294,7 @@ function Test-ListElasticPoolAdvisorsExpanded
 			-ElasticPoolName $ep.ElasticPoolName `
 			-ExpandRecommendedActions
 		Assert-NotNull $response
-		Assert-AreEqual 4 $response.Count
+		ValidateAdvisorCount $response
 		foreach($advisor in $response)
 		{
 			ValidateElasticPool $advisor $ep
@@ -455,4 +455,14 @@ function ValidateAdvisorProperties($advisor, $expanded = $false)
 		($advisor.AutoExecuteStatusInheritedFrom -eq "Server") -or `
 		($advisor.AutoExecuteStatusInheritedFrom -eq "ElasticPool") -or `
 		($advisor.AutoExecuteStatusInheritedFrom -eq "Database")}
+}
+
+<#
+	.SYNOPSIS
+	Validates number of advisors returned.
+#>
+function ValidateAdvisorCount($response)
+{
+	$expectedMinAdvisorCount = 4
+	Assert-True { $response.Count -ge $expectedMinAdvisorCount } "Advisor count was $($response.Count), expected at least $expectedMinAdvisorCount. Response: $response"
 }
