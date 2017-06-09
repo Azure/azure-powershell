@@ -56,6 +56,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRMOffer", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Set-AzureRMOffer will be deprecated in a future release. Please use the cmdlet name Set-AzSOffer instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.UpdatingOffer.FormatArgs(this.Offer.Name, this.ResourceGroupName));

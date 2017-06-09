@@ -50,6 +50,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMOffer", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Remove-AzureRMOffer will be deprecated in a future release. Please use the cmdlet name Remove-AzSOffer instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 this.WriteVerbose(Resources.RemovingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
