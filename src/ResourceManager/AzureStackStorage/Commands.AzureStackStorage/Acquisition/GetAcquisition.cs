@@ -23,26 +23,26 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
 
     /// <summary>
-    /// Get an acquisition by ID or list acquisitions
+    /// Lists page blob acquisitions.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminAcquisition)]
     [Alias("Get-ACSAcquisition")]
     public sealed class GetAdminAcquisition : AdminCmdletDefaultFarm
     {
         /// <summary>
-        ///     AcquisitionId
+        /// Tenant Subscription Id to filter 
         /// </summary>
         [Parameter(Mandatory = false)]
         public string TenantSubscriptionId { get; set; }
 
         /// <summary>
-        ///     AcquisitionId
+        /// Storage account to filter
         /// </summary>
         [Parameter(Mandatory = false)]
         public string StorageAccountName { get; set; }
 
         /// <summary>
-        ///     AcquisitionId
+        /// Containers to Filter
         /// </summary>
         [Parameter(Mandatory = false)]
         public string Container { get; set; }

@@ -19,17 +19,14 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         Get-Farm [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [[-FarmName] {string}] [ {CommonParameters}] 
-    /// 
+    /// Gets the storage properties and settings for a specified region/farm.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminFarm)]
     [Alias("Get-ACSFarm")]
     public sealed class GetAdminFarm : AdminCmdletDefaultFarm
     {
         /// <summary>
-        /// Farm identifier
+        /// Name of the Farm to get
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]

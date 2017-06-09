@@ -22,16 +22,14 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// SYNTAX
-    /// Stop-ACSContainerMigration  [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///                  [-FarmName] {string} [-ShareName] {string} -Jobid {string} [{CommonParameters}] 
+    /// Tries to stop the container migration operation specified by the given JobId.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, Nouns.AdminContainerMigration)]
     [Alias("Stop-ACSContainerMigration")]
     public sealed class StopContainerMigration : AdminCmdletDefaultFarm
     {
         /// <summary>
-        /// Storage Account Name
+        /// JobId of the Containter Migration Job to be stopped
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true )]
         public string JobId { get; set; }

@@ -20,10 +20,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-TableService [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
-    /// 
+    /// Gets the Table service properties and settings.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminTableService)]
     [Alias("Get-ACSTableService")]

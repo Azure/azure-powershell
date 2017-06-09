@@ -23,11 +23,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-StorageAccountsWithAdminInfo [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-TenantSubscriptionId] {string}] [[-StorageAccountName] {string}] 
-    ///             [[-StorageAccountStatus] {int}] [[-AccountId] {string}] [-Summary]]
-    /// 
+    /// Gets a list of all storage accounts and their properties in a region.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminStorageAccount, DefaultParameterSetName = ListAccountsParamSet)]
     [Alias("Get-ACSStorageAccount")]
@@ -37,25 +33,25 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         const string GetSingleAccountParamSet = "GetSingleAccount";
 
         /// <summary>
-        /// Tenant Subscription Id
+        /// Tenant Subscription Id to filter
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public string TenantSubscriptionId { get; set; }
 
         /// <summary>
-        /// Storage Account Name
+        /// substring of Storage Account Name to filter
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public string PartialAccountName { get; set; }
 
         /// <summary>
-        /// Storage Account Status
+        /// Storage Account Status to filter
         /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public StorageAccountStatus? StorageAccountStatus { get; set; }
 
         /// <summary>
-        /// Storage Account AccountId
+        /// Storage Account AccountId to get
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetSingleAccountParamSet)]
         public string AccountId { get; set; }

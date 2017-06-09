@@ -21,11 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-QueueServiceMetric [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string}
-    ///             [[-StartTime] {DateTime}] [[-EndTime] {DateTime}] [[-TimeGrain] {TimeGrain}] [[-MetricNames] {string[]}] [ {CommonParameters}]
-    /// 
+    /// Gets the metrics for the Queue service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetric)]
     [Alias("Get-ACSQueueServiceMetric")]

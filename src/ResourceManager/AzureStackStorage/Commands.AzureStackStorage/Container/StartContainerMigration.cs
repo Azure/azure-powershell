@@ -22,21 +22,21 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// SYNTAX
-    /// Start-ACSContainerMigration  [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///                  [-FarmName] {string} [-ShareName] {string} [-Container] {container} [-DestinationShareName] {string} [{CommonParameters}] 
+    /// Returns the job ID of the operation to migrate specified containers to a specified destination share.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, Nouns.AdminContainerMigration)]
     [Alias("Start-ACSContainerMigration")]
     public sealed class StartContainerMigration : AdminCmdletDefaultFarm
     {
         /// <summary>
+        /// Container to migrate
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public Container ContainerToMigrate { get; set; }
 
         /// <summary>
+        /// Destination share where the container needs to be migrated
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]

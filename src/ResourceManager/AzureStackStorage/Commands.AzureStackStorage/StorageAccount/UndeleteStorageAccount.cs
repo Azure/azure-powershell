@@ -21,29 +21,26 @@ using System;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Undo-StorageAccountDeletion [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-AccountId] {string}] [[-NewAccountName] {string}] [-TenantSubscriptionId] {string} [-Sync] {bool} [-ResourceLocation] {string}
-    /// 
+    /// Tries to recover a deleted storage account.
     /// </summary>
     [Cmdlet(VerbsCommon.Undo, Nouns.AdminStorageAccountDeletion, SupportsShouldProcess = true)]
     [Alias("Undo-ACSStorageAccountDeletion")]
     public sealed class UndeleteStorageAccount : AdminCmdletDefaultFarm
     {
         /// <summary>
-        /// Storage Account Name
+        /// Storage Account Id
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string AccountId { get; set; }
 
         /// <summary>
-        /// Storage Account Name
+        /// New Storage Account Name to recover with
         /// </summary>
         [Parameter(Mandatory = false)]
         public string NewAccountName { get; set; }
 
         /// <summary>
-        /// Specify storage account api version whic resource was created with
+        /// Specify storage account api version which resource was created with
         /// </summary>
         [Parameter(Mandatory = false)]
         public string StorageAccountApiVersion { get; set; }

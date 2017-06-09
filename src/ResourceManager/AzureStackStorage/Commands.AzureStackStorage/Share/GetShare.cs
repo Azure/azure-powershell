@@ -21,12 +21,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// get shares
-    /// 
-    ///     SYNTAX
-    ///          Get-Share [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [-ShareName] {string} [ {CommonParameters}] 
-    /// 
+    /// Gets a list of shares used by the Storage system to place storage accounts.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminShare, DefaultParameterSetName = ListTenantSharesParamSet)]
     [Alias("Get-ACSShare")]
@@ -36,7 +31,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         const string ListSharesForMigrationParamSet = "GetSharesForMigration";
 
         /// <summary>
-        /// Get details for a given share
+        /// Share name to get details
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = ListTenantSharesParamSet)]
         [ValidateNotNullOrEmpty]
@@ -47,14 +42,14 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         }
 
         /// <summary>
-        /// Get Destination Shares for a container migration for a given Source Share
+        /// Get Destination Shares for a container migration, given a Source Share
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ListSharesForMigrationParamSet)]
         [ValidateNotNullOrEmpty]
         public string SourceShareName { get; set; }
 
         /// <summary>
-        /// Get Destination Shares for a container migration for a given Source Share
+        /// Intent of the cmdlet to get all shares (default) or get shares for container migration
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ListSharesForMigrationParamSet)]
         public FileShareGetIntent? Intent { get; set; }

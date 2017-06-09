@@ -18,8 +18,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// Clear-ACSStorageAccount [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
+    /// Forces garbage collection of all deleted storage accounts, regardless of the retention period setting. 
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, Nouns.AdminOnDemandGc, SupportsShouldProcess = true)]
     [Alias("Clear-ACSStorageAccount")]

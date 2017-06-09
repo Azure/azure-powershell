@@ -22,14 +22,13 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// SYNTAX
-    /// Get-AzSReclaimStorageCapacityStatus -Jobid {string} [{CommonParameters}] 
+    /// Get the Garbage Collection job status
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminOnDemandGcStatus)]
     public sealed class GetOnDemandGcStatus : AdminCmdletDefaultFarm
     {
         /// <summary>
-        /// Operation Id
+        /// JobId of the Gabage Collection Job
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string JobId { get; set; }

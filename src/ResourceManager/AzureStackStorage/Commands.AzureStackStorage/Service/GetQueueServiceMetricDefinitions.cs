@@ -20,10 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-QueueServiceMetricDefinition [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-MetricNames] {string[]}] [ {CommonParameters}] 
-    /// 
+    /// Gets the properties of the metric definitions exposed by the Queue service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetricDefinition)]
     [Alias("Get-ACSQueueServiceMetricDefinition")]
@@ -36,7 +33,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <returns></returns>
         protected override MetricDefinitionsResult GetMetricDefinitionsResult(string filter)
         {
-
             return Client.QueueService.GetMetricDefinitions(ResourceGroupName, FarmName, filter);
         }
     }

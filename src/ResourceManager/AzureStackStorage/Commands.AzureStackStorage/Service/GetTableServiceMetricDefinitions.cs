@@ -19,7 +19,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///
+    /// Gets the properties of the metric definitions exposed by the Table service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminTableServiceMetricDefinition)]
     [Alias("Get-ACSTableServiceMetricDefinition")]

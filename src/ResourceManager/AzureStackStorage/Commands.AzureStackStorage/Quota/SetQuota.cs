@@ -21,10 +21,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         Set-ACSQuota [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-Location] {string} 
-    ///             [-SkipCertificateValidation] [-Name] {string} [-NumberOfStorageAccounts] {int}  [-CapacityInGB] {int} [ {CommonParameters}] 
-    /// 
+    /// Modifies the quota values of the given Storage quota resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.AdminQuota, SupportsShouldProcess = true)]
     [Alias("Set-ACSQuota")]

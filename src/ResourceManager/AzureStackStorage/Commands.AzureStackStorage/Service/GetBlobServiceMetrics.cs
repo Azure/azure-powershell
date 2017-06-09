@@ -19,7 +19,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///
+    /// Gets the metrics for the Blob service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobServiceMetric)]
     [Alias("Get-ACSBlobServiceMetric")]

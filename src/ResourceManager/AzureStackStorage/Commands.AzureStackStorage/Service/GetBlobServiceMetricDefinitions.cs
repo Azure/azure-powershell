@@ -19,17 +19,12 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///
+    /// Gets the properties of the metric definitions exposed by the Blob service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobServiceMetricDefinition)]
     [Alias("Get-ACSBlobServiceMetricDefinition")]
     public sealed class GetBlobServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filter"></param>
-        /// <returns></returns>
         protected override MetricDefinitionsResult GetMetricDefinitionsResult(string filter)
         {
             return Client.BlobService.GetMetricDefinitions(ResourceGroupName, FarmName, filter);

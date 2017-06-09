@@ -21,10 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-QueueService [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
-    /// 
+    /// Gets the Queue service properties and settings.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueService)]
     [Alias("Get-ACSQueueService")]

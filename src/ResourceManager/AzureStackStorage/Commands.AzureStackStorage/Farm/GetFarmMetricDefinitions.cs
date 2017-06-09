@@ -20,14 +20,14 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// 
+    /// Gets the properties of the storage metric definitions exposed at the region level.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminFarmMetricDefinition)]
     [Alias("Get-ACSFarmMetricDefinition")]
     public sealed class GetFarmMetricDefinitions : AdminMetricDefinitionCmdlet
     {
         /// <summary>
-        /// 
+        /// Filter the metric definition
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>

@@ -20,10 +20,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         New-ACSQuota [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-Location] {string} 
-    ///             [-SkipCertificateValidation] [-QuotaName] {string} [-NumberOfStorageAccounts] {int}  [-CapacityInGB] {int} [ {CommonParameters}] 
-    /// 
+    /// Creates a Storage quota resource in the specified 
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.AdminQuota, SupportsShouldProcess = true)]
     [Alias("New-ACSQuota")]

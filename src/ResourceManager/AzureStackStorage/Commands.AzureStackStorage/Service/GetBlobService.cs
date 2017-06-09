@@ -20,10 +20,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-BlobService [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
-    /// 
+    /// Gets the Blob service properties and settings.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobService)]
     [Alias("Get-ACSBlobService")]

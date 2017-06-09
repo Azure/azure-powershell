@@ -22,9 +22,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// SYNTAX
-    /// Get-ACSContainer [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///                  [-FarmName] {string} [-ShareName] {string} [[-Intent] {Migration}] [-Count {MaxCount}] [{CommonParameters}] 
+    /// Gets a list of containers in a share that the system considers as best candidates for migration.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminContainer)]
     [Alias("Get-ACSContainer")]
@@ -36,25 +34,26 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         internal const uint DefaultMaxCountOfRecords = 10;
 
         /// <summary>
+        /// Filter containers from this Share 
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set;}
 
         /// <summary>
-        /// Storage Account Name
+        /// Intention of get container
         /// </summary>
         [Parameter(Mandatory = false )]
         public ContainerGetIntent? Intent { get; set; }
 
         /// <summary>
-        /// Storage Account Status
+        /// Count of containers to return 
         /// </summary>
         [Parameter(Mandatory = false)]
         public uint? Count { get; set; }
 
         /// <summary>
-        /// Start index of the 
+        /// Start index from which containers will be returned
         /// </summary>
         [Parameter(Mandatory = false)]
         public uint? StartIndex { get; set; }

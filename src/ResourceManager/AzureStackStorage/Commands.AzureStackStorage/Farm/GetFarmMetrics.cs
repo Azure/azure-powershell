@@ -21,14 +21,14 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// 
+    /// Gets the metrics for a specified storage farm.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminFarmMetric)]
     [Alias("Get-ACSFarmMetric")]
     public sealed class GetFarmMetric : AdminMetricCmdlet
     {
         /// <summary>
-        /// 
+        /// Filter the metric results
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>

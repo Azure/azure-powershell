@@ -22,10 +22,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         Get-ACSQuota [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-Location] {string} 
-    ///             [-SkipCertificateValidation] [[-Name] {string}] [ {CommonParameters}] 
-    /// 
+    /// Gets a list of all Storage quota resources in the specified location.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQuota)]
     [Alias("Get-ACSQuota")]
