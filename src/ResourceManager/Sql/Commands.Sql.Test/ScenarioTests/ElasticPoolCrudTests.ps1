@@ -20,7 +20,7 @@ function Test-CreateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "westcentralus"
+	$server = Create-ServerForTest $rg
 
     try
     {
@@ -59,7 +59,7 @@ function Test-UpdateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "westcentralus"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -109,7 +109,7 @@ function Test-GetElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "westcentralus"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -186,7 +186,7 @@ function Test-RemoveElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "12.0" "westcentralus"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
