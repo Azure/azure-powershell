@@ -19,6 +19,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Net;
+using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -68,6 +70,31 @@ namespace Microsoft.Azure.Commands.Network
             psVirtualNetworkGateway.Tag = TagsConversionHelper.CreateTagHashtable(vnetGateway.Tags);
 
             return psVirtualNetworkGateway;
+        }
+
+        public List<VirtualNetworkGateway> GetAllResourcesByPollingNextLink(IPage<VirtualNetworkGateway> resourcePage)
+        {
+            var resourceList = new List<VirtualNetworkGateway>();
+
+            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
+
+            while (!string.IsNullOrEmpty(nextPageLink))
+            {
+                var nextVnetPage = this.VirtualNetworkGatewayClient.ListNext(nextPageLink);
+                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
+            }
+
+            return resourceList;
+        }
+
+        private string AddResourceToListAndReturnNextPageLink(IPage<VirtualNetworkGateway> resourcePage, List<VirtualNetworkGateway> resourceList)
+        {
+            foreach (var resource in resourcePage)
+            {
+                resourceList.Add(resource);
+            }
+
+            return resourcePage.NextPageLink;
         }
     }
 }

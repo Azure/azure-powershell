@@ -17,12 +17,13 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Net;
+using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class VirtualNetworkBaseCmdlet : NetworkBaseCmdlet
     {
         public IVirtualNetworksOperations VirtualNetworkClient
@@ -78,6 +79,31 @@ namespace Microsoft.Azure.Commands.Network
             psVnet.Tag = TagsConversionHelper.CreateTagHashtable(vnet.Tags);
 
             return psVnet;
+        }
+
+        public List<VirtualNetwork> GetAllResourcesByPollingNextLink(IPage<VirtualNetwork> resourcePage)
+        {
+            var resourceList = new List<VirtualNetwork>();
+
+            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
+
+            while(!string.IsNullOrEmpty(nextPageLink))
+            {
+                var nextVnetPage = this.VirtualNetworkClient.ListNext(nextPageLink);
+                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
+            }
+
+            return resourceList;
+        }
+
+        private string AddResourceToListAndReturnNextPageLink(IPage<VirtualNetwork> resourcePage, List<VirtualNetwork> resourceList)
+        {
+            foreach (var resource in resourcePage)
+            {
+                resourceList.Add(resource);
+            }
+
+            return resourcePage.NextPageLink;
         }
     }
 }

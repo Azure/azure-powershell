@@ -18,6 +18,9 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Net;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -72,6 +75,31 @@ namespace Microsoft.Azure.Commands.Network
             psRouteTable.Tag = TagsConversionHelper.CreateTagHashtable(routeTable.Tags);
 
             return psRouteTable;
+        }
+
+        public List<RouteTable> GetAllResourcesByPollingNextLink(IPage<RouteTable> resourcePage)
+        {
+            var resourceList = new List<RouteTable>();
+
+            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
+
+            while (!string.IsNullOrEmpty(nextPageLink))
+            {
+                var nextVnetPage = this.RouteTableClient.ListNext(nextPageLink);
+                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
+            }
+
+            return resourceList;
+        }
+
+        private string AddResourceToListAndReturnNextPageLink(IPage<RouteTable> resourcePage, List<RouteTable> resourceList)
+        {
+            foreach (var resource in resourcePage)
+            {
+                resourceList.Add(resource);
+            }
+
+            return resourcePage.NextPageLink;
         }
     }
 }

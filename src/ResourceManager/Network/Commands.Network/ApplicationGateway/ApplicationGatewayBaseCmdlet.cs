@@ -19,6 +19,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Net;
+using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -71,6 +73,31 @@ namespace Microsoft.Azure.Commands.Network
             psAppGw.Tag = TagsConversionHelper.CreateTagHashtable(appGw.Tags);
 
             return psAppGw;
+        }
+
+        public List<ApplicationGateway> GetAllResourcesByPollingNextLink(IPage<ApplicationGateway> resourcePage)
+        {
+            var resourceList = new List<ApplicationGateway>();
+
+            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
+
+            while (!string.IsNullOrEmpty(nextPageLink))
+            {
+                var nextVnetPage = this.ApplicationGatewayClient.ListNext(nextPageLink);
+                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
+            }
+
+            return resourceList;
+        }
+
+        private string AddResourceToListAndReturnNextPageLink(IPage<ApplicationGateway> resourcePage, List<ApplicationGateway> resourceList)
+        {
+            foreach (var resource in resourcePage)
+            {
+                resourceList.Add(resource);
+            }
+
+            return resourcePage.NextPageLink;
         }
     }
 }

@@ -17,7 +17,10 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Net;
+using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -71,6 +74,31 @@ namespace Microsoft.Azure.Commands.Network
             psCircuit.Tag = TagsConversionHelper.CreateTagHashtable(circuit.Tags);
 
             return psCircuit;
+        }
+
+        public List<ExpressRouteCircuit> GetAllResourcesByPollingNextLink(IPage<ExpressRouteCircuit> resourcePage)
+        {
+            var resourceList = new List<ExpressRouteCircuit>();
+
+            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
+
+            while (!string.IsNullOrEmpty(nextPageLink))
+            {
+                var nextVnetPage = this.ExpressRouteCircuitClient.ListNext(nextPageLink);
+                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
+            }
+
+            return resourceList;
+        }
+
+        private string AddResourceToListAndReturnNextPageLink(IPage<ExpressRouteCircuit> resourcePage, List<ExpressRouteCircuit> resourceList)
+        {
+            foreach (var resource in resourcePage)
+            {
+                resourceList.Add(resource);
+            }
+
+            return resourcePage.NextPageLink;
         }
     }
 }
