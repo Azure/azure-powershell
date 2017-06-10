@@ -147,11 +147,6 @@ namespace Microsoft.Azure.Commands.Network
                         WriteObject(packetCapture);
                     });
             }
-            else
-            {
-                throw new PSArgumentException(
-                    string.Format("Packet capture with name {0} already exists", this.PacketCaptureName));
-            }
         }
 
         private PSPacketCaptureResult CreatePacketCapture()
