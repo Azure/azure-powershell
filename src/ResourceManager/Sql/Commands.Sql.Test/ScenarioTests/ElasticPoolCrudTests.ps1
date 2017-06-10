@@ -39,11 +39,6 @@ function Test-CreateElasticPool
         $poolName = Get-ElasticPoolName
         $ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName
         Assert-NotNull $ep2
-        Assert-AreEqual 200 $ep2.Dtu 
-        Assert-AreEqual 204800 $ep2.StorageMB
-        Assert-AreEqual Standard $ep2.Edition
-        Assert-AreEqual 0 $ep2.DatabaseDtuMin
-        Assert-AreEqual 100 $ep2.DatabaseDtuMax
     }
     finally
     {
