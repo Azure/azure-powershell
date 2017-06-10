@@ -648,41 +648,76 @@ function Get-LatestModuleVersion
   return $version
 }
 
-# Create a script block with modules and requiredversions for use with default parameters
-function Get-ScriptBlock
+# Gets module version to be set in default parameter in $profile
+function Get-ModuleVersion
 {
-  param($armProfile)
+  param ([string] $armProfile, [string] $invocationLine)
 
   $ProfileMap = (Get-AzProfile)
   $Modules = ($ProfileMap.$armProfile | Get-Member -MemberType NoteProperty).Name
+    
+  # Check for AzureRm first 
+  if ($invocationLine.ToLower().Contains($RollUpModule.ToLower()) -and (-not $invocationLine.ToLower().Contains("$($RollUpModule.ToLower())."))) 
+  {
+    $versions = $ProfileMap.$armProfile.$RollUpModule
+    $version = Get-LatestModuleVersion -versions $versions
+    return $version
+  }
 
-  # In scriptblock first cmd should be "if" and others "elseif". So handle first element separately
-  $ScriptBlock = @()
-  $firstModule = $modules[0].ToLower()
-  $versions = $ProfileMap.$armProfile.$firstModule
-  $version = Get-LatestModuleVersion -versions $versions
-  $ScriptBlock += "if (`$MyInvocation.Line.ToLower().Contains(`"$firstModule`")) { `"$version`" } `r`n"
-  $Modules = $Modules | Where-Object { $_ -ne $Modules[0] }
   foreach ($module in $Modules)
   {
-    if ($module.ToLower() -eq $RollUpModule.ToLower())
+    if ($module -eq $RollUpModule)
     {
       continue
     }
-    $versions = $ProfileMap.$armProfile.$module
-    $version = Get-LatestModuleVersion -versions $versions
-    $module = $module.ToLower()
-    $ScriptBlock += " elseif (`$MyInvocation.Line.ToLower().Contains(`"$module`")) { `"$version`" } `r`n"
+
+    if ($invocationLine.ToLower().Contains($module.ToLower())) 
+    {
+      $versions = $ProfileMap.$armProfile.$module
+      $version = Get-LatestModuleVersion -versions $versions
+      return $version
+    }
+  }
+}
+
+# Create a script block with function to be called to get requiredversions for use with default parameters
+function Get-ScriptBlock
+{
+  param ($ProfilePath)
+  
+  $profileContent = @()
+
+  # Write Get-ModuleVersion function to $profile path 
+  $functionScript = @"
+function Get-ModVersion
+{
+  param (`$armProfile, `$invocationLine)
+        
+  `$BoostrapModule = Get-Module -Name "AzureRM.Bootstrapper" 
+  if (`$BoostrapModule -ne `$null)
+  {
+    `$version = Get-ModuleVersion -armProfile `$armProfile -invocationLine `$invocationLine
+    return `$version
+  }
+} `r`n
+"@
+  
+  # Write function into $profile path only if its not already present
+  $getContentScriptBlock = {
+    (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'Get-ModVersion' 
+  }
+  if ($null -eq (Invoke-CommandWithRetry -ScriptBlock $getContentScriptBlock))
+  {
+    $profileContent += $functionScript
   }
 
-  # Add AzureRm module at the end to avoid confusion
-  $rollupmoduleVersions = $ProfileMap.$armProfile.$RollUpModule
-  $rollupmoduleVersion = Get-LatestModuleVersion -versions $rollupmoduleVersions
-  $rollupmodule = $rollupmodule.ToLower()
-  $ScriptBlock += " elseif (`$MyInvocation.Line.ToLower().Contains(`"$rollupmodule`") -and (-not `$MyInvocation.Line.ToLower().Contains(`"$rollupmodule.`"))) { `"$rollupmoduleVersion`" } `r`n"
-  $sb = [Scriptblock]::Create($scriptblock)
-  return $sb
+   $defaultScript = @"
+`$PSDefaultParameterValues["Import-Module:RequiredVersion"]={ Get-ModVersion -armProfile `$PSDefaultParameterValues["*-AzureRmProfile:Profile"] -invocationLine `$MyInvocation.Line }
+"@
+  $profileContent += $defaultScript
+  return $profileContent
 }
+
 
 # Add Scope parameter to the cmdlet
 function Add-ScopeParam
@@ -1147,20 +1182,6 @@ function Set-AzureRmDefaultProfile
     $defaultProfile = $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"]
     if ($defaultProfile -ne $armProfile)
     {
-      # Set DefaultProfile for this session
-      $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile"
-
-      # Edit the profile content
-      $profileContent = @"
-          `$PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile" `r`n
-"@
-
-      $scriptBlock = Get-ScriptBlock -armProfile $armProfile
-
-      $Global:PSDefaultParameterValues["Import-Module:RequiredVersion"]= $scriptBlock
-      $profileContent += @"
-          `$PSDefaultParameterValues["Import-Module:RequiredVersion"]={ $scriptBlock } `r`n
-"@
       if ($PSCmdlet.ShouldProcess("$armProfile", "Set Default Profile")) 
       {
         if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Are you sure you would like to set $armProfile as Default Profile?", "Setting $armProfile as Default profile")))
@@ -1168,14 +1189,23 @@ function Set-AzureRmDefaultProfile
           # Check Profile existence and choose proper profile
           $profilePath = Select-Profile -Scope $Scope
 
-          # Remove previous setting if exists
+          # Set DefaultProfile for this session
+          $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile"
+          $Global:PSDefaultParameterValues["Import-Module:RequiredVersion"]={ Get-ModuleVersion -armProfile $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] -invocationLine $MyInvocation.Line }
+
+          # Edit the profile content
+          $profileContent = @"
+`$PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile" `r`n
+"@
+
+          # Get Script to be added to the $profile path
+          $profileContent += Get-ScriptBlock -ProfilePath $profilePath
+
           Write-Verbose "Updating default profile value to $armProfile"
           Write-Debug "Removing previous setting if exists"
           $RemoveSettingScriptBlock = {
             (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'AzureRmProfile:Profile' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
             (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'Import-Module:RequiredVersion' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'MyInvocation.Line.ToLower' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern '}' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
           }
           Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
 
@@ -1237,8 +1267,6 @@ function Remove-AzureRmDefaultProfile
           $RemoveSettingScriptBlock = {
             (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'AzureRmProfile:Profile' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
             (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'Import-Module:RequiredVersion' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop            
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'MyInvocation.Line.ToLower' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern '}' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
           }
           Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
         }

@@ -771,16 +771,27 @@ Describe "Get-LatestModuleVersion" {
     }
 }
 
-Describe "Get-ScriptBlock" {
+Describe "Get-ModuleVersion" {
     InModuleScope AzureRM.Bootstrapper {
-        Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
-        Mock Get-LatestModuleVersion {"1.0"}
-        Context "Creates a script block" {
+        Mock Get-AzProfile -Verifiable { $testProfileMap | ConvertFrom-Json }
+        Mock Get-LatestModuleVersion -Verifiable { "2.0" }
+        Context "Gets module version" {
             $RollupModule = "Module1"
             It "Should return script block" {
-                $result = Get-ScriptBlock -armProfile "Profile1"
-                $result.GetType().name | Should Be "ScriptBlock"
-                $result.ToString().contains("MyInvocation.Line.ToLower().Contains") | Should Be $true
+                Get-ModuleVersion -armProfile "Profile1" -invocationLine "ipmo module1" | Should Be "2.0"
+                Assert-VerifiableMocks
+            }
+        }
+    }
+}
+
+Describe "Get-ScriptBlock" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Invoke-CommandWithRetry -Verifiable {}
+        Context "Creates a script block" {
+            It "Should return script block" {
+                $result = Get-ScriptBlock -ProfilePath "Profilepath"
+                $result[1].contains("Import-Module:RequiredVersion") | Should Be $true
                 Assert-VerifiableMocks
             }
         }
