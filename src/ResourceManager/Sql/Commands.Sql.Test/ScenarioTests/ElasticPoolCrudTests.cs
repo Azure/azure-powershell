@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -51,7 +52,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolMetricGet()
         {
-            RunPowerShellTest("Test-GetElasticPoolMetric");
+            // Test cannot be re-recorded because it has hardcoded server name
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                RunPowerShellTest("Test-GetElasticPoolMetric");
+            }
         }
 
         [Fact]
