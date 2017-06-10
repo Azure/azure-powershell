@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -67,23 +69,20 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(vnet);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var vnetList = this.VirtualNetworkClient.List(this.ResourceGroupName);
-
-                var psVnets = new List<PSVirtualNetwork>();
-                foreach (var virtualNetwork in vnetList)
-                {
-                    var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
-                    psVnet.ResourceGroupName = this.ResourceGroupName;
-                    psVnets.Add(psVnet);
-                }
-
-                WriteObject(psVnets, true);
-            }
             else
             {
-                var vnetList = this.VirtualNetworkClient.ListAll();
+                IPage<VirtualNetwork> vnetPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    vnetPage = this.VirtualNetworkClient.List(this.ResourceGroupName);
+                }
+                else
+                {
+                    vnetPage = this.VirtualNetworkClient.ListAll();
+                }
+
+                // Get all resources by polling on next page link
+                var vnetList = this.GetAllResourcesByPollingNextLink(vnetPage);
 
                 var psVnets = new List<PSVirtualNetwork>();
                 foreach (var virtualNetwork in vnetList)

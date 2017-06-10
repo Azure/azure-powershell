@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -66,25 +68,20 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(publicIp);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var publicIPList = this.PublicIpAddressClient.List(this.ResourceGroupName);
-
-                var psPublicIps = new List<PSPublicIpAddress>();
-
-                // populate the publicIpAddresses with the ResourceGroupName
-                foreach (var publicIp in publicIPList)
-                {
-                    var psPublicIp = this.ToPsPublicIpAddress(publicIp);
-                    psPublicIp.ResourceGroupName = this.ResourceGroupName;
-                    psPublicIps.Add(psPublicIp);
-                }
-
-                WriteObject(psPublicIps, true);
-            }
             else
             {
-                var publicIPList = this.PublicIpAddressClient.ListAll();
+                IPage<PublicIPAddress> publicipPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    publicipPage = this.PublicIpAddressClient.List(this.ResourceGroupName);                   
+                }
+                else
+                {
+                    publicipPage = this.PublicIpAddressClient.ListAll();
+                }
+
+                // Get all resources by polling on next page link
+                var publicIPList = this.GetAllResourcesByPollingNextLink(publicipPage);
 
                 var psPublicIps = new List<PSPublicIpAddress>();
 

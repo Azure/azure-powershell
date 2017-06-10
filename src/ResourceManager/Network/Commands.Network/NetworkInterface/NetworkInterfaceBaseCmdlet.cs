@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Net;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -91,6 +92,31 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             return psNic;
+        }
+
+        public List<NetworkInterface> GetAllResourcesByPollingNextLink(IPage<NetworkInterface> resourcePage)
+        {
+            var resourceList = new List<NetworkInterface>();
+
+            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
+
+            while (!string.IsNullOrEmpty(nextPageLink))
+            {
+                var nextVnetPage = this.NetworkInterfaceClient.ListNext(nextPageLink);
+                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
+            }
+
+            return resourceList;
+        }
+
+        private string AddResourceToListAndReturnNextPageLink(IPage<NetworkInterface> resourcePage, List<NetworkInterface> resourceList)
+        {
+            foreach (var resource in resourcePage)
+            {
+                resourceList.Add(resource);
+            }
+
+            return resourcePage.NextPageLink;
         }
     }
 }

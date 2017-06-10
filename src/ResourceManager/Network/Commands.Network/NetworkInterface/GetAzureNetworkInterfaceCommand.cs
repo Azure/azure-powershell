@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -129,48 +130,42 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(networkInterface);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            else
             {
-                IEnumerable<MNM.NetworkInterface> nicList;
-
-                if (ParameterSetName.Contains("ScaleSetNic"))
+                IPage<MNM.NetworkInterface> nicPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    if (string.IsNullOrEmpty(this.VirtualMachineIndex))
+                    if (ParameterSetName.Contains("ScaleSetNic"))
                     {
-                        nicList =
-                            this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(
-                                this.ResourceGroupName,
-                                this.VirtualMachineScaleSetName);
+                        if (string.IsNullOrEmpty(this.VirtualMachineIndex))
+                        {
+                            nicPage =
+                                this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(
+                                    this.ResourceGroupName,
+                                    this.VirtualMachineScaleSetName);
+                        }
+                        else
+                        {
+                            nicPage =
+                                this.NetworkInterfaceClient.ListVirtualMachineScaleSetVMNetworkInterfaces(
+                                    this.ResourceGroupName,
+                                    this.VirtualMachineScaleSetName,
+                                    this.VirtualMachineIndex);
+                        }
                     }
                     else
                     {
-                        nicList =
-                            this.NetworkInterfaceClient.ListVirtualMachineScaleSetVMNetworkInterfaces(
-                                this.ResourceGroupName,
-                                this.VirtualMachineScaleSetName,
-                                this.VirtualMachineIndex);
-                    }
+                        nicPage = this.NetworkInterfaceClient.List(this.ResourceGroupName);
+                    }                    
                 }
+
                 else
                 {
-                    nicList = this.NetworkInterfaceClient.List(this.ResourceGroupName);
+                    nicPage = this.NetworkInterfaceClient.ListAll();
                 }
 
-                var psNetworkInterfaces = new List<PSNetworkInterface>();
-
-                foreach (var nic in nicList)
-                {
-                    var psNic = this.ToPsNetworkInterface(nic);
-                    psNic.ResourceGroupName = this.ResourceGroupName;
-                    psNetworkInterfaces.Add(psNic);
-                }
-
-                WriteObject(psNetworkInterfaces, true);
-            }
-
-            else
-            {
-                var nicList = this.NetworkInterfaceClient.ListAll();
+                // Get all resources by polling on next page link
+                var nicList = this.GetAllResourcesByPollingNextLink(nicPage);
 
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 

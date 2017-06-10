@@ -19,6 +19,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Net;
+using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -73,6 +75,31 @@ namespace Microsoft.Azure.Commands.Network
                 psPublicIpAddress.IpAddress = "Not Assigned";
             }
             return psPublicIpAddress;
+        }
+
+        public List<PublicIPAddress> GetAllResourcesByPollingNextLink(IPage<PublicIPAddress> resourcePage)
+        {
+            var resourceList = new List<PublicIPAddress>();
+
+            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
+
+            while (!string.IsNullOrEmpty(nextPageLink))
+            {
+                var nextVnetPage = this.PublicIpAddressClient.ListNext(nextPageLink);
+                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
+            }
+
+            return resourceList;
+        }
+
+        private string AddResourceToListAndReturnNextPageLink(IPage<PublicIPAddress> resourcePage, List<PublicIPAddress> resourceList)
+        {
+            foreach (var resource in resourcePage)
+            {
+                resourceList.Add(resource);
+            }
+
+            return resourcePage.NextPageLink;
         }
     }
 }
