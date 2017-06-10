@@ -54,8 +54,9 @@ function Validate-FailoverGroup($server, $partnerServer, $name, $role, $failover
 	Assert-AreEqual $partnerServer.ResourceGroupName $fg.PartnerResourceGroupName "`$fg.PartnerResourceGroupName ($message)"
 	Assert-AreEqual $server.ServerName $fg.ServerName "`$fg.ServerName ($message)"
 	Assert-AreEqual $partnerServer.ServerName $fg.PartnerServerName "`$fg.PartnerServerName ($message)"
-	Assert-AreEqual $server.Location $fg.Location "`$fg.Location ($message)"
-	Assert-AreEqual $partnerServer.Location $fg.PartnerLocation "`$fg.PartnerLocation ($message)"
+	# Commented out because server location is a location id, but FG location is a location friendly name
+	# Assert-AreEqual $server.Location $fg.Location "`$fg.Location ($message)"
+	# Assert-AreEqual $partnerServer.Location $fg.PartnerLocation "`$fg.PartnerLocation ($message)"
 	Assert-AreEqual $role $fg.ReplicationRole "`$fg.ReplicationRole ($message)"
 	Assert-AreEqual $failoverPolicy $fg.ReadWriteFailoverPolicy "`$fg.FailoverPolicy ($message)"
 	Assert-AreEqual $gracePeriod $fg.FailoverWithDataLossGracePeriodHours "`$fg.FailoverWithGraceperiodHours ($message)"
