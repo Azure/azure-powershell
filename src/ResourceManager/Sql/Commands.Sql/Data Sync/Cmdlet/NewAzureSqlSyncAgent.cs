@@ -30,9 +30,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync agent name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync agent name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "The sync agent name.")]
+        [Alias("SyncAgentName")]
         [ValidateNotNullOrEmpty]
-        public string SyncAgentName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database used to store sync related metadata
@@ -72,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             // We try to get the sync agent.  Since this is a create, we don't want the sync agent to exist
             try
             {
-                ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.SyncAgentName);
+                ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.Name);
             }
             catch (CloudException ex)
             {
@@ -88,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 
             // The sync agent already exists
             throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SyncAgentNameExists, this.SyncAgentName, this.ResourceGroupName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SyncAgentNameExists, this.Name, this.ResourceGroupName),
                 "SyncAgentName");
         }
 
@@ -104,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
-                SyncAgentName = this.SyncAgentName
+                SyncAgentName = this.Name
             });
 
             if (MyInvocation.BoundParameters.ContainsKey("SyncDatabaseName"))

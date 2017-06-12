@@ -33,9 +33,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync group name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync group name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3, 
+            HelpMessage = "The sync group name.")]
+        [Alias("SyncGroupName")]
         [ValidateNotNullOrEmpty]
-        public string SyncGroupName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database used to store sync related metadata
@@ -103,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             // We try to get the sync group. Since this is a create, we don't want the sync group to exist
             try
             {
-                ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName);
+                ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.Name);
             }
             catch (CloudException ex)
             {
@@ -119,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 
             // The sync group already exists
             throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SyncGroupNameExists, this.SyncGroupName, this.DatabaseName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SyncGroupNameExists, this.Name, this.DatabaseName),
                 "SyncGroupName");
         }
 
@@ -136,7 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 DatabaseName = this.DatabaseName,
-                SyncGroupName = this.SyncGroupName,
+                SyncGroupName = this.Name,
                 ConflictResolutionPolicy = this.ConflictResolutionPolicy != null ? this.ConflictResolutionPolicy.ToString() : null,
                 HubDatabaseUserName = this.HubDatabaseCredential != null ? this.HubDatabaseCredential.UserName : null,
                 HubDatabasePassword = this.HubDatabaseCredential != null ? this.HubDatabaseCredential.Password : null

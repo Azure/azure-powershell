@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public DateTime? TimeStamp { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of logs
+        /// Gets or sets the log level of logs
         /// </summary>
-        public string Type { get; set; }
+        public string LogLevel { get; set; }
 
         /// <summary>
         /// Gets or sets the content of logs
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public AzureSqlSyncGroupLogModel(SyncGroupLog syncGroupLog)
         {
             TimeStamp = syncGroupLog.TimeStamp;
-            Type = syncGroupLog.Type == null ? null : syncGroupLog.Type.ToString();
+            LogLevel = syncGroupLog.Type == null ? null : syncGroupLog.Type.ToString();
             Details = syncGroupLog.Details;
             Source = syncGroupLog.Source;
         }

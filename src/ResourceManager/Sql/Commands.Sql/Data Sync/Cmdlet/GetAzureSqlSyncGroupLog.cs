@@ -33,9 +33,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync group name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync group name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3, 
+            HelpMessage = "The sync group name.")]
+        [Alias("SyncGroupName")]
         [ValidateNotNullOrEmpty]
-        public string SyncGroupName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the start time of logs to query
@@ -57,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             + "'Error', 'Warning', 'Success' and 'All'.")]
         [ValidateSet("Error", "Warning", "Success", "All", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string Type { get; set; }
+        public string LogLevel { get; set; }
 
         /// <summary>
         /// Creation and initialization of the ModelAdapter object
@@ -77,10 +80,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             return ModelAdapter.ListSyncGroupLogs(this.ResourceGroupName, this.ServerName, this.DatabaseName, new SyncGroupLogGetParameters
             {
-                SyncGroupName = this.SyncGroupName,
+                SyncGroupName = this.Name,
                 StartTime = this.StartTime.ToString(),
                 EndTime = MyInvocation.BoundParameters.ContainsKey("EndTime") ? this.EndTime.ToString() : DateTime.Now.ToString(),
-                Type = MyInvocation.BoundParameters.ContainsKey("Type") ? this.Type : LogType.All.ToString()
+                Type = MyInvocation.BoundParameters.ContainsKey("LogLevel") ? this.LogLevel : LogType.All.ToString()
             });
         }
 

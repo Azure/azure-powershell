@@ -30,8 +30,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync group name
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The sync group name.")]
-        public string SyncGroupName { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3,
+            HelpMessage = "The sync group name.")]
+        [Alias("SyncGroupName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -41,10 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             ICollection<AzureSqlSyncGroupModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("SyncGroupName"))
+            if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {
                 results = new List<AzureSqlSyncGroupModel>();
-                results.Add(ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName));
+                results.Add(ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.Name));
             }
             else
             {

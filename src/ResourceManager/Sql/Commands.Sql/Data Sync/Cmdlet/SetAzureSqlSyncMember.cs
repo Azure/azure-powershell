@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The sync member name.")]
+        [Alias("SyncMemberName")]
         [ValidateNotNullOrEmpty]
-        public string SyncMemberName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the credential (username and password) of Azure SQL database. 
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         protected override IEnumerable<AzureSqlSyncMemberModel> GetEntity()
         {
             return new List<AzureSqlSyncMemberModel>() { 
-               ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.SyncMemberName)
+               ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name)
             };
         }
 
