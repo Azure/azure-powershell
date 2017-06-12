@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var appGwResponseList = this.GetAllResourcesByPollingNextLink(appGatewayPage);
+                var appGwResponseList = ListNextLink<ApplicationGateway>.GetAllResourcesByPollingNextLink(appGatewayPage, this.ApplicationGatewayClient.ListNext);
 
                 var psApplicationGateways = new List<PSApplicationGateway>();
 

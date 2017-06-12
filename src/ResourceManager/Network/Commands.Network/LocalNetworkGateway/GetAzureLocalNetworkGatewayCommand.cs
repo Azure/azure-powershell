@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
                 var localnetGatewayPage = this.LocalNetworkGatewayClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var localnetGatewayList = this.GetAllResourcesByPollingNextLink(localnetGatewayPage);
+                var localnetGatewayList = ListNextLink<LocalNetworkGateway>.GetAllResourcesByPollingNextLink(localnetGatewayPage, this.LocalNetworkGatewayClient.ListNext);
 
                 var psLocalnetGateways = new List<PSLocalNetworkGateway>();
                 foreach (var localNetworkGateway in localnetGatewayList)

@@ -70,31 +70,6 @@ namespace Microsoft.Azure.Commands.Network
             psLocalNetworkGateway.Tag = TagsConversionHelper.CreateTagHashtable(localnetGateway.Tags);
 
             return psLocalNetworkGateway;
-        }
-
-        public List<LocalNetworkGateway> GetAllResourcesByPollingNextLink(IPage<LocalNetworkGateway> resourcePage)
-        {
-            var resourceList = new List<LocalNetworkGateway>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.LocalNetworkGatewayClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<LocalNetworkGateway> resourcePage, List<LocalNetworkGateway> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
+        }        
     }
 }

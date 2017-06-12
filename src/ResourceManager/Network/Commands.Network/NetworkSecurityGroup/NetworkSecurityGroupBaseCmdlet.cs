@@ -73,31 +73,6 @@ namespace Microsoft.Azure.Commands.Network
             psNsg.Tag = TagsConversionHelper.CreateTagHashtable(nsg.Tags);
 
             return psNsg;
-        }
-
-        public List<NetworkSecurityGroup> GetAllResourcesByPollingNextLink(IPage<NetworkSecurityGroup> resourcePage)
-        {
-            var resourceList = new List<NetworkSecurityGroup>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.NetworkSecurityGroupClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<NetworkSecurityGroup> resourcePage, List<NetworkSecurityGroup> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
+        }        
     }
 }

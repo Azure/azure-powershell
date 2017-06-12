@@ -76,30 +76,5 @@ namespace Microsoft.Azure.Commands.Network
             }
             return psPublicIpAddress;
         }
-
-        public List<PublicIPAddress> GetAllResourcesByPollingNextLink(IPage<PublicIPAddress> resourcePage)
-        {
-            var resourceList = new List<PublicIPAddress>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.PublicIpAddressClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<PublicIPAddress> resourcePage, List<PublicIPAddress> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
     }
 }

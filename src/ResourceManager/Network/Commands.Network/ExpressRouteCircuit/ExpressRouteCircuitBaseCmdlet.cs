@@ -75,30 +75,5 @@ namespace Microsoft.Azure.Commands.Network
 
             return psCircuit;
         }
-
-        public List<ExpressRouteCircuit> GetAllResourcesByPollingNextLink(IPage<ExpressRouteCircuit> resourcePage)
-        {
-            var resourceList = new List<ExpressRouteCircuit>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.ExpressRouteCircuitClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<ExpressRouteCircuit> resourcePage, List<ExpressRouteCircuit> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
     }
 }

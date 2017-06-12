@@ -74,30 +74,5 @@ namespace Microsoft.Azure.Commands.Network
 
             return psLb;
         }
-
-        public List<LoadBalancer> GetAllResourcesByPollingNextLink(IPage<LoadBalancer> resourcePage)
-        {
-            var resourceList = new List<LoadBalancer>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.LoadBalancerClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<LoadBalancer> resourcePage, List<LoadBalancer> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
     }
 }

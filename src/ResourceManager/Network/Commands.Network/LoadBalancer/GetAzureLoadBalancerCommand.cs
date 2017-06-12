@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var lbList = this.GetAllResourcesByPollingNextLink(lbPage);
+                var lbList = ListNextLink<LoadBalancer>.GetAllResourcesByPollingNextLink(lbPage, this.LoadBalancerClient.ListNext);
 
                 var psLoadBalancers = new List<PSLoadBalancer>();
 

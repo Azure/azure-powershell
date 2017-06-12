@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var publicIPList = this.GetAllResourcesByPollingNextLink(publicipPage);
+                var publicIPList = ListNextLink<PublicIPAddress>.GetAllResourcesByPollingNextLink(publicipPage, this.PublicIpAddressClient.ListNext);
 
                 var psPublicIps = new List<PSPublicIpAddress>();
 

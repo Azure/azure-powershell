@@ -71,31 +71,6 @@ namespace Microsoft.Azure.Commands.Network
             psRouteFilter.Tag = TagsConversionHelper.CreateTagHashtable(routeFilter.Tags);
 
             return psRouteFilter;
-        }
-
-        public List<RouteFilter> GetAllResourcesByPollingNextLink(IPage<RouteFilter> resourcePage)
-        {
-            var resourceList = new List<RouteFilter>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.RouteFilterClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<RouteFilter> resourcePage, List<RouteFilter> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
+        }        
     }
 }

@@ -16,6 +16,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var nicList = this.GetAllResourcesByPollingNextLink(nicPage);
+                var nicList = ListNextLink<NetworkInterface>.GetAllResourcesByPollingNextLink(nicPage, this.NetworkInterfaceClient.ListNext);
 
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 

@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var routeFilterList = this.GetAllResourcesByPollingNextLink(routeFilterPage);
+                var routeFilterList = ListNextLink<RouteFilter>.GetAllResourcesByPollingNextLink(routeFilterPage, this.RouteFilterClient.ListNext);
 
                 var psRouteFilters = new List<PSRouteFilter>();
 
