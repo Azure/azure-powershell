@@ -71,6 +71,6 @@ namespace Microsoft.Azure.Commands.Network
             psNsg.Tag = TagsConversionHelper.CreateTagHashtable(nsg.Tags);
 
             return psNsg;
-        }        
+        }
     }
 }

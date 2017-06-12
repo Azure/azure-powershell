@@ -93,8 +93,7 @@ namespace Microsoft.Azure.Commands.Network
                     psRouteFilters.Add(psRouteFilter);
                 }
 
-                WriteObject(psRouteFilters, true);
-                
+                WriteObject(psRouteFilters, true);                
             }
         }
     }

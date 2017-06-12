@@ -69,6 +69,6 @@ namespace Microsoft.Azure.Commands.Network
             psRouteFilter.Tag = TagsConversionHelper.CreateTagHashtable(routeFilter.Tags);
 
             return psRouteFilter;
-        }        
+        }
     }
 }

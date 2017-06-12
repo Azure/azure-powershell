@@ -68,6 +68,6 @@ namespace Microsoft.Azure.Commands.Network
             psVirtualNetworkGateway.Tag = TagsConversionHelper.CreateTagHashtable(vnetGateway.Tags);
 
             return psVirtualNetworkGateway;
-        }        
+        }
     }
 }
