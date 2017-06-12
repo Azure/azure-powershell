@@ -29,11 +29,11 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
 
 	$copyRg = Create-ResourceGroupForTest $location
-	$copyServer = Create-ServerForTest $copyRg $serverVersion $location
+	$copyServer = Create-ServerForTest $copyRg $location
 	$copyDatabaseName = Get-DatabaseName
 
 	try
@@ -82,11 +82,11 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	
@@ -131,11 +131,11 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	
@@ -183,11 +183,11 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	
@@ -223,11 +223,11 @@ function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "No
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
 
 	$partRg = Create-ResourceGroupForTest $location
-	$partServer = Create-ServerForTest $partRg $serverVersion $location
+	$partServer = Create-ServerForTest $partRg $location
 
 	try
 	{	

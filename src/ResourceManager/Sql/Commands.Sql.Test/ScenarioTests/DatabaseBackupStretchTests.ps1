@@ -25,7 +25,7 @@ function Test-ListStretchDatabaseRestorePoints
 
 	try
 	{
-		$server = Create-ServerForTest $rg $serverVersion $location
+		$server = Create-ServerForTest $rg $location
 
 		# Create stretch database with all parameters.
 		$databaseName = Get-DatabaseName

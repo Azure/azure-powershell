@@ -230,7 +230,7 @@ function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 			  serverKeyName = "akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106";
 			  vaultName = "akvtdekeyvault";
 			  keyName = "key1"
-			  location = "Southeast Asia";
+			  location = "centraluseuap";
 			  }
 }
 
@@ -358,14 +358,14 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "westcentralus")
+function Create-ServerForTest ($resourceGroup, $location = "westcentralus")
 {
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	$server = New-AzureRmSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	$server = New-AzureRmSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -SqlAdministratorCredentials $credentials
 	return $server
 }
 

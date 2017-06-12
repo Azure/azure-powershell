@@ -30,7 +30,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "westcentralus
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
@@ -70,7 +70,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "westcentralus
 {
 	# Setup
 		$rg = Create-ResourceGroupForTest $location
-		$server = Create-ServerForTest $rg $serverVersion $location
+		$server = Create-ServerForTest $rg $location
 	try {
 		# Create stretch database
 		$databaseName = Get-DatabaseName
@@ -113,7 +113,7 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
@@ -157,7 +157,7 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "westcentralu
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
