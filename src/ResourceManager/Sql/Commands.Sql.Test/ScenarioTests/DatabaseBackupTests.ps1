@@ -25,7 +25,7 @@ function Test-ListDatabaseRestorePoints
 
 	try
 	{
-		$server = Create-ServerForTest $rg $serverVersion $location
+		$server = Create-ServerForTest $rg $location
 
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName

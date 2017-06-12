@@ -29,7 +29,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "westcentralus
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
@@ -145,7 +145,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "westcentralus
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
@@ -246,7 +246,7 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
@@ -323,7 +323,7 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "westcentralu
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName

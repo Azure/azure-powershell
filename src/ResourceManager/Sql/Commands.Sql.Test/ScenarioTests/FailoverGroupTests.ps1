@@ -19,8 +19,8 @@ function Handle-FailoverGroupTest($scriptBlock, $primaryLocation = "North Europe
 		$isCreated = $rg -eq $null
 
 		$rg = if ($rg -eq $null) { Create-ResourceGroupForTest } else { $rg }
-		$server1 = if ($server1 -eq $null) { Create-ServerForTest $rg $serverVersion $primaryLocation } else { $server1 }
-		$server2 = if ($server2 -eq $null) { Create-ServerForTest $rg $serverVersion $secondaryLocation } else { $server2 }
+		$server1 = if ($server1 -eq $null) { Create-ServerForTest $rg $primaryLocation } else { $server1 }
+		$server2 = if ($server2 -eq $null) { Create-ServerForTest $rg $secondaryLocation } else { $server2 }
 
 		Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $server1,$server2
 	}

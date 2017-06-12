@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$location = 'centraluseuap'
+
 <#
 	.SYNOPSIS
 	Tests updating a database transparent data encryption
@@ -20,7 +22,7 @@ function Test-UpdateTransparentDataEncryption
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
@@ -51,7 +53,7 @@ function Test-GetTransparentDataEncryption
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
@@ -90,15 +92,8 @@ function Test-GetTransparentDataEncryption
 function Test-GetTransparentDataEncryptionProtector
 {
 	# Setup
-	$location = "Southeast Asia"
-	$rgName = Get-ResourceGroupName
-	$rg = New-AzureRmResourceGroup -Name $rgName -Location $location -Force
-	$serverName = Get-ServerName
-	$serverLogin = "testusername"
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
-	
-	$server = New-AzureRmSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
