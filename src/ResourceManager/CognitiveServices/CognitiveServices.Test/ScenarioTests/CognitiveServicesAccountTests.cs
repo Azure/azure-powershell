@@ -109,5 +109,12 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-PipingToGetAccountSkus");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMinMaxAccountNames()
+        {
+            TestController.NewInstance.RunPsTest("Test-MinMaxAccountName");
+        }
     }
 }
