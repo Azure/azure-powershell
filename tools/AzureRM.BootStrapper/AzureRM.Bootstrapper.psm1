@@ -693,31 +693,57 @@ function Get-ModVersion
 {
   param (`$armProfile, `$invocationLine)
         
-  `$BoostrapModule = Get-Module -Name "AzureRM.Bootstrapper" 
-  if (`$BoostrapModule -ne `$null)
+  `$BoostrapModule = Get-Module -Name "AzureRM.Bootstrapper" -ListAvailable
+  if (`$null -ne `$BoostrapModule)
   {
+    Import-Module -Name "AzureRM.Bootstrapper" -RequiredVersion '0.1.0'
     `$version = Get-ModuleVersion -armProfile `$armProfile -invocationLine `$invocationLine
     return `$version
   }
 } `r`n
 "@
   
-  # Write function into $profile path only if its not already present
-  $getContentScriptBlock = {
-    (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'Get-ModVersion' 
-  }
-  if ($null -eq (Invoke-CommandWithRetry -ScriptBlock $getContentScriptBlock))
-  {
-    $profileContent += $functionScript
-  }
+  $profileContent += $functionScript
 
-   $defaultScript = @"
+  $defaultScript = @"
 `$PSDefaultParameterValues["Import-Module:RequiredVersion"]={ Get-ModVersion -armProfile `$PSDefaultParameterValues["*-AzureRmProfile:Profile"] -invocationLine `$MyInvocation.Line }
+########## END AzureRM.Bootstrapper scripts
 "@
   $profileContent += $defaultScript
   return $profileContent
 }
 
+function Remove-ProfileSetting
+{
+  [CmdletBinding(SupportsShouldProcess=$true)]
+  param ([string] $profilePath)
+
+  $RemoveSettingScriptBlock = {
+    $reqLines = @()
+    Get-Content -Path $profilePath -ErrorAction Stop | 
+      Foreach-Object { 
+        if($_.contains("BEGIN AzureRM.Bootstrapper scripts") -or $donotread)
+        {
+          $donotread = $true; 
+        } 
+        else 
+        { 
+          $reqLines += $_ 
+        }
+        if ($_.contains("END AzureRM.Bootstrapper scripts"))
+        { 
+          $donotread = $false 
+        }
+      }
+
+      if ($PSCmdlet.ShouldProcess($reqLines, "Updating `$profile conents"))
+      {
+        Set-Content -path $profilePath -Value $reqLines -ErrorAction Stop 
+      }
+  }
+  
+  Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
+}
 
 # Add Scope parameter to the cmdlet
 function Add-ScopeParam
@@ -1195,6 +1221,7 @@ function Set-AzureRmDefaultProfile
 
           # Edit the profile content
           $profileContent = @"
+########## BEGIN AzureRM.Bootstrapper scripts
 `$PSDefaultParameterValues["*-AzureRmProfile:Profile"]="$armProfile" `r`n
 "@
 
@@ -1203,11 +1230,7 @@ function Set-AzureRmDefaultProfile
 
           Write-Verbose "Updating default profile value to $armProfile"
           Write-Debug "Removing previous setting if exists"
-          $RemoveSettingScriptBlock = {
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'AzureRmProfile:Profile' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'Import-Module:RequiredVersion' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
-          }
-          Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
+          Remove-ProfileSetting -profilePath $profilePath
 
           Write-Debug "Adding new default profile value as $armProfile"
           $AddContentScriptBlock = {
@@ -1242,9 +1265,16 @@ function Remove-AzureRmDefaultProfile
       {
         Write-Verbose "Removing default profile value"
         $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
+        $Global:PSDefaultParameterValues.Remove("Import-Module:RequiredVersion")
+        
+        # Remove AzureRm modules except bootstrapper module
         $importedModules = Get-Module "Azure*"
         foreach ($importedModule in $importedModules) 
         {
+          if ($importedModule.Name -eq "AzureRM.Bootstrapper")
+          {
+            continue
+          }
           Remove-Module -Name $importedModule -Force -ErrorAction "SilentlyContinue"
         }
 
@@ -1264,11 +1294,7 @@ function Remove-AzureRmDefaultProfile
             continue
           }
 
-          $RemoveSettingScriptBlock = {
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'AzureRmProfile:Profile' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop
-            (Get-Content -Path $profilePath -ErrorAction Stop) | Select-String -pattern 'Import-Module:RequiredVersion' -notmatch | Set-Content -path  $profilePath -ErrorAction Stop            
-          }
-          Invoke-CommandWithRetry -ScriptBlock $RemoveSettingScriptBlock
+          Remove-ProfileSetting -profilePath $profilePath
         }
       }
     }

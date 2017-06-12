@@ -755,8 +755,44 @@ Describe "Invoke-CommandWithRetry" {
                 { Invoke-CommandWithRetry -scriptBlock $scriptBlock } | Should throw
             }
         }
-
     }   
+}
+
+Describe "Select-Profile" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Test-Path -Verifiable { $true }
+        Context "Scope AllUsers with Admin rights" {
+            $script:IsAdmin = $true
+            It "Should return AllUsersAllHosts profile" {
+                Select-Profile -scope "AllUsers" | Should Be $profile.AllUsersAllHosts 
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Scope CurrentUser" {
+            It "Should return CurrentUserAllHosts profile" {
+                Select-Profile -scope "CurrentUser" | Should Be $profile.CurrentUserAllHosts 
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Scope AllUsers no admin rights" {
+            $script:IsAdmin = $false
+            It "Should throw for admin rights" {
+                { Select-Profile -scope "AllUsers" } | Should throw
+            }
+        }
+
+        Context "ProfilePath does not exist" {
+            $script:IsAdmin = $false
+            Mock Test-Path -Verifiable { $false }
+            Mock New-Item -Verifiable {}
+            It "Should create a new file for profile" {
+                Select-Profile -scope "CurrentUser" | Should Be $profile.CurrentUserAllHosts 
+                Assert-VerifiableMocks
+            }
+        }
+    }
 }
 
 Describe "Get-LatestModuleVersion" {
@@ -787,11 +823,32 @@ Describe "Get-ModuleVersion" {
 
 Describe "Get-ScriptBlock" {
     InModuleScope AzureRM.Bootstrapper {
-        Mock Invoke-CommandWithRetry -Verifiable {}
         Context "Creates a script block" {
             It "Should return script block" {
                 $result = Get-ScriptBlock -ProfilePath "Profilepath"
                 $result[1].contains("Import-Module:RequiredVersion") | Should Be $true
+                Assert-VerifiableMocks
+            }
+        }
+    }
+}
+
+Describe "Remove-ProfileSetting" {
+    InModuleScope AzureRM.Bootstrapper {
+        Mock Set-Content -Verifiable {}
+
+        Context "Profile contents had bootstrapper scripts" {
+            $contents = @"
+Temp Line 1
+##BEGIN AzureRM.Bootstrapper scripts
+Temp Line 2
+Temp Line 3
+##END AzureRM.Bootstrapper scripts
+Temp Line 4
+"@
+            Mock Get-Content -Verifiable { $contents }
+            It "Should return lines 1 and 4" {
+                Remove-ProfileSetting -profilePath "testpath"
                 Assert-VerifiableMocks
             }
         }
@@ -1274,10 +1331,12 @@ Describe "Set-AzureRmDefaultProfile" {
         Mock Get-ScriptBlock -Verifiable { $sb }
         Mock Invoke-CommandWithRetry -Verifiable {}
         Mock Select-Profile -verifiable {}
+        Mock Remove-ProfileSetting -Verifiable {}
         Mock Get-AzProfile -Verifiable { ($global:testProfileMap | ConvertFrom-Json) }
 
         Context "New default profile value is given" {
             It "Setting default profile succeeds" {
+                $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
                 Assert-VerifiableMocks
@@ -1286,6 +1345,7 @@ Describe "Set-AzureRmDefaultProfile" {
 
         Context "User wants to update default profile value" {
             It "Should update default profile value" {
+                $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 Set-AzureRmDefaultProfile -Profile "Profile2" -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile2"
                 Assert-VerifiableMocks
@@ -1295,26 +1355,8 @@ Describe "Set-AzureRmDefaultProfile" {
         Context "Removing old default profile vaule throws" {
             Mock Invoke-CommandWithRetry -Verifiable { throw }
             It "Should throw for updating default profile" {
-                  { Set-AzureRmDefaultProfile -Profile "Profile1" -Force } | Should throw
-                  Assert-VerifiableMocks
-            }
-        }
-
-        Context "Setting default profile value failed" {
-            $Script:mockCalled = 0
-            $mockTestPath = {
-                $Script:mockCalled++
-                if ($Script:mockCalled -eq 1)
-                {
-                    return $null
-                }
-                else {
-                   throw 
-                }
-            }   
-            Mock -CommandName Invoke-CommandWithRetry -MockWith $mockTestPath
-            It "Should throw for setting default profile" {
-                { Set-AzureRmDefaultProfile -Profile "Profile2" -Force } | Should throw
+                $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
+                { Set-AzureRmDefaultProfile -Profile "Profile1" -Force } | Should throw
                 Assert-VerifiableMocks
             }
         }
@@ -1323,6 +1365,7 @@ Describe "Set-AzureRmDefaultProfile" {
             $script:IsAdmin = $true
             Mock Select-Profile -Verifiable { "AllUsersProfile"}
             It "Should succeed setting AllUsers Profile" {
+                $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Scope "AllUsers" -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
                 Assert-VerifiableMocks
@@ -1333,7 +1376,18 @@ Describe "Set-AzureRmDefaultProfile" {
             $script:IsAdmin = $false
             Mock Select-Profile -Verifiable { throw }
             It "Should throw for AllUsers Profile" {
+                $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 { Set-AzureRmDefaultProfile -Profile "Profile2" -Scope "AllUsers" -Force } | Should throw
+                Assert-VerifiableMocks
+            }
+        }
+
+        Context "Set a Default Profile twice" {
+            It "Should not edit profile content twice" {
+                $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
+                Set-AzureRmDefaultProfile -Profile "Profile1" -Force 
+                Set-AzureRmDefaultProfile -Profile "Profile1" -Force 
+                Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
                 Assert-VerifiableMocks
             }
         }
@@ -1343,7 +1397,7 @@ Describe "Set-AzureRmDefaultProfile" {
 Describe "Remove-AzureRmDefaultProfile" {
     InModuleScope AzureRM.Bootstrapper {
         Mock Remove-Module -Verifiable {}
-        Mock Invoke-CommandWithRetry -Verifiable {}
+        Mock Remove-ProfileSetting -Verifiable {}
         Mock Test-Path -Verifiable { $true }
         
         Context "Default profile presents in the profile file & default variable" {
