@@ -22,52 +22,40 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(bool))]
     public class EnableAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.ObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            TrafficManagerEndpoint endpointToEnable = null;
+            string resourceGroup = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.ResourceGroupName : this.TrafficManagerEndpoint.ResourceGroupName;
+            string profileName = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.ProfileName : this.TrafficManagerEndpoint.ProfileName;
+            string endpointType = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.Type : this.TrafficManagerEndpoint.Type;
+            string endpointName = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.Name : this.TrafficManagerEndpoint.Name;
 
-            if (this.ParameterSetName == "Fields")
-            {
-                endpointToEnable = new TrafficManagerEndpoint
-                {
-                    Name = this.Name,
-                    Type = this.Type,
-                    ProfileName = this.ProfileName,
-                    ResourceGroupName = this.ResourceGroupName
-                };
-            }
-            else if (this.ParameterSetName == "Object")
-            {
-                endpointToEnable = this.TrafficManagerEndpoint;
-            }
-
-            bool enabled = this.TrafficManagerClient.EnableDisableTrafficManagerEndpoint(endpointToEnable, shouldEnableEndpointStatus: true);
+            bool enabled = this.TrafficManagerClient.EnableTrafficManagerEndpoint(resourceGroup, profileName, endpointType, endpointName);
 
             if (enabled)
             {
                 this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_EnableEndpoint, endpointToEnable.Name, endpointToEnable.ProfileName, endpointToEnable.ResourceGroupName));
+                this.WriteVerbose(string.Format(ProjectResources.Success_EnableEndpoint, endpointName, profileName, resourceGroup));
             }
 
             this.WriteObject(enabled);

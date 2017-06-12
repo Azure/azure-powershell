@@ -93,18 +93,18 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
                     TrafficManagerEndpoint trafficManagerEndpoint = this.TrafficManagerClient.CreateTrafficManagerEndpoint(
-                        this.ResourceGroupName,
-                        this.ProfileName,
-                        this.Type,
-                        this.Name,
-                        this.TargetResourceId,
-                        this.Target,
-                        this.EndpointStatus,
-                        this.Weight,
-                        this.Priority,
-                        this.EndpointLocation,
-                        this.MinChildEndpoints,
-                        this.GeoMapping);
+                        resourceGroupName: this.ResourceGroupName,
+                        profileName: this.ProfileName,
+                        endpointType: this.Type,
+                        endpointName: this.Name,
+                        targetResourceId: this.TargetResourceId,
+                        target: this.Target,
+                        endpointStatus: this.EndpointStatus,
+                        weight: this.Weight,
+                        priority: this.Priority,
+                        endpointLocation: this.EndpointLocation,
+                        minChildEndpoints: this.MinChildEndpoints,
+                        geoMapping: this.GeoMapping);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(trafficManagerEndpoint);

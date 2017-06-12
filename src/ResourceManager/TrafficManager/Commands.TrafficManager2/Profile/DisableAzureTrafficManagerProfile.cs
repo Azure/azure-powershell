@@ -19,19 +19,18 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class DisableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = TrafficManagerBaseCmdlet.ObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
@@ -40,34 +39,21 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            var disabled = false;
-            TrafficManagerProfile profileToDisable = null;
-
-            if (this.ParameterSetName == "Fields")
-            {
-                profileToDisable = new TrafficManagerProfile
-                {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName
-                };
-            }
-            else if (this.ParameterSetName == "Object")
-            {
-                profileToDisable = this.TrafficManagerProfile;
-            }
+            string resourceGroup = this.ParameterSetName == TrafficManagerBaseCmdlet.FieldsParameterSet ? this.ResourceGroupName : this.TrafficManagerProfile.ResourceGroupName;
+            string profileName = this.ParameterSetName == TrafficManagerBaseCmdlet.FieldsParameterSet ? this.Name : this.TrafficManagerProfile.Name;
 
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_DisableProfile, profileToDisable.Name),
+                string.Format(ProjectResources.Confirm_DisableProfile, profileName),
                 ProjectResources.Progress_DisablingProfile,
-                profileToDisable.Name,
+                profileName,
                 () =>
                 {
-                    disabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToDisable, shouldEnableProfileStatus: false);
+                    bool disabled = this.TrafficManagerClient.DisableTrafficManagerProfile(resourceGroup, profileName);
                     if (disabled)
                     {
                         this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_DisableProfile, profileToDisable.Name, profileToDisable.ResourceGroupName));
+                        this.WriteVerbose(string.Format(ProjectResources.Success_DisableProfile, profileName, resourceGroup));
                     }
 
                     this.WriteObject(disabled);

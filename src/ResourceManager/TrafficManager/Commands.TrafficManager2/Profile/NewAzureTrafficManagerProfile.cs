@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-
 namespace Microsoft.Azure.Commands.TrafficManager
 {
     using System.Collections;
@@ -105,19 +103,19 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
                     TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
-                    this.ResourceGroupName,
-                    this.Name,
-                    this.ProfileStatus,
-                    this.TrafficRoutingMethod,
-                    this.RelativeDnsName,
-                    this.Ttl,
-                    this.MonitorProtocol,
-                    this.MonitorPort,
-                    this.MonitorPath,
-                    this.MonitorIntervalInSeconds,
-                    this.MonitorTimeoutInSeconds,
-                    this.MonitorToleratedNumberOfFailures,
-                    this.Tag);
+                        resourceGroupName: this.ResourceGroupName,
+                        profileName: this.Name,
+                        profileStatus: this.ProfileStatus,
+                        trafficRoutingMethod: this.TrafficRoutingMethod,
+                        relativeDnsName: this.RelativeDnsName,
+                        ttl: this.Ttl,
+                        monitorProtocol: this.MonitorProtocol,
+                        monitorPort: this.MonitorPort,
+                        monitorPath: this.MonitorPath,
+                        monitorInterval: this.MonitorIntervalInSeconds,
+                        monitorTimeout: this.MonitorTimeoutInSeconds,
+                        monitorToleratedNumberOfFailures: this.MonitorToleratedNumberOfFailures,
+                        tag: this.Tag);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(profile);

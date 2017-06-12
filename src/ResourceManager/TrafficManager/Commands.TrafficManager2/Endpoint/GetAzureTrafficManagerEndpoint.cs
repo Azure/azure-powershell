@@ -22,47 +22,41 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsCommon.Get, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class GetAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.ObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            TrafficManagerEndpoint trafficManagerEndpoint = null;
-
-            if (this.ParameterSetName == "Fields")
-            {
-                trafficManagerEndpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(
-                    this.ResourceGroupName,
-                    this.ProfileName,
-                    this.Type,
-                    this.Name);
-            }
-            else if (this.ParameterSetName == "Object")
-            {
-                trafficManagerEndpoint = this.TrafficManagerClient.GetTrafficManagerEndpoint(
-                    this.TrafficManagerEndpoint.ResourceGroupName,
-                    this.TrafficManagerEndpoint.ProfileName,
-                    this.TrafficManagerEndpoint.Type,
-                    this.TrafficManagerEndpoint.Name);
-            }
+            TrafficManagerEndpoint trafficManagerEndpoint =
+                this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ?
+                    this.TrafficManagerClient.GetTrafficManagerEndpoint(
+                        this.ResourceGroupName,
+                        this.ProfileName,
+                        this.Type,
+                        this.Name) :
+                    this.TrafficManagerClient.GetTrafficManagerEndpoint(
+                        this.TrafficManagerEndpoint.ResourceGroupName,
+                        this.TrafficManagerEndpoint.ProfileName,
+                        this.TrafficManagerEndpoint.Type,
+                        this.TrafficManagerEndpoint.Name);
 
             this.WriteVerbose(ProjectResources.Success);
             this.WriteObject(trafficManagerEndpoint);
