@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderManifest)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRMResourceProviderRegistration")]
+    [Alias("Remove-AzureRmResourceProviderRegistration")]
     public class RemoveResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>

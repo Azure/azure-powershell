@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.ResourceProviderManifest)]
     [OutputType(typeof(ProviderRegistrationModel))]
-    [Alias("Set-AzureRMResourceProviderRegistration")]
+    [Alias("Set-AzureRmResourceProviderRegistration")]
     public class SetResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>

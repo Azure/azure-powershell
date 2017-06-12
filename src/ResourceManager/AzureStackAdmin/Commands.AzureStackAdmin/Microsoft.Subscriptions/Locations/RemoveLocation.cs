@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.Location)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRMManagedLocation")]
+    [Alias("Remove-AzureRmManagedLocation")]
     public class RemoveLocation : AdminApiCmdlet
     {
         /// <summary>

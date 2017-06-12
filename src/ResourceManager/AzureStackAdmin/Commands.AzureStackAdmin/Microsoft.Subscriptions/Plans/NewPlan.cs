@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.Plan, DefaultParameterSetName = CommonPSConst.ParameterSet.ByProperty)]
     [OutputType(typeof(AdminPlanModel))]
-    [Alias("New-AzureRMPlan")]
+    [Alias("New-AzureRmPlan")]
     public class NewPlan : AdminApiCmdlet
     {
         /// <summary>

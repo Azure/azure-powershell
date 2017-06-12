@@ -25,7 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.Subscription)]
     [OutputType(typeof(SubscriptionDefinition))]
-    [Alias("Set-AzureRMTenantSubscription")]
+    [Alias("Set-AzureRmTenantSubscription")]
     public class SetSubscription : AdminApiCmdlet
     {
         /// <summary>

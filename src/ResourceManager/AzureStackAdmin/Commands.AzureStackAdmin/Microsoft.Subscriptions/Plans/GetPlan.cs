@@ -25,7 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.Plan)]
     [OutputType(typeof(AdminPlanModel))]
-    [Alias("Get-AzureRMPlan")]
+    [Alias("Get-AzureRmPlan")]
     public class GetPlan : AdminApiCmdlet
     {
         /// <summary>

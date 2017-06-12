@@ -24,6 +24,7 @@ namespace Microsoft.AzureStack.Commands
     [Cmdlet(VerbsCommon.Get, Nouns.Offer, DefaultParameterSetName = "TenantList")]
     [OutputType(typeof(OfferDefinition))]
     [OutputType(typeof(AdminOfferModel))]
+    [Alias("Get-AzureRmOffer")]
     public class GetOffer : AdminApiCmdlet
     {
         /// <summary>

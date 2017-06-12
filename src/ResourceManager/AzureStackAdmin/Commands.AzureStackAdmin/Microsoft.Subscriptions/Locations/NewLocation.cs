@@ -27,7 +27,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.Location)]
     [OutputType(typeof(Location))]
-    [Alias("New-AzureRMManagedLocation")]
+    [Alias("New-AzureRmManagedLocation")]
     public class NewLocation : AdminApiCmdlet
     {
         /// <summary>

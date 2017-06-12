@@ -25,7 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.Offer)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRMOffer")]
+    [Alias("Remove-AzureRmOffer")]
     public class RemoveOffer : AdminApiCmdlet
     {
         /// <summary>

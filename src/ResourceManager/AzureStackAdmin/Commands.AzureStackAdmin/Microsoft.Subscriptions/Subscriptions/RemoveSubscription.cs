@@ -26,7 +26,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.Subscription)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRMTenantSubscription")]
+    [Alias("Remove-AzureRmTenantSubscription")]
     public class RemoveSubscription : AdminApiCmdlet
     {
         /// <summary>

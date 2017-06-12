@@ -25,7 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.Plan)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRMPlan")]
+    [Alias("Remove-AzureRmPlan")]
     public class RemovePlan : AdminApiCmdlet
     {
         /// <summary>

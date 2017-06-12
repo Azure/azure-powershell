@@ -25,7 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.Offer)]
     [OutputType(typeof(AdminOfferModel))]
-    [Alias("Set-AzureRMOffer")]
+    [Alias("Set-AzureRmOffer")]
     public class SetOffer : AdminApiCmdlet
     {
         /// <summary>

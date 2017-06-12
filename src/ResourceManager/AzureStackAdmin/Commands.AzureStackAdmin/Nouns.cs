@@ -22,7 +22,7 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// The prefix for cmdlet names.
         /// </summary>
-        private const string Prefix = "AzS";
+        private const string Prefix = "Azs";
 
         /// <summary>
         /// The noun for operations on Gallery Items.

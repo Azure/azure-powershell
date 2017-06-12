@@ -27,7 +27,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Add, Nouns.ResourceProviderManifest, DefaultParameterSetName = "MultipleExtensions")]
     [OutputType(typeof(ProviderRegistrationModel))]
-    [Alias("Add-AzureRMResourceProviderRegistration")]
+    [Alias("Add-AzureRmResourceProviderRegistration")]
     public class AddResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>
