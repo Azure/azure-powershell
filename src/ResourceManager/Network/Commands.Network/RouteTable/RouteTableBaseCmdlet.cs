@@ -76,30 +76,5 @@ namespace Microsoft.Azure.Commands.Network
 
             return psRouteTable;
         }
-
-        public List<RouteTable> GetAllResourcesByPollingNextLink(IPage<RouteTable> resourcePage)
-        {
-            var resourceList = new List<RouteTable>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.RouteTableClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<RouteTable> resourcePage, List<RouteTable> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
     }
 }

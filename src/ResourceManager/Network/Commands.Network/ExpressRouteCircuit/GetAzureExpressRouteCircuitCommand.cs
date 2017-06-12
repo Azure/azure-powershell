@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var circuitList = this.GetAllResourcesByPollingNextLink(circuitPage);
+                var circuitList = ListNextLink<ExpressRouteCircuit>.GetAllResourcesByPollingNextLink(circuitPage, this.ExpressRouteCircuitClient.ListNext);
 
                 var psCircuits = new List<PSExpressRouteCircuit>();
                 foreach (var ExpressRouteCircuit in circuitList)

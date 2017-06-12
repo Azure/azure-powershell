@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var nsgList = this.GetAllResourcesByPollingNextLink(nsgPage);
+                var nsgList = ListNextLink<NetworkSecurityGroup>.GetAllResourcesByPollingNextLink(nsgPage, this.NetworkSecurityGroupClient.ListNext);
 
                 var psNsgs = new List<PSNetworkSecurityGroup>();
 

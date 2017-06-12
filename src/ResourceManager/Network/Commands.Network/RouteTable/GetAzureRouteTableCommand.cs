@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var routeTableList = this.GetAllResourcesByPollingNextLink(routeTablePage);
+                var routeTableList = ListNextLink<RouteTable>.GetAllResourcesByPollingNextLink(routeTablePage, this.RouteTableClient.ListNext);
 
                 var psRouteTables = new List<PSRouteTable>();
                 foreach (var routeTable in routeTableList)

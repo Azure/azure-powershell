@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
                 var connectionPage = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
 
                 // Get all resources by polling on next page link
-                var connectionList = this.GetAllResourcesByPollingNextLink(connectionPage);
+                var connectionList = ListNextLink<VirtualNetworkGatewayConnection>.GetAllResourcesByPollingNextLink(connectionPage, this.VirtualNetworkGatewayConnectionClient.ListNext);
 
                 var psVnetGatewayConnections = new List<PSVirtualNetworkGatewayConnection>();
                 foreach (var virtualNetworkGatewayConnection in connectionList)

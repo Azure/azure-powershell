@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var vnetList = this.GetAllResourcesByPollingNextLink(vnetPage);
+                var vnetList = ListNextLink<VirtualNetwork>.GetAllResourcesByPollingNextLink(vnetPage, this.VirtualNetworkClient.ListNext);
 
                 var psVnets = new List<PSVirtualNetwork>();
                 foreach (var virtualNetwork in vnetList)

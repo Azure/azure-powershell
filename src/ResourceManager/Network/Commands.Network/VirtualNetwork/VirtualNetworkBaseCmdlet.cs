@@ -79,31 +79,6 @@ namespace Microsoft.Azure.Commands.Network
             psVnet.Tag = TagsConversionHelper.CreateTagHashtable(vnet.Tags);
 
             return psVnet;
-        }
-
-        public List<VirtualNetwork> GetAllResourcesByPollingNextLink(IPage<VirtualNetwork> resourcePage)
-        {
-            var resourceList = new List<VirtualNetwork>();
-
-            var nextPageLink = this.AddResourceToListAndReturnNextPageLink(resourcePage, resourceList);
-
-            while(!string.IsNullOrEmpty(nextPageLink))
-            {
-                var nextVnetPage = this.VirtualNetworkClient.ListNext(nextPageLink);
-                nextPageLink = this.AddResourceToListAndReturnNextPageLink(nextVnetPage, resourceList);
-            }
-
-            return resourceList;
-        }
-
-        private string AddResourceToListAndReturnNextPageLink(IPage<VirtualNetwork> resourcePage, List<VirtualNetwork> resourceList)
-        {
-            foreach (var resource in resourcePage)
-            {
-                resourceList.Add(resource);
-            }
-
-            return resourcePage.NextPageLink;
-        }
+        }        
     }
 }
