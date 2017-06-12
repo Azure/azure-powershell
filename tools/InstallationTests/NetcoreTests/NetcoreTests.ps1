@@ -118,7 +118,6 @@ Run-TestProtected { Test-StartStopRestartWebApp } "Test-StartStopRestartWebApp"
 Run-TestProtected { Test-CloneNewWebAppAndDeploymentSlots } "Test-CloneNewWebAppAndDeploymentSlots" 
 Run-TestProtected { Test-RemoveWebApp } "Test-RemoveWebApp" 
 Run-TestProtected { Test-SetWebApp} "Test-SetWebApp" 
-Run-TestProtected { Test-CloneNewWebAppWithTrafficManager } "Test-CloneNewWebAppWithTrafficManager" 
 
 # final results
 Write-Host
