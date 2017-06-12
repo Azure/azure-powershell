@@ -32,9 +32,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the sync group name
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3,
             HelpMessage = "The sync group name.")]
         [ValidateNotNullOrEmpty]
-        public string SyncGroupName { get; set; }
+        [Alias("SyncGroupName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the frequency (in seconds) of doing data synchronization
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         protected override IEnumerable<AzureSqlSyncGroupModel> GetEntity()
         {
             return new List<AzureSqlSyncGroupModel>() { 
-                ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName) 
+                ModelAdapter.GetSyncGroup(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.Name) 
             };
         }
 

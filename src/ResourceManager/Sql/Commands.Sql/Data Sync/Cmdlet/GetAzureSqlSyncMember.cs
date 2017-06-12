@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the sync member name
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The sync member name.")]
-        public string SyncMemberName { get; set; }
+        [Alias("SyncMemberName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -39,10 +40,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             ICollection<AzureSqlSyncMemberModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("SyncMemberName"))
+            if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {
                 results = new List<AzureSqlSyncMemberModel>();
-                results.Add(ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.SyncMemberName));
+                results.Add(ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name));
             }
             else
             {

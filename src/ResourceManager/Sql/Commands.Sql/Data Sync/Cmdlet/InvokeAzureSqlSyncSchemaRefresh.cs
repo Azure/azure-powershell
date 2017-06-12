@@ -28,7 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync group name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync group name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "The sync group name.")]
         public string SyncGroupName { get; set; }
 
         /// <summary>

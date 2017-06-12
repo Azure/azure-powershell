@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the sync member name
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync member name.")]
+        [Alias("SyncMemberName")]
         [ValidateNotNullOrEmpty]
-        public string SyncMemberName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         protected override IEnumerable<AzureSqlSyncMemberModel> GetEntity()
         {
             return new List<AzureSqlSyncMemberModel>() { 
-               ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.SyncMemberName)
+               ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name)
             };
         }
 
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlSyncMemberModel> PersistChanges(IEnumerable<AzureSqlSyncMemberModel> entity)
         {
-            ModelAdapter.RemoveSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.SyncMemberName);
+            ModelAdapter.RemoveSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name);
             return entity;
         }
 
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <returns>The confirmation message</returns>
         protected override string GetConfirmActionProcessMessage()
         {
-            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncMemberDescription, this.SyncMemberName, this.SyncGroupName);
+            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncMemberDescription, this.Name, this.SyncGroupName);
         }
 
         /// <summary>

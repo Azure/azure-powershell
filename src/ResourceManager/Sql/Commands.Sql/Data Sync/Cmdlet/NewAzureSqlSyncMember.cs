@@ -47,8 +47,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The sync member name.")]
+        [Alias("SyncMemberName")]
         [ValidateNotNullOrEmpty]
-        public string SyncMemberName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the database type of the member database
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             // We try to get the sync member.  Since this is a create, we don't want the sync member to exist
             try
             {
-                ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.SyncMemberName);
+                ModelAdapter.GetSyncMember(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName, this.Name);
             }
             catch (CloudException ex)
             {
@@ -155,7 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 
             // The sync member already exists
             throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SyncMemberNameExists, this.SyncMemberName, this.SyncGroupName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.SyncMemberNameExists, this.Name, this.SyncGroupName),
                 "SyncMemberName");
         }
 
@@ -173,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 ServerName = this.ServerName,
                 DatabaseName = this.DatabaseName,
                 SyncGroupName = this.SyncGroupName,
-                SyncMemberName = this.SyncMemberName,
+                SyncMemberName = this.Name,
                 SyncDirection = this.SyncDirection
             };
 

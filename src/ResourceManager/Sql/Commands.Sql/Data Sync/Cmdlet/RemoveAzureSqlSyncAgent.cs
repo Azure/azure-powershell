@@ -29,9 +29,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync agent name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync agent name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "The sync agent name.")]
+        [Alias("SyncAgentName")]
         [ValidateNotNullOrEmpty]
-        public string SyncAgentName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -52,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         protected override IEnumerable<AzureSqlSyncAgentModel> GetEntity()
         {
             return new List<AzureSqlSyncAgentModel>() { 
-                ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.SyncAgentName) 
+                ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.Name) 
             };
         }
 
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlSyncAgentModel> PersistChanges(IEnumerable<AzureSqlSyncAgentModel> entity)
         {
-            ModelAdapter.RemoveSyncAgent(this.ResourceGroupName, this.ServerName, this.SyncAgentName);
+            ModelAdapter.RemoveSyncAgent(this.ResourceGroupName, this.ServerName, this.Name);
             return entity;
         }
 
@@ -73,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <returns>The confirmation message</returns>
         protected override string GetConfirmActionProcessMessage()
         {
-            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentDescription, this.SyncAgentName);
+            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentDescription, this.Name);
         }
 
         /// <summary>

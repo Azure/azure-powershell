@@ -44,7 +44,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync agent name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync agent name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "The sync agent name.")]
         [ValidateNotNullOrEmpty]
         public string SyncAgentName { get; set; }
 

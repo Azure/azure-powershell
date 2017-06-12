@@ -28,8 +28,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the sync agent name
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync agent name.")]
-        public string SyncAgentName { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            Position = 3,
+            HelpMessage = "The sync agent name.")]
+        [Alias("SyncAgentName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -39,10 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             ICollection<AzureSqlSyncAgentModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("SyncAgentName"))
+            if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {
                 results = new List<AzureSqlSyncAgentModel>();
-                results.Add(ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.SyncAgentName));
+                results.Add(ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.Name));
             }
             else
             {

@@ -19,16 +19,18 @@ using Microsoft.Azure.Commands.Sql.DataSync.Model;
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to cancel the synchronization of sync group
+    /// Cmdlet to trigger data synchronization of a sync group
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlSyncGroupSynchronization", SupportsShouldProcess = true,
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlSyncGroupSync", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
-    public class StopAzureSqlSynchronization : AzureSqlSyncGroupCmdletBase
+    public class StartAzureSqlSynchronization : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the sync group name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The sync group name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            Position = 3, 
+            HelpMessage = "The sync group name.")]
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 
@@ -56,13 +58,13 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
 
         /// <summary>
-        /// Cancel the synchronization of the specified sync group.
+        /// Start the synchronization of the specified sync group.
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlSyncGroupModel> PersistChanges(IEnumerable<AzureSqlSyncGroupModel> entity)
         {
-            ModelAdapter.StopSynchronization(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName);
+            ModelAdapter.StartSynchronization(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.SyncGroupName);
             return entity;
         }
     }
