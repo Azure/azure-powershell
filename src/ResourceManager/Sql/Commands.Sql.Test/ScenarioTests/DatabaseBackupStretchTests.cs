@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "")]
+        [Fact(Skip = "Skip all Stretch edition tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseListRestorePoints()
         {
