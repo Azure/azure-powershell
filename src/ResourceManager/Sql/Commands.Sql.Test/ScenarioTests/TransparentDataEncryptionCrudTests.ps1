@@ -63,21 +63,21 @@ function Test-GetTransparentDataEncryption
 	try
 	{
 		$tde1 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
-		Assert-AreEqual $tde1.State Disabled
+		Assert-AreEqual $tde1.State Enabled
 
 		$tde2 = $tde1 | Get-AzureRmSqlDatabaseTransparentDataEncryption
-		Assert-AreEqual $tde2.State Disabled
+		Assert-AreEqual $tde2.State Enabled
 
 		# Alter all properties
 		$tde3 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-State Enabled 
-		Assert-AreEqual $tde3.State Enabled
+			-State Disabled
+		Assert-AreEqual $tde3.State Disabled
 
 		$tdeActivity = Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
-		Assert-AreEqual $tdeActivity.Status Encrypting
+		Assert-AreEqual $tdeActivity.Status Decrypting
 
 		$tde4 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
-		Assert-AreEqual $tde4.State Enabled
+		Assert-AreEqual $tde4.State Disabled
 	}
 	finally
 	{
@@ -87,7 +87,7 @@ function Test-GetTransparentDataEncryption
 
 <#
 	.SYNOPSIS
-	Tests Getting a server transparent data encryption protector
+	Tests Getting a server transpagrent data encryption protector
 #>
 function Test-GetTransparentDataEncryptionProtector
 {
