@@ -132,7 +132,7 @@ function Test-GetElasticPool
         $gep2 = $ep2 | Get-AzureRmSqlElasticPool
         Assert-NotNull $ep2
         Assert-AreEqual 400 $ep2.Dtu 
-        Assert-AreEqual 204800 $ep2.StorageMB
+        Assert-AreEqual 409600 $ep2.StorageMB
         Assert-AreEqual Standard $ep2.Edition
         Assert-AreEqual 0 $ep2.DatabaseDtuMin
         Assert-AreEqual 100 $ep2.DatabaseDtuMax
