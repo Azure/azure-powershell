@@ -26,88 +26,87 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to set Azure Environment in Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment", SupportsShouldProcess = true, DefaultParameterSetName = EnvironmentNameParameterSet)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment", SupportsShouldProcess = true, DefaultParameterSetName = EnvironmentPropertiesParameterSet)]
     [OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
-		private const string ArmParameterSet = "ResourceManagerEndpoint";
-        private const string EnvironmentNameParameterSet = "Name";
-		
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = ArmParameterSet, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+		private const string MetadataParameterSet = "ResourceManagerEndpoint";
+        private const string EnvironmentPropertiesParameterSet = "Name";
+
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string PublishSettingsFileUrl { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [Alias("ServiceManagement", "ServiceManagementUrl")]
         public string ServiceEndpoint { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string ManagementPortalUrl { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 4, Mandatory = false, HelpMessage = "The storage endpoint")]
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 4, Mandatory = false, HelpMessage = "The storage endpoint")]
         [Alias("StorageEndpointSuffix")]
         public string StorageEndpoint { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The URI for the Active Directory service for this environment")]
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The URI for the Active Directory service for this environment")]
         [Alias("AdEndpointUrl", "ActiveDirectory", "ActiveDirectoryAuthority")]
         public string ActiveDirectoryEndpoint { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
-        [Parameter(ParameterSetName = ArmParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure Resource Manager endpoint")]
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure Resource Manager endpoint")]
         [Alias("ResourceManager", "ResourceManagerUrl")]
         public string ResourceManagerEndpoint { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The public gallery endpoint")]
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The public gallery endpoint")]
         [Alias("Gallery", "GalleryUrl")]
         public string GalleryEndpoint { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Identifier of the target resource that is the recipient of the requested token.")]
         public string ActiveDirectoryServiceEndpointResourceId { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The AD Graph Endpoint.")]
         [Alias("Graph", "GraphUrl")]
         public string GraphEndpoint { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "Dns suffix of Azure Key Vault service. Example is vault-int.azure-int.net")]
         public string AzureKeyVaultDnsSuffix { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 11, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "Dns suffix of Traffic Manager service.")]
         public string TrafficManagerDnsSuffix { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true,
           HelpMessage = "Dns suffix of Sql databases created in this environment.")]
         public string SqlDatabaseDnsSuffix { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 14, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 14, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dns Suffix of Azure Data Lake Store FileSystem. Example: azuredatalake.net")]
         public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Dns Suffix of Azure Data Lake Analytics job and catalog services")]
         public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "Determines whether to enable ADFS authentication, or to use AAD authentication instead. This value is normally true only for Azure Stack endpoints.")]
-		[Parameter(ParameterSetName = ArmParameterSet, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
+		[Parameter(ParameterSetName = MetadataParameterSet, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
         [Alias("OnPremise")]
         public SwitchParameter EnableAdfsAuthentication { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 17, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 17, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
-        [Parameter(ParameterSetName = EnvironmentNameParameterSet, Position = 18, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 18, Mandatory = false, ValueFromPipelineByPropertyName = true,
           HelpMessage = "The audience for tokens authenticating with the AD Graph Endpoint.")]
         [Alias("GraphEndpointResourceId", "GraphResourceId")]
         public string GraphAudience { get; set; }
@@ -131,17 +130,27 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
-			if (this.ParameterSetName.Equals(ArmParameterSet, StringComparison.Ordinal))
+			if (this.ParameterSetName.Equals(MetadataParameterSet, StringComparison.Ordinal))
             {
-                MetadataResponse metadataEndpoints = new MetadataResponse();
+                MetadataResponse metadataEndpoints = null;
                 metadataEndpoints = EnvironmentHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
+                if (null == metadataEndpoints)
+                {
+                    throw new Exception("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
+                }
+
                 string domain = EnvironmentHelper.RetrieveDomain(metadataEndpoints.PortalEndpoint);
                 ActiveDirectoryEndpoint = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/') + '/';
+                if (string.IsNullOrEmpty(ActiveDirectoryEndpoint))
+                {
+                    throw new Exception("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
+                }
+
                 ActiveDirectoryServiceEndpointResourceId = metadataEndpoints.authentication.Audiences[0];
                 GalleryEndpoint = metadataEndpoints.GalleryEndpoint;
                 GraphEndpoint = metadataEndpoints.GraphEndpoint;
-                AzureKeyVaultDnsSuffix = $"vault.{domain}".ToLowerInvariant();
-                AzureKeyVaultServiceEndpointResourceId = ($"https://vault.{domain}".ToLowerInvariant());
+                AzureKeyVaultDnsSuffix = string.Format("vault.{0}", domain).ToLowerInvariant();
+                AzureKeyVaultServiceEndpointResourceId = string.Format("https://vault.{0}", domain).ToLowerInvariant();
                 StorageEndpoint = domain;
                 EnableAdfsAuthentication = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/').EndsWith("/adfs", System.StringComparison.OrdinalIgnoreCase);
             }
@@ -170,7 +179,19 @@ namespace Microsoft.Azure.Commands.Profile
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, AzureDataLakeStoreFileSystemEndpointSuffix);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AdTenant, AdTenant);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId, GraphAudience);
-            if (ShouldProcess(Name, "Adding new environment"))
+
+            string shouldProcessString = String.Empty;
+            foreach (AzureEnvironment.Endpoint environmentSetting in newEnvironment.Endpoints.Keys)
+            {
+                if (newEnvironment.Endpoints[environmentSetting] == null)
+                {
+                    continue;
+                }
+
+                shouldProcessString += (environmentSetting + " : " + newEnvironment.Endpoints[environmentSetting] + '\n');
+            }
+
+            if (ShouldProcess(shouldProcessString, "Setting AzureRM environment"))
             {
 				profileClient.AddOrSetEnvironment(newEnvironment);
 

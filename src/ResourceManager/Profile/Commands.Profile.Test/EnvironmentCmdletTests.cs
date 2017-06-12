@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.SetParameterSet("ResourceManagerEndpoint");
             cmdlet.InvokeBeginProcessing();
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Add again
             cmdlet.Name = "kAtAl";
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("kAtAl", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
             AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess(EnvironmentName.AzureCloud, It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
         }
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.SetParameterSet("ResourceManagerEndpoint");
 
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             };
 
             // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess("Katal", It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();

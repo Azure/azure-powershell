@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             // Todo: Revisit this when azure metadata endpoint supports keyvault suffix and storage endpoints
             // Example format:: portal endpoint: "management.azure.com"; returns: "azure.com"
-            return portalEndpoint.Replace(portalEndpoint.Split('.')[0], "").TrimEnd('/').TrimStart('.');
+            string[] domainHost = new Uri(portalEndpoint).Host.Split('.');
+            return domainHost[domainHost.Length - 2] + '.' + domainHost[domainHost.Length - 1];
         }
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             {
                 throw new ArgumentException("The ResourceManagement Endpoint provided was invalid.");
             }
+
             url = String.Concat(url.ToLower(), "/metadata/endpoints?api-version=1.0");
             MetadataResponse response = null;
             using (HttpClient client = new HttpClient())
