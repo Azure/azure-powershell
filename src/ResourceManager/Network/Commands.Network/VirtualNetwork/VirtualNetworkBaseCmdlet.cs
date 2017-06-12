@@ -77,6 +77,6 @@ namespace Microsoft.Azure.Commands.Network
             psVnet.Tag = TagsConversionHelper.CreateTagHashtable(vnet.Tags);
 
             return psVnet;
-        }        
+        }
     }
 }
