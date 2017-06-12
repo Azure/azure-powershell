@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Net;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {

@@ -20,8 +20,6 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
-    using System.Collections.Generic;
-    using Microsoft.Rest.Azure;
 
     public abstract class RouteFilterBaseCmdlet : NetworkBaseCmdlet
     {
