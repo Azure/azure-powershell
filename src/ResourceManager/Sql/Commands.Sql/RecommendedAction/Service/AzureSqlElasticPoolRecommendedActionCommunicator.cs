@@ -36,25 +36,25 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <summary>
         /// Gets the Azure Sql Elastic Pool Recommended Action
         /// </summary>
-        public Management.Sql.LegacySdk.Models.RecommendedAction Get(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string recommendedActionName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.RecommendedAction Get(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string recommendedActionName)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolRecommendedActions.Get(resourceGroupName, serverName, elasticPoolName, advisorName, recommendedActionName).RecommendedAction;
+            return GetCurrentSqlClient().ElasticPoolRecommendedActions.Get(resourceGroupName, serverName, elasticPoolName, advisorName, recommendedActionName).RecommendedAction;
         }
 
         /// <summary>
         /// Lists Azure Sql Elastic Pool Recommended Actions
         /// </summary> 
-        public IList<Management.Sql.LegacySdk.Models.RecommendedAction> List(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RecommendedAction> List(string resourceGroupName, string serverName, string elasticPoolName, string advisorName)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolRecommendedActions.List(resourceGroupName, serverName, elasticPoolName, advisorName).RecommendedActions;
+            return GetCurrentSqlClient().ElasticPoolRecommendedActions.List(resourceGroupName, serverName, elasticPoolName, advisorName).RecommendedActions;
         }
 
         /// <summary>
         /// Update Recommended Action State
         /// </summary>
-        public Management.Sql.LegacySdk.Models.RecommendedAction UpdateState(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string recommendedActionName, string newStateValue, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.RecommendedAction UpdateState(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string recommendedActionName, string newStateValue)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolRecommendedActions.Update(resourceGroupName, serverName, elasticPoolName, advisorName, recommendedActionName,
+            return GetCurrentSqlClient().ElasticPoolRecommendedActions.Update(resourceGroupName, serverName, elasticPoolName, advisorName, recommendedActionName,
                     new RecommendedActionUpdateParameters
                     {
                         Properties = new RecommendedActionUpdateProperties()
