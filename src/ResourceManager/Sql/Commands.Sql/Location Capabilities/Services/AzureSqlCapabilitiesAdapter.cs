@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <returns></returns>
         public LocationCapabilityModel GetLocationCapabilities(string locationName)
         {
-            var resp = _communicator.Get(locationName, Util.GenerateTracingId());
+            var resp = _communicator.Get(locationName);
             return CreateLocationCapabilityModel(resp);
         }
 

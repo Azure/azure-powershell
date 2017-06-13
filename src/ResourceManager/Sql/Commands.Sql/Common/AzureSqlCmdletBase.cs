@@ -27,19 +27,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
     /// </summary>
     public abstract class AzureSqlCmdletBase<M, A> : AzureRMCmdlet
     {
-        /// <summary>
-        /// Stores the per request session Id for all request made in this cmdlet call.
-        /// </summary>
-        protected string clientRequestId { get; set; }
-
-        /// <summary>
-        /// Default constructor.  Generates a request ID
-        /// </summary>
-        internal AzureSqlCmdletBase()
-        {
-            this.clientRequestId = Util.GenerateTracingId();
-        }
-
         protected virtual string GetResourceId(M model)
         {
             var serverProperty = model.GetType().GetProperty("ServerName");

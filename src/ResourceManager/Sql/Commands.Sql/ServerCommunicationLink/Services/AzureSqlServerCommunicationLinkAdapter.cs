@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <returns>The Azure Sql server communication link object</returns>
         internal AzureSqlServerCommunicationLinkModel GetServerCommunicationLink(string resourceGroupName, string serverName, string communicationLinkName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, communicationLinkName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, communicationLinkName);
             return CreateServerCommunicationLinkModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <returns>A list of server communication link objects</returns>
         internal ICollection<AzureSqlServerCommunicationLinkModel> ListServerCommunicationLinks(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((l) =>
             {
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <returns>The upserted Azure Sql server communication link</returns>
         internal AzureSqlServerCommunicationLinkModel UpsertServerCommunicationLink(AzureSqlServerCommunicationLinkModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.Name, Util.GenerateTracingId(), new ServerCommunicationLinkCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.Name, new ServerCommunicationLinkCreateOrUpdateParameters()
             {
                 Location = model.Location,
                 Properties = new ServerCommunicationLinkCreateOrUpdateProperties()
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <param name="communicationLinkName">The name of the Azure Sql server communication link to delete</param>
         public void RemoveServerCommunicationLink(string resourceGroupName, string serverName, string communicationLinkName)
         {
-            Communicator.Remove(resourceGroupName, serverName, communicationLinkName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, communicationLinkName);
         }
 
         /// <summary>
