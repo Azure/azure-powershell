@@ -229,7 +229,8 @@ function Test_RemoveNonExistentAccessPolicyDoesNotThrow
 function Test_AllPermissionExpansion
 {
     Reset-PreCreatedVault
-    Test-AllPermissionExpansion $global:testVault $global:resourceGroupName
+    $user = (Get-AzureRmContext).Account.Id
+    Test-AllPermissionExpansion $global:testVault $global:resourceGroupName $user 
 }
 
 #-------------------------------------------------------------------------------------
@@ -285,7 +286,7 @@ Reset the pre-created vault to the default state for the control plane tests.
 #>
 function Reset-PreCreatedVault
 {
-    $tenantId = (Get-AzureRmContext).Tenant.TenantId
+    $tenantId = (Get-AzureRmContext).Tenant.Id
     $sku = "premium"
     if ($global:standardVaultOnly)
     {
@@ -366,6 +367,7 @@ function Initialize-TemporaryState
                     "keys" = @("all")
                     "secrets" = @("all")
                     "certificates" = @("all")
+                    "storage" = @("all")
                 }
             }
         )

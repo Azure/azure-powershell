@@ -17,8 +17,10 @@ New-AzureRmIotHubImportDevices [-ResourceGroupName] <String> [-Name] <String> [-
 ```
 
 ## DESCRIPTION
-Creates a new import devices job for the IotHub. This will import all the devices to the IotHub from the specified container. 
-Refer to the following article on how to generate the SAS URI. https://azure.microsoft.com/en-us/documentation/articles/iot-hub-bulk-identity-mgmt/ .
+Creates a new import devices job for the IotHub.
+This will import all the devices to the IotHub from the specified container. 
+Refer to the following article on how to generate the SAS URI.
+https://azure.microsoft.com/en-us/documentation/articles/iot-hub-bulk-identity-mgmt/ .
 
 ## EXAMPLES
 
@@ -32,7 +34,7 @@ Creates a new import device request for the IotHub "myiothub".
 ## PARAMETERS
 
 ### -InputBlobContainerUri
-The Uri for the InputBlobContainerUri
+Input Blob Container Uri for FileUpload
 
 ```yaml
 Type: String
@@ -47,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -62,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputBlobContainerUri
-The Uri to write the output to.
+The Uri to write the output to. 
 
 ```yaml
 Type: String
@@ -77,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -101,13 +103,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -116,7 +119,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The server</returns>
         public AzureSqlServerModel GetServer(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName);
             return CreateServerModelFromResponse(resourceGroupName, resp);
         }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>A list of all the servers</returns>
         public List<AzureSqlServerModel> GetServers(string resourceGroupName)
         {
-            var resp = Communicator.List(resourceGroupName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName);
             return resp.Select((s) =>
             {
                 return CreateServerModelFromResponse(resourceGroupName, s);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerModel UpsertServer(AzureSqlServerModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new Management.Sql.Models.Server()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, new Management.Sql.Models.Server()
             {
                 Location = model.Location,
                 Tags = model.Tags,
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="serverName">The name of the server to delete</param>
         public void RemoveServer(string resourceGroupName, string serverName)
         {
-            Communicator.Remove(resourceGroupName, serverName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName);
         }
 
         /// <summary>
