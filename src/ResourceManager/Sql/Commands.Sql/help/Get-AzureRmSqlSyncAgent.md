@@ -11,7 +11,8 @@ Returns information about Azure SQL Sync Agents.
 
 ## SYNTAX
 ```
-Get-AzureRmSqlSyncAgent [-SyncAgentName <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+Get-AzureRmSqlSyncAgent [[-Name] <String>] [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf]
+ [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -52,7 +53,7 @@ This command gets information about all the Azure SQL Sync Agents assigned to an
 
 ### Example 2: Get information about an Azure SQL Sync Agent
 ```
-PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
+PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01"
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -69,6 +70,36 @@ State                       : Online
 This command gets information about the Azure SQL Database Sync Agent with name "SyncAgent01"
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The sync agent name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncAgentName
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 The name of the resource group.
@@ -100,31 +131,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SyncAgentName
-The sync agent name.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Remove-AzureRmSqlSyncAgent](./Remove-AzureRmSqlSyncAgent.md)
+
+[New-AzureRmSqlSyncAgent](./New-AzureRmSqlSyncAgent.md)
 

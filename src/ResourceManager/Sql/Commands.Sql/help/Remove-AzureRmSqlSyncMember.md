@@ -12,8 +12,8 @@ Removes an Azure SQL Database Sync Member.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncMember -SyncMemberName <String> [-PassThru] -SyncGroupName <String>
- [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmSqlSyncMember -Name <String> [-PassThru] [-SyncGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ The **Remove-AzureRmSqlSyncMember** cmdlet removes an Azure SQL Database Sync Me
 
 ### Example 1: Remove a sync member
 ```
-PS C:\>Remove-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
+PS C:\>Remove-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -Name "syncMember01"
 ```
 
 This command removes the Azure SQL Database Sync Member named syncMember01.
@@ -61,6 +61,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Name
+The sync member name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncMemberName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Defines Whether return the removed sync member
 
@@ -92,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -115,22 +130,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SyncMemberName
-The sync member name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -154,14 +154,17 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSqlSyncMember](./New-AzureRmSqlSyncMember.md)
+
+[Set-AzureRmSqlSyncMember](./Set-AzureRmSqlSyncMember.md)
+
+[Get-AzureRmSqlSyncMember](./Get-AzureRmSqlSyncMember.md)
 

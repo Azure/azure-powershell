@@ -12,8 +12,9 @@ Creates an Azure SQL Sync Agent.
 ## SYNTAX
 
 ```
-New-AzureRmSqlSyncAgent -SyncAgentName <String> -SyncDatabaseName <String> [-SyncDatabaseServerName <String>]
- [-SyncDatabaseResourceGroupName <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+New-AzureRmSqlSyncAgent [-Name] <String> -SyncDatabaseName <String> [-SyncDatabaseServerName <String>]
+ [-SyncDatabaseResourceGroupName <String>] [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf]
+ [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ The **New-AzureRmSqlSyncAgent** cmdlet creates an Azure SQL Sync Agent.
 
 ### Example 1: Create a sync agent for an Azure SQL server.
 ```
-PS C:\> New-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01" -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" 
+PS C:\> New-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" 
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -40,6 +41,36 @@ State                       : NeverConnected
 This command creates a sync agent for an Azure SQL server.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The sync agent name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncAgentName
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 The name of the resource group.
@@ -66,21 +97,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SyncAgentName
-The sync agent name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -131,16 +147,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ## INPUTS
-
-### System.String
-
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Remove-AzureRmSqlSyncAgent](./Remove-AzureRmSqlSyncAgent.md)
+
+[Get-AzureRmSqlSyncAgent](./Get-AzureRmSqlSyncAgent.md)
 

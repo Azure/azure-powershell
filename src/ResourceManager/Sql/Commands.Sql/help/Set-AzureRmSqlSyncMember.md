@@ -12,9 +12,8 @@ Updates an Azure SQL Database Sync Member.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlSyncMember -SyncMemberName <String> -Credential <PSCredential>
- -SyncGroupName <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String>
+Set-AzureRmSqlSyncMember -Name <String> -MemberDatabaseCredential <PSCredential> [-SyncGroupName] <String>
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -25,8 +24,8 @@ The **Set-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Datab
 ### Example 1
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> Set-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01"
--Credential $credential
+PS C:\> Set-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01"
+-MemberDatabaseCredential $credential
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -34,13 +33,13 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup01
 SyncMemberName              : SyncMember01
 SyncDirection               : OneWayMemberToHub
-DatabaseType:               : AzureSqlDatabase
+MemberDatabaseType:         : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
 MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : myAccount-new
-Password                    : 
+MemberDatabaseUserName      : myAccount-new
+MemberDatabasePassword      : 
 SyncState                   : Good 
 ```
 
@@ -48,15 +47,30 @@ This command resets the administrator password for the member database.
 
 ## PARAMETERS
 
-### -Credential
-The credential (username and password) of the Azure SQL database.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MemberDatabaseCredential
+The credential (username and password) of the Azure SQL Database.
 
 ```yaml
 Type: PSCredential
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -78,6 +92,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Name
+The sync member name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncMemberName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -94,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -117,37 +146,41 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SyncMemberName
-The sync member name.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSqlSyncMember](./New-AzureRmSqlSyncMember.md)
+
+[Get-AzureRmSqlSyncMember](./Get-AzureRmSqlSyncMember.md)
+
+[Remove-AzureRmSqlSyncMember](./Remove-AzureRmSqlSyncMember.md)
 

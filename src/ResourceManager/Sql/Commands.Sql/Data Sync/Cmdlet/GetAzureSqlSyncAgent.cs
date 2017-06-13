@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the sync agent name
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            Position = 3,
+            Position = 2,
             HelpMessage = "The sync agent name.")]
         [Alias("SyncAgentName")]
         public string Name { get; set; }

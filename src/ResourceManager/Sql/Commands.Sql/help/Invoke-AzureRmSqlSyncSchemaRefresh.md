@@ -8,12 +8,14 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Invoke the sync schema refresh for a sync member database or a sync hub database.
+It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 
 ## SYNTAX
 
 ```
-Invoke-AzureRmSqlSyncSchemaRefresh -SyncGroupName <String> [-SyncMemberName <String>] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String>
+Invoke-AzureRmSqlSyncSchemaRefresh [-SyncGroupName] <String> [-SyncMemberName <String>] [-PassThru]
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -38,6 +40,21 @@ This command invokes the sync schema refresh for the member database in the sync
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DatabaseName
 The name of the Azure SQL Database.
 
@@ -50,6 +67,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Defines Whether return the sync group this cmdlet works on
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -69,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -92,7 +124,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -113,14 +145,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ## INPUTS
-
-### System.String
-
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel
 
 ## NOTES
 

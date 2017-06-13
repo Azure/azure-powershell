@@ -14,17 +14,17 @@ Creates an Azure SQL Database Sync Member.
 
 ### AzureSql (Default)
 ```
-New-AzureRmSqlSyncMember -SyncMemberName <String> -DatabaseType <String> [-SyncDirection <String>]
- -MemberServerName <String> -MemberDatabaseName <String> -Credential <PSCredential> -SyncGroupName <String>
- [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
+New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -MemberServerName <String>
+ -MemberDatabaseName <String> -MemberDatabaseCredential <PSCredential> [-SyncDirection <String>] [-SyncGroupName] <String>
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ### OnPremise
 ```
-New-AzureRmSqlSyncMember -SyncMemberName <String> -DatabaseType <String> [-SyncDirection <String>]
- -SyncAgentResourceGroupName <String> -SyncAgentServerName <String> -SyncAgentName <String>
- -SqlServerDatabaseId <String> -SyncGroupName <String> [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String>
+New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -SyncAgentResourceGroupName <String>
+ -SyncAgentServerName <String> -SyncAgentName <String> -SqlServerDatabaseId <String> [-SyncDirection <String>]
+ [-SyncGroupName] <String> [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
+ [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -35,8 +35,8 @@ The **New-AzureRmSqlSyncMember** cmdlet creates an Azure SQL Database Sync Membe
 ### Example 1: Create a sync member for an Azure SQL database.
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01" -SyncDirection "OneWayMemberToHub"
--DatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01" -Credential $credential
+PS C:\> New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" -SyncDirection "OneWayMemberToHub"
+-MemberDatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01" -MemberDatabaseCredential $credential
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -44,13 +44,13 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup01
 SyncMemberName              : SyncMember01
 SyncDirection               : OneWayMemberToHub
-DatabaseType:               : AzureSqlDatabase
+MemberDatabaseType:         : AzureSqlDatabase
 SyncAgentId                 : 
 SqlServerDatabaseId         : 
 MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
-UserName                    : myAccount
-Password                    : 
+MemberDatabaseUserName      : myAccount
+MemberDatabasePassword      : 
 SyncState                   : UnProvisioned 
 ```
 
@@ -59,8 +59,8 @@ This command creates a sync member for an Azure SQL database.
 ### Example 2: Create a sync member for an on-premises SQL Server database
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -SyncMemberName "SyncMember01" -SyncDirection "OneWayMemberToHub"
--DatabaseType "SqlServerDatabase" -SqlServerDatabaseId "dbId" -syncAgentResourceGroupName "syncAgentResourceGroupName" -syncAgentServerName "syncAgentServerName" -syncAgentDatabaseName "syncAgentDatabaseName" -syncAgentName "agentName"
+PS C:\> New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" -SyncDirection "OneWayMemberToHub"
+-MemberDatabaseType "SqlServerDatabase" -SqlServerDatabaseId "dbId" -syncAgentResourceGroupName "syncAgentResourceGroupName" -syncAgentServerName "syncAgentServerName" -syncAgentDatabaseName "syncAgentDatabaseName" -syncAgentName "agentName"
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -68,13 +68,13 @@ DatabaseName                : Database01
 SyncGroupName               : SyncGroup01
 SyncMemberName              : SyncMember01
 SyncDirection               : OneWayMemberToHub
-DatabaseType:               : AzureSqlDatabase
+MemberDatabaseType:         : AzureSqlDatabase
 SyncAgentId                 : /subscriptions/{subscriptionId}/resourceGroups/{syncAgentResourceGroupName}/servers/{syncAgentServerName}/syncAgents/{syncAgentId}
 SqlServerDatabaseId         : dbId
 MemberServerName            : 
 MemberDatabaseName          : 
-UserName                    : 
-Password                    : 
+MemberDatabaseUserName      : myAccount
+MemberDatabasePassword      : 
 SyncState                   : UnProvisioned 
 ```
 
@@ -82,8 +82,23 @@ This command creates a sync member for an on-premises SQL database.
 
 ## PARAMETERS
 
-### -Credential
-The credential (username and password) of the Azure SQL database.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MemberDatabaseCredential
+The credential (username and password) of the Azure SQL Database.
 
 ```yaml
 Type: PSCredential
@@ -112,8 +127,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DatabaseType
-The database type.
+### -MemberDatabaseType
+The database type of the member database.
 
 ```yaml
 Type: String
@@ -158,6 +173,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The sync member name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncMemberName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -174,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -234,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -SyncAgentServerName
-The name of Azure SQL server where the sync agent is under.
+The name of the Azure SQL Server where the sync agent is under.
 
 ```yaml
 Type: String
@@ -273,37 +303,41 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SyncMemberName
-The sync member name.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncMemberModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmSqlSyncMember](./Get-AzureRmSqlSyncMember.md)
+
+[Set-AzureRmSqlSyncMember](./Set-AzureRmSqlSyncMember.md)
+
+[Remove-AzureRmSqlSyncMember](./Remove-AzureRmSqlSyncMember.md)
 

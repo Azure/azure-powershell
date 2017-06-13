@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
         /// </summary>
-        [Parameter(HelpMessage = "Indicates that the sync group should be returned")]
+        [Parameter(HelpMessage = "Defines Whether return the sync group")]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>

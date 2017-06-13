@@ -350,10 +350,10 @@ Returns information about Azure SQL Database Sync Groups.
 ### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
 Removes an Azure SQL Database Sync Group.
 
-### [Start-AzureRmSqlSyncGroupSynchronization](Start-AzureRmSqlSyncGroupSynchronization.md)
+### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
 Starts a sync group synchronization.
 
-### [Stop-AzureRmSqlSyncGroupSynchronization](Stop-AzureRmSqlSyncGroupSynchronization.md)
+### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
 Stops a sync group synchronization.
 
 ### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)

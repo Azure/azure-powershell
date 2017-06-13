@@ -12,7 +12,7 @@ Returns the logs of an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncGroupLog -SyncGroupName <String> -StartTime <String> [-EndTime <String>] [-Type <String>]
+Get-AzureRmSqlSyncGroupLog [-Name] <String> -StartTime <DateTime> [-EndTime <DateTime>] [-LogLevel <String>]
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
@@ -23,7 +23,7 @@ The **Get-AzureRmSqlSyncGroupLog** cmdlet returns the logs of an Azure SQL Datab
 
 ### Example 1: Get the logs of an Azure SQL Sync Group
 ```
-PS C:\>Get-AzureRmSqlSyncGroupLog -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -StartTime "9/16/2016 11:31:12" -EndTime "9/16/2016 12:31:00" -Type "All"
+PS C:\>Get-AzureRmSqlSyncGroupLog -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -StartTime "9/16/2016 11:31:12" -EndTime "9/16/2016 12:31:00" -LogLevel "All"
 [{
 TimeStamp                  : "9/16/2016 11:32:12"
 Type                       : All
@@ -89,6 +89,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LogLevel
+The type of the logs to query.
+Valid values are: 'Error', 'Warning', 'Success' and 'All'.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Error, Warning, Success, All
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The sync group name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncGroupName
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -105,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -134,38 +166,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SyncGroupName
-The sync group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Type
-The type of the logs to query.
-Valid values are: 'Error', 'Warning', 'Success' and 'All'.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: Error, Warning, Success, All
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -184,12 +184,9 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupLogModel
 
 ## NOTES
 

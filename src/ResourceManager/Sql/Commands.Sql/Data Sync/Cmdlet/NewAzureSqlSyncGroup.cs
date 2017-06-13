@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the name of the server on which sync metadata database is hosted
         /// </summary>
         [Parameter(Mandatory = true,
-           HelpMessage = "The server on which sync metadata database is hosted.")]
+           HelpMessage = "The server on which the sync metadata database is hosted.")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseServerName { get; set; }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the name of the resource group the sync metadata database belongs to
         /// </summary>
         [Parameter(Mandatory = true,
-           HelpMessage = "The resource group sync metadata database belongs to.")]
+           HelpMessage = "The resource group the sync metadata database belongs to.")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseResourceGroupName { get; set; }
 
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the hub database credential of the sync group
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The SQL authentication credetial of hub database.")]
+        [Parameter(Mandatory = false, HelpMessage = "The SQL authentication credential of the hub database.")]
         [ValidateNotNull]
-        public PSCredential HubDatabaseCredential { get; set; }
+        public PSCredential DatabaseCredential { get; set; }
 
         /// <summary>
         /// Gets or sets the policy of resolving confliction between hub and member database in the sync group
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 DatabaseName = this.DatabaseName,
                 SyncGroupName = this.Name,
                 ConflictResolutionPolicy = this.ConflictResolutionPolicy != null ? this.ConflictResolutionPolicy.ToString() : null,
-                HubDatabaseUserName = this.HubDatabaseCredential != null ? this.HubDatabaseCredential.UserName : null,
-                HubDatabasePassword = this.HubDatabaseCredential != null ? this.HubDatabaseCredential.Password : null
+                HubDatabaseUserName = this.DatabaseCredential != null ? this.DatabaseCredential.UserName : null,
+                HubDatabasePassword = this.DatabaseCredential != null ? this.DatabaseCredential.Password : null
             };
 
             if (MyInvocation.BoundParameters.ContainsKey("IntervalInSeconds"))

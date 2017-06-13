@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         public string SyncDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the database type.
+        /// Gets or sets the database type of the member database.
         /// </summary>
-        public string DatabaseType { get; set; }
+        public string MemberDatabaseType { get; set; }
 
         /// <summary>
         /// Gets or sets the sync agent name
@@ -85,12 +85,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
         /// <summary>
         /// Gets or sets the user name of Azure SQL database
         /// </summary>
-        public string UserName { get; set; }
+        public string MemberDatabaseUserName { get; set; }
 
         /// <summary>
         /// Gets or sets the password of Azure SQL database
         /// </summary>
-        public SecureString Password { get; set; }
+        public SecureString MemberDatabasePassword { get; set; }
 
         /// <summary>
         /// Gets or sets the sync state of a sync member
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Model
             SqlServerDatabaseId = syncMember.Properties.SqlServerDatabaseId;
             MemberServerName = syncMember.Properties.ServerName;
             MemberDatabaseName = syncMember.Properties.DatabaseName;
-            UserName = syncMember.Properties.UserName;
-            DatabaseType = syncMember.Properties.DatabaseType == null ? null : syncMember.Properties.DatabaseType.ToString();
+            MemberDatabaseUserName = syncMember.Properties.UserName;
+            MemberDatabaseType = syncMember.Properties.DatabaseType == null ? null : syncMember.Properties.DatabaseType.ToString();
             SyncState = syncMember.Properties.SyncState;
         }
     }
