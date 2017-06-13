@@ -24,20 +24,10 @@ The **Get-AzureRmSqlSyncGroupLog** cmdlet returns the logs of an Azure SQL Datab
 ### Example 1: Get the logs of an Azure SQL Sync Group
 ```
 PS C:\>Get-AzureRmSqlSyncGroupLog -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -StartTime "9/16/2016 11:31:12" -EndTime "9/16/2016 12:31:00" -LogLevel "All"
-[{
-TimeStamp                  : "9/16/2016 11:32:12"
-Type                       : All
-Details                    : "Details of logs"
-Source                     : SyncGroupLogs
-},
-...,
-{
-TimeStamp                  : "9/16/2016 11:33:15"
-Type                       : All
-Details                    : "Details of logs"
-Source                     : SyncMemberLogs
-}
-]
+TimeStamp            LogLevel Details                                   Source
+---------            -------- -------                                   ------
+6/13/2017 9:14:26 AM Success  Schema information obtained successfully. fangltest2.database.windows.net/fangltest
+6/13/2017 7:11:59 AM Success  Schema information obtained successfully. fangltest2.database.windows.net/fangltest
 ```
 
 This command gets the logs of an Azure SQL Sync Group.

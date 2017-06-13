@@ -21,28 +21,34 @@ The **Get-AzureRmSqlSyncSchema** cmdlet returns information about the sync schem
 
 ## EXAMPLES
 
-### Example 1: Get the sync schema for a hub database
+### Example 1.1: Get the sync schema for a hub database
 ```
 PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
-LastUpdateTime       : 2016-06-01T09:08:36.164217Z
-Tables {
-[{  ErrorId          : 
-    HasError         : false
-    Name             : table1
-    QuotedName       : [dbo].[table1]
-    Columns          : 
-    {[{  DataSize    : 100
-         DataType    : String
-         ErrorId     ： 
-         HasError    ： false
-         IsPrimaryKey： true
-         Name        : column1
-         QuotedName  : [dbo].[column1]
-    }]},
-}]
+Tables                     LastUpdateTime
+------                     --------------
+{dbo.Table_1, dbo.Table_2} 6/13/2017 10:03:44 AM
 ```
 
 This command gets the sync schema for the hub database in the sync group syncGroup01.
+
+
+### Example 1.2: Get the sync schema for a hub database, and expand Tables
+```
+PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"  | select -ExpandProperty Tables
+Columns    : {column1, column2}
+ErrorId    : Schema_TableHasNoPrimaryKey
+HasError   : True
+Name       : dbo.Table_1
+QuotedName : [dbo].[Table_1]
+
+Columns    : {column2, column4}
+ErrorId    : Schema_TableHasNoPrimaryKey
+HasError   : True
+Name       : dbo.Table_2
+QuotedName : [dbo].[Table_2]
+```
+
+This command gets the sync schema for the hub database in the sync group syncGroup01 and expand Tables property.
 
 
 ### Example 2: Get the sync schema for a member database
@@ -166,6 +172,10 @@ Accept wildcard characters: False
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaModel
+
+### Tables: Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel
+
+### Columns: Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel
 
 ## NOTES
 

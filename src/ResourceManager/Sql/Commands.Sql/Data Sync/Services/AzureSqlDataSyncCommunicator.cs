@@ -209,7 +209,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         public SyncMember CreateSyncMember(string resourceGroupName, string serverName, string databaseName, string syncAgentId, string clientRequestId, SyncMemberCreateOrUpdateParameters parameters)
         {
             SqlManagementClient client = GetCurrentSqlClient(clientRequestId);
-            parameters.Properties.SyncAgentId = syncAgentId == null ? null : string.Format("/subscriptions/{0}/{1}", client.Credentials.SubscriptionId, syncAgentId); 
+            if (syncAgentId != null)
+            {
+                parameters.Properties.SyncAgentId = string.Format("/subscriptions/{0}/{1}", client.Credentials.SubscriptionId, syncAgentId);
+            }
             return GetCurrentSqlClient(clientRequestId).DataSync.CreateOrUpdateSyncMember(resourceGroupName, serverName, databaseName, parameters).SyncMember;
         }
 
@@ -251,7 +254,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         public SyncAgent CreateSyncAgent(string resourceGroupName, string serverName, string syncAgentName, string syncDatabaseId, string clientRequestId, SyncAgentCreateOrUpdateParameters parameters)
         {
             SqlManagementClient client = GetCurrentSqlClient(clientRequestId);
-            parameters.Properties.SyncDatabaseId = syncDatabaseId == null ? null : string.Format("/subscriptions/{0}/{1}", client.Credentials.SubscriptionId, syncDatabaseId);            
+            if (syncDatabaseId != null)
+            {
+                parameters.Properties.SyncDatabaseId = string.Format("/subscriptions/{0}/{1}", client.Credentials.SubscriptionId, syncDatabaseId);
+            }     
             return GetCurrentSqlClient(clientRequestId).DataSync.CreateOrUpdateSyncAgent(resourceGroupName, serverName, syncAgentName, parameters).SyncAgent;
         }
 

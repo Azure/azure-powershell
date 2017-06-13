@@ -35,12 +35,17 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Parameter set name for Azure Sql Database
         /// </summary>
-        private const string AzureSqlSet = "AzureSql";
+        private const string AzureSqlSet = "AzureSqlDatabase";
 
         /// <summary>
-        /// Parameter set name for On Premise Database
+        /// Parameter set name for On Premises Database with sync agent resource ID
         /// </summary>
-        private const string OnPremiseSet = "OnPremise";
+        private const string OnPremisesSyncAgentResourceIDSet = "OnPremisesDatabaseSyncAgentResourceID";
+
+        /// <summary>
+        /// Parameter set name for On Premises Database with sync agent component including resource group name, server name, sync agent name
+        /// </summary>
+        private const string OnPremisesSyncAgentComponentSet = "OnPremisesDatabaseSyncAgentComponent";
 
         /// <summary>
         /// Gets or sets the sync member name
@@ -87,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the resource group name of the sync agent.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = OnPremiseSet,
+            ParameterSetName = OnPremisesSyncAgentComponentSet,
             HelpMessage = "The name of the resource group where the sync agent is under.")]
         [ValidateNotNullOrEmpty]
         public string SyncAgentResourceGroupName { get; set; }
@@ -96,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the server name of the sync agent.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = OnPremiseSet,
+            ParameterSetName = OnPremisesSyncAgentComponentSet,
             HelpMessage = "The name of the Azure SQL Server where the sync agent is under.")]
         [ValidateNotNullOrEmpty]
         public string SyncAgentServerName { get; set; }
@@ -105,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the name of sync agent.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = OnPremiseSet,
+            ParameterSetName = OnPremisesSyncAgentComponentSet,
             HelpMessage = "The name of the sync agent.")]
         [ValidateNotNullOrEmpty]
         public string SyncAgentName { get; set; }
@@ -114,10 +119,22 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the id of the SQL server database which is connected by the sync agent. 
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = OnPremiseSet,
+            ParameterSetName = OnPremisesSyncAgentComponentSet,
+            HelpMessage = "The id of the SQL server database which is connected by the sync agent.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = OnPremisesSyncAgentResourceIDSet,
             HelpMessage = "The id of the SQL server database which is connected by the sync agent.")]
         [ValidateNotNullOrEmpty]
         public string SqlServerDatabaseId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the sync agent. 
+        /// </summary>
+        [Parameter(Mandatory = true,
+           ParameterSetName = OnPremisesSyncAgentResourceIDSet,
+           HelpMessage = "The resource ID of the sync agent.")]
+        [ValidateNotNullOrEmpty]
+        public string SyncAgentResourceID { get; set; }
 
         /// <summary>
         /// Gets or sets the sync direction of this sync member
@@ -175,24 +192,29 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 DatabaseName = this.DatabaseName,
                 SyncGroupName = this.SyncGroupName,
                 SyncMemberName = this.Name,
-                SyncDirection = this.SyncDirection
+                SyncDirection = this.SyncDirection,
+                MemberDatabaseType = this.MemberDatabaseType
             };
-
-            DatabaseTypeEnum dbType = (DatabaseTypeEnum)Enum.Parse(typeof(DatabaseTypeEnum), MemberDatabaseType, true);
-            if(dbType == DatabaseTypeEnum.AzureSqlDatabase) 
+            
+            if(ParameterSetName == AzureSqlSet) 
             {
                 newModel.MemberDatabaseName = this.MemberDatabaseName;
                 newModel.MemberServerName = this.MemberServerName;
                 newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
                 newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
-                newModel.MemberDatabaseType = DatabaseTypeEnum.AzureSqlDatabase.ToString();
             } 
             else
             {
-                this.syncAgentId = string.Format("resourceGroups/{0}/providers/Microsoft.Sql/servers/{1}/syncAgents/{2}", this.SyncAgentResourceGroupName, this.SyncAgentServerName, this.SyncAgentName);
-                newModel.SyncAgentId = this.syncAgentId;
                 newModel.SqlServerDatabaseId = this.SqlServerDatabaseId;
-                newModel.MemberDatabaseType = DatabaseTypeEnum.SqlServerDatabase.ToString();
+                if (ParameterSetName == OnPremisesSyncAgentResourceIDSet)
+                {
+                    newModel.SyncAgentId = this.SyncAgentResourceID;
+                }
+                else
+                {
+                    // "/subscriptions/{id}/" will be added in AzureSqlDataSyncCommunicator
+                    this.syncAgentId = string.Format("resourceGroups/{0}/providers/Microsoft.Sql/servers/{1}/syncAgents/{2}", this.SyncAgentResourceGroupName, this.SyncAgentServerName, this.SyncAgentName);
+                }
             }
             newEntity.Add(newModel);
             return newEntity;

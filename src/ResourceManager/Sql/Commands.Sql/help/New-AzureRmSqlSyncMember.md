@@ -12,19 +12,27 @@ Creates an Azure SQL Database Sync Member.
 
 ## SYNTAX
 
-### AzureSql (Default)
+### AzureSqlDatabase (Default)
 ```
 New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -MemberServerName <String>
- -MemberDatabaseName <String> -MemberDatabaseCredential <PSCredential> [-SyncDirection <String>] [-SyncGroupName] <String>
- [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ -MemberDatabaseName <String> -MemberDatabaseCredential <PSCredential> [-SyncDirection <String>]
+ [-SyncGroupName] <String> [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
+ [-WhatIf] [-Confirm]
 ```
 
-### OnPremise
+### OnPremisesDatabaseSyncAgentComponent
 ```
 New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -SyncAgentResourceGroupName <String>
  -SyncAgentServerName <String> -SyncAgentName <String> -SqlServerDatabaseId <String> [-SyncDirection <String>]
  [-SyncGroupName] <String> [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
  [-WhatIf] [-Confirm]
+```
+
+### OnPremisesDatabaseSyncAgentResourceID
+```
+New-AzureRmSqlSyncMember -Name <String> -MemberDatabaseType <String> -SqlServerDatabaseId <String>
+ -SyncAgentResourceID <String> [-SyncDirection <String>] [-SyncGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -97,21 +105,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MemberDatabaseCredential
-The credential (username and password) of the Azure SQL Database.
-
-```yaml
-Type: PSCredential
-Parameter Sets: AzureSql
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
 The name of the Azure SQL Database.
 
@@ -124,6 +117,36 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MemberDatabaseCredential
+The credential (username and password) of the Azure SQL Database.
+
+```yaml
+Type: PSCredential
+Parameter Sets: AzureSqlDatabase
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MemberDatabaseName
+The Azure SQL Database name of the member database.
+
+```yaml
+Type: String
+Parameter Sets: AzureSqlDatabase
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,27 +166,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -MemberDatabaseName
-The Azure SQL Database name of the member database.
-
-```yaml
-Type: String
-Parameter Sets: AzureSql
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MemberServerName
 The Azure SQL Server Name of the member database.
 
 ```yaml
 Type: String
-Parameter Sets: AzureSql
+Parameter Sets: AzureSqlDatabase
 Aliases: 
 
 Required: True
@@ -223,7 +231,7 @@ The id of the SQL server database which is connected by the sync agent.
 
 ```yaml
 Type: String
-Parameter Sets: OnPremise
+Parameter Sets: OnPremisesDatabaseSyncAgentComponent, OnPremisesDatabaseSyncAgentResourceID
 Aliases: 
 
 Required: True
@@ -238,7 +246,7 @@ The name of the sync agent.
 
 ```yaml
 Type: String
-Parameter Sets: OnPremise
+Parameter Sets: OnPremisesDatabaseSyncAgentComponent
 Aliases: 
 
 Required: True
@@ -253,7 +261,22 @@ The name of the resource group where the sync agent is under.
 
 ```yaml
 Type: String
-Parameter Sets: OnPremise
+Parameter Sets: OnPremisesDatabaseSyncAgentComponent
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SyncAgentResourceID
+The resource ID of the sync agent.
+
+```yaml
+Type: String
+Parameter Sets: OnPremisesDatabaseSyncAgentResourceID
 Aliases: 
 
 Required: True
@@ -268,7 +291,7 @@ The name of the Azure SQL Server where the sync agent is under.
 
 ```yaml
 Type: String
-Parameter Sets: OnPremise
+Parameter Sets: OnPremisesDatabaseSyncAgentComponent
 Aliases: 
 
 Required: True
