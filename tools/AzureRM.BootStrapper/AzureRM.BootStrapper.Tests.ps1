@@ -1399,7 +1399,8 @@ Describe "Remove-AzureRmDefaultProfile" {
         Mock Remove-Module -Verifiable {}
         Mock Remove-ProfileSetting -Verifiable {}
         Mock Test-Path -Verifiable { $true }
-        
+        Mock Get-Module -Verifiable { "AzureRm" }
+
         Context "Default profile presents in the profile file & default variable" {
             It "Should successfully remove default profile from shell & profile file" {
                 Remove-AzureRmDefaultProfile -Force
@@ -1417,17 +1418,15 @@ Describe "Remove-AzureRmDefaultProfile" {
         }
 
         Context "Profile files do not exist" {
-            Mock Invoke-CommandWithRetry {}
             Mock Test-Path -Verifiable { $false }
             It "Should not invoke remove script" {
                 Remove-AzureRmDefaultProfile -Force
-                Assert-MockCalled Invoke-CommandWithRetry -Exactly 0
+                Assert-MockCalled Remove-ProfileSetting -Exactly 0
             }
         }
 
         Context "Remove default profile in admin mode" {
             Mock Remove-Module -verifiable {}
-            Mock Invoke-CommandWithRetry -Verifiable {}
             $Script:IsAdmin = $true
             It "Should remove setting in AllUsersAllHosts and CurrentUserAllHosts profiles" {
                 Remove-AzureRmDefaultProfile -Force
@@ -1443,7 +1442,6 @@ Describe "Remove-AzureRmDefaultProfile" {
             It "Should remove setting in CurrentUserAllHosts profile" {
                 Remove-AzureRmDefaultProfile -Force
                 Assert-MockCalled Test-Path -Exactly 1
-               
             }
         }
     }    
