@@ -58,7 +58,26 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 string responseJson = await client.GetStringAsync(url).ConfigureAwait(false);
                 response = JsonConvert.DeserializeObject<MetadataResponse>(responseJson);
             }
+
+            if ((null == response) || (CheckIfAnyPropertyIsNull(response)))
+            {
+                throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");    
+            }
+
+            if (CheckIfAnyPropertyIsNull(response.authentication))
+            {
+                throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
+            }
+
             return response;
+        }
+
+        internal static bool CheckIfAnyPropertyIsNull(object response)
+        {
+            return response.GetType()
+                 .GetProperties() 
+                 .Select(pi => pi.GetValue(response))
+                 .Any(value => value == null);
         }
     }
 }

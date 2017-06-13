@@ -125,18 +125,8 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 MetadataResponse metadataEndpoints = null;
                 metadataEndpoints = EnvironmentHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
-                if (null == metadataEndpoints)
-                {
-                    throw new Exception("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
-                }
-
                 string domain = EnvironmentHelper.RetrieveDomain(metadataEndpoints.PortalEndpoint);
                 ActiveDirectoryEndpoint = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/') + '/';
-                if (string.IsNullOrEmpty(ActiveDirectoryEndpoint))
-                {
-                    throw new Exception("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
-                }
-
                 ActiveDirectoryServiceEndpointResourceId = metadataEndpoints.authentication.Audiences[0];
                 GalleryEndpoint = metadataEndpoints.GalleryEndpoint;
                 GraphEndpoint = metadataEndpoints.GraphEndpoint;
