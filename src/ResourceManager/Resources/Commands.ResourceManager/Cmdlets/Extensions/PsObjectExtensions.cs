@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Newtonsoft.Json.Linq;
