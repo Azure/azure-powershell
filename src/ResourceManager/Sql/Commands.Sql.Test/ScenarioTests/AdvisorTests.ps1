@@ -372,8 +372,7 @@ function Test-UpdateElasticPoolAdvisor
 function SetupServer($resourceGroup)
 {
 	$location = "Southeast Asia"
-	$serverVersion = "12.0";
-	$server = Create-ServerForTest $resourceGroup $serverVersion $location
+	$server = Create-ServerForTest $resourceGroup $location
 	return $server
 }
 
