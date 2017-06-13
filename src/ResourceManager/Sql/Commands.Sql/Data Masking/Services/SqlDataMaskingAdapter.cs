@@ -55,23 +55,23 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         ///  Checks whether the server is applicable for dynamic data masking
         /// </summary>
-        private bool IsRightServerVersionForDataMasking(string resourceGroupName, string serverName, string clientId)
+        private bool IsRightServerVersionForDataMasking(string resourceGroupName, string serverName)
         {
             AzureSqlServerCommunicator dbCommunicator = new AzureSqlServerCommunicator(Context);
-            Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName, clientId);
+            Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName);
             return server.Version == "12.0";
         }
 
         /// <summary>
         /// Provides a cmdlet model representation of a specific database's data making policy
         /// </summary>
-        public DatabaseDataMaskingPolicyModel GetDatabaseDataMaskingPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
+        public DatabaseDataMaskingPolicyModel GetDatabaseDataMaskingPolicy(string resourceGroup, string serverName, string databaseName)
         {
-            if (!IsRightServerVersionForDataMasking(resourceGroup, serverName, requestId))
+            if (!IsRightServerVersionForDataMasking(resourceGroup, serverName))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForDataMasking);
             }
-            DataMaskingPolicy policy = Communicator.GetDatabaseDataMaskingPolicy(resourceGroup, serverName, databaseName, requestId);
+            DataMaskingPolicy policy = Communicator.GetDatabaseDataMaskingPolicy(resourceGroup, serverName, databaseName);
             DatabaseDataMaskingPolicyModel dbPolicyModel = ModelizeDatabaseDataMaskingPolicy(policy);
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;
@@ -82,22 +82,22 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Sets the data masking policy of a specific database to be based on the information provided by the model object
         /// </summary>
-        public void SetDatabaseDataMaskingPolicy(DatabaseDataMaskingPolicyModel model, String clientId)
+        public void SetDatabaseDataMaskingPolicy(DatabaseDataMaskingPolicyModel model)
         {
-            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
+            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForDataMasking);
             }
             DataMaskingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseDataMaskingModel(model);
-            Communicator.SetDatabaseDataMaskingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, parameters);
+            Communicator.SetDatabaseDataMaskingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, parameters);
         }
 
         /// <summary>
         /// Provides the data masking rule model for a specific data masking rule
         /// </summary>
-        public IList<DatabaseDataMaskingRuleModel> GetDatabaseDataMaskingRules(string resourceGroup, string serverName, string databaseName, string requestId)
+        public IList<DatabaseDataMaskingRuleModel> GetDatabaseDataMaskingRules(string resourceGroup, string serverName, string databaseName)
         {
-            return Communicator.ListDataMaskingRules(resourceGroup, serverName, databaseName, requestId).
+            return Communicator.ListDataMaskingRules(resourceGroup, serverName, databaseName).
                 Select(r => ModelizeDatabaseDataMaskingRule(r, resourceGroup, serverName, databaseName)).
                 ToList();
         }
@@ -105,36 +105,36 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Sets a data masking rule based on the information provided by the model object
         /// </summary>
-        public void SetDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
+        public void SetDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model)
         {
-            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
+            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForDataMasking);
             }
 
-            DatabaseDataMaskingPolicyModel policyModel = GetDatabaseDataMaskingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
+            DatabaseDataMaskingPolicyModel policyModel = GetDatabaseDataMaskingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName);
             if (policyModel.DataMaskingState == DataMaskingStateType.Uninitialized)
             {
                 policyModel.DataMaskingState = DataMaskingStateType.Enabled;
-                SetDatabaseDataMaskingPolicy(policyModel, clientId);
+                SetDatabaseDataMaskingPolicy(policyModel);
             }
             DataMaskingRuleCreateOrUpdateParameters parameters = PolicizeDatabaseDataRuleModel(model);
-            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, ExtractDataMaskingRuleId(model), clientId, parameters);
+            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, ExtractDataMaskingRuleId(model), parameters);
         }
 
         /// <summary>
         /// Removes a data masking rule based on the information provided by the model object
         /// </summary>
-        public void RemoveDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
+        public void RemoveDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model)
         {
-            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
+            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName))
             {
                 throw new Exception(Properties.Resources.ServerNotApplicableForDataMasking);
             }
             DataMaskingRuleCreateOrUpdateParameters parameters = PolicizeDatabaseDataRuleModel(model);
             parameters.Properties.RuleState = SecurityConstants.Disabled;
             string ruleId = ExtractDataMaskingRuleId(model);
-            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, ruleId, clientId, parameters);
+            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, ruleId, parameters);
         }
 
         private string ExtractDataMaskingRuleId(DatabaseDataMaskingRuleModel model)

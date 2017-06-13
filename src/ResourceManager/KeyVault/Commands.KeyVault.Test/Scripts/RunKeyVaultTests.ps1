@@ -38,7 +38,7 @@ If true, then active directory related tests are skipped.
 Run all tests against a temporary vault.
 
 .EXAMPLE
-.\RunKeyVaultTests.ps1 -TestRunNameSpace "test2" -TestMode "DataPlane" -Location "westus" -Vault "MyAwesomeVault" -ResourceGroup "MyAwesomeResourceGroup"
+.\RunKeyVaultTests.ps1 -TestRunNameSpace "test2" -TestMode "DataPlane" -Location "westus" -Vault "MyAwesomeVault" -ResourceGroup "MyAwesomeResourceGroup" -StorageResourceId "/subscriptions/76fb41ba-5387-4dff-89f5-24ae457ade99/resourceGroups/kvstoragetestrg/providers/Microsoft.Storage/storageAccounts/azkvteststorage1westus"
 
 Run only the data plane tests against a provided vault.
 #>
@@ -61,7 +61,9 @@ param(
     [Parameter(Mandatory=$false, Position=7)]
     [Guid] $UserObjectId,
     [Parameter(Mandatory=$false, Position=8)]
-    [Nullable[bool]] $NoADCmdLetMode = $null
+    [Nullable[bool]] $NoADCmdLetMode = $null,
+    [Parameter(Mandatory=$false, Position=9)]
+    [string] $StorageResourceId = $null
 )
 
 . (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Common.ps1")
@@ -70,6 +72,7 @@ param(
 . (Join-Path $PSScriptRoot "VaultKeyTests.ps1")
 . (Join-Path $PSScriptRoot "VaultSecretTests.ps1")
 . (Join-Path $PSScriptRoot "VaultCertificateTests.ps1");
+. (Join-Path $PSScriptRoot "VaultManagedStorageAccountTests.ps1");
 . (Join-Path $PSScriptRoot "VaultManagementTests.ps1")
 . (Join-Path $PSScriptRoot "ControlPlane\KeyVaultManagementTests.ps1")  # Shared between PSH scenario tests and KV-specific script based tests.
 . (Join-Path $PSScriptRoot "ControlPlane\Common.ps1")
@@ -88,6 +91,7 @@ $global:standardVaultOnly = $StandardVaultOnly
 $global:softDeleteEnabled = $SoftDeleteEnabled
 $global:objectId = $UserObjectId
 $global:noADCmdLetMode = $NoADCmdLetMode
+$global:storageResourceId = $StorageResourceId
 
 if (-not $global:objectId)
 {
@@ -427,6 +431,22 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-CertificateTest {Test_Add_AzureKeyVaultCertificate} "Test_Add_AzureKeyVaultCertificate" } "Test_Add_AzureKeyVaultCertificate"
     Run-TestProtected { Run-CertificateTest {Test_CertificateTags} "Test_CertificateTags" } "Test_CertificateTags"
     Run-TestProtected { Run-CertificateTest {Test_UpdateCertificateTags} "Test_UpdateCertificateTags" } "Test_UpdateCertificateTags"
+
+   # AzureKeyVaultManagedStorageAccount, AzureKeyVaultManagedStorageSasDefinition tests
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndRawSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndRawSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndRawSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndBlobSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndBlobSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndBlobSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndBlobStoredPolicySasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndBlobStoredPolicySasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndBlobStoredPolicySasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndContainerSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndContainerSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndContainerSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndShareSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndShareSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndShareSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndFileSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndFileSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndFileSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndQueueSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndQueueSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndQueueSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndTableSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndTableSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndTableSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndAccountSasDefinition} "Test_SetAzureKeyVaultManagedStorageAccountAndAccountSasDefinition" } "Test_SetAzureKeyVaultManagedStorageAccountAndAccountSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionPipeTest} "Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionPipeTest" } "Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionPipeTest"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionAttribute} "Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionAttribute" } "Test_SetAzureKeyVaultManagedStorageAccountAndSasDefinitionAttribute"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_UpdateAzureKeyVaultManagedStorageAccount} "Test_UpdateAzureKeyVaultManagedStorageAccount" } "Test_UpdateAzureKeyVaultManagedStorageAccount"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_RegenerateAzureKeyVaultManagedStorageAccountAndSasDefinition} "Test_RegenerateAzureKeyVaultManagedStorageAccountAndSasDefinition" } "Test_RegenerateAzureKeyVaultManagedStorageAccountAndSasDefinition"
+    Run-TestProtected { Run-ManagedStorageAccountTest {Test_ListKeyVaultAzureKeyVaultManagedStorageAccounts} "Test_ListKeyVaultAzureKeyVaultManagedStorageAccounts" } "Test_ListKeyVaultAzureKeyVaultManagedStorageAccounts"
 }
 
 # Clean up and initialize the temporary state required to run all tests, if necessary.
@@ -435,6 +455,7 @@ Initialize-TemporaryState
 if (($Vault -ne "") -and (@('DataPlane', 'All') -contains $TestMode))
 {
     Cleanup-OldCertificates
+    Cleanup-OldManagedStorageAccounts
     Cleanup-OldKeys
     Cleanup-OldSecrets
 }
