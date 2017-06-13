@@ -27,7 +27,7 @@ The **New-AzureRmStorageAccount** cmdlet creates an Azure Storage account.
 
 ### Example 1: Create a Storage Account
 ```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -Type "Standard_GRS"
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS"
 ```
 
 This command creates a Storage account for the resource group name MyResourceGroup.
