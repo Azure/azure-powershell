@@ -126,7 +126,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
                 if (overWrite)
                 {
-                    destinationBlob.DeleteIfExists(DeleteSnapshotsOption.IncludeSnapshots, null, requestOptions);
+                    destinationBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, requestOptions, operationContext: null)
+                        .ConfigureAwait(false).GetAwaiter().GetResult();
                 }
 
                 if (destinationBlob.Exists(requestOptions))
@@ -184,7 +185,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 var bs = new BufferedStream(vds);
                 if (resume)
                 {
-                    var alreadyUploadedRanges = context.DestinationBlob.GetPageRanges().Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
+                    var alreadyUploadedRanges = context.DestinationBlob.GetPageRangesAsync()
+                        .ConfigureAwait(false).GetAwaiter().GetResult()
+                        .Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
                     ranges = IndexRange.SubstractRanges(ranges, alreadyUploadedRanges);
                     context.AlreadyUploadedDataSize = alreadyUploadedRanges.Sum(ir => ir.Length);
                 }
