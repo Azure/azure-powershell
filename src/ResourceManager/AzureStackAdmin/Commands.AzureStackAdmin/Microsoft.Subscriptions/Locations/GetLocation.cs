@@ -40,11 +40,11 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets the managed location 
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMManagedLocation", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmManagedLocation", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRMManagedLocation will be deprecated in a future release. Please use the cmdlet name Get-AzSLocation instead");
+                this.WriteWarning("Alias Get-AzureRmManagedLocation will be deprecated in a future release. Please use the cmdlet name Get-AzsLocation instead");
             }
 
             using (var client = this.GetAzureStackClient())
@@ -52,12 +52,14 @@ namespace Microsoft.AzureStack.Commands
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteVerbose(Resources.ListingLocations);
-                    return client.ManagedLocations.List().Locations;
+                    var result = client.ManagedLocations.List().Locations;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingLocation.FormatArgs(this.Name));
-                    return client.ManagedLocations.Get(this.Name).Location;
+                    var result = client.ManagedLocations.Get(this.Name).Location;
+                    WriteObject(result);
                 }
             }
         }

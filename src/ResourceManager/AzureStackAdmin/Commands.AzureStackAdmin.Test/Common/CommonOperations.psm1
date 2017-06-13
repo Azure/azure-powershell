@@ -86,7 +86,7 @@ function Set-Offer
     )
 
     $Offer.properties.state = $State
-    $Offer | Set-AzSOffer -ResourceGroupName $ResourceGroup
+    $Offer | Set-AzsOffer -ResourceGroupName $ResourceGroup
 
     Write-Verbose "$Offer state got updated to $State"
 }
@@ -103,7 +103,7 @@ function Set-Plan
 
     )
 
-    $Plan | Set-AzSPlan -ResourceGroupName $ResourceGroup
+    $Plan | Set-AzsPlan -ResourceGroupName $ResourceGroup
 
     Write-Verbose "$Plan state got updated to $State"
 }
@@ -166,7 +166,7 @@ function New-Plan
 
     $quotaIds = Get-ServiceQuotas -Services $Services
 
-    $plan = New-AzSPlan -Name $PlanName -DisplayName $PlanName -ArmLocation $Global:AzureStackConfig.ArmLocation -ResourceGroupName $ResourceGroupName -QuotaIds $quotaIds
+    $plan = New-AzsPlan -Name $PlanName -DisplayName $PlanName -ArmLocation $Global:AzureStackConfig.ArmLocation -ResourceGroupName $ResourceGroupName -QuotaIds $quotaIds
 
     Write-Verbose "Plan created successfully: $PlanName"
 
@@ -190,7 +190,7 @@ function Remove-Plan
         [String] $ResourceGroupName
     )
 
-    Remove-AzSPlan -Name $PlanName -ResourceGroupName $ResourceGroupName
+    Remove-AzsPlan -Name $PlanName -ResourceGroupName $ResourceGroupName
 
     Assert-ResourceDeletion {Get-Plan -PlanName $PlanName -ResourceGroupName $ResourceGroupName}
 
@@ -209,7 +209,7 @@ function Get-Plan
         [String] $ResourceGroupName
     )
 
-    return Get-AzSPlan -Name $PlanName -ResourceGroupName $ResourceGroupName
+    return Get-AzsPlan -Name $PlanName -ResourceGroupName $ResourceGroupName
 }
 
 function New-Offer
@@ -227,7 +227,7 @@ function New-Offer
         [String] $ResourceGroupName
     )
 
-    $offer = New-AzSOffer -Name $OfferName -DisplayName $OfferName -State Private -BasePlanIds $BasePlanIds -ArmLocation $AzureStackConfig.ArmLocation -ResourceGroupName $ResourceGroupName
+    $offer = New-AzsOffer -Name $OfferName -DisplayName $OfferName -State Private -BasePlanIds $BasePlanIds -ArmLocation $AzureStackConfig.ArmLocation -ResourceGroupName $ResourceGroupName
 
     Assert-NotNull $offer
     Assert-True {$offer.Properties.DisplayName -eq  $OfferName}
@@ -247,7 +247,7 @@ function Remove-Offer
         [String] $ResourceGroupName
     )
 
-    $offer = Remove-AzSOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
+    $offer = Remove-AzsOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
 
     Assert-ResourceDeletion {Get-Offer -OfferName $OfferName -ResourceGroupName $ResourceGroupName}
 
@@ -273,11 +273,11 @@ function Get-Offer
     {
         "Admin"
         {
-            return Get-AzSManagedOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
+            return Get-AzsManagedOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
         }
         "Tenant"
         {
-            return Get-AzSOffer -Provider "default" | Where-Object name -eq $OfferName
+            return Get-AzsOffer -Provider "default" | Where-Object name -eq $OfferName
         }
     }
 }
@@ -297,13 +297,13 @@ function New-Subscription
     if ($SubscriptionUser)
     {
         $subDisplayName = "Test User-$SubscriptionUser"
-        $subscription = New-AzSTenantSubscription -Owner $SubscriptionUser -OfferId $OfferId -DisplayName $subDisplayName
+        $subscription = New-AzsTenantSubscription -Owner $SubscriptionUser -OfferId $OfferId -DisplayName $subDisplayName
     }
     else
     {
         $userName = (Get-AzureRMContext).Account.Id
         $subDisplayName = "Test User-$userName"
-        $subscription = New-AzSSubscription  -OfferId $OfferId -DisplayName $subDisplayName
+        $subscription = New-AzsSubscription  -OfferId $OfferId -DisplayName $subDisplayName
     }
 
     Assert-True { $subscription.DisplayName -eq $subDisplayName } | Out-Null
@@ -314,13 +314,13 @@ function New-Subscription
     if ($SubscriptionUser)
     {
         Retry-Function -ScriptBlock {
-            (Get-AzSTenantSubscription -SubscriptionId $subscription.SubscriptionId).State -ieq "Enabled"
+            (Get-AzsTenantSubscription -SubscriptionId $subscription.SubscriptionId).State -ieq "Enabled"
         } -MaxTries 12 -IntervalInSeconds 5 | Out-Null
     }
     else
     {
         Retry-Function -ScriptBlock {
-            (Get-AzSSubscription)[0].State -ieq "Enabled"
+            (Get-AzsSubscription)[0].State -ieq "Enabled"
         } -MaxTries 12 -IntervalInSeconds 5 | Out-Null
     }
 
@@ -337,10 +337,10 @@ function Remove-Subscription
    )
     Write-Verbose "Deleting the subscription : $TargetSubscriptionId"
 
-    $subscription = Get-AzSTenantSubscription -SubscriptionId $TargetSubscriptionId
-    Remove-AzSTenantSubscription -SubscriptionId $TargetSubscriptionId
+    $subscription = Get-AzsTenantSubscription -SubscriptionId $TargetSubscriptionId
+    Remove-AzsTenantSubscription -SubscriptionId $TargetSubscriptionId
 
-    Assert-SubscriptionDeletion {Get-AzSTenantSubscription -SubscriptionId $TargetSubscriptionId}
+    Assert-SubscriptionDeletion {Get-AzsTenantSubscription -SubscriptionId $TargetSubscriptionId}
     Write-Verbose "Successfully deleted the subscription : $TargetSubscriptionId"
 }
 
@@ -352,7 +352,7 @@ function Get-TenantPublicOffers
         [String] $Token
     )
 
-     return Get-AzSOffer -Provider "default"
+     return Get-AzsOffer -Provider "default"
 }
 
 function Get-Subscriptions

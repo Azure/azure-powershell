@@ -25,7 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.GalleryItem)]
     [OutputType(typeof(GalleryItemModel))]
-    [Alias("Get-AzureRMGalleryItem")]
+    [Alias("Get-AzureRmGalleryItem")]
     public class GetGalleryItem : AdminApiCmdlet
     {
         /// <summary>
@@ -38,11 +38,11 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMGalleryItem", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmGalleryItem", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRMGalleryItem will be deprecated in a future release. Please use the cmdlet name Get-AzSGalleryItem instead");
+                this.WriteWarning("Alias Get-AzureRmGalleryItem will be deprecated in a future release. Please use the cmdlet name Get-AzsGalleryItem instead");
             }
 
             this.ApiVersion = GalleryAdminApiVersion;
@@ -52,12 +52,14 @@ namespace Microsoft.AzureStack.Commands
                 {
                     this.WriteVerbose(Resources.ListingGalleryItems);
 
-                    return client.GalleryItem.List().GalleryItems;
+                    var result = client.GalleryItem.List().GalleryItems;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingGalleryItem.FormatArgs(this.Name));
-                    return client.GalleryItem.Get(this.Name).GalleryItem;
+                    var result = client.GalleryItem.Get(this.Name).GalleryItem;
+                    WriteObject(result);
                 }
             }
         }

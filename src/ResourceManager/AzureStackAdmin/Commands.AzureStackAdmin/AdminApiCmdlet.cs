@@ -73,7 +73,6 @@ namespace Microsoft.AzureStack.Commands
         protected override void ProcessRecord()
         {
             var originalValidateCallback = ServicePointManager.ServerCertificateValidationCallback;
-            object result;
 
             if (this.MyInvocation.BoundParameters.Keys.Contains("ResourceGroup", StringComparer.OrdinalIgnoreCase))
             {
@@ -81,20 +80,14 @@ namespace Microsoft.AzureStack.Commands
             }
 
             // Execute the API call(s) for the current cmdlet
-            result = this.ExecuteCore();
+            this.ExecuteCore();
 
-            // Write the object to the pipeline only after the certificate validation callback has been restored.
-            // This will prevent other cmdlets in the pipeline from inheriting this security vulnerability.
-            if (result != null)
-            {
-                this.WriteObject(result, enumerateCollection: true);
-            }
         }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected abstract object ExecuteCore();
+        protected abstract void ExecuteCore();
 
         /// <summary>
         /// Gets the Azure Stack management client.

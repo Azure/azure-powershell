@@ -164,6 +164,6 @@ function Get-DefaultLocation
     )
 
     # TODO: always returning the first region, change if neede
-    $locations = Get-AzSLocation
+    $locations = Get-AzsLocation
     return $locations[0].Name
 }

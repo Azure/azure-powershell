@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Set Resource Provider Manifest Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.ResourceProviderManifest)]
+    [Cmdlet(VerbsCommon.Set, Nouns.ResourceProviderManifest, SupportsShouldProcess = true)]
     [OutputType(typeof(ProviderRegistrationModel))]
     [Alias("Set-AzureRmResourceProviderRegistration")]
     public class SetResourceProviderManifest : AdminApiCmdlet
@@ -49,27 +49,33 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Set-AzureRMResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Set-AzureRMResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Set-AzSResourceProviderManifest instead");
+                this.WriteWarning("Alias Set-AzureRmResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Set-AzsResourceProviderManifest instead");
             }
 
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.ProviderRegistration.Name, VerbsCommon.Set))
             {
-                var parameters = new ProviderRegistrationCreateOrUpdateParameters()
+                using (var client = this.GetAzureStackClient())
+                {
+                    var parameters = new ProviderRegistrationCreateOrUpdateParameters()
                     {
                         ProviderRegistration = this.ProviderRegistration
-                    };  
+                    };
 
-                this.WriteVerbose(Resources.AddingResourceProviderManifest.FormatArgs(parameters.ProviderRegistration.Properties.DisplayName));
+                    this.WriteVerbose(
+                        Resources.AddingResourceProviderManifest.FormatArgs(
+                            parameters.ProviderRegistration.Properties.DisplayName));
 
-                this.ValidatePrerequisites(client, parameters);
+                    this.ValidatePrerequisites(client, parameters);
 
-                return client.ProviderRegistrations
-                    .CreateOrUpdate(this.ResourceGroupName, parameters)
-                    .ProviderRegistration;
+                    var result = client.ProviderRegistrations
+                        .CreateOrUpdate(this.ResourceGroupName, parameters)
+                        .ProviderRegistration;
+                    WriteObject(result);
+                }
             }
         }
 

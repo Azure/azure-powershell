@@ -68,23 +68,25 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
             if (this.Managed.IsPresent)
             {
-                 this.WriteWarning("The switch parameter Managed will be deprecated in a future release. Please use the cmdlet Get-AzSManagedOffer instead");
+                 this.WriteWarning("The switch parameter Managed will be deprecated in a future release. Please use the cmdlet Get-AzsManagedOffer instead");
 
                 using (var client = this.GetAzureStackClient())
                 {
                     if (string.IsNullOrEmpty(this.Name))
                     {
                         this.WriteVerbose(Resources.ListingManagedOffers.FormatArgs(this.ResourceGroupName));
-                        return client.ManagedOffers.List(this.ResourceGroupName, includeDetails: true).Offers;
+                        var result = client.ManagedOffers.List(this.ResourceGroupName, includeDetails: true).Offers;
+                        WriteObject(result, enumerateCollection: true);
                     }
                     else
                     {
                         this.WriteVerbose(Resources.GettingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
-                        return client.ManagedOffers.Get(this.ResourceGroupName, this.Name).Offer;
+                        var result = client.ManagedOffers.Get(this.ResourceGroupName, this.Name).Offer;
+                        WriteObject(result);
                     }
                 }
             }
@@ -97,18 +99,21 @@ namespace Microsoft.AzureStack.Commands
                         if (string.IsNullOrEmpty(this.Provider))
                         {
                             this.WriteVerbose(Resources.ListingOffers.FormatArgs("<root>"));
-                            return client.Offers.ListUnderRootProvider().Offers;
+                            var result = client.Offers.ListUnderRootProvider().Offers;
+                            WriteObject(result, enumerateCollection:true);
                         }
                         else
                         {
                             this.WriteVerbose(Resources.ListingOffers.FormatArgs(this.Provider));
-                            return client.Offers.List(this.Provider).Offers;
+                            var result = client.Offers.List(this.Provider).Offers;
+                            WriteObject(result, enumerateCollection:true);
                         }
                     }
                     else
                     {
                         this.WriteVerbose(Resources.GettingOffer.FormatArgs(this.OfferId));
-                        return client.Offers.Get(this.OfferId).Offer;
+                        var result = client.Offers.Get(this.OfferId).Offer;
+                        WriteObject(result);
                     }
                 }
             }

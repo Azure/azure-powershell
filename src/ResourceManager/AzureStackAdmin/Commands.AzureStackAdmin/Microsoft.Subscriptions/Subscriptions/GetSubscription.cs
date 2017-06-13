@@ -36,11 +36,11 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Performs the API operation(s) against subscriptions as tenant.
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
             if (this.MyInvocation.InvocationName.Equals("Get-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name Get-AzSSubscription instead");
+                this.WriteWarning("Alias Get-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name Get-AzsSubscription instead");
             }
 
             using (var client = this.GetAzureStackClient())
@@ -48,12 +48,14 @@ namespace Microsoft.AzureStack.Commands
                 if (this.SubscriptionId == Guid.Empty)
                 {
                     this.WriteVerbose(Resources.ListingSubscriptions);
-                    return client.Subscriptions.List(true).Subscriptions;
+                    var result = client.Subscriptions.List(true).Subscriptions;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingSubscriptionByID.FormatArgs(this.SubscriptionId));
-                    return client.Subscriptions.Get(this.SubscriptionId.ToString()).Subscription;
+                    var result = client.Subscriptions.Get(this.SubscriptionId.ToString()).Subscription;
+                    WriteObject(result);
                 }
             }
         }

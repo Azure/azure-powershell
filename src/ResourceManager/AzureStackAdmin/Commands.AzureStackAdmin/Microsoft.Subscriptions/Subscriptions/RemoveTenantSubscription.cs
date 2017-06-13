@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.TenantSubscription)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.TenantSubscription, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
     [Alias("Remove-AzureRmManagedSubscription")]
     public class RemoveTenantSubscription : AdminApiCmdlet
@@ -40,17 +40,21 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Performs the API operation(s) against subscriptions as administrator.
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMManagedSubscription", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRMManagedSubscription will be deprecated in a future release. Please use the cmdlet name Remove-AzSTenantSubscription instead");
+                this.WriteWarning("Alias Remove-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Remove-AzsTenantSubscription instead");
             }
 
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.SubscriptionId.ToString(), VerbsCommon.Remove))
             {
-                this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.SubscriptionId));
-                return client.TenantSubscriptions.Delete(this.SubscriptionId.ToString());
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.SubscriptionId));
+                    var result = client.TenantSubscriptions.Delete(this.SubscriptionId.ToString());
+                    WriteObject(result);
+                }
             }
         }
     }

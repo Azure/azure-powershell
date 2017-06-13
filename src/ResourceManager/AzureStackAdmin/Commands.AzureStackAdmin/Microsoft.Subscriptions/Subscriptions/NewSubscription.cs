@@ -23,7 +23,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// New Tenant Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.Subscription)]
+    [Cmdlet(VerbsCommon.New, Nouns.Subscription, SupportsShouldProcess = true)]
     [OutputType(typeof(SubscriptionDefinition))]
     [Alias("New-AzureRmTenantSubscription")]
     public class NewSubscription : AdminApiCmdlet
@@ -45,6 +45,13 @@ namespace Microsoft.AzureStack.Commands
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets the subscription identifier optional.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNull]
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
         /// This queue is used by the tests to assign fixed SubscritionIds
         /// every time the test runs
         /// </summary>
@@ -60,12 +67,18 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected SubscriptionDefinition GetSubscriptionDefinition()
         {
-            // TODO: determine any extra properties which could / should be set
+            if (NewTenantSubscription.SubscriptionIds.Count != 0)
+            {
+                this.SubscriptionId = NewSubscription.SubscriptionIds.Dequeue().ToString();
+            }
+            else if (string.IsNullOrEmpty(this.SubscriptionId))
+            {
+                this.SubscriptionId = Guid.NewGuid().ToString();
+            }
+
             return new SubscriptionDefinition()
             {
-                SubscriptionId = (NewSubscription.SubscriptionIds.Count == 0
-                    ? Guid.NewGuid()
-                    : NewSubscription.SubscriptionIds.Dequeue()).ToString(),
+                SubscriptionId = this.SubscriptionId,
                 DisplayName = this.DisplayName,
                 OfferId = this.OfferId,
                 State = SubscriptionState.Enabled,
@@ -75,18 +88,22 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Performs the API operation(s) against subscriptions as tenant.
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
             if (this.MyInvocation.InvocationName.Equals("New-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias New-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name New-AzSSubscription instead");
+                this.WriteWarning("Alias New-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsSubscription instead");
             }
 
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.SubscriptionId, VerbsCommon.New))
             {
-                this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
-                var parameters = new SubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
-                return client.Subscriptions.CreateOrUpdate(parameters).Subscription;
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
+                    var parameters = new SubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
+                    var result = client.Subscriptions.CreateOrUpdate(parameters).Subscription;
+                    WriteObject(result);
+                }
             }
         }
 

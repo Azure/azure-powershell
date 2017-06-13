@@ -23,9 +23,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Gallery Item Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.GalleryItem)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.GalleryItem, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRMGalleryItem")]
+    [Alias("Remove-AzureRmGalleryItem")]
     public class RemoveGalleryItem : AdminApiCmdlet
     {
         /// <summary>
@@ -38,17 +38,21 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMGalleryItem", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmGalleryItem", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRMGalleryItem will be deprecated in a future release. Please use the cmdlet name Remove-AzSGalleryItem instead");
+                this.WriteWarning("Alias Remove-AzureRmGalleryItem will be deprecated in a future release. Please use the cmdlet name Remove-AzsGalleryItem instead");
             }
 
-            this.ApiVersion = GalleryAdminApiVersion;
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
             {
-                return client.GalleryItem.Delete(this.Name);
+                this.ApiVersion = GalleryAdminApiVersion;
+                using (var client = this.GetAzureStackClient())
+                {
+                    var result = client.GalleryItem.Delete(this.Name);
+                    WriteObject(result);
+                }
             }
         }
     }

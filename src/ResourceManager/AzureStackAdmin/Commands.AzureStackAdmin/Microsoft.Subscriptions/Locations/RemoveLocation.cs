@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Remove managed location cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.Location)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.Location, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
     [Alias("Remove-AzureRmManagedLocation")]
     public class RemoveLocation : AdminApiCmdlet
@@ -41,17 +41,21 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Removes the specified location
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMManagedLocation", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmManagedLocation", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRMManagedLocation will be deprecated in a future release. Please use the cmdlet name Remove-AzSLocation instead");
+                this.WriteWarning("Alias Remove-AzureRmManagedLocation will be deprecated in a future release. Please use the cmdlet name Remove-AzsLocation instead");
             }
 
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
             {
-                this.WriteVerbose(Resources.RemovingLocation.FormatArgs(this.Name));
-                return client.ManagedLocations.Delete(this.Name);
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.RemovingLocation.FormatArgs(this.Name));
+                    var result = client.ManagedLocations.Delete(this.Name);
+                    WriteObject(result);
+                }
             }
         }
     }

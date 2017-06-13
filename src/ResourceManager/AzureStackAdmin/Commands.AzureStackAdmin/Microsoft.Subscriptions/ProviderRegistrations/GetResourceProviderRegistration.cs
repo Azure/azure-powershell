@@ -46,11 +46,11 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRMResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Get-AzSResourceProviderManifest instead");
+                this.WriteWarning("Alias Get-AzureRmResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Get-AzsResourceProviderManifest instead");
             }
 
             using (var client = this.GetAzureStackClient())
@@ -58,12 +58,14 @@ namespace Microsoft.AzureStack.Commands
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteVerbose(Resources.ListingResourceProviderManifests);
-                    return client.ProviderRegistrations.List(this.ResourceGroupName).ProviderRegistrations;
+                    var result = client.ProviderRegistrations.List(this.ResourceGroupName).ProviderRegistrations;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingResourceProviderManifest.FormatArgs(this.Name));
-                    return client.ProviderRegistrations.Get(this.ResourceGroupName, this.Name).ProviderRegistration;
+                    var result = client.ProviderRegistrations.Get(this.ResourceGroupName, this.Name).ProviderRegistration;
+                    WriteObject(result);
                 }
             }
         }

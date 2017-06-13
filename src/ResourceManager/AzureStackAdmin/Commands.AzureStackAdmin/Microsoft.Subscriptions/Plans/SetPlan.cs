@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Set Plan cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.Plan)]
+    [Cmdlet(VerbsCommon.Set, Nouns.Plan, SupportsShouldProcess = true)]
     [OutputType(typeof(AdminPlanModel))]
     [Alias("Set-AzureRmPlan")]
     public class SetPlan : AdminApiCmdlet
@@ -48,18 +48,22 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Set-AzureRMPlan", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmPlan", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Set-AzureRMPlan will be deprecated in a future release. Please use the cmdlet name Set-AzSPlan instead");
+                this.WriteWarning("Alias Set-AzureRmPlan will be deprecated in a future release. Please use the cmdlet name Set-AzsPlan instead");
             }
 
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Plan.Name, VerbsCommon.Set))
             {
-                this.WriteVerbose(Resources.UpdatingPlan.FormatArgs(this.Plan.Name, this.ResourceGroupName));
-                var parameters = new ManagedPlanCreateOrUpdateParameters(this.Plan);
-                return client.ManagedPlans.CreateOrUpdate(this.ResourceGroupName, parameters).Plan;
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.UpdatingPlan.FormatArgs(this.Plan.Name, this.ResourceGroupName));
+                    var parameters = new ManagedPlanCreateOrUpdateParameters(this.Plan);
+                    var result = client.ManagedPlans.CreateOrUpdate(this.ResourceGroupName, parameters).Plan;
+                    WriteObject(result);
+                }
             }
         }
     }

@@ -23,7 +23,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// New Offer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.Offer)]
+    [Cmdlet(VerbsCommon.New, Nouns.Offer, SupportsShouldProcess = true)]
     [OutputType(typeof(AdminOfferModel))]
     [Alias("New-AzureRmOffer")]
     public class NewOffer : AdminApiCmdlet
@@ -83,58 +83,67 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("New-AzureRMOffer", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRmOffer", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias New-AzureRMOffer will be deprecated in a future release. Please use the cmdlet name New-AzSOffer instead");
+                this.WriteWarning("Alias New-AzureRmOffer will be deprecated in a future release. Please use the cmdlet name New-AzsOffer instead");
             }
 
-            this.WriteVerbose(Resources.CreatingNewOffer.FormatArgs(this.Name, this.ResourceGroupName));
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Name, VerbsCommon.New))
             {
-                // Ensure the resource group is created
-                client.ResourceGroups.CreateOrUpdate(new ResourceGroupCreateOrUpdateParameters()
+                this.WriteVerbose(Resources.CreatingNewOffer.FormatArgs(this.Name, this.ResourceGroupName));
+                using (var client = this.GetAzureStackClient())
                 {
-                    ResourceGroup = new ResourceGroupDefinition()
+                    // Ensure the resource group is created
+                    client.ResourceGroups.CreateOrUpdate(new ResourceGroupCreateOrUpdateParameters()
                     {
-                        Location = this.ArmLocation,
-                        Name = this.ResourceGroupName,
-                    }
-                });
+                        ResourceGroup = new ResourceGroupDefinition()
+                        {
+                            Location = this.ArmLocation,
+                            Name = this.ResourceGroupName,
+                        }
+                    });
 
-                var parameters = new ManagedOfferCreateOrUpdateParameters()
-                {
-                    Offer = new AdminOfferModel()
+                    var parameters = new ManagedOfferCreateOrUpdateParameters()
                     {
-                        Name = this.Name,
-                        Location = this.ArmLocation,
-                        Properties = new AdminOfferPropertiesDefinition()
+                        Offer = new AdminOfferModel()
                         {
                             Name = this.Name,
-                            DisplayName = this.DisplayName,
-                            State = this.State,
+                            Location = this.ArmLocation,
+                            Properties = new AdminOfferPropertiesDefinition()
+                            {
+                                Name = this.Name,
+                                DisplayName = this.DisplayName,
+                                State = this.State,
+                            }
                         }
+                    };
+
+                    if (this.BasePlanIds != null && this.BasePlanIds.Length > 0)
+                    {
+                        parameters.Offer.Properties.BasePlanIds = this.BasePlanIds;
                     }
-                };
 
-                if (this.BasePlanIds != null && this.BasePlanIds.Length > 0)
-                {
-                    parameters.Offer.Properties.BasePlanIds = this.BasePlanIds;
+                    if (this.AddOnPlans != null && this.AddOnPlans.Length > 0)
+                    {
+                        parameters.Offer.Properties.AddonPlans = this.AddOnPlans.ToList();
+                    }
+
+                    if (client.ManagedOffers.List(this.ResourceGroupName, includeDetails: false).Offers
+                        .Any(
+                            offer =>
+                                string.Equals(offer.Properties.Name, parameters.Offer.Properties.Name,
+                                    StringComparison.OrdinalIgnoreCase)))
+                    {
+                        throw new PSInvalidOperationException(
+                            Resources.ManagedOfferAlreadyExists.FormatArgs(parameters.Offer.Properties.Name,
+                                this.ResourceGroupName));
+                    }
+
+                    var result = client.ManagedOffers.CreateOrUpdate(this.ResourceGroupName, parameters).Offer;
+                    WriteObject(result);
                 }
-
-                if (this.AddOnPlans != null && this.AddOnPlans.Length > 0)
-                {
-                    parameters.Offer.Properties.AddonPlans = this.AddOnPlans.ToList();
-                }
-
-                if (client.ManagedOffers.List(this.ResourceGroupName, includeDetails: false).Offers
-                    .Any(offer => string.Equals(offer.Properties.Name, parameters.Offer.Properties.Name, StringComparison.OrdinalIgnoreCase)))
-                {
-                    throw new PSInvalidOperationException(Resources.ManagedOfferAlreadyExists.FormatArgs(parameters.Offer.Properties.Name, this.ResourceGroupName));
-                }
-
-                return client.ManagedOffers.CreateOrUpdate(this.ResourceGroupName, parameters).Offer;
             }
         }
     }

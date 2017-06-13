@@ -23,9 +23,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Remove Usage Connection Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.UsageConnection)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.UsageConnection, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRMUsageConnection")]
+    [Alias("Remove-AzureRmUsageConnection")]
     public class RemoveUsageConnection : AdminApiCmdlet
     {
         /// <summary>
@@ -47,18 +47,23 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMUsageConnection", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmUsageConnection", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRMUsageConnection will be deprecated in a future release. Please use the cmdlet name Remove-AzSUsageConection instead");
+                this.WriteWarning("Alias Remove-AzureRmUsageConnection will be deprecated in a future release. Please use the cmdlet name Remove-AzsUsageConection instead");
             }
 
-            this.ApiVersion = UsageApiVersion;
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
             {
-                this.WriteVerbose(Resources.RemovingUsageConnection.FormatArgs(this.Name));
-                return client.UsageConnections.Delete(this.ResourceGroupName, this.Name);
+                this.ApiVersion = UsageApiVersion;
+                using (var client = this.GetAzureStackClient())
+                {
+
+                    this.WriteVerbose(Resources.RemovingUsageConnection.FormatArgs(this.Name));
+                    var result = client.UsageConnections.Delete(this.ResourceGroupName, this.Name);
+                    WriteObject(result);
+                }
             }
         }
     }

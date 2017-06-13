@@ -638,7 +638,7 @@ function Test-ManagedLocation
 
     try
     {
-        $loc = New-AzSLocation -Name $Location -DisplayName $Location -Latitude 80.5 -Longitude -45.5
+        $loc = New-AzsLocation -Name $Location -DisplayName $Location -Latitude 80.5 -Longitude -45.5
 
         Assert-NotNull $loc
         Assert-AreEqual $loc.Name $Location
@@ -646,7 +646,7 @@ function Test-ManagedLocation
         Assert-AreEqual $loc.Longitude $longitude
         Assert-AreEqual $loc.DisplayName $Location
 
-        $loc2 = Get-AzSLocation -Name $Location
+        $loc2 = Get-AzsLocation -Name $Location
 
         Assert-AreEqual $loc2.Name $Location
         Assert-AreEqual $loc2.Latitude $lattitude
@@ -656,10 +656,10 @@ function Test-ManagedLocation
         $lattitude = 90.0 
 
         $loc2.Latitude = $lattitude
-        $loc2 | Set-AzSLocation
+        $loc2 | Set-AzsLocation
 
 
-        $loc3 = Get-AzSLocation -Name $Location
+        $loc3 = Get-AzsLocation -Name $Location
 
         Assert-AreEqual $loc3.Name $Location
         Assert-AreEqual $loc3.Latitude $lattitude
@@ -668,8 +668,8 @@ function Test-ManagedLocation
     }
     finally
     {
-        Remove-AzSLocation -Name $Location
-        Assert-Throws {Get-AzSLocation -Name $Location }
+        Remove-AzsLocation -Name $Location
+        Assert-Throws {Get-AzsLocation -Name $Location }
     }
 }
 
@@ -716,15 +716,15 @@ function Test-GalleryItem
         New-AzureRmResourceGroup -Name $resourceGroupName  -Location local -Force
 		
 		[Microsoft.AzureStack.Commands.AddGalleryItem]::GalleryPackageIds.Enqueue("1988820c-2bcc-4682-9991-bec44e6b8324")
-        $galleryItem = Add-AzSGalleryItem -ResourceGroupName $resourceGroupName  -Name $galleryItemName -Path "Microsoft.SimpleVMTemplate.1.0.0.azpkg"  –Verbose
+        $galleryItem = Add-AzsGalleryItem -ResourceGroupName $resourceGroupName  -Name $galleryItemName -Path "Microsoft.SimpleVMTemplate.1.0.0.azpkg"  –Verbose
         Assert-NotNull $galleryItem
 
-        $galleryItem  = Get-AzSGalleryItem -Name $galleryItemName -ResourceGroupName  $resourceGroupName
+        $galleryItem  = Get-AzsGalleryItem -Name $galleryItemName -ResourceGroupName  $resourceGroupName
         Assert-AreEqual $galleryItem.Name $galleryItemName
     }
     finally
     {
-        Remove-AzSGalleryItem -Name $GalleryItemName -ResourceGroupName  $resourceGroupName
+        Remove-AzsGalleryItem -Name $GalleryItemName -ResourceGroupName  $resourceGroupName
 		Remove-ResourceGroup -ResourceGroupName $resourceGroupName
     }
 }

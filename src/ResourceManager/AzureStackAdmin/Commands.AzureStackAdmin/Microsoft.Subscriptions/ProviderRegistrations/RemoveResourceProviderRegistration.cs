@@ -24,7 +24,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Remove Resource Provider Manifest Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderManifest)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderManifest, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
     [Alias("Remove-AzureRmResourceProviderRegistration")]
     public class RemoveResourceProviderManifest : AdminApiCmdlet
@@ -48,17 +48,20 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRMResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Remove-AzSResourceProviderManifest instead");
+                this.WriteWarning("Alias Remove-AzureRmResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Remove-AzsResourceProviderManifest instead");
             }
 
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
             {
-                this.WriteVerbose(Resources.RemovingResourceProviderRegistration.FormatArgs(this.Name));
-                return client.ProviderRegistrations.Delete(this.ResourceGroupName, this.Name);
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.RemovingResourceProviderRegistration.FormatArgs(this.Name));
+                    var result = client.ProviderRegistrations.Delete(this.ResourceGroupName, this.Name);
+                }
             }
         }
     }

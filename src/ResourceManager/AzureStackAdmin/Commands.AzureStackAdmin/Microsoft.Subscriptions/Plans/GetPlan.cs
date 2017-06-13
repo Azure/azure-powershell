@@ -54,11 +54,11 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMPlan", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmPlan", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRMPlan will be deprecated in a future release. Please use the cmdlet name Get-AzSPlan instead");
+                this.WriteWarning("Alias Get-AzureRmPlan will be deprecated in a future release. Please use the cmdlet name Get-AzsPlan instead");
             }
 
             if (this.Managed.IsPresent)
@@ -71,12 +71,14 @@ namespace Microsoft.AzureStack.Commands
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteVerbose(Resources.ListingPlans.FormatArgs(this.ResourceGroupName));
-                    return client.ManagedPlans.List(this.ResourceGroupName, includeDetails: true).Plans;
+                    var result = client.ManagedPlans.List(this.ResourceGroupName, includeDetails: true).Plans;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingPlan.FormatArgs(this.Name, this.ResourceGroupName));
-                    return client.ManagedPlans.Get(this.ResourceGroupName, this.Name).Plan;
+                    var result = client.ManagedPlans.Get(this.ResourceGroupName, this.Name).Plan;
+                    WriteObject(result);
                 }
             }
         }

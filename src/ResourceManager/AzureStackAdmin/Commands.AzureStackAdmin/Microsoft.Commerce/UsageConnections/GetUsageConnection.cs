@@ -25,7 +25,7 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.UsageConnection)]
     [OutputType(typeof(UsageConnectionModel))]
-    [Alias("Get-AzureRMUsageConnection")]
+    [Alias("Get-AzureRmUsageConnection")]
     public class GetUsageConnection : AdminApiCmdlet
     {
         /// <summary>
@@ -47,11 +47,11 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Get-AzureRMUsageConnection", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmUsageConnection", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Get-AzureRMUsageConnection will be deprecated in a future release. Please use the cmdlet name Get-AzSUsageConection instead");
+                this.WriteWarning("Alias Get-AzureRmUsageConnection will be deprecated in a future release. Please use the cmdlet name Get-AzsUsageConection instead");
             }
 
             this.ApiVersion = UsageApiVersion;
@@ -60,7 +60,8 @@ namespace Microsoft.AzureStack.Commands
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteVerbose(Resources.ListingUsageConnections);
-                    return client.UsageConnections.List(this.ResourceGroupName).UsageConnections;
+                    var result = client.UsageConnections.List(this.ResourceGroupName).UsageConnections;
+                    WriteObject(result);
                 }
                 else if (string.IsNullOrEmpty(this.ResourceGroupName))
                 {
@@ -69,7 +70,8 @@ namespace Microsoft.AzureStack.Commands
                 else
                 {
                     this.WriteVerbose(Resources.GettingUsageConnection.FormatArgs(this.Name));
-                    return client.UsageConnections.Get(this.ResourceGroupName, this.Name).UsageConnections;
+                    var result = client.UsageConnections.Get(this.ResourceGroupName, this.Name).UsageConnections;
+                    WriteObject(result, enumerateCollection:true);
                 }
             }
         }

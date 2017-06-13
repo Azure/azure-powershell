@@ -23,7 +23,7 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Remove Offer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.Offer)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.Offer, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
     [Alias("Remove-AzureRmOffer")]
     public class RemoveOffer : AdminApiCmdlet
@@ -48,17 +48,21 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRMOffer", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmOffer", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRMOffer will be deprecated in a future release. Please use the cmdlet name Remove-AzSOffer instead");
+                this.WriteWarning("Alias Remove-AzureRmOffer will be deprecated in a future release. Please use the cmdlet name Remove-AzsOffer instead");
             }
 
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
             {
-                this.WriteVerbose(Resources.RemovingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
-                return client.ManagedOffers.Delete(this.ResourceGroupName, this.Name);
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.RemovingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
+                    var result = client.ManagedOffers.Delete(this.ResourceGroupName, this.Name);
+                    WriteObject(result);
+                }
             }
         }
     }

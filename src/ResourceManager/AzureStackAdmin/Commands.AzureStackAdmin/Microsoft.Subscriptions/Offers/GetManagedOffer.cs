@@ -45,19 +45,21 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
             using (var client = this.GetAzureStackClient())
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
                     this.WriteVerbose(Resources.ListingManagedOffers.FormatArgs(this.ResourceGroupName));
-                    return client.ManagedOffers.List(this.ResourceGroupName, includeDetails: true).Offers;
+                    var result = client.ManagedOffers.List(this.ResourceGroupName, includeDetails: true).Offers;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
-                    return client.ManagedOffers.Get(this.ResourceGroupName, this.Name).Offer;
+                    var result = client.ManagedOffers.Get(this.ResourceGroupName, this.Name).Offer;
+                    WriteObject(result);
                 }
             }
         }
