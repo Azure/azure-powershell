@@ -12,7 +12,8 @@ Creates an Azure SQL Sync Agent Key.
 ## SYNTAX
 
 ```
-New-AzureRmSqlSyncAgentKey [-ServerName] <String> -SyncAgentName <String> [-ResourceGroupName] <String>
+New-AzureRmSqlSyncAgentKey [-ServerName] <String> [-SyncAgentName] <String> [-ResourceGroupName] <String>
+ [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ SyncAgentKey                  : Key
 This command creates a sync agent key for an Azure SQL Sync Agent.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 The name of the resource group.
@@ -69,20 +85,33 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ## INPUTS
-
-### System.String
-
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentKeyModel
 
 ## NOTES
 

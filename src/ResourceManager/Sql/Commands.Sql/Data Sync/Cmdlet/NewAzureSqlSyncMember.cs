@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the database type of the member database
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The database type.")]
+            HelpMessage = "The database type of the member database.")]
         [ValidateSet("SqlServerDatabase", "AzureSqlDatabase", IgnoreCase = true)]
-        public string DatabaseType { get; set; }
+        public string MemberDatabaseType { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure SQL Server Name of the member database. 
@@ -68,20 +68,20 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string MemberServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the Azure SQL database name of the member database. 
+        /// Gets or sets the Azure SQL Database name of the member database. 
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = AzureSqlSet,
-            HelpMessage = "The Azure SQL database name of the member database.")]
+            HelpMessage = "The Azure SQL Database name of the member database.")]
         public string MemberDatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the credential (username and password) of Azure SQL database. 
+        /// Gets or sets the credential (username and password) of the Azure SQL Database. 
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = AzureSqlSet,
-            HelpMessage = "The credential (username and password) of Azure SQL database.")]
-        public PSCredential Credential { get; set; }
+            HelpMessage = "The credential (username and password) of the Azure SQL Database.")]
+        public PSCredential MemberDatabaseCredential { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name of the sync agent.
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = OnPremiseSet,
-            HelpMessage = "The name of server where the sync agent is under.")]
+            HelpMessage = "The name of the Azure SQL Server where the sync agent is under.")]
         [ValidateNotNullOrEmpty]
         public string SyncAgentServerName { get; set; }
 
@@ -178,21 +178,21 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 SyncDirection = this.SyncDirection
             };
 
-            DatabaseTypeEnum dbType = (DatabaseTypeEnum)Enum.Parse(typeof(DatabaseTypeEnum), DatabaseType, true);
+            DatabaseTypeEnum dbType = (DatabaseTypeEnum)Enum.Parse(typeof(DatabaseTypeEnum), MemberDatabaseType, true);
             if(dbType == DatabaseTypeEnum.AzureSqlDatabase) 
             {
                 newModel.MemberDatabaseName = this.MemberDatabaseName;
                 newModel.MemberServerName = this.MemberServerName;
-                newModel.UserName = this.Credential.UserName;
-                newModel.Password = this.Credential.Password;
-                newModel.DatabaseType = DatabaseTypeEnum.AzureSqlDatabase.ToString();
+                newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
+                newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
+                newModel.MemberDatabaseType = DatabaseTypeEnum.AzureSqlDatabase.ToString();
             } 
             else
             {
                 this.syncAgentId = string.Format("resourceGroups/{0}/providers/Microsoft.Sql/servers/{1}/syncAgents/{2}", this.SyncAgentResourceGroupName, this.SyncAgentServerName, this.SyncAgentName);
                 newModel.SyncAgentId = this.syncAgentId;
                 newModel.SqlServerDatabaseId = this.SqlServerDatabaseId;
-                newModel.DatabaseType = DatabaseTypeEnum.SqlServerDatabase.ToString();
+                newModel.MemberDatabaseType = DatabaseTypeEnum.SqlServerDatabase.ToString();
             }
             newEntity.Add(newModel);
             return newEntity;

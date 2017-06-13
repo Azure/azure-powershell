@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the name of the server on which sync metadata database is hosted
         /// </summary>
         [Parameter(Mandatory = false,
-           HelpMessage = "The server on which sync metadata database is hosted.")]
+           HelpMessage = "The server on which the sync metadata database is hosted.")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseServerName { get; set; }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the name of the resource group the sync metadata database belongs to
         /// </summary>
         [Parameter(Mandatory = false,
-           HelpMessage = "The resource group sync metadata database belongs to.")]
+           HelpMessage = "The resource group the sync metadata database belongs to.")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseResourceGroupName { get; set; }
 

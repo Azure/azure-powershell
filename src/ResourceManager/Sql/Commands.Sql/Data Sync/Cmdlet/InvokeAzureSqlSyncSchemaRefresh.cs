@@ -41,10 +41,16 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string SyncMemberName { get; set; }
 
         /// <summary>
+        ///  Defines whether the cmdlets will output the model object at the end of its execution
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Defines Whether return the sync group this cmdlet works on")]
+        public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
         /// Returns false so that the model is not written out
         /// </summary>
         /// <returns>Always false</returns>
-        protected override bool WriteResult() { return false; }
+        protected override bool WriteResult() { return PassThru; }
 
         /// <summary>
         /// Get the entities from the service

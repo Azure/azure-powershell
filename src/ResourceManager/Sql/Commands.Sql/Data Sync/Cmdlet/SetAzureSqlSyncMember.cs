@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the credential (username and password) of Azure SQL database. 
+        /// Gets or sets the credential (username and password) of the Azure SQL Database. 
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The credential (username and password) of Azure SQL database.")]
+        [Parameter(Mandatory = true, HelpMessage = "The credential (username and password) of the Azure SQL Database.")]
         [ValidateNotNull]
-        public PSCredential Credential { get; set; }
+        public PSCredential MemberDatabaseCredential { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -66,15 +66,15 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             AzureSqlSyncMemberModel newModel = model.First();
 
-            if (MyInvocation.BoundParameters.ContainsKey("Credential"))
+            if (MyInvocation.BoundParameters.ContainsKey("MemberDatabaseCredential"))
             {
-                newModel.UserName = this.Credential.UserName;
-                newModel.Password = this.Credential.Password;
+                newModel.MemberDatabaseUserName = this.MemberDatabaseCredential.UserName;
+                newModel.MemberDatabasePassword = this.MemberDatabaseCredential.Password;
             }
             else
             {
-                newModel.UserName = null;
-                newModel.Password = null;
+                newModel.MemberDatabaseUserName = null;
+                newModel.MemberDatabasePassword = null;
             }
 
             return model;

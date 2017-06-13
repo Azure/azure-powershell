@@ -309,14 +309,14 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             SyncMemberCreateOrUpdateProperties properties = new SyncMemberCreateOrUpdateProperties()
             {
                 SyncDirection = (SyncDirectionEnum)(model.SyncDirection != null ? Enum.Parse(typeof(SyncDirectionEnum), model.SyncDirection, true) : null),
-                DatabaseType = (DatabaseTypeEnum)(model.DatabaseType != null ? Enum.Parse(typeof(DatabaseTypeEnum), model.DatabaseType, true) : null)
+                DatabaseType = (DatabaseTypeEnum)(model.MemberDatabaseType != null ? Enum.Parse(typeof(DatabaseTypeEnum), model.MemberDatabaseType, true) : null)
             };
             if (properties.DatabaseType == DatabaseTypeEnum.AzureSqlDatabase)
             {
                 properties.DatabaseName = model.MemberDatabaseName;
                 properties.ServerName = model.MemberServerName;
-                properties.UserName = model.UserName;
-                properties.Password = model.Password == null ? null : AzureSqlServerAdapter.Decrypt(model.Password);
+                properties.UserName = model.MemberDatabaseUserName;
+                properties.Password = model.MemberDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.MemberDatabasePassword);
             }
             else 
             {
@@ -349,11 +349,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         {
             SyncMemberCreateOrUpdateProperties properties = new SyncMemberCreateOrUpdateProperties()
             {
-                DatabaseType = (DatabaseTypeEnum)(model.DatabaseType != null ? Enum.Parse(typeof(DatabaseTypeEnum), model.DatabaseType, true) : null),
+                DatabaseType = (DatabaseTypeEnum)(model.MemberDatabaseType != null ? Enum.Parse(typeof(DatabaseTypeEnum), model.MemberDatabaseType, true) : null),
                 DatabaseName = model.MemberDatabaseName,
                 ServerName = model.MemberServerName,
-                UserName = model.UserName,
-                Password = model.Password == null ? null : AzureSqlServerAdapter.Decrypt(model.Password)
+                UserName = model.MemberDatabaseUserName,
+                Password = model.MemberDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.MemberDatabasePassword)
             };
             var resp = Communicator.UpdateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), new SyncMemberCreateOrUpdateParameters()
             {

@@ -12,8 +12,8 @@ Returns information about Azure SQL Database Sync Groups.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncGroup [-SyncGroupName <String>] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String>
+Get-AzureRmSqlSyncGroup [[-Name] <String>] [-ServerName] <String> [-DatabaseName] <String>
+ [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ This command gets information about all the Azure SQL Database Sync Groups assig
 
 ### Example 2: Get information about an Azure SQL Database Sync Group
 ```
-PS C:\>Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01"
+PS C:\>Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup02}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -79,6 +79,21 @@ This command gets information about the Azure SQL Database Sync Group with name 
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DatabaseName
 The name of the Azure SQL Database.
 
@@ -89,6 +104,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The sync group name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncGroupName
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -110,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -124,31 +154,35 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SyncGroupName
-The sync group name.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSqlSyncGroup](./New-AzureRmSqlSyncGroup.md)
+
+[Set-AzureRmSqlSyncGroup](./Set-AzureRmSqlSyncGroup.md)
+
+[Remove-AzureRmSqlSyncGroup](./Remove-AzureRmSqlSyncGroup.md)
 

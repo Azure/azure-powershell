@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// <summary>
         /// Gets or sets the hub database credential of the sync group
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The SQL authentication credetial of hub database.")]
+        [Parameter(Mandatory = false, HelpMessage = "The SQL authentication credential of the hub database.")]
         [ValidateNotNull]
-        public PSCredential HubDatabaseCredential { get; set; }
+        public PSCredential DatabaseCredential { get; set; }
 
         /// <summary>
         /// Gets or sets the path of the schema file
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                 newModel.IntervalInSeconds = this.IntervalInSeconds;
             }
 
-            if (MyInvocation.BoundParameters.ContainsKey("HubDatabaseCredential"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseCredential"))
             {
-                newModel.HubDatabaseUserName = this.HubDatabaseCredential.UserName;
-                newModel.HubDatabasePassword = this.HubDatabaseCredential.Password;
+                newModel.HubDatabaseUserName = this.DatabaseCredential.UserName;
+                newModel.HubDatabasePassword = this.DatabaseCredential.Password;
             }
             else
             {

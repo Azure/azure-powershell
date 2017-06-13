@@ -12,8 +12,8 @@ Removes an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncGroup -SyncGroupName <String> [-PassThru] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmSqlSyncGroup [-Name] <String> [-PassThru] [-ServerName] <String> [-DatabaseName] <String>
+ [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -23,7 +23,7 @@ The **Remove-AzureRmSqlSyncGroup** cmdlet removes an Azure SQL Database Sync Gro
 
 ### Example 1: Remove a sync group
 ```
-PS C:\>Remove-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
+PS C:\>Remove-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -Name "syncGroup01"
 ```
 
 This command removes the Azure SQL Database Sync Group named syncGroup01.
@@ -60,6 +60,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Name
+The sync group name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncGroupName
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Defines Whether return the removed sync group
 
@@ -91,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -100,21 +115,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SyncGroupName
-The sync group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -138,14 +138,17 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSqlSyncGroup](./New-AzureRmSqlSyncGroup.md)
+
+[Set-AzureRmSqlSyncGroup](./Set-AzureRmSqlSyncGroup.md)
+
+[Get-AzureRmSqlSyncGroup](./Get-AzureRmSqlSyncGroup.md)
 

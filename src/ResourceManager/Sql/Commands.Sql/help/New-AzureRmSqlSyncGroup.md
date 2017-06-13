@@ -12,10 +12,10 @@ Creates an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-New-AzureRmSqlSyncGroup -SyncGroupName <String> [-IntervalInSeconds <Int32>] [-HubDatabaseCredential <PSCredential>]
- [-ConflictResolutionPolicy <String>] -SyncDatabaseName <String> -SyncDatabaseServerName <String>
- -SyncDatabaseResourceGroupName <String> [-SchemaFile <String>] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String>
+New-AzureRmSqlSyncGroup [-Name] <String> -SyncDatabaseName <String> -SyncDatabaseServerName <String>
+ -SyncDatabaseResourceGroupName <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
+ [-ConflictResolutionPolicy <String>] [-SchemaFile <String>] [-ServerName] <String> [-DatabaseName] <String>
+ [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -26,8 +26,8 @@ The **New-AzureRmSqlSyncGroup** cmdlet creates an Azure SQL Database Sync Group.
 ### Example 1: Create a sync group for an Azure SQL Database.
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -ConflictResolutionPolicy "HubWin"
--HubDatabaseCredential $credential -IntervalInSeconds 100 -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -Schema ".\schema.json"
+PS C:\> New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" -ConflictResolutionPolicy "HubWin"
+-DatabaseCredential $credential -IntervalInSeconds 100 -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -Schema ".\schema.json"
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -50,6 +50,21 @@ This command creates a sync group for an Azure SQL Database. "schema.json" is a 
 }
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ConflictResolutionPolicy
 The policy of resolving confliction between hub and member database in the sync group.
@@ -82,7 +97,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -HubDatabaseCredential
+### -DatabaseCredential
 The SQL authentication credential of the hub database.
 
 ```yaml
@@ -98,7 +113,8 @@ Accept wildcard characters: False
 ```
 
 ### -IntervalInSeconds
-The frequency (in seconds) of doing data synchronization. Default is -1, which means the auto synchronization is not enabled.
+The frequency (in seconds) of doing data synchronization.
+Default is -1, which means the auto synchronization is not enabled.
 
 ```yaml
 Type: Int32
@@ -109,6 +125,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The sync group name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: SyncGroupName
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -143,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -202,31 +233,35 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SyncGroupName
-The sync group name.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ## INPUTS
 
-### System.String
-
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Set-AzureRmSqlSyncGroup](./Set-AzureRmSqlSyncGroup.md)
+
+[Remove-AzureRmSqlSyncGroup](./Remove-AzureRmSqlSyncGroup.md)
+
+[Get-AzureRmSqlSyncGroup](./Get-AzureRmSqlSyncGroup.md)
 

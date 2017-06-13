@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Stop-AzureRmSqlSyncGroupSynchronization
+# Stop-AzureRmSqlSyncGroupSync
 
 ## SYNOPSIS
 Stops a sync group synchronization.
@@ -12,23 +12,38 @@ Stops a sync group synchronization.
 ## SYNTAX
 
 ```
-Stop-AzureRmSqlSyncGroupSynchronization -SyncGroupName <String> [-PassThru] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String>
+Stop-AzureRmSqlSyncGroupSync [-SyncGroupName] <String> [-PassThru] [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmSqlSyncGroupSynchronization** cmdlet stops a sync group synchronization.
+The **Stop-AzureRmSqlSyncGroupSync** cmdlet stops a sync group synchronization.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Stop-AzureRmSqlSyncGroupSynchronization -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
+PS C:\> Stop-AzureRmSqlSyncGroupSync -SyncGroupName mysg [-ServerName] mysrv [-DatabaseName] mydb [-ResourceGroupName] myrg
 ```
 
 This command stops the synchronization which is ongoing for the sync group mysg.
 
 ## PARAMETERS
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 The name of the Azure SQL Database.
@@ -76,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL server.
+The name of the Azure SQL Server.
 
 ```yaml
 Type: String
@@ -99,22 +114,37 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ## INPUTS
-
-### System.String
-
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncGroupModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Start-AzureRmSqlSyncGroupSync](./Start-AzureRmSqlSyncGroupSync.md)
 
