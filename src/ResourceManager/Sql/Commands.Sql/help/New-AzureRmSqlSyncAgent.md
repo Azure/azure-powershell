@@ -11,10 +11,17 @@ Creates an Azure SQL Sync Agent.
 
 ## SYNTAX
 
+### SyncDatabaseComponent (Default)
 ```
 New-AzureRmSqlSyncAgent [-Name] <String> -SyncDatabaseName <String> [-SyncDatabaseServerName <String>]
  [-SyncDatabaseResourceGroupName <String>] [-ServerName] <String> [-ResourceGroupName] <String> [-WhatIf]
  [-Confirm]
+```
+
+### SyncDatabaseResourceID
+```
+New-AzureRmSqlSyncAgent [-Name] <String> -SyncDatabaseResourceID <String> [-ServerName] <String>
+ [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -107,7 +114,7 @@ The database used to store sync related metadata.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SyncDatabaseComponent
 Aliases: 
 
 Required: True
@@ -122,10 +129,25 @@ The resource group the sync metadata database belongs to.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SyncDatabaseComponent
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SyncDatabaseResourceID
+The resource ID of  the sync metadata database.
+
+```yaml
+Type: String
+Parameter Sets: SyncDatabaseResourceID
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,7 +159,7 @@ The server on which the sync metadata database is hosted.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SyncDatabaseComponent
 Aliases: 
 
 Required: False

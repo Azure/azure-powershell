@@ -8178,20 +8178,10 @@ Schema                      :</dev:code>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get the logs of an Azure SQL Sync Group</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmSqlSyncGroupLog -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -StartTime "9/16/2016 11:31:12" -EndTime "9/16/2016 12:31:00" -LogLevel "All"
-[{
-TimeStamp                  : "9/16/2016 11:32:12"
-Type                       : All
-Details                    : "Details of logs"
-Source                     : SyncGroupLogs
-},
-...,
-{
-TimeStamp                  : "9/16/2016 11:33:15"
-Type                       : All
-Details                    : "Details of logs"
-Source                     : SyncMemberLogs
-}
-]</dev:code>
+TimeStamp            LogLevel Details                                   Source
+---------            -------- -------                                   ------
+6/13/2017 9:14:26 AM Success  Schema information obtained successfully. fangltest2.database.windows.net/fangltest
+6/13/2017 7:11:59 AM Success  Schema information obtained successfully. fangltest2.database.windows.net/fangltest</dev:code>
 <dev:remarks><maml:para>This command gets the logs of an Azure SQL Sync Group.
 </maml:para>
 </dev:remarks>
@@ -8566,30 +8556,46 @@ SyncState                   : Good</dev:code>
 </maml:para>
 </maml:description>
 </command:returnValue>
+<command:returnValue><dev:type><maml:name>Tables: Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+<command:returnValue><dev:type><maml:name>Columns: Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
 </command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example 1: Get the sync schema for a hub database</maml:title>
+<command:examples><command:example><maml:title>Example 1.1: Get the sync schema for a hub database</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
-LastUpdateTime       : 2016-06-01T09:08:36.164217Z
-Tables {
-[{  ErrorId          : 
-    HasError         : false
-    Name             : table1
-    QuotedName       : [dbo].[table1]
-    Columns          : 
-    {[{  DataSize    : 100
-         DataType    : String
-         ErrorId     ： 
-         HasError    ： false
-         IsPrimaryKey： true
-         Name        : column1
-         QuotedName  : [dbo].[column1]
-    }]},
-}]</dev:code>
+Tables                     LastUpdateTime
+------                     --------------
+{dbo.Table_1, dbo.Table_2} 6/13/2017 10:03:44 AM</dev:code>
 <dev:remarks><maml:para>This command gets the sync schema for the hub database in the sync group syncGroup01.
+</maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 1.2: Get the sync schema for a hub database, and expand Tables</maml:title>
+<dev:code>PS C:\&gt;Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"  | select -ExpandProperty Tables
+Columns    : {column1, column2}
+ErrorId    : Schema_TableHasNoPrimaryKey
+HasError   : True
+Name       : dbo.Table_1
+QuotedName : [dbo].[Table_1]
+
+Columns    : {column2, column4}
+ErrorId    : Schema_TableHasNoPrimaryKey
+HasError   : True
+Name       : dbo.Table_2
+QuotedName : [dbo].[Table_2]</dev:code>
+<dev:remarks><maml:para>This command gets the sync schema for the hub database in the sync group syncGroup01 and expand Tables property.
 </maml:para>
 </dev:remarks>
 </command:example>
@@ -12147,6 +12153,60 @@ FirewallRuleName  : Rule01</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
+<command:syntaxItem><maml:name>New-AzureRmSqlSyncAgent</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The name of the resource group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<maml:Description><maml:para>The name of the Azure SQL Server the sync agent is in.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="SyncAgentName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The sync agent name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceID</maml:name>
+<maml:Description><maml:para>The resource ID of  the sync metadata database.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
@@ -12195,6 +12255,15 @@ FirewallRuleName  : Rule01</dev:code>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceGroupName</maml:name>
 <maml:Description><maml:para>The resource group the sync metadata database belongs to.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDatabaseResourceID</maml:name>
+<maml:Description><maml:para>The resource ID of  the sync metadata database.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12744,6 +12813,15 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberDatabaseName</maml:name>
+<maml:Description><maml:para>The Azure SQL Database name of the member database.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>MemberDatabaseType</maml:name>
 <maml:Description><maml:para>The database type of the member database.
 </maml:para>
@@ -12751,15 +12829,6 @@ Schema                      :</dev:code>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">SqlServerDatabase</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">AzureSqlDatabase</command:parameterValue>
 </command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberDatabaseName</maml:name>
-<maml:Description><maml:para>The Azure SQL Database name of the member database.
-</maml:para>
-</maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
@@ -12929,22 +12998,22 @@ Schema                      :</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
-</command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+<command:syntaxItem><maml:name>New-AzureRmSqlSyncMember</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none"><maml:name>ResourceGroupName</maml:name>
+<maml:Description><maml:para>The name of the resource group.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberDatabaseCredential</maml:name>
-<maml:Description><maml:para>The credential (username and password) of the Azure SQL Database.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<maml:Description><maml:para>The name of the Azure SQL Server.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
-<dev:type><maml:name>PSCredential</maml:name>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -12957,8 +13026,8 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>MemberDatabaseType</maml:name>
-<maml:Description><maml:para>The database type of the member database.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SyncGroupName</maml:name>
+<maml:Description><maml:para>The sync group name.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -12966,8 +13035,114 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>MemberDatabaseType</maml:name>
+<maml:Description><maml:para>The database type of the member database.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">SqlServerDatabase</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AzureSqlDatabase</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="SyncMemberName"><maml:name>Name</maml:name>
+<maml:Description><maml:para>The sync member name.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SqlServerDatabaseId</maml:name>
+<maml:Description><maml:para>The id of the SQL server database which is connected by the sync agent.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncAgentResourceID</maml:name>
+<maml:Description><maml:para>The resource ID of the sync agent.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncDirection</maml:name>
+<maml:Description><maml:para>The sync direction of this sync member.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Bidirectional</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">OneWayMemberToHub</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">OneWayHubToMember</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<maml:Description><maml:para>The name of the Azure SQL Database.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberDatabaseCredential</maml:name>
+<maml:Description><maml:para>The credential (username and password) of the Azure SQL Database.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+<dev:type><maml:name>PSCredential</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>MemberDatabaseName</maml:name>
 <maml:Description><maml:para>The Azure SQL Database name of the member database.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>MemberDatabaseType</maml:name>
+<maml:Description><maml:para>The database type of the member database.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -13031,6 +13206,15 @@ Schema                      :</dev:code>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncAgentResourceGroupName</maml:name>
 <maml:Description><maml:para>The name of the resource group where the sync agent is under.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SyncAgentResourceID</maml:name>
+<maml:Description><maml:para>The resource ID of the sync agent.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>

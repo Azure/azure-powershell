@@ -24,31 +24,53 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to create a new sync agent
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncAgent", SupportsShouldProcess = true,
+        DefaultParameterSetName = SyncDatabaseComponentSet,
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlSyncAgent : AzureSqlSyncAgentCmdletBase
     {
         /// <summary>
+        /// Parameter set name for sync database resource ID
+        /// </summary>
+        private const string SyncDatabaseResourceIDSet = "SyncDatabaseResourceID";
+
+        /// <summary>
+        /// Parameter set name for sync database component including resource group name, server name, database name
+        /// </summary>
+        private const string SyncDatabaseComponentSet = "SyncDatabaseComponent";
+
+        /// <summary>
         /// Gets or sets the sync agent name
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            Position = 3,
+            Position = 2,
             HelpMessage = "The sync agent name.")]
         [Alias("SyncAgentName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource ID of the sync metadata database
+        /// </summary>
+        [Parameter(Mandatory = true,
+           ParameterSetName = SyncDatabaseResourceIDSet,
+           HelpMessage = "The resource ID of  the sync metadata database.")]
+        [ValidateNotNullOrEmpty]
+        public string SyncDatabaseResourceID { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the database used to store sync related metadata
         /// </summary>
         [Parameter(Mandatory = true,
+           ParameterSetName = SyncDatabaseComponentSet,
            HelpMessage = "The database used to store sync related metadata.")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server on which sync metadata database is hosted
+        /// Gets or sets the name of the server on which the sync metadata database is hosted
         /// </summary>
         [Parameter(Mandatory = false,
+           ParameterSetName = SyncDatabaseComponentSet,
            HelpMessage = "The server on which the sync metadata database is hosted.")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseServerName { get; set; }
@@ -57,6 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// Gets or sets the name of the resource group the sync metadata database belongs to
         /// </summary>
         [Parameter(Mandatory = false,
+           ParameterSetName = SyncDatabaseComponentSet,
            HelpMessage = "The resource group the sync metadata database belongs to.")]
         [ValidateNotNullOrEmpty]
         public string SyncDatabaseResourceGroupName { get; set; }
@@ -103,14 +126,19 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         protected override IEnumerable<AzureSqlSyncAgentModel> ApplyUserInputToModel(IEnumerable<AzureSqlSyncAgentModel> model)
         {
             List<Model.AzureSqlSyncAgentModel> newEntity = new List<AzureSqlSyncAgentModel>();
-            newEntity.Add(new AzureSqlSyncAgentModel()
+
+            AzureSqlSyncAgentModel newModel = new AzureSqlSyncAgentModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 SyncAgentName = this.Name
-            });
+            };
 
-            if (MyInvocation.BoundParameters.ContainsKey("SyncDatabaseName"))
+            if (ParameterSetName == SyncDatabaseResourceIDSet)
+            {
+                newModel.SyncDatabaseId = this.SyncDatabaseResourceID;
+            }
+            else
             {
                 if (!MyInvocation.BoundParameters.ContainsKey("SyncDatabaseResourceGroupName"))
                 {
@@ -121,10 +149,11 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
                     this.SyncDatabaseServerName = this.ServerName;
                 }
                 // "/subscriptions/{id}/" will be added in AzureSqlDataSyncCommunicator
-                this.syncDatabaseId = string.Format("resourceGroups/{0}/providers/Microsoft.Sql/servers/{1}/databases/{2}", 
+                this.syncDatabaseId = string.Format("resourceGroups/{0}/providers/Microsoft.Sql/servers/{1}/databases/{2}",
                     this.SyncDatabaseResourceGroupName, this.SyncDatabaseServerName, this.SyncDatabaseName);
             }
 
+            newEntity.Add(newModel);
             return newEntity;
         }
 

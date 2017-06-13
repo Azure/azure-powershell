@@ -321,6 +321,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             else 
             {
                 properties.SqlServerDatabaseId = model.SqlServerDatabaseId;
+                properties.SyncAgentId = model.SyncAgentId;
             }
             var resp = Communicator.CreateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, syncAgentId, Util.GenerateTracingId(), new SyncMemberCreateOrUpdateParameters()
             {
@@ -429,6 +430,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             {
                 Properties = new SyncAgentCreateOrUpdateProperties()
                 {
+                    SyncDatabaseId = model.SyncDatabaseId
                 }
             });
 
