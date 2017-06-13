@@ -11,7 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+#if !NETSTANDARD
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Moq;
@@ -122,3 +122,4 @@ namespace Microsoft.Azure.Commands.ScenarioTest.Mocks
         }
     }
 }
+#endif

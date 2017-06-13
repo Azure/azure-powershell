@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Diagnostics;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     {
                         if (null == _instance)
                         {
-                            throw new InvalidOperationException(Abstractions.Properties.Resources.SessionNotInitialized);
+                            throw new InvalidOperationException(Resources.SessionNotInitialized);
                         }
 
                         return _instance;
@@ -111,11 +112,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
                 catch (LockRecursionException lockException)
                 {
-                    throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockReadRecursion, lockException);
+                    throw new InvalidOperationException(Resources.SessionLockReadRecursion, lockException);
                 }
                 catch (ObjectDisposedException disposedException)
                 {
-                    throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockReadDisposed, disposedException);
+                    throw new InvalidOperationException(Resources.SessionLockReadDisposed, disposedException);
                 }
             }
         }
@@ -151,11 +152,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             catch (LockRecursionException lockException)
             {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockWriteRecursion, lockException);
+                throw new InvalidOperationException(Resources.SessionLockWriteRecursion, lockException);
             }
             catch (ObjectDisposedException disposedException)
             {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockWriteDisposed, disposedException);
+                throw new InvalidOperationException(Resources.SessionLockWriteDisposed, disposedException);
             }
         }
 

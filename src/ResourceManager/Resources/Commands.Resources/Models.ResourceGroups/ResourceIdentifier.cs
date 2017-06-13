@@ -16,8 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using AuthorizationResourceIdentity = Microsoft.Azure.ResourceIdentity;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 using ResourcesResourceIdentity = Microsoft.Azure.ResourceIdentity;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {

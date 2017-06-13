@@ -15,7 +15,6 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -25,6 +24,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {

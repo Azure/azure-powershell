@@ -41,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public static ProductInfoHeaderValue UserAgentValue = new ProductInfoHeaderValue(
             "AzurePowershell",
             string.Format("v{0}", AzurePowerShell.AssemblyVersion));
-
+        
         public static string ProfileDirectory = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "Windows Azure PowerShell");

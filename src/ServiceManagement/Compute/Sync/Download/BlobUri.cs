@@ -565,6 +565,6 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
             return builder.ToString();
         }
     }
-    #endregion
+#endregion
 
 }

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {

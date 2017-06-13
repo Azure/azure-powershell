@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -21,6 +20,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -39,10 +39,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             INTERNET_CONNECTION_OFFLINE = 0x20,
             INTERNET_CONNECTION_CONFIGURED = 0x40
         }
-
-        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "Not necessary for a single p-invoke")]
-        [DllImport("WININET", CharSet = CharSet.Auto)]
-        static extern bool InternetGetConnectedState(ref InternetConnectionState lpdwFlags, int dwReserved);
 
         /// <summary>
         /// Validates against given string if null or empty.
@@ -195,17 +191,27 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
         }
 
+#if !NETSTANDARD
+        [SuppressMessage("Microsoft.Design", "CA1060:MovePInvokesToNativeMethodsClass", Justification = "Not necessary for a single p-invoke")]
+        [DllImport("WININET", CharSet = CharSet.Auto)]
+        static extern bool InternetGetConnectedState(ref InternetConnectionState lpdwFlags, int dwReserved);
+#endif
+
         /// <summary>
         /// Validate that the intenret connection is working
         /// </summary>
         public static void ValidateInternetConnection()
         {
+#if !NETSTANDARD
             InternetConnectionState flags = 0;
 
             if (!InternetGetConnectedState(ref flags, 0))
             {
                 throw new Exception(Resources.NoInternetConnection);
             }
+#else
+			throw new NotSupportedException();			
+#endif
         }
 
         /// <summary>

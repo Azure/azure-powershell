@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 }
                 catch (LockRecursionException lockException)
                 {
-                    throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockReadRecursion, lockException);
+                    throw new InvalidOperationException(Resources.ProfileLockReadRecursion, lockException);
                 }
                 catch (ObjectDisposedException disposedException)
                 {
-                    throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockReadDisposed, disposedException);
+                    throw new InvalidOperationException(Resources.ProfileLockReadDisposed, disposedException);
                 }
             }
         }
@@ -86,11 +86,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             }
             catch (LockRecursionException lockException)
             {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockWriteRecursion, lockException);
+                throw new InvalidOperationException(Resources.ProfileLockWriteRecursion, lockException);
             }
             catch (ObjectDisposedException disposedException)
             {
-                throw new InvalidOperationException(Abstractions.Properties.Resources.ProfileLockWriteDisposed, disposedException);
+                throw new InvalidOperationException(Resources.ProfileLockWriteDisposed, disposedException);
             }
         }
 

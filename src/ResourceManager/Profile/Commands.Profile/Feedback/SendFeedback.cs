@@ -12,12 +12,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -29,9 +29,10 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             // Do not call base.BeginProcessing(), as context is not required for this cmdlet.
-
             if (!this.CheckIfInteractive())
+            {
                 throw new PSInvalidOperationException(String.Format(Resources.SendFeedbackNonInteractiveMessage, nameof(SendFeedbackCommand)));
+            }
         }
 
         public override void ExecuteCmdlet()
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Profile
             };
 
             this.Host.UI.WriteLine();
-
+            
             // Log the event with force since the user specifically issued this command to provide feedback.
             this._metricHelper.LogCustomEvent(_eventName, feedbackPayload, true /* force */);
         }

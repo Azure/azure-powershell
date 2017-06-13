@@ -5,6 +5,7 @@ using Xunit;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
+
 [assembly: AssemblyTitle("Commands.ScenarioTests.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -13,6 +14,8 @@ using Xunit;
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: AssemblyVersion("1.0.4")]
+[assembly: AssemblyFileVersion("1.0.4")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -31,7 +34,4 @@ using Xunit;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.4")]
-[assembly: AssemblyFileVersion("1.0.4")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

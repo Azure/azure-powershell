@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     // now find either the last (for head) or first (for tail) index of a new line in the stream.
                     // set the offset to the character immediately after (for head) or before (for tail)
                     // Then, for tail, subtract the amount of data that we want to read from that location (so read up to where the new line would be).
-                    var newOffset = StringExtensions.FindNewline(
+                    var newOffset = Management.DataLake.Store.StringExtensions.FindNewline(
                         streamAsBytes,
                         !reverse ? streamAsBytes.Length - 1 : 0,  // depending on if we are searching from the back or the front, the start index is either the front or back of the array
                         streamAsBytes.Length,

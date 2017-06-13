@@ -10,6 +10,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Properties {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -29,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        public Resources() {
         }
         
         /// <summary>
@@ -39,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.Common.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.Common.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1207,11 +1208,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Internal Server Error.
+        ///   Looks up a localized string similar to public Server Error.
         /// </summary>
-        public static string InternalServerErrorMessage {
+        public static string publicServerErrorMessage {
             get {
-                return ResourceManager.GetString("InternalServerErrorMessage", resourceCulture);
+                return ResourceManager.GetString("publicServerErrorMessage", resourceCulture);
             }
         }
         
@@ -1863,7 +1864,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Internal Server Error. This could happen because the namespace name is already used or due to an incorrect location name. Use Get-AzureSBLocation cmdlet to list valid names..
+        ///   Looks up a localized string similar to public Server Error. This could happen because the namespace name is already used or due to an incorrect location name. Use Get-AzureSBLocation cmdlet to list valid names..
         /// </summary>
         public static string NewNamespaceErrorMessage {
             get {
@@ -2964,7 +2965,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Internal Server Error. This could happen because the namespace does not exist or it does not exist under your subscription..
+        ///   Looks up a localized string similar to public Server Error. This could happen because the namespace does not exist or it does not exist under your subscription..
         /// </summary>
         public static string RemoveNamespaceErrorMessage {
             get {
@@ -3396,7 +3397,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Internal Server Error. This could happen due to an incorrect/missing namespace.
+        ///   Looks up a localized string similar to public Server Error. This could happen due to an incorrect/missing namespace.
         /// </summary>
         public static string ServiceBusNamespaceMissingMessage {
             get {

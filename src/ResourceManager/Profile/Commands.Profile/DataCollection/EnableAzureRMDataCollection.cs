@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             var profile = GetDataCollectionProfile();
             profile.EnableAzureDataCollection = enable;
-            SaveDataCollectionProfile();
+            SaveDataCollectionProfile();	
         }
     }
 }

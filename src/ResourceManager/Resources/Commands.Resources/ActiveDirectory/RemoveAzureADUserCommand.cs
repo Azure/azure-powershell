@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
-
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     /// <summary>

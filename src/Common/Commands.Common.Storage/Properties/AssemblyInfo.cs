@@ -20,9 +20,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Microsoft Azure Powershell")]
 [assembly: AssemblyCopyright("Copyright © Microsoft")]
+[assembly: AssemblyVersion("4.0.0")]
+[assembly: AssemblyFileVersion("4.0.0")]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("c565107e-98a9-4703-85cd-a7efc3d8da7b")]
-[assembly: AssemblyVersion("4.0.0")]
-[assembly: AssemblyFileVersion("4.0.0")]

@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {

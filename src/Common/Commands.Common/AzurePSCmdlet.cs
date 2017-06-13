@@ -46,9 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected static string _sessionId = Guid.NewGuid().ToString();
         protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
         protected string _clientRequestId = Guid.NewGuid().ToString();
+        protected DebugStreamTraceListener _adalListener;
         protected MetricHelper _metricHelper;
         protected AzurePSQoSEvent _qosEvent;
-        protected DebugStreamTraceListener _adalListener;
 
         protected virtual bool IsUsageMetricEnabled
         {
@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
-
+            
             //TODO: Inject from CI server
             _metricHelper = new MetricHelper();
             _metricHelper.AddTelemetryClient(new TelemetryClient
@@ -271,8 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
         }
-
-
+        
         protected virtual void SetupHttpClientPipeline()
         {
             AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
@@ -338,7 +337,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 _qosEvent.Exception = errorRecord.Exception;
                 _qosEvent.IsSuccess = false;
             }
-
             base.WriteError(errorRecord);
         }
 
@@ -458,7 +456,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 base.WriteDebug(message);
             }
         }
-
         protected abstract void InitializeQosEvent();
 
         private void RecordDebugMessages()
@@ -586,6 +583,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 useShouldContinue = () => true;
             }
+
             if (_qosEvent != null)
             {
                 _qosEvent.PauseQoSTimer();
