@@ -75,7 +75,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectivityCheck()
         {

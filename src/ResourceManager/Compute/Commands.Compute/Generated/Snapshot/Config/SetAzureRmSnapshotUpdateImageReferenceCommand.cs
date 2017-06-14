@@ -28,6 +28,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [Obsolete("This cmdlet will be removed in the upcoming release.  Updating the image reference of a snapshot is not supported." +
+        "To set image reference of a snapshot, please use Set-AzureRmSnapshotImageReference command.")]
     [Cmdlet("Set", "AzureRmSnapshotUpdateImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(SnapshotUpdate))]
     public class SetAzureRmSnapshotUpdateImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet

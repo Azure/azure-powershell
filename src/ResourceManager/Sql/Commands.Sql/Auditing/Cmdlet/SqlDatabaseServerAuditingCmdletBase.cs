@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             if (AuditType == AuditType.Table)
             {
-                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerAuditingPolicyModel, clientRequestId, 
+                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerAuditingPolicyModel, 
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             if (AuditType == AuditType.Blob)
             {
-                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerBlobAuditingPolicyModel, clientRequestId,
+                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerBlobAuditingPolicyModel,
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             return null;
@@ -98,14 +98,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (AuditType == AuditType.Table)
             {
                 ServerAuditingPolicyModel model;
-                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, clientRequestId, out model);
+                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, out model);
                 return model;
             }
 
             if (AuditType == AuditType.Blob)
             {
                 ServerBlobAuditingPolicyModel blobModel;
-                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, clientRequestId, out blobModel);
+                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, out blobModel);
                 return blobModel;
             }
 
