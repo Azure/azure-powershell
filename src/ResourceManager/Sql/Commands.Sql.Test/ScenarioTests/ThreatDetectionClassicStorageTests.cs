@@ -22,57 +22,29 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ThreatDetectionTests : SqlTestsBase
+    public class ThreatDetectionClassicStorageTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
+            var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
             var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, resourcesClient,
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient,
                 authorizationClient);
         }
 
-        public ThreatDetectionTests(ITestOutputHelper output) : base(output)
+        public ThreatDetectionClassicStorageTests(ITestOutputHelper output) : base(output)
         {
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ThreatDetectionGetDefualtPolicy()
+        public void ThreatDetectionUpdatePolicyWithClassicStorage()
         {
-            RunPowerShellTest("Test-ThreatDetectionGetDefualtPolicy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ThreatDetectionDatabaseUpdatePolicy()
-        {
-            RunPowerShellTest("Test-ThreatDetectionDatabaseUpdatePolicy");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ThreatDetectionServerUpdatePolicy()
-        {
-            RunPowerShellTest("Test-ThreatDetectionServerUpdatePolicy");
-        }
-
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisablingThreatDetection()
-        {
-            RunPowerShellTest("Test-DisablingThreatDetection");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void InvalidArgumentsThreatDetection()
-        {
-            RunPowerShellTest("Test-InvalidArgumentsThreatDetection");
+            RunPowerShellTest("Test-ThreatDetectionUpdatePolicyWithClassicStorage");
         }
     }
 }
