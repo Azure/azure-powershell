@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerBackendAddressPoolConfigCommand : AzureLoadBalancerBackendAddressPoolConfigBase
     {
         [Parameter(
@@ -35,10 +34,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var existingbackendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingbackendAddressPool != null)
@@ -48,10 +47,10 @@ namespace Microsoft.Azure.Commands.Network
 
             var backendAddressPool = new PSBackendAddressPool();
             backendAddressPool.Name = this.Name;
-            
+
             backendAddressPool.Id =
                 ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerBackendAddressPoolName,

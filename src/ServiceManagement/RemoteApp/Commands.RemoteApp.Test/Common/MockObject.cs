@@ -43,6 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
     {
         internal static IList<Collection> mockCollectionList { get; set; }
 
+        internal static IList<RemoteAppVm> mockVmList { get; set; }
+
         internal static IList<Region> mockRegionList {get; set;}
 
         internal static IList<VNet> mockVNetList { get; set; }
@@ -103,6 +105,10 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
             if (typeof(T) == typeof(Collection))
             {
                 expectedResults = ConvertList<T>(mockCollectionList);
+            }
+            else if (typeof(T) == typeof(RemoteAppVm))
+            {
+                expectedResults = ConvertList<T>(mockVmList);
             }
             else if (typeof(T) == typeof(Region))
             {

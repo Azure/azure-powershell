@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataFactories.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             HelpMessage = "The data factory name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -41,20 +42,22 @@ namespace Microsoft.Azure.Commands.DataFactories
                 Name = Name,
                 ResourceGroupName = ResourceGroupName
             };
-            
-            List<PSDataFactory> dataFactories = DataFactoryClient.FilterPSDataFactories(filterOptions);
 
-            if (dataFactories != null)
+            if (Name != null)
             {
-                if (dataFactories.Count == 1 && Name != null)
+                List<PSDataFactory> dataFactories = DataFactoryClient.FilterPSDataFactories(filterOptions);
+                if (dataFactories != null && dataFactories.Any())
                 {
-                    WriteObject(dataFactories[0]);
+                    WriteObject(dataFactories.First());
                 }
-                else
-                {
-                    WriteObject(dataFactories, true);
-                }
+                return;
             }
+
+            //List data factories until all pages are fetched
+            do
+            {
+                WriteObject(DataFactoryClient.FilterPSDataFactories(filterOptions), true);
+            } while (filterOptions.NextLink.IsNextPageLink());
         }
     }
 }

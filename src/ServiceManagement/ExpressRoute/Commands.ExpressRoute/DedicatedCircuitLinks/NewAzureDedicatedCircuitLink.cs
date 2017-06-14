@@ -14,17 +14,17 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
+
     [Cmdlet(VerbsCommon.New, "AzureDedicatedCircuitLink"), OutputType(typeof(AzureDedicatedCircuitLink))]
     public class NewAzureDedicatedCircuitLinkCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key representing Azure Circuit")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Virtual Network Name")]
         [ValidateNotNullOrEmpty]

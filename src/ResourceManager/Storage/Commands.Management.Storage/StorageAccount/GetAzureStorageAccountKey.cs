@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
+    [Cmdlet(VerbsCommon.Get, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKey))]
     public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
-            var listKeyResponse = this.StorageClient.StorageAccounts.ListKeys(
+            var storageKeys = this.StorageClient.StorageAccounts.ListKeys(
                  this.ResourceGroupName,
-                 this.Name);
+                 this.Name).Keys;
 
-            WriteObject(listKeyResponse.StorageAccountKeys);
+            WriteObject(storageKeys, true);
         }
     }
 }

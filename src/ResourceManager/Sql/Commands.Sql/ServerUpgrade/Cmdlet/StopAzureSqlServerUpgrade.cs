@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureSqlServerUpgrade",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlServerUpgrade", SupportsShouldProcess = true)]
     public class StopAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
     {
         /// <summary>
@@ -40,8 +37,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         /// <returns>The entity going to be deleted</returns>
         protected override IEnumerable<Model.AzureSqlServerUpgradeModel> GetEntity()
         {
-            return new List<Model.AzureSqlServerUpgradeModel>() { 
-                ModelAdapter.GetUpgrade(this.ResourceGroupName, this.ServerName) 
+            return new List<Model.AzureSqlServerUpgradeModel>() {
+                ModelAdapter.GetUpgrade(this.ResourceGroupName, this.ServerName)
             };
         }
 
@@ -63,9 +60,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         protected override IEnumerable<AzureSqlServerUpgradeModel> PersistChanges(IEnumerable<AzureSqlServerUpgradeModel> entity)
         {
             if (!Force.IsPresent && !ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Resources.StopAzureSqlServerUpgradeDescription, this.ServerName),
-                string.Format(CultureInfo.InvariantCulture, Resources.StopAzureSqlServerUpgradeWarning, this.ServerName),
-                Resources.ShouldProcessCaption))
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlServerUpgradeDescription, this.ServerName),
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlServerUpgradeWarning, this.ServerName),
+                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return null;
             }

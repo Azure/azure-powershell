@@ -15,8 +15,9 @@
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
+    using System.Collections.Generic;
 
-    class RedisCacheAttributes
+    public class RedisCacheAttributes
     {
         public RedisCacheAttributes(RedisResource cache, string resourceGroupName)
         {
@@ -24,40 +25,26 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Location = cache.Location;
             Name = cache.Name;
             Type = cache.Type;
-            HostName = cache.Properties.HostName;
-            Port = cache.Properties.Port;
-            ProvisioningState = cache.Properties.ProvisioningState;
-            SslPort = cache.Properties.SslPort;
-            MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
-            EnableNonSslPort = cache.Properties.EnableNonSslPort;
-            RedisVersion = cache.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
-            Sku = cache.Properties.Sku.Name;
+            HostName = cache.HostName;
+            Port = cache.Port.HasValue ? cache.Port.Value : 0;
+            ProvisioningState = cache.ProvisioningState;
+            SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
+            RedisConfiguration = cache.RedisConfiguration;
+            EnableNonSslPort = cache.EnableNonSslPort.Value;
+            RedisVersion = cache.RedisVersion;
+            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
+            Sku = cache.Sku.Name;
             ResourceGroupName = resourceGroupName;
-        }
-
-        public RedisCacheAttributes(RedisGetResponse cache, string resourceGroupName)
-        {
-            Id = cache.Id;
-            Location = cache.Location;
-            Name = cache.Name;
-            Type = cache.Type;
-            HostName = cache.Properties.HostName;
-            Port = cache.Properties.Port;
-            ProvisioningState = cache.Properties.ProvisioningState;
-            SslPort = cache.Properties.SslPort;
-            MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
-            EnableNonSslPort = cache.Properties.EnableNonSslPort;
-            RedisVersion = cache.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
-            Sku = cache.Properties.Sku.Name;
-            ResourceGroupName = resourceGroupName;
+            SubnetId = cache.SubnetId;
+            StaticIP = cache.StaticIP;
+            TenantSettings = cache.TenantSettings;
+            ShardCount = cache.ShardCount;
         }
 
         public RedisCacheAttributes() { }
 
         private string _resourceGroupName;
-        public string ResourceGroupName 
+        public string ResourceGroupName
         {
             get
             {
@@ -71,7 +58,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     _resourceGroupName = value;
                 }
                 else
-                { 
+                {
                     // if resource group name is null (when try to get all cache in given subscription it will be null) we have to fetch it from Id.
                     _resourceGroupName = Id.Split('/')[4];
                 }
@@ -94,7 +81,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public int SslPort { get; protected set; }
 
-        public string MaxMemoryPolicy { get; protected set; }
+        public IDictionary<string, string> RedisConfiguration { get; protected set; }
 
         public bool EnableNonSslPort { get; protected set; }
 
@@ -103,5 +90,13 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public string Size { get; protected set; }
 
         public string Sku { get; protected set; }
+
+        public IDictionary<string, string> TenantSettings { get; protected set; }
+
+        public int? ShardCount { get; protected set; }
+
+        public string SubnetId { get; protected set; }
+
+        public string StaticIP { get; protected set; }
     }
 }

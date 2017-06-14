@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Management.Automation;
+using System;
+using System.Diagnostics.Eventing;
 
 namespace Microsoft.Azure.Commands.Automation
 {
@@ -31,11 +28,25 @@ namespace Microsoft.Azure.Commands.Automation
             client = ((AutomationManagementClient)automationClient);
             client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, Guid.NewGuid().ToString());
+
+            client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
+            var activityId = Guid.NewGuid();
+            EventProvider.SetActivityId(ref activityId);
+            client.HttpClient.DefaultRequestHeaders.Add(Constants.ActivityIdHeaderName, activityId.ToString());
         }
-        
+
         public void Dispose()
         {
-            client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+                client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
+            }
         }
     }
 }

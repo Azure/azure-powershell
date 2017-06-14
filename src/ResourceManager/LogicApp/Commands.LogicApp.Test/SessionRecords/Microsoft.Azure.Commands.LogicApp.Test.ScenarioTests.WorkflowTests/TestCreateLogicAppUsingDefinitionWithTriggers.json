@@ -1,0 +1,289 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourcegroups/onesdk1462?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlZ3JvdXBzL29uZXNkazE0NjI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/onesdk1462\",\r\n  \"name\": \"onesdk1462\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "173"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1192"
+        ],
+        "x-ms-request-id": [
+          "283f7472-82bc-4181-ad6b-d283427d9e08"
+        ],
+        "x-ms-correlation-request-id": [
+          "283f7472-82bc-4181-ad6b-d283427d9e08"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160726T000051Z:283f7472-82bc-4181-ad6b-d283427d9e08"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 26 Jul 2016 00:00:51 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/onesdk1462/providers/Microsoft.Logic/workflows/onesdk0?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL29uZXNkazE0NjIvcHJvdmlkZXJzL01pY3Jvc29mdC5Mb2dpYy93b3JrZmxvd3Mvb25lc2RrMD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8b8a7acb-8b97-434d-b485-924b2fcf336a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.2.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/workflows/onesdk0' under resource group 'onesdk1462' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "147"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "bd298ef9-ab03-4e57-8193-523ba559e3fa"
+        ],
+        "x-ms-correlation-request-id": [
+          "bd298ef9-ab03-4e57-8193-523ba559e3fa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160726T000059Z:bd298ef9-ab03-4e57-8193-523ba559e3fa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 26 Jul 2016 00:00:58 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/onesdk1462/providers/Microsoft.Logic/workflows/onesdk0?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL29uZXNkazE0NjIvcHJvdmlkZXJzL01pY3Jvc29mdC5Mb2dpYy93b3JrZmxvd3Mvb25lc2RrMD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a6513be-5297-4fbc-b2fe-899397ddc279"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.2.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"createdTime\": \"2016-07-26T00:00:59.6195096Z\",\r\n    \"changedTime\": \"2016-07-26T00:00:59.6196625Z\",\r\n    \"state\": \"Enabled\",\r\n    \"version\": \"08587321156259282470\",\r\n    \"accessEndpoint\": \"https://prod-13.westus.logic.azure.com:443/workflows/e40808a9bdac4969b731aa5983189fa4\",\r\n    \"definition\": {\r\n      \"$schema\": \"http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"runworkflowmanually\": {\r\n          \"defaultValue\": false,\r\n          \"type\": \"Bool\"\r\n        }\r\n      },\r\n      \"triggers\": {\r\n        \"httpTrigger\": {\r\n          \"recurrence\": {\r\n            \"frequency\": \"Hour\",\r\n            \"interval\": 1\r\n          },\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        },\r\n        \"manualTrigger\": {\r\n          \"type\": \"Manual\"\r\n        }\r\n      },\r\n      \"actions\": {\r\n        \"http\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        },\r\n        \"http1\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"outputs\": {\r\n        \"output1\": {\r\n          \"type\": \"String\",\r\n          \"value\": \"true\"\r\n        }\r\n      }\r\n    },\r\n    \"parameters\": {}\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/onesdk1462/providers/Microsoft.Logic/workflows/onesdk0\",\r\n  \"name\": \"onesdk0\",\r\n  \"type\": \"Microsoft.Logic/workflows\",\r\n  \"location\": \"westus\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1290"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:6970a9f4-8df8-4387-b069-cb19072b6bed"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14941"
+        ],
+        "x-ms-correlation-request-id": [
+          "186195ec-1308-47d6-9c04-317dc2c41551"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160726T000102Z:186195ec-1308-47d6-9c04-317dc2c41551"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 26 Jul 2016 00:01:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/onesdk1462/providers/Microsoft.Logic/workflows/onesdk0?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL29uZXNkazE0NjIvcHJvdmlkZXJzL01pY3Jvc29mdC5Mb2dpYy93b3JrZmxvd3Mvb25lc2RrMD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"definition\": {\r\n      \"$schema\": \"http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"runworkflowmanually\": {\r\n          \"defaultValue\": false,\r\n          \"type\": \"bool\"\r\n        }\r\n      },\r\n      \"triggers\": {\r\n        \"httpTrigger\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"recurrence\": {\r\n            \"frequency\": \"Hour\",\r\n            \"interval\": 1\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        },\r\n        \"manualTrigger\": {\r\n          \"type\": \"Manual\"\r\n        }\r\n      },\r\n      \"actions\": {\r\n        \"http\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        },\r\n        \"http1\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"outputs\": {\r\n        \"output1\": {\r\n          \"type\": \"string\",\r\n          \"value\": \"true\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1615"
+        ],
+        "x-ms-client-request-id": [
+          "87fc56aa-0b8f-4c06-b569-15aa9fc60d2b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.2.2.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"createdTime\": \"2016-07-26T00:00:59.6195096Z\",\r\n    \"changedTime\": \"2016-07-26T00:00:59.6195096Z\",\r\n    \"state\": \"Enabled\",\r\n    \"version\": \"08587321156259282470\",\r\n    \"accessEndpoint\": \"https://prod-13.westus.logic.azure.com:443/workflows/e40808a9bdac4969b731aa5983189fa4\",\r\n    \"definition\": {\r\n      \"$schema\": \"http://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#\",\r\n      \"contentVersion\": \"1.0.0.0\",\r\n      \"parameters\": {\r\n        \"runworkflowmanually\": {\r\n          \"defaultValue\": false,\r\n          \"type\": \"Bool\"\r\n        }\r\n      },\r\n      \"triggers\": {\r\n        \"httpTrigger\": {\r\n          \"recurrence\": {\r\n            \"frequency\": \"Hour\",\r\n            \"interval\": 1\r\n          },\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        },\r\n        \"manualTrigger\": {\r\n          \"type\": \"Manual\"\r\n        }\r\n      },\r\n      \"actions\": {\r\n        \"http\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        },\r\n        \"http1\": {\r\n          \"type\": \"Http\",\r\n          \"inputs\": {\r\n            \"method\": \"GET\",\r\n            \"uri\": \"http://www.bing.com\"\r\n          },\r\n          \"conditions\": [\r\n            {\r\n              \"expression\": \"@bool('true')\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"outputs\": {\r\n        \"output1\": {\r\n          \"type\": \"String\",\r\n          \"value\": \"true\"\r\n        }\r\n      }\r\n    },\r\n    \"parameters\": {}\r\n  },\r\n  \"id\": \"/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/onesdk1462/providers/Microsoft.Logic/workflows/onesdk0\",\r\n  \"name\": \"onesdk0\",\r\n  \"type\": \"Microsoft.Logic/workflows\",\r\n  \"location\": \"westus\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1290"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:805f1fae-9b9f-4b1d-9869-17552fc4f42c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "726e432e-8652-4b94-8cfa-00f5b837a254"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160726T000100Z:726e432e-8652-4b94-8cfa-00f5b837a254"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 26 Jul 2016 00:00:59 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/5250dd92-b580-46be-b327-e6596c8de196/resourceGroups/onesdk1462/providers/Microsoft.Logic/workflows/onesdk0?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTI1MGRkOTItYjU4MC00NmJlLWIzMjctZTY1OTZjOGRlMTk2L3Jlc291cmNlR3JvdXBzL29uZXNkazE0NjIvcHJvdmlkZXJzL01pY3Jvc29mdC5Mb2dpYy93b3JrZmxvd3Mvb25lc2RrMD9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2ba451ec-8e0b-4509-b5c6-9a25495527e7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/0.2.2.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:b5b1b07f-cc89-4ba9-91b3-7f9b96f46c1c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "bdff189e-c3f9-45ad-b216-80f21e658195"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160726T000102Z:bdff189e-c3f9-45ad-b216-80f21e658195"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 26 Jul 2016 00:01:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-CreateLogicAppUsingDefinitionWithTriggers": [
+      "onesdk1462",
+      "onesdk0"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "5250dd92-b580-46be-b327-e6596c8de196"
+  }
+}

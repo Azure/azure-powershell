@@ -12,23 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Globalization;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Removes the dsc node.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureAutomationDscNode")]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmAutomationDscNode", SupportsShouldProcess = true)]
     [OutputType(typeof(DscNode))]
     public class UnregisterAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {

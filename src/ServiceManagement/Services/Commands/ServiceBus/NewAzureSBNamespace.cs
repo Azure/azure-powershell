@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Creates new service bus namespace.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSBNamespace"), OutputType(typeof(ServiceBusNamespace))]
-    public class NewAzureSBNamespaceCommand : AzurePSCmdlet
+    public class NewAzureSBNamespaceCommand : AzureSMCmdlet
     {
         internal ServiceBusClientExtensions Client { get; set; }
 
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+            Client = Client ?? new ServiceBusClientExtensions(Profile);
             if (CreateACSNamespace.HasValue)
             {
                 WriteObject(Client.CreateNamespace(Name, Location, NamespaceType, CreateACSNamespace.Value));

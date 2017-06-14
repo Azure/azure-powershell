@@ -15,8 +15,8 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -53,35 +53,74 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Update Domain Count.")]
+            HelpMessage = "The Platform Update Domain Count")]
         [ValidateNotNullOrEmpty]
         public int? PlatformUpdateDomainCount { get; set; }
 
         [Parameter(
             Position = 4,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Platform Fault Domain Count.")]
+            HelpMessage = "The Platform Fault Domain Count")]
         [ValidateNotNullOrEmpty]
         public int? PlatformFaultDomainCount { get; set; }
+
+        [Parameter(
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Name of Sku")]
+        public string Sku { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Managed Availability Set")]
+        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
+        public SwitchParameter Managed { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var avSetParams = new AvailabilitySet
+            ExecuteClientAction(() =>
             {
-                Name = this.Name,
-                Location = this.Location,
-                PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                PlatformFaultDomainCount = this.PlatformFaultDomainCount
-            };
+                var avSetParams = new AvailabilitySet
+                {
+                    Location = this.Location,
+                    PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount,
+#pragma warning disable CS0618 // Type or member is obsolete
+                    Managed = this.Managed.IsPresent ? (bool?) true : null
+#pragma warning restore CS0618 // Type or member is obsolete
+                };
 
-            var result = this.AvailabilitySetClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                avSetParams);
+#pragma warning disable CS0618 // Type or member is obsolete
+                if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
+#pragma warning restore CS0618 // Type or member is obsolete
+                {
+                    avSetParams.Sku = new Sku();
+                    if (!string.IsNullOrEmpty(this.Sku))
+                    {
+                        avSetParams.Sku.Name = this.Sku;
+                    }
+#pragma warning disable CS0618 // Type or member is obsolete
+                    if (this.Managed.IsPresent)
+#pragma warning restore CS0618 // Type or member is obsolete
+                    {
+                        avSetParams.Sku.Name = "Aligned";
+                    }
+                }
 
-            var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
-            WriteObject(psResult);
+                var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    this.Name,
+                    avSetParams).GetAwaiter().GetResult();
+
+                var psResult = Mapper.Map<PSAvailabilitySet>(result);
+                if (result.Body != null)
+                {
+                    psResult = Mapper.Map(result.Body, psResult);
+                }
+                WriteObject(psResult);
+            });
         }
     }
 }

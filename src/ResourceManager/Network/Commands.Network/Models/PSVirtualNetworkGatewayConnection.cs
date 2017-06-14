@@ -14,17 +14,19 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSVirtualNetworkGatewayConnection : PSTopLevelResource
     {
+        public string AuthorizationKey { get; set; }
         public PSVirtualNetworkGateway VirtualNetworkGateway1 { get; set; }
 
         public PSVirtualNetworkGateway VirtualNetworkGateway2 { get; set; }
 
         public PSLocalNetworkGateway LocalNetworkGateway2 { get; set; }
+
+        public PSResourceId Peer { get; set; }
 
         public string ConnectionType { get; set; }
 
@@ -32,22 +34,50 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string SharedKey { get; set; }
 
+        public bool EnableBgp { get; set; }
+
+        public string ConnectionStatus { get; set; }
+
+        public ulong EgressBytesTransferred { get; set; }
+
+        public ulong IngressBytesTransferred { get; set; }
+
+        public List<PSTunnelConnectionHealth> TunnelConnectionStatus { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        public bool UsePolicyBasedTrafficSelectors { get; set; }
+
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkGateway1, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(VirtualNetworkGateway1.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string VirtualNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(VirtualNetworkGateway2, Formatting.Indented); }
+            get { return VirtualNetworkGateway2 == null ? string.Empty : JsonConvert.SerializeObject(VirtualNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LocalNetworkGateway2Text
         {
-            get { return JsonConvert.SerializeObject(LocalNetworkGateway2, Formatting.Indented); }
+            get { return LocalNetworkGateway2 == null ? string.Empty : JsonConvert.SerializeObject(LocalNetworkGateway2.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PeerText
+        {
+            get { return Peer == null ? string.Empty : JsonConvert.SerializeObject(Peer.Id, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TunnelConnectionStatusText
+        {
+            get { return TunnelConnectionStatus == null ? string.Empty : JsonConvert.SerializeObject(TunnelConnectionStatus, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

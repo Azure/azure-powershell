@@ -1,0 +1,925 @@
+<?xml version="1.0"?>
+<ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Manifest" mclass="Module" useSupports="false">
+  <Name>AzureRM.DevTestLabs</Name>
+  <Version>1.0.0</Version>
+  <Description>Microsoft Azure PowerShell - DevTestLabs service cmdlets for Azure Resource Manager</Description>
+  <HasManifest>true</HasManifest>
+  <OverridePostCount>false</OverridePostCount>
+  <FetchPostCount xsi:nil="true" />
+  <Cmdlets>
+    <CmdletObject verb="Get" noun="AzureRmDtlAllowedVMSizesPolicy">
+      <Name>Get-AzureRmDtlAllowedVMSizesPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the policy which specifies the list of VM sizes allowed in the lab. </Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The policy which specifies the list of VM sizes allowed in the lab.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmDtlAllowedVMSizesPolicy [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmDtlAutoShutdownPolicy">
+      <Name>Get-AzureRmDtlAutoShutdownPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Get-AzureRmDtlAutoShutdownPolicy cmdlet gets the policy which specifies when the lab's VMs must shut down.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must shut down.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmDtlAutoShutdownPolicy [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmDtlAutoStartPolicy">
+      <Name>Get-AzureRmDtlAutoStartPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Get-AzureRmDtlAutoStartPolicy cmdlet gets the policy which specifies when the lab's VMs must be started.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must be started.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmDtlAutoStartPolicy [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmDtlVMsPerLabPolicy">
+      <Name>Get-AzureRmDtlVMsPerLabPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Get-AzureRmDtlVMsPerLabPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created in the lab.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created in the lab.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmDtlVMsPerLabPolicy [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmDtlVMsPerUserPolicy">
+      <Name>Get-AzureRmDtlVMsPerUserPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Get-AzureRmDtlVMsPerUserPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created by a user in the lab.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmDtlVMsPerUserPolicy [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Set" noun="AzureRmDtlAllowedVMSizesPolicy">
+      <Name>Set-AzureRmDtlAllowedVMSizesPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Set-AzureRmDtlAllowedVMSizesPolicy cmdlet sets the policy which specifies the list of VM sizes allowed in the lab.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The policy which specifies the list of VM sizes allowed in the lab.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Enable" Params="VmSizes Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Disable" Params="VmSizes Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Set-AzureRmDtlAllowedVMSizesPolicy [[-VmSizes] &lt;String[]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAllowedVMSizesPolicy [[-VmSizes] &lt;String[]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>VmSizes</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The list of VM sizes allowed in the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
+          <Name>Enable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be enabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+          <Name>Disable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Set" noun="AzureRmDtlAutoShutdownPolicy">
+      <Name>Set-AzureRmDtlAutoShutdownPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Set-AzureRmDtlAutoShutdownPolicy cmdlet sets the policy which specifies when the lab's VMs must shut down.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must shut down.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Enable" Params="Time Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Disable" Params="Time Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Set-AzureRmDtlAutoShutdownPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAutoShutdownPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="DateTime" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>Time</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The time at which the lab's VMs must shut down.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
+          <Name>Enable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be enabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+          <Name>Disable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[DateTime]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>Time</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Set" noun="AzureRmDtlAutoStartPolicy">
+      <Name>Set-AzureRmDtlAutoStartPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Set-AzureRmDtlAutoStartPolicy cmdlet sets the policy which specifies when the lab's VMs must be started.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.ScheduleDisplay</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The schedule which specifies when the lab's VMs must be started.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Enable" Params="Time Days Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Disable" Params="Time Days Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Set-AzureRmDtlAutoStartPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [[-Days] &lt;DayOfWeek[]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlAutoStartPolicy [[-Time] &lt;Nullable`1[DateTime]&gt;] [[-Days] &lt;DayOfWeek[]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="DateTime" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>Time</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The time at which the lab's VMs must be started.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="DayOfWeek[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="5" globbing="false">
+          <Name>Days</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The days of the week on which the lab's VMs must be started.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
+          <Name>Enable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be enabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+          <Name>Disable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[DateTime]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>Time</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Set" noun="AzureRmDtlVMsPerLabPolicy">
+      <Name>Set-AzureRmDtlVMsPerLabPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Set-AzureRmDtlVMsPerLabPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created in the lab.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created in the lab.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Enable" Params="MaxVMs Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Disable" Params="MaxVMs Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Set-AzureRmDtlVMsPerLabPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlVMsPerLabPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="Int32" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>MaxVMs</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The maximum number of VMs that can be created in the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
+          <Name>Enable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be enabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+          <Name>Disable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>MaxVMs</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The maximum number of VMs that can be created in the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Set" noun="AzureRmDtlVMsPerUserPolicy">
+      <Name>Set-AzureRmDtlVMsPerUserPolicy</Name>
+      <GeneralHelp>
+        <Synopsis>The Set-AzureRmDtlVMsPerUserPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</Synopsis>
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType>Microsoft.Azure.Management.DevTestLabs.Models.Policy</ReturnType>
+        <ReturnUrl />
+        <ReturnTypeDescription>The policy which specifies the maximum number of VMs that can be created by a user in the lab.</ReturnTypeDescription>
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="Enable" Params="MaxVMs Enable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="Disable" Params="MaxVMs Disable LabName ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Set-AzureRmDtlVMsPerUserPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [[-Enable] &lt;SwitchParameter&gt;] [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmDtlVMsPerUserPolicy [[-MaxVMs] &lt;Nullable`1[Int32]&gt;] [-Disable] &lt;SwitchParameter&gt; [-LabName] &lt;String&gt; [-ResourceGroupName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="Int32" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>MaxVMs</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The maximum number of VMs that can be created by a user in the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="2" globbing="false">
+          <Name>Enable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be enabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>LabName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>The name of the lab's resource group.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="SwitchParameter" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="3" globbing="false">
+          <Name>Disable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description>Specifies that the policy should be disabled.</Description>
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Nullable`1[Int32]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="4" globbing="false">
+          <Name>MaxVMs</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+  </Cmdlets>
+</ModuleObject>

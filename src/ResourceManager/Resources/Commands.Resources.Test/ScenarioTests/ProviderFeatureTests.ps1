@@ -18,23 +18,23 @@
 #>
 function Test-AzureProviderFeature
 {
-    $defaultProviderFeatures = Get-AzureProviderFeature
+    $defaultProviderFeatures = Get-AzureRmProviderFeature
 
-    $allProviderFeatures = Get-AzureProviderFeature -ListAvailable
+    $allProviderFeatures = Get-AzureRmProviderFeature -ListAvailable
 
     Assert-True { $allProviderFeatures.Length -gt $defaultProviderFeatures.Length }
 
-    $batchFeatures = Get-AzureProviderFeature -ProviderName "Microsoft.Batch"
+    $batchFeatures = Get-AzureRmProviderFeature -ProviderName "Microsoft.Batch"
 
     Assert-True { $batchFeatures.Length -eq 0 }
 
-    $batchFeatures = Get-AzureProviderFeature -ProviderName "Microsoft.Batch" -ListAvailable
+    $batchFeatures = Get-AzureRmProviderFeature -ProviderName "Microsoft.Batch" -ListAvailable
 
     Assert-True { $batchFeatures.Length -gt 0 }
 
-    Register-AzureProviderFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3" -Force
+    Register-AzureRmProviderFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
 
-    $cacheRegisteredFeatures = Get-AzureProviderFeature -ProviderName "Microsoft.Cache"
+    $cacheRegisteredFeatures = Get-AzureRmProviderFeature -ProviderName "Microsoft.Cache"
 
     Assert-True { $cacheRegisteredFeatures.Length -gt 0 }
 }

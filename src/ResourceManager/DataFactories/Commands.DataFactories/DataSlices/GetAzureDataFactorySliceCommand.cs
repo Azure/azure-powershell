@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
@@ -25,6 +25,25 @@ namespace Microsoft.Azure.Commands.DataFactories
     [Cmdlet(VerbsCommon.Get, Constants.DataSlice, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSDataSlice>))]
     public class GetAzureDataFactorySliceCommand : DataSliceContextBaseCmdlet
     {
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The data slice range end time.")]
+        public DateTime EndDateTime
+        {
+            get
+            {
+                if (_endDateTime == default(DateTime))
+                {
+                    WriteWarning(Resources.EndDateTimeNotSpecifiedForGetSlice);
+                    return StartDateTime + Constants.DefaultSliceActivePeriodDuration;
+                }
+
+                return _endDateTime;
+            }
+            set
+            {
+                _endDateTime = value;
+            }
+        }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -39,18 +58,27 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            var dataSlices = DataFactoryClient.ListDataSlices(
-                ResourceGroupName, DataFactoryName, TableName, StartDateTime,
-                EndDateTime);
-
-            if (dataSlices == null || dataSlices.Count == 0)
+            DataSliceFilterOptions filterOptions = new DataSliceFilterOptions()
             {
-                WriteWarning(string.Format(
-                     CultureInfo.InvariantCulture,
-                     Resources.NoDataSliceFound));
-            }
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName,
+                DatasetName = this.DatasetName,
+                DataSliceRangeStartTime = StartDateTime,
+                DataSliceRangeEndTime = EndDateTime
+            };
 
-            WriteObject(dataSlices, true);
+            int totalDataSlices = 0;
+            do
+            {
+                var dataSlices = DataFactoryClient.ListDataSlices(filterOptions);
+                totalDataSlices += dataSlices.Count;
+                WriteObject(dataSlices, true);
+            } while (filterOptions.NextLink.IsNextPageLink());
+
+            if (totalDataSlices == 0)
+            {
+                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.NoDataSliceFound));
+            }
         }
     }
 }

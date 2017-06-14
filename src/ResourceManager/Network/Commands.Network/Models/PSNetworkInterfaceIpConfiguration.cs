@@ -14,48 +14,57 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    using Newtonsoft.Json;
-
-    public class PSNetworkInterfaceIpConfiguration : PSChildResource
+    public class PSNetworkInterfaceIPConfiguration : PSIPConfiguration
     {
-        public string PrivateIpAddress { get; set; }
+        [JsonProperty(Order = 2)]
+        public string PrivateIpAddressVersion { get; set; }
 
-        public string PrivateIpAllocationMethod { get; set; }
+        [JsonProperty(Order = 2)]
+        public List<PSBackendAddressPool> LoadBalancerBackendAddressPools { get; set; }
 
-        public PSResourceId Subnet { get; set; }
+        [JsonProperty(Order = 2)]
+        public List<PSInboundNatRule> LoadBalancerInboundNatRules { get; set; }
 
-        public PSResourceId PublicIpAddress { get; set; }
+        [JsonProperty(Order = 2)]
+        public bool Primary { get; set; }
 
-        public List<PSResourceId> LoadBalancerBackendAddressPools { get; set; }
-
-        public List<PSResourceId> LoadBalancerInboundNatRules { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string SubnetText
-        {
-            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string PublicIpAddressText
-        {
-            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
-        }
+        [JsonProperty(Order = 2)]
+        public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPools { get; set; }
 
         [JsonIgnore]
         public string LoadBalancerBackendAddressPoolsText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancerBackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancerInboundNatRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancerInboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ApplicationGatewayBackendAddressPoolsText
+        {
+            get { return JsonConvert.SerializeObject(ApplicationGatewayBackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeLoadBalancerBackendAddressPools()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeLoadBalancerInboundNatRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeApplicationGatewayBackendAddressPools()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

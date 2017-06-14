@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Utilities</RootNamespace>
     <AssemblyName>Microsoft.WindowsAzure.Commands.Utilities</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -57,43 +57,57 @@
       <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ServiceBus, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\WindowsAzure.ServiceBus.2.3.2.0\lib\net40-full\Microsoft.ServiceBus.dll</HintPath>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ServiceBus, Version=2.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAzure.ServiceBus.2.8.2\lib\net40-full\Microsoft.ServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -109,24 +123,25 @@
     </Reference>
     <Reference Include="Microsoft.Web.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Microsoft.Web.Deployment.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Web.Deployment\lib\Net40\Microsoft.Web.Deployment.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.2.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.14.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.MediaServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.MediaServices.4.0.0\lib\net40\Microsoft.WindowsAzure.Management.MediaServices.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.8.2.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Scheduler, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -134,10 +149,10 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.ServiceBus, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ServiceBus.0.17.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ServiceBus.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ServiceBus.0.18.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.6.0.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Store, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -147,21 +162,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.TrafficManager.0.16.0-preview\lib\net40\Microsoft.WindowsAzure.Management.TrafficManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.VirtualNetworks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Management.WebSites, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.VirtualNetworks.0.9.9-preview\lib\net40\Microsoft.WindowsAzure.Management.VirtualNetworks.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.WebSites, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.WebSites.4.4.2-prerelease\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.WebSites.5.0.0-prerelease\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.8.1.1\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -180,8 +193,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -193,6 +208,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\RDFE.Storage\CloudStorageService.cs">
+      <Link>Common\CloudStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\RDFE.Storage\RDFEStorageProvider.cs">
+      <Link>Common\RDFEStorageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+      <Link>Common\AzureContextAdapterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
+      <Link>Common\AzureStorageContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs">
+      <Link>Common\LazyAzureStorageContext.cs</Link>
+    </Compile>
     <Compile Include="CloudService\AddRole.cs" />
     <Compile Include="CloudService\CloudServiceClient.cs" />
     <Compile Include="CloudService\ICloudServiceClient.cs" />
@@ -213,6 +243,7 @@
     <Compile Include="Common\AzureTools\CsPack.cs" />
     <Compile Include="Common\AzureTools\CsRun.cs" />
     <Compile Include="Common\AzureTools\StorageEmulator.cs" />
+    <Compile Include="Common\ClientProvider.cs" />
     <Compile Include="Common\CloudBlobUtility.cs" />
     <Compile Include="Common\CloudRuntime.cs" />
     <Compile Include="Common\CloudRuntimeApplicator.cs" />
@@ -222,6 +253,7 @@
     <Compile Include="Common\CloudServiceProject.cs" />
     <Compile Include="Common\CommonUtilities.cs" />
     <Compile Include="Common\ComputeEmulatorMode.cs" />
+    <Compile Include="Common\IClientProvider.cs" />
     <Compile Include="Common\JavaScriptPackageHelpers.cs" />
     <Compile Include="Common\ObjectDeltaMapper.cs" />
     <Compile Include="Common\PowerShellProjectPathInfo.cs" />
@@ -238,6 +270,7 @@
     <Compile Include="Common\ServiceSettings.cs" />
     <Compile Include="Common\ServiceManagementBaseCmdlet.cs" />
     <Compile Include="Common\AzureBlob.cs" />
+    <Compile Include="Common\StorageUtilities.cs" />
     <Compile Include="Common\VisualStudioProjectPathInfo.cs" />
     <Compile Include="Common\WebRoleInfo.cs" />
     <Compile Include="Common\WorkerRoleInfo.cs" />
@@ -312,6 +345,7 @@
     <Compile Include="WAPackIaaS\Operations\StaticIPAddressPoolOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VirtualHardDiskOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VirtualMachineOperations.cs" />
+    <Compile Include="WAPackIaaS\Operations\VMRoleSizeProfileOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMSubnetOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMNetworkOperations.cs" />
     <Compile Include="WAPackIaaS\Operations\VMRoleOperations.cs" />
@@ -418,10 +452,6 @@
     <Compile Include="Websites\WebsitesClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">
-      <Link>AutoMapper.Net4.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="ServiceManagementStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -526,7 +556,9 @@
     <Content Include="Azure.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="PostBuild.ps1" />
     <None Include="Resources\Scaffolding\General\WorkerRole\startup.cmd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -673,6 +705,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
@@ -681,19 +721,14 @@
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
-      <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
-      <Name>Commands.Profile</Name>
+    <ProjectReference Include="..\..\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
+      <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
+      <Name>Commands.ServiceManagement.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <PropertyGroup>
     <PostBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -File "$(ProjectDir)\PostBuild.ps1" "$(TargetDir)\"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
 </Project>

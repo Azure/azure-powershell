@@ -17,45 +17,41 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
 
-    public class PSLoadBalancingRule : PSChildResource
+    public class PSLoadBalancingRule : PSInboundRule
     {
-        public PSResourceId FrontendIPConfiguration { get; set; }
-
+        [JsonProperty(Order = 1)]
         public PSResourceId BackendAddressPool { get; set; }
 
+        [JsonProperty(Order = 1)]
         public PSResourceId Probe { get; set; }
 
-        public string Protocol { get; set; }
-
+        [JsonProperty(Order = 1)]
         public int FrontendPort { get; set; }
 
-        public int BackendPort { get; set; }
-
+        [JsonProperty(Order = 1)]
         public int? IdleTimeoutInMinutes { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string LoadDistribution { get; set; }
 
-        public bool EnableFloatingIP { get; set; }
-
-        public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string FrontendIPConfigurationText
-        {
-            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented); }
-        }
+        [JsonProperty(Order = 1)]
+        public bool? EnableFloatingIP { get; set; }
 
         [JsonIgnore]
         public string BackendAddressPoolText
         {
-            get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string ProbeText
         {
-            get { return JsonConvert.SerializeObject(Probe, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Probe, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        public bool ShouldSerializeFrontendPort()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }

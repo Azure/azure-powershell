@@ -20,30 +20,32 @@ namespace Microsoft.Azure.Commands.DataFactories
     {
         public static readonly TimeSpan DefaultSliceActivePeriodDuration = TimeSpan.FromHours(48);
 
-        public const string DataFactory = "AzureDataFactory";
+        public const string DataFactory = "AzureRmDataFactory";
 
-        public const string LinkedService = "AzureDataFactoryLinkedService";
+        public const string LinkedService = "AzureRmDataFactoryLinkedService";
 
-        public const string Gateway = "AzureDataFactoryGateway";
+        public const string Gateway = "AzureRmDataFactoryGateway";
 
-        public const string GatewayKey = "AzureDataFactoryGatewayKey";
+        public const string ActivityWindows = "AzureRmDataFactoryActivityWindow";
 
-        public const string EncryptString = "AzureDataFactoryEncryptValue";
+        public const string GatewayKey = "AzureRmDataFactoryGatewayKey";
 
-        public const string Table = "AzureDataFactoryTable";
+        public const string EncryptString = "AzureRmDataFactoryEncryptValue";
 
-        public const string Pipeline = "AzureDataFactoryPipeline";
+        public const string Dataset = "AzureRmDataFactoryDataset";
 
-        public const string PipelineActivePeriod = "AzureDataFactoryPipelineActivePeriod";
+        public const string Pipeline = "AzureRmDataFactoryPipeline";
 
-        public const string Run = "AzureDataFactoryRun";
+        public const string PipelineActivePeriod = "AzureRmDataFactoryPipelineActivePeriod";
 
-        public const string DataSlice = "AzureDataFactorySlice";
+        public const string Run = "AzureRmDataFactoryRun";
 
-        public const string SliceStatus = "AzureDataFactorySliceStatus";
+        public const string DataSlice = "AzureRmDataFactorySlice";
 
-        public const string Hub = "AzureDataFactoryHub";
+        public const string SliceStatus = "AzureRmDataFactorySliceStatus";
 
-        public const string RunLog = "AzureDataFactoryLog";
+        public const string Hub = "AzureRmDataFactoryHub";
+
+        public const string RunLog = "AzureRmDataFactoryLog";
     }
 }

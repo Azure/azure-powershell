@@ -15,14 +15,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System;
-    using System.Management.Automation;
-    using System.Threading;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
+    using System;
+    using System.Management.Automation;
 
-    public class AzureApiManagementCmdletBase : AzurePSCmdlet
+    public class AzureApiManagementCmdletBase : AzureRMCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             {
                 if (_client == null)
                 {
-                    _client = new ApiManagementClient(Profile);
+                    _client = new ApiManagementClient(DefaultContext);
                 }
                 return _client;
             }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 var retryAfter = longRunningOperation.RetryAfter ?? LongRunningOperationDefaultTimeout;
 
                 WriteVerboseWithTimestamp(Resources.VerboseGetOperationStateTimeoutMessage, retryAfter);
-                Thread.Sleep(retryAfter);
+                TestMockSupport.Delay(retryAfter);
 
                 longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
                 WriteProgress(longRunningOperation);

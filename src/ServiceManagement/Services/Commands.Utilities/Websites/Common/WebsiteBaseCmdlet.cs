@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Common
 {
-    public abstract class WebsiteBaseCmdlet : AzurePSCmdlet
+    public abstract class WebsiteBaseCmdlet : AzureSMCmdlet
     {
         private IWebsitesClient websitesClient;
 
@@ -26,7 +29,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites.Common
             {
                 if (websitesClient == null)
                 {
-                    websitesClient = new WebsitesClient(Profile, Profile.Context.Subscription, WriteDebug);
+                    var profile = Profile ?? AzureSMProfileProvider.Instance.Profile as AzureSMProfile;
+                    websitesClient = new WebsitesClient(profile, profile.DefaultContext.Subscription, WriteDebug);
                 }
                 return websitesClient;
             }

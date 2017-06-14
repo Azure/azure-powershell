@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Common</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.ResourceManager.Common.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\..\..\packages\Microsoft.ApplicationInsights.1.1.1-beta\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessTokenExtensions.cs" />
+    <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="Generated\DeploymentOperations.cs" />
+    <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
+    <Compile Include="Generated\DeploymentsOperations.cs" />
+    <Compile Include="Generated\DeploymentsOperationsExtensions.cs" />
+    <Compile Include="Generated\FeatureClient.cs" />
+    <Compile Include="Generated\FeaturesOperations.cs" />
+    <Compile Include="Generated\FeaturesOperationsExtensions.cs" />
+    <Compile Include="Generated\IDeploymentOperations.cs" />
+    <Compile Include="Generated\IDeploymentsOperations.cs" />
+    <Compile Include="Generated\IFeatureClient.cs" />
+    <Compile Include="Generated\IFeaturesOperations.cs" />
+    <Compile Include="Generated\IManagementLinkClient.cs" />
+    <Compile Include="Generated\IManagementLockClient.cs" />
+    <Compile Include="Generated\IManagementLocksOperations.cs" />
+    <Compile Include="Generated\IPolicyAssignmentsOperations.cs" />
+    <Compile Include="Generated\IPolicyClient.cs" />
+    <Compile Include="Generated\IPolicyDefinitionsOperations.cs" />
+    <Compile Include="Generated\IProvidersOperations.cs" />
+    <Compile Include="Generated\IResourceGroupsOperations.cs" />
+    <Compile Include="Generated\IResourceLinksOperations.cs" />
+    <Compile Include="Generated\IResourceManagementClient.cs" />
+    <Compile Include="Generated\IResourcesOperations.cs" />
+    <Compile Include="Generated\ISubscriptionClient.cs" />
+    <Compile Include="Generated\ISubscriptionsOperations.cs" />
+    <Compile Include="Generated\ITagsOperations.cs" />
+    <Compile Include="Generated\ITenantsOperations.cs" />
+    <Compile Include="Generated\ManagementLinkClient.cs" />
+    <Compile Include="Generated\ManagementLockClient.cs" />
+    <Compile Include="Generated\ManagementLocksOperations.cs" />
+    <Compile Include="Generated\ManagementLocksOperationsExtensions.cs" />
+    <Compile Include="Generated\Models\AliasPathType.cs" />
+    <Compile Include="Generated\Models\AliasType.cs" />
+    <Compile Include="Generated\Models\BasicDependency.cs" />
+    <Compile Include="Generated\Models\DebugSetting.cs" />
+    <Compile Include="Generated\Models\Dependency.cs" />
+    <Compile Include="Generated\Models\Deployment.cs" />
+    <Compile Include="Generated\Models\DeploymentExportResult.cs" />
+    <Compile Include="Generated\Models\DeploymentExtended.cs" />
+    <Compile Include="Generated\Models\DeploymentExtendedFilter.cs" />
+    <Compile Include="Generated\Models\DeploymentMode.cs" />
+    <Compile Include="Generated\Models\DeploymentOperation.cs" />
+    <Compile Include="Generated\Models\DeploymentOperationProperties.cs" />
+    <Compile Include="Generated\Models\DeploymentProperties.cs" />
+    <Compile Include="Generated\Models\DeploymentPropertiesExtended.cs" />
+    <Compile Include="Generated\Models\DeploymentValidateResult.cs" />
+    <Compile Include="Generated\Models\ExportTemplateRequest.cs" />
+    <Compile Include="Generated\Models\FeatureProperties.cs" />
+    <Compile Include="Generated\Models\FeatureResult.cs" />
+    <Compile Include="Generated\Models\Filter.cs" />
+    <Compile Include="Generated\Models\GenericResource.cs" />
+    <Compile Include="Generated\Models\GenericResourceFilter.cs" />
+    <Compile Include="Generated\Models\HttpMessage.cs" />
+    <Compile Include="Generated\Models\Identity.cs" />
+    <Compile Include="Generated\Models\Location.cs" />
+    <Compile Include="Generated\Models\LockLevel.cs" />
+    <Compile Include="Generated\Models\ManagementLockObject.cs" />
+    <Compile Include="Generated\Models\ManagementLockOwner.cs" />
+    <Compile Include="Generated\Models\Page.cs" />
+    <Compile Include="Generated\Models\Page1.cs" />
+    <Compile Include="Generated\Models\PageEnumerable.cs" />
+    <Compile Include="Generated\Models\PageEnumerator.cs" />
+    <Compile Include="Generated\Models\ParametersLink.cs" />
+    <Compile Include="Generated\Models\Plan.cs" />
+    <Compile Include="Generated\Models\PolicyAssignment.cs" />
+    <Compile Include="Generated\Models\PolicyDefinition.cs" />
+    <Compile Include="Generated\Models\policyType.cs" />
+    <Compile Include="Generated\Models\Provider.cs" />
+    <Compile Include="Generated\Models\ProviderResourceType.cs" />
+    <Compile Include="Generated\Models\RegistrationState.cs" />
+    <Compile Include="Generated\Models\Resource.cs" />
+    <Compile Include="Generated\Models\ResourceGroup.cs" />
+    <Compile Include="Generated\Models\ResourceGroupExportResult.cs" />
+    <Compile Include="Generated\Models\ResourceGroupFilter.cs" />
+    <Compile Include="Generated\Models\ResourceGroupProperties.cs" />
+    <Compile Include="Generated\Models\ResourceIdentityType.cs" />
+    <Compile Include="Generated\Models\ResourceLink.cs" />
+    <Compile Include="Generated\Models\ResourceLinkFilter.cs" />
+    <Compile Include="Generated\Models\ResourceLinkProperties.cs" />
+    <Compile Include="Generated\Models\ResourceManagementErrorWithDetails.cs" />
+    <Compile Include="Generated\Models\ResourceProviderOperationDisplayProperties.cs" />
+    <Compile Include="Generated\Models\ResourcesMoveInfo.cs" />
+    <Compile Include="Generated\Models\Sku.cs" />
+    <Compile Include="Generated\Models\spendingLimit.cs" />
+    <Compile Include="Generated\Models\SubResource.cs" />
+    <Compile Include="Generated\Models\Subscription.cs" />
+    <Compile Include="Generated\Models\SubscriptionPolicies.cs" />
+    <Compile Include="Generated\Models\SubscriptionState.cs" />
+    <Compile Include="Generated\Models\TagCount.cs" />
+    <Compile Include="Generated\Models\TagDetails.cs" />
+    <Compile Include="Generated\Models\TagValue.cs" />
+    <Compile Include="Generated\Models\TargetResource.cs" />
+    <Compile Include="Generated\Models\TemplateLink.cs" />
+    <Compile Include="Generated\Models\TenantIdDescription.cs" />
+    <Compile Include="Generated\PolicyAssignmentsOperations.cs" />
+    <Compile Include="Generated\PolicyAssignmentsOperationsExtensions.cs" />
+    <Compile Include="Generated\PolicyClient.cs" />
+    <Compile Include="Generated\PolicyDefinitionsOperations.cs" />
+    <Compile Include="Generated\PolicyDefinitionsOperationsExtensions.cs" />
+    <Compile Include="Generated\ProvidersOperations.cs" />
+    <Compile Include="Generated\ProvidersOperationsExtensions.cs" />
+    <Compile Include="Generated\ResourceGroupsOperations.cs" />
+    <Compile Include="Generated\ResourceGroupsOperationsExtensions.cs" />
+    <Compile Include="Generated\ResourceLinksOperations.cs" />
+    <Compile Include="Generated\ResourceLinksOperationsExtensions.cs" />
+    <Compile Include="Generated\ResourceManagementClient.cs" />
+    <Compile Include="Generated\ResourcesOperations.cs" />
+    <Compile Include="Generated\ResourcesOperationsExtensions.cs" />
+    <Compile Include="Generated\SubscriptionClient.cs" />
+    <Compile Include="Generated\SubscriptionsOperations.cs" />
+    <Compile Include="Generated\SubscriptionsOperationsExtensions.cs" />
+    <Compile Include="Generated\TagsOperations.cs" />
+    <Compile Include="Generated\TagsOperationsExtensions.cs" />
+    <Compile Include="Generated\TenantsOperations.cs" />
+    <Compile Include="Generated\TenantsOperationsExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="PaginatedResponseHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResponseWithContinuation.cs" />
+    <Compile Include="RPRegistrationDelegatingHandler.cs" />
+    <Compile Include="ServiceClientTracingInterceptor.cs" />
+    <Compile Include="Tags\PSTag.cs" />
+    <Compile Include="Tags\PSTagValue.cs" />
+    <Compile Include="Tags\PSTagValuePair.cs" />
+    <Compile Include="Tags\TagsConversionHelper.cs" />
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

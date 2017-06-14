@@ -1,0 +1,3940 @@
+{
+  "Cmdlets": [
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmStreamAnalyticsFunction",
+      "Name": "Get-AzureRmStreamAnalyticsFunction",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.GetAzureStreamAnalyticsFunctionCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmStreamAnalyticsDefaultFunctionDefinition",
+      "Name": "Get-AzureRmStreamAnalyticsDefaultFunctionDefinition",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.GetAzureStreamAnalyticsFunctionDefaultDefinitionCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "File",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "File",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzureRmStreamAnalyticsFunction",
+      "Name": "New-AzureRmStreamAnalyticsFunction",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.NewAzureStreamAnalyticsFunctionCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "File",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "File",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Remove",
+      "NounName": "AzureRmStreamAnalyticsFunction",
+      "Name": "Remove-AzureRmStreamAnalyticsFunction",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.RemoveAzureStreamAnalyticsFunctionCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "AzureRmStreamAnalyticsFunction",
+      "Name": "Test-AzureRmStreamAnalyticsFunction",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.TestAzureStreamAnalyticsFunctionCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmStreamAnalyticsInput",
+      "Name": "Get-AzureRmStreamAnalyticsInput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.GetAzureStreamAnalyticsInputCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzureRmStreamAnalyticsInput",
+      "Name": "New-AzureRmStreamAnalyticsInput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.NewAzureStreamAnalyticsInputCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "File",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "File",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Remove",
+      "NounName": "AzureRmStreamAnalyticsInput",
+      "Name": "Remove-AzureRmStreamAnalyticsInput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.RemoveAzureStreamAnalyticsInputCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "AzureRmStreamAnalyticsInput",
+      "Name": "Test-AzureRmStreamAnalyticsInput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.TestAzureStreamAnalyticsInputCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmStreamAnalyticsJob",
+      "Name": "Get-AzureRmStreamAnalyticsJob",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.GetAzureStreamAnalyticsJobCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedDate": "System.Nullable`1[System.DateTime]",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "JobId": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "JobState": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "NoExpand",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "For stream analytics objects in the given resource group",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NoExpand",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "For stream analytics objects in the given subscription",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "NoExpand",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzureRmStreamAnalyticsJob",
+      "Name": "New-AzureRmStreamAnalyticsJob",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.NewAzureStreamAnalyticsJobCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "CreatedDate": "System.Nullable`1[System.DateTime]",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "JobId": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "JobState": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "File",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "File",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Remove",
+      "NounName": "AzureRmStreamAnalyticsJob",
+      "Name": "Remove-AzureRmStreamAnalyticsJob",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.RemoveAzureStreamAnalyticsJobCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Start",
+      "NounName": "AzureRmStreamAnalyticsJob",
+      "Name": "Start-AzureRmStreamAnalyticsJob",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.StartAzureStreamAnalyticsJobCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "OutputStartMode",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "OutputStartTime",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Nullable`1[System.DateTime]",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.DateTime"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OutputStartMode",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "OutputStartTime",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.DateTime]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.DateTime"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Stop",
+      "NounName": "AzureRmStreamAnalyticsJob",
+      "Name": "Stop-AzureRmStreamAnalyticsJob",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.StopAzureStreamAnalyticsJobCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmStreamAnalyticsOutput",
+      "Name": "Get-AzureRmStreamAnalyticsOutput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.GetAzureStreamAnalyticsOutputCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzureRmStreamAnalyticsOutput",
+      "Name": "New-AzureRmStreamAnalyticsOutput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.NewAzureStreamAnalyticsOutputCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "File",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "File",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Remove",
+      "NounName": "AzureRmStreamAnalyticsOutput",
+      "Name": "Remove-AzureRmStreamAnalyticsOutput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.RemoveAzureStreamAnalyticsOutputCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Test",
+      "NounName": "AzureRmStreamAnalyticsOutput",
+      "Name": "Test-AzureRmStreamAnalyticsOutput",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.TestAzureStreamAnalyticsOutputCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmStreamAnalyticsQuota",
+      "Name": "Get-AzureRmStreamAnalyticsQuota",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.GetAzureStreamAnalyticsQuotasCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
+              "CurrentCount": "System.Int32",
+              "MaxCount": "System.Int32",
+              "Name": "System.String",
+              "Location": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Location",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
+      "NounName": "AzureRmStreamAnalyticsTransformation",
+      "Name": "Get-AzureRmStreamAnalyticsTransformation",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.GetAzureStreamAnalyticsTransformationCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation"
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "New",
+      "NounName": "AzureRmStreamAnalyticsTransformation",
+      "Name": "New-AzureRmStreamAnalyticsTransformation",
+      "ClassName": "Microsoft.Azure.Commands.StreamAnalytics.NewAzureStreamAnalyticsTransformationCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+            "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+              "Name": "System.String",
+              "JobName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PropertiesInJson": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "JobName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "File",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "JobName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "File",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    }
+  ],
+  "TypeDictionary": {
+    "System.String": {
+      "Namespace": null,
+      "Name": "System.String",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Boolean": {
+      "Namespace": null,
+      "Name": "System.Boolean",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Byte": {
+      "Namespace": null,
+      "Name": "System.Byte",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.SByte": {
+      "Namespace": null,
+      "Name": "System.SByte",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Int16": {
+      "Namespace": null,
+      "Name": "System.Int16",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.UInt16": {
+      "Namespace": null,
+      "Name": "System.UInt16",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Int32": {
+      "Namespace": null,
+      "Name": "System.Int32",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.UInt32": {
+      "Namespace": null,
+      "Name": "System.UInt32",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Int64": {
+      "Namespace": null,
+      "Name": "System.Int64",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.UInt64": {
+      "Namespace": null,
+      "Name": "System.UInt64",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Single": {
+      "Namespace": null,
+      "Name": "System.Single",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Double": {
+      "Namespace": null,
+      "Name": "System.Double",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Decimal": {
+      "Namespace": null,
+      "Name": "System.Decimal",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Char": {
+      "Namespace": null,
+      "Name": "System.Char",
+      "AssemblyQualifiedName": null,
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction": {
+      "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Etag": "System.String",
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput": {
+      "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSInput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Diagnostics": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
+        "Serialization": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
+        "Etag": "System.String",
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Conditions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition"
+      ]
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.DiagnosticCondition, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Since": "System.Nullable`1[System.DateTime]",
+        "Message": "System.String",
+        "Code": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob": {
+      "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "CreatedDate": "System.Nullable`1[System.DateTime]",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "JobId": "System.String",
+        "Location": "System.String",
+        "ProvisioningState": "System.String",
+        "JobState": "System.String",
+        "PropertiesInJson": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.JobProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Sku": "Microsoft.Azure.Management.StreamAnalytics.Models.Sku",
+        "Transformation": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation",
+        "Functions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Function]",
+        "Inputs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Input]",
+        "Outputs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Output]",
+        "OutputStartTime": "System.Nullable`1[System.DateTime]",
+        "LastOutputEventTime": "System.Nullable`1[System.DateTime]",
+        "CreatedDate": "System.Nullable`1[System.DateTime]",
+        "EventsOutOfOrderMaxDelayInSeconds": "System.Nullable`1[System.Int32]",
+        "EventsLateArrivalMaxDelayInSeconds": "System.Nullable`1[System.Int32]",
+        "JobState": "System.String",
+        "Etag": "System.String",
+        "OutputStartMode": "System.String",
+        "DataLocale": "System.String",
+        "ProvisioningState": "System.String",
+        "EventsOutOfOrderPolicy": "System.String",
+        "JobId": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.Sku": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Sku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Sku, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Transformation, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "StreamingUnits": "System.Nullable`1[System.Int32]",
+        "Query": "System.String",
+        "Etag": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ]
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Function]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Function]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.Function, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.StreamAnalytics.Models.Function"
+      ]
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.Function": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Function",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Function, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.FunctionProperties",
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Input]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Input]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.Input, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.StreamAnalytics.Models.Input"
+      ]
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.Input": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Input",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Input, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.InputProperties",
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Output]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StreamAnalytics.Models.Output]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.StreamAnalytics.Models.Output, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.StreamAnalytics.Models.Output"
+      ]
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.Output": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.Output",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.Output, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Diagnostics": "Microsoft.Azure.Management.StreamAnalytics.Models.Diagnostics",
+        "DataSource": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource",
+        "Serialization": "Microsoft.Azure.Management.StreamAnalytics.Models.Serialization",
+        "Etag": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputDataSource, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.String"
+      ]
+    },
+    "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput": {
+      "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.OutputProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota": {
+      "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
+        "CurrentCount": "System.Int32",
+        "MaxCount": "System.Int32",
+        "Name": "System.String",
+        "Location": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties": {
+      "Namespace": "Microsoft.Azure.Management.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.StreamAnalytics.Models.SubscriptionQuotasProperties, Microsoft.Azure.Management.StreamAnalytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "CurrentCount": "System.Int32",
+        "MaxCount": "System.Int32"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation": {
+      "Namespace": "Microsoft.Azure.Commands.StreamAnalytics.Models",
+      "Name": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation, Microsoft.Azure.Commands.StreamAnalytics, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Properties": "Microsoft.Azure.Management.StreamAnalytics.Models.TransformationProperties",
+        "Name": "System.String",
+        "JobName": "System.String",
+        "ResourceGroupName": "System.String",
+        "PropertiesInJson": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    }
+  }
+}

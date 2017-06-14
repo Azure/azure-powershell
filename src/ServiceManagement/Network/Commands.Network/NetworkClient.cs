@@ -18,14 +18,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
     using Gateway.Model;
     using Hyak.Common;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
     using Microsoft.WindowsAzure.Management.Compute;
     using NetworkSecurityGroup.Model;
     using Routes.Model;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Management.Automation;
     using System.Security.Cryptography.X509Certificates;
@@ -38,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     using WindowsAzure.Storage.Auth;
     using ComputeModels = Microsoft.WindowsAzure.Management.Compute.Models;
     using PowerShellAppGwModel = ApplicationGateway.Model;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public class NetworkClient
     {
@@ -49,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public static readonly string WithRoutesDetailLevel = "full";
         public static readonly string WithoutRoutesDetailLevel = "noroutes";
 
-        public NetworkClient(AzureProfile profile, AzureSubscription subscription, ICommandRuntime commandRuntime)
+        public NetworkClient(AzureSMProfile profile, IAzureSubscription subscription, ICommandRuntime commandRuntime)
             : this(CreateClient<NetworkManagementClient>(profile, subscription),
                    CreateClient<ComputeManagementClient>(profile, subscription),
                    CreateClient<ManagementClient>(profile, subscription),
@@ -188,12 +190,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 
         public ApplicationGatewayOperationResponse AddApplicationGatewayCertificate(string gatewayName, string certificateName, string password, string certificateFile)
         {
-            X509Certificate2 cert = new X509Certificate2(certificateFile, password, X509KeyStorageFlags.Exportable);
-
             ApplicationGatewayCertificate appGwCert = new ApplicationGatewayCertificate()
             {
-                Data = Convert.ToBase64String(cert.Export(X509ContentType.Pfx, password)),
-                //CertificateFormat = "pfx",
+                Data = Convert.ToBase64String(File.ReadAllBytes(certificateFile)),
                 Password = password
             };
 
@@ -203,15 +202,56 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public PowerShellAppGwModel.ApplicationGatewayCertificate GetApplicationGatewayCertificate(string gatewayName, string certificateName)
         {
             ApplicationGatewayGetCertificate certificate = client.ApplicationGateways.GetCertificate(gatewayName, certificateName);
-            X509Certificate2 certObject = new X509Certificate2(Convert.FromBase64String(certificate.Data));
+            var certToReturn = ExtractLeafCert(certificate);
             return (new PowerShellAppGwModel.ApplicationGatewayCertificate
             {
                 Name = certificate.Name,
-                SubjectName = certObject.SubjectName.Name,
-                Thumbprint = certObject.Thumbprint,
-                ThumbprintAlgo = certObject.SignatureAlgorithm.FriendlyName,
+                SubjectName = certToReturn.SubjectName.Name,
+                Thumbprint = certToReturn.Thumbprint,
+                ThumbprintAlgo = certToReturn.SignatureAlgorithm.FriendlyName,
                 State = certificate.State
             });
+        }
+
+        private static bool IsCACert(X509Certificate2 cert)
+        {
+            const string BasicConstraintsOid = "2.5.29.19";
+            foreach (var extension in cert.Extensions)
+            {
+                if (extension.Oid.Value == BasicConstraintsOid)
+                {
+                    X509BasicConstraintsExtension ext = (X509BasicConstraintsExtension)extension;
+                    return ext.CertificateAuthority;
+                }
+            }
+
+            return false;
+        }
+
+        private static X509Certificate2 ExtractLeafCert(ApplicationGatewayGetCertificate certificate)
+        {
+            X509Certificate2Collection certCollection = new X509Certificate2Collection();
+            certCollection.Import(Convert.FromBase64String(certificate.Data));
+
+            X509Certificate2 certToReturn = null;
+            // We need to return the first non-CA cert.
+            // If there is no non-CA cert, return the first cert in the collection.
+            foreach (var certObject in certCollection)
+            {
+                // Remember first cert in collection
+                if (certToReturn == null)
+                {
+                    certToReturn = certObject;
+                }
+                // Non-CA cert, so this is the one we want
+                if (!IsCACert(certObject))
+                {
+                    certToReturn = certObject;
+                    break;
+                }
+            }
+
+            return certToReturn;
         }
 
         public List<PowerShellAppGwModel.ApplicationGatewayCertificate> ListApplicationGatewayCertificate(string gatewayName)
@@ -221,16 +261,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             List<PowerShellAppGwModel.ApplicationGatewayCertificate> psCertList = new List<PowerShellAppGwModel.ApplicationGatewayCertificate>();
             foreach (ApplicationGatewayGetCertificate certificate in hydraCertList.ApplicationGatewayCertificates)
             {
-                X509Certificate2 certObject = new X509Certificate2(Convert.FromBase64String(certificate.Data));
+                var certToReturn = ExtractLeafCert(certificate);
                 psCertList.Add(new PowerShellAppGwModel.ApplicationGatewayCertificate
                 {
                     Name = certificate.Name,
-                    SubjectName = certObject.SubjectName.Name,
-                    Thumbprint = certObject.Thumbprint,
-                    ThumbprintAlgo = certObject.SignatureAlgorithm.FriendlyName,
+                    SubjectName = certToReturn.SubjectName.Name,
+                    Thumbprint = certToReturn.Thumbprint,
+                    ThumbprintAlgo = certToReturn.SignatureAlgorithm.FriendlyName,
                     State = certificate.State
                 });
             }
+
             return psCertList;
         }
 
@@ -271,6 +312,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 });
             }
 
+            //Probe
+            outConfig.Probes = new List<Probe>();
+
+            if (null != config.Probes)
+            {
+                foreach (PowerShellAppGwModel.Probe probe in config.Probes)
+                {
+                    outConfig.Probes.Add(new Probe
+                    {
+                        Name = probe.Name,
+                        Protocol = probe.Protocol.ToString(),
+                        Host = probe.Host,
+                        Path = probe.Path,
+                        Interval = probe.Interval,
+                        Timeout = probe.Timeout,
+                        UnhealthyThreshold = probe.UnhealthyThreshold
+                    });
+                }
+            }
+
             //Backend Address Pools 
             outConfig.BackendAddressPools = new List<BackendAddressPool>();
             foreach (PowerShellAppGwModel.BackendAddressPool pool in config.BackendAddressPools)
@@ -300,7 +361,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                     Name = setting.Name,
                     Port = setting.Port,
                     Protocol = (Protocol)setting.Protocol,
-                    CookieBasedAffinity = setting.CookieBasedAffinity
+                    CookieBasedAffinity = setting.CookieBasedAffinity,
+                    RequestTimeout = setting.RequestTimeout,
+                    Probe = setting.Probe
                 });
             }
 
@@ -370,6 +433,28 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 });
             }
 
+            //Probe
+            List<PowerShellAppGwModel.Probe> probes = new List<PowerShellAppGwModel.Probe>();
+
+            if (null != config.Probes)
+            {
+                foreach (Probe probe in config.Probes)
+                {
+
+                    probes.Add(new PowerShellAppGwModel.Probe
+                    {
+                        Name = probe.Name,
+                        Protocol = (String.Equals(probe.Protocol, "http", StringComparison.InvariantCultureIgnoreCase) ?
+                                    PowerShellAppGwModel.Protocol.Http : PowerShellAppGwModel.Protocol.Https),
+                        Host = probe.Host,
+                        Path = probe.Path,
+                        Interval = probe.Interval,
+                        Timeout = probe.Timeout,
+                        UnhealthyThreshold = probe.UnhealthyThreshold
+                    });
+                }
+            }
+
             //Backend Address Pools 
             List<PowerShellAppGwModel.BackendAddressPool> pools = new List<PowerShellAppGwModel.BackendAddressPool>();
             foreach (BackendAddressPool pool in config.BackendAddressPools)
@@ -396,7 +481,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                     Name = setting.Name,
                     Port = setting.Port,
                     Protocol = (PowerShellAppGwModel.Protocol)setting.Protocol,
-                    CookieBasedAffinity = setting.CookieBasedAffinity
+                    CookieBasedAffinity = setting.CookieBasedAffinity,
+                    RequestTimeout = setting.RequestTimeout,
+                    Probe = setting.Probe
                 });
             }
 
@@ -429,6 +516,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             }
 
             outConfig.FrontendIPConfigurations = fips;
+            outConfig.Probes = probes;
             outConfig.FrontendPorts = fps;
             outConfig.BackendAddressPools = pools;
             outConfig.BackendHttpSettingsList = settings;
@@ -455,7 +543,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
                 State = (ProvisioningState)Enum.Parse(typeof(ProvisioningState), response.State, true),
                 VIPAddress = response.VipAddress,
                 DefaultSite = (response.DefaultSite != null ? response.DefaultSite.Name : null),
-                GatewaySKU = response.GatewaySKU,
+                GatewaySKU = response.GatewaySKU, 
             };
             PopulateOperationContext(response.RequestId, gatewayContext);
 
@@ -754,9 +842,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             operationContext.OperationDescription = commandRuntime.ToString();
         }
 
-        private static ClientType CreateClient<ClientType>(AzureProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        private static ClientType CreateClient<ClientType>(AzureSMProfile profile, IAzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
-            return AzureSession.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.Instance.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public void CreateNetworkSecurityGroup(string name, string location, string label)
@@ -1022,5 +1110,391 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
             IPForwardingGetResponse ipForwardingGetResponse = client.IPForwarding.GetForNetworkInterface(serviceName, deploymentName, roleName, networkInterfaceName);
             return ipForwardingGetResponse.State;
         }
+
+        public GetVirtualNetworkGatewayContext GetVirtualNetworkGateway(string gatewayId)
+        {
+            if (string.IsNullOrWhiteSpace(gatewayId))
+            {
+                throw new ArgumentException("gatewayId cannot be null or whitespace.", "gatewayId");
+            }
+
+            VirtualNetworkGatewayGetResponse response = client.Gateways.GetVirtualNetworkGateway(gatewayId);
+
+            GetVirtualNetworkGatewayContext gatewayContext = new GetVirtualNetworkGatewayContext()
+            {
+                GatewayId = response.GatewayId.ToString(),
+                GatewayName = response.GatewayName,
+                GatewayType = response.GatewayType,
+                LastEventData = (response.LastEvent != null) ? response.LastEvent.Data : null,
+                LastEventMessage = (response.LastEvent != null) ? response.LastEvent.Message : null,
+                LastEventID = GetEventId(response.LastEvent),
+                LastEventTimeStamp = (response.LastEvent != null) ? (DateTime?)response.LastEvent.Timestamp : null,
+                State = (ProvisioningState)Enum.Parse(typeof(ProvisioningState), response.State, true),
+                VIPAddress = response.VipAddress,
+                DefaultSite = (response.DefaultSite != null ? response.DefaultSite.Name : null),
+                GatewaySKU = response.GatewaySKU,
+                Location = response.Location,
+                VnetId = response.VnetId,
+                SubnetId = response.SubnetId,
+                EnableBgp = response.EnableBgp.ToString(),
+            };
+
+            if(response.BgpSettings != null)
+            {
+                gatewayContext.Asn = response.BgpSettings.Asn;
+                gatewayContext.BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress;
+                gatewayContext.PeerWeight = response.BgpSettings.PeerWeight;
+            }
+            PopulateOperationContext(response.RequestId, gatewayContext);
+
+            return gatewayContext;
+        }
+
+        public GetVirtualNetworkGatewayConnectionContext GetVirtualNetworkGatewayConnection(string gatewayId, string connectedentityId)
+        {
+            if (string.IsNullOrWhiteSpace(gatewayId))
+            {
+                throw new ArgumentException("gatewayId cannot be null or whitespace.", "gatewayId");
+            }
+            if (string.IsNullOrWhiteSpace(connectedentityId))
+            {
+                throw new ArgumentException("connectedentityId cannot be null or whitespace.", "connectedentityId");
+            }
+
+            GatewayConnectionGetResponse response = client.Gateways.GetGatewayConnection(gatewayId, connectedentityId);
+
+            GetVirtualNetworkGatewayConnectionContext gatewayContext = new GetVirtualNetworkGatewayConnectionContext()
+            {
+                GatewayConnectionName = response.GatewayConnectionName.ToString(),
+                VirtualNetworkGatewayId = response.VirtualNetworkGatewayId.ToString(),
+                ConnectedEntityId = response.ConnectedEntityId,
+                GatewayConnectionType = response.GatewayConnectionType,
+                RoutingWeight = response.RoutingWeight,
+                SharedKey = response.SharedKey,
+                EnableBgp = response.EnableBgp.ToString(),
+            };
+            PopulateOperationContext(response.RequestId, gatewayContext);
+
+            return gatewayContext;
+        }
+
+        public GetLocalNetworkGatewayContext GetLocalNetworkGateway(string gatewayId)
+        {
+            if (string.IsNullOrWhiteSpace(gatewayId))
+            {
+                throw new ArgumentException("gatewayId cannot be null or whitespace.", "gatewayId");
+            }
+
+            LocalNetworkGatewayGetResponse response = client.Gateways.GetLocalNetworkGateway(gatewayId);
+
+            GetLocalNetworkGatewayContext gatewayContext = new GetLocalNetworkGatewayContext()
+            {
+                GatewayId = response.Id.ToString(),
+                GatewayName = response.GatewayName,
+                IpAddress = response.IpAddress,
+                AddressSpace = response.AddressSpace.ToList(),
+            };
+
+            if(response.BgpSettings != null)
+            {
+                gatewayContext.Asn = response.BgpSettings.Asn;
+                gatewayContext.BgpPeeringAddress = response.BgpSettings.BgpPeeringAddress;
+                gatewayContext.PeerWeight = response.BgpSettings.PeerWeight;
+            }
+
+            PopulateOperationContext(response.RequestId, gatewayContext);
+
+            return gatewayContext;
+        }
+        public IEnumerable<GetVirtualNetworkGatewayConnectionContext> ListVirtualNetworkGatewayConnections()
+        {
+            GatewayListGatewayConnectionsResponse response = client.Gateways.ListGatewayConnections();
+
+            IEnumerable<GetVirtualNetworkGatewayConnectionContext> connections = response.VirtualNetworkGatewayConnections.Select(
+                (GatewayListGatewayConnectionsResponse.VirtualNetworkGatewayConnection connection) =>
+                {
+                    return new GetVirtualNetworkGatewayConnectionContext()
+                    {
+                        GatewayConnectionName = connection.GatewayConnectionName,
+                        VirtualNetworkGatewayId = connection.VirtualNetworkGatewayId.ToString(),
+                        ConnectedEntityId = connection.ConnectedEntityId,
+                        GatewayConnectionType = connection.GatewayConnectionType,
+                        RoutingWeight = connection.RoutingWeight,
+                        SharedKey = connection.SharedKey,
+                        EnableBgp = connection.EnableBgp.ToString(),
+                    };
+                });
+            PopulateOperationContext(response.RequestId, connections);
+
+            return connections;
+        }
+
+        public IEnumerable<GetVirtualNetworkGatewayContext> ListVirtualNetworkGateways()
+        {
+            ListVirtualNetworkGatewaysResponse response = client.Gateways.ListVirtualNetworkGateways();
+
+            IEnumerable<GetVirtualNetworkGatewayContext> virtualNetworkGateways = response.VirtualNetworkGateways.Select(
+                (ListVirtualNetworkGatewaysResponse.VirtualNetworkGateway virtualNetworkGateway) =>
+                {
+                    return new GetVirtualNetworkGatewayContext()
+                    {
+                        GatewayId = virtualNetworkGateway.GatewayId.ToString(),
+                        GatewayName = virtualNetworkGateway.GatewayName,
+                        GatewayType = virtualNetworkGateway.GatewayType,
+                        LastEventData = (virtualNetworkGateway.LastEvent != null) ? virtualNetworkGateway.LastEvent.Data : null,
+                        LastEventMessage = (virtualNetworkGateway.LastEvent != null) ? virtualNetworkGateway.LastEvent.Message : null,
+                        LastEventID = GetEventId(virtualNetworkGateway.LastEvent),
+                        LastEventTimeStamp = (virtualNetworkGateway.LastEvent != null) ? (DateTime?)virtualNetworkGateway.LastEvent.Timestamp : null,
+                        State = (ProvisioningState)Enum.Parse(typeof(ProvisioningState), virtualNetworkGateway.State, true),
+                        VIPAddress = virtualNetworkGateway.VipAddress,
+                        DefaultSite = (virtualNetworkGateway.DefaultSite != null ? virtualNetworkGateway.DefaultSite.Name : null),
+                        GatewaySKU = virtualNetworkGateway.GatewaySKU,
+                        Location = virtualNetworkGateway.Location,
+                        VnetId = virtualNetworkGateway.VnetId,
+                        SubnetId = virtualNetworkGateway.SubnetId,
+                        EnableBgp = virtualNetworkGateway.EnableBgp.ToString(),
+                        Asn = virtualNetworkGateway.BgpSettings != null ? virtualNetworkGateway.BgpSettings.Asn : 0,
+                        BgpPeeringAddress = virtualNetworkGateway.BgpSettings != null ? virtualNetworkGateway.BgpSettings.BgpPeeringAddress : "",
+                        PeerWeight = virtualNetworkGateway.BgpSettings != null ? virtualNetworkGateway.BgpSettings.PeerWeight : 0
+                    };
+                });
+            PopulateOperationContext(response.RequestId, virtualNetworkGateways);
+
+            return virtualNetworkGateways;
+        }
+
+        public IEnumerable<GetLocalNetworkGatewayContext> ListLocalNetworkGateways()
+        {
+            ListLocalNetworkGatewaysResponse response = client.Gateways.ListLocalNetworkGateways();
+
+            IEnumerable<GetLocalNetworkGatewayContext> localNetworkGateways = response.LocalNetworkGateways.Select(
+                (ListLocalNetworkGatewaysResponse.LocalNetworkGateway localNetworkGateway) =>
+                {
+                    return new GetLocalNetworkGatewayContext()
+                    {
+                        GatewayId = localNetworkGateway.Id.ToString(),
+                        GatewayName = localNetworkGateway.GatewayName,
+                        IpAddress = localNetworkGateway.IpAddress,
+                        AddressSpace = localNetworkGateway.AddressSpace.ToList(),
+                        Asn = localNetworkGateway.BgpSettings != null?localNetworkGateway.BgpSettings.Asn : 0,
+                        BgpPeeringAddress = localNetworkGateway.BgpSettings != null?localNetworkGateway.BgpSettings.BgpPeeringAddress : "",
+                        PeerWeight = localNetworkGateway.BgpSettings != null?localNetworkGateway.BgpSettings.PeerWeight : 0,
+                    };
+                });
+            PopulateOperationContext(response.RequestId, localNetworkGateways);
+
+            return localNetworkGateways;
+        }
+
+        public VirtualNetworkDiagnosticsContext GetDiagnosticsV2(string gatewayId)
+        {
+            GatewayDiagnosticsStatus diagnosticsStatus = client.Gateways.GetDiagnosticsV2(gatewayId);
+
+            VirtualNetworkDiagnosticsContext diagnosticsContext = new VirtualNetworkDiagnosticsContext()
+            {
+                DiagnosticsUrl = diagnosticsStatus.DiagnosticsUrl,
+                State = diagnosticsStatus.State,
+            };
+            PopulateOperationContext(diagnosticsStatus.RequestId, diagnosticsContext);
+
+            return diagnosticsContext;
+        }
+
+        public SharedKeyContext GetSharedKeyV2(string gatewayId, string connectedentityId)
+        {
+            GatewayGetSharedKeyResponse response = client.Gateways.GetSharedKeyV2(gatewayId, connectedentityId);
+
+            SharedKeyContext sharedKeyContext = new SharedKeyContext()
+            {
+                Value = response.SharedKey
+            };
+            PopulateOperationContext(response.RequestId, sharedKeyContext);
+
+            return sharedKeyContext;
+        }
+
+        public GatewayGetOperationStatusResponse CreateVirtualNetworkGateway(string vnetName, string gatewayName, string gatewayType, string gatewaySKU, string location, string vnetId,
+            uint Asn, int PeerWeight)
+        {
+            VirtualNetworkGatewayCreateParameters parameters = new VirtualNetworkGatewayCreateParameters()
+            {
+                GatewayName = gatewayName,
+                GatewaySKU = gatewaySKU,
+                GatewayType = gatewayType,
+                Location = location,
+                VnetId = vnetId,
+                BgpSettings = (Asn > 0 || PeerWeight > 0)?new BgpSettings {
+                    Asn = Asn,
+                    BgpPeeringAddress = "", // We don't allow changing the gateway's BgpPeeringAddress
+                    PeerWeight = PeerWeight
+                }:null,
+            };
+
+            return client.Gateways.CreateVirtualNetworkGateway(vnetName, parameters);
+        }
+
+        public GatewayGetOperationStatusResponse CreateVirtualNetworkGatewayConnection(string connectedEntityId, string gatewayConnectionName, string gatewayConnectionType,
+            int routingWeight, string sharedKey, Guid virtualNetworkGatewayId, bool EnableBgp)
+        {
+            GatewayConnectionCreateParameters parameters = new GatewayConnectionCreateParameters()
+            {
+                ConnectedEntityId = connectedEntityId,
+                GatewayConnectionName = gatewayConnectionName,
+                GatewayConnectionType = gatewayConnectionType,
+                VirtualNetworkGatewayId = virtualNetworkGatewayId,
+                RoutingWeight = routingWeight,
+                SharedKey = sharedKey,  
+                EnableBgp = EnableBgp,
+            };
+
+            return client.Gateways.CreateGatewayConnection(parameters);
+        }
+
+        public LocalNetworkGatewayCreateResponse CreateLocalNetworkGateway(string gatewayName, string ipAddress, List<string> addressSpace,
+            uint Asn, string BgpPeeringAddress, int PeerWeight)
+        {
+            LocalNetworkGatewayCreateParameters parameters = new LocalNetworkGatewayCreateParameters()
+            {
+                AddressSpace = addressSpace,
+                GatewayName = gatewayName,
+                IpAddress = ipAddress,
+                BgpSettings = Asn > 0? new BgpSettings {
+                    Asn = Asn,
+                    BgpPeeringAddress = BgpPeeringAddress,
+                    PeerWeight = PeerWeight,
+                }:null,
+            };
+
+            return client.Gateways.CreateLocalNetworkGateway(parameters);
+        }
+
+        public GatewayGetOperationStatusResponse DeleteVirtualNetworkGateway(string gatewayId)
+        {
+            return client.Gateways.DeleteVirtualNetworkGateway(gatewayId);
+        }
+
+        public GatewayGetOperationStatusResponse DeleteVirtualNetworkGatewayConnection(string gatewayId, string connectedentityId)
+        {
+            return client.Gateways.DeleteGatewayConnection(gatewayId, connectedentityId);
+        }
+
+        public AzureOperationResponse DeleteLocalNetworkGateway(string gatewayId)
+        {
+            return client.Gateways.DeleteLocalNetworkGateway(gatewayId);
+        }
+
+        public GatewayGetOperationStatusResponse ResetVirtualNetworkGateway(string gatewayId)
+        {
+            ResetGatewayParameters parameters = new ResetGatewayParameters();
+            return client.Gateways.ResetVirtualNetworkGateway(gatewayId, parameters);
+        }
+
+        public GatewayGetOperationStatusResponse SetSharedKeyV2(string gatewayId, string connectedentityId, string sharedKey)
+        {
+            GatewaySetSharedKeyParameters sharedKeyParameters = new GatewaySetSharedKeyParameters()
+            {
+                Value = sharedKey,
+            };
+
+            return client.Gateways.SetSharedKeyV2(gatewayId, connectedentityId, sharedKeyParameters);
+        }
+
+        public GatewayGetOperationStatusResponse ResetSharedKeyV2(string gatewayId, string connectedentityId, int keyLength)
+        {
+            GatewayResetSharedKeyParameters parameters = new GatewayResetSharedKeyParameters()
+            {
+                KeyLength = keyLength,
+            };
+            return client.Gateways.ResetSharedKeyV2(gatewayId, connectedentityId, parameters);
+        }
+
+        public GatewayGetOperationStatusResponse ResizeVirtualNetworkGateway(string gatewayId, string gatewaySKU)
+        {
+            ResizeGatewayParameters parameters = new ResizeGatewayParameters()
+            {
+                GatewaySKU = gatewaySKU,
+            };
+            return client.Gateways.ResizeVirtualNetworkGateway(gatewayId, parameters);
+        }
+
+        public GatewayGetOperationStatusResponse UpdateVirtualNetworkGatewayConnection(string gatewayId, string connectedentityId, int routingWeight, string sharedKey, bool EnableBgp)
+        {
+            UpdateGatewayConnectionParameters parameters = new UpdateGatewayConnectionParameters()
+            {
+                RoutingWeight = routingWeight,
+                SharedKey = sharedKey,
+                EnableBgp = EnableBgp,
+            };
+            return client.Gateways.UpdateGatewayConnection(gatewayId, connectedentityId, parameters);
+        }
+
+        public AzureOperationResponse UpdateLocalNetworkGateway(string gatewayId, List<string> addressSpace, uint Asn, string BgpPeeringAddress, int PeerWeight)
+        {
+            UpdateLocalNetworkGatewayParameters parameters = new UpdateLocalNetworkGatewayParameters()
+            {
+                AddressSpace = addressSpace,
+                BgpSettings = (Asn > 0 || PeerWeight > 0 || ! string.IsNullOrEmpty(BgpPeeringAddress))?new BgpSettings {
+                    Asn = Asn,
+                    BgpPeeringAddress = BgpPeeringAddress,
+                    PeerWeight = PeerWeight,
+                }:null,
+            };
+
+            return client.Gateways.UpdateLocalNetworkGateway(gatewayId, parameters);
+        }
+
+        public GatewayGetOperationStatusResponse StartDiagnosticsV2(string gatewayId, int captureDurationInSeconds, string containerName, AzureStorageContext storageContext)
+        {
+            StorageCredentials credentials = storageContext.StorageAccount.Credentials;
+            string customerStorageKey = credentials.ExportBase64EncodedKey();
+            string customerStorageName = credentials.AccountName;
+            return StartDiagnosticsV2(gatewayId, captureDurationInSeconds, containerName, customerStorageKey, customerStorageName);
+        }
+        public GatewayGetOperationStatusResponse StartDiagnosticsV2(string gatewayId, int captureDurationInSeconds, string containerName, string customerStorageKey, string customerStorageName)
+        {
+            StartGatewayPublicDiagnosticsParameters parameters = new StartGatewayPublicDiagnosticsParameters()
+            {
+                CaptureDurationInSeconds = captureDurationInSeconds.ToString(),
+                ContainerName = containerName,
+                CustomerStorageKey = customerStorageKey,
+                CustomerStorageName = customerStorageName,
+                Operation = UpdateGatewayPublicDiagnosticsOperation.StartDiagnostics,
+            };
+
+            return client.Gateways.StartDiagnosticsV2(gatewayId, parameters);
+        }
+
+        public GatewayOperationResponse StopDiagnosticsV2(string gatewayId)
+        {
+            StopGatewayPublicDiagnosticsParameters parameters = new StopGatewayPublicDiagnosticsParameters()
+            {
+                Operation = UpdateGatewayPublicDiagnosticsOperation.StopDiagnostics,
+            };
+
+            return client.Gateways.StopDiagnosticsV2(gatewayId, parameters);
+        }
+
+        public GatewayGetOperationStatusResponse SetIPsecParametersV2(string gatewayId, string connectedentityId, string encryptionType, string pfsGroup, int saDataSizeKilobytes, int saLifetimeSeconds)
+        {
+            GatewaySetIPsecParametersParameters parameters = new GatewaySetIPsecParametersParameters()
+            {
+                Parameters = new IPsecParameters()
+                {
+                    EncryptionType = encryptionType,
+                    PfsGroup = pfsGroup,
+                    SADataSizeKilobytes = saDataSizeKilobytes,
+                    SALifeTimeSeconds = saLifetimeSeconds,
+                },
+            };
+
+            return client.Gateways.SetIPsecParametersV2(gatewayId, connectedentityId, parameters);
+        }
+
+        public IPsecParameters GetIPsecParametersV2(string gatewayId, string connectedentityId)
+        {
+            return client.Gateways.GetIPsecParametersV2(gatewayId, connectedentityId).IPsecParameters;
+        }
+
+
     }
 }

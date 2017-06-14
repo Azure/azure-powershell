@@ -17,20 +17,48 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class VirtualNetworkGatewayConnectionTests
+    public class VirtualNetworkGatewayConnectionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayConnectionCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayConnectionSharedKeyCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
+        }
+
+        [Fact(Skip = "Rerecord tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkeExpressRouteGatewayConnectionCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
+        }
+
+        [Fact(Skip = "Rerecord tests")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkGatewayConnectionWithBgpCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
+	    }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
         }
     }
 }

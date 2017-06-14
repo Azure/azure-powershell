@@ -109,6 +109,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Use-AzureRmHDInsightCluster"));
             try
             {
                 this.command.Logger = this.Logger;

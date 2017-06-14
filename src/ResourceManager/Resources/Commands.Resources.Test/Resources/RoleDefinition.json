@@ -1,0 +1,11 @@
+{
+    "Name": "Another tests role",
+    "Id": "85E460B3-89E9-48BA-9DCD-A8A99D64A674",
+    "Description": "Test role",
+    "Actions": [ 
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*"
+    ],
+    "NotActions": [],
+    "AssignableScopes": ["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"]
+}

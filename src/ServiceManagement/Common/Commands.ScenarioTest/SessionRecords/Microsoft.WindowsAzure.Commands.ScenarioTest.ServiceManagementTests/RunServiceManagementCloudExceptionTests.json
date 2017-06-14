@@ -1,0 +1,140 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/ace9b607-25c7-4695-b94d-9bfc8fde73d9/services/hostedservices/*",
+      "EncodedRequestUri": "L2FjZTliNjA3LTI1YzctNDY5NS1iOTRkLTliZmM4ZmRlNzNkOS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2017-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/14.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Code>BadRequest</Code>\r\n  <Message>The hosted service name is invalid.</Message>\r\n</Error>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "194"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "4c3ef8586266761686596ebce25d4d6f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 23:50:47 GMT"
+        ],
+        "Server": [
+          "1.0.6198.492",
+          "(rd_rdfe_stable.170314-1904)",
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 400
+    },
+    {
+      "RequestUri": "/ace9b607-25c7-4695-b94d-9bfc8fde73d9/services/hostedservices/*/deploymentslots/Production",
+      "EncodedRequestUri": "L2FjZTliNjA3LTI1YzctNDY5NS1iOTRkLTliZmM4ZmRlNzNkOS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy8lMkEvZGVwbG95bWVudHNsb3RzL1Byb2R1Y3Rpb24=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2017-01-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/14.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Code>BadRequest</Code>\r\n  <Message>The hosted service name is invalid.</Message>\r\n</Error>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "194"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ce8d30cde0d57beeb08c9e053107acb1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 23:50:47 GMT"
+        ],
+        "Server": [
+          "1.0.6198.492",
+          "(rd_rdfe_stable.170314-1904)",
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 400
+    },
+    {
+      "RequestUri": "/ace9b607-25c7-4695-b94d-9bfc8fde73d9/affinitygroups/*",
+      "EncodedRequestUri": "L2FjZTliNjA3LTI1YzctNDY5NS1iOTRkLTliZmM4ZmRlNzNkOS9hZmZpbml0eWdyb3Vwcy8lMkE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Code>ResourceNotFound</Code>\r\n  <Message>The affinity group does not exist.</Message>\r\n</Error>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "199"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth2"
+        ],
+        "x-ms-request-id": [
+          "7a1417fc7445798bb2f02353b2a43841"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 28 Mar 2017 23:50:49 GMT"
+        ],
+        "Server": [
+          "1.0.6198.492",
+          "(rd_rdfe_stable.170314-1904)",
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "ace9b607-25c7-4695-b94d-9bfc8fde73d9"
+  }
+}

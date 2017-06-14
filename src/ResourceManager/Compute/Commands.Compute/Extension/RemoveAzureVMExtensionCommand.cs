@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachineExtension)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachineExtension, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -58,13 +58,20 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
+            ExecuteClientAction(() =>
             {
-                var op = this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName, this.Name);
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                WriteObject(result);
-            }
+                if (this.ShouldProcess(String.Format(VMName, Name, VMName), string.Format(Properties.Resources.RemoveExtensionAction, Name))
+                    && (this.Force.IsPresent
+                    || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption)))
+                {
+                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                }
+            });
         }
     }
 }

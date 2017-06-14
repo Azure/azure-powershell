@@ -1,0 +1,642 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourcegroups/onesdk6299?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlZ3JvdXBzL29uZXNkazYyOTk/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "07297bd0-5449-467a-a90d-7adf363171d6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "102"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "baf0b0e4-d05d-4d5a-bff4-49bb9320b366"
+        ],
+        "x-ms-correlation-request-id": [
+          "baf0b0e4-d05d-4d5a-bff4-49bb9320b366"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171858Z:baf0b0e4-d05d-4d5a-bff4-49bb9320b366"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:18:57 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourcegroups/onesdk6299?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlZ3JvdXBzL29uZXNkazYyOTk/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "f7576bf3-f577-4cb8-b64f-c33d28ec7cd1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299\",\r\n  \"name\": \"onesdk6299\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "173"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-request-id": [
+          "d2262a27-8c67-4b4c-bbea-1e1766890a67"
+        ],
+        "x-ms-correlation-request-id": [
+          "d2262a27-8c67-4b4c-bbea-1e1766890a67"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171858Z:d2262a27-8c67-4b4c-bbea-1e1766890a67"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:18:58 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"level\": \"CanNotDelete\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "57"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock at the specified scope."
+        ],
+        "CommandName": [
+          "New-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"level\": \"CanNotDelete\"\r\n  },\r\n  \"id\": \"/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795\",\r\n  \"type\": \"Microsoft.Authorization/locks\",\r\n  \"name\": \"onesdk6795\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "234"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:807d378e-5a2c-46f6-8f11-13ecf2e96def"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "32b1d628-477e-431e-a3e2-51eaf5e7f6d6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171859Z:32b1d628-477e-431e-a3e2-51eaf5e7f6d6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:18:59 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"level\": \"CanNotDelete\",\r\n    \"notes\": \"test\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "79"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock, by Id."
+        ],
+        "CommandName": [
+          "Set-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"level\": \"CanNotDelete\",\r\n    \"notes\": \"test\"\r\n  },\r\n  \"id\": \"/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795\",\r\n  \"type\": \"Microsoft.Authorization/locks\",\r\n  \"name\": \"onesdk6795\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "249"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:bd085837-2044-4c2f-9341-da3ed9401541"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "a24c61d3-b577-48b4-8033-8c960ea96646"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171901Z:a24c61d3-b577-48b4-8033-8c960ea96646"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"level\": \"CanNotDelete\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "57"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock at the specified scope."
+        ],
+        "CommandName": [
+          "New-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"level\": \"CanNotDelete\"\r\n  },\r\n  \"id\": \"/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795\",\r\n  \"type\": \"Microsoft.Authorization/locks\",\r\n  \"name\": \"onesdk6795\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "234"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:5f1ef680-528b-4c2c-9d86-a6754111c91d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "32c11d43-eff8-47a4-9c19-99275e372b33"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171902Z:32c11d43-eff8-47a4-9c19-99275e372b33"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:02 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"level\": \"ReadOnly\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "53"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock at the specified scope."
+        ],
+        "CommandName": [
+          "New-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"level\": \"ReadOnly\"\r\n  },\r\n  \"id\": \"/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795\",\r\n  \"type\": \"Microsoft.Authorization/locks\",\r\n  \"name\": \"onesdk6795\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "230"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:d39e85ab-a2b3-4a45-ace0-e741670eda0c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "487bacf1-645b-42ae-a63d-a4ea3fe07e2a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171904Z:487bacf1-645b-42ae-a63d-a4ea3fe07e2a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:03 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock at the specified scope."
+        ],
+        "CommandName": [
+          "Get-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"level\": \"CanNotDelete\"\r\n  },\r\n  \"id\": \"/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795\",\r\n  \"type\": \"Microsoft.Authorization/locks\",\r\n  \"name\": \"onesdk6795\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "234"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:e1f998c3-33f8-4297-93c4-a32e4c8a1b3e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0088a040-fd12-4996-9cca-da823aa6f994"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171900Z:0088a040-fd12-4996-9cca-da823aa6f994"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock at the specified scope."
+        ],
+        "CommandName": [
+          "Get-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"level\": \"ReadOnly\"\r\n  },\r\n  \"id\": \"/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795\",\r\n  \"type\": \"Microsoft.Authorization/locks\",\r\n  \"name\": \"onesdk6795\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "230"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:de534dfb-7f00-4b2f-bb55-0c430acb4f47"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "4448e5e2-0c7f-4072-b678-f70081b32f87"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171904Z:4448e5e2-0c7f-4072-b678-f70081b32f87"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:03 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock, by Id."
+        ],
+        "CommandName": [
+          "Remove-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:cdf1b570-0d6c-4c6c-ac34-05dab296380e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "0108ba42-cb39-4e98-86ab-fec5b730cd54"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171902Z:0108ba42-cb39-4e98-86ab-fec5b730cd54"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:01 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock, by Id."
+        ],
+        "CommandName": [
+          "Remove-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:64c60d7f-2eb4-42f1-b2c7-bae543851bdc"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "890afe11-b8e8-4467-959c-27f00f179add"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171903Z:890afe11-b8e8-4467-959c-27f00f179add"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:02 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2/resourceGroups/onesdk6299/providers/Microsoft.Authorization/locks/onesdk6795?api-version=2015-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDFmNGYwZTYtZmRiMy00NWZiLWIyNDYtYTcxMWQxZThjM2YyL3Jlc291cmNlR3JvdXBzL29uZXNkazYyOTkvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL2xvY2tzL29uZXNkazY3OTU/YXBpLXZlcnNpb249MjAxNS0wMS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v1.6.0.0"
+        ],
+        "ParameterSetName": [
+          "A lock, by Id."
+        ],
+        "CommandName": [
+          "Remove-AzureRmResourceLock"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus:6989b2ec-a605-4e1e-af3e-7c44f7b6a855"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "52c09f37-039c-4aa8-a919-3953da8ec62a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160715T171904Z:52c09f37-039c-4aa8-a919-3953da8ec62a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 15 Jul 2016 17:19:04 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ResourceLockCRUD": [
+      "onesdk6299",
+      "onesdk6795"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "d1f4f0e6-fdb3-45fb-b246-a711d1e8c3f2",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": "microsoft.com"
+  }
+}

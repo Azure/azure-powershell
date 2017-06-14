@@ -12,20 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.WebApp.Models;
+using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
+using System;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.WebApp
+namespace Microsoft.Azure.Commands.WebApps
 {
     public abstract class AppServicePlanBaseCmdlet : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
+        protected const string ParameterSet1Name = "S1";
+        protected const string ParameterSet2Name = "S2";
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the app service plan.")]
-        [ValidateNotNullOrEmptyAttribute]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = true, HelpMessage = "The name of the app service plan.")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The app service plan object", ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ServerFarmWithRichSku AppServicePlan { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            if (string.Equals(ParameterSetName, ParameterSet2Name, StringComparison.OrdinalIgnoreCase))
+            {
+                string rg, name;
+
+                CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(AppServicePlan.Id, out rg, out name);
+
+                ResourceGroupName = rg;
+                Name = name;
+            }
+        }
 
     }
 }

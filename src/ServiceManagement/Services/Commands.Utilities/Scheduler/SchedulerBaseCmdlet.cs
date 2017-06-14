@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Scheduler
 {
-    public abstract class SchedulerBaseCmdlet : AzurePSCmdlet
+    public abstract class SchedulerBaseCmdlet : AzureSMCmdlet
     {
         private SchedulerMgmntClient schedulerMgmntClient;
 

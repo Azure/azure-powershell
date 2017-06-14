@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
-    public abstract partial class RdsCmdlet : AzurePSCmdlet
+    public abstract partial class RdsCmdlet : AzureSMCmdlet
     {
 
         public new void WriteObject(object sendToPipeline)

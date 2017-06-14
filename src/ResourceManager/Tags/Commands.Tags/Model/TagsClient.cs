@@ -15,13 +15,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Properties;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.Tags.Model
         public Action<string> ErrorLogger { get; set; }
 
         /// <summary>
-        /// Creates new TagsClient
+        /// Creates new tags client instance.
         /// </summary>
-        /// <param name="subscription">Subscription containing resources to manipulate</param>
-        public TagsClient(AzureProfile profile, AzureSubscription subscription)
-            : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ResourceManager))
+        /// <param name="context">The Azure context instance</param>
+        public TagsClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -64,18 +64,18 @@ namespace Microsoft.Azure.Commands.Tags.Model
 
         public List<PSTag> ListTags()
         {
-            TagsListResult result = ResourceManagementClient.Tags.List();
+            var result = ResourceManagementClient.Tags.List();
             List<PSTag> tags = new List<PSTag>();
 
             do
             {
-                result.Tags.Where(t => !t.Name.StartsWith(ExecludedTagPrefix)).ForEach(t => tags.Add(t.ToPSTag()));
+                result.Where(t => !t.TagName.StartsWith(ExecludedTagPrefix)).ForEach(t => tags.Add(t.ToPSTag()));
 
-                if (!string.IsNullOrEmpty(result.NextLink))
+                if (!string.IsNullOrEmpty(result.NextPageLink))
                 {
-                    result = ResourceManagementClient.Tags.ListNext(result.NextLink);
+                    result = ResourceManagementClient.Tags.ListNext(result.NextPageLink);
                 }
-            } while (!string.IsNullOrEmpty(result.NextLink));
+            } while (!string.IsNullOrEmpty(result.NextPageLink));
 
             return tags;
         }

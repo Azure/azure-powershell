@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessTokenRequiresAccount" xml:space="preserve">
+    <value>AccountId must be provided to use an AccessToken credential.</value>
+  </data>
+  <data name="AccountIdMismatch" xml:space="preserve">
+    <value>Account ID '{0}' for tenant '{1}' does not match home Account ID '{2}'</value>
+  </data>
+  <data name="AccountIdRequired" xml:space="preserve">
+    <value>Access token credentials must provide the AccountId parameter.</value>
+  </data>
+  <data name="AzureProfileMustNotBeNull" xml:space="preserve">
+    <value>Selected profile must not be null.</value>
+  </data>
+  <data name="BothSubscriptionIdAndNameProvided" xml:space="preserve">
+    <value>Please provide either a subscription ID or a subscription name.</value>
+  </data>
+  <data name="ChangingContextSubscription" xml:space="preserve">
+    <value>Switching targeted subscription in the context to '{0}'</value>
+    <comment>{0} is subscription (name or id)</comment>
+  </data>
+  <data name="ChangingContextTenant" xml:space="preserve">
+    <value>Switching targeted tenant in the context to '{0}'</value>
+    <comment>{0} is tenant id or domain name</comment>
+  </data>
+  <data name="ChangingContextUsingPipeline" xml:space="preserve">
+    <value>Set current context using tenant: '{0}', subscription: '{1}'</value>
+    <comment>{0} is tenant, {1} is subscription</comment>
+  </data>
+  <data name="CommonTenantAuthFailed" xml:space="preserve">
+    <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
+  </data>
+  <data name="ContextChangeWarning" xml:space="preserve">
+    <value>Targeting all subsequent cmdlets at a different tenant and subscription</value>
+  </data>
+  <data name="CurrentTenantInUse" xml:space="preserve">
+    <value>Current tenant with Id '{0}' will be used.</value>
+  </data>
+  <data name="DataCollectionDisabledWarning" xml:space="preserve">
+    <value>Data collection will be disabled permanently for the current user</value>
+  </data>
+  <data name="DataCollectionEnabledWarning" xml:space="preserve">
+    <value>Cmdlets will send data to Microsoft to help improve the customer experience</value>
+  </data>
+  <data name="DisableDataCollection" xml:space="preserve">
+    <value>Turn off data collection for Azure PowerShell cmdlets</value>
+  </data>
+  <data name="EnableDataCollection" xml:space="preserve">
+    <value>Allow Azure PowerShell cmdlets to send data to Microsoft to improve the customer experience</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Cannot find file '{0}'</value>
+  </data>
+  <data name="FileOverwriteCaption" xml:space="preserve">
+    <value>Overwrite File?</value>
+  </data>
+  <data name="FileOverwriteMessage" xml:space="preserve">
+    <value>Overwrite existing file at '{0}'?</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ImportContextTarget" xml:space="preserve">
+    <value>Current context</value>
+  </data>
+  <data name="InvalidSubscriptionId" xml:space="preserve">
+    <value>The provided subscription ID "{0}" is not a valid Guid.</value>
+  </data>
+  <data name="LoginTarget" xml:space="preserve">
+    <value>{0} account in environment '{1}'</value>
+  </data>
+  <data name="NoAccountProvided" xml:space="preserve">
+    <value>(no account provided)</value>
+  </data>
+  <data name="NoValidTenant" xml:space="preserve">
+    <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
+  </data>
+  <data name="ProcessImportContextFromFile" xml:space="preserve">
+    <value>Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProcessImportContextFromObject" xml:space="preserve">
+    <value>Set the target account, tenant, and subscription of cmdlets executed in this session to the provided context</value>
+  </data>
+  <data name="ProfileArgumentSaved" xml:space="preserve">
+    <value>The profile argument was saved to the file system at '{0}'. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls.</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileArgumentWrite" xml:space="preserve">
+    <value>save the profile argument to the file system at '{0}'</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileCurrentSaved" xml:space="preserve">
+    <value>The current profile was saved to the file system at '{0}'. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls.</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileCurrentWrite" xml:space="preserve">
+    <value>save the current profile to the file system at '{0}'</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileWriteWarning" xml:space="preserve">
+    <value>Personally identifiable information and secrets may be written to the file at '{0}'.  Please ensure that the saved file is assigned appropriate access controls</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="RmProfileNull" xml:space="preserve">
+    <value>The Resource Manager context was not properly initialized.  Please load the module again.</value>
+  </data>
+  <data name="SelectedSubscriptionNotActive" xml:space="preserve">
+    <value>Selected subscription is in '{0}' state. </value>
+  </data>
+  <data name="SendFeedbackEmailQuestion" xml:space="preserve">
+    <value>Please enter your email if you are interested in providing follow up information:</value>
+  </data>
+  <data name="SendFeedbackNegativeCommentsQuestion" xml:space="preserve">
+    <value>Upon what could Azure PowerShell improve? </value>
+  </data>
+  <data name="SendFeedbackNonInteractiveMessage" xml:space="preserve">
+    <value>{0} must be issued in interactive mode.</value>
+    <comment>{0} is nameof feedback cmdlet</comment>
+  </data>
+  <data name="SendFeedbackOutOfRangeMessage" xml:space="preserve">
+    <value>The value entered was either not convertible to an integer or out of range [0, 10].</value>
+  </data>
+  <data name="SendFeedbackPositiveCommentsQuestion" xml:space="preserve">
+    <value>What does Azure PowerShell do well?</value>
+  </data>
+  <data name="SendFeedbackRecommendationQuestion" xml:space="preserve">
+    <value>With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?</value>
+  </data>
+  <data name="SetAzureRmContextNoParameterSet" xml:space="preserve">
+    <value>Please provide either a subscription ID, subscription name, tenant Id or domain.</value>
+  </data>
+  <data name="SubscriptionChangeWarning" xml:space="preserve">
+    <value>Targeting all subsequent cmdlets in this session at a different subscription</value>
+  </data>
+  <data name="SubscriptionNameNotFoundError" xml:space="preserve">
+    <value>Unable to find subscription with name '{0}'.</value>
+  </data>
+  <data name="SubscriptionNotFoundError" xml:space="preserve">
+    <value>Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant.</value>
+  </data>
+  <data name="TenantAuthFailed" xml:space="preserve">
+    <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
+  </data>
+  <data name="TenantChangeWarning" xml:space="preserve">
+    <value>Targeting all subsequent cmdlets in this session at a different tenant</value>
+  </data>
+  <data name="TenantIdNotFound" xml:space="preserve">
+    <value>Unable to find tenant '{0}'.</value>
+  </data>
+  <data name="TypeNotAccessToken" xml:space="preserve">
+    <value>To create an access token credential, you must provide an access token account.</value>
+  </data>
+  <data name="UnableToAqcuireToken" xml:space="preserve">
+    <value>Unable to acquire token for tenant '{0}'</value>
+  </data>
+  <data name="UnableToLogin" xml:space="preserve">
+    <value>Could not authenticate user account '{0}' with tenant '{1}'. Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount to view the subscriptions in this tenant.</value>
+  </data>
+  <data name="UnknownEnvironment" xml:space="preserve">
+    <value>Unable to find environment with name '{0}'</value>
+  </data>
+</root>

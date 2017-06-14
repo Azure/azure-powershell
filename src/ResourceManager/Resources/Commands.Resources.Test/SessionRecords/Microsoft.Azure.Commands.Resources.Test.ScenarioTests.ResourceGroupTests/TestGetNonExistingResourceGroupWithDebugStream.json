@@ -1,0 +1,61 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourcegroups/InvalidNonExistRocks?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NhNDkwNDItNzgyYS00Y2M5LTg5YjUtZWUxYjQ4N2ZlMTE1L3Jlc291cmNlZ3JvdXBzL0ludmFsaWROb25FeGlzdFJvY2tzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'InvalidNonExistRocks' could not be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "112"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "3633e6fd-16ca-4f0d-830f-bfa2eacf42f9"
+        ],
+        "x-ms-correlation-request-id": [
+          "3633e6fd-16ca-4f0d-830f-bfa2eacf42f9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151125T215815Z:3633e6fd-16ca-4f0d-830f-bfa2eacf42f9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 25 Nov 2015 21:58:14 GMT"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "3ca49042-782a-4cc9-89b5-ee1b487fe115",
+    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0",
+    "Domain": "rbactest.onmicrosoft.com"
+  }
+}

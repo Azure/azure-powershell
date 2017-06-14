@@ -13,32 +13,89 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class WebAppTests 
+    public class WebAppTests : RMTestBase
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewSimpleWebApp()
+        public WebAppTests(ITestOutputHelper output)
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewSimpleWebApp");
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAppServicePlan()
+        public void TestCreateNewWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreatesNewAppServicePlan");
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewAppServicePlan()
+        public void TestCreateNewAppOnAse()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-SetNewAppServicePlan");
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppOnAse");
+        }
+
+        [Fact(Skip = "Needs investigation. Fails running playback")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetWebApp()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-GetWebApp");
+        }
+
+        [Fact(Skip = "Needs investigation. Fails running playback")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetWebAppMetrics()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppMetrics");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWebAppPublishingProfile()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppPublishingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCloneNewWebApp()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCloneNewWebAppAndDeploymentSlots()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppAndDeploymentSlots");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCloneNewWebAppWithNewTrafficManager()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppWithTrafficManager");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStartStopRestartWebApp()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetWebApp()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-SetWebApp");
         }
     }
 }

@@ -14,15 +14,17 @@
 
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
-    public static class SizeConverter
+    using System.Collections.Generic;
+
+    internal static class SizeConverter
     {
-        public const string C0 = "250MB";
-        public const string C1 = "1GB";
-        public const string C2 = "2.5GB";
-        public const string C3 = "6GB";
-        public const string C4 = "13GB";
-        public const string C5 = "26GB";
-        public const string C6 = "53GB";
+        public const string MB250 = "250MB";
+        public const string GB1 = "1GB";
+        public const string GB2_5 = "2.5GB";
+        public const string GB6 = "6GB";
+        public const string GB13 = "13GB";
+        public const string GB26 = "26GB";
+        public const string GB53 = "53GB";
 
         public const string C0String = "C0";
         public const string C1String = "C1";
@@ -32,68 +34,86 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string C5String = "C5";
         public const string C6String = "C6";
 
-        public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser)
-        { 
-            switch(actualSizeFromUser)
+        public const string P1String = "P1";
+        public const string P2String = "P2";
+        public const string P3String = "P3";
+        public const string P4String = "P4";
+
+        private static Dictionary<string, string> skuStringToActualSize = new Dictionary<string, string>{
+            { C0String, MB250 },
+            { C1String, GB1 },
+            { C2String, GB2_5 },
+            { C3String, GB6 },
+            { C4String, GB13 },
+            { C5String, GB26 },
+            { C6String, GB53 },
+            { P1String, GB6 },
+            { P2String, GB13 },
+            { P3String, GB26 },
+            { P4String, GB53 }
+        };
+
+        public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser, bool isPremiumCache)
+        {
+            switch (actualSizeFromUser)
             {
                 // accepting actual sizes
-                case C0:
+                case MB250:
                     return C0String;
-                case C1:
+                case GB1:
                     return C1String;
-                case C2:
+                case GB2_5:
                     return C2String;
-                case C3:
-                    return C3String;
-                case C4:
-                    return C4String;
-                case C5:
-                    return C5String;
-                case C6:
-                    return C6String;
+                case GB6:
+                    if (isPremiumCache)
+                    {
+                        return P1String;
+                    }
+                    else
+                    {
+                        return C3String;
+                    }
+                case GB13:
+                    if (isPremiumCache)
+                    {
+                        return P2String;
+                    }
+                    else
+                    {
+                        return C4String;
+                    }
+                case GB26:
+                    if (isPremiumCache)
+                    {
+                        return P3String;
+                    }
+                    else
+                    {
+                        return C5String;
+                    }
+                case GB53:
+                    if (isPremiumCache)
+                    {
+                        return P4String;
+                    }
+                    else
+                    {
+                        return C6String;
+                    }
                 // accepting C0, C1 etc.
-                case C0String:
-                    return C0String;
-                case C1String:
-                    return C1String;
-                case C2String:
-                    return C2String;
-                case C3String:
-                    return C3String;
-                case C4String:
-                    return C4String;
-                case C5String:
-                    return C5String;
-                case C6String:
-                    return C6String;
                 default:
-                    return C1String;
+                    return actualSizeFromUser;
             }
         }
 
         public static string GetSizeInUserSpecificFormat(string skuFamily, int skuCapacity)
         {
             string sizeConstant = skuFamily + skuCapacity.ToString();
-            switch (sizeConstant)
+            if (skuStringToActualSize.ContainsKey(sizeConstant))
             {
-                // accepting C0, C1 etc.
-                case C0String:
-                        return C0;
-                case C1String:
-                        return C1;
-                case C2String:
-                        return C2;
-                case C3String:
-                        return C3;
-                case C4String:
-                        return C4;
-                case C5String:
-                        return C5;
-                case C6String:
-                        return C6;
-                default:
-                    return C1;
+                return skuStringToActualSize[sizeConstant];
             }
+            return null;
         }
     }
 }

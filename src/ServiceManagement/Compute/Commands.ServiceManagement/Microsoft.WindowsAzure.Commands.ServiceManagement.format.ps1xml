@@ -317,6 +317,11 @@
         <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMRoleListContext</TypeName>
       </ViewSelectedBy>
       <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+        </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
@@ -543,32 +548,6 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.AutoBackupSettings</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Enable</Label>
-                <PropertyName>Enable</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>EnableEncryption</Label>
-                <PropertyName>EnableEncryption</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>RetentionPeriodInDays</Label>
-                <PropertyName>RetentionPeriod</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
       <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.VirtualMachineSqlServerExtensionContext</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.VirtualMachineSqlServerExtensionContext</TypeName>
@@ -580,6 +559,10 @@
               <ListItem>
                 <Label>ExtensionName</Label>
                 <PropertyName>ExtensionName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtensionStatus</Label>
+                <PropertyName>ExtensionStatus</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Publisher</Label>
@@ -604,6 +587,14 @@
               <ListItem>
                 <Label>AutoBackupSettings</Label>
                 <PropertyName>AutoBackupSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>KeyVaultCredentialSettings</Label>
+                <PropertyName>KeyVaultCredentialSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AutoTelemetrySettings</Label>
+                <PropertyName>AutoTelemetrySettings</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -687,6 +678,33 @@
               <ListItem>
                 <Label>DscConfigurationLog</Label>
                 <PropertyName>DscConfigurationLog</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.Model.MigrationValidateContext</Name>
+      <OutOfBand />
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.Model.MigrationValidateContext</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>OperationId</Label>
+                <PropertyName>OperationId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Result</Label>
+                <PropertyName>Result</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ValidationMessages</Label>
+                <PropertyName>ValidationMessages</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

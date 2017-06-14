@@ -19,7 +19,7 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureResourceGroup -Name $rgname -Force
+        Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
 
@@ -49,7 +49,14 @@ function Retry-IfException
     {
         $iter += 1;
 
-        &$script;
+        try
+        {
+            &$script;
+        }
+        catch
+        {
+
+        }
 
         if ($Error.Count -gt 0)
         {
@@ -131,4 +138,13 @@ function Get-StorageManagementTestResourceName
     }
 
     return $assetName
+}
+
+<#
+.SYNOPSIS
+Gets the default location for a provider
+#>
+function Get-ProviderLocation($provider)
+{
+    "westus"
 }

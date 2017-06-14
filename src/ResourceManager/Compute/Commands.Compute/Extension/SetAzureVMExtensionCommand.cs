@@ -15,7 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System.Collections;
@@ -26,67 +25,31 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
-        DefaultParameterSetName = SettingsParamSet)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class SetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+        DefaultParameterSetName = SettingsParamSet,
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(PSAzureOperationResponse))]
+    public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
         protected const string SettingsParamSet = "Settings";
 
         [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
             Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The publisher.")]
         [ValidateNotNullOrEmpty]
         public string Publisher { get; set; }
 
+        [Alias("Type")]
         [Parameter(
             Mandatory = true,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionType { get; set; }
 
-        [Alias("HandlerVersion", "Version")]
-        [Parameter(
-            Mandatory = true,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type.")]
-        [ValidateNotNullOrEmpty]
-        public string TypeHandlerVersion { get; set; }
-
         [Parameter(
             ParameterSetName = SettingsParamSet,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The settings.")]
         [ValidateNotNullOrEmpty]
@@ -94,7 +57,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingsParamSet,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected settings.")]
         [ValidateNotNullOrEmpty]
@@ -102,7 +64,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The setting raw string.")]
         [ValidateNotNullOrEmpty]
@@ -110,48 +71,51 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             ParameterSetName = SettingStringParamSet,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protected setting raw string.")]
         [ValidateNotNullOrEmpty]
         public string ProtectedSettingString { get; set; }
 
-        [Parameter(
-            Position = 8,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            if (this.Settings != null)
+            if (ShouldProcess(this.ExtensionType, VerbsCommon.Set))
             {
-                this.SettingString = JsonConvert.SerializeObject(Settings);
-                this.ProtectedSettingString = JsonConvert.SerializeObject(ProtectedSettings);
+                ExecuteClientAction(() =>
+                {
+                    if (this.ParameterSetName.Equals(SettingStringParamSet))
+                    {
+                        this.Settings = string.IsNullOrEmpty(this.SettingString)
+                            ? null
+                            : JsonConvert.DeserializeObject<Hashtable>(this.SettingString);
+                        this.ProtectedSettings = string.IsNullOrEmpty(this.ProtectedSettingString)
+                            ? null
+                            : JsonConvert.DeserializeObject<Hashtable>(this.ProtectedSettingString);
+                    }
+
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Publisher = this.Publisher,
+                        VirtualMachineExtensionType = this.ExtensionType,
+                        TypeHandlerVersion = this.TypeHandlerVersion,
+                        Settings = this.Settings,
+                        ProtectedSettings = this.ProtectedSettings,
+                        AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                        ForceUpdateTag = this.ForceRerun
+                    };
+
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
+
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
             }
-
-            var parameters = new VirtualMachineExtension
-            {
-                Location = this.Location,
-                Name = this.Name,
-                Type = VirtualMachineExtensionType,
-                Publisher = this.Publisher,
-                ExtensionType = this.ExtensionType,
-                TypeHandlerVersion = this.TypeHandlerVersion,
-                Settings = this.SettingString,
-                ProtectedSettings = this.ProtectedSettingString,
-            };
-
-            var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
-
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-            WriteObject(result);
         }
     }
 }

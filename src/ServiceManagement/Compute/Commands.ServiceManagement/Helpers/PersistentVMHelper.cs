@@ -48,6 +48,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             overrides.Add(typeof(DataVirtualHardDisk), "MediaLink", ignoreAttrib);
             overrides.Add(typeof(DataVirtualHardDisk), "SourceMediaLink", ignoreAttrib);
             overrides.Add(typeof(OSVirtualHardDisk), "MediaLink", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "ConsoleScreenshotBlobUri", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "SerialOutputBlobUri", ignoreAttrib);
 
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(PersistentVM), overrides, new Type[] { typeof(NetworkConfigurationSet) }, null, null);
             using (TextWriter writer = new StreamWriter(filePath))
@@ -70,6 +72,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             overrides.Add(typeof(DataVirtualHardDisk), "SourceMediaLink", ignoreAttrib);
             overrides.Add(typeof(OSVirtualHardDisk), "MediaLink", ignoreAttrib);
             overrides.Add(typeof(OSVirtualHardDisk), "SourceImageName", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "ConsoleScreenshotBlobUri", ignoreAttrib);
+            overrides.Add(typeof(CSM.DebugSettings), "SerialOutputBlobUri", ignoreAttrib);
 
             var serializer = new System.Xml.Serialization.XmlSerializer(typeof(PersistentVM), overrides, new Type[] { typeof(NetworkConfigurationSet) }, null, null);
 
@@ -114,6 +118,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
                     }
                 }
             }
+            return roleNamesCollection;
+        }
+
+        // Return the list of role names that match any of the given query.
+        public static RoleNamesCollection GetRoleNames(IList<RoleInstance> roleInstanceList, string[] roleNameQueries)
+        {
+            List<string> distinctRoleNameList = new List<string>();
+
+            foreach (var roleNameQuery in roleNameQueries)
+            {
+                var unionResult = distinctRoleNameList.Union(GetRoleNames(roleInstanceList, roleNameQuery));
+                distinctRoleNameList = unionResult.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+            }
+
+            var roleNamesCollection = new RoleNamesCollection();
+
+            foreach (var roleName in distinctRoleNameList)
+            {
+                roleNamesCollection.Add(roleName);
+            }
+
             return roleNamesCollection;
         }
 

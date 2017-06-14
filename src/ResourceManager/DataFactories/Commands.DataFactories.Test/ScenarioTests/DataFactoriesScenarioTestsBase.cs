@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public abstract class DataFactoriesScenarioTestsBase
+    public abstract class DataFactoriesScenarioTestsBase : RMTestBase
     {
         private EnvironmentSetupHelper helper;
 
@@ -52,7 +52,14 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
@@ -60,16 +67,21 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.DataFactories.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 helper.RunPowerShellTest(scripts);
             }
         }
 
-        protected DataPipelineManagementClient GetDataPipelineManagementClient()
+        protected DataFactoryManagementClient GetDataPipelineManagementClient()
         {
-            return TestBase.GetServiceClient<DataPipelineManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<DataFactoryManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         protected ResourceManagementClient GetResourceManagementClient()
@@ -80,11 +92,6 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         protected SubscriptionClient GetSubscriptionClient()
         {
             return TestBase.GetServiceClient<SubscriptionClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected StorageManagementClient GetStorageManagementClient()
-        {
-            return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         protected GalleryClient GetGalleryClient()

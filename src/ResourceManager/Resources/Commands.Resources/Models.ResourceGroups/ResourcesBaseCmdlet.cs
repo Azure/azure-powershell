@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     using Microsoft.Azure.Commands.Resources.Models.Authorization;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
 
     /// <summary> 
     /// Base class for all resources cmdlets
     /// </summary>
-    public abstract class ResourcesBaseCmdlet : AzurePSCmdlet
+    public abstract class ResourcesBaseCmdlet : AzureRMCmdlet
     {
         /// <summary>
         /// Field that holds the resource client instance
@@ -42,6 +39,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         private AuthorizationClient policiesClient;
 
         /// <summary>
+        /// Field that holds the subscripotions client instance
+        /// </summary>
+        private SubscriptionsClient subscriptionsClient;
+
+        /// <summary>
         /// Gets or sets the resources client
         /// </summary>
         public ResourcesClient ResourcesClient
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (this.resourcesClient == null)
                 {
-                    this.resourcesClient = new ResourcesClient(this.Profile)
+                    this.resourcesClient = new ResourcesClient(DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -74,7 +76,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     // since this accessor can be called before BeginProcessing, use GetCurrentContext if no 
                     // profile is passed in
-                    this.galleryTemplatesClient = new GalleryTemplatesClient(this.GetCurrentContext());
+                    this.galleryTemplatesClient = new GalleryTemplatesClient(DefaultContext);
                 }
 
                 return this.galleryTemplatesClient;
@@ -92,12 +94,29 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (this.policiesClient == null)
                 {
-                    this.policiesClient = new AuthorizationClient(this.Profile.Context);
+                    this.policiesClient = new AuthorizationClient(DefaultContext);
                 }
                 return this.policiesClient;
             }
 
             set { this.policiesClient = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the subscriptions client
+        /// </summary>
+        public SubscriptionsClient SubscriptionsClient
+        {
+            get
+            {
+                if (this.subscriptionsClient == null)
+                {
+                    this.subscriptionsClient = new SubscriptionsClient(DefaultContext);
+                }
+                return this.subscriptionsClient;
+            }
+
+            set { this.subscriptionsClient = value; }
         }
 
         /// <summary>

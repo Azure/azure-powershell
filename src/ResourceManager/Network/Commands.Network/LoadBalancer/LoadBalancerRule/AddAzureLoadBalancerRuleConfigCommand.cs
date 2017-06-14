@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
     {
         [Parameter(
@@ -36,10 +34,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var existingLoadBalancingRule = this.LoadBalancer.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingLoadBalancingRule != null)
@@ -62,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 loadBalancingRule.LoadDistribution = this.LoadDistribution;
             }
-            
+
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
 
             if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
@@ -84,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
 
             loadBalancingRule.Id =
                 ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerRuleName,

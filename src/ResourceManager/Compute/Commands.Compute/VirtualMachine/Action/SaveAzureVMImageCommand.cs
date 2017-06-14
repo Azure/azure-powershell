@@ -15,33 +15,24 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage)]
+    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class SaveAzureVMImageCommand : VirtualMachineBaseCmdlet
+    public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
-        public string Name { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
+        [Alias("VMName")]
         [Parameter(
            Mandatory = true,
            Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -67,25 +58,39 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Overwrite { get; set; }
 
+        [Parameter(
+           Position = 5,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The file path in which the template of the captured image is stored")]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineCaptureParameters
+            ExecuteClientAction(() =>
             {
-                DestinationContainerName = DestinationContainerName,
-                Overwrite = Overwrite.IsPresent,
-                VirtualHardDiskNamePrefix = VHDNamePrefix
-            };
+                var parameters = new VirtualMachineCaptureParameters
+                {
+                    DestinationContainerName = DestinationContainerName,
+                    OverwriteVhds = Overwrite.IsPresent,
+                    VhdPrefix = VHDNamePrefix
+                };
 
-            var op = this.VirtualMachineClient.Capture(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
+                var op = this.VirtualMachineClient.CaptureWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    this.Name,
+                    parameters).GetAwaiter().GetResult();
 
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-            WriteObject(result);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+
+                if (!string.IsNullOrWhiteSpace(this.Path))
+                {
+                    File.WriteAllText(this.Path, op.Body.Output.ToString());
+                }
+                WriteObject(result);
+            });
         }
     }
 }

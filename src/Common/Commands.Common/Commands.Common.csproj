@@ -9,12 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Common</RootNamespace>
     <AssemblyName>Microsoft.WindowsAzure.Commands.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
+    <NuGetPackageImportStamp>06e19c11</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,40 +52,23 @@
   <ItemGroup>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.1.0.1899, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.1.1.1-beta\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -103,8 +86,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -130,9 +113,6 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Channels" />
     <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -142,44 +122,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AzurePowerShell.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="SecureStringExtensions.cs" />
-    <Compile Include="ConversionUtilities.cs" />
-    <Compile Include="DebugStreamTraceListener.cs" />
-    <Compile Include="GeneralUtilities.cs" />
-    <Compile Include="PowerShellUtilities.cs" />
-    <Compile Include="RecordingTracingInterceptor.cs" />
-    <Compile Include="ProfileClientExtensions.cs" />
-    <Compile Include="ServiceManagementTypes.cs" />
-    <Compile Include="ChannelHelper.cs" />
-    <Compile Include="ClientCreatedArgs.cs" />
-    <Compile Include="CloudBaseCmdlet.cs" />
+    <Compile Include="DiskDataStore.cs" />
+    <Compile Include="Serialization\LegacyAzureAccount.cs" />
+    <Compile Include="Serialization\LegacyAzureEnvironment.cs" />
+    <Compile Include="Serialization\LegacyAzureSubscription.cs" />
+    <Compile Include="Serialization\ModelConversionExtensions.cs" />
+    <Compile Include="Utilities\FileUtilities.cs" />
+    <Compile Include="Utilities\JsonUtilities.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="AzureDataCmdlet.cs" />
     <Compile Include="AzurePSCmdlet.cs" />
-    <Compile Include="CmdletExtensions.cs" />
-    <Compile Include="ConfigurationConstants.cs" />
-    <Compile Include="ErrorHelper.cs" />
-    <Compile Include="IdnHelper.cs" />
-    <Compile Include="ManagementOperationContext.cs" />
-    <Compile Include="Parameters.cs" />
-    <Compile Include="SubscriptionCmdletBase.cs" />
-    <Compile Include="TestMockSupport.cs" />
-    <Compile Include="HttpClientExtensions.cs" />
-    <Compile Include="HttpRestCallLogger.cs" />
-    <Compile Include="HttpRestMessageInspector.cs" />
-    <Compile Include="ProcessHelper.cs" />
-    <Compile Include="Tasks.cs" />
-    <Compile Include="PSAzureAccount.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AzurePSDataCollectionProfile.cs" />
+    <Compile Include="AzurePowerShell.cs" />
+    <Compile Include="Extensions\ConcurrentQueueExtensions.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\ContextExtensions.cs" />
+    <Compile Include="IFileSystem.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="MetricHelper.cs" />
+    <Compile Include="CmdletInfoHandler.cs" />
+    <Compile Include="Extensions\SecureStringExtensions.cs" />
+    <Compile Include="Utilities\ConversionUtilities.cs" />
+    <Compile Include="DebugStreamTraceListener.cs" />
+    <Compile Include="Utilities\GeneralUtilities.cs" />
+    <Compile Include="Utilities\PowerShellUtilities.cs" />
+    <Compile Include="RecordingTracingInterceptor.cs" />
+    <Compile Include="ClientCreatedArgs.cs" />
+    <Compile Include="Extensions\CmdletExtensions.cs" />
+    <Compile Include="TestMockSupport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Validate.cs" />
+    <Compile Include="ValidateGuidNotEmpty.cs" />
+    <Compile Include="Utilities\XmlUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
@@ -188,11 +171,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
-  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
 </Project>

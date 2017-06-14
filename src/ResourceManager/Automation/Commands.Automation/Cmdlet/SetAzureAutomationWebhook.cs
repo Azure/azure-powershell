@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Common;
-using System.Collections.Generic;
+using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
 
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Update a Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationWebhook")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationWebhook")]
     [OutputType(typeof(Webhook))]
     public class SetAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
@@ -48,19 +47,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Runbook parameters name/value.")]
-        public IDictionary<string, string> Parameters { get; set; }
+        public IDictionary Parameters { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             var updatedWebhook = this.AutomationClient.UpdateWebhook(
                 this.ResourceGroupName,
                 this.AutomationAccountName,
                 this.Name,
-                this.Parameters.ToHashtable(),
+                this.Parameters,
                 this.IsEnabled);
             this.WriteObject(updatedWebhook);
         }

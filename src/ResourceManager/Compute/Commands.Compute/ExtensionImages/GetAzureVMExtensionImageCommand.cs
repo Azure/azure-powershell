@@ -14,15 +14,15 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure.OData;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineExtensionImage)]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImage)]
+    [OutputType(typeof(PSVirtualMachineExtensionImage))]
     [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
     {
@@ -45,66 +45,62 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.Version))
+            ExecuteClientAction(() =>
             {
-                var parameters = new VirtualMachineExtensionImageListVersionsParameters
+                if (string.IsNullOrEmpty(this.Version))
                 {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName,
-                    Type = Type,
-                    FilterExpression = FilterExpression
-                };
+                    var filter = new ODataQuery<VirtualMachineExtensionImage>(this.FilterExpression);
 
-                VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListVersions(parameters);
+                    var result = this.VirtualMachineExtensionImageClient.ListVersionsWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Type,
+                        odataQuery: filter).GetAwaiter().GetResult();
 
-                var images = from r in result.Resources
-                             select new PSVirtualMachineExtensionImage
-                             {
-                                 RequestId = result.RequestId,
-                                 StatusCode = result.StatusCode,
-                                 Id = r.Id,
-                                 Location = r.Location,
-                                 Version = r.Name,
-                                 PublisherName = this.PublisherName,
-                                 Type = this.Type,
-                                 FilterExpression = this.FilterExpression
-                             };
+                    var images = from r in result.Body
+                                 select new PSVirtualMachineExtensionImage
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.Response.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     Version = r.Name,
+                                     PublisherName = this.PublisherName,
+                                     Type = this.Type,
+                                     FilterExpression = this.FilterExpression
+                                 };
 
-                WriteObject(images, true);
-            }
-            else
-            {
-
-                var parameters = new VirtualMachineExtensionImageGetParameters
+                    WriteObject(images, true);
+                }
+                else
                 {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName,
-                    Type = Type,
-                    FilterExpression = FilterExpression,
-                    Version = Version
-                };
+                    var result = this.VirtualMachineExtensionImageClient.GetWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Type,
+                        this.Version).GetAwaiter().GetResult();
 
-                VirtualMachineExtensionImageGetResponse result = this.VirtualMachineExtensionImageClient.Get(parameters);
 
-                var image = new PSVirtualMachineExtensionImageDetails
-                {
-                    RequestId = result.RequestId,
-                    StatusCode = result.StatusCode,
-                    Id = result.VirtualMachineExtensionImage.Id,
-                    Location = result.VirtualMachineExtensionImage.Location,
-                    Name = result.VirtualMachineExtensionImage.Name,
-                    HandlerSchema = result.VirtualMachineExtensionImage.HandlerSchema,
-                    OperatingSystem = result.VirtualMachineExtensionImage.OperatingSystem,
-                    ComputeRole = result.VirtualMachineExtensionImage.ComputeRole,
-                    SupportsMultipleExtensions = result.VirtualMachineExtensionImage.SupportsMultipleExtensions,
-                    VMScaleSetEnabled = result.VirtualMachineExtensionImage.VMScaleSetEnabled,
-                    PublisherName = this.PublisherName,
-                    Type = this.Type,
-                    Version = this.Version
-                };
+                    var image = new PSVirtualMachineExtensionImageDetails
+                    {
+                        RequestId = result.RequestId,
+                        StatusCode = result.Response.StatusCode,
+                        Id = result.Body.Id,
+                        Location = result.Body.Location,
+                        HandlerSchema = result.Body.HandlerSchema,
+                        OperatingSystem = result.Body.OperatingSystem,
+                        ComputeRole = result.Body.ComputeRole,
+                        SupportsMultipleExtensions = result.Body.SupportsMultipleExtensions,
+                        VMScaleSetEnabled = result.Body.VmScaleSetEnabled,
+                        Version = result.Body.Name,
+                        PublisherName = this.PublisherName,
+                        Type = this.Type,
+                        FilterExpression = this.FilterExpression
+                    };
 
-                WriteObject(image);
-            }
+                    WriteObject(image);
+                }
+            });
         }
     }
 }

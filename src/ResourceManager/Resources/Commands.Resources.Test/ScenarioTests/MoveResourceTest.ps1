@@ -27,21 +27,23 @@ function Test-MoveAzureResource
     $providerNamespace = "Providers.Test"
     $resourceType = $providerNamespace + "/statefulResources"
 
-    Register-AzureProvider -ProviderNamespace $providerNamespace -Force
-    New-AzureResourceGroup -Name $sourceResourceGroupName -Location $location -Force
-    New-AzureResourceGroup -Name $destinationResourceGroupName -Location $location -Force
-    $resource1 = New-AzureResource -Name $testResourceName1 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
-    $resource2 = New-AzureResource -Name $testResourceName2 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
+    Register-AzureRmResourceProvider -ProviderNamespace $providerNamespace -Force
+    New-AzureRmResourceGroup -Name $sourceResourceGroupName -Location $location -Force
+    New-AzureRmResourceGroup -Name $destinationResourceGroupName -Location $location -Force
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+    $resource1 = New-AzureRmResource -Name $testResourceName1 -Location $location -Tags @{testtag = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+    $resource2 = New-AzureRmResource -Name $testResourceName2 -Location $location -Tags @{testtag = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
 
-    Get-AzureResource -ResourceGroupName $sourceResourceGroupName | Move-AzureResource -DestinationResourceGroupName $destinationResourceGroupName -Force
+    Get-AzureRmResource -ResourceGroupName $sourceResourceGroupName | Move-AzureRmResource -DestinationResourceGroupName $destinationResourceGroupName -Force
 
     $endTime = [DateTime]::UtcNow.AddMinutes(10)
 
-    while ([DateTime]::UtcNow -lt $endTime -and (@(Get-AzureResource -ResourceGroupName $sourceResourceGroupName).Length -gt 0))
+    while ([DateTime]::UtcNow -lt $endTime -and (@(Get-AzureRmResource -ResourceGroupName $sourceResourceGroupName).Length -gt 0))
     {
 		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
 
-    Assert-True { @(Get-AzureResource -ResourceGroupName $sourceResourceGroupName).Length -eq 0 }
-    Assert-True { @(Get-AzureResource -ResourceGroupName $destinationResourceGroupName).Length -eq 2 }
+    Assert-True { @(Get-AzureRmResource -ResourceGroupName $sourceResourceGroupName).Length -eq 0 }
+    Assert-True { @(Get-AzureRmResource -ResourceGroupName $destinationResourceGroupName).Length -eq 2 }
 }

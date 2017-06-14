@@ -177,7 +177,7 @@
           "192"
         ],
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -218,7 +218,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -262,7 +262,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -306,7 +306,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -356,7 +356,7 @@
           "367"
         ],
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -397,7 +397,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -441,7 +441,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -485,7 +485,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -529,7 +529,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -573,7 +573,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -617,7 +617,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -658,7 +658,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -702,7 +702,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2017-01-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"

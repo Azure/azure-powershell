@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLoadBalancerFrontendIpConfig"), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerFrontendIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
     {
         [Parameter(
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var frontendIpConfig = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (frontendIpConfig == null)
@@ -45,33 +45,22 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("FrontendIpConfiguration with the specified name does not exist");
             }
 
-
-            // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, "id"))
-            {
-                this.SubnetId = this.Subnet.Id;
-
-                if (PublicIpAddress != null)
-                {
-                    this.PublicIpAddressId = this.PublicIpAddress.Id;
-                }
-            }
-
             frontendIpConfig.Name = this.Name;
 
+            frontendIpConfig.Subnet = null;
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
-                frontendIpConfig.Subnet = new PSResourceId();
+                frontendIpConfig.Subnet = new PSSubnet();
                 frontendIpConfig.Subnet.Id = this.SubnetId;
 
                 if (!string.IsNullOrEmpty(this.PrivateIpAddress))
                 {
                     frontendIpConfig.PrivateIpAddress = this.PrivateIpAddress;
-                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Static;
                 }
                 else
                 {
-                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                    frontendIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Dynamic;
                 }
             }
 
@@ -80,17 +69,10 @@ namespace Microsoft.Azure.Commands.Network
                 frontendIpConfig.PrivateIpAddress = this.PrivateIpAddress;
             }
 
-            frontendIpConfig.Subnet = null;
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                frontendIpConfig.Subnet = new PSResourceId();
-                frontendIpConfig.Subnet.Id = this.SubnetId;
-            }
-
             frontendIpConfig.PublicIpAddress = null;
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
-                frontendIpConfig.PublicIpAddress = new PSResourceId();
+                frontendIpConfig.PublicIpAddress = new PSPublicIpAddress();
                 frontendIpConfig.PublicIpAddress.Id = this.PublicIpAddressId;
             }
 

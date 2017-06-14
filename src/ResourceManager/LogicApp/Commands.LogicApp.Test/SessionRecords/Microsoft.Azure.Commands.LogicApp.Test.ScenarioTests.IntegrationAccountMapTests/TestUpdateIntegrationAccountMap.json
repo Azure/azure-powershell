@@ -1,0 +1,793 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlZ3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "33"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest\",\r\n  \"name\": \"IntegrationAccountPsCmdletTest\",\r\n  \"location\": \"brazilsouth\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "218"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-request-id": [
+          "84270e61-716f-49ba-aedf-8018c40ae7d2"
+        ],
+        "x-ms-correlation-request-id": [
+          "84270e61-716f-49ba-aedf-8018c40ae7d2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193836Z:84270e61-716f-49ba-aedf-8018c40ae7d2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:36 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2bf5880a-ada3-44b9-b91a-1a17dae61c27"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Logic/integrationAccounts/onesdk1859' under resource group 'IntegrationAccountPsCmdletTest' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "180"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "e11f34f8-4730-41c5-8d84-770ace897de6"
+        ],
+        "x-ms-correlation-request-id": [
+          "e11f34f8-4730-41c5-8d84-770ace897de6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193837Z:e11f34f8-4730-41c5-8d84-770ace897de6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:37 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4dab6b62-8d83-44d6-8fa8-378281db143f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859\",\r\n  \"name\": \"onesdk1859\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "295"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:c5e441fa-5420-4516-b23c-9613388ca0a8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14886"
+        ],
+        "x-ms-correlation-request-id": [
+          "3885b106-ab50-4ef1-8f8d-61ea4e80e13e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193842Z:3885b106-ab50-4ef1-8f8d-61ea4e80e13e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:42 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4d5401e7-9654-4ad0-8ac5-a99be6fb7146"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859\",\r\n  \"name\": \"onesdk1859\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "295"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:00d1e5be-06d1-475c-a9c4-c0026f4e0820"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14884"
+        ],
+        "x-ms-correlation-request-id": [
+          "9714a011-9963-44c6-93fc-1ee7e46da2b7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193843Z:9714a011-9963-44c6-93fc-1ee7e46da2b7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:43 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7c4f61ce-ccd7-4737-8c93-533afaa415e4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859\",\r\n  \"name\": \"onesdk1859\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "295"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:df2ee480-993a-4739-af7a-cc9b1f9d9cfa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14882"
+        ],
+        "x-ms-correlation-request-id": [
+          "bfada074-887d-4b82-9cd4-60aae0b4e5bb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193843Z:bfada074-887d-4b82-9cd4-60aae0b4e5bb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:43 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "96"
+        ],
+        "x-ms-client-request-id": [
+          "5079b5a3-6ccc-4a06-8ad1-c95e9c854b41"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {},\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859\",\r\n  \"name\": \"onesdk1859\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts\",\r\n  \"location\": \"brazilsouth\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "295"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:2b78a553-13b6-4de6-8c9d-80bd0ac03618"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "96596152-71ee-4a6a-825b-9c21d36b413b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193842Z:96596152-71ee-4a6a-825b-9c21d36b413b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:41 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OS9tYXBzL29uZXNkazE5MDQ/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1170d026-3ea0-455a-8067-6074f7c18d64"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MapNotFound\",\r\n    \"message\": \"The map 'onesdk1904' could not be found in the integration account 'onesdk1859'.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "125"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:47cd7b8b-4b5e-47d7-89eb-4532d2f841e5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14885"
+        ],
+        "x-ms-correlation-request-id": [
+          "33504f86-4e45-48a9-946d-3e5377701375"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193842Z:33504f86-4e45-48a9-946d-3e5377701375"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:42 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OS9tYXBzL29uZXNkazE5MDQ/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fe54f0ef-8f36-4d43-852a-42ee64713028"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-25.brazilus.logic.azure.com:443/integrationAccounts/6f989bcd54e84134bcab9f07e7508dc9/maps/onesdk1904/contents/Value?api-version=2015-08-01-preview&se=2017-03-31T23%3A38%3A43.5212404Z&sp=%2Fmaps%2Fonesdk1904%2Fread&sv=1.0&sig=VYYH4lhYLxERqfbPRILWNtdkgf6cJp7KfJseiWld1Uw\",\r\n      \"contentVersion\": \"\\\"0x8D4786D89E562D4\\\"\",\r\n      \"contentSize\": 3056,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"A2avz/M0ov2FPI3+Je8vDw==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-03-31T19:38:42.9653193Z\",\r\n    \"changedTime\": \"2017-03-31T19:38:42.9655228Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904\",\r\n  \"name\": \"onesdk1904\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/maps\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "806"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:02ec4388-711e-4d7c-9897-ab0e3763a560"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14883"
+        ],
+        "x-ms-correlation-request-id": [
+          "404d207d-b2f7-4d5a-ac6c-d5d4bfddbe83"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193843Z:404d207d-b2f7-4d5a-ac6c-d5d4bfddbe83"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:43 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OS9tYXBzL29uZXNkazE5MDQ/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "25a63670-ecd7-444a-af32-971a5bfd543d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-25.brazilus.logic.azure.com:443/integrationAccounts/6f989bcd54e84134bcab9f07e7508dc9/maps/onesdk1904/contents/Value?api-version=2015-08-01-preview&se=2017-03-31T23%3A38%3A44.0525806Z&sp=%2Fmaps%2Fonesdk1904%2Fread&sv=1.0&sig=__PpzvnygLQf4RiwlvJkrJB2-SiVXOZmQAcPotX4TKk\",\r\n      \"contentVersion\": \"\\\"0x8D4786D8A5C8310\\\"\",\r\n      \"contentSize\": 3056,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"A2avz/M0ov2FPI3+Je8vDw==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-03-31T19:38:42.9653193Z\",\r\n    \"changedTime\": \"2017-03-31T19:38:43.7707785Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904\",\r\n  \"name\": \"onesdk1904\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/maps\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "806"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:5539507d-de4d-4f4b-918f-9d8ec8262809"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14881"
+        ],
+        "x-ms-correlation-request-id": [
+          "38d19928-bd75-40f5-aa0e-a87e97388326"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193844Z:38d19928-bd75-40f5-aa0e-a87e97388326"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:43 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OS9tYXBzL29uZXNkazE5MDQ/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-16\\\"?>\\r\\n<xsl:stylesheet xmlns:xsl=\\\"http://www.w3.org/1999/XSL/Transform\\\" xmlns:msxsl=\\\"urn:schemas-microsoft-com:xslt\\\" xmlns:var=\\\"http://schemas.microsoft.com/BizTalk/2003/var\\\" exclude-result-prefixes=\\\"msxsl var s0 userCSharp\\\" version=\\\"1.0\\\" xmlns:ns0=\\\"http://BizTalk_Server_Project4.StringFunctoidsDestinationSchema\\\" xmlns:s0=\\\"http://BizTalk_Server_Project4.StringFunctoidsSourceSchema\\\" xmlns:userCSharp=\\\"http://schemas.microsoft.com/BizTalk/2003/userCSharp\\\">\\r\\n  <xsl:import href=\\\"http://btsfunctoids.blob.core.windows.net/functoids/functoids.xslt\\\" />\\r\\n  <xsl:output omit-xml-declaration=\\\"yes\\\" method=\\\"xml\\\" version=\\\"1.0\\\" />\\r\\n  <xsl:template match=\\\"/\\\">\\r\\n    <xsl:apply-templates select=\\\"/s0:Root\\\" />\\r\\n  </xsl:template>\\r\\n  <xsl:template match=\\\"/s0:Root\\\">\\r\\n    <xsl:variable name=\\\"var:v1\\\" select=\\\"userCSharp:StringFind(string(StringFindSource/text()) , &quot;SearchString&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v2\\\" select=\\\"userCSharp:StringLeft(string(StringLeftSource/text()) , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v3\\\" select=\\\"userCSharp:StringRight(string(StringRightSource/text()) , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v4\\\" select=\\\"userCSharp:StringUpperCase(string(UppercaseSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v5\\\" select=\\\"userCSharp:StringLowerCase(string(LowercaseSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v6\\\" select=\\\"userCSharp:StringSize(string(SizeSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v7\\\" select=\\\"userCSharp:StringSubstring(string(StringExtractSource/text()) , &quot;0&quot; , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v8\\\" select=\\\"userCSharp:StringConcat(string(StringConcatSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v9\\\" select=\\\"userCSharp:StringTrimLeft(string(StringLeftTrimSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v10\\\" select=\\\"userCSharp:StringTrimRight(string(StringRightTrimSource/text()))\\\" />\\r\\n    <ns0:Root>\\r\\n      <StringFindDestination>\\r\\n        <xsl:value-of select=\\\"$var:v1\\\" />\\r\\n      </StringFindDestination>\\r\\n      <StringLeftDestination>\\r\\n        <xsl:value-of select=\\\"$var:v2\\\" />\\r\\n      </StringLeftDestination>\\r\\n      <StringRightDestination>\\r\\n        <xsl:value-of select=\\\"$var:v3\\\" />\\r\\n      </StringRightDestination>\\r\\n      <UppercaseDestination>\\r\\n        <xsl:value-of select=\\\"$var:v4\\\" />\\r\\n      </UppercaseDestination>\\r\\n      <LowercaseDestination>\\r\\n        <xsl:value-of select=\\\"$var:v5\\\" />\\r\\n      </LowercaseDestination>\\r\\n      <SizeDestination>\\r\\n        <xsl:value-of select=\\\"$var:v6\\\" />\\r\\n      </SizeDestination>\\r\\n      <StringExtractDestination>\\r\\n        <xsl:value-of select=\\\"$var:v7\\\" />\\r\\n      </StringExtractDestination>\\r\\n      <StringConcatDestination>\\r\\n        <xsl:value-of select=\\\"$var:v8\\\" />\\r\\n      </StringConcatDestination>\\r\\n      <StringLeftTrimDestination>\\r\\n        <xsl:value-of select=\\\"$var:v9\\\" />\\r\\n      </StringLeftTrimDestination>\\r\\n      <StringRightTrimDestination>\\r\\n        <xsl:value-of select=\\\"$var:v10\\\" />\\r\\n      </StringRightTrimDestination>\\r\\n    </ns0:Root>\\r\\n  </xsl:template>\\r\\n</xsl:stylesheet>\",\r\n    \"contentType\": \"application/xml\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3362"
+        ],
+        "x-ms-client-request-id": [
+          "47efdb69-6adc-4aba-9adb-ed66e6c2bb85"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-25.brazilus.logic.azure.com:443/integrationAccounts/6f989bcd54e84134bcab9f07e7508dc9/maps/onesdk1904/contents/Value?api-version=2015-08-01-preview&se=2017-03-31T23%3A38%3A43.2738843Z&sp=%2Fmaps%2Fonesdk1904%2Fread&sv=1.0&sig=1NXqU2csgn6vSkWJoAbXGeMbG65mfe3WRZMcFWDqMWY\",\r\n      \"contentVersion\": \"\\\"0x8D4786D89E562D4\\\"\",\r\n      \"contentSize\": 3056,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"A2avz/M0ov2FPI3+Je8vDw==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-03-31T19:38:42.9653193Z\",\r\n    \"changedTime\": \"2017-03-31T19:38:42.9655228Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904\",\r\n  \"name\": \"onesdk1904\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/maps\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "806"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:cb00523b-3139-4444-9660-55a1f8ac6a66"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "bac1abf4-3ef9-4dd5-8449-3bf571b43c8c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193843Z:bac1abf4-3ef9-4dd5-8449-3bf571b43c8c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:43 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OS9tYXBzL29uZXNkazE5MDQ/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"createdTime\": \"2017-03-31T19:38:42.9653193Z\",\r\n    \"changedTime\": \"2017-03-31T19:38:42.9655228Z\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-16\\\"?>\\r\\n<xsl:stylesheet xmlns:xsl=\\\"http://www.w3.org/1999/XSL/Transform\\\" xmlns:msxsl=\\\"urn:schemas-microsoft-com:xslt\\\" xmlns:var=\\\"http://schemas.microsoft.com/BizTalk/2003/var\\\" exclude-result-prefixes=\\\"msxsl var s0 userCSharp\\\" version=\\\"1.0\\\" xmlns:ns0=\\\"http://BizTalk_Server_Project4.StringFunctoidsDestinationSchema\\\" xmlns:s0=\\\"http://BizTalk_Server_Project4.StringFunctoidsSourceSchema\\\" xmlns:userCSharp=\\\"http://schemas.microsoft.com/BizTalk/2003/userCSharp\\\">\\r\\n  <xsl:import href=\\\"http://btsfunctoids.blob.core.windows.net/functoids/functoids.xslt\\\" />\\r\\n  <xsl:output omit-xml-declaration=\\\"yes\\\" method=\\\"xml\\\" version=\\\"1.0\\\" />\\r\\n  <xsl:template match=\\\"/\\\">\\r\\n    <xsl:apply-templates select=\\\"/s0:Root\\\" />\\r\\n  </xsl:template>\\r\\n  <xsl:template match=\\\"/s0:Root\\\">\\r\\n    <xsl:variable name=\\\"var:v1\\\" select=\\\"userCSharp:StringFind(string(StringFindSource/text()) , &quot;SearchString&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v2\\\" select=\\\"userCSharp:StringLeft(string(StringLeftSource/text()) , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v3\\\" select=\\\"userCSharp:StringRight(string(StringRightSource/text()) , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v4\\\" select=\\\"userCSharp:StringUpperCase(string(UppercaseSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v5\\\" select=\\\"userCSharp:StringLowerCase(string(LowercaseSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v6\\\" select=\\\"userCSharp:StringSize(string(SizeSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v7\\\" select=\\\"userCSharp:StringSubstring(string(StringExtractSource/text()) , &quot;0&quot; , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v8\\\" select=\\\"userCSharp:StringConcat(string(StringConcatSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v9\\\" select=\\\"userCSharp:StringTrimLeft(string(StringLeftTrimSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v10\\\" select=\\\"userCSharp:StringTrimRight(string(StringRightTrimSource/text()))\\\" />\\r\\n    <ns0:Root>\\r\\n      <StringFindDestination>\\r\\n        <xsl:value-of select=\\\"$var:v1\\\" />\\r\\n      </StringFindDestination>\\r\\n      <StringLeftDestination>\\r\\n        <xsl:value-of select=\\\"$var:v2\\\" />\\r\\n      </StringLeftDestination>\\r\\n      <StringRightDestination>\\r\\n        <xsl:value-of select=\\\"$var:v3\\\" />\\r\\n      </StringRightDestination>\\r\\n      <UppercaseDestination>\\r\\n        <xsl:value-of select=\\\"$var:v4\\\" />\\r\\n      </UppercaseDestination>\\r\\n      <LowercaseDestination>\\r\\n        <xsl:value-of select=\\\"$var:v5\\\" />\\r\\n      </LowercaseDestination>\\r\\n      <SizeDestination>\\r\\n        <xsl:value-of select=\\\"$var:v6\\\" />\\r\\n      </SizeDestination>\\r\\n      <StringExtractDestination>\\r\\n        <xsl:value-of select=\\\"$var:v7\\\" />\\r\\n      </StringExtractDestination>\\r\\n      <StringConcatDestination>\\r\\n        <xsl:value-of select=\\\"$var:v8\\\" />\\r\\n      </StringConcatDestination>\\r\\n      <StringLeftTrimDestination>\\r\\n        <xsl:value-of select=\\\"$var:v9\\\" />\\r\\n      </StringLeftTrimDestination>\\r\\n      <StringRightTrimDestination>\\r\\n        <xsl:value-of select=\\\"$var:v10\\\" />\\r\\n      </StringRightTrimDestination>\\r\\n    </ns0:Root>\\r\\n  </xsl:template>\\r\\n</xsl:stylesheet>\",\r\n    \"contentType\": \"application/xml\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904\",\r\n  \"name\": \"onesdk1904\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/maps\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3729"
+        ],
+        "x-ms-client-request-id": [
+          "2e9010b1-0c6f-4082-84cb-f7598180489a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-25.brazilus.logic.azure.com:443/integrationAccounts/6f989bcd54e84134bcab9f07e7508dc9/maps/onesdk1904/contents/Value?api-version=2015-08-01-preview&se=2017-03-31T23%3A38%3A43.8024922Z&sp=%2Fmaps%2Fonesdk1904%2Fread&sv=1.0&sig=8DBfaqJ7fvBC-kVD1kOdQQk8B-9iuNek9U_SFC0ELVY\",\r\n      \"contentVersion\": \"\\\"0x8D4786D8A5C8310\\\"\",\r\n      \"contentSize\": 3056,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"A2avz/M0ov2FPI3+Je8vDw==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-03-31T19:38:42.9653193Z\",\r\n    \"changedTime\": \"2017-03-31T19:38:43.7707785Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904\",\r\n  \"name\": \"onesdk1904\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/maps\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "806"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:59784ad4-7f8e-4cef-bad9-567c8daf3fd4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "9ba755d5-3567-4889-82e7-11c818cd2547"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193843Z:9ba755d5-3567-4889-82e7-11c818cd2547"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:43 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OS9tYXBzL29uZXNkazE5MDQ/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"createdTime\": \"2017-03-31T19:38:42.9653193Z\",\r\n    \"changedTime\": \"2017-03-31T19:38:43.7707785Z\",\r\n    \"content\": \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-16\\\"?>\\r\\n<xsl:stylesheet xmlns:xsl=\\\"http://www.w3.org/1999/XSL/Transform\\\" xmlns:msxsl=\\\"urn:schemas-microsoft-com:xslt\\\" xmlns:var=\\\"http://schemas.microsoft.com/BizTalk/2003/var\\\" exclude-result-prefixes=\\\"msxsl var s0 userCSharp\\\" version=\\\"1.0\\\" xmlns:ns0=\\\"http://BizTalk_Server_Project4.StringFunctoidsDestinationSchema\\\" xmlns:s0=\\\"http://BizTalk_Server_Project4.StringFunctoidsSourceSchema\\\" xmlns:userCSharp=\\\"http://schemas.microsoft.com/BizTalk/2003/userCSharp\\\">\\r\\n  <xsl:import href=\\\"http://btsfunctoids.blob.core.windows.net/functoids/functoids.xslt\\\" />\\r\\n  <xsl:output omit-xml-declaration=\\\"yes\\\" method=\\\"xml\\\" version=\\\"1.0\\\" />\\r\\n  <xsl:template match=\\\"/\\\">\\r\\n    <xsl:apply-templates select=\\\"/s0:Root\\\" />\\r\\n  </xsl:template>\\r\\n  <xsl:template match=\\\"/s0:Root\\\">\\r\\n    <xsl:variable name=\\\"var:v1\\\" select=\\\"userCSharp:StringFind(string(StringFindSource/text()) , &quot;SearchString&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v2\\\" select=\\\"userCSharp:StringLeft(string(StringLeftSource/text()) , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v3\\\" select=\\\"userCSharp:StringRight(string(StringRightSource/text()) , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v4\\\" select=\\\"userCSharp:StringUpperCase(string(UppercaseSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v5\\\" select=\\\"userCSharp:StringLowerCase(string(LowercaseSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v6\\\" select=\\\"userCSharp:StringSize(string(SizeSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v7\\\" select=\\\"userCSharp:StringSubstring(string(StringExtractSource/text()) , &quot;0&quot; , &quot;2&quot;)\\\" />\\r\\n    <xsl:variable name=\\\"var:v8\\\" select=\\\"userCSharp:StringConcat(string(StringConcatSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v9\\\" select=\\\"userCSharp:StringTrimLeft(string(StringLeftTrimSource/text()))\\\" />\\r\\n    <xsl:variable name=\\\"var:v10\\\" select=\\\"userCSharp:StringTrimRight(string(StringRightTrimSource/text()))\\\" />\\r\\n    <ns0:Root>\\r\\n      <StringFindDestination>\\r\\n        <xsl:value-of select=\\\"$var:v1\\\" />\\r\\n      </StringFindDestination>\\r\\n      <StringLeftDestination>\\r\\n        <xsl:value-of select=\\\"$var:v2\\\" />\\r\\n      </StringLeftDestination>\\r\\n      <StringRightDestination>\\r\\n        <xsl:value-of select=\\\"$var:v3\\\" />\\r\\n      </StringRightDestination>\\r\\n      <UppercaseDestination>\\r\\n        <xsl:value-of select=\\\"$var:v4\\\" />\\r\\n      </UppercaseDestination>\\r\\n      <LowercaseDestination>\\r\\n        <xsl:value-of select=\\\"$var:v5\\\" />\\r\\n      </LowercaseDestination>\\r\\n      <SizeDestination>\\r\\n        <xsl:value-of select=\\\"$var:v6\\\" />\\r\\n      </SizeDestination>\\r\\n      <StringExtractDestination>\\r\\n        <xsl:value-of select=\\\"$var:v7\\\" />\\r\\n      </StringExtractDestination>\\r\\n      <StringConcatDestination>\\r\\n        <xsl:value-of select=\\\"$var:v8\\\" />\\r\\n      </StringConcatDestination>\\r\\n      <StringLeftTrimDestination>\\r\\n        <xsl:value-of select=\\\"$var:v9\\\" />\\r\\n      </StringLeftTrimDestination>\\r\\n      <StringRightTrimDestination>\\r\\n        <xsl:value-of select=\\\"$var:v10\\\" />\\r\\n      </StringRightTrimDestination>\\r\\n    </ns0:Root>\\r\\n  </xsl:template>\\r\\n</xsl:stylesheet>\",\r\n    \"contentType\": \"application/xml\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904\",\r\n  \"name\": \"onesdk1904\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/maps\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "3729"
+        ],
+        "x-ms-client-request-id": [
+          "4ae5d5d9-9853-469c-be06-3be20d79942c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"mapType\": \"Xslt\",\r\n    \"contentLink\": {\r\n      \"uri\": \"https://prod-25.brazilus.logic.azure.com:443/integrationAccounts/6f989bcd54e84134bcab9f07e7508dc9/maps/onesdk1904/contents/Value?api-version=2015-08-01-preview&se=2017-03-31T23%3A38%3A44.2880797Z&sp=%2Fmaps%2Fonesdk1904%2Fread&sv=1.0&sig=kOJSDuAgyBDbYaHwo0HxpU41ER63GeJ2ppKVHWPonP8\",\r\n      \"contentVersion\": \"\\\"0x8D4786D8AA92E32\\\"\",\r\n      \"contentSize\": 3056,\r\n      \"contentHash\": {\r\n        \"algorithm\": \"md5\",\r\n        \"value\": \"A2avz/M0ov2FPI3+Je8vDw==\"\r\n      }\r\n    },\r\n    \"createdTime\": \"2017-03-31T19:38:42.9653193Z\",\r\n    \"changedTime\": \"2017-03-31T19:38:44.254111Z\"\r\n  },\r\n  \"id\": \"/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859/maps/onesdk1904\",\r\n  \"name\": \"onesdk1904\",\r\n  \"type\": \"Microsoft.Logic/integrationAccounts/maps\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "805"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:99ddf514-dbfe-46f5-923d-2a8f80553c4c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "852b1dad-7dad-492f-a28f-7c62f3cd649e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193844Z:852b1dad-7dad-492f-a28f-7c62f3cd649e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:44 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourceGroups/IntegrationAccountPsCmdletTest/providers/Microsoft.Logic/integrationAccounts/onesdk1859?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjM0YjIyYTMtMjIwMi00ZmIxLWIwNDAtMTMzMmJkOTI4Yzg0L3Jlc291cmNlR3JvdXBzL0ludGVncmF0aW9uQWNjb3VudFBzQ21kbGV0VGVzdC9wcm92aWRlcnMvTWljcm9zb2Z0LkxvZ2ljL2ludGVncmF0aW9uQWNjb3VudHMvb25lc2RrMTg1OT9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2a3b8f22-5087-4d69-ae8d-8d80ae1b6498"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Logic.LogicManagementClient/3.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "brazilsouth:91acab77-2314-4e59-ba05-fa96e54ab572"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "d1d1dc88-a700-4496-a7a5-9a97bd7f8999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170331T193846Z:d1d1dc88-a700-4496-a7a5-9a97bd7f8999"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 31 Mar 2017 19:38:45 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-UpdateIntegrationAccountMap": [
+      "onesdk1859",
+      "onesdk1904"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "f34b22a3-2202-4fb1-b040-1332bd928c84"
+  }
+}

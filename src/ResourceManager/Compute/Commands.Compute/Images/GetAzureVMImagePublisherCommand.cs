@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System.Linq;
 using System.Management.Automation;
 
@@ -32,24 +30,23 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachineImageListPublishersParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize()
-            };
+                var result = this.VirtualMachineImageClient.ListPublishersWithHttpMessagesAsync(
+                    this.Location.Canonicalize()).GetAwaiter().GetResult();
 
-            VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListPublishers(parameters);
+                var images = from r in result.Body
+                             select new PSVirtualMachineImagePublisher
+                             {
+                                 RequestId = result.RequestId,
+                                 StatusCode = result.Response.StatusCode,
+                                 Id = r.Id,
+                                 Location = r.Location,
+                                 PublisherName = r.Name
+                             };
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineImagePublisher
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             PublisherName = r.Name
-                         };
-
-            WriteObject(images, true);
+                WriteObject(images, true);
+            });
         }
     }
 }

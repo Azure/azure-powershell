@@ -19,11 +19,10 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System;
-
-namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
+namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class NewAzureAutomationWebhookTest : TestBase
+    public class NewAzureAutomationWebhookTest : RMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
@@ -37,10 +36,10 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
             this.cmdlet = new NewAzureAutomationWebhook
-                              {
-                                  AutomationClient = this.mockAutomationClient.Object,
-                                  CommandRuntime = this.mockCommandRuntime
-                              };
+            {
+                AutomationClient = this.mockAutomationClient.Object,
+                CommandRuntime = this.mockCommandRuntime
+            };
         }
 
         [TestMethod]

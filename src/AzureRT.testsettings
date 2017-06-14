@@ -7,7 +7,7 @@
   <Description>These are test settings for AzureRT test run.</Description>
   <Deployment>
     <DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Test\Resources\" />
-	<DeploymentItem filename="Package\Debug\" />
+	<DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\" />
   </Deployment>
   <Execution parallelTestCount="0">
     <Timeouts testTimeout="3000000" />

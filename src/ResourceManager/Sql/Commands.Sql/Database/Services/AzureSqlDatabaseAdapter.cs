@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using DatabaseEdition = Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -46,24 +46,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseAdapter(AzureProfile Profile, AzureSubscription subscription)
+        public AzureSqlDatabaseAdapter(IAzureContext context)
         {
-            this.Profile = Profile;
-            this._subscription = subscription;
-            Communicator = new AzureSqlDatabaseCommunicator(Profile, subscription);
-            ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Profile, subscription);
+            Context = context;
+            _subscription = context.Subscription;
+            Communicator = new AzureSqlDatabaseCommunicator(Context);
+            ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Context);
         }
 
         /// <summary>
@@ -77,6 +77,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         {
             var resp = Communicator.Get(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
             return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
+        }
+
+        /// <summary>
+        /// Gets an Azure Sql Database by name with additional information.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database</param>
+        /// <returns>The Azure Sql Database object</returns>
+        internal AzureSqlDatabaseModelExpanded GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName)
+        {
+            var resp = Communicator.GetExpanded(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            return CreateExpandedDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
         /// <summary>
@@ -96,29 +109,75 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
+        /// Gets a list of Azure Sql Databases with additional information.
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <returns>A list of database objects</returns>
+        internal ICollection<AzureSqlDatabaseModelExpanded> ListDatabasesExpanded(string resourceGroupName, string serverName)
+        {
+            var resp = Communicator.ListExpanded(resourceGroupName, serverName, Util.GenerateTracingId());
+
+            return resp.Select((db) =>
+            {
+                return CreateExpandedDatabaseModelFromResponse(resourceGroupName, serverName, db);
+            }).ToList();
+        }
+
+        /// <summary>
         /// Creates or updates an Azure Sql Database.
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
         /// <returns>The upserted Azure Sql Database</returns>
-        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
+            // Use AutoRest or Hyak SDK depending on model parameters.
+            // This is done because we want to add support for -SampleName, which is only supported by AutoRest SDK.
+            // Why not always use AutoRest SDK? Because it uses Azure-AsyncOperation polling, while Hyak uses
+            // Location polling. This means that switching to AutoRest requires re-recording almost all scenario tests,
+            // which currently is quite difficult.
+            if (!string.IsNullOrEmpty(model.SampleName))
             {
-                Location = model.Location,
-                Properties = new DatabaseCreateOrUpdateProperties()
+                // Use AutoRest SDK
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new Management.Sql.Models.Database
                 {
-                    Collation = model.CollationName,
-                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                    MaxSizeBytes = model.MaxSizeBytes,
-                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                    ElasticPoolName = model.ElasticPoolName,
-                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                }
-            });
+                    Location = model.Database.Location,
+                    Tags = model.Database.Tags,
+                    Collation = model.Database.CollationName,
+                    Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                    MaxSizeBytes = model.Database.MaxSizeBytes.ToString(),
+                    RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
+                    ElasticPoolName = model.Database.ElasticPoolName,
+                    RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
+                    ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.Database.ReadScale.ToString()),
+                    SampleName = model.SampleName
+                });
 
-            return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+                return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+            }
+            else
+            {
+                // Use Hyak SDK
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters
+                {
+                    Location = model.Database.Location,
+                    Tags = model.Database.Tags,
+                    Properties = new DatabaseCreateOrUpdateProperties()
+                    {
+                        Collation = model.Database.CollationName,
+                        Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                        MaxSizeBytes = model.Database.MaxSizeBytes,
+                        RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
+                        ElasticPoolName = model.Database.ElasticPoolName,
+                        RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
+                        ReadScale = model.Database.ReadScale.ToString(),
+                    }
+                });
+
+                return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
+            }
         }
 
         /// <summary>
@@ -140,7 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns></returns>
         public string GetServerLocation(string resourceGroupName, string serverName)
         {
-            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Profile, _subscription);
+            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
         }
@@ -148,79 +207,75 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Converts the response from the service to a powershell database object
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
         /// <param name="database">The service response</param>
         /// <returns>The converted model</returns>
         public static AzureSqlDatabaseModel CreateDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
-            AzureSqlDatabaseModel model = new AzureSqlDatabaseModel();
-            Guid id = Guid.Empty;
-            DatabaseEdition edition = DatabaseEdition.None;
+            return new AzureSqlDatabaseModel(resourceGroup, serverName, database);
+        }
 
-            model.ResourceGroupName = resourceGroup;
-            model.ServerName = serverName;
-            model.CollationName = database.Properties.Collation;
-            model.CreationDate = database.Properties.CreationDate;
-            model.CurrentServiceObjectiveName = database.Properties.ServiceObjective;
-            model.MaxSizeBytes = database.Properties.MaxSizeBytes;
-            model.DatabaseName = database.Name;
-            model.Status = database.Properties.Status;
-            model.Tags = database.Tags as Dictionary<string, string>;
-            model.ElasticPoolName = database.Properties.ElasticPoolName;
-            model.Location = database.Location;
+        /// <summary>
+        /// Converts the response from the service to a powershell database object
+        /// </summary>
+        /// <param name="resourceGroup">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="database">The service response</param>
+        /// <returns>The converted model</returns>
+        public static AzureSqlDatabaseModel CreateDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
+        {
+            return new AzureSqlDatabaseModel(resourceGroup, serverName, database);
+        }
 
-            Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
-            model.CurrentServiceObjectiveId = id;
-
-            Guid.TryParse(database.Properties.DatabaseId, out id);
-            model.DatabaseId = id;
-
-            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
-            model.Edition = edition;
-
-            Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
-            model.RequestedServiceObjectiveId = id;
-
-            return model;
+        /// <summary>
+        /// Converts the response from the service to a powershell database object
+        /// </summary>
+        /// <param name="resourceGroup">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="database">The service response</param>
+        /// <returns>The converted model</returns>
+        public static AzureSqlDatabaseModelExpanded CreateExpandedDatabaseModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
+        {
+            return new AzureSqlDatabaseModelExpanded(resourceGroup, serverName, database);
         }
 
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
         {
-            if(!string.IsNullOrEmpty(elasticPoolName))
+            if (!string.IsNullOrEmpty(elasticPoolName))
             {
                 var response = ElasticPoolCommunicator.ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, Util.GenerateTracingId());
-                IEnumerable< AzureSqlDatabaseActivityModel> list = response.Select((r) =>
-                    {
-                        return new AzureSqlDatabaseActivityModel()
-                        {
-                            DatabaseName = r.Properties.DatabaseName,
-                            EndTime = r.Properties.EndTime,
-                            ErrorCode = r.Properties.ErrorCode,
-                            ErrorMessage = r.Properties.ErrorMessage,
-                            ErrorSeverity = r.Properties.ErrorSeverity,
-                            Operation = r.Properties.Operation,
-                            OperationId = r.Properties.OperationId,
-                            PercentComplete = r.Properties.PercentComplete,
-                            ServerName = r.Properties.ServerName,
-                            StartTime = r.Properties.StartTime,
-                            State = r.Properties.State,
-                            Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
-                            {
-                                Current = new Dictionary<string, string>()
-                                {
-                                    {"CurrentElasticPoolName", r.Properties.CurrentElasticPoolName},
-                                    {"CurrentServiceObjectiveName", r.Properties.CurrentServiceObjectiveName},
-                                },
-                                Requested = new Dictionary<string, string>()
-                                {
-                                    {"RequestedElasticPoolName", r.Properties.RequestedElasticPoolName},
-                                    {"RequestedServiceObjectiveName", r.Properties.RequestedServiceObjectiveName},
-                                }
-                            }
-                        };
-                    });
-                
+                IEnumerable<AzureSqlDatabaseActivityModel> list = response.Select((r) =>
+                   {
+                       return new AzureSqlDatabaseActivityModel()
+                       {
+                           DatabaseName = r.DatabaseName,
+                           EndTime = r.EndTime,
+                           ErrorCode = r.ErrorCode,
+                           ErrorMessage = r.ErrorMessage,
+                           ErrorSeverity = r.ErrorSeverity,
+                           Operation = r.Operation,
+                           OperationId = r.OperationId,
+                           PercentComplete = r.PercentComplete,
+                           ServerName = r.ServerName,
+                           StartTime = r.StartTime,
+                           State = r.State,
+                           Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
+                           {
+                               Current = new Dictionary<string, string>()
+                               {
+                                    {"CurrentElasticPoolName", r.CurrentElasticPoolName},
+                                    {"CurrentServiceObjectiveName", r.CurrentServiceObjective},
+                               },
+                               Requested = new Dictionary<string, string>()
+                               {
+                                    {"RequestedElasticPoolName", r.RequestedElasticPoolName},
+                                    {"RequestedServiceObjectiveName", r.RequestedServiceObjective},
+                               }
+                           }
+                       };
+                   });
+
                 // Check if we have a database name constraint
                 if (!string.IsNullOrEmpty(databaseName))
                 {
@@ -231,7 +286,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }
             else
             {
-                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Resources.StandaloneDatabaseActivityNotSupported));
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StandaloneDatabaseActivityNotSupported));
             }
         }
     }

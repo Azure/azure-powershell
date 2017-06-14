@@ -13,13 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceTests 
+    public class ResourceTests : RMTestBase
     {
+        public ResourceTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResource()
@@ -48,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromEmptyGroup");
         }
 
-        [Fact (Skip = "TODO: Re-record")]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromNonExisingGroup()
         {
@@ -85,9 +93,72 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveResourceFailed()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-MoveResourceFailed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceWithPatchTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SetAResourceWithPatch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindAResourceByTag()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindAResource-ByTag");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithExpandProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithCollection()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceWithCollection");
+        }
+
+        [Fact(Skip = "Zones are disabled for now.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageResourceWithZones()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ManageResourceWithZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveASetOfResourcesTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveASetOfResources");
         }
     }
 }

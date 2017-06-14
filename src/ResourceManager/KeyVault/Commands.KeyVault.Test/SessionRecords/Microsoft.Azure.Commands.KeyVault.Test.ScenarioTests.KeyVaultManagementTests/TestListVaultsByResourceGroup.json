@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2Fvaults'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODYxOTM1ODEtYmI3Ni00NGE5LTkxMTAtOGNmNmRiY2JmZWE1L3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzI2OTAvcmVzb3VyY2VzPyRmaWx0ZXI9cmVzb3VyY2VUeXBlJTIwZXElMjAnTWljcm9zb2Z0LktleVZhdWx0JTJGdmF1bHRzJyZhcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/4fbe2810-8ec4-4443-88f4-1d0a6a212d02/resourceGroups/pshtestrg4931/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2Fvaults'&api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGZiZTI4MTAtOGVjNC00NDQzLTg4ZjQtMWQwYTZhMjEyZDAyL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzQ5MzEvcmVzb3VyY2VzPyRmaWx0ZXI9cmVzb3VyY2VUeXBlJTIwZXElMjAnTWljcm9zb2Z0LktleVZhdWx0JTJGdmF1bHRzJyZhcGktdmVyc2lvbj0yMDE2LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -10,10 +10,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/86193581-bb76-44a9-9110-8cf6dbcbfea5/resourceGroups/pshtestrg2690/providers/Microsoft.KeyVault/vaults/pshtestvault2489\",\r\n      \"name\": \"pshtestvault2489\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"northcentralus\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/4fbe2810-8ec4-4443-88f4-1d0a6a212d02/resourceGroups/pshtestrg4931/providers/Microsoft.KeyVault/vaults/pshtestvault7685\",\r\n      \"name\": \"pshtestvault7685\",\r\n      \"type\": \"Microsoft.KeyVault/vaults\",\r\n      \"location\": \"northcentralus\",\r\n      \"tags\": {\r\n        \"testtag\": \"testvalue\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "253"
+          "274"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -28,13 +28,13 @@
           "14998"
         ],
         "x-ms-request-id": [
-          "ac2831c2-89d8-4e56-8128-88ccec6b1b4d"
+          "cbb8f0d1-e068-4ccc-9c06-a4bf495fec15"
         ],
         "x-ms-correlation-request-id": [
-          "ac2831c2-89d8-4e56-8128-88ccec6b1b4d"
+          "cbb8f0d1-e068-4ccc-9c06-a4bf495fec15"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150515T233427Z:ac2831c2-89d8-4e56-8128-88ccec6b1b4d"
+          "WESTUS:20160714T204522Z:cbb8f0d1-e068-4ccc-9c06-a4bf495fec15"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 15 May 2015 23:34:27 GMT"
+          "Thu, 14 Jul 2016 20:45:21 GMT"
         ]
       },
       "StatusCode": 200
@@ -51,12 +51,12 @@
   ],
   "Names": {},
   "Variables": {
-    "ResourceGroupName": "pshtestrg2690",
+    "ResourceGroupName": "pshtestrg4931",
     "Location": "northcentralus",
-    "PreCreatedVault": "pshtestvault2489",
-    "SubscriptionId": "86193581-bb76-44a9-9110-8cf6dbcbfea5",
-    "TenantId": "71ecaf6c-7521-4953-ba5f-e55c260af004",
-    "Domain": "yuhuizhotmail.onmicrosoft.com",
-    "User": "kvtest@yuhuizhotmail.onmicrosoft.com"
+    "PreCreatedVault": "pshtestvault7685",
+    "SubscriptionId": "4fbe2810-8ec4-4443-88f4-1d0a6a212d02",
+    "TenantId": "dab60df3-eb31-470e-9aa7-0bb580c2624c",
+    "Domain": "mstestkeyvaultoutlook.onmicrosoft.com",
+    "User": "testuser@mstestkeyvaultoutlook.onmicrosoft.com"
   }
 }

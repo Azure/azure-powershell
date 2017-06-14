@@ -72,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
             }
         }
 
-        [TestMethod]
+        //[TestMethod]
         [TestCategory("CheckIn")]
         public void ICanCallThe_Get_ClusterHDInsightClusterCmdlet_WithDebug()
         {

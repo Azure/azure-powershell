@@ -22,11 +22,13 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class NewAzureSqlDatabaseTests : TestBase
+    public class NewAzureSqlDatabaseTests : SMTestBase
     {
         /// <summary>
         /// Initialize the necessary environment for the tests.
@@ -34,6 +36,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         [TestInitialize]
         public void SetupTest()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+            AzureSMProfileProvider.Instance.Profile = new AzureSMProfile();
             // Create 2 test databases
             NewAzureSqlDatabaseTests.CreateTestDatabasesWithSqlAuth();
         }
@@ -74,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     (expected, actual) =>
                     {
                         Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                        Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                        Assert.IsNotNull(actual.UserAgent);
                         switch (expected.Index)
                         {
                             // Request 0-1: Create testdb1
@@ -141,7 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 (expected, actual) =>
                 {
                     Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                    Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                    Assert.IsNotNull(actual.UserAgent);
                     switch (expected.Index)
                     {
                         // Request 0-2: Create testdb1
@@ -234,7 +239,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                 (expected, actual) =>
                 {
                     Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                    Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                    Assert.IsNotNull(actual.UserAgent);
                     switch (expected.Index)
                     {
                         // Request 0-5: Remove database requests

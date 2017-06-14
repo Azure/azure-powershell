@@ -15,10 +15,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using System.Management.Automation;
 
-    [Cmdlet(VerbsData.Import, "AzureApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
+    [Cmdlet(VerbsData.Import, "AzureRmApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
     public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
     {
         [Parameter(

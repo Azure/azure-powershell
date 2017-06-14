@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 
-  <?define productName="Microsoft Azure PowerShell - June 2015" ?>
+  <?define productName="Microsoft Azure PowerShell - June 2017" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="0.9.3" ?>
-  <?define versionedStartMenuFolder="Microsoft Azure" ?>
-  <?define staleStartMenuFolder="Windows Azure" ?>
+  <?define version="4.1.0" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
@@ -27,20 +25,33 @@
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     <Property Id="ALLUSERS" Value="1" />
     <!-- per machine install-->
-
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
+
+    <SetProperty Action="SetBase64" Id="BaseModulesFolder" Value="[ProgramFiles64Folder]WindowsPowerShell\Modules\" Before="AppSearch">
+      VersionNT64
+    </SetProperty>
+
+    <SetProperty Action="SetBase32" Id="BaseModulesFolder" Value="[ProgramFilesFolder]WindowsPowerShell\Modules\" Before="AppSearch">
+      NOT VersionNT64
+    </SetProperty>
+
+    <SetProperty Id="POWERSHELLEXE" Value="[WindowsFolder]System32\WindowsPowerShell\v1.0\powershell.exe" Before="AppSearch"/>
+    
+    <util:CloseApplication Id="ClosePowerShellExe" Target="powershell.exe" ElevatedCloseMessage="yes" CloseMessage="yes" PromptToContinue="yes" Description="PowerShell must be closed to continue with this installation.  Please close any PowerShell windows and click 'Retry', or click 'Cancel' to stop installation. If you click 'Ignore' the installer will attempt to close any open PowerShell window."/>
+    <util:CloseApplication Id="ClosePowerShellIseExe" Target="powershell_ise.exe" ElevatedCloseMessage="yes" CloseMessage="yes" PromptToContinue="yes" Description="PowerShell ISE must be closed to continue with this installation. Please close any PowerShell ISE windows and click 'Retry', or click 'Cancel' to stop installation. If you click 'Ignore' the installer will attempt to close any open PowerShell ISE window."/>
 
     <Condition Message="This setup requires the Windows PowerShell 3.0 or compatible version to be installed.">
       <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
       <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "3.0")]]>
     </Condition>
 
-    <PropertyRef Id="NETFRAMEWORK40FULL" />
-    <PropertyRef Id="NETFRAMEWORK40CLIENT" />
-    <Condition Message="This setup requires the .NET Framework 4.0 or higher to be installed.">
-      Installed OR NETFRAMEWORK40FULL OR NETFRAMEWORK40CLIENT
+    <PropertyRef Id="NETFRAMEWORK45" />
+    <Condition Message="This setup requires the .NET Framework 4.5.2 or higher to be installed.">
+      <!-- NETFRAMEWORK45 contains a DWORD with installed version key to versions is here: -->
+      <!-- https://msdn.microsoft.com/en-us/library/ee942965(v=vs.110).aspx#detect_net -->
+      <![CDATA[Installed or (NETFRAMEWORK45 >= "#379893")]]>
     </Condition>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
@@ -51,55 +62,50 @@
           </Directory>
         </Directory>
       </Directory>
-      <Directory Id="ProgramMenuFolder">
-        <Directory Id="AzureSdkMenu" Name="$(var.versionedStartMenuFolder)"/>
-        <Directory Id="StaleAzureSdkMenu" Name="$(var.staleStartMenuFolder)"/>
-      </Directory>
     </Directory>
 
     <Property Id="POWERSHELLPATH">
-    <RegistrySearch Id="POWERSHELLPATH"
-                    Type="raw"
-                    Root="HKLM"
-                    Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
-                    Name="ApplicationBase" />
+      <RegistrySearch Id="POWERSHELLPATH"
+                      Type="raw"
+                      Root="HKLM"
+                      Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
+                      Name="ApplicationBase" />
     </Property>
 
     <DirectoryRef Id="PowerShellFolder">
       <Component Id="PSModulePath.System" Guid="273525B9-7AAB-421A-90C8-8E50A1840B8D">
         <CreateFolder />
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
-        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[PowerShellFolder]ServiceManagement" System="yes" />
+        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager\;[PowerShellFolder]ServiceManagement\;[PowerShellFolder]Storage\" System="yes" />
+     </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="PowerShellFolder">
+      <Component Id="AzureSdkExecutionPolicyScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
+        <File Id="AzureSdkExecutionPolicyScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\SetExecutionPolicy.ps1" />
       </Component>
     </DirectoryRef>
 
-    <DirectoryRef Id="AzureSdkMenu">
-      <Component Id="AzureSdkShortcut" Guid="A9B58A22-F746-451D-8840-F887D8014C3C">
-        <Shortcut Id="AzureSdkStartMenuShortcut"
-                  Name="Microsoft Azure PowerShell"
-                  Description="Microsoft PowerShell cmdlets"
-                  Target="[POWERSHELLPATH]\powershell.exe"
-                  Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]ServiceManagement\Azure\Services\ShortcutStartup.ps1&quot;"/>
-        <RemoveFolder Id="AzureSdkMenu" On="uninstall"/>
-        <RemoveFile Id="RemoveStaleFiles" Directory="StaleAzureSdkMenu" Name="Windows Azure PowerShell.lnk" On="both"/>
-        <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Microsoft SDKs\WindowsAzure\$(var.version)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+    <DirectoryRef Id="PowerShellFolder">
+      <Component Id="AzureSdkRemoveModulesScript" Guid="7d75fe67-88e4-40da-bc3d-874cb0438d30">
+        <File Id="AzureSdkRemoveModulesScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\RemoveGalleryModules.ps1" />
       </Component>
     </DirectoryRef>
 
     <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
       <ComponentGroupRef Id="azurecmdfiles" />
       <ComponentRef Id="PSModulePath.System" />
-      <ComponentRef Id="AzureSdkShortcut" />
-    </Feature>
+      <ComponentRef Id="AzureSdkExecutionPolicyScript" />
+      <ComponentRef Id="AzureSdkRemoveModulesScript" />
+   </Feature>
 
     <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
-    <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
-    <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
-                     Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
+    <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]SetExecutionPolicy.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+    <CustomAction Id="RemoveGalleryModules" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]RemoveGalleryModules.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
-      <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
-      <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="RemoveGalleryModules" After="CreateShortcuts">NOT Installed</Custom>
+      <Custom Action="SetExecutionPolicy" After="RemoveGalleryModules">NOT Installed</Custom>
     </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />

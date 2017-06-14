@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" />
+  <Import Project="..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props" Condition="Exists('..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A3965B66-5A3E-4B8C-9574-28E5958D4828}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.ScenarioTest</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.ScenarioTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>af45439e</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hyak.Common">
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Test.Framework">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6179.26854-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.7-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Web.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.14.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=8.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.8.2.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Storage">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.6.0.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.WebSites, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.WebSites.5.0.0-prerelease\lib\net40\Microsoft.WindowsAzure.Management.WebSites.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.6.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Spatial">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.assert.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.assert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.extensibility.core.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutomationTests\AutomationTests.cs" />
+    <Compile Include="CloudServiceTests\ReverseDnsFqdnAzureServiceScenarioTests.cs" />
+    <Compile Include="CloudServiceTests\PublishAzureServiceScenarioTests.cs" />
+    <Compile Include="CloudServiceTests\StartAzureServiceScenarioTests.cs" />
+    <Compile Include="CloudServiceTests\StopAzureServiceScenarioTests.cs" />
+    <Compile Include="CloudServiceTests\TestAzureNameScenarioTests.cs" />
+    <Compile Include="CloudServiceTests\EmulatorTests.cs" />
+    <Compile Include="CloudServiceTests\RemoveAzureServiceScenarioTests.cs" />
+    <Compile Include="Common\ConnectionStringFields.cs" />
+    <Compile Include="Common\PowerShellCommandMode.cs" />
+    <Compile Include="Common\WindowsAzurePowerShellCertificateTest.cs" />
+    <Compile Include="Common\ResourceManagerTestEnvironmentFactory.cs" />
+    <Compile Include="Common\CustomPowerShell\CustomerPSHostUserInterface.cs" />
+    <Compile Include="Common\CustomPowerShell\CustomHost.cs" />
+    <Compile Include="Common\PowerShellExtensions.cs" />
+    <Compile Include="Common\PowerShellTest.cs" />
+    <Compile Include="Common\ServiceManagementTestEnvironmentFactory.cs" />
+    <Compile Include="Common\TestCredentialHelper.cs" />
+    <Compile Include="Common\TestEnvironment.cs" />
+    <Compile Include="Common\TestEnvironmentFactory.cs" />
+    <Compile Include="Common\TokenCloudCredentialsHelper.cs" />
+    <None Include="packages.config" />
+    <None Include="Resources\CredentialTests\AddAccountForArmTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\CredentialTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ChefExtension\ChefExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ChefExtension\client.rb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ChefExtension\tstorgnztn-validator.pem">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ChefExtension\encrypted_data_bag_secret">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DiagnosticsExtension\DiagnosticsExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DiagnosticsExtension\Files\diagnostics.wadcfgx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SqlIaaSExtension\SqlIaaSExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DscExtension\DscExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DscExtension\DummyConfig.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Files\LongRoleName.Cloud.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Files\LongRoleName.Cloud.cspkg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Files\OneWebOneWorker.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Files\OneWebOneWorker.cspkg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Files\vnetconfig.netcfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationConfigureRunbook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationPublishAndEditRunbook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationRunbookWithParameter.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationStartAndStopRunbook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationStartRunbookOnASchedule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationStartUnpublishedRunbook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.AutomationTests\TestAutomationSuspendAndResumeJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtensionDaemonTask.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionBasic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionConfigurationArray.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DiagnosticsExtensionTests\TestAzureServiceDiagnosticsExtensionWrongServiceName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ChefExtensionTests\TestSetAzureVMChefExtensionAdvancedOptions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.DscExtensionTests\TestGetAzureVMDscExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunAutoGeneratedHostedServiceCmdletTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunAutoGeneratedServiceExtensionCmdletTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunAutoGeneratedVirtualMachineCmdletTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunAzurePlatformVMImageNegativeTest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunEnableAndDisableDataCollectionTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunInitiateMaintenanceTest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunNewAzureComputeArgumentListTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunNewAzureComputeParameterObjectTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunRedeployVirtualMachineTest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunServiceDeploymentExtensionCmdletTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunServiceExtensionSetCmdletTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunServiceManagementCloudExceptionTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunStartAndStopMultipleVirtualMachinesTest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestAzureReservedIPWithIPTags.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestGetAzureLocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestGetAzureVM.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.SchedulerTests\TestSchedulerEndToEnd.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrateAzureDeployment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrateAzureStorageAccount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrateAzureVNet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationAbortAzureDeployment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationAbortAzureStorageAccount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationAbortAzureVNet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationAzureReservedIP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationNetworkSecurityGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationRouteTable.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestMigrationValidateAzureDeployment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestNewAzureVMWithBYOL.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.SqlIaaSExtensionTests\TestGetAzureVMSqlIaaSExtension.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddAzureTrafficManagerEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddAzureTrafficManagerEndpointNoWeightLocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestAddMultipleAzureTrafficManagerEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestCreateAndRemoveProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestDisableProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestDisableProfileWithInvalidCredentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestEnableProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestEnableProfileWithInvalidCredentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestGetMultipleProfiles.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestGetProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestGetProfileWithInvalidCredentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestNewProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestNewProfileInvalidParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestRemoveAzureTrafficManagerEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestRemoveProfileWithInvalidCredentials.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestRemoveProfileWithNonExistingName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetAzureTrafficManagerEndpoint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetAzureTrafficManagerEndpointAdds.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetAzureTrafficManagerEndpointUpdateWeightLocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestSetProfileProperty.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.TrafficManagerTests\TestTestAzureTrafficManagerDomainName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Storage\StorageContext.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="CredentialTests\AddAccountForArmTests.cs" />
+    <Compile Include="CredentialTests\CredentialTestBase.cs" />
+    <Compile Include="CredentialTests\CredentialTestHelper.cs" />
+    <Compile Include="ChefExtension\ChefExtensionTests.cs" />
+    <Compile Include="DiagnosticsExtension\DiagnosticsExtensionTests.cs" />
+    <Compile Include="SqlIaaSExtensionTests\SqlIaaSExtensionTests.cs" />
+    <Compile Include="DscExtension\DscExtensionTests.cs" />
+    <Compile Include="MediaServicesTests\MediaServicesTests.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ResourceLocator.cs" />
+    <Compile Include="Scheduler\SchedulerTests.cs" />
+    <Compile Include="ServiceBusTests\ServiceBusAuthorizationRuleTests.cs" />
+    <Compile Include="ServiceManagement\UnitTests.cs" />
+    <Compile Include="ServiceManagement\ScenarioTests.cs" />
+    <Compile Include="ServiceManagement\ServiceManagementTests.cs" />
+    <Compile Include="StorageTests\StorageContainerTest.cs" />
+    <Compile Include="StorageTests\StorageContextTest.cs" />
+    <Compile Include="StoreTests\StoreTests.cs" />
+    <Compile Include="TrafficManagerTests\TrafficManagerTests.cs" />
+    <Compile Include="WAPackIaaS\CloudService\CmdletTestCloudServiceBase.cs" />
+    <Compile Include="WAPackIaaS\CloudService\GetWAPackCloudServiceTests.cs" />
+    <Compile Include="WAPackIaaS\CloudService\GetWAPackVMRoleTests.cs" />
+    <Compile Include="WAPackIaaS\CloudService\NewWAPackCloudServiceTests.cs" />
+    <Compile Include="WAPackIaaS\CloudService\NewWAPackVMRoleTests.cs" />
+    <Compile Include="WAPackIaaS\CloudService\RemoveWAPackCloudServiceTests.cs" />
+    <Compile Include="WAPackIaaS\CloudService\RemoveWAPackVMRoleTests.cs" />
+    <Compile Include="WAPackIaaS\CloudService\SetWAPackVMRoleTests.cs" />
+    <Compile Include="WAPackIaaS\CmdletTestBase.cs" />
+    <Compile Include="WAPackIaaS\Networking\CmdletTestNetworkingBase.cs" />
+    <Compile Include="WAPackIaaS\Networking\GetWAPackLogicalNetworkTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\GetWAPackStaticIPAddressPoolTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\GetWAPackVMSubnetTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\NewWAPackStaticIPAddressPoolTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\NewWAPackVMSubnetTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\NewWAPackVNetTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\RemoveStaticIPAddressPoolTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\RemoveWAPackVMSubnetTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\RemoveWAPackVNetTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\CmdletTestVirtualMachineStatusBase.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackVMOSDiskTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackVMSizeProfileTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\GetWAPackVMTemplateTests.cs" />
+    <Compile Include="WAPackIaaS\Networking\GetWAPackVNetTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\GetWAPPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\NewWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\PowershellExtension.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\RemoveWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\RestartWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\ResumeWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\SetWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\StartWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\StopWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\VirtualMachine\SuspendWAPackVMTests.cs" />
+    <Compile Include="WAPackIaaS\WAPackConfigurationFactory.cs" />
+    <Compile Include="WebsitesTests\WebsitesTestsBase.cs" />
+    <Compile Include="WebsitesTests\WebsitesTests.cs" />
+    <Compile Include="ManagementTests\ManagementTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBusTests\ServiceBusNamespaceTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RunWebsitesTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Websites\WebsiteJobTestCmd.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Resources\Automation\AutomationTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Automation\fastJob.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Automation\Test-Workflow.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Automation\Test-WorkflowV2.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Automation\Test-WorkFlowWithVariousParameters.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Automation\Use-WorkflowCheckpointSample.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Automation\Write-DebugAndVerboseOutput.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Build2014_Website_App.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\RdfeTestDummy.publishsettings">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\CsmTestDummySubscription.json" />
+    <None Include="Resources\Scheduler\SchedulerTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Websites\WebsiteJobTestCmd.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\TrafficManager\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\TrafficManager\TrafficManagerTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Websites\WebsiteJobTestCmd.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="Resources\CloudService\CloudServiceTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\CloudService\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Management\ManagementTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Websites\WebsitesTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Websites\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\CloudService\Cache\connman.tgz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\CloudService\Cache\mc.tgz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\ServiceManagementTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Credentials.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Credstests.ps1" />
+    <None Include="Resources\CredUtils.ps1" />
+    <None Include="Resources\Emulator.ps1" />
+    <None Include="Resources\Emulatortests.ps1" />
+    <None Include="Resources\GenerateCredstests.ps1" />
+    <None Include="Resources\GenerateEmulatortests.ps1" />
+    <None Include="Resources\MediaServices\MediaServices.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\NodeEmulatorTests.ps1" />
+    <None Include="Resources\PHPEmulatorTests.ps1" />
+    <None Include="Resources\Scaffolding.ps1" />
+    <None Include="Resources\ServiceBus\NamespaceScenarioTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceBus\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Store\StoreTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Storage\StorageContainer.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Store\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceBus\AuthorizationRuleScenarioTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\tipsf001.publishsettings" />
+    <None Include="Resources\tipsf002.publishsettings" />
+    <None Include="Resources\tipsf003.publishsettings" />
+    <None Include="Resources\tipsf004.publishsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Compute\Commands.ServiceManagement.Test\Commands.ServiceManagement.Test.csproj">
+      <Project>{58a78f29-8c0c-4a5e-893e-3953c0f29c8a}</Project>
+      <Name>Commands.ServiceManagement.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
+      <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
+      <Name>Commands.Test.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Compute\Commands.ServiceManagement\Commands.ServiceManagement.csproj">
+      <Project>{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}</Project>
+      <Name>Commands.ServiceManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
+      <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
+      <Name>Commands.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands\Commands.csproj">
+      <Project>{cd5aa507-f5ef-473d-855b-84b91a1abe54}</Project>
+      <Name>Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Common.Test\Commands.Common.Test.csproj">
+      <Project>{3b48a77b-5956-4a62-9081-92ba04b02b27}</Project>
+      <Name>Commands.Common.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
+      <Name>Commands.ScenarioTests.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
+      <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
+      <Name>Commands.ServiceManagement.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\CloudService\Cache\index.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\CloudService\Cache\requestHandlers.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CloudService\Cache\router.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\CloudService\Cache\server.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+</Project>

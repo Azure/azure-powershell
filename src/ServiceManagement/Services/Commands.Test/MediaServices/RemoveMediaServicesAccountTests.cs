@@ -25,7 +25,7 @@ using Microsoft.Azure;
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
     
-    public class RemoveMediaServicesAccountTests : TestBase
+    public class RemoveMediaServicesAccountTests : SMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

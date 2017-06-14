@@ -1,0 +1,1724 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/gateways/mygateway?api-version=2015-07-01-preview&$expand=status",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L2dhdGV3YXlzL215Z2F0ZXdheT9hcGktdmVyc2lvbj0yMDE1LTA3LTAxLXByZXZpZXcmJGV4cGFuZD1zdGF0dXM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4ba333c6-0959-4439-9bf1-92afa64360af"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/gateways/mygateway\",\r\n  \"name\": \"mygateway\",\r\n  \"type\": \"microsoft.servermanagement/gateways\",\r\n  \"location\": \"centralus\",\r\n  \"etag\": \"W/\\\"datetime'2016-05-02T17%3A30%3A40.4378961Z'\\\"\",\r\n  \"properties\": {\r\n    \"created\": \"2016-05-02T17:27:34.0544536Z\",\r\n    \"updated\": \"2016-05-02T17:30:40.1347392Z\",\r\n    \"autoUpgrade\": \"Off\",\r\n    \"desiredVersion\": null,\r\n    \"minimumVersion\": \"1.0.0.0\",\r\n    \"betaFeatures\": \"Off\",\r\n    \"instances\": [\r\n      {\r\n        \"availableMemoryMByte\": 2097.0,\r\n        \"gatewayWorkingSetMByte\": 117.379074,\r\n        \"totalCpuUtilizationPercent\": 8.436918,\r\n        \"gatewayCpuUtilizationPercent\": 0.0195141621,\r\n        \"gatewayVersion\": \"1.0.1104.0\",\r\n        \"friendlyOsName\": \"Microsoft Windows 10 Enterprise Insider Preview\",\r\n        \"installedDate\": \"2016-04-13T18:35:04Z\",\r\n        \"logicalProcessorCount\": 8,\r\n        \"name\": \"SADDLEBAGS\",\r\n        \"gatewayId\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/gateways/mygateway\",\r\n        \"statusUpdated\": \"2016-05-02T17:38:43Z\"\r\n      }\r\n    ],\r\n    \"activeMessageCount\": 0,\r\n    \"latestPublishedMsiVersion\": \"1.0.1187.0\",\r\n    \"publishedTimeUtc\": \"2016-04-28T18:07:20Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1123"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ef672871-3455-4c35-a1b8-a9ff75a1c6f4"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef672871-3455-4c35-a1b8-a9ff75a1c6f4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173924Z:ef672871-3455-4c35-a1b8-a9ff75a1c6f4"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:24 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/gateways/mygateway?api-version=2015-07-01-preview&$expand=status",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L2dhdGV3YXlzL215Z2F0ZXdheT9hcGktdmVyc2lvbj0yMDE1LTA3LTAxLXByZXZpZXcmJGV4cGFuZD1zdGF0dXM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9e378fb5-2e78-4ee9-bcd8-e92c0e683a08"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/gateways/mygateway\",\r\n  \"name\": \"mygateway\",\r\n  \"type\": \"microsoft.servermanagement/gateways\",\r\n  \"location\": \"centralus\",\r\n  \"etag\": \"W/\\\"datetime'2016-05-02T17%3A30%3A40.4378961Z'\\\"\",\r\n  \"properties\": {\r\n    \"created\": \"2016-05-02T17:27:34.0544536Z\",\r\n    \"updated\": \"2016-05-02T17:30:40.1347392Z\",\r\n    \"autoUpgrade\": \"Off\",\r\n    \"desiredVersion\": null,\r\n    \"minimumVersion\": \"1.0.0.0\",\r\n    \"betaFeatures\": \"Off\",\r\n    \"instances\": [\r\n      {\r\n        \"availableMemoryMByte\": 2097.0,\r\n        \"gatewayWorkingSetMByte\": 117.379074,\r\n        \"totalCpuUtilizationPercent\": 8.436918,\r\n        \"gatewayCpuUtilizationPercent\": 0.0195141621,\r\n        \"gatewayVersion\": \"1.0.1104.0\",\r\n        \"friendlyOsName\": \"Microsoft Windows 10 Enterprise Insider Preview\",\r\n        \"installedDate\": \"2016-04-13T18:35:04Z\",\r\n        \"logicalProcessorCount\": 8,\r\n        \"name\": \"SADDLEBAGS\",\r\n        \"gatewayId\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/gateways/mygateway\",\r\n        \"statusUpdated\": \"2016-05-02T17:38:43Z\"\r\n      }\r\n    ],\r\n    \"activeMessageCount\": 0,\r\n    \"latestPublishedMsiVersion\": \"1.0.1187.0\",\r\n    \"publishedTimeUtc\": \"2016-04-28T18:07:20Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1123"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3e78ad2a-0f8d-4de4-9d7b-dcc00a31a393"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "3e78ad2a-0f8d-4de4-9d7b-dcc00a31a393"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173924Z:3e78ad2a-0f8d-4de4-9d7b-dcc00a31a393"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:24 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3M/YXBpLXZlcnNpb249MjAxNS0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"centralus\",\r\n  \"properties\": {\r\n    \"gatewayId\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/gateways/mygateway\",\r\n    \"connectionName\": \"saddlebags\",\r\n    \"userName\": \"gsAdmin\",\r\n    \"password\": \"S0meP@sswerd!\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "306"
+        ],
+        "x-ms-client-request-id": [
+          "85d86925-25f7-4229-bbe3-990324108dbc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/nodes/saddlebags\",\r\n  \"name\": \"saddlebags\",\r\n  \"type\": \"microsoft.servermanagement/nodes\",\r\n  \"location\": \"centralus\",\r\n  \"etag\": \"W/\\\"datetime'2016-05-02T17%3A39%3A30.0061533Z'\\\"\",\r\n  \"properties\": {\r\n    \"gatewayId\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/gateways/mygateway\",\r\n    \"connectionName\": \"saddlebags\",\r\n    \"created\": \"2016-05-02T17:39:29.6741971Z\",\r\n    \"updated\": \"2016-05-02T17:39:29.6741971Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "552"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "81f734fd-505e-4168-b806-c0795cb6d885"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "81f734fd-505e-4168-b806-c0795cb6d885"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173930Z:81f734fd-505e-4168-b806-c0795cb6d885"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3M/YXBpLXZlcnNpb249MjAxNS0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9adb84c1-8462-442c-90ef-5219b066711d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/nodes/saddlebags\",\r\n  \"name\": \"saddlebags\",\r\n  \"type\": \"microsoft.servermanagement/nodes\",\r\n  \"location\": \"centralus\",\r\n  \"etag\": \"W/\\\"datetime'2016-05-02T17%3A39%3A30.0061533Z'\\\"\",\r\n  \"properties\": {\r\n    \"gatewayId\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/gateways/mygateway\",\r\n    \"connectionName\": \"saddlebags\",\r\n    \"created\": \"2016-05-02T17:39:29.6741971Z\",\r\n    \"updated\": \"2016-05-02T17:39:29.6741971Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "552"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "42326b37-e1da-41c3-91c1-031c5d9eb4cb"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "42326b37-e1da-41c3-91c1-031c5d9eb4cb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173930Z:42326b37-e1da-41c3-91c1-031c5d9eb4cb"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3M/YXBpLXZlcnNpb249MjAxNS0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fd4e632d-0661-41e5-b48f-00e041c20627"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/nodes/saddlebags\",\r\n  \"name\": \"saddlebags\",\r\n  \"type\": \"microsoft.servermanagement/nodes\",\r\n  \"location\": \"centralus\",\r\n  \"etag\": \"W/\\\"datetime'2016-05-02T17%3A39%3A30.0061533Z'\\\"\",\r\n  \"properties\": {\r\n    \"gatewayId\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/gateways/mygateway\",\r\n    \"connectionName\": \"saddlebags\",\r\n    \"created\": \"2016-05-02T17:39:29.6741971Z\",\r\n    \"updated\": \"2016-05-02T17:39:29.6741971Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "552"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "33e19129-d046-4a81-8940-e40466f401a1"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "33e19129-d046-4a81-8940-e40466f401a1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173931Z:33e19129-d046-4a81-8940-e40466f401a1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"userName\": \"gsAdmin\",\r\n    \"password\": \"S0meP@sswerd!\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "89"
+        ],
+        "x-ms-client-request-id": [
+          "0914db40-564a-4c30-a4f3-edf26cdcf898"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d\",\r\n  \"name\": \"95ec78a9-be7b-4a40-a9ab-3950c822682d\",\r\n  \"type\": \"microsoft.servermanagement/nodes/sessions\",\r\n  \"properties\": {\r\n    \"userName\": \"gsAdmin\",\r\n    \"created\": \"2016-05-02T17:39:31.1010989Z\",\r\n    \"updated\": \"2016-05-02T17:39:31.1010989Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "398"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7307ee44-e402-4004-8b4f-7df6affb2230"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "7307ee44-e402-4004-8b4f-7df6affb2230"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173931Z:7307ee44-e402-4004-8b4f-7df6affb2230"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9a6c3c9-7c12-4d0d-83c5-0c38487264ad"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000\",\r\n  \"name\": \"00000000-0000-0000-0000-000000000000\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"sessionId\": \"9bfed69b-360f-47b0-ba76-1b388cde09da\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "432"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c858d640-57ab-4222-a69b-8767ef9e13f3"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:33.5280947Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "c858d640-57ab-4222-a69b-8767ef9e13f3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173933Z:c858d640-57ab-4222-a69b-8767ef9e13f3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:33 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "01f13cf3-76f8-445b-9a75-1ba6fc122b5f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/00000000-0000-0000-0000-000000000000\",\r\n  \"name\": \"00000000-0000-0000-0000-000000000000\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "432"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2c0b6fde-9106-4a1e-beda-628b5cf46121"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:36.0134462Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "2c0b6fde-9106-4a1e-beda-628b5cf46121"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173936Z:2c0b6fde-9106-4a1e-beda-628b5cf46121"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:35 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/9bfed69b-360f-47b0-ba76-1b388cde09da/invokeCommand?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvOWJmZWQ2OWItMzYwZi00N2IwLWJhNzYtMWIzODhjZGUwOWRhL2ludm9rZUNvbW1hbmQ/YXBpLXZlcnNpb249MjAxNS0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"command\": \" dir c:\\\\ \"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "57"
+        ],
+        "x-ms-client-request-id": [
+          "5f37e3fb-63d3-464f-9861-6eb0dbf26d13"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"results\": [\r\n    {\r\n      \"foregroundColor\": \"#FFFFFF\",\r\n      \"backgroundColor\": \"#012456\",\r\n      \"value\": \"\\r\\n\\r\\n    Directory: C:\\\\\\r\\n\\r\\n\\r\\nMode                LastWriteTime         Length Name                                                                  \\r\\n----                -------------         ------ ----                                                                  \\r\\nd-----        3/23/2016  10:02 AM                bootstrap                                                             \\r\\nd-----        3/23/2016   9:39 AM                Chocolatey                                                            \\r\\nd-----        3/31/2016   6:16 AM                Data                                                                  \\r\\nd-----        3/29/2016   5:08 PM                MSOTraceLite                                                          \\r\\nd-----        4/23/2016   3:27 AM                PerfLogs                                                              \\r\\nd-r---        4/25/2016  10:36 AM                Program Files                                                         \\r\\nd-r---        4/28/2016   5:45 PM                Program Files (x86)                                                   \\r\\nd-----        3/23/2016   8:16 AM                root                                                                  \\r\\nd-----         4/5/2016   9:47 AM                tmp                                                                   \\r\\nd-----        3/23/2016  10:03 AM                Tools                                                                 \\r\\nd-r---        4/25/2016  10:36 AM                Users                                                                 \\r\\nd-----         5/2/2016   9:51 AM                Windows                                                               \\r\\n\\r\\n\",\r\n      \"messageType\": 107\r\n    },\r\n    {\r\n      \"prompt\": \"PS C:\\\\Users\\\\gsAdmin\\\\Documents> \",\r\n      \"messageType\": 0\r\n    }\r\n  ],\r\n  \"sessionId\": \"9bfed69b-360f-47b0-ba76-1b388cde09da\",\r\n  \"command\": \"dir\",\r\n  \"completed\": \"true\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2015"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e9213311-0dc9-41c7-a14f-8a2e98c091e8"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:34.5024428Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "e9213311-0dc9-41c7-a14f-8a2e98c091e8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173934Z:e9213311-0dc9-41c7-a14f-8a2e98c091e8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:34 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnM/YXBpLXZlcnNpb249MjAxNS0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bd6a119b-3478-42f7-a4c6-911a2bb1bf27"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/cd616b20-7e54-4dbe-bee2-eba203f2ac88\",\r\n      \"name\": \"cd616b20-7e54-4dbe-bee2-eba203f2ac88\",\r\n      \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n      \"properties\": {\r\n        \"sessionId\": \"cd616b20-7e54-4dbe-bee2-eba203f2ac88\",\r\n        \"state\": \"Disconnected\",\r\n        \"runspaceAvailability\": \"None\",\r\n        \"disconnectedOn\": \"2016-05-02T10:37:38.0694959-07:00\",\r\n        \"expiresOn\": \"2016-05-02T12:37:38.0694959-07:00\",\r\n        \"version\": {\r\n          \"major\": 5,\r\n          \"minor\": 1,\r\n          \"build\": 14332,\r\n          \"revision\": 1001,\r\n          \"majorRevision\": 0,\r\n          \"minorRevision\": 1001\r\n        },\r\n        \"name\": \"Runspace141\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/9bfed69b-360f-47b0-ba76-1b388cde09da\",\r\n      \"name\": \"9bfed69b-360f-47b0-ba76-1b388cde09da\",\r\n      \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n      \"properties\": {\r\n        \"sessionId\": \"9bfed69b-360f-47b0-ba76-1b388cde09da\",\r\n        \"state\": \"Disconnected\",\r\n        \"runspaceAvailability\": \"None\",\r\n        \"disconnectedOn\": \"2016-05-02T10:39:35.1053537-07:00\",\r\n        \"expiresOn\": \"2016-05-02T12:39:35.1053537-07:00\",\r\n        \"version\": {\r\n          \"major\": 5,\r\n          \"minor\": 1,\r\n          \"build\": 14332,\r\n          \"revision\": 1001,\r\n          \"majorRevision\": 0,\r\n          \"minorRevision\": 1001\r\n        },\r\n        \"name\": \"Runspace142\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/79aa6929-aac5-4be5-80e4-5118c93a8842\",\r\n      \"name\": \"79aa6929-aac5-4be5-80e4-5118c93a8842\",\r\n      \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n      \"properties\": {\r\n        \"sessionId\": \"79aa6929-aac5-4be5-80e4-5118c93a8842\",\r\n        \"state\": \"Disconnected\",\r\n        \"runspaceAvailability\": \"None\",\r\n        \"disconnectedOn\": \"2016-05-02T10:38:00.1221195-07:00\",\r\n        \"expiresOn\": \"2016-05-02T12:38:00.1221195-07:00\",\r\n        \"version\": {\r\n          \"major\": 5,\r\n          \"minor\": 1,\r\n          \"build\": 14332,\r\n          \"revision\": 1001,\r\n          \"majorRevision\": 0,\r\n          \"minorRevision\": 1001\r\n        },\r\n        \"name\": \"Runspace143\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2138"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "c3184bfd-18ff-4848-a804-42e2e57be8f2"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:35.1564740Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "c3184bfd-18ff-4848-a804-42e2e57be8f2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173935Z:c3184bfd-18ff-4848-a804-42e2e57be8f2"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:34 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2/invokeCommand?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyL2ludm9rZUNvbW1hbmQ/YXBpLXZlcnNpb249MjAxNS0wNy0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "94"
+        ],
+        "x-ms-client-request-id": [
+          "f17f83c2-97bd-4663-8736-90e9f4bc5673"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"results\": [\r\n    {\r\n      \"sourceId\": 1,\r\n      \"record\": {\r\n        \"activityId\": 0,\r\n        \"parentActivityId\": -1,\r\n        \"activity\": \"Preparing modules for first use.\",\r\n        \"statusDescription\": \" \",\r\n        \"percentComplete\": -1,\r\n        \"timeRemaining\": \"\",\r\n        \"recordType\": \"Completed\"\r\n      },\r\n      \"messageType\": 108\r\n    },\r\n    {\r\n      \"foregroundColor\": \"#FFFFFF\",\r\n      \"backgroundColor\": \"#012456\",\r\n      \"value\": \"\\r\\n\\r\\n    Directory: C:\\\\\\r\\n\\r\\n\\r\\nMode                LastWriteTime         Length Name                                                                  \\r\\n----                -------------         ------ ----                                                                  \\r\\nd-----        3/23/2016  10:02 AM                bootstrap                                                             \\r\\nd-----        3/23/2016   9:39 AM                Chocolatey                                                            \\r\\nd-----        3/31/2016   6:16 AM                Data                                                                  \\r\\nd-----        3/29/2016   5:08 PM                MSOTraceLite                                                          \\r\\nd-----        4/23/2016   3:27 AM                PerfLogs                                                              \\r\\nd-r---        4/25/2016  10:36 AM                Program Files                                                         \\r\\nd-r---        4/28/2016   5:45 PM                Program Files (x86)                                                   \\r\\nd-----        3/23/2016   8:16 AM                root                                                                  \\r\\nd-----         4/5/2016   9:47 AM                tmp                                                                   \\r\\nd-----        3/23/2016  10:03 AM                Tools                                                                 \\r\\nd-r---        4/25/2016  10:36 AM                Users                                                                 \\r\\nd-----         5/2/2016   9:51 AM                Windows                                                               \",\r\n      \"messageType\": 107\r\n    },\r\n    {\r\n      \"sourceId\": 1,\r\n      \"record\": {\r\n        \"activityId\": 0,\r\n        \"parentActivityId\": -1,\r\n        \"activity\": \"Preparing modules for first use.\",\r\n        \"statusDescription\": \" \",\r\n        \"percentComplete\": -1,\r\n        \"timeRemaining\": \"\",\r\n        \"recordType\": \"Completed\"\r\n      },\r\n      \"messageType\": 108\r\n    }\r\n  ],\r\n  \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n  \"completed\": \"false\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2420"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "93abb02a-c816-49bf-bc56-8c125d154f0d"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:38.8586214Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "93abb02a-c816-49bf-bc56-8c125d154f0d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173939Z:93abb02a-c816-49bf-bc56-8c125d154f0d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:38 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "69db662a-92b3-40df-810c-b229c3219de4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "ba73ab36-f203-4a33-8964-ad07898bdc66"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:40.3798273Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "ba73ab36-f203-4a33-8964-ad07898bdc66"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173940Z:ba73ab36-f203-4a33-8964-ad07898bdc66"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:40 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bdb90474-3852-4126-a418-311c76733850"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "d4f87ebb-0882-4b2e-a68a-53cfa1dda7e7"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:42.0537308Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4f87ebb-0882-4b2e-a68a-53cfa1dda7e7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173942Z:d4f87ebb-0882-4b2e-a68a-53cfa1dda7e7"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:41 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c7edc16e-ce38-4396-aca3-507beaec2aa5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "d49ed338-86bb-4ded-bf67-de2e2468c4ea"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:43.7556191Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "d49ed338-86bb-4ded-bf67-de2e2468c4ea"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173944Z:d49ed338-86bb-4ded-bf67-de2e2468c4ea"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:43 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9fbe7864-8291-4e3d-b91a-a0c6d3d2eaca"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "8f79c2da-4eec-4215-ad39-f0ed9dc44aeb"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:45.3743956Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f79c2da-4eec-4215-ad39-f0ed9dc44aeb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173945Z:8f79c2da-4eec-4215-ad39-f0ed9dc44aeb"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:45 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1d38a0e5-3c31-423f-8fe4-cf1f409cd6b9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "a81c19cb-aad8-49c8-899b-a1e81458ddf7"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:47.1852583Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "a81c19cb-aad8-49c8-899b-a1e81458ddf7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173947Z:a81c19cb-aad8-49c8-899b-a1e81458ddf7"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:46 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "390564cb-94d9-46b6-84f8-1656e57a7606"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "4be6bad7-cb11-4120-b7e0-df28462e2d35"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:48.9260043Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-correlation-request-id": [
+          "4be6bad7-cb11-4120-b7e0-df28462e2d35"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173949Z:4be6bad7-cb11-4120-b7e0-df28462e2d35"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:48 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2e64f907-c8e7-4a4f-bbbf-55947b5e5a5f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "2a16f4a0-67ae-448a-8142-d5499b5d9781"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:50.4590868Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a16f4a0-67ae-448a-8142-d5499b5d9781"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173950Z:2a16f4a0-67ae-448a-8142-d5499b5d9781"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:50 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c2816d0d-70c8-419b-9fe6-1f3cf869ae3c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "bafdbf4e-f69a-496c-ae11-69c9443d3c74"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:52.1619398Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14980"
+        ],
+        "x-ms-correlation-request-id": [
+          "bafdbf4e-f69a-496c-ae11-69c9443d3c74"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173952Z:bafdbf4e-f69a-496c-ae11-69c9443d3c74"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:51 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "75abd7cb-2a03-4d9f-9c0b-a910caeeb376"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "c6a348c3-160a-4b4d-a44c-de0ba7a5e075"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:53.7472951Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
+        ],
+        "x-ms-correlation-request-id": [
+          "c6a348c3-160a-4b4d-a44c-de0ba7a5e075"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173954Z:c6a348c3-160a-4b4d-a44c-de0ba7a5e075"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:53 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3f193cf3-1ce2-4a93-920f-14eebac1f56b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"false\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "8540d92f-e63c-46be-98db-b718c2a0ac5d"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:55.4339840Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14978"
+        ],
+        "x-ms-correlation-request-id": [
+          "8540d92f-e63c-46be-98db-b718c2a0ac5d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173955Z:8540d92f-e63c-46be-98db-b718c2a0ac5d"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:54 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2?api-version=2015-07-01-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkL2ZlYXR1cmVzL3Bvd2VyU2hlbGxDb25zb2xlL3Bzc2Vzc2lvbnMvZjE0NjlkYWUtNDVlNC00MmU1LThiMjEtN2ZmNWVlOGExZmMyP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldyYkZXhwYW5kPW91dHB1dA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cd831eb3-8c7a-4623-b339-7aee856b7dd1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d/features/powerShellConsole/pssessions/f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"name\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n  \"type\": \"Microsoft.ServerManagement/nodes/features/pssessions\",\r\n  \"properties\": {\r\n    \"results\": [\r\n      {\r\n        \"foregroundColor\": \"#FFFFFF\",\r\n        \"backgroundColor\": \"#012456\",\r\n        \"value\": \"\\r\\n\\r\\n    Directory: C:\\\\Program Files\\r\\n\\r\\n\\r\\nMode                LastWriteTime         Length Name                                                                  \\r\\n----                -------------         ------ ----                                                                  \\r\\nda----        3/31/2016  10:30 AM                Application Verifier                                                  \\r\\nd-----        3/23/2016  11:44 AM                Araxis                                                                \\r\\nd-----        4/25/2016  10:36 AM                Common Files                                                          \\r\\nda----        3/23/2016  12:48 PM                dotnet                                                                \\r\\nd-----        3/23/2016   8:08 AM                Everything                                                            \\r\\nda----        4/21/2016   9:01 AM                Git                                                                   \\r\\nd-----        4/25/2016  11:28 AM                Hyper-V                                                               \\r\\nda----        4/25/2016  10:36 AM                IIS                                                                   \\r\\nda----        3/23/2016   8:33 AM                IIS Express                                                           \\r\\nd-----        4/23/2016   5:25 AM                Internet Explorer                                                     \\r\\nda----        3/31/2016  10:08 AM                Microsoft DNX                                                         \\r\\nda----        3/23/2016   9:29 AM                Microsoft Office                                                      \\r\\nd-----        3/23/2016   9:29 AM                Microsoft Office 15                                                   \\r\\nda----        3/23/2016  11:22 AM                Microsoft Silverlight                                                 \\r\\nda----        4/19/2016   2:47 PM                Microsoft SQL Server                                                  \\r\\nda----        3/31/2016  10:11 AM                Microsoft SQL Server Compact Edition                                  \\r\\nd-----        3/31/2016  10:03 AM                Microsoft Visual Studio 12.0                                          \\r\\nd-----        3/23/2016  10:28 AM                PackageManagement                                                     \\r\\nda----        4/13/2016  11:35 AM                ServerManagementToolsGateway                                          \\r\\nd-----        4/19/2016   2:45 PM                SharePoint Client Components                                          \\r\\nd-----        3/30/2016   9:58 AM                VcXsrv                                                                \\r\\nd-----        4/23/2016   3:27 AM                Windows Advanced Threat Protection                                    \\r\\nd-----        4/23/2016   5:25 AM                Windows Defender                                                      \\r\\nd-----        4/23/2016   5:25 AM                Windows Mail                                                          \\r\\nd-----        4/23/2016   5:25 AM                Windows Media Player                                                  \\r\\nd-----        4/23/2016   3:27 AM                Windows Multimedia Platform                                           \\r\\nd-----        4/23/2016   3:27 AM                Windows NT                                                            \\r\\nd-----        4/23/2016   5:25 AM                Windows Photo Viewer                                                  \\r\\nd-----        4/23/2016   3:27 AM                Windows Portable Devices                                              \\r\\nd-----        4/25/2016  10:36 AM                WindowsPowerShell                                                     \\r\\nda----         4/6/2016  10:59 AM                Xming                                                                 \\r\\n\\r\\n\",\r\n        \"messageType\": 107\r\n      },\r\n      {\r\n        \"prompt\": \"PS C:\\\\Users\\\\gsAdmin\\\\Documents> \",\r\n        \"messageType\": 0\r\n      }\r\n    ],\r\n    \"sessionId\": \"f1469dae-45e4-42e5-8b21-7ff5ee8a1fc2\",\r\n    \"command\": \" dir c:\\\\ ; sleep 20 ; dir 'C:\\\\Program Files' \",\r\n    \"completed\": \"true\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4789"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "x-ms-request-id": [
+          "bf1b645a-b74a-421a-83a6-365852eb08ad"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-ManagementService-ExpiredOn": [
+          "2016-05-03T17:39:57.4191580Z"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14977"
+        ],
+        "x-ms-correlation-request-id": [
+          "bf1b645a-b74a-421a-83a6-365852eb08ad"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173957Z:bf1b645a-b74a-421a-83a6-365852eb08ad"
+        ],
+        "Cache-Control": [
+          "must-revalidate, max-age=10, private"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:56 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "51c2dff5-9f74-42c8-aa35-7a206d1493d7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourcegroups/sdktest/providers/microsoft.servermanagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d\",\r\n  \"name\": \"95ec78a9-be7b-4a40-a9ab-3950c822682d\",\r\n  \"type\": \"microsoft.servermanagement/nodes/sessions\",\r\n  \"properties\": {\r\n    \"userName\": \"gsAdmin\",\r\n    \"created\": \"2016-05-02T17:39:31.1010989Z\",\r\n    \"updated\": \"2016-05-02T17:39:31.1010989Z\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "398"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fffdcf61-49f5-4e63-9133-4d4cd87dc9db"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14976"
+        ],
+        "x-ms-correlation-request-id": [
+          "fffdcf61-49f5-4e63-9133-4d4cd87dc9db"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173957Z:fffdcf61-49f5-4e63-9133-4d4cd87dc9db"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:56 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b72e1693-3889-4a16-bc23-db64c5bff1ab"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource you are looking for is not found.\",\r\n    \"requestId\": \"46e2bd89-3ed1-432d-a4ea-0f9d7d89e780\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "147"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14975"
+        ],
+        "x-ms-request-id": [
+          "46e2bd89-3ed1-432d-a4ea-0f9d7d89e780"
+        ],
+        "x-ms-correlation-request-id": [
+          "46e2bd89-3ed1-432d-a4ea-0f9d7d89e780"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173958Z:46e2bd89-3ed1-432d-a4ea-0f9d7d89e780"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:57 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/3e82a90d-d19e-42f9-bb43-9112945846ef/resourceGroups/sdktest/providers/Microsoft.ServerManagement/nodes/saddlebags/sessions/95ec78a9-be7b-4a40-a9ab-3950c822682d?api-version=2015-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U4MmE5MGQtZDE5ZS00MmY5LWJiNDMtOTExMjk0NTg0NmVmL3Jlc291cmNlR3JvdXBzL3Nka3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TZXJ2ZXJNYW5hZ2VtZW50L25vZGVzL3NhZGRsZWJhZ3Mvc2Vzc2lvbnMvOTVlYzc4YTktYmU3Yi00YTQwLWE5YWItMzk1MGM4MjI2ODJkP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "930f054a-78aa-4549-a349-5f0a893765c6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ServerManagement.ServerManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "586c128b-921c-47d9-a5bc-70e6754ddc29"
+        ],
+        "x-managementservice-fileversion": [
+          "1.0.1187.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-correlation-request-id": [
+          "586c128b-921c-47d9-a5bc-70e6754ddc29"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160502T173958Z:586c128b-921c-47d9-a5bc-70e6754ddc29"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 02 May 2016 17:39:57 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "3e82a90d-d19e-42f9-bb43-9112945846ef"
+  }
+}

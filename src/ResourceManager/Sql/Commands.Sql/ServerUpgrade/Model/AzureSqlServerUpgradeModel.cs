@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,6 +11,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
 {
@@ -30,5 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
         /// Gets or sets the upgrade status of the server
         /// </summary>
         public ServerUpgradeStatus Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the earliest time to upgrade the server
+        /// </summary>
+        public DateTime? ScheduleUpgradeAfterUtcDateTime { get; set; }
     }
 }

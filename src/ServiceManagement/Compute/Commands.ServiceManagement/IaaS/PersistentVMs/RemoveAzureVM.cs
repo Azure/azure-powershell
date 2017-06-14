@@ -15,15 +15,16 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureVM"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine, SupportsShouldProcess = true), OutputType(typeof(ManagementOperationContext))]
     public class RemoveAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the role to remove.")]
@@ -43,38 +44,41 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
         protected override void ExecuteCommand()
         {
-            ServiceManagementProfile.Initialize();
+            if (this.ShouldProcess(String.Format("Service: {0},  VM: {1}", this.ServiceName, this.Name), Resources.RemoveAzureVMShouldProcessAction))
+            {
+                ServiceManagementProfile.Initialize();
 
-            base.ExecuteCommand();
-            if (CurrentDeploymentNewSM == null)
-            {
-                return;
-            }
-
-            DeploymentGetResponse deploymentGetResponse = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, DeploymentSlot.Production);
-            if (deploymentGetResponse.Roles.FirstOrDefault(r => r.RoleName.Equals(Name, StringComparison.InvariantCultureIgnoreCase)) == null)
-            {
-                throw new ArgumentOutOfRangeException(String.Format(Resources.RoleInstanceCanNotBeFoundWithName, Name));
-            }
-
-            if (deploymentGetResponse.RoleInstances.Count > 1)
-            {
-                ExecuteClientActionNewSM(
-                    null,
-                    CommandRuntime.ToString(),
-                    () => this.ComputeClient.VirtualMachines.Delete(this.ServiceName, CurrentDeploymentNewSM.Name, Name, DeleteVHD.IsPresent));
-            }
-            else
-            {
-                if (deploymentGetResponse != null && !string.IsNullOrEmpty(deploymentGetResponse.ReservedIPName))
+                base.ExecuteCommand();
+                if (CurrentDeploymentNewSM == null)
                 {
-                    WriteVerboseWithTimestamp(string.Format(Resources.ReservedIPNameNoLongerInUseByDeletingLastVMButStillBeingReserved, deploymentGetResponse.ReservedIPName));
+                    return;
                 }
 
-                ExecuteClientActionNewSM<AzureOperationResponse>(
-                    null,
-                    CommandRuntime.ToString(),
-                    () => this.ComputeClient.Deployments.DeleteByName(this.ServiceName, CurrentDeploymentNewSM.Name, DeleteVHD.IsPresent));
+                DeploymentGetResponse deploymentGetResponse = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, DeploymentSlot.Production);
+                if (deploymentGetResponse.Roles.FirstOrDefault(r => r.RoleName.Equals(Name, StringComparison.InvariantCultureIgnoreCase)) == null)
+                {
+                    throw new ArgumentOutOfRangeException(String.Format(Resources.RoleInstanceCanNotBeFoundWithName, Name));
+                }
+
+                if (deploymentGetResponse.RoleInstances.Count > 1)
+                {
+                    ExecuteClientActionNewSM(
+                        null,
+                        CommandRuntime.ToString(),
+                        () => this.ComputeClient.VirtualMachines.Delete(this.ServiceName, CurrentDeploymentNewSM.Name, Name, DeleteVHD.IsPresent));
+                }
+                else
+                {
+                    if (deploymentGetResponse != null && !string.IsNullOrEmpty(deploymentGetResponse.ReservedIPName))
+                    {
+                        WriteVerboseWithTimestamp(string.Format(Resources.ReservedIPNameNoLongerInUseByDeletingLastVMButStillBeingReserved, deploymentGetResponse.ReservedIPName));
+                    }
+
+                    ExecuteClientActionNewSM<AzureOperationResponse>(
+                        null,
+                        CommandRuntime.ToString(),
+                        () => this.ComputeClient.Deployments.DeleteByName(this.ServiceName, CurrentDeploymentNewSM.Name, DeleteVHD.IsPresent));
+                }
             }
         }
     }

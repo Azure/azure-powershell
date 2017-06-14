@@ -12,22 +12,85 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class DeploymentTests
     {
-        [Fact (Skip = "Need to implement storage client mock.")]
+        public DeploymentTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
+        [Fact(Skip = "Need to implement storage client mock.")]
         public void TestValidateDeployment()
         {
             ResourcesController.NewInstance.RunPsTest("Test-ValidateDeployment");
         }
 
-        [Fact (Skip = "Need to implement storage client mock.")]
+        [Fact]
         public void TestNewDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromTemplateFile");
+        }
+
+        [Fact]
+        public void TestNestedDeploymentFromTemplateFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NestedDeploymentFromTemplateFile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrossResourceGroupDeploymentFromTemplateFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-CrossResourceGroupDeploymentFromTemplateFile");
+        }
+
+        [Fact]
+        public void TestSaveDeploymentTemplateFile()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-SaveDeploymentTemplateFile");
+        }
+
+        [Fact]
+        public void TestNestedErrorsDisplayed()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NestedErrorsDisplayed");
+        }
+
+        [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]
+        public void TestNewDeploymentWithKeyVaultReference()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithKeyVaultReference");
+        }
+
+        [Fact]
+        public void TestNewDeploymentWithComplexPramaters()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithComplexPramaters");
+        }
+
+        [Fact]
+        public void TestNewDeploymentWithParameterObject()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithParameterObject");
+        }
+
+        [Fact]
+        public void TestNewDeploymentWithDynamicParameters()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithDynamicParameters");
+        }
+
+        [Fact]
+        public void TestNewDeploymentWithInvalidParameters()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithInvalidParameters");
         }
     }
 }

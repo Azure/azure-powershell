@@ -1,0 +1,3393 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716\",\r\n  \"name\": \"onesdk2716\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "173"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "01c824c3-0678-494c-b214-ca2c502516a2"
+        ],
+        "x-ms-correlation-request-id": [
+          "01c824c3-0678-494c-b214-ca2c502516a2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235514Z:01c824c3-0678-494c-b214-ca2c502516a2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:13 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "7aacb01c-f3df-4298-977b-5655d086e660"
+        ],
+        "x-ms-correlation-request-id": [
+          "7aacb01c-f3df-4298-977b-5655d086e660"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235514Z:7aacb01c-f3df-4298-977b-5655d086e660"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:13 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-request-id": [
+          "2146d776-f28c-4fa3-99c6-cc6f3982e2b3"
+        ],
+        "x-ms-correlation-request-id": [
+          "2146d776-f28c-4fa3-99c6-cc6f3982e2b3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235519Z:2146d776-f28c-4fa3-99c6-cc6f3982e2b3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:18 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-request-id": [
+          "eb377d16-c8c4-49e6-b2fc-8cbf7853181b"
+        ],
+        "x-ms-correlation-request-id": [
+          "eb377d16-c8c4-49e6-b2fc-8cbf7853181b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235521Z:eb377d16-c8c4-49e6-b2fc-8cbf7853181b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-request-id": [
+          "5ead6919-6e95-4121-ac24-acb71971ce25"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ead6919-6e95-4121-ac24-acb71971ce25"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235523Z:5ead6919-6e95-4121-ac24-acb71971ce25"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:23 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-request-id": [
+          "2401573e-e1de-4d7e-aca6-0b5fcfb9c988"
+        ],
+        "x-ms-correlation-request-id": [
+          "2401573e-e1de-4d7e-aca6-0b5fcfb9c988"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235525Z:2401573e-e1de-4d7e-aca6-0b5fcfb9c988"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:25 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-request-id": [
+          "e61c8f79-ef9d-42a0-a8f3-2425a2671cb5"
+        ],
+        "x-ms-correlation-request-id": [
+          "e61c8f79-ef9d-42a0-a8f3-2425a2671cb5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235527Z:e61c8f79-ef9d-42a0-a8f3-2425a2671cb5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:27 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-request-id": [
+          "3a86a713-a1b1-4bee-b931-3ff0fe7c5241"
+        ],
+        "x-ms-correlation-request-id": [
+          "3a86a713-a1b1-4bee-b931-3ff0fe7c5241"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235529Z:3a86a713-a1b1-4bee-b931-3ff0fe7c5241"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:29 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Byb3ZpZGVycy9NaWNyb3NvZnQuU2NoZWR1bGVyP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/providers/Microsoft.Scheduler\",\r\n  \"namespace\": \"Microsoft.Scheduler\",\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"jobcollections\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Central US\",\r\n        \"East US 2\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-03-01\",\r\n        \"2016-01-01\",\r\n        \"2014-08-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"flows\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan West\",\r\n        \"Japan East\",\r\n        \"Brazil South\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2015-08-01-preview\",\r\n        \"2015-02-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2086"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-request-id": [
+          "eb7e6e7d-242f-4a44-9756-382203fa04b1"
+        ],
+        "x-ms-correlation-request-id": [
+          "eb7e6e7d-242f-4a44-9756-382203fa04b1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235532Z:eb7e6e7d-242f-4a44-9756-382203fa04b1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:31 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "b37adf9b-74c1-4ddb-bcd9-42d061c1fdb1"
+        ],
+        "x-ms-correlation-request-id": [
+          "b37adf9b-74c1-4ddb-bcd9-42d061c1fdb1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235514Z:b37adf9b-74c1-4ddb-bcd9-42d061c1fdb1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:13 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-request-id": [
+          "1b4f53f7-399f-43d6-85d9-71dd2506c0c3"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b4f53f7-399f-43d6-85d9-71dd2506c0c3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235519Z:1b4f53f7-399f-43d6-85d9-71dd2506c0c3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:18 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-request-id": [
+          "83e68cd6-e98f-4c9f-ac84-662ddaee8147"
+        ],
+        "x-ms-correlation-request-id": [
+          "83e68cd6-e98f-4c9f-ac84-662ddaee8147"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235521Z:83e68cd6-e98f-4c9f-ac84-662ddaee8147"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:21 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "a0d5afcf-f160-4922-87b2-1d4fe66775fe"
+        ],
+        "x-ms-correlation-request-id": [
+          "a0d5afcf-f160-4922-87b2-1d4fe66775fe"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235523Z:a0d5afcf-f160-4922-87b2-1d4fe66775fe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:23 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-request-id": [
+          "9ea5861f-d809-43fe-a7ce-21bb20c66b8d"
+        ],
+        "x-ms-correlation-request-id": [
+          "9ea5861f-d809-43fe-a7ce-21bb20c66b8d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235525Z:9ea5861f-d809-43fe-a7ce-21bb20c66b8d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:25 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-request-id": [
+          "04465eb0-418b-4c34-9425-f6d90d653579"
+        ],
+        "x-ms-correlation-request-id": [
+          "04465eb0-418b-4c34-9425-f6d90d653579"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235527Z:04465eb0-418b-4c34-9425-f6d90d653579"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:27 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-request-id": [
+          "11442f99-8be0-4577-bc25-01742281b078"
+        ],
+        "x-ms-correlation-request-id": [
+          "11442f99-8be0-4577-bc25-01742281b078"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235530Z:11442f99-8be0-4577-bc25-01742281b078"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:29 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-request-id": [
+          "a8e0d0ff-5784-45c8-bd7d-caaf064b844f"
+        ],
+        "x-ms-correlation-request-id": [
+          "a8e0d0ff-5784-45c8-bd7d-caaf064b844f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235532Z:a8e0d0ff-5784-45c8-bd7d-caaf064b844f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:32 GMT"
+        ]
+      },
+      "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3c45c1f8-6662-44d6-a2e6-7fb0ca096458"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Scheduler/jobcollections/CreateJobCollectionWithStandardPlan' under resource group 'onesdk2716' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "184"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "316cb998-5018-45a5-9bb5-f24083fba59d"
+        ],
+        "x-ms-correlation-request-id": [
+          "316cb998-5018-45a5-9bb5-f24083fba59d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235514Z:316cb998-5018-45a5-9bb5-f24083fba59d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:14 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0da408cf-3558-4406-bc23-6234d066ba39"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "249"
+        ],
+        "x-ms-request-id": [
+          "97d664b9-6d7c-416f-8ea7-42b164b9c940"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "37c91cf8-5a85-4fa6-95b4-8d895b1acc69"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235519Z:37c91cf8-5a85-4fa6-95b4-8d895b1acc69"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:19 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f74974fa-ce4a-462e-9802-d84ca911ad45"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "246"
+        ],
+        "x-ms-request-id": [
+          "5d9f1ed7-02bd-4265-8d8b-fb6bfd4a306e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "d29fd4e6-c153-465a-8e35-7d9497beff60"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235522Z:d29fd4e6-c153-465a-8e35-7d9497beff60"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:21 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "878f52e7-2a44-4963-9626-b23847734ac7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "243"
+        ],
+        "x-ms-request-id": [
+          "e61095c1-2d18-4ee2-8be7-ab434cf7d4b2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "35709818-e0f9-4809-858b-a8a9970b25d0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235523Z:35709818-e0f9-4809-858b-a8a9970b25d0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:23 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "de79cdb5-c7f2-4fc2-8af7-aca13868587e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "240"
+        ],
+        "x-ms-request-id": [
+          "318e3b42-5dc8-44f1-8ceb-e7c908d36c56"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "ea1801bc-2ef3-4723-bb5b-83a987dbbf64"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235526Z:ea1801bc-2ef3-4723-bb5b-83a987dbbf64"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:25 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "037b305f-f790-41ed-9049-55b56fcc4188"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "237"
+        ],
+        "x-ms-request-id": [
+          "7e6e3717-a4d9-4143-b0fb-af0e21c495a1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-correlation-request-id": [
+          "647cfd15-702d-4bc6-9adf-cf98c1427240"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235528Z:647cfd15-702d-4bc6-9adf-cf98c1427240"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:27 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "311c0de8-65a0-4339-96c1-4493e9d4e9e2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "234"
+        ],
+        "x-ms-request-id": [
+          "d9660721-e146-4918-ade3-cf3deae87fc9"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "abcbf47c-2bb2-406e-9443-977d580937ea"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235530Z:abcbf47c-2bb2-406e-9443-977d580937ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b3dbf04a-6cb9-493b-9fde-1c47ad3300eb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "231"
+        ],
+        "x-ms-request-id": [
+          "b10d5eb6-d0e6-4202-ab5b-46d1a81f0d95"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14980"
+        ],
+        "x-ms-correlation-request-id": [
+          "637e600c-2ced-47a7-acbf-00b1d7448088"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235532Z:637e600c-2ced-47a7-acbf-00b1d7448088"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"Minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "291"
+        ],
+        "x-ms-client-request-id": [
+          "2ed13fa3-434d-4728-bf8b-309ee1286365"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Standard\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"quota\": {\r\n      \"maxJobCount\": 50,\r\n      \"maxRecurrence\": {\r\n        \"frequency\": \"minute\",\r\n        \"interval\": 1\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "415"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "59"
+        ],
+        "x-ms-request-id": [
+          "2c65794d-dd08-4227-90ea-36538ed0703e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "d6827816-63ee-4d99-9824-50c23c88cac7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235519Z:d6827816-63ee-4d99-9824-50c23c88cac7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:19 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9EZWZhdWx0SHR0cEpvYj9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7a2c265d-df97-470e-8f1c-fe3509a71e33"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Job 'DefaultHttpJob' cannot be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "79"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "248"
+        ],
+        "x-ms-request-id": [
+          "49a274fd-2fcd-485f-b357-409754822e8a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "23bba17c-2661-4a62-9622-e8eb5ce44339"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235520Z:23bba17c-2661-4a62-9622-e8eb5ce44339"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:19 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icz9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d77c3cee-0596-481b-b2e8-e66c33c8ffc8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "28"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "247"
+        ],
+        "x-ms-request-id": [
+          "4d885fe1-0881-4c11-ae89-32de31820dd0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "199503da-6361-4b0f-9c91-14cf42758010"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235520Z:199503da-6361-4b0f-9c91-14cf42758010"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icz9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "dd9c1c0b-1375-464f-b2a6-72778b5dc53b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/DefaultHttpJob\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:41.3647161Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "553"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "244"
+        ],
+        "x-ms-request-id": [
+          "991738ef-2edb-4002-8a7b-438f104769f4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "cac11151-73d3-483f-a948-90be8ab5cdd3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235522Z:cac11151-73d3-483f-a948-90be8ab5cdd3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:22 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icz9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7ce3725f-6b74-4fa9-89db-04e000f4306d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/DefaultHttpJob\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:41.3647161Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHeadersAndBody\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"post\",\r\n            \"headers\": {\r\n              \"ConTent-tYPe\": \"application/json\"\r\n            },\r\n            \"body\": \"Hello\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:43.2723957Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1163"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "241"
+        ],
+        "x-ms-request-id": [
+          "1ea714dd-0ccc-4740-bb23-13e4cc8f1bf7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "4491ee13-1292-4ca7-ac26-6e64382d7f22"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235524Z:4491ee13-1292-4ca7-ac26-6e64382d7f22"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:24 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icz9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7a7ae769-58c6-4736-ac5c-1c0cf0f9cb94"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/DefaultHttpJob\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:41.3647161Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHeadersAndBody\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"post\",\r\n            \"headers\": {\r\n              \"ConTent-tYPe\": \"application/json\"\r\n            },\r\n            \"body\": \"Hello\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:43.2723957Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\",\r\n            \"authentication\": {\r\n              \"username\": \"httpJob\",\r\n              \"type\": \"Basic\"\r\n            }\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:45.216Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1804"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "238"
+        ],
+        "x-ms-request-id": [
+          "6d5e4343-618c-47a8-8fd2-0c2ffd6b126a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "afea34d6-8f8e-441c-8577-c473e44dccee"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235526Z:afea34d6-8f8e-441c-8577-c473e44dccee"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:26 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icz9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0d785d29-da39-43d7-9075-1ccd4e9341b5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/DefaultHttpJob\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:41.3647161Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHeadersAndBody\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"post\",\r\n            \"headers\": {\r\n              \"ConTent-tYPe\": \"application/json\"\r\n            },\r\n            \"body\": \"Hello\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:43.2723957Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\",\r\n            \"authentication\": {\r\n              \"username\": \"httpJob\",\r\n              \"type\": \"Basic\"\r\n            }\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:45.216Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithStartTime\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithStartTime\",\r\n      \"properties\": {\r\n        \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2385"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "235"
+        ],
+        "x-ms-request-id": [
+          "77b79c79-8d59-4e7f-aeab-197b98e4717c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "15f73ae9-df1a-4056-a399-fcf52c798d43"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235529Z:15f73ae9-df1a-4056-a399-fcf52c798d43"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:28 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icz9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3a8f01dc-a5c6-4c8c-8439-6e678eab4577"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/DefaultHttpJob\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:41.3647161Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHeadersAndBody\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"post\",\r\n            \"headers\": {\r\n              \"ConTent-tYPe\": \"application/json\"\r\n            },\r\n            \"body\": \"Hello\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:43.2723957Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\",\r\n            \"authentication\": {\r\n              \"username\": \"httpJob\",\r\n              \"type\": \"Basic\"\r\n            }\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:45.216Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithRecurrence\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithRecurrence\",\r\n      \"properties\": {\r\n        \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"recurrence\": {\r\n          \"frequency\": \"minute\",\r\n          \"count\": 10,\r\n          \"endTime\": \"2017-02-12T23:55:27.7949296Z\",\r\n          \"interval\": 1\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithStartTime\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithStartTime\",\r\n      \"properties\": {\r\n        \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3069"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "232"
+        ],
+        "x-ms-request-id": [
+          "0a6e7632-ba97-4ab9-8fd8-b55efc2fdf42"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-correlation-request-id": [
+          "bb53b52f-77e7-40ec-9cee-d4a8dcb242b7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235531Z:bb53b52f-77e7-40ec-9cee-d4a8dcb242b7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:31 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icz9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "84f7d73d-dfb5-456f-ae5f-7af76e19f307"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/DefaultHttpJob\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:41.3647161Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithErrorHttpAction\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithErrorHttpAction\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\",\r\n          \"errorAction\": {\r\n            \"request\": {\r\n              \"uri\": \"http://www.bing.com/\",\r\n              \"method\": \"post\",\r\n              \"headers\": {\r\n                \"ContEnt-TyPe\": \"application/json\"\r\n              },\r\n              \"body\": \"HelloError\",\r\n              \"authentication\": {\r\n                \"username\": \"HttpErrorAction\",\r\n                \"type\": \"Basic\"\r\n              }\r\n            },\r\n            \"type\": \"Http\"\r\n          }\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:51.8724254Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHeadersAndBody\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"post\",\r\n            \"headers\": {\r\n              \"ConTent-tYPe\": \"application/json\"\r\n            },\r\n            \"body\": \"Hello\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:43.2723957Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHttpClientCertificateAuthentication\",\r\n      \"properties\": {\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\",\r\n            \"authentication\": {\r\n              \"username\": \"httpJob\",\r\n              \"type\": \"Basic\"\r\n            }\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-08T23:55:45.216Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithRecurrence\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithRecurrence\",\r\n      \"properties\": {\r\n        \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"recurrence\": {\r\n          \"frequency\": \"minute\",\r\n          \"count\": 10,\r\n          \"endTime\": \"2017-02-12T23:55:27.7949296Z\",\r\n          \"interval\": 1\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithStartTime\",\r\n      \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n      \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithStartTime\",\r\n      \"properties\": {\r\n        \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n        \"action\": {\r\n          \"request\": {\r\n            \"uri\": \"http://www.bing.com/\",\r\n            \"method\": \"get\"\r\n          },\r\n          \"type\": \"Http\"\r\n        },\r\n        \"state\": \"enabled\",\r\n        \"status\": {\r\n          \"nextExecutionTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n          \"executionCount\": 0,\r\n          \"failureCount\": 0,\r\n          \"faultedCount\": 0\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3835"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "229"
+        ],
+        "x-ms-request-id": [
+          "2a820398-2b1c-47fa-b440-67489381d059"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14978"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a663024-ca40-46dd-ad9a-6553380185d6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235533Z:8a663024-ca40-46dd-ad9a-6553380185d6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:33 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9EZWZhdWx0SHR0cEpvYj9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"type\": \"Http\",\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "169"
+        ],
+        "x-ms-client-request-id": [
+          "fc7c88e3-3b41-4b8a-9fc6-14ebab4b38ce"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/DefaultHttpJob\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan/DefaultHttpJob\",\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      },\r\n      \"type\": \"Http\"\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2017-02-08T23:55:41.3647161Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "58"
+        ],
+        "x-ms-request-id": [
+          "a22fbeb3-247d-48c1-942b-49408e79792e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "599"
+        ],
+        "x-ms-correlation-request-id": [
+          "0b7a9328-9af6-4f75-967f-8c5166b59723"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235521Z:0b7a9328-9af6-4f75-967f-8c5166b59723"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:21 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEhlYWRlcnNBbmRCb2R5P2FwaS12ZXJzaW9uPTIwMTYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "52095e4c-f401-4fe8-95fd-61990da5bda8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Job 'HttpJobWithHeadersAndBody' cannot be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "90"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "245"
+        ],
+        "x-ms-request-id": [
+          "94721a05-d4ad-479d-88a8-1329d2d374a4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14994"
+        ],
+        "x-ms-correlation-request-id": [
+          "9849c601-df11-4ccb-b9f3-4dba58478944"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235522Z:9849c601-df11-4ccb-b9f3-4dba58478944"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:22 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEhlYWRlcnNBbmRCb2R5P2FwaS12ZXJzaW9uPTIwMTYtMDMtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"type\": \"Http\",\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"post\",\r\n        \"body\": \"Hello\",\r\n        \"headers\": {\r\n          \"ConTent-tYPe\": \"application/json\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "276"
+        ],
+        "x-ms-client-request-id": [
+          "64c89f0d-d02e-48da-9180-3a3b50137e6b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHeadersAndBody\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHeadersAndBody\",\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"post\",\r\n        \"headers\": {\r\n          \"ConTent-tYPe\": \"application/json\"\r\n        },\r\n        \"body\": \"Hello\"\r\n      },\r\n      \"type\": \"Http\"\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2017-02-08T23:55:43.2723957Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "609"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "57"
+        ],
+        "x-ms-request-id": [
+          "255bd597-d39c-41ce-afb8-b2511860a014"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "598"
+        ],
+        "x-ms-correlation-request-id": [
+          "d159852b-e465-4ce6-94f3-aeddacdfa98b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235523Z:d159852b-e465-4ce6-94f3-aeddacdfa98b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:23 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHttpClientCertificateAuthentication?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEh0dHBDbGllbnRDZXJ0aWZpY2F0ZUF1dGhlbnRpY2F0aW9uP2FwaS12ZXJzaW9uPTIwMTYtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "109e778f-548c-4f0f-9486-7a796067179b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Job 'HttpJobWithHttpClientCertificateAuthentication' cannot be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "111"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "242"
+        ],
+        "x-ms-request-id": [
+          "7d9aa821-ec47-44ce-b20e-37413d9994af"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "7c03299d-2e53-420d-82cd-a6096250a42d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235524Z:7c03299d-2e53-420d-82cd-a6096250a42d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:24 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHttpClientCertificateAuthentication?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEh0dHBDbGllbnRDZXJ0aWZpY2F0ZUF1dGhlbnRpY2F0aW9uP2FwaS12ZXJzaW9uPTIwMTYtMDMtMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"type\": \"Http\",\r\n      \"request\": {\r\n        \"authentication\": {\r\n          \"username\": \"httpJob\",\r\n          \"password\": \"p@ssword!\",\r\n          \"type\": \"Basic\"\r\n        },\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "307"
+        ],
+        "x-ms-client-request-id": [
+          "7a40526f-8fcc-4512-8c4d-be36cf968cb6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithHttpClientCertificateAuthentication\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithHttpClientCertificateAuthentication\",\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\",\r\n        \"authentication\": {\r\n          \"username\": \"httpJob\",\r\n          \"type\": \"Basic\"\r\n        }\r\n      },\r\n      \"type\": \"Http\"\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2017-02-08T23:55:45.216Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "640"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "56"
+        ],
+        "x-ms-request-id": [
+          "ca669466-20d5-497c-8dab-02ccc8cfca0b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "597"
+        ],
+        "x-ms-correlation-request-id": [
+          "9dda7399-4940-49fe-941f-ebc881ba9ff3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235525Z:9dda7399-4940-49fe-941f-ebc881ba9ff3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:25 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithStartTime?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aFN0YXJ0VGltZT9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6e01fb1e-d9f7-401b-ba0c-391f701d8314"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Job 'HttpJobWithStartTime' cannot be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "85"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "239"
+        ],
+        "x-ms-request-id": [
+          "08b41cca-73bb-4f84-a1c3-14c1c75c86a5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "6df0d082-7332-4962-901c-9768daf840d6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235526Z:6df0d082-7332-4962-901c-9768daf840d6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:26 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithStartTime?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aFN0YXJ0VGltZT9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n    \"action\": {\r\n      \"type\": \"Http\",\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "219"
+        ],
+        "x-ms-client-request-id": [
+          "8cc09c55-b0c7-4deb-a106-9d1c7aae3c6c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithStartTime\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithStartTime\",\r\n  \"properties\": {\r\n    \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      },\r\n      \"type\": \"Http\"\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "580"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "55"
+        ],
+        "x-ms-request-id": [
+          "4fbc5f14-82a9-4ce3-97cd-d6ecfc090d43"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "596"
+        ],
+        "x-ms-correlation-request-id": [
+          "616b5415-3919-404b-b79c-0c35680f1d65"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235527Z:616b5415-3919-404b-b79c-0c35680f1d65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:27 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithRecurrence?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aFJlY3VycmVuY2U/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "42951c5c-199c-4556-a15b-0650f3752213"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Job 'HttpJobWithRecurrence' cannot be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "86"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "236"
+        ],
+        "x-ms-request-id": [
+          "aca7e4ac-eee2-4d93-b65b-3f448b02d876"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "952e8830-3a12-43ab-961e-82513e7d6f3a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235528Z:952e8830-3a12-43ab-961e-82513e7d6f3a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:28 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithRecurrence?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aFJlY3VycmVuY2U/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n    \"action\": {\r\n      \"type\": \"Http\",\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      }\r\n    },\r\n    \"recurrence\": {\r\n      \"frequency\": \"Minute\",\r\n      \"interval\": 1,\r\n      \"count\": 10,\r\n      \"endTime\": \"2017-02-12T23:55:27.7949296Z\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "369"
+        ],
+        "x-ms-client-request-id": [
+          "594725a3-9786-433c-94b9-351421dc6ace"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithRecurrence\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithRecurrence\",\r\n  \"properties\": {\r\n    \"startTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      },\r\n      \"type\": \"Http\"\r\n    },\r\n    \"recurrence\": {\r\n      \"frequency\": \"minute\",\r\n      \"count\": 10,\r\n      \"endTime\": \"2017-02-12T23:55:27.7949296Z\",\r\n      \"interval\": 1\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2017-02-09T23:55:25.5648511Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "683"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "54"
+        ],
+        "x-ms-request-id": [
+          "145dab91-4695-41c8-b08c-62ec38638a0d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "595"
+        ],
+        "x-ms-correlation-request-id": [
+          "92e1342c-e45f-444a-ac7b-f63cb0bf6a54"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235529Z:92e1342c-e45f-444a-ac7b-f63cb0bf6a54"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:29 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithErrorHttpAction?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEVycm9ySHR0cEFjdGlvbj9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "403245c5-d189-424b-805a-c427bb97f568"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Job 'HttpJobWithErrorHttpAction' cannot be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "91"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "233"
+        ],
+        "x-ms-request-id": [
+          "a880533b-9150-48cc-9dc1-5d7edc527927"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-correlation-request-id": [
+          "83f2a3b4-fd11-46d1-b221-4e76ff5ed74a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235530Z:83f2a3b4-fd11-46d1-b221-4e76ff5ed74a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithErrorHttpAction?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEVycm9ySHR0cEFjdGlvbj9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"type\": \"Http\",\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      },\r\n      \"errorAction\": {\r\n        \"type\": \"Http\",\r\n        \"request\": {\r\n          \"authentication\": {\r\n            \"username\": \"HttpErrorAction\",\r\n            \"password\": \"p@ssword!\",\r\n            \"type\": \"Basic\"\r\n          },\r\n          \"uri\": \"http://www.bing.com/\",\r\n          \"method\": \"post\",\r\n          \"body\": \"HelloError\",\r\n          \"headers\": {\r\n            \"ContEnt-TyPe\": \"application/json\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "606"
+        ],
+        "x-ms-client-request-id": [
+          "db26f76f-d6bc-45fa-9ed8-914bda0fec21"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithErrorHttpAction\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithErrorHttpAction\",\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/\",\r\n        \"method\": \"get\"\r\n      },\r\n      \"type\": \"Http\",\r\n      \"errorAction\": {\r\n        \"request\": {\r\n          \"uri\": \"http://www.bing.com/\",\r\n          \"method\": \"post\",\r\n          \"headers\": {\r\n            \"ContEnt-TyPe\": \"application/json\"\r\n          },\r\n          \"body\": \"HelloError\",\r\n          \"authentication\": {\r\n            \"username\": \"HttpErrorAction\",\r\n            \"type\": \"Basic\"\r\n          }\r\n        },\r\n        \"type\": \"Http\"\r\n      }\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2017-02-08T23:55:51.8724254Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "765"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "53"
+        ],
+        "x-ms-request-id": [
+          "1d9f7fe4-6ab2-4ce2-b236-006dd3e470b2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "594"
+        ],
+        "x-ms-correlation-request-id": [
+          "0dca5a16-8591-4dad-bb03-c3338908aa18"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235532Z:0dca5a16-8591-4dad-bb03-c3338908aa18"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:31 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithEncodableUriCharacters?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEVuY29kYWJsZVVyaUNoYXJhY3RlcnM/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5409c3fd-e748-4aae-ab6b-b82b3f63109a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"NotFound\",\r\n    \"message\": \"Job 'HttpJobWithEncodableUriCharacters' cannot be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "98"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-reads": [
+          "230"
+        ],
+        "x-ms-request-id": [
+          "7298750d-130f-42f0-b52f-1c5b0bfec800"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
+        ],
+        "x-ms-correlation-request-id": [
+          "93a2d807-5732-47d0-95b2-eed876430f96"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235533Z:93a2d807-5732-47d0-95b2-eed876430f96"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithEncodableUriCharacters?api-version=2016-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlR3JvdXBzL29uZXNkazI3MTYvcHJvdmlkZXJzL01pY3Jvc29mdC5TY2hlZHVsZXIvam9iQ29sbGVjdGlvbnMvQ3JlYXRlSm9iQ29sbGVjdGlvbldpdGhTdGFuZGFyZFBsYW4vam9icy9IdHRwSm9iV2l0aEVuY29kYWJsZVVyaUNoYXJhY3RlcnM/YXBpLXZlcnNpb249MjAxNi0wMy0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"type\": \"Http\",\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d\",\r\n        \"method\": \"get\"\r\n      },\r\n      \"errorAction\": {\r\n        \"type\": \"Http\",\r\n        \"request\": {\r\n          \"authentication\": {\r\n            \"username\": \"HttpErrorAction\",\r\n            \"password\": \"p@ssword!\",\r\n            \"type\": \"Basic\"\r\n          },\r\n          \"uri\": \"http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d\",\r\n          \"method\": \"post\",\r\n          \"body\": \"HelloError\",\r\n          \"headers\": {\r\n            \"ContEnt-TyPe\": \"application/json\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "716"
+        ],
+        "x-ms-client-request-id": [
+          "1410a345-2c25-4e13-a88b-018d0d36c7bb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Scheduler.SchedulerManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourceGroups/onesdk2716/providers/Microsoft.Scheduler/jobCollections/CreateJobCollectionWithStandardPlan/jobs/HttpJobWithEncodableUriCharacters\",\r\n  \"type\": \"Microsoft.Scheduler/jobCollections/jobs\",\r\n  \"name\": \"CreateJobCollectionWithStandardPlan/HttpJobWithEncodableUriCharacters\",\r\n  \"properties\": {\r\n    \"action\": {\r\n      \"request\": {\r\n        \"uri\": \"http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d\",\r\n        \"method\": \"get\"\r\n      },\r\n      \"type\": \"Http\",\r\n      \"errorAction\": {\r\n        \"request\": {\r\n          \"uri\": \"http://www.bing.com/workers?somekey=somevalue%2drandomvalue%2fconsistent%3d\",\r\n          \"method\": \"post\",\r\n          \"headers\": {\r\n            \"ContEnt-TyPe\": \"application/json\"\r\n          },\r\n          \"body\": \"HelloError\",\r\n          \"authentication\": {\r\n            \"username\": \"HttpErrorAction\",\r\n            \"type\": \"Basic\"\r\n          }\r\n        },\r\n        \"type\": \"Http\"\r\n      }\r\n    },\r\n    \"state\": \"enabled\",\r\n    \"status\": {\r\n      \"nextExecutionTime\": \"2017-02-08T23:55:54.2945801Z\",\r\n      \"executionCount\": 0,\r\n      \"failureCount\": 0,\r\n      \"faultedCount\": 0\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "889"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-burst-remaining-scheduler-writes": [
+          "52"
+        ],
+        "x-ms-request-id": [
+          "ec5de994-bc26-473a-9462-947324b1f264"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "593"
+        ],
+        "x-ms-correlation-request-id": [
+          "af99479a-d7ad-4671-bde9-766e16a25298"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235534Z:af99479a-d7ad-4671-bde9-766e16a25298"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:34 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/resourcegroups/onesdk2716?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL3Jlc291cmNlZ3JvdXBzL29uZXNkazI3MTY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "d14075f8-e8cf-49a6-982b-ec257df5bd83"
+        ],
+        "x-ms-correlation-request-id": [
+          "d14075f8-e8cf-49a6-982b-ec257df5bd83"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235535Z:d14075f8-e8cf-49a6-982b-ec257df5bd83"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:35 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-request-id": [
+          "b179e159-a3a3-4fa0-8b1c-35642774773f"
+        ],
+        "x-ms-correlation-request-id": [
+          "b179e159-a3a3-4fa0-8b1c-35642774773f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235535Z:b179e159-a3a3-4fa0-8b1c-35642774773f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:35 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14982"
+        ],
+        "x-ms-request-id": [
+          "554d9891-8403-4461-84f0-5345effd4d7e"
+        ],
+        "x-ms-correlation-request-id": [
+          "554d9891-8403-4461-84f0-5345effd4d7e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235550Z:554d9891-8403-4461-84f0-5345effd4d7e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:55:49 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-request-id": [
+          "d4d602d5-c604-4b9e-bd51-a721fa4bdc9c"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4d602d5-c604-4b9e-bd51-a721fa4bdc9c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235605Z:d4d602d5-c604-4b9e-bd51-a721fa4bdc9c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:56:04 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14980"
+        ],
+        "x-ms-request-id": [
+          "1990063a-5e55-40c0-ab43-f91888a1980a"
+        ],
+        "x-ms-correlation-request-id": [
+          "1990063a-5e55-40c0-ab43-f91888a1980a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235620Z:1990063a-5e55-40c0-ab43-f91888a1980a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:56:20 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14979"
+        ],
+        "x-ms-request-id": [
+          "ef48e772-2a78-4a68-994f-02636b8d2d7f"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef48e772-2a78-4a68-994f-02636b8d2d7f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235635Z:ef48e772-2a78-4a68-994f-02636b8d2d7f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:56:35 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14978"
+        ],
+        "x-ms-request-id": [
+          "b16ab26e-f9a1-48e7-8950-662e66cfdf91"
+        ],
+        "x-ms-correlation-request-id": [
+          "b16ab26e-f9a1-48e7-8950-662e66cfdf91"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235650Z:b16ab26e-f9a1-48e7-8950-662e66cfdf91"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:56:50 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14977"
+        ],
+        "x-ms-request-id": [
+          "56f17b55-329f-43e5-bba3-6fd494664de5"
+        ],
+        "x-ms-correlation-request-id": [
+          "56f17b55-329f-43e5-bba3-6fd494664de5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235706Z:56f17b55-329f-43e5-bba3-6fd494664de5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:57:05 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/22219ba9-41d8-4b8f-b1e9-dc8a403b803d/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1PTkVTREsyNzE2LVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjIyMTliYTktNDFkOC00YjhmLWIxZTktZGM4YTQwM2I4MDNkL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFQVGtWVFJFc3lOekUyTFZkRlUxUlZVeUlzSW1wdllreHZZMkYwYVc5dUlqb2lkMlZ6ZEhWekluMD9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14976"
+        ],
+        "x-ms-request-id": [
+          "017d65f9-bbc8-4d05-ba42-b2d136c464e5"
+        ],
+        "x-ms-correlation-request-id": [
+          "017d65f9-bbc8-4d05-ba42-b2d136c464e5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170208T235721Z:017d65f9-bbc8-4d05-ba42-b2d136c464e5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 08 Feb 2017 23:57:21 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-CreateHttpJob": [
+      "onesdk2716"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "22219ba9-41d8-4b8f-b1e9-dc8a403b803d"
+  }
+}

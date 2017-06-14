@@ -12,33 +12,34 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.ApiManagement
 {
+    using AutoMapper;
+    using Common.Authentication.Abstractions;
+    using Management.ApiManagement;
+    using Management.ApiManagement.Models;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using AutoMapper;
-    using Microsoft.Azure.Commands.ApiManagement.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Management.ApiManagement;
-    using Microsoft.Azure.Management.ApiManagement.Models;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     public class ApiManagementClient
     {
-        private readonly AzureProfile _azureProfile;
+        private readonly IAzureContext _context;
         private Management.ApiManagement.ApiManagementClient _client;
 
-        public ApiManagementClient(AzureProfile azureProfile)
+        public ApiManagementClient(IAzureContext context)
         {
-            if (azureProfile == null)
+            if (context == null)
             {
-                throw new ArgumentNullException("azureProfile");
+                throw new ArgumentNullException("AzureProfile");
             }
 
-            _azureProfile = azureProfile;
+            _context = context;
         }
 
         private IApiManagementClient Client
@@ -48,8 +49,8 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 if (_client == null)
                 {
                     _client =
-                        AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
-                            _azureProfile,
+                        AzureSession.Instance.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
+                            _context,
                             AzureEnvironment.Endpoint.ResourceManager);
                 }
 
@@ -59,13 +60,13 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
         public PsApiManagement GetApiManagement(string resourceGroupName, string serviceName)
         {
-            ApiServiceGetResponse response = Client.ApiManagement.Get(resourceGroupName, serviceName);
+            ApiServiceGetResponse response = Client.ResourceProvider.Get(resourceGroupName, serviceName);
             return new PsApiManagement(response.Value);
         }
 
         public IEnumerable<PsApiManagement> ListApiManagements(string resourceGroupName)
         {
-            var response = Client.ApiManagement.List(resourceGroupName);
+            var response = Client.ResourceProvider.List(resourceGroupName);
             return response.Value.Select(resource => new PsApiManagement(resource));
         }
 
@@ -77,27 +78,61 @@ namespace Microsoft.Azure.Commands.ApiManagement
             string administratorEmail,
             PsApiManagementSku sku = PsApiManagementSku.Developer,
             int capacity = 1,
-            IDictionary<string, string> tags = null)
+            PsApiManagementVpnType vpnType = PsApiManagementVpnType.None,
+            IDictionary<string, string> tags = null,
+            PsApiManagementVirtualNetwork virtualNetwork = null,
+            PsApiManagementRegion[] additionalRegions = null)
         {
             var parameters = new ApiServiceCreateOrUpdateParameters
             {
                 Location = location,
                 Properties = new ApiServiceProperties
                 {
-                    SkuProperties = new ApiServiceSkuProperties
-                    {
-                        Capacity = capacity,
-                        SkuType = MapSku(sku)
-                    },
                     PublisherEmail = administratorEmail,
-                    PublisherName = organization
+                    PublisherName = organization,
+                    VpnType = MapVirtualNetworkType(vpnType)
+                },
+                SkuProperties = new ApiServiceSkuProperties
+                {
+                    Capacity = capacity,
+                    SkuType = MapSku(sku)
                 },
                 Tags = tags
             };
 
-            var longrunningResponse = Client.ApiManagement.BeginCreatingOrUpdating(resourceGroupName, serviceName, parameters);
+            if (virtualNetwork != null)
+            {
+                parameters.Properties.VirtualNetworkConfiguration = new VirtualNetworkConfiguration
+                {
+                    Location = virtualNetwork.Location,
+                    SubnetResourceId = virtualNetwork.SubnetResourceId
+                };
+            }
+            
+            if (additionalRegions != null && additionalRegions.Any())
+            {
+                parameters.Properties.AdditionalRegions =
+                    additionalRegions
+                        .Select(region =>
+                            new AdditionalRegion
+                            {
+                                Location = region.Location,
+                                SkuType = MapSku(region.Sku),
+                                SkuUnitCount = region.Capacity,
+                                VirtualNetworkConfiguration = region.VirtualNetwork == null
+                                    ? null
+                                    : new VirtualNetworkConfiguration
+                                    {
+                                        Location = region.VirtualNetwork.Location,
+                                        SubnetResourceId = region.VirtualNetwork.SubnetResourceId
+                                    }
+                            })
+                        .ToList();
+            }
+
+            var longrunningResponse = Client.ResourceProvider.BeginCreatingOrUpdating(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("New-AzureApiManagement", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("New-AzureRmApiManagement", longrunningResponse);
         }
 
         public ApiManagementLongRunningOperation BeginBackupApiManagement(
@@ -121,14 +156,14 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 BackupName = backupBlob
             };
 
-            var longrunningResponse = Client.ApiManagement.BeginBackup(resourceGroupName, serviceName, parameters);
+            var longrunningResponse = Client.ResourceProvider.BeginBackup(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Backup-AzureApiManagement", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Backup-AzureRmApiManagement", longrunningResponse);
         }
 
         public bool DeleteApiManagement(string resourceGroupName, string serviceName)
         {
-            Client.ApiManagement.Delete(resourceGroupName, serviceName);
+            Client.ResourceProvider.Delete(resourceGroupName, serviceName);
 
             return true;
         }
@@ -149,9 +184,9 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 BackupName = backupBlob
             };
 
-            var longrunningResponse = Client.ApiManagement.BeginRestoring(resourceGroupName, serviceName, parameters);
+            var longrunningResponse = Client.ResourceProvider.BeginRestoring(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Restore-AzureApiManagement", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Restore-AzureRmApiManagement", longrunningResponse);
         }
 
         public ApiManagementLongRunningOperation BeginUpdateDeployments(
@@ -161,11 +196,13 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagementSku sku,
             int capacity,
             PsApiManagementVirtualNetwork vnetConfiguration,
+            PsApiManagementVpnType vpnType,
             IList<PsApiManagementRegion> additionalRegions)
         {
             var parameters = new ApiServiceManageDeploymentsParameters(location, MapSku(sku))
             {
-                SkuUnitCount = capacity
+                SkuUnitCount = capacity,
+                VpnType = MapVirtualNetworkType(vpnType)
             };
 
             if (vnetConfiguration != null)
@@ -173,8 +210,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 parameters.VirtualNetworkConfiguration = new VirtualNetworkConfiguration
                 {
                     Location = vnetConfiguration.Location,
-                    SubnetName = vnetConfiguration.SubnetName,
-                    VnetId = vnetConfiguration.VnetId
+                    SubnetResourceId = vnetConfiguration.SubnetResourceId
                 };
             }
 
@@ -193,16 +229,15 @@ namespace Microsoft.Azure.Commands.ApiManagement
                                     : new VirtualNetworkConfiguration
                                     {
                                         Location = region.VirtualNetwork.Location,
-                                        SubnetName = region.VirtualNetwork.SubnetName,
-                                        VnetId = region.VirtualNetwork.VnetId
+                                        SubnetResourceId = region.VirtualNetwork.SubnetResourceId
                                     }
                             })
                         .ToList();
             }
 
-            var longrunningResponse = Client.ApiManagement.BeginManagingDeployments(resourceGroupName, serviceName, parameters);
+            var longrunningResponse = Client.ResourceProvider.BeginManagingDeployments(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Update-AzureApiManagementDeployment", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Update-AzureRmApiManagementDeployment", longrunningResponse);
         }
 
         public PsApiManagementHostnameCertificate UploadCertificate(
@@ -221,7 +256,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             var encodedCertificate = Convert.ToBase64String(certificate);
 
             var parameters = new ApiServiceUploadCertificateParameters(MapHostnameType(hostnameType), encodedCertificate, pfxPassword);
-            var result = Client.ApiManagement.UploadCertificate(resourceGroupName, serviceName, parameters);
+            var result = Client.ResourceProvider.UploadCertificate(resourceGroupName, serviceName, parameters);
 
             return new PsApiManagementHostnameCertificate(result.Value);
         }
@@ -232,7 +267,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagementHostnameConfiguration portalHostnameConfiguration,
             PsApiManagementHostnameConfiguration proxyHostnameConfiguration)
         {
-            var currentStateResource = Client.ApiManagement.Get(resourceGroupName, serviceName);
+            var currentStateResource = Client.ResourceProvider.Get(resourceGroupName, serviceName);
             var currentState = new PsApiManagement(currentStateResource.Value);
 
             var parameters = new ApiServiceUpdateHostnameParameters
@@ -241,43 +276,20 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 HostnamesToCreateOrUpdate = GetHostnamesToCreateOrUpdate(portalHostnameConfiguration, proxyHostnameConfiguration, currentState).ToList()
             };
 
-            var longrunningResponse = Client.ApiManagement.BeginUpdatingHostname(resourceGroupName, serviceName, parameters);
+            var longrunningResponse = Client.ResourceProvider.BeginUpdatingHostname(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureApiManagementHostnames", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureRmApiManagementHostnames", longrunningResponse);
         }
 
         public string GetSsoToken(string resourceGroupName, string serviceName)
         {
-            return Client.ApiManagement.GetSsoToken(resourceGroupName, serviceName).RedirectUrl;
-        }
-
-        public ApiManagementLongRunningOperation BeginManageVirtualNetworks(
-            string resourceGroupName, 
-            string serviceName, 
-            IList<PsApiManagementVirtualNetwork> virtualNetworks)
-        {
-            var parameters = new ApiServiceManageVirtualNetworksParameters
-            {
-                VirtualNetworkConfigurations = (virtualNetworks == null || virtualNetworks.Count == 0)
-                    ? null
-                    : virtualNetworks.Select(vn =>
-                        new VirtualNetworkConfiguration
-                        {
-                            Location = vn.Location,
-                            SubnetName = vn.SubnetName,
-                            VnetId = vn.VnetId
-                        }).ToList()
-            };
-
-            var longrunningResponse = Client.ApiManagement.BeginManagingVirtualNetworks(resourceGroupName, serviceName, parameters);
-            AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureApiManagementVirtualNetworks", longrunningResponse);
+            return Client.ResourceProvider.GetSsoToken(resourceGroupName, serviceName).RedirectUrl;
         }
 
         internal ApiManagementLongRunningOperation GetLongRunningOperationStatus(ApiManagementLongRunningOperation longRunningOperation)
         {
             var response =
-                Client.ApiManagement
+                Client.ResourceProvider
                     .GetApiServiceLongRunningOperationStatusAsync(longRunningOperation.OperationLink)
                     .ConfigureAwait(false)
                     .GetAwaiter()
@@ -307,31 +319,38 @@ namespace Microsoft.Azure.Commands.ApiManagement
             return Mapper.Map<PsApiManagementSku, SkuType>(sku);
         }
 
+        private static VirtualNetworkType MapVirtualNetworkType(PsApiManagementVpnType vpnType)
+        {
+            return Mapper.Map<PsApiManagementVpnType, VirtualNetworkType>(vpnType);
+        }
+
         private static IEnumerable<HostnameConfiguration> GetHostnamesToCreateOrUpdate(
             PsApiManagementHostnameConfiguration portalHostnameConfiguration,
             PsApiManagementHostnameConfiguration proxyHostnameConfiguration,
             PsApiManagement currentState)
         {
-            if (portalHostnameConfiguration != null && currentState.PortalHostnameConfiguration != null)
+            if (portalHostnameConfiguration != null)
             {
                 yield return new HostnameConfiguration(
                     HostnameType.Portal,
                     portalHostnameConfiguration.Hostname,
-                    new CertificateInformation(
-                        portalHostnameConfiguration.HostnameCertificate.Expiry,
-                        portalHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        portalHostnameConfiguration.HostnameCertificate.Subject));
+                    new CertificateInformation
+                    {
+                        Thumbprint = portalHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        Subject = string.IsNullOrWhiteSpace(portalHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : portalHostnameConfiguration.HostnameCertificate.Subject
+                    });
             }
 
-            if (proxyHostnameConfiguration != null && currentState.ProxyHostnameConfiguration != null)
+            if (proxyHostnameConfiguration != null)
             {
                 yield return new HostnameConfiguration(
                     HostnameType.Proxy,
                     proxyHostnameConfiguration.Hostname,
-                    new CertificateInformation(
-                        proxyHostnameConfiguration.HostnameCertificate.Expiry,
-                        proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
-                        proxyHostnameConfiguration.HostnameCertificate.Subject));
+                    new CertificateInformation
+                    {
+                        Thumbprint = proxyHostnameConfiguration.HostnameCertificate.Thumbprint,
+                        Subject = string.IsNullOrWhiteSpace(proxyHostnameConfiguration.HostnameCertificate.Subject) ? "dummy" : proxyHostnameConfiguration.HostnameCertificate.Subject
+                    });
             }
         }
 

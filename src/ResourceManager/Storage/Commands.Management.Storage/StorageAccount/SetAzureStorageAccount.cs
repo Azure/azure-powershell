@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,25 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, DefaultParameterSetName = UpdateAccountTypeParamSet), OutputType(typeof(StorageAccount))]
+    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(StorageModels.StorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
-        protected const string UpdateAccountTypeParamSet = "UpdateAccountType";
-        protected const string UpdateCustomDomainParamSet = "UpdateCustomDomain";
-        protected const string UpdateTagsParamSet = "UpdateTags";
+
+        /// <summary>
+        /// Storage Encryption parameter set name
+        /// </summary>
+        private const string StorageEncryptionParameterSet = "StorageEncryption";
+
+        /// <summary>
+        /// Keyvault Encryption parameter set name
+        /// </summary>
+        private const string KeyvaultEncryptionParameterSet = "KeyvaultEncryption";
 
         [Parameter(
             Position = 0,
@@ -49,89 +57,193 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(HelpMessage = "Force to Set the Account")]
+        public SwitchParameter Force
+        {
+            get { return force; }
+            set { force = value; }
+        }
+        private bool force = false;
+
         [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ParameterSetName = UpdateAccountTypeParamSet,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Type.")]
+            HelpMessage = "Storage Account Sku Name.")]
+        [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
         [ValidateSet(AccountTypeString.StandardLRS,
             AccountTypeString.StandardZRS,
             AccountTypeString.StandardGRS,
             AccountTypeString.StandardRAGRS,
             AccountTypeString.PremiumLRS,
             IgnoreCase = true)]
-        public string Type { get; set; }
+        public string SkuName { get; set; }
 
         [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ParameterSetName = UpdateCustomDomainParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Custom Domain Name.")]
-        [ValidateNotNullOrEmpty]
+            Mandatory = false,
+            HelpMessage = "Storage Account Access Tier.")]
+        [ValidateSet(AccountAccessTier.Hot,
+            AccountAccessTier.Cool,
+            IgnoreCase = true)]
+        public string AccessTier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account Custom Domain.")]
+        [ValidateNotNull]
         public string CustomDomainName { get; set; }
 
         [Parameter(
-            Position = 3,
-            ParameterSetName = UpdateCustomDomainParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To Use Sub Domain Name.")]
+            Mandatory = false,
+            HelpMessage = "To Use Sub Domain.")]
         [ValidateNotNullOrEmpty]
         public bool? UseSubDomain { get; set; }
 
         [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ParameterSetName = UpdateTagsParamSet,
+            Mandatory = false,
+            HelpMessage = "Storage Service that will enable encryption.")]
+        public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Service that will disable encryption.")]
+        public EncryptionSupportServiceEnum? DisableEncryptionService { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
+        [AllowEmptyCollection]
+        [ValidateNotNull]
+        [Alias(TagsAlias)]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
+        public bool EnableHttpsTrafficOnly
+        {
+            get
+            {
+                return enableHttpsTrafficOnly.Value;
+            }
+            set
+            {
+                enableHttpsTrafficOnly = value;
+            }
+        }
+        private bool? enableHttpsTrafficOnly = null;
+
+        [Parameter(HelpMessage = "Whether to set Storage Account Encryption KeySource to Microsoft.Storage or not.", Mandatory = false, ParameterSetName = StorageEncryptionParameterSet)]
+        public SwitchParameter StorageEncryption
+        {
+            get { return storageEncryption; }
+            set { storageEncryption = value; }
+        }
+        private bool storageEncryption = false;
+
+        [Parameter(HelpMessage = "Whether to set Storage Account encryption keySource to Microsoft.Keyvault or not. " +
+            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.", 
+            Mandatory = false, ParameterSetName = KeyvaultEncryptionParameterSet)]
+        public SwitchParameter KeyvaultEncryption
+        {
+            get { return keyvaultEncryption; }
+            set { keyvaultEncryption = value; }
+        }
+        private bool keyvaultEncryption = false;
+
+        [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyName",
+                    Mandatory = true,
+                    ParameterSetName = KeyvaultEncryptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public Hashtable[] Tags { get; set; }
+        public string KeyName { get; set; }
+
+        [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVersion",
+        Mandatory = true,
+        ParameterSetName = KeyvaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
+        [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVaultUri",
+        Mandatory = true,
+        ParameterSetName = KeyvaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri
+        {
+            get; set;
+        }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            Dictionary<string, string> tagDictionary = null;
-            StorageAccountUpdateParameters updateParameters = null;
+            if (ShouldProcess(this.Name, "Set Storage Account"))
+            {
+                if (this.force || this.AccessTier == null || ShouldContinue("Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.", ""))
+                {
+                    StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
+                    if (this.SkuName != null)
+                    {
+                        updateParameters.Sku = new Sku(ParseSkuName(this.SkuName));
+                    }
 
-            if (ParameterSetName == UpdateAccountTypeParamSet)
-            {
-                updateParameters = new StorageAccountUpdateParameters
+                    if (this.Tag != null)
                     {
-                        AccountType = ParseAccountType(this.Type)
-                    };
-            }
-            else if (ParameterSetName == UpdateCustomDomainParamSet)
-            {
-                updateParameters = new StorageAccountUpdateParameters
+                        Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+                        updateParameters.Tags = tagDictionary ?? new Dictionary<string, string>();
+                    }
+
+                    if (this.CustomDomainName != null)
                     {
-                        CustomDomain = new CustomDomain
+                        updateParameters.CustomDomain = new CustomDomain()
                         {
                             Name = CustomDomainName,
                             UseSubDomain = UseSubDomain
-                        }
-                    };
-            }
-            else
-            {
-                tagDictionary = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
-
-                updateParameters = new StorageAccountUpdateParameters
+                        };
+                    }
+                    else if (UseSubDomain != null)
                     {
-                        Tags = tagDictionary
-                    };
+                        throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
+                    }
+
+                    if (this.AccessTier != null)
+                    {
+                        updateParameters.AccessTier = ParseAccessTier(AccessTier);
+                    }
+                    if (enableHttpsTrafficOnly != null)
+                    {
+                        updateParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+                    }
+
+                    if (AssignIdentity.IsPresent)
+                    {
+                        updateParameters.Identity = new Identity();
+                    }
+
+                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null || StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
+                    {
+                        if (ParameterSetName == KeyvaultEncryptionParameterSet)
+                        {
+                            keyvaultEncryption = true;
+                        }
+                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
+                    }
+
+                    var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
+                        this.ResourceGroupName,
+                        this.Name,
+                        updateParameters);
+
+                    var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+
+                    WriteStorageAccount(storageAccount);
+                }
             }
-
-            var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
-                this.ResourceGroupName,
-                this.Name,
-                updateParameters);
-
-            var accountProperties = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-
-            WriteStorageAccount(accountProperties.StorageAccount);
         }
     }
 }

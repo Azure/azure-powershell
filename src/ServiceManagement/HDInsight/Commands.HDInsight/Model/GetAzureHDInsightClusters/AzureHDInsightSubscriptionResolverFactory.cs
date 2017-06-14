@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
     internal class AzureHDInsightSubscriptionResolverFactory : IAzureHDInsightSubscriptionResolverFactory
     {
-        public IAzureHDInsightSubscriptionResolver Create(AzureProfile profile)
+        public IAzureHDInsightSubscriptionResolver Create(AzureSMProfile profile)
         {
             return new AzureHDInsightSubscriptionResolver(profile);
         }

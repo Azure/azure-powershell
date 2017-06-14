@@ -12,16 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class AuthorizationTests
     {
-        //[Fact]
+        public AuthorizationTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Fact(Skip = "TODO: Fix the broken test.")]
+        [Fact(Skip = "TODO: Fix the broken outdated test. The test cleans up all assignments, but some assignments are needed for the service scenario tests")]
         public void TestAuthorizationEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest("Test-AuthorizationEndToEnd");

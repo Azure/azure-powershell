@@ -15,28 +15,40 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSBackendAddressPool : PSChildResource
     {
-        public List<PSResourceId> BackendIpConfigurations { get; set; }
+        [JsonProperty(Order = 1)]
+        public List<PSNetworkInterfaceIPConfiguration> BackendIpConfigurations { get; set; }
 
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
 
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string BackendIpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancingRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeBackendIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeLoadBalancingRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     using NSM = Management.Compute.Models;
     using Hyak.Common;
+    using System;
 
     /// <summary>
     /// Get-AzureVMSqlServerExtension implementation
@@ -42,6 +43,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
         protected const string AutoPatchingStatusMessageName = "Automated Patching";
         protected const string AutoBackupStatusMessageName = "Automated Backup";
+        protected const string KeyVaultCredentialStatusMessageName = "Key Vault Credential";
+        protected const string SqlConfigurationStatusMessageName = "SQL Configuration";
+
+        // These maps are needed due to mismatch in the values while we set/get these parameters.
+        protected static readonly Dictionary<string, string> AutoBackupScheduleTypeMap =
+            new Dictionary<string, string>()
+            {
+                { "NOTSET" , null },
+                { "SYSTEM" , "Automated" },
+                { "CUSTOM" , "Manual" }
+            };
+        protected static readonly Dictionary<string, string> AutoPatchingCategoryMap =
+            new Dictionary<string, string>()
+            {
+                { "WindowsMandatoryUpdates" , "Important" },
+            };
 
         internal void ExecuteCommand()
         {
@@ -59,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            ExecuteCommand();
+            this.ExecuteCommand();
         }
 
         /// <summary>
@@ -68,8 +85,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <returns></returns>
         private VirtualMachineSqlServerExtensionContext GetExtensionContext(ResourceExtensionReference r)
         {
-            string extensionName= VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedNamespace + "."
-                               + VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedName;
+            string extensionName = VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedNamespace + "."
+                      + VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedName;
 
             VirtualMachineSqlServerExtensionContext context = new VirtualMachineSqlServerExtensionContext
             {
@@ -104,31 +121,84 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 if (null != res.ExtensionSettingStatus)
                 {
                     context.SubStatusList = res.ExtensionSettingStatus.SubStatusList;
+                    context.ExtensionStatus = res.Status;
 
+                    // Gather status messages because
+                    // #$ISSUE- extension.Statuses is always null, follow up with Azure team
                     foreach (NSM.ResourceExtensionSubStatus status in res.ExtensionSettingStatus.SubStatusList)
                     {
                         if (null != status.FormattedMessage)
                         {
-                            string formattedMessage = status.FormattedMessage.Message;
-
-                            // get current auto patching and auto backup config from extension status message
-                            if (status.Name.Equals(AutoPatchingStatusMessageName, System.StringComparison.InvariantCulture))
-                            {
-                                context.AutoPatchingSettings = DeSerializeAutoPatchingSettings(status.Name, formattedMessage);
-                            }
-
-                            if (status.Name.Equals(AutoBackupStatusMessageName, System.StringComparison.InvariantCulture))
-                            {
-                                context.AutoBackupSettings = DeSerializeAutoBackupSettings(status.Name, formattedMessage);
-                            }
-
-                            statusMessageList.Add(formattedMessage);
+                            statusMessageList.Add(status.FormattedMessage.Message);
                         }
+                    }
+                    context.StatusMessages = statusMessageList;
+
+                    // Extract sql configuration information from one of the sub statuses
+                    if (context.SubStatusList == null
+                        || context.SubStatusList.FirstOrDefault(s =>
+                            s.Name.Equals(SqlConfigurationStatusMessageName, StringComparison.InvariantCultureIgnoreCase)) == null)
+                    {
+                        WriteWarning(
+                            String.Format(
+                                CultureInfo.CurrentUICulture,
+                                Properties.Resources.AzureVMSqlServerSqlConfigurationNotFound,
+                                context.SubStatusList));
+
+                        continue;
+                    }
+
+                    string sqlConfiguration = context.SubStatusList.First(s => s.Name.Equals(SqlConfigurationStatusMessageName, StringComparison.InvariantCultureIgnoreCase)).FormattedMessage.Message;
+
+                    try
+                    {
+                        AzureVMSqlServerConfiguration settings = JsonConvert.DeserializeObject<AzureVMSqlServerConfiguration>(sqlConfiguration);
+
+                        context.AutoBackupSettings = settings.AutoBackup == null ? null : new AutoBackupSettings()
+                        {
+                            Enable = settings.AutoBackup.Enable,
+                            EnableEncryption = settings.AutoBackup.EnableEncryption,
+                            RetentionPeriod = settings.AutoBackup.RetentionPeriod,
+                            StorageUrl = settings.AutoBackup.StorageAccountUrl,
+                            BackupSystemDbs = settings.AutoBackup.BackupSystemDbs,
+                            BackupScheduleType = string.IsNullOrEmpty(settings.AutoBackup.BackupScheduleType) ? null : AutoBackupScheduleTypeMap[settings.AutoBackup.BackupScheduleType],
+                            FullBackupFrequency = settings.AutoBackup.FullBackupFrequency,
+                            FullBackupStartTime = settings.AutoBackup.FullBackupStartTime,
+                            FullBackupWindowHours = settings.AutoBackup.FullBackupWindowHours,
+                            LogBackupFrequency = settings.AutoBackup.LogBackupFrequency
+                        };
+
+                        context.AutoPatchingSettings = settings.AutoPatching == null ? null : new AutoPatchingSettings()
+                        {
+                            Enable = settings.AutoPatching.Enable,
+                            DayOfWeek = settings.AutoPatching.DayOfWeek,
+                            MaintenanceWindowDuration = settings.AutoPatching.MaintenanceWindowDuration,
+                            MaintenanceWindowStartingHour = settings.AutoPatching.MaintenanceWindowStartingHour,
+                            PatchCategory = string.IsNullOrEmpty(settings.AutoPatching.PatchCategory) ? null : AutoPatchingCategoryMap[settings.AutoPatching.PatchCategory]
+                        };
+
+                        context.KeyVaultCredentialSettings = settings.AzureKeyVault == null ? null : new KeyVaultCredentialSettings()
+                        {
+                            Enable = settings.AzureKeyVault.Enable,
+                            Credentials = settings.AzureKeyVault.CredentialsList
+                        };
+
+                        context.AutoTelemetrySettings = settings.AutoTelemetryReport == null ? null : new AutoTelemetrySettings()
+                        {
+                            Region = settings.AutoTelemetryReport.Location,
+                        };
+                    }
+                    catch (JsonException)
+                    {
+                        WriteWarning(
+                            String.Format(
+                                CultureInfo.CurrentUICulture,
+                                Properties.Resources.AzureVMSqlServerWrongConfigFormat,
+                                sqlConfiguration));
                     }
                 }
             }
 
-            context.StatusMessages = statusMessageList;
             return context;
         }
 
@@ -158,7 +228,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         NSM.DeploymentSlot.Production);
                 }
                 catch (CloudException e)
-                {  
+                {
                     if (e.Response.StatusCode != HttpStatusCode.NotFound)
                     {
                         throw;
@@ -212,13 +282,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         private AutoBackupSettings DeSerializeAutoBackupSettings(string category, string input)
         {
-            AutoBackupSettings abs = new AutoBackupSettings();
+            AutoBackupSettings autoBackupSettings = new AutoBackupSettings();
 
             if (!string.IsNullOrEmpty(input))
             {
                 try
                 {
-                    abs = JsonConvert.DeserializeObject<AutoBackupSettings>(input);
+                    PublicAutoBackupSettings publicAutoBackupSettings = JsonConvert.DeserializeObject<PublicAutoBackupSettings>(input);
+
+                    if(publicAutoBackupSettings != null)
+                    {
+                        autoBackupSettings.Enable = publicAutoBackupSettings.Enable;
+                        autoBackupSettings.EnableEncryption = publicAutoBackupSettings.EnableEncryption;
+                        autoBackupSettings.RetentionPeriod = publicAutoBackupSettings.RetentionPeriod;
+                        autoBackupSettings.StorageAccessKey = "***";
+                        autoBackupSettings.StorageUrl = "***";
+
+                        if (autoBackupSettings.EnableEncryption)
+                        {
+                            autoBackupSettings.Password = "***";
+                        }
+                    }
                 }
                 catch (JsonReaderException jre)
                 {
@@ -228,7 +312,42 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 }
             }
 
-            return abs;
+            return autoBackupSettings;
+        }
+
+        private KeyVaultCredentialSettings DeSerializeKeyVaultCredentialSettings(string category, string input)
+        {
+            KeyVaultCredentialSettings kvtSettings = new KeyVaultCredentialSettings();
+
+            if (!string.IsNullOrEmpty(input))
+            {
+                try
+                {
+                    // we only print the public settings
+                    PublicKeyVaultCredentialSettings publicSettings = JsonConvert.DeserializeObject<PublicKeyVaultCredentialSettings>(input);
+
+                    if (publicSettings != null)
+                    {
+                        kvtSettings.CredentialName = publicSettings.CredentialName;
+                        kvtSettings.Enable = publicSettings.Enable;
+
+                        if (kvtSettings.Enable)
+                        {
+                            kvtSettings.ServicePrincipalName = "***";
+                            kvtSettings.ServicePrincipalSecret = "***";
+                            kvtSettings.AzureKeyVaultUrl = "***";
+                        }
+                    }
+                }
+                catch (JsonReaderException jre)
+                {
+                    WriteVerboseWithTimestamp("Category:" + category);
+                    WriteVerboseWithTimestamp("Message:" + input);
+                    WriteVerboseWithTimestamp(jre.ToString());
+                }
+            }
+
+            return kvtSettings;
         }
 
         /// <summary>

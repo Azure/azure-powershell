@@ -15,22 +15,154 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
-    public class EndpointTests : WatmV2TestsBase
+    using Xunit.Abstractions;
+    public class EndpointTests
     {
+        public EndpointTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddEndpoint()
         {
-            this.RunPowerShellTest("Test-AddEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-AddEndpoint");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteEndpoint()
         {
-            this.RunPowerShellTest("Test-DeleteEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-DeleteEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrud()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrud");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrudGeo()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudGeo");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrudPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateExistingEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CreateExistingEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CreateExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-RemoveExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetExistingEndpointFromNonExistingProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-GetExistingEndpointFromNonExistingProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveNonExistingEndpointFromProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingEndpointFromProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-DisableEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEndpointUsingPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableEndpointUsingPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEndpointUsingPipingFromGetProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableEndpointUsingPipingFromGetProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableEndpointUsingPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-DisableEndpointUsingPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableNonExistingEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableNonExistingEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableNonExistingEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-DisableNonExistingEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointTypeCaseInsensitive()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointTypeCaseInsensitive");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipeEndpointFromGetEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-PipeEndpointFromGetEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipeEndpointFromGetProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-PipeEndpointFromGetProfile");
         }
     }
 }

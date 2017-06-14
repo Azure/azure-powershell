@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using System;
 
     public class ApiManagementLongRunningOperation
     {
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                     : null
             };
 
-            var apiServiceLongRunnigResponse = longRunningResponse as ApiServiceLongRunningOperationResponse;
-            if (apiServiceLongRunnigResponse != null && apiServiceLongRunnigResponse.Value != null)
+            var apiServiceLongRunningResponse = longRunningResponse as ApiServiceLongRunningOperationResponse;
+            if (apiServiceLongRunningResponse != null && apiServiceLongRunningResponse.Value != null)
             {
-                result.ApiManagement = new PsApiManagement(apiServiceLongRunnigResponse.Value);
+                result.ApiManagement = new PsApiManagement(apiServiceLongRunningResponse.Value);
             }
 
             return result;

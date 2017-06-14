@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,29 +13,35 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerUpgradeTests : SqlTestsBase
     {
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerUpgradeWithRecommendedDatabase()
+        public ServerUpgradeTests(ITestOutputHelper output) : base(output)
         {
-            RunPowerShellTest("Test-ServerUpgradeWithRecommendedDatabase");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpgradeWithUpgradeHint()
+        {
+            RunPowerShellTest("Test-ServerUpgradeWithUpgradeHint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpgradeAndCancel()
         {
             RunPowerShellTest("Test-ServerUpgradeAndCancel");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpgradeNegative()
         {
             RunPowerShellTest("Test-ServerUpgradeNegative");

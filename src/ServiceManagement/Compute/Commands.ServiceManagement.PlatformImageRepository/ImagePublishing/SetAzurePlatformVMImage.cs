@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         public string[] ReplicaLocations { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ShareParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "Specifies the sharing permission of replicated image.")]
-        [ValidateSet("Public", "Private")]
+        [ValidateSet("Public", "Private", "MSDN", "EA")]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]
@@ -153,7 +153,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                         ValidateTargetLocations();
                         return this.ComputeClient.VirtualMachineOSImages.Replicate(this.ImageName, new Management.Compute.Models.VirtualMachineOSImageReplicateParameters
                             {
-                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList()
+                                TargetLocations = this.ReplicaLocations == null ? null : this.ReplicaLocations.ToList(),
+                                ComputeImageAttributes = new ComputeImageAttributes
+                                {
+                                    Offer = this.ComputeImageConfig.Offer,
+                                    Sku = this.ComputeImageConfig.Sku,
+                                    Version = this.ComputeImageConfig.Version
+                                },
+                                MarketplaceImageAttributes = this.MarketplaceImageConfig == null ? null : new MarketplaceImageAttributes
+                                {
+                                    Plan = new Plan
+                                    {
+                                        Name = this.MarketplaceImageConfig.PlanName,
+                                        Product = this.MarketplaceImageConfig.Product,
+                                        Publisher = this.MarketplaceImageConfig.Publisher
+                                    },
+                                    PublisherId = this.MarketplaceImageConfig.PublisherId
+                                }
                             });
                     });
             }

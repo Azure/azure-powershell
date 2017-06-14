@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.TrafficManager.Models;
-using Microsoft.Azure.Commands.TrafficManager.Utilities;
 
-using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
+    using System.Collections;
     using System.Net;
-    using Hyak.Common;
+    using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    using Microsoft.Azure.Commands.TrafficManager.Models;
+    using Microsoft.Azure.Commands.TrafficManager.Utilities;
+    using Microsoft.Rest.Azure;
+    using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+
+    [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
@@ -34,6 +36,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The status of the profile.")]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string ProfileStatus { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "The relative name of the profile.")]
         [ValidateNotNullOrEmpty]
         public string RelativeDnsName { get; set; }
@@ -43,22 +50,44 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public uint Ttl { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The traffic routing method of the profile.")]
-        [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, IgnoreCase = false)]
+        [ValidateSet(Constants.Performance, Constants.Weighted, Constants.Priority, Constants.Geographic, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string TrafficRoutingMethod { get; set; }
 
+        [Alias("ProtocolForMonitor")]
         [Parameter(Mandatory = true, HelpMessage = "The protocol of the monitor.")]
-        [ValidateSet(Constants.HTTP, Constants.HTTPS, IgnoreCase = false)]
+        [ValidateSet(Constants.HTTP, Constants.HTTPS, Constants.TCP, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string MonitorProtocol { get; set; }
 
+        [Alias("PortForMonitor")]
         [Parameter(Mandatory = true, HelpMessage = "The port of the monitor.")]
         [ValidateNotNullOrEmpty]
         public uint MonitorPort { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The path of the monitor.")]
+        [Alias("PathForMonitor")]
+        [Parameter(Mandatory = false, HelpMessage = "The path of the monitor.")]
         [ValidateNotNullOrEmpty]
         public string MonitorPath { get; set; }
+
+        [Alias("IntervalInSecondsForMonitor")]
+        [Parameter(Mandatory = false, HelpMessage = "The interval (in seconds) at which Traffic Manager will check the health of each endpoint in this profile. The default is 30.")]
+        [ValidateNotNullOrEmpty]
+        public int? MonitorIntervalInSeconds { get; set; }
+
+        [Alias("TimeoutInSecondsForMonitor")]
+        [Parameter(Mandatory = false, HelpMessage = "The time (in seconds) that Traffic Manager allows endpoints in this profile to respond to the health check. The default is 10.")]
+        [ValidateNotNullOrEmpty]
+        public int? MonitorTimeoutInSeconds { get; set; }
+
+        [Alias("ToleratedNumberOfFailuresForMonitor")]
+        [Parameter(Mandatory = false, HelpMessage = "The number of consecutive failed health checks that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next consecutive failed health check. The default is 3.")]
+        [ValidateNotNullOrEmpty]
+        public int? MonitorToleratedNumberOfFailures { get; set; }
+
+        [Alias("Tags")]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -78,12 +107,17 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
                     this.ResourceGroupName,
                     this.Name,
+                    this.ProfileStatus,
                     this.TrafficRoutingMethod,
                     this.RelativeDnsName,
                     this.Ttl,
                     this.MonitorProtocol,
                     this.MonitorPort,
-                    this.MonitorPath);
+                    this.MonitorPath,
+                    this.MonitorIntervalInSeconds,
+                    this.MonitorTimeoutInSeconds,
+                    this.MonitorToleratedNumberOfFailures,
+                    this.Tag);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(profile);

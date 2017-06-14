@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Request path")]
         [ValidateNotNullOrEmpty]
         public string RequestPath { get; set; }

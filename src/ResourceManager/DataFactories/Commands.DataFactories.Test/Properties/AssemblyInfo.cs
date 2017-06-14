@@ -14,6 +14,7 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Xunit;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -23,7 +24,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Microsoft.Azure.Commands.DataFactories.Test")]
-[assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+[assembly: AssemblyCopyright("Microsoft Corporation")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +32,6 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("8E86B542-B22F-44B6-8053-3F5118E04DEA")]
 
-[assembly: AssemblyVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyVersion)]
-[assembly: AssemblyFileVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyFileVersion)]
+[assembly: AssemblyVersion("3.1.0")]
+[assembly: AssemblyFileVersion("3.1.0")]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]

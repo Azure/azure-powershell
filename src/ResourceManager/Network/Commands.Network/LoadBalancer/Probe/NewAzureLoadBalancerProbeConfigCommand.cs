@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSProbe))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerProbeConfig"), OutputType(typeof(PSProbe))]
     public class NewAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
     {
         [Parameter(
@@ -27,10 +26,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var probe = new PSProbe();
             probe.Name = this.Name;
             probe.Port = this.Port;
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
 
             probe.Id =
                 ChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerProbeName,
                     this.Name);
 

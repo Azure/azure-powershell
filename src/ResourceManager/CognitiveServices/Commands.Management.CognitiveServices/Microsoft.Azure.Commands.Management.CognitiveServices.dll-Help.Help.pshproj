@@ -1,0 +1,618 @@
+<?xml version="1.0"?>
+<ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Manifest" mclass="External" useSupports="false">
+  <Name>Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help</Name>
+  <Version>0.1.0</Version>
+  <Description>Microsoft Azure PowerShell - Cognitive Services management cmdlets for Azure Resource Manager.  Creates and manages cognitive services accounts in Azure Resource Manager.</Description>
+  <ModulePath>C:\s\azure-powershell\src\ResourceManager\CognitiveServices\Commands.Management.CognitiveServices\Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.psd1</ModulePath>
+  <HasManifest>false</HasManifest>
+  <OverridePostCount>false</OverridePostCount>
+  <FetchPostCount xsi:nil="true" />
+  <Cmdlets>
+    <CmdletObject verb="Get" noun="AzureRmCognitiveServicesAccount">
+      <Name>Get-AzureRmCognitiveServicesAccount</Name>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="ResourceGroupParameterSet" Params="ResourceGroupName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="AccountNameParameterSet" Params="ResourceGroupName Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmCognitiveServicesAccount [[-ResourceGroupName] &lt;String&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmCognitiveServicesAccount [-ResourceGroupName] &lt;String&gt; [-Name] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountName</string>
+            <string>AccountName</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmCognitiveServicesAccountKey">
+      <Name>Get-AzureRmCognitiveServicesAccountKey</Name>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] &lt;String&gt; [-Name] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountName</string>
+            <string>AccountName</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Get" noun="AzureRmCognitiveServicesAccountSkus">
+      <Name>Get-AzureRmCognitiveServicesAccountSkus</Name>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Get-AzureRmCognitiveServicesAccountSkus [-ResourceGroupName] &lt;String&gt; [-Name] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountName</string>
+            <string>AccountName</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="New" noun="AzureRmCognitiveServicesAccount">
+      <Name>New-AzureRmCognitiveServicesAccount</Name>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Type SkuName Location Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>New-AzureRmCognitiveServicesAccount [-ResourceGroupName] &lt;String&gt; [-Name] &lt;String&gt; [-Type] &lt;String&gt; {ComputerVision | Emotion | Face | LUIS | Recommendations | Speech | TextAnalytics | WebLM}  [-SkuName] &lt;String&gt; {F0 | S0 | S1 | S2 | S3 | S4}  [-Location] &lt;String&gt; [-Tags &lt;Hashtable[]&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateLengthAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ValidatePatternAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountName</string>
+            <string>AccountName</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+          <Name>Type</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountType</string>
+            <string>AccountType</string>
+            <string>Kind</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
+          <Name>SkuName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="4" globbing="false">
+          <Name>Location</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Hashtable[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>Tags</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateNotNullAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="New" noun="AzureRmCognitiveServicesAccountKey">
+      <Name>New-AzureRmCognitiveServicesAccountKey</Name>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name KeyName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>New-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] &lt;String&gt; [-Name] &lt;String&gt; [-KeyName] &lt;KeyName&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountName</string>
+            <string>AccountName</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="KeyName" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
+          <Name>KeyName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Remove" noun="AzureRmCognitiveServicesAccount">
+      <Name>Remove-AzureRmCognitiveServicesAccount</Name>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Remove-AzureRmCognitiveServicesAccount [-ResourceGroupName] &lt;String&gt; [-Name] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountName</string>
+            <string>AccountName</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+    <CmdletObject verb="Set" noun="AzureRmCognitiveServicesAccount">
+      <Name>Set-AzureRmCognitiveServicesAccount</Name>
+      <GeneralHelp>
+        <Synopsis />
+        <Description />
+        <Notes />
+        <InputType />
+        <InputUrl />
+        <InputTypeDescription />
+        <ReturnType />
+        <ReturnUrl />
+        <ReturnTypeDescription />
+      </GeneralHelp>
+      <ParamSets>
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName Name SkuName Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+      </ParamSets>
+      <Syntax>
+        <string>Set-AzureRmCognitiveServicesAccount [-ResourceGroupName] &lt;String&gt; [-Name] &lt;String&gt; [-SkuName &lt;String&gt; {F0 | S0 | S1 | S2 | S3 | S4} ] [-Tags &lt;Hashtable[]&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+      </Syntax>
+      <Parameters>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
+          <Name>ResourceGroupName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
+          <Name>Name</Name>
+          <Attributes>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>CognitiveServicesAccountName</string>
+            <string>AccountName</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>SkuName</Name>
+          <Attributes>
+            <string>System.Management.Automation.ValidateSetAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AllowNullAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="Hashtable[]" varLen="true" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
+          <Name>Tags</Name>
+          <Attributes>
+            <string>System.Management.Automation.AllowNullAttribute</string>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AllowEmptyCollectionAttribute</string>
+          </Attributes>
+          <Aliases />
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationAction</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+          </Attributes>
+          <Aliases>
+            <string>infa</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+        <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
+          <Name>InformationVariable</Name>
+          <Attributes>
+            <string>System.Management.Automation.ParameterAttribute</string>
+            <string>System.Management.Automation.AliasAttribute</string>
+            <string>System.Management.Automation.Internal.CommonParameters+ValidateVariableName</string>
+          </Attributes>
+          <Aliases>
+            <string>iv</string>
+          </Aliases>
+          <Description />
+          <DefaultValue />
+        </ParameterDescription>
+      </Parameters>
+      <Examples />
+      <RelatedLinks />
+      <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
+      <Publish>false</Publish>
+    </CmdletObject>
+  </Cmdlets>
+</ModuleObject>

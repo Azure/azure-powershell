@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.DataFactories.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
 
         public string DataFactoryName { get; set; }
 
-        public string TableName { get; set; }
+        public string DatasetName { get; set; }
 
         public DateTime Start
         {
@@ -81,15 +81,27 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             }
         }
 
-        public string Status
+        public string State
         {
             get
             {
-                return dataSlice.Status;
+                return dataSlice.State;
             }
             internal set
             {
-                dataSlice.Status = value;
+                dataSlice.State = value;
+            }
+        }
+
+        public string SubState
+        {
+            get
+            {
+                return dataSlice.Substate;
+            }
+            internal set
+            {
+                dataSlice.Substate = value;
             }
         }
 

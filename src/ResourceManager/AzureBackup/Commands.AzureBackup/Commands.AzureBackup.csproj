@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C8D2337-C9D1-4F52-94B3-AB63A19F3453}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.AzureBackup</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.AzureBackup</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Backup\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Backup\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hyak.Common">
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.BackupServicesManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.BackupServices.1.0.5-preview\lib\net40\Microsoft.Azure.Management.BackupServicesManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Cmdlets\VaultCredentials\Microsoft.WindowsAzure.Management.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Scheduler">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Scheduler.6.0.0\lib\net40\Microsoft.WindowsAzure.Management.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Security.Cryptography">
+      <HintPath>Cmdlets\VaultCredentials\Security.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AzureBackupClientAdapter\AzureBackupClientAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ContainerAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\ItemAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\JobAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\OperationStatusAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\PolicyAdapter.cs" />
+    <Compile Include="AzureBackupClientAdapter\VaultAdapter.cs" />
+    <Compile Include="AzureBackupContainerCmdletBase.cs" />
+    <Compile Include="AzureBackupDSCmdletBase.cs" />
+    <Compile Include="AzureBackupItemCmdletBase.cs" />
+    <Compile Include="AzureBackupPolicyCmdletBase.cs" />
+    <Compile Include="AzureBackUpRestoreBase.cs" />
+    <Compile Include="AzureBackupVaultCmdletBase.cs" />
+    <Compile Include="AzureBackupCmdletBase.cs" />
+    <Compile Include="AzureBackupCmdletHelpMessage.cs" />
+    <Compile Include="Cmdlets\Backup\BackupAzureRMBackupItem.cs" />
+    <Compile Include="Cmdlets\Container\EnableAzureRMBackupContainerReregistration.cs" />
+    <Compile Include="Cmdlets\Container\GetAzureRMBackupContainer.cs" />
+    <Compile Include="Cmdlets\Container\RegisterAzureRMBackupContainer.cs" />
+    <Compile Include="Cmdlets\Container\UnregisterAzureRMBackupContainer.cs" />
+    <Compile Include="Cmdlets\Item\Disable-AzureRmBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\Enable-AzureRmBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\GetAzureRMBackupItem.cs" />
+    <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
+    <Compile Include="Cmdlets\Jobs\GetAzureRMBackupJob.cs" />
+    <Compile Include="Cmdlets\Jobs\GetAzureRMBackupJobDetails.cs" />
+    <Compile Include="Cmdlets\Jobs\StopAzureRMBackukpJob.cs" />
+    <Compile Include="Cmdlets\Jobs\WaitAzureRMBackupJob.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\GetAzureRMBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRMBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\NewAzureRMBackupRetentionPolicyObject.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureRMBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRMBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMBackupRecoveryPoint.cs" />
+    <Compile Include="Cmdlets\Restore\RestoreAzureRMBackupItem.cs" />
+    <Compile Include="Cmdlets\VaultCredentials\GetAzureRMBackupVaultCredentials.cs" />
+    <Compile Include="Cmdlets\Vault\GetAzureRMBackupVault.cs" />
+    <Compile Include="Cmdlets\Vault\NewAzureRMBackupVault.cs" />
+    <Compile Include="Cmdlets\Vault\RemoveAzureRMBackupVault.cs" />
+    <Compile Include="Cmdlets\Vault\SetAzureRMBackupVault.cs" />
+    <Compile Include="Helpers\ContainerHelpers.cs" />
+    <Compile Include="Helpers\ItemHelpers.cs" />
+    <Compile Include="Helpers\ProtectionPolicyHelpers.cs" />
+    <Compile Include="Helpers\VaultHelpers.cs" />
+    <Compile Include="Library\CertUtils.cs" />
+    <Compile Include="Models\AzureBackupBaseObjects.cs" />
+    <Compile Include="Models\AzureBackupContainer.cs" />
+    <Compile Include="Models\AzureBackupEnums.cs" />
+    <Compile Include="Models\AzureBackupItem.cs" />
+    <Compile Include="Models\AzureBackupRecoveryPoint.cs" />
+    <Compile Include="Models\AzurePSBackupVault.cs" />
+    <Compile Include="Models\JobObjects.cs" />
+    <Compile Include="Models\ListContainerQueryParameter.cs" />
+    <Compile Include="Models\ProtectionPolicy.cs" />
+    <Compile Include="Models\VaultCredentials.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\AzureRM.Backup.psd1">
+      <Link>AzureRM.Backup.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.Azure.Commands.AzureBackup.dll-help.psd1">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Microsoft.Azure.Commands.AzureBackup.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Microsoft.WindowsAzure.Management.Common.dll" />
+    <Content Include="Resources\Security.Cryptography.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
+</Project>

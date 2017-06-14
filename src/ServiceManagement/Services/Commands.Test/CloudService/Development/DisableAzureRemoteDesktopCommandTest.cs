@@ -19,19 +19,19 @@ using Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigurationSchema;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 {
     /// <summary>
     /// Basic unit tests for the Enable-Enable-AzureServiceProjectRemoteDesktop command.
     /// </summary>
-    public class DisableAzureRemoteDesktopCommandTest : TestBase
+    public class DisableAzureRemoteDesktopCommandTest : SMTestBase
     {
         private MockCommandRuntime mockCommandRuntime;
 
@@ -45,7 +45,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         {
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
             mockCommandRuntime = new MockCommandRuntime();
-
             disableRDCmdlet = new DisableAzureServiceProjectRemoteDesktopCommand();
             disableRDCmdlet.CommandRuntime = mockCommandRuntime;
         }

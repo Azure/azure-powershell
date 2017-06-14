@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Runtime.Remoting.Channels;
-
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model
 {
     using System;
@@ -25,7 +23,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationG
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class BackendHttpSettings : NamedConfigurationElement
     {
-        internal  ApplicationGatewayConfigurationContext ConfigurationContext { get; set; }
+        internal ApplicationGatewayConfigurationContext ConfigurationContext { get; set; }
+
+        //Values taken from ARR schemas
+        public const uint MinRequestTimeout = 1;
+        public const uint DefaultRequestTimeout = 30;
+        public const uint MaxRequestTimeout = 86400;
+
+        private uint _requestTimeout;
 
         [DataMember(Order = 2, IsRequired = true)]
         public ushort Port { get; set; }
@@ -36,6 +41,31 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationG
         [DataMember(Order = 4, IsRequired = true)]
         public string CookieBasedAffinity { get; set; }
 
+        //ReuestTimeout in seconds
+        //ARR will fail the request if response not received within RequestTimeout
+        [DataMember(Order = 5, IsRequired = false)]
+        public uint RequestTimeout
+        {
+            get
+            {
+                if (0 == _requestTimeout)
+                    return DefaultRequestTimeout;
+                else
+                    return _requestTimeout;
+            }
+            set
+            {
+                _requestTimeout = value;
+            }
+        }
+
+        [DataMember(Order = 6, EmitDefaultValue = false)]
+        public string Probe { get; set; }
+
+        public BackendHttpSettings()
+        {
+            RequestTimeout = DefaultRequestTimeout;
+        }
         public override void Validate()
         {
             if (!string.Equals(this.Protocol.ToString(), "Http", StringComparison.InvariantCultureIgnoreCase))
@@ -44,12 +74,29 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationG
                     string.Format("Only Http is allowed as Protocol of BackendHttpSettings {0}", this.Name));
             }
 
+            if (this.Port == 443)
+            {
+                throw new ApplicationGatewayConfigurationValidationException(
+                    string.Format("443 is not allowed as Port of BackendHttpSettings {0}", this.Name));
+            }
+
             if (!string.Equals(this.CookieBasedAffinity, "Enabled", StringComparison.InvariantCultureIgnoreCase) &&
                 !string.Equals(this.CookieBasedAffinity, "Disabled", StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new ApplicationGatewayConfigurationValidationException(
                     string.Format("Invalid value for CookieBasedAffinity in BackendHttpSettings {0}. Allowed values:[Enabled/Disabled]", this.Name));
             }
+
+            if ((this.RequestTimeout < MinRequestTimeout) || (this.RequestTimeout > MaxRequestTimeout))
+            {
+                throw new ApplicationGatewayConfigurationValidationException(
+                    string.Format("Invalid BackendHttpSettings {0} RequestTimeout. {1} is outside valid RequestTimeout (seconds) range [1, 86400]", this.Name, this.RequestTimeout));
+            }
+        }
+
+        public bool IsCookieBasedAffinityEnabled()
+        {
+            return string.Equals(this.CookieBasedAffinity, "Enabled", StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

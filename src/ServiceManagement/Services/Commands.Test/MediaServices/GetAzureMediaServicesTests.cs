@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.MediaServices;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -27,12 +27,14 @@ using Microsoft.WindowsAzure.Commands.Utilities.MediaServices;
 using Microsoft.WindowsAzure.Commands.Utilities.MediaServices.Services.Entities;
 using Microsoft.WindowsAzure.Management.MediaServices.Models;
 using Moq;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
     
-    public class GetAzureMediaServicesTests : TestBase
+    public class GetAzureMediaServicesTests : SMTestBase
     {
         protected string SubscriptionId = "DE8C2681-0BCD-47DB-A8A6-A103D2D4A1B9";
 
@@ -73,10 +75,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 MediaServicesClient = clientMock.Object,
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
+            currentProfile = new AzureSMProfile();
+            var subscription = new AzureSubscription { Id = SubscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(SubscriptionId)] = subscription;
 
             getAzureMediaServiceCommand.ExecuteCmdlet();
 
@@ -112,10 +114,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 MediaServicesClient = clientMock.Object,
                 Name = expectedName
             };
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
+            currentProfile = new AzureSMProfile();
+            var subscription = new AzureSubscription { Id = SubscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(SubscriptionId)] = subscription;
             getAzureMediaServiceCommand.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)getAzureMediaServiceCommand.CommandRuntime).OutputPipeline.Count);
             MediaServiceAccountDetails accounts = (MediaServiceAccountDetails)((MockCommandRuntime)getAzureMediaServiceCommand.CommandRuntime).OutputPipeline.FirstOrDefault();
@@ -154,10 +156,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 Name = mediaServicesAccountName
             };
 
-            currentProfile = new AzureProfile();
-            var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
+            currentProfile = new AzureSMProfile();
+            var subscription = new AzureSubscription { Id = SubscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(SubscriptionId)] = subscription;
             Assert.Throws<ServiceManagementClientException>(()=> getAzureMediaServiceCommand.ExecuteCmdlet());
             Assert.Equal(0, ((MockCommandRuntime)getAzureMediaServiceCommand.CommandRuntime).OutputPipeline.Count);
         }

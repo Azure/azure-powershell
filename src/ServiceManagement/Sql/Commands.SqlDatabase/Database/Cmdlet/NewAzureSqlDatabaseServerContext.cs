@@ -18,13 +18,15 @@ using System.Linq;
 using System.Management.Automation;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -33,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseServerContext", ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = ServerNameWithSqlAuthParamSet)]
-    public class NewAzureSqlDatabaseServerContext : AzurePSCmdlet
+    public class NewAzureSqlDatabaseServerContext : AzureSMCmdlet
     {
         #region ParameterSet Names
 
@@ -146,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 
         #region Current Subscription Management
 
-        private AzureSubscription CurrentSubscription
+        private IAzureSubscription CurrentSubscription
         {
             get
             {
@@ -155,9 +157,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     return Profile.Context.Subscription;
                 }
 
-                ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+                ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
 
-                return client.Profile.Subscriptions.Values.First(
+                return client.Profile.Subscriptions.First(
                         s => SubscriptionName == s.Name);
             }
         }
@@ -210,7 +212,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// or <c>null</c> if an error occurred.</returns>
         internal ServerDataServiceCertAuth GetServerDataServiceByCertAuth(
             string serverName,
-            AzureSubscription subscription)
+            IAzureSubscription subscription)
         {
             ServerDataServiceCertAuth context = null;
             SqlDatabaseCmdletBase.ValidateSubscription(subscription);
@@ -256,7 +258,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                 case FullyQualifiedServerNameWithCertAuthParamSet:
                 case ServerNameWithCertAuthParamSet:
                     // Get the current subscription data.
-                    AzureSubscription subscription = CurrentSubscription;
+                    IAzureSubscription subscription = CurrentSubscription;
 
                     // Create a context using the subscription datat
                     return this.GetServerDataServiceByCertAuth(

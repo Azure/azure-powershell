@@ -73,6 +73,24 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 return this;
             }
+
+            /// <summary>
+            /// Checks argument value for not null or empty
+            /// </summary>
+            /// <returns>The not null requirement</returns>
+            public ArgumentRequirements<T> NotNullOrEmpty()
+            {
+                if (this.Value == null)
+                {
+                    throw new ArgumentNullException(this.Name);
+                }
+                else if (string.IsNullOrEmpty(this.Value.ToString()))
+                {
+                    throw new ArgumentNullException(this.Name);
+                }
+
+                return this;
+            }
         }
     }
 }

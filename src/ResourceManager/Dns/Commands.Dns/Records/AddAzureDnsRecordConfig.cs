@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
-
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -26,7 +24,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Adds a record to a record set object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class AddAzureDnsRecordConfig : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
@@ -59,6 +57,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = "TXT")]
         [ValidateNotNullOrEmpty]
+        [ValidateLength(DnsClient.TxtRecordMinLength, DnsClient.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = "SRV")]
@@ -129,17 +128,30 @@ namespace Microsoft.Azure.Commands.Dns
                         result.Records.Add(new TxtRecord { Value = this.Value });
                         break;
                     }
+                case RecordType.PTR:
+                    {
+                        result.Records.Add(new PtrRecord { Ptrdname = this.Ptrdname });
+                        break;
+                    }
                 case RecordType.CNAME:
                     {
-                        if (result.Records.Count == 0)
+                        if (result.Records.Count != 0)
                         {
-                            result.Records.Add(new CnameRecord { Cname = this.Cname });
-                        }
-                        else
-                        {
-                            throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
+                            var currentCNameRecord = result.Records[0] as CnameRecord;
+                            if (currentCNameRecord == null)
+                            {
+                                throw new ArgumentException(ProjectResources.Error_AddRecordTypeMismatch);
+                            }
+
+                            if (!string.IsNullOrEmpty(currentCNameRecord.Cname))
+                            {
+                                throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
+                            }
+
+                            result.Records.Clear();
                         }
 
+                        result.Records.Add(new CnameRecord { Cname = this.Cname });
                         break;
                     }
                 default:

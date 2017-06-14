@@ -12,24 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Xml.Linq;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     public class VirtualMachineExtensionCmdletBase : VirtualMachineConfigurationCmdletBase
     {
-        protected const string VirtualMachineExtensionNoun = "AzureVMExtension";
-
-        protected const string ExtensionReferenceNameFormat = "{0}-{1}-{2}";
         protected const string PublicConfigurationKeyStr = "PublicConfiguration";
         protected const string PrivateConfigurationKeyStr = "PrivateConfiguration";
         protected const string PublicTypeStr = "Public";
@@ -115,6 +113,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                  : LegacyExtensionImages.Any(r => eq(r.ExtensionName, name)
                                                && eq(r.Publisher, publisher)
                                                && eq(r.Version, version));
+        }
+
+        protected bool IsXmlExtension(string version)
+        {
+            if (string.IsNullOrEmpty(version))
+            {
+                return false;
+            }
+            return version.StartsWith("1");
         }
 
         protected ResourceExtensionReferenceList ResourceExtensionReferences
@@ -344,6 +351,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                          select d.Descendants().Any() ? d.ToString() : d.Value;
 
             return result.FirstOrDefault();
+        }
+
+        protected static string GetJsonConfigValue(string jsonText, string element)
+        {
+            if (string.IsNullOrEmpty(jsonText))
+            {
+                return null;
+            }
+            var jsonObject = JObject.Parse(jsonText);
+            return jsonObject[element].Value<string>();
         }
     }
 }

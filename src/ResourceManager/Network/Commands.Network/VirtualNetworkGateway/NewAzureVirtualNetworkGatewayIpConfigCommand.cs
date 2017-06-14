@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkGatewayIpConfig"), OutputType(typeof(PSVirtualNetworkGatewayIpConfiguration))]
-    public class NewAzureVirtualNetworkGatewayIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayIpConfig"), OutputType(typeof(PSVirtualNetworkGatewayIpConfiguration))]
+    public class NewAzureVirtualNetworkGatewayIpConfigCommand : AzureVirtualNetworkGatewayIpConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             // Get the subnetId and publicIpAddressId from the objects if specified
             if (string.Equals(ParameterSetName, "object"))
             {
@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.PrivateIpAddress))
             {
                 vnetGatewayIpConfig.PrivateIpAddress = this.PrivateIpAddress;
-                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Static;
             }
             else
             {
-                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                vnetGatewayIpConfig.PrivateIpAllocationMethod = Management.Network.Models.IPAllocationMethod.Dynamic;
             }
 
             if (!string.IsNullOrEmpty(this.PublicIpAddressId))
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
 
             vnetGatewayIpConfig.Id =
                 ChildResourceHelp.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayIpConfigName,
                     this.Name);
 

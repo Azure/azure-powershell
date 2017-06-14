@@ -14,30 +14,29 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
 
     using Newtonsoft.Json;
 
     public class PSVirtualNetworkGatewayIpConfiguration : PSChildResource
-    {        
+    {
         public string PrivateIpAddress { get; set; }
 
         public string PrivateIpAllocationMethod { get; set; }
 
         public PSResourceId Subnet { get; set; }
 
-        public PSResourceId PublicIpAddress { get; set; } 
+        public PSResourceId PublicIpAddress { get; set; }
 
         [JsonIgnore]
         public string SubnetText
         {
-            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string PublicIpAddressText
         {
-            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

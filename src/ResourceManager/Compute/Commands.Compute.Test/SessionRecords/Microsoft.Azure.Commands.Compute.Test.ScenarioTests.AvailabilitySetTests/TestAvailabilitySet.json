@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourcegroups/pstestrg3330?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMzMzMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "HEAD",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZT9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/providers/Microsoft.Compute\",\r\n  \"namespace\": \"Microsoft.Compute\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"60e6cd67-9c8c-4951-9b3c-23c25a2169af\",\r\n    \"roleDefinitionId\": \"e4770acb-272e-4dc8-87f3-12f44a612224\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"availabilitySets\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines/extensions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove, SystemAssignedResourceIdentity\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/extensions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/virtualMachines\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/networkInterfaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachineScaleSets/virtualMachines/networkInterfaces\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-01\",\r\n        \"2016-08-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/vmSizes\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/runCommands\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/usages\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/virtualMachines\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/publishers\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-04-30-preview\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-08-30\",\r\n        \"2016-03-30\",\r\n        \"2015-06-15\",\r\n        \"2015-05-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"disks\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-04-30-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"snapshots\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-04-30-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/diskoperations\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-04-30-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"images\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\",\r\n        \"2016-04-30-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"restorePointCollections\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"restorePointCollections/restorePoints\",\r\n      \"locations\": [\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Brazil South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2017-03-30\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines/diagnosticSettings\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"virtualMachines/metricDefinitions\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"UK South\",\r\n        \"UK West\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "104"
+          "12064"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -24,20 +24,17 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31990"
+          "14994"
         ],
         "x-ms-request-id": [
-          "81fa8f09-586d-4290-bb7d-6dfc0f9807bd"
+          "c1363381-6447-4f7a-a187-d4014502bec0"
         ],
         "x-ms-correlation-request-id": [
-          "81fa8f09-586d-4290-bb7d-6dfc0f9807bd"
+          "c1363381-6447-4f7a-a187-d4014502bec0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004748Z:81fa8f09-586d-4290-bb7d-6dfc0f9807bd"
+          "WESTUS2:20170207T021431Z:c1363381-6447-4f7a-a187-d4014502bec0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,61 +43,16 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:47 GMT"
+          "Tue, 07 Feb 2017 02:14:30 GMT"
         ]
       },
-      "StatusCode": 404
+      "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourcegroups/pstestrg3330?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMzMzMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "HEAD",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31988"
-        ],
-        "x-ms-request-id": [
-          "ac0700ef-38b2-4efb-be15-1842a1c95178"
-        ],
-        "x-ms-correlation-request-id": [
-          "ac0700ef-38b2-4efb-be15-1842a1c95178"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150429T004752Z:ac0700ef-38b2-4efb-be15-1842a1c95178"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 29 Apr 2015 00:47:52 GMT"
-        ]
-      },
-      "StatusCode": 204
-    },
-    {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourcegroups/pstestrg3330?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMzMzMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/crptestps3644?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczM2NDQ/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -112,10 +64,10 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330\",\r\n  \"name\": \"pstestrg3330\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644\",\r\n  \"name\": \"crptestps3644\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "177"
+          "179"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -127,16 +79,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "x-ms-request-id": [
-          "ecce9fec-56a8-4887-8613-fa236cfe4d57"
+          "b0918fae-bc81-46df-9762-abe706e3e69f"
         ],
         "x-ms-correlation-request-id": [
-          "ecce9fec-56a8-4887-8613-fa236cfe4d57"
+          "b0918fae-bc81-46df-9762-abe706e3e69f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004748Z:ecce9fec-56a8-4887-8613-fa236cfe4d57"
+          "WESTUS2:20170207T021432Z:b0918fae-bc81-46df-9762-abe706e3e69f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -145,130 +97,40 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:47 GMT"
+          "Tue, 07 Feb 2017 02:14:32 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/resources?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMzMzMC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "12"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31989"
-        ],
-        "x-ms-request-id": [
-          "9ed7cea8-7f0a-4b1f-a02c-5a9e350f28b9"
-        ],
-        "x-ms-correlation-request-id": [
-          "9ed7cea8-7f0a-4b1f-a02c-5a9e350f28b9"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150429T004748Z:9ed7cea8-7f0a-4b1f-a02c-5a9e350f28b9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 29 Apr 2015 00:47:47 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourcegroups/pstestrg3330/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMzMzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcGVybWlzc2lvbnM/YXBpLXZlcnNpb249MjAxNC0wNy0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "45"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "westus:b5a4d61c-ed8b-4242-b62a-509eac87d92e"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31933"
-        ],
-        "x-ms-correlation-request-id": [
-          "230b3ea2-e823-4176-9183-4c8840e85055"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150429T004813Z:230b3ea2-e823-4176-9183-4c8840e85055"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 29 Apr 2015 00:48:13 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets/avspstestrg3330?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMzMzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cy9hdnNwc3Rlc3RyZzMzMzA/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE2LTA0LTMwLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"name\": \"avspstestrg3330\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Classic\"\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "171"
+          "167"
+        ],
+        "x-ms-client-request-id": [
+          "38e4d4d1-7198-4009-9331-5c60800e349f"
+        ],
+        "accept-language": [
+          "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"id\": \"/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets/avspstestrg3330\",\r\n  \"name\": \"avspstestrg3330\",\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Classic\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "372"
+          "401"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -282,8 +144,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
         "x-ms-request-id": [
-          "96f021ad-d5ee-4213-ac69-7a1fd6c530b4"
+          "ab20fcf5-e67b-48e2-8932-1467ac01e563"
         ],
         "Cache-Control": [
           "no-cache"
@@ -293,34 +158,49 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1184"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "60cd15b0-6dba-437f-92a0-aaf1572df3b5"
+          "d0f3d7d6-a9ad-4e25-a8c1-929c83e1c8a3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004759Z:60cd15b0-6dba-437f-92a0-aaf1572df3b5"
+          "WESTUS2:20170207T021434Z:d0f3d7d6-a9ad-4e25-a8c1-929c83e1c8a3"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:58 GMT"
+          "Tue, 07 Feb 2017 02:14:34 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMzMzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE2LTA0LTMwLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"managed\": true\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "188"
+        ],
+        "x-ms-client-request-id": [
+          "117e24ba-b869-4603-939d-fcc03e60ecd6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"platformUpdateDomainCount\": 2,\r\n        \"platformFaultDomainCount\": 3,\r\n        \"virtualMachines\": []\r\n      },\r\n      \"id\": \"/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets/avspstestrg3330\",\r\n      \"name\": \"avspstestrg3330\",\r\n      \"type\": \"Microsoft.Compute/availabilitySets\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "473"
+          "401"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -334,8 +214,145 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
         "x-ms-request-id": [
-          "bda0219a-894e-4870-954d-45a66f85372c"
+          "c2d89b1a-b974-4954-aad6-1d46c315f865"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "023117b3-d736-4317-9eca-029ad3c5c677"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170207T021436Z:023117b3-d736-4317-9eca-029ad3c5c677"
+        ],
+        "Date": [
+          "Tue, 07 Feb 2017 02:14:35 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE2LTA0LTMwLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "166"
+        ],
+        "x-ms-client-request-id": [
+          "0a5466cb-cf58-4254-9b23-2b3c9a9311dd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "401"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
+        "x-ms-request-id": [
+          "37a86225-bf11-4b8a-9935-ab6a826b8236"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-correlation-request-id": [
+          "cff5a7eb-2252-42ff-96d4-2b22cc478232"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170207T021436Z:cff5a7eb-2252-42ff-96d4-2b22cc478232"
+        ],
+        "Date": [
+          "Tue, 07 Feb 2017 02:14:35 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHM/YXBpLXZlcnNpb249MjAxNi0wNC0zMC1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c99aace9-ba07-401b-90d2-72c2b0c5cd0e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"platformUpdateDomainCount\": 2,\r\n        \"platformFaultDomainCount\": 3,\r\n        \"virtualMachines\": []\r\n      },\r\n      \"type\": \"Microsoft.Compute/availabilitySets\",\r\n      \"location\": \"eastus\",\r\n      \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n      \"name\": \"avscrptestps3644\",\r\n      \"sku\": {\r\n        \"name\": \"Classic\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "510"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
+        "x-ms-request-id": [
+          "05d82f16-5c1b-4223-ab47-f861a1485dac"
         ],
         "Cache-Control": [
           "no-cache"
@@ -345,28 +362,37 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31979"
+          "14975"
         ],
         "x-ms-correlation-request-id": [
-          "107602ba-e0b7-4c64-8109-5f6ee998a01d"
+          "af32fd8b-8eec-4486-a5d0-b00a503705a2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004759Z:107602ba-e0b7-4c64-8109-5f6ee998a01d"
+          "WESTUS2:20170207T021435Z:af32fd8b-8eec-4486-a5d0-b00a503705a2"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:58 GMT"
+          "Tue, 07 Feb 2017 02:14:34 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMzMzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHM/YXBpLXZlcnNpb249MjAxNi0wNC0zMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "02a03f85-3986-4f96-8cfa-d09b0bd60f85"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
@@ -384,16 +410,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31977"
+          "14971"
         ],
         "x-ms-request-id": [
-          "28f1d32d-c79c-4bdc-98ac-aa6f34b5dbcb"
+          "aee3868f-5306-4d4f-ad14-4267befce5ba"
         ],
         "x-ms-correlation-request-id": [
-          "28f1d32d-c79c-4bdc-98ac-aa6f34b5dbcb"
+          "aee3868f-5306-4d4f-ad14-4267befce5ba"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004759Z:28f1d32d-c79c-4bdc-98ac-aa6f34b5dbcb"
+          "WESTUS2:20170207T021437Z:aee3868f-5306-4d4f-ad14-4267befce5ba"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -402,25 +428,34 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:59 GMT"
+          "Tue, 07 Feb 2017 02:14:37 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets/avspstestrg3330?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMzMzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cy9hdnNwc3Rlc3RyZzMzMzA/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE2LTA0LTMwLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d0f69479-2bfd-4202-8bd2-2491f1a55315"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"id\": \"/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets/avspstestrg3330\",\r\n  \"name\": \"avspstestrg3330\",\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Classic\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "400"
+          "429"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -434,8 +469,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
         "x-ms-request-id": [
-          "9904aa19-1bf3-4036-ab7b-1d8030974ebb"
+          "b685f66e-5912-468c-b2c1-ce5e8c9cec1c"
         ],
         "Cache-Control": [
           "no-cache"
@@ -445,28 +483,165 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31978"
+          "14974"
         ],
         "x-ms-correlation-request-id": [
-          "bb28bc79-a1a8-4bf2-b4a5-944dc7e313f5"
+          "c64e43cd-98b5-41c2-9707-bef6c21cc5e1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004759Z:bb28bc79-a1a8-4bf2-b4a5-944dc7e313f5"
+          "WESTUS2:20170207T021435Z:c64e43cd-98b5-41c2-9707-bef6c21cc5e1"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:58 GMT"
+          "Tue, 07 Feb 2017 02:14:34 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourceGroups/pstestrg3330/providers/Microsoft.Compute/availabilitySets/avspstestrg3330?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnMzMzMC9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvYXZhaWxhYmlsaXR5U2V0cy9hdnNwc3Rlc3RyZzMzMzA/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE2LTA0LTMwLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e91a8d14-d644-483d-9c0e-61610c2af57a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "429"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
+        "x-ms-request-id": [
+          "b7c3a92c-96ee-4e4d-b45c-5b3b949aaf4d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-correlation-request-id": [
+          "603fad98-2f0e-4511-bfd0-ccbad39a41b3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170207T021436Z:603fad98-2f0e-4511-bfd0-ccbad39a41b3"
+        ],
+        "Date": [
+          "Tue, 07 Feb 2017 02:14:35 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE2LTA0LTMwLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "819740e9-b232-4bba-82d0-875ebef39f4e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"platformUpdateDomainCount\": 2,\r\n    \"platformFaultDomainCount\": 3,\r\n    \"virtualMachines\": []\r\n  },\r\n  \"type\": \"Microsoft.Compute/availabilitySets\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644\",\r\n  \"name\": \"avscrptestps3644\",\r\n  \"sku\": {\r\n    \"name\": \"Aligned\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "429"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
+        "x-ms-request-id": [
+          "3dd709fb-e8ac-41f7-9abc-c790687de66e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-correlation-request-id": [
+          "c00bddbc-62d5-49dc-85e7-1c15adef842a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170207T021436Z:c00bddbc-62d5-49dc-85e7-1c15adef842a"
+        ],
+        "Date": [
+          "Tue, 07 Feb 2017 02:14:35 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourceGroups/crptestps3644/providers/Microsoft.Compute/availabilitySets/avscrptestps3644?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczM2NDQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL2F2YWlsYWJpbGl0eVNldHMvYXZzY3JwdGVzdHBzMzY0ND9hcGktdmVyc2lvbj0yMDE2LTA0LTMwLXByZXZpZXc=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "55aaa906-bee4-491d-a452-8ff202b740ce"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.6.1586.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/14.0.0-prerelease"
         ]
       },
       "ResponseBody": "",
@@ -483,8 +658,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-served-by": [
+          "bc9c7ae8-272f-468c-91ab-42b5442bf96b_131304604152857309"
+        ],
         "x-ms-request-id": [
-          "9e078faa-7650-4abf-9351-cb3fec9d6922"
+          "38287c40-f83e-45d6-bffe-9f3c38f347dd"
         ],
         "Cache-Control": [
           "no-cache"
@@ -494,23 +672,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1183"
+          "1192"
         ],
         "x-ms-correlation-request-id": [
-          "db39a1d4-0f49-4547-adb7-b7e9c82d80ad"
+          "aa0b8a0a-63dc-447e-8c1b-af8838065e86"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004759Z:db39a1d4-0f49-4547-adb7-b7e9c82d80ad"
+          "WESTUS2:20170207T021437Z:aa0b8a0a-63dc-447e-8c1b-af8838065e86"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:59 GMT"
+          "Tue, 07 Feb 2017 02:14:37 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/resourcegroups/pstestrg3330?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Jlc291cmNlZ3JvdXBzL3BzdGVzdHJnMzMzMD9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/crptestps3644?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL3Jlc291cmNlZ3JvdXBzL2NycHRlc3RwczM2NDQ/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -533,16 +711,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1197"
         ],
         "x-ms-request-id": [
-          "1ccf278b-afbb-474a-a160-7a3765d4bb68"
+          "9ada8d66-06ad-4f2b-9f33-b2f816e88cd8"
         ],
         "x-ms-correlation-request-id": [
-          "1ccf278b-afbb-474a-a160-7a3765d4bb68"
+          "9ada8d66-06ad-4f2b-9f33-b2f816e88cd8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004753Z:1ccf278b-afbb-474a-a160-7a3765d4bb68"
+          "WESTUS2:20170207T021438Z:9ada8d66-06ad-4f2b-9f33-b2f816e88cd8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -551,22 +729,22 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:53 GMT"
+          "Tue, 07 Feb 2017 02:14:38 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSek16TXpBdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-04-01-preview"
+          "2016-02-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
@@ -587,16 +765,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31987"
+          "14993"
         ],
         "x-ms-request-id": [
-          "1261f057-37eb-42b9-acd3-e79b8d2b3ca7"
+          "271c2871-d5a8-4c78-a72c-0b26af0d2d1b"
         ],
         "x-ms-correlation-request-id": [
-          "1261f057-37eb-42b9-acd3-e79b8d2b3ca7"
+          "271c2871-d5a8-4c78-a72c-0b26af0d2d1b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004753Z:1261f057-37eb-42b9-acd3-e79b8d2b3ca7"
+          "WESTUS2:20170207T021439Z:271c2871-d5a8-4c78-a72c-0b26af0d2d1b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -605,22 +783,22 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:47:53 GMT"
+          "Tue, 07 Feb 2017 02:14:38 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSek16TXpBdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-04-01-preview"
+          "2016-02-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
@@ -641,16 +819,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31986"
+          "14992"
         ],
         "x-ms-request-id": [
-          "630be9c9-e419-43a6-a83d-c629d25e58a3"
+          "37d934c3-fb69-49fc-aef3-0dd04314e6fd"
         ],
         "x-ms-correlation-request-id": [
-          "630be9c9-e419-43a6-a83d-c629d25e58a3"
+          "37d934c3-fb69-49fc-aef3-0dd04314e6fd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004808Z:630be9c9-e419-43a6-a83d-c629d25e58a3"
+          "WESTUS2:20170207T021454Z:37d934c3-fb69-49fc-aef3-0dd04314e6fd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -659,22 +837,22 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:48:07 GMT"
+          "Tue, 07 Feb 2017 02:14:53 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSek16TXpBdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-04-01-preview"
+          "2016-02-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
@@ -695,16 +873,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31985"
+          "14991"
         ],
         "x-ms-request-id": [
-          "d7da4a63-9a48-4bf8-818e-975dbde51f64"
+          "9e8c2c6c-99a4-49d2-9155-4922a8e9798d"
         ],
         "x-ms-correlation-request-id": [
-          "d7da4a63-9a48-4bf8-818e-975dbde51f64"
+          "9e8c2c6c-99a4-49d2-9155-4922a8e9798d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004823Z:d7da4a63-9a48-4bf8-818e-975dbde51f64"
+          "WESTUS2:20170207T021509Z:9e8c2c6c-99a4-49d2-9155-4922a8e9798d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -713,22 +891,22 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:48:22 GMT"
+          "Tue, 07 Feb 2017 02:15:08 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview"
+          "https://management.azure.com/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSRzMzMzAtV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTFSRlUxUlNSek16TXpBdFYwVlRWRlZUSWl3aWFtOWlURzlqWVhScGIyNGlPaUozWlhOMGRYTWlmUT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1DUlBURVNUUFMzNjQ0LUVBU1RVUyIsImpvYkxvY2F0aW9uIjoiZWFzdHVzIn0?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjRmYjIzZTMtNmJhMy00MWYwLTliNmUtZTQxMTMxZDVkNjFlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFEVWxCVVJWTlVVRk16TmpRMExVVkJVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pWldGemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-04-01-preview"
+          "2016-02-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
@@ -746,16 +924,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31984"
+          "14990"
         ],
         "x-ms-request-id": [
-          "2bee0bb6-fe32-486c-8d60-ab71e06bfa4e"
+          "c296a639-912d-4bd4-952a-2637caab22e3"
         ],
         "x-ms-correlation-request-id": [
-          "2bee0bb6-fe32-486c-8d60-ab71e06bfa4e"
+          "c296a639-912d-4bd4-952a-2637caab22e3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150429T004838Z:2bee0bb6-fe32-486c-8d60-ab71e06bfa4e"
+          "WESTUS2:20170207T021524Z:c296a639-912d-4bd4-952a-2637caab22e3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -764,7 +942,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 29 Apr 2015 00:48:38 GMT"
+          "Tue, 07 Feb 2017 02:15:24 GMT"
         ]
       },
       "StatusCode": 200
@@ -772,12 +950,10 @@
   ],
   "Names": {
     "Test-AvailabilitySet": [
-      "pstestrg3330"
+      "crptestps3644"
     ]
   },
   "Variables": {
-    "SubscriptionId": "4d368445-cbb1-42a7-97a6-6850ab99f48e",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": "microsoft.com"
+    "SubscriptionId": "24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
   }
 }

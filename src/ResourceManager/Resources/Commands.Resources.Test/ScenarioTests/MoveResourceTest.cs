@@ -14,13 +14,19 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     public class MoveResourceTest
     {
-        [Fact(Skip = "TODO: Re-record")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public MoveResourceTest(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
+        [Fact(Skip = "Need to re-record test")]
+        // TODO: test takes too long, reduce time and then add to Category.CheckIn
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAzureResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");

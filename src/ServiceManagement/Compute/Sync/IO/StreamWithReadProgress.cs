@@ -29,10 +29,10 @@ namespace Microsoft.WindowsAzure.Commands.Sync.IO
             this.innerStream = innerStream;
             this.progressInterval = progressInterval;
             this.readStatus = new ProgressStatus(0, this.innerStream.Length, new ComputeStats());
-            
-            this.progressTracker = new ProgressTracker(this.readStatus, 
-                Program.SyncOutput.ProgressOperationStatus, 
-                Program.SyncOutput.ProgressOperationComplete, 
+
+            this.progressTracker = new ProgressTracker(this.readStatus,
+                Program.SyncOutput.ProgressOperationStatus,
+                Program.SyncOutput.ProgressOperationComplete,
                 this.progressInterval);
         }
 

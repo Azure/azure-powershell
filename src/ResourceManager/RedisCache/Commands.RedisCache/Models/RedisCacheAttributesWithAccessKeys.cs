@@ -16,27 +16,32 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
 
-    class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
+    public class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
     {
-        public RedisCacheAttributesWithAccessKeys(RedisCreateOrUpdateResponse cache, string resourceGroupName)
+        public RedisCacheAttributesWithAccessKeys(RedisResource cache, RedisAccessKeys accessKeys, string resourceGroupName)
         {
             Id = cache.Id;
             Location = cache.Location;
             Name = cache.Name;
             Type = cache.Type;
-            HostName = cache.Properties.HostName;
-            Port = cache.Properties.Port;
-            ProvisioningState = cache.Properties.ProvisioningState;
-            SslPort = cache.Properties.SslPort;
-            MaxMemoryPolicy = cache.Properties.MaxMemoryPolicy;
-            EnableNonSslPort = cache.Properties.EnableNonSslPort;
-            RedisVersion = cache.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
-            Sku = cache.Properties.Sku.Name;
-            
-            PrimaryKey = cache.Properties.AccessKeys.PrimaryKey;
-            SecondaryKey = cache.Properties.AccessKeys.SecondaryKey;
+            HostName = cache.HostName;
+            Port = cache.Port.HasValue ? cache.Port.Value : 0;
+            ProvisioningState = cache.ProvisioningState;
+            SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
+            RedisConfiguration = cache.RedisConfiguration;
+            EnableNonSslPort = cache.EnableNonSslPort.Value;
+            RedisVersion = cache.RedisVersion;
+            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
+            Sku = cache.Sku.Name;
+
+            PrimaryKey = accessKeys.PrimaryKey;
+            SecondaryKey = accessKeys.SecondaryKey;
             ResourceGroupName = resourceGroupName;
+
+            SubnetId = cache.SubnetId;
+            StaticIP = cache.StaticIP;
+            TenantSettings = cache.TenantSettings;
+            ShardCount = cache.ShardCount;
         }
 
         public string PrimaryKey { get; private set; }

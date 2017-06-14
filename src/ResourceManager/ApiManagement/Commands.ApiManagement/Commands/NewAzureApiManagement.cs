@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.Models;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagement"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -33,13 +33,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public string Name { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Location where want to create API Management.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
 
         [Parameter(
@@ -54,25 +51,51 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "The originating e-mail address for all e-mail notifications sent from the API Management system.")]
         [ValidateNotNullOrEmpty]
+        [ValidateLength(1, 100)]
+        [ValidatePattern(@"^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@([a-zA-Z0-9_]+[a-zA-Z0-9_-]*\.)+[a-zA-Z]{2,63}$")]
         public string AdminEmail { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium . Default value is Developer")]
+        [ValidateSet("Developer", "Standard", "Premium"), PSDefaultValue(Value = "Developer")]
         public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Sku capacity of the Azure API Management service. Default value is 1.")]
+        [ValidateRange(1, 10), PSDefaultValue(Value = 1)]
         public int? Capacity { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = false,
+            HelpMessage = "Virtual Network Type of the ApiManagement Deployment. Valid Values are " +
+                     " - None (Default Value. ApiManagement is not part of any Virtual Network)" + 
+                     " - External (ApiManagement Deployment is setup inside a Virtual Network having an Internet Facing Endpoint) " +
+                     " - Internal (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)")]
+        [ValidateSet("None", "External", "Internal"), PSDefaultValue(Value = "None")]
+        public PsApiManagementVpnType VpnType { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Virtual Network Configuration of master Azure API Management deployment region. Default value is $null")]
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags dictionary.")]
         public Dictionary<string, string> Tags { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Additional deployment regions of Azure API Management.")]
+        public PsApiManagementRegion[] AdditionalRegions { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -85,7 +108,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     AdminEmail,
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
-                    Tags),
+                    VpnType,
+                    Tags,
+                    VirtualNetwork,
+                    AdditionalRegions),
                 passThru: true);
         }
     }

@@ -13,20 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class ObjectIdentifier
     {
-        internal void SetObjectIdentifier(VaultUriHelper vaultUriHelper, Microsoft.Azure.KeyVault.ObjectIdentifier identifier)
+        internal void SetObjectIdentifier(VaultUriHelper vaultUriHelper, Azure.KeyVault.ObjectIdentifier identifier)
         {
             if (vaultUriHelper == null)
                 throw new ArgumentNullException("vaultUriHelper");
 
             if (identifier == null)
                 throw new ArgumentNullException("identifier");
-          
+
             VaultName = vaultUriHelper.GetVaultName(identifier.Identifier);
             Name = identifier.Name;
             Version = identifier.Version;
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Version = identifier.Version;
             Id = identifier.Id;
         }
-       
+
 
         public string VaultName { get; set; }
 

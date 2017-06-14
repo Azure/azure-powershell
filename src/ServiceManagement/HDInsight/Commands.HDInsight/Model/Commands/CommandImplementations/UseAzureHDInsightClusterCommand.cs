@@ -15,14 +15,15 @@
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImplementations
 {
@@ -36,9 +37,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             IHDInsightClient client = this.GetClient(IgnoreSslErrors);
             var cluster = await client.GetClusterAsync(this.Name);
             var connection = new AzureHDInsightClusterConnection();
-            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
             connection.Credential = this.GetSubscriptionCredentials(this.CurrentSubscription,
-                profileClient.GetEnvironmentOrDefault(this.CurrentSubscription.Environment),
+                profileClient.GetEnvironmentOrDefault(this.CurrentSubscription.GetEnvironment()),
                 profileClient.Profile);
 
             if (cluster == null)

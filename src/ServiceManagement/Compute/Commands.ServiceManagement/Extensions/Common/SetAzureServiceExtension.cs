@@ -124,6 +124,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             set;
         }
 
+        [Parameter(Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [Parameter(Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SetExtensionUsingThumbprintParameterSetName, HelpMessage = ExtensionParameterPropertyHelper.ExtensionIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public override string ExtensionId
+        {
+            get;
+            set;
+        }
+
+
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
@@ -139,6 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             ValidateParameters();
             ExtensionConfigurationInput context = new ExtensionConfigurationInput
             {
+                Id = ExtensionId,
                 ProviderNameSpace = ProviderNamespace,
                 Type = ExtensionName,
                 CertificateThumbprint = CertificateThumbprint,
@@ -149,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 Version = Version,
                 Roles = new ExtensionRoleList(Role != null && Role.Any() ? Role.Select(r => new ExtensionRole(r)) : Enumerable.Repeat(new ExtensionRole(), 1))
             };
-            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment.ExtensionConfiguration);
+            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment, PeerDeployment);
             ChangeDeployment(extConfig);
         }
 

@@ -16,22 +16,24 @@
 .SYNOPSIS
 Tests adding an autoscale setting.
 #>
-function Test-AddAutoscaleSetting
+function Test-AddAzureRmAutoscaleSetting
 {
 	# Setup
-	$rule1 = new-autoscaleRule -MetricName Requests -MetricResourceId "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo" -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue "1" 
-    $rule2 = new-autoscaleRule -MetricName Requests -MetricResourceId "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo" -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionScaleType ChangeCount -ScaleActionValue "2"
-	$profile1 = new-autoscaleprofile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -StartTimeWindow 2015-03-05T14:00:00 -EndTimeWindow 2015-03-05T14:30:00 -TimeWindowTimeZone GMT -Rules $rule1, $rule2 -Name "adios"
-	$profile2 = new-autoscaleprofile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -Rules $rule1, $rule2 -Name "saludos" -RecurrenceFrequency Minute -ScheduleDays "1", "2", "3" -ScheduleHours 5, 10, 15 -ScheduleMinutes 15, 30, 45 -ScheduleTimeZone GMT
+	$resourceId = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"
+	$resourceGroup = "TestingMetricsScaleSet"
+
+    #$webhook1 = New-AzureRmAutoscaleWebhook -ServiceUri "http://myservice.com"
+    #$notification1 = New-AzureRmAutoscaleNotification -Cust gu@ms.com, ge@ns.net -SendEmailToSubscriptionAdministrator -SendEmailToSubscriptionCoAdministrators -webhooks $webhook1
+  
+	$rule1 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId $resourceId -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionValue "1" 
+	$rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId $resourceId -Operator GreaterThan -MetricStatistic Average -Threshold 15 -TimeGrain 00:02:00 -ScaleActionCooldown 00:06:00 -ScaleActionDirection Decrease -ScaleActionValue "2"
+	$profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -StartTimeWindow 2015-03-05T14:00:00 -EndTimeWindow 2015-03-05T14:30:00 -TimeWindowTimeZone GMT -Rules $rule1, $rule2 -Name "adios"
+	$profile2 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -Rules $rule1, $rule2 -Name "saludos" -RecurrenceFrequency Week -ScheduleDays "1" -ScheduleHours 5 -ScheduleMinutes 15 -ScheduleTimeZone UTC
 
     try 
     {
         # Test
-		$actual = add-autoscalesetting -Location "East US" -Name MySetting -ResourceGroup Default-Web-EastUS -TargetResourceId /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm -AutoscaleProfiles $profile1, $profile2
-
-        # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-		Assert-AreEqual $actual.StatusCode 'Created'
+		Add-AzureRmAutoscaleSetting -Location "East US" -Name MySetting -ResourceGroup $resourceGroup -TargetResourceId $resourceId -AutoscaleProfiles $profile1, $profile2
     }
     finally
     {
@@ -44,14 +46,14 @@ function Test-AddAutoscaleSetting
 .SYNOPSIS
 Tests getting the autoscale setting associated to a resource group.
 #>
-function Test-GetAutoscaleSetting
+function Test-GetAzureRmAutoscaleSetting
 {
     # Setup
-    $rgname = 'Default-Web-EastUS'
+    $rgname = 'TestingMetricsScaleSet'
 
     try 
     {
-	    $actual = Get-AutoscaleSetting -ResourceGroup $rgname -detailedOutput
+	    $actual = Get-AzureRmAutoscaleSetting -ResourceGroup $rgname -detailedOutput
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Count 1
@@ -65,20 +67,39 @@ function Test-GetAutoscaleSetting
 
 <#
 .SYNOPSIS
+Tests getting the autoscale setting associated to a resource group.
+#>
+function Test-GetAzureRmAutoscaleSettingByName
+{
+    # Setup
+    $rgname = 'TestingMetricsScaleSet'
+
+    try 
+    {
+		$actual = Get-AzureRmAutoscaleSetting -ResourceGroup $rgname -Name "MySetting" -detailedOutput
+
+		# Assert TODO add more asserts
+		Assert-NotNull $actual "Result is null"
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
+<#
+.SYNOPSIS
 Tests removing an autoscale setting
 #>
-function Test-RemoveAutoscaleSetting
+function Test-RemoveAzureRmAutoscaleSetting
 {
     # Setup
     $rgname = 'Default-Web-EastUS'
 
     try 
     {
-		$actual = Remove-AutoscaleSetting -ResourceGroup $rgname -name DefaultServerFarm-Default-Web-EastUS
-
-        # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId 'db74e798-b011-4311-bba4-08cf31cb6a3b'
-		Assert-AreEqual $actual.StatusCode 'OK'
+		Remove-AzureRmAutoscaleSetting -ResourceGroup $rgname -name DefaultServerFarm-Default-Web-EastUS
     }
     finally
     {
@@ -91,14 +112,81 @@ function Test-RemoveAutoscaleSetting
 .SYNOPSIS
 Tests getting the logs associated to an autoscale setting in a subscription.
 #>
-function Test-GetAutoscaleHistory
+function Test-GetAzureRmAutoscaleHistory
 {
     try 
     {
-		$actual = Get-AutoscaleHistory -StartTime 2015-02-09T18:35:00 -endTime 2015-02-09T18:40:00 -detailedOutput
+		$actual = Get-AzureRmAutoscaleHistory -StartTime 2015-02-10T02:35:00Z -endTime 2015-02-10T02:40:00Z -detailedOutput
 
         # Assert
 		Assert-AreEqual $actual.Count 2
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
+
+<#
+.SYNOPSIS
+Tests creating a new Autoscale notification.
+#>
+function Test-NewAzureRmAutoscaleNotification
+{
+    try 
+    {
+		Assert-Throws { New-AzureRmAutoscaleNotification } "At least one Webhook or one CustomeEmail must be present, or the notification must be sent to the admin or co-admin"
+
+		$actual = New-AzureRmAutoscaleNotification -CustomEmails gu@ms.com, fu@net.net
+
+        # Assert
+		Assert-Null $actual.Webhooks "webhooks"
+		Assert-NotNull $actual.Email "email"
+		Assert-NotNull $actual.Email.CustomEmails "custom emails"
+		Assert-AreEqual 2 $actual.Email.CustomEmails.Length "length"
+		Assert-False { $actual.Email.SendToSubscriptionAdministrator } "SendToSubscriptionAdministrator"
+		Assert-False { $actual.Email.SendToSubscriptionCoAdministrators } "SendToSubscriptionCoAdministrators"
+
+		$actual = New-AzureRmAutoscaleNotification -SendEmailToSubscriptionAdministrator
+
+        # Assert
+		Assert-Null $actual.Webhooks
+		Assert-NotNull $actual.Email
+		Assert-Null $actual.Email.CustomeEmails
+		Assert-True { $actual.Email.SendToSubscriptionAdministrator } "SendToSubscriptionAdministrator"
+		Assert-False { $actual.Email.SendToSubscriptionCoAdministrators } "SendToSubscriptionCoAdministrators"
+
+		$actual = New-AzureRmAutoscaleNotification -SendEmailToSubscriptionCoAdministrators
+
+        # Assert
+		Assert-Null $actual.Webhooks
+		Assert-NotNull $actual.Email
+		Assert-Null $actual.Email.CustomeEmails
+		Assert-False { $actual.Email.SendToSubscriptionAdministrator } "SendToSubscriptionAdministrator"
+		Assert-True { $actual.Email.SendToSubscriptionCoAdministrators } "SendToSubscriptionCoAdministrators"
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a new Autoscale webhook.
+#>
+function Test-NewAzureRmAutoscaleWebhook
+{
+    try 
+    {
+		$actual = New-AzureRmAutoscaleWebhook -ServiceUri "http://myservice.com"
+
+        # Assert
+		Assert-AreEqual "http://myservice.com" $actual.ServiceUri
+		Assert-AreEqual 0 $actual.Properties.Count
     }
     finally
     {

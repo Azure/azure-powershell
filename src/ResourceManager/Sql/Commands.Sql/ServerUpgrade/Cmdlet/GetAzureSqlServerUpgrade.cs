@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServerUpgrade cmdlet
+    /// Defines the Get-AzureRmSqlServerUpgrade cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlServerUpgrade", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerUpgrade", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     public class GetAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
     {
         /// <summary>

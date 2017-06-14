@@ -124,6 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
 
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Set-AzureRmHDInsightClusterSize"));
             if (Cluster != null)
             {
                 Name = Cluster.Name;

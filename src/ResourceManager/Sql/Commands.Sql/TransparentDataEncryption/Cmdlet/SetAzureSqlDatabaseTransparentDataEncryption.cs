@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseTransparentDataEncryption cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseTransparentDataEncryption cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     public class SetAzureSqlDatabaseTransparentDataEncryption : AzureSqlDatabaseTransparentDataEncryptionCmdletBase
     {
         /// <summary>
@@ -70,8 +70,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// <returns>The response object from the service</returns>
         protected override IEnumerable<Model.AzureSqlDatabaseTransparentDataEncryptionModel> PersistChanges(IEnumerable<Model.AzureSqlDatabaseTransparentDataEncryptionModel> entity)
         {
-            return new List<Model.AzureSqlDatabaseTransparentDataEncryptionModel>() { 
-                ModelAdapter.UpsertTransparentDataEncryption(entity.First()) 
+            return new List<Model.AzureSqlDatabaseTransparentDataEncryptionModel>() {
+                ModelAdapter.UpsertTransparentDataEncryption(entity.First())
             };
         }
     }

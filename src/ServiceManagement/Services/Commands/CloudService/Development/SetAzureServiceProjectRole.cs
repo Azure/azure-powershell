@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// Configure the number of instances or installed runtimes for a web/worker role. Updates the cscfg with the number of instances
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureServiceProjectRole"), OutputType(typeof(RoleSettings))]
-    public class SetAzureServiceProjectRoleCommand : AzurePSCmdlet
+    public class SetAzureServiceProjectRoleCommand : AzureSMCmdlet
     {
         const string InstancesParameterSet = "Instances";
 

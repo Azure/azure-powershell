@@ -18,10 +18,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
@@ -257,6 +258,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             name = builder.ToString(
                 0,
                 Math.Min(builder.Length, MaximumStorageAccountNameLength));
+
+            if (name.Length < 3)
+            {
+                name = name.PadRight(3, '0');
+            }
 
             return name;
         }

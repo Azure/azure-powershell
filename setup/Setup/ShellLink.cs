@@ -435,6 +435,14 @@ namespace Microsoft.WindowsAzure.Setup
             this.consoleProperties.dwWindowSize = c;
         }
 
+        public void SetFont()
+        {
+            this.consoleProperties.FaceName = "Lucida Console";
+            this.consoleProperties.uFontFamily = 54;
+            this.consoleProperties.uFontWeight = 400;
+            this.consoleProperties.uCursorSize = 25;
+        }
+
         // This does more than console colors
         private void SetConsoleProperties()
         {

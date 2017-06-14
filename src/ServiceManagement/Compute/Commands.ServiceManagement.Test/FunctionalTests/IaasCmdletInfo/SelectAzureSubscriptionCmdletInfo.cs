@@ -18,28 +18,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     public class SelectAzureSubscriptionCmdletInfo : CmdletsInfo
     {
-        public SelectAzureSubscriptionCmdletInfo(string subscriptionName)
+        public SelectAzureSubscriptionCmdletInfo(string subscriptionId, bool isDefault)
         {
             cmdletName = "Select-AzureSubscription";
-            cmdletParams.Add(new CmdletParam("SubscriptionName", subscriptionName));
-            cmdletParams.Add(new CmdletParam("Default"));
-        }
-
-        public SelectAzureSubscriptionCmdletInfo(string subscriptionName, bool isDefault, bool clear, string subscriptionDataFile)
-        {
-            cmdletName = "Select-AzureSubscription";
-            cmdletParams.Add(new CmdletParam("SubscriptionName", subscriptionName));
+            cmdletParams.Add(new CmdletParam("SubscriptionId", subscriptionId));
             if (isDefault)
             {
                 cmdletParams.Add(new CmdletParam("Default"));
-            }
-            if (clear)
-            {
-                cmdletParams.Add(new CmdletParam("Clear"));
-            }
-            if (subscriptionDataFile != null)
-            {
-                cmdletParams.Add(new CmdletParam("SubscriptionDataFile", subscriptionDataFile));
             }
         }
     }

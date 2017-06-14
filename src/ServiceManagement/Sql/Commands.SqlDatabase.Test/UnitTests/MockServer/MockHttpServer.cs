@@ -22,11 +22,14 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
 {
@@ -170,47 +173,43 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
         /// </summary>
         public static void SetupCertificates()
         {
-            TestingTracingInterceptor.AddToContext();
+            PSTestTracingInterceptor.AddToContext();
             var newGuid = Guid.NewGuid();
-            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
-            AzureSession.DataStore = new MemoryDataStore();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            AzureSMCmdlet.CurrentProfile = profile;
+            AzureSession.Instance.DataStore = new MemoryDataStore();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             ProfileClient client = new ProfileClient(profile);
-            client.Profile.Subscriptions[newGuid] = new AzureSubscription
-            {
-                Id = newGuid,
-                Name = "test",
-                Environment = EnvironmentName.AzureCloud,
-                Account = "test"
-            };
-            client.Profile.Accounts["test"] = new AzureAccount
+            var acct2 = new AzureAccount
             {
                 Id = "test",
-                Type = AzureAccount.AccountType.User,
-                Properties = new Dictionary<AzureAccount.Property, string>
-                        {
-                            {AzureAccount.Property.Subscriptions, newGuid.ToString()}
-                        }
+                Type = AzureAccount.AccountType.User
             };
-            client.Profile.Accounts[UnitTestHelper.GetUnitTestClientCertificate().Thumbprint] = new AzureAccount
+            acct2.SetSubscriptions(newGuid.ToString());
+            client.AddOrSetAccount( acct2);
+            var acct3 = new AzureAccount
             {
                 Id = UnitTestHelper.GetUnitTestClientCertificate().Thumbprint,
-                Type = AzureAccount.AccountType.Certificate,
-                Properties = new Dictionary<AzureAccount.Property, string>
-                        {
-                            {AzureAccount.Property.Subscriptions, newGuid.ToString()}
-                        }
+                Type = AzureAccount.AccountType.Certificate
             };
-            client.Profile.Accounts[UnitTestHelper.GetUnitTestSSLCertificate().Thumbprint] = new AzureAccount
+            acct3.SetSubscriptions(newGuid.ToString());
+            client.AddOrSetAccount( acct3);
+            var acct = new AzureAccount
             {
                 Id = UnitTestHelper.GetUnitTestSSLCertificate().Thumbprint,
                 Type = AzureAccount.AccountType.Certificate,
-                Properties = new Dictionary<AzureAccount.Property, string>
-                        {
-                            {AzureAccount.Property.Subscriptions, newGuid.ToString()}
-                        }
             };
+            acct.SetSubscriptions(newGuid.ToString());
+            client.AddOrSetAccount(acct);
+            var sub1 = new AzureSubscription
+            {
+                Id = newGuid.ToString(),
+                Name = "test",
+            };
+            sub1.SetEnvironment(EnvironmentName.AzureCloud);
+            sub1.SetAccount("test");
+            client.AddOrSetSubscription(sub1);
+
             client.SetSubscriptionAsDefault(newGuid, "test");
             client.Profile.Save();
 

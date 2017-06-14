@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
 
-    public abstract class TrafficManagerBaseCmdlet : AzurePSCmdlet
+    public abstract class TrafficManagerBaseCmdlet : AzureRMCmdlet
     {
         private TrafficManagerClient trafficManagerClient;
 
@@ -26,8 +26,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             {
                 if (this.trafficManagerClient == null)
                 {
-                    this.trafficManagerClient = new TrafficManagerClient(this.Profile);
+                    this.trafficManagerClient = new TrafficManagerClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp
+                    };
                 }
+
                 return this.trafficManagerClient;
             }
 

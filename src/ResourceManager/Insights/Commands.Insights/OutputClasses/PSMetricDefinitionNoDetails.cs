@@ -12,36 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wraps around MetricDefinition to provide summarized data about it
     /// </summary>
-    public class PSMetricDefinitionNoDetails : MetricDefinition
+    public class PSMetricDefinitionNoDetails : PSMetricDefinition
     {
         /// <summary>
-        /// Gets or sets the Name of the metric
+        /// Gets or sets the list of MetricAvailability objects
         /// </summary>
-        public new string Name { get; set; }
-
+        protected internal new IList<MetricAvailability> MetricAvailabilities { get; private set; }
+ 
         /// <summary>
         /// Initializes an new instance of the PSMetricDefinitionNoDetails class
         /// </summary>
         /// <param name="metricDefinition">The MetricDefinition</param>
         public PSMetricDefinitionNoDetails(MetricDefinition metricDefinition)
+            : base(metricDefinition)
         {
-            // Keep the original value (localized string, Dictionary, List) in the base
-            base.Name = metricDefinition.Name;
-
-            this.Dimensions = metricDefinition.Dimensions;
+            this.Name = new PSLocalizableStringNoDetails(metricDefinition.Name);
             this.MetricAvailabilities = metricDefinition.MetricAvailabilities;
-            this.Name = metricDefinition.Name != null ? metricDefinition.Name.Value : null;
-            this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
-            this.Properties = metricDefinition.Properties;
-            this.ResourceUri = metricDefinition.ResourceUri;
-            this.Unit = metricDefinition.Unit;
         }
     }
 }

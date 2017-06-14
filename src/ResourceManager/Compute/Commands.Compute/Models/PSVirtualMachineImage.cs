@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Models
@@ -53,8 +54,26 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public OSDiskImage OSDiskImage { get; set; }
 
+        [JsonIgnore]
+        public string OSDiskImageText
+        {
+            get { return JsonConvert.SerializeObject(OSDiskImage, Formatting.Indented); }
+        }
+
         public PurchasePlan PurchasePlan { get; set; }
 
+        [JsonIgnore]
+        public string PurchasePlanText
+        {
+            get { return JsonConvert.SerializeObject(PurchasePlan, Formatting.Indented); }
+        }
+
         public IList<DataDiskImage> DataDiskImages { get; set; }
+
+        [JsonIgnore]
+        public string DataDiskImagesText
+        {
+            get { return JsonConvert.SerializeObject(DataDiskImages, Formatting.Indented); }
+        }
     }
 }

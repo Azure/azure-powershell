@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// ServiceDefinition.csdef and ServiceConfiguration.*.cscfg
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureServiceProjectRemoteDesktop"), OutputType(typeof(bool))]
-    public class DisableAzureServiceProjectRemoteDesktopCommand : AzurePSCmdlet
+    public class DisableAzureServiceProjectRemoteDesktopCommand : AzureSMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }

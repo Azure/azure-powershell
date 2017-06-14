@@ -25,6 +25,15 @@ function Get-WebsiteName
 .SYNOPSIS
 Gets a website name for testing.
 #>
+function Get-TrafficManagerProfileName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets a website name for testing.
+#>
 function Get-WebHostPlanName
 {
     return getAssetName 
@@ -41,19 +50,68 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
+Gets a backup name for testing.
+#>
+function Get-BackupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets an aseName for testing.
+#>
+function Get-AseName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the location for the Website. Default to West US if none found.
 #>
 function Get-Location
 {
-    $location = Get-AzureLocation | where {$_.Name -eq "Microsoft.Web/sites"}
-	if ($location -eq $null) 
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
-		return "West US"
-	} 
-	else 
-	{
-        $location.Locations[0]
+		$namespace = "Microsoft.Web"
+		$type = "sites"
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+  
+		if ($location -eq $null) 
+		{  
+			return "West US"  
+		} else 
+		{  
+			return $location.Locations[0]  
+		}
 	}
+
+	return "WestUS"
+}
+
+<#
+.SYNOPSIS
+Gets the location for the Website. Default to West US if none found.
+#>
+function Get-SecondaryLocation
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.Web"
+		$type = "sites"
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+  
+		if ($location -eq $null) 
+		{  
+			return "East US"  
+		} else 
+		{  
+			return $location.Locations[1]  
+		}
+	}
+
+	return "EastUS"
 }
 
 <#
@@ -64,6 +122,42 @@ function Clean-Website($resourceGroup, $websiteName)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
 	{
-		$result = Remove-AzureWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
+		$result = Remove-AzureRmWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
     }
+}
+
+function PingWebApp($webApp)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
+	{
+		try 
+		{
+			$result = Invoke-WebRequest $webApp.HostNames[0] 
+			$statusCode = $result.StatusCode
+		} 
+		catch [System.Net.WebException ] 
+		{ 
+			$statusCode = $_.Exception.Response.StatusCode
+		}
+
+		return $statusCode
+    }
+}
+
+# Create a SAS Uri
+function Get-SasUri
+{
+    param ([string] $storageAccount, [string] $storageKey, [string] $container, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
+
+	$uri = "https://$storageAccount.blob.core.windows.net/$container"
+
+	$destUri = New-Object -TypeName System.Uri($uri);
+	$cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
+	$destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
+	$policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
+	$policy.Permissions = $type;
+	$policy.SharedAccessExpiryTime = (Get-Date).Add($duration);
+	$uri += $destBlob.GetSharedAccessSignature($policy);
+
+	return $uri;
 }

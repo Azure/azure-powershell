@@ -43,13 +43,18 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         [ValidatePattern(UserPrincipalValdatorString)]
         public string[] UserUpn { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Published program alias (applicable only in per-app publishing mode)")]
+        [ValidateNotNullOrEmpty()]
+        public string Alias { get; set; }
+
         protected enum Operation
         {
             Add,
             Remove
         }
 
-        protected void AddUsers(string CollectionName, string[] users, PrincipalProviderType userIdType)
+        protected void AddUsers(string CollectionName, string[] users, PrincipalProviderType userIdType, string appAlias)
         {
             SecurityPrincipalOperationsResult response = null;
             SecurityPrincipalList spAdd = null;
@@ -58,7 +63,14 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             {
                 spAdd = BuildUserList(users, userIdType);
 
-                response = CallClient(() => Client.Principals.Add(CollectionName, spAdd), Client.Principals);
+                if (String.IsNullOrEmpty(appAlias))
+                {
+                    response = CallClient(() => Client.Principals.Add(CollectionName, spAdd), Client.Principals);
+                }
+                else
+                {
+                    response = CallClient(() => Client.Principals.AddToApp(CollectionName, appAlias, spAdd), Client.Principals);
+                }
             }
 
             if (response != null)
@@ -67,7 +79,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             }
         }
 
-        protected void RemoveUsers(string CollectionName, string[] users, PrincipalProviderType userIdType)
+        protected void RemoveUsers(string CollectionName, string[] users, PrincipalProviderType userIdType, string appAlias)
         {
             SecurityPrincipalOperationsResult response = null;
             SecurityPrincipalList spRemove = null;
@@ -76,7 +88,14 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             {
                 spRemove = BuildUserList(users, userIdType);
 
-                response = CallClient(() => Client.Principals.Delete(CollectionName, spRemove), Client.Principals);
+                if (String.IsNullOrEmpty(appAlias))
+                {
+                    response = CallClient(() => Client.Principals.Delete(CollectionName, spRemove), Client.Principals);
+                }
+                else
+                {
+                    response = CallClient(() => Client.Principals.DeleteFromApp(CollectionName, appAlias, spRemove), Client.Principals);
+                }
             }
 
             if (response != null)

@@ -206,7 +206,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Utilities.ExecuteAndLog(() =>
                 {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, vmName, serviceName, imageName, username, password, locationName, InstanceSize.Small.ToString(), null, null, vnetName);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows,
+                        vmName, serviceName, imageName, username, password,
+                        locationName, InstanceSize.Small.ToString(), false, null, vnetName);
                 }, "Create a Vm using New-AzureQuickVM");
 
                 vmPowershellCmdlets.AddAzureInternalLoadBalancer(ilbName, serviceName, subNet, ipAddress);
@@ -240,7 +242,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Utilities.ExecuteAndLog(() =>
                 {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, vmName, serviceName, imageName, username, password, locationName, InstanceSize.Small.ToString(), null, null, vnetName);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows,
+                        vmName, serviceName, imageName, username, password,
+                        locationName, InstanceSize.Small.ToString(), false, null, vnetName);
                 }, "Create a Vm using New-AzureQuickVM");
 
                 vmPowershellCmdlets.AddAzureInternalLoadBalancer(ilbName, serviceName, subNet, ipAddress);

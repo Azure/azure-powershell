@@ -14,17 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
+    using AutoMapper;
+    using Microsoft.Azure.Commands.ApiManagement.Properties;
+    using Microsoft.Azure.Management.ApiManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using AutoMapper;
-    using Microsoft.Azure.Commands.ApiManagement.Properties;
-    using Microsoft.Azure.Management.ApiManagement.Models;
 
     public class PsApiManagement
     {
-        private static readonly Regex ResourceGroupRegex = 
+        private static readonly Regex ResourceGroupRegex =
             new Regex(@"/resourceGroups/(?<resourceGroupName>.+)/providers/", RegexOptions.Compiled);
 
         public PsApiManagement()
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             AdditionalRegions = new List<PsApiManagementRegion>();
         }
 
-        internal PsApiManagement(ApiServiceResource apiServiceResource)
+        public PsApiManagement(ApiServiceResource apiServiceResource)
             : this()
         {
             if (apiServiceResource == null)
@@ -44,12 +44,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Id = apiServiceResource.Id;
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
-            Sku = Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.Properties.SkuProperties.SkuType);
-            Capacity = apiServiceResource.Properties.SkuProperties.Capacity ?? 1;
+            Sku = Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.SkuProperties.SkuType);
+            Capacity = apiServiceResource.SkuProperties.Capacity ?? 1;
             ProvisioningState = apiServiceResource.Properties.ProvisioningState;
             RuntimeUrl = apiServiceResource.Properties.ProxyEndpoint;
             PortalUrl = apiServiceResource.Properties.ManagementPortalEndpoint;
             StaticIPs = apiServiceResource.Properties.StaticIPs.ToArray();
+            VpnType = Mapper.Map<VirtualNetworkType, PsApiManagementVpnType>(apiServiceResource.Properties.VpnType);
 
             if (apiServiceResource.Properties.AdditionalRegions != null)
             {
@@ -75,7 +76,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var proxyHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResource != null)
                 {
-                    PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
+                    ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
+                }
+
+                var managementHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
+                if (managementHostnameResource != null)
+                {
+                    ManagementHostnameConfiguration = new PsApiManagementHostnameConfiguration(managementHostnameResource);
+                }
+
+                var scmHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Kudu);
+                if (scmHostnameResource != null)
+                {
+                    ScmHostnameConfiguration = new PsApiManagementHostnameConfiguration(scmHostnameResource);
                 }
             }
 
@@ -105,9 +118,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
+        public PsApiManagementVpnType VpnType { get; set; }
+
         public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
         public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
+
+        public PsApiManagementHostnameConfiguration ManagementHostnameConfiguration { get; set; }
+
+        public PsApiManagementHostnameConfiguration ScmHostnameConfiguration { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
@@ -147,17 +166,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("location");
             }
 
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
-            }
-
             if (location.Equals(Location) || AdditionalRegions.Any(r => location.Equals(r.Location)))
             {
                 throw new ArgumentException(string.Format(Resources.AddRegionExistsMessage, location), "location");
@@ -183,17 +191,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("location");
             }
 
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
-            }
-
             if (location.Equals(Location))
             {
                 throw new ArgumentException(
@@ -211,17 +208,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             if (location == null)
             {
                 throw new ArgumentNullException("location");
-            }
-
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
             }
 
             var regionToUpdate = AdditionalRegions.FirstOrDefault(r => location.Equals(r.Location));

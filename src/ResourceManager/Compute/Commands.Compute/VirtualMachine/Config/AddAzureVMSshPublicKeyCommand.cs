@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.SshPublicKey),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureSshPublicKeyCommand : AzurePSCmdlet
+    public class NewAzureSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -70,20 +69,20 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.VM.OSProfile.WindowsConfiguration != null && this.VM.OSProfile.LinuxConfiguration == null)
             {
-                throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
-            if (this.VM.OSProfile.LinuxConfiguration.SshConfiguration == null)
+            if (this.VM.OSProfile.LinuxConfiguration.Ssh == null)
             {
-                this.VM.OSProfile.LinuxConfiguration.SshConfiguration = new SshConfiguration();
+                this.VM.OSProfile.LinuxConfiguration.Ssh = new SshConfiguration();
             }
 
-            if (this.VM.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys == null)
+            if (this.VM.OSProfile.LinuxConfiguration.Ssh.PublicKeys == null)
             {
-                this.VM.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys = new List<SshPublicKey>();
+                this.VM.OSProfile.LinuxConfiguration.Ssh.PublicKeys = new List<SshPublicKey>();
             }
 
-            this.VM.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys.Add(
+            this.VM.OSProfile.LinuxConfiguration.Ssh.PublicKeys.Add(
                 new SshPublicKey
                 {
                     KeyData = this.KeyData,

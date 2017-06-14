@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Test.Profile
@@ -26,8 +25,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
             ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-SelectDefaultProfile {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "PSGet Migration: TODO Move to ARM")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeArmCallWithCreatedProfile()
         {
@@ -35,7 +33,6 @@ namespace Microsoft.Azure.Commands.Test.Profile
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {

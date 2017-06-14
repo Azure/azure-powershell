@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
-using System.Management.Automation;
 using System.Security;
 using Xunit;
 
@@ -44,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void CanRemoveSecretWithPassThruTest()
         {
             SecureString secureSecretValue = SecretValue.ConvertToSecureString();
-            Secret expected = new Secret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
+            DeletedSecret expected = new DeletedSecret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
             keyVaultClientMock.Setup(kv => kv.DeleteSecret(VaultName, SecretName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -73,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void CanRemoveSecretWithNoPassThruTest()
         {
             SecureString secureSecretValue = SecretValue.ConvertToSecureString();
-            Secret expected = new Secret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
+            DeletedSecret expected = new DeletedSecret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
             keyVaultClientMock.Setup(kv => kv.DeleteSecret(VaultName, SecretName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -92,6 +90,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CannotRemoveSecretWithoutShouldProcessOrForceConfirmationTest()
         {
+            // Should process but without force
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
+
             Secret expected = null;
 
             cmdlet.Name = SecretName;
@@ -100,9 +101,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             // Write object should be called with null input
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
-
-            // Should process but without force
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
             // Write object should be called with null input

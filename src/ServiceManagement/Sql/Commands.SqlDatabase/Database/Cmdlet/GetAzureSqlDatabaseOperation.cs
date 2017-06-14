@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseOperation", ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = ByConnectionContext)]
-    public class GetAzureSqlDatabaseOperation : AzurePSCmdlet
+    public class GetAzureSqlDatabaseOperation : AzureSMCmdlet
     {
         #region Parameter Sets
 

@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Management.Automation;
 using AutoMapper;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
@@ -70,87 +70,95 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
         public void GetRoleProcess()
         {
             OperationStatusResponse getDeploymentOperation;
-            var currentDeployment = this.GetCurrentDeployment(out getDeploymentOperation);
-            if (currentDeployment != null)
+            try
             {
-                if (this.InstanceDetails.IsPresent)
+                var currentDeployment = this.GetCurrentDeployment(out getDeploymentOperation);
+                if (currentDeployment != null)
                 {
-                    Collection<PVM.RoleInstanceContext> instanceContexts = new Collection<PVM.RoleInstanceContext>();
-                    IList<RoleInstance> roleInstances = null;
-
-                    if (string.IsNullOrEmpty(this.RoleName))
+                    if (this.InstanceDetails.IsPresent)
                     {
-                        roleInstances = currentDeployment.RoleInstances;
-                    }
-                    else
-                    {
-                        roleInstances = new List<RoleInstance>(currentDeployment.RoleInstances.Where(r => r.RoleName.Equals(this.RoleName, StringComparison.OrdinalIgnoreCase)));
-                    }
+                        Collection<PVM.RoleInstanceContext> instanceContexts = new Collection<PVM.RoleInstanceContext>();
+                        IList<RoleInstance> roleInstances = null;
 
-                    foreach (var role in roleInstances)
-                    {
-                        var vmRole = currentDeployment.Roles == null || !currentDeployment.Roles.Any() ? null
-                                   : currentDeployment.Roles.FirstOrDefault(r => string.Equals(r.RoleName, role.RoleName, StringComparison.OrdinalIgnoreCase));
-
-                        instanceContexts.Add(new PVM.RoleInstanceContext
+                        if (string.IsNullOrEmpty(this.RoleName))
                         {
-                            ServiceName           = this.ServiceName,
-                            OperationId           = getDeploymentOperation.Id,
-                            OperationDescription  = this.CommandRuntime.ToString(),
-                            OperationStatus       = getDeploymentOperation.Status.ToString(),
-                            InstanceErrorCode     = role.InstanceErrorCode,
-                            InstanceFaultDomain   = role.InstanceFaultDomain,
-                            InstanceName          = role.InstanceName,
-                            InstanceSize          = role.InstanceSize,
-                            InstanceStateDetails  = role.InstanceStateDetails,
-                            InstanceStatus        = role.InstanceStatus,
-                            InstanceUpgradeDomain = role.InstanceUpgradeDomain,
-                            RoleName              = role.RoleName,
-                            IPAddress             = role.IPAddress,
-                            PublicIPAddress       = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().Address,
-                            PublicIPName          = role.PublicIPs == null || !role.PublicIPs.Any() ? null
-                                                  : !string.IsNullOrEmpty(role.PublicIPs.First().Name) ? role.PublicIPs.First().Name
-                                                  : PersistentVMHelper.GetPublicIPName(vmRole),
-                            PublicIPIdleTimeoutInMinutes = role.PublicIPs == null || !role.PublicIPs.Any() ? null
-                                                  : role.PublicIPs.First().IdleTimeoutInMinutes,
-                            PublicIPDomainNameLabel = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().DomainNameLabel,
-                            PublicIPFqdns = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().Fqdns.ToList(),
-                            DeploymentID          = currentDeployment.PrivateId,
-                            InstanceEndpoints     = Mapper.Map<PVM.InstanceEndpointList>(role.InstanceEndpoints)
-                        });
-                    }
+                            roleInstances = currentDeployment.RoleInstances;
+                        }
+                        else
+                        {
+                            roleInstances = new List<RoleInstance>(currentDeployment.RoleInstances.Where(r => r.RoleName.Equals(this.RoleName, StringComparison.OrdinalIgnoreCase)));
+                        }
 
-                    WriteObject(instanceContexts, true);
-                }
-                else
-                {
-                    var roleContexts = new Collection<PVM.RoleContext>();
-                    IList<Role> roles = null;
-                    if (string.IsNullOrEmpty(this.RoleName))
-                    {
-                        roles = currentDeployment.Roles;
+                        foreach (var role in roleInstances)
+                        {
+                            var vmRole = currentDeployment.Roles == null || !currentDeployment.Roles.Any() ? null
+                                       : currentDeployment.Roles.FirstOrDefault(r => string.Equals(r.RoleName, role.RoleName, StringComparison.OrdinalIgnoreCase));
+
+                            instanceContexts.Add(new PVM.RoleInstanceContext
+                            {
+                                ServiceName           = this.ServiceName,
+                                OperationId           = getDeploymentOperation.Id,
+                                OperationDescription  = this.CommandRuntime.ToString(),
+                                OperationStatus       = getDeploymentOperation.Status.ToString(),
+                                InstanceErrorCode     = role.InstanceErrorCode,
+                                InstanceFaultDomain   = role.InstanceFaultDomain,
+                                InstanceName          = role.InstanceName,
+                                InstanceSize          = role.InstanceSize,
+                                InstanceStateDetails  = role.InstanceStateDetails,
+                                InstanceStatus        = role.InstanceStatus,
+                                InstanceUpgradeDomain = role.InstanceUpgradeDomain,
+                                RoleName              = role.RoleName,
+                                IPAddress             = role.IPAddress,
+                                PublicIPAddress       = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().Address,
+                                PublicIPName          = role.PublicIPs == null || !role.PublicIPs.Any() ? null
+                                                      : !string.IsNullOrEmpty(role.PublicIPs.First().Name) ? role.PublicIPs.First().Name
+                                                      : PersistentVMHelper.GetPublicIPName(vmRole),
+                                PublicIPIdleTimeoutInMinutes = role.PublicIPs == null || !role.PublicIPs.Any() ? null
+                                                      : role.PublicIPs.First().IdleTimeoutInMinutes,
+                                PublicIPDomainNameLabel = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().DomainNameLabel,
+                                PublicIPFqdns = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().Fqdns.ToList(),
+                                DeploymentID          = currentDeployment.PrivateId,
+                                InstanceEndpoints     = Mapper.Map<PVM.InstanceEndpointList>(role.InstanceEndpoints)
+                            });
+                        }
+
+                        WriteObject(instanceContexts, true);
                     }
                     else
                     {
-                        roles = new List<Role>(currentDeployment.Roles.Where(r => r.RoleName.Equals(this.RoleName, StringComparison.OrdinalIgnoreCase)));
-                    }
+                        var roleContexts = new Collection<PVM.RoleContext>();
+                        IList<Role> roles = null;
+                        if (string.IsNullOrEmpty(this.RoleName))
+                        {
+                            roles = currentDeployment.Roles;
+                        }
+                        else
+                        {
+                            roles = new List<Role>(currentDeployment.Roles.Where(r => r.RoleName.Equals(this.RoleName, StringComparison.OrdinalIgnoreCase)));
+                        }
 
-                    foreach (var r in roles.Select(role => new PVM.RoleContext
-                    {
-                        InstanceCount        = currentDeployment.RoleInstances.Count(ri => ri.RoleName.Equals(role.RoleName, StringComparison.OrdinalIgnoreCase)),
-                        RoleName             = role.RoleName,
-                        OperationDescription = this.CommandRuntime.ToString(),
-                        OperationStatus      = getDeploymentOperation.Status.ToString(),
-                        OperationId          = getDeploymentOperation.Id,
-                        ServiceName          = this.ServiceName,
-                        DeploymentID         = currentDeployment.PrivateId
-                    }))
-                    {
-                        roleContexts.Add(r);
-                    }
+                        foreach (var r in roles.Select(role => new PVM.RoleContext
+                        {
+                            InstanceCount        = currentDeployment.RoleInstances.Count(ri => ri.RoleName.Equals(role.RoleName, StringComparison.OrdinalIgnoreCase)),
+                            RoleName             = role.RoleName,
+                            OSVersion            = role.OSVersion,
+                            OperationDescription = this.CommandRuntime.ToString(),
+                            OperationStatus      = getDeploymentOperation.Status.ToString(),
+                            OperationId          = getDeploymentOperation.Id,
+                            ServiceName          = this.ServiceName,
+                            DeploymentID         = currentDeployment.PrivateId
+                        }))
+                        {
+                            roleContexts.Add(r);
+                        }
 
-                    WriteObject(roleContexts, true);
+                        WriteObject(roleContexts, true);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
             }
         }
 
@@ -163,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
             DeploymentGetResponse deploymentGetResponse = null;
             InvokeInOperationContext(() => deploymentGetResponse = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slot));
-            operation = GetOperationNewSM(deploymentGetResponse.RequestId);
+            operation = GetOperation(deploymentGetResponse.RequestId);
 
             WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
 

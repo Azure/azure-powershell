@@ -1,0 +1,1104 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/RGName-onesdk5487?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlZ3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3P2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487\",\r\n  \"name\": \"RGName-onesdk5487\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "187"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "9b75b840-f40e-4c71-ba4a-e71ced97e9e7"
+        ],
+        "x-ms-correlation-request-id": [
+          "9b75b840-f40e-4c71-ba4a-e71ced97e9e7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024807Z:9b75b840-f40e-4c71-ba4a-e71ced97e9e7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:48:07 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjU/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "4532918d-3827-4f65-a5d8-2a519ba58171"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765\",\r\n  \"name\": \"SBNamespace-onesdk4765\",\r\n  \"type\": \"Microsoft.ServiceBus/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Messaging\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Unknown\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:sbnamespace-onesdk4765\",\r\n    \"enabled\": false,\r\n    \"namespaceType\": \"Messaging\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "462"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c83ff4c5-748f-41ea-a510-0d7a2de9fee8_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "af3ec956-aa52-41f6-aab9-b9aa7a23aad3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024808Z:af3ec956-aa52-41f6-aab9-b9aa7a23aad3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:48:07 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjU/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765\",\r\n  \"name\": \"SBNamespace-onesdk4765\",\r\n  \"type\": \"Microsoft.ServiceBus/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Messaging\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:sbnamespace-onesdk4765\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2017-04-28T02:48:08.403Z\",\r\n    \"serviceBusEndpoint\": \"https://SBNamespace-onesdk4765.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"scaleUnit\": \"BY3-008\",\r\n    \"dataCenter\": \"BY3\",\r\n    \"updatedAt\": \"2017-04-28T02:48:31.053Z\",\r\n    \"namespaceType\": \"Messaging\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "754"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5e99e880-06a9-4b94-9d7a-6824711c7484_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14989"
+        ],
+        "x-ms-correlation-request-id": [
+          "e79905b1-b6b2-4b5a-9cf5-8d8599a90d31"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024839Z:e79905b1-b6b2-4b5a-9cf5-8d8599a90d31"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:48:38 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjU/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "207411c2-8c84-4a50-ac1e-d71cf2428912"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765\",\r\n  \"name\": \"SBNamespace-onesdk4765\",\r\n  \"type\": \"Microsoft.ServiceBus/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Messaging\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:sbnamespace-onesdk4765\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2017-04-28T02:48:08.403Z\",\r\n    \"serviceBusEndpoint\": \"https://SBNamespace-onesdk4765.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"scaleUnit\": \"BY3-008\",\r\n    \"dataCenter\": \"BY3\",\r\n    \"updatedAt\": \"2017-04-28T02:48:31.053Z\",\r\n    \"namespaceType\": \"Messaging\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "754"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9f851a9b-23dc-4658-af7a-3605c4eb4430_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "36c6179b-fbf6-4715-ab78-792995aff4f2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024854Z:36c6179b-fbf6-4715-ab78-792995aff4f2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:48:53 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjU/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d5efb8da-178a-4714-9e47-fd59499e2a8c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765\",\r\n  \"name\": \"SBNamespace-onesdk4765\",\r\n  \"type\": \"Microsoft.ServiceBus/namespaces\",\r\n  \"location\": \"West US\",\r\n  \"kind\": \"Messaging\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\",\r\n    \"capacity\": 1\r\n  },\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"metricId\": \"854d368f-1828-428f-8f3c-f2affa9b2f7d:sbnamespace-onesdk4765\",\r\n    \"status\": \"Active\",\r\n    \"createdAt\": \"2017-04-28T02:48:08.403Z\",\r\n    \"serviceBusEndpoint\": \"https://SBNamespace-onesdk4765.servicebus.windows.net:443/\",\r\n    \"enabled\": true,\r\n    \"critical\": false,\r\n    \"scaleUnit\": \"BY3-008\",\r\n    \"dataCenter\": \"BY3\",\r\n    \"updatedAt\": \"2017-04-28T02:48:31.053Z\",\r\n    \"namespaceType\": \"Messaging\",\r\n    \"messagingSku\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "754"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0c9813ce-f9d0-4b3c-862c-2c1cabb5cff7_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14987"
+        ],
+        "x-ms-correlation-request-id": [
+          "69b54056-fc4d-4df1-823a-84be24f50f74"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024854Z:69b54056-fc4d-4df1-823a-84be24f50f74"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:48:53 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNj9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "146"
+        ],
+        "x-ms-client-request-id": [
+          "6ea2221e-18ad-4908-b7b1-5d34a50261a8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"name\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"type\": \"Microsoft.ServiceBus/AuthorizationRules\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "403"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e3a9a448-83ba-4f13-a2cc-41dfffca29a0_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "e79272b9-5f7b-4bfa-b33e-acda63a512a2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024915Z:e79272b9-5f7b-4bfa-b33e-acda63a512a2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:49:14 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNj9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "163"
+        ],
+        "x-ms-client-request-id": [
+          "2e54431e-506a-4863-bc47-33f1dac506f9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"name\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"type\": \"Microsoft.ServiceBus/AuthorizationRules\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "412"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1e4087f6-d909-4ba0-bac3-80ff4a18b69e_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-correlation-request-id": [
+          "870ccec0-c9a9-4028-8f7b-21fee21bb44f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024938Z:870ccec0-c9a9-4028-8f7b-21fee21bb44f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:49:38 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNj9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9e836706-cc6c-4611-9ea0-94fbf7978f3a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"name\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"type\": \"Microsoft.ServiceBus/AuthorizationRules\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "403"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8e50ccae-2377-4a24-beb2-2c0e1978c5ed_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-correlation-request-id": [
+          "bfa83f37-06eb-45ca-9ea1-f15a1be95eda"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024915Z:bfa83f37-06eb-45ca-9ea1-f15a1be95eda"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:49:15 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNj9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "22ce30b6-a849-4753-89d1-fa8a43482a5a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"name\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n  \"type\": \"Microsoft.ServiceBus/AuthorizationRules\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Send\",\r\n      \"Manage\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "412"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4d70cde0-517d-481d-84ba-efb4f418f6b4_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "49ebc8db-3341-4d44-9827-778daafa4a1b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024953Z:49ebc8db-3341-4d44-9827-778daafa4a1b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:49:53 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/RootManageSharedAccessKey?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1Jvb3RNYW5hZ2VTaGFyZWRBY2Nlc3NLZXk/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8963f092-b059-45fd-a85d-a4aa4cf58277"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/RootManageSharedAccessKey\",\r\n  \"name\": \"RootManageSharedAccessKey\",\r\n  \"type\": \"Microsoft.ServiceBus/AuthorizationRules\",\r\n  \"location\": null,\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"rights\": [\r\n      \"Listen\",\r\n      \"Manage\",\r\n      \"Send\"\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "366"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6877cf3d-de95-4922-847c-b21a14fab129_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "8219c07f-b29a-413e-8b22-0344a3bf81bc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024916Z:8219c07f-b29a-413e-8b22-0344a3bf81bc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:49:15 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "08733871-12ab-4dd6-8106-08a017fa64db"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/RootManageSharedAccessKey\",\r\n      \"name\": \"RootManageSharedAccessKey\",\r\n      \"type\": \"Microsoft.ServiceBus/AuthorizationRules\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"rights\": [\r\n          \"Listen\",\r\n          \"Manage\",\r\n          \"Send\"\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n      \"name\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\",\r\n      \"type\": \"Microsoft.ServiceBus/AuthorizationRules\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"rights\": [\r\n          \"Listen\",\r\n          \"Send\"\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "798"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0465a1f0-d737-467f-9a7f-a172895d64b9_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14984"
+        ],
+        "x-ms-correlation-request-id": [
+          "7d26dc01-acf9-4859-972d-e457ac9b6458"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024917Z:7d26dc01-acf9-4859-972d-e457ac9b6458"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:49:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836/listKeys?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNi9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cb8d8caf-cfeb-4a56-b111-238e4e06c743"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://sbnamespace-onesdk4765.servicebus.windows.net/;SharedAccessKeyName=Servicebus-Namespace-AuthorizationRuleonesdk8836;SharedAccessKey=RwQi6lBXL5pZYl9r7F3JCeMP8YUu66ticXo9R3K6eXE=\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://sbnamespace-onesdk4765.servicebus.windows.net/;SharedAccessKeyName=Servicebus-Namespace-AuthorizationRuleonesdk8836;SharedAccessKey=ok73fpMdB4LNMTtHTfCGNEy5V1Hv/gfWETfrrUphTao=\",\r\n  \"primaryKey\": \"RwQi6lBXL5pZYl9r7F3JCeMP8YUu66ticXo9R3K6eXE=\",\r\n  \"secondaryKey\": \"ok73fpMdB4LNMTtHTfCGNEy5V1Hv/gfWETfrrUphTao=\",\r\n  \"keyName\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "624"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b790f7ed-e0d4-43e3-b2d0-c09142b8eb4a_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "c805287d-03ef-42bf-aa19-ce2171705081"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T024954Z:c805287d-03ef-42bf-aa19-ce2171705081"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:49:53 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836/regenerateKeys?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNi9yZWdlbmVyYXRlS2V5cz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"Policykey\": \"PrimaryKey\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "33"
+        ],
+        "x-ms-client-request-id": [
+          "59d158af-30fd-4c49-8f16-193cfb3a4102"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://sbnamespace-onesdk4765.servicebus.windows.net/;SharedAccessKeyName=Servicebus-Namespace-AuthorizationRuleonesdk8836;SharedAccessKey=vDxv43bvLw6HBbYUH1K1+b/M/F2y3sBH77wXyYbhLq8=\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://sbnamespace-onesdk4765.servicebus.windows.net/;SharedAccessKeyName=Servicebus-Namespace-AuthorizationRuleonesdk8836;SharedAccessKey=ok73fpMdB4LNMTtHTfCGNEy5V1Hv/gfWETfrrUphTao=\",\r\n  \"primaryKey\": \"vDxv43bvLw6HBbYUH1K1+b/M/F2y3sBH77wXyYbhLq8=\",\r\n  \"secondaryKey\": \"ok73fpMdB4LNMTtHTfCGNEy5V1Hv/gfWETfrrUphTao=\",\r\n  \"keyName\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "624"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4522deb3-8f9d-44f1-9770-78b26daeefae_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "203aa763-9d08-4f38-90a9-692be2f71912"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T025010Z:203aa763-9d08-4f38-90a9-692be2f71912"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:50:09 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836/regenerateKeys?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNi9yZWdlbmVyYXRlS2V5cz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"Policykey\": \"SecondaryKey\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "35"
+        ],
+        "x-ms-client-request-id": [
+          "4d72885d-4e16-4026-a448-52e216b39f9d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryConnectionString\": \"Endpoint=sb://sbnamespace-onesdk4765.servicebus.windows.net/;SharedAccessKeyName=Servicebus-Namespace-AuthorizationRuleonesdk8836;SharedAccessKey=vDxv43bvLw6HBbYUH1K1+b/M/F2y3sBH77wXyYbhLq8=\",\r\n  \"secondaryConnectionString\": \"Endpoint=sb://sbnamespace-onesdk4765.servicebus.windows.net/;SharedAccessKeyName=Servicebus-Namespace-AuthorizationRuleonesdk8836;SharedAccessKey=x3Rj2AooDFMKagP/VNILYh7xOTu0jmUHaAYzFye0FYQ=\",\r\n  \"primaryKey\": \"vDxv43bvLw6HBbYUH1K1+b/M/F2y3sBH77wXyYbhLq8=\",\r\n  \"secondaryKey\": \"x3Rj2AooDFMKagP/VNILYh7xOTu0jmUHaAYzFye0FYQ=\",\r\n  \"keyName\": \"Servicebus-Namespace-AuthorizationRuleonesdk8836\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "624"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fcde69c4-1b48-42cf-a58c-3211926f6ea9_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "a2ab0e2f-3a01-49d5-a372-c1a578a5d460"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T025026Z:a2ab0e2f-3a01-49d5-a372-c1a578a5d460"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:50:25 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/AuthorizationRules/Servicebus-Namespace-AuthorizationRuleonesdk8836?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvQXV0aG9yaXphdGlvblJ1bGVzL1NlcnZpY2VidXMtTmFtZXNwYWNlLUF1dGhvcml6YXRpb25SdWxlb25lc2RrODgzNj9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b6f993cc-2a12-4da4-8333-ab7267248134"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4173f80c-06a6-4e20-bea2-291779712700_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-correlation-request-id": [
+          "8f3e993a-c69f-456c-afd3-fee6d1af97a1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T025042Z:8f3e993a-c69f-456c-afd3-fee6d1af97a1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:50:41 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjU/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d210b576-0b23-4c03-9452-77e86c93b261"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1f90ef8c-c085-4e8b-a65e-a7ca59468381_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/operationresults/SBNamespace-onesdk4765?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1192"
+        ],
+        "x-ms-correlation-request-id": [
+          "bd042e0e-b8fa-462e-975e-1fa459e84ded"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T025042Z:bd042e0e-b8fa-462e-975e-1fa459e84ded"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:50:42 GMT"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/RGName-onesdk5487/providers/Microsoft.ServiceBus/namespaces/SBNamespace-onesdk4765/operationresults/SBNamespace-onesdk4765?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODU0ZDM2OGYtMTgyOC00MjhmLThmM2MtZjJhZmZhOWIyZjdkL3Jlc291cmNlR3JvdXBzL1JHTmFtZS1vbmVzZGs1NDg3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU2VydmljZUJ1cy9uYW1lc3BhY2VzL1NCTmFtZXNwYWNlLW9uZXNkazQ3NjUvb3BlcmF0aW9ucmVzdWx0cy9TQk5hbWVzcGFjZS1vbmVzZGs0NzY1P2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.1637.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.14393",
+          "Microsoft.Azure.Management.ServiceBus.ServiceBusManagementClient/0.2.0-preview"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "3ad93ae3-e30b-46f0-b6ed-dc3e7a770f5f_M5_M5"
+        ],
+        "Server-SB": [
+          "Service-Bus-Resource-Provider/SN1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Service-Bus-Resource-Provider/SN1",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14983"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a4105e2-eff1-41e0-a215-d9f39803223b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170428T025113Z:2a4105e2-eff1-41e0-a215-d9f39803223b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Fri, 28 Apr 2017 02:51:12 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "": [
+      "onesdk5487",
+      "onesdk4765",
+      "onesdk8836"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "854d368f-1828-428f-8f3c-f2affa9b2f7d"
+  }
+}

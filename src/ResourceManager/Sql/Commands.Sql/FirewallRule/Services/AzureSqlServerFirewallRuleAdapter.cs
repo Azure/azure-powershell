@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Model;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
 {
@@ -38,17 +36,17 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerFirewallRuleAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServerFirewallRuleAdapter(IAzureContext context)
         {
-            Profile = profile;
-            Communicator = new AzureSqlServerFirewallRuleCommunicator(Profile, subscription);
+            Context = context;
+            Communicator = new AzureSqlServerFirewallRuleCommunicator(Context);
         }
 
         /// <summary>
@@ -89,13 +87,13 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         public AzureSqlServerFirewallRuleModel UpsertFirewallRule(AzureSqlServerFirewallRuleModel model)
         {
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FirewallRuleName, Util.GenerateTracingId(), new FirewallRuleCreateOrUpdateParameters()
+            {
+                Properties = new FirewallRuleCreateOrUpdateProperties()
                 {
-                    Properties = new FirewallRuleCreateOrUpdateProperties()
-                    {
-                        EndIpAddress= model.EndIpAddress,
-                        StartIpAddress = model.StartIpAddress
-                    }
-                });
+                    EndIpAddress = model.EndIpAddress,
+                    StartIpAddress = model.StartIpAddress
+                }
+            });
 
             return CreateFirewallRuleModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
@@ -112,13 +110,13 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.FirewallRule to AzureSqlServerFirewallRuleModel
+        /// Convert a Management.Sql.LegacySdk.Models.FirewallRule to AzureSqlServerFirewallRuleModel
         /// </summary>
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlServerFirewallRuleModel CreateFirewallRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.FirewallRule resp)
+        private static AzureSqlServerFirewallRuleModel CreateFirewallRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.FirewallRule resp)
         {
             AzureSqlServerFirewallRuleModel firewallRule = new AzureSqlServerFirewallRuleModel();
 

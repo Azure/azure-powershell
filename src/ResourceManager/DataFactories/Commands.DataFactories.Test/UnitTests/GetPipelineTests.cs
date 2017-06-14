@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         private GetAzureDataFactoryPipelineCommand cmdlet;
 
-        public GetPipelineTests()
+        public GetPipelineTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new GetAzureDataFactoryPipelineCommand()
@@ -133,12 +134,19 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
                                     options.DataFactoryName == DataFactoryName &&
-                                    options.Name == null)))
+                                    options.Name == null &&
+                                    options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(f => f.ListPipelines(ResourceGroupName, DataFactoryName))
+                .Setup(f => f.ListPipelines(It.Is<PipelineFilterOptions>(
+                    options =>
+                        options.ResourceGroupName == ResourceGroupName &&
+                        options.DataFactoryName == DataFactoryName &&
+                        options.Name == null &&
+                        options.NextLink == null)))
+
                 .Returns(expected)
                 .Verifiable();
 

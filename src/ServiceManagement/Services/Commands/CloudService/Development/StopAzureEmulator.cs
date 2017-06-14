@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// Runs the service in the emulator
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureEmulator"), OutputType(typeof(bool))]
-    public class StopAzureEmulatorCommand : AzurePSCmdlet
+    public class StopAzureEmulatorCommand : AzureSMCmdlet
     {
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }

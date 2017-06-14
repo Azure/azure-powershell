@@ -12,84 +12,68 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using System.Collections;
-using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Resize, "AzureVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.Resize, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
     public class ResizeAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
-        [Alias("ResourceName")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The VirtualNetworkGateway")]
+        [ValidateNotNull]
+        public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
+
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
-       Mandatory = true,
-       ValueFromPipelineByPropertyName = true,
-       HelpMessage = "The size of this virtual network gateway.")]
-        [ValidateNotNullOrEmpty]
+            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance/VpnGw1/VpnGw2/VpnGw3")]
         [ValidateSet(
-            MNM.VirtualNetworkGatewaySize.Default,
-            MNM.VirtualNetworkGatewaySize.HighPerformance,
-            IgnoreCase = true)]
-        public string GatewaySize { get; set; }
+        MNM.VirtualNetworkGatewaySkuTier.Basic,
+        MNM.VirtualNetworkGatewaySkuTier.Standard,
+        MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+        MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+        IgnoreCase = true)]
+        public string GatewaySku { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "An array of hashtables which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
-
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
-            if (!this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name))
+            base.Execute();
+            if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            var vnetGateway = new PSVirtualNetworkGateway();
-            vnetGateway.Name = this.Name;
-            vnetGateway.Location = this.Location;
-            vnetGateway.GatewaySize = this.GatewaySize;
+            var getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
+            if (getvirtualnetGateway.Sku.Tier.Equals(this.GatewaySku))
+            {
+                throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:"+ this.GatewaySku + " requested. No need to resize!");
+            }
+
+            this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();
+            this.VirtualNetworkGateway.Sku.Tier = this.GatewaySku;
+            this.VirtualNetworkGateway.Sku.Name = this.GatewaySku;
 
             // Map to the sdk object
-            var vnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
-            vnetGatewayModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayType;
-            vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            var virtualnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
+            virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
 
-            // Execute the Create VirtualNetworkGateway call
-            this.VirtualNetworkGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetGatewayModel);
+            this.VirtualNetworkGatewayClient.CreateOrUpdate(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, virtualnetGatewayModel);
 
-            var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name);
-            WriteObject(getVirtualNetworkGateway);
+            getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
+
+            WriteObject(getvirtualnetGateway);
         }
     }
 }

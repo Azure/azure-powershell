@@ -12,21 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
 using System;
-
-using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 using System.Collections.Generic;
+using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
 {
     /// <summary>
     /// Gets one or more existing record sets.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
     public class GetAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = false, ParameterSetName = "Fields", ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
@@ -48,20 +46,10 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of DNS records in this record set.")]
         [ValidateNotNullOrEmpty]
-        public string RecordType { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The single or multiple label suffix to search in the relative name.")]
-        [ValidateNotNullOrEmpty]
-        public string EndsWith { get; set; }
+        public RecordType? RecordType { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            RecordType recordType = default(RecordType);
-            if (this.RecordType != null && !Enum.TryParse(this.RecordType, false, out recordType))
-            {
-                throw new PSArgumentException("RecordType must be one of A, AAAA, CNAME, MX, NS, SOA, SRV, TXT.");
-            }
-
             string zoneName = null;
             string resourceGroupName = null;
 
@@ -70,7 +58,7 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneName = this.ZoneName;
                 resourceGroupName = this.ResourceGroupName;
             }
-            else if (this.ParameterSetName == "Object")
+            else
             {
                 zoneName = this.Zone.Name;
                 resourceGroupName = this.Zone.ResourceGroupName;
@@ -82,18 +70,14 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
-            if (this.Name != null && this.EndsWith != null)
-            {
-                throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
-            }
-            else if (this.Name != null)
+            if (this.Name != null)
             {
                 if (this.RecordType == null)
                 {
                     throw new PSArgumentException("If you specify the Name parameter you must also specify the RecordType parameter.");
                 }
 
-                DnsRecordSet result = this.DnsClient.GetDnsRecordSet(this.Name, zoneName, resourceGroupName, recordType);
+                DnsRecordSet result = this.DnsClient.GetDnsRecordSet(this.Name, zoneName, resourceGroupName, this.RecordType.Value);
                 this.WriteObject(result);
             }
             else
@@ -101,16 +85,19 @@ namespace Microsoft.Azure.Commands.Dns
                 List<DnsRecordSet> result = null;
                 if (this.RecordType == null)
                 {
-                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, this.EndsWith);
+                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName);
                 }
                 else
                 {
-                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, recordType, this.EndsWith);
+                    result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, this.RecordType.Value);
                 }
 
-                this.WriteObject(result);
+                foreach (var r in result)
+                {
+                    this.WriteObject(r);
+                }
             }
-            
+
         }
     }
 }

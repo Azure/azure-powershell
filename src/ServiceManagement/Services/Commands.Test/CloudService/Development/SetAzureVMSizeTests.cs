@@ -22,10 +22,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceConfigur
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
-    public class SetAzureVMSizeTests : TestBase
+    public class SetAzureVMSizeTests : SMTestBase
     {
         private const string serviceName = "AzureService";
 

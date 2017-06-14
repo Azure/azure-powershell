@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -23,10 +22,11 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.DataDisk),
+        ProfileNouns.DataDisk,
+        SupportsShouldProcess = true),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class RemoveAzureVMDataDiskCommand : AzurePSCmdlet
+    public class RemoveAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -38,29 +38,44 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
+        [Alias("Name")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.VMDataDiskName)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string[] DataDiskNames { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VM.StorageProfile;
-
-            if (storageProfile != null && storageProfile.DataDisks != null)
+            if (this.ShouldProcess("DataDisk", VerbsCommon.Remove))
             {
-                var disks = storageProfile.DataDisks.ToList();
-                var comp = StringComparison.OrdinalIgnoreCase;
-                disks.RemoveAll(d => string.Equals(d.Name, this.Name, comp));
-                storageProfile.DataDisks = disks;
-            }
+                var storageProfile = this.VM.StorageProfile;
 
-            this.VM.StorageProfile = storageProfile;
-            
-            WriteObject(this.VM);
+                if (storageProfile != null && storageProfile.DataDisks != null)
+                {
+                    var disks = storageProfile.DataDisks.ToList();
+                    var comp = StringComparison.OrdinalIgnoreCase;
+
+                    if (DataDiskNames == null)
+                    {
+                        disks.Clear();
+                    }
+                    else
+                    {
+                        foreach (var diskName in DataDiskNames)
+                        {
+                            disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
+                        }
+                    }
+                    storageProfile.DataDisks = disks;
+                }
+
+                this.VM.StorageProfile = storageProfile;
+
+                WriteObject(this.VM);
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props')" />
+  <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" />
+  <Import Project="..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props" Condition="Exists('..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.ServiceManagement.Test</RootNamespace>
     <AssemblyName>Microsoft.WindowsAzure.Commands.ServiceManagement.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -20,7 +21,7 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>6d88902b</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>3d690ed1</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,38 +57,57 @@
       <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.7-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,32 +121,34 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.12.2.0-preview\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.14.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=8.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.8.2.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.6.0.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq, Version=4.2.1402.2112, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.8.1.1\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Security.Cryptography, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -138,6 +160,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
@@ -153,11 +176,29 @@
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.assert.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.assert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.extensibility.core.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -293,6 +334,17 @@
     <Compile Include="FunctionalTests\NetworkCmdletInfo\SetAzureReservedIPAssociationCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PaasCmdletInfo\GetAzureDeploymentEventBySlotCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PaasCmdletInfo\GetAzureDeploymentEventCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\NewAzurePlatformExtensionCertificateConfigCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\NewAzurePlatformExtensionEndpointConfigSetCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\NewAzurePlatformExtensionLocalResourceConfigSetCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\PublishAzurePlatformExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformExtensionEndpointCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformExtensionLocalResourceCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformExtensionEndpointCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformExtensionLocalResourceCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\UnpublishAzurePlatformExtensionCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PlatformExtensionTests.cs" />
     <Compile Include="FunctionalTests\SubscriptionCmdletInfo\RemoveAzureSubscriptionCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\RemoveAzureVMCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\RemoveAzureServiceCmdletInfo.cs" />
@@ -360,9 +412,9 @@
     <Compile Include="FunctionalTests\PaasCmdletInfo\SetAzureServiceRemoteDesktopExtensionCmdletInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FunctionalTests\PIRCmdletInfo\GetAzurePlatformVMImage.cs" />
-    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformVMImage.cs" />
-    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformVMImage.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\GetAzurePlatformVMImageCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\RemoveAzurePlatformVMImageCmdletInfo.cs" />
+    <Compile Include="FunctionalTests\PIRCmdletInfo\SetAzurePlatformVMImageCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PIRTest.cs" />
     <Compile Include="FunctionalTests\PowershellCore\InvokeCommandCmdletInfo.cs" />
     <Compile Include="FunctionalTests\PowershellCore\PowershellCmdletScript.cs" />
@@ -382,7 +434,6 @@
     <Compile Include="FunctionalTests\IaasCmdletInfo\NewAzureQuickVMCmdletInfo.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\NewAzureStorageAccountCmdletInfo.cs" />
     <Compile Include="FunctionalTests\SubscriptionCmdletInfo\SetAzureSubscriptionCmdletInfo.cs" />
-    <Compile Include="FunctionalTests\IaasCmdletInfo\WindowsAzurePowershellCmdletSequence.cs" />
     <Compile Include="FunctionalTests\IaasCmdletInfo\WindowsAzurePowershellCmdlet.cs" />
     <Compile Include="FunctionalTests\PowershellCore\CmdletsInfo.cs" />
     <Compile Include="FunctionalTests\PowershellCore\CmdletParam.cs" />
@@ -412,6 +463,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\Diagnostics\DiagnosticsHelperTest.cs" />
+    <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\DSC\DscExtensionConfigurationParsingHelperTests.cs" />
+    <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\DSC\DscExtensionSettingsSerializerTests.cs" />
+    <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\DSC\GetAzureVMDscExtensionStatusUnitTest.cs" />
     <Compile Include="UnitTests\Cmdlets\IaaS\Extensions\VirtualMachineExtensionImageFactoryTests.cs" />
     <Compile Include="FunctionalTests\VMTemplateTests.cs" />
   </ItemGroup>
@@ -422,70 +477,153 @@
     <None Include="AzureRTComplete_Full_Diff.playlist" />
     <None Include="AzureRTExtensions.playlist" />
     <None Include="AzureRTFull.playlist" />
+    <Content Include="Resources\Diagnostics\PurePublic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Diagnostics\PlainText.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Diagnostics\PlainText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Diagnostics\PurePublic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\HelloWorld_SDK20.cspkg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\ServiceConfiguration.cscfg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="Resources\affinityGroupData.csv" />
-    <None Include="Resources\certificateData.csv" />
+    <None Include="Resources\affinityGroupData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\certificateData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\CustomData.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\cloudinittest.sh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\download_VHD.csv" />
-    <None Include="Resources\DSC\DscExtensionTestConfigurationData.psd1" />
-    <None Include="Resources\HelloNoDiag.cscfg" />
-    <None Include="Resources\nodiagpackage.csv" />
-    <None Include="Resources\OneWebOneWorker.cscfg" />
-    <None Include="Resources\OneWebOneWorkerRDP.cscfg" />
-    <None Include="Resources\overwrite_VHD.csv" />
-    <None Include="Resources\package.csv" />
-    <None Include="Resources\packageADDomain.csv" />
-    <None Include="Resources\packageReservedIP.csv" />
-    <None Include="Resources\packageScenario.csv" />
-    <None Include="Resources\patch_VHD.csv" />
-    <None Include="Resources\rdpcert.pfx" />
-    <None Include="Resources\ReservedIPConfig1.cscfg" />
-    <None Include="Resources\ReservedIPConfig1update.cscfg" />
-    <None Include="Resources\ReservedIPConfig2.cscfg" />
-    <None Include="Resources\ReservedIPConfig2update.cscfg" />
-    <None Include="Resources\resume_VHD.csv" />
-    <None Include="Resources\SampleAppV1.cscfg" />
-    <None Include="Resources\SampleAppV2.cscfg" />
-    <None Include="Resources\SampleAppV3.cscfg" />
-    <None Include="Resources\StaticCAvnetconfig.netcfg" />
-    <None Include="Resources\storageAccountTestData.csv" />
-    <None Include="Resources\DSC\DscExtensionTestConfiguration.ps1" />
-    <None Include="Resources\test1.ps1" />
-    <None Include="Resources\test2.ps1" />
-    <None Include="Resources\thread_VHD.csv" />
-    <None Include="Resources\upload_VHD.csv" />
-    <None Include="Resources\vnetconfig.netcfg" />
-    <None Include="Resources\VnetconfigWithLocation.netcfg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Include="Resources\download_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\wrongPara_VHD.csv" />
+    <None Include="Resources\DSC\DscExtensionTestConfigurationData.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\HelloNoDiag.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\nodiagpackage.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\OneWebOneWorker.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\OneWebOneWorkerRDP.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\overwrite_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\package.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\packageADDomain.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\packageReservedIP.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\packageScenario.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\patch_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\rdpcert.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ReservedIPConfig.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ReservedIPConfigupdate.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\resume_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SampleAppV1.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SampleAppV2.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\SampleAppV3.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\StaticCAvnetconfig.netcfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\storageAccountTestData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\DscExtensionTestConfiguration.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\test1.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\test2.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\thread_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\upload_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\vnetconfig.netcfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\VnetconfigWithLocation.netcfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\wrongPara_VHD.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Diagnostics\diagnostics.wadcfgx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Diagnostics\config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FunctionalTests\ExtensionTests\MicrosoftAntimalware\AntimalwareConfig.xml" />
     <Content Include="FunctionalTests\Readme.txt" />
     <Content Include="lib\Security.Cryptography.dll" />
-    <Content Include="Resources\clxtshar.dll" />
-    <Content Include="Resources\da.xml" />
-    <Content Include="Resources\PrivateConfig.xml" />
-    <Content Include="Resources\PublicConfig.xml" />
-    <Content Include="Resources\VmAccessExtensionConfiguration.xml" />
+    <Content Include="Resources\clxtshar.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\da.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\PrivateConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\PublicConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\VmAccessExtensionConfiguration.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestScripts\" />
-    <Folder Include="Tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -494,17 +632,41 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
+    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
+      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
+      <Name>Commands.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
+      <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
+      <Name>Commands.ServiceManagement.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
+      <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Network\Commands.Network\Commands.ServiceManagement.Network.csproj">
       <Project>{40fee0bb-fd45-4efc-85bc-0d602a6892c4}</Project>
       <Name>Commands.ServiceManagement.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Commands.Utilities\Commands.Utilities.csproj">
+      <Project>{4900ec4e-8deb-4412-9108-0bc52f81d457}</Project>
+      <Name>Commands.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.ServiceManagement.PlatformImageRepository\Commands.ServiceManagement.PlatformImageRepository.csproj">
       <Project>{6478fa8b-3801-4863-8591-87f0855d5c82}</Project>
@@ -518,10 +680,6 @@
       <Project>{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}</Project>
       <Name>Commands.ServiceManagement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Services\Commands.Test.Utilities\Commands.Test.Utilities.csproj">
       <Project>{bc420543-c04e-4bf3-96e1-cd81b823bdd7}</Project>
       <Name>Commands.Test.Utilities</Name>
@@ -530,7 +688,7 @@
       <Project>{CD5AA507-F5EF-473D-855B-84B91A1ABE54}</Project>
       <Name>Commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
+    <ProjectReference Include="..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
       <Project>{3b48a77b-5956-4a62-9081-92ba04b02b27}</Project>
       <Name>Commands.Common.Test</Name>
     </ProjectReference>
@@ -563,23 +721,5 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

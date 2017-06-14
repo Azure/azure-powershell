@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -24,19 +24,21 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
-    public class RemoveAzureEnvironmentTests : TestBase, IDisposable
+    public class RemoveAzureEnvironmentTests : SMTestBase, IDisposable
     {
         private MemoryDataStore dataStore;
 
         public RemoveAzureEnvironmentTests()
         {
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
         }
 
         public void Cleanup()
@@ -52,8 +54,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             const string name = "test";
-            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
             client.AddOrSetEnvironment(new AzureEnvironment
             {
@@ -72,8 +74,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
-            Assert.False(client.Profile.Environments.ContainsKey(name));
+            client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
+            Assert.False(client.Profile.EnvironmentTable.ContainsKey(name));
         }
 
         [Fact]

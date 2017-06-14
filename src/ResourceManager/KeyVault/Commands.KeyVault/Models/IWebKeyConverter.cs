@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.KeyVault.WebKey;
 using System.IO;
 using System.Security;
-using Microsoft.Azure.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

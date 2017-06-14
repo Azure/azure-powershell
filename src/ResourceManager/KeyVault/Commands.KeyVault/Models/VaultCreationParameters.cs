@@ -12,23 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class VaultCreationParameters
-    {        
+    {
         public string VaultName { get; set; }
         public string ResourceGroupName { get; set; }
         public string Location { get; set; }
-        public Hashtable[] Tags { get; set; }
-        public string SkuName { get; set; }
+        public Hashtable Tags { get; set; }
+        public SkuName SkuName { get; set; }
         public string SkuFamilyName { get; set; }
         public bool EnabledForDeployment { get; set; }
+        public bool EnabledForTemplateDeployment { get; set; }
+        public bool EnabledForDiskEncryption { get; set; }
+        public bool EnableSoftDelete { get; set; }
         public Guid TenantId { get; set; }
-        public Guid ObjectId { get; set; }
-        public string[] PermissionsToKeys { get; set; }
-        public string[] PermissionsToSecrets { get; set; }
+        public AccessPolicyEntry AccessPolicy { get; set; }
+        public CreateMode? CreateMode { get; set; }
     }
 }

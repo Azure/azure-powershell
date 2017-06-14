@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
     public class NewAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
     {
         [Parameter(
@@ -28,9 +26,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             var inboundNatRule = new PSInboundNatRule();
             inboundNatRule.Name = this.Name;
@@ -50,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
 
             inboundNatRule.Id =
                 ChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInBoundNatRuleName,
                     this.Name);
 

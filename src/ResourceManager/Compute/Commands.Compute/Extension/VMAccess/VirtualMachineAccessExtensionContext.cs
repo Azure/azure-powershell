@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class VirtualMachineAccessExtensionContext : PSVirtualMachineExtension
     {
-
         public const string ExtensionDefaultPublisher = "Microsoft.Compute";
         public const string ExtensionDefaultName = "VMAccessAgent";
         public const string ExtensionDefaultVersion = "2.0";
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             ProtectedSettings = psExt.ProtectedSettings;
             ProvisioningState = psExt.ProvisioningState;
             Statuses = psExt.Statuses;
-            UserName = (publicSettings == null) ? null : publicSettings.userName;
+            UserName = (publicSettings == null) ? null : publicSettings.UserName;
         }
     }
 }

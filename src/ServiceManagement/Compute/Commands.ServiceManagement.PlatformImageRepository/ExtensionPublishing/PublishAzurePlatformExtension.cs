@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.Azure;
+using Microsoft.WindowsAzure.Management.Compute.Models;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ExtensionPublishing
 {
@@ -36,9 +36,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
     public class PublishAzurePlatformExtensionCommand : ServiceManagementBaseCmdlet
     {
         protected const string AzureVMPlatformExtensionCommandNoun = "AzurePlatformExtension";
-        protected const string PublicModeStr = "Public";
-        protected const string InternalModeStr = "Internal";
-
         public bool? IsInternalExtension { get; set; }
 
         [Parameter(
@@ -196,17 +193,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         [Parameter(
             Position = 21,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To disallow major version upgrade.")]
+            HelpMessage = "Supported OS of the Extension")]
         [ValidateNotNullOrEmpty]
         public string SupportedOS { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           Position = 22,
+           HelpMessage = "Regions of the Extension")]
+        public string Regions { get; set; }
+
+        [Parameter(
             Mandatory = false,
-            Position = 22,
+            Position = 23,
             HelpMessage = "To force the registration operation.")]
         public SwitchParameter Force { get; set; }
-
-        public string ExtensionMode { get; set; }
 
         protected override void OnProcessRecord()
         {
@@ -225,9 +226,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                     var upgradeCnfm = Resources.ExtensionUpgradingConfirmation;
                     var upgradeCptn = Resources.ExtensionUpgradingCaption;
 
-                    this.IsInternalExtension = string.Equals(this.ExtensionMode, PublicModeStr) ? false
-                                             : string.Equals(this.ExtensionMode, InternalModeStr) ? true
-                                             : true;
+                    this.IsInternalExtension = true;
 
                     if (found && (this.Force.IsPresent || this.ShouldContinue(upgradeCnfm, upgradeCptn)))
                     {

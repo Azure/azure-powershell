@@ -12,22 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Moq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
-    public class NewAzureResourceGroupDeploymentCommandTests
+    public class NewAzureResourceGroupDeploymentCommandTests : RMTestBase
     {
-        private NewAzureResourceGroupDeploymentCommand cmdlet;
+        private NewAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -35,18 +42,20 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string deploymentName = "fooDeployment";
 
-        private string templateFile = @"Resources\sampleTemplateFile.json";
+        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
         private string storageAccountName = "myStorageAccount";
 
-        public NewAzureResourceGroupDeploymentCommandTests()
+        public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
-            resourcesClientMock = new Mock<ResourcesClient>();
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewAzureResourceGroupDeploymentCommand()
+            SetupConfirmation(commandRuntimeMock);
+            cmdlet = new NewAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 
@@ -54,14 +63,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreatesNewPSResourceGroupDeploymentWithUserTemplate()
         {
-            CreatePSResourceGroupDeploymentParameters expectedParameters = new CreatePSResourceGroupDeploymentParameters()
+            PSCreateResourceGroupDeploymentParameters expectedParameters = new PSCreateResourceGroupDeploymentParameters()
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
-                StorageAccountName = storageAccountName,
-                TemplateVersion = "1.0"
             };
-            CreatePSResourceGroupDeploymentParameters actualParameters = new CreatePSResourceGroupDeploymentParameters();
+            PSCreateResourceGroupDeploymentParameters actualParameters = new PSCreateResourceGroupDeploymentParameters();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
             {
                 Mode = DeploymentMode.Incremental,
@@ -79,92 +86,29 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     { "Parameter2", new DeploymentVariable() { Value = "10", Type = "int" } },
                     { "Parameter3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
                 },
-                ProvisioningState = ProvisioningState.Succeeded,
+                ProvisioningState = ProvisioningState.Succeeded.ToString(),
                 ResourceGroupName = resourceGroupName,
                 TemplateLink = new TemplateLink()
                 {
                     ContentVersion = "1.0",
-                    Uri = new Uri("http://mytemplate.com")
+                    Uri = "http://mytemplate.com"
                 },
                 Timestamp = new DateTime(2014, 2, 13)
             };
             resourcesClientMock.Setup(f => f.ExecuteDeployment(
-                It.IsAny<CreatePSResourceGroupDeploymentParameters>()))
+                It.IsAny<PSCreateResourceGroupDeploymentParameters>()))
                 .Returns(expected)
-                .Callback((CreatePSResourceGroupDeploymentParameters p) => { actualParameters = p; });
+                .Callback((PSCreateResourceGroupDeploymentParameters p) => { actualParameters = p; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
 
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
-            Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CreatesNewPSResourceGroupDeploymentWithGalleryTemplate()
-        {
-            CreatePSResourceGroupDeploymentParameters expectedParameters = new CreatePSResourceGroupDeploymentParameters()
-            {
-                GalleryTemplateIdentity = "sqlServer",
-                DeploymentName = deploymentName,
-                StorageAccountName = storageAccountName,
-                TemplateVersion = "1.0"
-            };
-            CreatePSResourceGroupDeploymentParameters actualParameters = new CreatePSResourceGroupDeploymentParameters();
-            PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
-            {
-                Mode = DeploymentMode.Incremental,
-                DeploymentName = deploymentName,
-                CorrelationId = "123",
-                Outputs = new Dictionary<string, DeploymentVariable>()
-                {
-                    { "Variable1", new DeploymentVariable() { Value = "true", Type = "bool" } },
-                    { "Variable2", new DeploymentVariable() { Value = "10", Type = "int" } },
-                    { "Variable3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
-                },
-                Parameters = new Dictionary<string, DeploymentVariable>()
-                {
-                    { "Parameter1", new DeploymentVariable() { Value = "true", Type = "bool" } },
-                    { "Parameter2", new DeploymentVariable() { Value = "10", Type = "int" } },
-                    { "Parameter3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
-                },
-                ProvisioningState = ProvisioningState.Succeeded,
-                ResourceGroupName = resourceGroupName,
-                TemplateLink = new TemplateLink()
-                {
-                    ContentVersion = "1.0",
-                    Uri = new Uri("http://mytemplate.com")
-                },
-                Timestamp = new DateTime(2014, 2, 13)
-            };
-            resourcesClientMock.Setup(f => f.ExecuteDeployment(
-                It.IsAny<CreatePSResourceGroupDeploymentParameters>()))
-                .Returns(expected)
-                .Callback((CreatePSResourceGroupDeploymentParameters p) => { actualParameters = p; });
-
-            cmdlet.ResourceGroupName = resourceGroupName;
-            cmdlet.Name = expectedParameters.DeploymentName;
-            cmdlet.GalleryTemplateIdentity = expectedParameters.GalleryTemplateIdentity;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
-
-            cmdlet.ExecuteCmdlet();
-
-            Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
-            Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
-            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
-            Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
-            Assert.Equal(null, actualParameters.StorageAccountName);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }

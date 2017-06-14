@@ -13,24 +13,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Tags.Model;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
     public abstract class VirtualNetworkGatewayConnectionBaseCmdlet : NetworkBaseCmdlet
     {
-        public IVirtualNetworkGatewayConnectionOperations VirtualNetworkGatewayConnectionClient
+        public IVirtualNetworkGatewayConnectionsOperations VirtualNetworkGatewayConnectionClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.VirtualNetworkGatewayConnections;
+                return NetworkClient.NetworkManagementClient.VirtualNetworkGatewayConnections;
             }
         }
 
@@ -40,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetVirtualNetworkGatewayConnection(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -55,9 +53,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetworkGatewayConnection GetVirtualNetworkGatewayConnection(string resourceGroupName, string name)
         {
-            var getVirtualNetworkGatewayConnectionResponse = this.VirtualNetworkGatewayConnectionClient.Get(resourceGroupName, name);
+            var connection = this.VirtualNetworkGatewayConnectionClient.Get(resourceGroupName, name);
 
-            var psVirtualNetworkGatewayConnection = ToPsVirtualNetworkGatewayConnection(getVirtualNetworkGatewayConnectionResponse.VirtualNetworkGatewayConnection);
+            var psVirtualNetworkGatewayConnection = ToPsVirtualNetworkGatewayConnection(connection);
             psVirtualNetworkGatewayConnection.ResourceGroupName = resourceGroupName;
 
             return psVirtualNetworkGatewayConnection;
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetVirtualNetworkGatewayConnectionSharedKey(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {

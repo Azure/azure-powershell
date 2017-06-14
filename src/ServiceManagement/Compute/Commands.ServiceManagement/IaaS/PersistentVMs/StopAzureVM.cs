@@ -12,30 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
-using Microsoft.Azure;
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureVM", DefaultParameterSetName = "ByName"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = "ByName"), OutputType(typeof(ManagementOperationContext))]
     public class StopAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Virtual Machine to stop.", ParameterSetName = "ByName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string[] Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Virtual Machine to restart.", ParameterSetName = "Input")]
         [ValidateNotNullOrEmpty]
         [Alias("InputObject")]
-        public Model.PersistentVM VM { get; set; }
+        public Model.IPersistentVM[] VM { get; set; }
 
         [Parameter(Position = 2, HelpMessage = "Keeps the VM provisioned")]
         public SwitchParameter StayProvisioned { get; set; }
@@ -53,11 +54,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 return;
             }
 
-            string roleName = (this.ParameterSetName == "ByName") ? this.Name : this.VM.RoleName;
+            string[] inputRoleNames = (this.ParameterSetName == "ByName") ? this.Name : this.VM.Select(vm => vm.GetInstance().RoleName).ToArray();
 
             // Generate a list of role names matching regular expressions or
             // the exact name specified in the -Name parameter.
-            var roleNames = PersistentVMHelper.GetRoleNames(this.CurrentDeploymentNewSM.RoleInstances, roleName);
+            var roleNames = PersistentVMHelper.GetRoleNames(this.CurrentDeploymentNewSM.RoleInstances, inputRoleNames);
 
             // Insure at least one of the role name instances can be found.
             if ((roleNames == null) || (!roleNames.Any()))
@@ -66,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             }
 
             // Insure the Force switch is specified for wildcard operations when StayProvisioned is not specified.
-            if (WildcardPattern.ContainsWildcardCharacters(roleName) && (!this.StayProvisioned.IsPresent) && (!this.Force.IsPresent))
+            if (roleNames.Any(r => WildcardPattern.ContainsWildcardCharacters(r)) && (!this.StayProvisioned.IsPresent) && (!this.Force.IsPresent))
             {
                 throw new ArgumentException(Resources.MustSpecifyForceParameterWhenUsingWildcards);
             }
@@ -93,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     {
                         this.ConfirmAction(false,
                             Resources.DeploymentVIPLossWarning,
-                            string.Format(Resources.DeprovisioningVM, roleName),
+                            string.Format(Resources.DeprovisioningVM, string.Join(", ", roleNames)),
                             String.Empty,
                             () => this.ExecuteClientActionNewSM(
                                 null,
@@ -149,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     {
                         this.ConfirmAction(false,
                             Resources.DeploymentVIPLossWarning,
-                            string.Format(Resources.DeprovisioningVM, roleName),
+                            string.Format(Resources.DeprovisioningVM, string.Join(", ", roleNames)),
                             String.Empty,
                             () => this.ExecuteClientActionNewSM(
                                 null,

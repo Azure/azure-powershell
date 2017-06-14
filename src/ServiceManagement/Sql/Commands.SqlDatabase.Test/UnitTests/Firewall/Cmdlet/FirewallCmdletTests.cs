@@ -17,7 +17,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Model;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
@@ -25,11 +25,12 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Firewall.Cmdlet
 {
     [TestClass]
-    public class FirewallCmdletTests : TestBase
+    public class FirewallCmdletTests : SMTestBase
     {
         [TestCleanup]
         public void CleanupTest()

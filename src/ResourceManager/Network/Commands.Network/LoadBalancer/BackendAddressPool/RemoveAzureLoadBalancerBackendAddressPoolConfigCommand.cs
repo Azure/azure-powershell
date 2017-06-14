@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSLoadBalancer))]
     public class RemoveAzureLoadBalancerBackendAddressPoolConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The loadbalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var backendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (backendAddressPool != null)

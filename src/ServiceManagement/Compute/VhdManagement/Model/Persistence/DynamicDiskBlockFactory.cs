@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 {
-    
+
 
     public class DynamicDiskBlockFactory : AbstractDiskBlockFactory
     {
@@ -35,34 +35,34 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                 if (cachedBlock == null || cachedBlock.BlockIndex != block)
                 {
                     cachedBlock = new Block(this)
-                                      {
-                                          BlockIndex = block,
-                                          VhdUniqueId = this.vhdFile.Footer.UniqueId,
-                                          LogicalRange = IndexRange.FromLength(block * GetBlockSize(), vhdFile.Header.BlockSize),
-                                          BitMap = null,
-                                          Empty = true
-                                      };
+                    {
+                        BlockIndex = block,
+                        VhdUniqueId = this.vhdFile.Footer.UniqueId,
+                        LogicalRange = IndexRange.FromLength(block * GetBlockSize(), vhdFile.Header.BlockSize),
+                        BitMap = null,
+                        Empty = true
+                    };
                 }
                 return cachedBlock;
             }
 
-            if(cachedBlock == null || cachedBlock.BlockIndex != block)
+            if (cachedBlock == null || cachedBlock.BlockIndex != block)
             {
                 cachedBlock = new Block(this)
-                                  {
-                                      BlockIndex = block,
-                                      VhdUniqueId = this.vhdFile.Footer.UniqueId,
-                                      LogicalRange = IndexRange.FromLength(block * GetBlockSize(), vhdFile.Header.BlockSize),
-                                      BitMap = bitMapFactory.Create(block),
-                                      Empty = false
-                                  };
+                {
+                    BlockIndex = block,
+                    VhdUniqueId = this.vhdFile.Footer.UniqueId,
+                    LogicalRange = IndexRange.FromLength(block * GetBlockSize(), vhdFile.Header.BlockSize),
+                    BitMap = bitMapFactory.Create(block),
+                    Empty = false
+                };
             }
             return cachedBlock;
         }
 
         public override Sector GetSector(Block block, uint sector)
         {
-            if(block.Empty)
+            if (block.Empty)
             {
                 return this.sectorFactory.CreateEmptySector(block.BlockIndex, sector);
             }

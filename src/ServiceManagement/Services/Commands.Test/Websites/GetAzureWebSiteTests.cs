@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -29,12 +29,24 @@ using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
-    
+    public static class WebsiteCmdletTestsExtensions
+    {
+        public static void ExecuteWithProcessing(this AzureSMCmdlet cmdlt)
+        {
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+        }
+    }
+       
     public class GetAzureWebsiteTests : WebsitesTestBase
     {
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteTest()
@@ -138,10 +150,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteWithNullSubscription()
         {
-            currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            currentProfile.Subscriptions.Clear();
+            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            currentProfile.SubscriptionTable.Clear();
             currentProfile.Save();
-            AzurePSCmdlet.CurrentProfile = currentProfile;
+            AzureSMCmdlet.CurrentProfile = currentProfile;
 
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand
@@ -237,6 +249,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsSlots()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             // Setup
             string slot = "staging";
             var clientMock = new Mock<IWebsitesClient>();

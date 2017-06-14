@@ -198,17 +198,20 @@
   <data name="InvalidFormatOfResourceId" xml:space="preserve">
     <value>Invalid format of the resource identifier.</value>
   </data>
+  <data name="InvalidFormatOfResourceGroupId" xml:space="preserve">
+    <value>Invalid format of the resource group identifier. Expected 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}'.</value>
+  </data>
   <data name="InvalidTagFormat" xml:space="preserve">
-    <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
+    <value>Invalid tag format. Expect @{tagName = $null} or @{tagName = "tagValue"}</value>
   </data>
   <data name="RemovingRoleAssignment" xml:space="preserve">
     <value>Removing role assignment for AD object '{0}' on scope '{1}' with role definition '{2}' </value>
   </data>
   <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
-    <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
+    <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{tagName1 = "tagValue1"; tagName2 = "tagValue2"}</value>
   </data>
   <data name="RoleDefinitionNotFound" xml:space="preserve">
-    <value>Can not find role definition with name '{0}'.</value>
+    <value>Cannot find role definition with name '{0}'.</value>
   </data>
   <data name="RemoveApplication" xml:space="preserve">
     <value>Removing application ...</value>
@@ -296,5 +299,92 @@
   </data>
   <data name="InvalidAssignableScopes" xml:space="preserve">
     <value>Invalid value for AssignableScopes</value>
+  </data>
+  <data name="DeleteResourceGroupDeployment" xml:space="preserve">
+    <value>Are you sure you want to delete the deployment '{0}'?</value>
+  </data>
+  <data name="DeleteResourceGroupDeploymentMessage" xml:space="preserve">
+    <value>Deleting the deployment ...</value>
+  </data>
+  <data name="DeploymentDoesntExist" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
+  </data>
+  <data name="ExpandGroupsNotSupported" xml:space="preserve">
+    <value>ExpandPrincipalGroups is only supported for a User principal</value>
+  </data>
+  <data name="PrincipalNotFound" xml:space="preserve">
+    <value>Cannot find principal using the specified options</value>
+  </data>
+  <data name="IncludeClassicAdminsNotSupported" xml:space="preserve">
+    <value>IncludeClassicAdministrators is only supported for a User principal</value>
+  </data>
+  <data name="MultipleRoleDefinitionsFoundWithSameName" xml:space="preserve">
+    <value>Multiple role definitions found with name '{0}'. Specify role definition using it's Id instead.</value>
+  </data>
+  <data name="RoleDefinitionIdShouldBeAGuid" xml:space="preserve">
+    <value>Role definition id should be a valid guid.</value>
+  </data>
+  <data name="OperationSearchStringInvalidProviderName" xml:space="preserve">
+    <value>To get all operations under {0}, please specify the search string as {0}/*.</value>
+  </data>
+  <data name="OperationSearchStringInvalidWildcard" xml:space="preserve">
+    <value>Individual parts in the search string should either equal * or not contain *.</value>
+  </data>
+  <data name="ProviderOperationUnsupportedWildcard" xml:space="preserve">
+    <value>Wildcard character ? is not supported.</value>
+  </data>
+  <data name="InvalidRoleDefinitionDescription" xml:space="preserve">
+    <value>RoleDefinition Description is invalid.</value>
+  </data>
+  <data name="RemoveRoleDefinitionWithName" xml:space="preserve">
+    <value>Are you sure you want to remove role definition with name '{0}'.</value>
+  </data>
+  <data name="CreateApplicationNotAllowedGuestUser" xml:space="preserve">
+    <value>You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory.</value>
+  </data>
+  <data name="CreateServicePrincipalNotAllowedGuestUser" xml:space="preserve">
+    <value>You are a guest user in the directory and are not allowed to create a service principal. Please contact the administrator of the directory.</value>
+  </data>
+  <data name="GroupDoesntExist" xml:space="preserve">
+    <value>Group with object id '{0}' does not exist.</value>
+  </data>
+  <data name="RemoveUserConfirmation" xml:space="preserve">
+    <value>Are you sure you want to remove user with upn or object id '{0}'.</value>
+  </data>
+  <data name="RemovingUser" xml:space="preserve">
+    <value>Removing user ...</value>
+  </data>
+  <data name="RemoveCredential" xml:space="preserve">
+    <value>Removing credential ...</value>
+  </data>
+  <data name="RemovingAllAppCredentials" xml:space="preserve">
+    <value>Are you sure you want to remove all credentials for app objectId {0}.</value>
+  </data>
+  <data name="RemovingAppCredentialWithId" xml:space="preserve">
+    <value>Are you sure you want to remove credential with keyId '{0}' for app objectId '{1}'.</value>
+  </data>
+  <data name="RemovingAllSpCredentials" xml:space="preserve">
+    <value>Are you sure you want to remove all credentials for service principal objectId {0}.</value>
+  </data>
+  <data name="RemovingSpCredentialWithId" xml:space="preserve">
+    <value>Are you sure you want to remove credential with keyId '{0}' for service principal objectId '{1}'.</value>
+  </data>
+  <data name="ApplicationWithAppIdDoesntExist" xml:space="preserve">
+    <value>Application with AppId '{0}' does not exist.</value>
+  </data>
+  <data name="ExceptionInExecution" xml:space="preserve">
+    <value>Caught exception, type: {0}</value>
+  </data>
+  <data name="GraphException" xml:space="preserve">
+    <value>Received exception from graph. ErrorCode: {0}, Message: {1}</value>
+  </data>
+  <data name="KeyCredentialNotValid" xml:space="preserve">
+    <value>KeyCredential object is not valid.</value>
+  </data>
+  <data name="PasswordCredentialNotValid" xml:space="preserve">
+    <value>PasswordCredential object is not valid.</value>
+  </data>
+  <data name="ServicePrincipalWithSPNDoesntExist" xml:space="preserve">
+    <value>Service principal with SPN '{0}' does not exist.</value>
   </data>
 </root>

@@ -21,17 +21,24 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class GetRestorableDroppedDatabaseSqlAuthTests : TestBase
+    public class GetRestorableDroppedDatabaseSqlAuthTests : SMTestBase
     {
         private const string deletionDateStringFormat = "yyyy-MM-ddTHH:mm:ss.FFFZ";
 
         [ClassInitialize]
         public static void InitializeClass(TestContext context)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+            AzureSMProfileProvider.Instance.Profile = new AzureSMProfile();
             // Create atleast two test databases
             NewAzureSqlDatabaseTests.CreateTestDatabasesWithSqlAuth();
 
@@ -62,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                            Assert.IsNotNull(actual.UserAgent);
                             if (expected.Index < 3)
                             {
                                 DatabaseTestHelper.ValidateHeadersForODataRequest(expected.RequestInfo, actual);
@@ -162,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                            Assert.IsNotNull(actual.UserAgent);
                             if (expected.Index < 5)
                             {
                                 DatabaseTestHelper.ValidateHeadersForODataRequest(expected.RequestInfo, actual);
@@ -270,7 +277,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                            Assert.IsNotNull(actual.UserAgent);
                             if (expected.Index < 1)
                             {
                                 DatabaseTestHelper.ValidateHeadersForODataRequest(expected.RequestInfo, actual);

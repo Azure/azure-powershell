@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public class CreatePSTableParameters : DataFactoryParametersBase
+    public class CreatePSDatasetParameters : DataFactoryParametersBase
     {
         public string Name { get; set; }
 
@@ -24,6 +24,6 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public bool Force { get; set; }
 
-        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
+        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
 }

@@ -17,56 +17,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 {
     internal class AzureHDInsightSubscriptionResolverSimulator : IAzureHDInsightSubscriptionResolver
     {
-        private IEnumerable<AzureSubscription> knownSubscriptions;
+        private IEnumerable<IAzureSubscription> knownSubscriptions;
 
         internal AzureHDInsightSubscriptionResolverSimulator()
         {
             var certificate = new X509Certificate2(Convert.FromBase64String(IntegrationTestBase.TestCredentials.Certificate), string.Empty);
-            AzureSession.DataStore.AddCertificate(certificate);
-            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
-            profileClient.Profile.Accounts[certificate.Thumbprint] = new AzureAccount
+            AzureSession.Instance.DataStore.AddCertificate(certificate);
+            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
+            var newAccount = new AzureAccount
             {
                 Id = certificate.Thumbprint,
                 Type = AzureAccount.AccountType.Certificate,
-                Properties =
-                    new Dictionary<AzureAccount.Property, string>
-                    {
-                        {
-                            AzureAccount.Property.Subscriptions,
-                            IntegrationTestBase.TestCredentials.SubscriptionId.ToString()
-                        }
-                    }
             };
+            newAccount.SetSubscriptions(IntegrationTestBase.TestCredentials.SubscriptionId.ToString());
+            profileClient.Profile.AccountTable[certificate.Thumbprint] = newAccount;
             profileClient.Profile.Save();
-
+            var sub1 = new AzureSubscription()
+            {
+                Id = IntegrationTestBase.TestCredentials.SubscriptionId.ToString(),
+            };
+            sub1.SetAccount(certificate.Thumbprint);
+            sub1.SetEnvironment(EnvironmentName.AzureCloud);
             this.knownSubscriptions = new AzureSubscription[]
                 {
-                    new AzureSubscription()
-                        {
-                            Id = IntegrationTestBase.TestCredentials.SubscriptionId,
-                            Account = certificate.Thumbprint,
-                            Environment = EnvironmentName.AzureCloud
-                        }, 
+                    sub1
                 };
         }
 
-        public AzureSubscription ResolveSubscription(string subscription)
+        public IAzureSubscription ResolveSubscription(string subscription)
         {
             Guid subId;
             if (Guid.TryParse(subscription, out subId))
             {
-                return this.knownSubscriptions.FirstOrDefault(s => s.Id == subId);
+                return this.knownSubscriptions.FirstOrDefault(s => s.GetId() == subId);
             }
             else
             {

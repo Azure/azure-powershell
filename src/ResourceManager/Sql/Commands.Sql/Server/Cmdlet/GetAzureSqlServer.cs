@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServer cmdlet
+    /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlServer", ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlServer : AzureSqlServerCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    public class GetAzureSqlServer : AzureSqlServerCmdletBase, IModuleAssemblyInitializer
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -41,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         protected override IEnumerable<AzureSqlServerModel> GetEntity()
         {
             ICollection<AzureSqlServerModel> results = null;
-            
+
             if (this.MyInvocation.BoundParameters.ContainsKey("ServerName"))
             {
                 results = new List<AzureSqlServerModel>();
@@ -73,6 +77,26 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         protected override IEnumerable<AzureSqlServerModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerModel> model)
         {
             return model;
+        }
+
+        /// <summary>
+        /// Add Sql aliases
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "SqlStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This may throw exception for tests, ignore.
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             if (!string.IsNullOrEmpty(idFromServer))
             {
-                string[] tokens = idFromServer.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
+                string[] tokens = idFromServer.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tokens.Length < 8)
                 {
                     throw new ArgumentException(ProjectResources.InvalidFormatOfResourceId, "idFromServer");
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
                 List<string> resourceTypeBuilder = new List<string>();
                 resourceTypeBuilder.Add(tokens[5]);
-                
+
                 List<string> parentResourceBuilder = new List<string>();
                 for (int i = 6; i <= tokens.Length - 3; i++)
                 {
                     parentResourceBuilder.Add(tokens[i]);
                     // Add every other token to type
-                    if (i%2 == 0)
+                    if (i % 2 == 0)
                     {
                         resourceTypeBuilder.Add(tokens[i]);
                     }
@@ -72,6 +72,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     ResourceType = string.Join("/", resourceTypeBuilder);
                 }
             }
+        }
+
+        public static ResourceIdentifier FromResourceGroupIdentifier(string resourceGroupId)
+        {
+            if (!string.IsNullOrEmpty(resourceGroupId))
+            {
+                string[] tokens = resourceGroupId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 4)
+                {
+                    throw new ArgumentException(ProjectResources.InvalidFormatOfResourceGroupId, "resourceGroupId");
+                }
+                return new ResourceIdentifier
+                {
+                    Subscription = tokens[1],
+                    ResourceGroupName = tokens[3],
+                };
+            }
+
+            return new ResourceIdentifier();
         }
 
         public static string GetProviderFromResourceType(string resourceType)

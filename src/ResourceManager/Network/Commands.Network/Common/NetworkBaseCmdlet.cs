@@ -13,11 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Network.Common;
+
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class NetworkBaseCmdlet : AzurePSCmdlet
+    public abstract class NetworkBaseCmdlet : AzureRMCmdlet
     {
 
         private NetworkClient _networkClient;
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (_networkClient == null)
                 {
-                    _networkClient = new NetworkClient(Profile)
+                    _networkClient = new NetworkClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -44,6 +46,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
             NetworkResourceManagerProfile.Initialize();
+            try
+            {
+                Execute();
+            }
+            catch (Rest.Azure.CloudException ex)
+            {
+                throw new NetworkCloudException(ex);
+            }
+        }
+        public virtual void Execute()
+        {
         }
 
         public static string GetResourceGroup(string resourceId)

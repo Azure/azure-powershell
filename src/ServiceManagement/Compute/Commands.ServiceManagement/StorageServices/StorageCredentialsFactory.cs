@@ -13,18 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
 {
     public class StorageCredentialsFactory
     {
         private StorageManagementClient client;
-        private AzureSubscription currentSubscription;
+        private IAzureSubscription currentSubscription;
 
         public static bool IsChannelRequired(Uri destination)
         {
@@ -35,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
         {
         }
 
-        public StorageCredentialsFactory(StorageManagementClient client, AzureSubscription currentSubscription)
+        public StorageCredentialsFactory(StorageManagementClient client, IAzureSubscription currentSubscription)
         {
             this.client = client;
             this.currentSubscription = currentSubscription;

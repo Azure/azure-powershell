@@ -25,13 +25,16 @@ using System.Web.Script.Serialization;
 using System.Xml;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -58,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         /// Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
@@ -80,15 +83,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
+        /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(AzureSMProfile AzureSMProfile, IAzureSubscription azureSubscription)
         {
-            this.Profile = azureProfile;
+            this.Profile = AzureSMProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.Instance.ClientFactory.CreateClient<RecoveryServicesManagementClient>(AzureSMProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -248,7 +251,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
+                AzureSession.Instance.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
                 asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
                 Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
@@ -258,6 +261,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             }
 
             return siteRecoveryClient;
+        }
+
+        /// <summary>
+        /// Gets Vault Upgrade client.
+        /// </summary>
+        /// <param name="location">Resource location.</param>
+        /// <param name="resourceName">Resource Name.</param>
+        /// <param name="resourceType">Resource Type.</param>
+        /// <returns>Vault Upgrade Management client.</returns>
+        private RecoveryServicesVaultUpgradeManagementClient GetVaultUpgradeClient(
+            string location,
+            string resourceName,
+            string resourceType)
+        {
+            string resourceNamespace = 
+                resourceType == Constants.ASRVaultType ?
+                    Constants.ASRNamespace :
+                    Constants.BackupNamespace;
+
+            RecoveryServicesVaultUpgradeManagementClient VaultUpgradeClient =
+                AzureSession.Instance.ClientFactory.CreateCustomClient<RecoveryServicesVaultUpgradeManagementClient>(
+                    this.GetCloudServiceName(resourceName, location, resourceType),
+                    resourceNamespace,
+                    resourceType,
+                    resourceName,
+                    recoveryServicesClient.Credentials,
+                    Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+
+            if (null == VaultUpgradeClient)
+            {
+                throw new InvalidOperationException(Properties.Resources.NullVaultUpgradeClient);
+            }
+
+            return VaultUpgradeClient;
         }
     }
 
@@ -305,7 +342,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public static class DataContractUtils<T>
     {
         /// <summary>
-        /// Serializes the propertyBagContainer to the string. 
+        /// Serializes the propertyBagContainer to the string.
         /// </summary>
         /// <param name="propertyBagContainer">Property bag</param>
         /// <returns>Serialized string </returns>

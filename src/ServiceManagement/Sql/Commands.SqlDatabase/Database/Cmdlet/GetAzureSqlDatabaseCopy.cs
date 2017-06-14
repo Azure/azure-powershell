@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
 
     /// <summary>
     /// Retrieves a list of all ongoing Microsoft Azure SQL Database copy operations in the given
@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseCopy", ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = "ByServerNameOnly")]
-    public class GetAzureSqlDatabaseCopy : AzurePSCmdlet
+    public class GetAzureSqlDatabaseCopy : AzureSMCmdlet
     {
         #region Parameter Sets
 

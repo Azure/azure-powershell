@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Common;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
 {
@@ -33,28 +34,28 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-        
+
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Databases ServiceObjective
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlServerServiceObjectiveCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServerServiceObjectiveCommunicator(IAzureContext context)
         {
-            Profile = profile;
-            if (subscription != Subscription)
+            Context = context;
+            if (context.Subscription != Subscription)
             {
-                Subscription = subscription;
+                Subscription = context.Subscription;
                 SqlClient = null;
             }
         }
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// </summary>
         public Management.Sql.Models.ServiceObjective Get(string resourceGroupName, string serverName, string serviceObjectiveName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ServiceObjectives.Get(resourceGroupName, serverName, serviceObjectiveName).ServiceObjective;
+            return GetCurrentSqlClient(clientRequestId).Servers.GetServiceObjective(resourceGroupName, serverName, serviceObjectiveName);
         }
 
         /// <summary>
@@ -72,9 +73,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
         /// </summary>
         public IList<Management.Sql.Models.ServiceObjective> List(string resourceGroupName, string serverName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).ServiceObjectives.List(resourceGroupName, serverName).ServiceObjectives;
+            return GetCurrentSqlClient(clientRequestId).Servers.ListServiceObjectives(resourceGroupName, serverName).ToList();
         }
-        
+
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
@@ -85,8 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
-            }
+                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);            }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;

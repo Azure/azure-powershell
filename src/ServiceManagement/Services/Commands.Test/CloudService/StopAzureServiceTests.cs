@@ -21,10 +21,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Moq;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService
 {
-    public class StopAzureServiceTests : TestBase
+    public class StopAzureServiceTests : SMTestBase
     {
         private const string serviceName = "AzureService";
 

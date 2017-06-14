@@ -27,7 +27,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Logging;
 using Microsoft.Web.Deployment;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -47,9 +47,10 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Hyak.Common;
+    using Azure.Commands.Common.Authentication;
 
     public class WebsitesClient : IWebsitesClient
     {
@@ -57,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 
         private readonly CloudServiceClient cloudServiceClient;
 
-        private readonly AzureSubscription subscription;
+        private readonly IAzureSubscription subscription;
 
         public static string SlotFormat = "{0}({1})";
 
@@ -70,11 +71,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         /// <param name="logger">The logger action</param>
-        public WebsitesClient(AzureProfile profile, AzureSubscription subscription, Action<string> logger)
+        public WebsitesClient(AzureSMProfile profile, IAzureSubscription subscription, Action<string> logger)
         {
             Logger = logger;
             cloudServiceClient = new CloudServiceClient(profile, subscription, debugStream: logger);
-            WebsiteManagementClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            WebsiteManagementClient = AzureSession.Instance.ClientFactory.CreateClient<WebSiteManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.subscription = subscription;
         }
 
@@ -104,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             Repository repository;
             ICredentials credentials;
             GetWebsiteDeploymentHttpConfiguration(websiteName, out repository, out credentials);
-            return AzureSession.ClientFactory.CreateHttpClient(repository.RepositoryUri, credentials);
+            return AzureSession.Instance.ClientFactory.CreateHttpClient(repository.RepositoryUri, credentials);
         }
 
         private string GetWebsiteDeploymentHttpConfiguration(
@@ -250,7 +251,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         {
             Utilities.Site website = GetWebsite(websiteName);
             Uri endpointUrl = new Uri("https://" + website.EnabledHostNames.First(url => url.Contains(".scm.")));
-            return AzureSession.ClientFactory.CreateCustomClient<WebSiteExtensionsClient>(new object[] { websiteName,
+            return AzureSession.Instance.ClientFactory.CreateCustomClient<WebSiteExtensionsClient>(new object[] { websiteName,
                 GetWebSiteExtensionsCredentials(websiteName), endpointUrl });
         }
 
@@ -644,7 +645,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// </summary>
         /// <param name="name">The website name</param>
         /// <param name="slot">The website slot name</param>
-        /// <returns>The website cobfiguration object</returns>
+        /// <returns>The website configuration object</returns>
         public Utilities.SiteConfig GetWebsiteConfiguration(string name, string slot)
         {
             Utilities.Site website = GetWebsite(name);
@@ -995,7 +996,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="timeGrain">Time grains for the metrics.</param>
         /// <param name="instanceDetails">Include details for the server instances in which the site is running.</param>
         /// <param name="slotView">Represent the metrics for the hostnames that receive the traffic at the current slot.
-        /// If swap occured in the middle of the period mereics will be merged</param>
+        /// If swap occurred in the middle of the period metrics will be merged</param>
         /// <returns>The list of site metrics for the specified period.</returns>
         public IList<Utilities.MetricResponse> GetHistoricalUsageMetrics(string siteName, string slot, IList<string> metricNames,
             DateTime? starTime, DateTime? endTime, string timeGrain, bool instanceDetails, bool slotView)
@@ -1164,7 +1165,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             project.SetProperty("Configuration", configuration);
 
             // Set this property use "managedRuntimeVersion=v4.0".
-            // Otherwise, WebDeploy will fail becasue Azure Web Site is expecting v4.0.
+            // Otherwise, WebDeploy will fail because Azure Web Site is expecting v4.0.
             project.SetProperty("VisualStudioVersion", "11.0");
 
             // Build the project.
@@ -1216,15 +1217,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
         /// <param name="skipAppData">Skip app data</param>
         /// <param name="doNotDelete">Do not delete files at destination</param>
-        public void PublishWebProject(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
+        public DeploymentChangeSummary PublishWebProject(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             if (File.GetAttributes(package).HasFlag(FileAttributes.Directory))
             {
-                PublishWebProjectFromPackagePath(websiteName, slot, package, connectionStrings, skipAppData, doNotDelete);
+                return PublishWebProjectFromPackagePath(websiteName, slot, package, connectionStrings, skipAppData, doNotDelete);
             }
             else
             {
-                PublishWebProjectFromPackageFile(websiteName, slot, package, setParametersFile, connectionStrings, skipAppData, doNotDelete);
+                return PublishWebProjectFromPackageFile(websiteName, slot, package, setParametersFile, connectionStrings, skipAppData, doNotDelete);
             }
         }
 
@@ -1238,7 +1239,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
         /// <param name="skipAppData">Skip app data</param>
         /// <param name="doNotDelete">Do not delete files at destination</param>
-        private void PublishWebProjectFromPackageFile(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
+        private DeploymentChangeSummary PublishWebProjectFromPackageFile(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             DeploymentBaseOptions remoteBaseOptions = CreateRemoteDeploymentBaseOptions(websiteName, slot);
             DeploymentBaseOptions localBaseOptions = new DeploymentBaseOptions();
@@ -1282,7 +1283,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                     DoNotDelete = doNotDelete
                 };
 
-                deployment.SyncTo(remoteProviderOptions, remoteBaseOptions, syncOptions);
+                return deployment.SyncTo(remoteProviderOptions, remoteBaseOptions, syncOptions);
             }
         }
 
@@ -1295,7 +1296,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
         /// <param name="skipAppData">Skip app data</param>
         /// <param name="doNotDelete">Do not delete files at destination</param>
-        private void PublishWebProjectFromPackagePath(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
+        private DeploymentChangeSummary PublishWebProjectFromPackagePath(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             DeploymentBaseOptions remoteBaseOptions = CreateRemoteDeploymentBaseOptions(websiteName, slot);
             DeploymentBaseOptions localBaseOptions = new DeploymentBaseOptions();
@@ -1309,7 +1310,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 {
                     DoNotDelete = doNotDelete
                 };
-                deployment.SyncTo(DeploymentWellKnownProvider.ContentPath, SetWebsiteNameForWebDeploy(websiteName, slot), remoteBaseOptions, syncOptions);
+                return deployment.SyncTo(DeploymentWellKnownProvider.ContentPath, SetWebsiteNameForWebDeploy(websiteName, slot), remoteBaseOptions, syncOptions);
             }
         }
 
@@ -1327,7 +1328,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// Parse the Web.config files to get the connection string names.
         /// </summary>
         /// <param name="defaultWebConfigFile">The default Web.config file.</param>
-        /// <param name="overwriteWebConfigFile">The additional Web.config file for the specificed configuration, like Web.Release.Config file.</param>
+        /// <param name="overwriteWebConfigFile">The additional Web.config file for the specified configuration, like Web.Release.Config file.</param>
         /// <returns>An array of connection string names from the Web.config files.</returns>
         public string[] ParseConnectionStringNamesFromWebConfig(string defaultWebConfigFile, string overwriteWebConfigFile)
         {
@@ -1360,8 +1361,43 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 AuthenticationType = "Basic",
                 TempAgent = false
             };
+            
+            var userAgent = GetDeploymentBaseOptionsUserAgent();
+            if (!string.IsNullOrEmpty(userAgent))
+            {
+                remoteBaseOptions.UserAgent = userAgent;
+            }
 
             return remoteBaseOptions;
+        }
+
+        /// <summary>
+        /// Gets remote deployment base options useragent using AzureSession/WebSiteManagementClient.
+        /// </summary>
+        /// <returns>useragent string.</returns>
+        private string GetDeploymentBaseOptionsUserAgent()
+        {
+            var userAgent = string.Empty;
+            var managementClient = this.WebsiteManagementClient as WebSiteManagementClient;
+            if (managementClient != null && managementClient.UserAgent != null)
+            {
+                foreach (var agent in managementClient.UserAgent)
+                {
+                    if (agent != null && agent.Product != null && !string.IsNullOrEmpty(agent.Product.Name))
+                    {
+                        if (!string.IsNullOrEmpty(agent.Product.Version))
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, "/", agent.Product.Version, " ");
+                        }
+                        else
+                        {
+                            userAgent = string.Concat(userAgent, agent.Product.Name, " ");
+                        }
+                    }
+                }
+            }
+
+            return userAgent.TrimEnd();
         }
 
         /// <summary>
@@ -1713,7 +1749,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         }
 
         /// <summary>
-        /// Get a list of historic metrics for the web hostin plan.
+        /// Get a list of historic metrics for the web hosting plan.
         /// </summary>
         /// <param name="webSpaceName">web space name where plan belongs</param>
         /// <param name="planName">The web hosting plan name</param>

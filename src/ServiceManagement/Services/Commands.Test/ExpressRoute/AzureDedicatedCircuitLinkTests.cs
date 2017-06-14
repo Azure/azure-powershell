@@ -32,7 +32,7 @@ using Microsoft.Azure;
 namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 {
     
-    public class AzureDedicatedCircuitLinkTests : TestBase
+    public class AzureDedicatedCircuitLinkTests : SMTestBase
     {
         private const string SubscriptionId = "foo";
 
@@ -84,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             NewAzureDedicatedCircuitLinkCommand cmdlet = new NewAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 VNetName = vNetName,
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
@@ -130,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             GetAzureDedicatedCircuitLinkCommand cmdlet = new GetAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 VNetName = vNetName,
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
@@ -170,7 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             RemoveAzureDedicatedCircuitLinkCommand cmdlet = new RemoveAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 VNetName = vNetName,
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
@@ -218,7 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             GetAzureDedicatedCircuitLinkCommand cmdlet = new GetAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
             };

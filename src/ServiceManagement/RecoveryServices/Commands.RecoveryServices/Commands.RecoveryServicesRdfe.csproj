@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98B10548-DF97-4FB1-8D82-2A12945D4F21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.RecoveryServices</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.RecoveryServicesRdfe</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <StyleCopOverrideSettingsFile>Settings.StyleCop</StyleCopOverrideSettingsFile>
+    <BuildToolsStyleCopVersion>4.7.44.0</BuildToolsStyleCopVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ServiceManagement\Azure\RecoveryServices\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <StyleCopEnabled>True</StyleCopEnabled>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\..\Package\Release\ServiceManagement\Azure\RecoveryServices</OutputPath>
+    <DefineConstants>TRACE;SIGN;CODE_ANALYSIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hyak.Common">
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServicesVaultUpgrade.1.0.0-preview\lib\net40\Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.5.1-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.Storage">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.6.0.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Security.Cryptography, Version=1.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Security.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="lib\PSVaultUpgradeObjects.cs" />
+    <Compile Include="lib\PSStorageObjects.cs" />
+    <Compile Include="lib\PSNetworkObjects.cs" />
+    <Compile Include="lib\CertUtils.cs" />
+    <Compile Include="lib\PSContracts.cs" />
+    <Compile Include="lib\PSObjects.cs" />
+    <Compile Include="lib\PSParameterSets.cs" />
+    <Compile Include="lib\PSRecoveryPlanObjects.cs" />
+    <Compile Include="lib\Utilities.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesCloudServiceClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesProtectionProfileClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesClientHelper.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultUpgradeClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesSiteClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageMappingClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkMappingClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesNetworkClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultExtendedInfoClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMGroupClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesPEClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesClient.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesJobsClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesProtectedContainerClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesRecoveryPlanClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesServerClient.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVMClient.cs" />
+    <Compile Include="RecoveryServicesCmdletBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryVault.cs" />
+    <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
+    <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
+    <Compile Include="Service\SetAzureSiteRecoveryVM.cs" />
+    <Compile Include="Service\TestAzureRecoveryServicesVaultUpgrade.cs" />
+    <Compile Include="Service\InvokeAzureRecoveryServicesVaultUpgrade.cs" />
+    <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
+    <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
+    <Compile Include="Service\NewAzureSiteRecoveryVault.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryStorage.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryStorageMapping.cs" />
+    <Compile Include="Service\NewAzureSiteRecoveryStorageMapping.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoveryStorageMapping.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Service\NewAzureSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryNetwork.cs" />
+    <Compile Include="Service\CreateAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryRecoveryPlanFile.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryVaultSettingsFile.cs" />
+    <Compile Include="Service\RemoveAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryProtectionEntity.cs" />
+    <Compile Include="Service\RestartAzureSiteRecoveryJob.cs" />
+    <Compile Include="Service\ResumeAzureSiteRecoveryJob.cs" />
+    <Compile Include="Service\SetAzureSiteRecoveryProtectionEntity.cs" />
+    <Compile Include="Service\StartAzureSiteRecoveryCommitFailoverJob.cs" />
+    <Compile Include="Service\StartAzureSiteRecoveryPlannedFailoverJob.cs" />
+    <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileDissociationJob.cs" />
+    <Compile Include="Service\StartAzureSiteRecoveryTestFailoverJob.cs" />
+    <Compile Include="Service\StartAzureSiteRecoveryUnPlannedFailoverJob.cs" />
+    <Compile Include="Service\StopAzureSiteRecoveryJob.cs" />
+    <Compile Include="Service\UpdateAzureSiteRecoveryProtectionDirection.cs" />
+    <Compile Include="Service\UpdateAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryJob.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryProtectionContainer.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryServer.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryVaultSettings.cs" />
+    <Compile Include="Service\GetAzureSiteRecoveryVM.cs" />
+    <Compile Include="Service\ImportAzureSiteRecoveryVaultSettingsFile.cs" />
+    <Compile Include="Service\UpdateAzureSiteRecoveryProtectionEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
+      <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
+      <Name>Commands.ServiceManagement.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Security.Cryptography.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.Azure.Commands.RecoveryServicesRdfe.dll-help.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\..\..\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets" Condition="Exists('..\..\..\packages\BuildTools.StyleCop.4.7.49.0\tools\StyleCop.targets')" />
+</Project>

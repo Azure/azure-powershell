@@ -12,22 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
-using System.Linq;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Common.Authentication.Models;
 using System.Collections.Generic;
-
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -44,50 +37,34 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 //Overwrite the default subscription and default account
                 //with ones using user ID and tenant ID from auth context
                 var user = GetUser(csmEnvironment);
-                var tenantId = GetTenantId(csmEnvironment);                
+                var tenantId = GetTenantId(csmEnvironment);
 
                 var testSubscription = new AzureSubscription()
                 {
-                    Id = new Guid(csmEnvironment.SubscriptionId),
-                    Name = ProfileClient.Profile.DefaultSubscription.Name,
-                    Environment = ProfileClient.Profile.DefaultSubscription.Environment,
-                    Account = user,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        {AzureSubscription.Property.Default, "True"},
-                        {
-                            AzureSubscription.Property.StorageAccount,
-                            Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT")
-                        },
-                        {AzureSubscription.Property.Tenants, tenantId},
-                    }
+                    Id = csmEnvironment.SubscriptionId,
+                    Name = AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Name,
                 };
-
+                testSubscription.SetAccount(user);
+                testSubscription.SetEnvironment(AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment.Name);
+                testSubscription.SetDefault();
+                testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
+                testSubscription.SetTenant(tenantId);
                 var testAccount = new AzureAccount()
                 {
                     Id = user,
                     Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        {AzureAccount.Property.Subscriptions, csmEnvironment.SubscriptionId},
-                    }
                 };
-
-                ProfileClient.Profile.Accounts.Remove(ProfileClient.Profile.DefaultSubscription.Account);
-                ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;                
-                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
-                
-                ProfileClient.Profile.Save();
+                testAccount.SetSubscriptions(csmEnvironment.SubscriptionId);
+                AzureRmProfileProvider.Instance.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, AzureRmProfileProvider.Instance.Profile.DefaultContext.Environment, new AzureTenant { Id = tenantId });
             }
         }
 
         private string GetTenantId(TestEnvironment environment)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
-                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenatId;
-                return environment.AuthorizationContext.TenatId;
+                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenantId;
+                return environment.AuthorizationContext.TenantId;
             }
             else
             {
@@ -97,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         private string GetUser(TestEnvironment environment)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 HttpMockServer.Variables["User"] = environment.AuthorizationContext.UserId;
                 return environment.AuthorizationContext.UserId;

@@ -28,17 +28,18 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         private GetAzureDataFactoryHubCommand cmdlet;
 
-        public GetHubTests()
+        public GetHubTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new GetAzureDataFactoryHubCommand()
-                         {
-                             CommandRuntime = commandRuntimeMock.Object,
-                             DataFactoryClient = dataFactoriesClientMock.Object,
-                             ResourceGroupName = ResourceGroupName,
-                             DataFactoryName = DataFactoryName
-                         };
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                DataFactoryClient = dataFactoriesClientMock.Object,
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName
+            };
         }
 
         [Fact]
@@ -133,12 +134,19 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
                                     options.DataFactoryName == DataFactoryName &&
-                                    options.Name == null)))
+                                    options.Name == null &&
+                                    options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(f => f.ListHubs(ResourceGroupName, DataFactoryName))
+                .Setup(f => f.ListHubs(It.Is<HubFilterOptions>(
+                    options =>
+                        options.ResourceGroupName == ResourceGroupName &&
+                        options.DataFactoryName == DataFactoryName &&
+                        options.Name == null &&
+                        options.NextLink == null)))
+
                 .Returns(expected)
                 .Verifiable();
 

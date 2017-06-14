@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
     public class AzureSqlServerFirewallRuleAttributeTests
     {
+        public AzureSqlServerFirewallRuleAttributeTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(NewAzureSqlServerFirewallRule);
@@ -38,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(SetAzureSqlServerFirewallRule);
@@ -52,19 +59,18 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(RemoveAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.High);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: true);
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(GetAzureSqlServerFirewallRule);

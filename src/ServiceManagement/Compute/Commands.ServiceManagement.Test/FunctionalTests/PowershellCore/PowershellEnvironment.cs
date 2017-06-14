@@ -27,16 +27,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         public PowershellEnvironment(params PowershellModule[] modules)
         {
-            initialSessionState = InitialSessionState.CreateDefault();
-            string[] moduleFullPath=new string[modules.Length];
-            for(int i=0;i<modules.Length;i++)
+            if (modules == null)
             {
-                moduleFullPath[i] = modules[i].FullPath;
-                initialSessionState.Assemblies.Add(new SessionStateAssemblyEntry(modules[i].FullPath));
+                runspace = RunspaceFactory.CreateRunspace();
             }
-            initialSessionState.ImportPSModule(moduleFullPath);
-            
-            runspace = RunspaceFactory.CreateRunspace(initialSessionState);
+            else
+            {
+                initialSessionState = InitialSessionState.CreateDefault();
+                string[] moduleFullPath = new string[modules.Length];
+                for (int i = 0; i < modules.Length; i++)
+                {
+                    moduleFullPath[i] = modules[i].FullPath;
+                    initialSessionState.Assemblies.Add(new SessionStateAssemblyEntry(modules[i].FullPath));
+                }
+                initialSessionState.ImportPSModule(moduleFullPath);
+
+                runspace = RunspaceFactory.CreateRunspace(initialSessionState);
+            }
         }
 
         public PowershellEnvironment()

@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public class DataFactoryUnitTestBase
+    public class DataFactoryUnitTestBase : RMTestBase
     {
         protected const string subscriptionId = "subscriptionid";
 
@@ -28,11 +29,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         protected const string ResourceGroupName = "bar";
 
         protected const string Location = "centralus";
-        
+
         protected Mock<DataFactoryClient> dataFactoriesClientMock;
 
         protected Mock<ICommandRuntime> commandRuntimeMock;
-        
+
         public virtual void SetupTest()
         {
             dataFactoriesClientMock = new Mock<DataFactoryClient>();

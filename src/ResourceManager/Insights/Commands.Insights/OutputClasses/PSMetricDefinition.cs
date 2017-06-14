@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -22,44 +22,12 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSMetricDefinition : MetricDefinition
     {
         /// <summary>
-        /// Gets or sets the Dimensions of the metric
-        /// </summary>
-        public new PSDimensionCollection Dimensions { get; set; }
-
-        /// <summary>
-        /// Gets or sets the MetricAvailabilties of the metric
-        /// </summary>
-        public new PSAvailabilityCollection MetricAvailabilities { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Name of the metric
-        /// </summary>
-        public new string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Proterties of the metric
-        /// </summary>
-        public new PSDictionaryElement Properties { get; set; }
-
-        /// <summary>
         /// Initializes an new instance of the PSMetricDefinition class
         /// </summary>
         /// <param name="metricDefinition">The MetricDefinition</param>
         public PSMetricDefinition(MetricDefinition metricDefinition)
+            : base(name: new PSLocalizableString(metricDefinition.Name), metricAvailabilities: new PSMetricAvailabilityCollection(metricDefinition.MetricAvailabilities), primaryAggregationType: metricDefinition.PrimaryAggregationType, resourceId: metricDefinition.ResourceId, unit: metricDefinition.Unit, id: metricDefinition.Id)
         {
-            // Keep the original value (localized string, Dictionary, List) in the base
-            base.Dimensions = metricDefinition.Dimensions;
-            base.MetricAvailabilities = metricDefinition.MetricAvailabilities;
-            base.Name = metricDefinition.Name;
-            base.Properties = metricDefinition.Properties;
-
-            this.Dimensions = new PSDimensionCollection(metricDefinition.Dimensions);
-            this.MetricAvailabilities = new PSAvailabilityCollection(metricDefinition.MetricAvailabilities);
-            this.Name = metricDefinition.Name.ToString(localizedValue: false);
-            this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
-            this.Properties = new PSDictionaryElement(metricDefinition.Properties);
-            this.ResourceUri = metricDefinition.ResourceUri;
-            this.Unit = metricDefinition.Unit;
         }
     }
 }

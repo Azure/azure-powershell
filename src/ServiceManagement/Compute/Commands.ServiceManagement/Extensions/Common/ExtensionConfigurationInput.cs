@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
     public class ExtensionConfigurationInput
     {
+        public string Id { get; set; }
         public string ProviderNameSpace { get; set; }
         public string Type { get; set; }
         public string Version { get; set; }
@@ -27,5 +28,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public string PrivateConfiguration { get; set; }
         public ExtensionRoleList Roles { get; set; }
         public X509Certificate2 X509Certificate { get; set; }
+        public string State { get; set; }
     }
 }

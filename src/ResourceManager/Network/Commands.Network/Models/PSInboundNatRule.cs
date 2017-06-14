@@ -17,34 +17,29 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
 
-    public class PSInboundNatRule : PSChildResource
+    public class PSInboundNatRule : PSInboundRule
     {
-        public PSResourceId FrontendIPConfiguration { get; set; }
-
-        public PSResourceId BackendIPConfiguration { get; set; }
-
-        public string Protocol { get; set; }
-
+        [JsonProperty(Order = 1)]
         public int FrontendPort { get; set; }
 
-        public int BackendPort { get; set; }
-
+        [JsonProperty(Order = 1)]
         public int? IdleTimeoutInMinutes { get; set; }
 
-        public bool EnableFloatingIP { get; set; }
+        [JsonProperty(Order = 1)]
+        public bool? EnableFloatingIP { get; set; }
 
-        public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string FrontendIPConfigurationText
-        {
-            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented); }
-        }
+        [JsonProperty(Order = 1)]
+        public PSNetworkInterfaceIPConfiguration BackendIPConfiguration { get; set; }
 
         [JsonIgnore]
         public string BackendIPConfigurationText
         {
-            get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(BackendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeFrontendPort()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

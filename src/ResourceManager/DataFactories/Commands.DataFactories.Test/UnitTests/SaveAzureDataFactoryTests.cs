@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.DataFactories;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Moq;
 using System;
 using Xunit;
@@ -29,8 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
 
         private string _dataSliceRunId;
 
-        public SaveDataFactoryRunLogTests()
+        public SaveDataFactoryRunLogTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             this._dataSliceRunId = Guid.NewGuid().ToString();
@@ -72,15 +72,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
             this.dataFactoriesClientMock.Setup(
                 f =>
                 f.GetDataSliceRunLogsSharedAccessSignature(ResourceGroupName, DataFactoryName, this._dataSliceRunId))
-                .Returns(runLogInfo);
+                .Returns(sharedAccessSignature);
 
             this.dataFactoriesClientMock.Setup(
                 f =>
                 f.DownloadFileToBlob(
                     It.Is<BlobDownloadParameters>(
                             parameters =>
-                                parameters.Credentials == new StorageCredentials(runLogInfo.SasToken) &&
-                                parameters.SasUri == new Uri(runLogInfo.SasUri) &&
+                                parameters.SasUri == sharedAccessSignature &&
                                 parameters.Directory == @"c:\")));
 
             // Action
@@ -91,8 +90,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
                 f =>
                 f.GetDataSliceRunLogsSharedAccessSignature(ResourceGroupName, DataFactoryName, this._dataSliceRunId),
                 Times.Once());
-
-            this.commandRuntimeMock.Verify(f => f.WriteObject(runLogInfo), Times.Once());
         }
     }
 }

@@ -15,8 +15,8 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -76,33 +76,37 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            VirtualMachineSizeListResponse result = null;
+            ExecuteClientAction(() =>
+            {
+                AzureOperationResponse<IEnumerable<VirtualMachineSize>> result = null;
 
-            if (!string.IsNullOrEmpty(this.VMName))
-            {
-                result = this.VirtualMachineClient.ListAvailableSizes(
-                    this.ResourceGroupName,
-                    this.VMName);
-            }
-            else if (!string.IsNullOrEmpty(this.AvailabilitySetName))
-            {
-                result = this.AvailabilitySetClient.ListAvailableSizes(
-                    this.ResourceGroupName,
-                    this.AvailabilitySetName);
-            }
-            else
-            {
-                result = this.VirtualMachineSizeClient.List(this.Location.Canonicalize());
-            }
+                if (!string.IsNullOrEmpty(this.VMName))
+                {
+                    result = this.VirtualMachineClient.ListAvailableSizesWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName).GetAwaiter().GetResult();
+                }
+                else if (!string.IsNullOrEmpty(this.AvailabilitySetName))
+                {
+                    result = this.AvailabilitySetClient.ListAvailableSizesWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.AvailabilitySetName).GetAwaiter().GetResult();
+                }
+                else
+                {
+                    result = this.VirtualMachineSizeClient.ListWithHttpMessagesAsync(this.Location.Canonicalize()).GetAwaiter().GetResult();
+                }
 
-            List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
-            foreach (var item in result.VirtualMachineSizes)
-            {
-                var psItem = Mapper.Map<PSVirtualMachineSize>(item);
-                psResultList.Add(psItem);
-            }
+                List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
+                foreach (var item in result.Body)
+                {
+                    var psItem = Mapper.Map<PSVirtualMachineSize>(result);
+                    psItem = Mapper.Map(item, psItem);
+                    psResultList.Add(psItem);
+                }
 
-            WriteObject(psResultList, true);
+                WriteObject(psResultList, true);
+            });
         }
     }
 }

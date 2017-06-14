@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.DataFactories.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.DataFactories.Properties;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -106,12 +105,17 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             return equal;
         }
-        
+
         public static bool IsSucceededProvisioningState(string provisioningState)
         {
             return
                 string.Compare(provisioningState, OperationStatus.Succeeded.ToString(),
                     StringComparison.OrdinalIgnoreCase) == 0;
+        }
+
+        public static bool IsNextPageLink(this string nextLink)
+        {
+            return !string.IsNullOrEmpty(nextLink);
         }
     }
 }

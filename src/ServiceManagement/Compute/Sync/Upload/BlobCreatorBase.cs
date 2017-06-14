@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,11 +27,6 @@ using System.Security.Permissions;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
-using Microsoft.WindowsAzure.Commands.Sync.Download;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
     public abstract class BlobCreatorBase
     {
-        private const long OneTeraByte = 1024L * 1024L * 1024L * 1024L;
+        private const long FourTeraByte = 4 * 1024L * 1024L * 1024L * 1024L;
 
         protected FileInfo localVhd;
         protected readonly ICloudPageBlobObjectFactory blobObjectFactory;
@@ -94,12 +94,12 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         private static void AssertIfValidVhdSize(FileInfo fileInfo)
         {
-            using(var stream = new VirtualDiskStream(fileInfo.FullName))
+            using (var stream = new VirtualDiskStream(fileInfo.FullName))
             {
-                if(stream.Length > OneTeraByte)
+                if (stream.Length > FourTeraByte)
                 {
                     var lengthString = stream.Length.ToString("N0", CultureInfo.CurrentCulture);
-                    var expectedLengthString = OneTeraByte.ToString("N0", CultureInfo.CurrentCulture);
+                    var expectedLengthString = FourTeraByte.ToString("N0", CultureInfo.CurrentCulture);
                     string message = String.Format("VHD size is too large ('{0}'), maximum allowed size is '{1}'.", lengthString, expectedLengthString);
                     throw new InvalidOperationException(message);
                 }
@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             AssertIfValidhVhd(localVhd);
             AssertIfValidVhdSize(localVhd);
-            
+
             this.blobObjectFactory.CreateContainer(blobDestination);
 
             UploadContext context = null;
@@ -132,14 +132,14 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 if (destinationBlob.Exists(requestOptions))
                 {
                     Program.SyncOutput.MessageResumingUpload();
-                
-                    if(destinationBlob.GetBlobMd5Hash(requestOptions) != null)
+
+                    if (destinationBlob.GetBlobMd5Hash(requestOptions) != null)
                     {
                         throw new InvalidOperationException(
                             "An image already exists in blob storage with this name. If you want to upload again, use the Overwrite option.");
                     }
                     var metaData = destinationBlob.GetUploadMetaData();
-                
+
                     AssertMetaDataExists(metaData);
                     AssertMetaDataMatch(metaData, OperationMetaData);
 
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             }
             finally
             {
-                if(!completed && context != null)
+                if (!completed && context != null)
                 {
                     context.Dispose();
                 }
@@ -189,7 +189,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                     context.AlreadyUploadedDataSize = alreadyUploadedRanges.Sum(ir => ir.Length);
                 }
                 var uploadableRanges = IndexRangeHelper.ChunkRangesBySize(ranges, PageSizeInBytes).ToArray();
-                if(vds.DiskType == DiskType.Fixed)
+                if (vds.DiskType == DiskType.Fixed)
                 {
                     var nonEmptyUploadableRanges = GetNonEmptyRanges(bs, uploadableRanges).ToArray();
                     context.UploadableDataSize = nonEmptyUploadableRanges.Sum(r => r.Length);
@@ -221,9 +221,9 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                     Data = ReadBytes(stream, range, manager),
                     Range = range
                 };
-                using(dataWithRange)
+                using (dataWithRange)
                 {
-                    if(dataWithRange.IsAllZero())
+                    if (dataWithRange.IsAllZero())
                     {
                         Program.SyncOutput.DebugEmptyBlockDetected(dataWithRange.Range);
                     }
@@ -249,10 +249,10 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 {
                     var localRange = range;
                     yield return new DataWithRange(manager)
-                                     {
-                                         Data = ReadBytes(vds, localRange, manager),
-                                         Range = localRange
-                                     };
+                    {
+                        Data = ReadBytes(vds, localRange, manager),
+                        Range = localRange
+                    };
                 }
             }
             yield break;
@@ -276,7 +276,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         private static void AssertMetaDataExists(LocalMetaData blobMetaData)
         {
-            if(blobMetaData == null)
+            if (blobMetaData == null)
             {
                 throw new InvalidOperationException("There is no CsUpload metadata on the blob, so CsUpload cannot resume. Use the overwrite option.");
             }
@@ -302,7 +302,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             }
             finally
             {
-                if(throwing && singleInstanceMutex != null)
+                if (throwing && singleInstanceMutex != null)
                 {
                     singleInstanceMutex.ReleaseMutex();
                     singleInstanceMutex.Close();
@@ -314,7 +314,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             var invariant = destinationBlobUri.ToString().ToLowerInvariant();
             var bytes = Encoding.Unicode.GetBytes(invariant);
-            using(var md5 = MD5.Create())
+            using (var md5 = MD5.Create())
             {
                 byte[] hash = md5.ComputeHash(bytes);
                 return Convert.ToBase64String(hash);
@@ -327,8 +327,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
             if (String.Compare(systemInformation.MachineName, Environment.MachineName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) != 0)
             {
-                var message = String.Format("An upload is already in progress on machine {0} with process id {1}", 
-                                            systemInformation.MachineName, 
+                var message = String.Format("An upload is already in progress on machine {0} with process id {1}",
+                                            systemInformation.MachineName,
                                             systemInformation.CsUploadProcessId);
 
                 throw new InvalidOperationException(message);
@@ -338,7 +338,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
             if (fileMetaDataMessages.Count > 0)
             {
-                throw new InvalidOperationException(fileMetaDataMessages.Aggregate((r,n)=>r + Environment.NewLine + n));
+                throw new InvalidOperationException(fileMetaDataMessages.Aggregate((r, n) => r + Environment.NewLine + n));
             }
         }
 
@@ -347,8 +347,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             var fileMetaDataMessages = new List<string>();
             if (blobFileMetaData.VhdSize != localFileMetaData.VhdSize)
             {
-                var message = String.Format("Logical size of VHD file in blob storage ({0}) and local VHD file ({1}) does not match ", 
-                                            blobFileMetaData.VhdSize, 
+                var message = String.Format("Logical size of VHD file in blob storage ({0}) and local VHD file ({1}) does not match ",
+                                            blobFileMetaData.VhdSize,
                                             localFileMetaData.VhdSize);
                 fileMetaDataMessages.Add(message);
             }
@@ -369,7 +369,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 fileMetaDataMessages.Add(message);
             }
 
-            
+
             if (DateTime.Compare(blobFileMetaData.LastModifiedDateUtc, localFileMetaData.LastModifiedDateUtc) != 0)
             {
                 var message = String.Format("Last modified date of VHD file in blob storage ({0}) and local VHD file ({1}) does not match ",

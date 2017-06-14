@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         public override void ExecuteCmdlet()
         {
             Site websiteObject = WebsitesClient.GetWebsite(Name, Slot);
-            GeneralUtilities.LaunchWebPage("http://" + websiteObject.HostNames.First());
+            ProcessHelper.Start("http://" + websiteObject.HostNames.First());
         }
     }
 }

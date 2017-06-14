@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
@@ -26,14 +25,19 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
     public class NewDataFactoryTests : DataFactoryUnitTestBase
     {
         private NewAzureDataFactoryCommand cmdlet;
-        
+
         private IDictionary<string, string> tags;
 
-        public NewDataFactoryTests()
+        public NewDataFactoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
-            tags = new Dictionary<string, string>() {{"foo", "bar"}};
+            tags = new Dictionary<string, string>() { { "foo", "bar" } };
+
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet = new NewAzureDataFactoryCommand()
             {
@@ -86,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                     f.WriteObject(
                         It.Is<PSDataFactory>(
                             df =>
-                                df.DataFactoryName == expected.Name && 
+                                df.DataFactoryName == expected.Name &&
                                 df.Location == expected.Location)),
                 Times.Once());
         }

@@ -37,21 +37,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             return CreateVaultUri(vaultName).ToString();
         }
-        
+
         public string KeyVaultDnsSuffix { get; private set; }
 
         private Uri CreateAndValidateVaultUri(string vaultAddress)
         {
             if (string.IsNullOrEmpty(vaultAddress))
                 throw new ArgumentNullException("vaultAddress");
-          
+
             Uri vaultUri;
-            if (!Uri.TryCreate(vaultAddress, UriKind.Absolute, out vaultUri))            
-                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));            
+            if (!Uri.TryCreate(vaultAddress, UriKind.Absolute, out vaultUri))
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));
 
             if (vaultUri.HostNameType != UriHostNameType.Dns ||
-                !vaultUri.Host.EndsWith(this.KeyVaultDnsSuffix))            
-                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));            
+                !vaultUri.Host.EndsWith(this.KeyVaultDnsSuffix, StringComparison.OrdinalIgnoreCase))
+                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidVaultUri, vaultAddress, this.KeyVaultDnsSuffix));
 
             return vaultUri;
         }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException("vaultName");
-          
+
             UriBuilder builder = new UriBuilder("https", vaultName + "." + this.KeyVaultDnsSuffix);
 
             return builder.Uri;

@@ -649,28 +649,6 @@
     <value>Cannot find configuration file: {0}.</value>
     <comment>0 = path to the configuration file</comment>
   </data>
-  <data name="PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension" xml:space="preserve">
-    <value>Invalid configuration file: {0}.
-The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip).</value>
-    <comment>0 = path to the configuration file</comment>
-  </data>
-  <data name="PublishVMDscExtensionUploadArchiveConfigFileNotExist" xml:space="preserve">
-    <value>Configuration file '{0}' not found.</value>
-    <comment>0 = path to the configuration file</comment>
-  </data>
-  <data name="PublishVMDscExtensionGetDscResourceFailed" xml:space="preserve">
-    <value>Cannot get module for DscResource '{0}'. Possible solutions:
-1) Specify -ModuleName for Import-DscResource in your configuration.
-2) Unblock module that contains resource.
-3) Move Import-DscResource inside Node block.
-</value>
-    <comment>0 = name of DscResource</comment>
-  </data>
-  <data name="PublishVMDscExtensionStorageParserErrors" xml:space="preserve">
-    <value>Configuration script '{0}' contained parse errors:
-{1}</value>
-    <comment>0 = path to the configuration script, 1 = parser errors</comment>
-  </data>
   <data name="AzureVMDscStorageContextMustIncludeAccountName" xml:space="preserve">
     <value>The storage context must include an storage account.</value>
   </data>
@@ -683,35 +661,18 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="IaasDiagnosticsBadConfigNoMatchingWadCfg" xml:space="preserve">
     <value>WadCfg start element in the config is not matching the end element.</value>
   </data>
-  <data name="PaaSDiagnosticsWrongHeader" xml:space="preserve">
+  <data name="DiagnosticsExtensionWrongHeader" xml:space="preserve">
     <value>Your xml configuration file doesn't start with the required header &lt;?xml version="1.0" encoding="utf-8"?&gt;</value>
   </data>
-  <data name="PaaSDiagnosticsNullStorageAccount" xml:space="preserve">
+  <data name="DiagnosticsExtensionNullStorageAccount" xml:space="preserve">
     <value>The element StorageAccount cannot be empty. It is recommended to not use this element in the config. It will be set automatically by the cmdlet.</value>
   </data>
-  <data name="PassDiagnosticsNoMatchStorageAccount" xml:space="preserve">
+  <data name="DiagnosticsExtensionNoMatchStorageAccount" xml:space="preserve">
     <value>The element StorageAccount doesn't match the storage account name provided in the cmdlet arguments. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet.</value>
   </data>
   <data name="AzureVMDscApplyConfigurationAction" xml:space="preserve">
     <value>Apply configuration '{0}'</value>
     <comment>{0} is the name of a PowerShell DSC Configuration function</comment>
-  </data>
-  <data name="AzureVMDscParsingConfiguration" xml:space="preserve">
-    <value>Parsing configuration script: {0}</value>
-    <comment>{0} is the path to a script file</comment>
-  </data>
-  <data name="AzureVMDscStorageBlobAlreadyExists" xml:space="preserve">
-    <value>Storage Blob '{0}' already exists. Use the -Force parameter to overwrite it.</value>
-    <comment>{0} is the name of an storage blob</comment>
-  </data>
-  <data name="AzureVMDscUploadToBlobStorageAction" xml:space="preserve">
-    <value>Upload '{0}'</value>
-    <comment>{0} is the name of an storage blob</comment>
-  </data>
-  <data name="PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension" xml:space="preserve">
-    <value>Invalid configuration file: {0}.
-The file needs to be a PowerShell script (.ps1 or .psm1).</value>
-    <comment>0 = path to the configuration file</comment>
   </data>
   <data name="AzureVMDscNullArchiveNoConfiguragionParameters" xml:space="preserve">
     <value>If the ConfigurationArchive argument is null, then the ConfigurationName, ConfigurationArgument, and ConfigurationDataPath parameters must not be specified </value>
@@ -719,47 +680,12 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="AzureVMDscNullArchiveNoStorageParameters" xml:space="preserve">
     <value>If the ConfigurationArchive argument is null, then the StorageContext, ContainerName, and StorageEndpointSuffix parameters must not be specified</value>
   </data>
-  <data name="AzureVMDscCreateArchiveAction" xml:space="preserve">
-    <value>Create Archive</value>
-  </data>
-  <data name="AzureVMDscArchiveAlreadyExists" xml:space="preserve">
-    <value>File '{0}' already exists. Use the -Force parameter to overwrite it.</value>
-    <comment>{0} is the path to a file</comment>
-  </data>
-  <data name="PublishVMDscExtensionRequiredPsVersion" xml:space="preserve">
-    <value>Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version.</value>
-    <comment>{0} = minimal required PS version, {1} = current PS version</comment>
-  </data>
   <data name="AzureVMDscDefaultStorageCredentialsNotFound" xml:space="preserve">
     <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzureSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
-  </data>
-  <data name="PublishVMDscExtensionRequiredModulesVerbose" xml:space="preserve">
-    <value>List of required modules: [{0}].</value>
-    <comment>{0} = list of modules</comment>
-  </data>
-  <data name="PublishVMDscExtensionTempFolderVerbose" xml:space="preserve">
-    <value>Temp folder '{0}' created.</value>
-    <comment>{0} = temp folder path</comment>
-  </data>
-  <data name="PublishVMDscExtensionCopyFileVerbose" xml:space="preserve">
-    <value>Copy '{0}' to '{1}'.</value>
-    <comment>{0} = source, {1} = destination</comment>
-  </data>
-  <data name="PublishVMDscExtensionCopyModuleVerbose" xml:space="preserve">
-    <value>Copy the module '{0}' to '{1}'.</value>
-    <comment>{0} = source, {1} = destination</comment>
   </data>
   <data name="PublishVMDscExtensionCreateZipVerbose" xml:space="preserve">
     <value>Create a zip file '{0}' from directory '{1}'.</value>
     <comment>{0} = target zip, {1} = source</comment>
-  </data>
-  <data name="PublishVMDscExtensionDeletedFileMessage" xml:space="preserve">
-    <value>Deleted '{0}'</value>
-    <comment>{0} is the path of a file</comment>
-  </data>
-  <data name="PublishVMDscExtensionDeleteErrorMessage" xml:space="preserve">
-    <value>Cannot delete '{0}': {1}</value>
-    <comment>{0} is the path of a file, {1} is an error message</comment>
   </data>
   <data name="AzureVMDscWrongSettingsFormat" xml:space="preserve">
     <value>Cannot deserialize settings string from DSC extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
@@ -777,18 +703,11 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>"An exception occurred when calling the ServiceManagement API. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}."</value>
     <comment>{0} is the HTTP status code. {1} is the Service Management Error Code. {2} is the Service Management Error message. {3} is the operation tracking ID.</comment>
   </data>
-  <data name="PublishVMDscExtensionArchiveUploadedMessage" xml:space="preserve">
-    <value>Configuration published to {0}</value>
-    <comment>{0} is an URI</comment>
-  </data>
   <data name="SubnetShouldBeSpecifiedIfVnetPresent" xml:space="preserve">
     <value>Subnet should be specified when deploying VMs in a VNET: {0}</value>
   </data>
   <data name="DeprecationOfTheGeoReplicationEnabledParamInTheSetCmdlet" xml:space="preserve">
     <value>GeoReplicationEnabled parameter will be deprecated in a future release of Azure PowerShell. The functionality will be merged into the Type parameter.</value>
-  </data>
-  <data name="DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet" xml:space="preserve">
-    <value>GeoReplicationEnabled property will be deprecated in a future release of Azure PowerShell. The value will be merged into the AccountType property.</value>
   </data>
   <data name="DuplicateNetworkInterfaceFound" xml:space="preserve">
     <value>Duplicate NetworkInterface found on the VM</value>
@@ -816,5 +735,72 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   </data>
   <data name="RemoveVirtualIP" xml:space="preserve">
     <value>Remove Virtual IP from service</value>
+  </data>
+  <data name="DscExtensionRemovalCaption" xml:space="preserve">
+    <value>Remove Extension</value>
+  </data>
+  <data name="DscExtensionRemovalConfirmation" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="AzureVMDscStorageBlobAlreadyExists" xml:space="preserve">
+    <value>Storage Blob '{0}' already exists. Use the -Force parameter to overwrite it.</value>
+    <comment>{0} is the name of an storage blob</comment>
+  </data>
+  <data name="AzureVMDscUploadToBlobStorageAction" xml:space="preserve">
+    <value>Upload '{0}'</value>
+    <comment>{0} is the name of an storage blob</comment>
+  </data>
+  <data name="RemoveAzureVMShouldProcessAction" xml:space="preserve">
+    <value>Deleting VM</value>
+  </data>
+  <data name="ServiceExtensionNoExistingExtensionsEnabledOnRole" xml:space="preserve">
+    <value>No existing {0}.{1} extensions enabled on role: {2}.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullPublicConfig" xml:space="preserve">
+    <value>The config file doesn't have the PublicConfig element.</value>
+  </data>
+  <data name="DiagnosticsExtensionNoMatchPrivateStorageAccount" xml:space="preserve">
+    <value>The element StorageAccount in PrivateConfig doesn't match. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullStorageAccountKey" xml:space="preserve">
+    <value>Storage account key is not specified or can not be retrieved automatically.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullStorageAccountEndpoint" xml:space="preserve">
+    <value>Storage account endpoint is not specified or can not be retrieved automatically.</value>
+  </data>
+  <data name="DiagnosticsExtensionNullStorageAccountName" xml:space="preserve">
+    <value>Storage account name is not specified.</value>
+  </data>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInJson" xml:space="preserve">
+    <value>No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionInvalidConfigFileFormat" xml:space="preserve">
+    <value>Invalid diagnostics configuration file. It should be in xml or json format.</value>
+  </data>
+  <data name="DiagnosticsExtensionPaaSConfigElementNotDefined" xml:space="preserve">
+    <value>No WadCfg or WadCfgBlob element defined in the configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined" xml:space="preserve">
+    <value>No DiagnosticMonitorConfiguration element defined in the configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInXml" xml:space="preserve">
+    <value>No WadCfg or WadCfgBlob element defined in the xml configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionMetricsResourceIdNotMatch" xml:space="preserve">
+    <value>The resourceId defined in the config file does not match the actual resource's id.</value>
+  </data>
+  <data name="MigrateResourceShoudlProcessAction" xml:space="preserve">
+    <value>Performing migration action: {0} on resource {1}</value>
+  </data>
+  <data name="MigrateResourceShoudlProcessTarget" xml:space="preserve">
+    <value>Are you should you want to perform migrate action: {0} on resource {1}</value>
+  </data>
+  <data name="AzureVMSqlServerSqlConfigurationNotFound" xml:space="preserve">
+    <value>Cannot find sql server configuration info in substatuses. If you have just installed the extension, you may see this till the installation process finishes. Otherwise, updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
+{0}</value>
+  </data>
+  <data name="AzureVMSqlServerWrongConfigFormat" xml:space="preserve">
+    <value>Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+{0}</value>
   </data>
 </root>

@@ -107,6 +107,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "New-AzureRmHDInsightClusterConfig"));
             this.command.EndProcessing().Wait();
             foreach (AzureHDInsightConfig output in this.command.Output)
             {

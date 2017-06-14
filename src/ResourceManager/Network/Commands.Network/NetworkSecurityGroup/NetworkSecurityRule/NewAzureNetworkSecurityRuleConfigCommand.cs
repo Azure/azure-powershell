@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
     public class NewAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
         [Parameter(
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var rule = new PSSecurityRule();
 
             rule.Name = this.Name;

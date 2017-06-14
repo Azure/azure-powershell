@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Start-AzureSqlServerUpgrade cmdlet
+    /// Defines the Start-AzureRmSqlServerUpgrade cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureSqlServerUpgrade",
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlServerUpgrade",
         ConfirmImpact = ConfirmImpact.Low)]
     public class StartAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeStartModel>
     {
@@ -45,9 +44,17 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         [ValidateNotNullOrEmpty]
         public DateTime? ScheduleUpgradeAfterUtcDateTime { get; set; }
 
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
             HelpMessage = "Determines the collection of recommended database properties for server upgrade")]
         public RecommendedDatabaseProperties[] DatabaseCollection { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines the collection of recommended elastic pool properties for server upgrade")]
+        public UpgradeRecommendedElasticPoolProperties[] ElasticPoolCollection { get; set; }
+
+        private const int StorageMbPerDtuBasic = 100;
+        private const int StorageMbPerDtuStandard = 1024;
+        private const int StorageMbPerDtuPremium = 512;
 
         /// <summary>
         /// Check to see if the server already exists in this resource group.
@@ -57,13 +64,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         {
             var upgrade = ModelAdapter.GetUpgrade(this.ResourceGroupName, this.ServerName);
 
-            if (upgrade.Status == ServerUpgradeStatus.Queued || 
+            if (upgrade.Status == ServerUpgradeStatus.Queued ||
                 upgrade.Status == ServerUpgradeStatus.InProgress ||
                 upgrade.Status == ServerUpgradeStatus.Cancelling)
             {
                 // The server upgrade is already pending
                 throw new PSArgumentException(
-                    string.Format(Resources.ServerUpgradeExists, this.ServerName),
+                    string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerUpgradeExists, this.ServerName),
                     "ServerName");
             }
 
@@ -78,6 +85,29 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<AzureSqlServerUpgradeStartModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerUpgradeStartModel> models)
         {
+            if (ElasticPoolCollection != null)
+            {
+                // Ignore user input and recalculate StorageMb based on Dtu and coefficient of the edition
+                foreach (var elasticPoolProperties in ElasticPoolCollection)
+                {
+                    switch (elasticPoolProperties.Edition.ToLower())
+                    {
+                        case "basic":
+                            elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuBasic;
+                            break;
+                        case "standard":
+                            elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuStandard;
+                            break;
+                        case "premium":
+                            elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuPremium;
+                            break;
+                        default:
+                            throw new PSArgumentException(string.Format("Edition {0} is invalid", elasticPoolProperties.Edition));
+                    }
+
+                }
+            }
+
             var newEntity = new List<AzureSqlServerUpgradeStartModel>();
             newEntity.Add(new AzureSqlServerUpgradeStartModel
             {
@@ -85,7 +115,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
                 ServerName = this.ServerName,
                 ServerVersion = this.ServerVersion,
                 ScheduleUpgradeAfterUtcDateTime = this.ScheduleUpgradeAfterUtcDateTime,
-                DatabaseCollection = this.DatabaseCollection
+                DatabaseCollection = this.DatabaseCollection,
+                ElasticPoolCollection = this.ElasticPoolCollection
             });
             return newEntity;
         }

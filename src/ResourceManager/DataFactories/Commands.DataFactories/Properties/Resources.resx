@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DataFactoryArgumentInvalid" xml:space="preserve">
-    <value>The data factory object provided is invalid. Use Get-AzureDataFactory to retrieve a specific data factory object, or use New-AzureDataFactory to create a new data factory object.</value>
+    <value>The data factory object provided is invalid. Use Get-AzureRmDataFactory to retrieve a specific data factory object, or use New-AzureRmDataFactory to create a new data factory object.</value>
   </data>
   <data name="DataFactoryGatewayConfirmationMessage" xml:space="preserve">
     <value>Are you sure you want to remove the gateway '{0}' in the data factory '{1}'?</value>
@@ -225,22 +225,22 @@ Are you sure you want to continue?</value>
   <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
     <value>Resource group name cannot be null.</value>
   </data>
-  <data name="TableConfirmationMessage" xml:space="preserve">
-    <value>Are you sure you want to remove table '{0}' in data factory '{1}'?</value>
+  <data name="DatasetConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove dataset '{0}' in data factory '{1}'?</value>
   </data>
-  <data name="TableCreating" xml:space="preserve">
-    <value>Creating table '{0}' in data factory '{1}'.</value>
+  <data name="DatasetCreating" xml:space="preserve">
+    <value>Creating dataset '{0}' in data factory '{1}'.</value>
   </data>
-  <data name="TableExists" xml:space="preserve">
-    <value>A table with the name {0} in the data factory {1} already exists. 
+  <data name="DatasetExists" xml:space="preserve">
+    <value>A dataset with the name {0} in the data factory {1} already exists. 
 Continuing execution will overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
-  <data name="TableNotFound" xml:space="preserve">
-    <value>Table '{0}' does not exist in data factory '{1}'.</value>
+  <data name="DatasetNotFound" xml:space="preserve">
+    <value>Dataset '{0}' does not exist in data factory '{1}'.</value>
   </data>
-  <data name="TableRemoving" xml:space="preserve">
-    <value>Removing table '{0}' in data factory '{1}'.</value>
+  <data name="DatasetRemoving" xml:space="preserve">
+    <value>Removing dataset '{0}' in data factory '{1}'.</value>
   </data>
   <data name="NoDataSliceFound" xml:space="preserve">
     <value>No Slices were found in the time range specified. </value>
@@ -254,5 +254,11 @@ Are you sure you want to continue?</value>
   <data name="FormattedArgumentOutOfRangeExceptionMessageTemplate" xml:space="preserve">
     <value>{0}
 For data factory naming restrictions, please see http://msdn.microsoft.com/en-us/library/dn835027.aspx</value>
+  </data>
+  <data name="EndDateTimeNotSpecifiedForGetSlice" xml:space="preserve">
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureRmDataFactorySlice command if you want to specify EndDateTime.</value>
+  </data>
+  <data name="EndDateTimeNotSpecifiedForSetSliceStatus" xml:space="preserve">
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureRmDataFactorySliceStatus command if you want to specify EndDateTime.</value>
   </data>
 </root>

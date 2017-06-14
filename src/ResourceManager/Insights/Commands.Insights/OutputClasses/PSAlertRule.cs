@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -25,25 +25,12 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Initializes a new instance of the PSAlertRule class.
         /// </summary>
         /// <param name="ruleSpec"></param>
-        public PSAlertRule(RuleGetResponse ruleSpec)
+        public PSAlertRule(AlertRuleResource ruleSpec)
         {
             this.Id = ruleSpec.Id;
             this.Location = ruleSpec.Location;
             this.Name = ruleSpec.Name;
-            this.Properties = new PSAlertRuleProperty(ruleSpec.Properties);
-            this.Tags = new PSDictionaryElement(ruleSpec.Tags);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the PSAlertRule class.
-        /// </summary>
-        /// <param name="ruleSpec"></param>
-        public PSAlertRule(RuleResource ruleSpec)
-        {
-            this.Id = ruleSpec.Id;
-            this.Location = ruleSpec.Location;
-            this.Name = ruleSpec.Name;
-            this.Properties = new PSAlertRuleProperty(ruleSpec.Properties);
+            this.Properties = new PSAlertRuleProperty(ruleSpec);
             this.Tags = new PSDictionaryElement(ruleSpec.Tags);
         }
     }

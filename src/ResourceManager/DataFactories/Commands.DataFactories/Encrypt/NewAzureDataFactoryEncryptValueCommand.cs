@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Models;
-using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(ParameterSetName = ByFactoryName, Position = 5, Mandatory = false,
             HelpMessage = "The linked service type.")]
         [ValidateSet("OnPremisesSqlLinkedService", "OnPremisesFileSystemLinkedService", "OnPremisesOracleLinkedService",
-            "OnPremisesOdbcLinkedService", "OnPremisesPostgreSqlLinkedService", "OnPremisesTeradataLinkedService", 
-            "OnPremisesMySQLLinkedService", "OnPremisesDB2LinkedService", "OnPremisesSybaseLinkedService", 
+            "OnPremisesOdbcLinkedService", "OnPremisesPostgreSqlLinkedService", "OnPremisesTeradataLinkedService",
+            "OnPremisesMySQLLinkedService", "OnPremisesDB2LinkedService", "OnPremisesSybaseLinkedService",
+            "HdfsLinkedService",
             IgnoreCase = true)]
         public string Type { get; set; }
 
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 encryptedValue = DataFactoryClient.OnPremisesEncryptString(Value, ResourceGroupName, DataFactoryName,
                     GatewayName, Credential, Type, NonCredentialValue, AuthenticationType, Server, Database);
             }
-            
+
             WriteObject(encryptedValue);
         }
     }

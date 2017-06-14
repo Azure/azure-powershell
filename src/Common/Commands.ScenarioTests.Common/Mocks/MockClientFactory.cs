@@ -19,14 +19,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Common;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -34,32 +39,35 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
     {
         private readonly bool throwWhenNotAvailable;
 
+        public bool MoqClients { get; set; }
+
         public List<object> ManagementClients { get; private set; }
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UserAgents = new List<ProductInfoHeaderValue>();
+            UserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
 
-        public TClient CreateClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContext context, string endpoint) where TClient : ServiceClient<TClient>
         {
             Debug.Assert(context != null);
 
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+            SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
 
             return client;
         }
 
-        public TClient CreateClient<TClient>(AzureProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer profile, string endpoint) where TClient : ServiceClient<TClient>
         {
-            return CreateClient<TClient>(profile, profile.Context.Subscription, endpoint);
+            return CreateClient<TClient>(profile, profile.DefaultContext.Subscription, endpoint);
         }
 
-        public TClient CreateClient<TClient>(AzureProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(IAzureContextContainer container, IAzureSubscription subscription, string endpoint) where TClient : ServiceClient<TClient>
         {
+            var profile = container as AzureSMProfile;
             if (subscription == null)
             {
                 throw new ArgumentException(Commands.Common.Properties.Resources.InvalidDefaultSubscription);
@@ -67,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             if (profile == null)
             {
-                profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             }
 
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
@@ -76,14 +84,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 ProfileClient profileClient = new ProfileClient(profile);
                 AzureContext context = new AzureContext(
                     subscription,
-                    profileClient.GetAccount(subscription.Account),
-                    profileClient.GetEnvironmentOrDefault(subscription.Environment)
+                    profileClient.GetAccount(subscription.GetAccount()),
+                    profileClient.GetEnvironmentOrDefault(subscription.GetEnvironment())
                 );
 
-                creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
+                creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             }
 
-            Uri endpointUri = profile.Environments[subscription.Environment].GetEndpointAsUri(endpoint);
+            Uri endpointUri = profile.EnvironmentTable[subscription.GetEnvironment()].GetEndpointAsUri(endpoint);
             return CreateCustomClient<TClient>(creds, endpointUri);
         }
 
@@ -96,15 +104,26 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 {
                     throw new ArgumentException(
                         string.Format("TestManagementClientHelper class wasn't initialized with the {0} client.",
-                            typeof(TClient).Name));
+                            typeof (TClient).Name));
                 }
                 else
                 {
                     var realClientFactory = new ClientFactory();
                     var realClient = realClientFactory.CreateCustomClient<TClient>(parameters);
                     var newRealClient = realClient.WithHandler(HttpMockServer.CreateInstance());
+                    
                     realClient.Dispose();
                     return newRealClient;
+                }
+            }
+            else
+            {
+                if (!MoqClients)
+                {
+                    // Use the WithHandler method to create an extra reference to the http client
+                    // this will prevent the httpClient from being disposed in a long-running test using 
+                    // the same client for multiple cmdlets
+                    client = client.WithHandler(new PassThroughDelegatingHandler());
                 }
             }
 
@@ -150,6 +169,79 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
-        public List<ProductInfoHeaderValue> UserAgents { get; set; }
+        public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
+        {
+            // Do nothing
+        }
+
+        public void RemoveHandler(Type handlerType)
+        {
+            // Do nothing
+        }
+
+        public DelegatingHandler[] GetCustomHandlers()
+        {
+            // the equivalent of doing nothing
+            return new DelegatingHandler[0];
+        }
+
+        public void AddUserAgent(string productName, string productVersion)
+        {
+            this.UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
+        }
+
+        public void AddUserAgent(string productName)
+        {
+            this.AddUserAgent(productName, string.Empty);
+        }
+
+        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+
+        /// <summary>
+        /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
+        /// from being disposed.  Should not be used execpt in this mocked context.
+        /// </summary>
+        class PassThroughDelegatingHandler : DelegatingHandler
+        {
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                return base.SendAsync(request, cancellationToken);
+            }
+        }
+
+        public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Rest.ServiceClient<TClient>
+        {
+            Debug.Assert(context != null);
+            var credentials = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context);
+            var client = CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
+                context.Subscription.Id);
+            return client;
+
+        }
+
+        public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
+        {
+            TClient client = ManagementClients.FirstOrDefault(o => o is TClient) as TClient;
+            if (client == null)
+            {
+                if (throwWhenNotAvailable)
+                {
+                    throw new ArgumentException(
+                        string.Format("TestManagementClientHelper class wasn't initialized with the {0} client.",
+                            typeof (TClient).Name));
+                }
+                else
+                {
+                    var realClientFactory = new ClientFactory();
+                    var newParameters = new object[parameters.Length + 1];
+                    Array.Copy(parameters, 0, newParameters, 1, parameters.Length);
+                    newParameters[0] = HttpMockServer.CreateInstance();
+                    var realClient = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
+                    return realClient;
+                }
+            }
+
+            return client;
+        }
     }
 }

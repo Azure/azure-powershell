@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -39,8 +38,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private const string location2 = "North Central US";
         private const string location3 = "East US";
 
-        private const string publisher = "publisher1";
-        private const string normaluser = "normaluser2";
+        private static string publisher = "publisher1";
+        private static string publisherSubId = "602258C5-52EC-46B3-A49A-7587A764AC84";
+        private static string normaluser = "normaluser2";
         private const string normaluserSubId = "602258C5-52EC-46B3-A49A-7587A764AC84";
 
         private const string storageNormalUser = "normalstorage";
@@ -51,6 +51,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (defaultAzureSubscription.Equals(null))
             {
                 Assert.Inconclusive("No Subscription is selected!");
+            }
+
+            if (vmPowershellCmdlets.GetAzureSubscription(publisherSubId) == null)
+            {
+                publisher = defaultAzureSubscription.SubscriptionName;
+            }
+
+            if (vmPowershellCmdlets.GetAzureSubscription(normaluserSubId) == null)
+            {
+                normaluser = defaultAzureSubscription.SubscriptionName;
             }
         }
 
@@ -66,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 if (string.IsNullOrEmpty(localFile))
                 {
-                    CredentialHelper.CopyTestData(testDataContainer, osVhdName, vhdContainerName, vhdName);
+                    vmPowershellCmdlets.AddAzureVhd(new FileInfo(osVhdName), vhdBlobLocation);
                 }
                 else
                 {
@@ -99,6 +109,35 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             pass = false;
             testStartTime = DateTime.Now;
+        }
+
+        [TestCleanup]
+        public virtual void CleanUp()
+        {
+            SwitchToPublisher();
+            Console.WriteLine("Test {0}", pass ? "passed" : "failed");
+
+            if ((cleanupIfPassed && pass) || (cleanupIfFailed && !pass))
+            {
+                Console.WriteLine("Starting to clean up created VM and service.");
+
+                try
+                {
+                    vmPowershellCmdlets.RemoveAzureVMImage(image, false);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception occurs during cleanup: {0}", e.ToString());
+                }
+
+                try
+                {
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
         }
 
         /// <summary>
@@ -260,7 +299,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         throw;
                     }
                 }
-                vmPowershellCmdlets.SetAzureSubscription(normaluser, normaluserSubId, storageNormalUser);
+                vmPowershellCmdlets.SetAzureSubscription(normaluserSubId, storageNormalUser);
 
                 // Replicate the user image to "West US" and wait until the replication process is completed.
                 SwitchToPublisher();
@@ -301,43 +340,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        [TestCleanup]
-        public virtual void CleanUp()
-        {
-            SwitchToPublisher();
-            Console.WriteLine("Test {0}", pass ? "passed" : "failed");
-
-            if ((cleanupIfPassed && pass) || (cleanupIfFailed && !pass))
-            {
-                Console.WriteLine("Starting to clean up created VM and service.");
-
-                try
-                {
-                        vmPowershellCmdlets.RemoveAzureVMImage(image, false);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Exception occurs during cleanup: {0}", e.ToString());
-                }
-
-                try
-                {
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
-            }
-        }
-
         private void SwitchToPublisher()
         {
-            vmPowershellCmdlets.SetDefaultAzureSubscription(publisher);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(publisherSubId);
         }
 
         private void SwitchToNormalUser()
         {
-            vmPowershellCmdlets.SetDefaultAzureSubscription(normaluser);
+            vmPowershellCmdlets.SetDefaultAzureSubscription(normaluserSubId);
         }
 
         private void WaitForReplicationComplete(string imageName)

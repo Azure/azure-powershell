@@ -15,9 +15,10 @@
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -25,7 +26,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
     {
         CancellationToken CancellationToken { get; }
 
-        AzureSubscription CurrentSubscription { get; set; }
+        IAzureSubscription CurrentSubscription { get; set; }
 
         AzureHDInsightClusterConnection Connection { get; set; }
 

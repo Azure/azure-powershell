@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
 using System;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
@@ -25,7 +23,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Removes a record from a record set object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class RemoveAzureDnsRecordConfig : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set from which to remove the record.")]
@@ -141,6 +139,13 @@ namespace Microsoft.Azure.Commands.Dns
                             removedCount = result.Records.RemoveAll(record =>
                                 record is TxtRecord
                                 && ((TxtRecord)record).Value == this.Value);
+                            break;
+                        }
+                    case RecordType.PTR:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is PtrRecord
+                                && ((PtrRecord)record).Ptrdname == this.Ptrdname);
                             break;
                         }
                     case RecordType.CNAME:

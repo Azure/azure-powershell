@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancingRule))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
     {
         [Parameter(
@@ -35,10 +34,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-            
+
+            base.Execute();
             var existingProbe = this.LoadBalancer.Probes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingProbe != null)
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
 
             probe.Id =
                 ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
                     Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerProbeName,

@@ -19,11 +19,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string DiagnosticsExtensionNamespace = "Microsoft.Azure.Diagnostics";
         protected const string DiagnosticsExtensionType = "IaaSDiagnostics";
         protected const string VirtualMachineDiagnosticsExtensionNoun = "AzureVMDiagnosticsExtension";
+        protected const string DefaultVersion = "1.*";
+        protected const string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
 
-        protected string StorageAccountName { get; set; }
-        protected string StorageKey { get; set; }
-        protected string Endpoint { get; set; }
-        
         public VirtualMachineDiagnosticsExtensionCmdletBase()
             : base()
         {

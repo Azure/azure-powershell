@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureTag"), OutputType(typeof(PSTag))]
+    [Cmdlet(VerbsCommon.New, "AzureRmTag"), OutputType(typeof(PSTag))]
     public class NewAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If the tag name doesn't exist, create the tag name. Otherwise, add the value to the existing tag name.")]

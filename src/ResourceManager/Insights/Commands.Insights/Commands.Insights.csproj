@@ -9,17 +9,18 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Insights</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.Insights</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Insights\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Insights\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,7 +32,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\Insights\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Insights\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -44,80 +45,90 @@
   <ItemGroup>
     <Reference Include="Hyak.Common">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.0.26-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Common.NetFramework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.7.7-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage">
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.4.0.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Monitor">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.0-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alerts\AddAlertRuleCommandBase.cs" />
-    <Compile Include="Alerts\AddAlertRuleCommand.cs" />
+    <Compile Include="Alerts\AddAzureRmAlertRuleCommandBase.cs" />
+    <Compile Include="Alerts\AddAzureRmMetricAlertRuleCommand.cs" />
+    <Compile Include="Alerts\AddAzureRmLogAlertRuleCommand.cs" />
+    <Compile Include="Alerts\AddAzureRmWebtestAlertRuleCommand.cs" />
     <Compile Include="Alerts\AlertRuleTypes.cs" />
-    <Compile Include="Alerts\GetAlertHistoryCommand.cs" />
-    <Compile Include="Alerts\GetAlertRuleCommand.cs" />
-    <Compile Include="Alerts\RemoveAlertRuleCommand.cs" />
-    <Compile Include="Autoscale\NewAutoscaleProfileCommand.cs" />
-    <Compile Include="Autoscale\NewAutoscaleRuleCommand.cs" />
-    <Compile Include="Autoscale\AddAutoscaleSettingCommand.cs" />
-    <Compile Include="Autoscale\GetAutoscaleHistoryCommand.cs" />
-    <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
-    <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
-    <Compile Include="EventCmdletBase.cs" />
-    <Compile Include="Events\GetAzureCorrelationIdLogCommand.cs" />
-    <Compile Include="Events\GetAzureResourceGroupLogCommand.cs" />
-    <Compile Include="Events\GetAzureResourceLogCommand.cs" />
-    <Compile Include="Events\GetAzureResourceProviderLogCommand.cs" />
-    <Compile Include="Events\GetAzureSubscriptionIdLogCommand.cs" />
-    <Compile Include="InsightsClientCmdletBase.cs" />
-    <Compile Include="InsightsCmdletBase.cs" />
+    <Compile Include="Alerts\GetAzureRmAlertHistoryCommand.cs" />
+    <Compile Include="Alerts\GetAzureRmAlertRuleCommand.cs" />
+    <Compile Include="Alerts\NewAzureRmAlertRuleEmailCommand.cs" />
+    <Compile Include="Alerts\NewAzureRmAlertRuleWebhookCommand.cs" />
+    <Compile Include="Alerts\RemoveAzureRmAlertRuleCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleNotificationCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleProfileCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleRuleCommand.cs" />
+    <Compile Include="Autoscale\AddAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\GetAzureRmAutoscaleHistoryCommand.cs" />
+    <Compile Include="Autoscale\GetAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookCommand.cs" />
+    <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
+    <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
+    <Compile Include="LogsCmdletBase.cs" />
+    <Compile Include="ActivityLogs\GetAzureRmLogCommand.cs" />
+    <Compile Include="MonitorClientCmdletBase.cs" />
+    <Compile Include="MonitorCmdletBase.cs" />
+    <Compile Include="LogProfiles\RemoveAzureRmLogProfileCommand.cs" />
+    <Compile Include="LogProfiles\GetAzureRmLogProfileCommand.cs" />
+    <Compile Include="LogProfiles\AddAzureRmLogProfileCommand.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
-    <Compile Include="Metrics\FormatMetricsAsTableCommand.cs" />
-    <Compile Include="Metrics\GetMetricDefinitionsCommand.cs" />
-    <Compile Include="Metrics\GetMetricsCommand.cs" />
-    <Compile Include="OutputClasses\ConversionExtensions.cs" />
+    <Compile Include="Metrics\GetAzureRmMetricDefinitionCommand.cs" />
+    <Compile Include="Metrics\GetAzureRmMetricCommand.cs" />
+    <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSAddAlertRuleOperationResponse.cs" />
+    <Compile Include="OutputClasses\PSAddAutoscaleSettingOperationResponse.cs" />
+    <Compile Include="OutputClasses\PSAlertRuleResource.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleSettingNoDetails.cs" />
+    <Compile Include="OutputClasses\PSDiagnosticSettingOperationResponse.cs" />
+    <Compile Include="OutputClasses\PSLocalizableString.cs" />
+    <Compile Include="OutputClasses\PSLocalizableStringNoDetails.cs" />
+    <Compile Include="OutputClasses\PSLogProfileCollection.cs" />
+    <Compile Include="OutputClasses\PSLogSettings.cs" />
+    <Compile Include="OutputClasses\PSMetricAvailability.cs" />
+    <Compile Include="OutputClasses\PSMetricSettings.cs" />
+    <Compile Include="OutputClasses\PSLogProfile.cs" />
+    <Compile Include="OutputClasses\PSAutoscaleProfilesList.cs" />
+    <Compile Include="OutputClasses\PSRetentionPolicy.cs" />
+    <Compile Include="OutputClasses\PSServiceDiagnosticSettings.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
     <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
     <Compile Include="OutputClasses\PSAutoscaleSetting.cs" />
-    <Compile Include="OutputClasses\PSAutoscaleSettingProperty.cs" />
-    <Compile Include="OutputClasses\PSAvailabilityCollection.cs" />
+    <Compile Include="OutputClasses\PSMetricAvailabilityCollection.cs" />
     <Compile Include="OutputClasses\PSDictionaryElement.cs" />
-    <Compile Include="OutputClasses\PSDimensionCollection.cs" />
     <Compile Include="OutputClasses\PSEventData.cs" />
     <Compile Include="OutputClasses\PSEventDataAuthorization.cs" />
     <Compile Include="OutputClasses\PSEventDataHttpRequest.cs" />
@@ -153,25 +164,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
-    <Compile Include="UsageMetrics\GetUsageMetricsCommand.cs" />
+    <Compile Include="UsageMetrics\GetAzureRmUsageCommand.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\AzureRM.Insights.psd1">
+      <Link>AzureRM.Insights.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Microsoft.Azure.Commands.Insights.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Insights.dll-Help.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\ResourcesForAlertCmdlets.resx">
@@ -188,24 +196,25 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
   <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
-  -->
 </Project>

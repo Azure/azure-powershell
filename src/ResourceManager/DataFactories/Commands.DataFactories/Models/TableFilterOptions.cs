@@ -14,12 +14,14 @@
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public class TableFilterOptions
+    public class DatasetFilterOptions
     {
         public string Name { get; set; }
 
         public string ResourceGroupName { get; set; }
 
         public string DataFactoryName { get; set; }
+
+        public string NextLink { get; set; }
     }
 }

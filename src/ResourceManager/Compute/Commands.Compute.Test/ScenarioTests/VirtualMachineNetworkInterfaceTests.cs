@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineNetworkInterfaceTests
     {
+        public VirtualMachineNetworkInterfaceTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSingleNetworkInterface()
@@ -38,6 +43,35 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSingleNetworkInterfaceDnsSettings()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceDnsSettings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddNetworkInterface()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AddNetworkInterface");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEffectiveRoutesAndNsg()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-EffectiveRoutesAndNsg");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSingleNetworkInterfaceWithAcceleratedNetworking()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceWithAcceleratedNetworking");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMNicWithAcceleratedNetworkingValidations()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VMNicWithAcceleratedNetworkingValidations");
         }
     }
 }

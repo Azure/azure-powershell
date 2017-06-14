@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
-using Microsoft.Azure.Common.Authentication.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
@@ -48,9 +49,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlDatabaseTransparentDataEncryptionAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseTransparentDataEncryptionAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlDatabaseTransparentDataEncryptionAdapter(Profile, subscription);
+            return new AzureSqlDatabaseTransparentDataEncryptionAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

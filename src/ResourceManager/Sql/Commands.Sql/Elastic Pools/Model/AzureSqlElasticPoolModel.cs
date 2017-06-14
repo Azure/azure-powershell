@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
 {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// <summary>
         /// Gets or sets the Dtu for the elastic pool
         /// </summary>
-        public int? Dtu{ get; set; }
+        public int? Dtu { get; set; }
 
         /// <summary>
         /// Gets or sets the max Dtu per database in the elastic pool
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// <summary>
         /// Gets or sets the amount of storage the elastic pool has
         /// </summary>
-        public long? StorageMB { get; set; }
+        public int? StorageMB { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Elastic Pool.

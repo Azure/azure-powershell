@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Management.Compute;
+
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ExtensionPublishing
 {
@@ -117,6 +118,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         [ValidateNotNullOrEmpty]
         public string CompanyName { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           Position = 11,
+           HelpMessage = "Regions of the Extension")]
+        public string Regions { get; set; }
+
         public bool? BlockRoleUponFailure { get; set; }
 
         public bool? DisallowMajorVersionUpgrade { get; set; }
@@ -134,30 +141,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                 CommandRuntime.ToString(),
                 () => 
                 {
-                    var vmExtension = this.ComputeClient.VirtualMachineExtensions
-                                          .ListVersions(this.Publisher, this.ExtensionName)
-                                          .FirstOrDefault(e => e.Version.Equals(this.Version));
+                    var publisherExtension = this.ComputeClient.HostedServices
+                                          .ListPublisherExtensions()
+                                          .FirstOrDefault(e => e.ProviderNameSpace.Equals(this.Publisher)
+                                              && e.Type.Equals(this.ExtensionName)
+                                              && e.Version.Equals(this.Version));
 
-                    var serviceExtn = this.ComputeClient.HostedServices
-                                          .ListExtensionVersions(this.Publisher, this.ExtensionName)
-                                          .FirstOrDefault(e => e.Version.Equals(this.Version));
-
-                    if (vmExtension != null)
+                    if (publisherExtension != null)
                     {
-                        IsJsonExtension = vmExtension.IsJsonExtension;
-                        IsInternalExtension = vmExtension.IsJsonExtension;
-                        DisallowMajorVersionUpgrade = vmExtension.DisallowMajorVersionUpgrade;
-                    }
-                    else if (serviceExtn != null)
-                    {
-                        IsJsonExtension = serviceExtn.IsJsonExtension;
-                        IsInternalExtension = serviceExtn.IsJsonExtension;
-                        BlockRoleUponFailure = serviceExtn.BlockRoleUponFailure;
+                        IsJsonExtension = publisherExtension.IsJsonExtension;
+                        IsInternalExtension = publisherExtension.IsInternalExtension;
+                        BlockRoleUponFailure = publisherExtension.BlockRoleUponFailure;
                     }
 
-                    this.IsInternalExtension = string.Equals(this.ExtensionMode, PublicModeStr) ? false
-                                             : string.Equals(this.ExtensionMode, InternalModeStr) ? true
-                                             : true;
+                    if (! string.IsNullOrEmpty(this.ExtensionMode))
+                    {
+                        this.IsInternalExtension = this.ExtensionMode.Equals(InternalModeStr);
+                    }
 
                     var parameters = Mapper.Map<ExtensionImageUpdateParameters>(this);
 

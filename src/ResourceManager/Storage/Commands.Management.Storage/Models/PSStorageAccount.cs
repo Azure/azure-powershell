@@ -12,23 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    class PSStorageAccount
+    public class PSStorageAccount : IStorageContextProvider
     {
-        public PSStorageAccount(StorageAccount storageAccount)
+        public PSStorageAccount(StorageModels.StorageAccount storageAccount)
         {
             this.ResourceGroupName = ParseResourceGroupFromId(storageAccount.Id);
-            this.Name = storageAccount.Name;
+            this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
-            this.AccountType = storageAccount.AccountType;
+            this.Sku = storageAccount.Sku;
+            this.Encryption = storageAccount.Encryption;
+            this.Kind = storageAccount.Kind;
+            this.AccessTier = storageAccount.AccessTier;
             this.CreationTime = storageAccount.CreationTime;
             this.CustomDomain = storageAccount.CustomDomain;
+            this.Identity = storageAccount.Identity;
             this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
             this.PrimaryEndpoints = storageAccount.PrimaryEndpoints;
             this.PrimaryLocation = storageAccount.PrimaryLocation;
@@ -38,30 +48,36 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StatusOfPrimary = storageAccount.StatusOfPrimary;
             this.StatusOfSecondary = storageAccount.StatusOfSecondary;
             this.Tags = storageAccount.Tags;
+            this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
         }
 
         public string ResourceGroupName { get; set; }
 
-        public string Name { get; set; }
+        public string StorageAccountName { get; set; }
 
         public string Id { get; set; }
 
         public string Location { get; set; }
 
-        public AccountType? AccountType { get; set; }
-        
+        public Sku Sku { get; set; }
+        public Kind? Kind { get; set; }
+        public Encryption Encryption { get; set; }
+        public AccessTier? AccessTier { get; set; }
+
         public DateTime? CreationTime { get; set; }
-        
+
         public CustomDomain CustomDomain { get; set; }
-        
+
+        public Identity Identity { get; set; }
+
         public DateTime? LastGeoFailoverTime { get; set; }
-        
+
         public Endpoints PrimaryEndpoints { get; set; }
 
         public string PrimaryLocation { get; set; }
 
         public ProvisioningState? ProvisioningState { get; set; }
-        
+
         public Endpoints SecondaryEndpoints { get; set; }
 
         public string SecondaryLocation { get; set; }
@@ -72,6 +88,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public IDictionary<string, string> Tags { get; set; }
 
+        public bool? EnableHttpsTrafficOnly { get; set; }
+
+        public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
+        {
+            var result = new PSStorageAccount(storageAccount);
+             result.Context = new LazyAzureStorageContext((s) => 
+             { 
+                return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);  
+             }, result.StorageAccountName) as AzureStorageContext; 
+
+            return result;
+        }
+
         private static string ParseResourceGroupFromId(string idFromServer)
         {
             if (!string.IsNullOrEmpty(idFromServer))
@@ -81,6 +110,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 return tokens[3];
             }
 
+            return null;
+        }
+
+        public IStorageContext Context { get; private set; }
+
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// Return a string representation of this storage account
+        /// </summary>
+        /// <returns>null</returns>
+        public override string ToString()
+        {
+            // Allow listing storage contents through piping
             return null;
         }
     }

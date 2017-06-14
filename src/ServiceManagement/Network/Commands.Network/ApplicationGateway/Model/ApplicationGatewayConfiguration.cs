@@ -36,23 +36,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationG
         [DataMember(Order = 2, IsRequired = true)]
         public IEnumerable<FrontendPort> FrontendPorts { get; set; }
 
+        [DataMember(Order = 3, EmitDefaultValue = false)]
+        public IEnumerable<Probe> Probes { get; set; }
+
         /// <summary>
         /// Collection of backend address pools. See backendAddressPools in the NRP spec
         /// </summary>
-        [DataMember(Order = 3, IsRequired = true)]
+        [DataMember(Order = 4, IsRequired = true)]
         public IEnumerable<BackendAddressPool> BackendAddressPools { get; set; }
 
-        [DataMember(Order = 4, IsRequired = true)]
+        [DataMember(Order = 5, IsRequired = true)]
         public IEnumerable<BackendHttpSettings> BackendHttpSettingsList { get; set; }
 
-        [DataMember(Order = 5, IsRequired = true)]
+        [DataMember(Order = 6, IsRequired = true)]
         public IEnumerable<HttpListener> HttpListeners { get; set; }
 
-        [DataMember(Order = 6, IsRequired = true)]
+        [DataMember(Order = 7, IsRequired = true)]
         public IEnumerable<HttpLoadBalancingRule> HttpLoadBalancingRules { get; set; }
 
         public ApplicationGatewayConfigurationContext ConfigurationContext { get; set; }
-    
+
         public ApplicationGatewayConfiguration()
         {
         }
@@ -65,10 +68,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationG
 
         public override void Validate()
         {
-            if (this.FrontendIPConfigurations != null && this.FrontendIPConfigurations.Count() > 1)
+            if (this.FrontendIPConfigurations != null && this.FrontendIPConfigurations.Count() > 2)
             {
                 throw new ApplicationGatewayConfigurationValidationException(
-                    "Only one FrontendIPConfiguration can be specified");
+                    "Maximum two FrontendIPConfiguration can be specified");
             }
 
             //Validate that atleast one of each configuration element is present
@@ -102,21 +105,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationG
                     "Atleast one HttpLoadBalancingRule must be specified");
             }
         }
-        
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendFormat(CultureInfo.InvariantCulture, "FrontendIPConfigurations:");
-            foreach (FrontendIPConfiguration frontendIP in FrontendIPConfigurations)
+            if (null != FrontendIPConfigurations)
             {
-                sb.AppendFormat("{0}", frontendIP == null ? "null" : frontendIP.ToString());
+                sb.AppendFormat(CultureInfo.InvariantCulture, "FrontendIPConfigurations:");
+                foreach (FrontendIPConfiguration frontendIPConfiguration in FrontendIPConfigurations)
+                {
+                    sb.AppendFormat("{0}", frontendIPConfiguration == null ? "null" : frontendIPConfiguration.ToString());
+                }
             }
 
             sb.AppendFormat(CultureInfo.InvariantCulture, "FrontEndPorts:");
             foreach (FrontendPort frontEndPort in FrontendPorts)
             {
                 sb.AppendFormat("{0}", frontEndPort == null ? "null" : frontEndPort.ToString());
+            }
+
+            if (null != Probes)
+            {
+                sb.AppendFormat(CultureInfo.InvariantCulture, "Probes:");
+                foreach (Probe probe in Probes)
+                {
+                    sb.AppendFormat("{0}", probe == null ? "null" : probe.ToString());
+                }
             }
 
             sb.AppendFormat(CultureInfo.InvariantCulture, "BackendAddressPools:");

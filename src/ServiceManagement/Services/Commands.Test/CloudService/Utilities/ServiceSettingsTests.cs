@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class ServiceSettingsTests : TestBase
+    public class ServiceSettingsTests : SMTestBase
     {
         public ServiceSettingsTests()
         {

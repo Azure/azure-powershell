@@ -15,23 +15,17 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine)]
+    [Cmdlet(VerbsCommon.Remove,
+        ProfileNouns.VirtualMachine,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class RemoveAzureVMCommand : VirtualMachineBaseCmdlet
+    public class RemoveAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         [Alias("ResourceName", "VMName")]
         [Parameter(
             Mandatory = true,
@@ -50,14 +44,20 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
+            ExecuteClientAction(() =>
             {
-                var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
-                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                WriteObject(result);
-            }
+                if (this.ShouldProcess(Name, VerbsCommon.Remove)
+                    && (this.Force.IsPresent || 
+                        this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, 
+                        Properties.Resources.VirtualMachineRemovalCaption)))
+                {
+                    var op = this.VirtualMachineClient.DeleteWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                    WriteObject(result);
+                }
+            });
         }
     }
 }

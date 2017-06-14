@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Regenerates the agent registration key based on the key name.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationKey")]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationKey")]
     [OutputType(typeof(AgentRegistration))]
     public class NewAzureAutomationKey : AzureAutomationBaseCmdlet
     {

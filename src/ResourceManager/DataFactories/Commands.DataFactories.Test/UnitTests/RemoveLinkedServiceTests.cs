@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Net;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
@@ -25,8 +25,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
         private RemoveAzureDataFactoryLinkedServiceCommand cmdlet;
 
-        public RemoveLinkedServiceTests()
+        public RemoveLinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new RemoveAzureDataFactoryLinkedServiceCommand()

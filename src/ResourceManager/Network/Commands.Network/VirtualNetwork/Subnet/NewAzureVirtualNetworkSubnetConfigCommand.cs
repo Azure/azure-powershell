@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
     public class NewAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(
@@ -26,15 +26,20 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.NetworkSecurityGroup != null)
                 {
                     this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
+                }
+
+                if (this.RouteTable != null)
+                {
+                    this.RouteTableId = this.RouteTable.Id;
                 }
             }
 
@@ -44,8 +49,14 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
-                subnet.NetworkSecurityGroup = new PSResourceId();
+                subnet.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
+            if (!string.IsNullOrEmpty(this.RouteTableId))
+            {
+                subnet.RouteTable = new PSRouteTable();
+                subnet.RouteTable.Id = this.RouteTableId;
             }
 
             WriteObject(subnet);

@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
     {
         [Parameter(
@@ -36,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             var loadBalancingRule = this.LoadBalancer.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 

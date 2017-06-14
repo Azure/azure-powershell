@@ -27,7 +27,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.CloudService.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema;
 using Microsoft.WindowsAzure.Commands.Utilities;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
@@ -205,7 +206,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         private void AddRoleCore(string scaffolding, RoleInfo role)
         {
             Dictionary<string, object> parameters = CreateDefaultParameters(role);
-            parameters[ScaffoldParams.NodeModules] = GeneralUtilities.GetNodeModulesPath();
+            parameters[ScaffoldParams.NodeModules] = Path.Combine(
+                FileUtilities.GetAssemblyDirectory(),
+                Resources.NodeModulesPath);
             parameters[ScaffoldParams.NodeJsProgramFilesX86] = FileUtilities.GetWithProgramFilesPath(Resources.NodeProgramFilesFolderName, false);
 
             GenerateScaffolding(scaffolding, role.Name, parameters);

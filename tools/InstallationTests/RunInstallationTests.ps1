@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,13 +11,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+param([bool]$uninstallLocalCert=$false, [bool]$runOnCIMachine=$false )
 
-.".\\Common.ps1"
-.".\\Assert.ps1"
-.".\\InstallationTest.ps1"
+
+. "$PSScriptRoot\Common.ps1"
+. "$PSScriptRoot\Assert.ps1"
+. "$PSScriptRoot\InstallationTests.ps1"
+. "$PSScriptRoot\AutoTestLogin.ps1"
+
 # Pass expected PowerShell version as 1st param
-$expectedVersion = [string]$args[0]
-$credential = [PSCredential]$args[1]
 $global:totalCount = 0;
 $global:passedCount = 0;
 $global:passedTests = @()
@@ -25,6 +27,9 @@ $global:failedTests = @()
 $global:times = @{}
 $VerbosePreference = "SilentlyContinue"
 
+Test-Setup $runOnCIMachine
+
+Login-Azure $uninstallLocalCert $runOnCIMachine
 
 function Run-TestProtected
 {
@@ -72,10 +77,8 @@ $serviceCommands = @(
   {Get-AzureVnetConfig},
   {Get-AzureStorageAccount},
   {Get-AzureMediaServicesAccount},
-#  {Get-AzureStoreAddOn -ListAvailable| Select-Object -First 10},
   {Get-AzureSubscription -Current -ExtendedDetails},
   {Get-AzureAccount},
-  {Get-AzureManagedCache},
   {Get-AzureHDInsightCluster},
   {Get-AzureSBLocation},
   {Get-AzureSBNamespace},
@@ -87,34 +90,24 @@ $serviceCommands = @(
 )
 
 $resourceCommands = @(
-  {Get-AzureResourceGroup},
-  {Get-AzureResourceGroupGalleryTemplate},
-  {Get-AzureTag},
-  {Get-AzureADUser -UPN $credential.UserName},
-  {Get-AzureRoleAssignment}
+  {Get-AzureRmResourceGroup},
+  {Get-AzureRmTag},
+  #{Get-AzureRmADUser -UPN $context.Context.Account.Id},
+  {Get-AzureRmADServicePrincipal -ServicePrincipalName $global:gPsAutoTestADAppId},
+  #{Get-AzureRmRoleAssignment}, we can enable this once this cmdLet works well with service principal, currently it has a hard dependency on Graph API Version 1.6-preview and hence it has some bugs
+  {Get-AzureRmRoleDefinition},
+  {Get-AzureRmWebApp}
 )
 
-if ($credential -eq $null)
-{
-  $credential = $(Get-Credential)
-}
-Get-AzureSubscription | Remove-AzureSubscription -Force
-Add-AzureAccount -Credential $credential
 $ErrorActionPreference = "Stop"
-Switch-AzureMode AzureServiceManagement
-$subscription = $(Get-AzureSubscription -Current).SubscriptionName
-$profile = $(New-AzureProfile -SubscriptionId $subscription -Credential $credential)
-Select-AzureProfile $profile
 $global:startTime = Get-Date
 Run-TestProtected { Test-SetAzureStorageBlobContent } "Test-SetAzureStorageBlobContent"
-Run-TestProtected { Test-GetModuleVersion $expectedVersion} "Test-GetModuleVersion"
+
 Run-TestProtected { Test-UpdateStorageAccount } "Test-UpdateStorageAccount"
+
 $serviceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host -ForegroundColor Green "STARTING RESOURCE MANAGER TESTS"
-Switch-AzureMode AzureResourceManager > $null
-$subscription = $(Get-AzureSubscription -Current).SubscriptionName
-$profile = $(New-AzureProfile -SubscriptionId $subscription -Credential $credential)
-Select-AzureProfile $profile
+
 $resourceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host
 Write-Host -ForegroundColor Green "$global:passedCount / $global:totalCount Installation Tests Pass"
@@ -143,19 +136,8 @@ Write-Host -ForegroundColor Green "End Time: $global:endTime"
 Write-Host -ForegroundColor Green "Elapsed: "($global:endTime - $global:startTime).ToString()
 Write-Host "============================================================================================="
 Write-Host
-Write-Host "===================="
-Write-Host "Help Check: ARM Mode"
-Write-Host "===================="
-Switch-AzureMode AzureResourceManager
-Get-IncompleteHelp
 Write-Host
-Write-Host "===================="
-Write-Host "Help Check: ASM Mode"
-Write-Host "===================="
-Switch-AzureMode AzureServiceManagement
-Get-IncompleteHelp
-Write-Host
-Write-Host "============================================================================================="
-Write-Host
+
+Test-Cleanup
 
 $ErrorActionPreference = "Continue"

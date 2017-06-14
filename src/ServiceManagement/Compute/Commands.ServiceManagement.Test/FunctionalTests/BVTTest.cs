@@ -55,7 +55,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             int diskSize2 = 50;
             int lunSlot2 = 2;
 
-
             string ep1Name = "tcp1";
             int ep1LocalPort = 60010;
             int ep1PublicPort = 60011;
@@ -280,6 +279,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.IsTrue(endpoints.Count(e => e.Name == "RemoteDesktop" && e.LocalPort == 3389 && e.Protocol == "tcp") == 1);
 
                 //
+                // Verify DebugSettings
+                //
+                Assert.IsTrue(vm.DebugSettings.BootDiagnosticsEnabled);
+
+                //
                 // Verify AzureDns
                 //
                 Assert.IsTrue(Verify.AzureDns(vmPowershellCmdlets.GetAzureDeployment(serviceName).DnsSettings, dns));
@@ -379,6 +383,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 //
                 // Remove-AzureVM
                 //
+                vmPowershellCmdlets.RemoveAzureVM(newAzureVMName, serviceName, false, true);
+                Assert.AreNotEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureVMName, serviceName));
+
                 vmPowershellCmdlets.RemoveAzureVM(newAzureVMName, serviceName);
 
                 RecordTimeTaken(ref prevTime);

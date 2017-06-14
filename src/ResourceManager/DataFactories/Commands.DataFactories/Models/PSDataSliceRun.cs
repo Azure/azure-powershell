@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.DataFactories.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.DataFactories.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
 
         public string DataFactoryName { get; set; }
 
-        public string TableName { get; set; }
+        public string DatasetName { get; set; }
 
         public DateTime ProcessingStartTime
         {
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
                 dataSliceRun.ActivityName = value;
             }
         }
-        
+
         public string PipelineName
         {
             get

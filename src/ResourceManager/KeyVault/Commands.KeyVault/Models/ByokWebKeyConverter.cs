@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Security;
-using System.IO;
 using Microsoft.Azure.KeyVault.WebKey;
+using System;
+using System.IO;
+using System.Security;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     /// </summary>
     internal class ByokWebKeyConverter : IWebKeyConverter
     {
-        public ByokWebKeyConverter(IWebKeyConverter next=null)
+        public ByokWebKeyConverter(IWebKeyConverter next = null)
         {
             this.next = next;
         }
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             if (fileInfo == null || string.IsNullOrEmpty(fileInfo.Extension))
                 return false;
-          
+
             return ByokFileExtension.Equals(fileInfo.Extension, StringComparison.OrdinalIgnoreCase);
         }
 
         private JsonWebKey Convert(string byokFileName)
-        {            
+        {
             byte[] byokBlob = File.ReadAllBytes(byokFileName);
 
             if (byokBlob == null || byokBlob.Length == 0)
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 Kty = JsonWebKeyType.RsaHsm,
                 T = byokBlob,
             };
-        }              
+        }
 
         private IWebKeyConverter next;
         private const string ByokFileExtension = ".byok";

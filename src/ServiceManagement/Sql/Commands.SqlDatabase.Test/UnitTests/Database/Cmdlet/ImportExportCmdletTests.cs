@@ -18,13 +18,14 @@ using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
@@ -33,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
     /// Get-AzureSqlDatabaseImportExportStatus cmdlet.
     /// </summary>
     [TestClass]
-    public class ImportExportCmdletTests : TestBase
+    public class ImportExportCmdletTests : SMTestBase
     {
         [TestCleanup]
         public void CleanupTest()
@@ -49,6 +50,11 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         [TestMethod]
         public void ImportExportAzureSqlDatabaseTests()
         {
+            if (AzureRmProfileProvider.Instance != null)
+            {
+                AzureRmProfileProvider.Instance.Profile = null;
+            }
+
             using (System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create())
             {
                 // Setup the subscription used for the test

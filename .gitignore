@@ -29,6 +29,8 @@ x64/
 build/
 bld/
 src/*/[Bb]in/
+setup/**/*/[Bb]in/
+setup/[Bb]in/
 [Oo]bj/
 
 # Roslyn cache directories
@@ -181,6 +183,10 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
+# The Backup*/ rule will ignore the backup and restore cmdlets
+# for Azure web apps. Exclude that directory from being ignored here.
+!/src/ResourceManager/Websites/Commands.Websites/Cmdlets/BackupRestore
+
 # SQL Server files
 *.mdf
 *.ldf
@@ -192,3 +198,9 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+.vs/
+/tools/*.dll
+*.GhostDoc.xml
+pingme.txt
+groupMapping*.json

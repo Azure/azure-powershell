@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 string key = tag.Key as string;
                 if (string.IsNullOrWhiteSpace(key))
                     throw new ArgumentException("Invalid tag name");
-                
+
                 if (tag.Value != null && !(tag.Value is string))
                     throw new ArgumentException("Tag has invalid value");
                 string value = (tag.Value == null) ? string.Empty : (string)tag.Value;
                 tagsDictionary[key] = value;
             }
-                        
+
             return tagsDictionary;
         }
 
@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 int maxNameLength = tags.Keys.Max(key => key.Length);
                 int maxValueLength = tags.Values.Max(value => value.Length);
 
-                tagsTable = Format(maxNameLength, maxValueLength, () => { return EnumerateTag(tags); });               
+                tagsTable = Format(maxNameLength, maxValueLength, () => { return EnumerateTag(tags); });
             }
 
             return tagsTable;
         }
-        
+
         private static IEnumerable<KeyValuePair<string, string>> EnumerateTag(Hashtable tags)
         {
             foreach (DictionaryEntry tag in tags)
@@ -86,10 +86,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (tag.Value != null && !(tag.Value is string))
                     continue;
-                var value = (tag.Value == null) ? string.Empty : (string)tag.Value;     
-           
+                var value = (tag.Value == null) ? string.Empty : (string)tag.Value;
+
                 yield return new KeyValuePair<string, string>(key, value);
-            }        
+            }
         }
 
         private static IEnumerable<KeyValuePair<string, string>> EnumerateTag(IDictionary<string, string> tags)
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 if (string.IsNullOrWhiteSpace(tag.Key))
                     continue;
-                var value = (tag.Value == null) ? string.Empty : (string)tag.Value;
+                var value = tag.Value ?? string.Empty;
 
                 yield return new KeyValuePair<string, string>(tag.Key, value);
             }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             IEnumerable<KeyValuePair<string, string>> enumerator = enumeratorGenerator();
 
             foreach (var pair in enumerator)
-            {                
+            {
                 builder.AppendFormat(rowFormat, pair.Key, pair.Value);
             }
             return builder.ToString();

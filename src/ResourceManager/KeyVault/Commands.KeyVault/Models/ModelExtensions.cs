@@ -12,71 +12,42 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;
 using PSModels = Microsoft.Azure.Commands.KeyVault.Models;
-using ResourceManagement = Microsoft.Azure.Management.Resources.Models;
-using ResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     static class ModelExtensions
     {
 
-        //public static PSModels.Vault ToPSVault(this KeyVaultManagement.Vault vault, ActiveDirectoryClient adClient = null)
-        //{
-        //    var vaultTenantDisplayName = GetDisplayNameForTenant(vault.Properties.TenantId, adClient);
-        //    return new PSModels.Vault()
-        //    {
-        //        VaultName = vault.Name,
-        //        Location = vault.Location,
-        //        ResourceId = vault.Id,
-        //        ResourceGroupName = (new ResourceManagerModels.ResourceIdentifier(vault.Id)).ResourceGroupName,
-        //        Tags = ResourceManagerModels.TagsConversionHelper.CreateTagHashtable(vault.Tags),
-        //        Sku = vault.Properties.Sku.Name,
-        //        TenantId = vault.Properties.TenantId,
-        //        TenantName = vaultTenantDisplayName,
-        //        VaultUri = vault.Properties.VaultUri,
-        //        EnabledForDeployment = vault.Properties.EnabledForDeployment,
-        //        AccessPolicies = vault.Properties.AccessPolicies.Select(s =>
-        //            new PSModels.VaultAccessPolicy()
-        //            {
-        //                ObjectId = s.ObjectId,
-        //                DisplayName = GetDisplayNameForADObject(s.ObjectId, adClient),
-        //                TenantId = s.TenantId,
-        //                TenantName = s.TenantId == vault.Properties.TenantId ? vaultTenantDisplayName : s.TenantId.ToString(),
-        //                PermissionsToSecrets = s.PermissionsToSecrets,
-        //                PermissionsToKeys = s.PermissionsToKeys
-        //            }).ToArray(),
-        //        OriginalVault = vault
-        //    };
-        //}
-
         public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
-            if (policies != null && policies.Count() > 0)
-            {                
-                string rowFormat = "{0, -40}  {1, -40}  {2, -40} {3, -40} {4, -40}\r\n";
+            if (policies != null && policies.Any())
+            {
+                string rowFormat = "{0, -43}  {1, -43}  {2, -43} {3, -43} {4, -43} {5, -43} {6, -43}\r\n";
                 sb.AppendLine();
-                sb.AppendFormat(rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets");
-                sb.AppendFormat(rowFormat, 
-                    GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="), 
+                sb.AppendFormat( rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets", "Permissions to certificates", "Permissions to (Key Vault Managed) storage" );
+                sb.AppendFormat(rowFormat,
+                    GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="),
                     GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
-                    GeneralUtilities.GenerateSeparator("Application ID".Length, "="), 
-                    GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="), 
-                    GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="));
+                    GeneralUtilities.GenerateSeparator("Application ID".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Permissions To Certificates".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Permissions To (Key Vault Managed) Storage".Length, "="));
 
-                foreach(var policy in policies)
+                foreach (var policy in policies)
                 {
-                    sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName, 
-                        TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40));
+                    sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName,
+                        TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40),
+                        TrimWithEllipsis( policy.PermissionsToCertificatesStr, 40 ), TrimWithEllipsis( policy.PermissionsToStorageStr, 40 ) );
                 }
 
             }
@@ -88,17 +59,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             StringBuilder sb = new StringBuilder();
 
-            if (policies != null && policies.Count() > 0)
+            if (policies != null && policies.Any())
             {
                 sb.AppendLine();
                 foreach(var policy in policies)
-                {                    
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Tenant ID", policy.TenantName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Object ID", policy.ObjectId);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Display Name", policy.DisplayName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
+                {
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Tenant ID", policy.TenantName );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Object ID", policy.ObjectId );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Display Name", policy.DisplayName );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr );
+                    sb.AppendFormat( "{0, -43}: {1}\r\n", "Permissions to (Key Vault Managed) Storage", policy.PermissionsToStorageStr );
                     sb.AppendLine();
                 }
             }
@@ -110,37 +83,43 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 return string.Concat(str.Substring(0, maxLen - 3), "...");
             }
-            else
-                return str;
+
+            return str;
         }
 
-        public static string GetDisplayNameForADObject(Guid id, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForADObject(string objectId, ActiveDirectoryClient adClient)
         {
-            string displayName = "";            
+            string displayName = "";
+            string upnOrSpn = "";
 
-            if (id == null || adClient == null || id == Guid.Empty)
+            if (adClient == null || string.IsNullOrWhiteSpace(objectId))
                 return displayName;
-            else
+
+            try
             {
-                string upnOrSpn = "";
-
-                var obj = adClient.GetADObject(new ADObjectFilterOptions()
-                {
-                    Id = id.ToString(),                    
-                    Paging = true,
-                });
-
+                var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
                 if (obj != null)
                 {
-                    displayName = obj.DisplayName;
-                    if (obj is PSADUser)
-                        upnOrSpn = ((PSADUser)obj).UserPrincipalName;
-                    else if (obj is PSADServicePrincipal)
-                        upnOrSpn = ((PSADServicePrincipal)obj).ServicePrincipalName;
+                    if (obj.ObjectType.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var user = adClient.Users.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = user.DisplayName;
+                        upnOrSpn = user.UserPrincipalName;
+                    }
+                    else if (obj.ObjectType.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = servicePrincipal.AppDisplayName;
+                        upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
                 }
-
-                return displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : "");
             }
+            catch
+            {
+                // Error occured. Don't get the friendly name
+            }
+
+            return displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : "");
         }
 
         public static string GetDisplayNameForTenant(Guid id, ActiveDirectoryClient adClient)

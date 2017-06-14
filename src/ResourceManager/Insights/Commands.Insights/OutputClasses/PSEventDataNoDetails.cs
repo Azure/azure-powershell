@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
-using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// List of fields to be fetched when no details are needed
         /// </summary>
-        public static string SelectedFieldsForQuery = "Authorization,Caller,CorrelationId,EventSource,EventTimestamp,OperationName,ResourceGroupName,ResourceUri,Status,SubscriptionId,SubStatus";
+        public static string SelectedFieldsForQuery = "Authorization,Caller,CorrelationId,Category,EventTimestamp,OperationName,ResourceGroupName,ResourceUri,Status,SubscriptionId,SubStatus";
 
         /// <summary>
         /// Gets or sets the authorization. This is the authorization used by the user who has performed the operation that led to this event.
@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string Caller { get; set; }
 
         /// <summary>
-        /// Gets or sets the correlation Id. The correlation Id is shared among the events that belong to the same deployment.
+        /// Gets or sets the category Id.
         /// </summary>
         public string CorrelationId { get; set; }
 
         /// <summary>
         /// Gets or sets the event source. This value indicates the source that generated the event.
         /// </summary>
-        public string EventSource { get; set; }
+        public string Category { get; set; }
 
         /// <summary>
         /// Gets or sets the occurrence time of event
@@ -91,18 +91,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 ? new PSEventDataAuthorization
                 {
                     Action = eventData.Authorization.Action,
-                    Condition = eventData.Authorization.Condition,
                     Role = eventData.Authorization.Role,
                     Scope = eventData.Authorization.Scope
                 }
                 : null;
             this.Caller = eventData.Caller;
             this.CorrelationId = eventData.CorrelationId;
-            this.EventSource = eventData.EventSource.Value;
+            this.Category = eventData.Category.Value;
             this.EventTimestamp = eventData.EventTimestamp;
             this.OperationName = eventData.OperationName.Value;
             this.ResourceGroupName = eventData.ResourceGroupName;
-            this.ResourceId = eventData.ResourceUri;
+            this.ResourceId = eventData.ResourceId;
             this.Status = eventData.Status.Value;
             this.SubscriptionId = eventData.SubscriptionId;
             this.SubStatus = eventData.SubStatus.Value;

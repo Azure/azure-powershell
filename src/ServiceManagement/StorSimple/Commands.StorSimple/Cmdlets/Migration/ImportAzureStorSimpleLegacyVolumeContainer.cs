@@ -29,9 +29,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateNotNullOrEmpty]
         public string LegacyConfigId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.MigrateSpecificContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = StorSimpleCmdletParameterSet.MigrateAllContainer,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
+        public SwitchParameter All { get; set; }
 
         [Parameter(Mandatory = false, Position = 2,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationImportDCWithSkipACRs)]
@@ -45,9 +49,28 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             try
             {
                 var importDataContainerRequest = new MigrationImportDataContainerRequest();
-                importDataContainerRequest.DataContainerNames = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.InvariantCultureIgnoreCase))
-                    : new List<string>();
+                switch (ParameterSetName)
+                {
+                    case StorSimpleCmdletParameterSet.MigrateAllContainer:
+                        {
+                            importDataContainerRequest.DataContainerNames = new List<string>();
+                            break;
+                        }
+                    case StorSimpleCmdletParameterSet.MigrateSpecificContainer:
+                        {
+                            importDataContainerRequest.DataContainerNames =
+                                    new List<string>(LegacyContainerNames.ToList().Distinct(
+                                        StringComparer.InvariantCultureIgnoreCase));
+                            break;
+                        }
+                    default:
+                        {
+                            // unexpected code path.
+                            throw new ParameterBindingException(
+                                string.Format(Resources.MigrationParameterSetNotFound, ParameterSetName));
+                        }
+                }
+
                 importDataContainerRequest.ForceOnOtherDevice = Force.IsPresent;
                 importDataContainerRequest.SkipACRs = SkipACRs.IsPresent;
 

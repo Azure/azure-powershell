@@ -202,8 +202,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         private PersistentVM CreateIaaSVMObject(string vmName)
         {
-            defaultAzureSubscription = vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionName, defaultAzureSubscription.SubscriptionId, CredentialHelper.DefaultStorageName);
-            vmPowershellCmdlets.SelectAzureSubscription(defaultAzureSubscription.SubscriptionName, true);
+            defaultAzureSubscription = vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionId, CredentialHelper.DefaultStorageName);
+            vmPowershellCmdlets.SelectAzureSubscription(defaultAzureSubscription.SubscriptionId);
 
 
             //Create an IaaS VM with a static CA.

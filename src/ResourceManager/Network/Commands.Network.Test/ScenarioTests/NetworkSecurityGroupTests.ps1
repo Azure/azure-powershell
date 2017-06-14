@@ -32,22 +32,23 @@ function Test-NetworkSecurityGroupCRUD
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create NetworkSecurityGroup
-        $nsg = New-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location
+        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location
 
         # Get NetworkSecurityGroup
-        $getNsg = Get-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
+        $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
         
         #verification
         Assert-AreEqual $rgName $getNsg.ResourceGroupName
         Assert-AreEqual $nsgName $getNsg.Name
-        Assert-AreEqual $location $getNsg.Location
+        Assert-NotNull $getNsg.Location
+        Assert-NotNull $getNsg.ResourceGuid
         Assert-NotNull $getNsg.Etag
         Assert-AreEqual 0 @($getNsg.SecurityRules).Count
         Assert-AreEqual 6 @($getNsg.DefaultSecurityRules).Count
@@ -59,7 +60,7 @@ function Test-NetworkSecurityGroupCRUD
         Assert-AreEqual "DenyAllOutBound" $getNsg.DefaultSecurityRules[5].Name
 
         # list
-        $list = Get-AzureNetworkSecurityGroup -ResourceGroupName $rgname
+        $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $list[0].ResourceGroupName $getNsg.ResourceGroupName
         Assert-AreEqual $list[0].Name $getNsg.Name
@@ -76,32 +77,32 @@ function Test-NetworkSecurityGroupCRUD
 
 
         # Add NSG to a subnet
-        $vnet = $vnet | Set-AzureVirtualNetworkSubnetConfig -name $subnetName -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $nsg | Set-AzureVirtualNetwork
-        $getNsg = Get-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
+        $vnet = $vnet | Set-AzureRmVirtualNetworkSubnetConfig -name $subnetName -AddressPrefix "10.0.1.0/24" -NetworkSecurityGroup $nsg | Set-AzureRmVirtualNetwork
+        $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
         Assert-AreEqual $vnet.Subnets[0].NetworkSecurityGroup.Id $getNsg.Id
         Assert-AreEqual 1 @($getNsg.Subnets[0]).Count
         Assert-AreEqual $vnet.Subnets[0].Id $getNsg.Subnets[0].Id
 
         # Create NetworkInterface with NSG
-        $nic = New-AzureNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -NetworkSecurityGroup $nsg
         Assert-AreEqual $nic.NetworkSecurityGroup.Id $nsg.Id
-        $getNsg = Get-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
+        $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
         Assert-AreEqual 1 @($getNsg.NetworkInterfaces[0]).Count
         Assert-AreEqual $nic.Id $getNsg.NetworkInterfaces[0].Id
 
         # Delete NetworkInterface
-        $delete = Remove-AzureNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        $delete = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork
-        $delete = Remove-AzureVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
         Assert-AreEqual true $delete
 
         # Delete NetworkSecurityGroup
-        $delete = Remove-AzureNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
+        $delete = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
         Assert-AreEqual true $delete
         
-        $list = Get-AzureNetworkSecurityGroup -ResourceGroupName $rgname
+        $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -130,21 +131,21 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create SecurityRule
-        $securityRule = New-AzureNetworkSecurityRuleConfig -Name $securityRule1Name -Description "desciption" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
+        $securityRule = New-AzureRmNetworkSecurityRuleConfig -Name $securityRule1Name -Description "desciption" -Protocol Tcp -SourcePortRange "23-45" -DestinationPortRange "46-56" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 123 -Direction Inbound
 
         # Create NetworkSecurityGroup
-        $nsg = New-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -SecurityRule $securityRule
+        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -SecurityRule $securityRule
 
         # Get NetworkSecurityGroup
-        $getNsg = Get-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
+        $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
         
         #verification
         Assert-AreEqual $rgName $getNsg.ResourceGroupName
         Assert-AreEqual $nsgName $getNsg.Name
-        Assert-AreEqual $location $getNsg.Location
+        Assert-NotNull $getNsg.Location
         Assert-NotNull $getNsg.Etag
         Assert-AreEqual 1 @($getNsg.SecurityRules).Count
         Assert-AreEqual 6 @($getNsg.DefaultSecurityRules).Count
@@ -167,7 +168,7 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
         Assert-AreEqual "Inbound" $getNsg.SecurityRules[0].Direction
 
         # list
-        $list = Get-AzureNetworkSecurityGroup -ResourceGroupName $rgname
+        $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $list[0].ResourceGroupName $getNsg.ResourceGroupName
         Assert-AreEqual $list[0].Name $getNsg.Name
@@ -185,39 +186,39 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
         Assert-AreEqual $list[0].SecurityRules[0].Etag $getNsg.SecurityRules[0].Etag
 
         # Add a network security rule
-        $nsg = Get-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Add-AzureNetworkSecurityRuleConfig  -Name $securityRule2Name -Description "desciption2" -Protocol Tcp -SourcePortRange "26-43" -DestinationPortRange "45-53" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound | Set-AzureNetworkSecurityGroup
+        $nsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Add-AzureRmNetworkSecurityRuleConfig  -Name $securityRule2Name -Description "desciption2" -Protocol Tcp -SourcePortRange "26-43" -DestinationPortRange "45-53" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound | Set-AzureRmNetworkSecurityGroup
 		Assert-AreEqual 2 @($nsg.SecurityRules).Count
 		Assert-NotNull $nsg.SecurityRules[1].Etag
 		Assert-AreEqual $securityRule1Name $nsg.SecurityRules[0].Name
 		Assert-AreEqual $securityRule2Name $nsg.SecurityRules[1].Name
 		
 		# Get security rule
-		$securityRule2 = $nsg | Get-AzureNetworkSecurityRuleConfig -name $securityRule2Name 
+		$securityRule2 = $nsg | Get-AzureRmNetworkSecurityRuleConfig -name $securityRule2Name 
 		Assert-AreEqual $securityRule2.Name $nsg.SecurityRules[1].Name
 		Assert-AreEqual "Deny" $securityRule2.Access
 
 	    # List security rule
-		$securityRules = $nsg | Get-AzureNetworkSecurityRuleConfig
+		$securityRules = $nsg | Get-AzureRmNetworkSecurityRuleConfig
 		Assert-AreEqual 2 @($securityRules).Count
 		Assert-AreEqual $securityRules[0].Name $nsg.SecurityRules[0].Name
 		Assert-AreEqual $securityRules[1].Name $nsg.SecurityRules[1].Name
 		
 		# Set security rule
-		$nsg = Get-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Set-AzureNetworkSecurityRuleConfig  -Name $securityRule2Name -Description "desciption2" -Protocol Tcp -SourcePortRange "26-43" -DestinationPortRange "45-53" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 122 -Direction Outbound | Set-AzureNetworkSecurityGroup
-		$securityRule2 = $nsg | Get-AzureNetworkSecurityRuleConfig -name $securityRule2Name
+		$nsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Set-AzureRmNetworkSecurityRuleConfig  -Name $securityRule2Name -Description "desciption2" -Protocol Tcp -SourcePortRange "26-43" -DestinationPortRange "45-53" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Allow -Priority 122 -Direction Outbound | Set-AzureRmNetworkSecurityGroup
+		$securityRule2 = $nsg | Get-AzureRmNetworkSecurityRuleConfig -name $securityRule2Name
 		Assert-AreEqual "Allow" $securityRule2.Access
 
 		# Remove security rule
-		$nsg = Get-AzureNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Remove-AzureNetworkSecurityRuleConfig  -Name $securityRule2Name | Set-AzureNetworkSecurityGroup
-		$securityRules = $nsg | Get-AzureNetworkSecurityRuleConfig
+		$nsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Remove-AzureRmNetworkSecurityRuleConfig  -Name $securityRule2Name | Set-AzureRmNetworkSecurityGroup
+		$securityRules = $nsg | Get-AzureRmNetworkSecurityRuleConfig
 		Assert-AreEqual 1 @($securityRules).Count
 		Assert-AreEqual $securityRule1Name $securityRules[0].Name
 
         # Delete NetworkSecurityGroup
-        $delete = Remove-AzureNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
+        $delete = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
         Assert-AreEqual true $delete
         
-        $list = Get-AzureNetworkSecurityGroup -ResourceGroupName $rgname
+        $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally

@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADObjectIDRetrievalFailed" xml:space="preserve">
+    <value>Retrieving object ID from Azure Active Directory failed. {0}
+
+Please provide object ID for the user or service principle to set a vault access policy.
+You can find the object ID using Azure Active Directory Module for Windows PowerShell.</value>
+  </data>
   <data name="ADObjectNotFound" xml:space="preserve">
-    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'get-AzureSubscription -current' is the current subscription's Azure Active directory.</value>
+    <value>Cannot find the Active Directory object '{0}' in tenant '{1}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active directory.</value>
+  </data>
+  <data name="ArmAccountNotFound" xml:space="preserve">
+    <value>No account found in the context. Please login using Login-AzureRMAccount.</value>
   </data>
   <data name="BackupKeyFileAlreadyExists" xml:space="preserve">
     <value>The backup key file '{0}' already exists.</value>
@@ -126,8 +135,17 @@
   <data name="BackupKeyFileNotFound" xml:space="preserve">
     <value>Cannot find backup key file '{0}'</value>
   </data>
+  <data name="BackupSecretFileAlreadyExists" xml:space="preserve">
+    <value>The backup secret file '{0}' already exists.</value>
+  </data>
+  <data name="BackupSecretFileNotFound" xml:space="preserve">
+    <value>Cannot find backup secret file '{0}'</value>
+  </data>
   <data name="BadParameterSetName" xml:space="preserve">
     <value>Bad Parameter Set Name</value>
+  </data>
+  <data name="CertificateFileNotFound" xml:space="preserve">
+    <value>Cannot find certificate file '{0}'.</value>
   </data>
   <data name="ImportByokAsSoftkeyError" xml:space="preserve">
     <value>BYOK key can not be imported as software key</value>
@@ -135,11 +153,14 @@
   <data name="InvalidApplicationId" xml:space="preserve">
     <value>Invalid application Id.</value>
   </data>
+  <data name="InvalidObjectIdSyntax" xml:space="preserve">
+    <value>Cannot parse ObjectId into Guid.</value>
+  </data>
   <data name="InvalidAzureEnvironment" xml:space="preserve">
     <value>Invalid AzureEnvironment.</value>
   </data>
   <data name="InvalidCurrentSubscription" xml:space="preserve">
-    <value>No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
+    <value>No current subscription has been designated. Use Set-AzureRmContext -SubscriptionName &lt;subscriptionName&gt; to set the current subscription.</value>
   </data>
   <data name="InvalidKeyAttributes" xml:space="preserve">
     <value>Invalid key attributes</value>
@@ -159,6 +180,9 @@
   <data name="InvalidKeyName" xml:space="preserve">
     <value>Invalid key name.</value>
   </data>
+  <data name="InvalidNumberOfCertificates" xml:space="preserve">
+    <value>Invalid number of certificates.</value>
+  </data>
   <data name="InvalidKeyUri" xml:space="preserve">
     <value>Invalid key uri '{0}'.</value>
   </data>
@@ -174,14 +198,20 @@
   <data name="InvalidSecretUri" xml:space="preserve">
     <value>Invalid secret uri '{0}'.</value>
   </data>
+  <data name="InvalidSelectedSubscription" xml:space="preserve">
+    <value>No subscription is currently selected. Use Set-AzureRmContext to activate a subscription.</value>
+  </data>
   <data name="InvalidSubscriptionState" xml:space="preserve">
-    <value>Your Azure credentials have not been set up or have expired, please run Add-AzureAccount to set up your Azure credentials.</value>
+    <value>Your Azure credentials have not been set up or have expired, please run Login-AzureRmAccount to set up your Azure credentials.</value>
   </data>
   <data name="InvalidTagFormat" xml:space="preserve">
     <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
   </data>
   <data name="InvalidVaultName" xml:space="preserve">
     <value>Invalid vault name.</value>
+  </data>
+  <data name="InvalidManagedStorageAccountName" xml:space="preserve">
+    <value>Invalid key vault managed storage acccount name.</value>
   </data>
   <data name="InvalidVaultUri" xml:space="preserve">
     <value>Invalid vault uri '{0}'. Vault uri must contain valid dns host name with domain suffix '{1}'.</value>
@@ -192,11 +222,20 @@
   <data name="NoDefaultUserAccount" xml:space="preserve">
     <value>There is no default user account associated with this subscription. Certificate accounts are not supported with Azure Key Vault.</value>
   </data>
+  <data name="NoTenantInContext" xml:space="preserve">
+    <value>No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+  </data>
   <data name="PermissionSetIncludesAllPlusOthers" xml:space="preserve">
     <value>Invalid permissions to {0}. The list contains "all" along with other permissions. Please remove "all" from the list or include only "all" in the list.</value>
   </data>
   <data name="PermissionsNotSpecified" xml:space="preserve">
     <value>At least one permission should be selected for key access or secret access.</value>
+  </data>
+  <data name="RemoveCertWarning" xml:space="preserve">
+    <value>Are you sure you want to remove certificate '{0}'.</value>
+  </data>
+  <data name="RemoveCertWhatIfMessage" xml:space="preserve">
+    <value>Remove certificate</value>
   </data>
   <data name="RemoveKeyWarning" xml:space="preserve">
     <value>Are you sure you want to remove key '{0}'.</value>
@@ -209,6 +248,24 @@
   </data>
   <data name="RemoveSecretWhatIfMessage" xml:space="preserve">
     <value>Remove secret</value>
+  </data>
+  <data name="RemoveManagedStorageAccountWarning" xml:space="preserve">
+    <value>Are you sure you want to remove managed storage account '{0}'</value>
+  </data>
+  <data name="RemoveManagedStorageAccountWhatIfMessage" xml:space="preserve">
+    <value>Remove managed storage account</value>
+  </data>
+  <data name="RemoveManagedStorageSasDefinitionWarning" xml:space="preserve">
+    <value>Are you sure you want to remove managed storage sas definition '{0}'</value>
+  </data>
+  <data name="RemoveManagedStorageSasDefinitionWhatIfMessage" xml:space="preserve">
+    <value>Remove managed storage sas definition</value>
+  </data>
+  <data name="RegenerateManagedStorageAccountKeyWarning" xml:space="preserve">
+    <value>Are you sure you want to regenerate '{0}' of storage account '{1}' and make it an active key of Key Vault managed Storage Account.</value>
+  </data>
+  <data name="RegenerateManagedStorageAccountKeyWhatIfMessage" xml:space="preserve">
+    <value>Regenerate '{0}'</value>
   </data>
   <data name="RemoveVaultWarning" xml:space="preserve">
     <value>Are you sure you want to remove vault '{0}'.</value>
@@ -225,7 +282,136 @@
   <data name="VaultAlreadyExists" xml:space="preserve">
     <value>The specified vault already exists.</value>
   </data>
+  <data name="VaultNoAccessPolicyWarning" xml:space="preserve">
+    <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
+  </data>
   <data name="VaultNotFound" xml:space="preserve">
     <value>Cannot find vault '{0}' in resource group '{1}'.</value>
+  </data>
+  <data name="VaultPermissionFlagMissing" xml:space="preserve">
+    <value>At least one of -EnabledForDeployment, -EnabledForTemplateDeployment, or -EnabledForDiskEncryption must be specified.</value>
+  </data>
+  <data name="AddCertificate" xml:space="preserve">
+    <value>Add certificate</value>
+  </data>
+  <data name="AddCertificateContact" xml:space="preserve">
+    <value>Add certificate contact</value>
+  </data>
+  <data name="AddKey" xml:space="preserve">
+    <value>Add key</value>
+  </data>
+  <data name="BackupKey" xml:space="preserve">
+    <value>Backup key</value>
+  </data>
+  <data name="BackupSecret" xml:space="preserve">
+    <value>Backup secret</value>
+  </data>
+  <data name="CreateCertificateAdministrator" xml:space="preserve">
+    <value>Create certificate administrator</value>
+  </data>
+  <data name="CreateCertificateOrganization" xml:space="preserve">
+    <value>Create certificate organization</value>
+  </data>
+  <data name="CreateCertificatePolicy" xml:space="preserve">
+    <value>Create certificate policy</value>
+  </data>
+  <data name="CreateKeyVault" xml:space="preserve">
+    <value>Create key vault</value>
+  </data>
+  <data name="ImportCertificate" xml:space="preserve">
+    <value>Import certificate</value>
+  </data>
+  <data name="RemoveCertificateContact" xml:space="preserve">
+    <value>Remove certificate contact</value>
+  </data>
+  <data name="RemoveCertificateIssuer" xml:space="preserve">
+    <value>Remove certificate issuer</value>
+  </data>
+  <data name="RemoveCertificateOperation" xml:space="preserve">
+    <value>Remove certificate operation</value>
+  </data>
+  <data name="SetCertificateIssuer" xml:space="preserve">
+    <value>Set certificate issuer</value>
+  </data>
+  <data name="SetCertificatePolicy" xml:space="preserve">
+    <value>Set certificate policy</value>
+  </data>
+  <data name="SetKeyAttribute" xml:space="preserve">
+    <value>Set key attribute</value>
+  </data>
+  <data name="SetSecret" xml:space="preserve">
+    <value>Set secret</value>
+  </data>
+  <data name="SetSecretAttribute" xml:space="preserve">
+    <value>Set  secret attribute</value>
+  </data>
+  <data name="AddManagedStorageAccount" xml:space="preserve">
+    <value>Add Key Vault managed Storage Account</value>
+  </data>
+  <data name="SetManagedStorageAccountKeysAttribute" xml:space="preserve">
+    <value>Set Key Vault managed Storage Account attribute</value>
+  </data>
+  <data name="SetManagedStorageSasDefinition" xml:space="preserve">
+    <value>Set Key Vault managed Storage SAS definition</value>
+  </data>
+  <data name="StopCertificateOperation" xml:space="preserve">
+    <value>Stop certificate operation</value>
+  </data>
+  <data name="RemoveVaultAccessPolicy" xml:space="preserve">
+    <value>Remove vault access policy</value>
+  </data>
+  <data name="RestoreKey" xml:space="preserve">
+    <value>Restore key</value>
+  </data>
+  <data name="RestoreSecret" xml:space="preserve">
+    <value>Restore secret</value>
+  </data>
+  <data name="SetVaultAccessPolicy" xml:space="preserve">
+    <value>Set vault access policy</value>
+  </data>
+  <data name="SetCertificateAttributes" xml:space="preserve">
+    <value>Set certificate attribute</value>
+  </data>
+  <data name="RecoverKey" xml:space="preserve">
+    <value>Recover key</value>
+  </data>
+  <data name="RecoverSecret" xml:space="preserve">
+    <value>Recover secret</value>
+  </data>
+  <data name="RemoveDeletedKeyWarning" xml:space="preserve">
+    <value>Are you sure you want to purge key '{0}'.</value>
+  </data>
+  <data name="RemoveDeletedKeyWhatIfMessage" xml:space="preserve">
+    <value>Purge key</value>
+  </data>
+  <data name="RemoveDeletedSecretWarning" xml:space="preserve">
+    <value>Are you sure you want to purge secret '{0}'.</value>
+  </data>
+  <data name="RemoveDeletedSecretWhatIfMessage" xml:space="preserve">
+    <value>Purge secret</value>
+  </data>
+  <data name="AllPermissionExpansionWarning" xml:space="preserve">
+    <value>The 'all' permission is being deprecated and does not include the 'purge' permission. 'Purge' permission must be explicitly set.</value>
+  </data>
+  <data name="RecoverVault" xml:space="preserve">
+    <value>Recover vault</value>
+  </data>
+  <data name="PurgeVaultWarning" xml:space="preserve">
+    <value>Are you sure you want to remove vault '{0}' forever.</value>
+  </data>
+  <data name="PurgeVaultWhatIfMessage" xml:space="preserve">
+    <value>Purge vault</value>
+  </data>
+  <data name="DeletedVaultNotFound" xml:space="preserve">
+    <value>Cannot find deleted vault '{0}' in location '{1}'</value>
+  </data>
+  <data name="FileOverwriteCaption" xml:space="preserve">
+    <value>Overwrite File ?</value>
+  </data>
+  <data name="FileOverwriteMessage" xml:space="preserve">
+    <value>Overwrite existing file at '{0}' ?</value>
+  </data>
+  <data name="InvalidSasPermission" xml:space="preserve">
+    <value>Invalid Sas permission '{0}'.</value>
   </data>
 </root>

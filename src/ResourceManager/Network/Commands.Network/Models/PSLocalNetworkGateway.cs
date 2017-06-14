@@ -14,22 +14,29 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
 
     using Newtonsoft.Json;
 
     public class PSLocalNetworkGateway : PSTopLevelResource
     {
-        public string GatewayIpAddress  { get; set; }
+        public string GatewayIpAddress { get; set; }
 
-        public PSAddressSpace LocalNetworkSiteAddressSpace  { get; set; }
+        public PSAddressSpace LocalNetworkAddressSpace { get; set; }
 
         public string ProvisioningState { get; set; }
+
+        public PSBgpSettings BgpSettings { get; set; }
 
         [JsonIgnore]
         public string AddressSpaceText
         {
-            get { return JsonConvert.SerializeObject(LocalNetworkSiteAddressSpace, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LocalNetworkAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string BgpSettingsText
+        {
+            get { return JsonConvert.SerializeObject(BgpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

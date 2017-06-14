@@ -14,12 +14,15 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
-    using System.Collections.Generic;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TrafficManagerProfile
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string ResourceGroupName { get; set; }
@@ -27,6 +30,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         public string RelativeDnsName { get; set; }
 
         public uint Ttl { get; set; }
+
+        public string ProfileStatus { get; set; }
 
         public string TrafficRoutingMethod { get; set; }
 
@@ -36,52 +41,39 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string MonitorPath { get; set; }
 
-        public List<Endpoint> Endpoints { get; set; }
+        public int? MonitorIntervalInSeconds { get; set; }
+
+        public int? MonitorTimeoutInSeconds { get; set; }
+
+        public int? MonitorToleratedNumberOfFailures { get; set; }
+
+        public List<TrafficManagerEndpoint> Endpoints { get; set; }
 
         public Profile ToSDKProfile()
         {
-            var profile = new Profile
-            {
-                Name = this.Name,
-                Type = Constants.ProfileType,
-                Location = TrafficManagerClient.ProfileResourceLocation,
-                Properties = new ProfileProperties
+            var profile = new Profile(this.Id, this.Name, Constants.ProfileType, TrafficManagerClient.ProfileResourceLocation)
+            { 
+                ProfileStatus = this.ProfileStatus,
+                TrafficRoutingMethod = this.TrafficRoutingMethod,
+                DnsConfig = new DnsConfig
                 {
-                    TrafficRoutingMethod = this.TrafficRoutingMethod,
-                    DnsConfig = new DnsConfig
-                    {
-                        RelativeName = this.RelativeDnsName,
-                        Ttl = this.Ttl
-                    },
-                    MonitorConfig = new MonitorConfig
-                    {
-                        Protocol = this.MonitorProtocol,
-                        Port = this.MonitorPort,
-                        Path = this.MonitorPath
-                    }
+                    RelativeName = this.RelativeDnsName,
+                    Ttl = this.Ttl
+                },
+                MonitorConfig = new MonitorConfig
+                {
+                    Protocol = this.MonitorProtocol,
+                    Port = this.MonitorPort,
+                    Path = this.MonitorPath,
+                    IntervalInSeconds = this.MonitorIntervalInSeconds,
+                    TimeoutInSeconds = this.MonitorTimeoutInSeconds,
+                    ToleratedNumberOfFailures = this.MonitorToleratedNumberOfFailures,
                 }
             };
 
-            if (this.Endpoints.Count > 0)
+            if (this.Endpoints != null && this.Endpoints.Any())
             {
-                profile.Properties.Endpoints = new List<Management.TrafficManager.Models.Endpoint>();
-
-                foreach (Endpoint endpoint in this.Endpoints)
-                {
-                    profile.Properties.Endpoints.Add(new Management.TrafficManager.Models.Endpoint
-                    {
-                        Name = endpoint.Name,
-                        Type = endpoint.Type,
-                        Properties = new EndpointProperties
-                        {
-                            Target = endpoint.Target,
-                            EndpointStatus = endpoint.EndpointStatus,
-                            Weight = endpoint.Weight,
-                            Priority = endpoint.Priority,
-                            EndpointLocation = endpoint.Location
-                        }
-                    });
-                }    
+                profile.Endpoints = this.Endpoints.Select(endpoint => endpoint.ToSDKEndpoint()).ToList();
             }
 
             return profile;

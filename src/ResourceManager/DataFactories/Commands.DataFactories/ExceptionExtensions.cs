@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Hyak.Common;
-using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 exception.ParamName,
                 exception.ActualValue,
                 string.Format(CultureInfo.InvariantCulture,
-                    Resources.FormattedArgumentOutOfRangeExceptionMessageTemplate, 
+                    Resources.FormattedArgumentOutOfRangeExceptionMessageTemplate,
                     exception.Message));
         }
     }

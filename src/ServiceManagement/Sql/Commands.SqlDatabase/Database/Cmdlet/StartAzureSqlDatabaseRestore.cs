@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// Issues a new restore request for the specified live or dropped Microsoft Azure SQL Database.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureSqlDatabaseRestore", ConfirmImpact = ConfirmImpact.Low)]
-    public class StartAzureSqlDatabaseRestore : AzurePSCmdlet
+    public class StartAzureSqlDatabaseRestore : AzureSMCmdlet
     {
         #region Parameter Sets
 

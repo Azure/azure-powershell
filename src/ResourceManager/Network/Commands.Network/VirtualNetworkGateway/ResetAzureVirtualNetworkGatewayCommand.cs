@@ -12,41 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Reset, "AzureVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.Reset, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
     public class ResetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The virtualNetworkGateway")]
+        [ValidateNotNull]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The gateway vip in order to reset particular gateway instance (e.g. in case of Active-Active feature enabled gateways.) By default, gateway primary instance will be reset if no value is passed.")] 
+        public string GatewayVip { get; set; }
 
+        public override void Execute()
+        {
+            base.Execute();
             if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
-            
-            // Map to the sdk object
-            var vnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
-            vnetGatewayModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.VirtualNetworkGatewayType;
-            vnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGateway.Tag, validate: true);
 
-            this.VirtualNetworkGatewayClient.Reset(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, vnetGatewayModel);
+            this.VirtualNetworkGatewayClient.Reset(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, GatewayVip);
 
             var getVirtualNetworkGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
             WriteObject(getVirtualNetworkGateway);

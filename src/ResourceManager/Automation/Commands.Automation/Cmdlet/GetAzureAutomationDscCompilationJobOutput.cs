@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets stream for a compilation job
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationDscCompilationJobOutput")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscCompilationJobOutput")]
     [OutputType(typeof(JobStream))]
     public class GetAzureAutomationDscCompilationJobOutput : AzureAutomationBaseCmdlet
     {
@@ -48,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             var ret = this.AutomationClient.GetDscCompilationJobStream(this.ResourceGroupName, this.AutomationAccountName, this.Id, this.StartTime, this.Stream.ToString());
 

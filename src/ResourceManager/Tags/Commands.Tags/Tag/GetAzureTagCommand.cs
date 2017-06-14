@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureTag"), OutputType(typeof(List<PSTag>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmTag"), OutputType(typeof(List<PSTag>))]
     public class GetAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If not specified, return all the tags of the subscription.")]

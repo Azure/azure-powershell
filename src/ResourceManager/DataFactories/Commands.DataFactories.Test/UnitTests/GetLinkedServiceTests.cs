@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         private GetAzureDataFactoryLinkedServiceCommand cmdlet;
 
-        public GetLinkedServiceTests()
+        public GetLinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new GetAzureDataFactoryLinkedServiceCommand()
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                             It.Is<LinkedServiceFilterOptions>(
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
-                                    options.DataFactoryName == DataFactoryName && 
+                                    options.DataFactoryName == DataFactoryName &&
                                     options.Name == linkedServiceName)))
                 .CallBase()
                 .Verifiable();
@@ -115,13 +116,17 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
                             It.Is<LinkedServiceFilterOptions>(
                                 options =>
                                     options.ResourceGroupName == ResourceGroupName &&
-                                    options.DataFactoryName == DataFactoryName && 
-                                    options.Name == null)))
+                                    options.DataFactoryName == DataFactoryName &&
+                                    options.Name == null && options.NextLink == null)))
                 .CallBase()
                 .Verifiable();
 
             dataFactoriesClientMock
-                .Setup(f => f.ListLinkedServices(ResourceGroupName, DataFactoryName))
+                .Setup(f => f.ListLinkedServices(It.Is<LinkedServiceFilterOptions>(
+                    options =>
+                        options.ResourceGroupName == ResourceGroupName &&
+                        options.DataFactoryName == DataFactoryName &&
+                        options.Name == null && options.NextLink == null)))
                 .Returns(expected)
                 .Verifiable();
 

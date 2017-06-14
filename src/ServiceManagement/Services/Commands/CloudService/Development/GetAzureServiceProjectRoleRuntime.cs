@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// Retrieve a list of role runtimes available in the cloud
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureServiceProjectRoleRuntime"), OutputType(typeof(List<CloudRuntimePackage>))]
-    public class GetAzureServiceProjectRoleRuntimeCommand : AzurePSCmdlet
+    public class GetAzureServiceProjectRoleRuntimeCommand : AzureSMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Runtime { get; set; }
@@ -35,7 +35,6 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
         /// The manifest parameter is mainly a testing hook.
         /// </summary>
         /// <param name="runtimeType">The runtime type to filter by</param>
-        /// <param name="rootPath">The path to the service in question</param>
         /// <param name="manifest">The path to the manifest file, if null, the default cloud manifest is used (test hook)</param>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public void GetAzureRuntimesProcess(string runtimeType, string manifest = null)

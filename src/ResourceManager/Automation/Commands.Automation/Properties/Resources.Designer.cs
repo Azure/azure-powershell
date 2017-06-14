@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The node configuration &apos;{0}&apos; is currently assigned to one or more nodes. Either specify the IgnoreNodeMappings parameter, or reassign these nodes to a different node configuration, to delete this node configuration..
+        /// </summary>
+        internal static string CannotDeleteNodeConfiguration {
+            get {
+                return ResourceManager.GetString("CannotDeleteNodeConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The certificate already exists. Certificate name: {0}..
         /// </summary>
         internal static string CertificateAlreadyExists {
@@ -104,7 +113,18 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
                 return ResourceManager.GetString("CertificateAlreadyExists", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///     Looks up a localized string similar to The hybrid Runbook Worker Group was not found. hybrid Runbook Worker Group name {0}..
+        /// </summary>
+        internal static string HybridRunbookWorkerGroupNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("HybridRunbookWorkerNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The certificate was not found. Certificate name {0}..
         /// </summary>
@@ -138,6 +158,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string ConfigurationContentNotFound {
             get {
                 return ResourceManager.GetString("ConfigurationContentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ConfigurationData cannot be part of the job parameters. You can specify the ConfigurationData using the {0} switch.
+        /// </summary>
+        internal static string ConfigurationDataShouldNotBeInJobParameters {
+            get {
+                return ResourceManager.GetString("ConfigurationDataShouldNotBeInJobParameters", resourceCulture);
             }
         }
         
@@ -232,6 +261,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The connection type was not found. ConnectionType name: {0}..
+        /// </summary>
+        internal static string ConnectionTypeNotFound {
+            get {
+                return ResourceManager.GetString("ConnectionTypeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
         /// </summary>
         internal static string CredentialNotFound {
@@ -268,6 +306,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File name and runbook name must be the same for PowerShell Workflow runbooks..
+        /// </summary>
+        internal static string FileNameRunbookNameMismatch {
+            get {
+                return ResourceManager.GetString("FileNameRunbookNameMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid configuration parameters..
         /// </summary>
         internal static string InvalidConfigurationParameters {
@@ -295,6 +342,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imported file should be  either .ps1 or .graphrunbook..
+        /// </summary>
+        internal static string InvalidImportFile {
+            get {
+                return ResourceManager.GetString("InvalidImportFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid runbook parameters..
         /// </summary>
         internal static string InvalidRunbookParameters {
@@ -304,11 +360,38 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The runbook type is invalid for the file extension. PowerShell workflow and scripts should be .ps1. Graph runbook extension should be .graphrunbook. Provided file extension: {0}  .
+        /// </summary>
+        internal static string InvalidRunbookTypeForExtension {
+            get {
+                return ResourceManager.GetString("InvalidRunbookTypeForExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job completion maximum wait time reached..
+        /// </summary>
+        internal static string JobCompletionMaxWaitReached {
+            get {
+                return ResourceManager.GetString("JobCompletionMaxWaitReached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Job having Id: {0} was not found..
         /// </summary>
         internal static string JobNotFound {
             get {
                 return ResourceManager.GetString("JobNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Job progress state : Id {0}, state {1}, time {2}&quot;.
+        /// </summary>
+        internal static string JobProgressState {
+            get {
+                return ResourceManager.GetString("JobProgressState", resourceCulture);
             }
         }
         
@@ -331,6 +414,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Job terminal state : Id {0}, state {1}, time {2}&quot;.
+        /// </summary>
+        internal static string JobTerminalState {
+            get {
+                return ResourceManager.GetString("JobTerminalState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Metaconfig already exists. Specify the parameter to force an overwrite. File: {0}.
         /// </summary>
         internal static string MetaconfigAlreadyExists {
@@ -349,11 +441,29 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For monthly occurrence, both day of week and occurrence need to be specified..
+        /// </summary>
+        internal static string MonthlyScheduleNeedsDayOfWeekAndOccurrence {
+            get {
+                return ResourceManager.GetString("MonthlyScheduleNeedsDayOfWeekAndOccurrence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A node configuration already exists. Specify the parameter to force an overwrite..
         /// </summary>
         internal static string NodeConfigurationAlreadyExists {
             get {
                 return ResourceManager.GetString("NodeConfigurationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid node configuration name. Please specify in the format &lt;config name&gt;.&lt;node name&gt;.
+        /// </summary>
+        internal static string NodeConfigurationNameInvalid {
+            get {
+                return ResourceManager.GetString("NodeConfigurationNameInvalid", resourceCulture);
             }
         }
         
@@ -475,6 +585,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This connection type has connections associated with it. If you delete this connection type, all connections associated with it will be unusable and should be removed, unless you create a new connection type with the same name that has the same field definitions as the deleted connection type. However, it can have additional fields as well. Are you sure you want to remove the Azure Automation {0} ?.
+        /// </summary>
+        internal static string RemoveConnectionTypeThatHasConnectionWarning {
+            get {
+                return ResourceManager.GetString("RemoveConnectionTypeThatHasConnectionWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing the Dsc node with Id {0}..
         /// </summary>
         internal static string RemoveDscNodeDescription {
@@ -489,6 +608,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemoveDscNodeWarning {
             get {
                 return ResourceManager.GetString("RemoveDscNodeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation {0}? Note: Any DSC node configurations under this DSC configuration will not be removed..
+        /// </summary>
+        internal static string RemovingAzureAutomationDscConfigurationWarning {
+            get {
+                return ResourceManager.GetString("RemovingAzureAutomationDscConfigurationWarning", resourceCulture);
             }
         }
         
@@ -534,6 +662,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RunbookAlreadyHasDraft {
             get {
                 return ResourceManager.GetString("RunbookAlreadyHasDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}.
+        /// </summary>
+        internal static string RunbookFileAlreadyExists {
+            get {
+                return ResourceManager.GetString("RunbookFileAlreadyExists", resourceCulture);
             }
         }
         

@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories.Models;
-using System.Collections;
+using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -26,21 +26,32 @@ namespace Microsoft.Azure.Commands.DataFactories
     {
         private string _updateType = "Individual";
 
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = "The data slice status.")]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The data slice range end time.")]
+        public DateTime EndDateTime
+        {
+            get
+            {
+                if (_endDateTime == default(DateTime))
+                {
+                    WriteWarning(Resources.EndDateTimeNotSpecifiedForSetSliceStatus);
+                    return StartDateTime + Constants.DefaultSliceActivePeriodDuration;
+                }
+
+                return _endDateTime;
+            }
+            set
+            {
+                _endDateTime = value;
+            }
+        }
+
+        [Parameter(Position = 5, Mandatory = true, HelpMessage = "The data slice state.")]
         [ValidateSet(
-            DataSliceStatus.NotSpecified,
-            DataSliceStatus.PendingExecution,
-            DataSliceStatus.InProgress,
-            DataSliceStatus.Failed,
-            DataSliceStatus.Ready,
-            DataSliceStatus.Skip,
-            DataSliceStatus.Retry,
-            DataSliceStatus.TimedOut,
-            DataSliceStatus.PendingValidation,
-            DataSliceStatus.RetryValidation,
-            DataSliceStatus.FailedValidation,
-            DataSliceStatus.LongRetry,
-            DataSliceStatus.ValidationInProgress,
+            DataSliceState.Failed,
+            DataSliceState.InProgress,
+            DataSliceState.Ready,
+            DataSliceState.Skipped,
+            DataSliceState.Waiting,
             IgnoreCase = false)]
         public string Status { get; set; }
 
@@ -72,7 +83,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             DataFactoryClient.SetSliceStatus(
                 ResourceGroupName,
                 DataFactoryName,
-                TableName,
+                this.DatasetName,
                 Status,
                 UpdateType,
                 StartDateTime,

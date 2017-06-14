@@ -13,24 +13,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Tags.Model;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
     public abstract class LocalNetworkGatewayBaseCmdlet : NetworkBaseCmdlet
     {
-        public ILocalNetworkGatewayOperations LocalNetworkGatewayClient
+        public ILocalNetworkGatewaysOperations LocalNetworkGatewayClient
         {
             get
             {
-                return NetworkClient.NetworkResourceProviderClient.LocalNetworkGateways;
+                return NetworkClient.NetworkManagementClient.LocalNetworkGateways;
             }
         }
 
@@ -40,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetLocalNetworkGateway(resourceGroupName, name);
             }
-            catch (CloudException exception)
+            catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -55,9 +53,9 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSLocalNetworkGateway GetLocalNetworkGateway(string resourceGroupName, string name)
         {
-            var getLocalNetworkGatewayResponse = this.LocalNetworkGatewayClient.Get(resourceGroupName, name);
+            var localNetworkGateway = this.LocalNetworkGatewayClient.Get(resourceGroupName, name);
 
-            var psLocalNetworkGateway = ToPsLocalNetworkGateway(getLocalNetworkGatewayResponse.LocalNetworkGateway);
+            var psLocalNetworkGateway = ToPsLocalNetworkGateway(localNetworkGateway);
             psLocalNetworkGateway.ResourceGroupName = resourceGroupName;
 
             return psLocalNetworkGateway;

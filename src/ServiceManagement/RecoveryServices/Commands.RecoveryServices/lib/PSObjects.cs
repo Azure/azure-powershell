@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Management.RecoveryServices.Models;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
@@ -241,6 +241,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Acceptable values of Replication Frequency in seconds (as per portal).
         /// </summary>
         public const string NineHundred = "900";
+
+        /// <summary>
+        /// Acceptable value of ResourceType passed during vault upgrade.
+        /// </summary>
+        public const string BackupVault = "BackupVault";
+        
+        /// <summary>
+        /// ASR namespace.
+        /// </summary>
+        public const string ASRNamespace = "WAHyperVRecoveryManager";
+
+        /// <summary>
+        /// Backup namespace.
+        /// </summary>
+        public const string BackupNamespace = "WABackup";
+
+        /// <summary>
+        /// Represents in progress state.
+        /// </summary>
+        public const string InProgress = "InProgress";
+
+        /// <summary>
+        /// Represents succeeded state.
+        /// </summary>
+        public const string Succeeded = "Succeeded";
+
+        /// <summary>
+        /// Represents completed state.
+        /// </summary>
+        public const string Completed = "Completed";
+
+        /// <summary>
+        /// Represents vaults string value.
+        /// </summary>
+        public const string Vaults = "Vaults";
+
+        /// <summary>
+        /// Represents Recovery service namespace value.
+        /// </summary>
+        public const string RecoveryServicesNamespace = "Microsoft.RecoveryServices";
     }
 
     /// <summary>

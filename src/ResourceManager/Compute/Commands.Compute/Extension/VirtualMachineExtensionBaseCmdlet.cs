@@ -18,12 +18,18 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public abstract class VirtualMachineExtensionBaseCmdlet : ComputeClientBaseCmdlet
     {
-        public IVirtualMachineExtensionOperations VirtualMachineExtensionClient
+        public IVirtualMachineExtensionsOperations VirtualMachineExtensionClient
         {
             get
             {
                 return ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
             }
+        }
+
+        protected string GetLocationFromVm(string rgName, string vmName)
+        {
+            var vm = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(rgName, vmName);
+            return vm.Location;
         }
     }
 }

@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Sync.Threading;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using Microsoft.WindowsAzure.Commands.Sync.Threading;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -47,8 +47,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             var uploadStatus = new ProgressStatus(alreadyUploadedData, alreadyUploadedData + dataToUpload, new ComputeStats());
 
-            using(new ServicePointHandler(blob.Uri, this.maxParallelism))
-            using(new ProgressTracker(uploadStatus))
+            using (new ServicePointHandler(blob.Uri, this.maxParallelism))
+            using (new ProgressTracker(uploadStatus))
             {
                 var loopResult = Parallel.ForEach(dataWithRanges,
                                                   () => new CloudPageBlob(blob.Uri, blob.ServiceClient.Credentials),
@@ -56,27 +56,27 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                                                       {
                                                           using (dwr)
                                                           {
-                                                              var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int) dwr.Range.Length);
+                                                              var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int)dwr.Range.Length);
                                                               using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
                                                               {
                                                                   b.Properties.ContentMD5 = md5HashOfDataChunk;
                                                                   b.WritePages(stream, dwr.Range.StartIndex);
                                                               }
                                                           }
-                                                          uploadStatus.AddToProcessedBytes((int) dwr.Range.Length);
+                                                          uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);
                                                       }, this.maxParallelism);
-                if(loopResult.IsExceptional)
+                if (loopResult.IsExceptional)
                 {
                     if (loopResult.Exceptions.Any())
                     {
                         Program.SyncOutput.ErrorUploadFailedWithExceptions(loopResult.Exceptions);
-                        //TODO: throw an AggregateException
-                        return false;
+
+                        throw new AggregateException(loopResult.Exceptions);
                     }
                 }
                 else
                 {
-                    using(var bdms = new BlobMetaDataScope(new CloudPageBlob(blob.Uri, blob.ServiceClient.Credentials)))
+                    using (var bdms = new BlobMetaDataScope(new CloudPageBlob(blob.Uri, blob.ServiceClient.Credentials)))
                     {
                         bdms.Current.SetBlobMd5Hash(md5Hash);
                         bdms.Current.CleanUpUploadMetaData();

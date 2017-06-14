@@ -662,6 +662,78 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                 {
                     Context = this,
                     Enabled = true,
+                    Id = new Guid("afe1eee1-1f12-4e5f-9ad6-2de9c12cb4dc"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "P4"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("43940481-9191-475a-9dba-6b505615b9aa"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "P6"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("dd00d544-bbc0-4f61-ba60-cdce0c410288"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "P11"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("5BC86CCA-9A96-4A94-90EF-BBDFCFBF2D71"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "P15"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("DFDC102C-ED02-4349-9756-E227F0E43BB8"),
+                    IsDefault = true,
+                    IsSystem = false,
+                    Name = "PRS1"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("A089506E-B47A-4F42-8A32-CC19AF4C86FB"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "PRS2"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("39CB8FAF-CBA8-4B1B-B580-1E1202F2A024"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "PRS4"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
+                    Id = new Guid("1E8DA92E-EFCD-4682-9140-BF6582120D1F"),
+                    IsDefault = false,
+                    IsSystem = false,
+                    Name = "PRS6"
+                },
+                new ServiceObjective()
+                {
+                    Context = this,
+                    Enabled = true,
                     Id = new Guid("D1737D22-A8EA-4DE7-9BD0-33395D2A7419"),
                     IsDefault = false,
                     IsSystem = false,
@@ -837,15 +909,21 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
                     }
                 }
             }
+
             if (db.MaxSizeBytes.HasValue)
             {
                 db.MaxSizeGB = (int)(db.MaxSizeBytes / (1024 * 1024 * 1024));
             }
+
             if (!string.IsNullOrEmpty(db.ServiceObjectiveName))
             {
                 db.ServiceObjective = GetServiceObjective(db.ServiceObjectiveName);
-                db.ServiceObjectiveId = db.ServiceObjective.Id;
+                if (db.ServiceObjective != null)
+                {
+                    db.ServiceObjectiveId = db.ServiceObjective.Id;
+                }
             }
+
 
             builder["Database"] = null;
         }

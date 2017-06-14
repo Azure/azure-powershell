@@ -20,8 +20,7 @@ using System.Management.Automation;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.PowerShellTestAbstraction.Concretes;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.PowerShellTestAbstraction.Interfaces;
@@ -36,8 +35,11 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCluste
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.WindowsAzure.Management.HDInsight.Framework.Core;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
-using Microsoft.Azure.Common.Authentication;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
 {
@@ -66,30 +68,30 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             return TestManager.GetAllCredentials();
         }
 
-        public static AzureSubscription GetCurrentSubscription()
+        public static IAzureSubscription GetCurrentSubscription()
         {
             string certificateThumbprint1 = "jb245f1d1257fw27dfc402e9ecde37e400g0176r";
             var newSubscription = new AzureSubscription()
             {
-                Id = IntegrationTestBase.TestCredentials.SubscriptionId,
+                Id = IntegrationTestBase.TestCredentials.SubscriptionId.ToString(),
                 // Use fake certificate thumbprint
-                Account = certificateThumbprint1,
-                Environment = "AzureCloud"
             };
-            newSubscription.Properties[AzureSubscription.Property.Default] = "True";
+            newSubscription.SetAccount(certificateThumbprint1);
+            newSubscription.SetEnvironment("AzureCloud");
+            newSubscription.SetDefault();
 
-            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
-            profileClient.Profile.Accounts[certificateThumbprint1] = 
+            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
+            profileClient.Profile.AccountTable[certificateThumbprint1] = 
                 new AzureAccount()
                 {
                     Id = certificateThumbprint1,
                     Type = AzureAccount.AccountType.Certificate
                 };
-            profileClient.Profile.Subscriptions[newSubscription.Id] = newSubscription;
+            profileClient.Profile.SubscriptionTable[newSubscription.GetId()] = newSubscription;
             
             profileClient.Profile.Save();
             
-            return profileClient.Profile.Subscriptions[newSubscription.Id];
+            return profileClient.Profile.SubscriptionTable[newSubscription.GetId()];
         }
 
         public static AzureTestCredentials GetCredentialsForEnvironmentType(EnvironmentType type)
@@ -148,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
 
         public static void TestRunSetup()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             // This is to ensure that all key assemblies are loaded before IOC registration is required.
             // This is only necessary for the test system as load order is correct for a production run.
             // types.Add(typeof(GetAzureHDInsightClusterCmdlet));
@@ -159,9 +162,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             cmdletRunManager.RegisterType<IAzureHDInsightClusterManagementClientFactory, AzureHDInsightClusterManagementClientSimulatorFactory>();
             cmdletRunManager.RegisterType<IAzureHDInsightJobSubmissionClientFactory, AzureHDInsightJobSubmissionClientSimulatorFactory>();
             var testManager = new IntegrationTestManager();
-            AzureSession.DataStore = new MemoryDataStore();
-            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSession.Instance.DataStore = new MemoryDataStore();
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            AzureSMCmdlet.CurrentProfile = profile;
             TestCredentials = testManager.GetCredentials("default");
             if (TestCredentials == null)
             {
@@ -192,8 +195,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             WaitAzureHDInsightJobCommand.ReduceWaitTime = true;
             var cmdletManager = ServiceLocator.Instance.Locate<IServiceLocationSimulationManager>();
             cmdletManager.MockingLevel = ServiceLocationMockingLevel.ApplyFullMocking;
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            AzureSession.DataStore = new MemoryDataStore();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.DataStore = new MemoryDataStore();
         }
 
         public void ApplyIndividualTestMockingOnly()
@@ -260,6 +263,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
         {
             if (!IsInitialized)
             {
+                AzureSessionInitializer.InitializeAzureSession();
+                ServiceManagementProfileProvider.InitializeServiceManagementProfile();
                 TestRunSetup();
                 IsInitialized = true;
             }

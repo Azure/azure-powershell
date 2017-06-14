@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.TrafficManager
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Collections.Generic;
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.Add, "AzureTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
     public class AddAzureTrafficManagerEndpointConfig : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
@@ -35,11 +34,15 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.")]
-        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = false)]
+        [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The target of the endpoint.")]
+        [Parameter(Mandatory = false, HelpMessage = "The resource id of the endpoint.")]
+        [ValidateNotNullOrEmpty]
+        public string TargetResourceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The target of the endpoint.")]
         [ValidateNotNullOrEmpty]
         public string Target { get; set; }
 
@@ -60,11 +63,19 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpoints { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The list of regions mapped to this endpoint when using the ‘Geographic’ traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.")]
+        [ValidateCount(1, 350)]
+        public List<string> GeoMapping { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.TrafficManagerProfile.Endpoints == null)
             {
-                this.TrafficManagerProfile.Endpoints = new List<Endpoint>();
+                this.TrafficManagerProfile.Endpoints = new List<TrafficManagerEndpoint>();
             }
 
             if (this.TrafficManagerProfile.Endpoints.Any(endpoint => string.Equals(this.EndpointName, endpoint.Name)))
@@ -73,15 +84,18 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
 
             this.TrafficManagerProfile.Endpoints.Add(
-                new Endpoint
+                new TrafficManagerEndpoint
                 {
                     Name = this.EndpointName,
                     Type = this.Type,
+                    TargetResourceId = this.TargetResourceId,
                     Target = this.Target,
                     EndpointStatus = this.EndpointStatus,
                     Weight = this.Weight,
                     Priority = this.Priority,
-                    Location = this.EndpointLocation
+                    Location = this.EndpointLocation,
+                    MinChildEndpoints = this.MinChildEndpoints,
+                    GeoMapping = this.GeoMapping,
                 });
 
             this.WriteVerbose(ProjectResources.Success);

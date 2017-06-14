@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Removes new service bus authorization rule.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureSBAuthorizationRule"), OutputType(typeof(bool))]
-    public class RemoveAzureSBAuthorizationRuleCommand : AzurePSCmdlet
+    public class RemoveAzureSBAuthorizationRuleCommand : AzureSMCmdlet
     {
         public const string EntitySASParameterSet = "EntitySAS";
 
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
 
         public override void ExecuteCmdlet()
         {
-            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+            Client = Client ?? new ServiceBusClientExtensions(Profile);
             AuthorizationRuleFilterOption options = new AuthorizationRuleFilterOption()
             {
                 Namespace = Namespace,

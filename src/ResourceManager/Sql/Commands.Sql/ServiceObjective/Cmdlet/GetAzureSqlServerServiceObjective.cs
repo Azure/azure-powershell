@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter;
-using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
     {
         /// <summary>
@@ -45,8 +44,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName"))
             {
-                results = new List<AzureSqlServerServiceObjectiveModel>();
-                results.Add(ModelAdapter.GetServiceObjective(this.ResourceGroupName, this.ServerName, this.ServiceObjectiveName));
+                results = new List<AzureSqlServerServiceObjectiveModel>
+                {
+                    ModelAdapter.GetServiceObjective(this.ResourceGroupName, this.ServerName, this.ServiceObjectiveName)
+                };
             }
             else
             {

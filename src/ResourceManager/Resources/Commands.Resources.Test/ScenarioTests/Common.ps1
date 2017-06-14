@@ -36,12 +36,27 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureLocation | where {$_.Name -eq $provider}
-    if ($location -eq $null) {
-        "West US"
-    } else {
-        $location.Locations[0]
-    }
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "West US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
+		}
+		
+		return "West US"
+	}
+
+	return "WestUS"
 }
 
 <#
@@ -60,6 +75,6 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureResourceGroup -Name $rgname -Force
+        Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }

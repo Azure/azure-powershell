@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 {
@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
                 sectorsPerTrack = 17;
                 cylinderTimesHeads = totalSectors / sectorsPerTrack;
 
-                heads = (int) ((cylinderTimesHeads + 1023) / 1024);
+                heads = (int)((cylinderTimesHeads + 1023) / 1024);
 
                 if (heads < 4)
                 {
@@ -61,14 +61,14 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
                     cylinderTimesHeads = totalSectors / sectorsPerTrack;
                 }
             }
-            long cylinders = cylinderTimesHeads/heads;
+            long cylinders = cylinderTimesHeads / heads;
 
             return new DiskGeometry
-                       {
-                           Cylinder = (short) cylinders,
-                           Heads = (byte) heads,
-                           Sectors = (byte) sectorsPerTrack
-                       };
+            {
+                Cylinder = (short)cylinders,
+                Heads = (byte)heads,
+                Sectors = (byte)sectorsPerTrack
+            };
         }
 
         [VhdProperty(Offset = 0, Size = 2)]
@@ -83,11 +83,11 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         public DiskGeometry CreateCopy()
         {
             return new DiskGeometry
-                       {
-                           Cylinder = this.Cylinder,
-                           Heads = this.Heads,
-                           Sectors = this.Sectors
-                       };
+            {
+                Cylinder = this.Cylinder,
+                Heads = this.Heads,
+                Sectors = this.Sectors
+            };
         }
 
         public override string ToString()
@@ -99,8 +99,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (DiskGeometry)) return false;
-            return Equals((DiskGeometry) obj);
+            if (obj.GetType() != typeof(DiskGeometry)) return false;
+            return Equals((DiskGeometry)obj);
         }
 
         private bool Equals(DiskGeometry other)
@@ -113,8 +113,8 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
             unchecked
             {
                 int result = Cylinder.GetHashCode();
-                result = (result*397) ^ Heads.GetHashCode();
-                result = (result*397) ^ Sectors.GetHashCode();
+                result = (result * 397) ^ Heads.GetHashCode();
+                result = (result * 397) ^ Sectors.GetHashCode();
                 return result;
             }
         }

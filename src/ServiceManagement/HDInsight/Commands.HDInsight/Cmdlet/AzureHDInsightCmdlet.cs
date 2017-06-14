@@ -17,27 +17,30 @@ using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.BaseInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Logging;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
 {
     /// <summary>
     ///     The base class for HDInsight Cmdlets.
     /// </summary>
-    public abstract class AzureHDInsightCmdlet : AzurePSCmdlet
+    public abstract class AzureHDInsightCmdlet : AzureSMCmdlet
     {
-        internal static AzureSubscription testSubscription;
+        internal static IAzureSubscription testSubscription;
 
         private ILogWriter logger;
 
+      
         /// <summary>
         ///     Gets or sets a value indicating whether logging should be enabled.
         /// </summary>
@@ -113,20 +116,20 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             }
         }
 
-        protected AzureSubscription GetCurrentSubscription(string Subscription, X509Certificate2 certificate)
+        protected IAzureSubscription GetCurrentSubscription(string Subscription, X509Certificate2 certificate)
         {
             if (Subscription.IsNotNullOrEmpty())
             {
                 this.WriteWarning("The -Subscription parameter is deprecated, Please use Select-AzureSubscription -Current to select a subscription to use.");
 
-                ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+                ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
 
                 var subscriptionResolver =
                     ServiceLocator.Instance.Locate<IAzureHDInsightSubscriptionResolverFactory>().Create(client.Profile);
                 var resolvedSubscription = subscriptionResolver.ResolveSubscription(Subscription);
-                if (certificate.IsNotNull() && resolvedSubscription.Account != certificate.Thumbprint)
+                if (certificate.IsNotNull() && resolvedSubscription.GetAccount() != certificate.Thumbprint)
                 {
-                    AzureSession.DataStore.AddCertificate(certificate);
+                    AzureSession.Instance.DataStore.AddCertificate(certificate);
                 }
 
                 if (resolvedSubscription.IsNull())
@@ -145,7 +148,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
 #if DEBUG
                 // we need this for the tests to mock out the current subscription.
-                if (this.HasCurrentSubscription)
+                if (Profile.Context.Subscription != null)
                 {
                     return this.Profile.Context.Subscription;
                 }

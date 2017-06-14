@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets a Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Module))]
     public class GetAzureAutomationModule : AzureAutomationBaseCmdlet
     {
@@ -39,13 +38,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             IEnumerable<Module> ret = null;
             if (!string.IsNullOrEmpty(this.Name))
             {
-                ret = new List<Module> 
-                { 
+                ret = new List<Module>
+                {
                    this.AutomationClient.GetModule(this.ResourceGroupName, this.AutomationAccountName, this.Name)
                 };
                 this.GenerateCmdletOutput(ret);

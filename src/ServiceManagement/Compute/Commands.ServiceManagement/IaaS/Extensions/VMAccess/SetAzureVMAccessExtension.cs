@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -119,12 +119,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 this.PublicConfiguration = GetLegacyConfiguration();
                 this.Version = VMAccessAgentLegacyVersion;
             }
-            else
+            else if (IsXmlExtension(this.Version))
             {
                 this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
                 this.PublicConfiguration = GetPublicConfiguration();
                 this.PrivateConfiguration = GetPrivateConfiguration();
-                this.Version = ExtensionDefaultVersion;
+            }
+            else
+            {
+                this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
+                this.PublicConfiguration = GetJsonPublicConfiguration();
+                this.PrivateConfiguration = GetJsonPrivateConfiguration();
+                if (string.IsNullOrEmpty(this.Version))
+                {
+                    this.Version = ExtensionDefaultVersion;
+                }
             }
         }
 

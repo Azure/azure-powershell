@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         
         public string UserId { get; set; }
         
-        public LoginType LoginType { get; set; }
+        public string LoginType { get; set; }
 
         public string TenantId { get; set; }
     }

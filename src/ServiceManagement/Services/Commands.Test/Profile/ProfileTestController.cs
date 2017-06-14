@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -24,6 +24,8 @@ using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Test.Profile
 {
@@ -31,15 +33,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
     {
         private TestEnvironmentFactory testFactory;
         private EnvironmentSetupHelper helper;
-
-        public static ProfileTestController NewInstance 
-        { 
-            get
-            {
-                return new ProfileTestController();
-            }
-        }
-
+        
         public static ProfileTestController NewRdfeInstance 
         { 
             get
@@ -61,11 +55,6 @@ namespace Microsoft.Azure.Commands.Test.Profile
             get; 
             private set; 
         }
-        public ProfileTestController()
-        {
-            Module = AzureModule.AzureResourceManager;
-            helper = new EnvironmentSetupHelper();
-        }
 
         public ProfileTestController(AzureModule module)
         {
@@ -77,6 +66,8 @@ namespace Microsoft.Azure.Commands.Test.Profile
 
         public void RunPsTest(params string[] scripts)
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
@@ -90,17 +81,17 @@ namespace Microsoft.Azure.Commands.Test.Profile
                 mockName);
         }
 
-        public void RunPSTestWithToken(Func<AzureContext, string, string> testBuilder , params string[] scripts)
+        public void RunPSTestWithToken(Func<IAzureContext, string, string> testBuilder , params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
-            IAuthenticationFactory savedAuthFactory = AzureSession.AuthenticationFactory;
+            IAuthenticationFactory savedAuthFactory = AzureSession.Instance.AuthenticationFactory;
             try
             {
                 RunPsTestWorkflow(
                     () =>
                     {
-                        savedAuthFactory = AzureSession.AuthenticationFactory;
+                        savedAuthFactory = AzureSession.Instance.AuthenticationFactory;
                         var command = new GetAzureSubscriptionCommand();
                         command.CommandRuntime = new MockCommandRuntime();
                         command.InvokeBeginProcessing();
@@ -118,7 +109,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
                         }
                         else
                         {
-                            var accessToken = AzureSession.AuthenticationFactory.Authenticate(account,
+                            var accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(account,
                                 context.Environment,
                                 tenant, null, ShowDialog.Never);
                             Assert.IsNotNull(accessToken);
@@ -126,7 +117,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
                             token = accessToken.AccessToken;
                         }
 
-                        AzureSession.AuthenticationFactory = new AuthenticationFactory();
+                        AzureSession.Instance.AuthenticationFactory = new AuthenticationFactory();
                         var testString = testBuilder(context, token);
                         var returnedScripts = scripts.Concat(new String[] {testString});
                         return returnedScripts.ToArray();
@@ -140,7 +131,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
             }
             finally
             {
-               AzureSession.AuthenticationFactory = savedAuthFactory;
+               AzureSession.Instance.AuthenticationFactory = savedAuthFactory;
             }
         }
 

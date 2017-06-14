@@ -15,7 +15,7 @@
 using System;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Management.Compute;
 using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
@@ -164,32 +165,44 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     }
                 }
 
-                var slotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
-                DeploymentGetResponse d = null;
-                InvokeInOperationContext(() =>
+                Func<DeploymentSlot, DeploymentGetResponse> func = t =>
                 {
+                    DeploymentGetResponse d = null;
                     try
                     {
-                        d = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slotType);
+                        d = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, t);
                     }
                     catch (CloudException ex)
                     {
                         if (ex.Response.StatusCode != HttpStatusCode.NotFound && IsVerbose() == false)
                         {
-                            this.WriteExceptionDetails(ex);
+                            WriteExceptionError(ex);
                         }
                     }
-                });
+
+                    return d;
+                };
+
+                var slotType = (DeploymentSlot)Enum.Parse(typeof(DeploymentSlot), this.Slot, true);
+                DeploymentGetResponse currentDeployment = null;
+                InvokeInOperationContext(() => currentDeployment = func(slotType));
+
+                var peerSlottype = slotType == DeploymentSlot.Production ? DeploymentSlot.Staging : DeploymentSlot.Production;
+                DeploymentGetResponse peerDeployment = null;
+                InvokeInOperationContext(() => peerDeployment = func(peerSlottype));
 
                 ExtensionManager extensionMgr = new ExtensionManager(this, ServiceName);
-                extConfig = extensionMgr.Add(d, ExtensionConfiguration, this.Slot);
+
+                extConfig = (ExtensionConfiguration[0].State == null)
+                    ? extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot)
+                    : extensionMgr.UpdateExtensionState(ExtensionConfiguration[0]);
             }
 
             // Upgrade Parameter Set
             if (string.Compare(ParameterSetName, "Upgrade", StringComparison.OrdinalIgnoreCase) == 0)
             {
                 bool removePackage = false;
-                var storageName = Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                var storageName = Profile.Context.Subscription.GetStorageAccountName();
 
                 Uri packageUrl = null;
                 if (Package.StartsWith(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
@@ -254,7 +267,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     }
                     catch (CloudException ex)
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 });
             }

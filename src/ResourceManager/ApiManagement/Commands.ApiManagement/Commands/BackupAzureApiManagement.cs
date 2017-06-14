@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System;
-    using System.Management.Automation;
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Storage.Adapters;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using System.Management.Automation;
 
-      
-    [Cmdlet(VerbsData.Backup, "AzureApiManagement"), OutputType(typeof(PsApiManagement))]
+
+    [Cmdlet(VerbsData.Backup, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
     public class BackupAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "The storage connection context.")]
         [ValidateNotNull]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -65,12 +66,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
+            var account = StorageContext.GetCloudStorageAccount();
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginBackupApiManagement(
                     ResourceGroupName,
                     Name,
-                    StorageContext.StorageAccount.Credentials.AccountName,
-                    StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                    account.Credentials.AccountName,
+                    account.Credentials.ExportBase64EncodedKey(),
                     TargetContainerName,
                     TargetBlobName),
                 PassThru.IsPresent

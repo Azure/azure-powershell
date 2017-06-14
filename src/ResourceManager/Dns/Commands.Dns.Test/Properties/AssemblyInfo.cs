@@ -11,6 +11,7 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Xunit;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -20,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Microsoft.Azure.Commands.Dns.Test")]
-[assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +33,6 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("4623A8BD-075F-4B7C-9971-FBEDBFBDE521")]
 
-[assembly: AssemblyVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyVersion)]
-[assembly: AssemblyFileVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyFileVersion)]
+[assembly: AssemblyVersion("3.1.0")]
+[assembly: AssemblyFileVersion("3.1.0")]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]

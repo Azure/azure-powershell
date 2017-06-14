@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
-using System.Management.Automation;
 using Xunit;
 using WebKey = Microsoft.Azure.KeyVault.WebKey;
 
@@ -28,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         private RemoveAzureKeyVaultKey cmdlet;
         private KeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
-        private KeyBundle keyBundle;
+        private DeletedKeyBundle keyBundle;
 
         public RemoveKeyVaultKeyTests()
         {
@@ -41,16 +39,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 VaultName = VaultName
             };
 
-            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[]{"All"}, null);
+            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[] { "All" }, null);
             webKey = new WebKey.JsonWebKey();
-            keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
+            keyBundle = new DeletedKeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanRemvoeKeyWithPassThruTest()
+        public void CanRemoveKeyWithPassThruTest()
         {
-            KeyBundle expected = keyBundle;
+            DeletedKeyBundle expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -69,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanRemoveKeyWithNoPassThruTest()
         {
-            KeyBundle expected = keyBundle;
+            DeletedKeyBundle expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -88,6 +86,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CannotRemoveKeyWithoutShouldProcessOrForceConfirmationTest()
         {
+            // Should process but without force
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
+
             KeyBundle expected = null;
 
             cmdlet.Name = KeyName;
@@ -96,9 +97,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             // Write object should be called with null input
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
-
-            // Should process but without force
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(false);
             cmdlet.ExecuteCmdlet();
 
             // Write object should be called with null input
@@ -107,7 +105,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ErrorRemvoeKeyWithPassThruTest()
+        public void ErrorRemoveKeyWithPassThruTest()
         {
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Throws(new Exception()).Verifiable();
 

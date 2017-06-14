@@ -12,19 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo
 {
     public class WindowsAzurePowershellScript : PowershellCmdletScript
     {
-        private static readonly string[] modules = new[]
-        {
-            Path.Combine(Utilities.windowsAzurePowershellPath, Utilities.windowsAzurePowershellServiceModule)
-        };
-
         public WindowsAzurePowershellScript(List<string> cmdlets) : base(cmdlets, ConstructModules())
         {
         }
@@ -32,19 +27,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         {
         }
 
-        public static string[] Modules
-        {
-            get
-            {
-                return modules;
-            }
-        }
-
         private static PowershellModule[] ConstructModules()
         {
             return new[]
             {
-                new PowershellModule(Utilities.windowsAzurePowershellServiceModule, Utilities.windowsAzurePowershellPath)
+                new PowershellModule(Utilities.AzurePowershellProfileModule, Utilities.AzurePowershellPath),
+                new PowershellModule(Utilities.AzurePowershellCommandsModule, Utilities.AzurePowershellPath),
+                new PowershellModule(Utilities.AzurePowershellStorageModule, Utilities.AzurePowershellPath),
+                new PowershellModule(Utilities.AzurePowershellServiceManagementModule, Utilities.AzurePowershellPath)
             };
         }
     }

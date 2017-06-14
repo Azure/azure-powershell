@@ -12,48 +12,67 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "Expand")]
+        [ValidateNotNullOrEmpty]
+        public string ExpandResource { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var nsg = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name);
+                var nsg = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name, this.ExpandResource);
 
                 WriteObject(nsg);
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var nsgGetResponse = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
+                var nsgList = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
 
                 var psNsgs = new List<PSNetworkSecurityGroup>();
-                
-                foreach (var networkSecurityGroup in nsgGetResponse.NetworkSecurityGroups)
+
+                foreach (var networkSecurityGroup in nsgList)
                 {
                     var psNsg = this.ToPsNetworkSecurityGroup(networkSecurityGroup);
                     psNsg.ResourceGroupName = this.ResourceGroupName;
@@ -64,11 +83,11 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var nsgGetResponse = this.NetworkSecurityGroupClient.ListAll();
+                var nsgList = this.NetworkSecurityGroupClient.ListAll();
 
                 var psNsgs = new List<PSNetworkSecurityGroup>();
 
-                foreach (var networkSecurityGroup in nsgGetResponse.NetworkSecurityGroups)
+                foreach (var networkSecurityGroup in nsgList)
                 {
                     var psNsg = this.ToPsNetworkSecurityGroup(networkSecurityGroup);
                     psNsg.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkSecurityGroup.Id);

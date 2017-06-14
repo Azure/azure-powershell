@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections;
-using System.Security;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class SetAzureKeyVaultSecretAttribute : KeyVaultCmdletBase
     {
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("SecretName")]
+        [Alias(Constants.SecretName)]
         public string Name { get; set; }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             HelpMessage = "If present, enable a secret if value is true. Disable a secret if value is false. If not specified, the existing value of the secret's enabled/disabled state remains unchanged.")]
         public bool? Enable { get; set; }
-       
+
         /// <summary>
         /// Secret expires time in UTC time
         /// </summary>
@@ -97,7 +98,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.")]
-        public Hashtable Tags { get; set; }
+        [Alias(Constants.TagsAlias)]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
            HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return Secret object.")]
@@ -106,16 +108,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
 
         public override void ExecuteCmdlet()
-        {            
-            var secret = DataServiceClient.UpdateSecret(
+        {
+            if (ShouldProcess(Name, Properties.Resources.SetSecretAttribute))
+            {
+                var secret = DataServiceClient.UpdateSecret(
                 VaultName,
                 Name,
-                Version,
-                new SecretAttributes(Enable, Expires, NotBefore, ContentType, Tags));
+                Version ?? string.Empty,
+                new SecretAttributes(Enable, Expires, NotBefore, ContentType, Tag));
 
-            if (PassThru)
-            {
-                WriteObject(secret);
+                if (PassThru)
+                {
+                    WriteObject(secret);
+                }
             }
         }
     }

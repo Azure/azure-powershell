@@ -16,7 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Tags.Model
@@ -27,8 +28,8 @@ namespace Microsoft.Azure.Commands.Tags.Model
         {
             return new PSTag()
             {
-                Count = tag.Count.Value,
-                Name = tag.Name,
+                Count = tag.Count.Value.HasValue ? tag.Count.Value.ToString() : null,
+                Name = tag.TagName,
                 Values = tag.Values.Select(v => v.ToPSTagValue()).ToList(),
                 ValuesTable = ConstructTagValuesTable(tag.Values.ToList())
             };
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.Tags.Model
         {
             return new PSTagValue()
             {
-                Count = value.Count.Value,
-                Name = value.Value
+                Count = value.Count.Value.HasValue ? value.Count.Value.ToString() : null,
+                Name = value.TagValueProperty
             };
         }
 
@@ -49,12 +50,12 @@ namespace Microsoft.Azure.Commands.Tags.Model
             {
                 return new TagValue()
                 {
-                    Value = string.Empty,
+                    TagValueProperty = string.Empty,
                     Id = string.Empty,
                     Count = new TagCount()
                     {
                         Type = string.Empty,
-                        Value = string.Empty
+                        Value = null
                     }
                 };
             }
@@ -66,8 +67,8 @@ namespace Microsoft.Azure.Commands.Tags.Model
 
             if (tagValues.Count > 0)
             {
-                int maxNameLength = Math.Max("Name".Length, tagValues.Where(v => v.Value != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.Value.Length));
-                int maxCountLength = Math.Max("Count".Length, tagValues.Where(v => v.Count.Value != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.Count.Value.Length));
+                int maxNameLength = Math.Max("Name".Length, tagValues.Where(v => v.TagValueProperty != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.TagValueProperty.Length));
+                int maxCountLength = Math.Max("Count".Length, tagValues.Where(v => v.Count.Value != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.Count.Value.HasValue ? v.Count.Value.ToString().Length : 0));
 
                 string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxCountLength + "}\r\n";
                 tagValuesTable.AppendLine();
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
 
                 foreach (TagValue tagValue in tagValues)
                 {
-                    tagValuesTable.AppendFormat(rowFormat, tagValue.Value, tagValue.Count.Value);
+                    tagValuesTable.AppendFormat(rowFormat, tagValue.TagValueProperty, tagValue.Count.Value);
                 }
             }
 

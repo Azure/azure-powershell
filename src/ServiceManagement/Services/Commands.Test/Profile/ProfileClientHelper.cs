@@ -16,27 +16,43 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Hyak.Common;
+using RDFESubscriptionClient = Microsoft.WindowsAzure.Subscriptions.SubscriptionClient;
+using CSMSubscriptionClient = Microsoft.Azure.Subscriptions.SubscriptionClient;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Profile
 {
-    public class MockRdfeSubscriptionClient : Microsoft.Azure.Subscriptions.Rdfe.SubscriptionClient
+    public class MockRdfeSubscriptionClient : RDFESubscriptionClient
     {
         private IList<string> _subscriptions = new List<string>();
+
         public string Tenant { get; set; }
-        public IList<String> ReturnedSubscriptions
+
+        public IList<string> ReturnedSubscriptions
         {
             get { return this._subscriptions; }
 
             set { this._subscriptions = value; }
         }
 
-        public override Microsoft.Azure.Subscriptions.Rdfe.ISubscriptionOperations Subscriptions
+        protected override RDFESubscriptionClient WithHandler(ServiceClient<RDFESubscriptionClient> newClient, DelegatingHandler handler)
+        {
+            return newClient as RDFESubscriptionClient;
+        }
+
+        public override RDFESubscriptionClient WithHandler(DelegatingHandler handler)
+        {
+            return this;
+        }
+
+        public override Microsoft.WindowsAzure.Subscriptions.ISubscriptionOperations Subscriptions
         {
             get { return MockRdfeSubscriptionOperations.Create(this.ReturnedSubscriptions, this.Tenant); }
         }
     }
-    public class MockRdfeSubscriptionOperations : Microsoft.Azure.Subscriptions.Rdfe.ISubscriptionOperations
+    public class MockRdfeSubscriptionOperations : Microsoft.WindowsAzure.Subscriptions.ISubscriptionOperations
     {
         private List<string> _subscriptions = new List<string>();
         private string _tenant = Guid.NewGuid().ToString();
@@ -62,20 +78,20 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return operations;
         }
 
-        private Azure.Subscriptions.Rdfe.Models.Subscription CreateSubscription(string subscriptionId)
+        private WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription CreateSubscription(string subscriptionId)
         {
-            return new Azure.Subscriptions.Rdfe.Models.Subscription
+            return new WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription
             {
                 SubscriptionId = subscriptionId,
                 SubscriptionName = string.Format("Test Mock Subscription {0}", subscriptionId),
-                SubscriptionStatus = Microsoft.Azure.Subscriptions.Rdfe.Models.SubscriptionStatus.Active,
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Active,
                 ActiveDirectoryTenantId = _tenant.ToString()
             };
         }
 
-        public Task<Azure.Subscriptions.Rdfe.Models.SubscriptionListOperationResponse> ListAsync(System.Threading.CancellationToken cancellationToken)
+        public Task<WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse> ListAsync(System.Threading.CancellationToken cancellationToken)
         {
-            var response = new Azure.Subscriptions.Rdfe.Models.SubscriptionListOperationResponse
+            var response = new WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse
             {
                 StatusCode = HttpStatusCode.OK,
                 Subscriptions = CreateSubscriptionList()
@@ -83,9 +99,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return Task.FromResult(response);
         }
 
-        private IList<Azure.Subscriptions.Rdfe.Models.Subscription> CreateSubscriptionList()
+        private IList<WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription> CreateSubscriptionList()
         {
-            var result = new List<Azure.Subscriptions.Rdfe.Models.Subscription>();
+            var result = new List<WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription>();
             foreach (var subscriptionId in this._subscriptions)
             {
                 result.Add(CreateSubscription(subscriptionId));
@@ -95,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
     }
 
-    public class MockCsmSubscriptionClient : Microsoft.Azure.Subscriptions.Csm.SubscriptionClient
+    public class MockCsmSubscriptionClient : Microsoft.Azure.Subscriptions.SubscriptionClient
     {
         private IList<string> _subscriptions = new List<string>();
         private IList<string> _tenants = new List<string>();
@@ -113,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             set { this._tenants = value; }
         }
 
-        public override Azure.Subscriptions.Csm.ISubscriptionOperations Subscriptions
+        public override Azure.Subscriptions.ISubscriptionOperations Subscriptions
         {
             get
             {
@@ -121,16 +137,21 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             }
         }
 
-        public override Azure.Subscriptions.Csm.ITenantOperations Tenants
+        public override Azure.Subscriptions.ITenantOperations Tenants
         {
             get
             {
                 return MockCsmTenantOperations.Create(this.ReturnedTenants);
             }
         }
+
+        public override Azure.Subscriptions.SubscriptionClient WithHandler(DelegatingHandler handler)
+        {
+            return this;
+        }
     }
 
-    public class MockCsmTenantOperations : Microsoft.Azure.Subscriptions.Csm.ITenantOperations
+    public class MockCsmTenantOperations : Microsoft.Azure.Subscriptions.ITenantOperations
     {
         private IList<string> _tenants = new List<string>();
 
@@ -150,9 +171,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return operations;
         }
 
-        public Task<Azure.Subscriptions.Csm.Models.TenantListResult> ListAsync(System.Threading.CancellationToken cancellationToken)
+        public Task<Azure.Subscriptions.Models.TenantListResult> ListAsync(System.Threading.CancellationToken cancellationToken)
         {
-            var result = new Azure.Subscriptions.Csm.Models.TenantListResult
+            var result = new Azure.Subscriptions.Models.TenantListResult
             {
                 StatusCode = HttpStatusCode.OK,
                 TenantIds = CreateTenantList()
@@ -161,18 +182,18 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return Task.FromResult(result);
         }
 
-        private static Azure.Subscriptions.Csm.Models.TenantIdDescription CreateTenant(string tenantId)
+        private static Azure.Subscriptions.Models.TenantIdDescription CreateTenant(string tenantId)
         {
-            return new Azure.Subscriptions.Csm.Models.TenantIdDescription
+            return new Azure.Subscriptions.Models.TenantIdDescription
             {
                 TenantId = tenantId,
                 Id = tenantId
             };
         }
 
-        private IList<Azure.Subscriptions.Csm.Models.TenantIdDescription> CreateTenantList()
+        private IList<Azure.Subscriptions.Models.TenantIdDescription> CreateTenantList()
         {
-            var result = new List<Azure.Subscriptions.Csm.Models.TenantIdDescription>();
+            var result = new List<Azure.Subscriptions.Models.TenantIdDescription>();
             foreach (var tenant in this._tenants)
             {
                 result.Add(CreateTenant(tenant));
@@ -182,7 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         }
     }
 
-    public class MockCsmSubscriptionOperations : Microsoft.Azure.Subscriptions.Csm.ISubscriptionOperations
+    public class MockCsmSubscriptionOperations : Microsoft.Azure.Subscriptions.ISubscriptionOperations
     {
         private IList<string> _subscriptions = new List<string>();
 
@@ -202,9 +223,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return operations;
         }
 
-        public Task<Azure.Subscriptions.Csm.Models.GetSubscriptionResult> GetAsync(string subscriptionId, System.Threading.CancellationToken cancellationToken)
+        public Task<Azure.Subscriptions.Models.GetSubscriptionResult> GetAsync(string subscriptionId, System.Threading.CancellationToken cancellationToken)
         {
-            Azure.Subscriptions.Csm.Models.Subscription subscriptionToReturn = null;
+            Azure.Subscriptions.Models.Subscription subscriptionToReturn = null;
             var statusCode = HttpStatusCode.NotFound;
             if (_subscriptions.Contains(subscriptionId))
             {
@@ -213,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 statusCode = HttpStatusCode.OK;
             }
 
-            var result = new Azure.Subscriptions.Csm.Models.GetSubscriptionResult
+            var result = new Azure.Subscriptions.Models.GetSubscriptionResult
             {
                 StatusCode = statusCode,
                 Subscription = subscriptionToReturn
@@ -222,9 +243,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return Task.FromResult(result);
         }
 
-        public Task<Azure.Subscriptions.Csm.Models.SubscriptionListResult> ListAsync(System.Threading.CancellationToken cancellationToken)
+        public Task<Azure.Subscriptions.Models.SubscriptionListResult> ListAsync(System.Threading.CancellationToken cancellationToken)
         {
-            var result = new Azure.Subscriptions.Csm.Models.SubscriptionListResult
+            var result = new Azure.Subscriptions.Models.SubscriptionListResult
             {
                 StatusCode = HttpStatusCode.OK,
                 Subscriptions = CreateSubscriptionList()
@@ -233,9 +254,28 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             return Task.FromResult(result);
         }
 
-        private static Azure.Subscriptions.Csm.Models.Subscription CreateSubscription(string subscriptionId)
+        public Task<Azure.Subscriptions.Models.SubscriptionListResult> ListNextAsync(string nextLink, System.Threading.CancellationToken cancellationToken)
         {
-            return new Azure.Subscriptions.Csm.Models.Subscription
+            var result = new Azure.Subscriptions.Models.SubscriptionListResult
+            {
+                StatusCode = HttpStatusCode.OK,
+                Subscriptions = CreateSubscriptionList()
+            };
+
+            return Task.FromResult(result);
+        }
+
+        public Task<Azure.Subscriptions.Models.LocationListResult> ListLocationsAsync(string subscriptionId, System.Threading.CancellationToken cancellationToken)
+        {
+            var result = new Azure.Subscriptions.Models.LocationListResult();
+            result.Locations = new List<Azure.Subscriptions.Models.Location>();
+
+            return Task.FromResult(result);
+        }
+
+        private static Azure.Subscriptions.Models.Subscription CreateSubscription(string subscriptionId)
+        {
+            return new Azure.Subscriptions.Models.Subscription
             {
                 SubscriptionId = subscriptionId,
                 State = "Ready",
@@ -244,9 +284,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             };
         }
 
-        private IList<Azure.Subscriptions.Csm.Models.Subscription> CreateSubscriptionList()
+        private IList<Azure.Subscriptions.Models.Subscription> CreateSubscriptionList()
         {
-            var result = new List<Azure.Subscriptions.Csm.Models.Subscription>();
+            var result = new List<Azure.Subscriptions.Models.Subscription>();
             foreach (var subscriptionId in this._subscriptions)
             {
                 result.Add(CreateSubscription(subscriptionId));
@@ -258,7 +298,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
     public static class ProfileClientHelper
     {
-        public static Microsoft.Azure.Subscriptions.Rdfe.SubscriptionClient CreateRdfeSubscriptionClient(
+        public static Microsoft.WindowsAzure.Subscriptions.SubscriptionClient CreateRdfeSubscriptionClient(
             Guid tenantToReturn = default(Guid), params string[] subscriptionsToReturn)
         {
             return new MockRdfeSubscriptionClient
@@ -268,7 +308,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             };
         }
 
-        public static Microsoft.Azure.Subscriptions.Csm.SubscriptionClient CreateCsmSubscriptionClient(
+        public static Microsoft.Azure.Subscriptions.SubscriptionClient CreateCsmSubscriptionClient(
             IList<string> subscriptionsToReturn, IList<string> tenantsToReturn)
         {
             return new MockCsmSubscriptionClient

@@ -14,11 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System.Management.Automation;
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using System.Management.Automation;
+    using WindowsAzure.Commands.Storage.Adapters;
 
-    [Cmdlet(VerbsData.Restore, "AzureApiManagement"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsData.Restore, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
     public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -31,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Name of API Management.")]
+            HelpMessage = "Name of the API Management instance that will be restored with this backup.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -43,7 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Position = 1,
             HelpMessage = "The storage connection context.")]
         [ValidateNotNull]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -66,12 +68,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
+            var account = StorageContext.GetCloudStorageAccount();
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginRestoreApiManagement(
                     ResourceGroupName,
                     Name,
-                    StorageContext.StorageAccount.Credentials.AccountName,
-                    StorageContext.StorageAccount.Credentials.ExportBase64EncodedKey(),
+                    account.Credentials.AccountName,
+                    account.Credentials.ExportBase64EncodedKey(),
                     SourceContainerName,
                     SourceBlobName),
                 PassThru.IsPresent);

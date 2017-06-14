@@ -1,42 +1,79 @@
 {
   "Entries": [
     {
-      "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/groups/deadbeef-dead-beef-dead-beefdeadbeef?api-version=1.42-previewInternal",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/getObjectsByObjectIds?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9nZXRPYmplY3RzQnlPYmplY3RJZHM/YXBpLXZlcnNpb249MS42",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"baadc0de-baad-c0de-baad-c0debaadc0de\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "116"
+        ],
+        "x-ms-client-request-id": [
+          "4e414f37-79db-4e2d-8b80-2136087596ac"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'deadbeef-dead-beef-dead-beefdeadbeef' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects\",\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "121"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
         "ocp-aad-diagnostics-server-name": [
-          "1Ptot0LG1647jq6Jd5jbCVVlBPXTTRRWQ3OcUhRUILc="
+          "7fG4dxbq7nRDYyXcGY4G5ZqI759Ps6CZpKiJbHnrLiU="
         ],
         "request-id": [
-          "e06c7a00-4458-41d8-939e-e9c89cd3ed1a"
+          "aef40d4a-d701-480d-ac94-e034fad2aea3"
         ],
         "client-request-id": [
-          "2e6b1488-2266-4c8c-8721-477095a2e63a"
-        ],
-        "x-ms-gateway-rewrite": [
-          "false"
+          "e0ec090e-bf0f-4d06-a14b-5540311fdd0b"
         ],
         "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
+          "1.6"
         ],
         "ocp-aad-session-key": [
-          "9CPR14LFKHUbmrLln3ewiTU4fJNUykw67ZdLR-K_Y6bTofaGwq8kS3FaeZMZLf6fnF42wYdVZRQxkf1eKRHoFaR5qIzP6J-YKJOSrHlPdlE.fIQQN_aXs6n9TgI2nlDSX_NSGRk4Da8a0MMCVE0jWsQ"
+          "vNVchnhtwMsIFftofxz5902XkTirNGJN3dDDIpbQcPXz6miUqKdT7gDzMFWgmEk-Ttqa2avysKbUogkW7tCPcA7PnOfvjXP9vdEGi5qeuWScx04Tq7k9AYcbGVmsivMpx-wwYr9-w09FqS8ln9Mtng.YCQobYBbZPMjjC6dHtQJB2x56jL2DtMmSgrTJUjIuSc"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "926132"
+        ],
         "Cache-Control": [
-          "private"
+          "no-cache"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -46,15 +83,16 @@
           "ASP.NET"
         ],
         "Date": [
-          "Tue, 16 Sep 2014 00:28:30 GMT"
+          "Thu, 18 May 2017 23:07:45 GMT"
         ]
       },
-      "StatusCode": 404
+      "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
-    "TenantId": "1449d5b7-8a83-47db-ae4c-9b03e888bad0"
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "Domain": "rbacclitest.onmicrosoft.com"
   }
 }

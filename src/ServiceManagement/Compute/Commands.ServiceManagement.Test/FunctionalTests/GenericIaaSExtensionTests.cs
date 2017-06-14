@@ -22,7 +22,8 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -41,8 +42,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private VirtualMachineExtensionImageContext vmAccessExtension;
         private string version = "1.0";
         string rdpPath = @".\AzureVM.rdp";
-        string dns;
-        int port;
         private string referenceName;
         string localPath;
         private const string publisher = "Microsoft.Compute";
@@ -63,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             testStartTime = DateTime.Now;
             GetVmAccessConfiguration();
             referenceName = Utilities.GetUniqueShortName(referenceNamePrefix);
-            localPath = Path.Combine(Environment.CurrentDirectory, serviceName + ".xml").ToString();
+            localPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName + ".xml").ToString();
         }
 
         [TestCleanup]

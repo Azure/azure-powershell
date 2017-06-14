@@ -23,10 +23,13 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
-    public class ServiceComponentsTests : TestBase, IDisposable
+    public class ServiceComponentsTests : SMTestBase, IDisposable
     {
         private const string serviceName = "NodeService";
 
@@ -43,9 +46,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
         public void TestCleanup()
         {
-            if (Directory.Exists(serviceName))
-            {                
-                Directory.Delete(serviceName, true);
+            try
+            {
+                if (Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName)))
+                {
+                    Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName), true);
+                }
+            }
+            catch
+            {
+                // do not fail for file system issues
             }
         }
 
@@ -58,8 +68,11 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTest()
         {
-            newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
-            ServiceComponents components = new ServiceComponents(new PowerShellProjectPathInfo(serviceName));
+            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
+            ServiceComponents components = new ServiceComponents(
+                new PowerShellProjectPathInfo(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName)));
             AzureAssert.AreEqualServiceComponents(components);
         }
 
@@ -83,8 +96,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestCloudConfigDoesNotExistFail()
         {
-            newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {
@@ -103,8 +118,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestLocalConfigDoesNotExistFail()
         {
-            newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {
@@ -123,8 +140,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestSettingsDoesNotExistFail()
         {
-            newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {
@@ -143,8 +162,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceComponentsTestDefinitionDoesNotExistFail()
         {
-            newServiceCmdlet.NewAzureServiceProcess(Directory.GetCurrentDirectory(), serviceName);
-            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(serviceName);
+            TestMockSupport.TestExecutionFolder = AppDomain.CurrentDomain.BaseDirectory;
+            newServiceCmdlet.NewAzureServiceProcess(TestMockSupport.TestExecutionFolder, serviceName);
+            PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, serviceName));
 
             try
             {

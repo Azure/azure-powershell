@@ -25,14 +25,14 @@ using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 {
     /// <summary>
     /// Basic unit tests for the Enable-AzureServiceProjectRemoteDesktop enableRDCmdlet.
     /// </summary>
-    internal class SaveAzureServiceProjectPackageCommandTest : TestBase
+    internal class SaveAzureServiceProjectPackageCommandTest : SMTestBase
     {
         static private MockCommandRuntime mockCommandRuntime;
 

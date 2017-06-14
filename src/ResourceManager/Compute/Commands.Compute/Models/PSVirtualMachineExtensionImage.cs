@@ -14,16 +14,15 @@
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class PSVirtualMachineExtensionImage : PSOperation
+    public class PSVirtualMachineExtensionImageType : PSVirtualMachineImageResource
     {
-        public string Id { get; set; }
-
-        public string Location { get; set; }
-
         public string PublisherName { get; set; }
 
         public string Type { get; set; }
+    }
 
+    public class PSVirtualMachineExtensionImage : PSVirtualMachineExtensionImageType
+    {
         public string Version { get; set; }
 
         public string FilterExpression { get; set; }
@@ -31,16 +30,14 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
     public class PSVirtualMachineExtensionImageDetails : PSVirtualMachineExtensionImage
     {
-        public string Name { get; set; }
-
         public string HandlerSchema { get; set; }
 
         public string OperatingSystem { get; set; }
 
         public string ComputeRole { get; set; }
 
-        public bool SupportsMultipleExtensions { get; set; }
+        public bool? SupportsMultipleExtensions { get; set; }
 
-        public bool VMScaleSetEnabled { get; set; }
+        public bool? VMScaleSetEnabled { get; set; }
     }
 }

@@ -18,11 +18,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
-
-namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
+namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class SetAzureAutomationWebhookTest : TestBase
+    public class SetAzureAutomationWebhookTest : RMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string resourceGroupName = "resourceGroup";
             string accountName = "account";
             string name = "webhookName";
-          
+
             this.mockAutomationClient.Setup(
                 f => f.UpdateWebhook(resourceGroupName, accountName, name, null, false));
 

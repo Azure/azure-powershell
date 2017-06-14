@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, "AzureRemoteAppVNet"), OutputType(typeof(TrackingResult))]
-    public class NewAzureRemoteAppVNet : RdsCmdlet
+    public class NewAzureRemoteAppVNet : VNetDeprecated
     {
         [Parameter(Mandatory = true,
             ValueFromPipeline = true,

@@ -12,13 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceGroupTests
+    public class ResourceGroupTests : RMTestBase
     {
+        public ResourceGroupTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResourceGroup()
@@ -61,7 +69,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RemoveNonExistingResourceGroup");
         }
 
-        [Fact (Skip = "TODO: Fix the broken test.")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindResourceGroup()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportResourceGroup()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ExportResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceGroupWithPositionalParams()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ResourceGroupWithPositionalParams");
+        }
+
+        [Fact(Skip = "TODO: Fix the broken test.")]
         public void TestAzureTagsEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest("Test-AzureTagsEndToEnd");
@@ -75,9 +104,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestNewResourceGroupWithTemplate()
+        public void TestRemoveDeployment()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails");
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
+        }
+
+        [Fact(Skip = "Doesn't add any value. Will improve negative tests in a future release")]
+        public void TestGetNonExistingResourceGroupWithDebugStream()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroupWithDebugStream");
         }
     }
 }

@@ -23,9 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key of Azure Dedicated Circuit to be removed")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(HelpMessage = "Do not confirm Azure Dedicated Circuit deletion")]
         public SwitchParameter Force { get; set; }
@@ -39,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                 Force.IsPresent,
                 string.Format(Resources.RemoveAzureDedicatdCircuitWarning, ServiceKey),
                 Resources.RemoveAzureDedicatedCircuitMessage,
-                ServiceKey,
+                ServiceKey.ToString(),
                 () =>
                     {
                         if (!ExpressRouteClient.RemoveAzureDedicatedCircuit(ServiceKey))

@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayConnection"), OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class GetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -38,9 +37,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
@@ -49,10 +48,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var vnetGatewayConnectionGetResponse = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
+                var connectionList = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
 
                 var psVnetGatewayConnections = new List<PSVirtualNetworkGatewayConnection>();
-                foreach (var virtualNetworkGatewayConnection in vnetGatewayConnectionGetResponse.VirtualNetworkGatewayConnections)
+                foreach (var virtualNetworkGatewayConnection in connectionList)
                 {
                     var psVnetGatewayConnection = this.ToPsVirtualNetworkGatewayConnection(virtualNetworkGatewayConnection);
                     psVnetGatewayConnection.ResourceGroupName = this.ResourceGroupName;

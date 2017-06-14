@@ -13,10 +13,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public class TestMockSupport
     {
+        public static string TestExecutionFolder { get; set; }
+
         //a.k.a when you run under Playback mode
         public static bool RunningMocked { get; set; }
 
@@ -25,6 +28,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             if (!RunningMocked)
             {
                 System.Threading.Thread.Sleep(milliSeconds);
+            }
+            else
+            {
+                System.Threading.Thread.Yield();
+            }
+        }
+
+        public static void Delay(TimeSpan duration)
+        {
+            if (!RunningMocked)
+            {
+                System.Threading.Thread.Sleep(duration);
+            }
+            else
+            {
+                System.Threading.Thread.Yield();
             }
         }
     }

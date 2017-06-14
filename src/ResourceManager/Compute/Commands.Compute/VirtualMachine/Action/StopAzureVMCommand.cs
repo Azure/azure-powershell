@@ -15,25 +15,20 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
+using MCM = Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine)]
+    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class StopAzureVMCommand : VirtualMachineBaseCmdlet
+    public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         [Parameter(
            Mandatory = true,
            Position = 1,
@@ -58,25 +53,28 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption))
+            ExecuteClientAction(() =>
             {
-                Action<Func<string, string, ComputeLongRunningOperationResponse>> call = f =>
+                if (this.ShouldProcess(Name, VerbsLifecycle.Stop) 
+                    && (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineStoppingConfirmation, Properties.Resources.VirtualMachineStoppingCaption)))
                 {
-                    var op = f(this.ResourceGroupName, this.Name);
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                    WriteObject(result);
-                };
+                    Action<Func<string, string, Dictionary<string, List<string>>, CancellationToken, Task<Rest.Azure.AzureOperationResponse<MCM.OperationStatusResponse>>>> call = f =>
+                    {
+                        var op = f(this.ResourceGroupName, this.Name, null, CancellationToken.None).GetAwaiter().GetResult();
+                        var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                        WriteObject(result);
+                    };
 
-                if (this.StayProvisioned)
-                {
-                    call(this.VirtualMachineClient.PowerOff);
+                    if (this.StayProvisioned)
+                    {
+                        call(this.VirtualMachineClient.PowerOffWithHttpMessagesAsync);
+                    }
+                    else
+                    {
+                        call(this.VirtualMachineClient.DeallocateWithHttpMessagesAsync);
+                    }
                 }
-                else
-                {
-                    call(this.VirtualMachineClient.Deallocate);
-                }
-            }
+            });
         }
     }
 }

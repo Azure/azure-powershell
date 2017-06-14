@@ -13,12 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -57,6 +54,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                        Properties.Resources.CmdletWillBeDeprecatedSoon,
+                        this.MyInvocation.MyCommand.Name));
+
                 string recoveryPlanXml = FileUtilities.DataStore.ReadFileAsText(this.File);
                 this.jobResponse = RecoveryServicesClient.CreateAzureSiteRecoveryRecoveryPlan(
                     recoveryPlanXml);

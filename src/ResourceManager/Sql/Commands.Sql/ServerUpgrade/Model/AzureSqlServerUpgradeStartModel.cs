@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
 {
@@ -43,5 +43,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Model
         /// Gets or sets the collection of recommended database properties for the server upgrade
         /// </summary>
         public RecommendedDatabaseProperties[] DatabaseCollection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the collection of recommended elastic pool properties for the server upgrade
+        /// </summary>
+        public UpgradeRecommendedElasticPoolProperties[] ElasticPoolCollection { get; set; }
     }
 }

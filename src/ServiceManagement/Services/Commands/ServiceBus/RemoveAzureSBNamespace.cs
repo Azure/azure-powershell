@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Creates new service bus namespace.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureSBNamespace", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureSBNamespaceCommand : AzurePSCmdlet
+    public class RemoveAzureSBNamespaceCommand : AzureSMCmdlet
     {
         public ServiceBusClientExtensions Client { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
                 Name,
                 () =>
                 {
-                    Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+                    Client = Client ?? new ServiceBusClientExtensions(Profile);
                     Client.RemoveNamespace(Name);
 
                     if (PassThru)

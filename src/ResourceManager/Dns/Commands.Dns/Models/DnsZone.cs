@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Dns
 {
@@ -43,6 +40,20 @@ namespace Microsoft.Azure.Commands.Dns
         /// <summary>
         /// Gets or sets the tags of this resource
         /// </summary>
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
+
+        /// <summary>
+        /// Name servers provisioned for this zone
+        /// </summary>
+        public List<string> NameServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of records for this zone
+        /// </summary>
+        public long? NumberOfRecordSets { get; set; }
+        /// <summary>
+        ///Gets or sets the max number of records for this zone 
+        /// </summary>
+        public long? MaxNumberOfRecordSets { get; set; }
     }
 }

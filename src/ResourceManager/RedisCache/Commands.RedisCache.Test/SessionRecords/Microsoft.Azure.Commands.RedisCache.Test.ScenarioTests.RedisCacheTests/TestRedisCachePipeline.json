@@ -1,19 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourcegroups/PowerShellTest-2?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlZ3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Resource not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2\",\r\n  \"name\": \"PowerShellTest-2\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "69"
+          "185"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -24,14 +30,17 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
         "x-ms-request-id": [
-          "f7af4521-7614-453b-8f23-00befb7a0d72"
+          "5d9877c2-de83-445a-8f96-fc56d31646b3"
         ],
         "x-ms-correlation-request-id": [
-          "f7af4521-7614-453b-8f23-00befb7a0d72"
+          "5d9877c2-de83-445a-8f96-fc56d31646b3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220412Z:f7af4521-7614-453b-8f23-00befb7a0d72"
+          "CENTRALUS:20161111T173251Z:5d9877c2-de83-445a-8f96-fc56d31646b3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -40,25 +49,89 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:04:11 GMT"
+          "Fri, 11 Nov 2016 17:32:51 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "19c67b8b-c623-412e-80f3-6a188c6e6700"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Cache/Redis/powershelltestpipe' under resource group 'PowerShellTest-2' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "160"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "51890532-c00f-4942-8fb5-7c2b777d865a"
+        ],
+        "x-ms-correlation-request-id": [
+          "51890532-c00f-4942-8fb5-7c2b777d865a"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T173252Z:51890532-c00f-4942-8fb5-7c2b777d865a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:32:52 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c6cacc21-a5ba-4d29-9bf5-ca9228f1ae80"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -70,28 +143,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9e63d330-5b77-4b38-a672-037f57b9f19d"
+          "10e8ca5b-456d-4727-9658-1f75d96c001c"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799983"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "7861ff94-3a6f-4213-bf35-09d804632f2c"
+          "244f4374-088c-4ec5-8643-00fe9fea0f30"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220444Z:7861ff94-3a6f-4213-bf35-09d804632f2c"
+          "CENTRALUS:20161111T173325Z:244f4374-088c-4ec5-8643-00fe9fea0f30"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:04:44 GMT"
+          "Fri, 11 Nov 2016 17:33:24 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -100,19 +173,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3fb0d5b3-9c93-43cf-979b-8052766e37c7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -124,28 +205,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b6bde536-dcf1-4074-9343-137c844d528d"
+          "b2718aee-73af-4029-9356-788147bede00"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799982"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "90feaca5-52ca-4d94-89f6-f9d899fba389"
+          "b945f6c5-e9cb-4786-9543-49cc5c740b6a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220515Z:90feaca5-52ca-4d94-89f6-f9d899fba389"
+          "CENTRALUS:20161111T173355Z:b945f6c5-e9cb-4786-9543-49cc5c740b6a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:05:15 GMT"
+          "Fri, 11 Nov 2016 17:33:54 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -154,19 +235,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "19c57811-a3e0-4f7c-9256-932502947196"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -178,28 +267,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "329e81c3-b859-4cd0-9eeb-4efa359b68b5"
+          "4fa75686-093c-4c50-9cd8-b1f959a69ef0"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799981"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "85c7a966-08ff-4cc9-9301-e731d83c5535"
+          "d5ab56f0-9a80-469d-9503-8bcecabe28ff"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220545Z:85c7a966-08ff-4cc9-9301-e731d83c5535"
+          "CENTRALUS:20161111T173425Z:d5ab56f0-9a80-469d-9503-8bcecabe28ff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:05:44 GMT"
+          "Fri, 11 Nov 2016 17:34:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -208,19 +297,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "59911936-4ad9-4288-9b1b-c3cb9aa0e63b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -232,28 +329,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cac27cc4-a187-4a23-99e4-ece32bf5911e"
+          "70c06a1e-27e2-4d4d-992b-dfda6b82a497"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799980"
+          "14995"
         ],
         "x-ms-correlation-request-id": [
-          "56411633-86d2-4a34-a0d0-97897be95235"
+          "aadab169-c13a-4978-875b-8b488c461136"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220615Z:56411633-86d2-4a34-a0d0-97897be95235"
+          "CENTRALUS:20161111T173456Z:aadab169-c13a-4978-875b-8b488c461136"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:06:14 GMT"
+          "Fri, 11 Nov 2016 17:34:55 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -262,19 +359,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f398e61b-cdf4-4c0a-ac72-11ea67ed76b8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -286,28 +391,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3f871c56-438d-4970-953b-9773135dff3c"
+          "aeb28b4b-ba2c-44fa-9bd5-110dcfb839ad"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799978"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "4abcb2bf-3876-492b-9582-94af16201c08"
+          "a5fff722-c845-45ea-a65b-c8acdf306189"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220645Z:4abcb2bf-3876-492b-9582-94af16201c08"
+          "CENTRALUS:20161111T173526Z:a5fff722-c845-45ea-a65b-c8acdf306189"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:06:44 GMT"
+          "Fri, 11 Nov 2016 17:35:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -316,19 +421,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ba7cafed-057d-4fc2-a02a-36a33b26ec32"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -340,28 +453,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "75a6334d-3c70-4bd8-a3b9-ebb386aaf7cc"
+          "5cc4edeb-c610-4c13-b5cd-ee670fca2d8b"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799977"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "2bf0bef1-0a8b-491f-b0b1-549ee5837a55"
+          "e8422dd8-d5b0-44e9-92ba-118a045ac319"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220715Z:2bf0bef1-0a8b-491f-b0b1-549ee5837a55"
+          "CENTRALUS:20161111T173556Z:e8422dd8-d5b0-44e9-92ba-118a045ac319"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:07:15 GMT"
+          "Fri, 11 Nov 2016 17:35:55 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -370,19 +483,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "554460d9-f8fa-418f-902f-df5450385ca0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -394,28 +515,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a6bf626c-67ca-4d12-a5eb-b71dc4785bab"
+          "fe015f66-8550-4fbb-b96f-b9fbba58e8b8"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799975"
+          "14992"
         ],
         "x-ms-correlation-request-id": [
-          "37758195-0e18-4fc4-ae0b-213ccc863ea1"
+          "702073f8-72c0-412e-91c1-ea1cdc0796b0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220745Z:37758195-0e18-4fc4-ae0b-213ccc863ea1"
+          "CENTRALUS:20161111T173626Z:702073f8-72c0-412e-91c1-ea1cdc0796b0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:07:45 GMT"
+          "Fri, 11 Nov 2016 17:36:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -424,19 +545,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "909c4194-7893-4c39-92f5-4f8d666d72bd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -448,28 +577,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e3bf944a-a54f-4906-88e4-392327cbc24b"
+          "a83df1d4-015e-42a9-af77-50e99a007723"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799974"
+          "14991"
         ],
         "x-ms-correlation-request-id": [
-          "2af5cb27-1a78-47d5-8e02-46dc26fc50da"
+          "79de852f-6dfb-41c4-862b-ef6d6e788036"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220815Z:2af5cb27-1a78-47d5-8e02-46dc26fc50da"
+          "CENTRALUS:20161111T173656Z:79de852f-6dfb-41c4-862b-ef6d6e788036"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:08:15 GMT"
+          "Fri, 11 Nov 2016 17:36:55 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -478,19 +607,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a3aceb4b-31e5-4a7b-bd65-6fb1709c7404"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -502,28 +639,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1e1758d8-3d15-412d-bf0e-bd64ddb5407d"
+          "ef0d4129-b674-4f82-9247-f91dfcaf79b6"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799973"
+          "14990"
         ],
         "x-ms-correlation-request-id": [
-          "e2521038-da28-4aca-8646-56276831863a"
+          "ca3c3952-dc59-4d4e-b2fe-054b213cb6aa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220846Z:e2521038-da28-4aca-8646-56276831863a"
+          "CENTRALUS:20161111T173726Z:ca3c3952-dc59-4d4e-b2fe-054b213cb6aa"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:08:46 GMT"
+          "Fri, 11 Nov 2016 17:37:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -532,19 +669,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a6a0846c-0511-473c-8c63-a3bfb556c7c1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -556,28 +701,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0cf06c30-021a-4f39-9b48-ed13f015ce0f"
+          "a8975058-e62f-4c5e-8abd-a0e8d0e80441"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799972"
+          "14989"
         ],
         "x-ms-correlation-request-id": [
-          "00063de9-5377-4084-9c67-f0d04e411353"
+          "4ee8231e-74e4-4e08-b242-93cb324ee4db"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220916Z:00063de9-5377-4084-9c67-f0d04e411353"
+          "CENTRALUS:20161111T173756Z:4ee8231e-74e4-4e08-b242-93cb324ee4db"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:09:15 GMT"
+          "Fri, 11 Nov 2016 17:37:56 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -586,19 +731,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "92c317dd-37bd-4d6a-9d85-90f7829781ed"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -610,28 +763,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "897f0290-fc79-4441-9dad-ce5b10bc96bf"
+          "ce609978-a2c7-4cf2-8b10-ad214f581ca4"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799971"
+          "14988"
         ],
         "x-ms-correlation-request-id": [
-          "b84c4c19-5b50-4fde-9f45-b3d4fc76082b"
+          "4bdaeca7-b59b-4606-b1ca-c85ba7e13ad1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220946Z:b84c4c19-5b50-4fde-9f45-b3d4fc76082b"
+          "CENTRALUS:20161111T173827Z:4bdaeca7-b59b-4606-b1ca-c85ba7e13ad1"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:09:45 GMT"
+          "Fri, 11 Nov 2016 17:38:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -640,19 +793,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "27891e2f-5b6e-41a6-ad68-a577457b82c7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -664,28 +825,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2d056d7e-ab0e-4fe7-8371-aec17dee82e5"
+          "013340d8-7487-4ae2-a243-4b9d6945f6c7"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799970"
+          "14987"
         ],
         "x-ms-correlation-request-id": [
-          "288cedd9-9130-420d-b1e0-1749c8f80549"
+          "0cad0dc8-bd7f-4ecd-9c71-5b412b7b27b7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221016Z:288cedd9-9130-420d-b1e0-1749c8f80549"
+          "CENTRALUS:20161111T173857Z:0cad0dc8-bd7f-4ecd-9c71-5b412b7b27b7"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:10:15 GMT"
+          "Fri, 11 Nov 2016 17:38:56 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -694,19 +855,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "db8649c1-99a3-4dcf-a3bc-52f4b5b1b3ad"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -718,28 +887,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a574c6d3-287a-494b-b3dc-986b132d43af"
+          "fb324608-1df1-4daa-ad61-4de9d85ac4c1"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799969"
+          "14986"
         ],
         "x-ms-correlation-request-id": [
-          "b60c2f90-572b-4a9a-8d0a-5f84e38a58bc"
+          "6048a16e-e404-4d83-8c1c-440c5c490f0b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221046Z:b60c2f90-572b-4a9a-8d0a-5f84e38a58bc"
+          "CENTRALUS:20161111T173927Z:6048a16e-e404-4d83-8c1c-440c5c490f0b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:10:46 GMT"
+          "Fri, 11 Nov 2016 17:39:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -748,19 +917,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3cad0a14-f4dd-4afb-bb63-263b3320d2ac"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -772,28 +949,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b66ede13-1d0a-48fb-a2a6-4143dd990642"
+          "b3355986-7887-435b-b10a-8a858d29eb6e"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799968"
+          "14985"
         ],
         "x-ms-correlation-request-id": [
-          "698abdad-b77a-4156-987c-1c2c3dee89a0"
+          "070ecfea-e770-4921-be05-73972e4515e0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221116Z:698abdad-b77a-4156-987c-1c2c3dee89a0"
+          "CENTRALUS:20161111T173957Z:070ecfea-e770-4921-be05-73972e4515e0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:11:16 GMT"
+          "Fri, 11 Nov 2016 17:39:56 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -802,19 +979,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d899353b-7b9f-4a7a-afc1-277bfb4e9870"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -826,28 +1011,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d3c8e3d5-e827-489f-8a60-836240165392"
+          "ab215d8d-72da-4383-92e7-5b83b52d0cfc"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799967"
+          "14984"
         ],
         "x-ms-correlation-request-id": [
-          "df3b5203-d0d5-424d-bebb-9ac20122372f"
+          "edc777a4-ae79-4392-9909-a6acfea873c4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221146Z:df3b5203-d0d5-424d-bebb-9ac20122372f"
+          "CENTRALUS:20161111T174027Z:edc777a4-ae79-4392-9909-a6acfea873c4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:11:46 GMT"
+          "Fri, 11 Nov 2016 17:40:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -856,19 +1041,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d2149c85-3993-47a0-bcd7-92047c117c25"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "566"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -880,28 +1073,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a38099be-5c7c-4fc9-945c-81b092685fee"
+          "a2a16a7d-f7dd-45e2-8365-eb8d38884372"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799966"
+          "14983"
         ],
         "x-ms-correlation-request-id": [
-          "6d692983-0b88-470e-854c-7dca2f342f1b"
+          "92af8dd5-910a-4980-8ff6-8ac05b4e671b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221217Z:6d692983-0b88-470e-854c-7dca2f342f1b"
+          "CENTRALUS:20161111T174057Z:92af8dd5-910a-4980-8ff6-8ac05b4e671b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:12:17 GMT"
+          "Fri, 11 Nov 2016 17:40:57 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -910,19 +1103,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0c2ad6e0-5717-4a4e-b667-571941a769b9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "567"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -934,28 +1135,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0066b093-5f34-475d-8557-2037196e9a74"
+          "b2443404-f0a5-4047-89da-88f1c411a7c2"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799965"
+          "14982"
         ],
         "x-ms-correlation-request-id": [
-          "36e6e39c-ca29-4c37-94b6-e60e50bce313"
+          "cafafa5b-8f37-46d7-be64-813d62f494c2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221247Z:36e6e39c-ca29-4c37-94b6-e60e50bce313"
+          "CENTRALUS:20161111T174128Z:cafafa5b-8f37-46d7-be64-813d62f494c2"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:12:46 GMT"
+          "Fri, 11 Nov 2016 17:41:27 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -964,19 +1165,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "81a8fa1f-d708-4789-8360-ff1db9322f19"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "567"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -988,28 +1197,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "db8afabf-203f-4120-96aa-1b3c47da5c21"
+          "442dfdd4-3bae-4f30-963f-fb9a3fb4ca05"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799964"
+          "14981"
         ],
         "x-ms-correlation-request-id": [
-          "5e6df877-952f-46e3-a881-c93eee04b914"
+          "1f05f68f-91ec-4a16-b21c-afa6ccc1bc92"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221317Z:5e6df877-952f-46e3-a881-c93eee04b914"
+          "CENTRALUS:20161111T174128Z:1f05f68f-91ec-4a16-b21c-afa6ccc1bc92"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:13:16 GMT"
+          "Fri, 11 Nov 2016 17:41:27 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1018,19 +1227,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0e98264a-d2ec-4d27-a52a-c8b5efa7ca4a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "567"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1042,28 +1259,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e25fcd85-ebcd-4f0a-ab3c-1fb7cc5972cb"
+          "41b33db7-db17-4cf6-a89c-f9f9b5da067c"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799959"
+          "14980"
         ],
         "x-ms-correlation-request-id": [
-          "66d6846a-e386-493c-a7ab-2ea04d939cb5"
+          "3cfaa0bf-dacf-479f-8931-e7fff070dc59"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221347Z:66d6846a-e386-493c-a7ab-2ea04d939cb5"
+          "CENTRALUS:20161111T174128Z:3cfaa0bf-dacf-479f-8931-e7fff070dc59"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:13:47 GMT"
+          "Fri, 11 Nov 2016 17:41:28 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1072,19 +1289,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4fa95a1a-cc01-45e5-931a-3713d6889a10"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-policy\": \"allkeys-random\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "604"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1096,28 +1321,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "402c2083-c458-4c80-bc94-b53ecb93b47f"
+          "253dbc73-1856-4ad5-a17b-ca4bf5ee935b"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799958"
+          "14979"
         ],
         "x-ms-correlation-request-id": [
-          "f3ce5b14-8faf-4193-93a1-51b10cd10582"
+          "d8227108-22b8-48d4-ac00-f440647c9488"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221417Z:f3ce5b14-8faf-4193-93a1-51b10cd10582"
+          "CENTRALUS:20161111T174131Z:d8227108-22b8-48d4-ac00-f440647c9488"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:14:16 GMT"
+          "Fri, 11 Nov 2016 17:41:30 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1126,19 +1351,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "580bb7db-2f3d-4b2f-a6c5-d6252666929b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-policy\": \"allkeys-random\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "604"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1150,28 +1383,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d4757098-b20b-48e7-a694-62266e356f66"
+          "fd6b8096-8851-4e5c-b84b-2c82112c76d0"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799957"
+          "14978"
         ],
         "x-ms-correlation-request-id": [
-          "53b8b903-6a63-49c6-b76a-e417a3b794e4"
+          "99b1ca04-4478-4b22-a227-39cd69cfa822"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221447Z:53b8b903-6a63-49c6-b76a-e417a3b794e4"
+          "CENTRALUS:20161111T174131Z:99b1ca04-4478-4b22-a227-39cd69cfa822"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:14:47 GMT"
+          "Fri, 11 Nov 2016 17:41:31 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1180,19 +1413,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e4c17774-6df0-464f-bcee-bf13cd97daad"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-policy\": \"allkeys-random\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "604"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1204,28 +1445,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5a41f04d-bced-4a94-8496-e372798e9849"
+          "78ec868d-31a1-4aaa-b583-6d1bc256cdb2"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799956"
+          "14977"
         ],
         "x-ms-correlation-request-id": [
-          "6a4b8f5b-63fd-4b2e-87b6-81d5a4c06e19"
+          "0d8fca5a-751b-40a0-a63c-ace49b5e7807"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221518Z:6a4b8f5b-63fd-4b2e-87b6-81d5a4c06e19"
+          "CENTRALUS:20161111T174131Z:0d8fca5a-751b-40a0-a63c-ace49b5e7807"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:15:18 GMT"
+          "Fri, 11 Nov 2016 17:41:31 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1234,19 +1475,27 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a1ce0db3-aa17-41cf-b06d-2988f236dba5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-policy\": \"allkeys-random\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "604"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1258,28 +1507,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b5f2dcae-ca5f-480f-bb4b-d510db2b9f70"
+          "6c8fd881-e326-45b2-8b67-1cef45b04812"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "799955"
+          "14976"
         ],
         "x-ms-correlation-request-id": [
-          "357f7e5f-34ad-47db-b5f6-3095f424fbc6"
+          "1aa4d500-a400-4e8d-9fb0-6bf190cd9aad"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221548Z:357f7e5f-34ad-47db-b5f6-3095f424fbc6"
+          "CENTRALUS:20161111T174133Z:1aa4d500-a400-4e8d-9fb0-6bf190cd9aad"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:15:47 GMT"
+          "Fri, 11 Nov 2016 17:41:32 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1288,19 +1537,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/providers/Microsoft.Cache/register?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGUvcmVnaXN0ZXI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/providers/Microsoft.Cache\",\r\n  \"namespace\": \"Microsoft.Cache\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"96231a05-34ce-4eb4-aa6a-70759cbb5e83\",\r\n    \"roleDefinitionId\": \"4f731528-ba85-45c7-acfb-cd0a9b3cf31b\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"Redis\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01-alpha\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01-alpha\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisConfigDefinition\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/metricDefinitions\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/diagnosticSettings\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"North Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "2912"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1311,50 +1560,44 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "f9cb5972-1ac2-47e5-949c-a976bc757664"
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
         ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+        "x-ms-request-id": [
+          "59b8f0d0-6f54-4ccf-b382-b95bdf237532"
+        ],
+        "x-ms-correlation-request-id": [
+          "59b8f0d0-6f54-4ccf-b382-b95bdf237532"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T173253Z:59b8f0d0-6f54-4ccf-b382-b95bdf237532"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799954"
-        ],
-        "x-ms-correlation-request-id": [
-          "20c12fd5-466f-4b9d-9eb0-2a0a13c74c77"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221618Z:20c12fd5-466f-4b9d-9eb0-2a0a13c74c77"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:16:18 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 11 Nov 2016 17:32:53 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/providers/Microsoft.Cache/register?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGUvcmVnaXN0ZXI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/providers/Microsoft.Cache\",\r\n  \"namespace\": \"Microsoft.Cache\",\r\n  \"authorization\": {\r\n    \"applicationId\": \"96231a05-34ce-4eb4-aa6a-70759cbb5e83\",\r\n    \"roleDefinitionId\": \"4f731528-ba85-45c7-acfb-cd0a9b3cf31b\"\r\n  },\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"Redis\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"South India\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Southeast Asia\",\r\n        \"East Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01-alpha\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\",\r\n        \"2014-04-01-preview\",\r\n        \"2014-04-01-alpha\",\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"RedisConfigDefinition\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2016-04-01\",\r\n        \"2015-08-01\",\r\n        \"2015-03-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/metricDefinitions\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"Redis/diagnosticSettings\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"North Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Brazil South\",\r\n        \"West US\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK West\",\r\n        \"UK South\",\r\n        \"West US 2\",\r\n        \"West Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2014-04-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "2912"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1365,596 +1608,58 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "d5b9bc3f-cbe1-46b8-b6b8-01113ab44239"
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
         ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+        "x-ms-request-id": [
+          "b4140454-55c2-41f9-8671-e6db09500ae5"
+        ],
+        "x-ms-correlation-request-id": [
+          "b4140454-55c2-41f9-8671-e6db09500ae5"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174129Z:b4140454-55c2-41f9-8671-e6db09500ae5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799953"
-        ],
-        "x-ms-correlation-request-id": [
-          "d2f5ed7f-4afc-4034-9d1f-004156d5639b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221648Z:d2f5ed7f-4afc-4034-9d1f-004156d5639b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:16:48 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Fri, 11 Nov 2016 17:41:29 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "508"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "8badc9fc-3cb7-40bb-afe8-2960153d5c0e"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799952"
-        ],
-        "x-ms-correlation-request-id": [
-          "f30c27fb-4244-4b78-8475-4ffbc74c84f1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221718Z:f30c27fb-4244-4b78-8475-4ffbc74c84f1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:17:18 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "508"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "32e64969-b2f3-43d2-b0de-eacd50ce01f6"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799951"
-        ],
-        "x-ms-correlation-request-id": [
-          "c2382a3f-c2d5-47ba-aef9-28cdd50db719"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221748Z:c2382a3f-c2d5-47ba-aef9-28cdd50db719"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:17:48 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "508"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "5c03ada4-1b1e-40c5-a649-ad8e386f5594"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799950"
-        ],
-        "x-ms-correlation-request-id": [
-          "9f214c8f-fc7a-4e08-88f4-06323e4f974d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221818Z:9f214c8f-fc7a-4e08-88f4-06323e4f974d"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:17 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "509"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "aab0dde9-4b2b-4d3a-bb8e-58280a868aed"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799949"
-        ],
-        "x-ms-correlation-request-id": [
-          "3518bde5-e626-407a-b92c-08078ece5f51"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221849Z:3518bde5-e626-407a-b92c-08078ece5f51"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:48 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "509"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "382894af-9150-461c-887b-ff79bb89b118"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799948"
-        ],
-        "x-ms-correlation-request-id": [
-          "cfc38b3c-e3e7-409a-973a-c0b7b3983731"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221849Z:cfc38b3c-e3e7-409a-973a-c0b7b3983731"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:48 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "509"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "34902d06-ae8e-4c13-a186-d8a53745a4a3"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799947"
-        ],
-        "x-ms-correlation-request-id": [
-          "5885200a-7535-452a-a2de-bab2a2120ec6"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221849Z:5885200a-7535-452a-a2de-bab2a2120ec6"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:48 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"maxMemoryPolicy\": \"AllKeysRandom\",\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "519"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4f544fc8-1899-46e9-b809-087dcfce3843"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799946"
-        ],
-        "x-ms-correlation-request-id": [
-          "cee9d044-9643-41b2-85a6-763c5225c341"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221850Z:cee9d044-9643-41b2-85a6-763c5225c341"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:49 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"maxMemoryPolicy\": \"AllKeysRandom\",\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "519"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "c5f81abd-be91-4af1-8d5e-f8acc337d8d8"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799945"
-        ],
-        "x-ms-correlation-request-id": [
-          "b8ceb12b-8df6-4343-89d8-62349f77c080"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221850Z:b8ceb12b-8df6-4343-89d8-62349f77c080"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:49 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"maxMemoryPolicy\": \"AllKeysRandom\",\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "519"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "7234b2ff-fe81-4afc-95c1-5fc5450f38f0"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799944"
-        ],
-        "x-ms-correlation-request-id": [
-          "bbd77ce5-1361-4a47-b1f2-2a5ee09d8f4c"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221850Z:bbd77ce5-1361-4a47-b1f2-2a5ee09d8f4c"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:49 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"maxMemoryPolicy\": \"AllKeysRandom\",\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "519"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "4137f60b-e490-4f66-b659-5f31c50953b3"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "799943"
-        ],
-        "x-ms-correlation-request-id": [
-          "d6a6715a-e48c-448c-b409-7ec6fde4a3e0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221851Z:d6a6715a-e48c-448c-b409-7ec6fde4a3e0"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:50 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"North Central US\",\r\n  \"properties\": {\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"enableNonSslPort\": true,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    }\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "211"
+          "173"
+        ],
+        "x-ms-client-request-id": [
+          "f423f973-ef1a-4134-8bd0-d1a33689b7e8"
+        ],
+        "accept-language": [
+          "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"maxMemoryPolicy\": null,\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"qOw8pbe1/wSkUQ1aXh5CrAnjof8ubytC6MsYzH67T9s=\",\r\n      \"secondaryKey\": \"M13vavA+W9MtFyeB6rBQ0u0BUnt+JxRNrsXNkjtx1jA=\"\r\n    },\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"AAT6zGGlbIaIxpygwxychwPrno7PSr/e6bW8Y98QQx0=\",\r\n      \"secondaryKey\": \"+zK5H90FtsFAnMY+ISX4yE2K4lAwcqq2CHEy5OOwbjQ=\"\r\n    },\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "627"
+          "685"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1966,31 +1671,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "bebe9a09-20a9-45bf-9083-9761c5118880"
+          "256a75ef-fd76-4857-acac-089685e38a8a"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "11999"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "c0608a85-97f5-441b-874e-73b7e7803e8e"
+          "5edc05ba-6ead-4caa-8be3-623f6582c8eb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220414Z:c0608a85-97f5-441b-874e-73b7e7803e8e"
+          "CENTRALUS:20161111T173255Z:5edc05ba-6ead-4caa-8be3-623f6582c8eb"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:04:14 GMT"
+          "Fri, 11 Nov 2016 17:32:54 GMT"
         ],
         "Location": [
-          "https://cache.management.azure.com:10225/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe"
+          "https://management.azure.com/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1999,76 +1704,24 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"North Central US\",\r\n  \"properties\": {\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"maxMemoryPolicy\": \"AllKeysRandom\",\r\n    \"enableNonSslPort\": true\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json"
-        ],
-        "Content-Length": [
-          "251"
-        ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"North Central US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"2.8\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 0\r\n    },\r\n    \"enableNonSslPort\": true,\r\n    \"maxMemoryPolicy\": \"AllKeysRandom\",\r\n    \"accessKeys\": {\r\n      \"primaryKey\": \"qOw8pbe1/wSkUQ1aXh5CrAnjof8ubytC6MsYzH67T9s=\",\r\n      \"secondaryKey\": \"M13vavA+W9MtFyeB6rBQ0u0BUnt+JxRNrsXNkjtx1jA=\"\r\n    },\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "638"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "57ff650b-369c-468e-a3b3-5140f3c90662"
-        ],
-        "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "b1884d3e-d0f0-466c-8f8e-edd090a2351d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20141112T221849Z:b1884d3e-d0f0-466c-8f8e-edd090a2351d"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 12 Nov 2014 22:18:49 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe/listKeys?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe/listKeys?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGUvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87b40953-4094-4e61-89a7-27d84911c544"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"qOw8pbe1/wSkUQ1aXh5CrAnjof8ubytC6MsYzH67T9s=\",\r\n  \"secondaryKey\": \"M13vavA+W9MtFyeB6rBQ0u0BUnt+JxRNrsXNkjtx1jA=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"AAT6zGGlbIaIxpygwxychwPrno7PSr/e6bW8Y98QQx0=\",\r\n  \"secondaryKey\": \"+zK5H90FtsFAnMY+ISX4yE2K4lAwcqq2CHEy5OOwbjQ=\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "123"
@@ -2083,28 +1736,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a3810a7b-eaa1-44d6-9139-736ec754beaa"
+          "e870e17d-c95a-4704-a888-0661d826d399"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "11997"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "0b9529ea-16ba-45dc-a43c-0abd6cd0b408"
+          "c744d084-eb06-4461-947b-11a9f506259e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221850Z:0b9529ea-16ba-45dc-a43c-0abd6cd0b408"
+          "CENTRALUS:20161111T173255Z:c744d084-eb06-4461-947b-11a9f506259e"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:18:49 GMT"
+          "Fri, 11 Nov 2016 17:32:54 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2113,16 +1766,24 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe/listKeys?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZS9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe/listKeys?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGUvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f3fcb0a7-dd79-483a-a2e0-b23b53ac3fc9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"P517VE2jd0mf0kNLlzOPBFlBvrqKUqc+hEN8CsI1u8Y=\",\r\n  \"secondaryKey\": \"M13vavA+W9MtFyeB6rBQ0u0BUnt+JxRNrsXNkjtx1jA=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"AAT6zGGlbIaIxpygwxychwPrno7PSr/e6bW8Y98QQx0=\",\r\n  \"secondaryKey\": \"+zK5H90FtsFAnMY+ISX4yE2K4lAwcqq2CHEy5OOwbjQ=\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "123"
@@ -2137,28 +1798,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5358b2f5-2d08-4dc6-a630-af1ef97cf42e"
+          "8522595d-57ed-4f19-98fb-da6d7d4f221f"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "11995"
+          "1193"
         ],
         "x-ms-correlation-request-id": [
-          "0e315b75-16a9-4198-8560-58a4c182910c"
+          "e3b7b503-b393-4228-b599-4f17b4fa4975"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221850Z:0e315b75-16a9-4198-8560-58a4c182910c"
+          "CENTRALUS:20161111T174131Z:e3b7b503-b393-4228-b599-4f17b4fa4975"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:18:50 GMT"
+          "Fri, 11 Nov 2016 17:41:30 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2167,22 +1828,222 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe/regenerateKey?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZS9yZWdlbmVyYXRlS2V5P2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe/listKeys?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGUvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "656107fd-2fe0-4bb8-9ed5-5037862c479b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryKey\": \"AAT6zGGlbIaIxpygwxychwPrno7PSr/e6bW8Y98QQx0=\",\r\n  \"secondaryKey\": \"+zK5H90FtsFAnMY+ISX4yE2K4lAwcqq2CHEy5OOwbjQ=\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "123"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7486dcfe-a765-4b81-872f-1517a2f10956"
+        ],
+        "x-rp-server-mvid": [
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1192"
+        ],
+        "x-ms-correlation-request-id": [
+          "24c5ce7e-48cf-4fe0-966e-4c65ca7640a9"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174131Z:24c5ce7e-48cf-4fe0-966e-4c65ca7640a9"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:41:31 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe/listKeys?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGUvbGlzdEtleXM/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a0f6026e-deaa-497f-ae5b-b753ebcd559d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryKey\": \"cvoUBsQKa6n9bfaS0Oc/npxs8/5yhz67x2khM1MYkXY=\",\r\n  \"secondaryKey\": \"+zK5H90FtsFAnMY+ISX4yE2K4lAwcqq2CHEy5OOwbjQ=\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "123"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c1e74ccc-8a2d-4751-8c0f-a01926847588"
+        ],
+        "x-rp-server-mvid": [
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1190"
+        ],
+        "x-ms-correlation-request-id": [
+          "ac4a3259-c2e1-4b3f-9004-23de507f0c77"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174132Z:ac4a3259-c2e1-4b3f-9004-23de507f0c77"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:41:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "PATCH",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"redisConfiguration\": {\r\n      \"maxmemory-policy\": \"allkeys-random\"\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "229"
+        ],
+        "x-ms-client-request-id": [
+          "4543c269-0d38-4d24-8b62-acdb632afca4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"powershelltestpipe\",\r\n  \"type\": \"Microsoft.Cache/Redis\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"redisVersion\": \"3.0\",\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": \"C\",\r\n      \"capacity\": 1\r\n    },\r\n    \"enableNonSslPort\": false,\r\n    \"redisConfiguration\": {\r\n      \"maxclients\": \"1000\",\r\n      \"maxmemory-reserved\": \"50\",\r\n      \"maxmemory-policy\": \"allkeys-random\",\r\n      \"maxmemory-delta\": \"50\"\r\n    },\r\n    \"accessKeys\": null,\r\n    \"hostName\": \"powershelltestpipe.redis.cache.windows.net\",\r\n    \"port\": 6379,\r\n    \"sslPort\": 6380\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "604"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "81dc7a6e-f7c7-4fad-8676-8cbd78db64e4"
+        ],
+        "x-rp-server-mvid": [
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "b2433aec-d594-43ff-b238-0d79be06e599"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174130Z:b2433aec-d594-43ff-b238-0d79be06e599"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:41:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe/regenerateKey?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGUvcmVnZW5lcmF0ZUtleT9hcGktdmVyc2lvbj0yMDE2LTA0LTAx",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"keyType\": \"Primary\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Content-Length": [
           "28"
         ],
+        "x-ms-client-request-id": [
+          "4e7668d0-e270-4922-8e93-ab5dec944d16"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"P517VE2jd0mf0kNLlzOPBFlBvrqKUqc+hEN8CsI1u8Y=\",\r\n  \"secondaryKey\": \"M13vavA+W9MtFyeB6rBQ0u0BUnt+JxRNrsXNkjtx1jA=\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"cvoUBsQKa6n9bfaS0Oc/npxs8/5yhz67x2khM1MYkXY=\",\r\n  \"secondaryKey\": \"+zK5H90FtsFAnMY+ISX4yE2K4lAwcqq2CHEy5OOwbjQ=\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "123"
@@ -2197,28 +2058,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "16c3a03a-412e-4a2d-ba9e-09efb4e58422"
+          "4b156d41-6048-4178-b9ce-12a26ba9a5c5"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "11996"
+          "1191"
         ],
         "x-ms-correlation-request-id": [
-          "333d22d8-8b3c-4346-bc9c-c8bae7a43887"
+          "3730ac5b-5bb4-4128-a8f4-8dfcaead1a54"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221850Z:333d22d8-8b3c-4346-bc9c-c8bae7a43887"
+          "CENTRALUS:20161111T174132Z:3730ac5b-5bb4-4128-a8f4-8dfcaead1a54"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:18:50 GMT"
+          "Fri, 11 Nov 2016 17:41:32 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2227,13 +2088,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL3Bvd2Vyc2hlbGx0ZXN0cGlwZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/PowerShellTest-2/providers/Microsoft.Cache/Redis/powershelltestpipe?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9wb3dlcnNoZWxsdGVzdHBpcGU/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "42abfb5a-0180-4c95-9d72-5b096e255639"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "FxVersion/4.6.1586.0",
+          "Windows_10_Enterprise/6.3.14393",
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/4.2.0-preview"
         ]
       },
       "ResponseBody": "",
@@ -2248,31 +2117,292 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d0ce22a3-5f41-4fc1-8fe7-c516936e4b19"
+          "cc4555fe-fdbb-46fd-bfd3-449bc74cf1b9"
         ],
         "x-rp-server-mvid": [
-          "a381990d-ae56-4d98-bbbe-57915ba00903"
+          "e005b792-28c6-4233-8371-f6b6e1178b65"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "11994"
+          "1189"
         ],
         "x-ms-correlation-request-id": [
-          "e6cf776f-9948-43ff-b69c-bf9f20a84236"
+          "8819b6bd-df90-481d-acbe-cb9f314c0b04"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T221852Z:e6cf776f-9948-43ff-b69c-bf9f20a84236"
+          "CENTRALUS:20161111T174134Z:8819b6bd-df90-481d-acbe-cb9f314c0b04"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:18:52 GMT"
+          "Fri, 11 Nov 2016 17:41:33 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourcegroups/PowerShellTest-2?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlZ3JvdXBzL1Bvd2VyU2hlbGxUZXN0LTI/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1188"
+        ],
+        "x-ms-request-id": [
+          "de16ae09-41bb-468c-b143-50cb22b4ced8"
+        ],
+        "x-ms-correlation-request-id": [
+          "de16ae09-41bb-468c-b143-50cb22b4ced8"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174134Z:de16ae09-41bb-468c-b143-50cb22b4ced8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:41:34 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVDFkRlVsTklSVXhNVkVWVFZEb3lSREl0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14975"
+        ],
+        "x-ms-request-id": [
+          "f4a1cd40-05dc-47eb-934c-b1f684159b7b"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4a1cd40-05dc-47eb-934c-b1f684159b7b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174135Z:f4a1cd40-05dc-47eb-934c-b1f684159b7b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:41:34 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVDFkRlVsTklSVXhNVkVWVFZEb3lSREl0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14974"
+        ],
+        "x-ms-request-id": [
+          "95d7950e-6fd7-4ba6-8155-515555a70a00"
+        ],
+        "x-ms-correlation-request-id": [
+          "95d7950e-6fd7-4ba6-8155-515555a70a00"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174150Z:95d7950e-6fd7-4ba6-8155-515555a70a00"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:41:49 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVDFkRlVsTklSVXhNVkVWVFZEb3lSREl0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-request-id": [
+          "0a610fc6-51ad-4e8a-a9c7-5f9d6b833d3e"
+        ],
+        "x-ms-correlation-request-id": [
+          "0a610fc6-51ad-4e8a-a9c7-5f9d6b833d3e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174205Z:0a610fc6-51ad-4e8a-a9c7-5f9d6b833d3e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:42:04 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QT1dFUlNIRUxMVEVTVDoyRDItV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVDFkRlVsTklSVXhNVkVWVFZEb3lSREl0VjBWVFZGVlRJaXdpYW05aVRHOWpZWFJwYjI0aU9pSjNaWE4wZFhNaWZRP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-02-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-request-id": [
+          "3963f395-bf79-4ea7-8cec-55ff9572901c"
+        ],
+        "x-ms-correlation-request-id": [
+          "3963f395-bf79-4ea7-8cec-55ff9572901c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20161111T174220Z:3963f395-bf79-4ea7-8cec-55ff9572901c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 11 Nov 2016 17:42:19 GMT"
         ]
       },
       "StatusCode": 200
@@ -2280,6 +2410,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "e638312d-094f-40fd-a2cc-579fe8490bbd"
+    "SubscriptionId": "592cc9de-a3cd-4d70-9bc1-c1a28a3625b5"
   }
 }

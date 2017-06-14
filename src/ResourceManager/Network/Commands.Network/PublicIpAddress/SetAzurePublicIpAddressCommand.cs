@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzurePublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
     public class SetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Parameter(
@@ -32,18 +31,17 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
             // Map to the sdk object
-            var publicIpModel = Mapper.Map<MNM.PublicIpAddress>(this.PublicIpAddress);
-            publicIpModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.PublicIpAddressType;
+            var publicIpModel = Mapper.Map<MNM.PublicIPAddress>(this.PublicIpAddress);
             publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.PublicIpAddress.Tag, validate: true);
 
             this.PublicIpAddressClient.CreateOrUpdate(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name, publicIpModel);

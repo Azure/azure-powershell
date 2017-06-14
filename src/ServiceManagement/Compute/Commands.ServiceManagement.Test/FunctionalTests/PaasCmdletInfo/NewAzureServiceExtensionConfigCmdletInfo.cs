@@ -55,5 +55,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 this.cmdletParams.Add(new CmdletParam("ThumbprintAlgorithm", algorithm));
             }
         }
+
+        public NewAzureServiceExtensionConfigCmdletInfo(string extensionId, string extensionStatus, string[] roles)
+        {
+            this.cmdletName = Utilities.NewAzureServiceExtensionConfigCmdletName;
+            this.cmdletParams.Add(new CmdletParam("ExtensionId", extensionId));
+            this.cmdletParams.Add(new CmdletParam("ExtensionState", extensionStatus));
+            if (roles != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("Role", roles));
+            }
+        }
     }
 }

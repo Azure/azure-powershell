@@ -15,48 +15,51 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    using Newtonsoft.Json;
-
-    public class PSFrontendIPConfiguration : PSChildResource
+    public class PSFrontendIPConfiguration : PSIPConfiguration
     {
-        public string PrivateIpAddress { get; set; }
-
-        public string PrivateIpAllocationMethod { get; set; }
-
-        public PSResourceId Subnet { get; set; }
-
-        public PSResourceId PublicIpAddress { get; set; }
-
+        [JsonProperty(Order = 2)]
         public List<PSResourceId> InboundNatRules { get; set; }
 
+        [JsonProperty(Order = 2)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
 
-        public string ProvisioningState { get; set; }
-
-        [JsonIgnore]
-        public string SubnetText
-        {
-            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string PublicIpAddressText
-        {
-            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented); }
-        }
+        [JsonProperty(Order = 2)]
+        public List<PSResourceId> InboundNatPools { get; set; }
 
         [JsonIgnore]
         public string InboundNatRulesText
         {
-            get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string LoadBalancingRulesText
         {
-            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string InboundNatPoolsText
+        {
+            get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeInboundNatRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeLoadBalancingRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeInboundNatPools()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

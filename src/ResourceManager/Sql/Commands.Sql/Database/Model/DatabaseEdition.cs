@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,27 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// A database standard edition
         /// </summary>
-        Standard = 5
+        Standard = 5,
+
+        /// <summary>
+        /// Azure SQL Data Warehouse database edition
+        /// </summary>
+        DataWarehouse = 6,
+
+        /// <summary>
+        /// Azure SQL Stretch database edition
+        /// </summary>
+        Stretch = 7,
+
+        /// <summary>
+        /// Free database edition.  Reserved for special use cases/scenarios.
+        /// </summary>
+        Free = 8,
+
+        /// <summary>
+        /// PremiumRS database edition
+        /// </summary>
+        PremiumRS = 9,
     }
 }
 

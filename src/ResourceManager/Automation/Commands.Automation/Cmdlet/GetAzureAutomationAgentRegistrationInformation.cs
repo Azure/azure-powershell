@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets azure automation agent registration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationRegistrationInfo")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationRegistrationInfo")]
     [OutputType(typeof(AgentRegistration))]
     public class GetAzureAutomationRegistrationInfo : AzureAutomationBaseCmdlet
     {

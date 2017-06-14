@@ -14,7 +14,8 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.DeploymentEntities;
@@ -68,8 +69,14 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             }
             else if (TableStorage.IsPresent || BlobStorage.IsPresent)
             {
-                properties[DiagnosticProperties.StorageAccountName] = string.IsNullOrEmpty(StorageAccountName) ?
-                    Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount) : StorageAccountName;
+                if (string.IsNullOrWhiteSpace(StorageAccountName))
+                {
+                    properties[DiagnosticProperties.StorageAccountName] = Profile.Context.Subscription.GetStorageAccountName();
+                }
+                else
+                {
+                    properties[DiagnosticProperties.StorageAccountName] = StorageAccountName;
+                }
 
                 if (TableStorage.IsPresent)
                 {

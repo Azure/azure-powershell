@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlElasticPoolDatabase", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolDatabase : AzureSqlElasticPoolCmdletBase
     {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         {
             ICollection<AzureSqlDatabaseModel> results;
 
-            if(MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
             {
                 results = new List<AzureSqlDatabaseModel>();
                 results.Add(ModelAdapter.GetElasticPoolDatabase(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.DatabaseName));
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
+            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
 
             WriteObject(GetDatabase());
         }

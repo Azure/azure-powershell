@@ -24,13 +24,14 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class PublishContextTests : TestBase, IDisposable
+    public class PublishContextTests : SMTestBase, IDisposable
     {
         private static AzureServiceWrapper service;
 
@@ -47,15 +48,16 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         /// </summary>
         public PublishContextTests()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             AzurePowerShell.ProfileDirectory = Test.Utilities.Common.Data.AzureSdkAppDir;
             service = new AzureServiceWrapper(Directory.GetCurrentDirectory(), Path.GetRandomFileName(), null);
             service.CreateVirtualCloudPackage();
             packagePath = service.Paths.CloudPackage;
             configPath = service.Paths.CloudConfiguration;
             settings = ServiceSettingsTestData.Instance.Data[ServiceSettingsState.Default];
-            AzureSession.DataStore = new MemoryDataStore();
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
-            AzureSession.DataStore.WriteFile(Test.Utilities.Common.Data.ValidPublishSettings.First(),
+            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile)));
+            AzureSession.Instance.DataStore.WriteFile(Test.Utilities.Common.Data.ValidPublishSettings.First(),
                 File.ReadAllText(Test.Utilities.Common.Data.ValidPublishSettings.First()));
             client.ImportPublishSettings(Test.Utilities.Common.Data.ValidPublishSettings.First(), null);
             client.Profile.Save();
@@ -63,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 
         public void TestCleanup()
         {
-            AzureSession.DataStore = new MemoryDataStore();
+            AzureSession.Instance.DataStore = new MemoryDataStore();
             if (Directory.Exists(Test.Utilities.Common.Data.AzureSdkAppDir))
             {
                 new RemoveAzurePublishSettingsCommand().RemovePublishSettingsProcess(Test.Utilities.Common.Data.AzureSdkAppDir);

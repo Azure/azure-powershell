@@ -12,26 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.OSDisk,
-        DefaultParameterSetName = WindowsParamSet),
+        DefaultParameterSetName = DefaultParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOSDiskCommand : AzurePSCmdlet
+    public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        protected const string DefaultParamSet = "DefaultParamSet";
         protected const string WindowsParamSet = "WindowsParamSet";
         protected const string LinuxParamSet = "LinuxParamSet";
+        protected const string WindowsAndDiskEncryptionParameterSet = "WindowsDiskEncryptionParameterSet";
+        protected const string LinuxAndDiskEncryptionParameterSet = "LinuxDiskEncryptionParameterSet";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("OSDiskName", "DiskName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskName)]
@@ -54,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("OSDiskVhdUri", "DiskVhdUri")]
         [Parameter(
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskVhdUri)]
@@ -64,9 +66,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskCaching)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite)]
-        public string Caching { get; set; }
+        public CachingTypes? Caching { get; set; }
 
         [Alias("SourceImage")]
         [Parameter(
@@ -81,12 +81,15 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(DiskCreateOptionTypes.Empty, DiskCreateOptionTypes.Attach, DiskCreateOptionTypes.FromImage)]
-        public string CreateOption { get; set; }
+        public DiskCreateOptionTypes CreateOption { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
+        [Parameter(
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
@@ -97,7 +100,87 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        [Parameter(
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyUrl)]
+        [Parameter(
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyUrl)]
+        public string DiskEncryptionKeyUrl { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyVaultId)]
+        [Parameter(
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyVaultId)]
+        public string DiskEncryptionKeyVaultId { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyUrl)]
+        [Parameter(
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyUrl)]
+        public string KeyEncryptionKeyUrl { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
+        [Parameter(
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
+        public string KeyEncryptionKeyVaultId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskSizeInGB)]
+        [AllowNull]
+        public int? DiskSizeInGB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ManagedDiskId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -106,20 +189,60 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = new StorageProfile();
             }
 
-            this.VM.StorageProfile.OSDisk = new OSDisk
+            if ((string.IsNullOrEmpty(this.KeyEncryptionKeyVaultId) && !string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
+                || (!string.IsNullOrEmpty(this.KeyEncryptionKeyVaultId) && string.IsNullOrEmpty(this.KeyEncryptionKeyUrl)))
+            {
+                WriteError(new ErrorRecord(
+                        new Exception(Properties.Resources.VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired),
+                        string.Empty, ErrorCategory.InvalidArgument, null));
+            }
+
+            this.VM.StorageProfile.OsDisk = new OSDisk
             {
                 Caching = this.Caching,
                 Name = this.Name,
-                OperatingSystemType = this.Windows.IsPresent ? OperatingSystemTypes.Windows : this.Linux.IsPresent ? OperatingSystemTypes.Linux : null,
-                VirtualHardDisk = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
+                OsType = this.Windows.IsPresent ? OperatingSystemTypes.Windows : this.Linux.IsPresent ? OperatingSystemTypes.Linux : (OperatingSystemTypes?)null,
+                Vhd = string.IsNullOrEmpty(this.VhdUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.VhdUri
                 },
-                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                DiskSizeGB = this.DiskSizeInGB,
+                Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
                 },
-                CreateOption = this.CreateOption
+                CreateOption = this.CreateOption,
+                EncryptionSettings =
+                (this.ParameterSetName.Equals(WindowsAndDiskEncryptionParameterSet) || this.ParameterSetName.Equals(LinuxAndDiskEncryptionParameterSet))
+                ? new DiskEncryptionSettings
+                {
+                    DiskEncryptionKey = new KeyVaultSecretReference
+                    {
+                        SourceVault = new SubResource
+                        {
+                            Id = this.DiskEncryptionKeyVaultId
+                        },
+                        SecretUrl = this.DiskEncryptionKeyUrl
+                    },
+                    KeyEncryptionKey = (this.KeyEncryptionKeyVaultId == null || this.KeyEncryptionKeyUrl == null)
+                    ? null
+                    : new KeyVaultKeyReference
+                    {
+                        KeyUrl = this.KeyEncryptionKeyUrl,
+                        SourceVault = new SubResource
+                        {
+                            Id = this.KeyEncryptionKeyVaultId
+                        },
+                    }
+                }
+                : null,
+                ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
+                              ? null
+                              : new ManagedDiskParameters
+                              {
+                                  Id = this.ManagedDiskId,
+                                  StorageAccountType = this.StorageAccountType
+                              }
             };
 
             WriteObject(this.VM);

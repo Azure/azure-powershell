@@ -26,7 +26,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
 {
     
-    public class GetAzureSBLocationTests : TestBase
+    public class GetAzureSBLocationTests : SMTestBase
     {
         public GetAzureSBLocationTests()
         {

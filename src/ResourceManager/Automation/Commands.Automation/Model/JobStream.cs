@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Automation.Common;
-
+using System;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -41,17 +40,23 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public JobStream(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId )
+        public JobStream(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId)
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 
-            this.JobStreamId = jobStream.Properties.JobStreamId;
+            this.StreamRecordId = jobStream.Properties.JobStreamId;
             this.Type = jobStream.Properties.StreamType;
-            this.Text = jobStream.Properties.Summary;
             this.Time = jobStream.Properties.Time;
             this.AutomationAccountName = automationAccountName;
             this.ResourceGroupName = resourceGroupName;
-            this.Id = jobId;
+            this.JobId = jobId;
+
+            if (!String.IsNullOrWhiteSpace(jobStream.Properties.Summary))
+            {
+                this.Summary = jobStream.Properties.Summary.Length > Constants.JobSummaryLength ?
+                     jobStream.Properties.Summary.Substring(0, Constants.JobSummaryLength) + "..." :
+                     jobStream.Properties.Summary;
+            }
         }
 
         /// <summary>
@@ -74,12 +79,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the Job Id.
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid JobId { get; set; }
 
         /// <summary>
-        /// Gets or sets the stream id
+        /// Gets or sets the stream record id
         /// </summary>
-        public string JobStreamId { get; set; }
+        public string StreamRecordId { get; set; }
 
         /// <summary>
         /// Gets or sets the stream time.
@@ -87,9 +92,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public DateTimeOffset Time { get; set; }
 
         /// <summary>
-        /// Gets or sets the stream text.
+        /// Gets or sets the summary.
         /// </summary>
-        public string Text { get; set; }
+        public string Summary { get; set; }
 
         /// <summary>
         /// Gets or sets the stream Type.

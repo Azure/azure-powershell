@@ -15,37 +15,72 @@
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Test;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
+    using Xunit.Abstractions;
 
-    public class RedisCacheTests : RedisCacheTestsBase
+    public class RedisCacheTests : RMTestBase
     {
+        public RedisCacheTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCache()
         {
-            RunPowerShellTest("Test-RedisCache");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCache");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetNonExistingRedisCacheTest()
         {
-            RunPowerShellTest("Test-SetNonExistingRedisCacheTest");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateExistingRedisCacheTest()
-        {
-            RunPowerShellTest("Test-CreateExistingRedisCacheTest");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-SetNonExistingRedisCacheTest");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCachePipeline()
         {
-            RunPowerShellTest("Test-RedisCachePipeline");
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCachePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMaxMemoryPolicyErrorCheck()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-MaxMemoryPolicyErrorCheck");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRedisCacheClustering()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCacheClustering");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRedisCachePatchSchedules()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCachePatchSchedules");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestImportExportReboot()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ImportExportReboot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiagnosticOperations()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-DiagnosticOperations");
         }
     }
 }

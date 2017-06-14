@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureStorageAccount"), OutputType(typeof(StorageServicePropertiesOperationContext))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorageAccount"), OutputType(typeof(PSStorageService))]
     public class GetAzureStorageAccountCommand : ServiceManagementBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Storage Account Name.")]
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                     {
                         var context = ContextFactory<StorageAccountGetResponse, StorageServicePropertiesOperationContext>(response, s);
                         Mapper.Map(response.StorageAccount.Properties, context);
-                        return context;
+                        return PSStorageService.Create(this.StorageClient, context);
                     });
             }
             else
@@ -65,11 +65,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                         {
                             var context = ContextFactory<StorageAccount, StorageServicePropertiesOperationContext>(r, s);
                             Mapper.Map(r.Properties, context);
-                            return context;
+                            return PSStorageService.Create(this.StorageClient, context);
                         }));
             }
-
-            WriteWarning(Resources.DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet);
         }
     }
 }

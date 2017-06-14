@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.DataFactories.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.DataFactories.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {
@@ -46,6 +46,21 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             set
             {
                 dataFactory.Name = value;
+            }
+        }
+
+        public string DataFactoryId
+        {
+            get
+            {
+                return dataFactory.Properties == null ? String.Empty : dataFactory.Properties.DataFactoryId;
+            }
+            internal set
+            {
+                if (dataFactory.Properties != null)
+                {
+                    dataFactory.Properties.DataFactoryId = value;
+                }
             }
         }
 

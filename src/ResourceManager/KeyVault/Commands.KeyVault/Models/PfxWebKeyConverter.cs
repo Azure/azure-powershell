@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.KeyVault.WebKey;
 using System;
-using System.Security;
 using System.IO;
+using System.Security;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.KeyVault.WebKey;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -31,15 +32,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public JsonWebKey ConvertKeyFromFile(FileInfo fileInfo, SecureString password)
         {
-            if (CanProcess(fileInfo, password))
+            if (CanProcess(fileInfo))
                 return Convert(fileInfo.FullName, password);
-            else if (next != null)
+            if (next != null)
                 return next.ConvertKeyFromFile(fileInfo, password);
-            else
-                throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
+            throw new ArgumentException(string.Format(KeyVaultProperties.Resources.UnsupportedFileFormat, fileInfo.Name));
         }
 
-        private bool CanProcess(FileInfo fileInfo, SecureString password)
+        private bool CanProcess(FileInfo fileInfo)
         {
             if (fileInfo == null ||
                 string.IsNullOrEmpty(fileInfo.Extension))
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 certificate = new X509Certificate2(pfxFileName, pfxPassword, X509KeyStorageFlags.Exportable);
             else
                 certificate = new X509Certificate2(pfxFileName);
-          
+
             if (!certificate.HasPrivateKey)
                 throw new ArgumentException(string.Format(KeyVaultProperties.Resources.InvalidKeyBlob, "pfx"));
-          
+
             var key = certificate.PrivateKey as RSA;
 
             if (key == null)
@@ -75,8 +75,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (rsa == null)
                 throw new ArgumentNullException("rsa");
             RSAParameters rsaParameters = rsa.ExportParameters(true);
-            var webKey = new JsonWebKey() 
-            { 
+            var webKey = new JsonWebKey()
+            {
                 Kty = JsonWebKeyType.Rsa,
                 E = rsaParameters.Exponent,
                 N = rsaParameters.Modulus,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 P = rsaParameters.P,
                 Q = rsaParameters.Q
             };
-            
+
             return webKey;
         }
 

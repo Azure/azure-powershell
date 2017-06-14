@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// Retrieves a list of Microsoft Azure SQL Databases in the given server context.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseUsages", ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlDatabaseUsages : AzurePSCmdlet
+    public class GetAzureSqlDatabaseUsages : AzureSMCmdlet
     {
         #region Parameters
 

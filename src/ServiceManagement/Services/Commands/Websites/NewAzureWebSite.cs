@@ -32,8 +32,9 @@ using Microsoft.WindowsAzure.Management.WebSites.Models;
 namespace Microsoft.WindowsAzure.Commands.Websites
 {
     using GitClass = Utilities.Websites.Services.Git;
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
+    using Common;
 
     /// <summary>
     /// Creates a new azure website.

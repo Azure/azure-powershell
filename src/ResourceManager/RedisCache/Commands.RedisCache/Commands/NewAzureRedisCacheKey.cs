@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Management.Redis.Models;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRedisCacheKey"), OutputType(typeof(RedisAccessKeys))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRedisCacheKey", SupportsShouldProcess = true),
+        OutputType(typeof(RedisAccessKeys))]
     public class NewAzureRedisCacheKey : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
@@ -39,33 +40,25 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             RedisKeyType keyTypeToRegenerated = RedisKeyType.Primary;
             if (KeyType.Equals("Secondary"))
             {
                 keyTypeToRegenerated = RedisKeyType.Secondary;
             }
-            
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RegeneratingRedisCacheKey, Name, keyTypeToRegenerated.ToString()),
-                    string.Format(Resources.RegenerateRedisCacheKey, Name, keyTypeToRegenerated.ToString()),
-                    Name,
-                    () => CacheClient.RegenerateAccessKeys(ResourceGroupName, Name, keyTypeToRegenerated)
-                );
-            }
-            else
-            {
-                CacheClient.RegenerateAccessKeys(ResourceGroupName, Name, keyTypeToRegenerated);
-            }
 
-            RedisListKeysResponse keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
-            WriteObject(new RedisAccessKeys()
-            {
-                PrimaryKey = keysResponse.PrimaryKey,
-                SecondaryKey = keysResponse.SecondaryKey
-            });
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RegeneratingRedisCacheKey, Name, keyTypeToRegenerated.ToString()),
+                string.Format(Resources.RegenerateRedisCacheKey, Name, keyTypeToRegenerated.ToString()),
+                Name,
+                () =>
+                {
+                    CacheClient.RegenerateAccessKeys(ResourceGroupName, Name, keyTypeToRegenerated);
+                    RedisAccessKeys keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
+                    WriteObject(keysResponse);
+                }
+            );
         }
     }
 }

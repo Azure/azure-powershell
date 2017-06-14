@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +15,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlServer",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServer", SupportsShouldProcess = true)]
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -49,8 +46,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The entity going to be deleted</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> GetEntity()
         {
-            return new List<Model.AzureSqlServerModel>() { 
-                ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName) 
+            return new List<Model.AzureSqlServerModel>() {
+                ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName)
             };
         }
 
@@ -81,9 +78,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerDescription, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerWarning, this.ServerName),
-               Resources.ShouldProcessCaption))
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.ServerName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
             }

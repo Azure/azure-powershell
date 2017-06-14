@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,43 +13,49 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ElasticPoolCrudTests : SqlTestsBase
     {
+        public ElasticPoolCrudTests(ITestOutputHelper output) : base(output)
+        {
+        }
+
+        // Currently the test runs too long to be marked as a check-in test.
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
         public void TestElasticPoolCreate()
         {
             RunPowerShellTest("Test-CreateElasticPool");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateElasticPool");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolGet()
         {
             RunPowerShellTest("Test-GetElasticPool");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolMetricGet()
         {
             RunPowerShellTest("Test-GetElasticPoolMetric");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolRemove()
         {
             RunPowerShellTest("Test-RemoveElasticPool");

@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                        Properties.Resources.CmdletWillBeDeprecatedSoon,
+                        this.MyInvocation.MyCommand.Name));
+
                 string recoveryPlanXml = System.IO.File.ReadAllText(this.File);
 
                 this.jobResponse = RecoveryServicesClient.UpdateAzureSiteRecoveryRecoveryPlan(

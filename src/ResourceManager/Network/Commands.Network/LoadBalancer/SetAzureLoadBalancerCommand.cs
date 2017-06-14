@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Parameter(
@@ -32,21 +31,20 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The loadBalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             if (!this.IsLoadBalancerPresent(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
             // Normalize the IDs
-            ChildResourceHelper.NormalizeChildResourcesId(this.LoadBalancer);
+            ChildResourceHelper.NormalizeChildResourcesId(this.LoadBalancer, this.NetworkClient.NetworkManagementClient.SubscriptionId);
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
-            lbModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerType;
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

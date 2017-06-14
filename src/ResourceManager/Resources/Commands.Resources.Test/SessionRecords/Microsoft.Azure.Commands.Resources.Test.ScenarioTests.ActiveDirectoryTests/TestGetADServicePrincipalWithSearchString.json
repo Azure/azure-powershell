@@ -1,9 +1,10 @@
 {
   "Entries": [
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/applications?api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnM/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication8739\",\r\n  \"homepage\": \"http://adApplication8739/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication8739/home\"\r\n  ],\r\n  \"replyUrls\": [\r\n    \"http://adApplication8739/home\"\r\n  ]\r\n}",
+      "RequestBody": "{\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication7414\",\r\n  \"homepage\": \"http://adApplication7414/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication7414/home\"\r\n  ],\r\n  \"replyUrls\": [\r\n    \"http://adApplication7414/home\"\r\n  ]\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -11,14 +12,23 @@
         "Content-Length": [
           "254"
         ],
+        "x-ms-client-request-id": [
+          "bf413ad7-9992-43db-8121-5f5f09d59dac"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"1987af8a-ca98-40b1-a873-0d168b928d77\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"appId\": \"98344e72-14a0-4a19-8dcb-f6c852f475a2\",\r\n  \"appMetadata\": null,\r\n  \"appPermissions\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication8739\",\r\n  \"errorUrl\": null,\r\n  \"homepage\": \"http://adApplication8739/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication8739/home\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"replyUrls\": [\r\n    \"http://adApplication8739/home\"\r\n  ],\r\n  \"requiredResourceAccess\": [],\r\n  \"resourceApplicationSet\": null,\r\n  \"samlMetadataUrl\": null,\r\n  \"webApi\": null,\r\n  \"webApp\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.Application/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.Application\",\r\n  \"objectType\": \"Application\",\r\n  \"objectId\": \"4d05ab66-6e3e-42f9-b8d2-21f752b04249\",\r\n  \"deletionTimestamp\": null,\r\n  \"addIns\": [],\r\n  \"appId\": \"e9fd1f28-c6cb-4ab7-b29c-0275baaf7def\",\r\n  \"appRoles\": [],\r\n  \"availableToOtherTenants\": false,\r\n  \"displayName\": \"adApplication7414\",\r\n  \"errorUrl\": null,\r\n  \"groupMembershipClaims\": null,\r\n  \"homepage\": \"http://adApplication7414/home\",\r\n  \"identifierUris\": [\r\n    \"http://adApplication7414/home\"\r\n  ],\r\n  \"keyCredentials\": [],\r\n  \"knownClientApplications\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2AllowImplicitFlow\": false,\r\n  \"oauth2AllowUrlPathMatching\": false,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access adApplication7414 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access adApplication7414\",\r\n      \"id\": \"b7c91be2-63e7-44bc-b6e8-9ba4359cde6b\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access adApplication7414 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access adApplication7414\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"oauth2RequirePostResponse\": false,\r\n  \"optionalClaims\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publicClient\": null,\r\n  \"recordConsentConditions\": null,\r\n  \"replyUrls\": [\r\n    \"http://adApplication7414/home\"\r\n  ],\r\n  \"requiredResourceAccess\": [],\r\n  \"samlMetadataUrl\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "870"
+          "1393"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -30,22 +40,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GpZBqv1HpLKoq8DomLBjVg0qidYJApbIcc5XfQ74dc8="
+          "8dKgX5gVBF/WbpYK6Ji037sxCoLcJ1Uj7FRMsNhafCw="
         ],
         "request-id": [
-          "9be7d2ba-f4fd-430e-be42-d0da98c4c72f"
+          "a56a2b95-c094-43c0-baca-16663b36287a"
         ],
         "client-request-id": [
-          "84377dab-588a-4b44-87d8-4aa62abd9c38"
-        ],
-        "x-ms-gateway-rewrite": [
-          "false"
+          "f25ad8fb-0751-4efd-82d0-ea9f3ac4d4c4"
         ],
         "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
+          "1.6"
         ],
         "ocp-aad-session-key": [
-          "x6YvHeZa0Y71AupxVXajgKp2QrgnTy6qpuVamcIvHLl-veWFbgFeDy5mRxVWDhJgmU--aRFw4K0lt4u1IBeXM9rmNoODAyGpZ0hrgpmtDrc5OW6vJLxRPseNBXcPD5TA3a0s1648eRCeAPVgLVrBDg.puDZxM-zlen_qYHAEvlL7ZJM4SVnRKzDPTG9Itmw1Qg"
+          "s7ZB6zN9WPviHmRZWdSOC2580bGgmx4CjqF1w9U6NR-VO-Ddv3v3XNuf60zTwM3vwE1DfjOJsohg270YmHzMXjEeJQ8mBsy0tmz8joGgeNOSG3yrJT8-TaysLwpU-UKtsCNUVRO8Ni06tZOTwP9kTQ.k42OZCQ2bWzwG8SfFjGlasNSOaEPPrWO57-NsLoynnU"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -56,14 +63,20 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "5286864"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
         "Location": [
-          "https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/directoryObjects/1987af8a-ca98-40b1-a873-0d168b928d77/Microsoft.WindowsAzure.ActiveDirectory.Application"
+          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/4d05ab66-6e3e-42f9-b8d2-21f752b04249/Microsoft.DirectoryServices.Application"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -73,15 +86,16 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 25 Sep 2014 22:22:21 GMT"
+          "Thu, 18 May 2017 23:08:29 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals?api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscz9hcGktdmVyc2lvbj0xLjY=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"appId\": \"98344e72-14a0-4a19-8dcb-f6c852f475a2\",\r\n  \"accountEnabled\": true\r\n}",
+      "RequestBody": "{\r\n  \"appId\": \"e9fd1f28-c6cb-4ab7-b29c-0275baaf7def\",\r\n  \"accountEnabled\": true\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -89,14 +103,23 @@
         "Content-Length": [
           "82"
         ],
+        "x-ms-client-request-id": [
+          "361a5645-8a28-4afa-845a-d1080744bf4e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"86eac091-56ad-4ceb-8ce5-415edc3da17c\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"appDisplayName\": \"adApplication8739\",\r\n  \"appId\": \"98344e72-14a0-4a19-8dcb-f6c852f475a2\",\r\n  \"appMetadata\": null,\r\n  \"appOwnerTenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n  \"appPermissions\": [],\r\n  \"authenticationPolicy\": null,\r\n  \"displayName\": \"adApplication8739\",\r\n  \"errorUrl\": null,\r\n  \"explicitAccessGrantRequired\": false,\r\n  \"homepage\": \"http://adApplication8739/home\",\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"microsoftFirstParty\": null,\r\n  \"passwordCredentials\": [],\r\n  \"publisherName\": \"Microsoft\",\r\n  \"replyUrls\": [\r\n    \"http://adApplication8739/home\"\r\n  ],\r\n  \"resourceApplicationSet\": null,\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"98344e72-14a0-4a19-8dcb-f6c852f475a2\",\r\n    \"http://adApplication8739/home\"\r\n  ],\r\n  \"tags\": [],\r\n  \"webApi\": null,\r\n  \"webApp\": null\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal/@Element\",\r\n  \"odata.type\": \"Microsoft.DirectoryServices.ServicePrincipal\",\r\n  \"objectType\": \"ServicePrincipal\",\r\n  \"objectId\": \"300ee6a1-3c5a-45f4-9a90-43a228d7851e\",\r\n  \"deletionTimestamp\": null,\r\n  \"accountEnabled\": true,\r\n  \"addIns\": [],\r\n  \"alternativeNames\": [],\r\n  \"appDisplayName\": \"adApplication7414\",\r\n  \"appId\": \"e9fd1f28-c6cb-4ab7-b29c-0275baaf7def\",\r\n  \"appOwnerTenantId\": \"1273adef-00a3-4086-a51a-dbcce1857d36\",\r\n  \"appRoleAssignmentRequired\": false,\r\n  \"appRoles\": [],\r\n  \"displayName\": \"adApplication7414\",\r\n  \"errorUrl\": null,\r\n  \"homepage\": \"http://adApplication7414/home\",\r\n  \"keyCredentials\": [],\r\n  \"logoutUrl\": null,\r\n  \"oauth2Permissions\": [\r\n    {\r\n      \"adminConsentDescription\": \"Allow the application to access adApplication7414 on behalf of the signed-in user.\",\r\n      \"adminConsentDisplayName\": \"Access adApplication7414\",\r\n      \"id\": \"b7c91be2-63e7-44bc-b6e8-9ba4359cde6b\",\r\n      \"isEnabled\": true,\r\n      \"type\": \"User\",\r\n      \"userConsentDescription\": \"Allow the application to access adApplication7414 on your behalf.\",\r\n      \"userConsentDisplayName\": \"Access adApplication7414\",\r\n      \"value\": \"user_impersonation\"\r\n    }\r\n  ],\r\n  \"passwordCredentials\": [],\r\n  \"preferredTokenSigningKeyThumbprint\": null,\r\n  \"publisherName\": \"rbacCliTestDirectory\",\r\n  \"replyUrls\": [\r\n    \"http://adApplication7414/home\"\r\n  ],\r\n  \"samlMetadataUrl\": null,\r\n  \"servicePrincipalNames\": [\r\n    \"e9fd1f28-c6cb-4ab7-b29c-0275baaf7def\",\r\n    \"http://adApplication7414/home\"\r\n  ],\r\n  \"servicePrincipalType\": \"Application\",\r\n  \"tags\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1068"
+          "1463"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -108,22 +131,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GpZBqv1HpLKoq8DomLBjVg0qidYJApbIcc5XfQ74dc8="
+          "fcVKpTiyCCfKvFRoa9VsOHwp/gqYQpq53SpCg0Zgl2k="
         ],
         "request-id": [
-          "4d85de82-5106-4824-af95-9cc971354f83"
+          "961ae28f-830a-4194-871b-e558c2c4606a"
         ],
         "client-request-id": [
-          "6c4efbdf-f922-4f4f-8e7b-054c9b05eb3f"
-        ],
-        "x-ms-gateway-rewrite": [
-          "false"
+          "39aaecbd-70dc-459b-bc8f-37c4e97a1273"
         ],
         "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
+          "1.6"
         ],
         "ocp-aad-session-key": [
-          "hAbFm4ES-5bkGCno5D744i2U0Y-R-ounJzCo7TdDU01T-wxpLYsFlSAqMoYMDWgEDffngBlvYZdxCe1ZBzh_GHjLigViKdJEvoN3kQOJRAIqIG21RFxGP2IH_bn24YacEu9yFkZBe6Lzzl_mxP-qNQ.g1zoZG-AjQrMnBWDnzyiHVDHmtLCd6rFrGWYvHNM7DI"
+          "eggHyf9BpIE-gNc0E5u5vTquaiSjzSosTFZViFc5Ws_6HLpfW4yAT3o1huxe8IEmKQuAMMoSvixnHY4LA2UwVpCfeds33wfDXl2bJV7l_x_kT2jzyzo4keXGxWECdlvlDy2BGjQJ0NAYABa9rCxBHw.J2AcH87pUZIUzWnuiKgAmhsOV9rG160MN1R1UdZoPaw"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -133,15 +153,21 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "2420381"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Location": [
-          "https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/directoryObjects/86eac091-56ad-4ceb-8ce5-415edc3da17c/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal"
+          "https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/directoryObjects/300ee6a1-3c5a-45f4-9a90-43a228d7851e/Microsoft.DirectoryServices.ServicePrincipal"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -151,24 +177,34 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 25 Sep 2014 22:22:28 GMT"
+          "Thu, 18 May 2017 23:08:29 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals?$filter=startswith(displayName,'adApplication8739')&api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals?$filter=startswith(displayName,'adApplication7414')&api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXN0YXJ0c3dpdGgoZGlzcGxheU5hbWUsJ2FkQXBwbGljYXRpb243NDE0JykmYXBpLXZlcnNpb249MS42",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c7886eea-31fa-4fcd-a5be-a78a941b7be9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"86eac091-56ad-4ceb-8ce5-415edc3da17c\",\r\n      \"softDeletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"appDisplayName\": \"adApplication8739\",\r\n      \"appId\": \"98344e72-14a0-4a19-8dcb-f6c852f475a2\",\r\n      \"appMetadata\": null,\r\n      \"appOwnerTenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"appPermissions\": [],\r\n      \"authenticationPolicy\": null,\r\n      \"displayName\": \"adApplication8739\",\r\n      \"errorUrl\": null,\r\n      \"explicitAccessGrantRequired\": false,\r\n      \"homepage\": \"http://adApplication8739/home\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"microsoftFirstParty\": null,\r\n      \"passwordCredentials\": [],\r\n      \"publisherName\": \"Microsoft\",\r\n      \"replyUrls\": [\r\n        \"http://adApplication8739/home\"\r\n      ],\r\n      \"resourceApplicationSet\": null,\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"http://adApplication8739/home\",\r\n        \"98344e72-14a0-4a19-8dcb-f6c852f475a2\"\r\n      ],\r\n      \"tags\": [],\r\n      \"webApi\": null,\r\n      \"webApp\": null\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.ServicePrincipal\",\r\n  \"value\": [\r\n    {\r\n      \"odata.type\": \"Microsoft.DirectoryServices.ServicePrincipal\",\r\n      \"objectType\": \"ServicePrincipal\",\r\n      \"objectId\": \"300ee6a1-3c5a-45f4-9a90-43a228d7851e\",\r\n      \"deletionTimestamp\": null,\r\n      \"accountEnabled\": true,\r\n      \"addIns\": [],\r\n      \"alternativeNames\": [],\r\n      \"appDisplayName\": \"adApplication7414\",\r\n      \"appId\": \"e9fd1f28-c6cb-4ab7-b29c-0275baaf7def\",\r\n      \"appOwnerTenantId\": \"1273adef-00a3-4086-a51a-dbcce1857d36\",\r\n      \"appRoleAssignmentRequired\": false,\r\n      \"appRoles\": [],\r\n      \"displayName\": \"adApplication7414\",\r\n      \"errorUrl\": null,\r\n      \"homepage\": \"http://adApplication7414/home\",\r\n      \"keyCredentials\": [],\r\n      \"logoutUrl\": null,\r\n      \"oauth2Permissions\": [\r\n        {\r\n          \"adminConsentDescription\": \"Allow the application to access adApplication7414 on behalf of the signed-in user.\",\r\n          \"adminConsentDisplayName\": \"Access adApplication7414\",\r\n          \"id\": \"b7c91be2-63e7-44bc-b6e8-9ba4359cde6b\",\r\n          \"isEnabled\": true,\r\n          \"type\": \"User\",\r\n          \"userConsentDescription\": \"Allow the application to access adApplication7414 on your behalf.\",\r\n          \"userConsentDisplayName\": \"Access adApplication7414\",\r\n          \"value\": \"user_impersonation\"\r\n        }\r\n      ],\r\n      \"passwordCredentials\": [],\r\n      \"preferredTokenSigningKeyThumbprint\": null,\r\n      \"publisherName\": \"rbacCliTestDirectory\",\r\n      \"replyUrls\": [\r\n        \"http://adApplication7414/home\"\r\n      ],\r\n      \"samlMetadataUrl\": null,\r\n      \"servicePrincipalNames\": [\r\n        \"http://adApplication7414/home\",\r\n        \"e9fd1f28-c6cb-4ab7-b29c-0275baaf7def\"\r\n      ],\r\n      \"servicePrincipalType\": \"Application\",\r\n      \"tags\": []\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1071"
+          "1466"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
@@ -180,22 +216,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GpZBqv1HpLKoq8DomLBjVg0qidYJApbIcc5XfQ74dc8="
+          "apkxpclx8FoIVitjQot6u3V8AhQccm2Al0hed1sj/Es="
         ],
         "request-id": [
-          "94987f17-93de-47e3-8bbc-12fa9bcd4406"
+          "5fcfc14c-74af-488e-9203-373ea6f3020e"
         ],
         "client-request-id": [
-          "54cd6b83-e4bb-460e-86c1-a6bd85f39d18"
-        ],
-        "x-ms-gateway-rewrite": [
-          "false"
+          "b9334ce3-2ba5-42a9-b2ea-a50d911d636d"
         ],
         "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
+          "1.6"
         ],
         "ocp-aad-session-key": [
-          "50ffI1aYpyw0zuweEuXqo9WBAHPQfixYxPYA1KOoZV6rezGaQaTRtNBDKWVNyba6jiYAHveQyyJ0UbfiP2VVlvV0nV5P40Ykxh6YT-2Dv6pIsvXzZMLMBqoj6xjtT5gLut27DTyB3ivD0BqgwscVBw.r-0waTJkqMf00LPaAA8khV5gJMDwXel-yNiOBn0S-VQ"
+          "4GKtNlB6NGctDrcXOlu6RamWGLGcTngcLx5TozdLTvl7gjz4gXYqPBsF19Ul8CoVa6oQCpL6K4ga-kd0ILQV68znO-hCVR58HC-uLLAWNMcITf3Jh1qKJ6BZz1xSHZSAYOe2LVqjYRiCUcEPTgI0hg.09pA47blL6lLkwAOUXwJEFmmysoXxQM2ZyNah5joOVQ"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -206,11 +239,17 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "591440"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -220,18 +259,28 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 25 Sep 2014 22:22:28 GMT"
+          "Thu, 18 May 2017 23:08:30 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/servicePrincipals/86eac091-56ad-4ceb-8ce5-415edc3da17c?api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/servicePrincipals/300ee6a1-3c5a-45f4-9a90-43a228d7851e?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9zZXJ2aWNlUHJpbmNpcGFscy8zMDBlZTZhMS0zYzVhLTQ1ZjQtOWE5MC00M2EyMjhkNzg1MWU/YXBpLXZlcnNpb249MS42",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "566ed6b5-bd9b-4bb7-a474-3e2fb2643e33"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
       "ResponseBody": "",
@@ -243,22 +292,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GpZBqv1HpLKoq8DomLBjVg0qidYJApbIcc5XfQ74dc8="
+          "8dKgX5gVBF/WbpYK6Ji037sxCoLcJ1Uj7FRMsNhafCw="
         ],
         "request-id": [
-          "fa9edd9a-3b28-49ac-a797-0d6b9a1ca7be"
+          "8341c754-5a07-43a7-94f7-bd4e513876f5"
         ],
         "client-request-id": [
-          "a8264755-e0d4-4d51-83c7-c34ef33cb0be"
-        ],
-        "x-ms-gateway-rewrite": [
-          "false"
+          "41de1e13-5b97-4e27-a13a-5471e1449f99"
         ],
         "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
+          "1.6"
         ],
         "ocp-aad-session-key": [
-          "A-E-sj0hvS-ayyc2rbj71d_E3T4kLgcxLExgLGNVhIkaNSuy83B8Er910hUw_LnlM3_dQb6jsJrdG7XqzrU14enBZXwAzeaXQZoV6cMKHMqluXGuZOzkpAGu89cg-4SyDO3tXWsvQ2nwuJ1SqbZ_vw.LwQhpw5zPV2h_QWFiRPvQVLZB-rxphc8QV2_e9ALKWo"
+          "5hGA4iAbV-WYDjOBP41uSnlaVE1JMCVxV5qwMn0q3V3u1wGFefhwIzb61_D2GroGT4gnUB6pHbZPYVmI-WfIzeS7mt3x-81afPPPqJqepc_nieNIkFJj5qW71u0clbNHstqWyQpDf350t61aVlkOnQ.ysvYa_VfUYwqpFkQkgDRfHpNCEB6ztITM0slbmL--E4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -269,11 +315,17 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "2027312"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -283,18 +335,28 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 25 Sep 2014 22:22:28 GMT"
+          "Thu, 18 May 2017 23:08:30 GMT"
         ]
       },
       "StatusCode": 204
     },
     {
-      "RequestUri": "/72f988bf-86f1-41af-91ab-2d7cd011db47/applications/1987af8a-ca98-40b1-a873-0d168b928d77?api-version=1.42-previewInternal",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/applications/4d05ab66-6e3e-42f9-b8d2-21f752b04249?api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi9hcHBsaWNhdGlvbnMvNGQwNWFiNjYtNmUzZS00MmY5LWI4ZDItMjFmNzUyYjA0MjQ5P2FwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "22e2217d-d7a2-4684-bcdc-a4020d337a45"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
       "ResponseBody": "",
@@ -306,22 +368,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "GpZBqv1HpLKoq8DomLBjVg0qidYJApbIcc5XfQ74dc8="
+          "SbtWc5+I23LOrpKcANdEDWNl4YgfTbLWAdTBUDuDqek="
         ],
         "request-id": [
-          "a285c00d-d73a-478b-aba2-fad96c34ee6d"
+          "91945a71-a584-4f7d-8d29-3f0e8c081fc7"
         ],
         "client-request-id": [
-          "90206c6c-1d88-495d-95fb-6b12bf27b3f1"
-        ],
-        "x-ms-gateway-rewrite": [
-          "false"
+          "e4d9062d-9aae-447a-a993-577b71addb6d"
         ],
         "x-ms-dirapi-data-contract-version": [
-          "1.42-previewInternal"
+          "1.6"
         ],
         "ocp-aad-session-key": [
-          "2dB7tI9Xfgqgub9YtFHGx_EkggtqMi0MD1cfMpSsK7Ne2Vcz5VF7uIBzP41mUDMlh3e9jY28Ab_Vz8dZMA6FbjEoRV7X642JNT5V2dwWQzPLISUu5_tIAq9rS00Ll5qvIBoFrdGbYm3HFXIjEM5NCQ.jDvUblxaPK3CJX8Wug_aEr7aR-fSFMnCb9xRMWK5v7k"
+          "VUUJqE87dCO4UqtmSFx8nUl50y3SuOlrMJsrGTTS9xB9LwA5xucfiNWh-ONCdr-0hwoLvkg3NVwNGTpfm7vdikTqupupGtG1q-p-caF6caD4OdqyHEwXqSOZkIFMuHN81a1tuvRQSwFgY0N-K8WPcw.gvk-ALI-mfjOP_nWxrmNj7XrFhFd3usU19ZVUeT-q7Y"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -332,11 +391,17 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Duration": [
+          "2042194"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
         "Server": [
-          "Microsoft-IIS/8.0"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -346,7 +411,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 25 Sep 2014 22:22:28 GMT"
+          "Thu, 18 May 2017 23:08:30 GMT"
         ]
       },
       "StatusCode": 204
@@ -354,12 +419,12 @@
   ],
   "Names": {
     "CreateNewAdApp": [
-      "adApplication8739"
+      "adApplication7414"
     ]
   },
   "Variables": {
-    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": "microsoft.com"
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
+    "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
+    "Domain": "rbacclitest.onmicrosoft.com"
   }
 }

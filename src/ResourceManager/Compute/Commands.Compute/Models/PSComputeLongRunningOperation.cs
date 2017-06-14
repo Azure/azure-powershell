@@ -15,31 +15,22 @@
 // 
 
 using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 using System;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSComputeLongRunningOperation
     {
-        public string TrackingOperationId { get; set; }
-        
-        public string RequestId { get; set; }
+        public string OperationId { get; set; }
 
-        public ComputeOperationStatus Status { get; set; }
+        public string Status { get; set; }
 
-        public string Output { get; set; }
+        public DateTime? StartTime { get; set; }
 
-        public DateTimeOffset StartTime { get; set; }
-        
-        public DateTimeOffset? EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         public ApiError Error { get; set; }
 
-        [JsonIgnore]
-        public string ErrorText
-        {
-            get { return JsonConvert.SerializeObject(Error, Formatting.Indented); }
-        }
+        public string Name { get; set; }
     }
 }

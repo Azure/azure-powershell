@@ -13,18 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
-namespace Microsoft.Azure.Commands.WebApp.Models
+namespace Microsoft.Azure.Commands.WebApps.Models
 {
-    public abstract class WebAppBaseClientCmdLet : AzurePSCmdlet
+    public abstract class WebAppBaseClientCmdLet : AzureRMCmdlet
     {
+        private PSResourceManagerModels.ResourcesClient _resourcesClient;
+        public PSResourceManagerModels.ResourcesClient ResourcesClient
+        {
+            get
+            {
+                if (_resourcesClient == null)
+                {
+                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
+                }
+                return _resourcesClient;
+            }
+            set { _resourcesClient = value; }
+        }
+
         private WebsitesClient _websitesClient;
         public WebsitesClient WebsitesClient
         {
@@ -32,7 +47,12 @@ namespace Microsoft.Azure.Commands.WebApp.Models
             {
                 if (_websitesClient == null)
                 {
-                    _websitesClient = new WebsitesClient(this.Profile.Context);
+                    _websitesClient = new WebsitesClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
                 }
                 return _websitesClient;
             }

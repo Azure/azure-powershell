@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Adapter;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Model;
-using Microsoft.Azure.Common.Authentication.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlServerFirewallRuleAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlServerFirewallRuleAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlServerFirewallRuleAdapter(Profile, subscription);
+            return new AzureSqlServerFirewallRuleAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

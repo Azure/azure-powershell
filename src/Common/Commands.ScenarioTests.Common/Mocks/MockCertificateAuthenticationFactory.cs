@@ -13,8 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 
@@ -34,8 +35,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             Certificate = certificate;
         }
 
-        public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior,
-            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        public IAccessToken Authenticate(
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            string promptBehavior,
+            IAzureTokenCache tokenCache,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
             {
@@ -52,9 +59,37 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return token;
         }
 
-        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
+        public IAccessToken Authenticate(
+            IAzureAccount account,
+            IAzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            string promptBehavior,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
+        }
+
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)
         {
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
+        }
+
+
+        public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context, string targetEndpoint)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+        public Rest.ServiceClientCredentials GetServiceClientCredentials(IAzureContext context, string targetEndpoint)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

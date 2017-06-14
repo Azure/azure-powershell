@@ -39,21 +39,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         public string StoreLocation { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Extension Certificate Store Name.")]
+        [ValidateNotNullOrEmpty]
         public string StoreName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Extension Certificate Thumbprint Algorithm.")]
+        [ValidateNotNullOrEmpty]
         public string ThumbprintAlgorithm { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Extension Certificate Thumbprint Requirement.")]

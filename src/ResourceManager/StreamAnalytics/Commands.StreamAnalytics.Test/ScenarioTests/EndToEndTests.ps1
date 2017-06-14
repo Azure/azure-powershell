@@ -23,85 +23,108 @@ function Test-TestStreamingAnalyticsE2E
 	$inputName = "Input"
 	$outputName = "Output"
 	$transformationName = "transform1"
+	$functionName = "scoreTweet"
 
     # Create Job
-	$actual =  New-AzureStreamAnalyticsJob -File .\Resources\job.json -ResourceGroupName $resourceGroup -Name $jobName -Force
-	$expected = Get-AzureStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup
+	$actual =  New-AzureRmStreamAnalyticsJob -File .\Resources\job.json -ResourceGroupName $resourceGroup -Name $jobName -Force
+	$expected = Get-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup
 	Assert-AreEqual $expected.Name $actual.Name	
 
 	# Get Job Input
-	$actual = Get-AzureStreamAnalyticsInput -JobName $jobName -ResourceGroupName $resourceGroup
+	$actual = Get-AzureRmStreamAnalyticsInput -JobName $jobName -ResourceGroupName $resourceGroup
 	Assert-AreEqual $inputName $actual.Name
 
     # Get Job Output
-	$actual = Get-AzureStreamAnalyticsOutput -JobName $jobName -ResourceGroupName $resourceGroup
+	$actual = Get-AzureRmStreamAnalyticsOutput -JobName $jobName -ResourceGroupName $resourceGroup
 	Assert-AreEqual $outputName $actual.Name
 
 	# Get Job transformation
-	$actual = Get-AzureStreamAnalyticsTransformation -JobName $jobName -Name $transformationName -ResourceGroupName $resourceGroup
+	$actual = Get-AzureRmStreamAnalyticsTransformation -JobName $jobName -Name $transformationName -ResourceGroupName $resourceGroup
 	Assert-AreEqual $transformationName $actual.Name
 
+	# Get Job function
+	$actual = Get-AzureRmStreamAnalyticsFunction -JobName $jobName -Name $functionName -ResourceGroupName $resourceGroup
+	Assert-AreEqual $functionName $actual.Name
+
 	# New Input (Patch)
-    $actual = New-AzureStreamAnalyticsInput -File .\Resources\Input.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+    $actual = New-AzureRmStreamAnalyticsInput -File .\Resources\Input.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
 	Assert-AreEqual $inputName $actual.Name
 
     # Test Input 
-    $actual = Test-AzureStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup
+    $actual = Test-AzureRmStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
 	# New Output (Patch)
-	$actual = New-AzureStreamAnalyticsOutput -File .\Resources\Output.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+	$actual = New-AzureRmStreamAnalyticsOutput -File .\Resources\Output.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
 	Assert-AreEqual $outputName $actual.Name
 
 	# Test Output
-    $actual = Test-AzureStreamAnalyticsOutput -JobName $jobName -Name $outputName -ResourceGroupName $resourceGroup	
+    $actual = Test-AzureRmStreamAnalyticsOutput -JobName $jobName -Name $outputName -ResourceGroupName $resourceGroup	
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
 	# Create transformation (Patch)
-	$actual = New-AzureStreamAnalyticsTransformation -File .\Resources\Transformation.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+	$actual = New-AzureRmStreamAnalyticsTransformation -File .\Resources\Transformation.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
 	Assert-AreEqual $transformationName $actual.Name
 
-	# Get Quota
-    $actual = Get-AzureStreamAnalyticsQuota -Location "West US"	
-	$expected = 0
-	Assert-AreEqual $expected $actual.CurrentCount
+	# New Function (Patch)
+    $actual = New-AzureRmStreamAnalyticsFunction -File .\Resources\Function.json -JobName $jobName -ResourceGroupName $resourceGroup -Force
+	Assert-AreEqual $functionName $actual.Name
 
-    # Start Job
-    $actual = Start-AzureStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup	
+	# Test Function
+    $actual = Test-AzureRmStreamAnalyticsFunction -JobName $jobName -Name $functionName -ResourceGroupName $resourceGroup	
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
 	# Get Quota
-    $actual = Get-AzureStreamAnalyticsQuota -Location "West US"	
+    $actual = Get-AzureRmStreamAnalyticsQuota -Location "West US"	
+	$expected = 0
+	Assert-AreEqual $expected $actual.CurrentCount
+
+    # Start Job
+    $actual = Start-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup -OutputStartMode CustomTime -OutputStartTime 2012-12-12T12:12:12Z
+	$expected = "True"
+	Assert-AreEqual $expected $actual
+
+	# Get Quota
+    $actual = Get-AzureRmStreamAnalyticsQuota -Location "West US"	
 	$expected = 1
 	Assert-AreEqual $expected $actual.CurrentCount
 
 	#Get Diagnostics
-	$actual = Get-AzureStreamAnalyticsInput -JobName $jobName -ResourceGroupName $resourceGroup
+	$actual = Get-AzureRmStreamAnalyticsInput -JobName $jobName -ResourceGroupName $resourceGroup
 	Assert-NotNull $actual
 	Assert-NotNull $actual.Properties.Diagnostics
 	Assert-NotNull $actual.Properties.Diagnostics.Conditions
 	Assert-NotNull $actual.Properties.Diagnostics.Conditions.Message
 
 	# Stop Job
-    $actual = Stop-AzureStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup	
+    $actual = Stop-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup	
+	$expected = "True"
+	Assert-AreEqual $expected $actual
+
+	# Get Function Default Definition
+	$actual = Get-AzureRmStreamAnalyticsDefaultFunctionDefinition -File .\Resources\RetrieveDefaultFunctionDefinitionRequest.json -Name $functionName -JobName $jobName -ResourceGroupName $resourceGroup
+	Assert-AreEqual $functionName $actual.Name
+
+	# Remove Function
+    $actual = Remove-AzureRmStreamAnalyticsFunction -JobName $jobName -Name $functionName -ResourceGroupName $resourceGroup
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
     # Remove Output
-    $actual = Remove-AzureStreamAnalyticsOutput -JobName $jobName -Name Output -ResourceGroupName $resourceGroup -Force
+    $actual = Remove-AzureRmStreamAnalyticsOutput -JobName $jobName -Name Output -ResourceGroupName $resourceGroup
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
 	# Remove Input
-    $actual = Remove-AzureStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup -Force
+    $actual = Remove-AzureRmStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
 	# Remove Job
-    $actual = Remove-AzureStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup -Force
+    $actual = Remove-AzureRmStreamAnalyticsJob -Name $jobName -ResourceGroupName $resourceGroup
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 }

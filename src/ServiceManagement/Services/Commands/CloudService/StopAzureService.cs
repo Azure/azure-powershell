@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
     /// Stops the deployment of specified slot in the azure service
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureService"), OutputType(typeof(bool))]
-    public class StopAzureServiceCommand : AzurePSCmdlet
+    public class StopAzureServiceCommand : AzureSMCmdlet
     {
         public ICloudServiceClient CloudServiceClient { get; set; }
 

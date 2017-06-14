@@ -12,16 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
-    using System.Runtime.Remoting.Messaging;
-
     internal static class AutomationCmdletParameterSets
     {
         /// <summary>
@@ -60,6 +53,21 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByHourly = "ByHourly";
 
         /// <summary>
+        /// The weekly schedule parameter set.
+        /// </summary>
+        internal const string ByWeekly = "ByWeekly";
+
+        /// <summary>
+        /// The monthly schedule parameter set.
+        /// </summary>
+        internal const string ByMonthlyDaysOfMonth = "ByMonthlyDaysOfMonth";
+
+        /// <summary>
+        /// The monthly schedule parameter set.
+        /// </summary>
+        internal const string ByMonthlyDayOfWeek = "ByMonthlyDayOfWeek";
+
+        /// <summary>
         /// The Job Id parameter set.
         /// </summary>
         internal const string ByJobId = "ByJobId";
@@ -78,6 +86,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// The Runbook name parameter set.
         /// </summary>
         internal const string ByRunbookName = "ByRunbookName";
+
+        /// <summary>
+        /// The ByAsynchronousReturnJob.
+        /// </summary>
+        internal const string ByAsynchronousReturnJob = "ByAsynchronousReturnJob";
+
+        /// <summary>
+        /// The BySynchronousReturnJob.
+        /// </summary>
+        internal const string BySynchronousReturnJobOutput = "BySynchronousReturnJobOutput";
 
         /// <summary>
         /// The Configuration name parameter set.

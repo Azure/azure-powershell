@@ -12,25 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-using System.ServiceModel;
-using System.ServiceModel.Dispatcher;
 using AutoMapper;
+using Hyak.Common;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure;
-using Hyak.Common;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Management.Automation.Runspaces;
+using System.ServiceModel;
+using System.ServiceModel.Dispatcher;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -40,35 +39,27 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected ServiceManagementBaseCmdlet()
         {
-            runspace = new Lazy<Runspace>(() => {
+            IClientProvider clientProvider = new ClientProvider(this);
+            SetupClients(clientProvider);
+        }
+
+        private void SetupClients(IClientProvider clientProvider)
+        {
+            runspace = new Lazy<Runspace>(() =>
+            {
                 var localRunspace = RunspaceFactory.CreateRunspace(this.Host);
                 localRunspace.Open();
                 return localRunspace;
             });
-            client = new Lazy<ManagementClient>(CreateClient);
-            computeClient = new Lazy<ComputeManagementClient>(CreateComputeClient);
-            storageClient = new Lazy<StorageManagementClient>(CreateStorageClient);
-            networkClient = new Lazy<NetworkManagementClient>(CreateNetworkClient);
+            client = new Lazy<ManagementClient>(clientProvider.CreateClient);
+            computeClient = new Lazy<ComputeManagementClient>(clientProvider.CreateComputeClient);
+            storageClient = new Lazy<StorageManagementClient>(clientProvider.CreateStorageClient);
+            networkClient = new Lazy<NetworkManagementClient>(clientProvider.CreateNetworkClient);
         }
 
-        public ManagementClient CreateClient()
+        protected ServiceManagementBaseCmdlet(IClientProvider clientProvider)
         {
-            return AzureSession.ClientFactory.CreateClient<ManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
-        }
-
-        public ComputeManagementClient CreateComputeClient()
-        {
-            return AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-        }
-
-        public StorageManagementClient CreateStorageClient()
-        {
-            return AzureSession.ClientFactory.CreateClient<StorageManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-        }
-
-        public NetworkManagementClient CreateNetworkClient()
-        {
-            return AzureSession.ClientFactory.CreateClient<NetworkManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SetupClients(clientProvider);
         }
 
         private Lazy<ManagementClient> client;
@@ -97,104 +88,53 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected override void InitChannelCurrentSubscription(bool force)
         {
+            // Do nothing for service management based cmdlets
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Disposing the client would also dispose the channel we are returning.")]
-        protected override IServiceManagement CreateChannel()
-        {
-            // If ShareChannel is set by a unit test, use the same channel that
-            // was passed into out constructor.  This allows the test to submit
-            // a mock that we use for all network calls.
-            if (ShareChannel)
-            {
-                return Channel;
-            }
-
-            var messageInspectors = new List<IClientMessageInspector>
-            {
-                new ServiceManagementClientOutputMessageInspector(),
-                new HttpRestMessageInspector(this.WriteDebug)
-            };
-
-            /*
-            var clientOptions = new ServiceManagementClientOptions(null, null, null, 0, RetryPolicy.NoRetryPolicy, ServiceManagementClientOptions.DefaultOptions.WaitTimeForOperationToComplete, messageInspectors);
-            var smClient = new ServiceManagementClient(new Uri(this.ServiceEndpoint), CurrentContext.Subscription.SubscriptionId, CurrentContext.Subscription.Certificate, clientOptions);
-
-            Type serviceManagementClientType = typeof(ServiceManagementClient);
-            PropertyInfo propertyInfo = serviceManagementClientType.GetProperty("SyncService", BindingFlags.Instance | BindingFlags.NonPublic);
-            var syncService = (IServiceManagement)propertyInfo.GetValue(smClient, null);
-
-            return syncService;
-            */
-            return null;
-        }
-
-        /// <summary>
-        /// Invoke the given operation within an OperationContextScope if the
-        /// channel supports it.
-        /// </summary>
-        /// <param name="action">The action to invoke.</param>
-        protected override void InvokeInOperationContext(Action action)
-        {
-            IContextChannel contextChannel = ToContextChannel();
-            if (contextChannel != null)
-            {
-                using (new OperationContextScope(contextChannel))
-                {
-                    action();
-                }
-            }
-            else
-            {
-                action();
-            }
-        }
-
-        protected virtual IContextChannel ToContextChannel()
-        {
-            try
-            {
-                //return Channel.ToContextChannel();
-                return null;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        protected virtual void WriteExceptionDetails(Exception exception)
-        {
-            if (CommandRuntime != null)
-            {
-                WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
-            }
-        }
-
-        protected OperationStatusResponse GetOperationStatusNewSM(string operationId)
-        {
-            OperationStatusResponse response = this.ManagementClient.GetOperationStatus(operationId);
-            return response;
-        }
-
-        protected OperationStatusResponse GetOperationNewSM(string operationId)
+        protected OperationStatusResponse GetOperation(string operationId)
         {
             OperationStatusResponse operation = null;
 
             try
             {
-                operation = GetOperationStatusNewSM(operationId);
+                operation = this.ManagementClient.GetOperationStatus(operationId);
 
                 if (operation.Status == OperationStatus.Failed)
                 {
                     var errorMessage = string.Format(CultureInfo.InvariantCulture, "{0}: {1}", operation.Status, operation.Error.Message);
-                    var exception = new Exception(errorMessage);
-                    WriteError(new ErrorRecord(exception, string.Empty, ErrorCategory.CloseError, null));
+                    throw new Exception(errorMessage);
                 }
             }
             catch (AggregateException ex)
             {
-                WriteExceptionDetails(ex);
+                if (ex.InnerException is CloudException)
+                {
+                    WriteExceptionError(ex.InnerException);
+                }
+                else
+                {
+                    WriteExceptionError(ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
+
+            return operation;
+        }
+
+        protected OperationStatusResponse GetOperation(AzureOperationResponse result)
+        {
+            OperationStatusResponse operation;
+
+            if (result is OperationStatusResponse)
+            {
+                operation = result as OperationStatusResponse;
+            }
+            else
+            {
+                operation = result == null ? null : GetOperation(result.RequestId);
             }
 
             return operation;
@@ -203,63 +143,32 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         //TODO: Input argument is not used and should probably be removed.
         protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action, Func<OperationStatusResponse, TResult, object> contextFactory) where TResult : AzureOperationResponse
         {
-            ExecuteClientActionNewSM(input, operationDescription, action, null, contextFactory);
-        }
+            WriteVerboseWithTimestamp(Resources.ServiceManagementExecuteClientActionInOCSBeginOperation, operationDescription);
 
-        protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action, Func<string, string, OperationStatusResponse> waitOperation, Func<OperationStatusResponse, TResult, object> contextFactory) where TResult : AzureOperationResponse
-        {
-            TResult result = null;
-            OperationStatusResponse operation = null;
-            WriteVerboseWithTimestamp(string.Format(Resources.ServiceManagementExecuteClientActionInOCSBeginOperation, operationDescription));
             try
             {
                 try
                 {
-                    result = action();
-                }
-                catch (CloudException ex)
-                {
-                    WriteExceptionDetails(ex);
-                }
+                    TResult result = action();
+                    OperationStatusResponse operation = GetOperation(result);
 
-                if (result is OperationStatusResponse)
-                {
-                    operation = result as OperationStatusResponse;
-                }
-                else
-                {
-                    if (waitOperation == null)
+                    var context = contextFactory(operation, result);
+                    if (context != null)
                     {
-                        operation = result == null ? null : GetOperationNewSM(result.RequestId);
-                    }
-                    else
-                    {
-                        operation = result == null ? null : waitOperation(result.RequestId, operationDescription);
+                        WriteObject(context, true);
                     }
                 }
+                catch (CloudException ce)
+                {
+                    throw new ComputeCloudException(ce);
+                }
             }
-            catch (AggregateException ex)
+            catch (Exception ex)
             {
-                if (ex.InnerException is CloudException)
-                {
-                    WriteExceptionDetails(ex.InnerException);
-                }
-                else
-                {
-                    WriteExceptionDetails(ex);
-                }
+                WriteExceptionError(ex);
             }
 
-            WriteVerboseWithTimestamp(string.Format(Resources.ServiceManagementExecuteClientActionInOCSCompletedOperation, operationDescription));
-
-            if (result != null)
-            {
-                var context = contextFactory(operation, result);
-                if (context != null)
-                {
-                    WriteObject(context, true);
-                }
-            }
+            WriteVerboseWithTimestamp(Resources.ServiceManagementExecuteClientActionInOCSCompletedOperation, operationDescription);
         }
 
         protected void ExecuteClientActionNewSM<TResult>(object input, string operationDescription, Func<TResult> action) where TResult : AzureOperationResponse
@@ -267,12 +176,32 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             this.ExecuteClientActionNewSM(input, operationDescription, action, (s, response) => this.ContextFactory<AzureOperationResponse, ManagementOperationContext>(response, s));
         }
 
-        protected T2 ContextFactory<T1, T2>(T1 source, OperationStatusResponse response) where T2 : ManagementOperationContext
+        protected TDestination ContextFactory<TSource, TDestination>(TSource s1, OperationStatusResponse s2) where TDestination : ManagementOperationContext
         {
-            var context = Mapper.Map<T1, T2>(source);
-            context = Mapper.Map(response, context);
-            context.OperationDescription = CommandRuntime.ToString();
-            return context;
+            TDestination result = Mapper.Map<TSource, TDestination>(s1);
+            result = Mapper.Map(s2, result);
+            result.OperationDescription = CommandRuntime.ToString();
+
+            return result;
+        }
+
+        protected void ExecuteClientAction(Action action)
+        {
+            try
+            {
+                try
+                {
+                    action();
+                }
+                catch (CloudException ex)
+                {
+                    throw new ComputeCloudException(ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
+            }
         }
     }
 }

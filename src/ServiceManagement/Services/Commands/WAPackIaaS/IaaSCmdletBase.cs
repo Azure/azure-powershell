@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient;
 
 namespace Microsoft.WindowsAzure.Commands.WAPackIaaS
 {
-    public abstract class IaaSCmdletBase : AzurePSCmdlet, ILogger
+    public abstract class IaaSCmdletBase : AzureSMCmdlet, ILogger
     {
         private IRequestChannel requestChannel;
 

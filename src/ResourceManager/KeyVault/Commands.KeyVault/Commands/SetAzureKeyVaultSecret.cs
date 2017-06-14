@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections;
-using System.Security;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -44,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("SecretName")]
+        [Alias(Constants.SecretName)]
         public string Name { get; set; }
 
         /// <summary>
@@ -92,18 +94,22 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing secret tags.")]
-        public Hashtable Tags { get; set; }
+        [Alias(Constants.TagsAlias)]
+        public Hashtable Tag { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            var secret = DataServiceClient.SetSecret(
-                VaultName, 
-                Name, 
+            if (ShouldProcess(Name, Properties.Resources.SetSecret))
+            {
+                var secret = DataServiceClient.SetSecret(
+                VaultName,
+                Name,
                 SecretValue,
-                new SecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tags));
-            WriteObject(secret);
+                new SecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tag));
+                WriteObject(secret);
+            }
         }
     }
 }

@@ -12,260 +12,379 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Concurrent;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.ApplicationInsights;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
+using System.Net.Http.Headers;
+using System.Reflection;
+using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
-    public abstract class AzurePSCmdlet : PSCmdlet
+    /// <summary>
+    /// Represents base class for all Azure cmdlets.
+    /// </summary>
+    public abstract class AzurePSCmdlet : PSCmdlet, IDisposable
     {
-        private readonly ConcurrentQueue<string> _debugMessages = new ConcurrentQueue<string>();
-        private RecordingTracingInterceptor _httpTracingInterceptor;
-        private DebugStreamTraceListener _adalListener;
-        protected static AzureProfile _currentProfile = null;
+        private const string PSVERSION = "PSVersion";
+        private const string DEFAULT_PSVERSION = "3.0.0.0";
 
-        [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
-        public AzureProfile Profile { get; set; }
+        public ConcurrentQueue<string> DebugMessages { get; private set; }
+
+        private RecordingTracingInterceptor _httpTracingInterceptor;
+        protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
+        protected static string _errorRecordFolderPath = null;
+        protected static string _sessionId = Guid.NewGuid().ToString();
+        protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
+        protected string _clientRequestId = Guid.NewGuid().ToString();
+        protected MetricHelper _metricHelper;
+        protected AzurePSQoSEvent _qosEvent;
+        protected DebugStreamTraceListener _adalListener;
+
+        protected virtual bool IsUsageMetricEnabled
+        {
+            get { return true; }
+        }
+
+        protected virtual bool IsErrorMetricEnabled
+        {
+            get { return true; }
+        }
 
         /// <summary>
-        /// Sets the current profile - the profile used when no Profile is explicitly passed in.  Should be used only by
-        /// Profile cmdlets and tests that need to set up a particular profile
+        /// Indicates installed PowerShell version
         /// </summary>
-        public static AzureProfile CurrentProfile 
+        private string _psVersion;
+
+        /// <summary>
+        /// Get PsVersion returned from PowerShell.Runspace instance
+        /// </summary>
+        protected string PSVersion
         {
-            private get
+            get
             {
-                if (_currentProfile == null)
-                {
-                    _currentProfile = InitializeDefaultProfile();
-                    SetTokenCacheForProfile(_currentProfile);
+                if (string.IsNullOrEmpty(_psVersion))
+                {   
+                    if(this.Host != null)
+                    {
+                        _psVersion = this.Host.Version.ToString();
+                    }
+                    else
+                    {
+                        //We are doing this for perf. reasons. This code will execute during tests and so reducing the perf. overhead while running tests.
+                        _psVersion = DEFAULT_PSVERSION;
+                    }
                 }
 
-                return _currentProfile;
-            }
-
-            set
-            {
-                SetTokenCacheForProfile(value);
-                _currentProfile = value;
-            }
-        }
-
-        protected static TokenCache DefaultDiskTokenCache { get; set; }
-
-        protected static TokenCache DefaultMemoryTokenCache { get; set; }
-
-        static AzurePSCmdlet()
-        {
-            if (!TestMockSupport.RunningMocked)
-            {
-                AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
-            }
-
-            AzureSession.ClientFactory.UserAgents.Add(AzurePowerShell.UserAgentValue);
-            if (!TestMockSupport.RunningMocked)
-            {
-                InitializeTokenCaches();
-                AzureSession.DataStore = new DiskDataStore();
-                SetTokenCacheForProfile(CurrentProfile);
+                return _psVersion;
             }
         }
 
         /// <summary>
-        /// Create the default profile, based on the default profile path
+        /// Gets the PowerShell module name used for user agent header.
+        /// By default uses "Azure PowerShell"
         /// </summary>
-        /// <returns>The default profile, serialized from the default location on disk</returns>
-        protected static AzureProfile InitializeDefaultProfile()
+        protected virtual string ModuleName { get { return "AzurePowershell"; } }
+
+        /// <summary>
+        /// Gets PowerShell module version used for user agent header.
+        /// </summary>
+        protected string ModuleVersion { get { return AzurePowerShell.AssemblyVersion; } }
+
+        /// <summary>
+        /// The context for management cmdlet requests - includes account, tenant, subscription, 
+        /// and credential information for targeting and authorizing management calls.
+        /// </summary>
+        protected abstract IAzureContext DefaultContext { get; }
+
+        /// <summary>
+        /// Initializes AzurePSCmdlet properties.
+        /// </summary>
+        public AzurePSCmdlet()
         {
-            if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
+            DebugMessages = new ConcurrentQueue<string>();
+
+            //TODO: Inject from CI server
+            _metricHelper = new MetricHelper();
+            _metricHelper.AddTelemetryClient(new TelemetryClient
+            {
+                InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
+            });
+        }
+
+        /// <summary>
+        /// Initialize the data collection profile
+        /// </summary>
+        protected static void InitializeDataCollectionProfile()
+        {
+            if (_dataCollectionProfile != null && _dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                return;
+            }
+
+            // Get the value of the environment variable for Azure PS data collection setting.
+            string value = Environment.GetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName);
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                if (string.Equals(value, bool.FalseString, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Disable data collection only if it is explicitly set to 'false'.
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
+                }
+                else if (string.Equals(value, bool.TrueString, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Enable data collection only if it is explicitly set to 'true'.
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+                }
+            }
+
+            // If the environment value is null or empty, or not correctly set, try to read the setting from default file location.
+            if (_dataCollectionProfile == null)
+            {
+                string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
+                    AzurePSDataCollectionProfile.DefaultFileName);
+                if (File.Exists(fileFullPath))
+                {
+                    string contents = File.ReadAllText(fileFullPath);
+                    _dataCollectionProfile =
+                        JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
+                }
+            }
+
+            // If the environment variable or file content is not set, create a new profile object.
+            if (_dataCollectionProfile == null)
+            {
+                _dataCollectionProfile = new AzurePSDataCollectionProfile();
+            }
+        }
+
+        /// <summary>
+        /// Get the data collection profile
+        /// </summary>
+        protected static AzurePSDataCollectionProfile GetDataCollectionProfile()
+        {
+            if (_dataCollectionProfile == null)
+            {
+                InitializeDataCollectionProfile();
+            }
+
+            return _dataCollectionProfile;
+        }
+
+        /// <summary>
+        /// Check whether the data collection is opted in from user
+        /// </summary>
+        /// <returns>true if allowed</returns>
+        public static bool IsDataCollectionAllowed()
+        {
+            if (_dataCollectionProfile != null &&
+                _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
+                _dataCollectionProfile.EnableAzureDataCollection.Value)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Save the current data collection profile JSON data into the default file path
+        /// </summary>
+        protected abstract void SaveDataCollectionProfile();
+
+        protected bool CheckIfInteractive()
+        {
+            bool interactive = true;
+            if (this.Host == null ||
+                this.Host.UI == null ||
+                this.Host.UI.RawUI == null ||
+                Environment.GetCommandLineArgs().Any(s =>
+                    s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
+            {
+                interactive = false;
+            }
+            else
             {
                 try
                 {
-                   GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                   return new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                    var test = this.Host.UI.RawUI.KeyAvailable;
                 }
                 catch
                 {
-                    // swallow exceptions in creating the profile from disk
+                    interactive = false;
                 }
             }
 
-            return new AzureProfile();
+            if (!interactive && _dataCollectionProfile != null && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                _dataCollectionProfile.EnableAzureDataCollection = false;
+            }
+            return interactive;
         }
 
         /// <summary>
-        /// Get the context for the current profile before BeginProcessing is called
+        /// Prompt for the current data collection profile
         /// </summary>
-        /// <returns>The context for the current profile</returns>
-        protected AzureContext GetCurrentContext()
-        {
-            if (Profile != null)
-            {
-                return Profile.Context;
-            }
+        protected abstract void PromptForDataCollectionProfileIfNotExists();
 
-            return CurrentProfile.Context;
-        }
-
-        protected static void InitializeTokenCaches()
+        protected virtual void LogCmdletStartInvocationInfo()
         {
-            DefaultMemoryTokenCache = new TokenCache();
-            if (!string.IsNullOrWhiteSpace(AzureSession.ProfileDirectory) &&
-                !string.IsNullOrWhiteSpace(AzureSession.TokenCacheFile))
+            if (string.IsNullOrEmpty(ParameterSetName))
             {
-                GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                DefaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzureSession.ProfileDirectory, AzureSession.TokenCacheFile));
+                WriteDebugWithTimestamp(string.Format("{0} begin processing " +
+                   "without ParameterSet.", this.GetType().Name));
             }
             else
             {
-                DefaultDiskTokenCache = DefaultMemoryTokenCache;
+                WriteDebugWithTimestamp(string.Format("{0} begin processing " +
+                   "with ParameterSet '{1}'.", this.GetType().Name, ParameterSetName));
             }
         }
 
-        /// <summary>
-        /// Update the token cache when setting the profile
-        /// </summary>
-        /// <param name="profile"></param>
-        protected static void SetTokenCacheForProfile(AzureProfile profile)
+        protected virtual void LogCmdletEndInvocationInfo()
         {
-            var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
-            if (string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
-            {
-                AzureSession.TokenCache = DefaultDiskTokenCache;
-            }
-            else
-            {
-                AzureSession.TokenCache = DefaultMemoryTokenCache;
-            }
+            string message = string.Format("{0} end processing.", this.GetType().Name);
+            WriteDebugWithTimestamp(message);
         }
 
+        protected virtual void SetupDebuggingTraces()
+        {
+            _httpTracingInterceptor = _httpTracingInterceptor ?? new
+                RecordingTracingInterceptor(DebugMessages);
+            _adalListener = _adalListener ?? new DebugStreamTraceListener(DebugMessages);
+            RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
+            DebugStreamTraceListener.AddAdalTracing(_adalListener);
+        }
+
+        protected virtual void TearDownDebuggingTraces()
+        {
+            RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
+            DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
+            FlushDebugMessages();
+        }
+
+
+        protected virtual void SetupHttpClientPipeline()
+        {
+            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
+            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, string.Format("v{0}", PSVersion)));
+
+            AzureSession.Instance.ClientFactory.AddHandler(
+                new CmdletInfoHandler(this.CommandRuntime.ToString(),
+                    this.ParameterSetName, this._clientRequestId));
+
+        }
+
+        protected virtual void TearDownHttpClientPipeline()
+        {
+            AzureSession.Instance.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
+            AzureSession.Instance.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
+        }
         /// <summary>
         /// Cmdlet begin process. Write to logs, setup Http Tracing and initialize profile
         /// </summary>
         protected override void BeginProcessing()
         {
-            InitializeProfile();
-            if (string.IsNullOrEmpty(ParameterSetName))
-            {
-                WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
-            }
-            else
-            {
-                WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithParameterSetLog, this.GetType().Name, ParameterSetName));
-            }
-
-            if (Profile != null && Profile.Context != null && Profile.Context.Account != null && Profile.Context.Account.Id != null)
-            {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Profile.Context.Account.Id));
-            }
-
-            _httpTracingInterceptor = _httpTracingInterceptor?? new RecordingTracingInterceptor(_debugMessages);
-            _adalListener = _adalListener?? new DebugStreamTraceListener(_debugMessages);
-            RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
-            DebugStreamTraceListener.AddAdalTracing(_adalListener);
-
+            PromptForDataCollectionProfileIfNotExists();
+            InitializeQosEvent();
+            LogCmdletStartInvocationInfo();
+            SetupDebuggingTraces();
+            SetupHttpClientPipeline();
             base.BeginProcessing();
         }
 
         /// <summary>
-        /// Ensure that there is a profile for the command
-        /// </summary>
-        protected  virtual void InitializeProfile()
-        {
-            if (Profile == null)
-            {
-                Profile = AzurePSCmdlet.CurrentProfile;
-            }
-
-            SetTokenCacheForProfile(Profile);
-        }
-
-        /// <summary>
-        /// End processing. Flush messages in tracing interceptor and save profile.
+        /// Perform end of pipeline processing.
         /// </summary>
         protected override void EndProcessing()
         {
-            string message = string.Format(Resources.EndProcessingLog, this.GetType().Name);
-            WriteDebugWithTimestamp(message);
-
-            RecordingTracingInterceptor.RemoveFromContext(_httpTracingInterceptor);
-            DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
-            FlushDebugMessages();
-
+            LogQosEvent();
+            LogCmdletEndInvocationInfo();
+            TearDownDebuggingTraces();
+            TearDownHttpClientPipeline();
             base.EndProcessing();
-        }
-
-        public bool HasCurrentSubscription
-        {
-            get { return Profile.Context.Subscription != null; }
         }
 
         protected string CurrentPath()
         {
-            // SessionState is only available within Powershell so default to
-            // the CurrentDirectory when being run from tests.
+            // SessionState is only available within PowerShell so default to
+            // the TestMockSupport.TestExecutionFolder when being run from tests.
             return (SessionState != null) ?
                 SessionState.Path.CurrentLocation.Path :
-                Environment.CurrentDirectory;
+                TestMockSupport.TestExecutionFolder;
         }
 
         protected bool IsVerbose()
         {
-            bool verbose = MyInvocation.BoundParameters.ContainsKey("Verbose") && ((SwitchParameter)MyInvocation.BoundParameters["Verbose"]).ToBool();
+            bool verbose = MyInvocation.BoundParameters.ContainsKey("Verbose")
+                && ((SwitchParameter)MyInvocation.BoundParameters["Verbose"]).ToBool();
             return verbose;
         }
 
-        public new void WriteError(ErrorRecord errorRecord)
+        protected new void WriteError(ErrorRecord errorRecord)
         {
-            FlushDebugMessages();
+            FlushDebugMessages(IsDataCollectionAllowed());
+            if (_qosEvent != null && errorRecord != null)
+            {
+                _qosEvent.Exception = errorRecord.Exception;
+                _qosEvent.IsSuccess = false;
+            }
+
             base.WriteError(errorRecord);
         }
 
-        public new void WriteObject(object sendToPipeline)
+        protected new void ThrowTerminatingError(ErrorRecord errorRecord)
+        {
+            FlushDebugMessages(IsDataCollectionAllowed());
+            base.ThrowTerminatingError(errorRecord);
+        }
+
+        protected new void WriteObject(object sendToPipeline)
         {
             FlushDebugMessages();
             base.WriteObject(sendToPipeline);
         }
 
-        public new void WriteObject(object sendToPipeline, bool enumerateCollection)
+        protected new void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
             FlushDebugMessages();
             base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
-        public new void WriteVerbose(string text)
+        protected new void WriteVerbose(string text)
         {
             FlushDebugMessages();
             base.WriteVerbose(text);
         }
 
-        public new void WriteWarning(string text)
+        protected new void WriteWarning(string text)
         {
             FlushDebugMessages();
             base.WriteWarning(text);
         }
 
-        public new void WriteCommandDetail(string text)
+        protected new void WriteCommandDetail(string text)
         {
             FlushDebugMessages();
             base.WriteCommandDetail(text);
         }
 
-        public new void WriteProgress(ProgressRecord progressRecord)
+        protected new void WriteProgress(ProgressRecord progressRecord)
         {
             FlushDebugMessages();
             base.WriteProgress(progressRecord);
         }
 
-        public new void WriteDebug(string text)
+        protected new void WriteDebug(string text)
         {
             FlushDebugMessages();
             base.WriteDebug(text);
@@ -326,6 +445,190 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             WriteObject(customObject);
         }
 
+        private void FlushDebugMessages(bool record = false)
+        {
+            if (record)
+            {
+                RecordDebugMessages();
+            }
+
+            string message;
+            while (DebugMessages.TryDequeue(out message))
+            {
+                base.WriteDebug(message);
+            }
+        }
+
+        protected abstract void InitializeQosEvent();
+
+        private void RecordDebugMessages()
+        {
+            // Create 'ErrorRecords' folder under profile directory, if not exists
+            if (string.IsNullOrEmpty(_errorRecordFolderPath)
+                || !Directory.Exists(_errorRecordFolderPath))
+            {
+                _errorRecordFolderPath = Path.Combine(AzurePowerShell.ProfileDirectory,
+                    "ErrorRecords");
+                Directory.CreateDirectory(_errorRecordFolderPath);
+            }
+
+            CommandInfo cmd = this.MyInvocation.MyCommand;
+
+            string filePrefix = cmd.Name;
+            string timeSampSuffix = DateTime.Now.ToString(_fileTimeStampSuffixFormat);
+            string fileName = filePrefix + "_" + timeSampSuffix + ".log";
+            string filePath = Path.Combine(_errorRecordFolderPath, fileName);
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Module : ").AppendLine(cmd.ModuleName);
+            sb.Append("Cmdlet : ").AppendLine(cmd.Name);
+
+            sb.AppendLine("Parameters");
+            foreach (var item in this.MyInvocation.BoundParameters)
+            {
+                sb.Append(" -").Append(item.Key).Append(" : ");
+                sb.AppendLine(item.Value == null ? "null" : item.Value.ToString());
+            }
+
+            sb.AppendLine();
+
+            foreach (var content in DebugMessages)
+            {
+                sb.AppendLine(content);
+            }
+
+            AzureSession.Instance.DataStore.WriteFile(filePath, sb.ToString());
+        }
+
+        /// <summary>
+        /// Invoke this method when the cmdlet is completed or terminated.
+        /// </summary>
+        protected void LogQosEvent()
+        {
+            if (_qosEvent == null)
+            {
+                return;
+            }
+
+            _qosEvent.FinishQosEvent();
+
+            if (!IsUsageMetricEnabled && (!IsErrorMetricEnabled || _qosEvent.IsSuccess))
+            {
+                return;
+            }
+
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            WriteDebug(_qosEvent.ToString());
+
+            try
+            {
+                _metricHelper.LogQoSEvent(_qosEvent, IsUsageMetricEnabled, IsErrorMetricEnabled);
+                _metricHelper.FlushMetric();
+                WriteDebug("Finish sending metric.");
+            }
+            catch (Exception e)
+            {
+                //Swallow error from Application Insights event collection.
+                WriteWarning(e.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  This is a legacy 
+        /// version forcompatibility with older RDFE cmdlets.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        protected virtual void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+            Action action)
+        {
+            if (_qosEvent != null)
+            {
+                _qosEvent.PauseQoSTimer();
+            }
+
+            if (force || ShouldContinue(continueMessage, ""))
+            {
+                if (ShouldProcess(target, processMessage))
+                {
+                    if (_qosEvent != null)
+                    {
+                        _qosEvent.ResumeQosTimer();
+                    }
+                    action();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
+        /// particular action (e.g. a resource is being overwritten). By default, both 
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// must have a force parameter.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        /// <param name="useShouldContinue">A predicate indicating whether ShouldContinue should be invoked for thsi action</param>
+        protected virtual void ConfirmAction(bool force, string continueMessage, string processMessage, string target, Action action, Func<bool> useShouldContinue)
+        {
+            if (null == useShouldContinue)
+            {
+                useShouldContinue = () => true;
+            }
+            if (_qosEvent != null)
+            {
+                _qosEvent.PauseQoSTimer();
+            }
+
+            if (ShouldProcess(target, processMessage))
+            {
+                if (force || !useShouldContinue() || ShouldContinue(continueMessage, ""))
+                {
+                    if (_qosEvent != null)
+                    {
+                        _qosEvent.ResumeQosTimer();
+                    }
+                    action();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Prompt for confirmation depending on the ConfirmLevel. By default No confirmation prompt 
+        /// occurs unless ConfirmLevel >= $ConfirmPreference.  Guarding the actions of a cmdlet with this 
+        /// method will enable the cmdlet to support -WhatIf and -Confirm parameters.
+        /// </summary>
+        /// <param name="processMessage">The change being made to the resource</param>
+        /// <param name="target">The resource that is being changed</param>
+        /// <param name="action">The action to perform if confirmed</param>
+        protected virtual void ConfirmAction(string processMessage, string target, Action action)
+        {
+            if (_qosEvent != null)
+            {
+                _qosEvent.PauseQoSTimer();
+            }
+
+            if (ShouldProcess(target, processMessage))
+            {
+                if (_qosEvent != null)
+                {
+                    _qosEvent.ResumeQosTimer();
+                }
+                action();
+            }
+        }
+
         public virtual void ExecuteCmdlet()
         {
             // Do nothing.
@@ -344,32 +647,25 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        private void FlushDebugMessages()
+        protected virtual void Dispose(bool disposing)
         {
-            string message;
-            while (_debugMessages.TryDequeue(out message))
+            try
             {
-                base.WriteDebug(message);
+                FlushDebugMessages();
             }
+            catch { }
+            if (disposing && _adalListener != null)
+            {
+                _adalListener.Dispose();
+                _adalListener = null;
+            }
+
         }
 
-        /// <summary>
-        /// Asks for confirmation before executing the action.
-        /// </summary>
-        /// <param name="force">Do not ask for confirmation</param>
-        /// <param name="actionMessage">Message to describe the action</param>
-        /// <param name="processMessage">Message to prompt after the active is performed.</param>
-        /// <param name="target">The target name.</param>
-        /// <param name="action">The action code</param>
-        protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        public void Dispose()
         {
-            if (force || ShouldContinue(actionMessage, ""))
-            {
-                if (ShouldProcess(target, processMessage))
-                {
-                    action();
-                }
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

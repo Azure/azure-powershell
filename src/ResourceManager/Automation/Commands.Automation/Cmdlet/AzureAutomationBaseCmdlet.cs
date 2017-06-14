@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.DataContract;
+using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -21,18 +25,13 @@ using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Xml.Linq;
-using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.DataContract;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// The azure automation base cmdlet.
     /// </summary>
-    public abstract class AzureAutomationBaseCmdlet : AzurePSCmdlet
+    public abstract class AzureAutomationBaseCmdlet : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
+                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.DefaultContext);
             }
 
             set
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string AutomationAccountName { get; set; }
 
-        protected virtual void AutomationExecuteCmdlet()
+        protected virtual void AutomationProcessRecord()
         {
             // Do nothing.
         }
@@ -80,7 +79,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 Requires.Argument("ResourceGroupName", this.ResourceGroupName).NotNull();
                 Requires.Argument("AutomationAccountName", this.AutomationAccountName).NotNull();
-                this.AutomationExecuteCmdlet();
+                this.AutomationProcessRecord();
             }
             catch (CloudException cloudException)
             {

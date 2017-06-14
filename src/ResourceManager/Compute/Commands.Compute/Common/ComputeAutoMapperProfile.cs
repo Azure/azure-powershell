@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using FROM = Microsoft.Azure.Management.Compute.Models;
+using TO = Microsoft.Azure.Commands.Compute.Models;
+
 namespace Microsoft.Azure.Commands.Compute
 {
-    using AutoMapper;
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using FROM = Microsoft.Azure.Management.Compute.Models;
-    using TO = Microsoft.Azure.Commands.Compute.Models;
-
     public static class ComputeMapperExtension
     {
         public static IMappingExpression<TSource, TDestination> ForItems<TSource, TDestination, T>(
@@ -43,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 
-    public class ComputeAutoMapperProfile : Profile
+    public class ComputeAutoMapperProfile : AutoMapper.Profile
     {
         private static readonly Lazy<bool> initialize;
 
@@ -68,12 +70,158 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected override void Configure()
         {
-            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
-            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
+            // => PSComputeLongrunningOperation
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse<FROM.OperationStatusResponse>, TO.PSComputeLongRunningOperation>()
+                .ForMember(c => c.OperationId, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).OperationId))
+                .ForMember(c => c.Status, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Status))
+                .ForMember(c => c.StartTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).StartTime))
+                .ForMember(c => c.EndTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).EndTime))
+                .ForMember(c => c.Error, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Error));
+
+            // => PSComputeLongrunningOperation
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse, TO.PSComputeLongRunningOperation>()
+                .ForMember(c => c.OperationId, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).OperationId))
+                .ForMember(c => c.Status, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Status))
+                .ForMember(c => c.StartTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).StartTime))
+                .ForMember(c => c.EndTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).EndTime))
+                .ForMember(c => c.Error, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Error));
+
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse<FROM.VirtualMachine>, TO.PSComputeLongRunningOperation>()
+                .ForMember(c => c.OperationId, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).OperationId))
+                .ForMember(c => c.Status, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Status))
+                .ForMember(c => c.StartTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).StartTime))
+                .ForMember(c => c.EndTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).EndTime))
+                .ForMember(c => c.Error, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Error));
+
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse<FROM.VirtualMachineCaptureResult>, TO.PSComputeLongRunningOperation>()
+                .ForMember(c => c.OperationId, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).OperationId))
+                .ForMember(c => c.Status, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Status))
+                .ForMember(c => c.StartTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).StartTime))
+                .ForMember(c => c.EndTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).EndTime))
+                .ForMember(c => c.Error, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Error));
+
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse<FROM.VirtualMachineExtension>, TO.PSComputeLongRunningOperation>()
+                .ForMember(c => c.OperationId, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).OperationId))
+                .ForMember(c => c.Status, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Status))
+                .ForMember(c => c.StartTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).StartTime))
+                .ForMember(c => c.EndTime, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).EndTime))
+                .ForMember(c => c.Error, o => o.MapFrom(r => JsonConvert.DeserializeObject<TO.PSComputeLongRunningOperation>(
+                    r.Response.Content.ReadAsStringAsync().Result).Error));
+
+            // => PSAzureOperationResponse
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
+            Mapper.CreateMap<Rest.Azure.AzureOperationResponse<FROM.OperationStatusResponse>, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineCaptureResult>, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineExtension>, TO.PSAzureOperationResponse>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode))
+                .ForMember(c => c.IsSuccessStatusCode, o => o.MapFrom(r => r.Response.IsSuccessStatusCode))
+                .ForMember(c => c.ReasonPhrase, o => o.MapFrom(r => r.Response.ReasonPhrase));
+
+            // AvailabilitySet => PSAvailabilitySet
+            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>()
+                .ForMember(c => c.VirtualMachinesReferences, o => o.MapFrom(r => r.VirtualMachines))
+                .ForMember(c => c.Sku, o => o.MapFrom(r => r.Sku.Name));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.AvailabilitySet>, TO.PSAvailabilitySet>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            // VirtualMachine => PSVirtualMachine
+            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>()
+                .ForMember(c => c.AvailabilitySetReference, o => o.MapFrom(r => r.AvailabilitySet))
+                .ForMember(c => c.Extensions, o => o.MapFrom(r => r.Resources))
+                .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSVirtualMachine>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachine>>, TO.PSVirtualMachine>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            // VirtualMachine => PSVirtualMachineListStatusContext
+            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.AvailabilitySetReference, o => o.MapFrom(r => r.AvailabilitySet))
+                .ForMember(c => c.Extensions, o => o.MapFrom(r => r.Resources))
+                .ForMember(c => c.OSProfile, o => o.MapFrom(r => r.OsProfile));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachine>, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.VirtualMachine>>, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachine>>, TO.PSVirtualMachineListStatus>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<TO.PSVirtualMachineListStatus, TO.PSVirtualMachineList>();
+
+            // VirtualMachineSize => PSVirtualMachineSize
             Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
-            Mapper.CreateMap<FROM.Usage, TO.PSUsage>();
-            Mapper.CreateMap<FROM.ComputeLongRunningOperationResponse, TO.PSComputeLongRunningOperation>();
-            Mapper.CreateMap<Microsoft.Azure.AzureOperationResponse, TO.PSOperationResponse>();
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.VirtualMachineSize>, TO.PSVirtualMachineSize>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IEnumerable<FROM.VirtualMachineSize>>, TO.PSVirtualMachineSize>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            // Usage => PSUsage
+            Mapper.CreateMap<FROM.Usage, TO.PSUsage>()
+                .ForMember(c => c.Unit, o => o.MapFrom(r => Microsoft.Azure.Management.Compute.Models.Usage.Unit));
+
+            Mapper.CreateMap<AzureOperationResponse<FROM.Usage>, TO.PSUsage>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<AzureOperationResponse<IPage<FROM.Usage>>, TO.PSUsage>()
+                .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
+
+            Mapper.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
+            Mapper.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
         }
     }
 }

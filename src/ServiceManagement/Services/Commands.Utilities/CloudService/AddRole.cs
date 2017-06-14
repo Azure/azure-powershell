@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
     /// <summary>
     /// Creates basic scaffolding structure for azure web/worker role.
     /// </summary>
-    public abstract class AddRole : AzurePSCmdlet
+    public abstract class AddRole : AzureSMCmdlet
     {
         private string successMessage;
 

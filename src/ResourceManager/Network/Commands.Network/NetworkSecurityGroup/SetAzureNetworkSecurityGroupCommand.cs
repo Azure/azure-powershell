@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class SetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Parameter(
@@ -31,21 +31,20 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The NetworkSecurityGroup")]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             if (!this.IsNetworkSecurityGroupPresent(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
-            
+
             // Map to the sdk object
             var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(this.NetworkSecurityGroup);
-            nsgModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.NetworkSecurityGroupType;
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkSecurityGroup.Tag, validate: true);
 
-            // Execute the Create VirtualNetwork call
+            // Execute the PUT NetworkSecurityGroup call
             this.NetworkSecurityGroupClient.CreateOrUpdate(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name, nsgModel);
 
             var getNetworkSecurityGroup = this.GetNetworkSecurityGroup(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name);

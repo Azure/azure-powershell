@@ -14,13 +14,10 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
-using System.Management.Automation;
-using System.Security;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
@@ -48,7 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 Expires = secretAttributes.Expires,
                 NotBefore = secretAttributes.NotBefore,
                 ContentType = secretAttributes.ContentType,
-                Tags = secretAttributes.Tags,
+                Tag = secretAttributes.Tags,
                 PassThru = true
             };
         }
@@ -57,6 +54,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetSecretAttributeTest()
         {
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
+
             Secret expected = secret;
             keyVaultClientMock.Setup(kv => kv.UpdateSecret(VaultName, SecretName, SecretVersion,
                 It.Is<SecretAttributes>(st => st.Enabled == secretAttributes.Enabled
@@ -76,6 +76,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ErrorSetSecretAttributeTest()
         {
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
+
             keyVaultClientMock.Setup(kv => kv.UpdateSecret(VaultName, SecretName, SecretVersion,
                 It.Is<SecretAttributes>(st => st.Enabled == secretAttributes.Enabled
                         && st.Expires == secretAttributes.Expires
@@ -88,10 +91,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             {
                 cmdlet.ExecuteCmdlet();
             }
-            catch{}
+            catch { }
 
             keyVaultClientMock.VerifyAll();
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<Secret>()), Times.Never());
         }
-    }    
+    }
 }

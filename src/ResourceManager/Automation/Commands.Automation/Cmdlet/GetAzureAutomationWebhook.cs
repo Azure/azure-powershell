@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Get Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationWebhook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationWebhook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Webhook))]
     public class GetAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Runbook name.")]
         public string RunbookName { get; set; }
-     
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             IEnumerable<Model.Webhook> webhooks = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByAll)
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                     webhooks = this.AutomationClient.ListWebhooks(this.ResourceGroupName, this.AutomationAccountName, null, ref nextLink);
                     this.GenerateCmdletOutput(webhooks);
-                } 
+                }
                 while (!string.IsNullOrEmpty(nextLink));
-                
+
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
             {

@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
 
         Updating,
-        
+
         Deleting,
-        
+
         Failed,
-        
+
         Succeeded
     }
 }

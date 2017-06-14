@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute.Models;
@@ -67,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     try
                     {
                         CurrentDeploymentNewSM = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, DeploymentSlot.Production);
-                        GetDeploymentOperationNewSM = GetOperationNewSM(CurrentDeploymentNewSM.RequestId);
+                        GetDeploymentOperationNewSM = GetOperation(CurrentDeploymentNewSM.RequestId);
                         WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
                     }
                     catch (CloudException ex)
@@ -75,6 +76,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         if (ex.Response.StatusCode != HttpStatusCode.NotFound)
                         {
                             throw;
+                        }
+                        else
+                        {
+                            WriteWarning(string.Format(CultureInfo.CurrentUICulture, Resources.NoDeploymentFoundInService, ServiceName));
                         }
                     }
                 });
@@ -85,9 +90,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         {
             try
             {
-                HttpRestCallLogger.CurrentCmdlet = this;
-                base.ProcessRecord();
-                ExecuteCommand();
+                try
+                {
+                    HttpRestCallLogger.CurrentCmdlet = this;
+                    base.ProcessRecord();
+                    ExecuteCommand();
+                }
+                catch (CloudException ce)
+                {
+                    throw new ComputeCloudException(ce);
+                }
             }
             catch (Exception ex)
             {

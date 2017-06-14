@@ -1,0 +1,59 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/a0d901ba-9956-4f7d-830c-2d7974c36666/services/WATM/profiles",
+      "EncodedRequestUri": "L2EwZDkwMWJhLTk5NTYtNGY3ZC04MzBjLTJkNzk3NGMzNjY2Ni9zZXJ2aWNlcy9XQVRNL3Byb2ZpbGVz",
+      "RequestMethod": "POST",
+      "RequestBody": "<Profile xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <DomainName>INVALID</DomainName>\r\n  <Name>onesdk338</Name>\r\n</Profile>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "133"
+        ],
+        "x-ms-version": [
+          "2011-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "<Error xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Code>BadRequest</Code>\r\n  <Message>A policy with the requested domain name could not be created because the name INVALID does not end with the expected value .trafficmanager.net.</Message>\r\n</Error>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "302"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "e807b5cff4d0631caa8a50251d2248f2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 21 Jan 2016 12:19:56 GMT"
+        ],
+        "Server": [
+          "1.0.6198.306",
+          "(rd_rdfe_stable.160114-1616)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 400
+    }
+  ],
+  "Names": {
+    "Test-NewProfileWithInvalidParameter": [
+      "onesdk338"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a0d901ba-9956-4f7d-830c-2d7974c36666"
+  }
+}

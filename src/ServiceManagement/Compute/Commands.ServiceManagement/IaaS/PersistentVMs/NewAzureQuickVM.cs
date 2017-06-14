@@ -12,7 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using AutoMapper;
+using Hyak.Common;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,22 +37,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
-using AutoMapper;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Storage;
 using ConfigurationSet = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.ConfigurationSet;
 using InputEndpoint = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.InputEndpoint;
 using OSVirtualHardDisk = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.OSVirtualHardDisk;
-using Microsoft.Azure;
-using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
@@ -171,11 +175,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         public void NewAzureVMProcess()
         {
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            IAzureSubscription currentSubscription = Profile.Context.Subscription;
             CloudStorageAccount currentStorage = null;
             try
             {
-                currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
+                currentStorage = Profile.Context.GetCurrentStorageAccount(
+                    new RDFEStorageProvider(AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                        Profile.Context, AzureEnvironment.Endpoint.ServiceManagement), Profile.Context.Environment));
             }
             catch (Exception ex) // couldn't access
             {
@@ -188,11 +194,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
             bool serviceExists = DoesCloudServiceExist(this.ServiceName);
 
-            if(!string.IsNullOrEmpty(this.Location))
+            if (!string.IsNullOrEmpty(this.Location))
             {
-                if(serviceExists)
+                if (serviceExists)
                 {
-                    throw new ApplicationException(Resources.ServiceExistsLocationCanNotBeSpecified);
+                    HostedServiceGetResponse existingSvc = null;
+                    try
+                    {
+                        existingSvc = ComputeClient.HostedServices.Get(this.ServiceName);
+                    }
+                    catch
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsLocationCanNotBeSpecified);
+                    }
+
+                    if (existingSvc == null ||
+                        existingSvc.Properties == null ||
+                        !this.Location.Equals(existingSvc.Properties.Location))
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsLocationCanNotBeSpecified);
+                    }
                 }
             }
 
@@ -200,7 +221,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             {
                 if (serviceExists)
                 {
-                    throw new ApplicationException(Resources.ServiceExistsAffinityGroupCanNotBeSpecified);
+                    HostedServiceGetResponse existingSvc = null;
+                    try
+                    {
+                        existingSvc = ComputeClient.HostedServices.Get(this.ServiceName);
+                    }
+                    catch
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsAffinityGroupCanNotBeSpecified);
+                    }
+
+                    if (existingSvc == null ||
+                        existingSvc.Properties == null ||
+                        !this.AffinityGroup.Equals(existingSvc.Properties.AffinityGroup))
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsAffinityGroupCanNotBeSpecified);
+                    }
                 }
             }
 
@@ -238,7 +274,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 }
                 catch (CloudException ex)
                 {
-                    this.WriteExceptionDetails(ex);
+                    WriteExceptionError(ex);
                     return;
                 }
             }
@@ -354,7 +390,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     throw new Exception(Resources.ServiceDoesNotExistSpecifyLocationOrAffinityGroup);
                 }
 
-                this.WriteExceptionDetails(ex);
+                WriteExceptionError(ex);
             }
         }
 
@@ -382,7 +418,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     new VirtualMachineExtensionImageFactory(this.ComputeClient).MakeList(
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultPublisher,
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultName,
-                        VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultVersion))
+                        VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultVersion)),
+                DebugSettings = new Management.Compute.Models.DebugSettings
+                {
+                    BootDiagnosticsEnabled = true
+                }
             };
 
             if (!_isVMImage && vm.OSVirtualHardDisk.MediaLink == null && String.IsNullOrEmpty(vm.OSVirtualHardDisk.Name))
@@ -549,7 +589,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 {
                     return false;
                 }
-                this.WriteExceptionDetails(ex);
+                WriteExceptionError(ex);
             }
 
             return false;

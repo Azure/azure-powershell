@@ -34,6 +34,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public AutoBackupSettings AutoBackupSettings;
 
         /// <summary>
+        /// Key Vault Credential settings
+        /// </summary>
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
+
+        /// <summary>
+        /// Auto Telemetry settings
+        /// </summary>
+        public AutoTelemetrySettings AutoTelemetrySettings;
+
+        /// <summary>
         /// Status messages reported by extension
         /// </summary>
         public List<string> StatusMessages;
@@ -42,5 +52,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// Resource extension substatus list
         /// </summary>
         public IList<NSM.ResourceExtensionSubStatus> SubStatusList { get; set; }
+
+        /// <summary>
+        /// Extension status
+        /// </summary>
+        public string ExtensionStatus { get; set; }
     }
 }

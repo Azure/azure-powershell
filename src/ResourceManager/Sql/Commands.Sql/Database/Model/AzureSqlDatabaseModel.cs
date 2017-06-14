@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Model
 {
@@ -111,5 +112,109 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the tags associated with the server.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the database.
+        /// </summary>
+        public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the create mode of the database.
+        /// </summary>
+        public string CreateMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the read scale option of the database (Disabled/Enabled).
+        /// </summary>
+        public DatabaseReadScale? ReadScale { get; set; }
+
+        /// <summary>
+        /// Construct AzureSqlDatabaseModel
+        /// </summary>
+        public AzureSqlDatabaseModel()
+        {
+        }
+
+        /// <summary>
+        /// Construct AzureSqlDatabaseModel from Management.Sql.LegacySdk.Models.Database object
+        /// </summary>
+        /// <param name="resourceGroup">Resource group</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="database">Database object</param>
+        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
+        {
+            Guid id = Guid.Empty;
+            DatabaseEdition edition = DatabaseEdition.None;
+            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
+
+            ResourceGroupName = resourceGroup;
+            ServerName = serverName;
+            CollationName = database.Properties.Collation;
+            CreationDate = database.Properties.CreationDate;
+            CurrentServiceObjectiveName = database.Properties.ServiceObjective;
+            MaxSizeBytes = database.Properties.MaxSizeBytes;
+            DatabaseName = database.Name;
+            Status = database.Properties.Status;
+            Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
+            ElasticPoolName = database.Properties.ElasticPoolName;
+            Location = database.Location;
+            ResourceId = database.Id;
+            CreateMode = database.Properties.CreateMode;
+            EarliestRestoreDate = database.Properties.EarliestRestoreDate;
+
+            Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
+            CurrentServiceObjectiveId = id;
+
+            Guid.TryParse(database.Properties.DatabaseId, out id);
+            DatabaseId = id;
+
+            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
+            Edition = edition;
+
+            Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
+            RequestedServiceObjectiveId = id;
+
+            Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
+            ReadScale = readScale;
+        }
+
+        /// <summary>
+        /// Construct AzureSqlDatabaseModel from Management.Sql.LegacySdk.Models.Database object
+        /// </summary>
+        /// <param name="resourceGroup">Resource group</param>
+        /// <param name="serverName">Server name</param>
+        /// <param name="database">Database object</param>
+        public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
+        {
+            DatabaseEdition edition = DatabaseEdition.None;
+            DatabaseReadScale readScale = DatabaseReadScale.Enabled;
+
+            ResourceGroupName = resourceGroup;
+            ServerName = serverName;
+            CollationName = database.Collation;
+            CreationDate = database.CreationDate.Value;
+            CurrentServiceObjectiveName = database.ServiceLevelObjective;
+            MaxSizeBytes = long.Parse(database.MaxSizeBytes);
+            DatabaseName = database.Name;
+            Status = database.Status;
+            Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
+            ElasticPoolName = database.ElasticPoolName;
+            Location = database.Location;
+            ResourceId = database.Id;
+            CreateMode = database.CreateMode;
+            EarliestRestoreDate = database.EarliestRestoreDate;
+
+            CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
+
+            DatabaseId = database.DatabaseId.Value;
+
+            Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
+            Edition = edition;
+
+            RequestedServiceObjectiveId = database.RequestedServiceObjectiveId.Value;
+
+            Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
+            ReadScale = readScale;
+        }
     }
 }

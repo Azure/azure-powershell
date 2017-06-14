@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
-using System.Management.Automation;
 using Xunit;
 using WebKey = Microsoft.Azure.KeyVault.WebKey;
 
@@ -55,8 +53,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetKeyAttributeTest()
         {
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
+
             KeyBundle expected = keyBundle;
-            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, null,
+            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
                 It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore
@@ -75,8 +76,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ErrorSetKeyTest()
         {
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
+
             KeyBundle expected = keyBundle;
-            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, null,
+            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
                 It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore

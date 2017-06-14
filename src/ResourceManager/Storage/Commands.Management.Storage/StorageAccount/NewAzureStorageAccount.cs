@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,13 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
+    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(StorageModels.StorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -42,15 +45,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Type.")]
-        [Alias(StorageAccountTypeAlias, AccountTypeAlias)]
+            HelpMessage = "Storage Account Sku Name.")]
+        [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
         [ValidateSet(AccountTypeString.StandardLRS,
             AccountTypeString.StandardZRS,
             AccountTypeString.StandardGRS,
             AccountTypeString.StandardRAGRS,
             AccountTypeString.PremiumLRS,
             IgnoreCase = true)]
-        public string Type { get; set; }
+        public string SkuName { get; set; }
 
         [Parameter(
             Position = 3,
@@ -60,24 +63,131 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account Kind.")]
+        [ValidateSet(AccountKind.Storage,
+            AccountKind.BlobStorage,
+            IgnoreCase = true)]
+        public string Kind { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account Access Tier.")]
+        [ValidateSet(AccountAccessTier.Hot,
+            AccountAccessTier.Cool,
+            IgnoreCase = true)]
+        public string AccessTier { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account Custom Domain.")]
+        [ValidateNotNullOrEmpty]
+        public string CustomDomainName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "To Use Sub Domain.")]
+        [ValidateNotNullOrEmpty]
+        public bool? UseSubDomain { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Service that will enable encryption.")]
+        public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account Tags.")]
+        [ValidateNotNull]
+        [Alias(TagsAlias)]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account EnableHttpsTrafficOnly.")]
+        public bool EnableHttpsTrafficOnly
+        {
+            get
+            {
+                return enableHttpsTrafficOnly.Value;
+            }
+            set
+            {
+                enableHttpsTrafficOnly = value;
+            }
+        }
+        private bool? enableHttpsTrafficOnly = null;
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
+            CheckNameAvailabilityResult checkNameAvailabilityResult = this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
+            if (!checkNameAvailabilityResult.NameAvailable.Value)
+            {
+                throw new System.ArgumentException(checkNameAvailabilityResult.Message, "Name");
+            }
+
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                AccountType = ParseAccountType(this.Type)
+                Sku = new Sku(ParseSkuName(this.SkuName)),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
+
+            if (this.CustomDomainName != null)
+            {
+                createParameters.CustomDomain = new CustomDomain()
+                {
+                    Name = CustomDomainName,
+                    UseSubDomain = UseSubDomain
+                };
+            }
+            else if (UseSubDomain != null)
+            {
+                throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
+            }
+
+            if (Kind != null)
+            {
+                createParameters.Kind = ParseAccountKind(Kind);
+            }
+
+            if (this.EnableEncryptionService != null)
+            {
+                createParameters.Encryption = ParseEncryption(EnableEncryptionService);
+                createParameters.Encryption.KeySource = "Microsoft.Storage";
+            }
+
+            if (this.AccessTier != null)
+            {
+                createParameters.AccessTier = ParseAccessTier(AccessTier);
+            }
+            if (enableHttpsTrafficOnly != null)
+            {
+                createParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+            }
+
+            if (AssignIdentity.IsPresent)
+            {
+                createParameters.Identity = new Identity();
+            }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
                 this.ResourceGroupName,
                 this.Name,
                 createParameters);
 
-            var getAccountResponse = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-            this.WriteStorageAccount(getAccountResponse.StorageAccount);
+            this.WriteStorageAccount(storageAccount);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Store
     using Resource = Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource;
 
     
-    public class RemoveAzureStoreAddOnTests : TestBase
+    public class RemoveAzureStoreAddOnTests : SMTestBase
     {
         Mock<ICommandRuntime> mockCommandRuntime;
 

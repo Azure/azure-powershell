@@ -17,6 +17,10 @@ using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
@@ -24,11 +28,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
     /// These tests prevent regression in parameter validation attributes.
     /// </summary>
     [TestClass]
-    public class DatabaseCmdletAttributionTests : TestBase
+    public class DatabaseCmdletAttributionTests : SMTestBase
     {
         [TestInitialize]
         public void SetupTest()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+            AzureSMProfileProvider.Instance.Profile = new AzureSMProfile();
+
         }
 
         [TestMethod]

@@ -15,19 +15,20 @@
 using System;
 using System.Globalization;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Sql;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase
 {
     /// <summary>
     /// The base class for all Microsoft Azure Sql Database Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseCmdletBase : AzurePSCmdlet
+    public abstract class SqlDatabaseCmdletBase : AzureSMCmdlet
     {
         /// <summary>
         /// Stores the session Id for all the request made in this session.
@@ -61,9 +62,9 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase
         protected SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
-            AzureSubscription subscription = Profile.Context.Subscription;
+            IAzureSubscription subscription = Profile.Context.Subscription;
             SqlDatabaseCmdletBase.ValidateSubscription(subscription);
-            SqlManagementClient client = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            SqlManagementClient client = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, clientSessionId);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return client;
@@ -73,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase
         /// Validates that the given subscription is valid.
         /// </summary>
         /// <param name="subscription">The <see cref="AzureSubscription"/> to validate.</param>
-        public static void ValidateSubscription(AzureSubscription subscription)
+        public static void ValidateSubscription(IAzureSubscription subscription)
         {
             if (subscription == null)
             {

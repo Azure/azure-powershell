@@ -19,6 +19,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 
+using System.Threading;
+
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     [TestClass]
@@ -72,7 +74,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string reservedIpLabel1 = Utilities.GetUniqueShortName("ResrvdIPLbl", 5);
                 string reservedIpLabel2 = Utilities.GetUniqueShortName("ResrvdIPLbl", 5);
                 string dnsName = Utilities.GetUniqueShortName("Dns");
-                string deploymentName = Utilities.GetUniqueShortName("Depl");
+                string deploymentName1 = Utilities.GetUniqueShortName("Depl");
+                string deploymentName2 = Utilities.GetUniqueShortName("Depl");
+
                 var input1 = new ReservedIPContext()
                 {
                     DeploymentName = string.Empty,
@@ -95,48 +99,41 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // Reserve a new IP
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName1, locationName, reservedIpLabel1), "Reserve a new IP");
+
                 //Get the reserved ip and verify the reserved Ip properties.
                 VerifyReservedIpNotInUse(input1);
 
                 // Reserve a new IP
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName2, locationName, reservedIpLabel2), "Reserve a new IP");
+
                 //Get the reserved ip and verify the reserved Ip properties.
                 VerifyReservedIpNotInUse(input2);
 
                 vmPowershellCmdlets.NewAzureService(serviceName, locationName);
 
-
                 var _packageName = Convert.ToString(TestContext.DataRow["packageName"]);
-                var _configName1 = Convert.ToString(TestContext.DataRow["configName1"]);
-                var _configName2 = Convert.ToString(TestContext.DataRow["configName2"]);
-                var _configName1update = Convert.ToString(TestContext.DataRow["updateConfig1"]);
-                var _configName2update = Convert.ToString(TestContext.DataRow["updateConfig2"]);
+                var _configName = Convert.ToString(TestContext.DataRow["configName"]);
+                var _configNameupdate = Convert.ToString(TestContext.DataRow["updateConfig"]);
 
-                var _packagePath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _packageName);
-                var _configPath1 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName1);
-                var _configPath2 = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName2);
-                var _configPath1update = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName1update);
-                var _configPath2update = new FileInfo(Directory.GetCurrentDirectory() + "\\" + _configName2update);
+                string _packagePath = (new FileInfo(Directory.GetCurrentDirectory() + "\\" + _packageName)).FullName;
+                string _configPath1 = StoreConfigFileWithReservedIp(_configName, reservedIpName1);
+                string _configPath2 = StoreConfigFileWithReservedIp(_configName, reservedIpName2);
+                string _configPath1update = StoreConfigFileWithReservedIp(_configNameupdate, reservedIpName1);
+                string _configPath2update = StoreConfigFileWithReservedIp(_configNameupdate, reservedIpName2);
 
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, _packagePath, _configPath1,
+                    DeploymentSlotType.Production, "label", deploymentName1, false, false);
 
-                vmPowershellCmdlets.NewAzureDeployment(serviceName, _packagePath.FullName, _configPath1.FullName,
-                    DeploymentSlotType.Production, "label", deploymentName, false, false);
-
-                vmPowershellCmdlets.NewAzureDeployment(serviceName, _packagePath.FullName, _configPath2.FullName,
-                    DeploymentSlotType.Staging, "label", deploymentName, false, false);
-
-
-
+                vmPowershellCmdlets.NewAzureDeployment(serviceName, _packagePath, _configPath2,
+                    DeploymentSlotType.Staging, "label", deploymentName2, false, false);
 
                 vmPowershellCmdlets.MoveAzureDeployment(serviceName);
 
                 vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Production);
                 vmPowershellCmdlets.GetAzureDeployment(serviceName, DeploymentSlotType.Staging);
 
-                vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Production, _configPath1update.FullName);
-                vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Staging, _configPath2update.FullName);
-
-
+                vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Production, _configPath1update);
+                vmPowershellCmdlets.SetAzureDeploymentConfig(serviceName, DeploymentSlotType.Staging, _configPath2update);
 
                 pass = true;
             }
@@ -146,6 +143,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Console.WriteLine(ex.ToString());
                 throw;
             }
+        }
+
+        private string StoreConfigFileWithReservedIp(string configFileName, string reservedIpName)
+        {
+            var originalConfigPath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + configFileName);
+            var tempConfigPath = new FileInfo(Directory.GetCurrentDirectory() + "\\" + Utilities.GetUniqueShortName(configFileName));
+
+            string _config1_format = File.ReadAllText(originalConfigPath.FullName);
+
+            File.WriteAllText(tempConfigPath.FullName, string.Format(_config1_format, reservedIpName));
+            return tempConfigPath.FullName;
         }
 
         [TestMethod(), Priority(0), TestProperty("Feature", "IaaS"), TestCategory(Category.Network), Owner("hylee"), Description("Test the cmdlets (New-AzureReservedIP,Get-AzureReservedIP,Remove-AzureReservedIP)")]
@@ -582,7 +590,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureReservedIP(reservedIpName, locationName, reservedIpLabel), "Reserve a new IP");
                 VerifyReservedIpNotInUse(input);
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureAffinityGroup(affinityGroup, locationName, affinityGroup, affinityGroup), "Create a new affinity group");
-                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureQuickVM(OS.Linux, vmName, serviceName, imageName, username, password, locationName, InstanceSize.Small.ToString(), null,  reservedIpName), "Create a new Azure windows Quick VM with reserved ip.");
+                Utilities.ExecuteAndLog(() => vmPowershellCmdlets.NewAzureQuickVM(OS.Linux,
+                    vmName, serviceName, imageName, username, password, locationName,
+                    InstanceSize.Small.ToString(), false,  reservedIpName),
+                    "Create a new Azure windows Quick VM with reserved ip.");
                 VerifyReservedIpInUse(serviceName, input);
                 Utilities.ExecuteAndLog(() => vmPowershellCmdlets.StopAzureVM(vmName, serviceName,true), "Stop Azure VM and stay provisioned.");
                 VerifyReservedIpInUse(serviceName, input);

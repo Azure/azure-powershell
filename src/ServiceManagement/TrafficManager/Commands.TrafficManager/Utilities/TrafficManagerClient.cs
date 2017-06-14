@@ -16,13 +16,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.TrafficManager.Models;
 using Microsoft.WindowsAzure.Management.TrafficManager;
 using Microsoft.WindowsAzure.Management.TrafficManager.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
 {
@@ -30,9 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
     {
         public TrafficManagerManagementClient Client { get; internal set; }
 
-        public TrafficManagerClient(AzureProfile profile, AzureSubscription subscription)
+        public TrafficManagerClient(AzureSMProfile profile, IAzureSubscription subscription)
         {
-            this.Client = AzureSession.ClientFactory.CreateClient<TrafficManagerManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            this.Client = AzureSession.Instance.ClientFactory.CreateClient<TrafficManagerManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         public TrafficManagerClient(TrafficManagerManagementClient client)

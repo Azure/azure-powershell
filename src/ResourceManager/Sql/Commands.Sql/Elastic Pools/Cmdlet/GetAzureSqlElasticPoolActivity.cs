@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlElasticPoolActivity", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolActivity", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolActivity : AzureSqlElasticPoolActivityCmdletBase
     {

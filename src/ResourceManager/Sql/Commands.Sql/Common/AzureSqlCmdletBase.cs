@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using System;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
     /// The base class for all Azure Sql cmdlets
     /// </summary>
-    public abstract class AzureSqlCmdletBase<M, A> : AzurePSCmdlet
+    public abstract class AzureSqlCmdletBase<M, A> : AzureRMCmdlet
     {
         /// <summary>
         /// Stores the per request session Id for all request made in this cmdlet call.
@@ -37,13 +40,36 @@ namespace Microsoft.Azure.Commands.Sql.Common
             this.clientRequestId = Util.GenerateTracingId();
         }
 
+        protected virtual string GetResourceId(M model)
+        {
+            var serverProperty = model.GetType().GetProperty("ServerName");
+            var serverName = (serverProperty == null)? string.Empty: serverProperty.GetValue(model).ToString();
+
+            var databaseProperty = model.GetType().GetProperty("DatabaseName");
+            var databaseName = (databaseProperty == null) ? string.Empty : databaseProperty.GetValue(model).ToString();
+
+            if (!string.IsNullOrEmpty(serverName))
+            {
+                if (!string.IsNullOrEmpty(databaseName))
+                {
+                    return string.Format("{0}.{1}", serverName, databaseName);
+                }
+                return serverName;
+            }
+            if (!string.IsNullOrEmpty(databaseName))
+            {
+                return databaseName;
+            }
+            return string.Empty;
+        }
+
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The name of the resource group")]
+            HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -82,30 +108,49 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected abstract A InitModelAdapter(AzureSubscription subscription);
+        protected abstract A InitModelAdapter(IAzureSubscription subscription);
+
+        /// <summary>
+        /// Transforms the given model object to be an object that is written out
+        /// </summary>
+        /// <param name="model">The about to be written model object</param>
+        /// <returns>The prepared object to be written out</returns>
+        protected virtual object TransformModelToOutputObject(M model)
+        {
+            return model;
+        }
+
+        protected virtual string GetConfirmActionProcessMessage()
+        {
+            return Properties.Resources.BaseConfirmActionProcessMessage;
+        }
 
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
-            M model = this.GetEntity();
-            M updatedModel = this.ApplyUserInputToModel(model);
-            M responseModel = this.PersistChanges(updatedModel);
+            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
+            M model = GetEntity();
+            M updatedModel = ApplyUserInputToModel(model);
+            M responseModel = default(M);
+            ConfirmAction(GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
+            {
+                responseModel = PersistChanges(updatedModel);
+            });
 
-            if(responseModel != null)
+            if (responseModel != null)
             {
                 if (WriteResult())
                 {
-                    this.WriteObject(responseModel, true);
+                    WriteObject(TransformModelToOutputObject(responseModel), true);
                 }
             }
             else
             {
                 if (WriteResult())
                 {
-                    this.WriteObject(updatedModel);
+                    WriteObject(TransformModelToOutputObject(updatedModel));
                 }
             }
         }

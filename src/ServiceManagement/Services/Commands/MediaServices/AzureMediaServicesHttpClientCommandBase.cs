@@ -14,11 +14,13 @@
 
 using System;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.MediaServices
 {
-    public class AzureMediaServicesHttpClientCommandBase : AzurePSCmdlet
+    public class AzureMediaServicesHttpClientCommandBase : AzureSMCmdlet
     {
         protected virtual void OnProcessRecord()
         {

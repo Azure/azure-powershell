@@ -12,21 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Management.Automation;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo;
@@ -34,21 +26,29 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Iaa
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.BGInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.CustomScript;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.VMAccess;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.SqlServer;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.VMAccess;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.ILB;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PaasCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.SubscriptionCmdletInfo;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway.Model;
 using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Management.Automation;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
+    using Azure.Commands.Common.Authentication.Abstractions;
     using SM = Model;
 
     public class ServiceManagementCmdletTestHelper
@@ -178,7 +178,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public CopyState CheckCopyBlobStatus(string destContainer, string destBlob, bool debug = false)
         {
             List<string> st = new List<string>();
-            st.Add(string.Format("Get-AzureStorageBlobCopyState -Container {0} -Blob {1}", destContainer, destBlob));
+            st.Add(string.Format("{0}-{1} -Container {2} -Blob {3}",
+                VerbsCommon.Get, StorageNouns.CopyBlobStatus, destContainer, destBlob));
 
             WindowsAzurePowershellScript azurePowershellCmdlet = new WindowsAzurePowershellScript(st);
             return (CopyState)azurePowershellCmdlet.Run(debug)[0].BaseObject;
@@ -454,9 +455,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentStatusCmdletInfo(serviceName, slot, newStatus));
         }
 
-        public ManagementOperationContext SetAzureDeploymentConfig(string serviceName, string slot, string configPath)
+        public ManagementOperationContext SetAzureDeploymentConfig(string serviceName, string slot, string configPath, ExtensionConfigurationInput extConfig = null)
         {
-            return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentConfigCmdletInfo(serviceName, slot, configPath));
+            return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentConfigCmdletInfo(serviceName, slot, configPath, extConfig));
         }
 
         public ManagementOperationContext SetAzureDeploymentUpgrade(string serviceName, string slot, string mode, string packagePath, string configPath)
@@ -727,7 +728,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps,
+            string userName, string password, string locationName, string instanceSize, bool disableWinRMHttps,
             string reservedIpName = null, string vnetName = null)
         {
             var result = new ManagementOperationContext();
@@ -826,6 +827,100 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
 
         #endregion WinRM 
+
+        #region AzurePlatformExtension
+
+        internal ExtensionCertificateConfig NewAzurePlatformExtensionCertificateConfig(
+            string storeLocation, string storeName, string thumbAlgorithm, bool thumbRequired = false)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionCertificateConfig>(
+                new NewAzurePlatformExtensionCertificateConfigCmdletInfo(storeLocation, storeName, thumbAlgorithm, thumbRequired));
+        }
+
+        internal ExtensionEndpointConfigSet NewAzurePlatformExtensionEndpointConfigSet()
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new NewAzurePlatformExtensionEndpointConfigSetCmdletInfo());
+        }
+
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string inputEndpoint,
+            string protocol, int port, string localPort)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    inputEndpoint, null, null, protocol, port, localPort, null, null));
+        }
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string internalEndpoint,
+            string protocol, int port)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    null, internalEndpoint, null, protocol, port, null, null, null));
+        }
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string instanceInputEndpoint,
+            string protocol, string localPort, int portMax, int portMin)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    null, null, instanceInputEndpoint, protocol, null, localPort, portMax, portMin));
+        }
+
+        internal ExtensionEndpointConfigSet RemoveAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string epName, string kind)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new RemoveAzurePlatformExtensionEndpointCmdletInfo(endpointConfig, epName, kind));
+        }
+
+        internal ExtensionLocalResourceConfigSet NewAzurePlatformExtensionLocalResourceConfigSet()
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new NewAzurePlatformExtensionLocalResourceConfigSetCmdletInfo());
+        }
+
+        internal ExtensionLocalResourceConfigSet SetAzurePlatformExtensionLocalResource(
+            ExtensionLocalResourceConfigSet lrConfig, string name, int sizeInMb)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new SetAzurePlatformExtensionLocalResourceCmdletInfo(lrConfig, name, sizeInMb));
+        }
+
+        internal ExtensionLocalResourceConfigSet RemoveAzurePlatformExtensionLocalResource(
+            ExtensionLocalResourceConfigSet lrConfig, string name)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new RemoveAzurePlatformExtensionLocalResourceCmdletInfo(lrConfig, name));
+        }
+
+        internal ManagementOperationContext PublishAzurePlatformExtension(
+            string extensionName, string publisher, string version, string hr,
+            Uri media, string label, string description, string company,
+            ExtensionCertificateConfig certConfig, ExtensionEndpointConfigSet epConfig, ExtensionLocalResourceConfigSet lrConfig,
+            DateTime publishDate, string publicSchema, string privateSchema, string sample,
+            string eula,  Uri privacyUri, Uri homepage, string os, string regions,
+            bool blockRole, bool disallowUpgrade, bool xmlExtension, bool force)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(
+                new PublishAzurePlatformExtensionCmdletInfo(
+                    extensionName, publisher, version, hr,
+                    media, label, description, company,
+                    certConfig, epConfig, lrConfig,
+                    publishDate, publicSchema, privateSchema, sample,
+                    eula, privacyUri, homepage, os, regions,
+                    blockRole, disallowUpgrade, xmlExtension, force));
+        }
+
+        internal ManagementOperationContext UnpublishAzurePlatformExtension(
+            string extensionName, string publisher, string version, bool force)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(
+                new UnpublishAzurePlatformExtensionCmdletInfo(extensionName, publisher, version, force));
+        }
+
+        #endregion
 
         #region AzurePlatformVMImage
 
@@ -929,62 +1024,40 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #region AzureSubscription
 
-        public Collection<PSAzureSubscriptionExtended> GetAzureSubscription()
+        public Collection<PSAzureSubscriptionExtended> GetAzureSubscription(bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnAll<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, false, false));
+            return RunPSCmdletAndReturnAll<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, false, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetAzureSubscription(string subscriptionName)
+        public PSAzureSubscriptionExtended GetAzureSubscription(string subscriptionId, bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(subscriptionName, null, true, false, false));
+            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(subscriptionId, false, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetCurrentAzureSubscription()
+        public PSAzureSubscriptionExtended GetCurrentAzureSubscription(bool extendedDetails = true)
         {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, true, false));
+            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, true, false, extendedDetails));
         }
 
-        public PSAzureSubscriptionExtended GetDefaultAzureSubscription()
-        {
-            return RunPSCmdletAndReturnFirst<PSAzureSubscriptionExtended>(new GetAzureSubscriptionCmdletInfo(null, null, true, false, true));
-        }
-
-        public PSAzureSubscriptionExtended SetAzureSubscription(string subscriptionName, string subscriptionId, string currentStorageAccountName, bool debug = false)
+        public PSAzureSubscriptionExtended SetAzureSubscription(string subscriptionId, string currentStorageAccountName, bool debug = false)
         {
             var setAzureSubscriptionCmdlet = new SetAzureSubscriptionCmdletInfo(subscriptionId, currentStorageAccountName);
-            SelectAzureSubscription(subscriptionName);
+            SelectAzureSubscription(subscriptionId);
             var azurePowershellCmdlet = new WindowsAzurePowershellCmdlet(setAzureSubscriptionCmdlet);
             azurePowershellCmdlet.Run(debug);
 
-            Collection<PSAzureSubscriptionExtended> subscriptions = GetAzureSubscription();
-            foreach (PSAzureSubscriptionExtended subscription in subscriptions)
-            {
-                if (subscription.SubscriptionName == subscriptionName)
-                {
-                    return subscription;
-                }
-            }
-            return null;
+            return GetAzureSubscription(subscriptionId);
         }
 
-        public PSAzureSubscriptionExtended SetDefaultAzureSubscription(string subscriptionName, bool debug = false)
+        public PSAzureSubscriptionExtended SetDefaultAzureSubscription(string subscriptionId, bool debug = false)
         {
-            SelectAzureSubscription(subscriptionName);
-
-            Collection<PSAzureSubscriptionExtended> subscriptions = GetAzureSubscription();
-            foreach (PSAzureSubscriptionExtended subscription in subscriptions)
-            {
-                if (subscription.SubscriptionName == subscriptionName)
-                {
-                    return subscription;
-                }
-            }
-            return null;
+            SelectAzureSubscription(subscriptionId);
+            return GetAzureSubscription(subscriptionId);
         }
 
-        public AzureSubscription SelectAzureSubscription(string subscriptionName, bool isDefault = true, bool clear = false, string subscriptionDataFile = null)
+        public AzureSubscription SelectAzureSubscription(string subscriptionId, bool isDefault = true)
         {
-            return RunPSCmdletAndReturnFirst<AzureSubscription>(new SelectAzureSubscriptionCmdletInfo(subscriptionName, isDefault, clear, subscriptionDataFile));
+            return RunPSCmdletAndReturnFirst<AzureSubscription>(new SelectAzureSubscriptionCmdletInfo(subscriptionId, isDefault));
         }
 
         #endregion
@@ -1247,6 +1320,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                         providerNamespace, publicConfig, privateConfig, version));
         }
 
+        public ExtensionConfigurationInput NewAzureServiceExtensionConfig(string extensionId, string extensionStatus,
+            string [] roles = null)
+        {
+            return
+                RunPSCmdletAndReturnFirst<ExtensionConfigurationInput>(
+                    new NewAzureServiceExtensionConfigCmdletInfo(extensionId, extensionStatus, roles));
+        }
+
         // Set-AzureServiceExtension
         public ManagementOperationContext SetAzureServiceExtension(string serviceName, string extensionName,
             string providerNamespace, string publicConfig, string privateConfig, string[] roles = null, string slot = null, string version = null)
@@ -1305,7 +1386,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #endregion
 
-
         #region AzureVM
 
         internal Collection<ManagementOperationContext> NewAzureVM(string serviceName, SM.PersistentVM[] VMs, string location = null, bool waitForBoot = false)
@@ -1355,9 +1435,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.PersistentVMRoleContext>(new GetAzureVMCmdletInfo(vmName, serviceName));
         }
 
-        public ManagementOperationContext RemoveAzureVM(string vmName, string serviceName, bool deleteVhd = false)
+        public ManagementOperationContext RemoveAzureVM(string vmName, string serviceName, bool deleteVhd = false, bool whatif = false)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVMCmdletInfo(vmName, serviceName, deleteVhd));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVMCmdletInfo(vmName, serviceName, deleteVhd, whatif));
         }
 
         public ManagementOperationContext StartAzureVM(string vmName, string serviceName)
@@ -1503,14 +1583,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Collection<SM.OSImageContext> vmImages = GetAzureVMImage();
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0 &&
-                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
+                if (Utilities.MatchKeywords(image.ImageName, keywords, exactMatch) >= 0
+                    && ((diskSize == null) || (image.LogicalSizeInGB <= diskSize))
+                    && image.Location.Contains(CredentialHelper.Location))
                     return image.ImageName;
             }
             foreach (SM.OSImageContext image in vmImages)
             {
-                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0 &&
-                    ((diskSize == null) || (image.LogicalSizeInGB <= diskSize)))
+                if (Utilities.MatchKeywords(image.OS, keywords, exactMatch) >= 0
+                    && ((diskSize == null) || (image.LogicalSizeInGB <= diskSize))
+                    && image.Location.Contains(CredentialHelper.Location))
                     return image.ImageName;
             }
             return null;
@@ -1764,26 +1846,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             removeAzureSubscriptionCmdlet.Run(debug);
         }
 
-        public List<AzureEnvironment> GetAzureEnvironment(string name = null, string subscriptionDataFile = null, bool debug = false)
+        public List<PSAzureEnvironment> GetAzureEnvironment(string name = null, string subscriptionDataFile = null, bool debug = false)
         {
-            Collection<PSObject> result = (new WindowsAzurePowershellCmdlet(new GetAzureEnvironmentCmdletInfo(name, subscriptionDataFile))).Run(debug);
-            List<AzureEnvironment> envList = new List<AzureEnvironment>();
-
-            foreach (var element in result)
-            {
-                var newEnv = new AzureEnvironment();
-                newEnv.Name = element.Properties.Match("Name")[0].Value.ToString();
-                var endpoints = new Dictionary<AzureEnvironment.Endpoint,string>();
-                var endpointKeys = Enum.GetValues(typeof(AzureEnvironment.Endpoint));
-                foreach(var key in endpointKeys)
-                {
-                    endpoints.Add((AzureEnvironment.Endpoint) key, (string) element.Properties.Match(key.ToString())[0].Value);
-                }
-
-                newEnv.Endpoints = endpoints;
-                envList.Add(newEnv);
-            }
-
+            var envList = new List<PSAzureEnvironment>();
+            RunPSCmdletAndReturnAll<PSAzureEnvironment>(new GetAzureEnvironmentCmdletInfo(name, subscriptionDataFile))
+                .ForEach(a => envList.Add(a));
             return envList;
         }
 

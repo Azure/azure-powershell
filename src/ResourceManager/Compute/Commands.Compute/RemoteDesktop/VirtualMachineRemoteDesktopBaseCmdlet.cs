@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (networkClient == null)
                 {
-                    networkClient = new NetworkClient(Profile)
+                    networkClient = new NetworkClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

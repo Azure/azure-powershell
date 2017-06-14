@@ -12,23 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.WindowsAzure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Storage;
-using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsData.Update, "AzureVM"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine), OutputType(typeof(ManagementOperationContext))]
     public class UpdateAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Virtual Machine to update.")]
@@ -54,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
             base.ExecuteCommand();
 
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            IAzureSubscription currentSubscription = Profile.Context.Subscription;
             if (CurrentDeploymentNewSM == null)
             {
                 throw new ApplicationException(String.Format(Resources.CouldNotFindDeployment, ServiceName, Model.DeploymentSlotType.Production));
@@ -65,29 +72,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             {
                 if (datadisk.MediaLink == null && string.IsNullOrEmpty(datadisk.DiskName))
                 {
-                    CloudStorageAccount currentStorage = currentSubscription.GetCloudStorageAccount(Profile);
+                    CloudStorageAccount currentStorage = Profile.Context.GetCurrentStorageAccount(
+                    new RDFEStorageProvider(AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(
+                        Profile.Context, AzureEnvironment.Endpoint.ServiceManagement), Profile.Context.Environment));
                     if (currentStorage == null)
                     {
                         throw new ArgumentException(Resources.CurrentStorageAccountIsNotAccessible);
                     }
 
-                    DateTime dateTimeCreated = DateTime.Now;
                     string diskPartName = VM.RoleName;
-
                     if (datadisk.DiskLabel != null)
                     {
                         diskPartName += "-" + datadisk.DiskLabel;
                     }
 
-                    string vhdname = string.Format("{0}-{1}-{2}-{3}-{4}-{5}.vhd", ServiceName, diskPartName, dateTimeCreated.Year, dateTimeCreated.Month, dateTimeCreated.Day, dateTimeCreated.Millisecond);
-                    string blobEndpoint = currentStorage.BlobEndpoint.AbsoluteUri;
-
-                    if (blobEndpoint.EndsWith("/") == false)
-                    {
-                        blobEndpoint += "/";
-                    }
-
-                    datadisk.MediaLink = new Uri(blobEndpoint + "vhds/" + vhdname);
+                    var mediaLinkFactory = new MediaLinkFactory(currentStorage, this.ServiceName, diskPartName);
+                    datadisk.MediaLink = mediaLinkFactory.Create();
                 }
 
                 if (VM.DataVirtualHardDisks.Count > 1)
@@ -158,6 +158,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         }
                     }
                 }
+            }
+
+            if (VM.DebugSettings != null)
+            {
+                parameters.DebugSettings = new DebugSettings
+                {
+                    BootDiagnosticsEnabled = VM.DebugSettings.BootDiagnosticsEnabled
+                };
             }
 
             ExecuteClientActionNewSM(

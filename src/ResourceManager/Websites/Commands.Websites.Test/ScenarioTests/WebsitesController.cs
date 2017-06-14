@@ -12,29 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.WebSites;
-using Microsoft.Azure.Commands.WebApp.Utilities;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Test;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
-namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebsitesController
     {
-
-        private CSMTestEnvironmentFactory csmTestFactory;
+        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
+        private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -64,6 +70,7 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 
         public void RunPsTest(params string[] scripts)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
@@ -80,34 +87,42 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            HttpMockServer.Matcher = new PermissiveRecordMatcher();
-            using (UndoContext context = UndoContext.Current)
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
+                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
                 if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
-
-                SetupManagementClients();
-
+                SetupManagementClients(context);
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
+                helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath(@"AzureRM.WebSites.psd1"),
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -131,46 +146,52 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
-            WebsitesManagementClient = GetWebsitesManagementClient();
+            WebsitesManagementClient = GetWebsitesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
 
+            var armStorageManagementClient = GetArmStorageManagementClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 WebsitesManagementClient,
                 AuthorizationManagementClient,
-                GalleryClient
+                GalleryClient,
+                armStorageManagementClient
                 );
         }
 
+        protected StorageManagementClient GetArmStorageManagementClient()
+        {
+            return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+        }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
-        private WebSiteManagementClient GetWebsitesManagementClient()
+        private WebSiteManagementClient GetWebsitesManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<WebSiteManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
         private SubscriptionClient GetSubscriptionClient()
         {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
         private GalleryClient GetGalleryClient()
         {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
-    
+
     }
 }

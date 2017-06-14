@@ -12,34 +12,42 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Net;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public virtual List<PSDataSliceRun> ListDataSliceRuns(
-            string resourceGroupName,
-            string dataFactoryName,
-            string tableName,
-            DateTime dataSliceRangeStartTime)
+        public virtual List<PSDataSliceRun> ListDataSliceRuns(DataSliceRunFilterOptions filterOptions)
         {
             List<PSDataSliceRun> runs = new List<PSDataSliceRun>();
-            var response = DataPipelineManagementClient.DataSliceRuns.List(
-                resourceGroupName,
-                dataFactoryName,
-                tableName,
-                dataSliceRangeStartTime.ConvertToISO8601DateTimeString());
+
+            DataSliceRunListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.DataSliceRuns.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.DataSliceRuns.List(
+                    filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName,
+                    filterOptions.DatasetName,
+                    new DataSliceRunListParameters()
+                    {
+                        DataSliceStartTime = filterOptions.StartDateTime.ConvertToISO8601DateTimeString()
+                    });
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.DataSliceRuns != null)
             {
@@ -48,9 +56,9 @@ namespace Microsoft.Azure.Commands.DataFactories
                     runs.Add(
                         new PSDataSliceRun(run)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName,
-                            TableName = tableName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName,
+                            DatasetName = filterOptions.DatasetName
                         });
                 }
             }
@@ -58,15 +66,28 @@ namespace Microsoft.Azure.Commands.DataFactories
             return runs;
         }
 
-        public virtual List<PSDataSlice> ListDataSlices(string resourceGroupName, string dataFactoryName, string tableName, DateTime dataSliceRangeStartTime, DateTime dataSliceRangeEndTime)
+        public virtual List<PSDataSlice> ListDataSlices(DataSliceFilterOptions filterOptions)
         {
             List<PSDataSlice> dataSlices = new List<PSDataSlice>();
-            var response = DataPipelineManagementClient.DataSlices.List(
-                resourceGroupName,
-                dataFactoryName,
-                tableName,
-                dataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
-                dataSliceRangeEndTime.ConvertToISO8601DateTimeString());
+
+            DataSliceListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.DataSlices.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.DataSlices.List(
+                    filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName,
+                    filterOptions.DatasetName,
+                    new DataSliceListParameters()
+                    {
+                        DataSliceRangeStartTime = filterOptions.DataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
+                        DataSliceRangeEndTime = filterOptions.DataSliceRangeEndTime.ConvertToISO8601DateTimeString()
+                    });
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.DataSlices != null)
             {
@@ -75,9 +96,9 @@ namespace Microsoft.Azure.Commands.DataFactories
                     dataSlices.Add(
                         new PSDataSlice(dataSlice)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName,
-                            TableName = tableName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName,
+                            DatasetName = filterOptions.DatasetName
                         });
                 }
             }
@@ -88,8 +109,8 @@ namespace Microsoft.Azure.Commands.DataFactories
         public virtual void SetSliceStatus(
             string resourceGroupName,
             string dataFactoryName,
-            string tableName,
-            string sliceStatus,
+            string datasetName,
+            string sliceState,
             string updateType,
             DateTime dataSliceRangeStartTime,
             DateTime dataSliceRangeEndTime)
@@ -97,55 +118,67 @@ namespace Microsoft.Azure.Commands.DataFactories
             DataPipelineManagementClient.DataSlices.SetStatus(
                 resourceGroupName,
                 dataFactoryName,
-                tableName,
+                datasetName,
                 new DataSliceSetStatusParameters()
                 {
-                    SliceStatus = sliceStatus,
+                    SliceState = sliceState,
                     UpdateType = updateType,
                     DataSliceRangeStartTime = dataSliceRangeStartTime.ConvertToISO8601DateTimeString(),
                     DataSliceRangeEndTime = dataSliceRangeEndTime.ConvertToISO8601DateTimeString(),
                 });
         }
 
-        public virtual PSRunLogInfo GetDataSliceRunLogsSharedAccessSignature(string resourceGroupName, string dataFactoryName, string dataSliceRunId)
+        public virtual Uri GetDataSliceRunLogsSharedAccessSignature(string resourceGroupName, string dataFactoryName, string dataSliceRunId)
         {
             var response = DataPipelineManagementClient.DataSliceRuns.GetLogs(
                 resourceGroupName, dataFactoryName, dataSliceRunId);
 
-            return new PSRunLogInfo(response.DataSliceRunLogsSASUri);
+            return response.DataSliceRunLogsSASUri;
         }
 
         public virtual void DownloadFileToBlob(BlobDownloadParameters parameters)
         {
-            if (parameters == null || parameters.Credentials == null || string.IsNullOrWhiteSpace(parameters.SasUri.ToString()))
+            if (parameters == null || string.IsNullOrWhiteSpace(parameters.SasUri.ToString()))
             {
                 throw new ArgumentNullException(Resources.DownloadCredentialsNull);
             }
 
-            CloudBlobContainer sascontainer = new CloudBlobContainer(parameters.SasUri);
+            PSRunLogInfo rli = new PSRunLogInfo(parameters.SasUri);
+            StorageCredentials sc = new StorageCredentials(rli.SasToken);
 
-            var bloblist = sascontainer.ListBlobs(null, true);
+            StorageUri suri = new StorageUri(new Uri("https://" + parameters.SasUri.Host));
+            CloudBlobClient sourceClient = new CloudBlobClient(suri, sc);
+            CloudBlobContainer sascontainer = sourceClient.GetContainerReference(rli.Container);
+            CloudBlobDirectory sourceDirectory = sascontainer.GetDirectoryReference(rli.Directory);
+
+            var bloblist = sourceDirectory.ListBlobs(true);
             string downloadFolderPath = parameters.Directory.Insert(parameters.Directory.Length, @"\");
 
             foreach (var blob in bloblist)
             {
                 ICloudBlob destBlob = blob as ICloudBlob;
-                int length =  destBlob.Name.Split('/').Length;
-                string blobFileName = destBlob.Name.Split('/')[length-1];
+                int length = destBlob.Name.Split('/').Length;
+                string blobFileName = destBlob.Name.Split('/')[length - 1];
                 // the folder structure of run logs changed from flat listing to nesting under time directory
                 string blobFolderPath = String.Empty;
                 if (destBlob.Name.Length > blobFileName.Length)
                 {
                     blobFolderPath = destBlob.Name.Substring(0, destBlob.Name.Length - blobFileName.Length - 1);
+
+                    if (!string.IsNullOrEmpty(rli.Directory))
+                    {
+                        blobFolderPath = blobFolderPath.Remove(0, rli.Directory.Length - 1).Trim('/');
+                    }
                 }
-                
+
                 if (!Directory.Exists(downloadFolderPath + blobFolderPath))
                 {
                     Directory.CreateDirectory(downloadFolderPath + blobFolderPath);
                 }
                 // adding _log suffix to differentiate between files and folders of the same name. Azure blob storage only knows about blob files. We could use nested folder structure
                 // as part of the blob file name and thus it is possible to have a file and folder of the same name in the same location which is not acceptable for Windows file system
-                destBlob.DownloadToFile(downloadFolderPath + destBlob.Name + "_log", FileMode.Create);
+                string fileToDonwload = destBlob.Name.Remove(0, rli.Directory.Length);
+                destBlob.DownloadToFile(downloadFolderPath + fileToDonwload + "_log", FileMode.Create);
             }
         }
     }

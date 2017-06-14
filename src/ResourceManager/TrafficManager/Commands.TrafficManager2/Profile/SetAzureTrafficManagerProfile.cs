@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Set, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class SetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]

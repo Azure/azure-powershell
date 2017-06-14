@@ -21,12 +21,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Hadoop.Client;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.BaseCommandInterfaces;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -51,7 +52,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             get { return this.client != null ? this.client.CancellationToken : new CancellationTokenSource().Token; }
         }
 
-        public AzureSubscription CurrentSubscription { get; set; }
+        public IAzureSubscription CurrentSubscription { get; set; }
 
         public AzureHDInsightClusterConnection Connection { get; set; }
 

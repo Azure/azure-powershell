@@ -34,9 +34,13 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         [ValidateSet("Commit", "Rollback", IgnoreCase = true)]
         public string MigrationOperation { get; set; }
 
-        [Parameter(Mandatory = false, Position = 2,
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.MigrateSpecificContainer,
             HelpMessage = StorSimpleCmdletHelpMessage.MigrationLegacyDataContainers)]
         public string[] LegacyContainerNames { get; set; }
+
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StorSimpleCmdletParameterSet.MigrateAllContainer,
+            HelpMessage = StorSimpleCmdletHelpMessage.MigrationAllContainers)]
+        public SwitchParameter All { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -44,10 +48,29 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
             {
                 var confirmMigrationRequest = new MigrationConfirmStatusRequest();
                 confirmMigrationRequest.Operation =
-                    (MigrationOperation) Enum.Parse(typeof (MigrationOperation), MigrationOperation, true);
-                confirmMigrationRequest.DataContainerNameList = (null != LegacyContainerNames)
-                    ? new List<string>(LegacyContainerNames.ToList().Distinct(StringComparer.InvariantCultureIgnoreCase))
-                    : new List<string>();
+                    (MigrationOperation)Enum.Parse(typeof(MigrationOperation), MigrationOperation, true);
+                switch (ParameterSetName)
+                {
+                    case StorSimpleCmdletParameterSet.MigrateAllContainer:
+                        {
+                            confirmMigrationRequest.DataContainerNameList = new List<string>();
+                            break;
+                        }
+                    case StorSimpleCmdletParameterSet.MigrateSpecificContainer:
+                        {
+                            confirmMigrationRequest.DataContainerNameList =
+                            new List<string>(LegacyContainerNames.ToList().Distinct(
+                                StringComparer.InvariantCultureIgnoreCase));
+                            break;
+                        }
+                    default:
+                        {
+                            // unexpected code path hit.
+                            throw new ParameterBindingException(
+                                string.Format(Resources.MigrationParameterSetNotFound, ParameterSetName));
+                        }
+                }
+
                 var status = StorSimpleClient.ConfirmLegacyVolumeContainerStatus(LegacyConfigId, confirmMigrationRequest);
                 MigrationCommonModelFormatter opFormatter = new MigrationCommonModelFormatter();
                 WriteObject(opFormatter.GetResultMessage(Resources.ConfirmMigrationSuccessMessage, status));

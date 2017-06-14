@@ -14,8 +14,8 @@
 
 using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.RemoteApp;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RemoteApp;
 using Microsoft.WindowsAzure.Management.RemoteApp.Models;
@@ -24,7 +24,8 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Security.Principal;
 using Microsoft.Azure;
-
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Models
 {
@@ -48,7 +49,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         public const string goldImageImport = "GoldImageImport";
     }
 
-    public abstract partial class RdsCmdlet : AzurePSCmdlet
+    public abstract partial class RdsCmdlet : AzureSMCmdlet
     {
         [ThreadStatic]
         internal static Job theJob;
@@ -56,6 +57,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         private IRemoteAppManagementClient client = null;
 
         private Microsoft.WindowsAzure.Management.ManagementClient mgmtClient = null;
+        private IAdHelper cachedAdHelper = null;
 
         public IRemoteAppManagementClient Client
         {
@@ -63,7 +65,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             {
                 if (client == null)
                 {
-                    client = AzureSession.ClientFactory.CreateClient<RemoteAppManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+                    client = AzureSession.Instance.ClientFactory.CreateClient<RemoteAppManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
                     client.RdfeNamespace = "remoteapp";
 
                     // Read the namespace if defined as an environment variable from the session configuration
@@ -81,8 +83,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             set
             {
                 client = value;  // Test Hook
-                Profile = InitializeDefaultProfile();
-                SetTokenCacheForProfile(Profile);
+                AzureSMProfileProvider.Instance.ResetDefaultProfile();
             }
         }
 
@@ -92,7 +93,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             {
                 if (mgmtClient == null)
                 {
-                    mgmtClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>
+                    mgmtClient = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>
                                         (Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
 
                 }
@@ -102,6 +103,23 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             set
             {
                 mgmtClient = value;
+            }
+        }
+
+        public IAdHelper ActiveDirectoryHelper
+        {
+            get
+            {
+                if (cachedAdHelper == null)
+                {
+                    cachedAdHelper = new AdHelper();
+                }
+
+                return cachedAdHelper;
+            }
+            set
+            {
+                cachedAdHelper = value;
             }
         }
 

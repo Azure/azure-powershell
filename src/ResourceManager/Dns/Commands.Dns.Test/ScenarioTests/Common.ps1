@@ -36,12 +36,27 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureLocation | where {[string]::Compare($_.Name, $provider, $True) -eq $True}
-    if ($location -eq $null) {
-        "West US"
-    } else {
-        $location.Locations[0]
-    }
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "West US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
+		}
+		
+		return "West US"
+	}
+
+	return "WestUS"
 }
 
 <#
@@ -52,6 +67,22 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = Get-ResourceGroupName
 	$rglocation = Get-ProviderLocation "microsoft.compute"
-    $resourceGroup = New-AzureResourceGroup -Name $resourceGroupName -location $rglocation
+    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
+}
+
+function Get-RandomZoneName
+{
+	$prefix = getAssetName;
+	return $prefix + ".pstest.test" ;
+}
+
+function Get-TxtOfSpecifiedLength([int] $length)
+{
+	$returnValue = "";
+	for ($i = 0; $i -lt $length ; $i++)
+	{
+		$returnValue += "a";
+	}
+	return $returnValue;
 }

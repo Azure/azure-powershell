@@ -27,25 +27,35 @@ function Get-SqlAuditingTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
-Gets the values of the parameters used at the data masking tests
+Gets the values of the parameters used at the threat detection tests
 #>
-function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
+function Get-SqlThreatDetectionTestEnvironmentParameters ($testSuffix)
 {
-	return @{ rgname = "sql-dm-cmdlet-test-rg" +$testSuffix;
-			  serverName = "sql-dm-cmdlet-server" +$testSuffix;
-			  databaseName = "sql-dm-cmdlet-db" + $testSuffix
+	return @{ rgname = "sql-td-cmdlet-test-rg" +$testSuffix;
+			  serverName = "sql-td-cmdlet-server" +$testSuffix;
+			  databaseName = "sql-td-cmdlet-db" + $testSuffix;
+			  storageAccount = "tdcmdlets" +$testSuffix
 			  }
 }
 
 <#
 .SYNOPSIS
-Gets the values of the parameters used in the s
+Gets the values of the parameters used by the data masking tests
 #>
 function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 {
 	return @{ rgname = "sql-dm-cmdlet-test-rg" +$testSuffix;
 			  serverName = "sql-dm-cmdlet-server" +$testSuffix;
-			  databaseName = "sql-dm-cmdlet-db" + $testSuffix
+			  databaseName = "sql-dm-cmdlet-db" + $testSuffix;
+			  userName = "testuser";
+			  loginName = "testlogin";
+			  pwd = "testp@ssMakingIt1007Longer";
+			  table1="table1";
+			  column1 = "column1";
+			  columnInt = "columnInt";
+			  table2="table2";
+			  column2 = "column2";
+			  columnFloat = "columnFloat"
 			  }
 }
 
@@ -53,20 +63,82 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironment ($testSuffix)
+function Create-AuditingTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams ($params)
+	Create-TestEnvironmentWithParams $params $location $serverVersion
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql auditing tests with classic storage
+#>
+function Create-AuditingClassicTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+{
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	Create-ClassicTestEnvironmentWithParams $params $location $serverVersion
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql threat detecion tests
+#>
+function Create-ThreatDetectionTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+{
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	Create-TestEnvironmentWithParams $params $location $serverVersion
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql threat detecion tests with classic storage
+#>
+function Create-ThreatDetectionClassicTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+{
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	Create-ClassicTestEnvironmentWithParams $params $location $serverVersion
 }
 
 <#
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironmentWithParams ($params)
+function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 {
-	Azure\New-AzureStorageAccount -StorageAccountName $params.storageAccount -Location "West US" 
-	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
+	Create-BasicTestEnvironmentWithParams $params $location $serverVersion
+	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount -ResourceGroupName $params.rgname -Location $location -Type Standard_GRS 
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql auditing tests
+#>
+function Create-ClassicTestEnvironmentWithParams ($params, $location, $serverVersion)
+{
+	Create-BasicTestEnvironmentWithParams $params $location $serverVersion
+	try
+	{
+		New-AzureRmResource -ResourceName $params.storageAccount -ResourceGroupName $params.rgname -ResourceType "Microsoft.ClassicStorage/StorageAccounts" -Location $location -Properties @{ AccountType = "Standard_GRS" } -ApiVersion "2014-06-01" -Force
+	}
+	catch
+	{
+		# We catch the exceptions not to fail the tests in playback mode
+	}
+}
+
+<#
+.SYNOPSIS
+Creates the basic test environment needed to perform the Sql data security tests - resource group, server and database
+#>
+function Create-BasicTestEnvironmentWithParams ($params, $location, $serverVersion)
+{
+	New-AzureRmResourceGroup -Name $params.rgname -Location $location 	
+	$serverName = $params.serverName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!Sec"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	New-AzureRmSqlServer -ResourceGroupName $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	New-AzureRmSqlDatabase -DatabaseName $params.databaseName -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
 }
 
 <#
@@ -76,8 +148,114 @@ Creates the test environment needed to perform the Sql data masking tests
 function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
-	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
-	return $params
+	$password = $params.pwd
+    $secureString = ($password | ConvertTo-SecureString -asPlainText -Force) 
+    $credentials = new-object System.Management.Automation.PSCredential($params.loginName, $secureString) 	
+	New-AzureRmResourceGroup -Name $params.rgname -Location "West Central US"
+    New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion "12.0" -Location "West Central US" -SqlAdministratorCredentials $credentials       
+	New-AzureRmSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "ddmRule"
+	New-AzureRmSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	$fullServerName = $params.serverName + ".database.windows.net"
+	
+	$uid = $params.userName
+	$login = $params.loginName
+	$pwd = $params.pwd
+		
+	# create new login and user
+	$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=master;Integrated Security=False;"
+
+	$connection = New-Object System.Data.SqlClient.SqlConnection
+	$connection.ConnectionString = $connectionString
+	try
+	{
+		$connection.Open()
+
+		$query = "CREATE LOGIN $uid WITH PASSWORD = '$pwd';"
+		$command = $connection.CreateCommand()
+		$command.CommandText = $query		
+		$command.ExecuteReader()
+	}
+	catch
+	{
+		# We catch the exceptions not to fail the tests in playback mode
+	}
+	finally
+	{
+		$connection.Close()
+	}
+
+	# create new user and create table in the database
+	$databaseName=$params.databaseName
+	$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=$databaseName;Integrated Security=False;"
+
+	$connection = New-Object System.Data.SqlClient.SqlConnection
+	$connection.ConnectionString = $connectionString
+	try
+	{
+		$connection.Open()
+		
+		$table1 = $params.table1
+		$column1 = $params.column1
+		$columnInt = $params.columnInt
+
+		$table2 = $params.table2
+		$column2 = $params.column2
+		$columnFloat = $params.columnFloat
+
+		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));CREATE USER $uid FOR LOGIN $uid;"
+		$command = $connection.CreateCommand()
+		$command.CommandText = $query		
+		$command.ExecuteReader()
+	}
+	catch
+	{
+		# We catch the exceptions not to fail the tests in playback mode
+	}
+	finally
+	{
+		$connection.Close()
+	}
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used in the Server Key Vault Key tests
+#>
+function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
+{
+	return @{ rgName = Get-ResourceGroupName;
+			  serverName = Get-ServerName;
+			  databaseName = Get-DatabaseName;
+			  keyId = "https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106";
+			  serverKeyName = "akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106";
+			  vaultName = "akvtdekeyvault";
+			  keyName = "key1"
+			  location = "Southeast Asia";
+			  }
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Server Key Vault Key tests
+#>
+function Create-ServerKeyVaultKeyTestEnvironment ($params)
+{
+	# Create Resource Group
+	$rg = New-AzureRmResourceGroup -Name $params.rgname -Location $params.location -Force
+
+	# Create Server
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$server = New-AzureRmSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
+	Assert-AreEqual $server.ServerName $params.serverName
+
+	# Create database
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $params.databaseName
+	Assert-AreEqual $db.DatabaseName $params.databaseName
+
+	# Return the created resource group
+	return $rg
 }
 
 <#
@@ -117,27 +295,63 @@ function Get-ElasticPoolName
 }
 
 <#
+.SYNOPSIS
+Gets valid failover group name
+#>
+function Get-FailoverGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets the location for a provider, if not found return East US
+#>
+function Get-ProviderLocation($provider)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "East US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
+		}
+		
+		return "East US"
+	}
+
+	return "East US"
+}
+
+<#
 	.SYNOPSIS
 	Creates a resource group for tests
 #>
-function Create-ResourceGroupForTest ()
+function Create-ResourceGroupForTest ($location = "Japan East")
 {
-	$location = "Japan East"
 	$rgName = Get-ResourceGroupName
 	
-	$rg = New-AzureResourceGroup -Name $rgName -Location $location
+	$rg = New-AzureRmResourceGroup -Name $rgName -Location $location
 
 	return $rg
 }
 
-
 <#
 	.SYNOPSIS 
 	removes a resource group that was used for testing
-	#>
+#>
 function Remove-ResourceGroupForTest ($rg)
 {
-	Remove-AzureResourceGroup -Name $rg.ResourceGroupName -Force
+	Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
 }
 
 <#
@@ -151,7 +365,7 @@ function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $locatio
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	$server = New-AzureSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	$server = New-AzureRmSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
 	return $server
 }
 
@@ -161,21 +375,85 @@ function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $locatio
 #>
 function Remove-ServerForTest ($server)
 {
-	$server | Remove-AzureSqlServer -Force
+	$server | Remove-AzureRmSqlServer -Force
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the Sql threat detection tests
+#>
+function Remove-ThreatDetectionTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	Remove-AzureRmResourceGroup -Name $params.rgname -Force
 }
 
 <#
 .SYNOPSIS
 Removes the test environment that was needed to perform the Sql auditing tests
 #>
-function Remove-TestEnvironment ($testSuffix)
+function Remove-AuditingTestEnvironment ($testSuffix)
 {
-	try
-	{
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Azure\Remove-AzureStorageAccount -StorageAccountName $params.storageAccount
-	}
-	catch
-	{
-	}
+	Remove-AzureRmResourceGroup -Name $params.rgname -Force
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the Sql data masking tests
+#>
+function Remove-DataMaskingTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
+	Remove-AzureRmResourceGroup -Name $params.rgname -Force
+}
+
+<#
+.SYNOPSIS
+Gets the parameters for import/export tests
+#>
+function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
+{
+    $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
+    $password = [Microsoft.Azure.Test.TestUtilities]::GenerateName("IEp@ssw0rd");
+    #Fake storage account data. Used for playback mode
+    $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
+    $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
+    $storageKey = "StorageKey"
+
+    $testMode = [System.Environment]::GetEnvironmentVariable("AZURE_TEST_MODE")
+    if($testMode -eq "Record"){
+        $exportBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_EXPORT_BACPAC")
+        $importBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_IMPORT_BACPAC")
+        $storageKey = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_KEY")
+
+       if ([System.string]::IsNullOrEmpty($exportBacpacUri)){
+          throw "The TEST_EXPORT_BACPAC environment variable should point to a bacpac that has been uploaded to Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs/empty.bacpac)"
+       }
+       if ([System.string]::IsNullOrEmpty($importBacpacUri)){
+          throw "The  TEST_IMPORT_BACPAC environment variable should point to an Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs)"
+       }
+       if ([System.string]::IsNullOrEmpty($storageKey)){
+          throw "The  TEST_STORAGE_KEY environment variable should point to a valid storage key for an existing Azure storage account"
+       }
+    }
+    
+	return @{
+              rgname = "sql-ie-cmdlet-test-rg" +$testSuffix;
+              serverName = "sql-ie-cmdlet-server" +$testSuffix;
+              databaseName = $databaseName;
+              userName = "testuser";
+              firewallRuleName = "sql-ie-fwrule" +$testSuffix;
+              password = $password;
+              storageKeyType = "StorageAccessKey";
+              storageKey = $storageKey;
+              exportBacpacUri = $exportBacpacUri + "/" + $databaseName + ".bacpac";
+              importBacpacUri = $importBacpacUri;
+              location = "Australia East";
+              version = "12.0";
+              databaseEdition = "Standard";
+              serviceObjectiveName = "S0";
+              databaseMaxSizeBytes = "5000000";
+              authType = "Sql";
+             }
 }

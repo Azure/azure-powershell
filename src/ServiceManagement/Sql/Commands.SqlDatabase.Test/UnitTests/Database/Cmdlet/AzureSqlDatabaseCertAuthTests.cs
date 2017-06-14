@@ -19,19 +19,18 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class AzureSqlDatabaseTests : TestBase
+    public class AzureSqlDatabaseTests : SMTestBase
     {
         [TestCleanup]
         public void CleanupTest()

@@ -15,50 +15,154 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
-    public class ProfileTests : WatmV2TestsBase
+    using Xunit.Abstractions;
+    public class ProfileTests
     {
+        public ProfileTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrud()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileCrud");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileCrudWithPiping()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileCrudWithPiping");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteUsingProfile()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-CreateDeleteUsingProfile");
+            TestController.NewInstance.RunPowerShellTest("Test-CreateDeleteUsingProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudWithEndpoint()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-CrudWithEndpoint");
+            TestController.NewInstance.RunPowerShellTest("Test-CrudWithEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudWithEndpointGeo()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-CrudWithEndpointGeo");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListProfilesInResourceGroup()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ListProfilesInResourceGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListProfilesInSubscription()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ListProfilesInSubscription");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListProfilesWhereObject()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ListProfilesWhereObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileNewAlreadyExists()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileNewAlreadyExists");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestProfileRemoveNonExisting()
         {
-            WatmV2TestsBase.NewInstance.RunPowerShellTest("Test-ProfileRemoveNonExisting");
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileRemoveNonExisting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileEnable()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileEnable");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileEnablePipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileEnablePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileEnableNonExisting()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileEnableNonExisting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileDisable()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileDisable");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileDisablePipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileDisablePipeline");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileDisableNonExisting()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileDisableNonExisting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorDefault()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorDefaults");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorCustom()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorCustom");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorProtocol()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorProtocol");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestProfileMonitorParameterAliases()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-ProfileMonitorParameterAliases");
         }
     }
 }

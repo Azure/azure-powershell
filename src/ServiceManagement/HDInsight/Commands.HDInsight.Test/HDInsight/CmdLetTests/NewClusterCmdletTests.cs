@@ -597,7 +597,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
             }
         }  
 
-        [TestMethod]
+        //[TestMethod]
         [TestCategory("CheckIn")]
         [TestCategory("Integration")]
         [TestCategory("PowerShell")]

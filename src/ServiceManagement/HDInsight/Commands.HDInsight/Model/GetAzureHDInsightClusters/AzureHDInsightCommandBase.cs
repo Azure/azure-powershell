@@ -16,9 +16,10 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Management.HDInsight.Framework.Core;
 using Microsoft.WindowsAzure.Management.HDInsight.Logging;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters
 {
@@ -41,7 +42,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
         public string Subscription { get; set; }
 
-        public AzureSubscription CurrentSubscription { get; set; }
+        public IAzureSubscription CurrentSubscription { get; set; }
 
         public virtual void Cancel()
         {

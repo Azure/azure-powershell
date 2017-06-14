@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -26,13 +22,22 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
 
-    [Cmdlet(VerbsCommon.Set, VirtualMachineDscExtensionCmdletNoun, SupportsShouldProcess = true)]
+    [Cmdlet(
+        VerbsCommon.Set,
+        DscExtensionCmdletCommonBase.VirtualMachineDscExtensionCmdletNoun, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(IPersistentVM))]
-    public class SetAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
+    public class SetAzureVMDscExtension : VirtualMachineExtensionCmdletBase
     {
         /// <summary>
         /// The Extension Reference Name
@@ -123,9 +128,49 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// The DNS endpoint suffix for all storage services, e.g. "core.windows.net".
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The Storage Endpoint Suffix.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The Storage Endpoint Suffix.")]
         [ValidateNotNullOrEmpty]
         public string StorageEndpointSuffix { get; set; }
+
+        /// <summary>
+        /// Specifies the version of the Windows Management Framework (WMF) to install 
+        /// on the VM.
+        ///
+        /// The DSC Azure Extension depends on DSC features that are only available in 
+        /// the WMF updates. This parameter specifies which version of the update to 
+        /// install on the VM. The possible values are "4.0","5.0" ,"5.1" and "latest".  
+        /// 
+        /// A value of "4.0" will install WMF 4.0 Update packages 
+        /// (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 
+        /// 2012 R2, or  
+        /// (https://support.microsoft.com/en-us/kb/3109118) on Windows Server 2008 R2 
+        /// and on other versions of Windows if newer version is not already installed.
+        /// 
+        /// A value of "5.0" will install the latest release of WMF 5.0 
+        /// (https://www.microsoft.com/en-us/download/details.aspx?id=50395).
+        /// 
+        /// A value of "5.1" will install the WMF 5.1
+        /// (https://www.microsoft.com/en-us/download/details.aspx?id=54616).
+        /// 
+        /// A value of "latest" will install the latest WMF, currently WMF 5.1
+        /// 
+        /// The default value is "latest"
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1", "latest" })]
+        public string WmfVersion { get; set; }
+
+        /// <summary>
+        /// The Extension Data Collection state
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " +
+            "The value is persisted in the extension between calls.")
+        ]
+        [ValidateSet("Enable", "Disable")]
+        [AllowNull]
+        public string DataCollection { get; set; }
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -139,10 +184,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             public string SasToken { get; set; }
             public string DataBlobUri { get; set; }
-
             public string ModulesUrl { get; set; }
         }
-        
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -151,17 +195,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         internal void ExecuteCommand()
         {
+            extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
+            publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
+
             ValidateParameters();
 
             CreateConfiguration();
 
-            this.ConfirmAction(
+            ConfirmAction(
                 true,
                 string.Empty,
                 string.Format(
                     CultureInfo.CurrentUICulture,
                     Resources.AzureVMDscApplyConfigurationAction,
-                    this.ConfigurationName),
+                    ConfigurationName),
                 "VM",
                 () =>
                     {
@@ -179,14 +226,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             //
             // Validate parameters
             //
-            if (string.IsNullOrEmpty(this.ConfigurationArchive))
+            
+            if (string.IsNullOrEmpty(ConfigurationArchive))
             {
-                if (this.ConfigurationName != null || this.ConfigurationArgument != null
-                    || this.ConfigurationDataPath != null)
+                if (ConfigurationName != null || ConfigurationArgument != null
+                    || ConfigurationDataPath != null)
                 {
                     this.ThrowInvalidArgumentError(Resources.AzureVMDscNullArchiveNoConfiguragionParameters);
                 }
-                if (this.StorageContext != null || this.ContainerName != null || this.StorageEndpointSuffix != null)
+                if (StorageContext != null || ContainerName != null || StorageEndpointSuffix != null)
                 {
                     this.ThrowInvalidArgumentError(Resources.AzureVMDscNullArchiveNoStorageParameters);
                 }
@@ -194,25 +242,25 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             else
             {
                 if (string.Compare(
-                    Path.GetFileName(this.ConfigurationArchive),
-                    this.ConfigurationArchive,
+                    Path.GetFileName(ConfigurationArchive),
+                    ConfigurationArchive,
                     StringComparison.InvariantCultureIgnoreCase) != 0)
                 {
                     this.ThrowInvalidArgumentError(Resources.AzureVMDscConfigurationDataFileShouldNotIncludePath);
                 }
 
-                if (this.ConfigurationDataPath != null)
+                if (ConfigurationDataPath != null)
                 {
-                    this.ConfigurationDataPath = this.GetUnresolvedProviderPathFromPSPath(this.ConfigurationDataPath);
+                    ConfigurationDataPath = GetUnresolvedProviderPathFromPSPath(ConfigurationDataPath);
 
-                    if (!File.Exists(this.ConfigurationDataPath))
+                    if (!File.Exists(ConfigurationDataPath))
                     {
                         this.ThrowInvalidArgumentError(
                             Resources.AzureVMDscCannotFindConfigurationDataFile,
-                            this.ConfigurationDataPath);
+                            ConfigurationDataPath);
                     }
                     if (string.Compare(
-                        Path.GetExtension(this.ConfigurationDataPath),
+                        Path.GetExtension(ConfigurationDataPath),
                         ".psd1",
                         StringComparison.InvariantCultureIgnoreCase) != 0)
                     {
@@ -220,27 +268,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     }
                 }
 
-                this._storageCredentials = this.GetStorageCredentials(this.StorageContext);
+                _storageCredentials = this.GetStorageCredentials(StorageContext);
 
-                if (this.ConfigurationName == null)
+                if (ConfigurationName == null)
                 {
-                    this.ConfigurationName = Path.GetFileNameWithoutExtension(this.ConfigurationArchive);
+                    ConfigurationName = Path.GetFileNameWithoutExtension(ConfigurationArchive);
                 }
 
-                if (this.ContainerName == null)
+                if (ContainerName == null)
                 {
-                    this.ContainerName = DefaultContainerName;
+                    ContainerName = DscExtensionCmdletConstants.DefaultContainerName;
+                }
+
+                if (StorageEndpointSuffix == null)
+                {
+                    StorageEndpointSuffix =
+                        Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                 }
             }
 
-            if (this.Version == null)
+            if (Version == null)
             {
-                this.Version = DefaultExtensionVersion;
+                Version = DscExtensionCmdletCommonBase.DefaultExtensionVersion;
             }
 
-            if (this.ReferenceName == null)
+            if (ReferenceName == null)
             {
-                this.ReferenceName = ExtensionPublishedName;
+                ReferenceName = DscExtensionCmdletConstants.ExtensionPublishedName;
             }
         }
 
@@ -253,28 +307,28 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             //
             // Get a reference to the container in blob storage
             //
-            var storageAccount = string.IsNullOrEmpty(this.StorageEndpointSuffix)
-                                     ? new CloudStorageAccount(this._storageCredentials, true)
+            var storageAccount = string.IsNullOrEmpty(StorageEndpointSuffix)
+                                     ? new CloudStorageAccount(_storageCredentials, true)
                                      : new CloudStorageAccount(
-                                           this._storageCredentials,
-                                           this.StorageEndpointSuffix,
+                                           _storageCredentials,
+                                           StorageEndpointSuffix,
                                            true);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
 
-            var containerReference = blobClient.GetContainerReference(this.ContainerName);
+            var containerReference = blobClient.GetContainerReference(ContainerName);
 
             //
             // Get a reference to the configuration blob and create a SAS token to access it
             //
-            var blobAccessPolicy = new SharedAccessBlobPolicy()
+            var blobAccessPolicy = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime =
-                    DateTime.UtcNow.AddHours(1),
+                    DateTime.UtcNow.AddHours(2),
                 Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
             };
 
-            var configurationBlobName = this.ConfigurationArchive;
+            var configurationBlobName = ConfigurationArchive;
             var configurationBlobReference = containerReference.GetBlockBlobReference(configurationBlobName);
             var configurationBlobSasToken = configurationBlobReference.GetSharedAccessSignature(blobAccessPolicy);
 
@@ -283,33 +337,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             //
             string configurationDataBlobUri = null;
 
-            if (this.ConfigurationDataPath != null)
+            if (ConfigurationDataPath != null)
             {
-                this.ConfirmAction(
+                var guid = Guid.NewGuid();
+                // there may be multiple VMs using the same configuration
+
+                var configurationDataBlobName = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "{0}-{1}.psd1",
+                    ConfigurationName,
+                    guid);
+
+                var configurationDataBlobReference =
+                    containerReference.GetBlockBlobReference(configurationDataBlobName);
+
+                ConfirmAction(
                     true,
                     string.Empty,
                     string.Format(
                         CultureInfo.CurrentUICulture,
                         Resources.AzureVMDscUploadToBlobStorageAction,
-                        this.ConfigurationDataPath),
-                    configurationBlobReference.Uri.AbsoluteUri,
+                        ConfigurationDataPath),
+                    configurationDataBlobReference.Uri.AbsoluteUri,
                     () =>
                     {
-                        var guid = Guid.NewGuid();
-                        // there may be multiple VMs using the same configuration
-
-                        var configurationDataBlobName = string.Format(
-                            CultureInfo.InvariantCulture,
-                            "{0}-{1}.psd1",
-                            this.ConfigurationName,
-                            guid);
-
-                        var configurationDataBlobReference =
-                            containerReference.GetBlockBlobReference(configurationDataBlobName);
-
-                        if (!this.Force && configurationDataBlobReference.Exists())
+                        if (!Force && configurationDataBlobReference.Exists())
                         {
-                            this.ThrowTerminatingError(
+                            ThrowTerminatingError(
                                 new ErrorRecord(
                                     new UnauthorizedAccessException(
                                         string.Format(
@@ -321,7 +375,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(this.ConfigurationDataPath, FileMode.Open);
+                        configurationDataBlobReference.UploadFromFile(ConfigurationDataPath);
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);
@@ -331,7 +385,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                             + configurationDataBlobSasToken;
                     });
             }
-            return new ConfigurationUris()
+            return new ConfigurationUris
             {
                 ModulesUrl = configurationBlobReference.StorageUri.PrimaryUri.AbsoluteUri,
                 SasToken = configurationBlobSasToken,
@@ -341,37 +395,49 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         private void CreateConfiguration()
         {
-            var publicSettings = new DscPublicSettings();
-            var privateSettings = new DscPrivateSettings();
-            publicSettings.ProtocolVersion = CurrentProtocolVersion;
+            var publicSettings = new DscExtensionPublicSettings();
+            var privateSettings = new DscExtensionPrivateSettings();
 
-            if (!string.IsNullOrEmpty(this.ConfigurationArchive))
+            
+
+            if (!string.IsNullOrEmpty(ConfigurationArchive))
             {
                 ConfigurationUris configurationUris = UploadConfigurationDataToBlob();
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
+                
+                Hashtable privacySetting = new Hashtable();
+                privacySetting.Add("DataCollection",DataCollection);
+                publicSettings.Privacy = privacySetting;
+
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
-                    Path.GetFileNameWithoutExtension(this.ConfigurationArchive),
-                    this.ConfigurationName);
-                Tuple<DscPublicSettings.Property[], Hashtable> settings =
-                    DscSettingsSerializer.SeparatePrivateItems(this.ConfigurationArgument);
+                    Path.GetFileNameWithoutExtension(ConfigurationArchive),
+                    ConfigurationName);
+                Tuple<DscExtensionPublicSettings.Property[], Hashtable> settings =
+                    DscExtensionSettingsSerializer.SeparatePrivateItems(ConfigurationArgument);
                 publicSettings.Properties = settings.Item1;
                 privateSettings.Items = settings.Item2;
 
                 privateSettings.DataBlobUri = configurationUris.DataBlobUri;
+
+                if (!string.IsNullOrEmpty(WmfVersion))
+                {
+                    publicSettings.WmfVersion = WmfVersion;        
+                }
             }
 
             //
             // Define the public and private property bags that will be passed to the extension.
             //
-            this.PublicConfiguration = DscSettingsSerializer.SerializePublicSettings(publicSettings);
+            PublicConfiguration = DscExtensionSettingsSerializer.SerializePublicSettings(publicSettings);
             //
             // PrivateConfuguration contains sensitive data in a plain text.
             //
-            this.PrivateConfiguration = DscSettingsSerializer.SerializePrivateSettings(privateSettings);
+            PrivateConfiguration = DscExtensionSettingsSerializer.SerializePrivateSettings(privateSettings);
         }
     }
 }
+

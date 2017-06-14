@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
+using System;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -36,6 +35,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
             Requires.Argument("dscNodeReport", dscNodeReport).NotNull();
+            Requires.Argument("dscNodeReport", dscNodeReport.ReportId).NotNull();
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
@@ -43,8 +43,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.EndTime = dscNodeReport.EndTime;
             this.LastModifiedTime = dscNodeReport.LastModifiedTime;
             this.ReportType = dscNodeReport.Type;
-            this.Id = dscNodeReport.Id;
+            this.Id = dscNodeReport.ReportId.ToString("D");
             this.NodeId = nodeId;
+            this.Status = dscNodeReport.Status;
+            this.RefreshMode = dscNodeReport.RefreshMode;
+            this.RebootRequested = dscNodeReport.RebootRequested;
+            this.ReportFormatVersion = dscNodeReport.ReportFormatVersion;
         }
 
         /// <summary>
@@ -93,5 +97,25 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the Node id.
         /// </summary>
         public string NodeId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Status.
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Refresh Mode.
+        /// </summary>
+        public string RefreshMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Reboot Requested.
+        /// </summary>
+        public string RebootRequested { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Report Format Version.
+        /// </summary>
+        public string ReportFormatVersion { get; set; }
     }
 }

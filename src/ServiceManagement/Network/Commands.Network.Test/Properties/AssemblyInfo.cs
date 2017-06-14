@@ -15,6 +15,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Xunit;
 
 [assembly: AssemblyTitle("Network Test Assembly")]
 [assembly: AssemblyCompany("Microsoft")]
@@ -24,5 +25,6 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("3E5D3114-DEBB-4DC2-BB9D-CF2A2707F74D")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("4.1.0")]
+[assembly: AssemblyFileVersion("4.1.0")]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]

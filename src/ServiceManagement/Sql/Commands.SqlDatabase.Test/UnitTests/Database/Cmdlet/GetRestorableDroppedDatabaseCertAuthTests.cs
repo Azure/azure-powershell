@@ -19,7 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server;
@@ -28,11 +28,13 @@ using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class GetRestorableDroppedDatabaseCertAuthTests : TestBase
+    public class GetRestorableDroppedDatabaseCertAuthTests : SMTestBase
     {
         private const string deletionDateStringFormat = "yyyy-MM-ddTHH:mm:ss.FFFZ";
 
@@ -40,21 +42,18 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
 
         private static string serverName;
 
-        [ClassInitialize]
-        public static void InitializeClass(TestContext context)
+        [TestInitialize]
+        public void InitializeTest()
         {
+            AzureSessionInitializer.InitializeAzureSession();
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             powershell = System.Management.Automation.PowerShell.Create();
-
             MockHttpServer.SetupCertificates();
-
             UnitTestHelper.SetupUnitTestSubscription(powershell);
-
             serverName = SqlDatabaseTestSettings.Instance.ServerName;
             powershell.Runspace.SessionStateProxy.SetVariable("serverName", serverName);
-
             // Create atleast two test databases
             NewAzureSqlDatabaseTests.CreateTestDatabasesWithCertAuth(powershell);
-
             // Remove the test databases
             NewAzureSqlDatabaseTests.RemoveTestDatabasesWithCertAuth(powershell);
         }

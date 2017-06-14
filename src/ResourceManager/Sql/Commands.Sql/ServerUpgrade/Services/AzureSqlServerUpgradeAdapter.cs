@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
 {
@@ -32,17 +34,17 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerUpgradeAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServerUpgradeAdapter(IAzureContext context)
         {
-            Profile = profile;
-            Communicator = new AzureSqlServerUpgradeCommunicator(Profile, subscription);
+            Context = context;
+            Communicator = new AzureSqlServerUpgradeCommunicator(Context);
         }
 
         /// <summary>
@@ -53,12 +55,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <returns>The server</returns>
         public AzureSqlServerUpgradeModel GetUpgrade(string resourceGroupName, string serverName)
         {
-            var status = Communicator.GetStatus(resourceGroupName, serverName, Util.GenerateTracingId());
-            return new AzureSqlServerUpgradeModel()
+            var upgradeDetails = Communicator.GetUpgrade(resourceGroupName, serverName, Util.GenerateTracingId());
+            ServerUpgradeStatus status;
+            if (!Enum.TryParse(upgradeDetails.Status, out status))
+            {
+                status = ServerUpgradeStatus.Unknown;
+            }
+
+            return new AzureSqlServerUpgradeModel
             {
                 ResourceGroupName = resourceGroupName,
                 ServerName = serverName,
-                Status = status
+                Status = status,
+                ScheduleUpgradeAfterUtcDateTime = upgradeDetails.ScheduleUpgradeAfterTime
             };
         }
 
@@ -74,7 +83,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
                 {
                     Version = model.ServerVersion,
                     ScheduleUpgradeAfterUtcDateTime = model.ScheduleUpgradeAfterUtcDateTime,
-                    DatabaseCollection = model.DatabaseCollection
+                    DatabaseCollection = model.DatabaseCollection,
+                    ElasticPoolCollection = model.ElasticPoolCollection
                 }
             };
             Communicator.Start(model.ResourceGroupName, model.ServerName, parameters, Util.GenerateTracingId());

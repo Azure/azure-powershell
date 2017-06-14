@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
@@ -30,27 +31,34 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
     /// $vm = Get-AzureVM -ServiceName service -Name VM-name
     /// Remove-AzureVMDscExtension -VM $vm | Update-AzureVM -Verbose
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, VirtualMachineDscExtensionCmdletNoun),
+    [Cmdlet(
+        VerbsCommon.Remove,
+        DscExtensionCmdletCommonBase.VirtualMachineDscExtensionCmdletNoun,
+        SupportsShouldProcess = true),
     OutputType(typeof(IPersistentVM))]
-    public class RemoveAzureVMDscExtensionCommand : VirtualMachineDscExtensionCmdletBase
+    public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionCmdletBase
     {
-
-        internal void ExecuteCommand()
-        {
-            //this parameter needs to be true for remove to work
-            this.Uninstall = true;
-            this.Version = DefaultExtensionVersion;
-
-            RemovePredicateExtensions();
-            AddResourceExtension();
-
-            WriteObject(VM);
-        }
-
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
             ExecuteCommand();
+        }
+        private void ExecuteCommand()
+        {
+            extensionName = DscExtensionCmdletConstants.ExtensionPublishedName;
+            publisherName = DscExtensionCmdletConstants.ExtensionPublishedNamespace;
+
+            //this parameter needs to be true for remove to work
+            Uninstall = true;
+            Version = DscExtensionCmdletCommonBase.DefaultExtensionVersion;
+
+            if (ShouldProcess(Resources.DscExtensionRemovalConfirmation,
+                Resources.DscExtensionRemovalCaption))
+            {
+                RemovePredicateExtensions();
+                AddResourceExtension();
+                WriteObject(VM);
+            }
         }
     }
 }

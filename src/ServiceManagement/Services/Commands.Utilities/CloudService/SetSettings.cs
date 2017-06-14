@@ -17,7 +17,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 {
-    public class SetSettings : AzurePSCmdlet
+    public class SetSettings : AzureSMCmdlet
     {
         // Uncomment this to enable global set for settings
         //[Parameter(Position = 1, Mandatory = false)]

@@ -14,26 +14,58 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSVirtualNetworkGateway : PSTopLevelResource
     {
         public List<PSVirtualNetworkGatewayIpConfiguration> IpConfigurations { get; set; }
 
-        public string GatewaySize { get; set; }
-
         public string GatewayType { get; set; }
 
+        public string VpnType { get; set; }
+
         public bool EnableBgp { get; set; }
-        
+
+        public bool ActiveActive { get; set; }
+
+        public PSResourceId GatewayDefaultSite { get; set; }
+
         public string ProvisioningState { get; set; }
+        public PSVirtualNetworkGatewaySku Sku { get; set; }
+
+        public PSVpnClientConfiguration VpnClientConfiguration { get; set; }
+
+        public PSBgpSettings BgpSettings { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string GatewayDefaultSiteText
+        {
+            get { return JsonConvert.SerializeObject(GatewayDefaultSite, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string SkuText
+        {
+            get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VpnClientConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(VpnClientConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string BgpSettingsText
+        {
+            get { return JsonConvert.SerializeObject(BgpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

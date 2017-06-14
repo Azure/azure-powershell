@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using System;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using System;
 
     public class PsApiManagementVirtualNetwork
     {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         }
 
         internal PsApiManagementVirtualNetwork(VirtualNetworkConfiguration vnetConfigurationResource)
-            :this()
+            : this()
         {
             if (vnetConfigurationResource == null)
             {
@@ -32,11 +32,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
 
             Location = vnetConfigurationResource.Location;
+            SubnetResourceId = vnetConfigurationResource.SubnetResourceId;
             SubnetName = vnetConfigurationResource.SubnetName;
             VnetId = vnetConfigurationResource.VnetId;
         }
 
         public string Location { get; set; }
+
+        public string SubnetResourceId { get; set; }
 
         public string SubnetName { get; set; }
 

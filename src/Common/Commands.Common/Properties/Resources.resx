@@ -1165,7 +1165,7 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>Cannot find storage account '{0}' please type the name of an existing storage account.</value>
   </data>
   <data name="StorageEmulatorExe" xml:space="preserve">
-    <value>WAStorageEmulator.exe</value>
+    <value>AzureStorageEmulator.exe</value>
   </data>
   <data name="StorageEmulatorInstallPathRegistryKeyValue" xml:space="preserve">
     <value>InstallPath</value>
@@ -1360,5 +1360,230 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   </data>
   <data name="SwitchAzureModeDeprecated" xml:space="preserve">
     <value>The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.</value>
+  </data>
+  <data name="ComputeCloudExceptionOperationIdMessage" xml:space="preserve">
+    <value>OperationID : '{0}'</value>
+  </data>
+  <data name="PublishVMDscExtensionGetDscResourceFailed" xml:space="preserve">
+    <value>Cannot get module for DscResource '{0}'. Possible solutions:
+1) Specify -ModuleName for Import-DscResource in your configuration.
+2) Unblock module that contains resource.
+3) Move Import-DscResource inside Node block.
+</value>
+    <comment>0 = name of DscResource</comment>
+  </data>
+  <data name="PublishVMDscExtensionRequiredPsVersion" xml:space="preserve">
+    <value>Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version.</value>
+    <comment>{0} = minimal required PS version, {1} = current PS version</comment>
+  </data>
+  <data name="AzureVMDscParsingConfiguration" xml:space="preserve">
+    <value>Parsing configuration script: {0}</value>
+    <comment>{0} is the path to a script file</comment>
+  </data>
+  <data name="PublishVMDscExtensionStorageParserErrors" xml:space="preserve">
+    <value>Configuration script '{0}' contained parse errors:
+{1}</value>
+    <comment>0 = path to the configuration script, 1 = parser errors</comment>
+  </data>
+  <data name="PublishVMDscExtensionRequiredModulesVerbose" xml:space="preserve">
+    <value>List of required modules: [{0}].</value>
+    <comment>{0} = list of modules</comment>
+  </data>
+  <data name="PublishVMDscExtensionTempFolderVerbose" xml:space="preserve">
+    <value>Temp folder '{0}' created.</value>
+    <comment>{0} = temp folder path</comment>
+  </data>
+  <data name="PublishVMDscExtensionCopyFileVerbose" xml:space="preserve">
+    <value>Copy '{0}' to '{1}'.</value>
+    <comment>{0} = source, {1} = destination</comment>
+  </data>
+  <data name="PublishVMDscExtensionCopyModuleVerbose" xml:space="preserve">
+    <value>Copy the module '{0}' to '{1}'.</value>
+    <comment>{0} = source, {1} = destination</comment>
+  </data>
+  <data name="AzureVMDscArchiveAlreadyExists" xml:space="preserve">
+    <value>File '{0}' already exists. Use the -Force parameter to overwrite it.</value>
+    <comment>{0} is the path to a file</comment>
+  </data>
+  <data name="PublishVMDscExtensionUploadArchiveConfigFileNotExist" xml:space="preserve">
+    <value>Configuration file '{0}' not found.</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="PublishVMDscExtensionDirectoryNotExist" xml:space="preserve">
+    <value>Path '{0}' not found.</value>
+    <comment>0 = path to the additional content file/directory</comment>
+  </data>
+  <data name="PublishVMDscExtensionAdditionalContentPathNotExist" xml:space="preserve">
+    <value>Path '{0}' not found.</value>
+    <comment>0 = path to the additional content file/directory</comment>
+  </data>
+  <data name="PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension" xml:space="preserve">
+    <value>Invalid configuration file: {0}.
+The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip).</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension" xml:space="preserve">
+    <value>Invalid configuration file: {0}.
+The file needs to be a PowerShell script (.ps1 or .psm1).</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="AzureVMDscCreateArchiveAction" xml:space="preserve">
+    <value>Create Archive</value>
+  </data>
+  <data name="AzureVMDscUploadToBlobStorageAction" xml:space="preserve">
+    <value>Upload '{0}'</value>
+    <comment>{0} is the name of an storage blob</comment>
+  </data>
+  <data name="AzureVMDscStorageBlobAlreadyExists" xml:space="preserve">
+    <value>Storage Blob '{0}' already exists. Use the -Force parameter to overwrite it.</value>
+    <comment>{0} is the name of an storage blob</comment>
+  </data>
+  <data name="PublishVMDscExtensionArchiveUploadedMessage" xml:space="preserve">
+    <value>Configuration published to {0}</value>
+    <comment>{0} is an URI</comment>
+  </data>
+  <data name="PublishVMDscExtensionDeletedFileMessage" xml:space="preserve">
+    <value>Deleted '{0}'</value>
+    <comment>{0} is the path of a file</comment>
+  </data>
+  <data name="PublishVMDscExtensionDeleteErrorMessage" xml:space="preserve">
+    <value>Cannot delete '{0}': {1}</value>
+    <comment>{0} is the path of a file, {1} is an error message</comment>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoEndWadCfg" xml:space="preserve">
+    <value>Cannot find the WadCfg end element in the config.</value>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoMatchingWadCfg" xml:space="preserve">
+    <value>WadCfg start element in the config is not matching the end element.</value>
+  </data>
+  <data name="IaasDiagnosticsBadConfigNoWadCfg" xml:space="preserve">
+    <value>Cannot find the WadCfg element in the config.</value>
+  </data>
+  <data name="AzureVMDscCannotFindConfigurationDataFile" xml:space="preserve">
+    <value>Cannot find configuration data file: {0}</value>
+  </data>
+  <data name="AzureVMDscInvalidConfigurationDataFile" xml:space="preserve">
+    <value>The configuration data must be a .psd1 file</value>
+  </data>
+  <data name="CannotChangeBuiltinEnvironment" xml:space="preserve">
+    <value>Cannot change built-in environment {0}.</value>
+  </data>
+  <data name="DataCollectionPrompt" xml:space="preserve">
+    <value>Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
+ 
+If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
+1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module
+To disable data collection: PS &gt; Disable-AzureDataCollection
+
+If you choose to not participate, you can enable at any time by using Azure PowerShell as follows:
+1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module
+To enable data collection: PS &gt; Enable-AzureDataCollection
+ 
+Select Y to enable data collection [Y/N]:</value>
+  </data>
+  <data name="DataCollectionActivity" xml:space="preserve">
+    <value>Microsoft Azure PowerShell Data Collection Confirmation</value>
+  </data>
+  <data name="DataCollectionConfirmNo" xml:space="preserve">
+    <value>You choose not to participate in Microsoft Azure PowerShell data collection.</value>
+  </data>
+  <data name="DataCollectionConfirmTime" xml:space="preserve">
+    <value>This confirmation message will be dismissed in '{0}' second(s)...</value>
+  </data>
+  <data name="DataCollectionConfirmYes" xml:space="preserve">
+    <value>You choose to participate in Microsoft Azure PowerShell data collection.</value>
+  </data>
+  <data name="DataCollectionSaveFileInformation" xml:space="preserve">
+    <value>The setting profile has been saved to the following path '{0}'.</value>
+  </data>
+  <data name="AuthenticatingForSingleTenant" xml:space="preserve">
+    <value>[Common.Authentication]: Authenticating for account {0} with single tenant {1}.</value>
+  </data>
+  <data name="ChangingDefaultEnvironmentNotSupported" xml:space="preserve">
+    <value>Changing public environment is not supported.</value>
+  </data>
+  <data name="EnvironmentNameNeedsToBeSpecified" xml:space="preserve">
+    <value>Environment name needs to be specified.</value>
+  </data>
+  <data name="EnvironmentNeedsToBeSpecified" xml:space="preserve">
+    <value>Environment needs to be specified.</value>
+  </data>
+  <data name="EnvironmentNotFound" xml:space="preserve">
+    <value>The environment name '{0}' is not found.</value>
+  </data>
+  <data name="FilePathIsNotValid" xml:space="preserve">
+    <value>File path is not valid.</value>
+  </data>
+  <data name="InvalidSubscriptionName" xml:space="preserve">
+    <value>Must specify a non-null subscription name.</value>
+  </data>
+  <data name="RemoveDefaultSubscription" xml:space="preserve">
+    <value>The default subscription is being removed. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to select a new default subscription.</value>
+  </data>
+  <data name="RemovingDefaultEnvironmentsNotSupported" xml:space="preserve">
+    <value>Removing public environment is not supported.</value>
+  </data>
+  <data name="SubscriptionIdNotFoundMessage" xml:space="preserve">
+    <value>The subscription id {0} doesn't exist.</value>
+  </data>
+  <data name="SubscriptionNameNeedsToBeSpecified" xml:space="preserve">
+    <value>Subscription name needs to be specified.</value>
+  </data>
+  <data name="SubscriptionNameNotFoundMessage" xml:space="preserve">
+    <value>The subscription name {0} doesn't exist.</value>
+  </data>
+  <data name="SubscriptionNeedsToBeSpecified" xml:space="preserve">
+    <value>Subscription needs to be specified.</value>
+  </data>
+  <data name="UserNameIsNotValid" xml:space="preserve">
+    <value>User name is not valid.</value>
+  </data>
+  <data name="UserNameNeedsToBeSpecified" xml:space="preserve">
+    <value>User name needs to be specified.</value>
+  </data>
+  <data name="NoCurrentContextForDataCmdlet" xml:space="preserve">
+    <value>"There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management."</value>
+  </data>
+  <data name="NoSubscriptionFoundForTenant" xml:space="preserve">
+    <value>No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Login-AzureRmAccount?</value>
+  </data>
+  <data name="CertificateNotFoundInStore" xml:space="preserve">
+    <value>No certificate was found in the certificate store with thumbprint {0}</value>
+  </data>
+  <data name="IllegalPath" xml:space="preserve">
+    <value>Illegal characters in path.</value>
+  </data>
+  <data name="InvalidCertificate" xml:space="preserve">
+    <value>Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings</value>
+  </data>
+  <data name="InvalidDnsName" xml:space="preserve">
+    <value>"{0}" is an invalid DNS name for {1}</value>
+  </data>
+  <data name="InvalidFileExtension" xml:space="preserve">
+    <value>The provided file in {0} must be have {1} extension</value>
+  </data>
+  <data name="InvalidOrEmptyArgumentMessage" xml:space="preserve">
+    <value>{0} is invalid or empty</value>
+  </data>
+  <data name="NoInternetConnection" xml:space="preserve">
+    <value>Please connect to internet before executing this cmdlet</value>
+  </data>
+  <data name="PathDoesNotExist" xml:space="preserve">
+    <value>Path {0} doesn't exist.</value>
+  </data>
+  <data name="PathDoesNotExistForElement" xml:space="preserve">
+    <value>Path for {0} doesn't exist in {1}.</value>
+  </data>
+  <data name="PublishSettingsFileRealmFormat" xml:space="preserve">
+    <value>&amp;whr={0}</value>
+  </data>
+  <data name="ServiceNameExists" xml:space="preserve">
+    <value>The provided service name {0} already exists, please pick another name</value>
+  </data>
+  <data name="UnableToPatchJson" xml:space="preserve">
+    <value>Unable to update mismatching Json structured: {0} {1}.</value>
+  </data>
+  <data name="x86InProgramFiles" xml:space="preserve">
+    <value>(x86)</value>
   </data>
 </root>

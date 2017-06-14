@@ -25,7 +25,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.Store
 {
     
-    public class NewAzureStoreAddOnTests : TestBase
+    public class NewAzureStoreAddOnTests : SMTestBase
     {
         Mock<ICommandRuntime> mockCommandRuntime;
 

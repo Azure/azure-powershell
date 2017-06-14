@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServerFirewallRule cmdlet
+    /// Defines the Get-AzureRmSqlServerFirewallRule cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlServerFirewallRule", ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlServerFirewallRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase
     {
         #region Private 
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <summary>
         /// Azure Sql Database Server Firewall Rule Name.
         /// </summary>
-        [Parameter(Mandatory = true, 
+        [Parameter(Mandatory = true,
             HelpMessage = "Azure Sql Database Server Firewall Rule Name.",
             ParameterSetName = UserSpecifiedRuleSet)]
         [ValidateNotNullOrEmpty]
@@ -95,9 +94,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
                     ModelAdapter.GetFirewallRule(this.ResourceGroupName, this.ServerName, AzureRuleName);
                 }
             }
-            catch(CloudException ex)
+            catch (CloudException ex)
             {
-                if(ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     // This is what we want.  We looked and there is no server with this name.
                     return null;
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 
             // The server already exists
             throw new PSArgumentException(
-                string.Format(Resources.ServerFirewallRuleNameExists, this.FirewallRuleName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerFirewallRuleNameExists, this.FirewallRuleName, this.ServerName),
                 "FirewallRule");
         }
 
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         {
             List<Model.AzureSqlServerFirewallRuleModel> newEntity = new List<Model.AzureSqlServerFirewallRuleModel>();
 
-            if(ParameterSetName == UserSpecifiedRuleSet)
+            if (ParameterSetName == UserSpecifiedRuleSet)
             {
                 newEntity.Add(new Model.AzureSqlServerFirewallRuleModel()
                 {
@@ -155,8 +154,8 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <returns>The created FirewallRule</returns>
         protected override IEnumerable<Model.AzureSqlServerFirewallRuleModel> PersistChanges(IEnumerable<Model.AzureSqlServerFirewallRuleModel> entity)
         {
-            return new List<Model.AzureSqlServerFirewallRuleModel>() { 
-                ModelAdapter.UpsertFirewallRule(entity.First()) 
+            return new List<Model.AzureSqlServerFirewallRuleModel>() {
+                ModelAdapter.UpsertFirewallRule(entity.First())
             };
         }
     }

@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
+using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Xml;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Management.Compute;
+using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -32,11 +32,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         typeof(IPersistentVM))]
     public class SetAzureVMDiagnosticsExtensionCommand : VirtualMachineDiagnosticsExtensionCmdletBase
     {
+        private string publicConfiguration;
+        private string privateConfiguration;
+        private string resourceId;
         protected const string SetExtParamSetName = "SetDiagnosticsExtension";
         protected const string SetExtRefParamSetName = "SetDiagnosticsWithReferenceExtension";
-        private const string PublicConfigurationTemplate = "\"xmlCfg\":\"{0}\", \"StorageAccount\":\"{1}\" ";
-        private readonly string PrivateConfigurationTemplate = "\"storageAccountName\":\"{0}\", \"storageAccountKey\":\"{1}\", \"storageAccountEndPoint\":\"{2}\"";
-        private readonly string XmlNamespace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
+
         [Parameter(
             ParameterSetName = SetExtParamSetName,
             Mandatory = true,
@@ -59,51 +60,117 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         [Parameter(ParameterSetName = SetExtParamSetName,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
-            HelpMessage = "The storage connection context")]
+            HelpMessage = "The storage account name")]
         [Parameter(ParameterSetName = SetExtRefParamSetName,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            HelpMessage = "The storage account name")]
+        public string StorageAccountName
+        {
+            get;
+            set;
+        }
+
+        [Parameter(ParameterSetName = SetExtParamSetName,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account key")]
+        [Parameter(ParameterSetName = SetExtRefParamSetName,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account key")]
+        public string StorageAccountKey
+        {
+            get;
+            set;
+        }
+
+        [Parameter(ParameterSetName = SetExtParamSetName,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account endpoint")]
+        [Parameter(ParameterSetName = SetExtRefParamSetName,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account endpoint")]
+        public string StorageAccountEndpoint
+        {
+            get;
+            set;
+        }
+
+        [Parameter(ParameterSetName = SetExtParamSetName,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The storage connection context")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ParameterSetName = SetExtRefParamSetName,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage connection context")]
         public AzureStorageContext StorageContext
         {
             get;
             set;
         }
- 
 
         [Parameter(
         ParameterSetName = SetExtParamSetName,
-        Position = 2,
+        Position = 5,
         ValueFromPipelineByPropertyName = false,
         HelpMessage = "WAD Version")]
         [Parameter(
         ParameterSetName = SetExtRefParamSetName,
-        Position = 2,
+        Position = 5,
         ValueFromPipelineByPropertyName = false,
         HelpMessage = "WAD Version")]
         public override string Version { get; set; }
 
         [Parameter(
             ParameterSetName = SetExtParamSetName,
-            Position = 3,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To Set the Extension State to 'Disable'.")]
         [Parameter(
             ParameterSetName = SetExtRefParamSetName,
-            Position = 3,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To Set the Extension State to 'Disable'.")]
         public override SwitchParameter Disable { get; set; }
 
         [Parameter(
             ParameterSetName = SetExtRefParamSetName,
-            Position = 4,
+            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To specify the reference name.")]
         public override string ReferenceName { get; set; }
+
+        public override string PublicConfiguration
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.publicConfiguration))
+                {
+                    this.publicConfiguration = JsonConvert.SerializeObject(
+                        DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath, this.StorageAccountName, resourceId, cmdlet: this));
+                }
+
+                return this.publicConfiguration;
+            }
+        }
+
+        public override string PrivateConfiguration
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.privateConfiguration))
+                {
+                    this.privateConfiguration = JsonConvert.SerializeObject(
+                        DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.DiagnosticsConfigurationPath, this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint));
+                }
+
+                return this.privateConfiguration;
+            }
+        }
 
         internal void ExecuteCommand()
         {
@@ -111,120 +178,92 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             RemovePredicateExtensions();
             AddResourceExtension();
             WriteObject(VM);
-            UpdateAzureVMCommand cmd = new UpdateAzureVMCommand();
         }
 
         protected override void ValidateParameters()
-        {     
+        {
             base.ValidateParameters();
-            ValidateStorageAccount();
-            ValidateConfiguration();
             ExtensionName = DiagnosticsExtensionType;
             Publisher = DiagnosticsExtensionNamespace;
+            Version = Version ?? DefaultVersion;
+
+            // If the user didn't specify an extension reference name and the input VM already has a diagnostics extension,
+            // reuse its reference name
+            if (string.IsNullOrEmpty(ReferenceName))
+            {
+                ResourceExtensionReference diagnosticsExtension = ResourceExtensionReferences.FirstOrDefault(ExtensionPredicate);
+                if (diagnosticsExtension != null)
+                {
+                    ReferenceName = diagnosticsExtension.ReferenceName;
+                }
+            }
+
+            ValidateStorageAccountName();
+            ValidateStorageAccountKey();
+            ValidateStorageAccountEndpoint();
+            GetResourceId();
         }
 
-        private void ValidateStorageAccount()
+        private void ValidateStorageAccountName()
         {
-            StorageAccountName = StorageContext.StorageAccountName;
-            StorageKey = GetStorageKey();
-            // We need the suffix, NOT the full account endpoint.
-            Endpoint = "https://" + StorageContext.EndPointSuffix;
+            this.StorageAccountName = this.StorageAccountName ??
+                DiagnosticsHelper.InitializeStorageAccountName(this.StorageContext, this.DiagnosticsConfigurationPath);
+
+            if (string.IsNullOrEmpty(this.StorageAccountName))
+            {
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountName);
+            }
         }
 
-        private void ValidateConfiguration()
+        private void ValidateStorageAccountKey()
         {
-            // Public configuration must look like:
-            // { "xmlCfg":"base-64 encoded string", "StorageAccount":"account_name", "localResourceDirectory":{ "path":"some_path", "expandResourceDirectory":<true|false> }}
-            //
-            // localResourceDirectory is optional
-            //
-            // What we have in is something like:
-            //
-            // <?xml version="1.0" encoding="utf-8"?>     
-            //  <PublicConfig ...>
-            //    <WadCfg>
-            //      <DiagnosticsMonitorCofiguration> ... </DiagnosticsMonitorCofiguration>
-            //    </WadCfg>
-            //  </PublicConfig
+            this.StorageAccountKey = this.StorageAccountKey ??
+                DiagnosticsHelper.InitializeStorageAccountKey(this.StorageClient, this.StorageAccountName, this.DiagnosticsConfigurationPath);
 
-            string config;
-            using (StreamReader sr = new StreamReader(DiagnosticsConfigurationPath))
+            if (string.IsNullOrEmpty(this.StorageAccountKey))
             {
-                // find the <WadCfg> element and extract it
-                string fullConfig = sr.ReadToEnd();
-                int wadCfgBeginIndex = fullConfig.IndexOf("<WadCfg>");
-                if (wadCfgBeginIndex == -1)
-                {
-                    throw new ArgumentException(Resources.IaasDiagnosticsBadConfigNoWadCfg);
-                }
-
-                int wadCfgEndIndex = fullConfig.IndexOf("</WadCfg>");
-                if(wadCfgEndIndex == -1)
-                {
-                    throw new ArgumentException(Resources.IaasDiagnosticsBadConfigNoEndWadCfg);
-                }
-
-                if(wadCfgEndIndex <= wadCfgBeginIndex)
-                {
-                    throw new ArgumentException(Resources.IaasDiagnosticsBadConfigNoMatchingWadCfg);
-                }
-
-                config = fullConfig.Substring(wadCfgBeginIndex, wadCfgEndIndex + "</WadCfg>".Length - wadCfgBeginIndex);
-                config = Convert.ToBase64String(Encoding.UTF8.GetBytes(config.ToCharArray()));
+                throw new ArgumentException(Resources.DiagnosticsExtensionNullStorageAccountKey);
             }
-
-            // Now extract the local resource directory element
-            XmlDocument doc = new XmlDocument();
-            XmlNamespaceManager ns = new XmlNamespaceManager(doc.NameTable);
-            ns.AddNamespace("ns", XmlNamespace);
-            doc.Load(DiagnosticsConfigurationPath);
-            var node = doc.SelectSingleNode("//ns:LocalResourceDirectory", ns);
-            string localDirectory = (node != null && node.Attributes != null) ? node.Attributes["path"].Value : null;
-            string localDirectoryExpand = (node != null && node.Attributes != null) ? node.Attributes["expandEnvironment"].Value : null;
-            if (localDirectoryExpand == "0")
-            {
-                localDirectoryExpand = "false";
-            }
-            if (localDirectoryExpand == "1")
-            {
-                localDirectoryExpand = "true";
-            }
-
-            PublicConfiguration = "{ ";
-            PublicConfiguration += string.Format(PublicConfigurationTemplate, config, StorageAccountName);
-
-            if (!string.IsNullOrEmpty(localDirectory))
-            {
-                PublicConfiguration += ", \"localResourceDirectory\":{ \"path\":\"" + localDirectory + "\", \"expandResourceDirectory\":" + localDirectoryExpand + "}";
-            }
-
-            PublicConfiguration += "}";   
-
-            // Private configuration must look like:
-            // { "storageAccountName":"your_account_name", "storageAccountKey":"your_key", "storageAccountEndPoint":"end_point" }
-            PrivateConfiguration = "{ ";
-            PrivateConfiguration += string.Format(PrivateConfigurationTemplate, StorageAccountName, StorageKey, Endpoint);
-            PrivateConfiguration += "}";
         }
 
-        protected string GetStorageKey()
+        private void ValidateStorageAccountEndpoint()
         {
-            string storageKey = string.Empty;
+            this.StorageAccountEndpoint = this.StorageAccountEndpoint ??
+                DiagnosticsHelper.InitializeStorageAccountEndpoint(this.StorageAccountName, this.StorageAccountKey, this.StorageClient,
+                    this.StorageContext, this.DiagnosticsConfigurationPath, this.DefaultContext);
 
-            if (!string.IsNullOrEmpty(StorageAccountName))
+            if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
             {
-                var storageAccount = this.StorageClient.StorageAccounts.Get(StorageAccountName);
-                if (storageAccount != null)
+                throw new ArgumentNullException(Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
+            }
+        }
+
+        private void GetResourceId()
+        {
+            var vmRoleContext = VM as PersistentVMRoleContext;
+            if (vmRoleContext != null)
+            {
+                string resourceGroup = null;
+                string serviceName = vmRoleContext.ServiceName;
+
+                foreach (var service in this.ComputeClient.HostedServices.List())
                 {
-                    var keys = this.StorageClient.StorageAccounts.GetKeys(StorageAccountName);
-                    if (keys != null)
+                    if (service.ServiceName == serviceName
+                        && service.Properties != null
+                        && service.Properties.ExtendedProperties != null
+                        && service.Properties.ExtendedProperties.ContainsKey("ResourceGroup"))
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.PrimaryKey) ? keys.PrimaryKey : keys.SecondaryKey;
+                        resourceGroup = service.Properties.ExtendedProperties["ResourceGroup"];
+                        break;
                     }
                 }
-            }
 
-            return storageKey;
+                if (!string.IsNullOrEmpty(resourceGroup))
+                {
+                    this.resourceId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ClassicCompute/virtualMachines/{2}",
+                        Profile.DefaultSubscription.Id, resourceGroup, vmRoleContext.Name);
+                }
+            }
         }
 
         protected override void ProcessRecord()

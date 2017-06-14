@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.AvailabilitySet
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            this.VM.GetInstance().AvailabilitySetName = null;
+            this.VM.GetInstance().AvailabilitySetName = string.Empty;
             this.WriteObject(this.VM, true);
         }
     }

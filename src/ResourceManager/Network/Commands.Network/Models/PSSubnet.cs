@@ -14,30 +14,56 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSSubnet : PSChildResource
     {
+        [JsonProperty(Order = 1)]
         public string AddressPrefix { get; set; }
 
-        public List<PSResourceId> IpConfigurations { get; set; }
+        [JsonProperty(Order = 1)]
+        public List<PSIPConfiguration> IpConfigurations { get; set; }
 
-        public PSResourceId NetworkSecurityGroup { get; set; }
+        [JsonProperty(Order = 1)]
+        public List<PSResourceNavigationLink> ResourceNavigationLinks { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSRouteTable RouteTable { get; set; }
+
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ResourceNavigationLinksText
+        {
+            get { return JsonConvert.SerializeObject(ResourceNavigationLinks, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
         public string NetworkSecurityGroupText
         {
-            get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(NetworkSecurityGroup, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RouteTableText
+        {
+            get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

@@ -15,7 +15,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -24,8 +23,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     /// </summary>
     public class SecretAttributes
     {
-        public SecretAttributes() 
-        {}
+        public SecretAttributes()
+        { }
 
         internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string contentType, Hashtable tags)
         {
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
-            DateTime? created, DateTime? updated, string contentType, Dictionary<string, string> tags)
+            DateTime? created, DateTime? updated, string contentType, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
@@ -47,13 +46,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.ContentType = contentType;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
         }
-     
+
         public bool? Enabled { get; set; }
 
         public DateTime? Expires { get; set; }
 
-        public DateTime? NotBefore { get; set; }       
-        
+        public DateTime? NotBefore { get; set; }
+
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public Dictionary<string, string> TagsDirectionary
+        public Dictionary<string, string> TagsDictionary
         {
             get
             {
@@ -77,15 +76,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public static explicit operator Microsoft.Azure.KeyVault.SecretAttributes(SecretAttributes attr)
+        public static explicit operator Azure.KeyVault.Models.SecretAttributes(SecretAttributes attr)
         {
-            return new Microsoft.Azure.KeyVault.SecretAttributes()
+            return new Azure.KeyVault.Models.SecretAttributes
             {
                 Enabled = attr.Enabled,
                 NotBefore = attr.NotBefore,
-                Expires = attr.Expires               
+                Expires = attr.Expires
             };
 
-        }       
+        }
     }
 }

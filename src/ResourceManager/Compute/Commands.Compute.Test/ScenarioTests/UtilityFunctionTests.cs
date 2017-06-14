@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.Compute.Models;
 using System;
 using Xunit;
 
@@ -21,6 +21,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class UtilityFunctionTests
     {
+        public UtilityFunctionTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationStringExtension()
@@ -32,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 "East Asia 2"
             };
 
-            Func<string, string> normalize = delegate(string s)
+            Func<string, string> normalize = delegate (string s)
             {
                 return string.IsNullOrEmpty(s) ? s : s.Replace(" ", string.Empty).ToLower();
             };

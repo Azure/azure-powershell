@@ -161,6 +161,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             try
             {
+                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "AzureRmHDInsightConfigValues"));
                 this.command.EndProcessing().Wait();
                 foreach (AzureHDInsightConfig output in this.command.Output)
                 {

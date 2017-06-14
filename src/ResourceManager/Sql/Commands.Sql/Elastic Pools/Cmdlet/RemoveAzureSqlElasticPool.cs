@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlElasticPool",
-        SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticPool",
+        SupportsShouldProcess = true)]
     public class RemoveAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
@@ -47,8 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlElasticPoolModel> GetEntity()
         {
-            return new List<AzureSqlElasticPoolModel>() { 
-                ModelAdapter.GetElasticPool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName) 
+            return new List<AzureSqlElasticPoolModel>() {
+                ModelAdapter.GetElasticPool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName)
             };
         }
 
@@ -79,9 +77,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseElasticPoolDescription, this.ElasticPoolName, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseElasticPoolWarning, this.ElasticPoolName, this.ServerName),
-               Resources.ShouldProcessCaption))
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseElasticPoolDescription, this.ElasticPoolName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseElasticPoolWarning, this.ElasticPoolName, this.ServerName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
             }
