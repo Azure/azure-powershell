@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>The sync group object</returns>
         public AzureSqlSyncGroupModel GetSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            var resp = Communicator.GetSyncGroup(resourceGroupName, serverName, databaseName, syncGroupName, Util.GenerateTracingId());
+            var resp = Communicator.GetSyncGroup(resourceGroupName, serverName, databaseName, syncGroupName);
             return CreateSyncGroupModelFromResponse(resourceGroupName, serverName, databaseName, resp);
         }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>A list of sync group objects</returns>
         internal ICollection<AzureSqlSyncGroupModel> ListSyncGroups(string resourceGroupName, string serverName, string databaseName)
         {
-            var resp = Communicator.ListSyncGroups(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.ListSyncGroups(resourceGroupName, serverName, databaseName);
             return resp.Select((db) =>{
                 return CreateSyncGroupModelFromResponse(resourceGroupName, serverName, databaseName, db);
             }).ToList();
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         internal ICollection<AzureSqlSyncGroupLogModel> ListSyncGroupLogs(string resourceGroupName, string serverName, string databaseName, SyncGroupLogGetParameters parameters)
         {
             List<AzureSqlSyncGroupLogModel> result = new List<AzureSqlSyncGroupLogModel>();
-            var resp = Communicator.ListSyncGroupLogs(resourceGroupName, serverName, databaseName, Util.GenerateTracingId(), parameters);
+            var resp = Communicator.ListSyncGroupLogs(resourceGroupName, serverName, databaseName, parameters);
             result.AddRange(resp.SyncGroupLogs.Select((db) =>
             {
                 return CreateSyncGroupLogModelFromResponse(db);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
 
             while(!string.IsNullOrEmpty(resp.NextLink))
             {
-                resp = Communicator.ListNextSyncGroupLog(resourceGroupName, serverName, databaseName, Util.GenerateTracingId(), parameters.SyncGroupName, resp.NextLink);
+                resp = Communicator.ListNextSyncGroupLog(resourceGroupName, serverName, databaseName, parameters.SyncGroupName, resp.NextLink);
                 result.AddRange(resp.SyncGroupLogs.Select((db) =>
                 {
                     return CreateSyncGroupLogModelFromResponse(db);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncGroupName">The name of the sync group</param>
         public void StartSynchronization(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            Communicator.StartSynchronization(resourceGroupName, serverName, databaseName, syncGroupName, Util.GenerateTracingId());
+            Communicator.StartSynchronization(resourceGroupName, serverName, databaseName, syncGroupName);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncGroupName">The name of the sync group</param>
         public void StopSynchronization(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            Communicator.StopSynchronization(resourceGroupName, serverName, databaseName, syncGroupName, Util.GenerateTracingId());
+            Communicator.StopSynchronization(resourceGroupName, serverName, databaseName, syncGroupName);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncMemberName">The name of the sync member</param>
         public void InvokeSyncMemberSchemaRefresh(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
         {
-            Communicator.InvokeSyncMemberSchemaRefresh(resourceGroupName, serverName, databaseName, Util.GenerateTracingId(), new SyncMemberGeneralParameters()
+            Communicator.InvokeSyncMemberSchemaRefresh(resourceGroupName, serverName, databaseName, new SyncMemberGeneralParameters()
             {
                 SyncGroupName = syncGroupName,
                 SyncMemberName = syncMemberName,
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>Created AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncGroupModel CreateSyncGroup(AzureSqlSyncGroupModel model, string syncDatabaseId)
         {
-            var resp = Communicator.CreateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, syncDatabaseId, Util.GenerateTracingId(), new SyncGroupCreateOrUpdateParameters()
+            var resp = Communicator.CreateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, syncDatabaseId, new SyncGroupCreateOrUpdateParameters()
             {
                 SyncGroupName = model.SyncGroupName,
                 Properties = new SyncGroupCreateOrUpdateProperties
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             });
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
-            resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName, Util.GenerateTracingId());
+            resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName);
             return CreateSyncGroupModelFromResponse(model.ResourceGroupName, model.ServerName, model.DatabaseName, resp);
         }
 
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>Updated AzureSqlSyncGroupModel object</returns>
         internal AzureSqlSyncGroupModel UpdateSyncGroup(AzureSqlSyncGroupModel model)
         {
-            var resp = Communicator.UpdateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), new SyncGroupCreateOrUpdateParameters()
+            var resp = Communicator.UpdateSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncGroupCreateOrUpdateParameters()
             {
                 SyncGroupName = model.SyncGroupName,
                 Properties = new SyncGroupCreateOrUpdateProperties
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             });
             
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
-            resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName, Util.GenerateTracingId());
+            resp = Communicator.GetSyncGroup(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.SyncGroupName);
             return CreateSyncGroupModelFromResponse(model.ResourceGroupName, model.ServerName, model.DatabaseName, resp);
         }
 
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncGroupName">The name of the sync group</param>
         public void RemoveSyncGroup(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            Communicator.RemoveSyncGroup(resourceGroupName, serverName, databaseName, syncGroupName, Util.GenerateTracingId());
+            Communicator.RemoveSyncGroup(resourceGroupName, serverName, databaseName, syncGroupName);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncGroupName">The name of the sync group</param>
         public void InvokeSyncHubSchemaRefresh(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            Communicator.InvokeSyncHubSchemaRefresh(resourceGroupName, serverName, databaseName, syncGroupName, Util.GenerateTracingId());
+            Communicator.InvokeSyncHubSchemaRefresh(resourceGroupName, serverName, databaseName, syncGroupName);
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>The sync member object</returns>
         public AzureSqlSyncFullSchemaModel GetSyncHubSchema(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            var resp = Communicator.GetSyncHubSchema(resourceGroupName, serverName, databaseName, syncGroupName, Util.GenerateTracingId());
+            var resp = Communicator.GetSyncHubSchema(resourceGroupName, serverName, databaseName, syncGroupName);
             return new AzureSqlSyncFullSchemaModel(resp);
         }
 
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>The sync member object</returns>
         public AzureSqlSyncMemberModel GetSyncMember(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
         {
-            var resp = Communicator.GetSyncMember(resourceGroupName, serverName, databaseName, Util.GenerateTracingId(), new SyncMemberGeneralParameters()
+            var resp = Communicator.GetSyncMember(resourceGroupName, serverName, databaseName, new SyncMemberGeneralParameters()
             {
                 SyncGroupName = syncGroupName,
                 SyncMemberName = syncMemberName,
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>A list of sync member objects</returns>
         internal ICollection<AzureSqlSyncMemberModel> ListSyncMembers(string resourceGroupName, string serverName, string databaseName, string syncGroupName)
         {
-            var resp = Communicator.ListSyncMembers(resourceGroupName, serverName, databaseName, syncGroupName, Util.GenerateTracingId());
+            var resp = Communicator.ListSyncMembers(resourceGroupName, serverName, databaseName, syncGroupName);
             return resp.Select((db) =>
             {
                 return CreateSyncMemberModelFromResponse(resourceGroupName, serverName, databaseName, syncGroupName, db);
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncMemberName">The name of the sync member</param>
         public void RemoveSyncMember(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
         {
-            Communicator.RemoveSyncMember(resourceGroupName, serverName, databaseName, Util.GenerateTracingId(), new SyncMemberGeneralParameters()
+            Communicator.RemoveSyncMember(resourceGroupName, serverName, databaseName, new SyncMemberGeneralParameters()
             {
                 SyncGroupName = syncGroupName,
                 SyncMemberName = syncMemberName,
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 properties.SqlServerDatabaseId = model.SqlServerDatabaseId;
                 properties.SyncAgentId = model.SyncAgentId;
             }
-            var resp = Communicator.CreateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, syncAgentId, Util.GenerateTracingId(), new SyncMemberCreateOrUpdateParameters()
+            var resp = Communicator.CreateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, syncAgentId, new SyncMemberCreateOrUpdateParameters()
             {
                 SyncGroupName = model.SyncGroupName,
                 SyncMemberName = model.SyncMemberName,
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             });
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
-            resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), new SyncMemberGeneralParameters()
+            resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncMemberGeneralParameters()
             {
                 SyncGroupName = model.SyncGroupName,
                 SyncMemberName = model.SyncMemberName,
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
                 UserName = model.MemberDatabaseUserName,
                 Password = model.MemberDatabasePassword == null ? null : AzureSqlServerAdapter.Decrypt(model.MemberDatabasePassword)
             };
-            var resp = Communicator.UpdateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), new SyncMemberCreateOrUpdateParameters()
+            var resp = Communicator.UpdateSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncMemberCreateOrUpdateParameters()
             {
                 SyncGroupName = model.SyncGroupName,
                 SyncMemberName = model.SyncMemberName,
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             });
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
-            resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), new SyncMemberGeneralParameters()
+            resp = Communicator.GetSyncMember(model.ResourceGroupName, model.ServerName, model.DatabaseName, new SyncMemberGeneralParameters()
             {
                 SyncGroupName = model.SyncGroupName,
                 SyncMemberName = model.SyncMemberName,
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>The sync member object</returns>
         public AzureSqlSyncFullSchemaModel GetSyncMemberSchema(string resourceGroupName, string serverName, string databaseName, string syncGroupName, string syncMemberName)
         {
-            var resp = Communicator.GetSyncMemberSchema(resourceGroupName, serverName, databaseName, Util.GenerateTracingId(), new SyncMemberGeneralParameters()
+            var resp = Communicator.GetSyncMemberSchema(resourceGroupName, serverName, databaseName, new SyncMemberGeneralParameters()
             {
                 SyncGroupName = syncGroupName,
                 SyncMemberName = syncMemberName,
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>The sync agent object</returns>
         public AzureSqlSyncAgentModel GetSyncAgent(string resourceGroupName, string serverName, string syncAgentName)
         {
-            var resp = Communicator.GetSyncAgent(resourceGroupName, serverName, syncAgentName, Util.GenerateTracingId());
+            var resp = Communicator.GetSyncAgent(resourceGroupName, serverName, syncAgentName);
             return CreateSyncAgentModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>A list of sync agent objects</returns>
         internal ICollection<AzureSqlSyncAgentModel> ListSyncAgents(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.ListSyncAgents(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.ListSyncAgents(resourceGroupName, serverName);
 
             return resp.Select((db) =>
             {
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <returns>Created AzureSqlSyncAgentModel object</returns>
         internal AzureSqlSyncAgentModel CreateSyncAgent(AzureSqlSyncAgentModel model, string syncDatabaseId)
         {
-            var resp = Communicator.CreateSyncAgent(model.ResourceGroupName, model.ServerName, model.SyncAgentName, syncDatabaseId, Util.GenerateTracingId(), new SyncAgentCreateOrUpdateParameters()
+            var resp = Communicator.CreateSyncAgent(model.ResourceGroupName, model.ServerName, model.SyncAgentName, syncDatabaseId, new SyncAgentCreateOrUpdateParameters()
             {
                 Properties = new SyncAgentCreateOrUpdateProperties()
                 {
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
             });
 
             // Workaround for Rest API return response value incorrect issue. Remove this line after backend fix is deployed
-            resp = Communicator.GetSyncAgent(model.ResourceGroupName, model.ServerName, model.SyncAgentName, Util.GenerateTracingId());
+            resp = Communicator.GetSyncAgent(model.ResourceGroupName, model.ServerName, model.SyncAgentName);
             return CreateSyncAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
 
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncAgentName">The name of the sync agent</param>
         public void RemoveSyncAgent(string resourceGroupName, string serverName, string syncAgentName)
         {
-            Communicator.RemoveSyncAgent(resourceGroupName, serverName, syncAgentName, Util.GenerateTracingId());
+            Communicator.RemoveSyncAgent(resourceGroupName, serverName, syncAgentName);
         }
 
         /// <summary>
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncAgentName">The name of the sync agent</param>
         internal AzureSqlSyncAgentKeyModel CreateSyncAgentKey(string resourceGroupName, string serverName, string syncAgentName)
         {
-            var resp = Communicator.CreateSyncAgentKey(resourceGroupName, serverName, syncAgentName, Util.GenerateTracingId());
+            var resp = Communicator.CreateSyncAgentKey(resourceGroupName, serverName, syncAgentName);
             return new AzureSqlSyncAgentKeyModel()
             {
                 SyncAgentKey = resp.SyncAgentKey,
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         /// <param name="syncAgentName">The name of the sync agent</param>
         internal ICollection<AzureSqlSyncAgentLinkedDatabaseModel> ListSyncAgentLinkedDatabases(string resourceGroupName, string serverName, string syncAgentName)
         {
-            var resp = Communicator.ListSyncAgentLinkedDatabases(resourceGroupName, serverName, syncAgentName, Util.GenerateTracingId());
+            var resp = Communicator.ListSyncAgentLinkedDatabases(resourceGroupName, serverName, syncAgentName);
             return resp.Select((db) =>
             {
                 return new AzureSqlSyncAgentLinkedDatabaseModel(db);
