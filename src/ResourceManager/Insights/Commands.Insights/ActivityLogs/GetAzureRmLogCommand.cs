@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the max number of records to fetch parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to fetch. Alias: MaxEvents for backwards compatibility")]
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to fetch. Alias: MaxRecords")]
         [Alias("MaxRecords")]
         [ValidateNotNullOrEmpty]
         public virtual int MaxEvents { get; set; }
