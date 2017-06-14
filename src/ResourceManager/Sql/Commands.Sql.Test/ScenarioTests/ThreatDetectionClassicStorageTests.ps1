@@ -19,7 +19,7 @@ Tests setting and getting threat detection policy with classic storage
 function Test-ThreatDetectionUpdatePolicyWithClassicStorage
 {
 	# Setup
-	$testSuffix = 4996
+	$testSuffix = getAssetName
 	Create-ThreatDetectionClassicTestEnvironment $testSuffix
 	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
