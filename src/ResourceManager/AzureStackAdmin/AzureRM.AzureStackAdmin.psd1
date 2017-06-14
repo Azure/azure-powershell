@@ -9,7 +9,6 @@
 @{
 
 # Version number of this module.
-
 ModuleVersion = '0.10.9'
 
 # ID used to uniquely identify this module

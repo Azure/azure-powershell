@@ -15,18 +15,17 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
     /// New Offer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.Offer)]
+    [Cmdlet(VerbsCommon.New, Nouns.Offer, SupportsShouldProcess = true)]
     [OutputType(typeof(AdminOfferModel))]
+    [Alias("New-AzureRmOffer")]
     public class NewOffer : AdminApiCmdlet
     {
         /// <summary>
@@ -70,7 +69,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        public string ArmLocation { get; set; } // TODO - use API to get CSM location?
+        public string ArmLocation { get; set; } // TODO - use API to get ARM location?
 
         /// <summary>
         /// Gets or sets the resource group.
@@ -78,58 +77,73 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            this.WriteVerbose(Resources.CreatingNewOffer.FormatArgs(this.Name, this.ResourceGroup));
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRmOffer", StringComparison.OrdinalIgnoreCase))
             {
-                // Ensure the resource group is created
-                client.ResourceGroups.CreateOrUpdate(new ResourceGroupCreateOrUpdateParameters()
-                {
-                    ResourceGroup = new ResourceGroupDefinition()
-                    {
-                        Location = this.ArmLocation,
-                        Name = this.ResourceGroup,
-                    }
-                });
+                this.WriteWarning("Alias New-AzureRmOffer will be deprecated in a future release. Please use the cmdlet name New-AzsOffer instead");
+            }
 
-                var parameters = new ManagedOfferCreateOrUpdateParameters()
+            if (ShouldProcess(this.Name, VerbsCommon.New))
+            {
+                this.WriteVerbose(Resources.CreatingNewOffer.FormatArgs(this.Name, this.ResourceGroupName));
+                using (var client = this.GetAzureStackClient())
                 {
-                    Offer = new AdminOfferModel()
+                    // Ensure the resource group is created
+                    client.ResourceGroups.CreateOrUpdate(new ResourceGroupCreateOrUpdateParameters()
                     {
-                        Name = this.Name,
-                        Location = this.ArmLocation,
-                        Properties = new AdminOfferPropertiesDefinition()
+                        ResourceGroup = new ResourceGroupDefinition()
+                        {
+                            Location = this.ArmLocation,
+                            Name = this.ResourceGroupName,
+                        }
+                    });
+
+                    var parameters = new ManagedOfferCreateOrUpdateParameters()
+                    {
+                        Offer = new AdminOfferModel()
                         {
                             Name = this.Name,
-                            DisplayName = this.DisplayName,
-                            State = this.State,
+                            Location = this.ArmLocation,
+                            Properties = new AdminOfferPropertiesDefinition()
+                            {
+                                Name = this.Name,
+                                DisplayName = this.DisplayName,
+                                State = this.State,
+                            }
                         }
+                    };
+
+                    if (this.BasePlanIds != null && this.BasePlanIds.Length > 0)
+                    {
+                        parameters.Offer.Properties.BasePlanIds = this.BasePlanIds;
                     }
-                };
 
-                if (this.BasePlanIds != null && this.BasePlanIds.Length > 0)
-                {
-                    parameters.Offer.Properties.BasePlanIds = this.BasePlanIds;
+                    if (this.AddOnPlans != null && this.AddOnPlans.Length > 0)
+                    {
+                        parameters.Offer.Properties.AddonPlans = this.AddOnPlans.ToList();
+                    }
+
+                    if (client.ManagedOffers.List(this.ResourceGroupName, includeDetails: false).Offers
+                        .Any(
+                            offer =>
+                                string.Equals(offer.Properties.Name, parameters.Offer.Properties.Name,
+                                    StringComparison.OrdinalIgnoreCase)))
+                    {
+                        throw new PSInvalidOperationException(
+                            Resources.ManagedOfferAlreadyExists.FormatArgs(parameters.Offer.Properties.Name,
+                                this.ResourceGroupName));
+                    }
+
+                    var result = client.ManagedOffers.CreateOrUpdate(this.ResourceGroupName, parameters).Offer;
+                    WriteObject(result);
                 }
-
-                if (this.AddOnPlans != null && this.AddOnPlans.Length > 0)
-                {
-                    parameters.Offer.Properties.AddonPlans = this.AddOnPlans.ToList();
-                }
-
-                if (client.ManagedOffers.List(this.ResourceGroup, includeDetails: false).Offers
-                    .Any(offer => string.Equals(offer.Properties.Name, parameters.Offer.Properties.Name, StringComparison.OrdinalIgnoreCase)))
-                {
-                    throw new PSInvalidOperationException(Resources.ManagedOfferAlreadyExists.FormatArgs(parameters.Offer.Properties.Name, this.ResourceGroup));
-                }
-
-                return client.ManagedOffers.CreateOrUpdate(this.ResourceGroup, parameters).Offer;
             }
         }
     }

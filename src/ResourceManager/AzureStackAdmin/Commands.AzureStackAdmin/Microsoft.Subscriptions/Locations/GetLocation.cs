@@ -17,35 +17,50 @@ namespace Microsoft.AzureStack.Commands
     using System;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.Azure;
-    using Microsoft.WindowsAzure;
     using Microsoft.AzureStack.Management;
+    using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
     /// Remove managed location cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.Location)]
-    [OutputType(typeof(AzureOperationResponse))]
-    public class RemoveManagedLocation : AdminApiCmdlet
+    [Cmdlet(VerbsCommon.Get, Nouns.Location)]
+    [OutputType(typeof(Location))]
+    [Alias("Get-AzureRmManagedLocation")]
+    public class GetLocation : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter]
         [ValidateLength(1, 128)]
         [ValidateNotNull]
         [ValidatePattern("^[0-9a-z]+$")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Removes the specified location
+        /// Gets the managed location 
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmManagedLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRmManagedLocation will be deprecated in a future release. Please use the cmdlet name Get-AzsLocation instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.RemovingManagedLocation.FormatArgs(this.Name));
-                return client.ManagedLocations.Delete(this.Name);
+                if (string.IsNullOrEmpty(this.Name))
+                {
+                    this.WriteVerbose(Resources.ListingLocations);
+                    var result = client.ManagedLocations.List().Locations;
+                    WriteObject(result, enumerateCollection: true);
+                }
+                else
+                {
+                    this.WriteVerbose(Resources.GettingLocation.FormatArgs(this.Name));
+                    var result = client.ManagedLocations.Get(this.Name).Location;
+                    WriteObject(result);
+                }
             }
         }
     }

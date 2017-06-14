@@ -24,8 +24,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// New Plan cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.Plan, DefaultParameterSetName = CommonPSConst.ParameterSet.ByProperty)]
+    [Cmdlet(VerbsCommon.New, Nouns.Plan, SupportsShouldProcess = true)]
     [OutputType(typeof(AdminPlanModel))]
+    [Alias("New-AzureRmPlan")]
     public class NewPlan : AdminApiCmdlet
     {
         /// <summary>
@@ -57,7 +58,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the quota ids.
@@ -76,50 +78,64 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            this.WriteVerbose(Resources.CreatingNewPlan.FormatArgs(this.Name, this.ResourceGroup));
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRmPlan", StringComparison.OrdinalIgnoreCase))
             {
-                // Ensure the resource group is created
-                client.ResourceGroups.CreateOrUpdate(new ResourceGroupCreateOrUpdateParameters()
-                {
-                    ResourceGroup = new ResourceGroupDefinition()
-                    {
-                        Location = this.ArmLocation,
-                        Name = this.ResourceGroup,
-                    }
-                });
+                this.WriteWarning("Alias New-AzureRmPlan will be deprecated in a future release. Please use the cmdlet name New-AzsPlan instead");
+            }
 
-                // TODO - determine what properties are needed
-                var parameters = new ManagedPlanCreateOrUpdateParameters()
+            if (ShouldProcess(this.Name, VerbsCommon.New))
+            {
+                this.WriteVerbose(Resources.CreatingNewPlan.FormatArgs(this.Name, this.ResourceGroupName));
+                using (var client = this.GetAzureStackClient())
                 {
-                    Plan = new AdminPlanModel()
+                    // Ensure the resource group is created
+                    client.ResourceGroups.CreateOrUpdate(new ResourceGroupCreateOrUpdateParameters()
                     {
-                        Name = this.Name,
-                        Location = this.ArmLocation,
-                        Properties = new AdminPlanPropertiesDefinition()
+                        ResourceGroup = new ResourceGroupDefinition()
+                        {
+                            Location = this.ArmLocation,
+                            Name = this.ResourceGroupName,
+                        }
+                    });
+
+                    // TODO - determine what properties are needed
+                    var parameters = new ManagedPlanCreateOrUpdateParameters()
+                    {
+                        Plan = new AdminPlanModel()
                         {
                             Name = this.Name,
-                            DisplayName = this.DisplayName,
-                            QuotaIds = (this.QuotaIds != null ? this.QuotaIds.ToList() : null),
-                            SkuIds = (this.SkuIds != null ? this.SkuIds.ToList() : null)
+                            Location = this.ArmLocation,
+                            Properties = new AdminPlanPropertiesDefinition()
+                            {
+                                Name = this.Name,
+                                DisplayName = this.DisplayName,
+                                QuotaIds = (this.QuotaIds != null ? this.QuotaIds.ToList() : null),
+                                SkuIds = (this.SkuIds != null ? this.SkuIds.ToList() : null)
+                            }
                         }
+                    };
+
+                    if (QuotaIds == null && SkuIds == null)
+                    {
+                        throw new PSInvalidOperationException(Resources.QuotaIdOrSkuIdRequired);
                     }
-                };
 
-                if (QuotaIds == null && SkuIds == null)
-                {
-                    throw new PSInvalidOperationException(Resources.QuotaIdOrSkuIdRequired);
+                    if (client.ManagedPlans.List(this.ResourceGroupName, includeDetails: false).Plans
+                        .Any(
+                            p =>
+                                string.Equals(p.Properties.Name, parameters.Plan.Properties.Name,
+                                    StringComparison.OrdinalIgnoreCase)))
+                    {
+                        throw new PSInvalidOperationException(
+                            Resources.PlanAlreadyExists.FormatArgs(parameters.Plan.Properties.Name,
+                                this.ResourceGroupName));
+                    }
+
+                    var result = client.ManagedPlans.CreateOrUpdate(this.ResourceGroupName, parameters).Plan;
+                    WriteObject(result);
                 }
-
-                if (client.ManagedPlans.List(this.ResourceGroup, includeDetails: false).Plans
-                    .Any(p => string.Equals(p.Properties.Name, parameters.Plan.Properties.Name, StringComparison.OrdinalIgnoreCase)))
-                {
-                    throw new PSInvalidOperationException(Resources.ManagedPlanAlreadyExists.FormatArgs(parameters.Plan.Properties.Name, this.ResourceGroup));
-                }
-
-                return client.ManagedPlans.CreateOrUpdate(this.ResourceGroup, parameters).Plan;
             }
         }
     }

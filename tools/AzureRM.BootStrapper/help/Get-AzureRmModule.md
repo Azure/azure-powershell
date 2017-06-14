@@ -31,7 +31,7 @@ The version of the AzureRM.Storage module that supports profile 2017-03-09-profi
 ## PARAMETERS
 
 ### -Module
-The AzureRM module to retreive the version for.
+The AzureRM module to retrieve the version for.
 
 ```yaml
 Type: String

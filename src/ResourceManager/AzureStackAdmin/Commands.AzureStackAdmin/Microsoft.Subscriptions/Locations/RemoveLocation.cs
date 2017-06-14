@@ -16,41 +16,44 @@ namespace Microsoft.AzureStack.Commands
 {
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.Azure;
+    using Microsoft.WindowsAzure;
     using Microsoft.AzureStack.Management;
 
     /// <summary>
-    /// Gallery Item Cmdlet
+    /// Remove managed location cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.GalleryItem, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.Location, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
-    [Alias("Remove-AzureRmGalleryItem")]
-    public class RemoveGalleryItem : AdminApiCmdlet
+    [Alias("Remove-AzureRmManagedLocation")]
+    public class RemoveLocation : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateLength(1, 128)]
         [ValidateNotNull]
+        [ValidatePattern("^[0-9a-z]+$")]
         public string Name { get; set; }
 
         /// <summary>
-        /// Executes the API call(s) against Azure Resource Management API(s).
+        /// Removes the specified location
         /// </summary>
         protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmGalleryItem", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmManagedLocation", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias Remove-AzureRmGalleryItem will be deprecated in a future release. Please use the cmdlet name Remove-AzsGalleryItem instead");
+                this.WriteWarning("Alias Remove-AzureRmManagedLocation will be deprecated in a future release. Please use the cmdlet name Remove-AzsLocation instead");
             }
 
             if (ShouldProcess(this.Name, VerbsCommon.Remove))
             {
-                this.ApiVersion = GalleryAdminApiVersion;
                 using (var client = this.GetAzureStackClient())
                 {
-                    var result = client.GalleryItem.Delete(this.Name);
+                    this.WriteVerbose(Resources.RemovingLocation.FormatArgs(this.Name));
+                    var result = client.ManagedLocations.Delete(this.Name);
                     WriteObject(result);
                 }
             }

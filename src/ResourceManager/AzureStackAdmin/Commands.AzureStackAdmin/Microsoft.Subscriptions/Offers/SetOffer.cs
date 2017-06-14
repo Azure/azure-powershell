@@ -23,8 +23,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Set Offer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.Offer)]
+    [Cmdlet(VerbsCommon.Set, Nouns.Offer, SupportsShouldProcess = true)]
     [OutputType(typeof(AdminOfferModel))]
+    [Alias("Set-AzureRmOffer")]
     public class SetOffer : AdminApiCmdlet
     {
         /// <summary>
@@ -40,25 +41,28 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
-
-        /// <summary>
-        /// Gets or sets the subscription id.
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmOffer", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.UpdatingOffer.FormatArgs(this.Offer.Name, this.ResourceGroup));
-                var parameters = new ManagedOfferCreateOrUpdateParameters(this.Offer);
-                return client.ManagedOffers.CreateOrUpdate(this.ResourceGroup, parameters).Offer;
+                this.WriteWarning("Alias Set-AzureRmOffer will be deprecated in a future release. Please use the cmdlet name Set-AzsOffer instead");
+            }
+
+            if (ShouldProcess(this.Offer.Name, VerbsCommon.Set))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.UpdatingOffer.FormatArgs(this.Offer.Name, this.ResourceGroupName));
+                    var parameters = new ManagedOfferCreateOrUpdateParameters(this.Offer);
+                    var result = client.ManagedOffers.CreateOrUpdate(this.ResourceGroupName, parameters).Offer;
+                    WriteObject(result);
+                }
             }
         }
     }

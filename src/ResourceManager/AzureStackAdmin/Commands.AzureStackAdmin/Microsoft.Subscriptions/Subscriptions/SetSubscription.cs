@@ -21,32 +21,39 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Set Managed Subscription Cmdlet
+    /// Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.ManagedSubscription)]
+    [Cmdlet(VerbsCommon.Set, Nouns.Subscription, SupportsShouldProcess = true)]
     [OutputType(typeof(SubscriptionDefinition))]
-    public class SetManagedSubscription : AdminApiCmdlet
+    [Alias("Set-AzureRmTenantSubscription")]
+    public class SetSubscription : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the subscription to be updated.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        public AdminSubscriptionDefinition Subscription { get; set; }
+        public SubscriptionDefinition Subscription { get; set; }
 
         /// <summary>
-        /// Performs the API operation(s) against managed subscriptions.
+        /// Performs the API operation(s) against subscriptions as tenant.
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(
-                    Resources.UpdatingManagedSubscription.FormatArgs(
-                        this.Subscription.SubscriptionId));
+                this.WriteWarning("Alias Set-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name Set-AzsSubscription instead");
+            }
 
-                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.Subscription);
-                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
+            if (ShouldProcess(this.Subscription.SubscriptionId, VerbsCommon.Set))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.UpdatingSubscription.FormatArgs(this.Subscription.SubscriptionId));
+                    var parameters = new SubscriptionCreateOrUpdateParameters(this.Subscription);
+                    var result = client.Subscriptions.CreateOrUpdate(parameters).Subscription;
+                    WriteObject(result);
+                }
             }
         }
     }

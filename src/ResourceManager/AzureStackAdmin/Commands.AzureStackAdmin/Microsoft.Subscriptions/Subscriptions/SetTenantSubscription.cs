@@ -21,10 +21,11 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Subscription Cmdlet
+    /// Set Managed Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.TenantSubscription)]
+    [Cmdlet(VerbsCommon.Set, Nouns.TenantSubscription, SupportsShouldProcess = true)]
     [OutputType(typeof(SubscriptionDefinition))]
+    [Alias("Set-AzureRmManagedSubscription")]
     public class SetTenantSubscription : AdminApiCmdlet
     {
         /// <summary>
@@ -32,18 +33,29 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        public SubscriptionDefinition Subscription { get; set; }
+        public AdminSubscriptionDefinition Subscription { get; set; }
 
         /// <summary>
-        /// Performs the API operation(s) against tenant subscriptions.
+        /// Performs the API operation(s) against subscriptions as administrator.
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.UpdatingSubscription.FormatArgs(this.Subscription.SubscriptionId));
-                var parameters = new SubscriptionCreateOrUpdateParameters(this.Subscription);
-                return client.Subscriptions.CreateOrUpdate(parameters).Subscription;
+                this.WriteWarning("Alias Set-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Set-AzsTenantSubscription instead");
+            }
+
+            if (ShouldProcess(this.Subscription.SubscriptionId, VerbsCommon.Set))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(
+                        Resources.UpdatingManagedSubscription.FormatArgs(
+                            this.Subscription.SubscriptionId));
+
+                    var parameters = new SubscriptionCreateOrUpdateAsAdminParameters(this.Subscription);
+                    var result = client.TenantSubscriptions.CreateOrUpdate(parameters).Subscription;
+                }
             }
         }
     }

@@ -313,16 +313,28 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             DeploymentExtended deployment;
 
+            // Poll deployment state and deployment operations.
+            // In phase one, poll every 5 seconds. Phase one takes 400 seconds. In phase two, poll every 60 seconds. 
+            const int counterUnit = 1000;
+            int step = 5;
+            int phaseOne = 400;
+
             do
             {
+                Thread.Sleep(step * counterUnit);
+
+                if (phaseOne > 0)
+                {
+                    phaseOne -= step;
+                }
+
                 if (job != null)
                 {
                     job(resourceGroup, deploymentName, basicDeployment);
                 }
-
+                 
                 deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName).Deployment;
-                Thread.Sleep(2000);
-
+                step = phaseOne > 0 ? 5 : 60;
             } while (!status.Any(s => s.Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
             return deployment;

@@ -17,31 +17,22 @@ namespace Microsoft.AzureStack.Commands
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// New Managed Subscription Cmdlet
+    /// New Tenant Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.TenantSubscription, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, Nouns.Subscription, SupportsShouldProcess = true)]
     [OutputType(typeof(SubscriptionDefinition))]
-    [Alias("New-AzureRmManagedSubscription")]
-    public class NewTenantSubscription : AdminApiCmdlet
+    [Alias("New-AzureRmTenantSubscription")]
+    public class NewSubscription : AdminApiCmdlet
     {
-        /// <summary>
-        /// Gets or sets the subscription owner.
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
-        [ValidateNotNull]
-        public string Owner { get; set; }
-
         /// <summary>
         /// Gets or sets the identifier of the offer.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateLength(1, 512)]
+        [ValidateLength(1, 128)]
         [ValidateNotNull]
         public string OfferId { get; set; }
 
@@ -61,19 +52,12 @@ namespace Microsoft.AzureStack.Commands
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the display name.
-        /// </summary>
-        [Parameter]
-        [ValidateNotNull]
-        public string DelegatedProviderSubscriptionId { get; set; }
-
-        /// <summary>
         /// This queue is used by the tests to assign fixed SubscritionIds
         /// every time the test runs
         /// </summary>
         public static Queue<Guid> SubscriptionIds { get; set; }
 
-        static NewTenantSubscription()
+        static NewSubscription()
         {
             SubscriptionIds = new Queue<Guid>();
         }
@@ -81,36 +65,34 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets the subscription definition.
         /// </summary>
-        protected AdminSubscriptionDefinition GetSubscriptionDefinition()
+        protected SubscriptionDefinition GetSubscriptionDefinition()
         {
             if (NewTenantSubscription.SubscriptionIds.Count != 0)
             {
-                this.SubscriptionId = NewTenantSubscription.SubscriptionIds.Dequeue().ToString();
+                this.SubscriptionId = NewSubscription.SubscriptionIds.Dequeue().ToString();
             }
             else if (string.IsNullOrEmpty(this.SubscriptionId))
             {
                 this.SubscriptionId = Guid.NewGuid().ToString();
             }
 
-            return new AdminSubscriptionDefinition()
-                   {
-                       SubscriptionId = this.SubscriptionId,
-                       DelegatedProviderSubscriptionId = this.DelegatedProviderSubscriptionId ?? this.DefaultContext.Subscription.Id.ToString(),
-                       DisplayName = this.DisplayName,
-                       OfferId = this.OfferId,
-                       Owner = this.Owner,
-                       State = SubscriptionState.Enabled
-                   };
+            return new SubscriptionDefinition()
+            {
+                SubscriptionId = this.SubscriptionId,
+                DisplayName = this.DisplayName,
+                OfferId = this.OfferId,
+                State = SubscriptionState.Enabled,
+            };
         }
 
         /// <summary>
-        /// Performs the API operation(s) against subscriptions as administrator.
+        /// Performs the API operation(s) against subscriptions as tenant.
         /// </summary>
         protected override void ExecuteCore()
         {
-            if (this.MyInvocation.InvocationName.Equals("New-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteWarning("Alias New-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsTenantSubscription instead");
+                this.WriteWarning("Alias New-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name New-AzsSubscription instead");
             }
 
             if (ShouldProcess(this.SubscriptionId, VerbsCommon.New))
@@ -118,11 +100,12 @@ namespace Microsoft.AzureStack.Commands
                 using (var client = this.GetAzureStackClient())
                 {
                     this.WriteVerbose(Resources.CreatingNewSubscription.FormatArgs(this.OfferId, this.DisplayName));
-                    var parameters = new SubscriptionCreateOrUpdateAsAdminParameters(this.GetSubscriptionDefinition());
-                    var result = client.TenantSubscriptions.CreateOrUpdate(parameters).Subscription;
+                    var parameters = new SubscriptionCreateOrUpdateParameters(this.GetSubscriptionDefinition());
+                    var result = client.Subscriptions.CreateOrUpdate(parameters).Subscription;
                     WriteObject(result);
                 }
             }
         }
+
     }
 }

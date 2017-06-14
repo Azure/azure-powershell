@@ -14,44 +14,52 @@
 
 namespace Microsoft.AzureStack.Commands
 {
-    using System;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Remove managed location cmdlet
+    /// Get Offer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.Location)]
-    [OutputType(typeof(Location))]
-    public class GetManagedLocation : AdminApiCmdlet
+    [Cmdlet(VerbsCommon.Get, Nouns.ManagedOffer)]
+    [OutputType(typeof(AdminOfferModel))]
+    public class GetManagedOffer : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the Offer name used in the Admin get flow.
         /// </summary>
-        [Parameter]
         [ValidateLength(1, 128)]
         [ValidateNotNull]
-        [ValidatePattern("^[0-9a-z]+$")]
+        [Parameter]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets the managed location 
+        /// Gets or sets the resource group.
         /// </summary>
-        protected override object ExecuteCore()
+        [Parameter(Mandatory = true)]
+        [ValidateLength(1, 90)]
+        [ValidateNotNull]
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Executes the API call(s) against Azure Resource Management API(s).
+        /// </summary>
+        protected override void ExecuteCore()
         {
             using (var client = this.GetAzureStackClient())
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
-                    this.WriteVerbose(Resources.ListingManagedLocations);
-                    return client.ManagedLocations.List().Locations;
+                    this.WriteVerbose(Resources.ListingManagedOffers.FormatArgs(this.ResourceGroupName));
+                    var result = client.ManagedOffers.List(this.ResourceGroupName, includeDetails: true).Offers;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
-                    this.WriteVerbose(Resources.GettingManagedLocation.FormatArgs(this.Name));
-                    return client.ManagedLocations.Get(this.Name).Location;
+                    this.WriteVerbose(Resources.GettingManagedOffer.FormatArgs(this.Name, this.ResourceGroupName));
+                    var result = client.ManagedOffers.Get(this.ResourceGroupName, this.Name).Offer;
+                    WriteObject(result);
                 }
             }
         }

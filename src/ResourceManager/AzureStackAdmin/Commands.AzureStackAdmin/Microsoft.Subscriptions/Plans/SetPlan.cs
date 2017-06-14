@@ -24,8 +24,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Set Plan cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.Plan)]
+    [Cmdlet(VerbsCommon.Set, Nouns.Plan, SupportsShouldProcess = true)]
     [OutputType(typeof(AdminPlanModel))]
+    [Alias("Set-AzureRmPlan")]
     public class SetPlan : AdminApiCmdlet
     {
         /// <summary>
@@ -40,19 +41,29 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
-        [ValidateLength(1,90)]
-        public string ResourceGroup { get; set; }
+        [ValidateLength(1, 90)]
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmPlan", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.UpdatingPlan.FormatArgs(this.Plan.Name, this.ResourceGroup));
-                var parameters = new ManagedPlanCreateOrUpdateParameters(this.Plan);
-                return client.ManagedPlans.CreateOrUpdate(this.ResourceGroup, parameters).Plan;
+                this.WriteWarning("Alias Set-AzureRmPlan will be deprecated in a future release. Please use the cmdlet name Set-AzsPlan instead");
+            }
+
+            if (ShouldProcess(this.Plan.Name, VerbsCommon.Set))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.UpdatingPlan.FormatArgs(this.Plan.Name, this.ResourceGroupName));
+                    var parameters = new ManagedPlanCreateOrUpdateParameters(this.Plan);
+                    var result = client.ManagedPlans.CreateOrUpdate(this.ResourceGroupName, parameters).Plan;
+                    WriteObject(result);
+                }
             }
         }
     }
