@@ -674,8 +674,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]
@@ -700,8 +700,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]
@@ -778,8 +778,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericTypeArgument))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericTypeArgument));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]
@@ -804,8 +804,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.DifferentGenericTypeArgumentSize));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedGenericType))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedGenericType));
         }
 
         [Fact]
@@ -857,54 +857,6 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList
                 .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum))
                             .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedValidateRangeMaximum));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CheckDifferentPublicKeyToken()
-        {
-            TypeMetadata unsignedType = new TypeMetadata()
-            {
-                AssemblyQualifiedName = "StaticAnalysis.Test.BreakingChangeAnalyzerTests, StaticAnalysis.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
-            };
-            TypeMetadata signedType = new TypeMetadata()
-            {
-                AssemblyQualifiedName = "StaticAnalysis.Test.BreakingChangeAnalyzerTests, StaticAnalysis.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=h1ccnwzjxvldu787"
-            };
-
-            OutputMetadata unsignedOutputType = new OutputMetadata()
-            {
-                Type = unsignedType
-            };
-            OutputMetadata signedOutputType = new OutputMetadata()
-            {
-                Type = signedType
-            };
-
-            CmdletBreakingChangeMetadata unsignedCmdlet = new CmdletBreakingChangeMetadata()
-            {
-                VerbName = "Check",
-                NounName = "DifferentPublicKeyToken",
-                DefaultParameterSetName = "DefaultParameterSetName"
-            };
-            CmdletBreakingChangeMetadata signedCmdlet = new CmdletBreakingChangeMetadata()
-            {
-                VerbName = "Check",
-                NounName = "DifferentPublicKeyToken",
-                DefaultParameterSetName = "DefaultParameterSetName"
-            };
-
-            unsignedCmdlet.OutputTypes.Add(unsignedOutputType);
-            signedCmdlet.OutputTypes.Add(signedOutputType);
-            
-            var issueLogger = analysisLogger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
-
-            CmdletMetadataHelper helper = new CmdletMetadataHelper();
-            helper.CompareCmdletMetadata(new List<CmdletBreakingChangeMetadata> { unsignedCmdlet }, 
-                                         new List<CmdletBreakingChangeMetadata> { signedCmdlet }, 
-                                         issueLogger);
-
-            Assert.Equal(0, issueLogger.Records.Count);
         }
     }
 }

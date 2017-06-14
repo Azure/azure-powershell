@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database to remove.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
