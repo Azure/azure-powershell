@@ -81,7 +81,7 @@ CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer',
                'New-AzureRmAnalysisServicesServer',
                'Add-AzureAnalysisServicesAccount',
                'Restart-AzureAnalysisServicesInstance',
-               'Get-AzureAnalysisServicesInstanceLog'
+               'Fetch-AzureAnalysisServicesInstanceLog'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -89,7 +89,7 @@ CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer',
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Resume-AzureAs', 'Suspend-AzureAs', 'Get-AzureAs', 'Remove-AzureAs', 
                'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs', 'Login-AzureAsAccount',
-               'Restart-AzureAsInstance', 'Get-AzureAsInstanceLog'
+               'Restart-AzureAsInstance', 'Fetch-AzureAsInstanceLog'
 # DSC resources to export from this module
 # DscResourcesToExport = @()
 
