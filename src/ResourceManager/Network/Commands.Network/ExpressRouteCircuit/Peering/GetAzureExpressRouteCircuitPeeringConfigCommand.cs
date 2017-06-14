@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.ExpressRouteCircuit.Peerings.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
+                
                 WriteObject(peering);
             }
             else
