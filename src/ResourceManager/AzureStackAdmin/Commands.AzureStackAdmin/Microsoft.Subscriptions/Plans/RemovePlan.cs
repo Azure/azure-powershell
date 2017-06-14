@@ -23,8 +23,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Remove Plan cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.Plan)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.Plan, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRmPlan")]
     public class RemovePlan : AdminApiCmdlet
     {
         /// <summary>
@@ -39,19 +40,29 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource group.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmPlan", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.RemovingManagedPlan.FormatArgs(this.Name, this.ResourceGroup));
-                return client.ManagedPlans.Delete(this.ResourceGroup, this.Name);
+                this.WriteWarning("Alias Remove-AzureRmPlan will be deprecated in a future release. Please use the cmdlet name Remove-AzsPlan instead");
+            }
+
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.RemovingPlan.FormatArgs(this.Name, this.ResourceGroupName));
+                    var result = client.ManagedPlans.Delete(this.ResourceGroupName, this.Name);
+                    WriteObject(result);
+                }
             }
         }
     }

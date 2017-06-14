@@ -22,11 +22,12 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management;
 
     /// <summary>
-    /// Remove Resource Provider Registration Cmdlet
+    /// Remove Resource Provider Manifest Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderRegistration)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.ResourceProviderManifest, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
-    public class RemoveResourceProviderRegistration : AdminApiCmdlet
+    [Alias("Remove-AzureRmResourceProviderRegistration")]
+    public class RemoveResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the resource provider registration name.
@@ -40,18 +41,27 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateNotNull]
-        [ValidateLength(1,90)]
-        public string ResourceGroup { get; set; }
+        [ValidateLength(1, 90)]
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmResourceProviderRegistration", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.RemovingResourceProviderRegistration.FormatArgs(this.Name));
-                return client.ProviderRegistrations.Delete(this.ResourceGroup, this.Name);
+                this.WriteWarning("Alias Remove-AzureRmResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Remove-AzsResourceProviderManifest instead");
+            }
+
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.RemovingResourceProviderRegistration.FormatArgs(this.Name));
+                    var result = client.ProviderRegistrations.Delete(this.ResourceGroupName, this.Name);
+                }
             }
         }
     }

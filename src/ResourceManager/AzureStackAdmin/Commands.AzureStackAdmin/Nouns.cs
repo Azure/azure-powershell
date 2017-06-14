@@ -22,7 +22,7 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// The prefix for cmdlet names.
         /// </summary>
-        private const string Prefix = "AzureRM";
+        private const string Prefix = "Azs";
 
         /// <summary>
         /// The noun for operations on Gallery Items.
@@ -30,19 +30,19 @@ namespace Microsoft.AzureStack.Commands
         public const string GalleryItem = Prefix + "GalleryItem";
 
         /// <summary>
-        /// The noun for operations on Resource Provider Registration.
+        /// The noun for operations on Resource Provider Manifest.
         /// </summary>
-        public const string ResourceProviderRegistration = Prefix + "ResourceProviderRegistration";
+        public const string ResourceProviderManifest = Prefix + "ResourceProviderManifest";
 
         /// <summary>
         /// The noun for operations on Tenant Subscriptions.
         /// </summary>
-        public const string TenantSubscription = Prefix + "TenantSubscription";
+        public const string Subscription = Prefix + "Subscription";
 
         /// <summary>
         /// The noun for operations on Subscriptions as an administrator.
         /// </summary>
-        public const string ManagedSubscription = Prefix + "ManagedSubscription";
+        public const string TenantSubscription = Prefix + "TenantSubscription";
 
         /// <summary>
         /// The noun for operations on Offers.
@@ -50,14 +50,19 @@ namespace Microsoft.AzureStack.Commands
         public const string Offer = Prefix + "Offer";
 
         /// <summary>
+        /// The noun for admin operations on Offers.
+        /// </summary>
+        public const string ManagedOffer = Prefix + "ManagedOffer";
+
+        /// <summary>
         /// The noun for operations on Plans.
         /// </summary>
         public const string Plan = Prefix + "Plan";
 
         /// <summary>
-        /// The noun for operations on Locations.
+        /// The noun for  admin operations on Locations.
         /// </summary>
-        public const string Location = Prefix + "ManagedLocation";
+        public const string Location = Prefix + "Location";
 
         /// <summary>
         /// The noun for operations on Usage Connection.

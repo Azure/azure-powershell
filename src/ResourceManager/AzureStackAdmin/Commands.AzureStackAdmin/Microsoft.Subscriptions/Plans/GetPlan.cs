@@ -23,71 +23,63 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Get Plan cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.Plan, DefaultParameterSetName = "TenantList")]
+    [Cmdlet(VerbsCommon.Get, Nouns.Plan)]
     [OutputType(typeof(AdminPlanModel))]
-    ////[OutputType(typeof(PlanDefinition))]
+    [Alias("Get-AzureRmPlan")]
     public class GetPlan : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the Offer name.
+        /// Gets or sets the Plan name.
         /// </summary>
-        [Parameter(ParameterSetName = "TenantGet", Mandatory = true)]
-        [Parameter(ParameterSetName = "Admin")]
+        [Parameter]
         [ValidateNotNull]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group.
         /// </summary>
-        [Parameter(ParameterSetName = "Admin", Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Parameter(Mandatory = true)]
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets a switch indicating whether to return managed plans.
+        /// Plan is exposed only to the service admin now. This parameter will be deprecated
         /// </summary>
-        [Parameter(ParameterSetName = "Admin", Mandatory = true)]
+        [Parameter]
         public SwitchParameter Managed { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmPlan", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRmPlan will be deprecated in a future release. Please use the cmdlet name Get-AzsPlan instead");
+            }
+
             if (this.Managed.IsPresent)
             {
-                using (var client = this.GetAzureStackClient())
-                {
-                    if (string.IsNullOrEmpty(this.Name))
-                    {
-                        this.WriteVerbose(Resources.ListingManagedPlans.FormatArgs(this.ResourceGroup));
-                        return client.ManagedPlans.List(this.ResourceGroup, includeDetails: true).Plans;
-                    }
-                    else
-                    {
-                        this.WriteVerbose(Resources.GettingManagedPlan.FormatArgs(this.Name, this.ResourceGroup));
-                        return client.ManagedPlans.Get(this.ResourceGroup, this.Name).Plan;
-                    }
-                }
+                this.WriteWarning("The parameter Managed will be deprecated in a future release. This parameter is not being used and there is no need to specify");
             }
-            else
-            {
-                throw new PSNotSupportedException("This API is not supported at this time. Please use the -Managed switch to get managed plans.");
 
-                ////using (var client = this.GetAzureStackClient())
-                ////{
-                ////    if (string.IsNullOrEmpty(this.Name))
-                ////    {
-                ////        this.WriteVerbose(Resources.ListingPlans);
-                ////        return client.Plans.List(includeDetails: true).Plans;
-                ////    }
-                ////    else
-                ////    {
-                ////        this.WriteVerbose(Resources.GettingPlan.FormatArgs(this.Name));
-                ////        return client.Plans.Get(this.Name).Plan;
-                ////    }
-                ////}
+            using (var client = this.GetAzureStackClient())
+            {
+                if (string.IsNullOrEmpty(this.Name))
+                {
+                    this.WriteVerbose(Resources.ListingPlans.FormatArgs(this.ResourceGroupName));
+                    var result = client.ManagedPlans.List(this.ResourceGroupName, includeDetails: true).Plans;
+                    WriteObject(result, enumerateCollection: true);
+                }
+                else
+                {
+                    this.WriteVerbose(Resources.GettingPlan.FormatArgs(this.Name, this.ResourceGroupName));
+                    var result = client.ManagedPlans.Get(this.ResourceGroupName, this.Name).Plan;
+                    WriteObject(result);
+                }
             }
         }
     }

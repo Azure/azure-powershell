@@ -25,9 +25,10 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// New managed location cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, Nouns.Location)]
+    [Cmdlet(VerbsCommon.New, Nouns.Location, SupportsShouldProcess = true)]
     [OutputType(typeof(Location))]
-    public class NewManagedLocation : AdminApiCmdlet
+    [Alias("New-AzureRmManagedLocation")]
+    public class NewLocation : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the name.
@@ -65,29 +66,39 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Creates a new location
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("New-AzureRmManagedLocation", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.CreatingNewManagedLocation.FormatArgs(this.Name));
-                var parameters = new ManagedLocationCreateOrUpdateParameters()
+                this.WriteWarning("Alias New-AzureRmManagedLocation will be deprecated in a future release. Please use the cmdlet name New-AzsLocation instead");
+            }
+
+            if (ShouldProcess(this.Name, VerbsCommon.New))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.CreatingNewLocation.FormatArgs(this.Name));
+                    var parameters = new ManagedLocationCreateOrUpdateParameters()
                     {
                         Location = new Location()
-                            {
-                                DisplayName = this.DisplayName,
-                                Latitude = this.Latitude.ToString(CultureInfo.InvariantCulture),
-                                Longitude = this.Longitude.ToString(CultureInfo.InvariantCulture),
-                                Name = this.Name
-                            }
+                        {
+                            DisplayName = this.DisplayName,
+                            Latitude = this.Latitude.ToString(CultureInfo.InvariantCulture),
+                            Longitude = this.Longitude.ToString(CultureInfo.InvariantCulture),
+                            Name = this.Name
+                        }
                     };
 
-                if (client.ManagedLocations.List()
+                    if (client.ManagedLocations.List()
                         .Locations.Any(location => location.Name.EqualsInsensitively(parameters.Location.Name)))
-                {
-                    throw new PSInvalidOperationException(Resources.ManagedLocationAlreadyExists.FormatArgs(parameters.Location.Name));
-                }
+                    {
+                        throw new PSInvalidOperationException(
+                            Resources.LocationAlreadyExists.FormatArgs(parameters.Location.Name));
+                    }
 
-                return client.ManagedLocations.CreateOrUpdate(parameters).Location;
+                    var result = client.ManagedLocations.CreateOrUpdate(parameters).Location;
+                    WriteObject(result);
+                }
             }
         }
     }

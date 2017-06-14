@@ -21,14 +21,14 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
-    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
-    /// Add Resource Provider Registration Cmdlet
+    /// Add Resource Provider Manifest Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, Nouns.ResourceProviderRegistration, DefaultParameterSetName = "MultipleExtensions")]
+    [Cmdlet(VerbsCommon.Add, Nouns.ResourceProviderManifest, DefaultParameterSetName = "MultipleExtensions", SupportsShouldProcess = true)]
     [OutputType(typeof(ProviderRegistrationModel))]
-    public class AddResourceProviderRegistration : AdminApiCmdlet
+    [Alias("Add-AzureRmResourceProviderRegistration")]
+    public class AddResourceProviderManifest : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the namespace of the resource provider.
@@ -52,7 +52,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         // TODO - use API to get ARM location. BUG 8349643
         /// <summary>
@@ -114,79 +115,105 @@ namespace Microsoft.AzureStack.Commands
         public string ResourceTypes { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource provider registration display name.
+        /// </summary>
+        [ValidateNotNullOrEmpty]
+        [Parameter]
+        public string Signature { get; set; }
+
+        /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (ShouldProcess(this.Name, VerbsCommon.Add))
             {
-                ProviderRegistrationCreateOrUpdateParameters registrationParams = null;
-                // Todo: Remove the parameter sets in the next release
-                if( this.ParameterSetName.Equals("SingleExtension", StringComparison.OrdinalIgnoreCase) )
+                using (var client = this.GetAzureStackClient())
                 {
-                    WriteWarning("ExtensionName and ExtensionUri parameters will be deprecated in a future release, Instead please use Extensions parameter to pass it as a json");
-                    registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
+                    if (this.MyInvocation.InvocationName.Equals("Add-AzureRmResourceProviderRegistration",
+                        StringComparison.OrdinalIgnoreCase))
                     {
-                        ProviderRegistration = new ProviderRegistrationModel()
-                        {
-                            Name = this.Name,
-                            Location = this.ArmLocation,
-                            Properties = new ManifestPropertiesDefinition()
-                            {
-                                DisplayName = this.DisplayName,
-                                Namespace = this.Namespace,
-                                RoutingResourceManagerType = this.ResourceManagerType,
-                                Enabled = true,
-                                ProviderLocation = this.ProviderLocation,
-                                // Todo: Remove this HACK, hardcoded versions to have backward compatibility 
-                                ExtensionCollection = new ExtensionCollectionDefinition()
-                                                      {
-                                                          Version = "0.1.0.0",
-                                                          Extensions = new ExtensionDefinition[]
-                                                                       {
-                                                                           new ExtensionDefinition()
-                                                                           {
-                                                                               Name = this.ExtensionName,
-                                                                               Uri = (this.ExtensionUri == null) ? null : this.ExtensionUri.AbsoluteUri
-                                                                           }
-                                                                       }
-                                                      },
-                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
-                            }
-                        }
-                    };
-                }
-                else
-                {
-                    registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
+                        this.WriteWarning(
+                            "Alias Add-AzureRmResourceProviderRegistration will be deprecated in a future release. Please use the cmdlet Add-AzsResourceProviderManifest instead");
+                    }
+
+                    ProviderRegistrationCreateOrUpdateParameters registrationParams = null;
+                    // Todo: Remove the parameter sets in the next major release
+                    if (this.ParameterSetName.Equals("SingleExtension", StringComparison.OrdinalIgnoreCase))
                     {
-                        ProviderRegistration = new ProviderRegistrationModel()
+                        WriteWarning(
+                            "ExtensionName and ExtensionUri parameters will be deprecated in a future release, Use the Extensions parameter to specify the extesnions registration as a json string");
+                        registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
                         {
-                            Name = this.Name,
-                            Location = this.ArmLocation,
-                            Properties = new ManifestPropertiesDefinition()
+                            ProviderRegistration = new ProviderRegistrationModel()
                             {
-                                DisplayName = this.DisplayName,
-                                Namespace = this.Namespace,
-                                // Note: The default value is set to Admin ARM to have backward compatibility with existing deployment scripts
-                                // The default value will get changed to User ARM in future.
-                                RoutingResourceManagerType = this.ResourceManagerType,
-                                Enabled = true,
-                                ProviderLocation = this.ProviderLocation,
-                                ExtensionCollection = (this.Extensions == null) ? null : this.Extensions.FromJson<ExtensionCollectionDefinition>(),
-                                ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
+                                Name = this.Name,
+                                Location = this.ArmLocation,
+                                Properties = new ManifestPropertiesDefinition()
+                                {
+                                    DisplayName = this.DisplayName,
+                                    Namespace = this.Namespace,
+                                    RoutingResourceManagerType = this.ResourceManagerType,
+                                    Enabled = true,
+                                    ProviderLocation = this.ProviderLocation,
+                                    // Todo: Remove this HACK, hardcoded versions to have backward compatibility 
+                                    ExtensionCollection = new ExtensionCollectionDefinition()
+                                    {
+                                        Version = "0.1.0.0",
+                                        Extensions = new ExtensionDefinition[]
+                                        {
+                                            new ExtensionDefinition()
+                                            {
+                                                Name = this.ExtensionName,
+                                                Uri = (this.ExtensionUri == null) ? null : this.ExtensionUri.AbsoluteUri
+                                            }
+                                        }
+                                    },
+                                    ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>(),
+                                    Signature = this.Signature
+                                }
                             }
-                        }
-                    };
+                        };
+                    }
+                    else
+                    {
+                        registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
+                        {
+                            ProviderRegistration = new ProviderRegistrationModel()
+                            {
+                                Name = this.Name,
+                                Location = this.ArmLocation,
+                                Properties = new ManifestPropertiesDefinition()
+                                {
+                                    DisplayName = this.DisplayName,
+                                    Namespace = this.Namespace,
+                                    // Note: The default value is set to Admin ARM to have backward compatibility with existing deployment scripts
+                                    // The default value will get changed to User ARM in future.
+                                    RoutingResourceManagerType = this.ResourceManagerType,
+                                    Enabled = true,
+                                    ProviderLocation = this.ProviderLocation,
+                                    ExtensionCollection =
+                                        (this.Extensions == null)
+                                            ? null
+                                            : this.Extensions.FromJson<ExtensionCollectionDefinition>(),
+                                    ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>(),
+                                    Signature = this.Signature
+                                }
+                            }
+                        };
+                    }
+
+                    this.WriteVerbose(
+                        Resources.AddingResourceProviderManifest.FormatArgs(
+                            registrationParams.ProviderRegistration.Properties.DisplayName));
+
+                    this.ValidatePrerequisites(client, registrationParams);
+
+                    var result = client.ProviderRegistrations
+                        .CreateOrUpdate(this.ResourceGroupName, registrationParams)
+                        .ProviderRegistration;
+                    WriteObject(result);
                 }
-                
-                this.WriteVerbose(Resources.AddingResourceProviderRegistration.FormatArgs(registrationParams.ProviderRegistration.Properties.DisplayName));
-
-                this.ValidatePrerequisites(client, registrationParams);
-
-                return client.ProviderRegistrations
-                    .CreateOrUpdate(this.ResourceGroup, registrationParams)
-                    .ProviderRegistration;
             }
         }
 
@@ -200,9 +227,9 @@ namespace Microsoft.AzureStack.Commands
             ArgumentValidator.ValidateNotNull("client", client);
             ArgumentValidator.ValidateNotNull("parameters", parameters);
 
-            if (!client.ResourceGroups.List().ResourceGroups.Any(r => string.Equals(r.Name, this.ResourceGroup, StringComparison.OrdinalIgnoreCase)))
+            if (!client.ResourceGroups.List().ResourceGroups.Any(r => string.Equals(r.Name, this.ResourceGroupName, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSInvalidOperationException(Resources.ResourceGroupDoesNotExist.FormatArgs(this.ResourceGroup));
+                throw new PSInvalidOperationException(Resources.ResourceGroupDoesNotExist.FormatArgs(this.ResourceGroupName));
             }
         }
     }

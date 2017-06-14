@@ -23,9 +23,10 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Set managed location cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.Location)]
+    [Cmdlet(VerbsCommon.Set, Nouns.Location, SupportsShouldProcess = true)]
     [OutputType(typeof(Location))]
-    public class SetManagedLocation : AdminApiCmdlet
+    [Alias("Set-AzureRmManagedLocation")]
+    public class SetLocation : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the managed location.
@@ -37,13 +38,22 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Updates the managed location with new values
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Set-AzureRmManagedLocation", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.UpdatingManagedLocation.FormatArgs(this.Location.Name));
-                var parameters = new ManagedLocationCreateOrUpdateParameters(this.Location);
-                return client.ManagedLocations.CreateOrUpdate(parameters).Location;
+                this.WriteWarning("Alias Set-AzureRmManagedLocation will be deprecated in a future release. Please use the cmdlet name Set-AzsLocation instead");
+            }
+
+            if (ShouldProcess(this.Location.Name, VerbsCommon.Set))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.UpdatingLocation.FormatArgs(this.Location.Name));
+                    var parameters = new ManagedLocationCreateOrUpdateParameters(this.Location);
+                    var result = client.ManagedLocations.CreateOrUpdate(parameters).Location;
+                    WriteObject(result);
+                }
             }
         }
     }

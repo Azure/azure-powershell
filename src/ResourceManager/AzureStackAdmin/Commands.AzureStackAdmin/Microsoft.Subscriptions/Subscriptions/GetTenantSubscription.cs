@@ -25,29 +25,39 @@ namespace Microsoft.AzureStack.Commands
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.TenantSubscription)]
     [OutputType(typeof(SubscriptionDefinition))]
-    public class GetTenantSubscription : AdminApiCmdlet
+    [Alias("Get-AzureRmManagedSubscription")]
+    public class GetTenantSubscription : AdminApiCmdlet 
     {
         /// <summary>
         /// Gets or sets the subscription id.
         /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [Alias("TargetSubscriptionId")]
         public Guid SubscriptionId { get; set; } // Allow for empty GUID for list scenario
 
         /// <summary>
-        /// Performs the API operation(s) against tenant subscriptions.
+        /// Performs the API operation(s) against subscriptions as administrator.
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
+            if (this.MyInvocation.InvocationName.Equals("Get-AzureRmManagedSubscription", StringComparison.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("Alias Get-AzureRmManagedSubscription will be deprecated in a future release. Please use the cmdlet name Get-AzsTenantSubscription instead");
+            }
+
             using (var client = this.GetAzureStackClient())
             {
                 if (this.SubscriptionId == Guid.Empty)
                 {
-                    this.WriteVerbose(Resources.ListingSubscriptions);
-                    return client.Subscriptions.List(true).Subscriptions;
+                    this.WriteVerbose(Resources.ListingTenantSubscriptions);
+                    var result = client.TenantSubscriptions.List(includeDetails: true).Subscriptions;
+                    WriteObject(result, enumerateCollection: true);
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingSubscriptionByID.FormatArgs(this.SubscriptionId));
-                    return client.Subscriptions.Get(this.SubscriptionId.ToString()).Subscription;
+                    var result = client.TenantSubscriptions.Get(this.SubscriptionId.ToString()).Subscription;
+                    WriteObject(result);
                 }
             }
         }

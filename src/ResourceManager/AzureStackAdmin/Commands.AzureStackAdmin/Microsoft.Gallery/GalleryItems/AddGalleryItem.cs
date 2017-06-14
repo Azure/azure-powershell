@@ -15,8 +15,6 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Collections.Generic;
-    using System.IO;
     using System.Management.Automation;
     using Microsoft.Azure;
     using Microsoft.WindowsAzure.Commands.Common;
@@ -26,8 +24,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Gallery Item Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, Nouns.GalleryItem)]
+    [Cmdlet(VerbsCommon.Add, Nouns.GalleryItem, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Add-AzureRmGalleryItem")]
     public class AddGalleryItem : AdminApiCmdlet
     {
         /// <summary>
@@ -44,18 +43,30 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            this.ApiVersion = GalleryAdminApiVersion;
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Add-AzureRmGalleryItem", StringComparison.OrdinalIgnoreCase))
             {
-                var galleryItemUriPayload = new GalleryItemUriPayload()
-                {
-                        GalleryItemUri = this.GalleryItemUri
-                };
+                this.WriteWarning("Alias Add-AzureRmGalleryItem will be deprecated in a future release. Please use the cmdlet name Add-AzsGalleryItem instead");
+            }
 
-                var uploadParameters = new GalleryItemCreateOrUpdateParameters() { GalleryItemUri = galleryItemUriPayload };
-                return client.GalleryItem.CreateOrUpdate(uploadParameters);
+            if (ShouldProcess(this.GalleryItemUri, VerbsCommon.Add))
+            {
+                this.ApiVersion = GalleryAdminApiVersion;
+                using (var client = this.GetAzureStackClient())
+                {
+                    var galleryItemUriPayload = new GalleryItemUriPayload()
+                    {
+                        GalleryItemUri = this.GalleryItemUri
+                    };
+
+                    var uploadParameters = new GalleryItemCreateOrUpdateParameters()
+                    {
+                        GalleryItemUri = galleryItemUriPayload
+                    };
+                    var result = client.GalleryItem.CreateOrUpdate(uploadParameters);
+                    WriteObject(result);
+                }
             }
         }
     }

@@ -73,7 +73,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AzureStack.Management">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.0.10.7-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.0.10.8-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
     </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net40\Hyak.Common.dll</HintPath>
@@ -125,6 +125,7 @@
     <Compile Include="Microsoft.Commerce\UsageConnections\AddUsageConnection.cs" />
     <Compile Include="Microsoft.Commerce\UsageConnections\GetUsageConnection.cs" />
     <Compile Include="Microsoft.Commerce\UsageConnections\RemoveUsageConnection.cs" />
+    <Compile Include="Microsoft.Subscriptions\Offers\GetManagedOffer.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="ValidateAbsoluteUriAttribute.cs" />
     <None Include="..\AzureRM.AzureStackAdmin.psd1">
@@ -135,10 +136,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Compile Include="CommonPSConst.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\GetManagedLocation.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\NewManagedLocation.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\RemoveManagedLocation.cs" />
-    <Compile Include="Microsoft.Subscriptions\ManagedLocations\SetManagedLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\GetLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\NewLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\RemoveLocation.cs" />
+    <Compile Include="Microsoft.Subscriptions\Locations\SetLocation.cs" />
     <Compile Include="Microsoft.Gallery\GalleryItems\AddGalleryItem.cs" />
     <Compile Include="Microsoft.Gallery\GalleryItems\GetGalleryItem.cs" />
     <Compile Include="Microsoft.Gallery\GalleryItems\RemoveGalleryItem.cs" />
@@ -154,14 +155,14 @@
     <Compile Include="Microsoft.Subscriptions\ProviderRegistrations\GetResourceProviderRegistration.cs" />
     <Compile Include="Microsoft.Subscriptions\ProviderRegistrations\RemoveResourceProviderRegistration.cs" />
     <Compile Include="Microsoft.Subscriptions\ProviderRegistrations\SetResourceProviderRegistration.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\GetManagedSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\GetTenantSubscription.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\NewManagedSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\GetSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\NewTenantSubscription.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\RemoveManagedSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\NewSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\RemoveTenantSubscription.cs" />
-    <Compile Include="Microsoft.Subscriptions\Subscriptions\SetManagedSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\RemoveSubscription.cs" />
     <Compile Include="Microsoft.Subscriptions\Subscriptions\SetTenantSubscription.cs" />
+    <Compile Include="Microsoft.Subscriptions\Subscriptions\SetSubscription.cs" />
     <Compile Include="Nouns.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
