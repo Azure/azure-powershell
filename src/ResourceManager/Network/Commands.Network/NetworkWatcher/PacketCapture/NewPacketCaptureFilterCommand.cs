@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipeline = true,
              HelpMessage = "Procotol")]
+        [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
         [Parameter(
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Remote port")]
+        [ValidateNotNullOrEmpty]
         public string RemotePort { get; set; }
 
         public override void Execute()

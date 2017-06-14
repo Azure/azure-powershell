@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
     {
         const string TotalDeviceCountMetricName = "TotalDeviceCount";
         const string UnlimitedString = "Unlimited";
-        const string IotHubConnectionStringTemplate = "HostName={0};SharedAccessKeyName={1};SharedAccessKey={2}";
+        const string IotHubConnectionStringTemplate = "HostName={0};ShareAccessKeyName={1};SharedAccessKey={2}";
 
         public static T2 ConvertObject<T1, T2>(T1 iotHubObject)
         {
@@ -126,6 +126,26 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public static IotHubSkuInfo ToIotHubSku(PSIotHubSkuInfo psIotHubSkuInfo)
         {
             return ConvertObject<PSIotHubSkuInfo, IotHubSkuInfo>(psIotHubSkuInfo);
+        }
+
+        public static RoutingProperties ToRoutingProperties(PSRoutingProperties psRoutingProperties)
+        {
+            return ConvertObject<PSRoutingProperties, RoutingProperties>(psRoutingProperties);
+        }
+
+        public static List<RouteProperties> ToRouteProperties(List<PSRouteMetadata> psRouteProperties)
+        {
+            return ConvertObject<List<PSRouteMetadata>, List<RouteProperties>>(psRouteProperties);
+        }
+
+        public static RouteProperties ToRouteProperty(PSRouteMetadata psRouteProperty)
+        {
+            return ConvertObject<PSRouteMetadata, RouteProperties>(psRouteProperty);
+        }
+
+        public static FallbackRouteProperties ToFallbackRouteProperty(PSFallbackRouteMetadata psRouteProperty)
+        {
+            return ConvertObject<PSFallbackRouteMetadata, FallbackRouteProperties>(psRouteProperty);
         }
 
         public static IList<PSIotHubConnectionString> ToPSIotHubConnectionStrings(IEnumerable<SharedAccessSignatureAuthorizationRule> authorizationPolicies, string hostName)
