@@ -75,7 +75,7 @@ Specifies the name of the new server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: Named

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>The Azure Sql Elastic Pool Advisor object</returns>
         internal AzureSqlElasticPoolAdvisorModel GetElasticPoolAdvisor(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, bool expandRecommendedActions)
         {
-            var response = Communicator.Get(resourceGroupName, serverName, elasticPoolName, advisorName, expandRecommendedActions, Util.GenerateTracingId());
+            var response = Communicator.Get(resourceGroupName, serverName, elasticPoolName, advisorName, expandRecommendedActions);
             return new AzureSqlElasticPoolAdvisorModel(resourceGroupName, serverName, elasticPoolName, response);
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>A list of elastic pool advisor objects</returns>
         internal ICollection<AzureSqlElasticPoolAdvisorModel> ListElasticPoolAdvisors(string resourceGroupName, string serverName, string elasticPoolName, bool expandRecommendedActions)
         {
-            var response = Communicator.List(resourceGroupName, serverName, elasticPoolName, expandRecommendedActions, Util.GenerateTracingId());
+            var response = Communicator.List(resourceGroupName, serverName, elasticPoolName, expandRecommendedActions);
             return response.Select(adv => new AzureSqlElasticPoolAdvisorModel(resourceGroupName, serverName, elasticPoolName, adv)).ToList();
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>The upserted Azure Sql Elastic Pool Advisor</returns>
         internal AzureSqlElasticPoolAdvisorModel UpdateAutoExecuteStatus(AzureSqlElasticPoolAdvisorModel model)
         {
-            var response = Communicator.UpdateAutoExecuteStatus(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, model.AdvisorName, model.AutoExecuteStatus, Util.GenerateTracingId());
+            var response = Communicator.UpdateAutoExecuteStatus(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, model.AdvisorName, model.AutoExecuteStatus);
             return new AzureSqlElasticPoolAdvisorModel(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, response);
         }
     }
