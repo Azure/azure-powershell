@@ -23,7 +23,7 @@ Specify the name of a sync agent to see information for only that sync agent.
 
 ### Example 1: Get all instances of Azure SQL Sync Agent assigned to an Azure SQL Server
 ```
-PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -53,7 +53,7 @@ This command gets information about all the Azure SQL Sync Agents assigned to an
 
 ### Example 2: Get information about an Azure SQL Sync Agent
 ```
-PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01"
+PS C:\>Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01

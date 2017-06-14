@@ -27,7 +27,7 @@ The **Set-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Datab
 ```
 PS C:\> $credential = Get-Credential
 PS C:\> New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
--DatabaseCredential $credential -IntervalInSeconds 100 -Schema ".\schema.json"
+-DatabaseCredential $credential -IntervalInSeconds 100 -Schema ".\schema.json" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
