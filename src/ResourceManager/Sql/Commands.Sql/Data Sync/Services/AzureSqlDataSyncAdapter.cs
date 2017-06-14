@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Services
         {
             SyncMemberCreateOrUpdateProperties properties = new SyncMemberCreateOrUpdateProperties()
             {
-                SyncDirection = (SyncDirectionEnum)(model.SyncDirection != null ? Enum.Parse(typeof(SyncDirectionEnum), model.SyncDirection, true) : null),
+                SyncDirection = (SyncDirectionEnum?)(model.SyncDirection != null ? Enum.Parse(typeof(SyncDirectionEnum), model.SyncDirection, true) : null),
                 DatabaseType = (DatabaseTypeEnum)(model.MemberDatabaseType != null ? Enum.Parse(typeof(DatabaseTypeEnum), model.MemberDatabaseType, true) : null)
             };
             if (properties.DatabaseType == DatabaseTypeEnum.AzureSqlDatabase)

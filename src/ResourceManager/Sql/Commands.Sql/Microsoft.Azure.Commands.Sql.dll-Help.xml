@@ -530,7 +530,7 @@ ExpandedDetails : Version: 12.0 (Available) -&gt; Edition: Standard (Default) -&
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database to retrieve.
 </maml:para>
 </maml:Description>
@@ -557,7 +557,7 @@ ExpandedDetails : Version: 12.0 (Available) -&gt; Edition: Standard (Default) -&
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database to retrieve.
 </maml:para>
 </maml:Description>
@@ -4001,7 +4001,7 @@ PercentComplete   : 3.662109</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ElasticPoolName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ElasticPoolName</maml:name>
 <maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet gets.
 </maml:para>
 </maml:Description>
@@ -4012,7 +4012,7 @@ PercentComplete   : 3.662109</dev:code>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ElasticPoolName</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ElasticPoolName</maml:name>
 <maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet gets.
 </maml:para>
 </maml:Description>
@@ -5145,7 +5145,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server that this cmdlet gets.
 </maml:para>
 </maml:Description>
@@ -5181,7 +5181,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server that this cmdlet gets.
 </maml:para>
 </maml:Description>
@@ -6343,7 +6343,7 @@ RetentionInDays        : 0</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the firewall rule.
 </maml:para>
 </maml:Description>
@@ -6370,7 +6370,7 @@ RetentionInDays        : 0</dev:code>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the firewall rule.
 </maml:para>
 </maml:Description>
@@ -6877,7 +6877,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of an Azure SQL Database.
 </maml:para>
 </maml:Description>
@@ -6913,7 +6913,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of an Azure SQL Database.
 </maml:para>
 </maml:Description>
@@ -7603,7 +7603,7 @@ ElasticPools Databases
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get all instances of Azure SQL Sync Agent assigned to an Azure SQL Server</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+<dev:code>PS C:\&gt;Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -7632,7 +7632,7 @@ State                       : Online</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get information about an Azure SQL Sync Agent</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01"
+<dev:code>PS C:\&gt;Get-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -7773,7 +7773,7 @@ State                       : Online</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get the linked SQL Server databases for an Azure SQL sync agent.</maml:title>
-<dev:code>PS C:\&gt; Get-AzureRmSqlSyncAgentLinkedDatabases -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
+<dev:code>PS C:\&gt; Get-AzureRmSqlSyncAgentLinkedDatabases -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01" | Format-List
 SeverName                 : sever01
 DatabaseId                : databaseId
 DatabaseName              : database01
@@ -7921,7 +7921,7 @@ UserName                  : myAccount</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get all instances of Azure SQL Sync Group assigned to an Azure SQL Database</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+<dev:code>PS C:\&gt;Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -7954,7 +7954,7 @@ Schema                      :</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get information about an Azure SQL Database Sync Group</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
+<dev:code>PS C:\&gt;Get-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup02}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -8341,7 +8341,7 @@ TimeStamp            LogLevel Details                                   Source
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get all instances of Azure SQL Sync Member assigned to a sync group</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01"
+<dev:code>PS C:\&gt;Get-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -8378,7 +8378,7 @@ SyncState                   : Good</dev:code>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get information about an Azure SQL Database Sync Member</maml:title>
-<dev:code>PS C:\&gt;Get-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01"
+<dev:code>PS C:\&gt;Get-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -8842,7 +8842,7 @@ The schema payload is the same as Example 1.</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database.
 </maml:para>
 </maml:Description>
@@ -8922,6 +8922,17 @@ The schema payload is the same as Example 1.</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SampleName</maml:name>
+<maml:Description><maml:para>The name of the sample schema to apply when creating this database.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">AdventureWorksLT</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Tag"><maml:name>Tags</maml:name>
 <maml:Description><maml:para>Specifies a dictionary of tags that this cmdlet associates with the new database.
 </maml:para>
@@ -8947,15 +8958,6 @@ The schema payload is the same as Example 1.</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SampleName</maml:name>
-<maml:Description><maml:para>The name of the sample schema to apply when creating this database.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CatalogCollation</maml:name>
@@ -8976,7 +8978,7 @@ The schema payload is the same as Example 1.</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database.
 </maml:para>
 </maml:Description>
@@ -9053,6 +9055,15 @@ The schema payload is the same as Example 1.</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SampleName</maml:name>
+<maml:Description><maml:para>The name of the sample schema to apply when creating this database.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server that hosts the database.
 </maml:para>
@@ -9088,15 +9099,6 @@ The schema payload is the same as Example 1.</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>SampleName</maml:name>
-<maml:Description><maml:para>The name of the sample schema to apply when creating this database.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
@@ -10098,7 +10100,7 @@ ErrorMessage               :</dev:code>
 </command:details>
 <maml:description><maml:para>Creates a new Azure SQL Database Failover Group for the specified servers.
 </maml:para>
-<maml:para>Two Azure SQL Database TDS endpoints are created at '&lt;FailoverGroupName&gt;.&lt;SqlDatabaseDnsSuffix&gt;' (for example, '&lt;FailoverGroupName&gt;.database.windows.net') and '&lt;FailoverGroupName&gt;.secondary.&lt;SqlDatabaseDnsSuffix&gt;.' These endpoints may be used to connect to the primary and secondary servers in the Failover Group, respectively. If the primary server is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Failover Group's failover policy and grace period.
+<maml:para>Two Azure SQL Database TDS endpoints are created at FailoverGroupName.SqlDatabaseDnsSuffix (for example, FailoverGroupName.database.windows.net) and FailoverGroupName.secondary.SqlDatabaseDnsSuffix. These endpoints may be used to connect to the primary and secondary servers in the Failover Group, respectively. If the primary server is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Failover Group's failover policy and grace period.
 </maml:para>
 <maml:para>Newly created Failover Groups do not contain any databases. To control the set of databases in a Failover Group, use the 'Add-AzureRmSqlDatabaseToFailoverGroup' and 'Remove-AzureRmSqlDatabaseFromFailoverGroup' cmdlets.
 </maml:para>
@@ -10128,6 +10130,9 @@ ErrorMessage               :</dev:code>
 <maml:Description><maml:para>Whether an outage on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.
 </maml:para>
 </maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Enabled</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Disabled</command:parameterValue>
+</command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">AllowReadOnlyFailoverToPrimary</command:parameterValue>
 <dev:type><maml:name>AllowReadOnlyFailoverToPrimary</maml:name>
 <maml:uri /></dev:type>
@@ -10966,49 +10971,10 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ElasticPoolName</maml:name>
-<maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet creates.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DatabaseDtuMax</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume. The default values for the different editions are as follows: 
 </maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Edition</maml:name>
-<maml:Description><maml:para>Specifies the edition of the Azure SQL Database used for the elastic pool. The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Premium 
-</maml:para>
-<maml:para>- Basic
-</maml:para>
-<maml:para>- Standard
-</maml:para>
-<maml:para>
-</maml:para>
-<maml:para>For the current preview, the edition must be Standard.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">DatabaseEdition</command:parameterValue>
-<dev:type><maml:name>DatabaseEdition</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Dtu</maml:name>
-<maml:Description><maml:para>Specifies the total number of shared DTUs for the elastic pool. The default values for the different editions are as follows: 
-</maml:para>
-<maml:para>- Basic. 100 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>StorageMB</maml:name>
-<maml:Description><maml:para>Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the Dtu parameter.
-</maml:para>
-<maml:para>See eDTU and storage limits (https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools)for possible values.
+<maml:para>- Basic. 5 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
@@ -11025,10 +10991,54 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DatabaseDtuMax</maml:name>
-<maml:Description><maml:para>Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume. The default values for the different editions are as follows: 
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Dtu</maml:name>
+<maml:Description><maml:para>Specifies the total number of shared DTUs for the elastic pool. The default values for the different editions are as follows: 
 </maml:para>
-<maml:para>- Basic. 5 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
+<maml:para>- Basic. 100 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Edition</maml:name>
+<maml:Description><maml:para>Specifies the edition of the Azure SQL Database used for the elastic pool. The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Premium 
+</maml:para>
+<maml:para>- Basic
+</maml:para>
+<maml:para>- Standard
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Premium</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Basic</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Standard</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">DataWarehouse</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Stretch</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Free</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">PremiumRS</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">DatabaseEdition</command:parameterValue>
+<dev:type><maml:name>DatabaseEdition</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>ElasticPoolName</maml:name>
+<maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet creates.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>StorageMB</maml:name>
+<maml:Description><maml:para>Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the Dtu parameter.
+</maml:para>
+<maml:para>See eDTU and storage limits (https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools)for possible values.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
@@ -11042,38 +11052,6 @@ ErrorMessage               :</dev:code>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 <dev:type><maml:name>Hashtable</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -11095,49 +11073,10 @@ ErrorMessage               :</dev:code>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ElasticPoolName</maml:name>
-<maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet creates.
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DatabaseDtuMax</maml:name>
+<maml:Description><maml:para>Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume. The default values for the different editions are as follows: 
 </maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Edition</maml:name>
-<maml:Description><maml:para>Specifies the edition of the Azure SQL Database used for the elastic pool. The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Premium 
-</maml:para>
-<maml:para>- Basic
-</maml:para>
-<maml:para>- Standard
-</maml:para>
-<maml:para>
-</maml:para>
-<maml:para>For the current preview, the edition must be Standard.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">DatabaseEdition</command:parameterValue>
-<dev:type><maml:name>DatabaseEdition</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Dtu</maml:name>
-<maml:Description><maml:para>Specifies the total number of shared DTUs for the elastic pool. The default values for the different editions are as follows: 
-</maml:para>
-<maml:para>- Basic. 100 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-<dev:type><maml:name>Int32</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>StorageMB</maml:name>
-<maml:Description><maml:para>Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the Dtu parameter.
-</maml:para>
-<maml:para>See eDTU and storage limits (https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools)for possible values.
+<maml:para>- Basic. 5 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
@@ -11154,10 +11093,10 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>DatabaseDtuMax</maml:name>
-<maml:Description><maml:para>Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume. The default values for the different editions are as follows: 
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Dtu</maml:name>
+<maml:Description><maml:para>Specifies the total number of shared DTUs for the elastic pool. The default values for the different editions are as follows: 
 </maml:para>
-<maml:para>- Basic. 5 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
+<maml:para>- Basic. 100 DTUs  - Standard. 100 DTUs - Premium. 125 DTUs
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
@@ -11165,17 +11104,23 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Tag"><maml:name>Tags</maml:name>
-<maml:Description><maml:para>Specifies a dictionary of tags that this cmdlet associates with the elastic pool.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Edition</maml:name>
+<maml:Description><maml:para>Specifies the edition of the Azure SQL Database used for the elastic pool. The acceptable values for this parameter are:
+</maml:para>
+<maml:para>- Premium 
+</maml:para>
+<maml:para>- Basic
+</maml:para>
+<maml:para>- Standard
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-<dev:type><maml:name>Hashtable</maml:name>
+<command:parameterValue required="true" variableLength="false">DatabaseEdition</command:parameterValue>
+<dev:type><maml:name>DatabaseEdition</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
-<maml:Description><maml:para>Specifies the name of the server that hosts the elastic pool.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>ElasticPoolName</maml:name>
+<maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet creates.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -11192,35 +11137,32 @@ ErrorMessage               :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<maml:Description><maml:para>Specifies the name of the server that hosts the elastic pool.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>StorageMB</maml:name>
+<maml:Description><maml:para>Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the Dtu parameter.
+</maml:para>
+<maml:para>See eDTU and storage limits (https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools)for possible values.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+<dev:type><maml:name>Int32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Tag"><maml:name>Tags</maml:name>
+<maml:Description><maml:para>Specifies a dictionary of tags that this cmdlet associates with the elastic pool.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -11325,7 +11267,7 @@ Tags              :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the new server.
 </maml:para>
 </maml:Description>
@@ -11399,7 +11341,7 @@ Tags              :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the new server.
 </maml:para>
 </maml:Description>
@@ -11917,7 +11859,7 @@ Tags                     :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the new firewall rule.
 </maml:para>
 </maml:Description>
@@ -11971,7 +11913,7 @@ Tags                     :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the new firewall rule.
 </maml:para>
 </maml:Description>
@@ -12303,7 +12245,8 @@ FirewallRuleName  : Rule01</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Create a sync agent for an Azure SQL server.</maml:title>
-<dev:code>PS C:\&gt; New-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" 
+<dev:code>PS C:\&gt; New-AzureRmSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" -SyncDatabaseServerName "syncDatabaseServer01" 
+-SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/syncAgents/{SyncAgent01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -12718,7 +12661,8 @@ SyncAgentKey                  : Key</dev:code>
 <command:examples><command:example><maml:title>Example 1: Create a sync group for an Azure SQL Database.</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01" -ConflictResolutionPolicy "HubWin"
--DatabaseCredential $credential -IntervalInSeconds 100 -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -Schema ".\schema.json"
+-DatabaseCredential $credential -IntervalInSeconds 100 -SyncDatabaseServerName "syncDatabaseServer01" -SyncDatabaseName "syncDatabaseName01"
+-SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" -Schema ".\schema.json" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -13274,7 +13218,7 @@ Schema                      :</dev:code>
 <command:examples><command:example><maml:title>Example 1: Create a sync member for an Azure SQL database.</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" -SyncDirection "OneWayMemberToHub"
--MemberDatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01" -MemberDatabaseCredential $credential
+-MemberDatabaseType "AzureSqlDatabase" -MemberServerName "memberServer01.full.dns.name" -MemberDatabaseName "memberDatabase01" -MemberDatabaseCredential $credential | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -13297,7 +13241,8 @@ SyncState                   : UnProvisioned</dev:code>
 <command:example><maml:title>Example 2: Create a sync member for an on-premises SQL Server database</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; New-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01" -SyncDirection "OneWayMemberToHub"
--MemberDatabaseType "SqlServerDatabase" -SqlServerDatabaseId "dbId" -syncAgentResourceGroupName "syncAgentResourceGroupName" -syncAgentServerName "syncAgentServerName" -syncAgentDatabaseName "syncAgentDatabaseName" -syncAgentName "agentName"
+-MemberDatabaseType "SqlServerDatabase" -SqlServerDatabaseId "dbId" -syncAgentResourceGroupName "syncAgentResourceGroupName" -syncAgentServerName "syncAgentServerName" 
+-syncAgentDatabaseName "syncAgentDatabaseName" -syncAgentName "agentName" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -13361,7 +13306,7 @@ SyncState                   : UnProvisioned</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database that this cmdlet removes.
 </maml:para>
 </maml:Description>
@@ -13396,7 +13341,7 @@ SyncState                   : UnProvisioned</dev:code>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database that this cmdlet removes.
 </maml:para>
 </maml:Description>
@@ -14083,21 +14028,30 @@ SyncState                   : UnProvisioned</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<maml:Description><maml:para>The name of the primary Azure SQL Database Server of the Failover Group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
+<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>Database</maml:name>
 <maml:Description><maml:para>One or more Azure SQL Databases on the Failover Group's primary server to be removed from the Failover Group.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]</command:parameterValue>
 <dev:type><maml:name>System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
-<maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -14108,15 +14062,6 @@ SyncState                   : UnProvisioned</dev:code>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServerName</maml:name>
-<maml:Description><maml:para>The name of the primary Azure SQL Database Server of the Failover Group.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
@@ -14145,7 +14090,7 @@ SyncState                   : UnProvisioned</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>FailoverGroupName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FailoverGroupName</maml:name>
 <maml:Description><maml:para>The name of the Azure SQL Database Failover Group.
 </maml:para>
 </maml:Description>
@@ -14172,7 +14117,7 @@ SyncState                   : UnProvisioned</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>The name of the primary Azure SQL Database Server of the Failover Group.
 </maml:para>
 </maml:Description>
@@ -14618,7 +14563,7 @@ PS C:\&gt; $failoverGroup = $failoverGroup | Remove-AzureRMSqlDatabaseFromFailov
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ElasticPoolName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ElasticPoolName</maml:name>
 <maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet deletes.
 </maml:para>
 </maml:Description>
@@ -14653,7 +14598,7 @@ PS C:\&gt; $failoverGroup = $failoverGroup | Remove-AzureRMSqlDatabaseFromFailov
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ElasticPoolName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ElasticPoolName</maml:name>
 <maml:Description><maml:para>Specifies the name of the elastic pool that this cmdlet deletes.
 </maml:para>
 </maml:Description>
@@ -14776,7 +14721,7 @@ PS C:\&gt; $failoverGroup = $failoverGroup | Remove-AzureRMSqlDatabaseFromFailov
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server to remove.
 </maml:para>
 </maml:Description>
@@ -14829,7 +14774,7 @@ PS C:\&gt; $failoverGroup = $failoverGroup | Remove-AzureRMSqlDatabaseFromFailov
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server to remove.
 </maml:para>
 </maml:Description>
@@ -15506,7 +15451,7 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the firewall rule that this cmdlet deletes.
 </maml:para>
 </maml:Description>
@@ -15541,7 +15486,7 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the firewall rule that this cmdlet deletes.
 </maml:para>
 </maml:Description>
@@ -17208,7 +17153,7 @@ PS C:\&gt; Restore-AzureRmSqlDatabase -FromGeoBackup -ResourceGroupName "TargetR
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database.
 </maml:para>
 </maml:Description>
@@ -17313,7 +17258,7 @@ PS C:\&gt; Restore-AzureRmSqlDatabase -FromGeoBackup -ResourceGroupName "TargetR
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>DatabaseName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>DatabaseName</maml:name>
 <maml:Description><maml:para>Specifies the name of the database.
 </maml:para>
 </maml:Description>
@@ -18948,6 +18893,9 @@ RecommendedActions             : {}</dev:code>
 <maml:Description><maml:para>Whether outages on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.
 </maml:para>
 </maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Enabled</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Disabled</command:parameterValue>
+</command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">AllowReadOnlyFailoverToPrimary</command:parameterValue>
 <dev:type><maml:name>AllowReadOnlyFailoverToPrimary</maml:name>
 <maml:uri /></dev:type>
@@ -19769,40 +19717,13 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:para>- None
 </maml:para>
 </maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Sql_Injection</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Sql_Injection_Vulnerability</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Access_Anomaly</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+</command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">DetectionType[]</command:parameterValue>
 <dev:type><maml:name>DetectionType[]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -19891,38 +19812,6 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">DetectionType[]</command:parameterValue>
 <dev:type><maml:name>DetectionType[]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -20232,7 +20121,7 @@ ResourceGroup01               Server01                      Database01          
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ElasticPoolName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ElasticPoolName</maml:name>
 <maml:Description><maml:para>Specifies the name of the elastic pool.
 </maml:para>
 </maml:Description>
@@ -20390,7 +20279,7 @@ ResourceGroup01               Server01                      Database01          
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>ElasticPoolName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>ElasticPoolName</maml:name>
 <maml:Description><maml:para>Specifies the name of the elastic pool.
 </maml:para>
 </maml:Description>
@@ -20987,7 +20876,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server that this cmdlet modifies.
 </maml:para>
 </maml:Description>
@@ -21067,7 +20956,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="Name"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server that this cmdlet modifies.
 </maml:para>
 </maml:Description>
@@ -22232,7 +22121,7 @@ RecommendedActions             : {}</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the firewall rule that this cmdlet modifies.
 </maml:para>
 </maml:Description>
@@ -22286,7 +22175,7 @@ RecommendedActions             : {}</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="none"><maml:name>FirewallRuleName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="Name"><maml:name>FirewallRuleName</maml:name>
 <maml:Description><maml:para>Specifies the name of the firewall rule that this cmdlet modifies.
 </maml:para>
 </maml:Description>
@@ -22638,15 +22527,6 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
-<maml:Description><maml:para>Specifies the name of the server.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>EmailAdmins</maml:name>
 <maml:Description><maml:para>Specifies whether the threat detection policy contacts administrators by using email.
 </maml:para>
@@ -22668,40 +22548,13 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:para>- None
 </maml:para>
 </maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">Sql_Injection</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Sql_Injection_Vulnerability</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">Access_Anomaly</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">None</command:parameterValue>
+</command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">DetectionType[]</command:parameterValue>
 <dev:type><maml:name>DetectionType[]</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -22728,6 +22581,15 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
 <dev:type><maml:name>UInt32</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServerName</maml:name>
+<maml:Description><maml:para>Specifies the name of the server.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -22784,38 +22646,6 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="infa"><maml:name>InformationAction</maml:name>
-<maml:Description><maml:para>Specifies how this cmdlet responds to an information event.
-</maml:para>
-<maml:para>The acceptable values for this parameter are:
-</maml:para>
-<maml:para>- Continue
-</maml:para>
-<maml:para>- Ignore
-</maml:para>
-<maml:para>- Inquire
-</maml:para>
-<maml:para>- SilentlyContinue
-</maml:para>
-<maml:para>- Stop
-</maml:para>
-<maml:para>- Suspend
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-<dev:type><maml:name>ActionPreference</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="iv"><maml:name>InformationVariable</maml:name>
-<maml:Description><maml:para>Specifies an information variable.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>NotificationRecipientsEmails</maml:name>
 <maml:Description><maml:para>Specifies a semicolon-separated list of email addresses to which the policy sends alerts.
 </maml:para>
@@ -22852,7 +22682,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="none"><maml:name>ServerName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>ServerName</maml:name>
 <maml:Description><maml:para>Specifies the name of the server.
 </maml:para>
 </maml:Description>
@@ -23279,7 +23109,7 @@ ValidSince                 : 4/21/2016 3:24:47 PM</dev:code>
 <command:examples><command:example><maml:title>Example 1: Update a sync group for an Azure SQL Database.</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
--DatabaseCredential $credential -IntervalInSeconds 100 -Schema ".\schema.json"
+-DatabaseCredential $credential -IntervalInSeconds 100 -Schema ".\schema.json" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
@@ -23481,7 +23311,7 @@ Schema                      :</dev:code>
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; $credential = Get-Credential
 PS C:\&gt; Set-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01"
--MemberDatabaseCredential $credential
+-MemberDatabaseCredential $credential | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01
 ServerName                  : Server01
