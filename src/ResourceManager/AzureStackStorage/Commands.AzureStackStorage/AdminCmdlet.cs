@@ -114,7 +114,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         {
             if(this.MyInvocation.InvocationName.ToLower().Contains("-acs"))
             {
-                WriteWarningWithTimestamp("\"-ACS\" aliases will be deprecated soon, please use -AzS cmdlet's");
+                WriteWarningWithTimestamp("\"-ACS\" aliases will be deprecated soon, please use -Azs cmdlet's");
             }
             Execute();
             base.ProcessRecord();
