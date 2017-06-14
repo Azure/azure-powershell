@@ -33,6 +33,7 @@ using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
+using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -286,7 +287,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             SecretPerms.Recover
         };
 
-        protected readonly string[] DefaultPermissionsToCertificates = 
+        protected readonly string[] DefaultPermissionsToCertificates =
         {
             CertPerms.Get,
             CertPerms.Delete,
@@ -301,6 +302,21 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Manageissuers,
             CertPerms.Setissuers
         };
+
+        protected readonly string[] DefaultPermissionsToStorage = 
+        {
+            StoragePerms.Delete,
+            StoragePerms.Deletesas,
+            StoragePerms.Get,
+            StoragePerms.Getsas,
+            StoragePerms.List,
+            StoragePerms.Listsas,
+            StoragePerms.Regeneratekey,
+            StoragePerms.Set,
+            StoragePerms.Setsas,
+            StoragePerms.Update,
+        };
+
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
     }

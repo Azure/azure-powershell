@@ -16,7 +16,8 @@ Get-AzureRmIotHubRegistryStatistic [-ResourceGroupName] <String> [-Name] <String
 ```
 
 ## DESCRIPTION
-Gets the RegistryStatistics for an IotHub. This provides information about the number of total, enabled and disabled devices in an IotHub.
+Gets the RegistryStatistics for an IotHub.
+This provides information about the number of total, enabled and disabled devices in an IotHub.
 
 ## EXAMPLES
 
@@ -30,7 +31,7 @@ Gets the RegistryStatictics for the IotHub named "myiothub"
 ## PARAMETERS
 
 ### -Name
-Name of the IoT hub.
+Name of the IoT hub. 
 
 ```yaml
 Type: String
@@ -45,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
