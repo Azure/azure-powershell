@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 string primaryKey = (string)responseDoc["primaryKey"];
                 string secondaryKey = (string)responseDoc["secondaryKey"];
                 if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
-                    throw new Exception(); // this is caught by the synced wrapper 
+                    throw new Exception(); // this is caught by the synced wrapper
                 result.Add(StorageKeyKind.Primary, primaryKey);
                 result.Add(StorageKeyKind.Secondary, secondaryKey);
                 return result;
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         }
 
         /// <summary>
-        /// Gets the storage keys for the given storage account. 
+        /// Gets the storage keys for the given storage account.
         /// </summary>
         public Dictionary<StorageKeyKind, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
         {
