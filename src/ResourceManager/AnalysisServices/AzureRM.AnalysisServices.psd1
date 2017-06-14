@@ -66,7 +66,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.1.0'; }
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.dll', '.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -78,18 +78,14 @@ CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer',
                'Remove-AzureRmAnalysisServicesServer', 
                'Set-AzureRmAnalysisServicesServer', 
                'Test-AzureRmAnalysisServicesServer', 
-               'New-AzureRmAnalysisServicesServer',
-               'Add-AzureAnalysisServicesAccount',
-               'Restart-AzureAnalysisServicesInstance',
-               'Fetch-AzureAnalysisServicesInstanceLog'
+               'New-AzureRmAnalysisServicesServer'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Resume-AzureAs', 'Suspend-AzureAs', 'Get-AzureAs', 'Remove-AzureAs', 
-               'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs', 'Login-AzureAsAccount',
-               'Restart-AzureAsInstance', 'Fetch-AzureAsInstanceLog'
+               'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs'
 # DSC resources to export from this module
 # DscResourcesToExport = @()
 
