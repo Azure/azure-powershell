@@ -331,8 +331,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 return true;
             }
 
-
-
             return false;
         }
 

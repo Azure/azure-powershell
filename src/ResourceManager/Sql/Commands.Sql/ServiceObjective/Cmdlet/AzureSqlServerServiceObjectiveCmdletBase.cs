@@ -18,12 +18,37 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 {
     public abstract class AzureSqlServerServiceObjectiveCmdletBase
-        : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
+        : AzureSqlCmdletBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
     {
+        /// <summary>
+        /// Gets or sets the name of the database server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "SQL Database server name.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the database to use.
+        /// </summary>
+        /// <remarks>
+        /// This parameter is not needed or used. It will be removed in a future release.
+        /// </remarks>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "SQL Database name.",
+            DontShow = true)]
+        [ValidateNotNullOrEmpty]
+        public string DatabaseName { get; set; }
+
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
