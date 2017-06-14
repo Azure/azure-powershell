@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>The Azure Sql Server Advisor object</returns>
         internal AzureSqlServerAdvisorModel GetServerAdvisor(string resourceGroupName, string serverName, string advisorName, bool expandRecommendedActions)
         {
-            var response = Communicator.Get(resourceGroupName, serverName, advisorName, expandRecommendedActions, Util.GenerateTracingId());
+            var response = Communicator.Get(resourceGroupName, serverName, advisorName, expandRecommendedActions);
             return new AzureSqlServerAdvisorModel(resourceGroupName, serverName, response);
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>A list of database advisor objects</returns>
         internal ICollection<AzureSqlServerAdvisorModel> ListServerAdvisors(string resourceGroupName, string serverName, bool expandRecommendedActions)
         {
-            var response = Communicator.List(resourceGroupName, serverName, expandRecommendedActions, Util.GenerateTracingId());
+            var response = Communicator.List(resourceGroupName, serverName, expandRecommendedActions);
             return response.Select(adv => new AzureSqlServerAdvisorModel(resourceGroupName, serverName, adv)).ToList();
         }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>The upserted Azure Sql Server Advisor</returns>
         internal AzureSqlServerAdvisorModel UpdateAutoExecuteStatus(AzureSqlServerAdvisorModel model)
         {
-            var response = Communicator.UpdateAutoExecuteStatus(model.ResourceGroupName, model.ServerName, model.AdvisorName, model.AutoExecuteStatus, Util.GenerateTracingId());
+            var response = Communicator.UpdateAutoExecuteStatus(model.ResourceGroupName, model.ServerName, model.AdvisorName, model.AutoExecuteStatus);
             return new AzureSqlServerAdvisorModel(model.ResourceGroupName, model.ServerName, response);
         }
     }

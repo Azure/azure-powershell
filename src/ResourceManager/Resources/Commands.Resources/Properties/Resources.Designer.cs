@@ -791,6 +791,60 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should begin with &apos;/subscriptions/&lt;subid&gt;/resourceGroups&apos;..
+        /// </summary>
+        internal static string ScopeShouldBeginWithSubscriptionsAndResourceGroups {
+            get {
+                return ResourceManager.GetString("ScopeShouldBeginWithSubscriptionsAndResourceGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should begin with &apos;/subscriptions/&lt;subid&gt;/resourceGroups/&lt;groupname&gt;/providers&apos;..
+        /// </summary>
+        internal static string ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders {
+            get {
+                return ResourceManager.GetString("ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should begin with &apos;/subscriptions&apos; or &apos;/providers&apos;..
+        /// </summary>
+        internal static string ScopeShouldBeginWithSubscriptionsOrProviders {
+            get {
+                return ResourceManager.GetString("ScopeShouldBeginWithSubscriptionsOrProviders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should have at least one pair of resource type and resource name. e.g. &apos;/subscriptions/&lt;subid&gt;/resourceGroups/&lt;groupname&gt;/providers/&lt;providername&gt;/&lt;resourcetype&gt;/&lt;resourcename&gt;&apos;..
+        /// </summary>
+        internal static string ScopeShouldHaveAtLeastOnePairOfResourceTypeAndName {
+            get {
+                return ResourceManager.GetString("ScopeShouldHaveAtLeastOnePairOfResourceTypeAndName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should have even number of parts..
+        /// </summary>
+        internal static string ScopeShouldHaveEvenNumberOfParts {
+            get {
+                return ResourceManager.GetString("ScopeShouldHaveEvenNumberOfParts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope &apos;{0}&apos; should not have any empty part..
+        /// </summary>
+        internal static string ScopeShouldHaveNoEmptyPart {
+            get {
+                return ResourceManager.GetString("ScopeShouldHaveNoEmptyPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service principal with object id &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string ServicePrincipalDoesntExist {
