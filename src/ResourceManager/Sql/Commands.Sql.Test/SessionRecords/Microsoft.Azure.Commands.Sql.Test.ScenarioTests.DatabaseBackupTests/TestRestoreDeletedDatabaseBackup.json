@@ -50,7 +50,7 @@
     },
     {
       "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2FsYXphZC1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL3Rlc3RzdnItYWxhemFkP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMj9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -104,7 +104,7 @@
     },
     {
       "RequestUri": "/subscriptions/0a496442-635f-4974-bda4-2d339b9a6b3c/resourceGroups/hchung-test2/providers/Microsoft.Sql/servers/hchung-testsvr2?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2FsYXphZC1yZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL3Rlc3RzdnItYWxhemFkP2FwaS12ZXJzaW9uPTIwMTUtMDUtMDEtcHJldmlldw==",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGE0OTY0NDItNjM1Zi00OTc0LWJkYTQtMmQzMzliOWE2YjNjL3Jlc291cmNlR3JvdXBzL2hjaHVuZy10ZXN0Mi9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyMj9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
