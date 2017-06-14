@@ -60,9 +60,6 @@ Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azur
 Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.dll-help.xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\ResourceManagerStartup.ps1 -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.dll -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Graph.RBAC.dll -ErrorAction SilentlyContinue
-
 
 #System Management Automation DLL
 Remove-Item -Force $resourceManagerPath\AzureRM.Dns\System.Management.Automation.dll -ErrorAction SilentlyContinue

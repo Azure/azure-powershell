@@ -385,6 +385,9 @@
                         <Component Id="cmp063FB4993B50731237083D3B8F62D7F5" Guid="*">
                             <File Id="fil20D694AB10C144BC2685A99900FF8215" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Resources.dll" />
                         </Component>
+                        <Component Id="cmpC0EB670D16D78EF4568D8EEF62281CDB" Guid="*">
+                            <File Id="filA57B2E59872E574A857F00A7319C56E0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.dll" />
+                        </Component>
                         <Component Id="cmp5C982BDD1D0615791970EB8BF2D2E9AF" Guid="*">
                             <File Id="fil1E78C53F64DEF5DB27FFEA88E0DE493A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackStorage\Microsoft.Azure.Common.dll" />
                         </Component>
@@ -393,6 +396,9 @@
                         </Component>
                         <Component Id="cmpA0061A6709DC48860055AC65A45FA4C6" Guid="*">
                             <File Id="fil5BA0DD25C27F9F32EA971CC3D6BED25A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackStorage\Microsoft.Azure.Gallery.dll" />
+                        </Component>
+                        <Component Id="cmp9A28D263798528BE1E40C95795F446AC" Guid="*">
+                            <File Id="filFC38988F407F4985EA4DB2AB709BA95A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackStorage\Microsoft.Azure.Graph.RBAC.dll" />
                         </Component>
                         <Component Id="cmp9BBFDB693C60E5746855BAC01312A99F" Guid="*">
                             <File Id="filE8FDD2B5D88F8445806CFA2D9FF714F9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackStorage\Microsoft.Azure.KeyVault.Core.dll" />
@@ -4905,9 +4911,11 @@
             <ComponentRef Id="cmpA45ABC0D8FA50C56AF89BE99433CD421" />
             <ComponentRef Id="cmpF59DACE5A099A1224C2EBE519139EA1B" />
             <ComponentRef Id="cmp063FB4993B50731237083D3B8F62D7F5" />
+            <ComponentRef Id="cmpC0EB670D16D78EF4568D8EEF62281CDB" />
             <ComponentRef Id="cmp5C982BDD1D0615791970EB8BF2D2E9AF" />
             <ComponentRef Id="cmp641D1C76590267170546F7C8FE37B488" />
             <ComponentRef Id="cmpA0061A6709DC48860055AC65A45FA4C6" />
+            <ComponentRef Id="cmp9A28D263798528BE1E40C95795F446AC" />
             <ComponentRef Id="cmp9BBFDB693C60E5746855BAC01312A99F" />
             <ComponentRef Id="cmp5AA59C210EA47459AC63D8102CC011FA" />
             <ComponentRef Id="cmp5088ABD64AF5A8770B66B7B6FC046C31" />
