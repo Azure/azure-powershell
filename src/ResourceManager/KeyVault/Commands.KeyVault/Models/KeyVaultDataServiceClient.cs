@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.KeyVault.WebKey;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,6 +22,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault;
@@ -1081,6 +1083,288 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return issuer;
         }
+
+        #region Managed Storage Accounts
+        public IEnumerable<ManagedStorageAccountListItem> GetManagedStorageAccounts( KeyVaultObjectFilterOptions options )
+        {
+            if ( options == null )
+                throw new ArgumentNullException( "options" );
+            if ( string.IsNullOrEmpty( options.VaultName ) )
+                throw new ArgumentException( KeyVaultProperties.Resources.InvalidVaultName );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress( options.VaultName );
+
+            try
+            {
+                IPage<StorageAccountItem> result;
+
+                if ( string.IsNullOrEmpty( options.NextLink ) )
+                    result = this.keyVaultClient.GetStorageAccountsAsync( vaultAddress ).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetStorageAccountsNextAsync( options.NextLink ).GetAwaiter().GetResult();
+
+                options.NextLink = result.NextPageLink;
+                return result.Select( ( storageAccountItem ) => new ManagedStorageAccountListItem( storageAccountItem, this.vaultUriHelper ) );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+        }
+
+        public ManagedStorageAccount GetManagedStorageAccount( string vaultName, string managedStorageAccountName )
+        {
+            if ( string.IsNullOrWhiteSpace( vaultName ) ) throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrWhiteSpace( managedStorageAccountName ) ) throw new ArgumentNullException( "managedStorageAccountName" );
+
+            StorageBundle storageBundle;
+
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+
+            try
+            {
+                storageBundle = this.keyVaultClient.GetStorageAccountAsync( vaultAddress, managedStorageAccountName ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageAccount( storageBundle, this.vaultUriHelper );
+        }
+
+        public ManagedStorageAccount SetManagedStorageAccount( string vaultName, string managedStorageAccountName, string storageResourceId,
+            string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod,
+            ManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( managedStorageAccountName ) )
+                throw new ArgumentNullException( "managedStorageAccountName" );
+            if ( string.IsNullOrEmpty( storageResourceId ) )
+                throw new ArgumentNullException( "storageResourceId" );
+            if ( string.IsNullOrEmpty( activeKeyName ) )
+                throw new ArgumentNullException( "activeKeyName" );
+
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+            var attributes = managedStorageAccountAttributes == null ? null : new Azure.KeyVault.Models.StorageAccountAttributes
+            {
+                Enabled = managedStorageAccountAttributes.Enabled,
+            };
+
+            Azure.KeyVault.Models.StorageBundle storageBundle;
+            try
+            {
+                storageBundle =
+                    this.keyVaultClient.SetStorageAccountAsync( vaultAddress, managedStorageAccountName,
+                        storageResourceId, activeKeyName,
+                        autoRegenerateKey ?? true,
+                        regenerationPeriod == null ? null : XmlConvert.ToString( regenerationPeriod.Value ), attributes,
+                        tags == null ? null : tags.ConvertToDictionary() ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageAccount( storageBundle, this.vaultUriHelper );
+        }
+
+        public ManagedStorageAccount UpdateManagedStorageAccount( string vaultName, string managedStorageAccountName, string activeKeyName,
+            bool? autoRegenerateKey, TimeSpan? regenerationPeriod, ManagedStorageAccountAttributes managedStorageAccountAttributes,
+            Hashtable tags )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( managedStorageAccountName ) )
+                throw new ArgumentNullException( "managedStorageAccountName" );
+
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+            var attributes = managedStorageAccountAttributes == null ? null : new Azure.KeyVault.Models.StorageAccountAttributes
+            {
+                Enabled = managedStorageAccountAttributes.Enabled,
+            };
+
+            Azure.KeyVault.Models.StorageBundle storageBundle;
+            try
+            {
+                storageBundle =
+                    this.keyVaultClient.UpdateStorageAccountAsync( vaultAddress, managedStorageAccountName,
+                        activeKeyName,
+                        autoRegenerateKey,
+                        regenerationPeriod == null ? null : XmlConvert.ToString( regenerationPeriod.Value ), attributes,
+                        tags == null ? null : tags.ConvertToDictionary() ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageAccount( storageBundle, this.vaultUriHelper );
+        }
+
+        public ManagedStorageAccount DeleteManagedStorageAccount( string vaultName, string managedStorageAccountName )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( managedStorageAccountName ) )
+                throw new ArgumentNullException( "managedStorageAccountName" );
+
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+
+            Azure.KeyVault.Models.StorageBundle storageBundle;
+            try
+            {
+                storageBundle = this.keyVaultClient.DeleteStorageAccountAsync( vaultAddress, managedStorageAccountName ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageAccount( storageBundle, this.vaultUriHelper );
+        }
+
+        public ManagedStorageAccount RegenerateManagedStorageAccountKey( string vaultName, string managedStorageAccountName, string keyName )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( managedStorageAccountName ) )
+                throw new ArgumentNullException( "managedStorageAccountName" );
+            if ( string.IsNullOrEmpty( keyName ) )
+                throw new ArgumentNullException( "keyName" );
+
+            Azure.KeyVault.Models.StorageBundle storageBundle;
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+
+            try
+            {
+                storageBundle = this.keyVaultClient.RegenerateStorageAccountKeyAsync( vaultAddress, managedStorageAccountName, keyName ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageAccount( storageBundle, this.vaultUriHelper );
+        }
+
+        public ManagedStorageSasDefinition GetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName )
+        {
+            if ( string.IsNullOrWhiteSpace( vaultName ) ) throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrWhiteSpace( managedStorageAccountName ) ) throw new ArgumentNullException( "managedStorageAccountName" );
+            if ( string.IsNullOrWhiteSpace( sasDefinitionName ) ) throw new ArgumentNullException( "sasDefinitionName" );
+
+            SasDefinitionBundle storagesasDefinitionBundle;
+
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+
+            try
+            {
+                storagesasDefinitionBundle = this.keyVaultClient.GetSasDefinitionAsync( vaultAddress, managedStorageAccountName, sasDefinitionName ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageSasDefinition( storagesasDefinitionBundle, this.vaultUriHelper );
+        }
+
+        public IEnumerable<ManagedStorageSasDefinitionListItem> GetManagedStorageSasDefinitions( KeyVaultStorageSasDefinitiontFilterOptions options )
+        {
+            if ( options == null )
+                throw new ArgumentNullException( "options" );
+            if ( string.IsNullOrEmpty( options.VaultName ) )
+                throw new ArgumentException( KeyVaultProperties.Resources.InvalidVaultName );
+            if ( string.IsNullOrEmpty( options.AccountName ) )
+                throw new ArgumentException( KeyVaultProperties.Resources.InvalidManagedStorageAccountName );
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress( options.VaultName );
+
+            try
+            {
+                IPage<SasDefinitionItem> result;
+
+                if ( string.IsNullOrEmpty( options.NextLink ) )
+                    result = this.keyVaultClient.GetSasDefinitionsAsync( vaultAddress, options.AccountName ).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetSasDefinitionsNextAsync( options.NextLink ).GetAwaiter().GetResult();
+
+                options.NextLink = result.NextPageLink;
+                return result.Select( ( storageAccountItem ) => new ManagedStorageSasDefinitionListItem( storageAccountItem, this.vaultUriHelper ) );
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+        }
+
+        public ManagedStorageSasDefinition SetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName,
+            IDictionary<string, string> parameters, ManagedStorageSasDefinitionAttributes sasDefinitionAttributes, Hashtable tags )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( managedStorageAccountName ) )
+                throw new ArgumentNullException( "managedStorageAccountName" );
+            if ( string.IsNullOrEmpty( sasDefinitionName ) )
+                throw new ArgumentNullException( "sasDefinitionName" );
+            if ( parameters == null )
+                throw new ArgumentNullException( "parameters" );
+
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+            var attributes = sasDefinitionAttributes == null ? null : new Azure.KeyVault.Models.SasDefinitionAttributes
+            {
+                Enabled = sasDefinitionAttributes.Enabled,
+            };
+
+            Azure.KeyVault.Models.SasDefinitionBundle sasDefinitionBundle;
+            try
+            {
+                sasDefinitionBundle =
+                    this.keyVaultClient.SetSasDefinitionAsync( vaultAddress, managedStorageAccountName,
+                        sasDefinitionName,
+                        parameters,
+                        attributes,
+                        tags == null ? null : tags.ConvertToDictionary() ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageSasDefinition( sasDefinitionBundle, this.vaultUriHelper );
+        }
+
+        public ManagedStorageSasDefinition DeleteManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName )
+        {
+            if ( string.IsNullOrEmpty( vaultName ) )
+                throw new ArgumentNullException( "vaultName" );
+            if ( string.IsNullOrEmpty( managedStorageAccountName ) )
+                throw new ArgumentNullException( "managedStorageAccountName" );
+            if ( string.IsNullOrEmpty( sasDefinitionName ) )
+                throw new ArgumentNullException( "sasDefinitionName" );
+
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress( vaultName );
+
+            Azure.KeyVault.Models.SasDefinitionBundle sasDefinitionBundle;
+            try
+            {
+                sasDefinitionBundle =
+                    this.keyVaultClient.DeleteSasDefinitionAsync( vaultAddress,
+                        managedStorageAccountName,
+                        sasDefinitionName ).GetAwaiter().GetResult();
+            }
+            catch ( Exception ex )
+            {
+                throw GetInnerException( ex );
+            }
+
+            return new ManagedStorageSasDefinition( sasDefinitionBundle, this.vaultUriHelper );
+        }
+
+        #endregion
+
 
         private Exception GetInnerException(Exception exception)
         {

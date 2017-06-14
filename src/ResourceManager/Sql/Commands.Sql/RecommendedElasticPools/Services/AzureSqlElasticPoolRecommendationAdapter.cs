@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<UpgradeRecommendedElasticPoolProperties> ListRecommendedElasticPoolProperties(string resourceGroupName, string serverName)
         {
-            var resp = RecommendationCommunicator.ListExpanded(resourceGroupName, serverName, "databases", Util.GenerateTracingId());
+            var resp = RecommendationCommunicator.ListExpanded(resourceGroupName, serverName, "databases");
             return resp.Select(CreateRecommendedElasticPoolPropertiesFromResponse).ToList();
         }
 
