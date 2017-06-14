@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
-                ResourceManagerEndpoint = "https://management.azure.com/"
+                ARMEndpoint = "https://management.azure.com/"
             };
 
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
-            cmdlet.SetParameterSet("ResourceManagerEndpoint");
+            cmdlet.SetParameterSet("ARMEndpoint");
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -346,15 +346,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "katal",
-                ResourceManagerEndpoint = "foobar.com"
+                ARMEndpoint = "foobar.com"
             };
 
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            cmdlet.SetParameterSet("ARMEndpoint");
 
-            cmdlet.SetParameterSet("ResourceManagerEndpoint");
-
-            Assert.Throws<AggregateException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
 
         [Fact]

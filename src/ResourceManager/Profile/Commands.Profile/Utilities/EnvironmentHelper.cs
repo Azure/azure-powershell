@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             // Todo: Revisit this when azure metadata endpoint supports keyvault suffix and storage endpoints
             // Example format:: portal endpoint: "management.azure.com"; returns: "azure.com"
-            string[] domainHost = new Uri(portalEndpoint).Host.Split('.');
-            return domainHost[domainHost.Length - 2] + '.' + domainHost[domainHost.Length - 1];
+            string domainHost = new Uri(portalEndpoint).Host;
+            return domainHost.Replace(domainHost.Split('.')[0], "").TrimEnd('/').TrimStart('.');
         }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         internal static bool CheckIfAnyPropertyIsNull(object response)
         {
             return response.GetType()
-                 .GetProperties() 
-                 .Select(pi => pi.GetValue(response))
-                 .Any(value => value == null);
+                           .GetProperties()
+                           .Select(pi => pi.GetValue(response))
+                           .Any(value => (value == null) || (string.IsNullOrEmpty(value.ToString())));
         }
     }
 }

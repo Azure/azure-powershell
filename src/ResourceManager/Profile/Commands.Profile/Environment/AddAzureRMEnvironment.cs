@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureEnvironment))]
     public class AddAzureRMEnvironmentCommand : AzureRMCmdlet
     {
-        private const string MetadataParameterSet = "ResourceManagerEndpoint";
+        private const string MetadataParameterSet = "ARMEndpoint";
         private const string EnvironmentPropertiesParameterSet = "Name";
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -56,9 +56,12 @@ namespace Microsoft.Azure.Commands.Profile
         public string ActiveDirectoryEndpoint { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
-        [Parameter(ParameterSetName = MetadataParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure Resource Manager endpoint")]
         [Alias("ResourceManager", "ResourceManagerUrl")]
         public string ResourceManagerEndpoint { get; set; }
+
+        [Parameter(ParameterSetName = MetadataParameterSet, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Azure Resource Manager endpoint")]
+        [Alias("ArmUrl")]
+        public string ARMEndpoint { get; set; }
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The public gallery endpoint")]
         [Alias("Gallery", "GalleryUrl")]
@@ -99,7 +102,6 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = EnvironmentPropertiesParameterSet, Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
           HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
-        [Parameter(ParameterSetName = MetadataParameterSet, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
         [Alias("OnPremise")]
         public SwitchParameter EnableAdfsAuthentication { get; set; }
 
@@ -124,16 +126,29 @@ namespace Microsoft.Azure.Commands.Profile
             if (this.ParameterSetName.Equals(MetadataParameterSet, StringComparison.Ordinal))
             {
                 MetadataResponse metadataEndpoints = null;
-                metadataEndpoints = EnvironmentHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
-                string domain = EnvironmentHelper.RetrieveDomain(metadataEndpoints.PortalEndpoint);
-                ActiveDirectoryEndpoint = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/') + '/';
-                ActiveDirectoryServiceEndpointResourceId = metadataEndpoints.authentication.Audiences[0];
-                GalleryEndpoint = metadataEndpoints.GalleryEndpoint;
-                GraphEndpoint = metadataEndpoints.GraphEndpoint;
-                AzureKeyVaultDnsSuffix = string.Format("vault.{0}", domain).ToLowerInvariant();
-                AzureKeyVaultServiceEndpointResourceId = string.Format("https://vault.{0}", domain).ToLowerInvariant();
-                StorageEndpoint = domain;
-                EnableAdfsAuthentication = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/').EndsWith("/adfs", System.StringComparison.OrdinalIgnoreCase);
+                ResourceManagerEndpoint = ARMEndpoint;
+                try
+                {
+                    metadataEndpoints = EnvironmentHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
+                    string domain = EnvironmentHelper.RetrieveDomain(metadataEndpoints.PortalEndpoint);
+                    ActiveDirectoryEndpoint = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/') + '/';
+                    ActiveDirectoryServiceEndpointResourceId = metadataEndpoints.authentication.Audiences[0];
+                    GalleryEndpoint = metadataEndpoints.GalleryEndpoint;
+                    GraphEndpoint = metadataEndpoints.GraphEndpoint;
+                    AzureKeyVaultDnsSuffix = string.Format("vault.{0}", domain).ToLowerInvariant();
+                    AzureKeyVaultServiceEndpointResourceId = string.Format("https://vault.{0}", domain).ToLowerInvariant();
+                    StorageEndpoint = domain;
+                    EnableAdfsAuthentication = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/').EndsWith("/adfs", System.StringComparison.OrdinalIgnoreCase);
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null)
+                    {
+                        throw ex.InnerException;
+                    }
+
+                    throw;
+                }
             }
 
             var newEnvironment = new AzureEnvironment
