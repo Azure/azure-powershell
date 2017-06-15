@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 1.0.0
 * Integrate with Cognitive Services Management SDK version 1.0.0.
 * Fix an account name length checking bug.
 
