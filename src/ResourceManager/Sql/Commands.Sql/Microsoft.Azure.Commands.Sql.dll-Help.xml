@@ -8023,7 +8023,7 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="SyncGroupName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SyncGroupName</maml:name>
 <maml:Description><maml:para>The sync group name.
 </maml:para>
 </maml:Description>
@@ -8118,7 +8118,7 @@ Schema                      :</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="SyncGroupName"><maml:name>Name</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="none"><maml:name>SyncGroupName</maml:name>
 <maml:Description><maml:para>The sync group name.
 </maml:para>
 </maml:Description>

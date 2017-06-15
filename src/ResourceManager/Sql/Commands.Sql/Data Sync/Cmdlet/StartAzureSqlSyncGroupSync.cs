@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlSyncGroupSync", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
-    public class StartAzureSqlSynchronization : AzureSqlSyncGroupCmdletBase
+    public class StartAzureRmSqlSyncGroupSync : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the sync group name
