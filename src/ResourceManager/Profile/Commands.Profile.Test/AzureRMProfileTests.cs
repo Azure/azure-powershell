@@ -693,6 +693,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
       ""AzureKeyVaultDnsSuffix"": null,
       ""AzureKeyVaultServiceEndpointResourceId"": null,
       ""GraphEndpointResourceId"": null,
+      ""DataLakeEndpointResourceId"": null,
       ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
       ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
       ""AdTenant"": null,
@@ -721,9 +722,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         ""Name"": ""Contoso Test Subscription"",
         ""State"": ""Enabled"",
         ""ExtendedProperties"": {
+          ""Environment"": ""testCloud"",
           ""Account"": ""me@contoso.com"",
-          ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6"",
-          ""Environment"": ""testCloud""
+          ""Tenants"": ""3c0ff8a7-e8bb-40e8-ae66-271343379af6""
         }
       },
       ""Environment"": {
@@ -743,6 +744,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         ""AzureKeyVaultDnsSuffix"": null,
         ""AzureKeyVaultServiceEndpointResourceId"": null,
         ""GraphEndpointResourceId"": null,
+        ""DataLakeEndpointResourceId"": null,
         ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
         ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
         ""AdTenant"": null,
