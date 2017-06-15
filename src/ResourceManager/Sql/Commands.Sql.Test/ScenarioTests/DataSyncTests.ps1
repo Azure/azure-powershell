@@ -357,7 +357,8 @@ function Test-CreateSyncMember
     # Setup
     $rg = Create-ResourceGroupForTest 
     $server = Create-ServerForTest $rg "12.0" "West US 2"
-    $serverName = "$($server.ServerName).sqltest-eg1.mscds.com"
+    $serverDNS = Get-DNSNameBasedOnEnvironment
+    $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
     $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
@@ -405,7 +406,8 @@ function Test-GetAndListSyncMembers
     # Setup
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "12.0" "West US 2"
-    $serverName = "$($server.ServerName).sqltest-eg1.mscds.com"
+    $serverDNS = Get-DNSNameBasedOnEnvironment
+    $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
     $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
@@ -462,7 +464,8 @@ function Test-UpdateSyncMember
     # Setup
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "12.0" "West US 2"
-    $serverName = "$($server.ServerName).sqltest-eg1.mscds.com"
+    $serverDNS = Get-DNSNameBasedOnEnvironment
+    $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
     $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
@@ -512,7 +515,8 @@ function Test-RefreshAndGetSyncMemberSchema
     # Setup
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "12.0" "West US 2"
-    $serverName = "$($server.ServerName).sqltest-eg1.mscds.com"
+    $serverDNS = Get-DNSNameBasedOnEnvironment
+    $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
     $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1
@@ -560,7 +564,8 @@ function Test-RemoveSyncMember
     # Setup
     $rg = Create-ResourceGroupForTest
     $server = Create-ServerForTest $rg "12.0" "West US 2"
-    $serverName = "$($server.ServerName).sqltest-eg1.mscds.com"
+    $serverDNS = Get-DNSNameBasedOnEnvironment
+    $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
     $databaseName1 = Get-DatabaseName
     $db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName1

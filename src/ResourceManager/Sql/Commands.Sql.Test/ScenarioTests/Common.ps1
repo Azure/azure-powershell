@@ -516,3 +516,18 @@ function Get-SqlSyncMemberTestEnvironmentParameters ()
                databaseType = "AzureSqlDatabase";
                }
 }
+
+<#
+.SYNOPSIS
+Gets dns name according to environment
+#>
+function Get-DNSNameBasedOnEnvironment ()
+{
+     $connectingString = [System.Environment]::GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")
+     $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectingString)
+     $environment = $parsedString[[Microsoft.Azure.Test.TestEnvironment]::EnvironmentKey]
+     if ($environment -eq "Prod"){
+         return ".database.windows.net"
+     }
+     return ".sqltest-eg1.mscds.com"
+}
