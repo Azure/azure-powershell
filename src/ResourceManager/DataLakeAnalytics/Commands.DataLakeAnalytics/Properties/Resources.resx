@@ -264,4 +264,7 @@
   <data name="RemoveDataLakeAnalyticsComputePolicy" xml:space="preserve">
     <value>Removing Data Lake Analytics compute policy: '{0}' ...</value>
   </data>
+  <data name="InvalidDegreeOfParallelism" xml:space="preserve">
+    <value>Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -DegreeOfParallelism. Please adjust your scripts to pass in a value greater than zero</value>
+  </data>
 </root>

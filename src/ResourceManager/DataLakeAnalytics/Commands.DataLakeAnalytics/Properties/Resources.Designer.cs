@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -DegreeOfParallelism. Please adjust your scripts to pass in a value greater than zero.
+        /// </summary>
+        internal static string InvalidDegreeOfParallelism {
+            get {
+                return ResourceManager.GetString("InvalidDegreeOfParallelism", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid JobType selected. Please select -USql when submitting a job.
         /// </summary>
         internal static string InvalidJobType {
