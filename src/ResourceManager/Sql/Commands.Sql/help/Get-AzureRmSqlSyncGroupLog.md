@@ -12,7 +12,7 @@ Returns the logs of an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncGroupLog [-Name] <String> -StartTime <DateTime> [-EndTime <DateTime>] [-LogLevel <String>]
+Get-AzureRmSqlSyncGroupLog [-SyncGroupName] <String> -StartTime <DateTime> [-EndTime <DateTime>] [-LogLevel <String>]
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
@@ -96,13 +96,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -SyncGroupName
 The sync group name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: SyncGroupName
+Aliases:
 
 Required: True
 Position: 3

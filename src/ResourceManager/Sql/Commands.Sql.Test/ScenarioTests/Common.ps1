@@ -499,10 +499,9 @@ function Get-SyncAgentName
 .SYNOPSIS
 Gets the values of the parameters used by the sync group tests
 #>
-function Get-SqlSyncGroupTestEnvironmentParameters ($testSuffix)
+function Get-SqlSyncGroupTestEnvironmentParameters ()
 {
-    return @{
-              intervalInSeconds = 300;
+    return @{ intervalInSeconds = 300;
               conflictResolutionPolicy = "HubWin";
               }
 }
@@ -511,10 +510,9 @@ function Get-SqlSyncGroupTestEnvironmentParameters ($testSuffix)
 .SYNOPSIS
 Gets the values of the parameters used by the sync member tests
 #>
-function Get-SqlSyncMemberTestEnvironmentParameters ($testSuffix)
+function Get-SqlSyncMemberTestEnvironmentParameters ()
 {
-    return @{
-              syncDirection = "Bidirectional";
-              databaseType = "AzureSqlDatabase";
-              }
+     return @{ syncDirection = "Bidirectional";
+               databaseType = "AzureSqlDatabase";
+               }
 }
