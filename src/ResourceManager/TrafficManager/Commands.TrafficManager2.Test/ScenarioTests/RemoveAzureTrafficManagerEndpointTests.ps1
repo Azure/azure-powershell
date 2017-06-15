@@ -25,7 +25,7 @@ function Test-RemoveEndpoint
 	try
 	{
 		TestSetup-CreateProfile $profileName $resourceGroup.resourceGroupName
-		TestSetup-CreateEndpoint $profileName $resourceGroup.resourceGroupName $endpointName
+		TestSetup-CreateExternalEndpoint $profileName $resourceGroup.resourceGroupName $endpointName
 
 		$removed = Remove-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Force
 

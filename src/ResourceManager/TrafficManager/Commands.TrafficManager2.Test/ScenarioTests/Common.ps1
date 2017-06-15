@@ -99,7 +99,7 @@ function TestSetup-AddEndpoint($endpointName, $profile)
 .SYNOPSIS
 Creates a profile group to use in tests
 #>
-function TestSetup-CreateEndpoint($profileName, $resourceGroupName, $endpointName, $endpointStatus = "Enabled")
+function TestSetup-CreateExternalEndpoint($profileName, $resourceGroupName, $endpointName, $endpointStatus = "Enabled")
 {
 	$relativeName = getAssetName
 
