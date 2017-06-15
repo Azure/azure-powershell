@@ -221,7 +221,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage =
                 "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
             )]
-        [ValidateRange(1, int.MaxValue)]
         public int DegreeOfParallelism
         {
             get { return _degreeOfParallelism; }
@@ -333,6 +332,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
+            if(DegreeOfParallelism < 1)
+            {
+                WriteWarning(Resources.InvalidDegreeOfParallelism);
+            }
+
             // error handling for not passing or passing both script and script path
             if ((string.IsNullOrEmpty(Script) && string.IsNullOrEmpty(ScriptPath)) ||
                 (!string.IsNullOrEmpty(Script) && !string.IsNullOrEmpty(ScriptPath)))
