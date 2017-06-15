@@ -145,6 +145,7 @@
     <Compile Include="BatchAccounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="BatchAccounts\SetBatchAccountCommand.cs" />
     <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="Jobs\GetBatchJobPreparationAndReleaseTaskStatusCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
     <Compile Include="Models.Generated\PSExitCodeMapping.cs" />
     <Compile Include="Models.Generated\PSExitCodeRangeMapping.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Models.Generated\PSExitOptions.cs" />
     <Compile Include="Models.Generated\PSNetworkConfiguration.cs" />
     <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
+    <Compile Include="Models\ListJobPreparationAndReleaseStatusOptions.cs" />
     <Compile Include="Models\NewBulkTaskParameters.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
     <Compile Include="Models\PSApplication.cs" />
