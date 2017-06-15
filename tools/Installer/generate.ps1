@@ -40,21 +40,40 @@ $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
 
 Write-Verbose "Removing unneeded psd1 and other files"
-Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.Tags.dll-Help.xml -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.dll-Help.xml -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
-Remove-Item -Force $resourceManagerPath\AzureRM.Intune\AzureRM.Intune.psd1 -ErrorAction SilentlyContinue
 
-Write-Verbose "Removing duplicated Resources folder"
-Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $serviceManagementPath\Sql\Resources\ -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $serviceManagementPath\Storage\Resources\ -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $serviceManagementPath\ManagedCache\Resources\ -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $serviceManagementPath\Networking\Resources\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $serviceManagementPath -ErrorAction SilentlyContinue
+
+Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
+
+Remove-Item -Force $output\PowerShellSetup.Test.dll -ErrorAction SilentlyContinue
+
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.ApiManagement\ -ErrorAction SilentlyContinue
+
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.ApiManagement\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Automation\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Backup\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Batch\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Compute\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.DataFactories\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.DataLakeStore\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Dns\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.HDInsight\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Insights\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.KeyVault\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Network\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.NotificationHubs\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.OperationalInsights\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.RecoveryServices\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.RedisCache\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.SiteRecovery\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Sql\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.StreamAnalytics\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Tags\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.TrafficManager\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.UsageAggregates\ -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Websites\ -ErrorAction SilentlyContinue
+
 
 Write-Verbose "Removing generated NuGet folders from $output"
 $resourcesFolders = @("de", "es", "fr", "it", "ja", "ko", "ru", "zh-Hans", "zh-Hant")
