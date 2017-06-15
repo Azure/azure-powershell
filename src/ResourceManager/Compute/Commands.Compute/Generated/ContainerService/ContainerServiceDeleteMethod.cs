@@ -96,67 +96,50 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
-    public partial class RemoveAzureRmContainerService : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    public partial class RemoveAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "ContainerServiceDelete";
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.Remove)
-                && (this.dynamicParameters["Force"].IsSet ||
-                    this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                        "Remove-AzureRmContainerService operation")))
+            ExecuteClientAction(() =>
             {
-                base.ProcessRecord();
-            }
+                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Remove)
+                    && (this.Force.IsPresent ||
+                        this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
+                                            "Remove-AzureRmContainerService operation")))
+                {
+                    string resourceGroupName = this.ResourceGroupName;
+                    string containerServiceName = this.Name;
+
+            ContainerServicesClient.Delete(resourceGroupName, containerServiceName);
+
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "Name";
-            pContainerServiceName.ParameterType = typeof(string);
-            pContainerServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pContainerServiceName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string Name { get; set; }
 
-            var pForce = new RuntimeDefinedParameter();
-            pForce.Name = "Force";
-            pForce.ParameterType = typeof(SwitchParameter);
-            pForce.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = false
-            });
-            pForce.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Force", pForce);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = false)]
+        [AllowNull]
+        public SwitchParameter Force { get; set; }
     }
 }
