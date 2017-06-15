@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Collections.Generic;
@@ -26,8 +29,19 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
-    public class GetAzureSqlServer : AzureSqlServerCmdletBase, IModuleAssemblyInitializer
+    public class GetAzureSqlServer : AzureSqlCmdletBaseBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>, IModuleAssemblyInitializer
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
@@ -40,6 +54,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
+        /// Intializes the model adapter
+        /// </summary>
+        /// <param name="subscription">The subscription the cmdlets are operation under</param>
+        /// <returns>The server adapter</returns>
+        protected override AzureSqlServerAdapter InitModelAdapter(IAzureSubscription subscription)
+        {
+            return new AzureSqlServerAdapter(DefaultContext);
+        }
+
+        /// <summary>
         /// Gets a server from the service.
         /// </summary>
         /// <returns>A single server</returns>
@@ -47,14 +71,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             ICollection<AzureSqlServerModel> results = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ServerName"))
+            if (MyInvocation.BoundParameters.ContainsKey("ServerName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroup"))
             {
                 results = new List<AzureSqlServerModel>();
                 results.Add(ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName));
             }
+            else if (MyInvocation.BoundParameters.ContainsKey("ResourceGroup"))
+            {
+                results = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName);
+            }
+            else if (!MyInvocation.BoundParameters.ContainsKey("ServerName"))
+            {
+                results = ModelAdapter.ListServers();
+            }
             else
             {
-                results = ModelAdapter.GetServers(this.ResourceGroupName);
+                throw new PSArgumentException("When specifying the serverName parameter the ResourceGroup parameter must also be used");
             }
 
             return results;

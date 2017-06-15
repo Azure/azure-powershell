@@ -85,8 +85,10 @@ function Test-GetServer
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
+	$rg1 = Create-ResourceGroupForTest
 	$server1 = Create-ServerForTest $rg
 	$server2 = Create-ServerForTest $rg
+	$server3 = Create-ServerForTest $rg1
 
 	try
 	{
@@ -101,9 +103,13 @@ function Test-GetServer
 		Assert-AreEqual $server2.ServerName $resp2.ServerName
 		Assert-AreEqual $server2.ServerVersion $resp2.ServerVersion
 		Assert-AreEqual $server2.SqlAdministratorLogin $resp2.SqlAdministratorLogin
-
+		
 		$all = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $all.Count 2
+
+		# Test getting all servers in all resource groups
+		$resp1 = Get-AzureRmSqlServer
+		Assert-AreEqual $all.Count 3
 	}
 	finally
 	{
