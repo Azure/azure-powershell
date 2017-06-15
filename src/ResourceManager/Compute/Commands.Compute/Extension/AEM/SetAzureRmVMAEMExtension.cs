@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id), 
                         this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
-                    if (osDiskMD.AccountType == StorageAccountTypes.PremiumLRS)
+                    if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
                         WriteVerbose("OS Disk Storage Account is a premium account - adding SLAs for OS disk");
                         var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
                             this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
 
-                        if (diskMD.AccountType == StorageAccountTypes.PremiumLRS)
+                        if (diskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                         {
                             this._Helper.WriteVerbose("Data Disk {0} is a Premium Managed Disk - adding SLAs for disk", diskNumber.ToString());
                             var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);

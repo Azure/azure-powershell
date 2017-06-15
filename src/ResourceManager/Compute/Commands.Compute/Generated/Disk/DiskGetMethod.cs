@@ -146,50 +146,86 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmDisk", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class GetAzureRmDisk : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter")]
+    public partial class GetAzureRmDisk : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "DiskGet";
-            base.ProcessRecord();
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
+            ExecuteClientAction(() =>
+            {
+                string resourceGroupName = this.ResourceGroupName;
+                string diskName = this.DiskName;
+
+                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(diskName))
+                {
+                    var result = DisksClient.Get(resourceGroupName, diskName);
+                    var psObject = new PSDisk();
+                    Mapper.Map<Disk, PSDisk>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else if (!string.IsNullOrEmpty(resourceGroupName))
+                {
+                    var result = DisksClient.ListByResourceGroup(resourceGroupName);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = DisksClient.ListByResourceGroupNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSDiskList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+                else
+                {
+                    var result = DisksClient.List();
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = DisksClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSDiskList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pDiskName = new RuntimeDefinedParameter();
-            pDiskName.Name = "DiskName";
-            pDiskName.ParameterType = typeof(string);
-            pDiskName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pDiskName.Attributes.Add(new AliasAttribute("Name"));
-            pDiskName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DiskName", pDiskName);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string DiskName { get; set; }
     }
 }

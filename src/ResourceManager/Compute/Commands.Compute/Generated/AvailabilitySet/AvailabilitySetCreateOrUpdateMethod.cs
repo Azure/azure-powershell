@@ -47,17 +47,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
-            var pName = new RuntimeDefinedParameter();
-            pName.Name = "Name";
-            pName.ParameterType = typeof(string);
-            pName.Attributes.Add(new ParameterAttribute
+            var pAvailabilitySetName = new RuntimeDefinedParameter();
+            pAvailabilitySetName.Name = "AvailabilitySetName";
+            pAvailabilitySetName.ParameterType = typeof(string);
+            pAvailabilitySetName.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = true
             });
-            pName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pName);
+            pAvailabilitySetName.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("AvailabilitySetName", pAvailabilitySetName);
 
             var pParameters = new RuntimeDefinedParameter();
             pParameters.Name = "AvailabilitySet";
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected void ExecuteAvailabilitySetCreateOrUpdateMethod(object[] invokeMethodInputParameters)
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string name = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string availabilitySetName = (string)ParseParameter(invokeMethodInputParameters[1]);
             AvailabilitySet parameters = (AvailabilitySet)ParseParameter(invokeMethodInputParameters[2]);
 
-            var result = AvailabilitySetsClient.CreateOrUpdate(resourceGroupName, name, parameters);
+            var result = AvailabilitySetsClient.CreateOrUpdate(resourceGroupName, availabilitySetName, parameters);
             WriteObject(result);
         }
     }
@@ -102,12 +102,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected PSArgument[] CreateAvailabilitySetCreateOrUpdateParameters()
         {
             string resourceGroupName = string.Empty;
-            string name = string.Empty;
+            string availabilitySetName = string.Empty;
             AvailabilitySet parameters = new AvailabilitySet();
 
             return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "Name", "Parameters" },
-                 new object[] { resourceGroupName, name, parameters });
+                 new string[] { "ResourceGroupName", "AvailabilitySetName", "Parameters" },
+                 new object[] { resourceGroupName, availabilitySetName, parameters });
         }
     }
 }

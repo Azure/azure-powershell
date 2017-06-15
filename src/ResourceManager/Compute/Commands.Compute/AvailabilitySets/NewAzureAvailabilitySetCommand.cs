@@ -86,26 +86,15 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = this.Location,
                     PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                    PlatformFaultDomainCount = this.PlatformFaultDomainCount,
-#pragma warning disable CS0618 // Type or member is obsolete
-                    Managed = this.Managed.IsPresent ? (bool?) true : null
-#pragma warning restore CS0618 // Type or member is obsolete
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount
                 };
 
-#pragma warning disable CS0618 // Type or member is obsolete
-                if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
-#pragma warning restore CS0618 // Type or member is obsolete
+                if (!string.IsNullOrEmpty(this.Sku))
                 {
                     avSetParams.Sku = new Sku();
                     if (!string.IsNullOrEmpty(this.Sku))
                     {
                         avSetParams.Sku.Name = this.Sku;
-                    }
-#pragma warning disable CS0618 // Type or member is obsolete
-                    if (this.Managed.IsPresent)
-#pragma warning restore CS0618 // Type or member is obsolete
-                    {
-                        avSetParams.Sku.Name = "Aligned";
                     }
                 }
 

@@ -116,131 +116,99 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
-    public partial class StopAzureRmVmss : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    public partial class StopAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            if (this.ParameterSetName == "InvokeByDynamicParameters")
+            ExecuteClientAction(() =>
             {
-                this.MethodName = "VirtualMachineScaleSetDeallocate";
-            }
-            else
-            {
-                this.MethodName = "VirtualMachineScaleSetPowerOff";
-            }
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsLifecycle.Stop)
-                && (this.dynamicParameters["Force"].IsSet ||
-                    this.ShouldContinue(Properties.Resources.ResourceStoppingConfirmation,
-                                        "Stop-AzureRmVmss operation")))
-            {
-                base.ProcessRecord();
-            }
+                if (ShouldProcess(this.ResourceGroupName, VerbsLifecycle.Stop)
+                    && (this.Force.IsPresent ||
+                        this.ShouldContinue(Properties.Resources.ResourceStoppingConfirmation,
+                                            "Stop-AzureRmVmss operation")))
+                {
+                    string resourceGroupName = this.ResourceGroupName;
+                    string vmScaleSetName = this.VMScaleSetName;
+                    System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
+
+                    if (this.ParameterSetName.Equals("FriendMethod"))
+                    {
+                        var result = VirtualMachineScaleSetsClient.PowerOff(resourceGroupName, vmScaleSetName, instanceIds);
+                        WriteObject(result);
+                    }
+                    else
+                    {
+                        var result = VirtualMachineScaleSetsClient.Deallocate(resourceGroupName, vmScaleSetName, instanceIds);
+                        WriteObject(result);
+                    }
+
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pVMScaleSetName.Attributes.Add(new AliasAttribute("Name"));
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string VMScaleSetName { get; set; }
 
-            var pInstanceIds = new RuntimeDefinedParameter();
-            pInstanceIds.Name = "InstanceId";
-            pInstanceIds.ParameterType = typeof(string[]);
-            pInstanceIds.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pInstanceIds.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 3,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pInstanceIds.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("InstanceId", pInstanceIds);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string [] InstanceId { get; set; }
 
-            var pForce = new RuntimeDefinedParameter();
-            pForce.Name = "Force";
-            pForce.ParameterType = typeof(SwitchParameter);
-            pForce.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = false
-            });
-            pForce.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 4,
-                Mandatory = false
-            });
-            pForce.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Force", pForce);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 4,
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 4,
+            Mandatory = false)]
+        [AllowNull]
+        public SwitchParameter Force { get; set; }
 
-            var pStayProvisioned = new RuntimeDefinedParameter();
-            pStayProvisioned.Name = "StayProvisioned";
-            pStayProvisioned.ParameterType = typeof(SwitchParameter);
-            pStayProvisioned.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 5,
-                Mandatory = true
-            });
-            pStayProvisioned.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("StayProvisioned", pStayProvisioned);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 5,
+            Mandatory = true)]
+        [AllowNull]
+        public SwitchParameter StayProvisioned { get; set; }
     }
 }
