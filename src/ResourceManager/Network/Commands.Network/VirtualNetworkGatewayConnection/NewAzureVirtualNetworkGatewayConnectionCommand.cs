@@ -115,6 +115,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName =true,
+            HelpMessage = "Whether to establish a BGP session over a S2S VPN tunnel")]
+        public string EnableBgp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
@@ -159,6 +165,16 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
+
+            if (!string.IsNullOrEmpty(this.EnableBgp))
+            {
+                vnetGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
+            }
+            else
+            {
+                vnetGatewayConnection.EnableBgp = false;
+            }
+
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;

@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string SharedKey { get; set; }
 
+        public bool EnableBgp { get; set; }
+
         public string ConnectionStatus { get; set; }
 
         public ulong EgressBytesTransferred { get; set; }
