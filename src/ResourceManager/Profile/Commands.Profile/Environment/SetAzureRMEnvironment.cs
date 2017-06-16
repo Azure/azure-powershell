@@ -149,14 +149,12 @@ namespace Microsoft.Azure.Commands.Profile
                     StorageEndpoint = domain;
                     EnableAdfsAuthentication = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/').EndsWith("/adfs", System.StringComparison.OrdinalIgnoreCase);
                 }
-                catch (Exception ex)
+                catch (AggregateException ae)
                 {
-                    if (ex.InnerException != null)
+                    foreach (Exception ex in ae.Flatten().InnerExceptions)
                     {
-                        throw ex.InnerException;
+                        throw ex;
                     }
-
-                    throw;
                 }
             }
 
