@@ -26,7 +26,7 @@ function Test-GetShare
 
     try 
     {
-        $actual = Get-ACSShare -ResourceGroupName $rgname -SubscriptionId $subscriptionId -FarmName $farmName -ShareName $shareName
+        $actual = Get-AzSStorageShare -ShareName $shareName
 
         Assert-AreEqual $actual.Count 1
         Assert-AreEqual $actual.FreeCapacity 460
@@ -57,7 +57,7 @@ function Test-ListShares
 
     try 
     {
-        $actual = Get-ACSShare -ResourceGroupName $rgname -SubscriptionId $subscriptionId -FarmName $farmName
+        $actual = Get-AzSStorageShare 
 
         Assert-AreEqual $actual.Count 1
         Assert-AreEqual $actual[0].FreeCapacity 460

@@ -20,29 +20,12 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-TableService [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
-    /// 
+    /// Gets the Table service properties and settings.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminTableService)]
-    public sealed class GetTableService : AdminCmdlet
+    [Alias("Get-ACSTableService")]
+    public sealed class GetTableService : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-
         protected override void Execute()
         {
             TableServiceGetResponse result = Client.TableService.Get(ResourceGroupName, FarmName);

@@ -55,7 +55,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AzureStack.AzureConsistentStorage">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.10.6\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.10.8-preview\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,24 +117,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acquisition\DeleteAcquisition.cs" />
     <Compile Include="Acquisition\GetAcquisition.cs" />
     <Compile Include="AdminCmdlet.cs" />
+    <Compile Include="AdminCmdletWithFarm.cs" />
     <Compile Include="AdminException.cs" />
     <Compile Include="AdminMetricCmdLet.cs" />
     <Compile Include="AdminMetricDefinitionCmdlet.cs" />
     <Compile Include="Container\GetContainer.cs" />
     <Compile Include="Container\GetContainerMigrationStatus.cs" />
-    <Compile Include="Container\GetDestinationSharesForContainerMigration.cs" />
     <Compile Include="Container\StartContainerMigration.cs" />
     <Compile Include="Container\StopContainerMigration.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Farm\AddFarm.cs" />
     <Compile Include="Farm\ClearDeletedAccounts.cs" />
     <Compile Include="Farm\GetFarm.cs" />
     <Compile Include="Farm\GetFarmMetricDefinitions.cs" />
     <Compile Include="Farm\GetFarmMetrics.cs" />
+    <Compile Include="Farm\GetOnDemandGcStatus.cs" />
     <Compile Include="Farm\SetFarm.cs" />
     <Compile Include="Model\AcquisitionResponse.cs" />
     <Compile Include="Model\BasicResponseBase.cs" />
@@ -174,7 +173,6 @@
     <Compile Include="Share\GetShareMetricDefinitions.cs" />
     <Compile Include="Share\GetShareMetrics.cs" />
     <Compile Include="StorageAccount\GetStorageAccountsWithAdminInfo.cs" />
-    <Compile Include="StorageAccount\SyncStorageAccount.cs" />
     <Compile Include="StorageAccount\UndeleteStorageAccount.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Validation\ValidateAbsoluteUri.cs" />
@@ -213,6 +211,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

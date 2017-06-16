@@ -19,25 +19,12 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-ShareMetricDefinition [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [-ShareName] {string} [[-MetricNames] {string[]}] [ {CommonParameters}] 
-    /// 
+    /// Gets the properties of the metric definitions exposed at the share level.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminShareMetricDefinition)]
+    [Alias("Get-ACSShareMetricDefinition")]
     public sealed class GetShareMetricDefinitions : AdminMetricDefinitionCmdlet
     {
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string FarmName
-        {
-            get;
-            set;
-        }
-
         /// <summary>
         /// Farm Identifier
         /// </summary>

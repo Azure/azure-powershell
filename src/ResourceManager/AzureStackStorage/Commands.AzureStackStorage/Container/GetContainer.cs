@@ -22,48 +22,42 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// SYNTAX
-    /// Get-ACSContainer [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///                  [-FarmName] {string} [-ShareName] {string} [[-Intent] {Migration}] [-Count {MaxCount}] [{CommonParameters}] 
+    /// Gets a list of containers in a share that the system considers as best candidates for migration.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminContainer)]
-    public sealed class GetContainer : AdminCmdlet
+    [Alias("Get-ACSContainer")]
+    public sealed class GetContainer : AdminCmdletDefaultFarm
     {
         /// <summary>
         /// Default value of records to be returned when count is not specified
         /// </summary>
         internal const uint DefaultMaxCountOfRecords = 10;
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Farm Identifier
+        /// Filter containers from this Share 
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set;}
 
         /// <summary>
-        /// Storage Account Name
+        /// Intention of get container
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6 )]
+        [Parameter(Mandatory = false )]
         public ContainerGetIntent? Intent { get; set; }
 
         /// <summary>
-        /// Storage Account Status
+        /// Count of containers to return 
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7)]
+        [Parameter(Mandatory = false)]
         public uint? Count { get; set; }
+
+        /// <summary>
+        /// Start index from which containers will be returned
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public uint? StartIndex { get; set; }
+
 
         protected override void Execute()
         {
@@ -76,8 +70,13 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             {
                 this.Count = DefaultMaxCountOfRecords;
             }
+            
+            if(null == StartIndex)
+            {
+                this.StartIndex = 0;
+            }
 
-            ContainerListResponse response = this.Client.Shares.GetContainers(this.ResourceGroupName, this.FarmName, this.ShareName, this.Intent.ToString(), this.Count.ToString());
+            ContainerListResponse response = this.Client.Shares.GetContainers(this.ResourceGroupName, this.FarmName, this.ShareName, this.Intent.ToString(), this.Count.ToString(), this.StartIndex.ToString() );
             this.WriteObject(response, true);
         }
     }

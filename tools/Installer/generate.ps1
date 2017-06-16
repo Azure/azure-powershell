@@ -39,6 +39,7 @@ Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
 
+
 Write-Verbose "Removing unneeded psd1 and other files"
 Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeAnalytics\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
@@ -48,6 +49,25 @@ Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\AzureRM.Tags.psd1 
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.dll-Help.xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.Intune\AzureRM.Intune.psd1 -ErrorAction SilentlyContinue
+
+Write-Verbose "Removing unneeded psd1 and other files from AzureStackStorage folder"
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\AzureRM.Resources.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Resources.dll-Help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Resources.format.ps1xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.dll-help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\ResourceManagerStartup.ps1 -ErrorAction SilentlyContinue
+
+#System Management Automation DLL
+Remove-Item -Force $resourceManagerPath\AzureRM.Dns\System.Management.Automation.dll -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.Sql\System.Management.Automation.dll -ErrorAction SilentlyContinue
+Remove-Item -Force $serviceManagementPath\RecoveryServices\System.Management.Automation.dll -ErrorAction SilentlyContinue
+
+#Powershell Test DLL
+Remove-Item -Force $output\PowerShellSetup.Test.dll -ErrorAction SilentlyContinue 
 
 Write-Verbose "Removing duplicated Resources folder"
 Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue

@@ -12,44 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.AzureStack.AzureConsistentStorage;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// get shares
-    /// 
-    ///     SYNTAX
-    ///          Get-Share [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [-ShareName] {string} [ {CommonParameters}] 
-    /// 
+    /// Gets a list of shares used by the Storage system to place storage accounts.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.AdminShare)]
-    public sealed class GetAdminShare : AdminCmdlet
+    [Cmdlet(VerbsCommon.Get, Nouns.AdminShare, DefaultParameterSetName = ListTenantSharesParamSet)]
+    [Alias("Get-ACSShare")]
+    public sealed class GetAdminShare : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
+        const string ListTenantSharesParamSet = "ListTenant";
+        const string ListSharesForMigrationParamSet = "GetSharesForMigration";
 
         /// <summary>
-        /// Farm Identifier
+        /// Share name to get details
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string FarmName
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = ListTenantSharesParamSet)]
         [ValidateNotNullOrEmpty]
         public string ShareName
         {
@@ -57,19 +41,54 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             set;
         }
 
+        /// <summary>
+        /// Get Destination Shares for a container migration, given a Source Share
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ListSharesForMigrationParamSet)]
+        [ValidateNotNullOrEmpty]
+        public string SourceShareName { get; set; }
+
+        /// <summary>
+        /// Intent of the cmdlet to get all shares (default) or get shares for container migration
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ListSharesForMigrationParamSet)]
+        public FileShareGetIntent? Intent { get; set; }
+
         protected override void Execute()
         {
-            if (string.IsNullOrEmpty(ShareName))
+            WriteVerbose(String.Format("Get Shares ParamSet {0}", ParameterSetName));
+            switch (ParameterSetName)
             {
-                var shares = Client.Shares.List(ResourceGroupName, FarmName);
+                case ListTenantSharesParamSet:
+                    if (string.IsNullOrEmpty(ShareName))
+                    {
+                        var shares = Client.Shares.List(ResourceGroupName, FarmName);
 
-                WriteObject(shares.Shares.Select(_=>new ShareResponse(_)), true);
-            }
-            else
-            {
-                var share = Client.Shares.Get(ResourceGroupName, FarmName, ShareName);
+                        WriteObject(shares.Shares.Select(_ => new ShareResponse(_)), true);
+                    }
+                    else
+                    {
+                        var share = Client.Shares.Get(ResourceGroupName, FarmName, ShareName);
 
-                WriteObject(new ShareResponse(share.Share));
+                        WriteObject(new ShareResponse(share.Share));
+                    }
+                    break;
+                case ListSharesForMigrationParamSet :
+                    if (null == this.Intent)
+                    {
+                        this.Intent = FileShareGetIntent.ContainerMigration;
+                    }
+
+                    WriteVerbose(String.Format("Source Share name {0}", this.SourceShareName));
+
+                    switch (this.Intent)
+                    {
+                        case FileShareGetIntent.ContainerMigration:
+                            DestinationShareListResponse response = this.Client.Shares.GetDestinationShares(this.ResourceGroupName, this.FarmName, this.SourceShareName);
+                            this.WriteObject(response.Shares.Select(_ => new ShareResponse(_)), true);
+                            break;
+                    }
+                    break;
             }
         }
     }
