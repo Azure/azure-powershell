@@ -95,25 +95,24 @@ function Test-GetServer
 		# Test using parameters
 		$resp1 = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName
 		Assert-AreEqual $server1.ServerName $resp1.ServerName
-		Assert-AreEqual $server1.ServerVersion $resp1.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $resp1.SqlAdministratorLogin
 		
 		# Test piping
 		$resp2 = $server2 | Get-AzureRmSqlServer
 		Assert-AreEqual $server2.ServerName $resp2.ServerName
-		Assert-AreEqual $server2.ServerVersion $resp2.ServerVersion
 		Assert-AreEqual $server2.SqlAdministratorLogin $resp2.SqlAdministratorLogin
 		
 		$all = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName
-		Assert-AreEqual $all.Count 2
+		Assert-AreEqual 2 $all.Count
 
 		# Test getting all servers in all resource groups
-		$resp1 = Get-AzureRmSqlServer
-		Assert-AreEqual $all.Count 3
+		$all2 = Get-AzureRmSqlServer
+		Assert-AreEqual 3 $all2.Count
 	}
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $rg1
 	}
 }
 

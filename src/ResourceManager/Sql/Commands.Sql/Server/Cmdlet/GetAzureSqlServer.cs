@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = false,
-
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
@@ -71,12 +70,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             ICollection<AzureSqlServerModel> results = null;
 
-            if (MyInvocation.BoundParameters.ContainsKey("ServerName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroup"))
+            if (MyInvocation.BoundParameters.ContainsKey("ServerName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
             {
                 results = new List<AzureSqlServerModel>();
                 results.Add(ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName));
             }
-            else if (MyInvocation.BoundParameters.ContainsKey("ResourceGroup"))
+            else if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
             {
                 results = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName);
             }

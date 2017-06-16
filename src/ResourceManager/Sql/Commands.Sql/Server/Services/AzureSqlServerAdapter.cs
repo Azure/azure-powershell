@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             // ID is in the form:
             // /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.Sql/servers/serverName
             string[] segments = resp.Id.Split('/');
-            server.ResourceGroupName = segments[3];
+            server.ResourceGroupName = segments[4];
 
             server.ServerName = resp.Name;
             server.ServerVersion = resp.Version;
