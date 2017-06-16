@@ -140,16 +140,22 @@ function Test-GetAzureSubscriptionIdLogMaxEvents
     try 
     {
 	    {
-           $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
-           Assert-AreEqual 7 $actual.Count
+		   # There are 7 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the command is using the default MaxEvent and following continuation token.
+		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
+		   Assert-AreEqual 7 $actual.Count
 		}
 
 		{
+		   # There are 7 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the command is using the default MaxEvent and following continuation token.
 		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents -3
 		   Assert-AreEqual 7 $actual.Count
 		}
 
 		{
+		   # There are 7 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the command is using the default MaxEvent and following continuation token.
 		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 0
 		   Assert-AreEqual 7 $actual.Count
 		}
@@ -177,13 +183,38 @@ function Test-GetAzureSubscriptionIdLogPaged
     try 
     {
         {
-            $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
-            Assert-AreEqual 7 $actual.Count
+		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the commands is following the continuation token to get the records in the second page.
+		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z 
+		   Assert-AreEqual 8 $actual.Count
+        }
+
+		{
+		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the commands is following the continuation token to get only one record in the second page.
+		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 7
+		   Assert-AreEqual 7 $actual.Count
+        }
+
+		{
+		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the commands could have followed the continuation token but did not because it reached MaxEvents first.
+		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z  -MaxEvents 6
+		   Assert-AreEqual 6 $actual.Count
         }
 
         {
-            $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 3
-            Assert-AreEqual 3 $actual.Count
+		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the commands could have followed the continuation token but did not because it reached MaxEvents first.
+		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 3
+		   Assert-AreEqual 3 $actual.Count
+        }
+
+		{
+		   # There are 8 elements in the recorded sessions. The page is set to 6 elements. 
+		   # So if this succeeds, the commands is following the continuation token to get the records in the second page and reached the last record before reaching MaxEvents.
+		   $actual = Get-AzureRmLog -starttime 2015-01-15T12:30:00Z -endtime 2015-01-15T20:30:00Z -MaxEvents 15
+		   Assert-AreEqual 8 $actual.Count
         }
     }
     finally
