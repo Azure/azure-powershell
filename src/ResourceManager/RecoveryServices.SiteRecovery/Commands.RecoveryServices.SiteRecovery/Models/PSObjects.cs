@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,129 +23,137 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Azure Site Recovery Vault Settings.
+    ///     Azure Site Recovery Vault Settings.
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Keeping all related objects together.")]
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+        "SA1402:FileMayOnlyContainASingleClass",
+        Justification = "Keeping all related objects together.")]
     public class ASRVaultSettings
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVaultSettings" /> class.
+        ///     Initializes a new instance of the <see cref="ASRVaultSettings" /> class.
         /// </summary>
         public ASRVaultSettings()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVaultSettings" /> class
+        ///     Initializes a new instance of the <see cref="ASRVaultSettings" /> class
         /// </summary>
         /// <param name="asrVaultCreds">Vault credentails</param>
         public ASRVaultSettings(ASRVaultCreds asrVaultCreds)
         {
-            this.ResourceName = asrVaultCreds.ResourceName;
-            this.ResourceGroupName = asrVaultCreds.ResourceGroupName;
-            this.ResourceNamespace = asrVaultCreds.ResourceNamespace;
-            this.ResouceType = asrVaultCreds.ARMResourceType;
+            ResourceName = asrVaultCreds.ResourceName;
+            ResourceGroupName = asrVaultCreds.ResourceGroupName;
+            ResourceNamespace = asrVaultCreds.ResourceNamespace;
+            ResouceType = asrVaultCreds.ARMResourceType;
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets Resource Name.
+        ///     Gets or sets Resource Name.
         /// </summary>
         public string ResourceName { get; set; }
 
         /// <summary>
-        /// Gets or sets Resource Group Name.
+        ///     Gets or sets Resource Group Name.
         /// </summary>
         public string ResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets Resource Provider Namespace.
+        ///     Gets or sets Resource Provider Namespace.
         /// </summary>
         public string ResourceNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets Resource Type.
+        ///     Gets or sets Resource Type.
         /// </summary>
         public string ResouceType { get; set; }
+
         #endregion Properties
     }
 
     /// <summary>
-    /// Azure Site Recovery Server.
+    ///     Azure Site Recovery Server.
     /// </summary>
     public class ASRRecoveryServicesProvider
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRRecoveryServicesProvider" /> class.
+        ///     Initializes a new instance of the <see cref="ASRRecoveryServicesProvider" /> class.
         /// </summary>
         public ASRRecoveryServicesProvider()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRRecoveryServicesProvider" /> class with required 
-        /// parameters.
+        ///     Initializes a new instance of the <see cref="ASRRecoveryServicesProvider" /> class with
+        ///     required
+        ///     parameters.
         /// </summary>
         /// <param name="server">Server object</param>
         public ASRRecoveryServicesProvider(RecoveryServicesProvider provider)
         {
-            this.ID = provider.Id;
-            this.Name = provider.Name;
-            this.FriendlyName = provider.Properties.FriendlyName;
+            ID = provider.Id;
+            Name = provider.Name;
+            FriendlyName = provider.Properties.FriendlyName;
             if (provider.Properties.LastHeartBeat != null)
             {
-                this.LastHeartbeat = (DateTime)provider.Properties.LastHeartBeat;
+                LastHeartbeat = (DateTime) provider.Properties.LastHeartBeat;
             }
-            this.ProviderVersion = provider.Properties.ProviderVersion;
-            this.ServerVersion = provider.Properties.ServerVersion;
-            this.Connected = provider.Properties.ConnectionStatus.ToLower().CompareTo("connected") == 0 ? true : false;
-            this.FabricType = provider.Properties.FabricType;
-            this.Type = provider.Type;
+            ProviderVersion = provider.Properties.ProviderVersion;
+            ServerVersion = provider.Properties.ServerVersion;
+            Connected = provider.Properties.ConnectionStatus.ToLower()
+                            .CompareTo("connected") ==
+                        0 ? true : false;
+            FabricType = provider.Properties.FabricType;
+            Type = provider.Type;
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets Name of the Server.
+        ///     Gets or sets Name of the Server.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets Name of the Server.
+        ///     Gets or sets Name of the Server.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Server ID.
+        ///     Gets or sets Server ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets the Type of Management entity – VMM, V-Center.
+        ///     Gets or sets the Type of Management entity – VMM, V-Center.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of Server - VMM.
+        ///     Gets or sets the type of Server - VMM.
         /// </summary>
         public string FabricType { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether server is connected or not.
+        ///     Gets or sets a value indicating whether server is connected or not.
         /// </summary>
         public bool Connected { get; set; }
 
         /// <summary>
-        /// Gets or sets Last communicated time.
+        ///     Gets or sets Last communicated time.
         /// </summary>
         public DateTime LastHeartbeat { get; set; }
 
         /// <summary>
-        /// Gets or sets Provider version.
+        ///     Gets or sets Provider version.
         /// </summary>
         public string ProviderVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets Server version.
+        ///     Gets or sets Server version.
         /// </summary>
         public string ServerVersion { get; set; }
 
@@ -153,63 +161,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Azure Site Recovery Site object.
+    ///     Azure Site Recovery Site object.
     /// </summary>
     public class ASRFabric
     {
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRSite" /> class.
+        ///     Initializes a new instance of the <see cref="ASRSite" /> class.
         /// </summary>
         public ASRFabric()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRSite" /> class.
+        ///     Initializes a new instance of the <see cref="ASRSite" /> class.
         /// </summary>
         /// <param name="site">Hydra site object.</param>
         public ASRFabric(Fabric fabric)
         {
-            this.Name = fabric.Name;
-            this.FriendlyName = fabric.Properties.FriendlyName;
-            this.ID = fabric.Id;
-            this.Type = fabric.Type;
-            this.SiteIdentifier = fabric.Properties.InternalIdentifier;
-            this.fabricSpecificDetails = fabric.Properties.CustomDetails;
+            Name = fabric.Name;
+            FriendlyName = fabric.Properties.FriendlyName;
+            ID = fabric.Id;
+            Type = fabric.Type;
+            SiteIdentifier = fabric.Properties.InternalIdentifier;
+            fabricSpecificDetails = fabric.Properties.CustomDetails;
         }
 
         #endregion
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets display name.
+        ///     Gets or sets display name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets friendly name.
+        ///     Gets or sets friendly name.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets ID.
+        ///     Gets or sets ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets site type.
+        ///     Gets or sets site type.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets site SiteIdentifier.
+        ///     Gets or sets site SiteIdentifier.
         /// </summary>
         public string SiteIdentifier { get; set; }
 
         /// <summary>
-        /// Gets or sets site SiteIdentifier.
+        ///     Gets or sets site SiteIdentifier.
         /// </summary>
         public FabricSpecificDetails fabricSpecificDetails { get; set; }
 
@@ -217,97 +226,99 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Azure Site Recovery Protection Container Mapping.
+    ///     Azure Site Recovery Protection Container Mapping.
     /// </summary>
     public class ASRProtectionContainerMapping
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectionContainerMapping" /> class.
+        ///     Initializes a new instance of the <see cref="ASRProtectionContainerMapping" /> class.
         /// </summary>
         public ASRProtectionContainerMapping()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectionContainerMapping" /> class with 
-        /// required parameters.
+        ///     Initializes a new instance of the <see cref="ASRProtectionContainerMapping" /> class with
+        ///     required parameters.
         /// </summary>
         /// <param name="pc">Protection container mapping object</param>
         public ASRProtectionContainerMapping(ProtectionContainerMapping pcm)
         {
-            this.Name = pcm.Name;
-            this.ID = pcm.Id;
-            this.Health = pcm.Properties.Health;
-            this.HealthErrorDetails = pcm.Properties.HealthErrorDetails;
-            this.PolicyFriendlyName = pcm.Properties.PolicyFriendlyName;
-            this.PolicyId = pcm.Properties.PolicyId;
-            this.SourceFabricFriendlyName = pcm.Properties.SourceFabricFriendlyName;
-            this.SourceProtectionContainerFriendlyName = pcm.Properties.SourceProtectionContainerFriendlyName;
-            this.State = pcm.Properties.State;
-            this.TargetFabricFriendlyName = pcm.Properties.TargetFabricFriendlyName;
-            this.TargetProtectionContainerFriendlyName = pcm.Properties.TargetProtectionContainerFriendlyName;
-            this.TargetProtectionContainerId = pcm.Properties.TargetProtectionContainerId;
+            Name = pcm.Name;
+            ID = pcm.Id;
+            Health = pcm.Properties.Health;
+            HealthErrorDetails = pcm.Properties.HealthErrorDetails;
+            PolicyFriendlyName = pcm.Properties.PolicyFriendlyName;
+            PolicyId = pcm.Properties.PolicyId;
+            SourceFabricFriendlyName = pcm.Properties.SourceFabricFriendlyName;
+            SourceProtectionContainerFriendlyName =
+                pcm.Properties.SourceProtectionContainerFriendlyName;
+            State = pcm.Properties.State;
+            TargetFabricFriendlyName = pcm.Properties.TargetFabricFriendlyName;
+            TargetProtectionContainerFriendlyName =
+                pcm.Properties.TargetProtectionContainerFriendlyName;
+            TargetProtectionContainerId = pcm.Properties.TargetProtectionContainerId;
         }
 
         #region Properties
 
         /// <summary>
-        /// Gets or sets name of the Protection Container Mapping.
+        ///     Gets or sets name of the Protection Container Mapping.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection container Mapping ID.
+        ///     Gets or sets Protection container Mapping ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets Health
+        ///     Gets or sets Health
         /// </summary>
         public string Health { get; set; }
 
         /// <summary>
-        /// Gets or sets Health Error Details
+        ///     Gets or sets Health Error Details
         /// </summary>
         public IList<HealthError> HealthErrorDetails { get; set; }
 
         /// <summary>
-        /// Gets or sets Policy Friendly Name
+        ///     Gets or sets Policy Friendly Name
         /// </summary>
         public string PolicyFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets Policy Id
+        ///     Gets or sets Policy Id
         /// </summary>
         public string PolicyId { get; set; }
 
         /// <summary>
-        /// Gets or sets Source Fabric Friendly Name
+        ///     Gets or sets Source Fabric Friendly Name
         /// </summary>
         public string SourceFabricFriendlyName { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets Source Protection Container Friendly Name
+        ///     Gets or sets Source Protection Container Friendly Name
         /// </summary>
         public string SourceProtectionContainerFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets State
+        ///     Gets or sets State
         /// </summary>
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or sets Target Fabric Friendly Name
+        ///     Gets or sets Target Fabric Friendly Name
         /// </summary>
         public string TargetFabricFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets Target Protection Container Friendly Name
+        ///     Gets or sets Target Protection Container Friendly Name
         /// </summary>
         public string TargetProtectionContainerFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets Target Protection Container Id
+        ///     Gets or sets Target Protection Container Id
         /// </summary>
         public string TargetProtectionContainerId { get; set; }
 
@@ -315,219 +326,224 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Azure Site Recovery Protection Container.
+    ///     Azure Site Recovery Protection Container.
     /// </summary>
     public class ASRProtectionContainer
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectionContainer" /> class.
+        ///     Initializes a new instance of the <see cref="ASRProtectionContainer" /> class.
         /// </summary>
         public ASRProtectionContainer()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectionContainer" /> class with 
-        /// required parameters.
+        ///     Initializes a new instance of the <see cref="ASRProtectionContainer" /> class with
+        ///     required parameters.
         /// </summary>
         /// <param name="pc">Protection container object</param>
-        public ASRProtectionContainer(ProtectionContainer pc, List<ASRPolicy> availablePolicies, List<ASRProtectionContainerMapping> protectionContainerMappings)
+        public ASRProtectionContainer(ProtectionContainer pc,
+            List<ASRPolicy> availablePolicies,
+            List<ASRProtectionContainerMapping> protectionContainerMappings)
         {
-            this.ID = pc.Id;
-            this.Name = pc.Name;
-            this.FriendlyName = pc.Properties.FriendlyName;
-            this.FabricFriendlyName = pc.Properties.FabricFriendlyName;
-            this.Role = pc.Properties.Role;
-            this.FabricType = pc.Properties.FabricType;
-            this.Type = pc.Type;
-            this.AvailablePolicies = availablePolicies;
-            this.ProtectionContainerMappings = protectionContainerMappings;
+            ID = pc.Id;
+            Name = pc.Name;
+            FriendlyName = pc.Properties.FriendlyName;
+            FabricFriendlyName = pc.Properties.FabricFriendlyName;
+            Role = pc.Properties.Role;
+            FabricType = pc.Properties.FabricType;
+            Type = pc.Type;
+            AvailablePolicies = availablePolicies;
+            ProtectionContainerMappings = protectionContainerMappings;
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets name of the Protection container.
+        ///     Gets or sets name of the Protection container.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Protection container.
+        ///     Gets or sets name of the Protection container.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection container ID.
+        ///     Gets or sets Protection container ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets the type e.g. VMM, HyperVSite, etc.
+        ///     Gets or sets the type e.g. VMM, HyperVSite, etc.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed.")]
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed.")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection container's Fabric Friendly Name.
+        ///     Gets or sets Protection container's Fabric Friendly Name.
         /// </summary>
         public string FabricFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of Fabric - VMM.
+        ///     Gets or sets the type of Fabric - VMM.
         /// </summary>
         public string FabricType { get; set; }
 
         /// <summary>
-        /// Gets or sets a role of the protection container.
+        ///     Gets or sets a role of the protection container.
         /// </summary>
         public string Role { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of Policies.
+        ///     Gets or sets the list of Policies.
         /// </summary>
         public List<ASRPolicy> AvailablePolicies { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of Protection Container Mappings.
+        ///     Gets or sets the list of Protection Container Mappings.
         /// </summary>
         public List<ASRProtectionContainerMapping> ProtectionContainerMappings { get; set; }
+
         #endregion
     }
 
     /// <summary>
-    /// Azure Site Recovery Policy.
+    ///     Azure Site Recovery Policy.
     /// </summary>
     public class ASRPolicy
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRPolicy" /> class.
+        ///     Initializes a new instance of the <see cref="ASRPolicy" /> class.
         /// </summary>
         public ASRPolicy()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRPolicy" /> class with 
-        /// required parameters.
+        ///     Initializes a new instance of the <see cref="ASRPolicy" /> class with
+        ///     required parameters.
         /// </summary>
         /// <param name="policy">Protection container object</param>
         public ASRPolicy(Policy policy)
         {
-            this.ID = policy.Id;
-            this.Name = policy.Name;
-            this.FriendlyName = policy.Properties.FriendlyName;
-            this.Type = policy.Type;
-            
+            ID = policy.Id;
+            Name = policy.Name;
+            FriendlyName = policy.Properties.FriendlyName;
+            Type = policy.Type;
 
             if (policy.Properties.ProviderSpecificDetails is HyperVReplicaBluePolicyDetails)
             {
-                HyperVReplicaBluePolicyDetails details =
-                    (HyperVReplicaBluePolicyDetails)policy.Properties.ProviderSpecificDetails;
+                var details =
+                    (HyperVReplicaBluePolicyDetails) policy.Properties.ProviderSpecificDetails;
 
-                ASRHyperVReplicaPolicyDetails replicationProviderSettings =
-                    new ASRHyperVReplicaPolicyDetails();
+                var replicationProviderSettings = new ASRHyperVReplicaPolicyDetails();
 
-                this.ReplicationProvider = Constants.HyperVReplica2012R2;
-                replicationProviderSettings.ReplicaDeletionOption =
-                    details.ReplicaDeletionOption;
+                ReplicationProvider = Constants.HyperVReplica2012R2;
+                replicationProviderSettings.ReplicaDeletionOption = details.ReplicaDeletionOption;
                 replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours =
-                    (int)details.ApplicationConsistentSnapshotFrequencyInHours;
-                replicationProviderSettings.Compression =
-                    details.Compression;
-                replicationProviderSettings.ReplicationFrequencyInSeconds =
-                    300;
+                    (int) details.ApplicationConsistentSnapshotFrequencyInHours;
+                replicationProviderSettings.Compression = details.Compression;
+                replicationProviderSettings.ReplicationFrequencyInSeconds = 300;
                 replicationProviderSettings.AllowedAuthenticationType =
-                    (details.AllowedAuthenticationType == 1) ?
-                    Constants.AuthenticationTypeKerberos :
-                    Constants.AuthenticationTypeCertificate;
-                replicationProviderSettings.RecoveryPoints = (int)details.RecoveryPoints;
+                    details.AllowedAuthenticationType == 1 ? Constants.AuthenticationTypeKerberos
+                        : Constants.AuthenticationTypeCertificate;
+                replicationProviderSettings.RecoveryPoints = (int) details.RecoveryPoints;
                 replicationProviderSettings.InitialReplicationMethod =
-                    (string.Compare(details.InitialReplicationMethod, "OverNetwork", StringComparison.OrdinalIgnoreCase) == 0) ?
-                    Constants.OnlineReplicationMethod :
-                    Constants.OfflineReplicationMethod;
-                replicationProviderSettings.ReplicationPort = (ushort)details.ReplicationPort;
-                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime == null ? (TimeSpan?)null : TimeSpan.Parse(details.OnlineReplicationStartTime);
+                    string.Compare(details.InitialReplicationMethod,
+                        "OverNetwork",
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0 ? Constants.OnlineReplicationMethod : Constants.OfflineReplicationMethod;
+                replicationProviderSettings.ReplicationPort = (ushort) details.ReplicationPort;
+                replicationProviderSettings.OnlineReplicationStartTime =
+                    details.OnlineReplicationStartTime == null ? (TimeSpan?) null
+                        : TimeSpan.Parse(details.OnlineReplicationStartTime);
 
-                this.ReplicationProviderSettings = replicationProviderSettings;
+                ReplicationProviderSettings = replicationProviderSettings;
             }
             else if (policy.Properties.ProviderSpecificDetails is HyperVReplicaPolicyDetails)
             {
-                HyperVReplicaPolicyDetails details =
-                    (HyperVReplicaPolicyDetails)policy.Properties.ProviderSpecificDetails;
+                var details =
+                    (HyperVReplicaPolicyDetails) policy.Properties.ProviderSpecificDetails;
 
-                ASRHyperVReplicaPolicyDetails replicationProviderSettings =
-                    new ASRHyperVReplicaPolicyDetails();
+                var replicationProviderSettings = new ASRHyperVReplicaPolicyDetails();
 
-                this.ReplicationProvider = Constants.HyperVReplica2012;
-                replicationProviderSettings.ReplicaDeletionOption =
-                    details.ReplicaDeletionOption;
+                ReplicationProvider = Constants.HyperVReplica2012;
+                replicationProviderSettings.ReplicaDeletionOption = details.ReplicaDeletionOption;
                 replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours =
-                    (int)details.ApplicationConsistentSnapshotFrequencyInHours;
-                replicationProviderSettings.Compression =
-                    details.Compression;
+                    (int) details.ApplicationConsistentSnapshotFrequencyInHours;
+                replicationProviderSettings.Compression = details.Compression;
                 replicationProviderSettings.AllowedAuthenticationType =
-                    (details.AllowedAuthenticationType == 1) ?
-                    Constants.AuthenticationTypeKerberos :
-                    Constants.AuthenticationTypeCertificate;
-                replicationProviderSettings.RecoveryPoints = (int)details.RecoveryPoints;
+                    details.AllowedAuthenticationType == 1 ? Constants.AuthenticationTypeKerberos
+                        : Constants.AuthenticationTypeCertificate;
+                replicationProviderSettings.RecoveryPoints = (int) details.RecoveryPoints;
                 replicationProviderSettings.InitialReplicationMethod =
-                    (string.Compare(details.InitialReplicationMethod, "OverNetwork", StringComparison.OrdinalIgnoreCase) == 0) ?
-                    Constants.OnlineReplicationMethod :
-                    Constants.OfflineReplicationMethod;
-                replicationProviderSettings.ReplicationPort = (ushort)details.ReplicationPort;
-                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime == null ? (TimeSpan?)null : TimeSpan.Parse(details.OnlineReplicationStartTime);
+                    string.Compare(details.InitialReplicationMethod,
+                        "OverNetwork",
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0 ? Constants.OnlineReplicationMethod : Constants.OfflineReplicationMethod;
+                replicationProviderSettings.ReplicationPort = (ushort) details.ReplicationPort;
+                replicationProviderSettings.OnlineReplicationStartTime =
+                    details.OnlineReplicationStartTime == null ? (TimeSpan?) null
+                        : TimeSpan.Parse(details.OnlineReplicationStartTime);
 
-                this.ReplicationProviderSettings = replicationProviderSettings;
+                ReplicationProviderSettings = replicationProviderSettings;
             }
             else if (policy.Properties.ProviderSpecificDetails is HyperVReplicaAzurePolicyDetails)
             {
-                HyperVReplicaAzurePolicyDetails details =
-                    (HyperVReplicaAzurePolicyDetails)policy.Properties.ProviderSpecificDetails;
+                var details =
+                    (HyperVReplicaAzurePolicyDetails) policy.Properties.ProviderSpecificDetails;
 
-                ASRHyperVReplicaAzurePolicyDetails replicationProviderSettings =
-                    new ASRHyperVReplicaAzurePolicyDetails();
+                var replicationProviderSettings = new ASRHyperVReplicaAzurePolicyDetails();
 
-                this.ReplicationProvider = Constants.HyperVReplicaAzure;
+                ReplicationProvider = Constants.HyperVReplicaAzure;
                 replicationProviderSettings.ApplicationConsistentSnapshotFrequencyInHours =
-                    (int)details.ApplicationConsistentSnapshotFrequencyInHours;
-                replicationProviderSettings.ReplicationFrequencyInSeconds = (int)details.ReplicationInterval;
-                replicationProviderSettings.RecoveryPoints = (int)details.RecoveryPointHistoryDurationInHours;
-                replicationProviderSettings.OnlineReplicationStartTime = details.OnlineReplicationStartTime == null ? (TimeSpan?)null : TimeSpan.Parse(details.OnlineReplicationStartTime);
+                    (int) details.ApplicationConsistentSnapshotFrequencyInHours;
+                replicationProviderSettings.ReplicationFrequencyInSeconds =
+                    (int) details.ReplicationInterval;
+                replicationProviderSettings.RecoveryPoints =
+                    (int) details.RecoveryPointHistoryDurationInHours;
+                replicationProviderSettings.OnlineReplicationStartTime =
+                    details.OnlineReplicationStartTime == null ? (TimeSpan?) null
+                        : TimeSpan.Parse(details.OnlineReplicationStartTime);
                 replicationProviderSettings.Encryption = details.Encryption;
-                replicationProviderSettings.ActiveStorageAccountId =
-                    details.ActiveStorageAccountId;
+                replicationProviderSettings.ActiveStorageAccountId = details.ActiveStorageAccountId;
 
-                this.ReplicationProviderSettings = replicationProviderSettings;
+                ReplicationProviderSettings = replicationProviderSettings;
             }
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets friendly name of the Policy.
+        ///     Gets or sets friendly name of the Policy.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Policy.
+        ///     Gets or sets name of the Policy.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Policy ID.
+        ///     Gets or sets Policy ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets Policy type.
+        ///     Gets or sets Policy type.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure, San)
+        ///     Gets or sets Replication Type (HyperVReplica, HyperVReplicaAzure, San)
         /// </summary>
         public string ReplicationProvider { get; set; }
 
         /// <summary>
-        /// Gets or sets HyperVReplicaProviderSettings
+        ///     Gets or sets HyperVReplicaProviderSettings
         /// </summary>
         // public HyperVReplicaProviderSettings ReplicationProviderSettings { get; set; }
         public ASRPolicyProviderSettingsDetails ReplicationProviderSettings { get; set; }
@@ -536,7 +552,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Policy provider settings
+    ///     Policy provider settings
     /// </summary>
     public class ASRPolicyProviderSettingsDetails
     {
@@ -546,46 +562,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     //     HyperV Replica Policy Details.
     public class ASRHyperVReplicaPolicyDetails : ASRPolicyProviderSettingsDetails
     {
-
         // Summary:
         //     Optional.
         public string AllowedAuthenticationType { get; set; }
+
         //
         // Summary:
         //     Optional.
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
         //
         // Summary:
         //     Optional.
         public string Compression { get; set; }
+
         //
         // Summary:
         //     Optional.
         public string InitialReplicationMethod { get; set; }
+
         //
         // Summary:
         //     Optional.
         public string OfflineReplicationExportPath { get; set; }
+
         //
         // Summary:
         //     Optional.
         public string OfflineReplicationImportPath { get; set; }
+
         //
         // Summary:
         //     Optional.
         public TimeSpan? OnlineReplicationStartTime { get; set; }
+
         //
         // Summary:
         //     Optional.
         public int RecoveryPoints { get; set; }
+
         //
         // Summary:
         //     Optional.
         public string ReplicaDeletionOption { get; set; }
+
         //
         // Summary:
         //     Optional.
         public ushort ReplicationFrequencyInSeconds { get; set; }
+
         //
         // Summary:
         //     Optional.
@@ -593,29 +618,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// ASR HyperV Replica Azure enable protection input.
+    ///     ASR HyperV Replica Azure enable protection input.
     /// </summary>
     public class ASRHyperVReplicaAzurePolicyDetails : ASRPolicyProviderSettingsDetails
     {
         // Summary:
         //     Optional.
         public string ActiveStorageAccountId { get; set; }
+
         //
         // Summary:
         //     Optional.
         public int ApplicationConsistentSnapshotFrequencyInHours { get; set; }
+
         //
         // Summary:
         //     Optional.
         public string Encryption { get; set; }
+
         //
         // Summary:
         //     Optional.
         public TimeSpan? OnlineReplicationStartTime { get; set; }
+
         //
         // Summary:
         //     Optional.
         public int RecoveryPoints { get; set; }
+
         //
         // Summary:
         //     Optional.
@@ -623,19 +653,59 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// ASR VM Nic Details
+    ///     ASR VM Nic Details
     /// </summary>
     public class ASRVMNicDetails
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVMNicDetails" /> class.
+        ///     Gets or sets the nic Id.
+        /// </summary>
+        public string NicId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets VM network name.
+        /// </summary>
+        public string VMNetworkName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets VM subnet name.
+        /// </summary>
+        public string VMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets recovery VM network Id.
+        /// </summary>
+        public string RecoveryVMNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets recovery VM subnet name.
+        /// </summary>
+        public string RecoveryVMSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets replica nic static IP address.
+        /// </summary>
+        public string ReplicaNicStaticIPAddress { get; set; }
+
+        /// <summary>
+        ///     Gets or sets ipv4 address type.
+        /// </summary>
+        public string IpAddressType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets selection type for failover.
+        /// </summary>
+        public string SelectionType { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRVMNicDetails" /> class.
         /// </summary>
         public ASRVMNicDetails()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRVMNicDetails" /> class.
+        ///     Initializes a new instance of the <see cref="ASRVMNicDetails" /> class.
         /// </summary>
         public ASRVMNicDetails(VMNicDetails vMNicDetails)
         {
@@ -648,86 +718,114 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             IpAddressType = vMNicDetails.IpAddressType;
             SelectionType = vMNicDetails.SelectionType;
         }
-
-        /// <summary>
-        /// Gets or sets the nic Id.
-        /// </summary>
-        public string NicId { get; set; }
-
-        /// <summary>
-        /// Gets or sets VM network name.
-        /// </summary>
-        public string VMNetworkName { get; set; }
-
-        /// <summary>
-        /// Gets or sets VM subnet name.
-        /// </summary>
-        public string VMSubnetName { get; set; }
-
-        /// <summary>
-        /// Gets or sets recovery VM network Id.
-        /// </summary>
-        public string RecoveryVMNetworkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets recovery VM subnet name.
-        /// </summary>
-        public string RecoveryVMSubnetName { get; set; }
-
-        /// <summary>
-        /// Gets or sets replica nic static IP address.
-        /// </summary>
-        public string ReplicaNicStaticIPAddress { get; set; }
-
-        /// <summary>
-        /// Gets or sets ipv4 address type.
-        /// </summary>
-        public string IpAddressType { get; set; }
-
-        /// <summary>
-        /// Gets or sets selection type for failover.
-        /// </summary>
-        public string SelectionType { get; set; }
     }
 
     /// <summary>
-    /// Azure Site Recovery Protectable Item
+    ///     Azure Site Recovery Protectable Item
     /// </summary>
     public class ASRProtectableItem
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectableItem" /> class.
+        ///     Gets or sets Friendly Name of the Protection entity.
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Name of the Protection entity.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protection entity ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets fabric object ID.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protection container ID.
+        /// </summary>
+        public string ProtectionContainerId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether it is protected or not.
+        /// </summary>
+        public string ProtectionStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value that lists allowed operations.
+        /// </summary>
+        public IList<string> ProtectionReadinessErrors { get; set; }
+
+        /// <summary>
+        ///     Gets or sets OSDiskVHDId.
+        /// </summary>
+        public string OSDiskId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets OS DiskName.
+        /// </summary>
+        public string OSDiskName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets OS.
+        /// </summary>
+        public string OS { get; set; }
+
+        /// <summary>
+        ///     Gets or sets OS.
+        /// </summary>
+        public List<VirtualHardDisk> Disks { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication provider.
+        /// </summary>
+        public IList<string> SupportedReplicationProviders { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication protected item id.
+        /// </summary>
+        public string ReplicationProtectedItemId { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRProtectableItem" /> class.
         /// </summary>
         public ASRProtectableItem()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProtectableItem" /> class when it is not protected
+        ///     Initializes a new instance of the <see cref="ASRProtectableItem" /> class when it is not
+        ///     protected
         /// </summary>
         /// <param name="pi">Protectable Item to read values from</param>
         public ASRProtectableItem(ProtectableItem pi)
         {
-            this.ID = pi.Id;
-            this.Name = pi.Name;
-            this.FriendlyName = pi.Properties.FriendlyName;
-            this.ProtectionContainerId = Utilities.GetValueFromArmId(pi.Id, ARMResourceTypeConstants.ReplicationProtectionContainers);
-            this.ProtectionStatus = pi.Properties.ProtectionStatus;
-            this.ReplicationProtectedItemId = pi.Properties.ReplicationProtectedItemId;
-            this.SupportedReplicationProviders = pi.Properties.SupportedReplicationProviders;
+            ID = pi.Id;
+            Name = pi.Name;
+            FriendlyName = pi.Properties.FriendlyName;
+            ProtectionContainerId = Utilities.GetValueFromArmId(pi.Id,
+                ARMResourceTypeConstants.ReplicationProtectionContainers);
+            ProtectionStatus = pi.Properties.ProtectionStatus;
+            ReplicationProtectedItemId = pi.Properties.ReplicationProtectedItemId;
+            SupportedReplicationProviders = pi.Properties.SupportedReplicationProviders;
             if (pi.Properties.CustomDetails != null)
             {
                 if (pi.Properties.CustomDetails is HyperVVirtualMachineDetails)
                 {
                     if (pi.Properties.CustomDetails is HyperVVirtualMachineDetails)
                     {
-                        HyperVVirtualMachineDetails providerSettings =
-                            (HyperVVirtualMachineDetails)pi.Properties.CustomDetails;
+                        var providerSettings =
+                            (HyperVVirtualMachineDetails) pi.Properties.CustomDetails;
 
-                        IList<DiskDetails> diskDetails = providerSettings.DiskDetails;
-                        this.UpdateDiskDetails(diskDetails);
-                        this.OS = providerSettings.OsDetails == null ? null : providerSettings.OsDetails.OsType;
-                        this.FabricObjectId = providerSettings.SourceItemId;
+                        var diskDetails = providerSettings.DiskDetails;
+                        UpdateDiskDetails(diskDetails);
+                        OS = providerSettings.OsDetails == null ? null
+                            : providerSettings.OsDetails.OsType;
+                        FabricObjectId = providerSettings.SourceItemId;
                     }
                 }
             }
@@ -735,406 +833,359 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         private void UpdateDiskDetails(IList<DiskDetails> diskDetails)
         {
-            this.Disks = new List<VirtualHardDisk>();
+            Disks = new List<VirtualHardDisk>();
             foreach (var disk in diskDetails)
             {
-                VirtualHardDisk hd = new VirtualHardDisk();
+                var hd = new VirtualHardDisk();
                 hd.Id = disk.VhdId;
                 hd.Name = disk.VhdName;
-                this.Disks.Add(hd);
+                Disks.Add(hd);
             }
-            DiskDetails OSDisk = diskDetails.SingleOrDefault(d => string.Compare(d.VhdType, "OperatingSystem", StringComparison.OrdinalIgnoreCase) == 0);
+
+            var OSDisk = diskDetails.SingleOrDefault(d => string.Compare(d.VhdType,
+                                                              "OperatingSystem",
+                                                              StringComparison.OrdinalIgnoreCase) ==
+                                                          0);
             if (OSDisk != null)
             {
-                this.OSDiskId = OSDisk.VhdId;
-                this.OSDiskName = OSDisk.VhdName;
+                OSDiskId = OSDisk.VhdId;
+                OSDiskName = OSDisk.VhdName;
             }
         }
-
-        /// <summary>
-        /// Gets or sets Friendly Name of the Protection entity.
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Name of the Protection entity.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection entity ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets fabric object ID.
-        /// </summary>
-        public string FabricObjectId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection container ID.
-        /// </summary>
-        public string ProtectionContainerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether it is protected or not.
-        /// </summary>
-        public string ProtectionStatus { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value that lists allowed operations.
-        /// </summary>
-        public IList<string> ProtectionReadinessErrors { get; set; }
-
-        /// <summary>
-        /// Gets or sets OSDiskVHDId.
-        /// </summary>
-        public string OSDiskId { get; set; }
-
-        /// <summary>
-        /// Gets or sets OS DiskName.
-        /// </summary>
-        public string OSDiskName { get; set; }
-
-        /// <summary>
-        /// Gets or sets OS.
-        /// </summary>
-        public string OS { get; set; }
-
-        /// <summary>
-        /// Gets or sets OS.
-        /// </summary>
-        public List<VirtualHardDisk> Disks { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication provider.
-        /// </summary>
-        public IList<string> SupportedReplicationProviders { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication protected item id.
-        /// </summary>
-        public string ReplicationProtectedItemId { get; set; }
     }
 
     /// <summary>
-    /// Azure Site Recovery Replication Protected Item.
+    ///     Azure Site Recovery Replication Protected Item.
     /// </summary>
     public class ASRReplicationProtectedItem
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRReplicationProtectedItem" /> class.
+        ///     Gets or sets Friendly Name of the Protection entity.
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Name of the Protection entity.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protection entity ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets type of the Protection entity.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Current Scenario Details
+        /// </summary>
+        public CurrentScenarioDetails CurrentScenario { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value that lists allowed operations.
+        /// </summary>
+        public IList<string> AllowedOperations { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a active location of protection entity.
+        /// </summary>
+        public string ActiveLocation { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication provider.
+        /// </summary>
+        public string ReplicationProvider { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Failover Recovery Point Id
+        /// </summary>
+        public string FailoverRecoveryPointId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Last Successful Failover Time
+        /// </summary>
+        public DateTime? LastSuccessfulFailoverTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Last Successful TestFailover Time
+        /// </summary>
+        public DateTime? LastSuccessfulTestFailoverTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Policy Friendly Name
+        /// </summary>
+        public string PolicyFriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Policy ID
+        /// </summary>
+        public string PolicyID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Primary Fabric Friendly Name
+        /// </summary>
+        public string PrimaryFabricFriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Primary Protection Container Friendly Name
+        /// </summary>
+        public string PrimaryProtectionContainerFriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protectable Item Id
+        /// </summary>
+        public string ProtectableItemId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protected Item Type
+        /// </summary>
+        public string ProtectedItemType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protection State
+        /// </summary>
+        public string ProtectionState { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Protection State Description
+        /// </summary>
+        public string ProtectionStateDescription { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Provider Specific Details
+        /// </summary>
+        public ReplicationProviderSpecificSettings ProviderSpecificDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Fabric Friendly Name
+        /// </summary>
+        public string RecoveryFabricFriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Fabric Id
+        /// </summary>
+        public string RecoveryFabricId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Protection Container Friendly Name
+        /// </summary>
+        public string RecoveryProtectionContainerFriendlyName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Services Provider Id
+        /// </summary>
+        public string RecoveryServicesProviderId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication Health
+        /// </summary>
+        public string ReplicationHealth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication Health Errors
+        /// </summary>
+        public IList<HealthError> ReplicationHealthErrors { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Test Failover State
+        /// </summary>
+        public string TestFailoverState { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Test Failover State Description
+        /// </summary>
+        public string TestFailoverStateDescription { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure VM Name of the Virtual machine.
+        /// </summary>
+        public string RecoveryAzureVMName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure VM Size of the Virtual machine.
+        /// </summary>
+        public string RecoveryAzureVMSize { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Azure Storage Account of the Virtual machine.
+        /// </summary>
+        public string RecoveryAzureStorageAccount { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Selected Recovery Azure Network Id of the Virtual machine.
+        /// </summary>
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Nic Details of the Virtual machine.
+        /// </summary>
+        public List<ASRVMNicDetails> NicDetailsList { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRReplicationProtectedItem" /> class.
         /// </summary>
         public ASRReplicationProtectedItem()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRReplicationProtectedItem" /> class when it is protected
+        ///     Initializes a new instance of the <see cref="ASRReplicationProtectedItem" /> class when it is
+        ///     protected
         /// </summary>
         /// <param name="pi">Protectable Item to read values from</param>
         /// <param name="rpi">Replication Protected Item to read values from</param>
         public ASRReplicationProtectedItem(ReplicationProtectedItem rpi)
         {
-            this.ID = rpi.Id;
-            this.Name = rpi.Name;
-            this.FriendlyName = rpi.Properties.FriendlyName;
-            this.Type = rpi.Type;
-            this.ActiveLocation = rpi.Properties.ActiveLocation;
-            this.AllowedOperations = rpi.Properties.AllowedOperations;
-            this.CurrentScenario = rpi.Properties.CurrentScenario;
-            this.FailoverRecoveryPointId = rpi.Properties.FailoverRecoveryPointId;
-            this.LastSuccessfulFailoverTime = rpi.Properties.LastSuccessfulFailoverTime;
-            this.LastSuccessfulTestFailoverTime = rpi.Properties.LastSuccessfulTestFailoverTime;
-            this.PolicyFriendlyName = rpi.Properties.PolicyFriendlyName;
-            this.PolicyID = rpi.Properties.PolicyId;
-            this.PrimaryFabricFriendlyName = rpi.Properties.PrimaryFabricFriendlyName;
-            this.PrimaryProtectionContainerFriendlyName = rpi.Properties.PrimaryProtectionContainerFriendlyName;
-            this.ProtectableItemId = rpi.Properties.ProtectableItemId;
-            this.ProtectedItemType = rpi.Properties.ProtectedItemType;
-            this.ProtectionState = rpi.Properties.ProtectionState;
-            this.ProtectionStateDescription = rpi.Properties.ProtectionStateDescription;
-            this.RecoveryFabricFriendlyName = rpi.Properties.RecoveryFabricFriendlyName;
-            this.RecoveryFabricId = rpi.Properties.RecoveryFabricId;
-            this.RecoveryProtectionContainerFriendlyName = rpi.Properties.RecoveryProtectionContainerFriendlyName;
-            this.RecoveryServicesProviderId = rpi.Properties.RecoveryServicesProviderId;
-            this.ReplicationHealth = rpi.Properties.ReplicationHealth;
-            this.ReplicationHealthErrors = rpi.Properties.ReplicationHealthErrors;
-            this.TestFailoverState = rpi.Properties.TestFailoverState;
-            this.TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
+            ID = rpi.Id;
+            Name = rpi.Name;
+            FriendlyName = rpi.Properties.FriendlyName;
+            Type = rpi.Type;
+            ActiveLocation = rpi.Properties.ActiveLocation;
+            AllowedOperations = rpi.Properties.AllowedOperations;
+            CurrentScenario = rpi.Properties.CurrentScenario;
+            FailoverRecoveryPointId = rpi.Properties.FailoverRecoveryPointId;
+            LastSuccessfulFailoverTime = rpi.Properties.LastSuccessfulFailoverTime;
+            LastSuccessfulTestFailoverTime = rpi.Properties.LastSuccessfulTestFailoverTime;
+            PolicyFriendlyName = rpi.Properties.PolicyFriendlyName;
+            PolicyID = rpi.Properties.PolicyId;
+            PrimaryFabricFriendlyName = rpi.Properties.PrimaryFabricFriendlyName;
+            PrimaryProtectionContainerFriendlyName =
+                rpi.Properties.PrimaryProtectionContainerFriendlyName;
+            ProtectableItemId = rpi.Properties.ProtectableItemId;
+            ProtectedItemType = rpi.Properties.ProtectedItemType;
+            ProtectionState = rpi.Properties.ProtectionState;
+            ProtectionStateDescription = rpi.Properties.ProtectionStateDescription;
+            RecoveryFabricFriendlyName = rpi.Properties.RecoveryFabricFriendlyName;
+            RecoveryFabricId = rpi.Properties.RecoveryFabricId;
+            RecoveryProtectionContainerFriendlyName =
+                rpi.Properties.RecoveryProtectionContainerFriendlyName;
+            RecoveryServicesProviderId = rpi.Properties.RecoveryServicesProviderId;
+            ReplicationHealth = rpi.Properties.ReplicationHealth;
+            ReplicationHealthErrors = rpi.Properties.ReplicationHealthErrors;
+            TestFailoverState = rpi.Properties.TestFailoverState;
+            TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
 
             if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaAzureReplicationDetails)
             {
-                HyperVReplicaAzureReplicationDetails providerSpecificDetails =
-                           (HyperVReplicaAzureReplicationDetails)rpi.Properties.ProviderSpecificDetails;
+                var providerSpecificDetails =
+                    (HyperVReplicaAzureReplicationDetails) rpi.Properties.ProviderSpecificDetails;
 
-                this.ReplicationProvider = Constants.HyperVReplicaAzure;
+                ReplicationProvider = Constants.HyperVReplicaAzure;
                 RecoveryAzureVMName = providerSpecificDetails.RecoveryAzureVMName;
                 RecoveryAzureVMSize = providerSpecificDetails.RecoveryAzureVMSize;
                 RecoveryAzureStorageAccount = providerSpecificDetails.RecoveryAzureStorageAccount;
-                SelectedRecoveryAzureNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
+                SelectedRecoveryAzureNetworkId = providerSpecificDetails
+                    .SelectedRecoveryAzureNetworkId;
                 if (providerSpecificDetails.VmNics != null)
                 {
                     NicDetailsList = new List<ASRVMNicDetails>();
-                    foreach (VMNicDetails n in providerSpecificDetails.VmNics)
+                    foreach (var n in providerSpecificDetails.VmNics)
                     {
                         NicDetailsList.Add(new ASRVMNicDetails(n));
                     }
                 }
-            }    
-            else if(rpi.Properties.ProviderSpecificDetails is HyperVReplicaReplicationDetails) 
+            }
+            else if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaReplicationDetails)
             {
-                this.ReplicationProvider = Constants.HyperVReplica2012;
-            }    
-            else if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaBlueReplicationDetails) 
+                ReplicationProvider = Constants.HyperVReplica2012;
+            }
+            else if (rpi.Properties.ProviderSpecificDetails is HyperVReplicaBlueReplicationDetails)
             {
-                this.ReplicationProvider = Constants.HyperVReplica2012R2;
+                ReplicationProvider = Constants.HyperVReplica2012R2;
             }
             else if (rpi.Properties.ProviderSpecificDetails is InMageAzureV2ReplicationDetails)
             {
-                this.ReplicationProvider = Constants.InMageAzureV2;
+                ReplicationProvider = Constants.InMageAzureV2;
             }
             else if (rpi.Properties.ProviderSpecificDetails is InMageReplicationDetails)
             {
-                this.ReplicationProvider = Constants.InMage;
+                ReplicationProvider = Constants.InMage;
             }
             else if (rpi.Properties.ProviderSpecificDetails is A2AReplicationDetails)
             {
-                this.ReplicationProvider = Constants.InMage;
+                ReplicationProvider = Constants.InMage;
             }
         }
-
-        /// <summary>
-        /// Gets or sets Friendly Name of the Protection entity.
-        /// </summary>
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Name of the Protection entity.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection entity ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets type of the Protection entity.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets Current Scenario Details
-        /// </summary>
-        public CurrentScenarioDetails CurrentScenario { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value that lists allowed operations.
-        /// </summary>
-        public IList<string> AllowedOperations { get; set; }
-
-        /// <summary>
-        /// Gets or sets a active location of protection entity.
-        /// </summary>
-        public string ActiveLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication provider.
-        /// </summary>
-        public string ReplicationProvider { get; set; }
-
-        /// <summary>
-        /// Gets or sets Failover Recovery Point Id
-        /// </summary>
-        public string FailoverRecoveryPointId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Last Successful Failover Time
-        /// </summary>
-        public DateTime? LastSuccessfulFailoverTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets Last Successful TestFailover Time
-        /// </summary>
-        public DateTime? LastSuccessfulTestFailoverTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets Policy Friendly Name
-        /// </summary>
-        public string PolicyFriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Policy ID
-        /// </summary>
-        public string PolicyID { get; set; }
-
-        /// <summary>
-        /// Gets or sets Primary Fabric Friendly Name
-        /// </summary>
-        public string PrimaryFabricFriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Primary Protection Container Friendly Name
-        /// </summary>
-        public string PrimaryProtectionContainerFriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protectable Item Id
-        /// </summary>
-        public string ProtectableItemId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protected Item Type
-        /// </summary>
-        public string ProtectedItemType { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection State
-        /// </summary>
-        public string ProtectionState { get; set; }
-
-        /// <summary>
-        /// Gets or sets Protection State Description
-        /// </summary>
-        public string ProtectionStateDescription { get; set; }
-
-        /// <summary>
-        /// Gets or sets Provider Specific Details
-        /// </summary>
-        public ReplicationProviderSpecificSettings ProviderSpecificDetails { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Fabric Friendly Name
-        /// </summary>
-        public string RecoveryFabricFriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Fabric Id
-        /// </summary>
-        public string RecoveryFabricId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Protection Container Friendly Name
-        /// </summary>
-        public string RecoveryProtectionContainerFriendlyName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Services Provider Id
-        /// </summary>
-        public string RecoveryServicesProviderId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication Health
-        /// </summary>
-        public string ReplicationHealth { get; set; }
-
-        /// <summary>
-        /// Gets or sets Replication Health Errors
-        /// </summary>
-        public IList<HealthError> ReplicationHealthErrors { get; set; }
-
-        /// <summary>
-        /// Gets or sets Test Failover State
-        /// </summary>
-        public string TestFailoverState { get; set; }
-
-        /// <summary>
-        /// Gets or sets Test Failover State Description
-        /// </summary>
-        public string TestFailoverStateDescription { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure VM Name of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureVMName { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure VM Size of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureVMSize { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Azure Storage Account of the Virtual machine.
-        /// </summary>
-        public string RecoveryAzureStorageAccount { get; set; }
-
-        /// <summary>
-        /// Gets or sets Selected Recovery Azure Network Id of the Virtual machine.
-        /// </summary>
-        public string SelectedRecoveryAzureNetworkId { get; set; }
-
-        /// <summary>
-        /// Gets or sets Nic Details of the Virtual machine.
-        /// </summary>
-        public List<ASRVMNicDetails> NicDetailsList { get; set; } 
     }
 
     /// <summary>
-    /// PS Recovery Point Class.
+    ///     PS Recovery Point Class.
     /// </summary>
     public class ASRRecoveryPoint
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRRecoveryPoint" /> class.
+        ///     Gets or sets Name of the Recovery Point.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Point ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets type of the Recovery Point.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Point Time.
+        /// </summary>
+        public DateTime? RecoveryPointTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Recovery Point Type.
+        /// </summary>
+        public string RecoveryPointType { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRRecoveryPoint" /> class.
         /// </summary>
         public ASRRecoveryPoint()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRRecoveryPoint" /> class.
+        ///     Initializes a new instance of the <see cref="ASRRecoveryPoint" /> class.
         /// </summary>
         /// <param name="recoveryPoint">Recovery point object to read values from.</param>
         public ASRRecoveryPoint(RecoveryPoint recoveryPoint)
         {
-            this.ID = recoveryPoint.Id;
-            this.Name = recoveryPoint.Name;
-            this.Type = recoveryPoint.Type;
-            this.RecoveryPointTime = recoveryPoint.Properties.RecoveryPointTime;
-            this.RecoveryPointType = recoveryPoint.Properties.RecoveryPointType;
+            ID = recoveryPoint.Id;
+            Name = recoveryPoint.Name;
+            Type = recoveryPoint.Type;
+            RecoveryPointTime = recoveryPoint.Properties.RecoveryPointTime;
+            RecoveryPointType = recoveryPoint.Properties.RecoveryPointType;
         }
-
-        /// <summary>
-        /// Gets or sets Name of the Recovery Point.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Point ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets type of the Recovery Point.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Point Time.
-        /// </summary>
-        public DateTime? RecoveryPointTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets Recovery Point Type.
-        /// </summary>
-        public string RecoveryPointType { get; set; }
     }
 
     /// <summary>
-    /// ASRGroupTaskDetails of the Task.
+    ///     ASRGroupTaskDetails of the Task.
     /// </summary>
     public class ASRGroupTaskDetails
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRGroupTaskDetails" /> class.
+        ///     Gets or sets ASRGroupTaskDetails Type.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        ///     Child Tasks.
+        /// </summary>
+        private List<ASRTaskBase> ChildTasks { get; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRGroupTaskDetails" /> class.
         /// </summary>
         public ASRGroupTaskDetails()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRGroupTaskDetails" /> class.
+        ///     Initializes a new instance of the <see cref="ASRGroupTaskDetails" /> class.
         /// </summary>
         /// <param name="task">Task details to load values from.</param>
         public ASRGroupTaskDetails(GroupTaskDetails groupTaskDetails)
@@ -1143,497 +1194,495 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ChildTasks = new List<ASRTaskBase>();
             if (groupTaskDetails.ChildTasks != null)
             {
-                ChildTasks = groupTaskDetails.ChildTasks.Select(ct => new ASRTaskBase(ct)).ToList();
+                ChildTasks = groupTaskDetails.ChildTasks.Select(ct => new ASRTaskBase(ct))
+                    .ToList();
             }
         }
-
-        /// <summary>
-        /// Gets or sets ASRGroupTaskDetails Type.
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Child Tasks.
-        /// </summary>
-        List<ASRTaskBase> ChildTasks { get; set; }
     }
 
     /// <summary>
-    /// ASRTaskBase.
+    ///     ASRTaskBase.
     /// </summary>
     public class ASRTaskBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRTaskBase" /> class.
+        ///     Gets or sets the task name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Job ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Status.
+        /// </summary>
+        public string State { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the State description, which tells the exact internal state.
+        /// </summary>
+        public string StateDescription { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the start time.
+        /// </summary>
+        public DateTime StartTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the end time.
+        /// </summary>
+        public DateTime EndTime { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRTaskBase" /> class.
         /// </summary>
         public ASRTaskBase()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRTaskBase" /> class.
+        ///     Initializes a new instance of the <see cref="ASRTaskBase" /> class.
         /// </summary>
         /// <param name="task">Base task details to load values from.</param>
         public ASRTaskBase(Management.RecoveryServices.SiteRecovery.Models.ASRTask taskBase)
         {
-            this.ID = taskBase.Name;
-            this.Name = taskBase.FriendlyName;
+            ID = taskBase.Name;
+            Name = taskBase.FriendlyName;
             if (taskBase.EndTime != null)
             {
-                this.EndTime = ((DateTime)taskBase.EndTime).ToLocalTime();
+                EndTime = ((DateTime) taskBase.EndTime).ToLocalTime();
             }
 
             if (taskBase.StartTime != null)
             {
-                this.StartTime = ((DateTime)taskBase.StartTime).ToLocalTime();
+                StartTime = ((DateTime) taskBase.StartTime).ToLocalTime();
             }
 
-            this.State = taskBase.State;
-            this.StateDescription = taskBase.StateDescription;
+            State = taskBase.State;
+            StateDescription = taskBase.StateDescription;
         }
-
-        /// <summary>
-        /// Gets or sets the task name.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Job ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Status.
-        /// </summary>
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or sets the State description, which tells the exact internal state.
-        /// </summary>
-        public string StateDescription { get; set; }
-
-        /// <summary>
-        /// Gets or sets the start time.
-        /// </summary>
-        public DateTime StartTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the end time.
-        /// </summary>
-        public DateTime EndTime { get; set; }
     }
 
     /// <summary>
-    /// Task of the Job.
+    ///     Task of the Job.
     /// </summary>
     public class ASRTask
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRTask" /> class.
+        ///     Gets or sets the task name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Job ID.
+        /// </summary>
+        public string ID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Status.
+        /// </summary>
+        public string State { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the State description, which tells the exact internal state.
+        /// </summary>
+        public string StateDescription { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the start time.
+        /// </summary>
+        public DateTime StartTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the end time.
+        /// </summary>
+        public DateTime EndTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the GroupTaskDetails
+        /// </summary>
+        public ASRGroupTaskDetails GroupTaskDetails { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRTask" /> class.
         /// </summary>
         public ASRTask()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRTask" /> class.
+        ///     Initializes a new instance of the <see cref="ASRTask" /> class.
         /// </summary>
         /// <param name="task">Task details to load values from.</param>
         public ASRTask(Management.RecoveryServices.SiteRecovery.Models.ASRTask task)
         {
-            this.ID = task.Name;
+            ID = task.Name;
             if (task.EndTime != null)
             {
-                this.EndTime = ((DateTime)task.EndTime).ToLocalTime();
+                EndTime = ((DateTime) task.EndTime).ToLocalTime();
             }
-            this.Name = task.FriendlyName;
+            Name = task.FriendlyName;
             if (task.StartTime != null)
             {
-                this.StartTime = ((DateTime)task.StartTime).ToLocalTime();
+                StartTime = ((DateTime) task.StartTime).ToLocalTime();
             }
-            this.State = task.State;
-            this.StateDescription = task.StateDescription;
+            State = task.State;
+            StateDescription = task.StateDescription;
             if (task.GroupTaskCustomDetails != null)
             {
-                this.GroupTaskDetails = new ASRGroupTaskDetails(task.GroupTaskCustomDetails);
+                GroupTaskDetails = new ASRGroupTaskDetails(task.GroupTaskCustomDetails);
             }
         }
-
-        /// <summary>
-        /// Gets or sets the task name.
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets Job ID.
-        /// </summary>
-        public string ID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Status.
-        /// </summary>
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or sets the State description, which tells the exact internal state.
-        /// </summary>
-        public string StateDescription { get; set; }
-
-        /// <summary>
-        /// Gets or sets the start time.
-        /// </summary>
-        public DateTime StartTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the end time.
-        /// </summary>
-        public DateTime EndTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the GroupTaskDetails
-        /// </summary>
-        public ASRGroupTaskDetails GroupTaskDetails { get; set; }
     }
 
     /// <summary>
-    /// Azure Site Recovery Job.
+    ///     Azure Site Recovery Job.
     /// </summary>
     public class ASRJob
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRJob" /> class.
+        ///     Initializes a new instance of the <see cref="ASRJob" /> class.
         /// </summary>
         public ASRJob()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRJob" /> class with required parameters.
+        ///     Initializes a new instance of the <see cref="ASRJob" /> class with required parameters.
         /// </summary>
         /// <param name="job">ASR Job object</param>
         public ASRJob(Job job)
         {
-            this.ID = job.Id;
-            this.Type = job.Type;
-            this.JobType = job.Properties.ScenarioName;
-            this.DisplayName = job.Properties.FriendlyName;
-            this.ClientRequestId = job.Properties.ActivityId;
-            this.State = job.Properties.State;
-            this.StateDescription = job.Properties.StateDescription;
-            this.Name = job.Name;
-            this.TargetObjectId = job.Properties.TargetObjectId;
-            this.TargetObjectName = job.Properties.TargetObjectName;
+            ID = job.Id;
+            Type = job.Type;
+            JobType = job.Properties.ScenarioName;
+            DisplayName = job.Properties.FriendlyName;
+            ClientRequestId = job.Properties.ActivityId;
+            State = job.Properties.State;
+            StateDescription = job.Properties.StateDescription;
+            Name = job.Name;
+            TargetObjectId = job.Properties.TargetObjectId;
+            TargetObjectName = job.Properties.TargetObjectName;
             if (job.Properties.EndTime.HasValue)
-                this.EndTime = job.Properties.EndTime.Value.ToLocalTime();
+                EndTime = job.Properties.EndTime.Value.ToLocalTime();
             if (job.Properties.StartTime.HasValue)
-                this.StartTime = job.Properties.StartTime.Value.ToLocalTime();
-            if (job.Properties.AllowedActions != null && job.Properties.AllowedActions.Count > 0)
+                StartTime = job.Properties.StartTime.Value.ToLocalTime();
+            if (job.Properties.AllowedActions != null &&
+                job.Properties.AllowedActions.Count > 0)
             {
-                this.AllowedActions = new List<string>();
+                AllowedActions = new List<string>();
                 foreach (var action in job.Properties.AllowedActions)
                 {
-                    this.AllowedActions.Add(action);
+                    AllowedActions.Add(action);
                 }
             }
 
             if (!string.IsNullOrEmpty(job.Properties.TargetObjectId))
             {
-                this.TargetObjectType = job.Properties.TargetInstanceType;
+                TargetObjectType = job.Properties.TargetInstanceType;
             }
 
-            this.Tasks = new List<ASRTask>();
+            Tasks = new List<ASRTask>();
             foreach (var task in job.Properties.Tasks)
             {
-                this.Tasks.Add(new ASRTask(task));
+                Tasks.Add(new ASRTask(task));
             }
 
-            this.Errors = new List<ASRErrorDetails>();
+            Errors = new List<ASRErrorDetails>();
 
             foreach (var error in job.Properties.Errors)
             {
-                ASRErrorDetails errorDetails = new ASRErrorDetails();
+                var errorDetails = new ASRErrorDetails();
                 errorDetails.TaskId = error.TaskId;
                 errorDetails.ServiceErrorDetails = new ASRServiceError(error.ServiceErrorDetails);
-                errorDetails.ProviderErrorDetails = new ASRProviderError(error.ProviderErrorDetails);
-                this.Errors.Add(errorDetails);
+                errorDetails.ProviderErrorDetails =
+                    new ASRProviderError(error.ProviderErrorDetails);
+                Errors.Add(errorDetails);
             }
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets Job display name.
+        ///     Gets or sets Job display name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Job ID.
+        ///     Gets or sets Job ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets type.
+        ///     Gets or sets type.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets Job display name.
+        ///     Gets or sets Job display name.
         /// </summary>
         public string JobType { get; set; }
 
         /// <summary>
-        /// Gets or sets Job display name.
+        ///     Gets or sets Job display name.
         /// </summary>
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets Activity ID.
+        ///     Gets or sets Activity ID.
         /// </summary>
         public string ClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets or sets State of the Job.
+        ///     Gets or sets State of the Job.
         /// </summary>
         public string State { get; set; }
 
         /// <summary>
-        /// Gets or sets StateDescription of the Job.
+        ///     Gets or sets StateDescription of the Job.
         /// </summary>
         public string StateDescription { get; set; }
 
         /// <summary>
-        /// Gets or sets Start timestamp.
+        ///     Gets or sets Start timestamp.
         /// </summary>
         public DateTime? StartTime { get; set; }
 
         /// <summary>
-        /// Gets or sets End timestamp.
+        ///     Gets or sets End timestamp.
         /// </summary>
         public DateTime? EndTime { get; set; }
 
         /// <summary>
-        /// Gets or sets TargetObjectId.
+        ///     Gets or sets TargetObjectId.
         /// </summary>
         public string TargetObjectId { get; set; }
 
         /// <summary>
-        /// Gets or sets TargetObjectType.
+        ///     Gets or sets TargetObjectType.
         /// </summary>
         public string TargetObjectType { get; set; }
 
         /// <summary>
-        /// Gets or sets End timestamp.
+        ///     Gets or sets End timestamp.
         /// </summary>
         public string TargetObjectName { get; set; }
 
         /// <summary>
-        /// Gets or sets list of allowed actions.
+        ///     Gets or sets list of allowed actions.
         /// </summary>
         public List<string> AllowedActions { get; set; }
 
         /// <summary>
-        /// Gets or sets list of tasks.
+        ///     Gets or sets list of tasks.
         /// </summary>
         public List<ASRTask> Tasks { get; set; }
 
         /// <summary>
-        /// Gets or sets list of Errors.
+        ///     Gets or sets list of Errors.
         /// </summary>
         public List<ASRErrorDetails> Errors { get; set; }
+
         #endregion
     }
 
     /// <summary>
-    /// This class contains the error details per object.
+    ///     This class contains the error details per object.
     /// </summary>
     public class ASRErrorDetails
     {
         /// <summary>
-        /// Gets or sets the Service error details.
+        ///     Gets or sets the Service error details.
         /// </summary>
         public ASRServiceError ServiceErrorDetails { get; set; }
 
         /// <summary>
-        /// Gets or sets the Provider error details.
+        ///     Gets or sets the Provider error details.
         /// </summary>
         public ASRProviderError ProviderErrorDetails { get; set; }
 
         /// <summary>
-        /// Gets or sets the Id of the task.
+        ///     Gets or sets the Id of the task.
         /// </summary>
         public string TaskId { get; set; }
     }
 
     /// <summary>
-    /// This class contains the ASR error details per object.
+    ///     This class contains the ASR error details per object.
     /// </summary>
     public class ASRServiceError : Error
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRServiceError" /> class with required parameters.
+        ///     Initializes a new instance of the <see cref="ASRServiceError" /> class with required
+        ///     parameters.
         /// </summary>
         public ASRServiceError()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRServiceError" /> class with required parameters.
+        ///     Initializes a new instance of the <see cref="ASRServiceError" /> class with required
+        ///     parameters.
         /// </summary>
         /// <param name="serviceError">ServiceError object</param>
-        public ASRServiceError(ServiceError serviceError)
-            : base(serviceError)
+        public ASRServiceError(ServiceError serviceError) : base(serviceError)
         {
         }
     }
 
     /// <summary>
-    /// This class contains the provider error details per object.
+    ///     This class contains the provider error details per object.
     /// </summary>
     public class ASRProviderError
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProviderError" /> class with required parameters.
+        ///     Gets or sets the Error code.
+        /// </summary>
+        public int ErrorCode { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Error message
+        /// </summary>
+        public string ErrorMessage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Provider error Id
+        /// </summary>
+        public string ErrorId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Time of the error creation.
+        /// </summary>
+        public DateTime CreationTimeUtc { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRProviderError" /> class with required
+        ///     parameters.
         /// </summary>
         public ASRProviderError()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRProviderError" /> class with required parameters.
+        ///     Initializes a new instance of the <see cref="ASRProviderError" /> class with required
+        ///     parameters.
         /// </summary>
         /// <param name="error">ProviderError object</param>
         public ASRProviderError(ProviderError error)
         {
             //this.CreationTimeUtc = error.CreationTimeUtc;
-            this.ErrorCode = (int)error.ErrorCode;
-            this.ErrorId = error.ErrorId;
-            this.ErrorMessage = error.ErrorMessage;
+            ErrorCode = (int) error.ErrorCode;
+            ErrorId = error.ErrorId;
+            ErrorMessage = error.ErrorMessage;
         }
-
-        /// <summary>
-        /// Gets or sets the Error code.
-        /// </summary>
-        public int ErrorCode { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Error message
-        /// </summary>
-        public string ErrorMessage { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Provider error Id
-        /// </summary>
-        public string ErrorId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Time of the error creation.
-        /// </summary>
-        public DateTime CreationTimeUtc { get; set; }
     }
 
     /// <summary>
-    /// Represents Azure site recovery storage classification.
+    ///     Represents Azure site recovery storage classification.
     /// </summary>
     public class ASRStorageClassification
     {
         /// <summary>
-        /// Gets or sets Storage classification ARM Id.
+        ///     Gets or sets Storage classification ARM Id.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets Storage classification ARM name.
+        ///     Gets or sets Storage classification ARM name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Storage classification friendly name.
+        ///     Gets or sets Storage classification friendly name.
         /// </summary>
         public string FriendlyName { get; set; }
     }
 
     /// <summary>
-    /// Represents Azure site recovery storage classification mapping.
+    ///     Represents Azure site recovery storage classification mapping.
     /// </summary>
     public class ASRStorageClassificationMapping
     {
         /// <summary>
-        /// Gets or sets Storage classification ARM Id.
+        ///     Gets or sets Storage classification ARM Id.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets Storage classification ARM name.
+        ///     Gets or sets Storage classification ARM name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets primary classification ARM Id.
+        ///     Gets or sets primary classification ARM Id.
         /// </summary>
         public string PrimaryClassificationId { get; set; }
 
         /// <summary>
-        /// Gets or sets recovery classification ARM Id.
+        ///     Gets or sets recovery classification ARM Id.
         /// </summary>
         public string RecoveryClassificationId { get; set; }
     }
 
     /// <summary>
-    /// Disk details.
+    ///     Disk details.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class VirtualHardDisk
     {
         /// <summary>
-        /// Gets or sets the VHD id.
+        ///     Gets or sets the VHD id.
         /// </summary>
         [DataMember]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the name.
         /// </summary>
         [DataMember]
         public string Name { get; set; }
     }
 
     /// <summary>
-    /// Partial details of a NIC of a VM.
+    ///     Partial details of a NIC of a VM.
     /// </summary>
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class VMNic
     {
         /// <summary>
-        /// Gets or sets ID of the NIC.
+        ///     Gets or sets ID of the NIC.
         /// </summary>
         [DataMember]
         public string NicId { get; set; }
 
         /// <summary>
-        /// Gets or sets Name of the VM subnet.
+        ///     Gets or sets Name of the VM subnet.
         /// </summary>
         [DataMember]
         public string VMSubnetName { get; set; }
 
         /// <summary>
-        /// Gets or sets Name of the VM network.
+        ///     Gets or sets Name of the VM network.
         /// </summary>
         [DataMember]
         public string VMNetworkName { get; set; }
 
         /// <summary>
-        /// Gets or sets Id of the recovery VM Network.
+        ///     Gets or sets Id of the recovery VM Network.
         /// </summary>
         [DataMember]
         public string RecoveryVMNetworkId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the recovery VM subnet.
+        ///     Gets or sets the name of the recovery VM subnet.
         /// </summary>
         [DataMember]
         public string RecoveryVMSubnetName { get; set; }
 
         /// <summary>
-        /// Gets or sets the static IP address of the replica NIC.
+        ///     Gets or sets the static IP address of the replica NIC.
         /// </summary>
         [DataMember]
         public string RecoveryNicStaticIPAddress { get; set; }

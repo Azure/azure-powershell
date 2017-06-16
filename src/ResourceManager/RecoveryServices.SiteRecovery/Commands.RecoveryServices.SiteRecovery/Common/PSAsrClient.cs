@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,11 +19,13 @@ using System.IO;
 using System.Net.Security;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
@@ -31,78 +33,71 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Recovery services convenience client.
+    ///     Recovery services convenience client.
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// client request id.
-        /// </summary>
-        public string ClientRequestId { get; set; }
-
-        /// <summary>
-        /// Gets the value of recovery services vault management client.
-        /// </summary>
-        public RecoveryServicesClient GetRecoveryServicesVaultClient
-        {
-            get
-            {
-                return this.recoveryServicesVaultClient;
-            }
-        }
-
-        /// <summary>
-        /// Amount of time to sleep before fetching job details again.
+        ///     Amount of time to sleep before fetching job details again.
         /// </summary>
         public const int TimeToSleepBeforeFetchingJobDetailsAgain = 30000;
 
         /// <summary>
-        /// Resource credentials holds vault, cloud service name, vault key and other details.
+        ///     Resource credentials holds vault, cloud service name, vault key and other details.
         /// </summary>
-        [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-        "SA1401:FieldsMustBePrivate",
-        Justification = "For Resource Credentials.")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+            "SA1401:FieldsMustBePrivate",
+            Justification = "For Resource Credentials.")]
         public static ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
-
-        public static string idPrefixtillvaultName = string.Empty;
-
-
-        /// <summary>
-        /// Recovery services vault management client.
-        /// </summary>
-        private RecoveryServicesClient recoveryServicesVaultClient;
-
-        /// <summary>
-        /// End point Uri
-        /// </summary>
-        private static Uri endPointUri;
-
-        /// <summary>
-        /// Subscription Cloud credentials
-        /// </summary>
-        private static SubscriptionCloudCredentials cloudCredentials;
 
         private static AzureContext AzureContext;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
-        /// required current subscription.
+        ///     Subscription Cloud credentials
+        /// </summary>
+        private static SubscriptionCloudCredentials cloudCredentials;
+
+        /// <summary>
+        ///     End point Uri
+        /// </summary>
+        private static Uri endPointUri;
+
+        public static string idPrefixtillvaultName = string.Empty;
+
+        /// <summary>
+        ///     client request id.
+        /// </summary>
+        public string ClientRequestId { get; set; }
+
+        /// <summary>
+        ///     Gets the value of recovery services vault management client.
+        /// </summary>
+        public RecoveryServicesClient GetRecoveryServicesVaultClient => recoveryServicesVaultClient;
+
+        /// <summary>
+        ///     Recovery services vault management client.
+        /// </summary>
+        private readonly RecoveryServicesClient recoveryServicesVaultClient;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with
+        ///     required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
         public PSRecoveryServicesClient(IAzureContextContainer azureProfile)
         {
-            AzureContext = (AzureContext)azureProfile.DefaultContext;
+            AzureContext = (AzureContext) azureProfile.DefaultContext;
 
-            string resourceNamespace = ARMResourceTypeConstants.RecoveryServicesResourceProviderNameSpace;
-            string resourceType = ARMResourceTypeConstants.RecoveryServicesVault;
+            var resourceNamespace = ARMResourceTypeConstants
+                .RecoveryServicesResourceProviderNameSpace;
+            var resourceType = ARMResourceTypeConstants.RecoveryServicesVault;
 
             // Get Resource provider namespace and type from config only if Vault context is not set
             // (hopefully it is required only for Vault related cmdlets)
             if (string.IsNullOrEmpty(asrVaultCreds.ResourceNamespace) ||
                 string.IsNullOrEmpty(asrVaultCreds.ARMResourceType))
             {
-                Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
+                Utilities.UpdateCurrentVaultContext(new ASRVaultCreds
                 {
                     ResourceNamespace = resourceNamespace,
                     ARMResourceType = resourceType
@@ -111,40 +106,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (null == endPointUri)
             {
-                endPointUri = azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
+                endPointUri =
+                    azureProfile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment
+                        .Endpoint.ResourceManager);
             }
 
-            cloudCredentials = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(azureProfile.DefaultContext);
-            this.recoveryServicesVaultClient =
-                AzureSession.Instance.ClientFactory.CreateArmClient<RecoveryServicesClient>(AzureContext, AzureEnvironment.Endpoint.ResourceManager);
+            cloudCredentials = AzureSession.Instance.AuthenticationFactory
+                .GetSubscriptionCloudCredentials(azureProfile.DefaultContext);
+            recoveryServicesVaultClient = AzureSession.Instance.ClientFactory
+                .CreateArmClient<RecoveryServicesClient>(AzureContext,
+                    AzureEnvironment.Endpoint.ResourceManager);
         }
 
-        private static bool IgnoreCertificateErrorHandler
-           (object sender,
-           System.Security.Cryptography.X509Certificates.X509Certificate certificate,
-           System.Security.Cryptography.X509Certificates.X509Chain chain,
-           SslPolicyErrors sslPolicyErrors)
+        private static bool IgnoreCertificateErrorHandler(object sender,
+            X509Certificate certificate,
+            X509Chain chain,
+            SslPolicyErrors sslPolicyErrors)
         {
             return true;
         }
 
         /// <summary>
-        /// Validates current in-memory Vault Settings.
+        ///     Validates current in-memory Vault Settings.
         /// </summary>
         /// <param name="resourceName">Resource Name</param>
         /// <param name="resourceGroupName">Cloud Service Name</param>
         /// <returns>Whether Vault settings are valid or not</returns>
-        public bool ValidateVaultSettings(
-            string resourceName,
+        public bool ValidateVaultSettings(string resourceName,
             string resourceGroupName)
         {
-            if (string.IsNullOrEmpty(resourceName) || string.IsNullOrEmpty(resourceGroupName))
+            if (string.IsNullOrEmpty(resourceName) ||
+                string.IsNullOrEmpty(resourceGroupName))
             {
-                throw new InvalidOperationException(Properties.Resources.MissingVaultSettings);
+                throw new InvalidOperationException(Resources.MissingVaultSettings);
             }
 
-            bool validResourceGroup = false;
-            bool validResource = false;
+            var validResourceGroup = false;
+            var validResource = false;
 
             //foreach (Management.RecoveryServices.Models.ResourceGroup resourceGroup in this.GetRecoveryServicesVaultClient.ResourceGroup.List())
             //{
@@ -160,9 +158,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             //    throw new ArgumentException(Properties.Resources.InvalidResourceGroup);
             //}
 
-            foreach (Management.RecoveryServices.Models.Vault vault in this.GetRecoveryServicesVaultClient.Vaults.ListByResourceGroup(resourceGroupName))
+            foreach (var vault in GetRecoveryServicesVaultClient.Vaults
+                .ListByResourceGroup(resourceGroupName))
             {
-                if (string.Compare(vault.Name, resourceName, StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(vault.Name,
+                        resourceName,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
                 {
                     validResource = true;
                     idPrefixtillvaultName = vault.Id;
@@ -172,7 +174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!validResource)
             {
-                throw new ArgumentException(Properties.Resources.InvalidResource);
+                throw new ArgumentException(Resources.InvalidResource);
             }
 
             return true;
@@ -182,59 +184,79 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             const string resourceGroup = "resourceGroups";
 
-            var startIndex = resourceId.IndexOf(resourceGroup, StringComparison.OrdinalIgnoreCase) + resourceGroup.Length + 1;
-            var endIndex = resourceId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
+            var startIndex = resourceId.IndexOf(resourceGroup,
+                                 StringComparison.OrdinalIgnoreCase) +
+                             resourceGroup.Length +
+                             1;
+            var endIndex = resourceId.IndexOf("/",
+                startIndex,
+                StringComparison.OrdinalIgnoreCase);
 
-            return resourceId.Substring(startIndex, endIndex - startIndex);
+            return resourceId.Substring(startIndex,
+                endIndex - startIndex);
         }
 
         public static string GetSubscriptionId(string resourceId)
         {
             const string subscriptions = "subscriptions";
 
-            var startIndex = resourceId.IndexOf(subscriptions, StringComparison.OrdinalIgnoreCase) + subscriptions.Length + 1;
-            var endIndex = resourceId.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
+            var startIndex = resourceId.IndexOf(subscriptions,
+                                 StringComparison.OrdinalIgnoreCase) +
+                             subscriptions.Length +
+                             1;
+            var endIndex = resourceId.IndexOf("/",
+                startIndex,
+                StringComparison.OrdinalIgnoreCase);
 
-            return resourceId.Substring(startIndex, endIndex - startIndex);
+            return resourceId.Substring(startIndex,
+                endIndex - startIndex);
         }
 
         public static string GetJobIdFromReponseLocation(string responseLocation)
         {
             const string operationResults = "operationresults";
 
-            var startIndex = responseLocation.IndexOf(operationResults, StringComparison.OrdinalIgnoreCase) + operationResults.Length + 1;
-            var endIndex = responseLocation.IndexOf("?", startIndex, StringComparison.OrdinalIgnoreCase);
+            var startIndex = responseLocation.IndexOf(operationResults,
+                                 StringComparison.OrdinalIgnoreCase) +
+                             operationResults.Length +
+                             1;
+            var endIndex = responseLocation.IndexOf("?",
+                startIndex,
+                StringComparison.OrdinalIgnoreCase);
 
-            return responseLocation.Substring(startIndex, endIndex - startIndex);
+            return responseLocation.Substring(startIndex,
+                endIndex - startIndex);
         }
 
         /// <summary>
-        /// Site Recovery requests that go to on-premise components (like the Provider installed
-        /// in VMM) require an authentication token that is signed with the vault key to indicate
-        /// that the request indeed originated from the end-user client.
-        /// Generating that authentication token here and sending it via http headers.
+        ///     Site Recovery requests that go to on-premise components (like the Provider installed
+        ///     in VMM) require an authentication token that is signed with the vault key to indicate
+        ///     that the request indeed originated from the end-user client.
+        ///     Generating that authentication token here and sending it via http headers.
         /// </summary>
         /// <param name="clientRequestId">Unique identifier for the client's request</param>
         /// <returns>The authentication token for the provider</returns>
         public string GenerateAgentAuthenticationHeader(string clientRequestId)
         {
-            CikTokenDetails cikTokenDetails = new CikTokenDetails();
+            var cikTokenDetails = new CikTokenDetails();
 
-            DateTime currentDateTime = DateTime.Now;
+            var currentDateTime = DateTime.Now;
             currentDateTime = currentDateTime.AddHours(-1);
             cikTokenDetails.NotBeforeTimestamp = TimeZoneInfo.ConvertTimeToUtc(currentDateTime);
             cikTokenDetails.NotAfterTimestamp = cikTokenDetails.NotBeforeTimestamp.AddDays(7);
             cikTokenDetails.ClientRequestId = clientRequestId;
-            cikTokenDetails.Version = new System.Version(1, 2);
+            cikTokenDetails.Version = new Version(1,
+                2);
             cikTokenDetails.PropertyBag = new Dictionary<string, object>();
 
-            string shaInput = new JavaScriptSerializer().Serialize(cikTokenDetails);
+            var shaInput = new JavaScriptSerializer().Serialize(cikTokenDetails);
 
             if (null == asrVaultCreds.ChannelIntegrityKey)
             {
-                throw new ArgumentException(Properties.Resources.MissingChannelIntergrityKey);
+                throw new ArgumentException(Resources.MissingChannelIntergrityKey);
             }
-            HMACSHA256 sha = new HMACSHA256(Encoding.UTF8.GetBytes(asrVaultCreds.ChannelIntegrityKey));
+
+            var sha = new HMACSHA256(Encoding.UTF8.GetBytes(asrVaultCreds.ChannelIntegrityKey));
             cikTokenDetails.Hmac =
                 Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(shaInput)));
             cikTokenDetails.HashFunction = CikSupportedHashFunctions.HMACSHA256.ToString();
@@ -243,33 +265,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Gets request headers.
+        ///     Gets request headers.
         /// </summary>
         /// <param name="shouldSignRequest">specifies whether to sign the request or not</param>
         /// <returns>Custom request headers</returns>
         public Dictionary<string, List<string>> GetRequestHeaders(bool shouldSignRequest = true)
         {
-            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            var customHeaders = new Dictionary<string, List<string>>();
 
-            this.ClientRequestId = Guid.NewGuid().ToString() + "-" + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ssZ") + "-P";
+            ClientRequestId = Guid.NewGuid() +
+                              "-" +
+                              DateTime.Now.ToUniversalTime()
+                                  .ToString("yyyy-MM-dd HH:mm:ssZ") +
+                              "-P";
 
-            customHeaders.Add("x-ms-client-request-id", new List<string> { this.ClientRequestId });
+            customHeaders.Add("x-ms-client-request-id",
+                new List<string> {ClientRequestId});
 
             if (shouldSignRequest)
             {
-                customHeaders.Add("Agent-Authentication", new List<string> { this.GenerateAgentAuthenticationHeader(this.ClientRequestId) });
+                customHeaders.Add("Agent-Authentication",
+                    new List<string> {GenerateAgentAuthenticationHeader(ClientRequestId)});
             }
             else
             {
-                customHeaders.Add("Agent-Authentication", new List<string> { "" });
+                customHeaders.Add("Agent-Authentication",
+                    new List<string> {""});
             }
 
             return customHeaders;
         }
 
-
         /// <summary>
-        /// Gets Site Recovery client.
+        ///     Gets Site Recovery client.
         /// </summary>
         /// <returns>Site Recovery Management client</returns>
         private SiteRecoveryManagementClient GetSiteRecoveryClient()
@@ -277,13 +305,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (string.IsNullOrEmpty(asrVaultCreds.ResourceName) ||
                 string.IsNullOrEmpty(asrVaultCreds.ResourceGroupName))
             {
-                throw new InvalidOperationException(Properties.Resources.MissingVaultSettings);
+                throw new InvalidOperationException(Resources.MissingVaultSettings);
             }
 
-            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(AzureContext);
+            var creds =
+                AzureSession.Instance.AuthenticationFactory
+                    .GetServiceClientCredentials(AzureContext);
 
-            SiteRecoveryManagementClient siteRecoveryClient =
-                AzureSession.Instance.ClientFactory.CreateArmClient<SiteRecoveryManagementClient>(AzureContext, AzureEnvironment.Endpoint.ResourceManager);
+            var siteRecoveryClient = AzureSession.Instance.ClientFactory
+                .CreateArmClient<SiteRecoveryManagementClient>(AzureContext,
+                    AzureEnvironment.Endpoint.ResourceManager);
 
             siteRecoveryClient.ResourceGroupName = asrVaultCreds.ResourceGroupName;
             siteRecoveryClient.ResourceName = asrVaultCreds.ResourceName;
@@ -292,7 +323,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (null == siteRecoveryClient)
             {
-                throw new InvalidOperationException(Properties.Resources.NullRecoveryServicesClient);
+                throw new InvalidOperationException(Resources.NullRecoveryServicesClient);
             }
 
             return siteRecoveryClient;
@@ -300,17 +331,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Helper around serialization/deserialization of objects. This one is a thin wrapper around
-    /// DataContractUtils template class which is the one doing the heavy lifting.
+    ///     Helper around serialization/deserialization of objects. This one is a thin wrapper around
+    ///     DataContractUtils template class which is the one doing the heavy lifting.
     /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     public static class DataContractUtils
     {
         /// <summary>
-        /// Serializes the supplied object to the string.
+        ///     Serializes the supplied object to the string.
         /// </summary>
         /// <typeparam name="T">The object type.</typeparam>
         /// <param name="obj">Object to serialize</param>
@@ -321,29 +351,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Deserialize the string to the expected object type.
+        ///     Deserialize the string to the expected object type.
         /// </summary>
         /// <typeparam name="T">The object type</typeparam>
         /// <param name="xmlString">Serialized string</param>
         /// <param name="result">Deserialized object</param>
-        public static void Deserialize<T>(string xmlString, out T result)
+        public static void Deserialize<T>(string xmlString,
+            out T result)
         {
             result = DataContractUtils<T>.Deserialize(xmlString);
         }
     }
 
     /// <summary>
-    /// Template class for DataContractUtils.
+    ///     Template class for DataContractUtils.
     /// </summary>
     /// <typeparam name="T">The object type</typeparam>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     public static class DataContractUtils<T>
     {
         /// <summary>
-        /// Serializes the propertyBagContainer to the string. 
+        ///     Serializes the propertyBagContainer to the string.
         /// </summary>
         /// <param name="propertyBagContainer">Property bag</param>
         /// <returns>Serialized string </returns>
@@ -359,7 +389,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     // Indent the XML so it's human readable.
                     writer.Formatting = Formatting.Indented;
-                    serializer.WriteObject(writer, propertyBagContainer);
+                    serializer.WriteObject(writer,
+                        propertyBagContainer);
                     writer.Flush();
                     xmlString = sw.ToString();
                 }
@@ -376,7 +407,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Deserialize the string to the propertyBagContainer.
+        ///     Deserialize the string to the propertyBagContainer.
         /// </summary>
         /// <param name="xmlString">Serialized string</param>
         /// <returns>Deserialized object</returns>
@@ -385,11 +416,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             T propertyBagContainer;
             using (Stream stream = new MemoryStream())
             {
-                byte[] data = System.Text.Encoding.UTF8.GetBytes(xmlString);
-                stream.Write(data, 0, data.Length);
+                var data = Encoding.UTF8.GetBytes(xmlString);
+                stream.Write(data,
+                    0,
+                    data.Length);
                 stream.Position = 0;
-                DataContractSerializer deserializer = new DataContractSerializer(typeof(T));
-                propertyBagContainer = (T)deserializer.ReadObject(stream);
+                var deserializer = new DataContractSerializer(typeof(T));
+                propertyBagContainer = (T) deserializer.ReadObject(stream);
             }
 
             return propertyBagContainer;

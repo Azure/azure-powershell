@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,72 +16,71 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery storage classification.
+    ///     Retrieves Azure Site Recovery storage classification.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrStorageClassificationMapping",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRStorageClassificationMapping")]
     [OutputType(typeof(IEnumerable<ASRStorageClassificationMapping>))]
     public class GetAzureRmRecoveryServicesAsrStorageClassificationMapping : SiteRecoveryCmdletBase
     {
-        #region Parameters
         /// <summary>
-        /// Gets or sets name of classification.
+        ///     Gets or sets name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets primary storage classification.
+        ///     Gets or sets primary storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRStorageClassification StorageClassification { get; set; }
 
-        #endregion
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            List<StorageClassificationMapping> mappings = RecoveryServicesClient.GetAzureSiteRecoveryStorageClassificationMapping();
+            var mappings =
+                RecoveryServicesClient.GetAzureSiteRecoveryStorageClassificationMapping();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByObjectWithName:
-                    mappings = mappings.Where(item =>
-                        item.Name.Equals(
-                            this.Name,
+                    mappings = mappings.Where(item => item.Name.Equals(Name,
                             StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
-                    mappings = mappings.Where(item =>
-                        item.GetPrimaryStorageClassificationId().Equals(
-                            this.StorageClassification.Id,
-                            StringComparison.InvariantCultureIgnoreCase))
+                    mappings = mappings.Where(item => item.GetPrimaryStorageClassificationId()
+                            .Equals(StorageClassification.Id,
+                                StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
                     break;
                 case ASRParameterSets.ByObject:
-                    mappings = mappings.Where(item =>
-                        item.GetPrimaryStorageClassificationId().Equals(
-                            this.StorageClassification.Id,
-                            StringComparison.InvariantCultureIgnoreCase))
+                    mappings = mappings.Where(item => item.GetPrimaryStorageClassificationId()
+                            .Equals(StorageClassification.Id,
+                                StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
                     break;
             }
 
             var psObject = mappings.ConvertAll(item =>
             {
-                return new ASRStorageClassificationMapping()
+                return new ASRStorageClassificationMapping
                 {
                     Id = item.Id,
                     Name = item.Name,
@@ -90,7 +89,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 };
             });
 
-            base.WriteObject(psObject, true);
+            WriteObject(psObject,
+                true);
         }
     }
 }

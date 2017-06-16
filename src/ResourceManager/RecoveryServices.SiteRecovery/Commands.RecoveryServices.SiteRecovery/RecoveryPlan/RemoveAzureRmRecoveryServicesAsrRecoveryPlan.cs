@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,46 +18,51 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Remove Azure Site Recovery Recovery Plan.
+    ///     Remove Azure Site Recovery Recovery Plan.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesAsrRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Remove-ASRRP", "Remove-ASRRecoveryPlan")]
+    [Cmdlet(VerbsCommon.Remove,
+        "AzureRmRecoveryServicesAsrRecoveryPlan",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Alias("Remove-ASRRP",
+        "Remove-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByName)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ASRParameterSets.ByName)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByObject, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ASRParameterSets.ByObject,
+            ValueFromPipeline = true)]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (string.Compare(this.ParameterSetName, ASRParameterSets.ByObject, StringComparison.OrdinalIgnoreCase) == 0)
+            if (string.Compare(ParameterSetName,
+                    ASRParameterSets.ByObject,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
             {
-                this.Name = this.RecoveryPlan.Name;
+                Name = RecoveryPlan.Name;
             }
 
-            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.Name);
+            var response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(Name);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }

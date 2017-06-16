@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,20 +17,21 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Vault Settings.
+    ///     Retrieves Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrVaultSettings")]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class GetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            this.WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
+            WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
         }
     }
 }

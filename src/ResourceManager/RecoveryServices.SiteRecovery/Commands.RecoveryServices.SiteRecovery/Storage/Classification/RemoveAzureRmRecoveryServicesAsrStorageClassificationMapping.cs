@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,43 +24,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     // <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesAsrStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove,
+        "AzureRmRecoveryServicesAsrStorageClassificationMapping",
+        DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Remove-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
-    public class RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping : SiteRecoveryCmdletBase, IModuleAssemblyInitializer
+    public class RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping :
+        SiteRecoveryCmdletBase,
+        IModuleAssemblyInitializer
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets primary storage classification.
+        ///     Gets or sets primary storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRStorageClassificationMapping StorageClassificationMapping { get; set; }
-        #endregion
 
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            string[] tokens = StorageClassificationMapping.Id.UnFormatArmId(
-                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
-            var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(
-                fabricName: tokens[0],
-                storageClassificationName: tokens[1],
-                mappingName: tokens[2]);
+            var tokens = StorageClassificationMapping.Id.UnFormatArmId(ARMResourceIdPaths
+                .StorageClassificationMappingResourceIdPath);
+            var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(tokens[0],
+                tokens[1],
+                tokens[2]);
             var jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
+                    PSRecoveryServicesClient
+                        .GetJobIdFromReponseLocation(operationResponse.Location));
 
-            base.WriteObject(new ASRJob(jobResponse));
+            WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
-        /// Add Site Recovery aliases
+        ///     Add Site Recovery aliases
         /// </summary>
         public void OnImport()
         {
@@ -70,9 +73,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile();
 
                 System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode
+                    .CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly()
+                        .Location),
                     "RecoveryServicesAsrStartup.ps1")));
                 invoker.Invoke();
             }

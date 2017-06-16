@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,53 +17,55 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Creates Azure Site Recovery Policy object in memory.
+    ///     Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesAsrFabric", DefaultParameterSetName = ASRParameterSets.Default, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove,
+        "AzureRmRecoveryServicesAsrFabric",
+        DefaultParameterSetName = ASRParameterSets.Default,
+        SupportsShouldProcess = true)]
     [Alias("Remove-ASRFabric")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets the fabric name
+        ///     Gets or sets the fabric name
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
-        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default)]
         public SwitchParameter Force { get; set; }
 
-        #endregion
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(this.Fabric.FriendlyName, VerbsCommon.Remove))
+            if (ShouldProcess(Fabric.FriendlyName,
+                VerbsCommon.Remove))
             {
                 PSSiteRecoveryLongRunningOperation response;
 
-                if (!this.Force.IsPresent)
+                if (!Force.IsPresent)
                 {
-                    response = RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Fabric.Name);
+                    response = RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(Fabric.Name);
                 }
                 else
                 {
-                    response = RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Fabric.Name);
+                    response = RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(Fabric.Name);
                 }
 
                 var jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                    RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                        .GetJobIdFromReponseLocation(response.Location));
 
                 WriteObject(new ASRJob(jobResponse));
             }

@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,72 +12,75 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Services Provider.
+    ///     Retrieves Azure Site Recovery Services Provider.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesAsrServicesProvider", DefaultParameterSetName = ASRParameterSets.Default, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove,
+        "AzureRmRecoveryServicesAsrServicesProvider",
+        DefaultParameterSetName = ASRParameterSets.Default,
+        SupportsShouldProcess = true)]
     [Alias("Remove-ASRServicesProvider")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets the Recovery Services Provider.
+        ///     Gets or sets the Recovery Services Provider.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRRecoveryServicesProvider ServicesProvider { get; set; }
 
         /// <summary>
-        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
         /// </summary>
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(this.ServicesProvider.FriendlyName, VerbsCommon.Remove))
+            if (ShouldProcess(ServicesProvider.FriendlyName,
+                VerbsCommon.Remove))
             {
                 RemoveServiceProvider();
             }
         }
 
         /// <summary>
-        /// Remove Server
+        ///     Remove Server
         /// </summary>
         private void RemoveServiceProvider()
         {
             PSSiteRecoveryLongRunningOperation response;
 
-            if (!this.Force.IsPresent)
+            if (!Force.IsPresent)
             {
-                response =
-                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(
-                        Utilities.GetValueFromArmId(this.ServicesProvider.ID, ARMResourceTypeConstants.ReplicationFabrics), this.ServicesProvider.Name);
+                response = RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(
+                    Utilities.GetValueFromArmId(ServicesProvider.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    ServicesProvider.Name);
             }
             else
             {
-                response =
-                        RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(
-                        Utilities.GetValueFromArmId(this.ServicesProvider.ID, ARMResourceTypeConstants.ReplicationFabrics), this.ServicesProvider.Name);
+                response = RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(
+                    Utilities.GetValueFromArmId(ServicesProvider.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    ServicesProvider.Name);
             }
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }

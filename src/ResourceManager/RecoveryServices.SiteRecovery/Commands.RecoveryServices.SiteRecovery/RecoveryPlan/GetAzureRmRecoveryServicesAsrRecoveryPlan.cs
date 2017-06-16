@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,79 +17,90 @@ using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using Hyak.Common;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Recovery Plans.
+    ///     Retrieves Azure Site Recovery Recovery Plans.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrRecoveryPlan", DefaultParameterSetName = ASRParameterSets.Default)]
-    [Alias("Get-ASRRP", "Get-ASRRecoveryPlan")]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrRecoveryPlan",
+        DefaultParameterSetName = ASRParameterSets.Default)]
+    [Alias("Get-ASRRP",
+        "Get-ASRRecoveryPlan")]
     [OutputType(typeof(IEnumerable<ASRRecoveryPlan>))]
     public class GetAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
-        #region Parameters
         /// <summary>
-        /// Gets or sets name of the Recovery Plan.
+        ///     Gets or sets name of the Recovery Plan.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets friendly name of the Recovery Plan.
+        ///     Gets or sets friendly name of the Recovery Plan.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets RP JSON FilePath.
+        ///     Gets or sets RP JSON FilePath.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Position = 1, Mandatory = false)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Position = 1, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+            Position = 1,
+            Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName,
+            Position = 1,
+            Mandatory = false)]
         public string Path { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByFriendlyName:
-                    this.GetByFriendlyName();
+                    GetByFriendlyName();
                     break;
                 case ASRParameterSets.ByName:
-                    this.GetByName();
+                    GetByName();
                     break;
                 case ASRParameterSets.Default:
-                    this.GetAll();
+                    GetAll();
                     break;
             }
         }
 
         /// <summary>
-        /// Queries by Friendly name.
+        ///     Queries by Friendly name.
         /// </summary>
         private void GetByFriendlyName()
         {
             var recoveryPlanListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan();
-            bool found = false;
+            var found = false;
 
-            foreach (RecoveryPlan recoveryPlan in recoveryPlanListResponse)
+            foreach (var recoveryPlan in recoveryPlanListResponse)
             {
-                if (0 == string.Compare(this.FriendlyName, recoveryPlan.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
+                if (0 ==
+                    string.Compare(FriendlyName,
+                        recoveryPlan.Properties.FriendlyName,
+                        StringComparison.OrdinalIgnoreCase))
                 {
-                    var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name);
-                    this.WriteRecoveryPlan(rp);
-                    if (!string.IsNullOrEmpty(this.Path))
+                    var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan
+                        .Name);
+                    WriteRecoveryPlan(rp);
+                    if (!string.IsNullOrEmpty(Path))
                     {
                         GetRecoveryPlanFile(rp);
                     }
@@ -100,29 +111,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!found)
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.RecoveryPlanNotFound,
-                    this.FriendlyName,
+                throw new InvalidOperationException(string.Format(Resources.RecoveryPlanNotFound,
+                    FriendlyName,
                     PSRecoveryServicesClient.asrVaultCreds.ResourceName));
             }
         }
 
         /// <summary>
-        /// Queries by Name.
+        ///     Queries by Name.
         /// </summary>
         private void GetByName()
         {
             try
             {
                 var recoveryPlanResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(this.Name);
+                    RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(Name);
 
                 if (recoveryPlanResponse != null)
                 {
-                    this.WriteRecoveryPlan(recoveryPlanResponse);
+                    WriteRecoveryPlan(recoveryPlanResponse);
 
-                    if (!string.IsNullOrEmpty(this.Path))
+                    if (!string.IsNullOrEmpty(Path))
                     {
                         GetRecoveryPlanFile(recoveryPlanResponse);
                     }
@@ -130,74 +139,85 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code, "NotFound", StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(ex.Error.Code,
+                        "NotFound",
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
                 {
-                    throw new InvalidOperationException(
-                        string.Format(
-                        Properties.Resources.RecoveryPlanNotFound,
-                        this.Name,
+                    throw new InvalidOperationException(string.Format(
+                        Resources.RecoveryPlanNotFound,
+                        Name,
                         PSRecoveryServicesClient.asrVaultCreds.ResourceName));
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
         /// <summary>
-        /// Queries all / by default.
+        ///     Queries all / by default.
         /// </summary>
         private void GetAll()
         {
             var recoveryPlanListResponse =
-                 RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan();
+                RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan();
 
-            this.WriteRecoveryPlans(recoveryPlanListResponse);
+            WriteRecoveryPlans(recoveryPlanListResponse);
         }
 
         private void GetRecoveryPlanFile(RecoveryPlan recoveryPlan)
         {
-            recoveryPlan = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name);
+            recoveryPlan =
+                RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(recoveryPlan.Name);
 
-            if (string.IsNullOrEmpty(this.Path) || !Directory.Exists(System.IO.Path.GetDirectoryName(this.Path)))
+            if (string.IsNullOrEmpty(Path) ||
+                !Directory.Exists(System.IO.Path.GetDirectoryName(Path)))
             {
-                throw new DirectoryNotFoundException(string.Format(Properties.Resources.DirectoryNotFound, System.IO.Path.GetDirectoryName(this.Path)));
+                throw new DirectoryNotFoundException(string.Format(Resources.DirectoryNotFound,
+                    System.IO.Path.GetDirectoryName(Path)));
             }
 
-            string fullFileName = this.Path;
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@fullFileName, false))
+            var fullFileName = Path;
+            using (var file = new StreamWriter(fullFileName,
+                false))
             {
-                string json = JsonConvert.SerializeObject(recoveryPlan, Formatting.Indented);
+                var json = JsonConvert.SerializeObject(recoveryPlan,
+                    Formatting.Indented);
                 file.WriteLine(json);
             }
         }
 
         /// <summary>
-        /// Write Recovery Plans.
+        ///     Write Recovery Plans.
         /// </summary>
         /// <param name="recoveryPlanList">List of Recovery Plans</param>
         private void WriteRecoveryPlans(IList<RecoveryPlan> recoveryPlanList)
         {
             IList<ASRRecoveryPlan> asrRecoveryPlans = new List<ASRRecoveryPlan>();
 
-            foreach (RecoveryPlan recoveryPlan in recoveryPlanList)
+            foreach (var recoveryPlan in recoveryPlanList)
             {
-                var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
-                asrRecoveryPlans.Add(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse));
+                var replicationProtectedItemListResponse =
+                    RecoveryServicesClient
+                        .GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
+                asrRecoveryPlans.Add(new ASRRecoveryPlan(recoveryPlan,
+                    replicationProtectedItemListResponse));
             }
 
-            this.WriteObject(asrRecoveryPlans, true);
+            WriteObject(asrRecoveryPlans,
+                true);
         }
 
         /// <summary>
-        /// Write Recovery Plan.
+        ///     Write Recovery Plan.
         /// </summary>
         /// <param name="recoveryPlan">Recovery Plan object</param>
         private void WriteRecoveryPlan(RecoveryPlan recoveryPlan)
         {
-            var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
-            this.WriteObject(new ASRRecoveryPlan(recoveryPlan, replicationProtectedItemListResponse));
+            var replicationProtectedItemListResponse = RecoveryServicesClient
+                .GetAzureSiteRecoveryReplicationProtectedItemInRP(recoveryPlan.Name);
+            WriteObject(new ASRRecoveryPlan(recoveryPlan,
+                replicationProtectedItemListResponse));
         }
     }
 }

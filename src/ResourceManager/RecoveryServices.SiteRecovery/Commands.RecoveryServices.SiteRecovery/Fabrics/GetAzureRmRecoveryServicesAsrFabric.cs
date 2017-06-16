@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,71 +16,76 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Hyak.Common;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Gets Azure Site Recovery fabric object.
+    ///     Gets Azure Site Recovery fabric object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrFabric", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrFabric",
+        DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRFabric")]
     [OutputType(typeof(List<ASRFabric>))]
     public class GetAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
-        #region Parameters
         /// <summary>
-        /// Gets or sets Name of the Fabric.
+        ///     Gets or sets Name of the Fabric.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Friendly name of the Fabric.
+        ///     Gets or sets Friendly name of the Fabric.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByName:
-                    this.GetByName();
+                    GetByName();
                     break;
                 case ASRParameterSets.ByFriendlyName:
-                    this.GetByFriendlyName();
+                    GetByFriendlyName();
                     break;
                 case ASRParameterSets.Default:
-                    this.GetAll();
+                    GetAll();
                     break;
             }
         }
 
         /// <summary>
-        /// Queries by friendly name.
+        ///     Queries by friendly name.
         /// </summary>
         private void GetByFriendlyName()
         {
-            List<Fabric> fabricListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
+            var fabricListResponse = RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            bool found = false;
-            foreach (Fabric fabric in fabricListResponse)
+            var found = false;
+            foreach (var fabric in fabricListResponse)
             {
-                if (0 == string.Compare(this.FriendlyName, fabric.Properties.FriendlyName, StringComparison.OrdinalIgnoreCase))
+                if (0 ==
+                    string.Compare(FriendlyName,
+                        fabric.Properties.FriendlyName,
+                        StringComparison.OrdinalIgnoreCase))
                 {
-                    var fabricByName = RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name);
-                    this.WriteFabric(fabricByName);
+                    var fabricByName =
+                        RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabric.Name);
+                    WriteFabric(fabricByName);
 
                     found = true;
                 }
@@ -88,67 +93,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!found)
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.FabricNotFound,
-                    this.FriendlyName,
+                throw new InvalidOperationException(string.Format(Resources.FabricNotFound,
+                    FriendlyName,
                     PSRecoveryServicesClient.asrVaultCreds.ResourceName));
             }
         }
 
         /// <summary>
-        /// Queries by name.
+        ///     Queries by name.
         /// </summary>
         private void GetByName()
         {
             try
             {
-                var fabricResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryFabric(this.Name);
+                var fabricResponse = RecoveryServicesClient.GetAzureSiteRecoveryFabric(Name);
 
                 if (fabricResponse != null)
                 {
-                    this.WriteFabric(fabricResponse);
+                    WriteFabric(fabricResponse);
                 }
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code, "NotFound", StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(ex.Error.Code,
+                        "NotFound",
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
                 {
-                    throw new InvalidOperationException(
-                        string.Format(
-                            Properties.Resources.FabricNotFound,
-                            this.Name,
-                            PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+                    throw new InvalidOperationException(string.Format(Resources.FabricNotFound,
+                        Name,
+                        PSRecoveryServicesClient.asrVaultCreds.ResourceName));
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
         /// <summary>
-        /// Queries all / by default.
+        ///     Queries all / by default.
         /// </summary>
         private void GetAll()
         {
-            List<Fabric> fabricListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryFabric();
+            var fabricListResponse = RecoveryServicesClient.GetAzureSiteRecoveryFabric();
 
-            foreach (Fabric fabric in fabricListResponse)
+            foreach (var fabric in fabricListResponse)
             {
-                this.WriteFabric(fabric);
+                WriteFabric(fabric);
             }
         }
 
         /// <summary>
-        /// Write Powershell Fabric.
+        ///     Write Powershell Fabric.
         /// </summary>
         /// <param name="server">Fabric object</param>
         private void WriteFabric(Fabric fabric)
         {
-            this.WriteObject(new ASRFabric(fabric));
+            WriteObject(new ASRFabric(fabric));
         }
     }
 }

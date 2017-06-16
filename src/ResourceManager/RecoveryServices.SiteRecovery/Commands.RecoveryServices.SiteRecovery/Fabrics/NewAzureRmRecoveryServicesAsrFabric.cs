@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,72 +18,70 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Creates Azure Site Recovery Fabric object.
+    ///     Creates Azure Site Recovery Fabric object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesAsrFabric", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.New,
+        "AzureRmRecoveryServicesAsrFabric",
+        DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("New-ASRFabric")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets the name of the fabric to be created
+        ///     Gets or sets the name of the fabric to be created
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, HelpMessage = "Name of the fabric to be created")]
+        [Parameter(ParameterSetName = ASRParameterSets.Default,
+            Mandatory = true,
+            HelpMessage = "Name of the fabric to be created")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets the Fabric type
+        ///     Gets or Sets the Fabric type
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default,
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            Constants.HyperVSite)]
+        [ValidateSet(Constants.HyperVSite)]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets the location
+        ///     Gets or Sets the location
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default,
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            string fabricType = string.IsNullOrEmpty(this.Type) ? FabricProviders.HyperVSite : this.Type;
+            var fabricType = string.IsNullOrEmpty(Type) ? FabricProviders.HyperVSite : Type;
 
-            FabricCreationInput input = new FabricCreationInput();
+            var input = new FabricCreationInput();
             input.Properties = new FabricCreationInputProperties();
 
-            if (string.IsNullOrEmpty(this.Location))
+            if (string.IsNullOrEmpty(Location))
             {
                 input.Properties.CustomDetails = new FabricSpecificCreationInput();
             }
             else
             {
-                input.Properties.CustomDetails = new AzureFabricCreationInput()
-                {
-                    Location = this.Location
-                };
+                input.Properties.CustomDetails = new AzureFabricCreationInput {Location = Location};
             }
 
-            PSSiteRecoveryLongRunningOperation response =
-                RecoveryServicesClient.CreateAzureSiteRecoveryFabric(this.Name, input);
+            var response = RecoveryServicesClient.CreateAzureSiteRecoveryFabric(Name,
+                input);
 
             WriteObject(response);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }

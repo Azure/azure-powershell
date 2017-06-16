@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,98 +20,103 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Network.
+    ///     Retrieves Azure Site Recovery Network.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrNetwork", DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrNetwork",
+        DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRNetwork")]
     [OutputType(typeof(IEnumerable<ASRNetwork>))]
     public class GetAzureRmRecoveryServicesAsrNetwork : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Fabric object.
+        ///     Gets or sets Fabric object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByFabricObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFabricObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
-        /// Gets or sets Name of the Network.
+        ///     Gets or sets Name of the Network.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Friendly Name of the Network.
+        ///     Gets or sets Friendly Name of the Network.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByFabricObject:
-                    this.GetByFabric();
+                    GetByFabric();
                     break;
                 case ASRParameterSets.ByName:
-                    this.GetByName();
+                    GetByName();
                     break;
                 case ASRParameterSets.ByFriendlyName:
-                    this.GetByFriendlyName();
+                    GetByFriendlyName();
                     break;
             }
         }
 
         /// <summary>
-        /// Queries all Networks under Fabric
+        ///     Queries all Networks under Fabric
         /// </summary>
         private void GetByFabric()
         {
             var networkListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryNetworks(
-                this.Fabric.Name);
+                RecoveryServicesClient.GetAzureSiteRecoveryNetworks(Fabric.Name);
 
-            this.WriteNetworks(networkListResponse);
+            WriteNetworks(networkListResponse);
         }
 
         /// <summary>
-        /// Queries by Name
+        ///     Queries by Name
         /// </summary>
         private void GetByName()
         {
-            var networkResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryNetwork(
-                this.Fabric.Name,
-                this.Name);
+            var networkResponse = RecoveryServicesClient.GetAzureSiteRecoveryNetwork(Fabric.Name,
+                Name);
 
-            this.WriteNetwork(networkResponse);
+            WriteNetwork(networkResponse);
         }
 
         /// <summary>
-        /// Queries a particular Network
+        ///     Queries a particular Network
         /// </summary>
         private void GetByFriendlyName()
         {
             var networkListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryNetworks(
-                this.Fabric.Name);
+                RecoveryServicesClient.GetAzureSiteRecoveryNetworks(Fabric.Name);
 
-            foreach (Network network in networkListResponse)
+            foreach (var network in networkListResponse)
             {
-                if (0 == string.Compare(this.FriendlyName, network.Properties.FriendlyName, true))
+                if (0 ==
+                    string.Compare(FriendlyName,
+                        network.Properties.FriendlyName,
+                        true))
                 {
                     WriteNetwork(network);
                 }
@@ -119,21 +124,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Write Networks.
+        ///     Write Networks.
         /// </summary>
         /// <param name="networks">List of Networks</param>
         private void WriteNetworks(IList<Network> networks)
         {
-            this.WriteObject(networks.Select(n => new ASRNetwork(n)), true);
+            WriteObject(networks.Select(n => new ASRNetwork(n)),
+                true);
         }
 
         /// <summary>
-        /// Write Network.
+        ///     Write Network.
         /// </summary>
         /// <param name="network">Network object</param>
         private void WriteNetwork(Network network)
         {
-            this.WriteObject(new ASRNetwork(network));
+            WriteObject(new ASRNetwork(network));
         }
     }
 }

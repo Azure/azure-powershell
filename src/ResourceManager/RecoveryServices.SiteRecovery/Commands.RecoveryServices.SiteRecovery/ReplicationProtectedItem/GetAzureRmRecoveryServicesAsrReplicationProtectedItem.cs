@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,95 +17,111 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Protected Item.
+    ///     Retrieves Azure Site Protected Item.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrReplicationProtectedItem", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrReplicationProtectedItem",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRReplicationProtectedItem")]
     [OutputType(typeof(IEnumerable<ASRReplicationProtectedItem>))]
     public class GetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
-        #region Parameters
         /// <summary>
-        /// Gets or sets Name of the Replicated Protected Item.
+        ///     Gets or sets Name of the Replicated Protected Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets friendly name of the Protection Entity.
+        ///     Gets or sets friendly name of the Protection Entity.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection Container Object.
+        ///     Gets or sets Protection Container Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer ProtectionContainer { get; set; }
 
         /// <summary>
-        /// Gets or sets Protectable Item.
+        ///     Gets or sets Protectable Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByProtectableItemObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByProtectableItemObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectableItem ProtectableItem { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    this.GetAll();
+                    GetAll();
                     break;
                 case ASRParameterSets.ByObjectWithName:
-                    this.GetByName();
+                    GetByName();
                     break;
                 case ASRParameterSets.ByObjectWithFriendlyName:
-                    this.GetByFriendlyName();
+                    GetByFriendlyName();
                     break;
                 case ASRParameterSets.ByProtectableItemObject:
-                    this.GetByProtectableItem();
+                    GetByProtectableItem();
                     break;
             }
         }
 
         /// <summary>
-        /// Queries by friendly name.
+        ///     Queries by friendly name.
         /// </summary>
         private void GetByFriendlyName()
         {
-            bool found = false;
+            var found = false;
 
-            var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                this.ProtectionContainer.Name);
-            ReplicationProtectedItem replicationProtectedItem = 
-                replicationProtectedItemListResponse.SingleOrDefault(t => 
-                string.Compare(t.Properties.FriendlyName, this.FriendlyName, StringComparison.OrdinalIgnoreCase) == 0);
+            var replicationProtectedItemListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
+                    Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    ProtectionContainer.Name);
+            var replicationProtectedItem = replicationProtectedItemListResponse.SingleOrDefault(
+                t => string.Compare(t.Properties.FriendlyName,
+                         FriendlyName,
+                         StringComparison.OrdinalIgnoreCase) ==
+                     0);
 
             if (replicationProtectedItem != null)
             {
-                var replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                    Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    this.ProtectionContainer.Name,
-                    replicationProtectedItem.Name);
+                var replicationProtectedItemResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
+                        Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        ProtectionContainer.Name,
+                        replicationProtectedItem.Name);
                 WriteReplicationProtectedItem(replicationProtectedItemResponse);
 
                 found = true;
@@ -113,66 +129,75 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!found)
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.ProtectionEntityNotFound,
-                    this.FriendlyName,
-                    this.ProtectionContainer.FriendlyName));
+                throw new InvalidOperationException(string.Format(
+                    Resources.ProtectionEntityNotFound,
+                    FriendlyName,
+                    ProtectionContainer.FriendlyName));
             }
         }
 
         /// <summary>
-        /// Queries by Name.
+        ///     Queries by Name.
         /// </summary>
         private void GetByName()
         {
             try
             {
-                var replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                    Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    this.ProtectionContainer.Name,
-                    this.Name);
+                var replicationProtectedItemResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
+                        Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        ProtectionContainer.Name,
+                        Name);
 
                 if (replicationProtectedItemResponse != null)
                 {
-                    this.WriteReplicationProtectedItem(replicationProtectedItemResponse);
+                    WriteReplicationProtectedItem(replicationProtectedItemResponse);
                 }
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code, "NotFound", StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(ex.Error.Code,
+                        "NotFound",
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
                 {
-                    throw new InvalidOperationException(
-                        string.Format(
-                        Properties.Resources.ReplicationProtectedItemNotFound,
-                        this.Name,
-                        this.ProtectionContainer.FriendlyName));
+                    throw new InvalidOperationException(string.Format(
+                        Resources.ReplicationProtectedItemNotFound,
+                        Name,
+                        ProtectionContainer.FriendlyName));
                 }
-                else
-                {
-                    throw;
-                }
-            }        
+
+                throw;
+            }
         }
 
         /// <summary>
-        /// Queries by Protectable Item
+        ///     Queries by Protectable Item
         /// </summary>
         private void GetByProtectableItem()
         {
-            bool found = false;
+            var found = false;
 
-            var protectableItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
-               Utilities.GetValueFromArmId(this.ProtectableItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.ProtectableItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    this.ProtectableItem.Name);
+            var protectableItemResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+                    Utilities.GetValueFromArmId(ProtectableItem.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    Utilities.GetValueFromArmId(ProtectableItem.ID,
+                        ARMResourceTypeConstants.ReplicationProtectionContainers),
+                    ProtectableItem.Name);
 
             if (protectableItemResponse != null)
             {
-                var replicationProtectedItemResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                    Utilities.GetValueFromArmId(this.ProtectableItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.ProtectableItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    Utilities.GetValueFromArmId(protectableItemResponse.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems));
+                var replicationProtectedItemResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
+                        Utilities.GetValueFromArmId(ProtectableItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(ProtectableItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        Utilities.GetValueFromArmId(protectableItemResponse.Properties
+                                .ReplicationProtectedItemId,
+                            ARMResourceTypeConstants.ReplicationProtectedItems));
 
                 WriteReplicationProtectedItem(replicationProtectedItemResponse);
 
@@ -181,42 +206,46 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!found)
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.ProtectionEntityNotFound,
-                    this.FriendlyName,
-                    this.ProtectionContainer.FriendlyName));
+                throw new InvalidOperationException(string.Format(
+                    Resources.ProtectionEntityNotFound,
+                    FriendlyName,
+                    ProtectionContainer.FriendlyName));
             }
         }
 
         /// <summary>
-        /// Queries all Protected Items under given Protection Container.
+        ///     Queries all Protected Items under given Protection Container.
         /// </summary>
         private void GetAll()
         {
-            var replicationProtectedItemListResponse = RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                this.ProtectionContainer.Name);
+            var replicationProtectedItemListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
+                    Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    ProtectionContainer.Name);
 
             WriteReplicationProtectedItems(replicationProtectedItemListResponse);
         }
 
         /// <summary>
-        /// Write Protected Items
+        ///     Write Protected Items
         /// </summary>
         /// <param name="protectableItems">List of protectable items</param>
-        private void WriteReplicationProtectedItems(IList<ReplicationProtectedItem> replicationProtectedItems)
+        private void WriteReplicationProtectedItems(
+            IList<ReplicationProtectedItem> replicationProtectedItems)
         {
-            this.WriteObject(replicationProtectedItems.Select(pi => new ASRReplicationProtectedItem(pi)), true);
+            WriteObject(replicationProtectedItems.Select(pi => new ASRReplicationProtectedItem(pi)),
+                true);
         }
 
         /// <summary>
-        /// Write Protected Items
+        ///     Write Protected Items
         /// </summary>
         /// <param name="replicationProtectedItem"></param>
-        private void WriteReplicationProtectedItem(ReplicationProtectedItem replicationProtectedItem)
+        private void WriteReplicationProtectedItem(
+            ReplicationProtectedItem replicationProtectedItem)
         {
-            this.WriteObject(new ASRReplicationProtectedItem(replicationProtectedItem));
+            WriteObject(new ASRReplicationProtectedItem(replicationProtectedItem));
         }
     }
 }

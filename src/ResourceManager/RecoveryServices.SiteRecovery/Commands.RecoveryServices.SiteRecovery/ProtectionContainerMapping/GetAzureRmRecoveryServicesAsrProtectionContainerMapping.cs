@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,117 +17,129 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Protection Conatiner Mapping
+    ///     Retrieves Azure Site Recovery Protection Conatiner Mapping
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrProtectionContainerMapping", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrProtectionContainerMapping",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectionContainerMapping")]
     [OutputType(typeof(IEnumerable<ASRProtectionContainerMapping>))]
     public class GetAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
-        #region Parameters
         /// <summary>
-        /// Gets or sets Name of the Protection Conatiner Mapping
+        ///     Gets or sets Name of the Protection Conatiner Mapping
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Protection Container Object.
+        ///     Gets or sets Protection Container Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer ProtectionContainer { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    this.GetAll();
+                    GetAll();
                     break;
                 case ASRParameterSets.ByObjectWithName:
-                    this.GetByName();
+                    GetByName();
                     break;
             }
         }
 
-
         /// <summary>
-        /// Queries by Name.
+        ///     Queries by Name.
         /// </summary>
         private void GetByName()
         {
             try
             {
-                var protectionContainerMappingResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
-                    Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    this.ProtectionContainer.Name,
-                    this.Name);
+                var protectionContainerMappingResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
+                        Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        ProtectionContainer.Name,
+                        Name);
 
                 if (protectionContainerMappingResponse != null)
                 {
-                    this.WriteProtectionContainerMapping(protectionContainerMappingResponse);
+                    WriteProtectionContainerMapping(protectionContainerMappingResponse);
                 }
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code, "NotFound", StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(ex.Error.Code,
+                        "NotFound",
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
                 {
-                    throw new InvalidOperationException(
-                        string.Format(
-                        Properties.Resources.ProtectionConatinerMappingNotFound,
-                        this.Name,
-                        this.ProtectionContainer.FriendlyName));
+                    throw new InvalidOperationException(string.Format(
+                        Resources.ProtectionConatinerMappingNotFound,
+                        Name,
+                        ProtectionContainer.FriendlyName));
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
         /// <summary>
-        /// Queries all Protection Container Mappings for a given Protection Container
+        ///     Queries all Protection Container Mappings for a given Protection Container
         /// </summary>
         private void GetAll()
         {
-            var protectionContainerMappingListResponse = RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
-                Utilities.GetValueFromArmId(this.ProtectionContainer.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                this.ProtectionContainer.Name);
+            var protectionContainerMappingListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
+                    Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    ProtectionContainer.Name);
 
             WriteProtectionContainerMappings(protectionContainerMappingListResponse);
         }
 
         /// <summary>
-        /// Write Protection Container Mappings
+        ///     Write Protection Container Mappings
         /// </summary>
         /// <param name="protectableItems">List of protectable items</param>
-        private void WriteProtectionContainerMappings(IList<ProtectionContainerMapping> protectionContainerMappings)
+        private void WriteProtectionContainerMappings(
+            IList<ProtectionContainerMapping> protectionContainerMappings)
         {
-            this.WriteObject(protectionContainerMappings.Select(pcm => new ASRProtectionContainerMapping(pcm)), true);
+            WriteObject(
+                protectionContainerMappings.Select(pcm => new ASRProtectionContainerMapping(pcm)),
+                true);
         }
 
         /// <summary>
-        /// Write Protection Container Mapping
+        ///     Write Protection Container Mapping
         /// </summary>
         /// <param name="protectionContainerMapping"></param>
-        private void WriteProtectionContainerMapping(ProtectionContainerMapping protectionContainerMapping)
+        private void WriteProtectionContainerMapping(
+            ProtectionContainerMapping protectionContainerMapping)
         {
-            this.WriteObject(new ASRProtectionContainerMapping(protectionContainerMapping));
+            WriteObject(new ASRProtectionContainerMapping(protectionContainerMapping));
         }
     }
 }

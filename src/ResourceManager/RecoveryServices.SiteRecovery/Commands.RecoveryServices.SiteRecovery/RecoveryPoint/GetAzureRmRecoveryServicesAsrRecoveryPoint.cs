@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,69 +17,76 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Hyak.Common;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Points.
+    ///     Retrieves Azure Site Recovery Points.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesAsrRecoveryPoint", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsCommon.Get,
+        "AzureRmRecoveryServicesAsrRecoveryPoint",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRRecoveryPoint")]
     [OutputType(typeof(IEnumerable<ASRRecoveryPoint>))]
     public class GetAzureRmRecoveryServicesAsrRecoveryPoint : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Name of the Recovery Point.
+        ///     Gets or sets Name of the Recovery Point.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Protected Item.
+        ///     Gets or sets Replication Protected Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    this.GetAll();
+                    GetAll();
                     break;
                 case ASRParameterSets.ByObjectWithName:
-                    this.GetByName();
+                    GetByName();
                     break;
                 default:
-                    throw new PSInvalidOperationException(Properties.Resources.InvalidParameterSet);
+                    throw new PSInvalidOperationException(Resources.InvalidParameterSet);
             }
         }
 
         /// <summary>
-        /// Queries by Name.
+        ///     Queries by Name.
         /// </summary>
         private void GetByName()
         {
             try
             {
-                var recoveryPointResponse = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPoint(
-                    Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    this.ReplicationProtectedItem.Name,
-                    this.Name);
+                var recoveryPointResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPoint(
+                        Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        ReplicationProtectedItem.Name,
+                        Name);
 
                 if (recoveryPointResponse != null)
                 {
@@ -88,50 +95,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code, "NotFound", StringComparison.OrdinalIgnoreCase) == 0)
+                if (string.Compare(ex.Error.Code,
+                        "NotFound",
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
                 {
-                    throw new InvalidOperationException(
-                        string.Format(
-                        Properties.Resources.InvalidParameterSet,
-                        this.Name,
-                        this.ReplicationProtectedItem.FriendlyName));
+                    throw new InvalidOperationException(string.Format(Resources.InvalidParameterSet,
+                        Name,
+                        ReplicationProtectedItem.FriendlyName));
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
         }
 
         /// <summary>
-        /// Queries all Protected Items under given Protection Container.
+        ///     Queries all Protected Items under given Protection Container.
         /// </summary>
         private void GetAll()
         {
-            var recoveryPointListResponse = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPoint(
-                Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                this.ReplicationProtectedItem.Name);
+            var recoveryPointListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPoint(
+                    Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationProtectionContainers),
+                    ReplicationProtectedItem.Name);
 
             WriteRecoveryPoints(recoveryPointListResponse);
         }
 
         /// <summary>
-        /// Write Recovery Points.
+        ///     Write Recovery Points.
         /// </summary>
         /// <param name="recoveryPoints">List of recovery points.</param>
         private void WriteRecoveryPoints(IList<RecoveryPoint> recoveryPoints)
         {
-            this.WriteObject(recoveryPoints.Select(recoveryPoint => new ASRRecoveryPoint(recoveryPoint)), true);
+            WriteObject(recoveryPoints.Select(recoveryPoint => new ASRRecoveryPoint(recoveryPoint)),
+                true);
         }
 
         /// <summary>
-        /// Write Recovery Point.
+        ///     Write Recovery Point.
         /// </summary>
         /// <param name="recoveryPoint">Recovery point.</param>
         private void WriteRecoveryPoint(RecoveryPoint recoveryPoint)
         {
-            this.WriteObject(new ASRRecoveryPoint(recoveryPoint));
+            WriteObject(new ASRRecoveryPoint(recoveryPoint));
         }
     }
 }

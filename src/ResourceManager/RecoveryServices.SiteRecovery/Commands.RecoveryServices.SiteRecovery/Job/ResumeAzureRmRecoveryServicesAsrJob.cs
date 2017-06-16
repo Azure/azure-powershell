@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,77 +18,79 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Resumes Azure Site Recovery Job.
+    ///     Resumes Azure Site Recovery Job.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Resume, "AzureRmRecoveryServicesAsrJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsLifecycle.Resume,
+        "AzureRmRecoveryServicesAsrJob",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Resume-ASRJob")]
     [OutputType(typeof(ASRJob))]
     public class ResumeAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Job ID.
+        ///     Gets or sets Job ID.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Job Object.
+        ///     Gets or sets Job Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRJob Job { get; set; }
 
         /// <summary>
-        /// Gets or sets job comments.
+        ///     Gets or sets job comments.
         /// </summary>
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string Comments { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    this.Name = this.Job.Name;
-                    this.ResumesByName();
+                    Name = Job.Name;
+                    ResumesByName();
                     break;
 
                 case ASRParameterSets.ByName:
-                    this.ResumesByName();
+                    ResumesByName();
                     break;
             }
         }
 
         /// <summary>
-        /// Resumes by Name.
+        ///     Resumes by Name.
         /// </summary>
         private void ResumesByName()
         {
-            ResumeJobParams resumeJobParams = new ResumeJobParams();
-            if (string.IsNullOrEmpty(this.Comments))
+            var resumeJobParams = new ResumeJobParams();
+            if (string.IsNullOrEmpty(Comments))
             {
-                this.Comments = " ";
+                Comments = " ";
             }
 
             resumeJobParams.Properties = new ResumeJobParamsProperties();
-            resumeJobParams.Properties.Comments = this.Comments;
+            resumeJobParams.Properties.Comments = Comments;
 
-            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.ResumeAzureSiteRecoveryJob(this.Name, resumeJobParams);
+            var response = RecoveryServicesClient.ResumeAzureSiteRecoveryJob(Name,
+                resumeJobParams);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }

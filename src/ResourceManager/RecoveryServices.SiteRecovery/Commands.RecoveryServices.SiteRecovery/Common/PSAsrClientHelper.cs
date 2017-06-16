@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,16 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Recovery Services Client Helper Methods class
+    ///     Recovery Services Client Helper Methods class
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Converts the Parameter set string of Replication Frequency in seconds to UShort.
+        ///     Converts the Parameter set string of Replication Frequency in seconds to UShort.
         /// </summary>
         /// <param name="replicationFrequencyString">Replication frequency in seconds.</param>
         /// <returns>A UShort corresponding to the value.</returns>
@@ -35,11 +36,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             ushort replicationFrequency;
 
-            if (!ushort.TryParse(replicationFrequencyString, out replicationFrequency))
+            if (!ushort.TryParse(replicationFrequencyString,
+                out replicationFrequency))
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.InvalidReplicationFrequency,
+                throw new InvalidOperationException(string.Format(
+                    Resources.InvalidReplicationFrequency,
                     replicationFrequencyString));
             }
 
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Validates if the time span object has a valid value.
+        ///     Validates if the time span object has a valid value.
         /// </summary>
         /// <param name="timeSpan">Time span object to be validated</param>
         public static void ValidateReplicationStartTime(TimeSpan? timeSpan)
@@ -57,10 +58,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 return;
             }
 
-            if (TimeSpan.Compare(timeSpan.Value, new TimeSpan(24, 0, 0)) == 1)
+            if (TimeSpan.Compare(timeSpan.Value,
+                    new TimeSpan(24,
+                        0,
+                        0)) ==
+                1)
             {
-                throw new InvalidOperationException(
-                    string.Format(Properties.Resources.ReplicationStartTimeInvalid));
+                throw new InvalidOperationException(string.Format(Resources
+                    .ReplicationStartTimeInvalid));
             }
         }
     }
