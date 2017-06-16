@@ -21,12 +21,10 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         Set-ACSQuota [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-Location] {string} 
-    ///             [-SkipCertificateValidation] [-Name] {string} [-NumberOfStorageAccounts] {int}  [-CapacityInGB] {int} [ {CommonParameters}] 
-    /// 
+    /// Modifies the quota values of the given Storage quota resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, Nouns.AdminQuota, SupportsShouldProcess = true)]
+    [Alias("Set-ACSQuota")]
     public sealed class SetAdminQuota : AdminCmdlet
     {
         const string ShouldProcessTargetFormat = "quota {0} ";
@@ -34,34 +32,39 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Location
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Location { get; set; }
 
         /// <summary>
         ///  Quota Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Name { get; set; }
 
         /// <summary>
         ///     Number of Storage Accounts for this quota
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public int NumberOfStorageAccounts { get; set; }
 
         /// <summary>
         ///   Capacity for this quota  
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public int CapacityInGB { get; set; }
 
         protected override void Execute()
         {
             Name = base.ParseNameForQuota(Name);
+
+            // try to fetch the quota. 
+            // if the quota doesnt exist, this will throw an exception
+            QuotaGetResponse getResponse = Client.Quotas.Get(Location, Name);
+
             if (ShouldProcess(
                 Resources.SetQuotaDescription.FormatInvariantCulture(Name),
                 Resources.SetQuotaWarning.FormatInvariantCulture(Name),

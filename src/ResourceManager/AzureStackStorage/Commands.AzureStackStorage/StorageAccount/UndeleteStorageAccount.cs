@@ -21,52 +21,44 @@ using System;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Undo-StorageAccountDeletion [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-AccountId] {string}] [[-NewAccountName] {string}] [-TenantSubscriptionId] {string} [-Sync] {bool} [-ResourceLocation] {string}
-    /// 
+    /// Tries to recover a deleted storage account.
     /// </summary>
     [Cmdlet(VerbsCommon.Undo, Nouns.AdminStorageAccountDeletion, SupportsShouldProcess = true)]
-    public sealed class UndeleteStorageAccount : AdminCmdlet
+    [Alias("Undo-ACSStorageAccountDeletion")]
+    public sealed class UndeleteStorageAccount : AdminCmdletDefaultFarm
     {
         /// <summary>
-        /// Resource group name
+        /// Storage Account Id
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
-        /// Storage Account Name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string AccountId { get; set; }
 
         /// <summary>
-        /// Storage Account Name
+        /// New Storage Account Name to recover with
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6)]
+        [Parameter(Mandatory = false)]
         public string NewAccountName { get; set; }
 
         /// <summary>
-        /// Specify storage account api version whic resource was created with
+        /// Specify storage account api version which resource was created with
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7)]
+        [Parameter(Mandatory = false)]
         public string StorageAccountApiVersion { get; set; }
 
         /// <summary>
         /// Specifies the Microsoft.Resource.Admin apiVersion
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8)]
+        [Parameter(Mandatory = false)]
         public string ResourceAdminApiVersion { get; set; }
 
+        internal static string SyncDefaultStorageAccountApiVersion = "2015-06-15";
+        internal static string SyncDefaultResourceAdminApiVersion = "2015-01-01";
+        internal static string SyncTargetOperation = "Create";
+
+        internal static string BuildSyncTargetId(string tenantSubscriptionId, string resourceGroupName, string accountName)
+        {
+            return "/subscriptions/" + tenantSubscriptionId + "/resourcegroups/" + resourceGroupName + "/providers/Microsoft.Storage/storageAccounts/" + accountName;
+        }
         protected override void Execute()
         {
             StorageAccountUndeleteParameters undeleteParam = new StorageAccountUndeleteParameters
@@ -101,13 +93,13 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 WriteVerbose(Resources.TriggerResourceSync);
                 StorageAccountSyncRequest req = new StorageAccountSyncRequest();
                 if (StorageAccountApiVersion == null)
-                    StorageAccountApiVersion = SyncStorageAccount.DefaultStorageAccountApiVersion;
+                    StorageAccountApiVersion = SyncDefaultStorageAccountApiVersion;
                 if (string.IsNullOrEmpty(ResourceAdminApiVersion))
                 {
-                    ResourceAdminApiVersion = SyncStorageAccount.DefaultResourceAdminApiVersion;
+                    ResourceAdminApiVersion = SyncDefaultResourceAdminApiVersion;
                 }
                 req.ApiVersion = StorageAccountApiVersion;
-                req.TargetOperaton = SyncStorageAccount.SyncTargetOperation;
+                req.TargetOperaton = SyncTargetOperation;
                 req.ResourceLocation = accounts.StorageAccounts[0].Location;
                 req.Id = accounts.StorageAccounts[0].Properties.TenantViewId;
 

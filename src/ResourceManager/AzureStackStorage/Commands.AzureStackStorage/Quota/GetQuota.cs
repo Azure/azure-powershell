@@ -22,25 +22,23 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         Get-ACSQuota [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-Location] {string} 
-    ///             [-SkipCertificateValidation] [[-Name] {string}] [ {CommonParameters}] 
-    /// 
+    /// Gets a list of all Storage quota resources in the specified location.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQuota)]
+    [Alias("Get-ACSQuota")]
     public sealed class GetQuota : AdminCmdlet
     {
         /// <summary>
         /// Location
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Location { get; set; }
 
         /// <summary>
         /// Quota Name
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

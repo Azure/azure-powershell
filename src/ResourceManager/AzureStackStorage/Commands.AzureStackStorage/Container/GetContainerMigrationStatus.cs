@@ -22,31 +22,16 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// SYNTAX
-    /// Get-ACSContainerMigrationStatus  [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///                  [-FarmName] {string} [-ShareName] {string} -Jobid {string} [{CommonParameters}] 
+    /// Gets the status of the specified migration job ID. 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminContainerMigrationStatus)]
-    public sealed class GetContainerMigrationStatus: AdminCmdlet
+    [Alias("Get-ACSContainerMigrationStatus")]
+    public sealed class GetContainerMigrationStatus : AdminCmdletDefaultFarm
     {
         /// <summary>
-        /// Resource group name
+        /// JobId of the Containter Migration Job
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
-        /// Operation Id
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5 )]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true )]
         public string JobId { get; set; }
 
         protected override void Execute()

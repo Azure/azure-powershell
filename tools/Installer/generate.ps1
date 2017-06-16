@@ -39,16 +39,13 @@ Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
 
-Write-Verbose "Removing unneeded psd1 and other files"
 
+Write-Verbose "Removing unneeded psd1 and other files"
 Remove-Item -Recurse -Force $serviceManagementPath -ErrorAction SilentlyContinue
 
 Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
 
-Remove-Item -Force $output\PowerShellSetup.Test.dll -ErrorAction SilentlyContinue
-
-Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.ApiManagement\ -ErrorAction SilentlyContinue
-
+Write-Verbose "Removing unneeded module folders"
 Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.ApiManagement\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Automation\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Backup\ -ErrorAction SilentlyContinue
@@ -74,6 +71,19 @@ Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.TrafficManager\ -ErrorA
 Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.UsageAggregates\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $resourceManagerPath\AzureRM.Websites\ -ErrorAction SilentlyContinue
 
+Write-Verbose "Removing unneeded psd1 and other files from AzureStackStorage folder"
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\AzureRM.Resources.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\AzureRM.Tags.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Resources.dll-Help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Resources.format.ps1xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.dll-help.xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.AzureStackStorage\ResourceManagerStartup.ps1 -ErrorAction SilentlyContinue
+
+#Powershell Test DLL
+Remove-Item -Force $output\PowerShellSetup.Test.dll -ErrorAction SilentlyContinue 
 
 Write-Verbose "Removing generated NuGet folders from $output"
 $resourcesFolders = @("de", "es", "fr", "it", "ja", "ko", "ru", "zh-Hans", "zh-Hant")

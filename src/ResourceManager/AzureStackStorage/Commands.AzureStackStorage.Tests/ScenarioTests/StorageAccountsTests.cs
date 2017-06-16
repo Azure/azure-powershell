@@ -39,12 +39,5 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
         {
             TestsController.NewInstance.RunPsTest("Test-UndoStorageAccountDeletion");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageAccountPipeline()
-        {
-            TestsController.NewInstance.RunPsTest("Test-StorageAccountPipeline");
-        }
     }
 }

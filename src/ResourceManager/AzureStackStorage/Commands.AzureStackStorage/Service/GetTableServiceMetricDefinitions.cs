@@ -19,18 +19,12 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///
+    /// Gets the properties of the metric definitions exposed by the Table service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminTableServiceMetricDefinition)]
+    [Alias("Get-ACSTableServiceMetricDefinition")]
     public sealed class GetTableServiceMetricDefinitions : AdminMetricDefinitionCmdlet
     {
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
         /// <summary>
         /// 
         /// </summary>

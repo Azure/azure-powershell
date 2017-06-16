@@ -158,6 +158,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LazyAzureStorageContext.cs" />
     <Compile Include="AzureStorageContext.cs" />
     <Compile Include="BlobUploadParameters.cs" />
     <Compile Include="IStorageClientWrapper.cs" />

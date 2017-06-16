@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
@@ -41,28 +42,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         }
 
         /// <summary>
-        /// Subscription identifier
-        /// </summary>
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Authentication token
-        /// </summary>
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string Token { get; set; }
-
-        /// <summary>
-        /// Azure package admin URL
-        /// </summary>
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        [ValidateAbsoluteUri]
-        public Uri AdminUri { get; set; }
-                
-        /// <summary>
         ///     Disable certification validation
         /// </summary>
         [Parameter]
@@ -76,27 +55,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         private RemoteCertificateValidationCallback originalValidateCallback;
 
         private static readonly RemoteCertificateValidationCallback unCheckCertificateValidation = (s, certificate, chain, sslPolicyErrors) => true;
-
-        //TODO: take back the validation
-        private void ValidateParameters()
-        {
-            if (string.IsNullOrEmpty(Token))
-            {
-                if (DefaultContext == null)
-                {
-                    throw new ApplicationException(Resources.InvalidProfile);
-                }
-            }
-            else
-            {
-                // if token is specified, AdminUri is required as well. 
-                if (AdminUri == null || SubscriptionId == null)
-                {
-                    throw new ApplicationException(Resources.TokenAndAdminUriRequired);
-                }
-            }
-        }
-
         
         /// <summary>
         ///     Initial StorageAdminManagementClient
@@ -112,8 +70,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             {
                 ServicePointManager.ServerCertificateValidationCallback = unCheckCertificateValidation;
             }
-
-            ValidateParameters();
 
             Client = GetClient();
         }
@@ -156,21 +112,16 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         protected override void ProcessRecord()
         {
+            if(this.MyInvocation.InvocationName.ToLower().Contains("-acs"))
+            {
+                WriteWarningWithTimestamp("\"-ACS\" aliases will be deprecated soon, please use -Azs cmdlet's");
+            }
             Execute();
             base.ProcessRecord();
         }
 
         protected virtual void Execute()
         {
-        }
-
-        /// <summary>
-        /// Get token credentials
-        /// </summary>
-        /// <returns></returns>
-        protected TokenCloudCredentials GetTokenCredentials()
-        {
-            return new TokenCloudCredentials(SubscriptionId, Token);
         }
 
         /// <summary>
@@ -194,15 +145,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         protected StorageAdminManagementClient GetClient()
         {
-            // get client from azure session if token is null or empty
-            if (string.IsNullOrEmpty(Token))
-            {
-                return GetClientThruAzureSession();
-            }
-            
-            return new StorageAdminManagementClient(
-                    baseUri: AdminUri,
-                    credentials: new TokenCloudCredentials(subscriptionId: SubscriptionId, token: Token));
+            return GetClientThruAzureSession();
         }
 
         private StorageAdminManagementClient GetClientThruAzureSession()
@@ -212,15 +155,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             var armUri = context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager);
 
             var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
-            
-            if (string.IsNullOrEmpty(SubscriptionId))
-            {
-                SubscriptionId = credentials.SubscriptionId;
-            }
 
             return AzureSession.ClientFactory.CreateCustomClient<StorageAdminManagementClient>(credentials, armUri);
         }
-		
+
         protected string ParseNameForQuota(string name)
         {
             // the quota is a nested resource with its resourceName being location/name as presented to ARM
