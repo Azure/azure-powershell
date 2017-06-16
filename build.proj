@@ -207,7 +207,7 @@
   </Target>
   
   <!-- Build .Net Core Cmdlets -->
-  <Target Name="BuildNetCore" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
+  <Target Name="BuildNetCore">
     <Message Importance="high" Text="Building Cmdlets..." />
 
     <!-- Build and create package content -->
@@ -305,7 +305,7 @@
              Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
   </Target>
 
-  <Target Name="CodeSignBinaries">
+  <Target Name="CodeSignBinaries" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <PropertyGroup>
       <!--public token associated with MSSharedLibKey.snk-->
       <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
