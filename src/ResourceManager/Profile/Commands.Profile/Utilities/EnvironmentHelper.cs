@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             // Todo: Revisit this when azure metadata endpoint supports keyvault suffix and storage endpoints
             // Example format:: portal endpoint: "management.azure.com"; returns: "azure.com"
             string domainHost = new Uri(portalEndpoint).Host;
-            return domainHost.Replace(domainHost.Split('.')[0], "").TrimEnd('/').TrimStart('.');
+            return domainHost.Replace(domainHost.Split('.')[0], "").TrimStart('.');
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 throw new ArgumentException("The ResourceManagement Endpoint provided was invalid.");
             }
 
-            url = String.Concat(url.ToLower(), "/metadata/endpoints?api-version=1.0");
+            url = String.Concat(url.TrimEnd('/').ToLower(), "/metadata/endpoints?api-version=1.0");
             MetadataResponse response = null;
             using (HttpClient client = new HttpClient())
             {
@@ -64,7 +64,12 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");    
             }
 
-            if (CheckIfAnyPropertyIsNull(response.authentication))
+            bool isAnyPropertyNull = response.authentication
+                                            .GetType()
+                                            .GetProperties()
+                                            .Select(pi => pi.GetValue(response.authentication))
+                                            .Any(value => (value == null) || (string.IsNullOrEmpty(value.ToString())));
+            if (isAnyPropertyNull)
             {
                 throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
             }
@@ -72,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             return response;
         }
 
-        internal static bool CheckIfAnyPropertyIsNull(object response)
+        internal static bool CheckIfAnyPropertyIsNull(MetadataResponse response)
         {
             return response.GetType()
                            .GetProperties()
