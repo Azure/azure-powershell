@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,94 +17,98 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Used to initiate a commit operation.
+    ///     Used to initiate a commit operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmRecoveryServicesAsrCommitFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
-    [Alias("Start-ASRCommitFailover", "Start-ASRCommitFailoverJob")]
+    [Cmdlet(VerbsLifecycle.Start,
+        "AzureRmRecoveryServicesAsrCommitFailoverJob",
+        DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
+    [Alias("Start-ASRCommitFailover",
+        "Start-ASRCommitFailoverJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        /// Gets or sets ID of the PE.
+        ///     Gets or sets Recovery Plan object.
         /// </summary>
-        public string protectionEntityName;
-
-        /// <summary>
-        /// Gets or sets ID of the Protection Container.
-        /// </summary>
-        public string protectionContainerName;
-
-        /// <summary>
-        /// Gets or sets Name of the Fabric.
-        /// </summary>
-        public string fabricName;
-
-        #region Parameters
-
-        /// <summary>
-        /// Gets or sets Recovery Plan object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Protected Item.
+        ///     Gets or sets Replication Protected Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
-        #endregion Parameters
+        /// <summary>
+        ///     Gets or sets Name of the Fabric.
+        /// </summary>
+        public string fabricName;
 
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     Gets or sets ID of the Protection Container.
+        /// </summary>
+        public string protectionContainerName;
+
+        /// <summary>
+        ///     Gets or sets ID of the PE.
+        /// </summary>
+        public string protectionEntityName;
+
+        /// <summary>
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = 
-                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                    this.SetRPICommit();
+                    protectionContainerName = Utilities.GetValueFromArmId(
+                        ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationProtectionContainers);
+                    fabricName = Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics);
+                    SetRPICommit();
                     break;
                 case ASRParameterSets.ByRPObject:
-                    this.StartRpCommit();
+                    StartRpCommit();
                     break;
             }
         }
 
         /// <summary>
-        /// Start RPI Commit.
+        ///     Start RPI Commit.
         /// </summary>
         private void SetRPICommit()
         {
-            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
-                this.fabricName,
-                this.protectionContainerName,
-                this.ReplicationProtectedItem.Name);
+            var response = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(fabricName,
+                protectionContainerName,
+                ReplicationProtectedItem.Name);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
-        /// Starts RP Commit.
+        ///     Starts RP Commit.
         /// </summary>
         private void StartRpCommit()
         {
-            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
-                this.RecoveryPlan.Name);
+            var response =
+                RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(RecoveryPlan.Name);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }

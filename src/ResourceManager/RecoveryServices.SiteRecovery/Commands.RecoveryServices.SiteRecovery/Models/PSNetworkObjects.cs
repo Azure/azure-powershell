@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,169 +16,164 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Azure Site Recovery Network.
+    ///     Azure Site Recovery Network.
     /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all related objects together.")]
     public class ASRNetwork
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRNetwork" /> class.
+        ///     Initializes a new instance of the <see cref="ASRNetwork" /> class.
         /// </summary>
         public ASRNetwork()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRNetwork" /> class with required
-        /// parameters.
+        ///     Initializes a new instance of the <see cref="ASRNetwork" /> class with required
+        ///     parameters.
         /// </summary>
         /// <param name="network">Network object</param>
         public ASRNetwork(Network network)
         {
-            this.ID = network.Id;
-            this.Name = network.Name;
-            this.Type = network.Type;
-            this.FriendlyName = network.Properties.FriendlyName;
-            this.FabricType = network.Properties.FabricType;
-            this.VmNetworkSubnetList = network.Properties.Subnets;
+            ID = network.Id;
+            Name = network.Name;
+            Type = network.Type;
+            FriendlyName = network.Properties.FriendlyName;
+            FabricType = network.Properties.FabricType;
+            VmNetworkSubnetList = network.Properties.Subnets;
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets friendly name of the Network.
+        ///     Gets or sets friendly name of the Network.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Network.
+        ///     Gets or sets name of the Network.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Network ID.
+        ///     Gets or sets Network ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets Type of Network.
+        ///     Gets or sets Type of Network.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets Fabric object  type.
+        ///     Gets or sets Fabric object  type.
         /// </summary>
         public string FabricType { get; set; }
 
         /// <summary>
-        /// Gets or sets VM Network subnets.
+        ///     Gets or sets VM Network subnets.
         /// </summary>
         public IList<Subnet> VmNetworkSubnetList { get; set; }
+
         #endregion
     }
 
     /// <summary>
-    /// Azure Site Recovery Logical Network.
+    ///     Azure Site Recovery Logical Network.
     /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all related objects together.")]
     public class ASRLogicalNetwork
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ASRNetwork" /> class.
-        /// </summary>
-        public ASRLogicalNetwork()
-        {
-        }
-
         #region Properties
+
         /// <summary>
-        /// Gets or sets friendly name of the Network.
+        ///     Gets or sets friendly name of the Network.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets name of the Network.
+        ///     Gets or sets name of the Network.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Network ID.
+        ///     Gets or sets Network ID.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets Type of Network.
+        ///     Gets or sets Type of Network.
         /// </summary>
         public string Type { get; set; }
+
         #endregion
     }
+
     /// <summary>
-    /// Azure Site Recovery Network Mapping.
+    ///     Azure Site Recovery Network Mapping.
     /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all related objects together.")]
     public class ASRNetworkMapping
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRNetworkMapping" /> class.
+        ///     Initializes a new instance of the <see cref="ASRNetworkMapping" /> class.
         /// </summary>
         public ASRNetworkMapping()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRNetworkMapping" /> class with required
-        /// parameters.
+        ///     Initializes a new instance of the <see cref="ASRNetworkMapping" /> class with required
+        ///     parameters.
         /// </summary>
         /// <param name="networkMapping">Network mapping object</param>
         public ASRNetworkMapping(NetworkMapping networkMapping)
         {
-            this.ID = networkMapping.Id;
-            this.Name = networkMapping.Name;
-            this.FriendlyName = networkMapping.Name;
-            this.PrimaryNetworkId = networkMapping.Properties.PrimaryNetworkId;
-            this.PrimaryNetworkFriendlyName = networkMapping.Properties.PrimaryNetworkFriendlyName;
-            this.PrimaryFabricFriendlyName = networkMapping.Properties.PrimaryFabricFriendlyName;
-            this.RecoveryNetworkId = networkMapping.Properties.RecoveryNetworkId;
-            this.RecoveryNetworkFriendlyName =
-                networkMapping.Properties.RecoveryNetworkFriendlyName;
-            this.RecoveryFabricFriendlyName = networkMapping.Properties.RecoveryFabricFriendlyName;
-            this.PairingStatus = networkMapping.Properties.State;
-            this.FabricSpecificNetworkMappingDetails =
+            ID = networkMapping.Id;
+            Name = networkMapping.Name;
+            FriendlyName = networkMapping.Name;
+            PrimaryNetworkId = networkMapping.Properties.PrimaryNetworkId;
+            PrimaryNetworkFriendlyName = networkMapping.Properties.PrimaryNetworkFriendlyName;
+            PrimaryFabricFriendlyName = networkMapping.Properties.PrimaryFabricFriendlyName;
+            RecoveryNetworkId = networkMapping.Properties.RecoveryNetworkId;
+            RecoveryNetworkFriendlyName = networkMapping.Properties.RecoveryNetworkFriendlyName;
+            RecoveryFabricFriendlyName = networkMapping.Properties.RecoveryFabricFriendlyName;
+            PairingStatus = networkMapping.Properties.State;
+            FabricSpecificNetworkMappingDetails =
                 ASRFabricSpecificNetworkMappingDetails.Load(networkMapping);
         }
 
         /// <summary>
-        /// Returns a string representation of the object.
+        ///     Returns a string representation of the object.
         /// </summary>
         /// <returns>Returns a string representing the object.</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Id: " + this.ID);
-            sb.AppendLine("Name: " + this.Name);
-            sb.AppendLine("FriendlyName: " + this.FriendlyName);
-            sb.AppendLine("PrimaryNetworkId: " + this.PrimaryNetworkId);
-            sb.AppendLine("PrimaryNetworkFriendlyName: " + this.PrimaryNetworkFriendlyName);
-            sb.AppendLine("PrimaryFabricFriendlyName: " + this.PrimaryFabricFriendlyName);
-            sb.AppendLine("RecoveryNetworkId: " + this.RecoveryNetworkId);
-            sb.AppendLine("RecoveryNetworkFriendlyName: " + this.RecoveryNetworkFriendlyName);
-            sb.AppendLine("RecoveryFabricFriendlyName: " + this.RecoveryFabricFriendlyName);
-            sb.AppendLine("PairingStatus: " + this.PairingStatus);
+            var sb = new StringBuilder();
+            sb.AppendLine("Id: " + ID);
+            sb.AppendLine("Name: " + Name);
+            sb.AppendLine("FriendlyName: " + FriendlyName);
+            sb.AppendLine("PrimaryNetworkId: " + PrimaryNetworkId);
+            sb.AppendLine("PrimaryNetworkFriendlyName: " + PrimaryNetworkFriendlyName);
+            sb.AppendLine("PrimaryFabricFriendlyName: " + PrimaryFabricFriendlyName);
+            sb.AppendLine("RecoveryNetworkId: " + RecoveryNetworkId);
+            sb.AppendLine("RecoveryNetworkFriendlyName: " + RecoveryNetworkFriendlyName);
+            sb.AppendLine("RecoveryFabricFriendlyName: " + RecoveryFabricFriendlyName);
+            sb.AppendLine("PairingStatus: " + PairingStatus);
 
-            string fabricSpecificDetails = this.FabricSpecificNetworkMappingDetails.ToString();
+            var fabricSpecificDetails = FabricSpecificNetworkMappingDetails.ToString();
             if (!string.IsNullOrEmpty(fabricSpecificDetails))
             {
                 sb.AppendLine(fabricSpecificDetails);
@@ -188,124 +183,130 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets or sets Mapping Id.
+        ///     Gets or sets Mapping Id.
         /// </summary>
         public string ID { get; set; }
 
         /// <summary>
-        /// Gets or sets Mapping Name.
+        ///     Gets or sets Mapping Name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Mapping Friendly Name.
+        ///     Gets or sets Mapping Friendly Name.
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets Primary network Id.
+        ///     Gets or sets Primary network Id.
         /// </summary>
         public string PrimaryNetworkId { get; set; }
 
         /// <summary>
-        /// Gets or sets Primary network friendly name.
+        ///     Gets or sets Primary network friendly name.
         /// </summary>
         public string PrimaryNetworkFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets primary fabric friendly name.
+        ///     Gets or sets primary fabric friendly name.
         /// </summary>
         public string PrimaryFabricFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets Recovery network Id.
+        ///     Gets or sets Recovery network Id.
         /// </summary>
         public string RecoveryNetworkId { get; set; }
 
         /// <summary>
-        /// Gets or sets Recovery network friendly name.
+        ///     Gets or sets Recovery network friendly name.
         /// </summary>
         public string RecoveryNetworkFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets recovery fabric friendly name.
+        ///     Gets or sets recovery fabric friendly name.
         /// </summary>
         public string RecoveryFabricFriendlyName { get; set; }
 
         /// <summary>
-        /// Gets or sets pairing status.
+        ///     Gets or sets pairing status.
         /// </summary>
         public string PairingStatus { get; set; }
 
         /// <summary>
-        /// Fabric specific network mapping details.
+        ///     Fabric specific network mapping details.
         /// </summary>
-        public ASRFabricSpecificNetworkMappingDetails FabricSpecificNetworkMappingDetails { get; set; }
+        public ASRFabricSpecificNetworkMappingDetails FabricSpecificNetworkMappingDetails
+        {
+            get;
+            set;
+        }
+
         #endregion
     }
 
     /// <summary>
-    /// Fabric specific details
+    ///     Fabric specific details
     /// </summary>
     public abstract class ASRFabricSpecificNetworkMappingDetails
     {
         /// <summary>
-        /// Loads fabric specific details for network mapping.
+        ///     Loads fabric specific details for network mapping.
         /// </summary>
         /// <param name="networkMapping">Network mapping response from API.</param>
         /// <returns></returns>
         public static ASRFabricSpecificNetworkMappingDetails Load(NetworkMapping networkMapping)
         {
-            if (networkMapping.Properties.FabricSpecificSettings is AzureToAzureNetworkMappingSettings)
+            if (networkMapping.Properties.FabricSpecificSettings is
+                AzureToAzureNetworkMappingSettings)
             {
                 return ASRAzureToAzureNetworkMappingDetails.LoadFabricDetails(networkMapping);
             }
-            else if (networkMapping.Properties.FabricSpecificSettings is VmmToAzureNetworkMappingSettings)
+
+            if (networkMapping.Properties.FabricSpecificSettings is VmmToAzureNetworkMappingSettings
+            )
             {
                 return ASRVmmToAzureNetworkMappingDetails.LoadFabricDetails(networkMapping);
             }
-            else if (networkMapping.Properties.FabricSpecificSettings is VmmToVmmNetworkMappingSettings)
+
+            if (networkMapping.Properties.FabricSpecificSettings is VmmToVmmNetworkMappingSettings)
             {
                 return ASRVmmToVmmNetworkMappingDetails.LoadFabricDetails(networkMapping);
             }
-            else
-            {
-                throw new InvalidOperationException(
-                    Properties.Resources.NetworkMappingNotFound);
-            }
-            
+
+            throw new InvalidOperationException(Resources.NetworkMappingNotFound);
         }
     }
 
     /// <summary>
-    /// Vmm to Vmm specific properties for network mapping.
+    ///     Vmm to Vmm specific properties for network mapping.
     /// </summary>
     public class ASRVmmToVmmNetworkMappingDetails : ASRFabricSpecificNetworkMappingDetails
     {
         /// <summary>
-        /// Returns a string representation of the object.
+        ///     Returns a string representation of the object.
         /// </summary>
         /// <returns>Returns a string representing the object.</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             return sb.ToString();
         }
 
         /// <summary>
-        /// Loads e2e specific details for network mapping.
+        ///     Loads e2e specific details for network mapping.
         /// </summary>
         /// <param name="networkMapping">Network mapping response from API.</param>
         /// <returns></returns>
-        public static ASRFabricSpecificNetworkMappingDetails LoadFabricDetails(NetworkMapping networkMapping)
+        public static ASRFabricSpecificNetworkMappingDetails LoadFabricDetails(
+            NetworkMapping networkMapping)
         {
             var e2ESpecificDetails =
                 networkMapping.Properties.FabricSpecificSettings as VmmToVmmNetworkMappingSettings;
             if (e2ESpecificDetails == null)
             {
-                throw new InvalidOperationException(
-                    Properties.Resources.InvalidNetworkMappingDetails);
+                throw new InvalidOperationException(Resources.InvalidNetworkMappingDetails);
             }
 
             return new ASRVmmToVmmNetworkMappingDetails();
@@ -313,33 +314,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Vmm to Azure specific properties for network mapping.
+    ///     Vmm to Azure specific properties for network mapping.
     /// </summary>
     public class ASRVmmToAzureNetworkMappingDetails : ASRFabricSpecificNetworkMappingDetails
     {
         /// <summary>
-        /// Returns a string representation of the object.
+        ///     Returns a string representation of the object.
         /// </summary>
         /// <returns>Returns a string representing the object.</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             return sb.ToString();
         }
 
         /// <summary>
-        /// Loads e2a specific details for network mapping.
+        ///     Loads e2a specific details for network mapping.
         /// </summary>
         /// <param name="networkMapping">Network mapping response from API.</param>
         /// <returns></returns>
-        public static ASRFabricSpecificNetworkMappingDetails LoadFabricDetails(NetworkMapping networkMapping)
+        public static ASRFabricSpecificNetworkMappingDetails LoadFabricDetails(
+            NetworkMapping networkMapping)
         {
             var e2ASpecificDetails =
-                networkMapping.Properties.FabricSpecificSettings as VmmToAzureNetworkMappingSettings;
+                networkMapping.Properties
+                    .FabricSpecificSettings as VmmToAzureNetworkMappingSettings;
             if (e2ASpecificDetails == null)
             {
-                throw new InvalidOperationException(
-                    Properties.Resources.InvalidNetworkMappingDetails);
+                throw new InvalidOperationException(Resources.InvalidNetworkMappingDetails);
             }
 
             return new ASRVmmToAzureNetworkMappingDetails();
@@ -347,35 +349,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
-    /// Azure to Azure specific properties for network mapping.
+    ///     Azure to Azure specific properties for network mapping.
     /// </summary>
     public class ASRAzureToAzureNetworkMappingDetails : ASRFabricSpecificNetworkMappingDetails
     {
         /// <summary>
-        /// Returns a string representation of the object.
+        ///     Returns a string representation of the object.
         /// </summary>
         /// <returns>Returns a string representing the object.</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("PrimaryNetworkLocation: " + this.PrimaryNetworkLocation);
-            sb.AppendLine("RecoveryNetworkLocation: " + this.RecoveryNetworkLocation);
+            var sb = new StringBuilder();
+            sb.AppendLine("PrimaryNetworkLocation: " + PrimaryNetworkLocation);
+            sb.AppendLine("RecoveryNetworkLocation: " + RecoveryNetworkLocation);
             return sb.ToString();
         }
 
         /// <summary>
-        /// Loads a2a specific details for network mapping.
+        ///     Loads a2a specific details for network mapping.
         /// </summary>
         /// <param name="networkMapping">Network mapping response from API.</param>
         /// <returns></returns>
-        public static ASRFabricSpecificNetworkMappingDetails LoadFabricDetails(NetworkMapping networkMapping)
+        public static ASRFabricSpecificNetworkMappingDetails LoadFabricDetails(
+            NetworkMapping networkMapping)
         {
             var a2ASpecificDetails =
-                networkMapping.Properties.FabricSpecificSettings as AzureToAzureNetworkMappingSettings;
+                networkMapping.Properties.FabricSpecificSettings as
+                    AzureToAzureNetworkMappingSettings;
             if (a2ASpecificDetails == null)
             {
-                throw new InvalidOperationException(
-                    Properties.Resources.InvalidNetworkMappingDetails);
+                throw new InvalidOperationException(Resources.InvalidNetworkMappingDetails);
             }
 
             return new ASRAzureToAzureNetworkMappingDetails
@@ -388,12 +391,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #region Azure to Azure network mapping specific properties
 
         /// <summary>
-        /// Gets or sets primary network location.
+        ///     Gets or sets primary network location.
         /// </summary>
         public string PrimaryNetworkLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets recovery network location.
+        ///     Gets or sets recovery network location.
         /// </summary>
         public string RecoveryNetworkLocation { get; set; }
 

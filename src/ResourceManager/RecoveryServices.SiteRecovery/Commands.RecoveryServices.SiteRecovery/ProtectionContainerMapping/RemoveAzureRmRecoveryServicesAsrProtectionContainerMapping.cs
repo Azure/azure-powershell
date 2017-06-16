@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,73 +18,76 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Adds Azure Site Recovery Policy settings to a Protection Container.
+    ///     Adds Azure Site Recovery Policy settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesAsrProtectionContainerMapping", DefaultParameterSetName = ASRParameterSets.ByObject, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove,
+        "AzureRmRecoveryServicesAsrProtectionContainerMapping",
+        DefaultParameterSetName = ASRParameterSets.ByObject,
+        SupportsShouldProcess = true)]
     [Alias("Remove-ASRProtectionContainerMapping")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
-
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Protection Container Mapping
+        ///     Gets or sets Protection Container Mapping
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainerMapping ProtectionContainerMapping { get; set; }
 
         /// <summary>
-        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
         /// </summary>
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(this.ProtectionContainerMapping.Name, VerbsCommon.Remove))
+            if (ShouldProcess(ProtectionContainerMapping.Name,
+                VerbsCommon.Remove))
             {
                 PSSiteRecoveryLongRunningOperation response = null;
 
-                if (!this.Force.IsPresent)
+                if (!Force.IsPresent)
                 {
-                    RemoveProtectionContainerMappingInputProperties inputProperties = new RemoveProtectionContainerMappingInputProperties()
+                    var inputProperties = new RemoveProtectionContainerMappingInputProperties
                     {
                         ProviderSpecificInput = new ReplicationProviderContainerUnmappingInput()
                     };
 
-                    RemoveProtectionContainerMappingInput input = new RemoveProtectionContainerMappingInput()
-                    {
-                        Properties = inputProperties
-                    };
+                    var input =
+                        new RemoveProtectionContainerMappingInput {Properties = inputProperties};
 
                     response = RecoveryServicesClient.UnConfigureProtection(
-                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        this.ProtectionContainerMapping.Name,
+                        Utilities.GetValueFromArmId(ProtectionContainerMapping.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(ProtectionContainerMapping.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        ProtectionContainerMapping.Name,
                         input);
                 }
                 else
                 {
-                    response = RecoveryServicesClient.PurgeCloudMapping(
-                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        this.ProtectionContainerMapping.Name);
+                    response = RecoveryServicesClient.PurgeCloudMapping(Utilities.GetValueFromArmId(
+                            ProtectionContainerMapping.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(ProtectionContainerMapping.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        ProtectionContainerMapping.Name);
                 }
 
                 var jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                    RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                        .GetJobIdFromReponseLocation(response.Location));
 
-                this.WriteObject(new ASRJob(jobResponse));
+                WriteObject(new ASRJob(jobResponse));
             }
         }
     }

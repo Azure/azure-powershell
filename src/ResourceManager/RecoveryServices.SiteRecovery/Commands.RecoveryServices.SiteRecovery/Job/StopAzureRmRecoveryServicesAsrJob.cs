@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,59 +17,62 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Resumes Azure Site Recovery Job.
+    ///     Resumes Azure Site Recovery Job.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmRecoveryServicesAsrJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsLifecycle.Stop,
+        "AzureRmRecoveryServicesAsrJob",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Stop-ASRJob")]
     [OutputType(typeof(ASRJob))]
     public class StopAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {
-        #region Parameters
         /// <summary>
-        /// Gets or sets Job ID.
+        ///     Gets or sets Job ID.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Job Object.
+        ///     Gets or sets Job Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRJob Job { get; set; }
-        #endregion Parameters
 
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    this.Name = this.Job.Name;
-                    this.StopByName();
+                    Name = Job.Name;
+                    StopByName();
                     break;
 
                 case ASRParameterSets.ByName:
-                    this.StopByName();
+                    StopByName();
                     break;
             }
         }
 
         /// <summary>
-        /// Restart by Name.
+        ///     Restart by Name.
         /// </summary>
         private void StopByName()
         {
-            PSSiteRecoveryLongRunningOperation response = RecoveryServicesClient.CancelAzureSiteRecoveryJob(this.Name);
+            var response = RecoveryServicesClient.CancelAzureSiteRecoveryJob(Name);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }

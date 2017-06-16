@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,27 +18,39 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Recovery services convenience client.
+    ///     Recovery services convenience client.
     /// </summary>
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        /// Retrieves Protectable Items.
+        ///     Retrieves Protectable Items.
         /// </summary>
         /// <param name="protectionContainerName">Protection Container Name</param>
         /// <returns>Protection entity list response</returns>
         public List<ProtectableItem> GetAzureSiteRecoveryProtectableItem(string fabricName,
             string protectionContainerName)
         {
-            var firstPage = this.GetSiteRecoveryClient().ReplicationProtectableItems.ListByReplicationProtectionContainersWithHttpMessagesAsync(fabricName, protectionContainerName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
-            var pages = Utilities.GetAllFurtherPages(this.GetSiteRecoveryClient().ReplicationProtectableItems.ListByReplicationProtectionContainersNextWithHttpMessagesAsync, firstPage.NextPageLink, this.GetRequestHeaders(true));
-            pages.Insert(0, firstPage);
+            var firstPage = GetSiteRecoveryClient()
+                .ReplicationProtectableItems
+                .ListByReplicationProtectionContainersWithHttpMessagesAsync(fabricName,
+                    protectionContainerName,
+                    GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
+            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+                    .ReplicationProtectableItems
+                    .ListByReplicationProtectionContainersNextWithHttpMessagesAsync,
+                firstPage.NextPageLink,
+                GetRequestHeaders(true));
+            pages.Insert(0,
+                firstPage);
 
             return Utilities.IpageToList(pages);
         }
 
         /// <summary>
-        /// Retrieves Protectable Item.
+        ///     Retrieves Protectable Item.
         /// </summary>
         /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicatedProtectedItemName">Virtual Machine Name</param>
@@ -47,7 +59,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string protectionContainerName,
             string replicatedProtectedItemName)
         {
-            return this.GetSiteRecoveryClient().ReplicationProtectableItems.GetWithHttpMessagesAsync(fabricName, protectionContainerName, replicatedProtectedItemName, this.GetRequestHeaders(true)).GetAwaiter().GetResult().Body;
+            return GetSiteRecoveryClient()
+                .ReplicationProtectableItems.GetWithHttpMessagesAsync(fabricName,
+                    protectionContainerName,
+                    replicatedProtectedItemName,
+                    GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
         }
     }
 }

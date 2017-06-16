@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,35 +17,33 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Removes Azure Site Recovery Policy.
+    ///     Removes Azure Site Recovery Policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesAsrPolicy")]
+    [Cmdlet(VerbsCommon.Remove,
+        "AzureRmRecoveryServicesAsrPolicy")]
     [Alias("Remove-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Name of the Policy.
+        ///     Gets or sets Name of the Policy.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true)]
         public ASRPolicy Policy { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            PSSiteRecoveryLongRunningOperation responseBlue = RecoveryServicesClient.DeletePolicy(this.Policy.Name);
+            var responseBlue = RecoveryServicesClient.DeletePolicy(Policy.Name);
 
             var jobResponseBlue =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
 
             WriteObject(new ASRJob(jobResponseBlue));
         }

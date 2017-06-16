@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,61 +17,67 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Creates Azure Site Recovery Recovery Plan object.
+    ///     Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmRecoveryServicesAsrRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByRPObject)]
+    [Cmdlet(VerbsData.Update,
+        "AzureRmRecoveryServicesAsrRecoveryPlan",
+        DefaultParameterSetName = ASRParameterSets.ByRPObject)]
     [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        /// Gets or sets RP JSON FilePath.
+        ///     Gets or sets RP JSON FilePath.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPFile, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPFile,
+            Mandatory = true)]
         public string Path { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByRPObject:
-                    UpdateRecoveryPlan(this.RecoveryPlan);
+                    UpdateRecoveryPlan(RecoveryPlan);
                     break;
                 case ASRParameterSets.ByRPFile:
 
-                    if (!File.Exists(this.Path))
+                    if (!File.Exists(Path))
                     {
-                        throw new FileNotFoundException(string.Format(Properties.Resources.FileNotFound, this.Path)); ;
+                        throw new FileNotFoundException(string.Format(Resources.FileNotFound,
+                            Path));
+
+                        ;
                     }
 
-                    string filePath = this.Path;
+                    var filePath = Path;
 
                     RecoveryPlan recoveryPlan = null;
 
-                    using (System.IO.StreamReader file = new System.IO.StreamReader(filePath))
+                    using (var file = new StreamReader(filePath))
                     {
-                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd(), new RecoveryPlanActionDetailsConverter());
+                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd(),
+                            new RecoveryPlanActionDetailsConverter());
                     }
 
                     UpdateRecoveryPlan(recoveryPlan);
@@ -81,49 +87,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Update Recovery Plan: By powerShell Recovery Plan object
+        ///     Update Recovery Plan: By powerShell Recovery Plan object
         /// </summary>
         private void UpdateRecoveryPlan(ASRRecoveryPlan asrRecoveryPlan)
         {
-            UpdateRecoveryPlanInputProperties updateRecoveryPlanInputProperties = new UpdateRecoveryPlanInputProperties()
-            {
-                Groups = new List<RecoveryPlanGroup>(),
-            };
+            var updateRecoveryPlanInputProperties =
+                new UpdateRecoveryPlanInputProperties {Groups = new List<RecoveryPlanGroup>()};
 
-            foreach (ASRRecoveryPlanGroup asrRecoveryPlanGroup in asrRecoveryPlan.Groups)
+            foreach (var asrRecoveryPlanGroup in asrRecoveryPlan.Groups)
             {
-                RecoveryPlanGroup recoveryPlanGroup = new RecoveryPlanGroup()
+                var recoveryPlanGroup = new RecoveryPlanGroup
                 {
-                    GroupType = (RecoveryPlanGroupType)Enum.Parse(typeof(RecoveryPlanGroupType), asrRecoveryPlanGroup.GroupType),
-                    
+                    GroupType = (RecoveryPlanGroupType) Enum.Parse(typeof(RecoveryPlanGroupType),
+                        asrRecoveryPlanGroup.GroupType),
+
                     // Initialize ReplicationProtectedItems with empty List if asrRecoveryPlanGroup.ReplicationProtectedItems is null
                     // otherwise assign respective values
-                    ReplicationProtectedItems = asrRecoveryPlanGroup.ReplicationProtectedItems == null ? new List<RecoveryPlanProtectedItem>() :
-                    asrRecoveryPlanGroup.ReplicationProtectedItems.Select(item =>
-                        {
-                            var newItem = new RecoveryPlanProtectedItem(item.Id);
+                    ReplicationProtectedItems =
+                        asrRecoveryPlanGroup.ReplicationProtectedItems == null
+                            ? new List<RecoveryPlanProtectedItem>() : asrRecoveryPlanGroup
+                                .ReplicationProtectedItems.Select(item =>
+                                {
+                                    var newItem = new RecoveryPlanProtectedItem(item.Id);
 
-                            string VmId = null;
+                                    string VmId = null;
 
-                            if (item.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaAzureReplicationDetails))
-                            {
-                                VmId = ((HyperVReplicaAzureReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
-                            }
-                            else if (item.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaReplicationDetails))
-                            {
-                                VmId = ((HyperVReplicaReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
-                            }
-                            else if (item.Properties.ProviderSpecificDetails.GetType() == typeof(HyperVReplicaBlueReplicationDetails))
-                            {
-                                VmId = ((HyperVReplicaBlueReplicationDetails)item.Properties.ProviderSpecificDetails).VmId;
-                            }
+                                    if (item.Properties.ProviderSpecificDetails.GetType() ==
+                                        typeof(HyperVReplicaAzureReplicationDetails))
+                                    {
+                                        VmId = ((HyperVReplicaAzureReplicationDetails) item
+                                            .Properties.ProviderSpecificDetails).VmId;
+                                    }
+                                    else if (item.Properties.ProviderSpecificDetails.GetType() ==
+                                             typeof(HyperVReplicaReplicationDetails))
+                                    {
+                                        VmId = ((HyperVReplicaReplicationDetails) item.Properties
+                                            .ProviderSpecificDetails).VmId;
+                                    }
+                                    else if (item.Properties.ProviderSpecificDetails.GetType() ==
+                                             typeof(HyperVReplicaBlueReplicationDetails))
+                                    {
+                                        VmId = ((HyperVReplicaBlueReplicationDetails) item
+                                            .Properties.ProviderSpecificDetails).VmId;
+                                    }
 
+                                    newItem.VirtualMachineId = VmId;
 
-                            newItem.VirtualMachineId = VmId;
-
-                            return newItem;
-
-                        }).ToList(),
+                                    return newItem;
+                                })
+                                .ToList(),
                     StartGroupActions = asrRecoveryPlanGroup.StartGroupActions,
                     EndGroupActions = asrRecoveryPlanGroup.EndGroupActions
                 };
@@ -131,46 +143,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 updateRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);
             }
 
-            UpdateRecoveryPlanInput updateRecoveryPlanInput = new UpdateRecoveryPlanInput()
-            {
-                Properties = updateRecoveryPlanInputProperties
-            };
+            var updateRecoveryPlanInput =
+                new UpdateRecoveryPlanInput {Properties = updateRecoveryPlanInputProperties};
 
-            UpdateRecoveryPlan(asrRecoveryPlan.Name, updateRecoveryPlanInput);
+            UpdateRecoveryPlan(asrRecoveryPlan.Name,
+                updateRecoveryPlanInput);
         }
 
         /// <summary>
-        /// Update Recovery Plan: By Service object
+        ///     Update Recovery Plan: By Service object
         /// </summary>
         private void UpdateRecoveryPlan(RecoveryPlan recoveryPlan)
         {
-            UpdateRecoveryPlanInputProperties updateRecoveryPlanInputProperties = new UpdateRecoveryPlanInputProperties()
-            {
-                Groups = recoveryPlan.Properties.Groups,
-            };
+            var updateRecoveryPlanInputProperties =
+                new UpdateRecoveryPlanInputProperties {Groups = recoveryPlan.Properties.Groups};
 
-            UpdateRecoveryPlanInput updateRecoveryPlanInput = new UpdateRecoveryPlanInput()
-            {
-                Properties = updateRecoveryPlanInputProperties
-            };
+            var updateRecoveryPlanInput =
+                new UpdateRecoveryPlanInput {Properties = updateRecoveryPlanInputProperties};
 
-            UpdateRecoveryPlan(recoveryPlan.Name, updateRecoveryPlanInput);
+            UpdateRecoveryPlan(recoveryPlan.Name,
+                updateRecoveryPlanInput);
         }
 
         /// <summary>
-        /// Update Replication Plan: Utility call
+        ///     Update Replication Plan: Utility call
         /// </summary>
-        private void UpdateRecoveryPlan(string recoveryPlanName, UpdateRecoveryPlanInput updateRecoveryPlanInput)
+        private void UpdateRecoveryPlan(string recoveryPlanName,
+            UpdateRecoveryPlanInput updateRecoveryPlanInput)
         {
-            PSSiteRecoveryLongRunningOperation response =
-            RecoveryServicesClient.UpdateAzureSiteRecoveryRecoveryPlan(recoveryPlanName, updateRecoveryPlanInput);
+            var response = RecoveryServicesClient.UpdateAzureSiteRecoveryRecoveryPlan(
+                recoveryPlanName,
+                updateRecoveryPlanInput);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
         }
-
     }
 }

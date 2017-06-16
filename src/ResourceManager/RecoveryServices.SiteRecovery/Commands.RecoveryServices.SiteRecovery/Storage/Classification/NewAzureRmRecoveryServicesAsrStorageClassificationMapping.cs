@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,67 +18,67 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Pairs storage classification
+    ///     Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesAsrStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsCommon.New,
+        "AzureRmRecoveryServicesAsrStorageClassificationMapping",
+        DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("New-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrStorageClassificationMapping : SiteRecoveryCmdletBase
     {
-        #region Parameters
-
         /// <summary>
-        /// Gets or sets Name.
+        ///     Gets or sets Name.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets primary storage classification.
+        ///     Gets or sets primary storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRStorageClassification PrimaryStorageClassification { get; set; }
 
         /// <summary>
-        /// Gets or sets recovery storage classification.
+        ///     Gets or sets recovery storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRStorageClassification RecoveryStorageClassification { get; set; }
-        #endregion
 
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            string mappingName = this.Name;
+            var mappingName = Name;
 
-            var props = new StorageMappingInputProperties()
+            var props = new StorageMappingInputProperties
             {
                 TargetStorageClassificationId = RecoveryStorageClassification.Id
             };
 
-            var input = new StorageClassificationMappingInput()
-            {
-                Properties = props
-            };
+            var input = new StorageClassificationMappingInput {Properties = props};
 
-            PSSiteRecoveryLongRunningOperation operationResponse =
-                RecoveryServicesClient.MapStorageClassification(
+            var operationResponse = RecoveryServicesClient.MapStorageClassification(
                 PrimaryStorageClassification,
                 input,
                 mappingName);
 
             var jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
+                    PSRecoveryServicesClient
+                        .GetJobIdFromReponseLocation(operationResponse.Location));
 
-            base.WriteObject(new ASRJob(jobResponse));
+            WriteObject(new ASRJob(jobResponse));
         }
     }
 }

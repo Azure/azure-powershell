@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,102 +14,108 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Set Protection Entity protection state.
+    ///     Set Protection Entity protection state.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesAsrReplicationProtectedItem", DefaultParameterSetName = ASRParameterSets.DisableDR, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove,
+        "AzureRmRecoveryServicesAsrReplicationProtectedItem",
+        DefaultParameterSetName = ASRParameterSets.DisableDR,
+        SupportsShouldProcess = true)]
     [Alias("Remove-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
-        /// Long Running Operation Response
+        ///     Gets or sets Replication Protected Item.
         /// </summary>
-        private PSSiteRecoveryLongRunningOperation response = null;
-
-        /// <summary>
-        /// Job Response
-        /// </summary>
-        private Management.RecoveryServices.SiteRecovery.Models.Job jobResponse = null;
-
-        /// <summary>
-        /// Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
-        /// </summary>
-        private string targetNameOrId = string.Empty;
-
-        #region Parameters
-
-        /// <summary>
-        /// Gets or sets Replication Protected Item.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.DisableDR, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.DisableDR,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        /// Gets or sets switch parameter. On passing, command waits till completion.
+        ///     Gets or sets switch parameter. On passing, command waits till completion.
         /// </summary>
         [Parameter]
         public SwitchParameter WaitForCompletion { get; set; }
 
         /// <summary>
-        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
         /// </summary>
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        #endregion Parameters
+        /// <summary>
+        ///     Job Response
+        /// </summary>
+        private Job jobResponse;
 
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     Long Running Operation Response
+        /// </summary>
+        private PSSiteRecoveryLongRunningOperation response;
+
+        /// <summary>
+        ///     Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
+        /// </summary>
+        private string targetNameOrId = string.Empty;
+
+        /// <summary>
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(this.ReplicationProtectedItem.FriendlyName, VerbsCommon.Remove))
+            if (ShouldProcess(ReplicationProtectedItem.FriendlyName,
+                VerbsCommon.Remove))
             {
-                this.targetNameOrId = this.ReplicationProtectedItem.FriendlyName;
+                targetNameOrId = ReplicationProtectedItem.FriendlyName;
 
                 if (!Force.IsPresent)
                 {
-                    DisableProtectionInput input = new DisableProtectionInput();
-                    input.Properties = new DisableProtectionInputProperties()
+                    var input = new DisableProtectionInput();
+                    input.Properties = new DisableProtectionInputProperties
                     {
                         ReplicationProviderInput = new DisableProtectionProviderSpecificInput()
                     };
-                    this.response =
-                        RecoveryServicesClient.DisableProtection(
-                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                    response = RecoveryServicesClient.DisableProtection(Utilities.GetValueFromArmId(
+                            ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers),
                         ReplicationProtectedItem.Name,
                         input);
                 }
                 else
                 {
-                    this.response =
-                        RecoveryServicesClient.PurgeProtection(
-                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                    response = RecoveryServicesClient.PurgeProtection(Utilities.GetValueFromArmId(
+                            ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers),
                         ReplicationProtectedItem.Name);
                 }
 
                 jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                    RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                        .GetJobIdFromReponseLocation(response.Location));
 
                 WriteObject(new ASRJob(jobResponse));
 
-                if (this.WaitForCompletion.IsPresent)
+                if (WaitForCompletion.IsPresent)
                 {
-                    this.WaitForJobCompletion(this.jobResponse.Name);
+                    WaitForJobCompletion(jobResponse.Name);
 
                     jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                        RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                            PSRecoveryServicesClient
+                                .GetJobIdFromReponseLocation(response.Location));
 
                     WriteObject(new ASRJob(jobResponse));
                 }
@@ -117,12 +123,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        /// Writes Job.
+        ///     Writes Job.
         /// </summary>
         /// <param name="job">JOB object</param>
-        private void WriteJob(Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job job)
+        private void WriteJob(Job job)
         {
-            this.WriteObject(new ASRJob(job));
+            WriteObject(new ASRJob(job));
         }
     }
 }

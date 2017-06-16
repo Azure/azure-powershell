@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,141 +20,143 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Used to initiate a apply recovery point operation.
+    ///     Used to initiate a apply recovery point operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmRecoveryServicesAsrApplyRecoveryPoint", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
+    [Cmdlet(VerbsLifecycle.Start,
+        "AzureRmRecoveryServicesAsrApplyRecoveryPoint",
+        DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [Alias("Start-ASRApplyRecoveryPoint")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrApplyRecoveryPoint : SiteRecoveryCmdletBase
     {
-        #region local parameters
-
         /// <summary>
-        /// Gets or sets Name of the Protection Container.
+        ///     Gets or sets Recovery Plan object.
         /// </summary>
-        public string protectionContainerName;
-
-        /// <summary>
-        /// Gets or sets Name of the Fabric.
-        /// </summary>
-        public string fabricName;
-
-        /// <summary>
-        /// Primary Kek Cert pfx file.
-        /// </summary>
-        string primaryKekCertpfx = null;
-
-        /// <summary>
-        /// Secondary Kek Cert pfx file.
-        /// </summary>
-        string secondaryKekCertpfx = null;
-
-        #endregion local parameters
-
-        #region Parameters
-
-        /// <summary>
-        /// Gets or sets Recovery Plan object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRRecoveryPoint RecoveryPoint { get; set; }
 
         /// <summary>
-        /// Gets or sets Replication Protected Item.
+        ///     Gets or sets Replication Protected Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        /// Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
-        /// Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionSecondaryCertFile { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+            if (!string.IsNullOrEmpty(DataEncryptionPrimaryCertFile))
             {
-                byte[] certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                var certBytesPrimary = File.ReadAllBytes(DataEncryptionPrimaryCertFile);
                 primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
             }
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
+            if (!string.IsNullOrEmpty(DataEncryptionSecondaryCertFile))
             {
-                byte[] certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                var certBytesSecondary = File.ReadAllBytes(DataEncryptionSecondaryCertFile);
                 secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
             }
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ByPEObject:
-                    this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
-                    this.protectionContainerName =
-                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    this.StartPEApplyRecoveryPoint();
+                    fabricName = Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics);
+                    protectionContainerName = Utilities.GetValueFromArmId(
+                        ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationProtectionContainers);
+                    StartPEApplyRecoveryPoint();
                     break;
             }
         }
 
         /// <summary>
-        /// Starts PE Apply Recovery Point.
+        ///     Starts PE Apply Recovery Point.
         /// </summary>
         private void StartPEApplyRecoveryPoint()
         {
-            var applyRecoveryPointInputProperties = new ApplyRecoveryPointInputProperties()
+            var applyRecoveryPointInputProperties = new ApplyRecoveryPointInputProperties
             {
-                RecoveryPointId = this.RecoveryPoint.ID,
+                RecoveryPointId = RecoveryPoint.ID,
                 ProviderSpecificDetails = new ApplyRecoveryPointProviderSpecificInput()
             };
 
-            var input = new ApplyRecoveryPointInput()
-            {
-                Properties = applyRecoveryPointInputProperties
-            };
+            var input =
+                new ApplyRecoveryPointInput {Properties = applyRecoveryPointInputProperties};
 
-            if (0 == string.Compare(
-                this.ReplicationProtectedItem.ReplicationProvider,
-                Constants.HyperVReplicaAzure,
-                StringComparison.OrdinalIgnoreCase))
+            if (0 ==
+                string.Compare(ReplicationProtectedItem.ReplicationProvider,
+                    Constants.HyperVReplicaAzure,
+                    StringComparison.OrdinalIgnoreCase))
             {
-                var hyperVReplicaAzureApplyRecoveryPointInput = new HyperVReplicaAzureApplyRecoveryPointInput()
-                {
-                    PrimaryKekCertificatePfx = primaryKekCertpfx,
-                    SecondaryKekCertificatePfx = secondaryKekCertpfx,
-                    VaultLocation = "dummy"
-                };
-                input.Properties.ProviderSpecificDetails = hyperVReplicaAzureApplyRecoveryPointInput;
+                var hyperVReplicaAzureApplyRecoveryPointInput =
+                    new HyperVReplicaAzureApplyRecoveryPointInput
+                    {
+                        PrimaryKekCertificatePfx = primaryKekCertpfx,
+                        SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                        VaultLocation = "dummy"
+                    };
+                input.Properties.ProviderSpecificDetails =
+                    hyperVReplicaAzureApplyRecoveryPointInput;
             }
 
-            PSSiteRecoveryLongRunningOperation response =
-                RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(
-                this.fabricName,
-                this.protectionContainerName,
-                this.ReplicationProtectedItem.Name,
+            var response = RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(
+                fabricName,
+                protectionContainerName,
+                ReplicationProtectedItem.Name,
                 input);
 
             var jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
+                    .GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse));
-        }      
+        }
+
+        #region local parameters
+
+        /// <summary>
+        ///     Gets or sets Name of the Protection Container.
+        /// </summary>
+        public string protectionContainerName;
+
+        /// <summary>
+        ///     Gets or sets Name of the Fabric.
+        /// </summary>
+        public string fabricName;
+
+        /// <summary>
+        ///     Primary Kek Cert pfx file.
+        /// </summary>
+        private string primaryKekCertpfx;
+
+        /// <summary>
+        ///     Secondary Kek Cert pfx file.
+        /// </summary>
+        private string secondaryKekCertpfx;
+
+        #endregion local parameters
     }
 }

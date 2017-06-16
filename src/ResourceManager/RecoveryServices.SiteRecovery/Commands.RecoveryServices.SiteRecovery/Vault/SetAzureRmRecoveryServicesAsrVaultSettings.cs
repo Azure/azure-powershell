@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------------
-//
+// 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,69 +13,72 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.ObjectModel;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    /// Retrieves Azure Site Recovery Vault Settings.
+    ///     Retrieves Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesAsrVaultSettings", DefaultParameterSetName = ASRParameterSets.ARSVault)]
-    [Alias("Set-ASRVaultContext", "Set-ASRVaultSettings")]
+    [Cmdlet(VerbsCommon.Set,
+        "AzureRmRecoveryServicesAsrVaultSettings",
+        DefaultParameterSetName = ASRParameterSets.ARSVault)]
+    [Alias("Set-ASRVaultContext",
+        "Set-ASRVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {
-        #region Parameters               
-
         /// <summary>
-        /// Gets or sets ARS vault Object.
+        ///     Gets or sets ARS vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ARSVault, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ARSVault,
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault Vault { get; set; }
 
-        #endregion Parameters
-
         /// <summary>
-        /// ProcessRecord of the command.
+        ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            switch (ParameterSetName)
             {
                 case ASRParameterSets.ARSVault:
-                    this.SetARSVaultContext(this.Vault);
+                    SetARSVaultContext(Vault);
                     break;
                 default:
-                    throw new PSInvalidOperationException(Properties.Resources.InvalidParameterSet);
+                    throw new PSInvalidOperationException(Resources.InvalidParameterSet);
             }
         }
 
         /// <summary>
-        /// Set Azure Recovery Services Vault context.
+        ///     Set Azure Recovery Services Vault context.
         /// </summary>
         private void SetARSVaultContext(ARSVault arsVault)
         {
             try
             {
-                using (System.Management.Automation.PowerShell powerShell = System.Management.Automation.PowerShell.Create())
+                using (var powerShell = System.Management.Automation.PowerShell.Create())
                 {
-                    Collection<PSObject> result =
-                        powerShell
+                    var result = powerShell
                         .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
-                        .AddParameter("Vault", arsVault)
+                        .AddParameter("Vault",
+                            arsVault)
                         .Invoke();
 
-                    string vaultSettingspath = (string)result[0].Members["FilePath"].Value;
+                    var vaultSettingspath = (string) result[0]
+                        .Members["FilePath"]
+                        .Value;
                     powerShell.Commands.Clear();
 
-                    result =
-                        powerShell
+                    result = powerShell
                         .AddCommand("Import-AzureRmRecoveryServicesAsrVaultSettingsFile")
-                        .AddParameter("Path", vaultSettingspath)
+                        .AddParameter("Path",
+                            vaultSettingspath)
                         .Invoke();
                     WriteObject(result);
                     powerShell.Commands.Clear();
