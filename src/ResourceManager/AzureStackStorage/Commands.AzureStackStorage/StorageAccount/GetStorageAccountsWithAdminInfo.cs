@@ -23,60 +23,43 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-StorageAccountsWithAdminInfo [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [[-TenantSubscriptionId] {string}] [[-StorageAccountName] {string}] 
-    ///             [[-StorageAccountStatus] {int}] [[-AccountId] {string}] [-Summary]]
-    /// 
+    /// Gets a list of all storage accounts and their properties in a region.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminStorageAccount, DefaultParameterSetName = ListAccountsParamSet)]
-    public sealed class GetStorageAccountsWithAdminInfo : AdminCmdlet
+    [Alias("Get-ACSStorageAccount")]
+    public sealed class GetStorageAccountsWithAdminInfo : AdminCmdletDefaultFarm
     {
         const string ListAccountsParamSet = "ListMultipleAccounts";
         const string GetSingleAccountParamSet = "GetSingleAccount";
 
         /// <summary>
-        /// Resource group name
+        /// Tenant Subscription Id to filter
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
-        /// Tenant Subscription Id
-        /// </summary>
-        [Parameter(Mandatory = false, Position = 5, ParameterSetName = ListAccountsParamSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public string TenantSubscriptionId { get; set; }
 
         /// <summary>
-        /// Storage Account Name
+        /// substring of Storage Account Name to filter
         /// </summary>
-        [Parameter(Mandatory = false, Position = 6, ParameterSetName = ListAccountsParamSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
         public string PartialAccountName { get; set; }
 
         /// <summary>
-        /// Storage Account Status
+        /// Storage Account Status to filter
         /// </summary>
-        [Parameter(Mandatory = false, Position = 7, ParameterSetName = ListAccountsParamSet)]
-        public int? StorageAccountStatus { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ListAccountsParamSet)]
+        public StorageAccountStatus? StorageAccountStatus { get; set; }
 
         /// <summary>
-        /// Storage Account AccountId
+        /// Storage Account AccountId to get
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 8, ParameterSetName = GetSingleAccountParamSet)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetSingleAccountParamSet)]
         public string AccountId { get; set; }
 
         /// <summary>
         /// Only need return summary information if not specified
         /// </summary>
-        [Parameter(Mandatory = false, Position = 9)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter Detail { get; set; }
 
         protected override void Execute()
@@ -93,8 +76,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                         filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.TenantSubscriptionId, TenantSubscriptionId));
                     if (PartialAccountName != null)
                         filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.PartialAccountName, PartialAccountName));
-                    if (StorageAccountStatus.HasValue == true)
-                        filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.StorageAccountStatus, StorageAccountStatus.Value.ToString(CultureInfo.InvariantCulture)));
+                    if (StorageAccountStatus.HasValue == true) {
+                        int accountStatus = (int)StorageAccountStatus;
+                        filters.Add(new KeyValuePair<StorageAccountSearchFilterParameter, string>(StorageAccountSearchFilterParameter.StorageAccountStatus, accountStatus.ToString(CultureInfo.InvariantCulture)));
+                    }
                     break;
             }
             string filter = Tools.GenerateStorageAccountsSearchFilter(filters);

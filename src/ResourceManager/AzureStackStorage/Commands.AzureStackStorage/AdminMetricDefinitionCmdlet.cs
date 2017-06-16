@@ -22,15 +22,8 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     /// <summary>
     /// 
     /// </summary>
-    public abstract class AdminMetricDefinitionCmdlet : AdminCmdlet
+    public abstract class AdminMetricDefinitionCmdlet : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
         /// <summary>
         /// Gets or sets the metricnames parameter of the cmdlet
         /// </summary>

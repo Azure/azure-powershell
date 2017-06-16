@@ -31,10 +31,12 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             this.AccountId = model.Name;
             this.AdminViewId = model.Id;
             this.Location = model.Location;
-            this.WacAccountId = model.Properties.AccountId;
             this.Type = model.Type;
             this.Tags = model.Tags;
             this.FarmName = farmName;
+            this.SubscriptionId = model.Properties.TenantSubscriptionId;
+            this.StorageAccountName = model.Properties.TenantAccountName;
+            this.ResourceGroupName = model.Properties.TenantResourceGroupName;
         }
 
         public string AccountId { get; set; }
@@ -52,11 +54,11 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         public RegionStatus StatusOfPrimary { get; set; }
 
-        public Guid TenantSubscriptionId { get; set; }
+        public Guid SubscriptionId { get; set; }
 
-        public string TenantAccountName { get; set; }
+        public string StorageAccountName { get; set; }
 
-        public string TenantResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         public StorageAccountOperation CurrentOperation { get; set; }
 
@@ -69,10 +71,5 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public DateTime? RecoveredTime { get; set; }
 
         public DateTime? RecycledTime { get; set; }
-
-        public WacAccountPermissions? Permissions { get; set; }
-
-        public string WacAccountId { get; set; }
-        public WacAccountStates? WacInternalState { get; set; }
     }
 }

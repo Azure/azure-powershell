@@ -21,22 +21,12 @@ using System.Management.Automation;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-QueueServiceMetric [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string}
-    ///             [[-StartTime] {DateTime}] [[-EndTime] {DateTime}] [[-TimeGrain] {TimeGrain}] [[-MetricNames] {string[]}] [ {CommonParameters}]
-    /// 
+    /// Gets the metrics for the Queue service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminQueueServiceMetric)]
+    [Alias("Get-ACSQueueServiceMetric")]
     public sealed class GetQueueServiceMetrics : AdminMetricCmdlet
     {
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-             
         protected override MetricsResult GetMetricsResult(string filter)
         {
             return Client.QueueService.GetMetrics(ResourceGroupName, FarmName, filter);

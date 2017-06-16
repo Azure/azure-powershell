@@ -163,14 +163,7 @@ function Get-DefaultLocation
         [String] $Token
     )
 
-    # TODO: always returning the first region, change if needed
-    if ($Global:AzureStackConfig.IsAAD)
-    {
-        $locations = Get-AzureRMManagedLocation -SubscriptionId $SubscriptionId
-    }
-    else
-    {
-        $locations = Get-AzureRMManagedLocation -SubscriptionId $SubscriptionId -Token $Token -AdminUri $AdminUri
-    }
+    # TODO: always returning the first region, change if neede
+    $locations = Get-AzsLocation
     return $locations[0].Name
 }

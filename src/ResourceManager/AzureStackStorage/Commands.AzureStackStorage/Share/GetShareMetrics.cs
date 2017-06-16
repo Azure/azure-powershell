@@ -19,22 +19,16 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///
+    /// Gets the metrics for a specified storage farm.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminShareMetric)]
+    [Alias("Get-ACSShareMetric")]
     public sealed class GetShareMetric : AdminMetricCmdlet
     {
         /// <summary>
-        ///     Farm Identifier
+        /// Share name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
-        ///     share name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 8)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string ShareName { get; set; }
 
         /// <summary>

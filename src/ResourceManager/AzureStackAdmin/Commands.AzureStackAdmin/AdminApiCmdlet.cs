@@ -15,7 +15,7 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Management.Automation;
+    using System.Linq;
     using System.Net;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.Common.Authentication;
@@ -73,23 +73,21 @@ namespace Microsoft.AzureStack.Commands
         protected override void ProcessRecord()
         {
             var originalValidateCallback = ServicePointManager.ServerCertificateValidationCallback;
-            object result;
+
+            if (this.MyInvocation.BoundParameters.Keys.Contains("ResourceGroup", StringComparer.OrdinalIgnoreCase))
+            {
+                this.WriteWarning("The parameter alias ResourceGroup will be deprecated in a future release. Please use the parameter ResourceGroupName instead");
+            }
 
             // Execute the API call(s) for the current cmdlet
-            result = this.ExecuteCore();
+            this.ExecuteCore();
 
-            // Write the object to the pipeline only after the certificate validation callback has been restored.
-            // This will prevent other cmdlets in the pipeline from inheriting this security vulnerability.
-            if (result != null)
-            {
-                this.WriteObject(result, enumerateCollection: true);
-            }
         }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected abstract object ExecuteCore();
+        protected abstract void ExecuteCore();
 
         /// <summary>
         /// Gets the Azure Stack management client.

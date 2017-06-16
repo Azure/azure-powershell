@@ -37,7 +37,7 @@ The AzureRM bootstrapper uses the PowerShell Gallery to install and load needed 
 ## Acquire and Load All Azure modules using the BootStrapper
 
 ```
-Use-AzureRmProfile -Profile 2017-03-09-profile -Force
+Use-AzureRmProfile -Profile '2017-03-09-profile' -Force
 ```
 
 Checks if the modules associated with the ```2017-03-09-profile``` profile are installed in the current scope, downloads and installs the modules if necessary, and then loads the modules in the current session.  You must open a new PowerShell session to target a different version profile.  Using the ```Force``` parameter installs the necessary modules without prompting.
@@ -45,7 +45,7 @@ Checks if the modules associated with the ```2017-03-09-profile``` profile are i
 ## Acquire and Load Selected Azure modules using the Bootstrapper
 
 ```
-Use-AzureRmProfile -Profile 2017-03-09-profile -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
+Use-AzureRmProfile -Profile '2017-03-09-profile' -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
 
 Checks if the AzureRM.Compute, AzureRM.Storage, and AzureRM.Network modules associated with the ```2017-03-09-profile``` profile are installed in the current scope, downloads and installs the modules if necessary, and then loads the modules in the current session.  You must open a new PowerShell session to target a different module.
@@ -55,7 +55,7 @@ Checks if the AzureRM.Compute, AzureRM.Storage, and AzureRM.Network modules asso
 To switch between version profiles on a machine, in a new PowerShell window, execute the following cmdlet:
 
 ```
-Use-AzureRmProfile -Profile 2017-03-09-profile
+Use-AzureRmProfile -Profile '2017-03-09-profile'
 ```
 
 This loads the modules associated with the ```2017-03-09-profile``` profile in the current session.  You must open a new PowerShell session to target a different version profile.  
@@ -65,14 +65,33 @@ This loads the modules associated with the ```2017-03-09-profile``` profile in t
 To update a profile to the latest versions in that profile and import updated modules to the current session, execute the following cmdlet:
 
 ```
-Update-AzureRmProfile -Profile '2016-09'
+Update-AzureRmProfile -Profile 'latest'
 ```
 
-This checks if the latest versions of the module in profile ```2016-09``` are installed, if not prompts the user if it should be installed and imports them into the current session. This should always be executed in a new PowerShell session.
+This checks if the latest versions of the modules in profile ```latest``` are installed, if not prompts the user if it should be installed and imports them into the current session. This should always be executed in a new PowerShell session.
 
 If you would like to update to the latest modules in a Profile and remove previously installed versions of the modules, use:
 
 ```
-Update-AzureRmProfile -Profile '2016-09' -RemovePreviousVersions
+Update-AzureRmProfile -Profile 'latest' -RemovePreviousVersions
 ```
 
+# Setting and Removing Default Profiles
+
+To set or update a profile as a default to be used with all API Version profiles cmdlets, execute the following cmdlet:
+
+```
+Set-AzureRmDefaultProfile -Profile '2017-03-09-profile'
+```
+The default profile selection is persisted across shells and sessions.
+
+After default profile is set using the above cmdlet, simply use API version profile cmdlets without the ```-profile``` parameter.
+
+Use-AzureRmProfile
+Uninstall-AzureRmProfile
+
+To remove a default profile from all sessions and shells, execute the following cmdlet:
+
+```
+Remove-AzureRmDefaultProfile 
+```

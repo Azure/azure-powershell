@@ -20,31 +20,15 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///          Get-BlobService [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
-    /// 
+    /// Gets the Blob service properties and settings.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobService)]
-    public sealed class GetBlobService : AdminCmdlet
+    [Alias("Get-ACSBlobService")]
+    public sealed class GetBlobService : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-
         protected override void Execute()
         {
+            WriteVerbose("Fetching BlobService");
             BlobServiceGetResponse result = Client.BlobService.Get(ResourceGroupName, FarmName);
             WriteObject(new BlobServiceResponse(result.Resource));
         }

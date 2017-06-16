@@ -20,12 +20,10 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         New-ACSQuota [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-Location] {string} 
-    ///             [-SkipCertificateValidation] [-QuotaName] {string} [-NumberOfStorageAccounts] {int}  [-CapacityInGB] {int} [ {CommonParameters}] 
-    /// 
+    /// Creates a Storage quota resource in the specified 
     /// </summary>
     [Cmdlet(VerbsCommon.New, Nouns.AdminQuota, SupportsShouldProcess = true)]
+    [Alias("New-ACSQuota")]
     public sealed class NewAdminQuota : AdminCmdlet
     {
         const string ShouldProcessTargetFormat = "quota {0} ";
@@ -33,28 +31,28 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Location
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Location { get; set; }
 
         /// <summary>
         ///  Quota Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Name { get; set; }
 
         /// <summary>
         /// Number of Storage Accounts for this quota    
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public int NumberOfStorageAccounts { get; set; }
 
         /// <summary>
         ///  Capacity for this quota   
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public int CapacityInGB { get; set; }
 
@@ -62,10 +60,17 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                QuotaGetResponse response = Client.Quotas.Get(Location, Name);
-                if (response != null && response.Quota != null)
+                try
                 {
-                    throw new AdminException(string.Format(CultureInfo.InvariantCulture, Resources.QuotaAlreadyExistsErrorMessage));
+                    QuotaGetResponse response = Client.Quotas.Get(Location, Name);
+                    if (response != null && response.Quota != null)
+                    {
+                        throw new AdminException(string.Format(CultureInfo.InvariantCulture, Resources.QuotaAlreadyExistsErrorMessage));
+                    }
+                }
+                catch (Hyak.Common.CloudException)
+                {
+                    // ignore this exception as the quota may not exist at all
                 }
             }
             if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, ShouldProcessTargetFormat, Name)))

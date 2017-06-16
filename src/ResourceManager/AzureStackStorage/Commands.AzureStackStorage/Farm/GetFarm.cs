@@ -19,27 +19,18 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         Get-Farm [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [[-FarmName] {string}] [ {CommonParameters}] 
-    /// 
+    /// Gets the storage properties and settings for a specified region/farm.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminFarm)]
-    public sealed class GetAdminFarm : AdminCmdlet
+    [Alias("Get-ACSFarm")]
+    public sealed class GetAdminFarm : AdminCmdletDefaultFarm
     {
         /// <summary>
-        /// Resource group name
+        /// Name of the Farm to get
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Farm identifier
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string FarmName
+        public string Name
         {
             get;
             set;
@@ -47,15 +38,14 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
         protected override void Execute()
         {
-            if (string.IsNullOrEmpty(FarmName) == false)
+            if (string.IsNullOrEmpty(Name) == false)
             {
-                FarmGetResponse response = Client.Farms.Get(ResourceGroupName, FarmName);
+                FarmGetResponse response = Client.Farms.Get(ResourceGroupName, Name);
                 WriteObject(new FarmResponse(response.Farm));
             }
             else
             {
                 FarmListResponse response = Client.Farms.List(ResourceGroupName);
-
                 WriteObject(response.Farms.Select(_=>new FarmResponse(_)), true);
             }
         }

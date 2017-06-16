@@ -22,25 +22,23 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///     SYNTAX
-    ///         Remove-ACSQuota [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-Location] {string} 
-    ///             [-Name] {string} [-SkipCertificateValidation] [ {CommonParameters}] 
-    /// 
+    /// Deletes the given Storage quota resource from the specified location.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.AdminQuota, SupportsShouldProcess = true)]
+    [Alias("Remove-ACSQuota")]
     public sealed class RemoveQuota : AdminCmdlet
     {
         /// <summary>
         /// Location
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Location { get; set; }
 
         /// <summary>
         ///  Quota Name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string Name { get; set; }
 

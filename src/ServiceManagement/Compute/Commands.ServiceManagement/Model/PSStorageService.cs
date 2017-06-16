@@ -66,8 +66,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public static PSStorageService Create(StorageManagementClient client,
             StorageServicePropertiesOperationContext account)
         {
-            var cloudStorageAccount = StorageUtilities.GenerateCloudStorageAccount(client, account.StorageAccountName);
-            return new PSStorageService(account, new AzureStorageContext(cloudStorageAccount));
+            return new PSStorageService(account, new LazyAzureStorageContext((s) =>
+            {
+                return StorageUtilities.GenerateCloudStorageAccount(client, account.StorageAccountName);
+            }, account.StorageAccountName) as AzureStorageContext); 
         }
 
         /// <summary>

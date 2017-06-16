@@ -70,11 +70,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adding resource provider registration with name &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Adding resource provider manifest with name &quot;{0}&quot;..
         /// </summary>
-        public static string AddingResourceProviderRegistration {
+        public static string AddingResourceProviderManifest {
             get {
-                return ResourceManager.GetString("AddingResourceProviderRegistration", resourceCulture);
+                return ResourceManager.GetString("AddingResourceProviderManifest", resourceCulture);
             }
         }
         
@@ -88,11 +88,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new managed location &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Creating new location &quot;{0}&quot;..
         /// </summary>
-        public static string CreatingNewManagedLocation {
+        public static string CreatingNewLocation {
             get {
-                return ResourceManager.GetString("CreatingNewManagedLocation", resourceCulture);
+                return ResourceManager.GetString("CreatingNewLocation", resourceCulture);
             }
         }
         
@@ -160,11 +160,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting managed location &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Getting location &quot;{0}&quot;..
         /// </summary>
-        public static string GettingManagedLocation {
+        public static string GettingLocation {
             get {
-                return ResourceManager.GetString("GettingManagedLocation", resourceCulture);
+                return ResourceManager.GetString("GettingLocation", resourceCulture);
             }
         }
         
@@ -178,24 +178,6 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting managed plan &quot;{0}&quot; in resource group &quot;{1}&quot;..
-        /// </summary>
-        public static string GettingManagedPlan {
-            get {
-                return ResourceManager.GetString("GettingManagedPlan", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting managed subscription with SubscriptionId &quot;{0}&quot;..
-        /// </summary>
-        public static string GettingManagedSubscriptionByID {
-            get {
-                return ResourceManager.GetString("GettingManagedSubscriptionByID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Getting offer &quot;{0}&quot;..
         /// </summary>
         public static string GettingOffer {
@@ -205,7 +187,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting plan &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Getting plan &quot;{0}&quot; in resource group &quot;{1}&quot;..
         /// </summary>
         public static string GettingPlan {
             get {
@@ -214,11 +196,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting resource provider registration with name &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Getting resource provider manifest with name &quot;{0}&quot;..
         /// </summary>
-        public static string GettingResourceProviderRegistration {
+        public static string GettingResourceProviderManifest {
             get {
-                return ResourceManager.GetString("GettingResourceProviderRegistration", resourceCulture);
+                return ResourceManager.GetString("GettingResourceProviderManifest", resourceCulture);
             }
         }
         
@@ -228,6 +210,15 @@ namespace Microsoft.AzureStack.Commands {
         public static string GettingSubscriptionByID {
             get {
                 return ResourceManager.GetString("GettingSubscriptionByID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting tenant subscription with SubscriptionId &quot;{0}&quot;..
+        /// </summary>
+        public static string GettingTenantSubscriptionByID {
+            get {
+                return ResourceManager.GetString("GettingTenantSubscriptionByID", resourceCulture);
             }
         }
         
@@ -268,11 +259,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Listing all managed locations..
+        ///   Looks up a localized string similar to Listing all  locations..
         /// </summary>
-        public static string ListingManagedLocations {
+        public static string ListingLocations {
             get {
-                return ResourceManager.GetString("ListingManagedLocations", resourceCulture);
+                return ResourceManager.GetString("ListingLocations", resourceCulture);
             }
         }
         
@@ -286,24 +277,6 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Listing all managed plans in resource group &quot;{0}&quot;..
-        /// </summary>
-        public static string ListingManagedPlans {
-            get {
-                return ResourceManager.GetString("ListingManagedPlans", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Listing all managed subscriptions..
-        /// </summary>
-        public static string ListingManagedSubscriptions {
-            get {
-                return ResourceManager.GetString("ListingManagedSubscriptions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Listing offers for provider &quot;{0}&quot;..
         /// </summary>
         public static string ListingOffers {
@@ -313,7 +286,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Listing all plans..
+        ///   Looks up a localized string similar to Listing all plans in resource group &quot;{0}&quot;..
         /// </summary>
         public static string ListingPlans {
             get {
@@ -322,11 +295,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Listing all resource provider registrations..
+        ///   Looks up a localized string similar to Listing all resource provider manifests..
         /// </summary>
-        public static string ListingResourceProviderRegistration {
+        public static string ListingResourceProviderManifests {
             get {
-                return ResourceManager.GetString("ListingResourceProviderRegistration", resourceCulture);
+                return ResourceManager.GetString("ListingResourceProviderManifests", resourceCulture);
             }
         }
         
@@ -340,6 +313,15 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Listing all managed subscriptions..
+        /// </summary>
+        public static string ListingTenantSubscriptions {
+            get {
+                return ResourceManager.GetString("ListingTenantSubscriptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Listing usage connections.
         /// </summary>
         public static string ListingUsageConnections {
@@ -349,11 +331,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A managed location with name &quot;{0}&quot; already exists..
+        ///   Looks up a localized string similar to A  location with name &quot;{0}&quot; already exists..
         /// </summary>
-        public static string ManagedLocationAlreadyExists {
+        public static string LocationAlreadyExists {
             get {
-                return ResourceManager.GetString("ManagedLocationAlreadyExists", resourceCulture);
+                return ResourceManager.GetString("LocationAlreadyExists", resourceCulture);
             }
         }
         
@@ -376,20 +358,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A managed plan with name &quot;{0}&quot; and region &quot;{1}&quot; already exists..
+        ///   Looks up a localized string similar to A plan with name &quot;{0}&quot; already exists in resource group &quot;{1}&quot;.
         /// </summary>
-        public static string ManagedPlanAlreadyExists {
+        public static string PlanAlreadyExists {
             get {
-                return ResourceManager.GetString("ManagedPlanAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A managed plan with name &quot;{0}&quot; does not exist in resource group &quot;{1}&quot;..
-        /// </summary>
-        public static string ManagedPlanDoesNotExist {
-            get {
-                return ResourceManager.GetString("ManagedPlanDoesNotExist", resourceCulture);
+                return ResourceManager.GetString("PlanAlreadyExists", resourceCulture);
             }
         }
         
@@ -421,11 +394,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing managed location &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Removing location &quot;{0}&quot;..
         /// </summary>
-        public static string RemovingManagedLocation {
+        public static string RemovingLocation {
             get {
-                return ResourceManager.GetString("RemovingManagedLocation", resourceCulture);
+                return ResourceManager.GetString("RemovingLocation", resourceCulture);
             }
         }
         
@@ -439,11 +412,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing managed plan &quot;{0}&quot; in resource group &quot;{1}&quot;..
+        ///   Looks up a localized string similar to Removing plan with the name &quot;{0}&quot; in resource group &quot;{1}&quot;.
         /// </summary>
-        public static string RemovingManagedPlan {
+        public static string RemovingPlan {
             get {
-                return ResourceManager.GetString("RemovingManagedPlan", resourceCulture);
+                return ResourceManager.GetString("RemovingPlan", resourceCulture);
             }
         }
         
@@ -493,11 +466,11 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating managed location &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Updating location &quot;{0}&quot;..
         /// </summary>
-        public static string UpdatingManagedLocation {
+        public static string UpdatingLocation {
             get {
-                return ResourceManager.GetString("UpdatingManagedLocation", resourceCulture);
+                return ResourceManager.GetString("UpdatingLocation", resourceCulture);
             }
         }
         

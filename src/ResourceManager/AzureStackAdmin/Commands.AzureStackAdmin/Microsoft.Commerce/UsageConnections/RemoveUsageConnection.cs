@@ -23,8 +23,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Remove Usage Connection Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.UsageConnection)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.UsageConnection, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
+    [Alias("Remove-AzureRmUsageConnection")]
     public class RemoveUsageConnection : AdminApiCmdlet
     {
         /// <summary>
@@ -40,19 +41,29 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
-
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            this.ApiVersion = UsageApiVersion;
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmUsageConnection", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.RemovingUsageConnection.FormatArgs(this.Name));
-                return client.UsageConnections.Delete(this.ResourceGroup, this.Name);
+                this.WriteWarning("Alias Remove-AzureRmUsageConnection will be deprecated in a future release. Please use the cmdlet name Remove-AzsUsageConection instead");
+            }
+
+            if (ShouldProcess(this.Name, VerbsCommon.Remove))
+            {
+                this.ApiVersion = UsageApiVersion;
+                using (var client = this.GetAzureStackClient())
+                {
+
+                    this.WriteVerbose(Resources.RemovingUsageConnection.FormatArgs(this.Name));
+                    var result = client.UsageConnections.Delete(this.ResourceGroupName, this.Name);
+                    WriteObject(result);
+                }
             }
         }
     }

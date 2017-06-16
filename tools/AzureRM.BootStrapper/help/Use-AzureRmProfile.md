@@ -73,7 +73,7 @@ The profile version to load in the current PowerShell session.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: 2017-03-09-profile, 2017-03-09-profile, <others>
+Accepted values: 2017-03-09-profile, latest, <others>
 
 Required: True
 Position: 0

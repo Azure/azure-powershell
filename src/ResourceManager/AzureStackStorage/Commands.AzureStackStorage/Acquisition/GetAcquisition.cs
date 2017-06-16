@@ -23,73 +23,35 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
 
     /// <summary>
-    /// Get an acquisition by ID or list acquisitions
+    /// Lists page blob acquisitions.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminAcquisition)]
-    public sealed class GetAdminAcquisition : AdminCmdlet
+    [Alias("Get-ACSAcquisition")]
+    public sealed class GetAdminAcquisition : AdminCmdletDefaultFarm
     {
-        const string GetAcquisitionSet = "GetAcquisitionSet";
-        const string ListAcquisitionSet = "ListAcquisitionSet";
-
         /// <summary>
-        /// Resource group name
+        /// Tenant Subscription Id to filter 
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
-        /// <summary>
-        ///     AcquisitionId
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetAcquisitionSet)]
-        public string AcquisitionId { get; set; }
-
-        /// <summary>
-        ///     AcquisitionId
-        /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ListAcquisitionSet)]
+        [Parameter(Mandatory = false)]
         public string TenantSubscriptionId { get; set; }
 
         /// <summary>
-        ///     AcquisitionId
+        /// Storage account to filter
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ListAcquisitionSet)]
+        [Parameter(Mandatory = false)]
         public string StorageAccountName { get; set; }
 
         /// <summary>
-        ///     AcquisitionId
+        /// Containers to Filter
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = ListAcquisitionSet)]
+        [Parameter(Mandatory = false)]
         public string Container { get; set; }
 
         protected override void Execute()
         {
-            switch (ParameterSetName)
-            {
-                case GetAcquisitionSet:
-                {
-                    AcquisitionGetResponse result = Client.Acquisitions.Get(ResourceGroupName, FarmName, AcquisitionId);
-                    WriteObject(new AcquisitionResponse(result.Acquisition));
-                    break;
-                }
-                case ListAcquisitionSet:
-                {
-                    string filter = Tools.GenerateAcquisitionQueryFilterString(TenantSubscriptionId, StorageAccountName,
-                        Container);
-                    var result = Client.Acquisitions.List(ResourceGroupName, FarmName, filter);
-                    WriteObject(result.Acquisitions.Select(_=> new AcquisitionResponse(_)), true);
-                    break;
-                }
-                default:
-                    throw new ArgumentException("Bad parameter set");
-            }
+            string filter = Tools.GenerateAcquisitionQueryFilterString(TenantSubscriptionId, StorageAccountName, Container);
+            var result = Client.Acquisitions.List(ResourceGroupName, FarmName, filter);
+            WriteObject(result.Acquisitions.Select(_ => new AcquisitionResponse(_)), true);
         }
-        }
+    }
 }

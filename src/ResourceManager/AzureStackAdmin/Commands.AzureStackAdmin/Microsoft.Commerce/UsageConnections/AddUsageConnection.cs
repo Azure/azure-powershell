@@ -23,8 +23,9 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Add Usage Connection Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, Nouns.UsageConnection)]
+    [Cmdlet(VerbsCommon.Add, Nouns.UsageConnection, SupportsShouldProcess = true)]
     [OutputType(typeof(UsageConnectionModel))]
+    [Alias("Add-AzureRmUsageConnection")]
     public class AddUsageConnection : AdminApiCmdlet
     {
         /// <summary>
@@ -40,7 +41,8 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateLength(1, 90)]
         [ValidateNotNull]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource manager location.
@@ -101,30 +103,44 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            this.ApiVersion = UsageApiVersion;
-            this.WriteVerbose(Resources.AddingUsageConnection.FormatArgs(this.Name));
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Add-AzureRmUsageConnection", StringComparison.OrdinalIgnoreCase))
             {
-                var usageConnectionModel = new UsageConnectionModel()
-                {
-                    Location = this.ArmLocation,
-                    Name = this.Name,
-                    Properties = new UsageConnection()
-                                 {
-                                     ProviderLocation = this.ProviderLocation,
-                                     ProviderNamespace = this.ProviderNamespace,
-                                     UsageStorageConnectionString = this.UsageStorageConnectionString,
-                                     UsageReportingTable = this.UsageReportingTable,
-                                     UsageReportingQueue = this.UsageReportingQueue,
-                                     ErrorReportingTable = this.ErrorReportingTable,
-                                     ErrorReportingQueue = this.ErrorReportingQueue
-                                 }
-                };
+                this.WriteWarning("Alias Add-AzureRmUsageConnection will be deprecated in a future release. Please use the cmdlet name Add-AzsUsageConnection instead");
+            }
 
-                var usageConnectionParameters = new UsageConnectionsCreateOrUpdateParameters() { UsageConnections = usageConnectionModel };
-                return client.UsageConnections.CreateOrUpdate(this.ResourceGroup, this.Name, usageConnectionParameters).UsageConnection;
+            if (ShouldProcess(this.Name, VerbsCommon.Add))
+            {
+                this.ApiVersion = UsageApiVersion;
+                this.WriteVerbose(Resources.AddingUsageConnection.FormatArgs(this.Name));
+                using (var client = this.GetAzureStackClient())
+                {
+                    var usageConnectionModel = new UsageConnectionModel()
+                    {
+                        Location = this.ArmLocation,
+                        Name = this.Name,
+                        Properties = new UsageConnection()
+                        {
+                            ProviderLocation = this.ProviderLocation,
+                            ProviderNamespace = this.ProviderNamespace,
+                            UsageStorageConnectionString = this.UsageStorageConnectionString,
+                            UsageReportingTable = this.UsageReportingTable,
+                            UsageReportingQueue = this.UsageReportingQueue,
+                            ErrorReportingTable = this.ErrorReportingTable,
+                            ErrorReportingQueue = this.ErrorReportingQueue
+                        }
+                    };
+
+                    var usageConnectionParameters = new UsageConnectionsCreateOrUpdateParameters()
+                    {
+                        UsageConnections = usageConnectionModel
+                    };
+
+                    var result = client.UsageConnections.CreateOrUpdate(this.ResourceGroupName, this.Name,
+                        usageConnectionParameters).UsageConnection;
+                    WriteObject(result);
+                }
             }
         }
     }

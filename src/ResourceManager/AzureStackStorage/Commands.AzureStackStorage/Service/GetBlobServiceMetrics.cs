@@ -19,18 +19,12 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    ///
+    /// Gets the metrics for the Blob service.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.AdminBlobServiceMetric)]
+    [Alias("Get-ACSBlobServiceMetric")]
     public sealed class GetBlobServiceMetrics : AdminMetricCmdlet
     {
-        /// <summary>
-        ///     Farm Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-
         /// <summary>
         /// 
         /// </summary>

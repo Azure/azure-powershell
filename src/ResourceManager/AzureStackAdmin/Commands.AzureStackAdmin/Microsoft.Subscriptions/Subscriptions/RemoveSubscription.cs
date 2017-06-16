@@ -24,26 +24,37 @@ namespace Microsoft.AzureStack.Commands
     /// <summary>
     /// Subscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, Nouns.ManagedSubscription)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.Subscription, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
-    public class RemoveManagedSubscription : AdminApiCmdlet
+    [Alias("Remove-AzureRmTenantSubscription")]
+    public class RemoveSubscription : AdminApiCmdlet
     {
         /// <summary>
         /// Gets or sets the subscription ID to be deleted.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateGuidNotEmpty]
-        public Guid TargetSubscriptionId { get; set; }
+        [Alias("TargetSubscriptionId")]
+        public Guid SubscriptionId { get; set; }
 
         /// <summary>
-        /// Performs the API operation(s) against managed subscriptions.
+        /// Performs the API operation(s) against subscriptions as tenant.
         /// </summary>
-        protected override object ExecuteCore()
+        protected override void ExecuteCore()
         {
-            using (var client = this.GetAzureStackClient())
+            if (this.MyInvocation.InvocationName.Equals("Remove-AzureRmTenantSubscription", StringComparison.OrdinalIgnoreCase))
             {
-                this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.TargetSubscriptionId));
-                return client.ManagedSubscriptions.Delete(this.TargetSubscriptionId.ToString());
+                this.WriteWarning("Alias Remove-AzureRmTenantSubscription will be deprecated in a future release. Please use the cmdlet name Remove-AzsSubscription instead");
+            }
+
+            if (ShouldProcess(this.SubscriptionId.ToString(), VerbsCommon.Remove))
+            {
+                using (var client = this.GetAzureStackClient())
+                {
+                    this.WriteVerbose(Resources.DeletingSubscription.FormatArgs(this.SubscriptionId));
+                    var result = client.Subscriptions.Delete(this.SubscriptionId.ToString());
+                    WriteObject(result);
+                }
             }
         }
     }

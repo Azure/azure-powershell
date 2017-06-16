@@ -11,34 +11,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
-
+using System;
 using System.Management.Automation;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// Clear-ACSStorageAccount [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [ {CommonParameters}] 
+    /// Forces garbage collection of all deleted storage accounts, regardless of the retention period setting. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Clear, Nouns.AdminStorageAccount, SupportsShouldProcess = true)]
-    public sealed class ClearDeletedAccounts : AdminCmdlet
+    [Cmdlet(VerbsLifecycle.Start, Nouns.AdminOnDemandGc, SupportsShouldProcess = true)]
+    [Alias("Clear-ACSStorageAccount")]
+    public sealed class ClearDeletedAccounts : AdminCmdletDefaultFarm
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// farm identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4)]
-        [ValidateNotNull]
-        public string FarmName { get; set; }
-        
-        
         protected override void Execute()
         {
             if (ShouldProcess(
@@ -46,7 +31,12 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 Resources.OnDemandGcWarning.FormatInvariantCulture(FarmName),
                 Resources.ShouldProcessCaption))
             {
-                Client.Farms.OnDemandGc(ResourceGroupName, FarmName);
+                OnDemandGcResponse response = Client.Farms.OnDemandGc(ResourceGroupName, FarmName);
+
+                WriteVerbose(String.Format("response {0}", response.ToString()));
+                string jobId;
+                ExtractOperationIdFromLocationUri(response.Location, out jobId);
+                this.WriteObject(jobId, true);
             }
         }
     }
