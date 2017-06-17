@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the email address of the user in Azure Active Directory for which to grant permissions.")]
         [ValidateNotNullOrEmpty()]
-        public string Mail { get; set; }
+        public string EmailAddress { get; set; }
 
         /// <summary>
         /// Id of the application to which a user delegate to
@@ -174,11 +174,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (!string.IsNullOrEmpty(UserPrincipalName)
                     || !string.IsNullOrEmpty(ServicePrincipalName)
                     || !string.IsNullOrWhiteSpace(this.ObjectId)
-                    || !string.IsNullOrWhiteSpace(this.Mail))
+                    || !string.IsNullOrWhiteSpace(this.EmailAddress))
                 {
                     if (string.IsNullOrWhiteSpace(this.ObjectId))
                     {
-                        ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.Mail, this.ServicePrincipalName);
+                        ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.EmailAddress, this.ServicePrincipalName);
                     }
                     updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, ObjectId, this.ApplicationId)).ToArray();
                 }

@@ -126,12 +126,12 @@ function Test_SetRemoveAccessPolicyByUPN
     Test-SetRemoveAccessPolicyByUPN $global:testVault $global:resourceGroupName $user
 }
 
-function Test_SetRemoveAccessPolicyByEmail
+function Test_SetRemoveAccessPolicyByEmailAddress
 {
     # ASSUMPTION: The logged in users UPN is the same as their email address.
     $user = (Get-AzureRmContext).Account.Id
     Reset-PreCreatedVault
-    Test-SetRemoveAccessPolicyByEmail $global:testVault $global:resourceGroupName $user $user
+    Test-SetRemoveAccessPolicyByEmailAddress $global:testVault $global:resourceGroupName $user $user
 }
 
 function Test_SetRemoveAccessPolicyBySPN
@@ -238,7 +238,7 @@ function Test_AllPermissionExpansion
 {
     Reset-PreCreatedVault
     $user = (Get-AzureRmContext).Account.Id
-    Test-AllPermissionExpansion $global:testVault $global:resourceGroupName $user 
+    Test-AllPermissionExpansion $global:testVault $global:resourceGroupName $user
 }
 
 #-------------------------------------------------------------------------------------
@@ -454,7 +454,7 @@ function Cleanup-TemporaryState([bool]$tempResourceGroup, [bool]$tempVault)
     elseif ($tempVault)
     {
         Write-Host "Starting the deletion of the temporary vault. This can take a minute or so..."
-        $vaultRemoved = Remove-AzureRmKeyVault -VaultName $global:testVault -Force -Confirm:$false
+        $vaultRemoved = Remove-AzureRmKeyVault -VaultName $global:testVault -ResourceGroupName $global:resourceGroupname -Force -Confirm:$false
         if ($vaultRemoved)
         {
             $global:testVault = ""

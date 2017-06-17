@@ -183,6 +183,7 @@ function Run-AllControlPlaneTests
     {
         Run-TestProtected { Run-VaultTest { Test_CreateNewPremiumVaultEnabledForDeployment } "Test_CreateNewPremiumVaultEnabledForDeployment" } "Test_CreateNewPremiumVaultEnabledForDeployment"
     }
+
     Run-TestProtected { Run-VaultTest { Test_CreateNewVault } "Test_CreateNewVault" } "Test_CreateNewVault"
     Run-TestProtected { Run-VaultTest { Test_RecreateVaultFails } "Test_RecreateVaultFails" } "Test_RecreateVaultFails"
     Run-TestProtected { Run-VaultTest { Test_CreateVaultInUnknownResGrpFails } "Test_CreateVaultInUnknownResGrpFails" } "Test_CreateVaultInUnknownResGrpFails"
@@ -212,10 +213,8 @@ function Run-AllControlPlaneTests
     # Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy tests.
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByUPN } "Test_SetRemoveAccessPolicyByUPN" } "Test_SetRemoveAccessPolicyByUPN"
 
-    <#
-    This test is disabled because it requires a user with an email address that matches their UPN.
-    Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByEmail } "Test_SetRemoveAccessPolicyByEmail" } "Test_SetRemoveAccessPolicyByEmail"
-    #>
+    # This test will fail for users that do not have the same email address as their UPN.
+    Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByEmailAddress } "Test_SetRemoveAccessPolicyByEmailAddress" } "Test_SetRemoveAccessPolicyByEmailAddress"
 
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyBySPN } "Test_SetRemoveAccessPolicyBySPN" } "Test_SetRemoveAccessPolicyBySPN"
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByObjectId } "Test_SetRemoveAccessPolicyByObjectId" } "Test_SetRemoveAccessPolicyByObjectId"
@@ -228,7 +227,7 @@ function Run-AllControlPlaneTests
     Run-TestProtected { Run-VaultTest { Test_ModifyAccessPolicyNegativeCases } "Test_ModifyAccessPolicyNegativeCases" } "Test_ModifyAccessPolicyNegativeCases"
     Run-TestProtected { Run-VaultTest { Test_RemoveNonExistentAccessPolicyDoesNotThrow } "Test_RemoveNonExistentAccessPolicyDoesNotThrow" } "Test_RemoveNonExistentAccessPolicyDoesNotThrow"
     Run-TestProtected { Run-VaultTest { Test_AllPermissionExpansion } "Test_AllPermissionExpansion" } "Test_AllPermissionExpansion"
-    
+
 
     # Piping tests.
     Run-TestProtected { Run-VaultTest { Test_CreateDeleteVaultWithPiping } "Test_CreateDeleteVaultWithPiping" } "Test_CreateDeleteVaultWithPiping"
@@ -243,7 +242,7 @@ function Run-AllDataPlaneTests
     Write-Host "Starting the data plane tests..."
 
     # All operations that invlove soft delete
-    if($global:softDeleteEnabled -eq $true) 
+    if($global:softDeleteEnabled -eq $true)
     {
         # Key soft delete tests
         Run-TestProtected { Run-KeyTest {Test_GetDeletedKey} "Test_GetDeletedKey" } "Test_GetDeletedKey"
@@ -274,7 +273,7 @@ function Run-AllDataPlaneTests
         Run-TestProtected { Run-KeyTest {Test_ImportPfxAsHsmWithDefaultAttributes} "Test_ImportPfxAsHsmWithDefaultAttributes" } "Test_ImportPfxAsHsmWithDefaultAttributes"
         Run-TestProtected { Run-KeyTest {Test_ImportPfxAsHsmWithCustomAttributes} "Test_ImportPfxAsHsmWithCustomAttributes" } "Test_ImportPfxAsHsmWithCustomAttributes"
 
-        # All operations involving BYOK keys. For these tests to run correctly, the user running the tests 
+        # All operations involving BYOK keys. For these tests to run correctly, the user running the tests
         # must have a subscription ID that matches the subscription ID of the person who initially
         # generated the dummy *.byok files located in the proddata folder.
         #
@@ -484,7 +483,7 @@ try
             Restore-VaultResource $oldVaultResource
         }
     }
-    
+
     if (@('DataPlane', 'All') -contains $TestMode)
     {
         $oldVaultResource = Get-VaultResource
