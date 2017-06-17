@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
+        [Alias("ReplicationProtectedItem")]
+        public ASRReplicationProtectedItem InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets switch parameter. On passing, command waits till completion.
@@ -72,10 +73,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(ReplicationProtectedItem.FriendlyName,
+            if (ShouldProcess(InputObject.FriendlyName,
                 VerbsCommon.Remove))
             {
-                targetNameOrId = ReplicationProtectedItem.FriendlyName;
+                targetNameOrId = InputObject.FriendlyName;
 
                 if (!Force.IsPresent)
                 {
@@ -85,21 +86,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         ReplicationProviderInput = new DisableProtectionProviderSpecificInput()
                     };
                     response = RecoveryServicesClient.DisableProtection(Utilities.GetValueFromArmId(
-                            ReplicationProtectedItem.ID,
+                            InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                        Utilities.GetValueFromArmId(InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        ReplicationProtectedItem.Name,
+                        InputObject.Name,
                         input);
                 }
                 else
                 {
                     response = RecoveryServicesClient.PurgeProtection(Utilities.GetValueFromArmId(
-                            ReplicationProtectedItem.ID,
+                            InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                        Utilities.GetValueFromArmId(InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        ReplicationProtectedItem.Name);
+                        InputObject.Name);
                 }
 
                 jobResponse =

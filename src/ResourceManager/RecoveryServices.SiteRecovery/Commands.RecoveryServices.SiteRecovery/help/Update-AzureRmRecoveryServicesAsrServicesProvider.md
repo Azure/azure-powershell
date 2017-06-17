@@ -12,7 +12,7 @@ Updates the information received from the Azure Site Recovery Services Provider.
 ## SYNTAX
 
 ```
-Update-AzureRmRecoveryServicesAsrServicesProvider -ServicesProvider <ASRRecoveryServicesProvider>
+Update-AzureRmRecoveryServicesAsrServicesProvider -InputObject <ASRRecoveryServicesProvider>
  [<CommonParameters>]
 ```
 
@@ -31,13 +31,13 @@ Starts updating the passed services provider and returns the job for tracking.
 
 ## PARAMETERS
 
-### -ServicesProvider
-Specifies the Azure Site Recovery Services Provider object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRRecoveryServicesProvider
 Parameter Sets: (All)
-Aliases: 
+Aliases: ServicesProvider
 
 Required: True
 Position: Named

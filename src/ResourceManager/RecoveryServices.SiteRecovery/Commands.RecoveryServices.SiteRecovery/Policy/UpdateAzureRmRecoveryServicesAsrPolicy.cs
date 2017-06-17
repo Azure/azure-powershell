@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true)]
-        public ASRPolicy Policy { get; set; }
+        [Alias("Policy")]
+        public ASRPolicy InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets a value for Replication Method of the Policy.
@@ -134,18 +135,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (string.Compare(Policy.ReplicationProvider,
+            if (string.Compare(InputObject.ReplicationProvider,
                     Constants.HyperVReplica2012,
                     StringComparison.OrdinalIgnoreCase) ==
                 0 ||
-                string.Compare(Policy.ReplicationProvider,
+                string.Compare(InputObject.ReplicationProvider,
                     Constants.HyperVReplica2012R2,
                     StringComparison.OrdinalIgnoreCase) ==
                 0)
             {
                 EnterpriseToEnterprisePolicyObject();
             }
-            else if (string.Compare(Policy.ReplicationProvider,
+            else if (string.Compare(InputObject.ReplicationProvider,
                          Constants.HyperVReplicaAzure,
                          StringComparison.OrdinalIgnoreCase) ==
                      0)
@@ -159,22 +160,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void EnterpriseToEnterprisePolicyObject()
         {
-            if (string.Compare(Policy.ReplicationProvider,
+            if (string.Compare(InputObject.ReplicationProvider,
                     Constants.HyperVReplica2012,
                     StringComparison.OrdinalIgnoreCase) !=
                 0 &&
-                string.Compare(Policy.ReplicationProvider,
+                string.Compare(InputObject.ReplicationProvider,
                     Constants.HyperVReplica2012R2,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
             {
                 throw new InvalidOperationException(string.Format(
                     Resources.IncorrectReplicationProvider,
-                    Policy.ReplicationProvider));
+                    InputObject.ReplicationProvider));
             }
 
             var replicationProviderSettings =
-                Policy.ReplicationProviderSettings as ASRHyperVReplicaPolicyDetails;
+                InputObject.ReplicationProviderSettings as ASRHyperVReplicaPolicyDetails;
 
             replicationMethod =
                 MyInvocation.BoundParameters.ContainsKey(
@@ -232,7 +233,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var updatePolicyProperties = new UpdatePolicyInputProperties();
 
-            if (string.Compare(Policy.ReplicationProvider,
+            if (string.Compare(InputObject.ReplicationProvider,
                     Constants.HyperVReplica2012,
                     StringComparison.OrdinalIgnoreCase) ==
                 0)
@@ -270,7 +271,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var updatePolicyInput = new UpdatePolicyInput {Properties = updatePolicyProperties};
 
-            var responseBlue = RecoveryServicesClient.UpdatePolicy(Policy.Name,
+            var responseBlue = RecoveryServicesClient.UpdatePolicy(InputObject.Name,
                 updatePolicyInput);
 
             var jobResponseBlue =
@@ -285,18 +286,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void EnterpriseToAzurePolicyObject()
         {
-            if (string.Compare(Policy.ReplicationProvider,
+            if (string.Compare(InputObject.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
             {
                 throw new InvalidOperationException(string.Format(
                     Resources.IncorrectReplicationProvider,
-                    Policy.ReplicationProvider));
+                    InputObject.ReplicationProvider));
             }
 
             var replicationProviderSettings =
-                Policy.ReplicationProviderSettings as ASRHyperVReplicaAzurePolicyDetails;
+                InputObject.ReplicationProviderSettings as ASRHyperVReplicaAzurePolicyDetails;
 
             replicationFrequencyInSeconds =
                 MyInvocation.BoundParameters.ContainsKey(
@@ -355,7 +356,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var updatePolicyInput = new UpdatePolicyInput {Properties = updatePolicyProperties};
 
-            var response = RecoveryServicesClient.UpdatePolicy(Policy.Name,
+            var response = RecoveryServicesClient.UpdatePolicy(InputObject.Name,
                 updatePolicyInput);
 
             var jobResponse =

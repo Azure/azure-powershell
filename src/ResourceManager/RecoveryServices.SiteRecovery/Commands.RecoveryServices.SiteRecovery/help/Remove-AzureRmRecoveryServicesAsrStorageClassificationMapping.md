@@ -12,8 +12,8 @@ Removes a storage classification mapping from Site Recovery.
 ## SYNTAX
 
 ```
-Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping
- -StorageClassificationMapping <ASRStorageClassificationMapping> [<CommonParameters>]
+Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping -InputObject <ASRStorageClassificationMapping>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,13 +30,13 @@ Starts the deletion of passed storage classification mapping and returns the job
 
 ## PARAMETERS
 
-### -StorageClassificationMapping
-Specifies a storage classification mapping that this cmdlet removes.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRStorageClassificationMapping
 Parameter Sets: (All)
-Aliases: 
+Aliases: StorageClassificationMapping
 
 Required: True
 Position: Named

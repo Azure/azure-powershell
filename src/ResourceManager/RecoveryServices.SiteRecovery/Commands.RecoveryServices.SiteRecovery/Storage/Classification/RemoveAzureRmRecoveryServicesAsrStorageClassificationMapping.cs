@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRStorageClassificationMapping StorageClassificationMapping { get; set; }
+        [Alias("StorageClassificationMapping")]
+        public ASRStorageClassificationMapping InputObject { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var tokens = StorageClassificationMapping.Id.UnFormatArmId(ARMResourceIdPaths
+            var tokens = InputObject.Id.UnFormatArmId(ARMResourceIdPaths
                 .StorageClassificationMappingResourceIdPath);
             var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(tokens[0],
                 tokens[1],

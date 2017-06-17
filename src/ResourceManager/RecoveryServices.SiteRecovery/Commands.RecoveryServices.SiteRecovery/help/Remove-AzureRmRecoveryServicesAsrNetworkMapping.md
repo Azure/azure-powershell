@@ -12,7 +12,7 @@ Removes a network mapping from the current Site Recovery vault.
 ## SYNTAX
 
 ```
-Remove-AzureRmRecoveryServicesAsrNetworkMapping -NetworkMapping <ASRNetworkMapping> [<CommonParameters>]
+Remove-AzureRmRecoveryServicesAsrNetworkMapping -InputObject <ASRNetworkMapping> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +29,13 @@ Starts the deletion of passed network mapping and returns the job for tracking.
 
 ## PARAMETERS
 
-### -NetworkMapping
-Specifies the network mapping object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRNetworkMapping
 Parameter Sets: (All)
-Aliases: 
+Aliases: NetworkMapping
 
 Required: True
 Position: Named

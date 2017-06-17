@@ -12,7 +12,8 @@ Removes an Azure Site Recovery Fabric.
 ## SYNTAX
 
 ```
-Remove-AzureRmRecoveryServicesAsrFabric -Fabric <ASRFabric> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmRecoveryServicesAsrFabric -InputObject <ASRFabric> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +30,13 @@ Starts the deletion of passed fabric and returns the job for tracking.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Force
+Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases: 
 
 Required: False
 Position: Named
@@ -44,13 +45,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Fabric
-Specifies the Azure Site Recovery Fabric object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRFabric
 Parameter Sets: (All)
-Aliases: 
+Aliases: Fabric
 
 Required: True
 Position: Named
@@ -59,13 +60,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named

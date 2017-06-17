@@ -13,7 +13,7 @@ Updates a recovery plan in Site Recovery.
 
 ### ByRPObject (Default)
 ```
-Update-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan <ASRRecoveryPlan> [<CommonParameters>]
+Update-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> [<CommonParameters>]
 ```
 
 ### ByRPFile
@@ -35,6 +35,21 @@ Starts updating the recovery plan in service as per the passed in memory recover
 
 ## PARAMETERS
 
+### -InputObject
+{{Fill InputObject Description}}
+
+```yaml
+Type: ASRRecoveryPlan
+Parameter Sets: ByRPObject
+Aliases: RecoveryPlan
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Path
 Specifies the path of the recovery plan file of the recovery plan that this cmdlet updates.
 
@@ -47,21 +62,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryPlan
-Specifies a recovery plan that this cmdlet updates.
-
-```yaml
-Type: ASRRecoveryPlan
-Parameter Sets: ByRPObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

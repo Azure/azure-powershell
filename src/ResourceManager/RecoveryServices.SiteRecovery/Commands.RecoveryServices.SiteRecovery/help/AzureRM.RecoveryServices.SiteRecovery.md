@@ -60,7 +60,7 @@ Gets a storage classification mapping in Site Recovery.
 Gets settings information for the current Site Recovery vault.
 
 ### [Import-AzureRmRecoveryServicesAsrVaultSettingsFile](Import-AzureRmRecoveryServicesAsrVaultSettingsFile.md)
-Imports a Site Recovery vault settings file.
+Imports a Recovery Services vault settings file.
 
 ### [New-AzureRmRecoveryServicesAsrFabric](New-AzureRmRecoveryServicesAsrFabric.md)
 Creates an Azure Site Recovery Fabric.
@@ -137,17 +137,17 @@ Starts the unplanned failover for a Site Recovery protection entity or recovery 
 ### [Stop-AzureRmRecoveryServicesAsrJob](Stop-AzureRmRecoveryServicesAsrJob.md)
 Stops a Site Recovery job.
 
+### [Update-AzureRmRecoveryServicesAsrNetworkMapping](Update-AzureRmRecoveryServicesAsrNetworkMapping.md)
+Updates a network mapping in Site Recovery.
+
 ### [Update-AzureRmRecoveryServicesAsrPolicy](Update-AzureRmRecoveryServicesAsrPolicy.md)
-Updates a policy in Site Recovery.
+Updates the Azure Site Recovery Policy.
 
 ### [Update-AzureRmRecoveryServicesAsrProtectionDirection](Update-AzureRmRecoveryServicesAsrProtectionDirection.md)
 Updates the source and target server for the protection of a Site Recovery object.
 
 ### [Update-AzureRmRecoveryServicesAsrRecoveryPlan](Update-AzureRmRecoveryServicesAsrRecoveryPlan.md)
 Updates a recovery plan in Site Recovery.
-
-### [Update-AzureRmRecoveryServicesAsrNetworkMapping](Update-AzureRmRecoveryServicesAsrNetworkMapping.md)
-Refreshes a Site Recovery server.
 
 ### [Update-AzureRmRecoveryServicesAsrServicesProvider](Update-AzureRmRecoveryServicesAsrServicesProvider.md)
 Updates the information received from the Azure Site Recovery Services Provider.

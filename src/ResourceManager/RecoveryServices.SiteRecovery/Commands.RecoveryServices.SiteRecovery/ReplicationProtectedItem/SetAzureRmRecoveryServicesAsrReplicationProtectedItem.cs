@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
+        [Alias("ReplicationProtectedItem")]
+        public ASRReplicationProtectedItem InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets Recovery Azure VM given name
@@ -116,11 +117,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             var replicationProtectedItemResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
-                    Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                    Utilities.GetValueFromArmId(InputObject.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                    Utilities.GetValueFromArmId(InputObject.ID,
                         ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    ReplicationProtectedItem.Name);
+                    InputObject.Name);
 
             var provider = replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
 
@@ -416,11 +417,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 };
 
             var response = RecoveryServicesClient.UpdateVmProperties(Utilities.GetValueFromArmId(
-                    ReplicationProtectedItem.ID,
+                    InputObject.ID,
                     ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                Utilities.GetValueFromArmId(InputObject.ID,
                     ARMResourceTypeConstants.ReplicationProtectionContainers),
-                ReplicationProtectedItem.Name,
+                InputObject.Name,
                 input);
 
             var jobResponse =

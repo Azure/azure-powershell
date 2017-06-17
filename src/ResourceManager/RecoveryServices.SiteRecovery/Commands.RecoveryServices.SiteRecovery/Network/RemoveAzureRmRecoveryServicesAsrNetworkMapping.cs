@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRNetworkMapping NetworkMapping { get; set; }
+        [Alias("NetworkMapping")]
+        public ASRNetworkMapping InputObject { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -41,11 +42,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             base.ExecuteSiteRecoveryCmdlet();
 
             var response = RecoveryServicesClient.RemoveAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(NetworkMapping.ID,
+                Utilities.GetValueFromArmId(InputObject.ID,
                     ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(NetworkMapping.ID,
+                Utilities.GetValueFromArmId(InputObject.ID,
                     "replicationNetworks"),
-                Utilities.GetValueFromArmId(NetworkMapping.ID,
+                Utilities.GetValueFromArmId(InputObject.ID,
                     "replicationNetworkMappings"));
 
             var jobResponse =

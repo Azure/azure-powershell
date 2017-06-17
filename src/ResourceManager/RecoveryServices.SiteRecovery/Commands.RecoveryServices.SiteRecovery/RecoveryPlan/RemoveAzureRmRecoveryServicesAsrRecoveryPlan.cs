@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(Mandatory = true,
             ParameterSetName = ASRParameterSets.ByObject,
             ValueFromPipeline = true)]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        [Alias("RecoveryPlan")]
+        public ASRRecoveryPlan InputObject { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     StringComparison.OrdinalIgnoreCase) ==
                 0)
             {
-                Name = RecoveryPlan.Name;
+                Name = InputObject.Name;
             }
 
             var response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(Name);

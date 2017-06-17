@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRFabric Fabric { get; set; }
+        [Alias("Fabric")]
+        public ASRFabric InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
@@ -49,18 +50,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(Fabric.FriendlyName,
+            if (ShouldProcess(InputObject.FriendlyName,
                 VerbsCommon.Remove))
             {
                 PSSiteRecoveryLongRunningOperation response;
 
                 if (!Force.IsPresent)
                 {
-                    response = RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(Fabric.Name);
+                    response = RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(InputObject.Name);
                 }
                 else
                 {
-                    response = RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(Fabric.Name);
+                    response = RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(InputObject.Name);
                 }
 
                 var jobResponse =
