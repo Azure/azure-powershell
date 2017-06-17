@@ -415,6 +415,6 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Invalid Sas permission '{0}'.</value>
   </data>
   <data name="ADObjectAmbiguous" xml:space="preserve">
-    <value>The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active directory.</value>
+    <value>The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active Directory.</value>
   </data>
 </root>
