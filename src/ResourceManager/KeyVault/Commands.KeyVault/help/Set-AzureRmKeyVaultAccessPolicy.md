@@ -34,6 +34,7 @@ Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <Str
  -EmailAddress <String> [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>]
  [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
 
 ### ByObjectId
 ```
