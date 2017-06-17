@@ -12,9 +12,8 @@ Removes an Azure Site Recovery Replication Protected Item.
 ## SYNTAX
 
 ```
-Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem
- -ReplicationProtectedItem <ASRReplicationProtectedItem> [-WaitForCompletion] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem>
+ [-WaitForCompletion] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,21 +31,6 @@ Starts the deletion of passed replication protected item and returns the job for
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -62,13 +46,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReplicationProtectedItem
-Specifies the Replication Protected Item object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: (All)
-Aliases: 
+Aliases: ReplicationProtectedItem
 
 Required: True
 Position: Named
@@ -84,6 +68,21 @@ Indicates that the cmdlet waits for the operation to complete.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

@@ -12,7 +12,7 @@ Removes a Site Recovery replication policy.
 ## SYNTAX
 
 ```
-Remove-AzureRmRecoveryServicesAsrPolicy -Policy <ASRPolicy> [<CommonParameters>]
+Remove-AzureRmRecoveryServicesAsrPolicy -InputObject <ASRPolicy> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +29,13 @@ Starts the deletion of passed policy and returns the job for tracking.
 
 ## PARAMETERS
 
-### -Policy
-Specifies the Site Recovery policy object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRPolicy
 Parameter Sets: (All)
-Aliases: 
+Aliases: Policy
 
 Required: True
 Position: Named

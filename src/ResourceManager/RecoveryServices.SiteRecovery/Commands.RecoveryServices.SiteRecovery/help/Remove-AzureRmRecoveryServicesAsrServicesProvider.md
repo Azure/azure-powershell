@@ -12,8 +12,8 @@ Removes an Azure Site Recovery Services Provider.
 ## SYNTAX
 
 ```
-Remove-AzureRmRecoveryServicesAsrServicesProvider -ServicesProvider <ASRRecoveryServicesProvider> [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmRecoveryServicesAsrServicesProvider -InputObject <ASRRecoveryServicesProvider> [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,21 +30,6 @@ Starts the deletion of passed Azure Site Recovery services provider and returns 
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -60,18 +45,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServicesProvider
-Specifies the Services Provider object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRRecoveryServicesProvider
 Parameter Sets: (All)
-Aliases: 
+Aliases: ServicesProvider
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

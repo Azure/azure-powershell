@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryServicesProvider ServicesProvider { get; set; }
+        [Alias("ServicesProvider")]
+        public ASRRecoveryServicesProvider InputObject { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -50,9 +51,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private void RefreshServicesProvider()
         {
             var response = RecoveryServicesClient.RefreshAzureSiteRecoveryProvider(
-                Utilities.GetValueFromArmId(ServicesProvider.ID,
+                Utilities.GetValueFromArmId(InputObject.ID,
                     ARMResourceTypeConstants.ReplicationFabrics),
-                ServicesProvider.Name);
+                InputObject.Name);
 
             var jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient

@@ -33,7 +33,7 @@ The **Get-AzureRmRecoveryServicesAsrNetwork** cmdlet gets information about Azur
 
 ### Example 1
 ```
-PS C:\> $Networks = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $Fabric 
+PS C:\> $Networks = Get-AzureRmRecoveryServicesAsrNetwork -Fabric $Fabric
 ```
 
 Gets all networks in passed fabric.

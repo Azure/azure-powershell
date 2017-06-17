@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRJob Job { get; set; }
+        [Alias("Job")]
+        public ASRJob InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets job comments.
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             switch (ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    Name = Job.Name;
+                    Name = InputObject.Name;
                     ResumesByName();
                     break;
 

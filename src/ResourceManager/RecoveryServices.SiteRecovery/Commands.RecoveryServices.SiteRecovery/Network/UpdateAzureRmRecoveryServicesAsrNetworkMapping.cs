@@ -30,11 +30,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets Azure VM Network Id.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ById,
-            Mandatory = true)]
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByNetworkObject,
-            Mandatory = true)]
+            Mandatory = true,
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRNetworkMapping Mapping { get; set; }
+        [Alias("NetworkMapping")]
+        public ASRNetworkMapping InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets Recovery Network object.
@@ -65,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     UpdateEnterpriseToEnterpriseNetworkMapping();
                     break;
                 case ASRParameterSets.ById:
-                    if (Mapping.ID.Contains(ARMResourceTypeConstants.AzureNetwork))
+                    if (InputObject.ID.Contains(ARMResourceTypeConstants.AzureNetwork))
                     {
                         UpdateAzureToAzureNetworkMapping();
                     }
@@ -93,11 +96,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             };
             var response = RecoveryServicesClient.UpdateAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(Mapping.PrimaryNetworkId,
+                Utilities.GetValueFromArmId(InputObject.PrimaryNetworkId,
                     ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(Mapping.PrimaryNetworkId,
+                Utilities.GetValueFromArmId(InputObject.PrimaryNetworkId,
                     ARMResourceTypeConstants.ReplicationNetworks),
-                Mapping.Name,
+                InputObject.Name,
                 input);
 
             var jobResponse =
@@ -126,11 +129,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             };
             var response = RecoveryServicesClient.UpdateAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(Mapping.PrimaryNetworkId,
+                Utilities.GetValueFromArmId(InputObject.PrimaryNetworkId,
                     ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(Mapping.PrimaryNetworkId,
+                Utilities.GetValueFromArmId(InputObject.PrimaryNetworkId,
                     ARMResourceTypeConstants.ReplicationNetworks),
-                Mapping.Name,
+                InputObject.Name,
                 input);
 
             var jobResponse =
@@ -153,19 +156,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 Properties = new UpdateNetworkMappingInputProperties
                 {
-                    RecoveryFabricName = Mapping.RecoveryFabricFriendlyName,
+                    RecoveryFabricName = InputObject.RecoveryFabricFriendlyName,
                     RecoveryNetworkId = RecoveryAzureNetworkId,
                     FabricSpecificDetails =
                         new AzureToAzureUpdateNetworkMappingInput
                         {
-                            PrimaryNetworkId = Mapping.PrimaryNetworkId
+                            PrimaryNetworkId = InputObject.PrimaryNetworkId
                         }
                 }
             };
             var response = RecoveryServicesClient.UpdateAzureSiteRecoveryNetworkMapping(
-                Mapping.PrimaryFabricFriendlyName,
+                InputObject.PrimaryFabricFriendlyName,
                 ARMResourceTypeConstants.AzureNetwork,
-                Mapping.Name,
+                InputObject.Name,
                 input);
 
             var jobResponse =

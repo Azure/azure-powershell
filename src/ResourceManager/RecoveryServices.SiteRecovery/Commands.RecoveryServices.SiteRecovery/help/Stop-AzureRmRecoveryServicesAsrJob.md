@@ -13,7 +13,7 @@ Stops a Site Recovery job.
 
 ### ByObject (Default)
 ```
-Stop-AzureRmRecoveryServicesAsrJob -Job <ASRJob> [<CommonParameters>]
+Stop-AzureRmRecoveryServicesAsrJob -InputObject <ASRJob> [<CommonParameters>]
 ```
 
 ### ByName
@@ -35,13 +35,13 @@ Starts stopping the passed job and returns the job for tracking.
 
 ## PARAMETERS
 
-### -Job
-Specifies the Site Recovery job object to stop.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRJob
 Parameter Sets: ByObject
-Aliases: 
+Aliases: Job
 
 Required: True
 Position: Named

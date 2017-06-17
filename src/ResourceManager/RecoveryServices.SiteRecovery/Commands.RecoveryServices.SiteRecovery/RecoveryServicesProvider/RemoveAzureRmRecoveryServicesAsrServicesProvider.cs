@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRRecoveryServicesProvider ServicesProvider { get; set; }
+        [Alias("ServicesProvider")]
+        public ASRRecoveryServicesProvider InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(ServicesProvider.FriendlyName,
+            if (ShouldProcess(InputObject.FriendlyName,
                 VerbsCommon.Remove))
             {
                 RemoveServiceProvider();
@@ -66,16 +67,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (!Force.IsPresent)
             {
                 response = RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(
-                    Utilities.GetValueFromArmId(ServicesProvider.ID,
+                    Utilities.GetValueFromArmId(InputObject.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
-                    ServicesProvider.Name);
+                    InputObject.Name);
             }
             else
             {
                 response = RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(
-                    Utilities.GetValueFromArmId(ServicesProvider.ID,
+                    Utilities.GetValueFromArmId(InputObject.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
-                    ServicesProvider.Name);
+                    InputObject.Name);
             }
 
             var jobResponse =

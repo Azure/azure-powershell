@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject,
             Mandatory = true,
             ValueFromPipeline = true)]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        [Alias("RecoveryPlan")]
+        public ASRRecoveryPlan InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets RP JSON FilePath.
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             switch (ParameterSetName)
             {
                 case ASRParameterSets.ByRPObject:
-                    UpdateRecoveryPlan(RecoveryPlan);
+                    UpdateRecoveryPlan(InputObject);
                     break;
                 case ASRParameterSets.ByRPFile:
 

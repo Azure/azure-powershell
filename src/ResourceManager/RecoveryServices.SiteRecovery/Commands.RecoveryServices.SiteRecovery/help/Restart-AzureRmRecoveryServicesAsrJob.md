@@ -13,7 +13,7 @@ Restarts an Azure Site Recovery job.
 
 ### ByObject (Default)
 ```
-Restart-AzureRmRecoveryServicesAsrJob -Job <ASRJob> [<CommonParameters>]
+Restart-AzureRmRecoveryServicesAsrJob -InputObject <ASRJob> [<CommonParameters>]
 ```
 
 ### ByName
@@ -35,13 +35,13 @@ Restarts the passed job and returns the job for tracking.
 
 ## PARAMETERS
 
-### -Job
-Specifies the Site Recovery job object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRJob
 Parameter Sets: ByObject
-Aliases: 
+Aliases: Job
 
 Required: True
 Position: Named

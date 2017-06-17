@@ -13,7 +13,7 @@ Removes a site recovery plan from Site Recovery.
 
 ### ByObject (Default)
 ```
-Remove-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan <ASRRecoveryPlan> [<CommonParameters>]
+Remove-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> [<CommonParameters>]
 ```
 
 ### ByName
@@ -35,6 +35,21 @@ Starts the deletion of passed recovery plan and returns the job for tracking.
 
 ## PARAMETERS
 
+### -InputObject
+{{Fill InputObject Description}}
+
+```yaml
+Type: ASRRecoveryPlan
+Parameter Sets: ByObject
+Aliases: RecoveryPlan
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the recovery plan that this cmdlet removes.
 
@@ -47,21 +62,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryPlan
-Specifies the recovery plan that this cmdlet removes.
-
-```yaml
-Type: ASRRecoveryPlan
-Parameter Sets: ByObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

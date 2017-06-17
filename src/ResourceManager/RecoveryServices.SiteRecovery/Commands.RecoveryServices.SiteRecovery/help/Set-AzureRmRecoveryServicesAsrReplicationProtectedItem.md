@@ -12,7 +12,7 @@ Sets recovery properties such as target network and virtual machine size for a R
 ## SYNTAX
 
 ```
-Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem <ASRReplicationProtectedItem>
+Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem>
  [-Name <String>] [-Size <String>] [-PrimaryNic <String>] [-RecoveryNetworkId <String>]
  [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>] [-NicSelectionType <String>]
  [-RecoveryResourceGroupId <String>] [-LicenseType <String>] [<CommonParameters>]
@@ -31,6 +31,21 @@ PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -Re
 Starts setting passed properties of replication protected items and returns the job for tracking.
 
 ## PARAMETERS
+
+### -InputObject
+{{Fill InputObject Description}}
+
+```yaml
+Type: ASRReplicationProtectedItem
+Parameter Sets: (All)
+Aliases: ReplicationProtectedItem
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -LicenseType
 Specifies the license type selection for Windows Server virtual machines migrated through Hybrid use benefit.
@@ -152,21 +167,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReplicationProtectedItem
-Specifies the Azure Site Recovery Replication Protected Item.
-
-```yaml
-Type: ASRReplicationProtectedItem
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

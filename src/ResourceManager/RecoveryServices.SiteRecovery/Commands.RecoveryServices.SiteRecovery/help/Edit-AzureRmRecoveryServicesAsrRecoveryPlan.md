@@ -13,24 +13,24 @@ Edits a Site Recovery plan.
 
 ### AppendGroup (Default)
 ```
-Edit-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan <ASRRecoveryPlan> [-AppendGroup] [<CommonParameters>]
+Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> [-AppendGroup] [<CommonParameters>]
 ```
 
 ### RemoveGroup
 ```
-Edit-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan <ASRRecoveryPlan> -RemoveGroup <ASRRecoveryPlanGroup>
+Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> -RemoveGroup <ASRRecoveryPlanGroup>
  [<CommonParameters>]
 ```
 
 ### AddReplicationProtectedItems
 ```
-Edit-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan <ASRRecoveryPlan> -Group <ASRRecoveryPlanGroup>
+Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> -Group <ASRRecoveryPlanGroup>
  -AddProtectedItems <ASRReplicationProtectedItem[]> [<CommonParameters>]
 ```
 
 ### RemoveReplicationProtectedItems
 ```
-Edit-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan <ASRRecoveryPlan> -Group <ASRRecoveryPlanGroup>
+Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> -Group <ASRRecoveryPlanGroup>
  -RemoveProtectedItems <ASRReplicationProtectedItem[]> [<CommonParameters>]
 ```
 
@@ -93,13 +93,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryPlan
-Specifies a recovery plan.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRRecoveryPlan
 Parameter Sets: (All)
-Aliases: 
+Aliases: RecoveryPlan
 
 Required: True
 Position: Named
@@ -139,8 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more 
-information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

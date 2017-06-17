@@ -13,12 +13,14 @@ Updates a network mapping in Site Recovery.
 
 ### ByNetworkObject (Default)
 ```
-Update-AzureRmRecoveryServicesAsrNetworkMapping -Mapping <ASRNetworkMapping> -RecoveryNetwork <ASRNetwork>
+Update-AzureRmRecoveryServicesAsrNetworkMapping -InputObject <ASRNetworkMapping> -RecoveryNetwork <ASRNetwork>
+ [<CommonParameters>]
 ```
 
 ### ById
 ```
-Update-AzureRmRecoveryServicesAsrNetworkMapping -Mapping <ASRNetworkMapping> -RecoveryAzureNetworkId <String>
+Update-AzureRmRecoveryServicesAsrNetworkMapping -InputObject <ASRNetworkMapping>
+ -RecoveryAzureNetworkId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,18 +37,18 @@ Starts updating network mapping with passed recovery network and returns the job
 
 ## PARAMETERS
 
-### -Mapping
-{{Fill Mapping Description}}
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRNetworkMapping
 Parameter Sets: (All)
-Aliases: 
+Aliases: NetworkMapping
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -80,15 +82,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
-
 
 ## NOTES
 

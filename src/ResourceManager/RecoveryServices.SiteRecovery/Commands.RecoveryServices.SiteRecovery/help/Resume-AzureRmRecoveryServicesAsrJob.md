@@ -13,7 +13,7 @@ Resumes a suspended Site Recovery job.
 
 ### ByObject (Default)
 ```
-Resume-AzureRmRecoveryServicesAsrJob -Job <ASRJob> [-Comments <String>] [<CommonParameters>]
+Resume-AzureRmRecoveryServicesAsrJob -InputObject <ASRJob> [-Comments <String>] [<CommonParameters>]
 ```
 
 ### ByName
@@ -50,13 +50,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Job
-Specifies the Site Recovery job object.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRJob
 Parameter Sets: ByObject
-Aliases: 
+Aliases: Job
 
 Required: True
 Position: Named

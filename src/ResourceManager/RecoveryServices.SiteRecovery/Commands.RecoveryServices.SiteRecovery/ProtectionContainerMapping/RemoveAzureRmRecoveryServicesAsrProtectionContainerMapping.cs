@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ASRProtectionContainerMapping ProtectionContainerMapping { get; set; }
+        [Alias("ProtectionContainerMapping")]
+        public ASRProtectionContainerMapping InputObject { get; set; }
 
         /// <summary>
         ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(ProtectionContainerMapping.Name,
+            if (ShouldProcess(InputObject.Name,
                 VerbsCommon.Remove))
             {
                 PSSiteRecoveryLongRunningOperation response = null;
@@ -66,21 +67,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         new RemoveProtectionContainerMappingInput {Properties = inputProperties};
 
                     response = RecoveryServicesClient.UnConfigureProtection(
-                        Utilities.GetValueFromArmId(ProtectionContainerMapping.ID,
+                        Utilities.GetValueFromArmId(InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(ProtectionContainerMapping.ID,
+                        Utilities.GetValueFromArmId(InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        ProtectionContainerMapping.Name,
+                        InputObject.Name,
                         input);
                 }
                 else
                 {
                     response = RecoveryServicesClient.PurgeCloudMapping(Utilities.GetValueFromArmId(
-                            ProtectionContainerMapping.ID,
+                            InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(ProtectionContainerMapping.ID,
+                        Utilities.GetValueFromArmId(InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        ProtectionContainerMapping.Name);
+                        InputObject.Name);
                 }
 
                 var jobResponse =

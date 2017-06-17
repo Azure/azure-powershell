@@ -12,7 +12,7 @@ Updates the Azure Site Recovery Policy.
 ## SYNTAX
 
 ```
-Update-AzureRmRecoveryServicesAsrPolicy -Policy <ASRPolicy> [-ReplicationMethod <String>]
+Update-AzureRmRecoveryServicesAsrPolicy -InputObject <ASRPolicy> [-ReplicationMethod <String>]
  [-ReplicationFrequencyInSeconds <String>] [-RecoveryPoints <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-Compression <String>] [-ReplicationPort <UInt16>]
  [-Authentication <String>] [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>]
@@ -96,13 +96,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Policy
-{{Fill Policy Description}}
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
 Type: ASRPolicy
 Parameter Sets: (All)
-Aliases: 
+Aliases: Policy
 
 Required: True
 Position: Named

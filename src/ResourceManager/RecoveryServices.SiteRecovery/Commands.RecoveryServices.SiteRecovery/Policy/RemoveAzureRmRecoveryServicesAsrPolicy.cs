@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipeline = true)]
-        public ASRPolicy Policy { get; set; }
+        [Alias("Policy")]
+        public ASRPolicy InputObject { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var responseBlue = RecoveryServicesClient.DeletePolicy(Policy.Name);
+            var responseBlue = RecoveryServicesClient.DeletePolicy(InputObject.Name);
 
             var jobResponseBlue =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(

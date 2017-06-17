@@ -36,7 +36,7 @@ The **Get-AzureRmRecoveryServicesAsrProtectableItem** cmdlet gets the protectabl
 
 ### Example 1
 ```
-PS C:\> $ProtectableItems = Get-AzureRmRecoveryServicesAsrProtectableItem -ProtectionContainer $Container 
+PS C:\> $ProtectableItems = Get-AzureRmRecoveryServicesAsrProtectableItem -ProtectionContainer $Container
 ```
 
 Gets all the protectable items in passed container.
