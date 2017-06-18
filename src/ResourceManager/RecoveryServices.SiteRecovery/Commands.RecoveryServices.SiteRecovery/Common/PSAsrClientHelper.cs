@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="replicationFrequencyString">Replication frequency in seconds.</param>
         /// <returns>A UShort corresponding to the value.</returns>
-        public static ushort ConvertReplicationFrequencyToUshort(string replicationFrequencyString)
+        public static ushort ConvertReplicationFrequencyToUshort(
+            string replicationFrequencyString)
         {
             if (replicationFrequencyString == null)
             {
@@ -36,12 +37,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             ushort replicationFrequency;
 
-            if (!ushort.TryParse(replicationFrequencyString,
+            if (!ushort.TryParse(
+                replicationFrequencyString,
                 out replicationFrequency))
             {
-                throw new InvalidOperationException(string.Format(
-                    Resources.InvalidReplicationFrequency,
-                    replicationFrequencyString));
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.InvalidReplicationFrequency,
+                        replicationFrequencyString));
             }
 
             return replicationFrequency;
@@ -51,21 +54,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Validates if the time span object has a valid value.
         /// </summary>
         /// <param name="timeSpan">Time span object to be validated</param>
-        public static void ValidateReplicationStartTime(TimeSpan? timeSpan)
+        public static void ValidateReplicationStartTime(
+            TimeSpan? timeSpan)
         {
             if (timeSpan == null)
             {
                 return;
             }
 
-            if (TimeSpan.Compare(timeSpan.Value,
-                    new TimeSpan(24,
+            if (TimeSpan.Compare(
+                    timeSpan.Value,
+                    new TimeSpan(
+                        24,
                         0,
                         0)) ==
                 1)
             {
-                throw new InvalidOperationException(string.Format(Resources
-                    .ReplicationStartTimeInvalid));
+                throw new InvalidOperationException(
+                    string.Format(Resources.ReplicationStartTimeInvalid));
             }
         }
     }

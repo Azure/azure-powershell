@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Imports Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsData.Import,
+    [Cmdlet(
+        VerbsData.Import,
         "AzureRmRecoveryServicesAsrVaultSettingsFile")]
     [OutputType(typeof(ASRVaultSettings))]
     public class ImportAzureRmRecoveryServicesAsrVaultSettingsFile : SiteRecoveryCmdletBase
@@ -34,7 +35,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets path to the Azure RecoveryServices Vault Settings file. This file can be
         ///     downloaded from Azure recoveryservices Vault portal and stored locally.
         /// </summary>
-        [Parameter(Position = 0,
+        [Parameter(
+            Position = 0,
             Mandatory = true,
             HelpMessage = "Azure RecoveryServices vault settings file path",
             ValueFromPipelineByPropertyName = true)]
@@ -48,59 +50,68 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            WriteVerbose("Vault Settings File path: " + Path);
+            this.WriteVerbose("Vault Settings File path: " + this.Path);
 
             ASRVaultCreds asrVaultCreds = null;
 
-            if (File.Exists(Path))
+            if (File.Exists(this.Path))
             {
                 try
                 {
                     var serializer = new DataContractSerializer(typeof(ASRVaultCreds));
-                    using (var s = new FileStream(Path,
+                    using (var s = new FileStream(
+                        this.Path,
                         FileMode.Open,
                         FileAccess.Read,
                         FileShare.Read))
                     {
-                        asrVaultCreds = (ASRVaultCreds) serializer.ReadObject(s);
+                        asrVaultCreds = (ASRVaultCreds)serializer.ReadObject(s);
                     }
                 }
                 catch (XmlException xmlException)
                 {
-                    throw new XmlException(string.Format(Resources.InvalidXml,
-                        xmlException));
+                    throw new XmlException(
+                        string.Format(
+                            Resources.InvalidXml,
+                            xmlException));
                 }
                 catch (SerializationException serializationException)
                 {
-                    throw new SerializationException(string.Format(Resources.InvalidXml,
-                        serializationException));
+                    throw new SerializationException(
+                        string.Format(
+                            Resources.InvalidXml,
+                            serializationException));
                 }
             }
             else
             {
-                throw new FileNotFoundException(Resources.VaultSettingFileNotFound,
-                    Path);
+                throw new FileNotFoundException(
+                    Resources.VaultSettingFileNotFound,
+                    this.Path);
             }
 
             // Validate required parameters taken from the Vault settings file.
             if (string.IsNullOrEmpty(asrVaultCreds.ResourceName))
             {
-                throw new ArgumentException(Resources.ResourceNameNullOrEmpty,
+                throw new ArgumentException(
+                    Resources.ResourceNameNullOrEmpty,
                     asrVaultCreds.ResourceName);
             }
 
             if (string.IsNullOrEmpty(asrVaultCreds.ResourceGroupName))
             {
-                throw new ArgumentException(Resources.CloudServiceNameNullOrEmpty,
+                throw new ArgumentException(
+                    Resources.CloudServiceNameNullOrEmpty,
                     asrVaultCreds.ResourceGroupName);
             }
 
             Utilities.UpdateCurrentVaultContext(asrVaultCreds);
 
-            RecoveryServicesClient.ValidateVaultSettings(asrVaultCreds.ResourceName,
+            this.RecoveryServicesClient.ValidateVaultSettings(
+                asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName);
 
-            WriteObject(new ASRVaultSettings(asrVaultCreds));
+            this.WriteObject(new ASRVaultSettings(asrVaultCreds));
         }
     }
 }

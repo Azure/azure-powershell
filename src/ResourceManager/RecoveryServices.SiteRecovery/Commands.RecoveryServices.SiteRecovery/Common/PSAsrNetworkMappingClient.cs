@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Recovery services convenience client.
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     public partial class PSRecoveryServicesClient
@@ -33,16 +34,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <returns>Network mappings list response</returns>
         public List<NetworkMapping> GetAzureSiteRecoveryNetworkMappings()
         {
-            var firstPage = GetSiteRecoveryClient()
-                .ReplicationNetworkMappings.ListWithHttpMessagesAsync(GetRequestHeaders(true))
+            var firstPage = this.GetSiteRecoveryClient()
+                .ReplicationNetworkMappings.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationNetworkMappings.ListNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
@@ -52,22 +55,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     List Azure Site Recovery Network mappings by network.
         /// </summary>
         /// <returns>Network mappings list response</returns>
-        public List<NetworkMapping> GetAzureSiteRecoveryNetworkMappings(string fabricName,
+        public List<NetworkMapping> GetAzureSiteRecoveryNetworkMappings(
+            string fabricName,
             string primaryNetworkName)
         {
-            var firstPage = GetSiteRecoveryClient()
+            var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationNetworkMappings.ListByReplicationNetworksWithHttpMessagesAsync(
                     fabricName,
                     primaryNetworkName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationNetworkMappings.ListByReplicationNetworksNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
@@ -77,15 +83,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Get Azure Site Recovery Network mappings.
         /// </summary>
         /// <returns>Network mappings response</returns>
-        public NetworkMapping GetAzureSiteRecoveryNetworkMappings(string fabricName,
+        public NetworkMapping GetAzureSiteRecoveryNetworkMappings(
+            string fabricName,
             string primaryNetworkName,
             string networkMappingName)
         {
-            return GetSiteRecoveryClient()
-                .ReplicationNetworkMappings.GetWithHttpMessagesAsync(fabricName,
+            return this.GetSiteRecoveryClient()
+                .ReplicationNetworkMappings.GetWithHttpMessagesAsync(
+                    fabricName,
                     primaryNetworkName,
                     networkMappingName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
@@ -106,12 +114,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string mappingName,
             CreateNetworkMappingInput input)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationNetworkMappings.BeginCreateWithHttpMessagesAsync(primaryFabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationNetworkMappings.BeginCreateWithHttpMessagesAsync(
+                    primaryFabricName,
                     primaryNetworkName,
                     mappingName,
                     input,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Removes Azure Site Recovery Network Mapping.
+        /// </summary>
+        /// <param name="primaryFabricName">Primary fabric name</param>
+        /// <param name="primaryNetworkName">Primary network name</param>
+        /// <param name="mappingName">mapping name</param>
+        /// <returns>Long running operation response</returns>
+        public PSSiteRecoveryLongRunningOperation RemoveAzureSiteRecoveryNetworkMapping(
+            string primaryFabricName,
+            string primaryNetworkName,
+            string mappingName)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationNetworkMappings.BeginDeleteWithHttpMessagesAsync(
+                    primaryFabricName,
+                    primaryNetworkName,
+                    mappingName,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -132,35 +165,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string mappingName,
             UpdateNetworkMappingInput input)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationNetworkMappings.BeginUpdateWithHttpMessagesAsync(primaryFabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationNetworkMappings.BeginUpdateWithHttpMessagesAsync(
+                    primaryFabricName,
                     primaryNetworkName,
                     mappingName,
                     input,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
-            return result;
-        }
-
-        /// <summary>
-        ///     Removes Azure Site Recovery Network Mapping.
-        /// </summary>
-        /// <param name="primaryFabricName">Primary fabric name</param>
-        /// <param name="primaryNetworkName">Primary network name</param>
-        /// <param name="mappingName">mapping name</param>
-        /// <returns>Long running operation response</returns>
-        public PSSiteRecoveryLongRunningOperation RemoveAzureSiteRecoveryNetworkMapping(
-            string primaryFabricName,
-            string primaryNetworkName,
-            string mappingName)
-        {
-            var op = GetSiteRecoveryClient()
-                .ReplicationNetworkMappings.BeginDeleteWithHttpMessagesAsync(primaryFabricName,
-                    primaryNetworkName,
-                    mappingName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);

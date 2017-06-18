@@ -99,7 +99,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Fabric type class.
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     public class FabricProviders
@@ -156,7 +157,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     ARM exception class.
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all related classes together.")]
     public class ARMException
@@ -176,7 +178,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets exception target.
         /// </summary>
-        [JsonProperty(PropertyName = "target",
+        [JsonProperty(
+            PropertyName = "target",
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Target { get; private set; }
@@ -208,7 +211,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets possible cause for error.
         /// </summary>
-        [JsonProperty(PropertyName = "possibleCauses",
+        [JsonProperty(
+            PropertyName = "possibleCauses",
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string PossibleCauses { get; private set; }
@@ -216,7 +220,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets recommended action for the error.
         /// </summary>
-        [JsonProperty(PropertyName = "recommendedAction",
+        [JsonProperty(
+            PropertyName = "recommendedAction",
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string RecommendedAction { get; private set; }
@@ -224,7 +229,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets the client request Id for the session.
         /// </summary>
-        [JsonProperty(PropertyName = "clientRequestId",
+        [JsonProperty(
+            PropertyName = "clientRequestId",
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string ClientRequestId { get; private set; }
@@ -238,7 +244,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets exception target.
         /// </summary>
-        [JsonProperty(PropertyName = "target",
+        [JsonProperty(
+            PropertyName = "target",
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Target { get; private set; }
@@ -247,12 +254,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Error contract returned when some exception occurs in ASR REST API.
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
     public class Error
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Error" /> class.
+        /// </summary>
+        public Error()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Error" /> class with required parameters.
+        /// </summary>
+        /// <param name="se">Service Error</param>
+        public Error(
+            ServiceError se)
+        {
+            this.ClientRequestId = se.ActivityId;
+            this.Code = se.Code;
+            this.Message = se.Message;
+            this.PossibleCauses = se.PossibleCauses;
+            this.RecommendedAction = se.RecommendedAction;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Error" /> class.
+        /// </summary>
+        /// <param name="errorCode">Service generated error code.</param>
+        /// <param name="message">Error message.</param>
+        /// <param name="possibleCauses">Possible causes of the error.</param>
+        /// <param name="recommendedAction">Recommended action to resolve the error.</param>
+        /// <param name="activityId">ActivityId in which error occurred.</param>
+        public Error(
+            string errorCode,
+            string message,
+            string possibleCauses,
+            string recommendedAction,
+            string activityId)
+        {
+            this.Code = errorCode;
+            this.Message = message;
+            this.PossibleCauses = possibleCauses;
+            this.RecommendedAction = recommendedAction;
+            this.ClientRequestId = activityId;
+        }
+
         /// <summary>
         ///     Gets or sets error code.
         /// </summary>
@@ -282,53 +333,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember(Name = "ActivityId")]
         public string ClientRequestId { get; set; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Error" /> class.
-        /// </summary>
-        public Error()
-        {
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Error" /> class with required parameters.
-        /// </summary>
-        /// <param name="se">Service Error</param>
-        public Error(ServiceError se)
-        {
-            ClientRequestId = se.ActivityId;
-            Code = se.Code;
-            Message = se.Message;
-            PossibleCauses = se.PossibleCauses;
-            RecommendedAction = se.RecommendedAction;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Error" /> class.
-        /// </summary>
-        /// <param name="errorCode">Service generated error code.</param>
-        /// <param name="message">Error message.</param>
-        /// <param name="possibleCauses">Possible causes of the error.</param>
-        /// <param name="recommendedAction">Recommended action to resolve the error.</param>
-        /// <param name="activityId">ActivityId in which error occurred.</param>
-        public Error(string errorCode,
-            string message,
-            string possibleCauses,
-            string recommendedAction,
-            string activityId)
-        {
-            Code = errorCode;
-            Message = message;
-            PossibleCauses = possibleCauses;
-            RecommendedAction = recommendedAction;
-            ClientRequestId = activityId;
-        }
     }
 
     /// <summary>
     ///     CIK token details.
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     [DataContract]
@@ -386,10 +397,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine("NotBeforeTimestamp: " + NotBeforeTimestamp);
-            sb.AppendLine("NotAfterTimestamp: " + NotAfterTimestamp);
-            sb.AppendLine("ClientRequestId: " + ClientRequestId);
-            sb.AppendLine("Hmac: " + Hmac);
+            sb.AppendLine("NotBeforeTimestamp: " + this.NotBeforeTimestamp);
+            sb.AppendLine("NotAfterTimestamp: " + this.NotAfterTimestamp);
+            sb.AppendLine("ClientRequestId: " + this.ClientRequestId);
+            sb.AppendLine("Hmac: " + this.Hmac);
             return sb.ToString();
         }
     }
@@ -448,7 +459,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     /// <summary>
     ///     Class to define Vault credentials
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     [DataContract]
@@ -470,16 +482,17 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
-        public VaultCreds(string subscriptionId,
+        public VaultCreds(
+            string subscriptionId,
             string resourceName,
             string managementCert,
             AcsNamespace acsNamespace)
         {
-            SubscriptionId = subscriptionId;
-            ResourceType = Constants.ASRVaultType;
-            ResourceName = resourceName;
-            ManagementCert = managementCert;
-            AcsNamespace = acsNamespace;
+            this.SubscriptionId = subscriptionId;
+            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceName = resourceName;
+            this.ManagementCert = managementCert;
+            this.AcsNamespace = acsNamespace;
         }
 
         #endregion
@@ -522,7 +535,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     /// <summary>
     ///     Class to define ASR Vault credentials
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     public class ASRVaultCreds : VaultCreds
@@ -547,7 +561,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceGroupName">cloud service name</param>
         /// <param name="siteId">custom site Id</param>
         /// <param name="siteName">custom site name</param>
-        public ASRVaultCreds(string subscriptionId,
+        public ASRVaultCreds(
+            string subscriptionId,
             string resourceName,
             string managementCert,
             AcsNamespace acsNamespace,
@@ -556,20 +571,21 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             string siteId,
             string siteName,
             string resourceNamespace,
-            string resourceType) : base(subscriptionId,
+            string resourceType) : base(
+            subscriptionId,
             resourceName,
             managementCert,
             acsNamespace)
         {
-            ChannelIntegrityKey = channelIntegrityKey;
-            ResourceGroupName = resourceGroupName;
-            Version = Constants.VaultCredentialVersion;
+            this.ChannelIntegrityKey = channelIntegrityKey;
+            this.ResourceGroupName = resourceGroupName;
+            this.Version = Constants.VaultCredentialVersion;
 
-            SiteId = siteId != null ? siteId : string.Empty;
-            SiteName = siteName != null ? siteName : string.Empty;
+            this.SiteId = siteId != null ? siteId : string.Empty;
+            this.SiteName = siteName != null ? siteName : string.Empty;
 
-            ResourceNamespace = resourceNamespace;
-            ARMResourceType = resourceType;
+            this.ResourceNamespace = resourceNamespace;
+            this.ARMResourceType = resourceType;
         }
 
         #endregion
@@ -624,7 +640,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     /// <summary>
     ///     Class to define ACS name space
     /// </summary>
-    [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
         Justification = "Keeping all contracts together.")]
     [DataContract]

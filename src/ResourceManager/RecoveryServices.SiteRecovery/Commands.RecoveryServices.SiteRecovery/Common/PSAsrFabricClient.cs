@@ -24,54 +24,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
-        ///     Gets Azure Site Recovery Fabrics.
-        /// </summary>
-        /// <param name="shouldSignRequest">Boolean indicating if the request should be signed ACIK</param>
-        /// <returns>Server list response</returns>
-        public List<Fabric> GetAzureSiteRecoveryFabric(bool shouldSignRequest = true)
-        {
-            var firstPage = GetSiteRecoveryClient()
-                .ReplicationFabrics.ListWithHttpMessagesAsync(GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult()
-                .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
-                    .ReplicationFabrics.ListNextWithHttpMessagesAsync,
-                firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
-                firstPage);
-
-            return Utilities.IpageToList(pages);
-        }
-
-        /// <summary>
-        ///     Gets Azure Site Recovery Fabrics.
-        /// </summary>
-        /// <param name="fabricName">Server ID</param>
-        /// <returns>Server response</returns>
-        public Fabric GetAzureSiteRecoveryFabric(string fabricName)
-        {
-            return GetSiteRecoveryClient()
-                .ReplicationFabrics.GetWithHttpMessagesAsync(fabricName,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult()
-                .Body;
-        }
-
-        /// <summary>
         ///     Creates Azure Site Recovery Fabric.
         /// </summary>
         /// <param name="createAndAssociatePolicyInput">Policy Input</param>
         /// <returns>Long operation response</returns>
-        public PSSiteRecoveryLongRunningOperation CreateAzureSiteRecoveryFabric(string fabricName,
+        public PSSiteRecoveryLongRunningOperation CreateAzureSiteRecoveryFabric(
+            string fabricName,
             FabricCreationInput input)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationFabrics.BeginCreateWithHttpMessagesAsync(fabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationFabrics.BeginCreateWithHttpMessagesAsync(
+                    fabricName,
                     input,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -83,11 +48,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="DeleteAzureSiteRecoveryFabric">Fabric Input</param>
         /// <returns>Long operation response</returns>
-        public PSSiteRecoveryLongRunningOperation DeleteAzureSiteRecoveryFabric(string fabricName)
+        public PSSiteRecoveryLongRunningOperation DeleteAzureSiteRecoveryFabric(
+            string fabricName)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationFabrics.BeginDeleteWithHttpMessagesAsync(fabricName,
-                    GetRequestHeaders(true))
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationFabrics.BeginDeleteWithHttpMessagesAsync(
+                    fabricName,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -95,15 +62,59 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Gets Azure Site Recovery Fabrics.
+        /// </summary>
+        /// <param name="shouldSignRequest">Boolean indicating if the request should be signed ACIK</param>
+        /// <returns>Server list response</returns>
+        public List<Fabric> GetAzureSiteRecoveryFabric(
+            bool shouldSignRequest = true)
+        {
+            var firstPage = this.GetSiteRecoveryClient()
+                .ReplicationFabrics.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
+                    .ReplicationFabrics.ListNextWithHttpMessagesAsync,
+                firstPage.NextPageLink,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
+                firstPage);
+
+            return Utilities.IpageToList(pages);
+        }
+
+        /// <summary>
+        ///     Gets Azure Site Recovery Fabrics.
+        /// </summary>
+        /// <param name="fabricName">Server ID</param>
+        /// <returns>Server response</returns>
+        public Fabric GetAzureSiteRecoveryFabric(
+            string fabricName)
+        {
+            return this.GetSiteRecoveryClient()
+                .ReplicationFabrics.GetWithHttpMessagesAsync(
+                    fabricName,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
+        }
+
+        /// <summary>
         ///     Purge Azure Site Recovery Fabric.
         /// </summary>
         /// <param name="fabricName">Fabric name</param>
         /// <returns>Long operation response</returns>
-        public PSSiteRecoveryLongRunningOperation PurgeAzureSiteRecoveryFabric(string fabricName)
+        public PSSiteRecoveryLongRunningOperation PurgeAzureSiteRecoveryFabric(
+            string fabricName)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationFabrics.BeginPurgeWithHttpMessagesAsync(fabricName,
-                    GetRequestHeaders(true))
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationFabrics.BeginPurgeWithHttpMessagesAsync(
+                    fabricName,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);

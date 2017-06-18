@@ -25,6 +25,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
+        ///     Removes Replicated Protected Item.
+        /// </summary>
+        /// <param name="protectionContainerName">Protection Container ID</param>
+        /// <param name="replicationProtectedItemName">Virtual Machine ID or Replication group Id</param>
+        /// <param name="input">Disable protection input.</param>
+        /// <returns>Job response</returns>
+        public PSSiteRecoveryLongRunningOperation DisableProtection(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            DisableProtectionInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginDeleteWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Creates Replicated Protected Item.
+        /// </summary>
+        /// <param name="protectionContainerName">Protection Container ID</param>
+        /// <param name="replicationProtectedItemName">Virtual Machine ID or Replication group Id</param>
+        /// <param name="input">Enable protection input.</param>
+        /// <returns>Job response</returns>
+        public PSSiteRecoveryLongRunningOperation EnableProtection(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            EnableProtectionInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginCreateWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
         ///     Retrieves Replicated Protected Item.
         /// </summary>
         /// <param name="protectionContainerName">Protection Container Name</param>
@@ -33,51 +85,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string fabricName,
             string protectionContainerName)
         {
-            var firstPage = GetSiteRecoveryClient()
+            var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectedItems
-                .ListByReplicationProtectionContainersWithHttpMessagesAsync(fabricName,
+                .ListByReplicationProtectionContainersWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationProtectedItems
                     .ListByReplicationProtectionContainersNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
-                firstPage);
-
-            return Utilities.IpageToList(pages);
-        }
-
-        /// <summary>
-        ///     Retrieves Protected Items.
-        /// </summary>
-        /// <param name="protectionContainerName">Recovery Plan Name</param>
-        /// <param name="sourceFabricName">Source Fabric Name</param>
-        /// <returns>Protection entity list response</returns>
-        public List<ReplicationProtectedItem> GetAzureSiteRecoveryReplicationProtectedItemInRP(
-            string recoveryPlanName)
-        {
-            var protectedItemsQueryParameter =
-                new ProtectedItemsQueryParameter {RecoveryPlanName = recoveryPlanName};
-            var odataQuery =
-                new ODataQuery<ProtectedItemsQueryParameter>(protectedItemsQueryParameter
-                    .ToQueryString());
-            var firstPage = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.ListWithHttpMessagesAsync(odataQuery,
-                    null,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult()
-                .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
-                    .ReplicationProtectedItems.ListNextWithHttpMessagesAsync,
-                firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
@@ -94,62 +118,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string protectionContainerName,
             string replicatedProtectedItemName)
         {
-            return GetSiteRecoveryClient()
-                .ReplicationProtectedItems.GetWithHttpMessagesAsync(fabricName,
+            return this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.GetWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
                     replicatedProtectedItemName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
         }
 
         /// <summary>
-        ///     Creates Replicated Protected Item.
+        ///     Retrieves Protected Items.
         /// </summary>
-        /// <param name="protectionContainerName">Protection Container ID</param>
-        /// <param name="replicationProtectedItemName">Virtual Machine ID or Replication group Id</param>
-        /// <param name="input">Enable protection input.</param>
-        /// <returns>Job response</returns>
-        public PSSiteRecoveryLongRunningOperation EnableProtection(string fabricName,
-            string protectionContainerName,
-            string replicationProtectedItemName,
-            EnableProtectionInput input)
+        /// <param name="protectionContainerName">Recovery Plan Name</param>
+        /// <param name="sourceFabricName">Source Fabric Name</param>
+        /// <returns>Protection entity list response</returns>
+        public List<ReplicationProtectedItem> GetAzureSiteRecoveryReplicationProtectedItemInRP(
+            string recoveryPlanName)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginCreateWithHttpMessagesAsync(fabricName,
-                    protectionContainerName,
-                    replicationProtectedItemName,
-                    input,
-                    GetRequestHeaders(true))
+            var protectedItemsQueryParameter =
+                new ProtectedItemsQueryParameter { RecoveryPlanName = recoveryPlanName };
+            var odataQuery =
+                new ODataQuery<ProtectedItemsQueryParameter>(
+                    protectedItemsQueryParameter.ToQueryString());
+            var firstPage = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.ListWithHttpMessagesAsync(
+                    odataQuery,
+                    null,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
-                .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
-            return result;
-        }
+                .GetResult()
+                .Body;
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
+                    .ReplicationProtectedItems.ListNextWithHttpMessagesAsync,
+                firstPage.NextPageLink,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
+                firstPage);
 
-        /// <summary>
-        ///     Removes Replicated Protected Item.
-        /// </summary>
-        /// <param name="protectionContainerName">Protection Container ID</param>
-        /// <param name="replicationProtectedItemName">Virtual Machine ID or Replication group Id</param>
-        /// <param name="input">Disable protection input.</param>
-        /// <returns>Job response</returns>
-        public PSSiteRecoveryLongRunningOperation DisableProtection(string fabricName,
-            string protectionContainerName,
-            string replicationProtectedItemName,
-            DisableProtectionInput input)
-        {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginDeleteWithHttpMessagesAsync(fabricName,
-                    protectionContainerName,
-                    replicationProtectedItemName,
-                    input,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
-            return result;
+            return Utilities.IpageToList(pages);
         }
 
         /// <summary>
@@ -158,93 +169,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="protectionContainerName">Protection Container ID</param>
         /// <param name="replicationProtectedItemName">Virtual Machine ID or Replication group Id</param>
         /// <returns>Job response</returns>
-        public PSSiteRecoveryLongRunningOperation PurgeProtection(string fabricName,
+        public PSSiteRecoveryLongRunningOperation PurgeProtection(
+            string fabricName,
             string protectionContainerName,
             string replicationProtectedItemName)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginPurgeWithHttpMessagesAsync(fabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginPurgeWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
-            return result;
-        }
-
-        /// <summary>
-        ///     Starts Planned Failover
-        /// </summary>
-        /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Container Name</param>
-        /// <param name="replicationProtectedItemName">Replication Protected Itenm</param>
-        /// <param name="input">Input for Planned Failover</param>
-        /// <returns>Job Response</returns>
-        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryPlannedFailover(
-            string fabricName,
-            string protectionContainerName,
-            string replicationProtectedItemName,
-            PlannedFailoverInput input)
-        {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginPlannedFailoverWithHttpMessagesAsync(fabricName,
-                    protectionContainerName,
-                    replicationProtectedItemName,
-                    input,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
-            return result;
-        }
-
-        /// <summary>
-        ///     Starts Unplanned Failover
-        /// </summary>
-        /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
-        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
-        /// <param name="input">Input for Unplanned failover</param>
-        /// <returns>Job Response</returns>
-        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryUnplannedFailover(
-            string fabricName,
-            string protectionContainerName,
-            string replicationProtectedItemName,
-            UnplannedFailoverInput input)
-        {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginUnplannedFailoverWithHttpMessagesAsync(fabricName,
-                    protectionContainerName,
-                    replicationProtectedItemName,
-                    input,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
-            return result;
-        }
-
-        /// <summary>
-        ///     Starts Test Failover
-        /// </summary>
-        /// <param name="fabricName">Fabric Name</param>
-        /// <param name="protectionContainerName">Protection Conatiner Name</param>
-        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
-        /// <param name="input">Input for Test failover</param>
-        /// <returns>Job Response</returns>
-        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryTestFailover(
-            string fabricName,
-            string protectionContainerName,
-            string replicationProtectedItemName,
-            TestFailoverInput input)
-        {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginTestFailoverWithHttpMessagesAsync(fabricName,
-                    protectionContainerName,
-                    replicationProtectedItemName,
-                    input,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -265,12 +200,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string replicationProtectedItemName,
             ApplyRecoveryPointInput input)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginApplyRecoveryPointWithHttpMessagesAsync(fabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginApplyRecoveryPointWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
                     input,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -289,11 +225,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string protectionContainerName,
             string replicationProtectedItemName)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginFailoverCommitWithHttpMessagesAsync(fabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginFailoverCommitWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts Planned Failover
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Container Name</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Itenm</param>
+        /// <param name="input">Input for Planned Failover</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryPlannedFailover(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            PlannedFailoverInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginPlannedFailoverWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -314,12 +278,67 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string replicationProtectedItemName,
             ReverseReplicationInput input)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginReprotectWithHttpMessagesAsync(fabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginReprotectWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
                     input,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts Test Failover
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
+        /// <param name="input">Input for Test failover</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryTestFailover(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            TestFailoverInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginTestFailoverWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts Unplanned Failover
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="replicationProtectedItemName">Replication Protected Item</param>
+        /// <param name="input">Input for Unplanned failover</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryUnplannedFailover(
+            string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
+            UnplannedFailoverInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginUnplannedFailoverWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    replicationProtectedItemName,
+                    input,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -334,17 +353,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Update Replication Protected Item Input</param>
         /// <returns></returns>
-        public PSSiteRecoveryLongRunningOperation UpdateVmProperties(string fabricName,
+        public PSSiteRecoveryLongRunningOperation UpdateVmProperties(
+            string fabricName,
             string protectionContainerName,
             string replicationProtectedItemName,
             UpdateReplicationProtectedItemInput input)
         {
-            var op = GetSiteRecoveryClient()
-                .ReplicationProtectedItems.BeginUpdateWithHttpMessagesAsync(fabricName,
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectedItems.BeginUpdateWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
                     replicationProtectedItemName,
                     input,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);

@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery Network mapping.
     /// </summary>
-    [Cmdlet(VerbsCommon.New,
+    [Cmdlet(
+        VerbsCommon.New,
         "AzureRmRecoveryServicesAsrNetworkMapping",
         DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
     [Alias("New-ASRNetworkMapping")]
@@ -30,9 +31,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Azure VM Network Id.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -40,10 +43,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Primary Network object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -52,7 +57,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Recovery Network object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRNetwork RecoveryNetwork { get; set; }
@@ -60,7 +66,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Azure VM Network Id.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureNetworkId { get; set; }
@@ -72,48 +79,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.EnterpriseToEnterprise:
-                    EnterpriseToEnterpriseNetworkMapping();
+                    this.EnterpriseToEnterpriseNetworkMapping();
                     break;
                 case ASRParameterSets.EnterpriseToAzure:
-                    EnterpriseToAzureNetworkMapping();
+                    this.EnterpriseToAzureNetworkMapping();
                     break;
             }
-        }
-
-        /// <summary>
-        ///     Enterprise to enterprise network mapping.
-        /// </summary>
-        private void EnterpriseToEnterpriseNetworkMapping()
-        {
-            var mappingName = Name;
-
-            var input = new CreateNetworkMappingInput
-            {
-                Properties = new CreateNetworkMappingInputProperties
-                {
-                    RecoveryFabricName = Utilities.GetValueFromArmId(RecoveryNetwork.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics),
-                    RecoveryNetworkId = RecoveryNetwork.ID,
-                    FabricSpecificDetails = new VmmToVmmCreateNetworkMappingInput()
-                }
-            };
-
-            var response = RecoveryServicesClient.NewAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(PrimaryNetwork.ID,
-                    ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(PrimaryNetwork.ID,
-                    ARMResourceTypeConstants.ReplicationNetworks),
-                mappingName,
-                input);
-
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
@@ -125,31 +99,67 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             // Verify whether the subscription is associated with the account or not.
             // Check if the Azure VM Network is associated with the Subscription or not.
 
-            var mappingName = Name;
+            var mappingName = this.Name;
 
             var input = new CreateNetworkMappingInput
             {
                 Properties = new CreateNetworkMappingInputProperties
                 {
                     RecoveryFabricName = "Microsoft Azure",
-                    RecoveryNetworkId = RecoveryAzureNetworkId,
+                    RecoveryNetworkId = this.RecoveryAzureNetworkId,
                     FabricSpecificDetails = new VmmToAzureCreateNetworkMappingInput()
                 }
             };
 
-            var response = RecoveryServicesClient.NewAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(PrimaryNetwork.ID,
+            var response = this.RecoveryServicesClient.NewAzureSiteRecoveryNetworkMapping(
+                Utilities.GetValueFromArmId(
+                    this.PrimaryNetwork.ID,
                     ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(PrimaryNetwork.ID,
+                Utilities.GetValueFromArmId(
+                    this.PrimaryNetwork.ID,
                     ARMResourceTypeConstants.ReplicationNetworks),
                 mappingName,
                 input);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
+        }
+
+        /// <summary>
+        ///     Enterprise to enterprise network mapping.
+        /// </summary>
+        private void EnterpriseToEnterpriseNetworkMapping()
+        {
+            var mappingName = this.Name;
+
+            var input = new CreateNetworkMappingInput
+            {
+                Properties = new CreateNetworkMappingInputProperties
+                {
+                    RecoveryFabricName = Utilities.GetValueFromArmId(
+                        this.RecoveryNetwork.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    RecoveryNetworkId = this.RecoveryNetwork.ID,
+                    FabricSpecificDetails = new VmmToVmmCreateNetworkMappingInput()
+                }
+            };
+
+            var response = this.RecoveryServicesClient.NewAzureSiteRecoveryNetworkMapping(
+                Utilities.GetValueFromArmId(
+                    this.PrimaryNetwork.ID,
+                    ARMResourceTypeConstants.ReplicationFabrics),
+                Utilities.GetValueFromArmId(
+                    this.PrimaryNetwork.ID,
+                    ARMResourceTypeConstants.ReplicationNetworks),
+                mappingName,
+                input);
+
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

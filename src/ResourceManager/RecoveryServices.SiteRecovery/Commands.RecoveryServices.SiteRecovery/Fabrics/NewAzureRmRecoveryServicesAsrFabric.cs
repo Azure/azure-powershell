@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery Fabric object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New,
+    [Cmdlet(
+        VerbsCommon.New,
         "AzureRmRecoveryServicesAsrFabric",
         DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("New-ASRFabric")]
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the name of the fabric to be created
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.Default,
             Mandatory = true,
             HelpMessage = "Name of the fabric to be created")]
         [ValidateNotNullOrEmpty]
@@ -39,7 +41,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or Sets the Fabric type
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.Default,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(Constants.HyperVSite)]
@@ -48,7 +51,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or Sets the location
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.Default,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -60,30 +64,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var fabricType = string.IsNullOrEmpty(Type) ? FabricProviders.HyperVSite : Type;
+            var fabricType = string.IsNullOrEmpty(this.Type) ? FabricProviders.HyperVSite
+                : this.Type;
 
             var input = new FabricCreationInput();
             input.Properties = new FabricCreationInputProperties();
 
-            if (string.IsNullOrEmpty(Location))
+            if (string.IsNullOrEmpty(this.Location))
             {
                 input.Properties.CustomDetails = new FabricSpecificCreationInput();
             }
             else
             {
-                input.Properties.CustomDetails = new AzureFabricCreationInput {Location = Location};
+                input.Properties.CustomDetails =
+                    new AzureFabricCreationInput { Location = this.Location };
             }
 
-            var response = RecoveryServicesClient.CreateAzureSiteRecoveryFabric(Name,
+            var response = this.RecoveryServicesClient.CreateAzureSiteRecoveryFabric(
+                this.Name,
                 input);
 
-            WriteObject(response);
+            this.WriteObject(response);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

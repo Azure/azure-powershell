@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery Network mappings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(
+        VerbsCommon.Get,
         "AzureRmRecoveryServicesAsrNetworkMapping",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRNetworkMapping")]
@@ -32,7 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Azure VM Network Id.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Primary Network object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -56,29 +60,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObjectWithName:
-                    ByObjectWithName();
+                    this.ByObjectWithName();
                     break;
                 case ASRParameterSets.ByObject:
-                    ByObject();
+                    this.ByObject();
                     break;
             }
-        }
-
-        /// <summary>
-        ///     Get network mapping by name.
-        /// </summary>
-        private void ByObjectWithName()
-        {
-            var networkMapping = RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
-                Utilities.GetValueFromArmId(Network.ID,
-                    ARMResourceTypeConstants.ReplicationFabrics),
-                Network.Name,
-                Name);
-
-            WriteNetworkMapping(networkMapping);
         }
 
         /// <summary>
@@ -86,31 +76,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void ByObject()
         {
-            var networkMappingList = RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
-                Utilities.GetValueFromArmId(Network.ID,
-                    ARMResourceTypeConstants.ReplicationFabrics),
-                Network.Name);
+            var networkMappingList =
+                this.RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
+                    Utilities.GetValueFromArmId(
+                        this.Network.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    this.Network.Name);
 
-            WriteNetworkMappings(networkMappingList);
+            this.WriteNetworkMappings(networkMappingList);
         }
 
         /// <summary>
-        ///     Write Network mappings.
+        ///     Get network mapping by name.
         /// </summary>
-        /// <param name="networkMappings">List of Network mappings</param>
-        private void WriteNetworkMappings(IList<NetworkMapping> networkMappings)
+        private void ByObjectWithName()
         {
-            WriteObject(networkMappings.Select(nm => new ASRNetworkMapping(nm)),
-                true);
+            var networkMapping = this.RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
+                Utilities.GetValueFromArmId(
+                    this.Network.ID,
+                    ARMResourceTypeConstants.ReplicationFabrics),
+                this.Network.Name,
+                this.Name);
+
+            this.WriteNetworkMapping(networkMapping);
         }
 
         /// <summary>
         ///     Write Network mapping.
         /// </summary>
         /// <param name="networkMapping">Network mapping</param>
-        private void WriteNetworkMapping(NetworkMapping networkMapping)
+        private void WriteNetworkMapping(
+            NetworkMapping networkMapping)
         {
-            WriteObject(new ASRNetworkMapping(networkMapping));
+            this.WriteObject(new ASRNetworkMapping(networkMapping));
+        }
+
+        /// <summary>
+        ///     Write Network mappings.
+        /// </summary>
+        /// <param name="networkMappings">List of Network mappings</param>
+        private void WriteNetworkMappings(
+            IList<NetworkMapping> networkMappings)
+        {
+            this.WriteObject(
+                networkMappings.Select(nm => new ASRNetworkMapping(nm)),
+                true);
         }
     }
 }

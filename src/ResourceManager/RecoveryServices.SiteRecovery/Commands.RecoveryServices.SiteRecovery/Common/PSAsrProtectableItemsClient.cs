@@ -27,23 +27,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="protectionContainerName">Protection Container Name</param>
         /// <returns>Protection entity list response</returns>
-        public List<ProtectableItem> GetAzureSiteRecoveryProtectableItem(string fabricName,
+        public List<ProtectableItem> GetAzureSiteRecoveryProtectableItem(
+            string fabricName,
             string protectionContainerName)
         {
-            var firstPage = GetSiteRecoveryClient()
+            var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationProtectableItems
-                .ListByReplicationProtectionContainersWithHttpMessagesAsync(fabricName,
+                .ListByReplicationProtectionContainersWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationProtectableItems
                     .ListByReplicationProtectionContainersNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
@@ -55,15 +59,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="protectionContainerName">Protection Container Name</param>
         /// <param name="replicatedProtectedItemName">Virtual Machine Name</param>
         /// <returns>Replicated Protected Item response</returns>
-        public ProtectableItem GetAzureSiteRecoveryProtectableItem(string fabricName,
+        public ProtectableItem GetAzureSiteRecoveryProtectableItem(
+            string fabricName,
             string protectionContainerName,
             string replicatedProtectedItemName)
         {
-            return GetSiteRecoveryClient()
-                .ReplicationProtectableItems.GetWithHttpMessagesAsync(fabricName,
+            return this.GetSiteRecoveryClient()
+                .ReplicationProtectableItems.GetWithHttpMessagesAsync(
+                    fabricName,
                     protectionContainerName,
                     replicatedProtectedItemName,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;

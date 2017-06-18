@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Resumes Azure Site Recovery Job.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Resume,
+    [Cmdlet(
+        VerbsLifecycle.Resume,
         "AzureRmRecoveryServicesAsrJob",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Resume-ASRJob")]
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Job ID.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -38,7 +40,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Job Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -59,15 +62,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    Name = InputObject.Name;
-                    ResumesByName();
+                    this.Name = this.InputObject.Name;
+                    this.ResumesByName();
                     break;
 
                 case ASRParameterSets.ByName:
-                    ResumesByName();
+                    this.ResumesByName();
                     break;
             }
         }
@@ -78,22 +81,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private void ResumesByName()
         {
             var resumeJobParams = new ResumeJobParams();
-            if (string.IsNullOrEmpty(Comments))
+            if (string.IsNullOrEmpty(this.Comments))
             {
-                Comments = " ";
+                this.Comments = " ";
             }
 
             resumeJobParams.Properties = new ResumeJobParamsProperties();
-            resumeJobParams.Properties.Comments = Comments;
+            resumeJobParams.Properties.Comments = this.Comments;
 
-            var response = RecoveryServicesClient.ResumeAzureSiteRecoveryJob(Name,
+            var response = this.RecoveryServicesClient.ResumeAzureSiteRecoveryJob(
+                this.Name,
                 resumeJobParams);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

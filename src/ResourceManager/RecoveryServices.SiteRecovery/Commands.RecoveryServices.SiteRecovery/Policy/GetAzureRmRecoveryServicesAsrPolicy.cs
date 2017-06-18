@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery Policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(
+        VerbsCommon.Get,
         "AzureRmRecoveryServicesAsrPolicy",
         DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRPolicy")]
@@ -35,7 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets name of the Policy.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -43,7 +45,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets friendly name of the Policy.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByFriendlyName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByFriendlyName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
@@ -55,18 +58,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByFriendlyName:
-                    GetByFriendlyName();
+                    this.GetByFriendlyName();
                     break;
                 case ASRParameterSets.ByName:
-                    GetByName();
+                    this.GetByName();
                     break;
                 case ASRParameterSets.Default:
-                    GetAll();
+                    this.GetAll();
                     break;
             }
+        }
+
+        /// <summary>
+        ///     Queries all / by default.
+        /// </summary>
+        private void GetAll()
+        {
+            var policyListResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
+
+            this.WritePolicies(policyListResponse);
         }
 
         /// <summary>
@@ -74,19 +87,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void GetByFriendlyName()
         {
-            var profileListResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
+            var profileListResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
             var found = false;
 
             foreach (var policy in profileListResponse)
             {
                 if (0 ==
-                    string.Compare(FriendlyName,
+                    string.Compare(
+                        this.FriendlyName,
                         policy.Properties.FriendlyName,
                         true))
                 {
                     var policyByName =
-                        RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name);
-                    WritePolicy(policyByName);
+                        this.RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name);
+                    this.WritePolicy(policyByName);
 
                     found = true;
                 }
@@ -94,9 +108,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (!found)
             {
-                throw new InvalidOperationException(string.Format(Resources.PolicyNotFound,
-                    FriendlyName,
-                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.PolicyNotFound,
+                        this.FriendlyName,
+                        PSRecoveryServicesClient.asrVaultCreds.ResourceName));
             }
         }
 
@@ -107,23 +123,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             try
             {
-                var policyResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(Name);
+                var policyResponse =
+                    this.RecoveryServicesClient.GetAzureSiteRecoveryPolicy(this.Name);
 
                 if (policyResponse != null)
                 {
-                    WritePolicy(policyResponse);
+                    this.WritePolicy(policyResponse);
                 }
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code,
+                if (string.Compare(
+                        ex.Error.Code,
                         "NotFound",
                         StringComparison.OrdinalIgnoreCase) ==
                     0)
                 {
-                    throw new InvalidOperationException(string.Format(Resources.PolicyNotFound,
-                        Name,
-                        PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources.PolicyNotFound,
+                            this.Name,
+                            PSRecoveryServicesClient.asrVaultCreds.ResourceName));
                 }
 
                 throw;
@@ -131,22 +151,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Queries all / by default.
-        /// </summary>
-        private void GetAll()
-        {
-            var policyListResponse = RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
-
-            WritePolicies(policyListResponse);
-        }
-
-        /// <summary>
         ///     Write Policies.
         /// </summary>
         /// <param name="policy">List of Policies</param>
-        private void WritePolicies(IList<Policy> policy)
+        private void WritePolicies(
+            IList<Policy> policy)
         {
-            WriteObject(policy.Select(p => new ASRPolicy(p)),
+            this.WriteObject(
+                policy.Select(p => new ASRPolicy(p)),
                 true);
         }
 
@@ -154,9 +166,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Write Policy.
         /// </summary>
         /// <param name="policy">Policy object</param>
-        private void WritePolicy(Policy policy)
+        private void WritePolicy(
+            Policy policy)
         {
-            WriteObject(new ASRPolicy(policy));
+            this.WriteObject(new ASRPolicy(policy));
         }
     }
 }

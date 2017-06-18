@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Used to initiate a apply recovery point operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start,
+    [Cmdlet(
+        VerbsLifecycle.Start,
         "AzureRmRecoveryServicesAsrApplyRecoveryPoint",
         DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [Alias("Start-ASRApplyRecoveryPoint")]
@@ -32,7 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Recovery Plan object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByPEObject,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRRecoveryPoint RecoveryPoint { get; set; }
@@ -40,7 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Replication Protected Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByPEObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -67,27 +70,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (!string.IsNullOrEmpty(DataEncryptionPrimaryCertFile))
+            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
             {
-                var certBytesPrimary = File.ReadAllBytes(DataEncryptionPrimaryCertFile);
-                primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+                var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
             }
 
-            if (!string.IsNullOrEmpty(DataEncryptionSecondaryCertFile))
+            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
             {
-                var certBytesSecondary = File.ReadAllBytes(DataEncryptionSecondaryCertFile);
-                secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+                var certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
             }
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByPEObject:
-                    fabricName = Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                    this.fabricName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
                         ARMResourceTypeConstants.ReplicationFabrics);
-                    protectionContainerName = Utilities.GetValueFromArmId(
-                        ReplicationProtectedItem.ID,
+                    this.protectionContainerName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
                         ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    StartPEApplyRecoveryPoint();
+                    this.StartPEApplyRecoveryPoint();
                     break;
             }
         }
@@ -99,40 +103,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var applyRecoveryPointInputProperties = new ApplyRecoveryPointInputProperties
             {
-                RecoveryPointId = RecoveryPoint.ID,
+                RecoveryPointId = this.RecoveryPoint.ID,
                 ProviderSpecificDetails = new ApplyRecoveryPointProviderSpecificInput()
             };
 
             var input =
-                new ApplyRecoveryPointInput {Properties = applyRecoveryPointInputProperties};
+                new ApplyRecoveryPointInput { Properties = applyRecoveryPointInputProperties };
 
             if (0 ==
-                string.Compare(ReplicationProtectedItem.ReplicationProvider,
+                string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
                     StringComparison.OrdinalIgnoreCase))
             {
                 var hyperVReplicaAzureApplyRecoveryPointInput =
                     new HyperVReplicaAzureApplyRecoveryPointInput
                     {
-                        PrimaryKekCertificatePfx = primaryKekCertpfx,
-                        SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                        PrimaryKekCertificatePfx = this.primaryKekCertpfx,
+                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
                         VaultLocation = "dummy"
                     };
                 input.Properties.ProviderSpecificDetails =
                     hyperVReplicaAzureApplyRecoveryPointInput;
             }
 
-            var response = RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(
-                fabricName,
-                protectionContainerName,
-                ReplicationProtectedItem.Name,
+            var response = this.RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(
+                this.fabricName,
+                this.protectionContainerName,
+                this.ReplicationProtectedItem.Name,
                 input);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
 
         #region local parameters

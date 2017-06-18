@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     // <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove,
+    [Cmdlet(
+        VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrStorageClassificationMapping",
         DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Remove-ASRStorageClassificationMapping")]
@@ -36,32 +37,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets primary storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.Default,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         [Alias("StorageClassificationMapping")]
         public ASRStorageClassificationMapping InputObject { get; set; }
-
-        /// <summary>
-        ///     ProcessRecord of the command.
-        /// </summary>
-        public override void ExecuteSiteRecoveryCmdlet()
-        {
-            base.ExecuteSiteRecoveryCmdlet();
-
-            var tokens = InputObject.Id.UnFormatArmId(ARMResourceIdPaths
-                .StorageClassificationMappingResourceIdPath);
-            var operationResponse = RecoveryServicesClient.UnmapStorageClassifications(tokens[0],
-                tokens[1],
-                tokens[2]);
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                    PSRecoveryServicesClient
-                        .GetJobIdFromReponseLocation(operationResponse.Location));
-
-            WriteObject(new ASRJob(jobResponse));
-        }
 
         /// <summary>
         ///     Add Site Recovery aliases
@@ -74,18 +56,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile();
 
                 System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode
-                    .CurrentRunspace);
-                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly()
-                        .Location),
-                    "RecoveryServicesAsrStartup.ps1")));
+                invoker = System.Management.Automation.PowerShell.Create(
+                    RunspaceMode.CurrentRunspace);
+                invoker.AddScript(
+                    File.ReadAllText(
+                        FileUtilities.GetContentFilePath(
+                            Path.GetDirectoryName(
+                                Assembly.GetExecutingAssembly()
+                                    .Location),
+                            "RecoveryServicesAsrStartup.ps1")));
                 invoker.Invoke();
             }
             catch
             {
                 // This may throw exception for tests, ignore.
             }
+        }
+
+        /// <summary>
+        ///     ProcessRecord of the command.
+        /// </summary>
+        public override void ExecuteSiteRecoveryCmdlet()
+        {
+            base.ExecuteSiteRecoveryCmdlet();
+
+            var tokens = this.InputObject.Id.UnFormatArmId(
+                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
+            var operationResponse = this.RecoveryServicesClient.UnmapStorageClassifications(
+                tokens[0],
+                tokens[1],
+                tokens[2]);
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
+
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

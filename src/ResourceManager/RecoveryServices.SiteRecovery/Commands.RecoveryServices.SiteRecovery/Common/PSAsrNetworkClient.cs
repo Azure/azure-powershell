@@ -23,21 +23,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public partial class PSRecoveryServicesClient
     {
         /// <summary>
+        ///     Gets a particular Azure Site Recovery Network under a Server
+        /// </summary>
+        /// <param name="fabricName">Fabric name</param>
+        /// <param name="networkName">Network name</param>
+        /// <returns>Network response</returns>
+        public Network GetAzureSiteRecoveryNetwork(
+            string fabricName,
+            string networkName)
+        {
+            return this.GetSiteRecoveryClient()
+                .ReplicationNetworks.GetWithHttpMessagesAsync(
+                    fabricName,
+                    networkName,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
+        }
+
+        /// <summary>
         ///     Gets all Azure Site Recovery Networks.
         /// </summary>
         /// <returns>Network list response</returns>
         public List<Network> GetAzureSiteRecoveryNetworks()
         {
-            var firstPage = GetSiteRecoveryClient()
-                .ReplicationNetworks.ListWithHttpMessagesAsync(GetRequestHeaders(true))
+            var firstPage = this.GetSiteRecoveryClient()
+                .ReplicationNetworks.ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationNetworks.ListNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
@@ -48,40 +70,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="serverId">Server ID</param>
         /// <returns>Network list response</returns>
-        public List<Network> GetAzureSiteRecoveryNetworks(string fabricName)
+        public List<Network> GetAzureSiteRecoveryNetworks(
+            string fabricName)
         {
-            var firstPage = GetSiteRecoveryClient()
-                .ReplicationNetworks.ListByReplicationFabricsWithHttpMessagesAsync(fabricName,
-                    GetRequestHeaders(true))
+            var firstPage = this.GetSiteRecoveryClient()
+                .ReplicationNetworks.ListByReplicationFabricsWithHttpMessagesAsync(
+                    fabricName,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationNetworks.ListByReplicationFabricsNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
-        }
-
-        /// <summary>
-        ///     Gets a particular Azure Site Recovery Network under a Server
-        /// </summary>
-        /// <param name="fabricName">Fabric name</param>
-        /// <param name="networkName">Network name</param>
-        /// <returns>Network response</returns>
-        public Network GetAzureSiteRecoveryNetwork(string fabricName,
-            string networkName)
-        {
-            return GetSiteRecoveryClient()
-                .ReplicationNetworks.GetWithHttpMessagesAsync(fabricName,
-                    networkName,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult()
-                .Body;
         }
     }
 }

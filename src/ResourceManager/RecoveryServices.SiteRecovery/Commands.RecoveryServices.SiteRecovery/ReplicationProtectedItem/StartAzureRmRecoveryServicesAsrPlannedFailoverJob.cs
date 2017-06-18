@@ -24,10 +24,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Used to initiate a failover operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start,
+    [Cmdlet(
+        VerbsLifecycle.Start,
         "AzureRmRecoveryServicesAsrPlannedFailoverJob",
         DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
-    [Alias("Start-ASRPFO",
+    [Alias(
+        "Start-ASRPFO",
         "Start-ASRPlannedFailoverJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrPlannedFailoverJob : SiteRecoveryCmdletBase
@@ -35,7 +37,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Recovery Plan object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -44,7 +47,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Replication Protected Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPIObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -54,32 +58,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets Failover direction for the protected Item.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateSet(Constants.PrimaryToRecovery,
+        [ValidateSet(
+            Constants.PrimaryToRecovery,
             Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
         /// <summary>
         ///     Gets or sets the Optimize value.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipeline = false)]
-        [ValidateSet(Constants.ForDownTime,
+        [ValidateSet(
+            Constants.ForDownTime,
             Constants.ForSynchronization)]
         public string Optimize { get; set; }
 
         /// <summary>
         ///     Gets or sets the recovery vm creation value.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipeline = false)]
-        [ValidateSet(Constants.Yes,
+        [ValidateSet(
+            Constants.Yes,
             Constants.No)]
         public string CreateVmIfNotFound { get; set; }
 
         /// <summary>
         ///     Gets or sets hyper-V recovery services provider to create vm on.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPIObject,
             Mandatory = false,
             ValueFromPipeline = false)]
         public ASRRecoveryServicesProvider ServicesProvider { get; set; }
@@ -87,7 +97,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
@@ -95,7 +106,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionSecondaryCertFile { get; set; }
@@ -107,30 +119,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (!string.IsNullOrEmpty(DataEncryptionPrimaryCertFile))
+            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
             {
-                var certBytesPrimary = File.ReadAllBytes(DataEncryptionPrimaryCertFile);
-                primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+                var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
             }
 
-            if (!string.IsNullOrEmpty(DataEncryptionSecondaryCertFile))
+            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
             {
-                var certBytesSecondary = File.ReadAllBytes(DataEncryptionSecondaryCertFile);
-                secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+                var certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
             }
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByRPIObject:
-                    protectionContainerName = Utilities.GetValueFromArmId(
-                        ReplicationProtectedItem.ID,
+                    this.protectionContainerName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
                         ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    fabricName = Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                    this.fabricName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
                         ARMResourceTypeConstants.ReplicationFabrics);
-                    StartRPIPlannedFailover();
+                    this.StartRPIPlannedFailover();
                     break;
                 case ASRParameterSets.ByRPObject:
-                    StartRpPlannedFailover();
+                    this.StartRpPlannedFailover();
                     break;
             }
         }
@@ -142,23 +155,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var plannedFailoverInputProperties = new PlannedFailoverInputProperties
             {
-                FailoverDirection = Direction,
+                FailoverDirection = this.Direction,
                 ProviderSpecificDetails = new ProviderSpecificFailoverInput()
             };
 
-            var input = new PlannedFailoverInput {Properties = plannedFailoverInputProperties};
+            var input = new PlannedFailoverInput { Properties = plannedFailoverInputProperties };
 
             if (0 ==
-                string.Compare(ReplicationProtectedItem.ReplicationProvider,
+                string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
                     StringComparison.OrdinalIgnoreCase))
             {
-                if (Direction == Constants.PrimaryToRecovery)
+                if (this.Direction == Constants.PrimaryToRecovery)
                 {
                     var failoverInput = new HyperVReplicaAzureFailoverProviderInput
                     {
-                        PrimaryKekCertificatePfx = primaryKekCertpfx,
-                        SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                        PrimaryKekCertificatePfx = this.primaryKekCertpfx,
+                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
                         VaultLocation = "dummy"
                     };
                     input.Properties.ProviderSpecificDetails = failoverInput;
@@ -168,48 +182,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     var failbackInput = new HyperVReplicaAzureFailbackProviderInput
                     {
                         DataSyncOption =
-                            Optimize == Constants.ForDownTime ? Constants.ForDownTime
+                            this.Optimize == Constants.ForDownTime ? Constants.ForDownTime
                                 : Constants.ForSynchronization,
-                        RecoveryVmCreationOption = string.Compare(CreateVmIfNotFound,
+                        RecoveryVmCreationOption = string.Compare(
+                                                       this.CreateVmIfNotFound,
                                                        Constants.Yes,
                                                        StringComparison.OrdinalIgnoreCase) ==
                                                    0 ? Constants.CreateVmIfNotFound
                             : Constants.NoAction
                     };
 
-                    if (string.Compare(CreateVmIfNotFound,
-                            Constants.Yes,
-                            StringComparison.OrdinalIgnoreCase) ==
-                        0 &&
-                        RecoveryServicesClient.GetAzureSiteRecoveryFabric(fabricName)
+                    if ((string.Compare(
+                             this.CreateVmIfNotFound,
+                             Constants.Yes,
+                             StringComparison.OrdinalIgnoreCase) ==
+                         0) &&
+                        this.RecoveryServicesClient.GetAzureSiteRecoveryFabric(this.fabricName)
                             .Properties.CustomDetails is HyperVSiteDetails)
                     {
-                        if (ServicesProvider == null ||
-                            string.Compare(ServicesProvider.FabricType,
-                                Constants.HyperVSite) !=
-                            0)
+                        if ((this.ServicesProvider == null) ||
+                            (string.Compare(
+                                 this.ServicesProvider.FabricType,
+                                 Constants.HyperVSite) !=
+                             0))
                         {
-                            throw new InvalidOperationException(Resources
-                                .ImproperServerObjectPassedForHyperVFailback);
+                            throw new InvalidOperationException(
+                                Resources.ImproperServerObjectPassedForHyperVFailback);
                         }
 
-                        failbackInput.ProviderIdForAlternateRecovery = ServicesProvider.ID;
+                        failbackInput.ProviderIdForAlternateRecovery = this.ServicesProvider.ID;
                     }
 
                     input.Properties.ProviderSpecificDetails = failbackInput;
                 }
             }
 
-            var response = RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(fabricName,
-                protectionContainerName,
-                ReplicationProtectedItem.Name,
+            var response = this.RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
+                this.fabricName,
+                this.protectionContainerName,
+                this.ReplicationProtectedItem.Name,
                 input);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
@@ -218,13 +235,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private void StartRpPlannedFailover()
         {
             // Refresh RP Object
-            var rp = RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(RecoveryPlan.Name);
+            var rp = this.RecoveryServicesClient.GetAzureSiteRecoveryRecoveryPlan(
+                this.RecoveryPlan.Name);
 
             var recoveryPlanPlannedFailoverInputProperties =
                 new RecoveryPlanPlannedFailoverInputProperties
                 {
                     FailoverDirection =
-                        Direction == PossibleOperationsDirections.PrimaryToRecovery.ToString()
+                        this.Direction == PossibleOperationsDirections.PrimaryToRecovery.ToString()
                             ? PossibleOperationsDirections.PrimaryToRecovery
                             : PossibleOperationsDirections.RecoveryToPrimary,
                     ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>()
@@ -233,17 +251,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             foreach (var replicationProvider in rp.Properties.ReplicationProviders)
             {
                 if (0 ==
-                    string.Compare(replicationProvider,
+                    string.Compare(
+                        replicationProvider,
                         Constants.HyperVReplicaAzure,
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    if (Direction == Constants.PrimaryToRecovery)
+                    if (this.Direction == Constants.PrimaryToRecovery)
                     {
                         var recoveryPlanHyperVReplicaAzureFailoverInput =
                             new RecoveryPlanHyperVReplicaAzureFailoverInput
                             {
-                                PrimaryKekCertificatePfx = primaryKekCertpfx,
-                                SecondaryKekCertificatePfx = secondaryKekCertpfx,
+                                PrimaryKekCertificatePfx = this.primaryKekCertpfx,
+                                SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
                                 VaultLocation = "dummy"
                             };
                         recoveryPlanPlannedFailoverInputProperties.ProviderSpecificDetails.Add(
@@ -255,9 +274,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             new RecoveryPlanHyperVReplicaAzureFailbackInput
                             {
                                 DataSyncOption =
-                                    Optimize == Constants.ForDownTime ? DataSyncStatus.ForDownTime
+                                    this.Optimize == Constants.ForDownTime
+                                        ? DataSyncStatus.ForDownTime
                                         : DataSyncStatus.ForSynchronization,
-                                RecoveryVmCreationOption = string.Compare(CreateVmIfNotFound,
+                                RecoveryVmCreationOption = string.Compare(
+                                                               this.CreateVmIfNotFound,
                                                                Constants.Yes,
                                                                StringComparison
                                                                    .OrdinalIgnoreCase) ==
@@ -270,21 +291,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
-            var recoveryPlanPlannedFailoverInput =
-                new RecoveryPlanPlannedFailoverInput
-                {
-                    Properties = recoveryPlanPlannedFailoverInputProperties
-                };
+            var recoveryPlanPlannedFailoverInput = new RecoveryPlanPlannedFailoverInput
+            {
+                Properties = recoveryPlanPlannedFailoverInputProperties
+            };
 
-            var response = RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
-                RecoveryPlan.Name,
+            var response = this.RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(
+                this.RecoveryPlan.Name,
                 recoveryPlanPlannedFailoverInput);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
 
         #region local parameters

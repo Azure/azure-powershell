@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery storage classification.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(
+        VerbsCommon.Get,
         "AzureRmRecoveryServicesAsrStorageClassificationMapping",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRStorageClassificationMapping")]
@@ -32,7 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets primary storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -56,40 +60,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var mappings =
-                RecoveryServicesClient.GetAzureSiteRecoveryStorageClassificationMapping();
+            var mappings = this.RecoveryServicesClient
+                .GetAzureSiteRecoveryStorageClassificationMapping();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObjectWithName:
-                    mappings = mappings.Where(item => item.Name.Equals(Name,
-                            StringComparison.InvariantCultureIgnoreCase))
-                        .ToList();
-                    mappings = mappings.Where(item => item.GetPrimaryStorageClassificationId()
-                            .Equals(StorageClassification.Id,
+                    mappings = mappings.Where(
+                            item => item.Name.Equals(
+                                this.Name,
                                 StringComparison.InvariantCultureIgnoreCase))
+                        .ToList();
+                    mappings = mappings.Where(
+                            item => item.GetPrimaryStorageClassificationId()
+                                .Equals(
+                                    this.StorageClassification.Id,
+                                    StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
                     break;
                 case ASRParameterSets.ByObject:
-                    mappings = mappings.Where(item => item.GetPrimaryStorageClassificationId()
-                            .Equals(StorageClassification.Id,
-                                StringComparison.InvariantCultureIgnoreCase))
+                    mappings = mappings.Where(
+                            item => item.GetPrimaryStorageClassificationId()
+                                .Equals(
+                                    this.StorageClassification.Id,
+                                    StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
                     break;
             }
 
-            var psObject = mappings.ConvertAll(item =>
-            {
-                return new ASRStorageClassificationMapping
+            var psObject = mappings.ConvertAll(
+                item =>
                 {
-                    Id = item.Id,
-                    Name = item.Name,
-                    PrimaryClassificationId = item.GetPrimaryStorageClassificationId(),
-                    RecoveryClassificationId = item.Properties.TargetStorageClassificationId
-                };
-            });
+                    return new ASRStorageClassificationMapping
+                    {
+                        Id = item.Id,
+                        Name = item.Name,
+                        PrimaryClassificationId = item.GetPrimaryStorageClassificationId(),
+                        RecoveryClassificationId = item.Properties.TargetStorageClassificationId
+                    };
+                });
 
-            WriteObject(psObject,
+            this.WriteObject(
+                psObject,
                 true);
         }
     }

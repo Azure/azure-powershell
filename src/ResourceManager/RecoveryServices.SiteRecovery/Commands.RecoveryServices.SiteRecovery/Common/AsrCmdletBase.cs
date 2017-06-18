@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public abstract class SiteRecoveryCmdletBase : AzureRMCmdlet
     {
         /// <summary>
+        ///     Recovery Services client.
+        /// </summary>
+        private PSRecoveryServicesClient recoveryServicesClient;
+
+        /// <summary>
         ///     Gets or sets a value indicating whether stop processing has been triggered.
         /// </summary>
         internal bool StopProcessingFlag { get; set; }
@@ -44,19 +49,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             get
             {
-                if (recoveryServicesClient == null)
+                if (this.recoveryServicesClient == null)
                 {
-                    recoveryServicesClient = new PSRecoveryServicesClient(DefaultProfile);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(this.DefaultProfile);
                 }
 
-                return recoveryServicesClient;
+                return this.recoveryServicesClient;
             }
         }
 
         /// <summary>
-        ///     Recovery Services client.
+        ///     Overriding base implementation go execute cmdlet.
         /// </summary>
-        private PSRecoveryServicesClient recoveryServicesClient;
+        public override void ExecuteCmdlet()
+        {
+            try
+            {
+                base.ExecuteCmdlet();
+                this.ExecuteSiteRecoveryCmdlet();
+            }
+            catch (Exception ex)
+            {
+                this.HandleException(ex);
+            }
+        }
 
         /// <summary>
         ///     Virtual method to be implemented by Site Recovery cmdlets.
@@ -69,47 +85,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Overriding base implementation go execute cmdlet.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            try
-            {
-                base.ExecuteCmdlet();
-                ExecuteSiteRecoveryCmdlet();
-            }
-            catch (Exception ex)
-            {
-                HandleException(ex);
-            }
-        }
-
-        /// <summary>
         ///     Exception handler.
         /// </summary>
         /// <param name="ex">Exception to handle.</param>
-        public void HandleException(Exception ex)
+        public void HandleException(
+            Exception ex)
         {
             var clientRequestIdMsg = string.Empty;
-            if (recoveryServicesClient != null)
+            if (this.recoveryServicesClient != null)
             {
                 clientRequestIdMsg = "ClientRequestId: " +
-                                     recoveryServicesClient.ClientRequestId +
+                                     this.recoveryServicesClient.ClientRequestId +
                                      "\n";
             }
 
             var cloudException = ex as CloudException;
-            if (cloudException != null &&
-                cloudException.Body != null &&
-                cloudException.Response != null)
+            if ((cloudException != null) &&
+                (cloudException.Body != null) &&
+                (cloudException.Response != null))
             {
                 try
                 {
                     if (cloudException.Message != null)
                     {
                         var error =
-                            SafeJsonConvert.DeserializeObject<ARMError>(cloudException.Response
-                                .Content);
+                            SafeJsonConvert.DeserializeObject<ARMError>(
+                                cloudException.Response.Content);
                         ;
                         var exceptionMessage = new StringBuilder();
                         exceptionMessage.Append(Resources.CloudExceptionDetails);
@@ -148,20 +149,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         throw new InvalidOperationException(exceptionMessage.ToString());
                     }
 
-                    throw new Exception(string.Format(Resources.InvalidCloudExceptionErrorMessage,
+                    throw new Exception(
+                        string.Format(
+                            Resources.InvalidCloudExceptionErrorMessage,
                             clientRequestIdMsg + ex.Message),
                         ex);
                 }
                 catch (XmlException)
                 {
                     throw new XmlException(
-                        string.Format(Resources.InvalidCloudExceptionErrorMessage,
+                        string.Format(
+                            Resources.InvalidCloudExceptionErrorMessage,
                             cloudException.Message),
                         cloudException);
                 }
                 catch (SerializationException)
                 {
-                    throw new SerializationException(string.Format(
+                    throw new SerializationException(
+                        string.Format(
                             Resources.InvalidCloudExceptionErrorMessage,
                             clientRequestIdMsg + cloudException.Message),
                         cloudException);
@@ -169,7 +174,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 catch (JsonReaderException)
                 {
                     throw new JsonReaderException(
-                        string.Format(Resources.InvalidCloudExceptionErrorMessage,
+                        string.Format(
+                            Resources.InvalidCloudExceptionErrorMessage,
                             clientRequestIdMsg + cloudException.Message),
                         cloudException);
                 }
@@ -177,7 +183,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (ex.Message != null)
             {
-                throw new Exception(string.Format(Resources.InvalidCloudExceptionErrorMessage,
+                throw new Exception(
+                    string.Format(
+                        Resources.InvalidCloudExceptionErrorMessage,
                         clientRequestIdMsg + ex.Message),
                     ex);
             }
@@ -188,21 +196,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="jobId">Id of the job to wait for.</param>
         /// <returns>Final job response</returns>
-        public Job WaitForJobCompletion(string jobId)
+        public Job WaitForJobCompletion(
+            string jobId)
         {
             Job job = null;
             do
             {
                 Thread.Sleep(PSRecoveryServicesClient.TimeToSleepBeforeFetchingJobDetailsAgain);
-                job = RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(jobId);
-                WriteProgress(new ProgressRecord(0,
-                    Resources.WaitingForCompletion,
-                    job.Properties.State));
-            } while (!(job.Properties.State == TaskStatus.Cancelled ||
-                       job.Properties.State == TaskStatus.Failed ||
-                       job.Properties.State == TaskStatus.Suspended ||
-                       job.Properties.State == TaskStatus.Succeeded ||
-                       StopProcessingFlag));
+                job = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(jobId);
+                this.WriteProgress(
+                    new ProgressRecord(
+                        0,
+                        Resources.WaitingForCompletion,
+                        job.Properties.State));
+            }
+            while (!((job.Properties.State == TaskStatus.Cancelled) ||
+                     (job.Properties.State == TaskStatus.Failed) ||
+                     (job.Properties.State == TaskStatus.Suspended) ||
+                     (job.Properties.State == TaskStatus.Succeeded) ||
+                     this.StopProcessingFlag));
 
             return job;
         }
@@ -214,7 +226,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             // Ctrl + C and etc
             base.StopProcessing();
-            StopProcessingFlag = true;
+            this.StopProcessingFlag = true;
         }
 
         /// <summary>
@@ -222,18 +234,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="replicationProvider">Replication provider.</param>
         /// <param name="paramName">Parameter name.</param>
-        protected void ValidateUsageById(string replicationProvider,
+        protected void ValidateUsageById(
+            string replicationProvider,
             string paramName)
         {
             if (replicationProvider != Constants.HyperVReplica2012)
             {
-                throw new Exception(string.Format(
-                    "Call using ID based parameter {0} is not supported for this provider. Please use its corresponding full object parameter instead",
-                    paramName));
+                throw new Exception(
+                    string.Format(
+                        "Call using ID based parameter {0} is not supported for this provider. Please use its corresponding full object parameter instead",
+                        paramName));
             }
 
-            WriteWarningWithTimestamp(
-                string.Format(Resources.IDBasedParamUsageNotSupportedFromNextRelease,
+            this.WriteWarningWithTimestamp(
+                string.Format(
+                    Resources.IDBasedParamUsageNotSupportedFromNextRelease,
                     paramName));
         }
     }

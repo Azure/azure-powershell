@@ -35,40 +35,41 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
 {
     public abstract class AsrTestsBase : RMTestBase
     {
-        public ResourceManagementClient RmRestClient { get; private set; }
-        public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
-        public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
+        protected string vaultSettingsFilePath;
         private readonly ASRVaultCreds asrVaultCreds;
         private CSMTestEnvironmentFactory csmTestFactory;
         private readonly EnvironmentSetupHelper helper;
-        protected string vaultSettingsFilePath;
 
         protected AsrTestsBase()
         {
-            vaultSettingsFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+            this.vaultSettingsFilePath = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
                 "ScenarioTests\\vaultSettings.VaultCredentials");
 
-            if (File.Exists(vaultSettingsFilePath))
+            if (File.Exists(this.vaultSettingsFilePath))
             {
                 try
                 {
                     var serializer1 = new DataContractSerializer(typeof(ASRVaultCreds));
-                    using (var s = new FileStream(vaultSettingsFilePath,
+                    using (var s = new FileStream(
+                        this.vaultSettingsFilePath,
                         FileMode.Open,
                         FileAccess.Read,
                         FileShare.Read))
                     {
-                        asrVaultCreds = (ASRVaultCreds) serializer1.ReadObject(s);
+                        this.asrVaultCreds = (ASRVaultCreds)serializer1.ReadObject(s);
                     }
                 }
                 catch (XmlException xmlException)
                 {
-                    throw new XmlException("XML is malformed or file is empty",
+                    throw new XmlException(
+                        "XML is malformed or file is empty",
                         xmlException);
                 }
                 catch (SerializationException serializationException)
                 {
-                    throw new SerializationException("XML is malformed or file is empty",
+                    throw new SerializationException(
+                        "XML is malformed or file is empty",
                         serializationException);
                 }
             }
@@ -77,31 +78,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
                 throw new FileNotFoundException(
                     string.Format(
                         "Vault settings file not found at '{0}', please pass the file downloaded from portal",
-                        vaultSettingsFilePath));
+                        this.vaultSettingsFilePath));
             }
 
-            helper = new EnvironmentSetupHelper();
+            this.helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients(string scenario,
-            RestTestFramework.MockContext context)
-        {
-            RmRestClient = GetRmRestClient(context);
-            RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(context);
-            SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(scenario,
-                context);
-            helper.SetupManagementClients(RmRestClient,
-                RecoveryServicesMgmtClient,
-                SiteRecoveryMgmtClient);
-        }
+        public ResourceManagementClient RmRestClient { get; private set; }
+        public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
+        public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
 
-        public void RunPowerShellTest(string scenario,
+        public void RunPowerShellTest(
+            string scenario,
             params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
-            RunPsTestWorkflow(scenario,
+            this.RunPsTestWorkflow(
+                scenario,
                 () => scripts,
 
                 // no custom initializer
@@ -113,7 +108,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
                 mockName);
         }
 
-        public void RunPsTestWorkflow(string scenario,
+        public void RunPsTestWorkflow(
+            string scenario,
             Func<string[]> scriptBuilder,
             Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
@@ -121,49 +117,59 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
             string mockName)
         {
             var providers = new Dictionary<string, string>();
-            providers.Add("Microsoft.Resources",
+            providers.Add(
+                "Microsoft.Resources",
                 null);
-            providers.Add("Microsoft.Features",
+            providers.Add(
+                "Microsoft.Features",
                 null);
-            providers.Add("Microsoft.Authorization",
+            providers.Add(
+                "Microsoft.Authorization",
                 null);
-            providers.Add("Microsoft.Compute",
+            providers.Add(
+                "Microsoft.Compute",
                 null);
             var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient",
+            providersToIgnore.Add(
+                "Microsoft.Azure.Management.Resources.ResourceManagementClient",
                 "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true,
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(
+                true,
                 providers,
                 providersToIgnore);
 
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+            HttpMockServer.RecordsDirectory = Path.Combine(
+                AppDomain.CurrentDomain.BaseDirectory,
                 "SessionRecords");
 
-            using (var context = RestTestFramework.MockContext.Start(callingClassType,
+            using (var context = RestTestFramework.MockContext.Start(
+                callingClassType,
                 mockName))
             {
-                csmTestFactory = new CSMTestEnvironmentFactory();
+                this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if (initialize != null)
                 {
-                    initialize.Invoke(csmTestFactory);
+                    initialize.Invoke(this.csmTestFactory);
                 }
 
-                SetupManagementClients(scenario,
+                this.SetupManagementClients(
+                    scenario,
                     context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var testFolderName = scenario;
-                var callingClassName = callingClassType.Split(new[] {"."},
+                var callingClassName = callingClassType.Split(
+                        new[] { "." },
                         StringSplitOptions.RemoveEmptyEntries)
                     .Last();
                 var psFile = "ScenarioTests\\" + callingClassName + ".ps1";
-                var rmProfileModule = helper.RMProfileModule;
+                var rmProfileModule = this.helper.RMProfileModule;
                 var rmModulePath =
-                    helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1");
+                    this.helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1");
                 var recoveryServicesModulePath =
-                    helper.GetRMModulePath("AzureRM.RecoveryServices.psd1");
+                    this.helper.GetRMModulePath("AzureRM.RecoveryServices.psd1");
 
                 var modules = new List<string>();
 
@@ -172,7 +178,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
 
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                this.helper.SetupModules(
+                    AzureModule.AzureResourceManager,
                     modules.ToArray());
 
                 try
@@ -183,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
 
                         if (psScripts != null)
                         {
-                            helper.RunPowerShellTest(psScripts);
+                            this.helper.RunPowerShellTest(psScripts);
                         }
                     }
                 }
@@ -197,7 +204,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
             }
         }
 
-        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(string scenario,
+        protected void SetupManagementClients(
+            string scenario,
+            RestTestFramework.MockContext context)
+        {
+            this.RmRestClient = this.GetRmRestClient(context);
+            this.RecoveryServicesMgmtClient = this.GetRecoveryServicesManagementClient(context);
+            this.SiteRecoveryMgmtClient = this.GetSiteRecoveryManagementClient(
+                scenario,
+                context);
+            this.helper.SetupManagementClients(
+                this.RmRestClient,
+                this.RecoveryServicesMgmtClient,
+                this.SiteRecoveryMgmtClient);
+        }
+
+        private RecoveryServicesClient GetRecoveryServicesManagementClient(
+            RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<RecoveryServicesClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ResourceManagementClient GetRmRestClient(
+            RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(
+            string scenario,
             RestTestFramework.MockContext context)
         {
             var resourceGroupName = "";
@@ -205,51 +242,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTe
             switch (scenario)
             {
                 case Constants.NewModel:
-                    resourceName = asrVaultCreds.ResourceName;
-                    resourceGroupName = asrVaultCreds.ResourceGroupName;
+                    resourceName = this.asrVaultCreds.ResourceName;
+                    resourceGroupName = this.asrVaultCreds.ResourceGroupName;
                     break;
 
                 default:
-                    resourceName = asrVaultCreds.ResourceName;
-                    resourceGroupName = asrVaultCreds.ResourceGroupName;
+                    resourceName = this.asrVaultCreds.ResourceName;
+                    resourceGroupName = this.asrVaultCreds.ResourceGroupName;
                     break;
             }
 
             ;
 
-            var client = GetSiteRecoveryManagementClient(context);
+            var client = this.GetSiteRecoveryManagementClient(context);
             client.ResourceGroupName = resourceGroupName;
             client.ResourceName = resourceName;
 
             return client;
         }
 
-        private static bool IgnoreCertificateErrorHandler(object sender,
+        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(
+            RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<SiteRecoveryManagementClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static bool IgnoreCertificateErrorHandler(
+            object sender,
             X509Certificate certificate,
             X509Chain chain,
             SslPolicyErrors sslPolicyErrors)
         {
             return true;
-        }
-
-        private RecoveryServicesClient GetRecoveryServicesManagementClient(
-            RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<RecoveryServicesClient>(RestTestFramework
-                .TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(
-            RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<SiteRecoveryManagementClient>(RestTestFramework
-                .TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private ResourceManagementClient GetRmRestClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework
-                .TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

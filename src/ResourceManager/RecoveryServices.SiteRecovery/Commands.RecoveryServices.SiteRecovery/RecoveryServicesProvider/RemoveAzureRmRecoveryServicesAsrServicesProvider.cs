@@ -19,7 +19,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery Services Provider.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove,
+    [Cmdlet(
+        VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrServicesProvider",
         DefaultParameterSetName = ASRParameterSets.Default,
         SupportsShouldProcess = true)]
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the Recovery Services Provider.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.Default,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -50,10 +52,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(InputObject.FriendlyName,
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
                 VerbsCommon.Remove))
             {
-                RemoveServiceProvider();
+                this.RemoveServiceProvider();
             }
         }
 
@@ -64,26 +67,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             PSSiteRecoveryLongRunningOperation response;
 
-            if (!Force.IsPresent)
+            if (!this.Force.IsPresent)
             {
-                response = RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(
-                    Utilities.GetValueFromArmId(InputObject.ID,
+                response = this.RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(
+                    Utilities.GetValueFromArmId(
+                        this.InputObject.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
-                    InputObject.Name);
+                    this.InputObject.Name);
             }
             else
             {
-                response = RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(
-                    Utilities.GetValueFromArmId(InputObject.ID,
+                response = this.RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(
+                    Utilities.GetValueFromArmId(
+                        this.InputObject.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
-                    InputObject.Name);
+                    this.InputObject.Name);
             }
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }
