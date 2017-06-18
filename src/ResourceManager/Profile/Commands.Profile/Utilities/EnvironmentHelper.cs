@@ -59,30 +59,19 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 response = JsonConvert.DeserializeObject<MetadataResponse>(responseJson);
             }
 
-            if ((null == response) || (CheckIfAnyPropertyIsNull(response)))
+            if ((null == response) || string.IsNullOrEmpty(response.GalleryEndpoint) || string.IsNullOrEmpty(response.GraphEndpoint)
+                || string.IsNullOrEmpty(response.PortalEndpoint))
             {
-                throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");    
+                throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
             }
 
-            bool isAnyPropertyNull = response.authentication
-                                            .GetType()
-                                            .GetProperties()
-                                            .Select(pi => pi.GetValue(response.authentication))
-                                            .Any(value => (value == null) || (string.IsNullOrEmpty(value.ToString())));
-            if (isAnyPropertyNull)
+            if (null == response.authentication || string.IsNullOrEmpty(response.authentication.LoginEndpoint)
+                || (response.authentication.Audiences.Any(string.IsNullOrEmpty)))
             {
                 throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
             }
 
             return response;
-        }
-
-        internal static bool CheckIfAnyPropertyIsNull(MetadataResponse response)
-        {
-            return response.GetType()
-                           .GetProperties()
-                           .Select(pi => pi.GetValue(response))
-                           .Any(value => (value == null) || (string.IsNullOrEmpty(value.ToString())));
         }
     }
 }

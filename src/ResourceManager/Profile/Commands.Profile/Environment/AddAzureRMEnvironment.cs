@@ -142,9 +142,14 @@ namespace Microsoft.Azure.Commands.Profile
                 }
                 catch (AggregateException ae)
                 {
-                    foreach (Exception ex in ae.Flatten().InnerExceptions)
+                    if (ae.Flatten().InnerExceptions.Count > 1)
                     {
-                        throw ex;
+                        throw;
+                    }
+
+                    if (ae.InnerException != null)
+                    {
+                        throw ae.InnerException;
                     }
                 }
             }
