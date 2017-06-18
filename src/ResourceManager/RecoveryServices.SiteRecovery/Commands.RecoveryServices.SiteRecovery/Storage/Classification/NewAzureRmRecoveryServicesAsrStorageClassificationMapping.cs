@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Pairs storage classification
     /// </summary>
-    [Cmdlet(VerbsCommon.New,
+    [Cmdlet(
+        VerbsCommon.New,
         "AzureRmRecoveryServicesAsrStorageClassificationMapping",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("New-ASRStorageClassificationMapping")]
@@ -30,7 +31,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -38,7 +40,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets primary storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -47,7 +50,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets recovery storage classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRStorageClassification RecoveryStorageClassification { get; set; }
@@ -59,26 +63,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var mappingName = Name;
+            var mappingName = this.Name;
 
             var props = new StorageMappingInputProperties
             {
-                TargetStorageClassificationId = RecoveryStorageClassification.Id
+                TargetStorageClassificationId = this.RecoveryStorageClassification.Id
             };
 
-            var input = new StorageClassificationMappingInput {Properties = props};
+            var input = new StorageClassificationMappingInput { Properties = props };
 
-            var operationResponse = RecoveryServicesClient.MapStorageClassification(
-                PrimaryStorageClassification,
+            var operationResponse = this.RecoveryServicesClient.MapStorageClassification(
+                this.PrimaryStorageClassification,
                 input,
                 mappingName);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                    PSRecoveryServicesClient
-                        .GetJobIdFromReponseLocation(operationResponse.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

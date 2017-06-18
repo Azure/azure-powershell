@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery Protection Conatiner Mapping
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(
+        VerbsCommon.Get,
         "AzureRmRecoveryServicesAsrProtectionContainerMapping",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectionContainerMapping")]
@@ -35,7 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the Protection Conatiner Mapping
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -43,10 +45,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Protection Container Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -59,15 +63,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    GetAll();
+                    this.GetAll();
                     break;
                 case ASRParameterSets.ByObjectWithName:
-                    GetByName();
+                    this.GetByName();
                     break;
             }
+        }
+
+        /// <summary>
+        ///     Queries all Protection Container Mappings for a given Protection Container
+        /// </summary>
+        private void GetAll()
+        {
+            var protectionContainerMappingListResponse = this.RecoveryServicesClient
+                .GetAzureSiteRecoveryProtectionContainerMapping(
+                    Utilities.GetValueFromArmId(
+                        this.ProtectionContainer.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    this.ProtectionContainer.Name);
+
+            this.WriteProtectionContainerMappings(protectionContainerMappingListResponse);
         }
 
         /// <summary>
@@ -77,59 +96,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             try
             {
-                var protectionContainerMappingResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
-                        Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                var protectionContainerMappingResponse = this.RecoveryServicesClient
+                    .GetAzureSiteRecoveryProtectionContainerMapping(
+                        Utilities.GetValueFromArmId(
+                            this.ProtectionContainer.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        ProtectionContainer.Name,
-                        Name);
+                        this.ProtectionContainer.Name,
+                        this.Name);
 
                 if (protectionContainerMappingResponse != null)
                 {
-                    WriteProtectionContainerMapping(protectionContainerMappingResponse);
+                    this.WriteProtectionContainerMapping(protectionContainerMappingResponse);
                 }
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code,
+                if (string.Compare(
+                        ex.Error.Code,
                         "NotFound",
                         StringComparison.OrdinalIgnoreCase) ==
                     0)
                 {
-                    throw new InvalidOperationException(string.Format(
-                        Resources.ProtectionConatinerMappingNotFound,
-                        Name,
-                        ProtectionContainer.FriendlyName));
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources.ProtectionConatinerMappingNotFound,
+                            this.Name,
+                            this.ProtectionContainer.FriendlyName));
                 }
 
                 throw;
             }
-        }
-
-        /// <summary>
-        ///     Queries all Protection Container Mappings for a given Protection Container
-        /// </summary>
-        private void GetAll()
-        {
-            var protectionContainerMappingListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionContainerMapping(
-                    Utilities.GetValueFromArmId(ProtectionContainer.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics),
-                    ProtectionContainer.Name);
-
-            WriteProtectionContainerMappings(protectionContainerMappingListResponse);
-        }
-
-        /// <summary>
-        ///     Write Protection Container Mappings
-        /// </summary>
-        /// <param name="protectableItems">List of protectable items</param>
-        private void WriteProtectionContainerMappings(
-            IList<ProtectionContainerMapping> protectionContainerMappings)
-        {
-            WriteObject(
-                protectionContainerMappings.Select(pcm => new ASRProtectionContainerMapping(pcm)),
-                true);
         }
 
         /// <summary>
@@ -139,7 +135,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private void WriteProtectionContainerMapping(
             ProtectionContainerMapping protectionContainerMapping)
         {
-            WriteObject(new ASRProtectionContainerMapping(protectionContainerMapping));
+            this.WriteObject(new ASRProtectionContainerMapping(protectionContainerMapping));
+        }
+
+        /// <summary>
+        ///     Write Protection Container Mappings
+        /// </summary>
+        /// <param name="protectableItems">List of protectable items</param>
+        private void WriteProtectionContainerMappings(
+            IList<ProtectionContainerMapping> protectionContainerMappings)
+        {
+            this.WriteObject(
+                protectionContainerMappings.Select(pcm => new ASRProtectionContainerMapping(pcm)),
+                true);
         }
     }
 }

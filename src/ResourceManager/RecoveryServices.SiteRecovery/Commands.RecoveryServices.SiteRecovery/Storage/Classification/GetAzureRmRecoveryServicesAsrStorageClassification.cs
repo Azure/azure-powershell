@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery storage classification.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(
+        VerbsCommon.Get,
         "AzureRmRecoveryServicesAsrStorageClassification",
         DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRStorageClassification")]
@@ -32,7 +33,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -40,7 +42,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets friendly name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
@@ -48,13 +51,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets friendly name of classification.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByFabricObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByFabricObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         public ASRFabric Fabric { get; set; }
@@ -66,50 +72,57 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var storageClassifications = RecoveryServicesClient
+            var storageClassifications = this.RecoveryServicesClient
                 .GetAzureSiteRecoveryStorageClassification();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObjectWithFriendlyName:
                     storageClassifications = storageClassifications.Where(
-                            item => item.Properties.FriendlyName.Equals(FriendlyName,
+                            item => item.Properties.FriendlyName.Equals(
+                                this.FriendlyName,
                                 StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
-                    storageClassifications = storageClassifications.Where(item => item.GetFabricId()
-                            .ToLower()
-                            .Equals(Fabric.ID.ToLower()))
+                    storageClassifications = storageClassifications.Where(
+                            item => item.GetFabricId()
+                                .ToLower()
+                                .Equals(this.Fabric.ID.ToLower()))
                         .ToList();
                     break;
                 case ASRParameterSets.ByObjectWithName:
-                    storageClassifications = storageClassifications.Where(item => item.Name.Equals(
-                            Name,
-                            StringComparison.InvariantCultureIgnoreCase))
+                    storageClassifications = storageClassifications.Where(
+                            item => item.Name.Equals(
+                                this.Name,
+                                StringComparison.InvariantCultureIgnoreCase))
                         .ToList();
-                    storageClassifications = storageClassifications.Where(item => item.GetFabricId()
-                            .ToLower()
-                            .Equals(Fabric.ID.ToLower()))
+                    storageClassifications = storageClassifications.Where(
+                            item => item.GetFabricId()
+                                .ToLower()
+                                .Equals(this.Fabric.ID.ToLower()))
                         .ToList();
                     break;
                 case ASRParameterSets.ByFabricObject:
-                    storageClassifications = storageClassifications.Where(item => item.GetFabricId()
-                            .ToLower()
-                            .Equals(Fabric.ID.ToLower()))
+                    storageClassifications = storageClassifications.Where(
+                            item => item.GetFabricId()
+                                .ToLower()
+                                .Equals(this.Fabric.ID.ToLower()))
                         .ToList();
                     break;
             }
 
-            var psObject = storageClassifications.ConvertAll(item =>
-            {
-                return new ASRStorageClassification
+            var psObject = storageClassifications.ConvertAll(
+                item =>
                 {
-                    FriendlyName = item.Properties.FriendlyName,
-                    Id = item.Id,
-                    Name = item.Name
-                };
-            });
+                    return new ASRStorageClassification
+                    {
+                        FriendlyName = item.Properties.FriendlyName,
+                        Id = item.Id,
+                        Name = item.Name
+                    };
+                });
 
-            WriteObject(psObject,
+            this.WriteObject(
+                psObject,
                 true);
         }
     }

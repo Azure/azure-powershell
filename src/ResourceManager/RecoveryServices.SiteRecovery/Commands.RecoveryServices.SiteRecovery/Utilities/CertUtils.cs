@@ -65,13 +65,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="issuer">issuer for the certificate</param>
         /// <param name="password">certificate password</param>
         /// <returns>certificate as an object</returns>
-        public static X509Certificate2 CreateSelfSignedCertificate(int validForHours,
+        public static X509Certificate2 CreateSelfSignedCertificate(
+            int validForHours,
             string subscriptionId,
             string certificateNamePrefix,
             string issuer = DefaultIssuer,
             string password = DefaultPassword)
         {
-            var friendlyName = GenerateCertFriendlyName(subscriptionId,
+            var friendlyName = GenerateCertFriendlyName(
+                subscriptionId,
                 certificateNamePrefix);
             var startTime = DateTime.UtcNow.AddMinutes(-10);
             var endTime = DateTime.UtcNow.AddHours(validForHours);
@@ -89,10 +91,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             //// adding client authentication, -eku = 1.3.6.1.5.5.7.3.2, 
             //// This is mandatory for the upload to be successful
             var oidCollection = new OidCollection();
-            oidCollection.Add(new Oid(OIDClientAuthValue,
-                OIDClientAuthFriendlyName));
-            creationParams.Extensions.Add(new X509EnhancedKeyUsageExtension(oidCollection,
-                false));
+            oidCollection.Add(
+                new Oid(
+                    OIDClientAuthValue,
+                    OIDClientAuthFriendlyName));
+            creationParams.Extensions.Add(
+                new X509EnhancedKeyUsageExtension(
+                    oidCollection,
+                    false));
 
             // Documentation of CreateSelfSignedCertificate states:
             // If creationParameters have TakeOwnershipOfKey set to true, the certificate
@@ -106,14 +112,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             // X509 certificate needs PersistKeySet flag set.  
             // Reload a new X509Certificate2 instance from exported bytes in order to set the PersistKeySet flag.
-            var bytes = cert.Export(X509ContentType.Pfx,
+            var bytes = cert.Export(
+                X509ContentType.Pfx,
                 password);
 
             // PfxValidation is not done here because these are newly created certs and assumed valid.
-            return NewX509Certificate2(bytes,
+            return NewX509Certificate2(
+                bytes,
                 password,
                 X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable,
                 false);
+        }
+
+        /// <summary>
+        ///     Method to get the Certificate's base 64 encoded string
+        /// </summary>
+        /// <param name="certFileName">Certificate File Name</param>
+        /// <returns>Base 64 encoded string of the certificate</returns>
+        public static string GetCertInBase64EncodedForm(
+            string certFileName)
+        {
+            FileStream fileStream = null;
+            byte[] data = null;
+            string certInBase64EncodedForm = null;
+
+            try
+            {
+                fileStream = new FileStream(
+                    certFileName,
+                    FileMode.Open,
+                    FileAccess.Read);
+
+                // If the file size is more than 1MB, fail the call - this is just to avoid Dos Attacks
+                if (fileStream.Length > 1048576)
+                {
+                    throw new Exception(
+                        "The Certficate size exceeds 1MB. Please provide a file whose size is utmost 1 MB");
+                }
+
+                var size = (int)fileStream.Length;
+                data = new byte[size];
+                size = fileStream.Read(
+                    data,
+                    0,
+                    size);
+
+                // Check if the file is a valid certificate before sending it to service
+                var x509 = new X509Certificate2();
+                x509.Import(data);
+                if (string.IsNullOrEmpty(x509.Thumbprint))
+                {
+                    throw new Exception("The thumbprint of Certificate is null or empty");
+                }
+
+                certInBase64EncodedForm = Convert.ToBase64String(data);
+            }
+            catch (Exception e)
+            {
+                certInBase64EncodedForm = null;
+                throw new ArgumentException(
+                    e.Message,
+                    certFileName,
+                    e);
+            }
+            finally
+            {
+                if (null != fileStream)
+                {
+                    fileStream.Close();
+                }
+            }
+
+            return certInBase64EncodedForm;
         }
 
         /// <summary>
@@ -127,7 +197,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     rawData is retrieved from an untrusted source.
         /// </param>
         /// <returns>An instance of the X509Certificate</returns>
-        public static X509Certificate2 NewX509Certificate2(byte[] rawData,
+        public static X509Certificate2 NewX509Certificate2(
+            byte[] rawData,
             string password,
             X509KeyStorageFlags keyStorageFlags,
             bool shouldValidatePfx)
@@ -137,9 +208,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             try
             {
                 var contentType = X509Certificate2.GetCertContentType(rawData);
-                File.WriteAllBytes(temporaryFileName,
+                File.WriteAllBytes(
+                    temporaryFileName,
                     rawData);
-                return new X509Certificate2(temporaryFileName,
+                return new X509Certificate2(
+                    temporaryFileName,
                     password,
                     keyStorageFlags);
             }
@@ -157,79 +230,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Method to get the Certificate's base 64 encoded string
-        /// </summary>
-        /// <param name="certFileName">Certificate File Name</param>
-        /// <returns>Base 64 encoded string of the certificate</returns>
-        public static string GetCertInBase64EncodedForm(string certFileName)
-        {
-            FileStream fileStream = null;
-            byte[] data = null;
-            string certInBase64EncodedForm = null;
-
-            try
-            {
-                fileStream = new FileStream(certFileName,
-                    FileMode.Open,
-                    FileAccess.Read);
-
-                // If the file size is more than 1MB, fail the call - this is just to avoid Dos Attacks
-                if (fileStream.Length > 1048576)
-                {
-                    throw new Exception(
-                        "The Certficate size exceeds 1MB. Please provide a file whose size is utmost 1 MB");
-                }
-
-                var size = (int) fileStream.Length;
-                data = new byte[size];
-                size = fileStream.Read(data,
-                    0,
-                    size);
-
-                // Check if the file is a valid certificate before sending it to service
-                var x509 = new X509Certificate2();
-                x509.Import(data);
-                if (string.IsNullOrEmpty(x509.Thumbprint))
-                {
-                    throw new Exception("The thumbprint of Certificate is null or empty");
-                }
-
-                certInBase64EncodedForm = Convert.ToBase64String(data);
-            }
-            catch (Exception e)
-            {
-                certInBase64EncodedForm = null;
-                throw new ArgumentException(e.Message,
-                    certFileName,
-                    e);
-            }
-            finally
-            {
-                if (null != fileStream)
-                {
-                    fileStream.Close();
-                }
-            }
-
-            return certInBase64EncodedForm;
-        }
-
-        /// <summary>
-        ///     Generates friendly name
-        /// </summary>
-        /// <param name="subscriptionId">subscription id</param>
-        /// <param name="prefix">prefix, likely resource name</param>
-        /// <returns>friendly name</returns>
-        private static string GenerateCertFriendlyName(string subscriptionId,
-            string prefix = "")
-        {
-            return string.Format("{0}{1}-{2}-vaultcredentials",
-                prefix,
-                subscriptionId,
-                DateTime.Now.ToString("M-d-yyyy"));
-        }
-
-        /// <summary>
         ///     Windows Azure Service Management API requires 2048bit RSA keys.
         ///     The private key needs to be exportable so we can save it for sharing with team members.
         /// </summary>
@@ -244,13 +244,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 Provider = new CngProvider(MsEnhancedProv)
             };
 
-            keyCreationParameters.Parameters.Add(new CngProperty("Length",
-                BitConverter.GetBytes(KeySize2048),
-                CngPropertyOptions.None));
+            keyCreationParameters.Parameters.Add(
+                new CngProperty(
+                    "Length",
+                    BitConverter.GetBytes(KeySize2048),
+                    CngPropertyOptions.None));
 
-            return CngKey.Create(CngAlgorithm2.Rsa,
+            return CngKey.Create(
+                CngAlgorithm2.Rsa,
                 null,
                 keyCreationParameters);
+        }
+
+        /// <summary>
+        ///     Generates friendly name
+        /// </summary>
+        /// <param name="subscriptionId">subscription id</param>
+        /// <param name="prefix">prefix, likely resource name</param>
+        /// <returns>friendly name</returns>
+        private static string GenerateCertFriendlyName(
+            string subscriptionId,
+            string prefix = "")
+        {
+            return string.Format(
+                "{0}{1}-{2}-vaultcredentials",
+                prefix,
+                subscriptionId,
+                DateTime.Now.ToString("M-d-yyyy"));
         }
     }
 }

@@ -36,7 +36,177 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     public static class Utilities
     {
-        public static List<T> IpageToList<T>(List<IPage<T>> pages)
+        /// <summary>
+        ///     Deserialize the xml as T
+        /// </summary>
+        /// <typeparam name="T">the type name</typeparam>
+        /// <param name="xml">the xml as string</param>
+        /// <returns>the equivalent T</returns>
+        [SuppressMessage(
+            "StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed.")]
+        public static T Deserialize<T>(
+            string xml)
+        {
+            if (string.IsNullOrEmpty(xml))
+            {
+                return default(T);
+            }
+
+            using (Stream stream = new MemoryStream())
+            {
+                var data = Encoding.UTF8.GetBytes(xml);
+                stream.Write(
+                    data,
+                    0,
+                    data.Length);
+                stream.Position = 0;
+                var deserializer = new DataContractSerializer(typeof(T));
+                return (T)deserializer.ReadObject(stream);
+            }
+        }
+
+        /// <summary>
+        ///     Generate cryptographically random key of given bit size.
+        /// </summary>
+        /// <param name="size">size of the key to be generated</param>
+        /// <returns>the key</returns>
+        public static string GenerateRandomKey(
+            int size)
+        {
+            var key = new byte[size / 8];
+            var crypto = new RNGCryptoServiceProvider();
+            crypto.GetBytes(key);
+            return Convert.ToBase64String(key);
+        }
+
+        public static List<IPage<T>> GetAllFurtherPages<T>(
+            Func<string, Dictionary<string, List<string>>, CancellationToken,
+                Task<AzureOperationResponse<IPage<T>>>> getNextPage,
+            string NextPageLink,
+            Dictionary<string, List<string>> customHeaders = null)
+        {
+            var result = new List<IPage<T>>();
+
+            while ((NextPageLink != null) &&
+                   (getNextPage != null))
+            {
+                var page = getNextPage(
+                        NextPageLink,
+                        customHeaders,
+                        default(CancellationToken))
+                    .GetAwaiter()
+                    .GetResult()
+                    .Body;
+                result.Add(page);
+                NextPageLink = page.NextPageLink;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        ///     method to return the Downloads path for the current user.
+        /// </summary>
+        /// <returns>path as  string.</returns>
+        public static string GetDefaultPath()
+        {
+            var path = Path.GetTempPath();
+            return path;
+        }
+
+        /// <summary>
+        ///     Get the name of the member for memberExpression.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="memberExpression">Member Expression.</param>
+        /// <returns>Name of the member.</returns>
+        public static string GetMemberName<T>(
+            Expression<Func<T>> memberExpression)
+        {
+            var expressionBody = (MemberExpression)memberExpression.Body;
+            return expressionBody.Member.Name;
+        }
+
+        /// <summary>
+        ///     Returns provider namespace from ARM id.
+        /// </summary>
+        /// <param name="data">ARM Id of the resource.</param>
+        /// <returns>Provider namespace.</returns>
+        public static string GetProviderNameSpaceFromArmId(
+            this string data)
+        {
+            return data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern)[2];
+        }
+
+        public static void GetResourceProviderNamespaceAndType(
+            string resourceId,
+            out string resourceProviderNamespace,
+            out string resourceType)
+        {
+            var armFields = resourceId.Split('/');
+            var dictionary = new Dictionary<string, string>();
+
+            if (armFields.Length % 2 == 0)
+            {
+                throw new Exception("Invalid ARM ID");
+            }
+
+            for (var i = 1; i < armFields.Length; i = i + 2)
+            {
+                dictionary.Add(
+                    armFields[i],
+                    armFields[i + 1]);
+            }
+
+            resourceProviderNamespace = dictionary[ARMResourceTypeConstants.Providers];
+            resourceType = dictionary.ContainsKey("SiteRecoveryVault") ? "SiteRecoveryVault"
+                : "RecoveryServicesVault";
+        }
+
+        /// <summary>
+        ///     Get Value from ARM ID
+        /// </summary>
+        /// <param name="size">size of the key to be generated</param>
+        /// <returns>the key</returns>
+        public static string GetValueFromArmId(
+            string armId,
+            string key)
+        {
+            var armFields = armId.Split('/');
+            var dictionary = new Dictionary<string, string>();
+
+            if (armFields.Length % 2 == 0)
+            {
+                throw new Exception("Invalid ARM ID");
+            }
+
+            for (var i = 1; i < armFields.Length; i = i + 2)
+            {
+                dictionary.Add(
+                    armFields[i],
+                    armFields[i + 1]);
+            }
+
+            return dictionary[key];
+        }
+
+        /// <summary>
+        ///     Returns ARM Id of the vault from ARM ID of the contained resource.
+        /// </summary>
+        /// <param name="data">ARM Id of the resource.</param>
+        /// <returns>ARM Id of the vault.</returns>
+        public static string GetVaultArmId(
+            this string data)
+        {
+            return string.Format(
+                ARMResourceIdPaths.SRSArmUrlPattern,
+                data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern));
+        }
+
+        public static List<T> IpageToList<T>(
+            List<IPage<T>> pages)
         {
             var result = new List<T>();
 
@@ -51,28 +221,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return result;
         }
 
-        public static List<IPage<T>> GetAllFurtherPages<T>(
-            Func<string, Dictionary<string, List<string>>, CancellationToken,
-                Task<AzureOperationResponse<IPage<T>>>> getNextPage,
-            string NextPageLink,
-            Dictionary<string, List<string>> customHeaders = null)
+        /// <summary>
+        ///     Serialize the T as xml using DataContract Serializer
+        /// </summary>
+        /// <typeparam name="T">the type name</typeparam>
+        /// <param name="value">the T object.</param>
+        /// <returns>the serialized object.</returns>
+        [SuppressMessage(
+            "StyleCop.CSharp.DocumentationRules",
+            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+            Justification = "Reviewed.")]
+        public static string Serialize<T>(
+            T value)
         {
-            var result = new List<IPage<T>>();
-
-            while (NextPageLink != null &&
-                   getNextPage != null)
+            if (value == null)
             {
-                var page = getNextPage(NextPageLink,
-                        customHeaders,
-                        default(CancellationToken))
-                    .GetAwaiter()
-                    .GetResult()
-                    .Body;
-                result.Add(page);
-                NextPageLink = page.NextPageLink;
+                return null;
             }
 
-            return result;
+            string serializedValue;
+
+            using (var memoryStream = new MemoryStream())
+                using (var reader = new StreamReader(memoryStream))
+                {
+                    var serializer = new DataContractSerializer(typeof(T));
+                    serializer.WriteObject(
+                        memoryStream,
+                        value);
+                    memoryStream.Position = 0;
+                    serializedValue = reader.ReadToEnd();
+                }
+
+            return serializedValue;
         }
 
         /// <summary>
@@ -80,7 +260,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="queryObject">Query object</param>
         /// <returns>Qeury string</returns>
-        public static string ToQueryString(this object queryObject)
+        public static string ToQueryString(
+            this object queryObject)
         {
             if (queryObject == null)
             {
@@ -94,14 +275,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var propQuery = new List<string>();
             foreach (var property in properties)
             {
-                var propValue = property.GetValue(queryObject,
+                var propValue = property.GetValue(
+                    queryObject,
                     null);
                 if (propValue != null)
                 {
                     // IList is the only one we are handling
                     var elems = propValue as IList;
-                    if (elems != null &&
-                        elems.Count != 0)
+                    if ((elems != null) &&
+                        (elems.Count != 0))
                     {
                         var itemCount = 0;
                         var multiPropQuery = new string[elems.Count];
@@ -116,10 +298,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             itemCount++;
                         }
 
-                        propQuery.Add("( " +
-                                      string.Join(" or ",
-                                          multiPropQuery) +
-                                      " )");
+                        propQuery.Add(
+                            "( " +
+                            string.Join(
+                                " or ",
+                                multiPropQuery) +
+                            " )");
                     }
                     /*Add DateTime, others if required*/ else
                     {
@@ -130,206 +314,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         }
                         else
                         {
-                            propQuery.Add(new StringBuilder().Append(property.Name)
-                                .Append(" eq '")
-                                .Append(propValue)
-                                .Append("'")
-                                .ToString());
+                            propQuery.Add(
+                                new StringBuilder().Append(property.Name)
+                                    .Append(" eq '")
+                                    .Append(propValue)
+                                    .Append("'")
+                                    .ToString());
                         }
                     }
                 }
             }
 
-            queryString.Append(string.Join(" and ",
-                propQuery));
+            queryString.Append(
+                string.Join(
+                    " and ",
+                    propQuery));
             return queryString.ToString();
-        }
-
-        /// <summary>
-        ///     Serialize the T as xml using DataContract Serializer
-        /// </summary>
-        /// <typeparam name="T">the type name</typeparam>
-        /// <param name="value">the T object.</param>
-        /// <returns>the serialized object.</returns>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules",
-            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
-            Justification = "Reviewed.")]
-        public static string Serialize<T>(T value)
-        {
-            if (value == null)
-            {
-                return null;
-            }
-
-            string serializedValue;
-
-            using (var memoryStream = new MemoryStream())
-                using (var reader = new StreamReader(memoryStream))
-                {
-                    var serializer = new DataContractSerializer(typeof(T));
-                    serializer.WriteObject(memoryStream,
-                        value);
-                    memoryStream.Position = 0;
-                    serializedValue = reader.ReadToEnd();
-                }
-
-            return serializedValue;
-        }
-
-        /// <summary>
-        ///     Deserialize the xml as T
-        /// </summary>
-        /// <typeparam name="T">the type name</typeparam>
-        /// <param name="xml">the xml as string</param>
-        /// <returns>the equivalent T</returns>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules",
-            "SA1650:ElementDocumentationMustBeSpelledCorrectly",
-            Justification = "Reviewed.")]
-        public static T Deserialize<T>(string xml)
-        {
-            if (string.IsNullOrEmpty(xml))
-            {
-                return default(T);
-            }
-
-            using (Stream stream = new MemoryStream())
-            {
-                var data = Encoding.UTF8.GetBytes(xml);
-                stream.Write(data,
-                    0,
-                    data.Length);
-                stream.Position = 0;
-                var deserializer = new DataContractSerializer(typeof(T));
-                return (T) deserializer.ReadObject(stream);
-            }
-        }
-
-        /// <summary>
-        ///     Method to write content to a file.
-        /// </summary>
-        /// <typeparam name="T">Class to be serialized</typeparam>
-        /// <param name="fileContent">content to be written to the file</param>
-        /// <param name="filePath">the path where the file is to be created</param>
-        /// <param name="fileName">name of the file to be created</param>
-        /// <returns>file path with file name as string</returns>
-        public static string WriteToFile<T>(T fileContent,
-            string filePath,
-            string fileName)
-        {
-            var fullFileName = Path.Combine(filePath,
-                fileName);
-            using (var file = new StreamWriter(fullFileName,
-                false))
-            {
-                var contentToWrite = Serialize(fileContent);
-                file.WriteLine(contentToWrite);
-            }
-
-            return fullFileName;
-        }
-
-        /// <summary>
-        ///     Updates current Vault context.
-        /// </summary>
-        /// <param name="asrVaultCreds">ASR Vault credentials</param>
-        public static void UpdateCurrentVaultContext(ASRVaultCreds asrVaultCreds)
-        {
-            var updateVaultContextOneAtATime = new object();
-            lock (updateVaultContextOneAtATime)
-            {
-                PSRecoveryServicesClient.asrVaultCreds.ResourceName = asrVaultCreds.ResourceName;
-                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName =
-                    asrVaultCreds.ResourceGroupName;
-                PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
-                    asrVaultCreds.ChannelIntegrityKey;
-                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace =
-                    asrVaultCreds.ResourceNamespace;
-                PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
-                    asrVaultCreds.ARMResourceType;
-            }
-        }
-
-        /// <summary>
-        ///     method to return the Downloads path for the current user.
-        /// </summary>
-        /// <returns>path as  string.</returns>
-        public static string GetDefaultPath()
-        {
-            var path = Path.GetTempPath();
-            return path;
-        }
-
-        /// <summary>
-        ///     Generate cryptographically random key of given bit size.
-        /// </summary>
-        /// <param name="size">size of the key to be generated</param>
-        /// <returns>the key</returns>
-        public static string GenerateRandomKey(int size)
-        {
-            var key = new byte[size / 8];
-            var crypto = new RNGCryptoServiceProvider();
-            crypto.GetBytes(key);
-            return Convert.ToBase64String(key);
-        }
-
-        /// <summary>
-        ///     Get Value from ARM ID
-        /// </summary>
-        /// <param name="size">size of the key to be generated</param>
-        /// <returns>the key</returns>
-        public static string GetValueFromArmId(string armId,
-            string key)
-        {
-            var armFields = armId.Split('/');
-            var dictionary = new Dictionary<string, string>();
-
-            if (armFields.Length % 2 == 0)
-            {
-                throw new Exception("Invalid ARM ID");
-            }
-
-            for (var i = 1; i < armFields.Length; i = i + 2)
-            {
-                dictionary.Add(armFields[i],
-                    armFields[i + 1]);
-            }
-
-            return dictionary[key];
-        }
-
-        /// <summary>
-        ///     Get the name of the member for memberExpression.
-        /// </summary>
-        /// <typeparam name="T">Generic type.</typeparam>
-        /// <param name="memberExpression">Member Expression.</param>
-        /// <returns>Name of the member.</returns>
-        public static string GetMemberName<T>(Expression<Func<T>> memberExpression)
-        {
-            var expressionBody = (MemberExpression) memberExpression.Body;
-            return expressionBody.Member.Name;
-        }
-
-        public static void GetResourceProviderNamespaceAndType(string resourceId,
-            out string resourceProviderNamespace,
-            out string resourceType)
-        {
-            var armFields = resourceId.Split('/');
-            var dictionary = new Dictionary<string, string>();
-
-            if (armFields.Length % 2 == 0)
-            {
-                throw new Exception("Invalid ARM ID");
-            }
-
-            for (var i = 1; i < armFields.Length; i = i + 2)
-            {
-                dictionary.Add(armFields[i],
-                    armFields[i + 1]);
-            }
-
-            resourceProviderNamespace = dictionary[ARMResourceTypeConstants.Providers];
-            resourceType = dictionary.ContainsKey("SiteRecoveryVault") ? "SiteRecoveryVault"
-                : "RecoveryServicesVault";
         }
 
         /// <summary>
@@ -338,7 +338,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="data">String to unformat.</param>
         /// <param name="format">Format reference.</param>
         /// <returns>Array of string tokens.</returns>
-        public static string[] UnFormatArmId(this string data,
+        public static string[] UnFormatArmId(
+            this string data,
             string format)
         {
             // Creates a new copy of the strings.
@@ -352,18 +353,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 if (string.IsNullOrEmpty(dataCopy))
                 {
-                    throw new Exception("Null and empty strings are not valid resource Ids - " +
-                                        data);
+                    throw new Exception(
+                        "Null and empty strings are not valid resource Ids - " + data);
                 }
 
                 // First truncate data string to point from where format string starts.
                 // We start from 1 index so that if url starts with / we avoid picking the first /.
-                var firstTokenEnd = format.IndexOf("/",
+                var firstTokenEnd = format.IndexOf(
+                    "/",
                     1);
                 var matchIndex = dataCopy.ToLower()
-                    .IndexOf(format.Substring(0,
-                            firstTokenEnd)
-                        .ToLower());
+                    .IndexOf(
+                        format.Substring(
+                                0,
+                                firstTokenEnd)
+                            .ToLower());
 
                 if (matchIndex == -1)
                 {
@@ -382,7 +386,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         break;
                     }
 
-                    var markerEndIndex = processData.IndexOf("/",
+                    var markerEndIndex = processData.IndexOf(
+                        "/",
                         markerStartIndex);
 
                     if (markerEndIndex == -1)
@@ -391,8 +396,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     }
                     else
                     {
-                        tokens.Add(processData.Substring(markerStartIndex,
-                            markerEndIndex - markerStartIndex));
+                        tokens.Add(
+                            processData.Substring(
+                                markerStartIndex,
+                                markerEndIndex - markerStartIndex));
                         processData = processData.Substring(markerEndIndex);
                         processFormat = processFormat.Substring(markerStartIndex + 3);
                     }
@@ -403,9 +410,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 // Similar formats like /a/{0}/b/{1} and /c/{0}/d/{1} can return incorrect tokens
                 // therefore, adding another check to ensure that the data is unformatted correctly.
                 if (data.ToLower()
-                    .Contains(string.Format(format,
-                            tokens.ToArray())
-                        .ToLower()))
+                    .Contains(
+                        string.Format(
+                                format,
+                                tokens.ToArray())
+                            .ToLower()))
                 {
                     return tokens.ToArray();
                 }
@@ -414,31 +423,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Invalid resource Id - {0}. Exception - {1} ",
-                    data,
-                    ex));
+                throw new Exception(
+                    string.Format(
+                        "Invalid resource Id - {0}. Exception - {1} ",
+                        data,
+                        ex));
             }
         }
 
         /// <summary>
-        ///     Returns ARM Id of the vault from ARM ID of the contained resource.
+        ///     Updates current Vault context.
         /// </summary>
-        /// <param name="data">ARM Id of the resource.</param>
-        /// <returns>ARM Id of the vault.</returns>
-        public static string GetVaultArmId(this string data)
+        /// <param name="asrVaultCreds">ASR Vault credentials</param>
+        public static void UpdateCurrentVaultContext(
+            ASRVaultCreds asrVaultCreds)
         {
-            return string.Format(ARMResourceIdPaths.SRSArmUrlPattern,
-                data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern));
+            var updateVaultContextOneAtATime = new object();
+            lock (updateVaultContextOneAtATime)
+            {
+                PSRecoveryServicesClient.asrVaultCreds.ResourceName = asrVaultCreds.ResourceName;
+                PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName =
+                    asrVaultCreds.ResourceGroupName;
+                PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
+                    asrVaultCreds.ChannelIntegrityKey;
+                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace =
+                    asrVaultCreds.ResourceNamespace;
+                PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
+                    asrVaultCreds.ARMResourceType;
+            }
         }
 
         /// <summary>
-        ///     Returns provider namespace from ARM id.
+        ///     Method to write content to a file.
         /// </summary>
-        /// <param name="data">ARM Id of the resource.</param>
-        /// <returns>Provider namespace.</returns>
-        public static string GetProviderNameSpaceFromArmId(this string data)
+        /// <typeparam name="T">Class to be serialized</typeparam>
+        /// <param name="fileContent">content to be written to the file</param>
+        /// <param name="filePath">the path where the file is to be created</param>
+        /// <param name="fileName">name of the file to be created</param>
+        /// <returns>file path with file name as string</returns>
+        public static string WriteToFile<T>(
+            T fileContent,
+            string filePath,
+            string fileName)
         {
-            return data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern)[2];
+            var fullFileName = Path.Combine(
+                filePath,
+                fileName);
+            using (var file = new StreamWriter(
+                fullFileName,
+                false))
+            {
+                var contentToWrite = Serialize(fileContent);
+                file.WriteLine(contentToWrite);
+            }
+
+            return fullFileName;
         }
     }
 
@@ -458,7 +497,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="objectType">Type of the object.</param>
         /// <returns>true if this instance can convert the specified object type; otherwise, false.</returns>
-        public override bool CanConvert(Type objectType)
+        public override bool CanConvert(
+            Type objectType)
         {
             return typeof(T).IsAssignableFrom(objectType);
         }
@@ -471,7 +511,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="existingValue">The existing value of object being read.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns>the type of object</returns>
-        public override object ReadJson(JsonReader reader,
+        public override object ReadJson(
+            JsonReader reader,
             Type objectType,
             object existingValue,
             JsonSerializer serializer)
@@ -485,11 +526,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var jObject = JObject.Load(reader);
 
             // Create target object based on JObject 
-            var target = Create(objectType,
+            var target = this.Create(
+                objectType,
                 jObject);
 
             // Populate the object properties 
-            serializer.Populate(jObject.CreateReader(),
+            serializer.Populate(
+                jObject.CreateReader(),
                 target);
 
             return target;
@@ -501,7 +544,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="writer">The Newtonsoft.Json.JsonWriter to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
-        public override void WriteJson(JsonWriter writer,
+        public override void WriteJson(
+            JsonWriter writer,
             object value,
             JsonSerializer serializer)
         {
@@ -514,7 +558,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="objectType">Type of the object.</param>
         /// <param name="jObject">Contents of JSON object that will be deserialized.</param>
         /// <returns>Returns object of type.</returns>
-        protected abstract T Create(Type objectType,
+        protected abstract T Create(
+            Type objectType,
             JObject jObject);
     }
 
@@ -531,11 +576,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="objectType">Object type.</param>
         /// <param name="jObject">JSON object that will be deserialized.</param>
         /// <returns>Returns recovery plan action custom details.</returns>
-        protected override RecoveryPlanActionDetails Create(Type objectType,
+        protected override RecoveryPlanActionDetails Create(
+            Type objectType,
             JObject jObject)
         {
             RecoveryPlanActionDetails outputType = null;
-            var actionType = (RecoveryPlanActionDetailsType) Enum.Parse(
+            var actionType = (RecoveryPlanActionDetailsType)Enum.Parse(
                 typeof(RecoveryPlanActionDetailsType),
                 jObject.Value<string>(Constants.InstanceType));
 

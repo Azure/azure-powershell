@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure site Recovery Job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(
+        VerbsCommon.Get,
         "AzureRmRecoveryServicesAsrJob",
         DefaultParameterSetName = ASRParameterSets.ByParam)]
     [Alias("Get-ASRJob")]
@@ -34,7 +35,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Job Name.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -42,7 +44,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Job Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -52,7 +55,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets start time. Allows to filter the list of jobs started after the given
         ///     start time.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByParam,
             HelpMessage =
                 "Represents start time of jobs to querying, jobs with the start time later than this will be returned")]
         [ValidateNotNullOrEmpty]
@@ -61,7 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets end time. Allows to filter the list of jobs ended before it.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByParam,
             HelpMessage = "Represents end time of jobs to query.")]
         [ValidateNotNullOrEmpty]
         public DateTime? EndTime { get; set; }
@@ -69,7 +74,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets target object id.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByParam,
             HelpMessage = "ID of the object on which Job was targeted to.")]
         [ValidateNotNullOrEmpty]
         public string TargetObjectId { get; set; }
@@ -79,10 +85,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     to get filtered view of Jobs
         /// </summary>
         /// Considered Valid states from WorkflowStatus enum in SRS (WorkflowData.cs)
-        [Parameter(ParameterSetName = ASRParameterSets.ByParam,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByParam,
             HelpMessage = "State of job to return.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("NotStarted",
+        [ValidateSet(
+            "NotStarted",
             "InProgress",
             "Succeeded",
             "Other",
@@ -97,20 +105,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    Name = Job.Name;
-                    GetByName();
+                    this.Name = this.Job.Name;
+                    this.GetByName();
                     break;
 
                 case ASRParameterSets.ByName:
-                    GetByName();
+                    this.GetByName();
                     break;
 
                 case ASRParameterSets.ByParam:
                 default:
-                    GetByParam();
+                    this.GetByParam();
                     break;
             }
         }
@@ -120,7 +128,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            WriteJob(RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(Name));
+            this.WriteJob(this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(this.Name));
         }
 
         /// <summary>
@@ -130,58 +138,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var jqp = new JobQueryParameter();
 
-            if (StartTime.HasValue)
+            if (this.StartTime.HasValue)
             {
-                jqp.StartTime = StartTime.Value.ToUniversalTime()
+                jqp.StartTime = this.StartTime.Value.ToUniversalTime()
                     .ToString("o");
             }
 
-            if (EndTime.HasValue)
+            if (this.EndTime.HasValue)
             {
-                jqp.EndTime = EndTime.Value.ToUniversalTime()
+                jqp.EndTime = this.EndTime.Value.ToUniversalTime()
                     .ToString("o");
             }
 
-            if (State != null)
+            if (this.State != null)
             {
                 jqp.JobStatus = new List<string>();
-                jqp.JobStatus.Add(State);
+                jqp.JobStatus.Add(this.State);
             }
 
-            var completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp);
+            var completeJobsList = this.RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp);
 
             // Filtering TargetObjectId
             var filteredJobsList = completeJobsList.ToArray()
                 .AsEnumerable();
-            if (TargetObjectId != null)
+            if (this.TargetObjectId != null)
             {
-                filteredJobsList = filteredJobsList.Where(j => 0 ==
-                                                               string.Compare(j.Properties
-                                                                       .TargetObjectId.ToString(),
-                                                                   TargetObjectId.ToString(),
-                                                                   StringComparison
-                                                                       .OrdinalIgnoreCase));
+                filteredJobsList = filteredJobsList.Where(
+                    j => 0 ==
+                         string.Compare(
+                             j.Properties.TargetObjectId.ToString(),
+                             this.TargetObjectId.ToString(),
+                             StringComparison.OrdinalIgnoreCase));
             }
 
-            WriteJobs(filteredJobsList.ToList());
+            this.WriteJobs(filteredJobsList.ToList());
         }
 
         /// <summary>
         ///     Writes Job.
         /// </summary>
         /// <param name="job">JOB object</param>
-        private void WriteJob(Job job)
+        private void WriteJob(
+            Job job)
         {
-            WriteObject(new ASRJob(job));
+            this.WriteObject(new ASRJob(job));
         }
 
         /// <summary>
         ///     Writes Jobs.
         /// </summary>
         /// <param name="jobs">Job objects</param>
-        private void WriteJobs(IList<Job> jobs)
+        private void WriteJobs(
+            IList<Job> jobs)
         {
-            WriteObject(jobs.Select(j => new ASRJob(j)),
+            this.WriteObject(
+                jobs.Select(j => new ASRJob(j)),
                 true);
         }
     }

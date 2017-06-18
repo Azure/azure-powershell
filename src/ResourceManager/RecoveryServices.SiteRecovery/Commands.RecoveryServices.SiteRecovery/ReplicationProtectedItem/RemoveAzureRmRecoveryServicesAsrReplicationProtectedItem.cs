@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Set Protection Entity protection state.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove,
+    [Cmdlet(
+        VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrReplicationProtectedItem",
         DefaultParameterSetName = ASRParameterSets.DisableDR,
         SupportsShouldProcess = true)]
@@ -30,9 +31,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
+        ///     Job Response
+        /// </summary>
+        private Job jobResponse;
+
+        /// <summary>
+        ///     Long Running Operation Response
+        /// </summary>
+        private PSSiteRecoveryLongRunningOperation response;
+
+        /// <summary>
+        ///     Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
+        /// </summary>
+        private string targetNameOrId = string.Empty;
+
+        /// <summary>
         ///     Gets or sets Replication Protected Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.DisableDR,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.DisableDR,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -52,73 +69,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        ///     Job Response
-        /// </summary>
-        private Job jobResponse;
-
-        /// <summary>
-        ///     Long Running Operation Response
-        /// </summary>
-        private PSSiteRecoveryLongRunningOperation response;
-
-        /// <summary>
-        ///     Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
-        /// </summary>
-        private string targetNameOrId = string.Empty;
-
-        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(InputObject.FriendlyName,
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
                 VerbsCommon.Remove))
             {
-                targetNameOrId = InputObject.FriendlyName;
+                this.targetNameOrId = this.InputObject.FriendlyName;
 
-                if (!Force.IsPresent)
+                if (!this.Force.IsPresent)
                 {
                     var input = new DisableProtectionInput();
                     input.Properties = new DisableProtectionInputProperties
                     {
                         ReplicationProviderInput = new DisableProtectionProviderSpecificInput()
                     };
-                    response = RecoveryServicesClient.DisableProtection(Utilities.GetValueFromArmId(
-                            InputObject.ID,
+                    this.response = this.RecoveryServicesClient.DisableProtection(
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(InputObject.ID,
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        InputObject.Name,
+                        this.InputObject.Name,
                         input);
                 }
                 else
                 {
-                    response = RecoveryServicesClient.PurgeProtection(Utilities.GetValueFromArmId(
-                            InputObject.ID,
+                    this.response = this.RecoveryServicesClient.PurgeProtection(
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(InputObject.ID,
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        InputObject.Name);
+                        this.InputObject.Name);
                 }
 
-                jobResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                        .GetJobIdFromReponseLocation(response.Location));
+                this.jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(this.response.Location));
 
-                WriteObject(new ASRJob(jobResponse));
+                this.WriteObject(new ASRJob(this.jobResponse));
 
-                if (WaitForCompletion.IsPresent)
+                if (this.WaitForCompletion.IsPresent)
                 {
-                    WaitForJobCompletion(jobResponse.Name);
+                    this.WaitForJobCompletion(this.jobResponse.Name);
 
-                    jobResponse =
-                        RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                            PSRecoveryServicesClient
-                                .GetJobIdFromReponseLocation(response.Location));
+                    this.jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                        PSRecoveryServicesClient
+                            .GetJobIdFromReponseLocation(this.response.Location));
 
-                    WriteObject(new ASRJob(jobResponse));
+                    this.WriteObject(new ASRJob(this.jobResponse));
                 }
             }
         }
@@ -127,9 +132,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Writes Job.
         /// </summary>
         /// <param name="job">JOB object</param>
-        private void WriteJob(Job job)
+        private void WriteJob(
+            Job job)
         {
-            WriteObject(new ASRJob(job));
+            this.WriteObject(new ASRJob(job));
         }
     }
 }

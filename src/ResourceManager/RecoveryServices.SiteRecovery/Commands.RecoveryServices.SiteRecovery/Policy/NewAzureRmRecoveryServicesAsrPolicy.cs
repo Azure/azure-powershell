@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.New,
+    [Cmdlet(
+        VerbsCommon.New,
         "AzureRmRecoveryServicesAsrPolicy",
         DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     [Alias("New-ASRPolicy")]
@@ -32,23 +33,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class NewAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
+        ///     Holds Name (if passed) of the Policy object.
+        /// </summary>
+        private string targetName = string.Empty;
+
+        /// <summary>
         ///     Gets or sets Name of the Policy.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
         public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets Replication Provider of the Policy.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.HyperVReplica2012R2,
+        [ValidateSet(
+            Constants.HyperVReplica2012R2,
             Constants.HyperVReplica2012,
             Constants.HyperVReplicaAzure)]
         public string ReplicationProvider { get; set; }
@@ -58,19 +69,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.OnlineReplicationMethod,
+        [ValidateSet(
+            Constants.OnlineReplicationMethod,
             Constants.OfflineReplicationMethod)]
         public string ReplicationMethod { get; set; }
 
         /// <summary>
         ///     Gets or sets Replication Frequency of the Policy in seconds.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.Thirty,
+        [ValidateSet(
+            Constants.Thirty,
             Constants.ThreeHundred,
             Constants.NineHundred)]
         public string ReplicationFrequencyInSeconds { get; set; }
@@ -98,14 +113,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [DefaultValue(Constants.Disable)]
-        [ValidateSet(Constants.Enable,
+        [ValidateSet(
+            Constants.Enable,
             Constants.Disable)]
         public string Compression { get; set; }
 
         /// <summary>
         ///     Gets or sets the Replication Port of the Policy.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ushort ReplicationPort { get; set; }
@@ -115,7 +132,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.AuthenticationTypeCertificate,
+        [ValidateSet(
+            Constants.AuthenticationTypeCertificate,
             Constants.AuthenticationTypeKerberos)]
         public string Authentication { get; set; }
 
@@ -133,14 +151,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
         [DefaultValue(Constants.NotRequired)]
-        [ValidateSet(Constants.Required,
+        [ValidateSet(
+            Constants.Required,
             Constants.NotRequired)]
         public string ReplicaDeletion { get; set; }
 
         /// <summary>
         ///     Gets or sets Recovery Azure Storage Account Name of the Policy for E2A scenarios.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
@@ -150,14 +170,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [DefaultValue(Constants.Disable)]
-        [ValidateSet(Constants.Enable,
+        [ValidateSet(
+            Constants.Enable,
             Constants.Disable)]
         public string Encryption { get; set; }
-
-        /// <summary>
-        ///     Holds Name (if passed) of the Policy object.
-        /// </summary>
-        private string targetName = string.Empty;
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -166,117 +182,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.EnterpriseToEnterprise:
-                    EnterpriseToEnterprisePolicyObject();
+                    this.EnterpriseToEnterprisePolicyObject();
                     break;
                 case ASRParameterSets.EnterpriseToAzure:
-                    EnterpriseToAzurePolicyObject();
+                    this.EnterpriseToAzurePolicyObject();
                     break;
             }
-        }
-
-        /// <summary>
-        ///     Creates an E2E Policy object
-        /// </summary>
-        private void EnterpriseToEnterprisePolicyObject()
-        {
-            if (string.Compare(ReplicationProvider,
-                    Constants.HyperVReplica2012,
-                    StringComparison.OrdinalIgnoreCase) !=
-                0 &&
-                string.Compare(ReplicationProvider,
-                    Constants.HyperVReplica2012R2,
-                    StringComparison.OrdinalIgnoreCase) !=
-                0)
-            {
-                throw new InvalidOperationException(string.Format(
-                    Resources.IncorrectReplicationProvider,
-                    ReplicationProvider));
-            }
-
-            PSRecoveryServicesClient.ValidateReplicationStartTime(ReplicationStartTime);
-
-            var replicationFrequencyInSeconds =
-                PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(
-                    ReplicationFrequencyInSeconds);
-
-            var createPolicyInputProperties = new CreatePolicyInputProperties();
-
-            if (string.Compare(ReplicationProvider,
-                    Constants.HyperVReplica2012,
-                    StringComparison.OrdinalIgnoreCase) ==
-                0)
-            {
-                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplicaPolicyInput
-                {
-                    AllowedAuthenticationType = (ushort) (string.Compare(Authentication,
-                                                              Constants.AuthenticationTypeKerberos,
-                                                              StringComparison.OrdinalIgnoreCase) ==
-                                                          0 ? 1 : 2),
-                    ApplicationConsistentSnapshotFrequencyInHours =
-                        ApplicationConsistentSnapshotFrequencyInHours,
-                    Compression =
-                        MyInvocation.BoundParameters.ContainsKey(
-                            Utilities.GetMemberName(() => Compression)) ? Compression
-                            : Constants.Disable,
-                    InitialReplicationMethod = string.Compare(ReplicationMethod,
-                                                   Constants.OnlineReplicationMethod,
-                                                   StringComparison.OrdinalIgnoreCase) ==
-                                               0 ? "OverNetwork" : "Offline",
-                    OnlineReplicationStartTime = ReplicationStartTime.ToString(),
-                    RecoveryPoints = RecoveryPoints,
-                    ReplicaDeletion =
-                        MyInvocation.BoundParameters.ContainsKey(
-                            Utilities.GetMemberName(() => ReplicaDeletion)) ? ReplicaDeletion
-                            : Constants.NotRequired,
-                    ReplicationPort = ReplicationPort
-                };
-            }
-            else
-            {
-                createPolicyInputProperties.ProviderSpecificInput =
-                    new HyperVReplicaBluePolicyInput
-                    {
-                        AllowedAuthenticationType = (ushort) (string.Compare(Authentication,
-                                                                  Constants
-                                                                      .AuthenticationTypeKerberos,
-                                                                  StringComparison
-                                                                      .OrdinalIgnoreCase) ==
-                                                              0 ? 1 : 2),
-                        ApplicationConsistentSnapshotFrequencyInHours =
-                            ApplicationConsistentSnapshotFrequencyInHours,
-                        Compression =
-                            MyInvocation.BoundParameters.ContainsKey(
-                                Utilities.GetMemberName(() => Compression)) ? Compression
-                                : Constants.Disable,
-                        InitialReplicationMethod = string.Compare(ReplicationMethod,
-                                                       Constants.OnlineReplicationMethod,
-                                                       StringComparison.OrdinalIgnoreCase) ==
-                                                   0 ? "OverNetwork" : "Offline",
-                        OnlineReplicationStartTime = ReplicationStartTime.ToString(),
-                        RecoveryPoints = RecoveryPoints,
-                        ReplicaDeletion =
-                            MyInvocation.BoundParameters.ContainsKey(
-                                Utilities.GetMemberName(() => ReplicaDeletion)) ? ReplicaDeletion
-                                : Constants.NotRequired,
-                        ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
-                        ReplicationPort = ReplicationPort
-                    };
-            }
-
-            var createPolicyInput =
-                new CreatePolicyInput {Properties = createPolicyInputProperties};
-
-            var responseBlue = RecoveryServicesClient.CreatePolicy(Name,
-                createPolicyInput);
-
-            var jobResponseBlue =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
-
-            WriteObject(new ASRJob(jobResponseBlue));
         }
 
         /// <summary>
@@ -284,40 +198,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void EnterpriseToAzurePolicyObject()
         {
-            if (string.Compare(ReplicationProvider,
+            if (string.Compare(
+                    this.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
             {
-                throw new InvalidOperationException(string.Format(
-                    Resources.IncorrectReplicationProvider,
-                    ReplicationProvider));
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.IncorrectReplicationProvider,
+                        this.ReplicationProvider));
             }
 
-            PSRecoveryServicesClient.ValidateReplicationStartTime(ReplicationStartTime);
+            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
 
             var replicationFrequencyInSeconds =
                 PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(
-                    ReplicationFrequencyInSeconds);
+                    this.ReplicationFrequencyInSeconds);
 
             var hyperVReplicaAzurePolicyInput = new HyperVReplicaAzurePolicyInput
             {
                 ApplicationConsistentSnapshotFrequencyInHours =
-                    ApplicationConsistentSnapshotFrequencyInHours,
+                    this.ApplicationConsistentSnapshotFrequencyInHours,
                 Encryption =
-                    MyInvocation.BoundParameters.ContainsKey(
-                        Utilities.GetMemberName(() => Encryption)) ? Encryption : Constants.Disable,
+                    this.MyInvocation.BoundParameters.ContainsKey(
+                        Utilities.GetMemberName(() => this.Encryption)) ? this.Encryption
+                        : Constants.Disable,
                 OnlineReplicationStartTime =
-                    ReplicationStartTime == null ? null : ReplicationStartTime.ToString(),
-                RecoveryPointHistoryDuration = RecoveryPoints,
+                    this.ReplicationStartTime == null ? null : this.ReplicationStartTime.ToString(),
+                RecoveryPointHistoryDuration = this.RecoveryPoints,
                 ReplicationInterval = replicationFrequencyInSeconds
             };
 
             hyperVReplicaAzurePolicyInput.StorageAccounts = new List<string>();
 
-            if (RecoveryAzureStorageAccountId != null)
+            if (this.RecoveryAzureStorageAccountId != null)
             {
-                var storageAccount = RecoveryAzureStorageAccountId;
+                var storageAccount = this.RecoveryAzureStorageAccountId;
                 hyperVReplicaAzurePolicyInput.StorageAccounts.Add(storageAccount);
             }
 
@@ -328,16 +245,126 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 };
 
             var createPolicyInput =
-                new CreatePolicyInput {Properties = createPolicyInputProperties};
+                new CreatePolicyInput { Properties = createPolicyInputProperties };
 
-            var response = RecoveryServicesClient.CreatePolicy(Name,
+            var response = this.RecoveryServicesClient.CreatePolicy(
+                this.Name,
                 createPolicyInput);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
+        }
+
+        /// <summary>
+        ///     Creates an E2E Policy object
+        /// </summary>
+        private void EnterpriseToEnterprisePolicyObject()
+        {
+            if ((string.Compare(
+                     this.ReplicationProvider,
+                     Constants.HyperVReplica2012,
+                     StringComparison.OrdinalIgnoreCase) !=
+                 0) &&
+                (string.Compare(
+                     this.ReplicationProvider,
+                     Constants.HyperVReplica2012R2,
+                     StringComparison.OrdinalIgnoreCase) !=
+                 0))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.IncorrectReplicationProvider,
+                        this.ReplicationProvider));
+            }
+
+            PSRecoveryServicesClient.ValidateReplicationStartTime(this.ReplicationStartTime);
+
+            var replicationFrequencyInSeconds =
+                PSRecoveryServicesClient.ConvertReplicationFrequencyToUshort(
+                    this.ReplicationFrequencyInSeconds);
+
+            var createPolicyInputProperties = new CreatePolicyInputProperties();
+
+            if (string.Compare(
+                    this.ReplicationProvider,
+                    Constants.HyperVReplica2012,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                createPolicyInputProperties.ProviderSpecificInput = new HyperVReplicaPolicyInput
+                {
+                    AllowedAuthenticationType = (ushort)(string.Compare(
+                                                             this.Authentication,
+                                                             Constants.AuthenticationTypeKerberos,
+                                                             StringComparison.OrdinalIgnoreCase) ==
+                                                         0 ? 1 : 2),
+                    ApplicationConsistentSnapshotFrequencyInHours =
+                        this.ApplicationConsistentSnapshotFrequencyInHours,
+                    Compression =
+                        this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.Compression)) ? this.Compression
+                            : Constants.Disable,
+                    InitialReplicationMethod = string.Compare(
+                                                   this.ReplicationMethod,
+                                                   Constants.OnlineReplicationMethod,
+                                                   StringComparison.OrdinalIgnoreCase) ==
+                                               0 ? "OverNetwork" : "Offline",
+                    OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
+                    RecoveryPoints = this.RecoveryPoints,
+                    ReplicaDeletion =
+                        this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.ReplicaDeletion))
+                            ? this.ReplicaDeletion : Constants.NotRequired,
+                    ReplicationPort = this.ReplicationPort
+                };
+            }
+            else
+            {
+                createPolicyInputProperties.ProviderSpecificInput =
+                    new HyperVReplicaBluePolicyInput
+                    {
+                        AllowedAuthenticationType = (ushort)(string.Compare(
+                                                                 this.Authentication,
+                                                                 Constants
+                                                                     .AuthenticationTypeKerberos,
+                                                                 StringComparison
+                                                                     .OrdinalIgnoreCase) ==
+                                                             0 ? 1 : 2),
+                        ApplicationConsistentSnapshotFrequencyInHours =
+                            this.ApplicationConsistentSnapshotFrequencyInHours,
+                        Compression =
+                            this.MyInvocation.BoundParameters.ContainsKey(
+                                Utilities.GetMemberName(() => this.Compression)) ? this.Compression
+                                : Constants.Disable,
+                        InitialReplicationMethod = string.Compare(
+                                                       this.ReplicationMethod,
+                                                       Constants.OnlineReplicationMethod,
+                                                       StringComparison.OrdinalIgnoreCase) ==
+                                                   0 ? "OverNetwork" : "Offline",
+                        OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
+                        RecoveryPoints = this.RecoveryPoints,
+                        ReplicaDeletion =
+                            this.MyInvocation.BoundParameters.ContainsKey(
+                                Utilities.GetMemberName(() => this.ReplicaDeletion))
+                                ? this.ReplicaDeletion : Constants.NotRequired,
+                        ReplicationFrequencyInSeconds = replicationFrequencyInSeconds,
+                        ReplicationPort = this.ReplicationPort
+                    };
+            }
+
+            var createPolicyInput =
+                new CreatePolicyInput { Properties = createPolicyInputProperties };
+
+            var responseBlue = this.RecoveryServicesClient.CreatePolicy(
+                this.Name,
+                createPolicyInput);
+
+            var jobResponseBlue = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+
+            this.WriteObject(new ASRJob(jobResponseBlue));
         }
     }
 }

@@ -20,10 +20,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Remove Azure Site Recovery Recovery Plan.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove,
+    [Cmdlet(
+        VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrRecoveryPlan",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Remove-ASRRP",
+    [Alias(
+        "Remove-ASRRP",
         "Remove-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
@@ -31,14 +33,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ParameterSetName = ASRParameterSets.ByName)]
         public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ParameterSetName = ASRParameterSets.ByObject,
             ValueFromPipeline = true)]
         [Alias("RecoveryPlan")]
@@ -51,21 +55,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (string.Compare(ParameterSetName,
+            if (string.Compare(
+                    this.ParameterSetName,
                     ASRParameterSets.ByObject,
                     StringComparison.OrdinalIgnoreCase) ==
                 0)
             {
-                Name = InputObject.Name;
+                this.Name = this.InputObject.Name;
             }
 
-            var response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(Name);
+            var response =
+                this.RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.Name);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

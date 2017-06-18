@@ -19,7 +19,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Removes Azure Site Recovery Network mapping.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove,
+    [Cmdlet(
+        VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrNetworkMapping")]
     [Alias("Remove-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
@@ -28,7 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Network mapping object.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         [Alias("NetworkMapping")]
@@ -41,19 +43,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var response = RecoveryServicesClient.RemoveAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(InputObject.ID,
+            var response = this.RecoveryServicesClient.RemoveAzureSiteRecoveryNetworkMapping(
+                Utilities.GetValueFromArmId(
+                    this.InputObject.ID,
                     ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(InputObject.ID,
+                Utilities.GetValueFromArmId(
+                    this.InputObject.ID,
                     "replicationNetworks"),
-                Utilities.GetValueFromArmId(InputObject.ID,
+                Utilities.GetValueFromArmId(
+                    this.InputObject.ID,
                     "replicationNetworkMappings"));
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

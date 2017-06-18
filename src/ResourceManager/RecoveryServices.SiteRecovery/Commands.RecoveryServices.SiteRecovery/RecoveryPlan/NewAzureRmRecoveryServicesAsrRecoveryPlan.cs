@@ -25,74 +25,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New,
+    [Cmdlet(
+        VerbsCommon.New,
         "AzureRmRecoveryServicesAsrRecoveryPlan",
         DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
-    [Alias("New-ASRRP",
+    [Alias(
+        "New-ASRRP",
         "New-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-            Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
-            Mandatory = true)]
-        public string Name { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Recovery Points of the Policy.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-            Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
-            Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRFabric PrimaryFabric { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Application Consistent Snapshot Frequency of the Policy in hours.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-            Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRFabric RecoveryFabric { get; set; }
-
-        /// <summary>
-        ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
-            Mandatory = true)]
-        public SwitchParameter Azure { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Replication Provider of the Policy.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
-            Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.Classic,
-            Constants.ResourceManager)]
-        public string FailoverDeploymentModel { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Replication Frequency of the Policy in seconds.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRReplicationProtectedItem[] ReplicationProtectedItem { get; set; }
-
-        /// <summary>
-        ///     Gets or sets RP JSON FilePath.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPFile,
-            Mandatory = true)]
-        public string Path { get; set; }
-
         /// <summary>
         ///     Gets or sets failover deployment model
         /// </summary>
@@ -104,14 +46,85 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string primaryserver;
 
         /// <summary>
+        ///     Gets or sets Name of the recovery server.
+        /// </summary>
+        public string recoveryserver;
+
+        /// <summary>
         ///     Gets or sets recovery plan object
         /// </summary>
         private RecoveryPlan recoveryPlan;
 
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+            Mandatory = true)]
+        public string Name { get; set; }
+
         /// <summary>
-        ///     Gets or sets Name of the recovery server.
+        ///     Gets or sets Recovery Points of the Policy.
         /// </summary>
-        public string recoveryserver;
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRFabric PrimaryFabric { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Application Consistent Snapshot Frequency of the Policy in hours.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRFabric RecoveryFabric { get; set; }
+
+        /// <summary>
+        ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+            Mandatory = true)]
+        public SwitchParameter Azure { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication Provider of the Policy.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.Classic,
+            Constants.ResourceManager)]
+        public string FailoverDeploymentModel { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication Frequency of the Policy in seconds.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EnterpriseToAzure,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRReplicationProtectedItem[] ReplicationProtectedItem { get; set; }
+
+        /// <summary>
+        ///     Gets or sets RP JSON FilePath.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPFile,
+            Mandatory = true)]
+        public string Path { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -120,49 +133,53 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.EnterpriseToEnterprise:
-                    failoverDeploymentModel = Constants.NotApplicable;
-                    primaryserver = PrimaryFabric.ID;
-                    recoveryserver = RecoveryFabric.ID;
+                    this.failoverDeploymentModel = Constants.NotApplicable;
+                    this.primaryserver = this.PrimaryFabric.ID;
+                    this.recoveryserver = this.RecoveryFabric.ID;
                     break;
                 case ASRParameterSets.EnterpriseToAzure:
-                    failoverDeploymentModel = FailoverDeploymentModel;
-                    primaryserver = PrimaryFabric.ID;
-                    recoveryserver = Constants.AzureContainer;
+                    this.failoverDeploymentModel = this.FailoverDeploymentModel;
+                    this.primaryserver = this.PrimaryFabric.ID;
+                    this.recoveryserver = Constants.AzureContainer;
                     break;
                 case ASRParameterSets.ByRPFile:
 
-                    if (!File.Exists(Path))
+                    if (!File.Exists(this.Path))
                     {
-                        throw new FileNotFoundException(string.Format(Resources.FileNotFound,
-                            Path));
+                        throw new FileNotFoundException(
+                            string.Format(
+                                Resources.FileNotFound,
+                                this.Path));
 
                         ;
                     }
 
-                    var filePath = Path;
+                    var filePath = this.Path;
 
                     using (var file = new StreamReader(filePath))
                     {
-                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(file.ReadToEnd(),
+                        this.recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(
+                            file.ReadToEnd(),
                             new RecoveryPlanActionDetailsConverter());
                     }
 
                     break;
             }
 
-            if (string.Compare(ParameterSetName,
+            if (string.Compare(
+                    this.ParameterSetName,
                     ASRParameterSets.ByRPFile,
                     StringComparison.OrdinalIgnoreCase) ==
                 0)
             {
-                CreateRecoveryPlan(recoveryPlan);
+                this.CreateRecoveryPlan(this.recoveryPlan);
             }
             else
             {
-                CreateRecoveryPlan();
+                this.CreateRecoveryPlan();
             }
         }
 
@@ -173,12 +190,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties
             {
-                FailoverDeploymentModel = (FailoverDeploymentModel) Enum.Parse(
+                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(
                     typeof(FailoverDeploymentModel),
-                    failoverDeploymentModel),
+                    this.failoverDeploymentModel),
                 Groups = new List<RecoveryPlanGroup>(),
-                PrimaryFabricId = primaryserver,
-                RecoveryFabricId = recoveryserver
+                PrimaryFabricId = this.primaryserver,
+                RecoveryFabricId = this.recoveryserver
             };
 
             var recoveryPlanGroup = new RecoveryPlanGroup
@@ -189,14 +206,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 EndGroupActions = new List<RecoveryPlanAction>()
             };
 
-            foreach (var rpi in ReplicationProtectedItem)
+            foreach (var rpi in this.ReplicationProtectedItem)
             {
-                var fabricName = Utilities.GetValueFromArmId(rpi.ID,
+                var fabricName = Utilities.GetValueFromArmId(
+                    rpi.ID,
                     ARMResourceTypeConstants.ReplicationFabrics);
 
-                var replicationProtectedItemResponse = RecoveryServicesClient
-                    .GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                        Utilities.GetValueFromArmId(rpi.ID,
+                var replicationProtectedItemResponse = this.RecoveryServicesClient
+                    .GetAzureSiteRecoveryReplicationProtectedItem(
+                        fabricName,
+                        Utilities.GetValueFromArmId(
+                            rpi.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
                         rpi.Name);
 
@@ -205,21 +225,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() ==
                     typeof(HyperVReplicaAzureReplicationDetails))
                 {
-                    VmId = ((HyperVReplicaAzureReplicationDetails) replicationProtectedItemResponse
+                    VmId = ((HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse
                         .Properties.ProviderSpecificDetails).VmId;
                 }
                 else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
                              .GetType() ==
                          typeof(HyperVReplicaReplicationDetails))
                 {
-                    VmId = ((HyperVReplicaReplicationDetails) replicationProtectedItemResponse
+                    VmId = ((HyperVReplicaReplicationDetails)replicationProtectedItemResponse
                         .Properties.ProviderSpecificDetails).VmId;
                 }
                 else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
                              .GetType() ==
                          typeof(HyperVReplicaBlueReplicationDetails))
                 {
-                    VmId = ((HyperVReplicaBlueReplicationDetails) replicationProtectedItemResponse
+                    VmId = ((HyperVReplicaBlueReplicationDetails)replicationProtectedItemResponse
                         .Properties.ProviderSpecificDetails).VmId;
                 }
 
@@ -232,20 +252,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             createRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);
 
             var createRecoveryPlanInput =
-                new CreateRecoveryPlanInput {Properties = createRecoveryPlanInputProperties};
+                new CreateRecoveryPlanInput { Properties = createRecoveryPlanInputProperties };
 
-            CreateRecoveryPlan(Name,
+            this.CreateRecoveryPlan(
+                this.Name,
                 createRecoveryPlanInput);
         }
 
         /// <summary>
         ///     Create Recovery Plan: By Service object
         /// </summary>
-        private void CreateRecoveryPlan(RecoveryPlan recoveryPlan)
+        private void CreateRecoveryPlan(
+            RecoveryPlan recoveryPlan)
         {
             var createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties
             {
-                FailoverDeploymentModel = (FailoverDeploymentModel) Enum.Parse(
+                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(
                     typeof(FailoverDeploymentModel),
                     recoveryPlan.Properties.FailoverDeploymentModel),
                 Groups = recoveryPlan.Properties.Groups,
@@ -254,27 +276,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             };
 
             var createRecoveryPlanInput =
-                new CreateRecoveryPlanInput {Properties = createRecoveryPlanInputProperties};
+                new CreateRecoveryPlanInput { Properties = createRecoveryPlanInputProperties };
 
-            CreateRecoveryPlan(recoveryPlan.Name,
+            this.CreateRecoveryPlan(
+                recoveryPlan.Name,
                 createRecoveryPlanInput);
         }
 
         /// <summary>
         ///     Create Replication Plan: Utility call
         /// </summary>
-        private void CreateRecoveryPlan(string recoveryPlanName,
+        private void CreateRecoveryPlan(
+            string recoveryPlanName,
             CreateRecoveryPlanInput createRecoveryPlanInput)
         {
-            var response = RecoveryServicesClient.CreateAzureSiteRecoveryRecoveryPlan(
+            var response = this.RecoveryServicesClient.CreateAzureSiteRecoveryRecoveryPlan(
                 recoveryPlanName,
                 createRecoveryPlanInput);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

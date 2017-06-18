@@ -21,10 +21,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set,
+    [Cmdlet(
+        VerbsCommon.Set,
         "AzureRmRecoveryServicesAsrVaultSettings",
         DefaultParameterSetName = ASRParameterSets.ARSVault)]
-    [Alias("Set-ASRVaultContext",
+    [Alias(
+        "Set-ASRVaultContext",
         "Set-ASRVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
@@ -32,7 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets ARS vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ARSVault,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ARSVault,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -45,10 +48,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ARSVault:
-                    SetARSVaultContext(Vault);
+                    this.SetARSVaultContext(this.Vault);
                     break;
                 default:
                     throw new PSInvalidOperationException(Resources.InvalidParameterSet);
@@ -58,7 +61,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Set Azure Recovery Services Vault context.
         /// </summary>
-        private void SetARSVaultContext(ARSVault arsVault)
+        private void SetARSVaultContext(
+            ARSVault arsVault)
         {
             try
             {
@@ -66,27 +70,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     var result = powerShell
                         .AddCommand("Get-AzureRmRecoveryServicesVaultSettingsFile")
-                        .AddParameter("Vault",
+                        .AddParameter(
+                            "Vault",
                             arsVault)
                         .Invoke();
 
-                    var vaultSettingspath = (string) result[0]
+                    var vaultSettingspath = (string)result[0]
                         .Members["FilePath"]
                         .Value;
                     powerShell.Commands.Clear();
 
                     result = powerShell
                         .AddCommand("Import-AzureRmRecoveryServicesAsrVaultSettingsFile")
-                        .AddParameter("Path",
+                        .AddParameter(
+                            "Path",
                             vaultSettingspath)
                         .Invoke();
-                    WriteObject(result);
+                    this.WriteObject(result);
                     powerShell.Commands.Clear();
                 }
             }
             catch (InvalidOperationException e)
             {
-                WriteDebug(e.Message);
+                this.WriteDebug(e.Message);
             }
         }
     }

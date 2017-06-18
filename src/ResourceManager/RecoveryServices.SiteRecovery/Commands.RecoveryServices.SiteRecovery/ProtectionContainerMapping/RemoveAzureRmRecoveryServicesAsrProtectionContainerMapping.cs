@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Adds Azure Site Recovery Policy settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove,
+    [Cmdlet(
+        VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrProtectionContainerMapping",
         DefaultParameterSetName = ASRParameterSets.ByObject,
         SupportsShouldProcess = true)]
@@ -31,7 +32,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Protection Container Mapping
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -51,12 +53,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (ShouldProcess(InputObject.Name,
+            if (this.ShouldProcess(
+                this.InputObject.Name,
                 VerbsCommon.Remove))
             {
                 PSSiteRecoveryLongRunningOperation response = null;
 
-                if (!Force.IsPresent)
+                if (!this.Force.IsPresent)
                 {
                     var inputProperties = new RemoveProtectionContainerMappingInputProperties
                     {
@@ -64,31 +67,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     };
 
                     var input =
-                        new RemoveProtectionContainerMappingInput {Properties = inputProperties};
+                        new RemoveProtectionContainerMappingInput { Properties = inputProperties };
 
-                    response = RecoveryServicesClient.UnConfigureProtection(
-                        Utilities.GetValueFromArmId(InputObject.ID,
+                    response = this.RecoveryServicesClient.UnConfigureProtection(
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(InputObject.ID,
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        InputObject.Name,
+                        this.InputObject.Name,
                         input);
                 }
                 else
                 {
-                    response = RecoveryServicesClient.PurgeCloudMapping(Utilities.GetValueFromArmId(
-                            InputObject.ID,
+                    response = this.RecoveryServicesClient.PurgeCloudMapping(
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        Utilities.GetValueFromArmId(InputObject.ID,
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
                             ARMResourceTypeConstants.ReplicationProtectionContainers),
-                        InputObject.Name);
+                        this.InputObject.Name);
                 }
 
-                var jobResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                        .GetJobIdFromReponseLocation(response.Location));
+                var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-                WriteObject(new ASRJob(jobResponse));
+                this.WriteObject(new ASRJob(jobResponse));
             }
         }
     }

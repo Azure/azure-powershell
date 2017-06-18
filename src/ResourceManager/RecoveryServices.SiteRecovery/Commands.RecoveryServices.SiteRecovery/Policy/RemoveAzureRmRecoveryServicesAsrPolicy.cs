@@ -19,7 +19,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Removes Azure Site Recovery Policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove,
+    [Cmdlet(
+        VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrPolicy")]
     [Alias("Remove-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
@@ -28,7 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the Policy.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true)]
         [Alias("Policy")]
         public ASRPolicy InputObject { get; set; }
@@ -40,13 +42,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var responseBlue = RecoveryServicesClient.DeletePolicy(InputObject.Name);
+            var responseBlue = this.RecoveryServicesClient.DeletePolicy(this.InputObject.Name);
 
-            var jobResponseBlue =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+            var jobResponseBlue = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
 
-            WriteObject(new ASRJob(jobResponseBlue));
+            this.WriteObject(new ASRJob(jobResponseBlue));
         }
     }
 }

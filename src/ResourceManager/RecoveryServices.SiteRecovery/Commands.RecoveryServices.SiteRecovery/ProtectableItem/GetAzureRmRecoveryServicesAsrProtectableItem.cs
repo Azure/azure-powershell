@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Protectable Item.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get,
+    [Cmdlet(
+        VerbsCommon.Get,
         "AzureRmRecoveryServicesAsrProtectableItem",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectableItem")]
@@ -35,7 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the Protectable Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -43,7 +45,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets friendly name of the Protectable Item.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
@@ -51,13 +54,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Server Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true,
             ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
             Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -70,18 +76,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObject:
-                    GetAll();
+                    this.GetAll();
                     break;
                 case ASRParameterSets.ByObjectWithName:
-                    GetByName();
+                    this.GetByName();
                     break;
                 case ASRParameterSets.ByObjectWithFriendlyName:
-                    GetByFriendlyName();
+                    this.GetByFriendlyName();
                     break;
             }
+        }
+
+        /// <summary>
+        ///     Queries all Protection Entities under given Protection Container.
+        /// </summary>
+        private void GetAll()
+        {
+            var protectableItemListResponse = this.RecoveryServicesClient
+                .GetAzureSiteRecoveryProtectableItem(
+                    Utilities.GetValueFromArmId(
+                        this.ProtectionContainer.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    this.ProtectionContainer.Name);
+
+            this.WriteProtectableItems(protectableItemListResponse);
         }
 
         /// <summary>
@@ -91,36 +112,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var found = false;
 
-            var protectableItemListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
-                    Utilities.GetValueFromArmId(ProtectionContainer.ID,
+            var protectableItemListResponse = this.RecoveryServicesClient
+                .GetAzureSiteRecoveryProtectableItem(
+                    Utilities.GetValueFromArmId(
+                        this.ProtectionContainer.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
-                    ProtectionContainer.Name);
+                    this.ProtectionContainer.Name);
             var protectableItem = protectableItemListResponse.SingleOrDefault(
-                t => string.Compare(t.Properties.FriendlyName,
-                         FriendlyName,
+                t => string.Compare(
+                         t.Properties.FriendlyName,
+                         this.FriendlyName,
                          StringComparison.OrdinalIgnoreCase) ==
                      0);
 
             if (protectableItem != null)
             {
-                var protectableItemResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
-                        Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                var protectableItemResponse = this.RecoveryServicesClient
+                    .GetAzureSiteRecoveryProtectableItem(
+                        Utilities.GetValueFromArmId(
+                            this.ProtectionContainer.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        ProtectionContainer.Name,
+                        this.ProtectionContainer.Name,
                         protectableItem.Name);
-                WriteProtectableItem(protectableItemResponse);
+                this.WriteProtectableItem(protectableItemResponse);
 
                 found = true;
             }
 
             if (!found)
             {
-                throw new InvalidOperationException(string.Format(
-                    Resources.ProtectionEntityNotFound,
-                    FriendlyName,
-                    ProtectionContainer.FriendlyName));
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.ProtectionEntityNotFound,
+                        this.FriendlyName,
+                        this.ProtectionContainer.FriendlyName));
             }
         }
 
@@ -131,29 +156,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             try
             {
-                var protectableItemResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
-                        Utilities.GetValueFromArmId(ProtectionContainer.ID,
+                var protectableItemResponse = this.RecoveryServicesClient
+                    .GetAzureSiteRecoveryProtectableItem(
+                        Utilities.GetValueFromArmId(
+                            this.ProtectionContainer.ID,
                             ARMResourceTypeConstants.ReplicationFabrics),
-                        ProtectionContainer.Name,
-                        Name);
+                        this.ProtectionContainer.Name,
+                        this.Name);
 
                 if (protectableItemResponse != null)
                 {
-                    WriteProtectableItem(protectableItemResponse);
+                    this.WriteProtectableItem(protectableItemResponse);
                 }
             }
             catch (CloudException ex)
             {
-                if (string.Compare(ex.Error.Code,
+                if (string.Compare(
+                        ex.Error.Code,
                         "NotFound",
                         StringComparison.OrdinalIgnoreCase) ==
                     0)
                 {
-                    throw new InvalidOperationException(string.Format(
-                        Resources.ProtectableItemNotFound,
-                        Name,
-                        ProtectionContainer.FriendlyName));
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources.ProtectableItemNotFound,
+                            this.Name,
+                            this.ProtectionContainer.FriendlyName));
                 }
 
                 throw;
@@ -161,36 +189,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Queries all Protection Entities under given Protection Container.
+        ///     Write Protection Items
         /// </summary>
-        private void GetAll()
+        /// <param name="protectableItem"></param>
+        private void WriteProtectableItem(
+            ProtectableItem protectableItem)
         {
-            var protectableItemListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
-                    Utilities.GetValueFromArmId(ProtectionContainer.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics),
-                    ProtectionContainer.Name);
-
-            WriteProtectableItems(protectableItemListResponse);
+            this.WriteObject(new ASRProtectableItem(protectableItem));
         }
 
         /// <summary>
         ///     Write Protection Items
         /// </summary>
         /// <param name="protectableItems">List of protectable items</param>
-        private void WriteProtectableItems(IList<ProtectableItem> protectableItems)
+        private void WriteProtectableItems(
+            IList<ProtectableItem> protectableItems)
         {
-            WriteObject(protectableItems.Select(pi => new ASRProtectableItem(pi)),
+            this.WriteObject(
+                protectableItems.Select(pi => new ASRProtectableItem(pi)),
                 true);
-        }
-
-        /// <summary>
-        ///     Write Protection Items
-        /// </summary>
-        /// <param name="protectableItem"></param>
-        private void WriteProtectableItem(ProtectableItem protectableItem)
-        {
-            WriteObject(new ASRProtectableItem(protectableItem));
         }
     }
 }

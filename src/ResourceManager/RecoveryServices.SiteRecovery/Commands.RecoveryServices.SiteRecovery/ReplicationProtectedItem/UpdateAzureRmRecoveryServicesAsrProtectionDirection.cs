@@ -21,44 +21,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Used to initiate a recovery protection operation.
     /// </summary>
-    [Cmdlet(VerbsData.Update,
+    [Cmdlet(
+        VerbsData.Update,
         "AzureRmRecoveryServicesAsrProtectionDirection",
         DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
     [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
     {
-        /// <summary>
-        ///     Gets or sets Recovery Plan object.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Replication Protected Item.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [ValidateNotNullOrEmpty]
-        public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
-
-        /// <summary>
-        ///     Gets or sets Failover direction for the recovery plan.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject,
-            Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject,
-            Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject,
-            Mandatory = true)]
-        [ValidateSet(Constants.PrimaryToRecovery,
-            Constants.RecoveryToPrimary)]
-        public string Direction { get; set; }
-
         /// <summary>
         ///     Gets or sets Name of the Fabric.
         /// </summary>
@@ -75,24 +45,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string protectionEntityName;
 
         /// <summary>
+        ///     Gets or sets Recovery Plan object.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRRecoveryPlan RecoveryPlan { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Replication Protected Item.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPIObject,
+            Mandatory = true,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
+
+        /// <summary>
+        ///     Gets or sets Failover direction for the recovery plan.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPObject,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByPEObject,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPIObject,
+            Mandatory = true)]
+        [ValidateSet(
+            Constants.PrimaryToRecovery,
+            Constants.RecoveryToPrimary)]
+        public string Direction { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByRPIObject:
-                    protectionContainerName = Utilities.GetValueFromArmId(
-                        ReplicationProtectedItem.ID,
+                    this.protectionContainerName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
                         ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    fabricName = Utilities.GetValueFromArmId(ReplicationProtectedItem.ID,
+                    this.fabricName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
                         ARMResourceTypeConstants.ReplicationFabrics);
-                    SetRPIReprotect();
+                    this.SetRPIReprotect();
                     break;
                 case ASRParameterSets.ByRPObject:
-                    SetRPReprotect();
+                    this.SetRPReprotect();
                     break;
             }
         }
@@ -104,49 +112,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var plannedFailoverInputProperties = new ReverseReplicationInputProperties
             {
-                FailoverDirection = Direction,
+                FailoverDirection = this.Direction,
                 ProviderSpecificDetails = new ReverseReplicationProviderSpecificInput()
             };
 
-            var input = new ReverseReplicationInput {Properties = plannedFailoverInputProperties};
+            var input = new ReverseReplicationInput { Properties = plannedFailoverInputProperties };
 
             // fetch the latest Protectable item objects
-            var replicationProtectedItemResponse = RecoveryServicesClient
-                .GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
-                    protectionContainerName,
-                    ReplicationProtectedItem.Name);
+            var replicationProtectedItemResponse = this.RecoveryServicesClient
+                .GetAzureSiteRecoveryReplicationProtectedItem(
+                    this.fabricName,
+                    this.protectionContainerName,
+                    this.ReplicationProtectedItem.Name);
 
-            var protectableItemResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(fabricName,
-                    protectionContainerName,
-                    Utilities.GetValueFromArmId(replicationProtectedItemResponse.Properties
-                            .ProtectableItemId,
+            var protectableItemResponse = this.RecoveryServicesClient
+                .GetAzureSiteRecoveryProtectableItem(
+                    this.fabricName,
+                    this.protectionContainerName,
+                    Utilities.GetValueFromArmId(
+                        replicationProtectedItemResponse.Properties.ProtectableItemId,
                         ARMResourceTypeConstants.ProtectableItems));
 
             var aSRProtectableItem = new ASRProtectableItem(protectableItemResponse);
 
             if (0 ==
-                string.Compare(ReplicationProtectedItem.ReplicationProvider,
+                string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
                     StringComparison.OrdinalIgnoreCase))
             {
-                if (Direction == Constants.PrimaryToRecovery)
+                if (this.Direction == Constants.PrimaryToRecovery)
                 {
                     var reprotectInput = new HyperVReplicaAzureReprotectInput
                     {
                         HvHostVmId = aSRProtectableItem.FabricObjectId,
                         VmName = aSRProtectableItem.FriendlyName,
-                        OsType = string.Compare(aSRProtectableItem.OS,
-                                     "Windows") ==
-                                 0 ||
-                                 string.Compare(aSRProtectableItem.OS,
-                                     "Linux") ==
-                                 0 ? aSRProtectableItem.OS : "Windows",
+                        OsType = (string.Compare(
+                                      aSRProtectableItem.OS,
+                                      "Windows") ==
+                                  0) ||
+                                 (string.Compare(
+                                      aSRProtectableItem.OS,
+                                      "Linux") ==
+                                  0) ? aSRProtectableItem.OS : "Windows",
                         VHDId = aSRProtectableItem.OSDiskId
                     };
 
                     var providerSpecificDetails =
-                        (HyperVReplicaAzureReplicationDetails) replicationProtectedItemResponse
+                        (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse
                             .Properties.ProviderSpecificDetails;
 
                     reprotectInput.StorageAccountId =
@@ -156,16 +169,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
-            var response = RecoveryServicesClient.StartAzureSiteRecoveryReprotection(fabricName,
-                protectionContainerName,
-                ReplicationProtectedItem.Name,
+            var response = this.RecoveryServicesClient.StartAzureSiteRecoveryReprotection(
+                this.fabricName,
+                this.protectionContainerName,
+                this.ReplicationProtectedItem.Name,
                 input);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
 
         /// <summary>
@@ -174,13 +187,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private void SetRPReprotect()
         {
             var response =
-                RecoveryServicesClient.UpdateAzureSiteRecoveryProtection(RecoveryPlan.Name);
+                this.RecoveryServicesClient.UpdateAzureSiteRecoveryProtection(
+                    this.RecoveryPlan.Name);
 
-            var jobResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient
-                    .GetJobIdFromReponseLocation(response.Location));
+            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse));
+            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

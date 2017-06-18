@@ -26,17 +26,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <returns>Storage classification list response</returns>
         public List<StorageClassification> GetAzureSiteRecoveryStorageClassification()
         {
-            var firstPage = GetSiteRecoveryClient()
+            var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationStorageClassifications
-                .ListWithHttpMessagesAsync(GetRequestHeaders(true))
+                .ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationStorageClassifications.ListNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
@@ -48,43 +50,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <returns>Storage classification Mapping list response</returns>
         public List<StorageClassificationMapping> GetAzureSiteRecoveryStorageClassificationMapping()
         {
-            var firstPage = GetSiteRecoveryClient()
+            var firstPage = this.GetSiteRecoveryClient()
                 .ReplicationStorageClassificationMappings
-                .ListWithHttpMessagesAsync(GetRequestHeaders(true))
+                .ListWithHttpMessagesAsync(this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()
                 .Body;
-            var pages = Utilities.GetAllFurtherPages(GetSiteRecoveryClient()
+            var pages = Utilities.GetAllFurtherPages(
+                this.GetSiteRecoveryClient()
                     .ReplicationStorageClassificationMappings.ListNextWithHttpMessagesAsync,
                 firstPage.NextPageLink,
-                GetRequestHeaders(true));
-            pages.Insert(0,
+                this.GetRequestHeaders(true));
+            pages.Insert(
+                0,
                 firstPage);
 
             return Utilities.IpageToList(pages);
-        }
-
-        /// <summary>
-        ///     Starts job for unmapping classifications
-        /// </summary>
-        /// <param name="fabricName">Fabric name name.</param>
-        /// <param name="storageClassificationName">Storage classification name.</param>
-        /// <param name="mappingName">Classification mapping name.</param>
-        /// <returns>Operation result.</returns>
-        public PSSiteRecoveryLongRunningOperation UnmapStorageClassifications(string fabricName,
-            string storageClassificationName,
-            string mappingName)
-        {
-            var op = GetSiteRecoveryClient()
-                .ReplicationStorageClassificationMappings.BeginDeleteWithHttpMessagesAsync(
-                    fabricName,
-                    storageClassificationName,
-                    mappingName,
-                    GetRequestHeaders(true))
-                .GetAwaiter()
-                .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
-            return result;
         }
 
         /// <summary>
@@ -100,16 +81,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string armName)
         {
             var tokens =
-                primaryClassification.Id.UnFormatArmId(ARMResourceIdPaths
-                    .StorageClassificationResourceIdPath);
+                primaryClassification.Id.UnFormatArmId(
+                    ARMResourceIdPaths.StorageClassificationResourceIdPath);
 
-            var op = GetSiteRecoveryClient()
+            var op = this.GetSiteRecoveryClient()
                 .ReplicationStorageClassificationMappings.BeginCreateWithHttpMessagesAsync(
                     tokens[0],
                     tokens[1],
                     armName,
                     input,
-                    GetRequestHeaders(true))
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        ///     Starts job for unmapping classifications
+        /// </summary>
+        /// <param name="fabricName">Fabric name name.</param>
+        /// <param name="storageClassificationName">Storage classification name.</param>
+        /// <param name="mappingName">Classification mapping name.</param>
+        /// <returns>Operation result.</returns>
+        public PSSiteRecoveryLongRunningOperation UnmapStorageClassifications(
+            string fabricName,
+            string storageClassificationName,
+            string mappingName)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationStorageClassificationMappings.BeginDeleteWithHttpMessagesAsync(
+                    fabricName,
+                    storageClassificationName,
+                    mappingName,
+                    this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
             var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
@@ -123,6 +128,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public static class StorageClassificationExtensions
     {
         /// <summary>
+        ///     Gets fabric Id from classification ARM Id.
+        /// </summary>
+        /// <param name="classification">Storage classification.</param>
+        /// <returns>ARM Id of the fabric.</returns>
+        public static string GetFabricId(
+            this StorageClassification classification)
+        {
+            var tokens =
+                classification.Id.UnFormatArmId(
+                    ARMResourceIdPaths.StorageClassificationResourceIdPath);
+
+            var vaultId = classification.Id.GetVaultArmId();
+
+            return vaultId +
+                   "/" +
+                   string.Format(
+                       ARMResourceIdPaths.FabricResourceIdPath,
+                       tokens[0]);
+        }
+
+        /// <summary>
         ///     Gets primary storage classification ARM Id.
         /// </summary>
         /// <param name="mapping">Storage classification mapping input.</param>
@@ -130,35 +156,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public static string GetPrimaryStorageClassificationId(
             this StorageClassificationMapping mapping)
         {
-            var tokens = mapping.Id.UnFormatArmId(ARMResourceIdPaths
-                .StorageClassificationMappingResourceIdPath);
+            var tokens = mapping.Id.UnFormatArmId(
+                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
 
             var vaultId = mapping.Id.GetVaultArmId();
 
             return vaultId +
                    "/" +
-                   string.Format(ARMResourceIdPaths.StorageClassificationResourceIdPath,
+                   string.Format(
+                       ARMResourceIdPaths.StorageClassificationResourceIdPath,
                        tokens[0],
                        tokens[1]);
-        }
-
-        /// <summary>
-        ///     Gets fabric Id from classification ARM Id.
-        /// </summary>
-        /// <param name="classification">Storage classification.</param>
-        /// <returns>ARM Id of the fabric.</returns>
-        public static string GetFabricId(this StorageClassification classification)
-        {
-            var tokens =
-                classification.Id.UnFormatArmId(ARMResourceIdPaths
-                    .StorageClassificationResourceIdPath);
-
-            var vaultId = classification.Id.GetVaultArmId();
-
-            return vaultId +
-                   "/" +
-                   string.Format(ARMResourceIdPaths.FabricResourceIdPath,
-                       tokens[0]);
         }
     }
 }

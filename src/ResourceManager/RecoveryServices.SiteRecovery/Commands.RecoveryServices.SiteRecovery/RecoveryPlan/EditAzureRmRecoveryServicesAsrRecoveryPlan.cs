@@ -24,10 +24,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Updates Azure Site Recovery Recovery Plan object in memory.
     /// </summary>
-    [Cmdlet(VerbsData.Edit,
+    [Cmdlet(
+        VerbsData.Edit,
         "AzureRmRecoveryServicesAsrRecoveryPlan",
         DefaultParameterSetName = ASRParameterSets.AppendGroup)]
-    [Alias("Edit-ASRRP",
+    [Alias(
+        "Edit-ASRRP",
         "Edit-ASRRecoveryPlan")]
     [OutputType(typeof(ASRRecoveryPlan))]
     public class EditAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
@@ -35,7 +37,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the Recovery Plan.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         [Alias("RecoveryPlan")]
@@ -44,37 +47,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets switch parameter
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AppendGroup,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AppendGroup,
             Mandatory = true)]
         public SwitchParameter AppendGroup { get; set; }
 
         /// <summary>
         ///     Gets or sets switch parameter
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.RemoveGroup,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.RemoveGroup,
             Mandatory = true)]
         public ASRRecoveryPlanGroup RemoveGroup { get; set; }
 
         /// <summary>
         ///     Gets or sets group
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AddReplicationProtectedItems,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AddReplicationProtectedItems,
             Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems,
             Mandatory = true)]
         public ASRRecoveryPlanGroup Group { get; set; }
 
         /// <summary>
         ///     Gets or sets switch parameter
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AddReplicationProtectedItems,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AddReplicationProtectedItems,
             Mandatory = true)]
         public ASRReplicationProtectedItem[] AddProtectedItems { get; set; }
 
         /// <summary>
         ///     Gets or sets switch parameter
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems,
+        [Parameter(
+            ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems,
             Mandatory = true)]
         public ASRReplicationProtectedItem[] RemoveProtectedItems { get; set; }
 
@@ -87,7 +96,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             ASRRecoveryPlanGroup tempGroup;
 
-            switch (ParameterSetName)
+            switch (this.ParameterSetName)
             {
                 case ASRParameterSets.AppendGroup:
                     var recoveryPlanGroup = new RecoveryPlanGroup
@@ -98,127 +107,140 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         EndGroupActions = new List<RecoveryPlanAction>()
                     };
 
-                    InputObject.Groups.Add(new ASRRecoveryPlanGroup(
-                        "Group " + (InputObject.Groups.Count - 1),
-                        recoveryPlanGroup));
+                    this.InputObject.Groups.Add(
+                        new ASRRecoveryPlanGroup(
+                            "Group " + (this.InputObject.Groups.Count - 1),
+                            recoveryPlanGroup));
                     break;
                 case ASRParameterSets.RemoveGroup:
-                    tempGroup = InputObject.Groups.FirstOrDefault(g => string.Compare(g.Name,
-                                                                            RemoveGroup.Name,
-                                                                            StringComparison
-                                                                                .OrdinalIgnoreCase) ==
-                                                                        0);
+                    tempGroup = this.InputObject.Groups.FirstOrDefault(
+                        g => string.Compare(
+                                 g.Name,
+                                 this.RemoveGroup.Name,
+                                 StringComparison.OrdinalIgnoreCase) ==
+                             0);
 
                     if (tempGroup != null)
                     {
-                        InputObject.Groups.Remove(tempGroup);
-                        InputObject = InputObject.RefreshASRRecoveryPlanGroupNames();
+                        this.InputObject.Groups.Remove(tempGroup);
+                        this.InputObject = this.InputObject.RefreshASRRecoveryPlanGroupNames();
                     }
                     else
                     {
-                        throw new PSArgumentException(string.Format(
-                            Resources.GroupNotFoundInRecoveryPlan,
-                            RemoveGroup.Name,
-                            InputObject.FriendlyName));
+                        throw new PSArgumentException(
+                            string.Format(
+                                Resources.GroupNotFoundInRecoveryPlan,
+                                this.RemoveGroup.Name,
+                                this.InputObject.FriendlyName));
                     }
 
                     break;
                 case ASRParameterSets.AddReplicationProtectedItems:
-                    foreach (var rpi in AddProtectedItems)
+                    foreach (var rpi in this.AddProtectedItems)
                     {
-                        var fabricName = Utilities.GetValueFromArmId(rpi.ID,
+                        var fabricName = Utilities.GetValueFromArmId(
+                            rpi.ID,
                             ARMResourceTypeConstants.ReplicationFabrics);
 
-                        var replicationProtectedItemResponse =
-                            RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(
+                        var replicationProtectedItemResponse = this.RecoveryServicesClient
+                            .GetAzureSiteRecoveryReplicationProtectedItem(
                                 fabricName,
-                                Utilities.GetValueFromArmId(rpi.ID,
+                                Utilities.GetValueFromArmId(
+                                    rpi.ID,
                                     ARMResourceTypeConstants.ReplicationProtectionContainers),
                                 rpi.Name);
 
-                        tempGroup = InputObject.Groups.FirstOrDefault(g => string.Compare(g.Name,
-                                                                                Group.Name,
-                                                                                StringComparison
-                                                                                    .OrdinalIgnoreCase) ==
-                                                                            0);
+                        tempGroup = this.InputObject.Groups.FirstOrDefault(
+                            g => string.Compare(
+                                     g.Name,
+                                     this.Group.Name,
+                                     StringComparison.OrdinalIgnoreCase) ==
+                                 0);
 
                         if (tempGroup != null)
                         {
-                            foreach (var gp in InputObject.Groups)
+                            foreach (var gp in this.InputObject.Groups)
                             {
                                 if (gp.ReplicationProtectedItems == null)
                                     continue;
 
-                                if (gp.ReplicationProtectedItems.Any(pi => string.Compare(pi.Id,
-                                                                               replicationProtectedItemResponse
-                                                                                   .Id,
-                                                                               StringComparison
-                                                                                   .OrdinalIgnoreCase) ==
-                                                                           0))
+                                if (gp.ReplicationProtectedItems.Any(
+                                    pi => string.Compare(
+                                              pi.Id,
+                                              replicationProtectedItemResponse.Id,
+                                              StringComparison.OrdinalIgnoreCase) ==
+                                          0))
                                 {
-                                    throw new PSArgumentException(string.Format(
-                                        Resources.VMAlreadyPartOfGroup,
-                                        rpi.FriendlyName,
-                                        gp.Name,
-                                        InputObject.FriendlyName));
+                                    throw new PSArgumentException(
+                                        string.Format(
+                                            Resources.VMAlreadyPartOfGroup,
+                                            rpi.FriendlyName,
+                                            gp.Name,
+                                            this.InputObject.FriendlyName));
                                 }
                             }
 
-                            InputObject.Groups[InputObject.Groups.IndexOf(tempGroup)]
+                            this.InputObject.Groups[this.InputObject.Groups.IndexOf(tempGroup)]
                                 .ReplicationProtectedItems.Add(replicationProtectedItemResponse);
                         }
                         else
                         {
-                            throw new PSArgumentException(string.Format(
-                                Resources.GroupNotFoundInRecoveryPlan,
-                                Group.Name,
-                                InputObject.FriendlyName));
+                            throw new PSArgumentException(
+                                string.Format(
+                                    Resources.GroupNotFoundInRecoveryPlan,
+                                    this.Group.Name,
+                                    this.InputObject.FriendlyName));
                         }
                     }
 
                     break;
                 case ASRParameterSets.RemoveReplicationProtectedItems:
-                    foreach (var rpi in RemoveProtectedItems)
+                    foreach (var rpi in this.RemoveProtectedItems)
                     {
-                        var fabricName = Utilities.GetValueFromArmId(rpi.ID,
+                        var fabricName = Utilities.GetValueFromArmId(
+                            rpi.ID,
                             ARMResourceTypeConstants.ReplicationFabrics);
 
-                        tempGroup = InputObject.Groups.FirstOrDefault(g => string.Compare(g.Name,
-                                                                                Group.Name,
-                                                                                StringComparison
-                                                                                    .OrdinalIgnoreCase) ==
-                                                                            0);
+                        tempGroup = this.InputObject.Groups.FirstOrDefault(
+                            g => string.Compare(
+                                     g.Name,
+                                     this.Group.Name,
+                                     StringComparison.OrdinalIgnoreCase) ==
+                                 0);
 
                         if (tempGroup != null)
                         {
-                            var ReplicationProtectedItem = InputObject
-                                .Groups[InputObject.Groups.IndexOf(tempGroup)]
-                                .ReplicationProtectedItems
-                                .FirstOrDefault(pi => string.Compare(pi.Id,
-                                                          rpi.ID,
-                                                          StringComparison.OrdinalIgnoreCase) ==
-                                                      0);
+                            var ReplicationProtectedItem = this.InputObject
+                                .Groups[this.InputObject.Groups.IndexOf(tempGroup)]
+                                .ReplicationProtectedItems.FirstOrDefault(
+                                    pi => string.Compare(
+                                              pi.Id,
+                                              rpi.ID,
+                                              StringComparison.OrdinalIgnoreCase) ==
+                                          0);
 
                             if (ReplicationProtectedItem != null)
                             {
-                                InputObject.Groups[InputObject.Groups.IndexOf(tempGroup)]
+                                this.InputObject.Groups[this.InputObject.Groups.IndexOf(tempGroup)]
                                     .ReplicationProtectedItems.Remove(ReplicationProtectedItem);
                             }
                             else
                             {
-                                throw new PSArgumentException(string.Format(
-                                    Resources.VMNotFoundInGroup,
-                                    rpi.FriendlyName,
-                                    Group.Name,
-                                    InputObject.FriendlyName));
+                                throw new PSArgumentException(
+                                    string.Format(
+                                        Resources.VMNotFoundInGroup,
+                                        rpi.FriendlyName,
+                                        this.Group.Name,
+                                        this.InputObject.FriendlyName));
                             }
                         }
                         else
                         {
-                            throw new PSArgumentException(string.Format(
-                                Resources.GroupNotFoundInRecoveryPlan,
-                                Group.Name,
-                                InputObject.FriendlyName));
+                            throw new PSArgumentException(
+                                string.Format(
+                                    Resources.GroupNotFoundInRecoveryPlan,
+                                    this.Group.Name,
+                                    this.InputObject.FriendlyName));
                         }
                     }
 
@@ -227,7 +249,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             ;
 
-            WriteObject(InputObject);
+            this.WriteObject(this.InputObject);
         }
     }
 }
