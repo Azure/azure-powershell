@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Context);
 
-            foreach (string storageAccountType in new[] { StorageAccountType.Storage, StorageAccountType.ClassicStorage })
+            foreach (string storageAccountType in new[] { StorageAccountType.ClassicStorage, StorageAccountType.Storage })
             {
                 string resourceGroup = GetStorageResourceGroup(
                     resourcesClient,
