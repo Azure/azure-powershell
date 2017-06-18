@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to generate a sync agent registration key for a specific sync agent
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncAgentKey", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncAgentKeyModel))]
     public class NewAzureSqlSyncAgentKey : AzureSqlCmdletBase<IEnumerable<AzureSqlSyncAgentKeyModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>

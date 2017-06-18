@@ -13,7 +13,7 @@ Returns information about Azure SQL Database Sync Groups.
 
 ```
 Get-AzureRmSqlSyncGroup [[-Name] <String>] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ [-ResourceGroupName] <String>
 ```
 
 ## DESCRIPTION
@@ -79,21 +79,6 @@ This command gets information about the Azure SQL Database Sync Group with name 
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
 The name of the Azure SQL Database.
 
@@ -154,22 +139,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ## INPUTS
 
 ## OUTPUTS
@@ -182,7 +151,7 @@ Accept wildcard characters: False
 
 [New-AzureRmSqlSyncGroup](./New-AzureRmSqlSyncGroup.md)
 
-[Set-AzureRmSqlSyncGroup](./Set-AzureRmSqlSyncGroup.md)
+[Update-AzureRmSqlSyncGroup](./Update-AzureRmSqlSyncGroup.md)
 
 [Remove-AzureRmSqlSyncGroup](./Remove-AzureRmSqlSyncGroup.md)
 

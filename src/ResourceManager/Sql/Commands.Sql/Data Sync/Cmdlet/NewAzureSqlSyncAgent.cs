@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncAgent", SupportsShouldProcess = true,
         DefaultParameterSetName = SyncDatabaseComponentSet,
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncAgentModel))]
     public class NewAzureSqlSyncAgent : AzureSqlSyncAgentCmdletBase
     {
         /// <summary>

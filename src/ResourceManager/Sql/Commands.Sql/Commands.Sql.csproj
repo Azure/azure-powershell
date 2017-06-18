@@ -133,10 +133,10 @@
     <Compile Include="Data Sync\Cmdlet\RemoveAzureSqlSyncAgent.cs" />
     <Compile Include="Data Sync\Cmdlet\RemoveAzureSqlSyncGroup.cs" />
     <Compile Include="Data Sync\Cmdlet\RemoveAzureSqlSyncMember.cs" />
-    <Compile Include="Data Sync\Cmdlet\SetAzureSqlSyncGroup.cs" />
-    <Compile Include="Data Sync\Cmdlet\SetAzureSqlSyncMember.cs" />
+    <Compile Include="Data Sync\Cmdlet\UpdateAzureSqlSyncGroup.cs" />
+    <Compile Include="Data Sync\Cmdlet\UpdateAzureSqlSyncMember.cs" />
     <Compile Include="Data Sync\Cmdlet\StartAzureSqlSyncGroupSync.cs" />
-    <Compile Include="Data Sync\Cmdlet\InvokeAzureSqlSyncSchemaRefresh.cs" />
+    <Compile Include="Data Sync\Cmdlet\UpdateAzureSqlSyncSchema.cs" />
     <Compile Include="Data Sync\Cmdlet\StopAzureSqlSyncGroupSync.cs" />
     <Compile Include="Data Sync\Model\AzureSqlSyncAgentKeyModel.cs" />
     <Compile Include="Data Sync\Model\AzureSqlSyncAgentLinkedDatabaseModel.cs" />

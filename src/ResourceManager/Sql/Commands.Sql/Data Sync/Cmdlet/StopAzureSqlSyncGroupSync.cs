@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to cancel the synchronization of sync group
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlSyncGroupSync", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
     public class StopAzureRmSqlSyncGroupSync : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "The sync group name.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string SyncGroupName { get; set; }
 

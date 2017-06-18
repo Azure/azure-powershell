@@ -221,7 +221,7 @@ function Test-UpdateSyncGroup
     {
         # Update a sync group
         $newIntervalInSeconds = 200
-        $sg2 = Set-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        $sg2 = Update-AzureRmSqlSyncGroup -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName -SyncGroupName $sgName -IntervalInSeconds $newIntervalInSeconds 
         Assert-AreEqual $newIntervalInSeconds $sg2.IntervalInSeconds
     }
@@ -297,7 +297,7 @@ function Test-RefreshAndGetSyncGroupHubSchema
     try
     {
         # Refresh hub schema
-        Invoke-AzureRmSqlSyncSchemaRefresh -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        Update-AzureRmSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName -SyncGroupName $sgName
 
         # Get hub schema
@@ -490,7 +490,7 @@ function Test-UpdateSyncMember
     try
     {
         # Update a sync member
-        $sm2 = Set-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        $sm2 = Update-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
             -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName `
             -MemberDatabaseCredential $credential
         Assert-AreEqual $smParams.databaseType $sm2.MemberDatabaseType
@@ -541,7 +541,7 @@ function Test-RefreshAndGetSyncMemberSchema
     try
     {
         # Refresh member schema
-        Invoke-AzureRmSqlSyncSchemaRefresh -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+        Update-AzureRmSqlSyncSchema -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
             -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName 
 
         # Get member schema

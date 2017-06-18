@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to update a existing sync group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlSyncGroup", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium)]
-    public class SetAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
+    [Cmdlet(VerbsData.Update, "AzureRmSqlSyncGroup", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+    public class UpdateAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the sync group name
