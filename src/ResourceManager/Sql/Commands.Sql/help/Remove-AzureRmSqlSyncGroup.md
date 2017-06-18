@@ -12,8 +12,8 @@ Removes an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncGroup [-Name] <String> [-PassThru] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmSqlSyncGroup [-Name] <String> [-Force] [-PassThru] [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -57,6 +57,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Skip confirmation message for performing the action
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,7 +163,7 @@ Accept wildcard characters: False
 
 [New-AzureRmSqlSyncGroup](./New-AzureRmSqlSyncGroup.md)
 
-[Set-AzureRmSqlSyncGroup](./Set-AzureRmSqlSyncGroup.md)
+[Update-AzureRmSqlSyncGroup](./Update-AzureRmSqlSyncGroup.md)
 
 [Get-AzureRmSqlSyncGroup](./Get-AzureRmSqlSyncGroup.md)
 

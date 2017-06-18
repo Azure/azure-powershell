@@ -94,7 +94,7 @@ function Test-RemoveSyncAgent
     {
         # Remove the sync agent
         Remove-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-         -SyncAgentName $saName -Confirm:$false
+         -SyncAgentName $saName -Force
 
         $all = Get-AzureRmSqlSyncAgent -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
         Assert-AreEqual $all.Count 0
@@ -336,7 +336,7 @@ function Test-RemoveSyncGroup
     {
         # Remove sync group
         Remove-AzureRmSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-        -DatabaseName $databaseName -SyncGroupName $sgName -Confirm:$false
+        -DatabaseName $databaseName -SyncGroupName $sgName -Force
         
         $all = Get-AzureRmSqlSyncGroup -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName
@@ -591,7 +591,7 @@ function Test-RemoveSyncMember
     {
         # Delete a sync member
         Remove-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-        -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName -Confirm:$false
+        -DatabaseName $databaseName1 -SyncGroupName $sgName -SyncMemberName $smName -Force
         
         $all = Get-AzureRmSqlSyncMember -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
         -DatabaseName $databaseName1 -SyncGroupName $sgName

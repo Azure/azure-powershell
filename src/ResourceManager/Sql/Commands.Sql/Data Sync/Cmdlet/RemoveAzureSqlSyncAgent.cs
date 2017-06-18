@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
+        /// Defines whether it is ok to skip the requesting of rule removal confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Defines Whether return the removed sync agent")]
@@ -71,22 +77,18 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
 
         /// <summary>
-        /// Get the confirmation message when users want to remove a sync agent
+        /// Entry point for the cmdlet
         /// </summary>
-        /// <returns>The confirmation message</returns>
-        protected override string GetConfirmActionProcessMessage()
+        public override void ExecuteCmdlet()
         {
-            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentDescription, this.Name);
-        }
-
-        /// <summary>
-        /// Get resource id for confirmation message
-        /// </summary>
-        /// <param name="model">The sync agent that this cmdlet operates on</param>
-        /// <returns>The resource id</returns>
-        protected override string GetResourceId(IEnumerable<AzureSqlSyncAgentModel> model)
-        {
-            return this.ServerName;
+            if (!Force.IsPresent && !ShouldProcess(
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentDescription, this.Name),
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentWarning, this.Name, this.ResourceGroupName),
+                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+            base.ExecuteCmdlet();
         }
     }
 }

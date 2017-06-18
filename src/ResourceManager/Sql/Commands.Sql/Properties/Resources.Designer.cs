@@ -529,6 +529,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Agent &apos;{0}&apos; for  Resource Group &apos;{1}&apos; ?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncAgentWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncAgentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Group &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlSyncGroupDescription {
@@ -538,11 +547,29 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Member &apos;{0}&apos; on Sync Group &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Group &apos;{0}&apos; for database &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Member &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlSyncMemberDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlSyncMemberDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Member &apos;{0}&apos; for Sync Group &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncMemberWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncMemberWarning", resourceCulture);
             }
         }
         

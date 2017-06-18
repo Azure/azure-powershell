@@ -15507,6 +15507,14 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Skip confirmation message for performing the action
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
 <maml:Description><maml:para>Defines Whether return the removed sync agent
 </maml:para>
@@ -15527,6 +15535,15 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
 <maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Skip confirmation message for performing the action
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -15663,6 +15680,14 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Skip confirmation message for performing the action
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>PassThru</maml:name>
 <maml:Description><maml:para>Defines Whether return the removed sync group
 </maml:para>
@@ -15698,6 +15723,15 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Skip confirmation message for performing the action
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="SyncGroupName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>The sync group name.
@@ -15767,7 +15801,7 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <command:relatedLinks><maml:navigationLink><maml:linkText>New-AzureRmSqlSyncGroup</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Set-AzureRmSqlSyncGroup</maml:linkText>
+<maml:navigationLink><maml:linkText>Update-AzureRmSqlSyncGroup</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Get-AzureRmSqlSyncGroup</maml:linkText>
@@ -15831,6 +15865,14 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Skip confirmation message for performing the action
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="SyncMemberName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>The sync member name.
 </maml:para>
@@ -15875,6 +15917,15 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Skip confirmation message for performing the action
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="SyncMemberName"><maml:name>Name</maml:name>
 <maml:Description><maml:para>The sync member name.
@@ -15953,7 +16004,7 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</d
 <command:relatedLinks><maml:navigationLink><maml:linkText>New-AzureRmSqlSyncMember</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
-<maml:navigationLink><maml:linkText>Set-AzureRmSqlSyncMember</maml:linkText>
+<maml:navigationLink><maml:linkText>Update-AzureRmSqlSyncMember</maml:linkText>
 <maml:uri></maml:uri>
 </maml:navigationLink>
 <maml:navigationLink><maml:linkText>Get-AzureRmSqlSyncMember</maml:linkText>
