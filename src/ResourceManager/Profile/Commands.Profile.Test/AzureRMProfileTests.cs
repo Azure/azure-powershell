@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
       },
       ""VersionProfile"": null,
       ""TokenCache"": {
-        ""CacheData"": ""AQIDBAUGCAkA""
+        ""CacheData"": ""AgAAAAAAAAA=""
       },
       ""ExtendedProperties"": {}
     }
