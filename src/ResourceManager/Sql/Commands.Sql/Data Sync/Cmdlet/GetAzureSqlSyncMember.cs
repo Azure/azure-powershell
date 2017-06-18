@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to get a specified sync member or list all the sync members under a specified sync group  
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlSyncMember", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlSyncMember",
+        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncMemberModel))]
     public class GetAzureSqlSyncMember : AzureSqlSyncMemberCmdletBase
     {
         /// <summary>

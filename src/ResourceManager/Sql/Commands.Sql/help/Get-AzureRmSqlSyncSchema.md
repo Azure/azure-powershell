@@ -13,7 +13,7 @@ Returns information about the sync schema of a member database or a hub database
 
 ```
 Get-AzureRmSqlSyncSchema [-SyncGroupName] <String> [-SyncMemberName <String>] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+ [-DatabaseName] <String> [-ResourceGroupName] <String>
 ```
 
 ## DESCRIPTION
@@ -60,21 +60,6 @@ This command gets the sync schema for the member database in the sync member syn
 
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 The name of the Azure SQL Database.
@@ -148,22 +133,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

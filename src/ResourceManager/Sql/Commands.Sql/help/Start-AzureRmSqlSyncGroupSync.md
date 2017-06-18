@@ -111,7 +111,7 @@ The sync group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: 3

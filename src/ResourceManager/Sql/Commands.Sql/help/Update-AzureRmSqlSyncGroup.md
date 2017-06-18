@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlSyncGroup
+# Update-AzureRmSqlSyncGroup
 
 ## SYNOPSIS
 Updates an Azure SQL Database Sync Group.
@@ -12,13 +12,13 @@ Updates an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlSyncGroup [-Name] <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
+Update-AzureRmSqlSyncGroup [-Name] <String> [-IntervalInSeconds <Int32>] [-DatabaseCredential <PSCredential>]
  [-SchemaFile <String>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf]
  [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Database Sync Group.
+The **Update-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Database Sync Group.
 
 
 ## EXAMPLES
@@ -26,7 +26,7 @@ The **Set-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Datab
 ### Example 1: Update a sync group for an Azure SQL Database.
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> New-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
+PS C:\> Update-AzureRmSqlSyncGroup -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -Name "SyncGroup01"
 -DatabaseCredential $credential -IntervalInSeconds 100 -Schema ".\schema.json" | Format-List
 ResourceId                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}
 ResourceGroupName           : ResourceGroup01

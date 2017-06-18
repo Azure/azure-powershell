@@ -12,8 +12,8 @@ Returns the logs of an Azure SQL Database Sync Group.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlSyncGroupLog [-SyncGroupName] <String> -StartTime <DateTime> [-EndTime <DateTime>] [-LogLevel <String>]
- [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Get-AzureRmSqlSyncGroupLog [-SyncGroupName] <String> -StartTime <DateTime> [-EndTime <DateTime>]
+ [-LogLevel <String>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
 ```
 
 ## DESCRIPTION
@@ -33,21 +33,6 @@ TimeStamp            LogLevel Details                                   Source
 This command gets the logs of an Azure SQL Sync Group.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 The name of the Azure SQL Database.
@@ -102,7 +87,7 @@ The sync group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: 3
@@ -150,22 +135,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

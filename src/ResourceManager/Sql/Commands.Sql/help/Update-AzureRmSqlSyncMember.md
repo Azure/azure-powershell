@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmSqlSyncMember
+# Update-AzureRmSqlSyncMember
 
 ## SYNOPSIS
 Updates an Azure SQL Database Sync Member.
@@ -12,19 +12,19 @@ Updates an Azure SQL Database Sync Member.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlSyncMember -Name <String> -MemberDatabaseCredential <PSCredential> [-SyncGroupName] <String>
+Update-AzureRmSqlSyncMember -Name <String> -MemberDatabaseCredential <PSCredential> [-SyncGroupName] <String>
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Database Sync Member.
+The **Update-AzureRmSqlSyncGroup** cmdlet modifies properties of an Azure SQL Database Sync Member.
 
 ## EXAMPLES
 
 ### Example 1
 ```
 PS C:\> $credential = Get-Credential
-PS C:\> Set-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01"
+PS C:\> Update-AzureRmSqlSyncMember -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -SyncGroupName "SyncGroup01" -Name "SyncMember01"
 -MemberDatabaseCredential $credential | Format-List
 ResourceId                  : subscriptions/{subscriptionId}/resourceGroups/{ResourceGroup01}/servers/{Server01}/databases/{Database01}/syncGroups/{SyncGroup01}/syncMembers/{SyncMember01}
 ResourceGroupName           : ResourceGroup01

@@ -4,39 +4,39 @@ online version:
 schema: 2.0.0
 ---
 
-# Invoke-AzureRmSqlSyncSchemaRefresh
+# Update-AzureRmSqlSyncSchema
 
 ## SYNOPSIS
-Invoke the sync schema refresh for a sync member database or a sync hub database.
+Update the sync schema for a sync member database or a sync hub database.
 It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 
 ## SYNTAX
 
 ```
-Invoke-AzureRmSqlSyncSchemaRefresh [-SyncGroupName] <String> [-SyncMemberName <String>] [-PassThru]
+Update-AzureRmSqlSyncSchema [-SyncGroupName] <String> [-SyncMemberName <String>] [-PassThru]
  [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Invoke-AzureRmSqlSyncSchemaRefresh** cmdlet invokes the sync schema refresh for a sync member database or a sync hub database.
+The **Update-AzureRmSqlSyncSchema** cmdlet updates the sync schema for a sync member database or a sync hub database.
 
 ## EXAMPLES
 
-### Example 1: Invoke the sync schema refresh for a hub database
+### Example 1: Update the sync schema for a hub database
 ```
-PS C:\>Invoke-AzureRmSqlSyncSchemaRefresh -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
-```
-
-This command invokes the sync schema refresh for the hub database in the sync group syncGroup01
-
-
-### Example 2: Invoke the sync schema refresh for a member database
-```
-PS C:\>Invoke-AzureRmSqlSyncSchemaRefresh -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
+PS C:\>Update-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01"
 ```
 
-This command invokes the sync schema refresh for the member database in the sync member syncMember01
+This command updates the sync schema for the hub database in the sync group syncGroup01
+
+
+### Example 2: Update the sync schema for a member database
+```
+PS C:\>Update-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
+```
+
+This command updates the sync schema for the member database in the sync member syncMember01
 
 ## PARAMETERS
 

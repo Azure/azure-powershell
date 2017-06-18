@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to refresh the schema of member database
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmSqlSyncSchemaRefresh", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
-    public class InvokeAzureSqlSyncSchemaRefresh : AzureSqlSyncGroupCmdletBase
+    [Cmdlet(VerbsData.Update, "AzureRmSqlSyncSchema", SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+    public class UpdateAzureSqlSyncSchema : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the sync group name
