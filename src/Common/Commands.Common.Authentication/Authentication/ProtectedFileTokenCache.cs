@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private static readonly Lazy<ProtectedFileTokenCache> instance = new Lazy<ProtectedFileTokenCache>(() => new ProtectedFileTokenCache());
 
+        IDataStore _store;
+
         public byte[] CacheData
         {
             get
@@ -54,25 +56,28 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         // If the file is already present, it loads its content in the ADAL cache
         private ProtectedFileTokenCache()
         {
+            _store = AzureSession.Instance.DataStore;
             Initialize(CacheFileName);
         }
 
-        public ProtectedFileTokenCache(byte[] inputData)
+        public ProtectedFileTokenCache(byte[] inputData, IDataStore store = null) : this(CacheFileName, store)
         {
-            AfterAccess = AfterAccessNotification;
-            BeforeAccess = BeforeAccessNotification;
             CacheData = inputData;
+        }
+
+        public ProtectedFileTokenCache(string cacheFile, IDataStore store = null)
+        {
+            _store = store ?? AzureSession.Instance.DataStore;
+            Initialize(cacheFile);
         }
 
         private void Initialize(string fileName)
         {
-            AfterAccess = AfterAccessNotification;
-            BeforeAccess = BeforeAccessNotification;
             lock (fileLock)
             {
-                if (AzureSession.Instance.DataStore.FileExists(fileName))
+                if (_store.FileExists(fileName))
                 {
-                    var existingData = AzureSession.Instance.DataStore.ReadFileAsBytes(fileName);
+                    var existingData = _store.ReadFileAsBytes(fileName);
                     if (existingData != null)
                     {
                         try
@@ -81,25 +86,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         }
                         catch (CryptographicException)
                         {
-                            AzureSession.Instance.DataStore.DeleteFile(fileName);
+                            _store.DeleteFile(fileName);
                         }
                     }
                 }
+                
+                // Create the file to start with
+                _store.WriteFile(CacheFileName, ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser));
             }
-        }
 
-        public ProtectedFileTokenCache(string cacheFile)
-        {
-            Initialize(cacheFile);
+            AfterAccess = AfterAccessNotification;
+            BeforeAccess = BeforeAccessNotification;
         }
 
         // Empties the persistent store.
         public override void Clear()
         {
             base.Clear();
-            if (AzureSession.Instance.DataStore.FileExists(CacheFileName))
+            if (_store.FileExists(CacheFileName))
             {
-                AzureSession.Instance.DataStore.DeleteFile(CacheFileName);
+                _store.DeleteFile(CacheFileName);
             }
         }
 
@@ -109,9 +115,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             lock (fileLock)
             {
-                if (AzureSession.Instance.DataStore.FileExists(CacheFileName))
+                if (_store.FileExists(CacheFileName))
                 {
-                    var existingData = AzureSession.Instance.DataStore.ReadFileAsBytes(CacheFileName);
+                    var existingData = _store.ReadFileAsBytes(CacheFileName);
                     if (existingData != null)
                     {
                         try
@@ -120,7 +126,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         }
                         catch (CryptographicException)
                         {
-                            AzureSession.Instance.DataStore.DeleteFile(CacheFileName);
+                            _store.DeleteFile(CacheFileName);
                         }
                     }
                 }
@@ -131,13 +137,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         void AfterAccessNotification(TokenCacheNotificationArgs args)
         {
             // if the access operation resulted in a cache update
-            if (HasStateChanged)
+            EnsureStateSaved();
+        }
+
+        void EnsureStateSaved()
+        {
+            lock (fileLock)
             {
-                lock (fileLock)
+                if (HasStateChanged)
                 {
                     // reflect changes in the persistent store
-                    AzureSession.Instance.DataStore.WriteFile(CacheFileName,
-                        ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser));
+                    _store.WriteFile(CacheFileName,
+                    ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser));
                     // once the write operation took place, restore the HasStateChanged bit to false
                     HasStateChanged = false;
                 }

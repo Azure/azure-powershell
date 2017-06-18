@@ -35,16 +35,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         public static void InitializeAzureSession()
         {
-            AzureSession.Initialize(CreateInstance);
+            AzureSession.Initialize(() => CreateInstance());
         }
 
-        static IAzureSession CreateInstance()
+        /// <summary>
+        /// Create a new session and replace any existing session
+        /// </summary>
+        public static void CreateOrReplaceSession()
+        {
+            CreateOrReplaceSession(new DiskDataStore());
+        }
+
+        /// <summary>
+        /// Create a new session and replace any existing session
+        /// </summary>
+        public static void CreateOrReplaceSession(IDataStore dataStore)
+        {
+            AzureSession.Initialize(() => CreateInstance(dataStore), true);
+        }
+
+        static IAzureSession CreateInstance(IDataStore dataStore = null)
         {
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
-                DataStore = new DiskDataStore(),
+                DataStore = dataStore?? new DiskDataStore(),
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
                 ProfileDirectory = Path.Combine(
@@ -59,17 +75,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
                 var cacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);
                 var contents = new byte[0];
-                if (session.DataStore.FileExists(cacheFile))
-                {
-                    contents = session.DataStore.ReadFileAsBytes(cacheFile);
-                }
-
-                if (contents != null  && contents.Length > 0)
-                {
-                    contents = ProtectedData.Unprotect(contents, null, DataProtectionScope.CurrentUser);
-                }
-
-                session.TokenCache = new ProtectedFileTokenCache(contents);
+                session.TokenCache = new ProtectedFileTokenCache(cacheFile, dataStore);
             }
             catch
             {
