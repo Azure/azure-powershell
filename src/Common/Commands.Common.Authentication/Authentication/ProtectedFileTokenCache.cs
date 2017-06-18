@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             set
             {
                 Deserialize(value);
+                HasStateChanged = true;
+                EnsureStateSaved();
             }
         }
 
