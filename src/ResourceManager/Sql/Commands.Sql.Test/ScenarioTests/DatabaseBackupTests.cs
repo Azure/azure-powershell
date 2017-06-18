@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRestoreGeoBackup()
         {
             // Test cannot be re-recorded because it has hardcoded server name
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestoreGeoBackup");
             }
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRestoreDeletedDatabaseBackup()
         {
             // Test cannot be re-recorded because it has hardcoded server name
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
             }
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRestorePointInTimeBackup()
         {
             // Test cannot be re-recorded because it has hardcoded server name
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestorePointInTimeBackup");
             }
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestServerBackupLongTermRetentionVault()
         {
             // Test cannot be re-recorded because it has hardcoded server name
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
             }
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseBackupLongTermRetentionPolicy()
         {
             // Test cannot be re-recorded because it has hardcoded server name
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
             }
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestRestoreLongTermRetentionBackup()
         {
             // Test cannot be re-recorded because it has hardcoded server name
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
             }
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseGeoBackupPolicy()
         {
             // Test cannot be re-recorded because it has hardcoded server name
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
             }
