@@ -35,6 +35,12 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
+        /// Defines whether it is ok to skip the requesting of rule removal confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Defines Whether return the removed sync member")]
@@ -69,22 +75,18 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
 
         /// <summary>
-        /// Get the confirmation message when users want to remove a sync member
+        /// Entry point for the cmdlet
         /// </summary>
-        /// <returns>The confirmation message</returns>
-        protected override string GetConfirmActionProcessMessage()
+        public override void ExecuteCmdlet()
         {
-            return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncMemberDescription, this.Name, this.SyncGroupName);
-        }
-
-        /// <summary>
-        /// Get resource id for confirmation message
-        /// </summary>
-        /// <param name="model">The sync member that this cmdlet operates on</param>
-        /// <returns>The resource id</returns>
-        protected override string GetResourceId(IEnumerable<AzureSqlSyncMemberModel> model)
-        {
-            return string.Format("{0}.{1}", this.ServerName, this.DatabaseName);
+            if (!Force.IsPresent && !ShouldProcess(
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncMemberDescription, this.Name),
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncMemberWarning, this.Name, this.SyncGroupName),
+                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+            base.ExecuteCmdlet();
         }
     }
 }

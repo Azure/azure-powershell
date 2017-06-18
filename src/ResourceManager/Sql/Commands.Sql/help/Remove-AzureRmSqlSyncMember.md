@@ -12,8 +12,8 @@ Removes an Azure SQL Database Sync Member.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlSyncMember -Name <String> [-PassThru] [-SyncGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmSqlSyncMember -Name <String> [-Force] [-PassThru] [-SyncGroupName] <String>
+ [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -58,6 +58,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+Skip confirmation message for performing the action
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -164,7 +179,7 @@ Accept wildcard characters: False
 
 [New-AzureRmSqlSyncMember](./New-AzureRmSqlSyncMember.md)
 
-[Set-AzureRmSqlSyncMember](./Set-AzureRmSqlSyncMember.md)
+[Update-AzureRmSqlSyncMember](./Update-AzureRmSqlSyncMember.md)
 
 [Get-AzureRmSqlSyncMember](./Get-AzureRmSqlSyncMember.md)
 
