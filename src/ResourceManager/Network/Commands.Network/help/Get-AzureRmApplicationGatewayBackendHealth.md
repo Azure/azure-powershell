@@ -37,6 +37,10 @@ The Get-AzureRmApplicationGatewayBackendHealth cmdlet gets application gateway b
 
 
 
+
+
+
+
 ```
 PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01
 ```
@@ -45,6 +49,10 @@ This command gets the backend health of application gateway named ApplicationGat
 
 ### --------------------------  Example 1: Gets backend health with expanded resources.  --------------------------
 @{paragraph=PS C:\\\>}
+
+
+
+
 
 
 
