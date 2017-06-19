@@ -18,9 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.0
 * Fixed issue where Get-AzureRMRoleAssignment would result in a Bad Request if the number of roleassignments where greater than 1000
     - Users can now use Get-AzureRMRoleAssignment even if the roleassignments to be returned is greater than 1000
     
+## Version 4.0.1
+
 ## Version 4.0.0
 * Support cross-resource-group deployments for New-AzureRmResourceGroupDeployment
     - Users can now use nested deployments to deploy to different resource groups.

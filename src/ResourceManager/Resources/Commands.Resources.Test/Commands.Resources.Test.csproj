@@ -201,6 +201,7 @@
     <Compile Include="Providers\UnregisterResourceProviderCmdletTests.cs" />
     <Compile Include="ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCommandTests.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommandTests.cs" />
+    <Compile Include="RoleAssignment\RoleAssignmentUnitTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
     <Compile Include="ScenarioTests\AuthorizationTests.cs" />
     <Content Include="ScenarioTests\ProviderFeatureTests.ps1">
@@ -662,6 +663,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaUserPermissions_Test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaValidateInputParameters.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleDefinitionTests\RdNegativeScenarios.json">
