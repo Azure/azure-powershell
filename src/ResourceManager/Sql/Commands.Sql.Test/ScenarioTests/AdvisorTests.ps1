@@ -338,35 +338,6 @@ function Test-GetElasticPoolAdvisor
 
 <#
 	.SYNOPSIS
-	Tests updating a elastic pool advisor
-#>
-function Test-UpdateElasticPoolAdvisor
-{
-	# Setup
-	$rg = Create-ResourceGroupForTest
-	$ep = SetupElasticPool $rg
-
-	try
-	{
-		$response = Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus `
-			-ResourceGroupName $ep.ResourceGroupName `
-			-ServerName $ep.ServerName `
-			-ElasticPoolName $ep.ElasticPoolName `
-			-AdvisorName CreateIndex `
-			-AutoExecuteStatus Disabled
-		Assert-NotNull $response
-		ValidateElasticPool $response $ep
-		ValidateAdvisorProperties $response
-	}
-	finally
-	{
-		# Cleanup
-		Remove-ResourceGroupForTest $rg
-	}
-}
-
-<#
-	.SYNOPSIS
 	Setup Server for tests
 #>
 function SetupServer($resourceGroup)
