@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.1.0'
+ModuleVersion = '3.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -78,6 +78,7 @@ CmdletsToExport = 'Remove-AzureRmDataFactory', 'Get-AzureRmDataFactoryRun',
                'New-AzureRmDataFactoryEncryptValue', 
                'Get-AzureRmDataFactoryGateway', 'New-AzureRmDataFactoryGateway', 
                'New-AzureRmDataFactoryGatewayKey', 
+               'Get-AzureRmDataFactoryGatewayAuthkey', 'New-AzureRmDataFactoryGatewayAuthkey', 
                'Remove-AzureRmDataFactoryGateway', 'Set-AzureRmDataFactoryGateway', 
                'Get-AzureRmDataFactoryHub', 'New-AzureRmDataFactoryHub', 
                'Remove-AzureRmDataFactoryHub', 
