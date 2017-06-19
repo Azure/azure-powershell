@@ -31,6 +31,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InitializerCreatesTokenCacheFile()
         {
+            AzureSessionInitializer.InitializeAzureSession();
             IAzureSession oldSession = null;
             try
             {
