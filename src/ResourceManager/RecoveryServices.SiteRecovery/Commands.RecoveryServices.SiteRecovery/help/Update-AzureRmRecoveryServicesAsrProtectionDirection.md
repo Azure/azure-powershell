@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmRecoveryServicesAsrProtectionDirection
 
 ## SYNOPSIS
-Updates the source and target server for the protection of a Site Recovery object.
+Updates the replication direction for the specified replication protected item or recovery plan. Used to re-protect/reverse replicate a failed over replicated item or recovery plan.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Update-AzureRmRecoveryServicesAsrProtectionDirection -Direction <String> [<Commo
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmRecoveryServicesAsrProtectionDirection** cmdlet updates the source and target server for the protection of an Azure Site Recovery object after the completion of a commit failover operation.
+The **Update-AzureRmRecoveryServicesAsrProtectionDirection** cmdlet updates the replication direction for the specified Azure Site Recovery object after the completion of a commit failover operation.
 
 ## EXAMPLES
 
@@ -38,12 +38,12 @@ The **Update-AzureRmRecoveryServicesAsrProtectionDirection** cmdlet updates the 
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrProtectionDirection -RecoveryPlan $RP -Direction PrimaryToRecovery
 ```
 
-Starts updating the direction of protection for recovery plan and returns job for tracking.
+Start the update direction operation for the specified recoveyr plan and returns the ASR job object used to track the operation.
 
 ## PARAMETERS
 
 ### -Direction
-Specifies the direction of the commit.
+Specifies the direction to be used for the update operation post a failover.  
 The acceptable values for this parameter are:
 
 - PrimaryToRecovery
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPlan
-Specifies a recovery plan object.
+Specifies an ASR recovery plan object.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-{{Fill ReplicationProtectedItem Description}}
+Specifies an ASR replication protected item
 
 ```yaml
 Type: ASRReplicationProtectedItem

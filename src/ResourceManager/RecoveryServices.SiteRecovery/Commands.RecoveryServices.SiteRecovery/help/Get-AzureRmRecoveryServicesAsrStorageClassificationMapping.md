@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrStorageClassificationMapping
 
 ## SYNOPSIS
-Gets a storage classification mapping in Site Recovery.
+Gets ASR storage classification mappings.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Get-AzureRmRecoveryServicesAsrStorageClassificationMapping -Name <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet gets a storage classification mapping in Azure Site Recovery.
+The **Get-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet gets the details of an ASR storage classification mapping.
 
 ## EXAMPLES
 
@@ -33,12 +33,12 @@ The **Get-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet gets a
 PS C:\> $StorageClassificationMappings = Get-AzureRmRecoveryServicesAsrStorageClassificationMapping -StorageClassification $StorageClassification
 ```
 
-List all storage classification mappings in a given storage classification.
+List all storage classification mappings corresponding to the specified storage classification.
 
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the storage classification mapping that this cmdlet gets.
+Specifies the name of the storage classification mapping to get.
 
 ```yaml
 Type: String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageClassification
-{{Fill StorageClassification Description}}
+Specifies an ASR storage classification object. The cmdlet gets ASR storage classification mappings corresponding to the specified storage classification 
 
 ```yaml
 Type: ASRStorageClassification

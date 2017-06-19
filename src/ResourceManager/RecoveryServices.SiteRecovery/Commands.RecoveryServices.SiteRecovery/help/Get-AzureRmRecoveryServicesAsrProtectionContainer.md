@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrProtectionContainer
 
 ## SYNOPSIS
-Gets protection containers for the current Site Recovery vault.
+Gets ASR protection containers in the Recovery Services vault.
 
 ## SYNTAX
 
@@ -28,9 +28,9 @@ Get-AzureRmRecoveryServicesAsrProtectionContainer -FriendlyName <String> -Fabric
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrProtectionContainer** cmdlet gets protection containers for the current Azure Site Recovery vault.
-A protection container is a logical container for protected objects such as virtual machines.
-Protection policies define replication settings for protected items and can be associated with a protection container and applied to a protected entity.
+The **Get-AzureRmRecoveryServicesAsrProtectionContainer** cmdlet gets Azure Site Recovery protection containers in the Recovery Services vault.
+A protection container is a logical container for protectable(discovered) and protected objects such as virtual machines.
+Replication policies define replication settings for protected items and can be associated with a protection container and applied to a protectable item.
 
 ## EXAMPLES
 
@@ -39,12 +39,12 @@ Protection policies define replication settings for protected items and can be a
 PS C:\> $ProtectionContainers = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrProtectionContainer
 ```
 
-Gets all containers in all piped fabrics.
+Gets all the ASR protection containers in the specified ASR fabric (the pipeline input in the above example.)
 
 ## PARAMETERS
 
 ### -Fabric
-{{Fill Fabric Description}}
+Look for the protection container in the specified ASR fabric.
 
 ```yaml
 Type: ASRFabric
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-Specifies the friendly name of the protection container.
+Specifies the friendly name of the ASR protection container to look for.
 
 ```yaml
 Type: String
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the protection container.
+Specifies the name of the ASR protection container to look for.
 
 ```yaml
 Type: String

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrRecoveryPlan
 
 ## SYNOPSIS
-Removes a site recovery plan from Site Recovery.
+Delets the specified ASR recovery plan from Recovery Services vault.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Remove-AzureRmRecoveryServicesAsrRecoveryPlan -Name <String> [<CommonParameters>
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet removes a site recovery plan from the current Azure Site Recovery.
+The **Remove-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet deletes the specified recovery plan from the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -31,12 +31,12 @@ The **Remove-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet removes a site reco
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
 ```
 
-Starts the deletion of passed recovery plan and returns the job for tracking.
+Starts the deletion of specified recovery plan and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR recovery plan object corresponding to the recovery plan to be deleted.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the recovery plan that this cmdlet removes.
+Specifies the name of the recovery plan to be deleted.
 
 ```yaml
 Type: String

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmRecoveryServicesAsrServicesProvider
 
 ## SYNOPSIS
-Updates the information received from the Azure Site Recovery Services Provider.
+Refreshes (Refresh server) the information received from the Azure Site Recovery Services Provider.
 
 ## SYNTAX
 
@@ -27,12 +27,12 @@ You can use this cmdlet to trigger a refresh of the information received from th
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrServicesProvider -ServicesProvider $ServicesProvider
 ```
 
-Starts updating the passed services provider and returns the job for tracking. 
+Starts the operation of refreshing the information from the specified ASR services provider and returns the ASR job used to track the operation. 
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+Input Object: Specifies the ASR services provider object corresponding to the ASR services provider that identifies the server for which information is to updated(refreshed.)
 
 ```yaml
 Type: ASRRecoveryServicesProvider

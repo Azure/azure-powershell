@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrJob
 
 ## SYNOPSIS
-Gets the operation information for the current Site Recovery vault.
+Gets the details of the specified ASR job or the list of recent ASR jobs in the Recovery Services vault.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Get-AzureRmRecoveryServicesAsrJob -Job <ASRJob> [<CommonParameters>]
 
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesAsrJob** cmdlet gets Azure Site Recovery jobs.
-You can use this cmdlet to view the operation information for the current Site Recovery vault.
+You can use this cmdlet to view the ASR jobs in the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ You can use this cmdlet to view the operation information for the current Site R
 PS C:\> $jobs = Get-AzureRmRecoveryServicesAsrJob -TargetObjectId $ASRObjectId
 ```
 
-Returns all the jobs specific to a particular target ASR object Id.
+Returns all the jobs on a particular ASR object(reference the ASR object such as replicated item or recovery plan by its ID.) 
 
 ## PARAMETERS
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Job
-Specifies the Site Recovery job.
+Specifies the ASR job object to get updated details for.
 
 ```yaml
 Type: ASRJob
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a unique name that identifies the job.
+Specify the ASR job by name.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-Specifies the input state for a Site Recovery job.
+Specifies the state for a ASR job.
 This cmdlet gets all jobs that match the specified state.
 The acceptable values for this parameter are:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetObjectId
-Specifies the ID of the object targeted by the job.
+Specifies the ID of the object. Used to search for jobs on the specified object.
 
 ```yaml
 Type: String

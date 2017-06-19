@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrRecoveryPoint
 
 ## SYNOPSIS
-Gets available recovery points for a replication protected item.
+Gets the available recovery points for a replication protected item.
 
 ## SYNTAX
 
@@ -33,12 +33,12 @@ The **Get-AzureRmRecoveryServicesAsrRecoveryPoint** cmdlet gets the list of avai
 PS C:\> $RecoveryPoints = Get-AzureRmRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
-Gets recovery points for the passed replication protected item.
+Gets recovery points for the specified ASR replication protected item.
 
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the recovery point this cmdlet gets.
+Specifies the name of the recovery point to get.
 
 ```yaml
 Type: String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-Specifies the Azure Site Recovery Replication Protected Item object.
+Specifies the Azure Site Recovery Replication Protected Item object for which to get the list of available recovery points.
 
 ```yaml
 Type: ASRReplicationProtectedItem

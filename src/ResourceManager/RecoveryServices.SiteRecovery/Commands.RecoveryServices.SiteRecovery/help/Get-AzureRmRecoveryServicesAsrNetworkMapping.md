@@ -22,7 +22,7 @@ Get-AzureRmRecoveryServicesAsrNetworkMapping -Name <String> -Network <ASRNetwork
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet gets information about Azure Site Recovery network mappings for the current Site Recovery vault.
+The **Get-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet gets information about Azure Site Recovery network mappings for the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -36,7 +36,7 @@ Gets all networks mappings for the passed Network.
 ## PARAMETERS
 
 ### -Name
-{{Fill Name Description}}
+The name of the ASR network mapping object to get.
 
 ```yaml
 Type: String
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -Network
-{{Fill Network Description}}
+Get the ASR network mappings corresponding to the specified network ASR object.
 
 ```yaml
 Type: ASRNetwork

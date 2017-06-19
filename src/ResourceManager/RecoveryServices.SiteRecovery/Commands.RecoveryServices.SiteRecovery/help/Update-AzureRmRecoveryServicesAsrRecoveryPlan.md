@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmRecoveryServicesAsrRecoveryPlan
 
 ## SYNOPSIS
-Updates a recovery plan in Site Recovery.
+Updates the contents of an Azure Site recovery plan.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Update-AzureRmRecoveryServicesAsrRecoveryPlan -Path <String> [<CommonParameters>
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet updates a recovery plan in Azure Site Recovery and then publishes it.
+The **Update-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet updates the contents of a recovery plan using the contents of the specified ASR recovery plan object or ASR recovery plan definition json file.
 
 ## EXAMPLES
 
@@ -31,12 +31,12 @@ The **Update-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet updates a recovery 
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrRecoveryPlan -RecoveryPlan $RP
 ```
 
-Starts updating the recovery plan in service as per the passed in memory recovery plan and returns the job for tracking.
+Start the operation of updating a recovery plan using the contents of the specified ASR recovery plan object and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+Input Object to the cmdlet: Specifies an ASR recovery plan object, the contents of which are used to update the recovery plan referred to by the object.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path of the recovery plan file of the recovery plan that this cmdlet updates.
+Specifies the path of the recovery plan definition json file used to update the recovery plan.
 
 ```yaml
 Type: String

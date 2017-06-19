@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrRecoveryPlan
 
 ## SYNOPSIS
-Gets a recovery plan in Site Recovery.
+Gets a recovery plan or all the recovery plans in the Recovery Services vault
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Get-AzureRmRecoveryServicesAsrRecoveryPlan -FriendlyName <String> [[-Path] <Stri
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet gets a recovery plan in Azure Site Recovery.
+The **Get-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet gets the details of the specified recovery plan or all recovery plans in the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -36,12 +36,12 @@ The **Get-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet gets a recovery plan i
 PS C:\> $RP = Get-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RPName
 ```
 
-Gets a recovery plan with the passed name.
+Gets the recovery plan with the specified name.
 
 ## PARAMETERS
 
 ### -FriendlyName
-Specifies the friendly name of the recovery plan that this cmdlet gets.
+Specifies the friendly name of the recovery plan to get.
 
 ```yaml
 Type: String
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the recovery plan that this cmdlet gets.
+Specifies the name of the recovery plan to get.
 
 ```yaml
 Type: String
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the file path to which this cmdlet saves the recovery plan.
+Specifies the file path to which this cmdlet saves the recovery plan json definition. The json definition can be edited to modify the recovery plan and used to update the recovery plan through the Update-AzureRmRecoveryServicesASRRecoveryPlan cmdlet
 
 ```yaml
 Type: String

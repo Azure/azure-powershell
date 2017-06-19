@@ -32,12 +32,12 @@ The **Start-AzureRmRecoveryServicesAsrCommitFailoverJob** cmdlet starts the comm
 PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrCommitFailoverJob -RecoveryPlan $RP
 ```
 
-Starts the commit failover for the passed recovery plan and returns the job for tracking.
+Starts the commit failover for the specified recovery plan and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -RecoveryPlan
-Specifies a recovery plan object.
+Specifies an ASR recovery plan object.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-Specifies the Site Recovery replication protected item object.
+Specifies an ASR replication protected item object.
 
 ```yaml
 Type: ASRReplicationProtectedItem

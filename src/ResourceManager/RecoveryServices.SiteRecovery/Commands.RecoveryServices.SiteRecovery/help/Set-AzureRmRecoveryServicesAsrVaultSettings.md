@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmRecoveryServicesAsrVaultSettings
 
 ## SYNOPSIS
-Sets the Site Recovery vault context for further operations.
+Sets the Recovery Services vault context to be used for subsequent Azure Site Recovery operations in the current PowerShell session.
 
 ## SYNTAX
 
@@ -17,7 +17,6 @@ Set-AzureRmRecoveryServicesAsrVaultSettings -Vault <ARSVault> [<CommonParameters
 
 ## DESCRIPTION
 The **Set-AzureRmRecoveryServicesAsrVaultSettings** cmdlet sets the Azure Site Recovery vault context for further operations.
-This does not apply to recovery services vaults.
 
 ## EXAMPLES
 
@@ -26,12 +25,12 @@ This does not apply to recovery services vaults.
 PS C:\> $vaultSettings = Set-AzureRmRecoveryServicesAsrVaultSettings -Vault $RecoveryServicesVault
 ```
 
-Sets the passed recovery services vault context for further Azure Site Recovery cmdlets and returns the set vault settings.
+Sets the vault context to the specified Recovery Services vault for subsequent Azure Site Recovery operations in the current PowerShell session.
 
 ## PARAMETERS
 
 ### -Vault
-{{Fill Vault Description}}
+The Recovery Services vault object corresponding to the Recovery Services vault.
 
 ```yaml
 Type: ARSVault

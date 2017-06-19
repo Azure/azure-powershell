@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping
 
 ## SYNOPSIS
-Removes an Azure Site Recovery Protection Container mapping.
+Deletes the specified Azure Site Recovery protection container mapping.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping -InputObject <ASRPro
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet removes an Azure Site Recovery Protection Container mapping.
+The **Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet deletes the specified Azure Site Recovery protection container mapping.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The **Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet remov
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
 ```
 
-Starts the deletion of passed protection container mapping and returns the job for tracking.
+Starts the deletion of specified protection container mapping and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Force the command to run without providing an additional warning.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: the ASR protection container mapping object corresponding to the protection container to be deleted.
 
 ```yaml
 Type: ASRProtectionContainerMapping
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Specify if confirmation is required. Set the value of the confirm parameter to $false in order to skip confirmation
 
 ```yaml
 Type: SwitchParameter
@@ -76,8 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet is executed without actually executing the cmdlet.
 
 ```yaml
 Type: SwitchParameter

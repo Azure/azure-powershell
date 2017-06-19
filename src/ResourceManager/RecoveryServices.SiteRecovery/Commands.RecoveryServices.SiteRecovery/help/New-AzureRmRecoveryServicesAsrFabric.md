@@ -12,7 +12,7 @@ Creates an Azure Site Recovery Fabric.
 ## SYNTAX
 
 ```
-New-AzureRmRecoveryServicesAsrFabric -Name <String> [-Type <String>] [-Location <String>] [<CommonParameters>]
+New-AzureRmRecoveryServicesAsrFabric -Name <String> [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,27 +25,12 @@ The **New-AzureRmRecoveryServicesAsrFabric** cmdlet creates an Azure Site Recove
 PS C:\>  $currentJob = New-AzureRmRecoveryServicesAsrFabric -Name $FabricName
 ```
 
-Starts the fabric creation with passed name and returns the job for tracking.
+Starts the fabric creation with passed name and returns the ASR job used to track the fabric creation operation.
 
 ## PARAMETERS
 
-### -Location
-{{Fill Location Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Specifies the name of the Azure Site Recovery Fabric
+Specifies the name of the Azure Site Recovery Fabric.
 
 ```yaml
 Type: String

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrReplicationProtectedItem
 
 ## SYNOPSIS
-Gets the properties of Azure Site Recovery Protected Items.
+Gets the properties of an Azure Site Recovery Replication Protected Items.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem <ASRProt
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet gets the properties of Azure Site Recovery Protected Items.
+The **Get-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet gets the properties of all or the specified ASR replication protected item from the specified ASR protection container.
 
 ## EXAMPLES
 
@@ -45,12 +45,12 @@ The **Get-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet gets the p
 PS C:\> $ReplicationProtectedItems = Get-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryContainer
 ```
 
-Lists all replication protected items in the passed container.
+Lists all replication protected items in the specified ASR protection container.
 
 ## PARAMETERS
 
 ### -FriendlyName
-Specifies the friendly name of the Replication Protected Item that this cmdlet gets.
+Specifies the friendly name of the replication protected item to get.
 
 ```yaml
 Type: String
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Replication Protected Item that this cmdlet gets.
+Specifies the name of the replication protected item to get.
 
 ```yaml
 Type: String
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectableItem
-Specifies the Protectable Item corresponding to the Replication Protected Item.
+Specifies an ASR protectable item object. The cmdlet gets the ASR replication protected item corresponding to the specified ASR protectable item if the item is protected.
 
 ```yaml
 Type: ASRProtectableItem
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionContainer
-Specifies the Azure Site Recovery Protection Container object.
+Specifies the ASR protection container object of the ASR protection container corresponding to the replication protected item. 
 
 ```yaml
 Type: ASRProtectionContainer

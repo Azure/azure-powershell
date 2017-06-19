@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrFabric
 
 ## SYNOPSIS
-Get the properties of an Azure Site Recovery Fabric.
+Get the details of an Azure Site Recovery Fabric.
 
 ## SYNTAX
 
@@ -36,12 +36,12 @@ The **Get-AzureRmRecoveryServicesAsrFabric** cmdlet gets the properties of a spe
 PS C:\> $fabrics = Get-AzureRmRecoveryServicesAsrFabric
 ```
 
-Returns all the Azure Site Recovery fabrics.
+Returns all the Azure Site Recovery fabrics in the vault.
 
 ## PARAMETERS
 
 ### -FriendlyName
-Specifies the friendly name of the Azure Site Recovery Fabric.
+Search for the ASR fabric by the friendly name of the fabric.
 
 ```yaml
 Type: String
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Site Recovery Fabric.
+Search for the ASR fabric by the name of the fabric.
 
 ```yaml
 Type: String

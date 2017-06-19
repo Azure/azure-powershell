@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrPolicy
 
 ## SYNOPSIS
-Gets Site Recovery protection policies.
+Gets ASR replication policies.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Get-AzureRmRecoveryServicesAsrPolicy -FriendlyName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrPolicy** cmdlet gets the list of configured Azure Site Recovery protection policies or a specific protection policy by name.
+The **Get-AzureRmRecoveryServicesAsrPolicy** cmdlet gets the list of configured Azure Site Recovery replication policies or a specific replication policy by name.
 
 ## EXAMPLES
 
@@ -36,12 +36,12 @@ The **Get-AzureRmRecoveryServicesAsrPolicy** cmdlet gets the list of configured 
 PS C:\> $Policy = Get-AzureRmRecoveryServicesAsrPolicy -Name $PolicyName
 ```
 
-Retruns a policy with the passed name.
+Retruns the replication policy with the specified name.
 
 ## PARAMETERS
 
 ### -FriendlyName
-Specifies the friendly name of the Site Recovery replication policy.
+Specifies the friendly name of the ASR replication policy.
 
 ```yaml
 Type: String
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Site Recovery replication policy.
+Specifies the name of the ASR replication policy.
 
 ```yaml
 Type: String

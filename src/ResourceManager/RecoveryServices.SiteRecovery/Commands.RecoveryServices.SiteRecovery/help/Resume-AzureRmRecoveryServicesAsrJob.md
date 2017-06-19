@@ -7,7 +7,7 @@ schema: 2.0.0
 # Resume-AzureRmRecoveryServicesAsrJob
 
 ## SYNOPSIS
-Resumes a suspended Site Recovery job.
+Resumes a suspended Azure Site Recovery job.
 
 ## SYNTAX
 
@@ -31,12 +31,12 @@ The **Resume-AzureRmRecoveryServicesAsrJob** cmdlet resumes a suspended Azure Si
 PS C:\> $currentJob = Resume-AzureRmRecoveryServicesAsrJob -Job $Job
 ```
 
-Resume the passed job in waiting or suspended state and returns the job for tracking.
+Resume the specified job if it is in a waiting or suspended state and return the updated ASR job object corresponding to the ASR job.
 
 ## PARAMETERS
 
 ### -Comments
-Specifies the comments for the job log.
+Comments for the job log.
 
 ```yaml
 Type: String
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR Job object corresponding to the job to be resumed.
 
 ```yaml
 Type: ASRJob
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the unique name for the job.
+Specify the ASR job by name.
 
 ```yaml
 Type: String

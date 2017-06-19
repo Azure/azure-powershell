@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRecoveryServicesAsrReplicationProtectedItem
 
 ## SYNOPSIS
-Enables replication for a protectable item by creating a protected item
+Enables replication for an ASR protectable item by creating a replication protected item
 
 ## SYNTAX
 
@@ -40,8 +40,8 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem <ASRProt
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet creates a new Replication Protected item.
-Use this cmdlet to enable replication for a protectable item.
+The **New-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet creates a new replication protected item.
+Use this cmdlet to enable replication for an ASR protectable item.
 
 ## EXAMPLES
 
@@ -50,12 +50,12 @@ Use this cmdlet to enable replication for a protectable item.
 PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping
 ```
 
-Starts the replication protected item creation with passed parameters and returns the job for tracking.
+Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the Azure Site Recovery Replication Protected Item.
+Specifies a name for the ASR replication protected item.
 
 ```yaml
 Type: String
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectableItem
-Specifies the Azure Site Recovery Protectable Item.
+Specifies the ASR protectable item object for which replication is being enabled.
 
 ```yaml
 Type: ASRProtectableItem
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionContainerMapping
-Specifies the Azure Site Recovery Protection Container mapping object to use for replication.
+Specifies the ASR protection container mapping object corresponding to the replication policy to be used for replication.
 
 ```yaml
 Type: ASRProtectionContainerMapping
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAzureStorageAccountId
-Specifies the ID of the Azure storage account that this cmdlet replicates to.
+Specifies the ID of the Azure storage account to replicate to.
 
 ```yaml
 Type: String
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryResourceGroupId
-{{Fill RecoveryResourceGroupId Description}}
+Specifies the ARM identifier of the resource group in which the virtual machine will be created in the event of a failover.
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -WaitForCompletion
-Indicates that the cmdlet waits for completion.
+Specifies that the cmdlet should wait for completion of the operation before returning.
 
 ```yaml
 Type: SwitchParameter
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Prompts  for confirmation before starting the operation.
 
 ```yaml
 Type: SwitchParameter

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrServicesProvider
 
 ## SYNOPSIS
-Gets information on the Azure Site Recovery providers in the vault.
+Gets the details of the ASR recovery services providers registered to the Recovery Services vault.
 
 ## SYNTAX
 
@@ -36,12 +36,12 @@ The **Get-AzureRmRecoveryServicesAsrServicesProvider** cmdlet gets information o
 PS C:\> $RSPs = Get-AzureRmRecoveryServicesAsrFabric | Get-AzureRmRecoveryServicesAsrServicesProvider
 ```
 
-List all repliaction services providers for all piped fabrics.
+List all ASR replication services providers registered to the Recovery Services vault corresponding to the specified fabric.
 
 ## PARAMETERS
 
 ### -Fabric
-Specifies the Azure Site Recovery Fabric object.
+Specifies the ASR fabric object.
 
 ```yaml
 Type: ASRFabric
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-Specifies the friendly name of the Azure Site Recovery Provider that this cmdlet gets.
+Specifies the friendly name of the ASR recovery services provider to get details for.
 
 ```yaml
 Type: String
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Site Recovery Provider that this cmdlet gets.
+Specifies the name of the ASR recovery services provider to get details for.
 
 ```yaml
 Type: String

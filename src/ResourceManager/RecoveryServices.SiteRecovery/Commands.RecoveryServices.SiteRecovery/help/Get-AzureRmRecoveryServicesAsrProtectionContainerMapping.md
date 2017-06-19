@@ -24,7 +24,7 @@ Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet gets information about the Protection Container to Policy mappings in the vault.
+The **Get-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet gets information about the protection container to replication policy mappings(association) in the vault for the specified ASR protection container.
 
 ## EXAMPLES
 
@@ -33,12 +33,12 @@ The **Get-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet gets inf
 PS C:\> $ProtectionContainerMappings = Get-AzureRmRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $Container
 ```
 
-Gets all container mappings for a container.
+Gets all protection container mappings for the specified protection container.
 
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the Protection Container mapping.
+Specifies the name of the protection container mapping to get.
 
 ```yaml
 Type: String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProtectionContainer
-Specifies the Azure Site Recovery Protection Container object.
+Get protection container mappings corresponding to the the specified ASR protection container object.
 
 ```yaml
 Type: ASRProtectionContainer

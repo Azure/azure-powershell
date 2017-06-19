@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmRecoveryServicesAsrPolicy
 
 ## SYNOPSIS
-Updates the Azure Site Recovery Policy.
+Updates an Azure Site Recovery replication policy.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Update-AzureRmRecoveryServicesAsrPolicy -InputObject <ASRPolicy> [-ReplicationMe
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmRecoveryServicesAsrPolicy** cmdlet updates the Azure Site Recovery Policy.
+The **Update-AzureRmRecoveryServicesAsrPolicy** cmdlet updates the specified Azure Site Recovery replication policy.
 
 ## EXAMPLES
 
@@ -29,12 +29,12 @@ The **Update-AzureRmRecoveryServicesAsrPolicy** cmdlet updates the Azure Site Re
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrPolicy -Policy $Policy -ReplicationFrequencyInSeconds 900
 ```
 
-Starts updating policy with passed parameters and returns job for tracking.
+Starts the update replication policy operation using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -ApplicationConsistentSnapshotFrequencyInHours
-{{Fill ApplicationConsistentSnapshotFrequencyInHours Description}}
+Specifies the frequency(in hours) at which to create application consistent recovery points.
 
 ```yaml
 Type: Int32
@@ -49,7 +49,11 @@ Accept wildcard characters: False
 ```
 
 ### -Authentication
-{{Fill Authentication Description}}
+Specifies the type of authentication used.
+Valid values are:
+
+- Certificate
+-  Kerberos
 
 ```yaml
 Type: String
@@ -65,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Compression
-{{Fill Compression Description}}
+Specifies if compression should be enabled.
 
 ```yaml
 Type: String
@@ -81,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Encryption
-{{Fill Encryption Description}}
+Specifies if encryption should be enabled or disabled.
 
 ```yaml
 Type: String
@@ -97,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+Input object for the cmdlet: Specifies the ASR replication policy object corresponding to the replication policy to be updated.
 
 ```yaml
 Type: ASRPolicy
@@ -112,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAzureStorageAccountId
-{{Fill RecoveryAzureStorageAccountId Description}}
+Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
 
 ```yaml
 Type: String
@@ -127,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPoints
-{{Fill RecoveryPoints Description}}
+Specifies the number of hours to retain recovery points for.
 
 ```yaml
 Type: Int32
@@ -142,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicaDeletion
-{{Fill ReplicaDeletion Description}}
+Specifies if the replica virtual machine should be deleted on disabling replication from a VMM managed site to another.
 
 ```yaml
 Type: String
@@ -158,7 +162,12 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationFrequencyInSeconds
-{{Fill ReplicationFrequencyInSeconds Description}}
+Specifies the replication frequency interval in seconds.
+Valid values are:
+
+- 30
+- 300
+- 900
 
 ```yaml
 Type: String
@@ -174,7 +183,11 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationMethod
-{{Fill ReplicationMethod Description}}
+Specifies the replication method.
+Valid values are:
+
+- Online
+- Offline
 
 ```yaml
 Type: String
@@ -190,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationPort
-{{Fill ReplicationPort Description}}
+Specifies the port used for replication.
 
 ```yaml
 Type: UInt16
@@ -205,7 +218,8 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationStartTime
-{{Fill ReplicationStartTime Description}}
+Specifies the replication start time.
+It must be no later than 24-hours from the start of the job.
 
 ```yaml
 Type: TimeSpan

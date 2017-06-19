@@ -7,7 +7,7 @@ schema: 2.0.0
 # Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob
 
 ## SYNOPSIS
-Starts the unplanned failover for a Site Recovery protection entity or recovery plan.
+Starts an unplanned failover operation.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan <ASRRecoveryP
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob** cmdlet starts the unplanned failover of an Azure Site Recovery protection entity or recovery plan.
+The **Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob** cmdlet starts the unplanned failover of an Azure Site Recovery replication protected item or recovery plan.
 You can check whether the job succeeds by using the Get-AzureRmRecoveryServicesAsrJob cmdlet.
 
 ## EXAMPLES
@@ -36,7 +36,7 @@ You can check whether the job succeeds by using the Get-AzureRmRecoveryServicesA
 PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
 ```
 
-Starts the unplanned failover for the recovery plan with passed parameters and returns the job for tracking.
+Starts the unplanned failover operation for the specified recovery plan using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerformSourceSideActions
-Indicates that the action can perform source site operations.
+Indicates that any source site operations specified in the recovery plan must be attempted to be performed as part of the fail over.
 
 ```yaml
 Type: SwitchParameter
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPlan
-Specifies a recovery plan object.
+Specifies an ASR recovery plan object corresponding to the recovery plan on which the failover operation is to be performed.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-{{Fill ReplicationProtectedItem Description}}
+Specifies the ASR replication protected item object corresponding to the replication protected item on which the failover operation is to be performed.
 
 ```yaml
 Type: ASRReplicationProtectedItem
