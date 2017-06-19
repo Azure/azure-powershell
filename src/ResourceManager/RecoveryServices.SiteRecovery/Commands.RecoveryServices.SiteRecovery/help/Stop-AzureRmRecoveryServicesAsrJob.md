@@ -7,7 +7,7 @@ schema: 2.0.0
 # Stop-AzureRmRecoveryServicesAsrJob
 
 ## SYNOPSIS
-Stops a Site Recovery job.
+Stops an Azure Site Recovery job.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Stop-AzureRmRecoveryServicesAsrJob -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmRecoveryServicesAsrJob** cmdlet stops an Azure Site Recovery job.
+The **Stop-AzureRmRecoveryServicesAsrJob** cmdlet stops the specified Azure Site Recovery job.
 
 ## EXAMPLES
 
@@ -31,12 +31,12 @@ The **Stop-AzureRmRecoveryServicesAsrJob** cmdlet stops an Azure Site Recovery j
 PS C:\> $currentJob = Stop-AzureRmRecoveryServicesAsrJob -Job $Job
 ```
 
-Starts stopping the passed job and returns the job for tracking.
+Attempts to stop the specified job and returns an updated ASR job object.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+Input Object: Specify the ASR job object corresponding to the ASR job to be stopped
 
 ```yaml
 Type: ASRJob
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the unique name for the Site Recovery job to stop.
+Specify the ASR Job to be stopped by the ASR job name.
 
 ```yaml
 Type: String

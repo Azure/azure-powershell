@@ -7,7 +7,7 @@ schema: 2.0.0
 # Start-AzureRmRecoveryServicesAsrTestFailoverJob
 
 ## SYNOPSIS
-Starts a test failover for a Site Recovery protection entity.
+Starts a test failover operation.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Start-AzureRmRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem <ASRRe
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmRecoveryServicesAsrTestFailoverJob** cmdlet starts test failover of an Azure Site Recovery protection entity or recovery plan.
+The **Start-AzureRmRecoveryServicesAsrTestFailoverJob** cmdlet starts test failover of an Azure Site Recovery replication protected item or recovery plan.
 You can check whether the job succeeded by using the Get-AzureRmRecoveryServicesAsrJob cmdlet.
 
 ## EXAMPLES
@@ -63,12 +63,12 @@ You can check whether the job succeeded by using the Get-AzureRmRecoveryServices
 PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $TestRecoveryNetwork
 ```
 
-Starts the test failover for the recovery plan with passed parameters and returns the job for tracking.
+Starts the test failover operation for the recovery plan with the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -AzureVMNetworkId
-Specifies the Azure virtual network ID.
+Specifies the Azure virtual network ID to connect the test fail over virtual machine(s) to.
 
 ```yaml
 Type: String
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPlan
-Specifies a recovery plan object.
+Specifies an ASR recovery plan object.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-{{Fill ReplicationProtectedItem Description}}
+Specifies an ASR replication protected item.
 
 ```yaml
 Type: ASRReplicationProtectedItem
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMNetwork
-Specifies the Site Recovery virtual machine network.
+Specifies the Site Recovery virtual machine network to connect the test failover virtual machine(s) to.
 
 ```yaml
 Type: ASRNetwork

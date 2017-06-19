@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrNetworkMapping
 
 ## SYNOPSIS
-Removes a network mapping from the current Site Recovery vault.
+Deletes the specified ASR network mapping from the Recovery Services vault.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Remove-AzureRmRecoveryServicesAsrNetworkMapping -InputObject <ASRNetworkMapping>
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet removes a network mapping from the current Azure Site Recovery vault.
+The **Remove-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet deletes the specified ASR network mapping.
 
 ## EXAMPLES
 
@@ -25,12 +25,12 @@ The **Remove-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet removes a network
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrNetworkMapping -NetworkMapping $networkmapping
 ```
 
-Starts the deletion of passed network mapping and returns the job for tracking.
+Starts the deletion of specified ASR network mapping and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR network mapping object corresponding to the ASR network mapping to be deleted.
 
 ```yaml
 Type: ASRNetworkMapping

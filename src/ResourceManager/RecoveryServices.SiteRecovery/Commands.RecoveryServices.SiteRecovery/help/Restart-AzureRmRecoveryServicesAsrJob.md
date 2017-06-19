@@ -31,13 +31,12 @@ The **Restart-AzureRmRecoveryServicesAsrJob** cmdlet restarts an Azure Site Reco
 PS C:\> $currentJob = Restart-AzureRmRecoveryServicesAsrJob -Job $Job
 ```
 
-Restarts the passed job and returns the job for tracking.
+Restarts the specified ASR job and returns the updated ASR job object of the ASR job.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
-
+The input object to the cmdlet: The ASR job object corresponding to the ASR job to be restarted
 ```yaml
 Type: ASRJob
 Parameter Sets: ByObject
@@ -51,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the unique name for the job.
+Specify the job by name.
 
 ```yaml
 Type: String

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrStorageClassification
 
 ## SYNOPSIS
-Gets storage classifications in Site Recovery.
+Gets the available(discovered) ASR storage classifications in the Recovery Services vault.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Get-AzureRmRecoveryServicesAsrStorageClassification -FriendlyName <String> -Fabr
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrStorageClassification** cmdlet gets storage classifications in Azure Site Recovery.
+The **Get-AzureRmRecoveryServicesAsrStorageClassification** cmdlet gets details of the discovered ASR storage classifications in the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -37,12 +37,12 @@ The **Get-AzureRmRecoveryServicesAsrStorageClassification** cmdlet gets storage 
 PS C:\> $StorageClassifications = Get-AzureRmRecoveryServicesAsrStorageClassification -Fabric $Fabric
 ```
 
-List storage classifications in passed fabric. 
+List the discovered storage classifications corresponding to the specified ASR fabric. 
 
 ## PARAMETERS
 
 ### -Fabric
-{{Fill Fabric Description}}
+Specifies an ASR fabric object. The cmdlet gets the details of discovered storage classifications corresponding to the specified ASR fabric. 
 
 ```yaml
 Type: ASRFabric
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
-Specifies the friendly name of the storage classification that this cmdlet gets.
+Specifies the friendly name of the storage classification object to get.
 
 ```yaml
 Type: String
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the storage classification that this cmdlet gets.
+Specifies the name of the storage classification object to get.
 
 ```yaml
 Type: String

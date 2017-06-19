@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRecoveryServicesAsrProtectionContainerMapping
 
 ## SYNOPSIS
-Creates an Azure Site Recovery Protection Container mapping by associating a policy to a Protection Container.
+Creates an Azure Site Recovery Protection Container mapping by associating the specified replication policy to the specified ASR protection container.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name <String> -Policy 
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet creates an Azure Site Recovery Protection Container mapping by associating a policy to a Protection Container.
+The **New-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet creates an Azure Site Recovery Protection Container mapping by associating the specified replication policy to the specified protection container.
 
 ## EXAMPLES
 
@@ -34,7 +34,7 @@ The **New-AzureRmRecoveryServicesAsrProtectionContainerMapping** cmdlet creates 
 PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $ContainerMappingName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
 ```
 
-Starts the creation of protection container mapping with passed name and returns the job for tracking.
+Starts the creation of the protection container mapping with the specified parameters, and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Policy
-Specifies the Azure Site Recovery Policy object.
+Specifies the ASR replication policy object for the replication policy to be used in the mapping.
 
 ```yaml
 Type: ASRPolicy
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryProtectionContainer
-Specifies the primary Protection Container object.
+Specifies the ASR protection container object for the  primary protection container to be used in the mapping.
 
 ```yaml
 Type: ASRProtectionContainer
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryProtectionContainer
-Specifies the Recovery Protection Container object.
+Specifies the ASR protection container object for the  recovery protection container to be used in the mapping (used if replicating to a recovery location that is not Azure.)
 
 ```yaml
 Type: ASRProtectionContainer

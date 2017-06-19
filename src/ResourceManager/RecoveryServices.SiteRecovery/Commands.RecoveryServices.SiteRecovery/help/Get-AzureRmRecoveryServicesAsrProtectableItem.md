@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrProtectableItem
 
 ## SYNOPSIS
-Get the protectable items in a Protection Container.
+Get the protectable items in an ASR protection container.
 
 ## SYNTAX
 
@@ -39,12 +39,12 @@ The **Get-AzureRmRecoveryServicesAsrProtectableItem** cmdlet gets the protectabl
 PS C:\> $ProtectableItems = Get-AzureRmRecoveryServicesAsrProtectableItem -ProtectionContainer $Container
 ```
 
-Gets all the protectable items in passed container.
+Gets all the protectable items in specified ASR protection container.
 
 ## PARAMETERS
 
 ### -FriendlyName
-Specifies the friendly name of the Azure Site Recovery protectable item.
+Specifies the friendly name of the ASR protectable item.
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Site Recovery protectable item.
+Specifies the name of the ASR protectable item.
 
 ```yaml
 Type: String

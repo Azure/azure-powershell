@@ -18,7 +18,7 @@ Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint -RecoveryPoint <ASRRecoveryPo
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint** changes a recovery point for a failed over protected item before it commits the failover operation.
+The **Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint** changes the recovery point for a failed over protected item before it commits the failover operation.
 
 ## EXAMPLES
 
@@ -27,12 +27,12 @@ The **Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint** changes a recovery po
 PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint -RecoveryPoint $RecoveryPoint -ReplicationProtectedItem $RPI
 ```
 
-Starts applying the passed recovery point to passed replication protected item and returns the job for tracking.
+Starts applying the specified recovery point to the replication protected item and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -DataEncryptionPrimaryCertFile
-{{Fill DataEncryptionPrimaryCertFile Description}}
+Specifies the primary certificate file if data encryption is being used.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataEncryptionSecondaryCertFile
-{{Fill DataEncryptionSecondaryCertFile Description}}
+Specifies the secondary certificate file if data encryption is being used.
 
 ```yaml
 Type: String
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPoint
-Specifies the recovery point object that this cmdlet changes.
+Specifies the recovery point object corresponding to the recovery point to be applied.
 
 ```yaml
 Type: ASRRecoveryPoint
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-Specifies the Replication Protected Item object.
+Specifies the ASR replication protected item object.
 
 ```yaml
 Type: ASRReplicationProtectedItem

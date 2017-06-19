@@ -49,7 +49,7 @@ Appends a group to existing Azure Site Recovery recovery plan and returns the in
 ## PARAMETERS
 
 ### -AddProtectedItems
-Protected items to be added or removed.
+List of ASR replication protected items to be added to the recovery plan group in the recovery plan object.
 
 ```yaml
 Type: ASRReplicationProtectedItem[]
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppendGroup
-Indicates that this operation appends the group to the recovery plan object.
+Switch parameter to append a recovery plan group to the recovery plan object.
 
 ```yaml
 Type: SwitchParameter
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -Group
-Specifies a Site Recovery plan group.
+Specifies a recovery plan group.
 
 ```yaml
 Type: ASRRecoveryPlanGroup
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The ASR recovery plan object to be edited (In memory operation. To update the recovery plan run Update-AzureRmASRRecoveryPlan with the edited recovery plan object.)
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveGroup
-Removes the specified Site Recovery recovery plan group.
+Removes the specified group from the recovery plan object.
 
 ```yaml
 Type: ASRRecoveryPlanGroup
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -RemoveProtectedItems
-{{Fill RemoveProtectedItems Description}}
+List of ASR replication protected items to be removed from the recovery plan group in the recovery plan object.
 
 ```yaml
 Type: ASRReplicationProtectedItem[]

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrServicesProvider
 
 ## SYNOPSIS
-Removes an Azure Site Recovery Services Provider.
+Deletes/unregister the specified Azure Site Recovery recovery services provider from the recovery services vault.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmRecoveryServicesAsrServicesProvider -InputObject <ASRRecoveryServi
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrServicesProvider** cmdlet removes an Azure Site Recovery Services Provider from the vault.
+The **Remove-AzureRmRecoveryServicesAsrServicesProvider** cmdlet removes the specified Azure Site Recovery recovery services provider from the vault.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The **Remove-AzureRmRecoveryServicesAsrServicesProvider** cmdlet removes an Azur
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrServicesProvider -ServicesProvider $ServicesProvider
 ```
 
-Starts the deletion of passed Azure Site Recovery services provider and returns the job for tracking.
+Starts the deletion/unregistration of the specified Azure Site Recovery services provider and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Force the command to run without providing an additional warning.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR recovery services provider object corresponding to the ASR recovery services provider to be deleted.
 
 ```yaml
 Type: ASRRecoveryServicesProvider
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Specify if confirmation is required. Set the value of the confirm parameter to $false in order to skip confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -76,8 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet is executed without actually executing the cmdlet.
 
 ```yaml
 Type: SwitchParameter

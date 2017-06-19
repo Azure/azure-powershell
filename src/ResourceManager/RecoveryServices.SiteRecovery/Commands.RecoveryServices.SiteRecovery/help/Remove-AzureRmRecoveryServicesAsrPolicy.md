@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrPolicy
 
 ## SYNOPSIS
-Removes a Site Recovery replication policy.
+Deletes the specified ASR replication policy from the Recovery Services vault.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Remove-AzureRmRecoveryServicesAsrPolicy -InputObject <ASRPolicy> [<CommonParamet
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrPolicy** cmdlet removes an Azure Site Recovery replication policy.
+The **Remove-AzureRmRecoveryServicesAsrPolicy** cmdlet deleted the specified replication policy from the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -25,12 +25,12 @@ The **Remove-AzureRmRecoveryServicesAsrPolicy** cmdlet removes an Azure Site Rec
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrPolicy -Policy $Policy
 ```
 
-Starts the deletion of passed policy and returns the job for tracking.
+Starts the deletion of the specified replication policy and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR replication policy object corresponding to the replication policy to be deleted.
 
 ```yaml
 Type: ASRPolicy

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Import-AzureRmRecoveryServicesAsrVaultSettingsFile
 
 ## SYNOPSIS
-Imports a Recovery Services vault settings file.
+Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Import-AzureRmRecoveryServicesAsrVaultSettingsFile [-Path] <String> [<CommonPara
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmRecoveryServicesAsrVaultSettingsFile** cmdlet imports an Azure Site Recovery vault settings file to set the vault context for subsequent Site Recovery operations in the current session.
+The **Import-AzureRmRecoveryServicesAsrVaultSettingsFile** cmdlet imports the Azure Site Recovery vault settings file. The vault settings file is used to set the vault context for subsequent Azure Site Recovery operations in the current session.
 
 ## EXAMPLES
 
@@ -25,12 +25,12 @@ The **Import-AzureRmRecoveryServicesAsrVaultSettingsFile** cmdlet imports an Azu
 PS C:\> $VaultSettings = Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $FilePath
 ```
 
-Imports the passed Recovery Services vault settings file and returns settings of the imported vault.
+Imports the specified Recovery Services vault settings file and returns settings of the imported vault.
 
 ## PARAMETERS
 
 ### -Path
-Specifies the path of the Recovery Services vault settings file.
+Specifies the path of the ASR vault settings file.
 This file can be downloaded from the Recovery Services vault portal and stored locally.
 
 ```yaml

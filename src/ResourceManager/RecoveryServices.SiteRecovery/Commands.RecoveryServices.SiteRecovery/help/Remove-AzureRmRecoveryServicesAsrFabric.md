@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrFabric
 
 ## SYNOPSIS
-Removes an Azure Site Recovery Fabric.
+Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmRecoveryServicesAsrFabric -InputObject <ASRFabric> [-Force] [-What
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrFabric** cmdlet removes an Azure Site Recovery Fabric.
+The **Remove-AzureRmRecoveryServicesAsrFabric** cmdlet removes the specified Azure Site Recovery fabric from the Recovery services vault.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The **Remove-AzureRmRecoveryServicesAsrFabric** cmdlet removes an Azure Site Rec
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrFabric -Fabric $Fabric
 ```
 
-Starts the deletion of passed fabric and returns the job for tracking.
+Starts the deletion of specified fabric and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Force the command to run without providing an additional warning.
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR fabric object corresponding to the fabric to be deleted.
 
 ```yaml
 Type: ASRFabric
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Specify if confirmation is required. Set the value of the confirm parameter to $false in order to skip confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -76,8 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet is executed without actually executing the cmdlet.
 
 ```yaml
 Type: SwitchParameter

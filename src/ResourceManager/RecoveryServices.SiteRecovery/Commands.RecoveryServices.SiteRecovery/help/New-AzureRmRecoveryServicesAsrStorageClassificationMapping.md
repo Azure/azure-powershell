@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRecoveryServicesAsrStorageClassificationMapping
 
 ## SYNOPSIS
-Creates a storage classification mapping in Site Recovery.
+Creates an ASR storage classification mapping in the Recovery Services vault.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzureRmRecoveryServicesAsrStorageClassificationMapping -Name <String>
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet creates a storage classification mapping in Azure Site Recovery.
+The **New-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet creates a storage classification mapping the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -27,12 +27,12 @@ The **New-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet create
 PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrStorageClassificationMapping -Name $StrorageClassificationMappingName -PrimaryStorageClassification $PrimaryStorageClassification -RecoveryStorageClassification $RecoveryStorageClassification
 ```
 
-Starts the storage classification mapping creation with passed parameters and returns the job for tracking.
+Starts the storage classification mapping creation operation with the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -Name
-{{Fill Name Description}}
+Specifies a name for the ASR storage classification mapping.
 
 ```yaml
 Type: String
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryStorageClassification
-Specifies the primary storage classification mapping.
+Specifies the primary ASR storage classification object for the mapping.
 
 ```yaml
 Type: ASRStorageClassification
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryStorageClassification
-Specifies a recovery storage classification mapping.
+Specifies the recovery ASR storage classification object for the mapping.
 
 ```yaml
 Type: ASRStorageClassification

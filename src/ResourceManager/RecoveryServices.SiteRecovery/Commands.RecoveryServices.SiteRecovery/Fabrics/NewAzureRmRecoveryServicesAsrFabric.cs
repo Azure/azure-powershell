@@ -49,15 +49,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Type { get; set; }
 
         /// <summary>
-        ///     Gets or Sets the location
-        /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.Default,
-            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -70,15 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var input = new FabricCreationInput();
             input.Properties = new FabricCreationInputProperties();
 
-            if (string.IsNullOrEmpty(this.Location))
-            {
-                input.Properties.CustomDetails = new FabricSpecificCreationInput();
-            }
-            else
-            {
-                input.Properties.CustomDetails =
-                    new AzureFabricCreationInput { Location = this.Location };
-            }
+            input.Properties.CustomDetails = new FabricSpecificCreationInput();
 
             var response = this.RecoveryServicesClient.CreateAzureSiteRecoveryFabric(
                 this.Name,

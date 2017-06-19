@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem
 
 ## SYNOPSIS
-Removes an Azure Site Recovery Replication Protected Item.
+Stops/Disables replication for an Azure Site Recovery replication protected item.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRRepli
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet removes an Azure Site Recovery Replication Protected Item.
+The **Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet disables replication of the specified Azure Site Recovery replication protected item.
 This operation causes replication to stop for the protected item.
 
 ## EXAMPLES
@@ -27,12 +27,12 @@ This operation causes replication to stop for the protected item.
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicationProtectedItem
 ```
 
-Starts the deletion of passed replication protected item and returns the job for tracking.
+Starts the disable replication operation for the specified replication protected item and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Force the command to run without providing an additional warning.
 
 ```yaml
 Type: SwitchParameter
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR replication protected item object corresponding to the replication protected item for which replication is to be disabled.
 
 ```yaml
 Type: ASRReplicationProtectedItem
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -WaitForCompletion
-Indicates that the cmdlet waits for the operation to complete.
+Indicates that the cmdlet should wait for the operation to complete before returning.
 
 ```yaml
 Type: SwitchParameter
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.
+Specify if confirmation is required. Set the value of the confirm parameter to $false in order to skip confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -92,8 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet is executed without actually executing the cmdlet.
 
 ```yaml
 Type: SwitchParameter

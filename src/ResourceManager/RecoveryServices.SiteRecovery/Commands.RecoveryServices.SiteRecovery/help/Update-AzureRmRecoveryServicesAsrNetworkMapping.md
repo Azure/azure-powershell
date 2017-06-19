@@ -7,7 +7,7 @@ schema: 2.0.0
 # Update-AzureRmRecoveryServicesAsrNetworkMapping
 
 ## SYNOPSIS
-Updates a network mapping in Site Recovery.
+Updates the specified ASR network mapping.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ Update-AzureRmRecoveryServicesAsrNetworkMapping -InputObject <ASRNetworkMapping>
 ```
 
 ## DESCRIPTION
-The **Update-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet updates a network mapping in Azure Site Recovery.
+The **Update-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet updates the specified Azure Site Recovery network mapping.
 
 ## EXAMPLES
 
@@ -33,12 +33,12 @@ The **Update-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet updates a network
 PS C:\> $currentJob = Update-AzureRmRecoveryServicesAsrNetworkMapping -Mapping $NetworkMapping -RecoveryNetwork $RecoveryNetwork
 ```
 
-Starts updating network mapping with passed recovery network and returns the job for tracking.
+Starts the update network mapping operation using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+Input Object: Specifies the ASR network mapping object corresponding to the ASR network mapping to be updated 
 
 ```yaml
 Type: ASRNetworkMapping
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAzureNetworkId
-{{Fill RecoveryAzureNetworkId Description}}
+Specifies the recovery azure network ID for the network mapping.
 
 ```yaml
 Type: String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryNetwork
-{{Fill RecoveryNetwork Description}}
+Specifies the recovery network object for the network mapping.
 
 ```yaml
 Type: ASRNetwork

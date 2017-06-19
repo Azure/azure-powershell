@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmRecoveryServicesAsrReplicationProtectedItem
 
 ## SYNOPSIS
-Sets recovery properties such as target network and virtual machine size for a Replication Protected Item.
+Sets recovery properties such as target network and virtual machine size for the specified replication protected item.
 
 ## SYNTAX
 
@@ -28,12 +28,12 @@ The **Set-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet sets the r
 PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $RPI -PrimaryNic $NicId -RecoveryNetworkId $AzureNetworkID -RecoveryNicSubnetName $subnetName
 ```
 
-Starts setting passed properties of replication protected items and returns the job for tracking.
+Starts the operation of updating the replication protect item settings using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR replication protected item object corresponding to the replication protected item to update.
 
 ```yaml
 Type: ASRReplicationProtectedItem
@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-Specifies the license type selection for Windows Server virtual machines migrated through Hybrid use benefit.
+Specifiy the license type selection to be used for Windows Server virtual machines. If you are entitled to use the Azure Hybrid Use Benefit (HUB) for migrations and would like to specify that the HUB setting be used while failing over this protected item set the license type to be WindowsServer.
 
 ```yaml
 Type: String
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the recovery virtual machine.
+Specifies the name of the recovery virtual machine that will be created on failover.
 
 ```yaml
 Type: String
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryNetworkId
-Specifies the ID of the Azure virtual network for which this cmdlet recovers the Protected Item.
+Specifies the ID of the Azure virtual network to which the protected item should be failed over.
 
 ```yaml
 Type: String
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryNicSubnetName
-Specifies the name of the Subnet on the recovery Azure virtual network for which this cmdlet recovers the Protected Item.
+Specifies the name of the subnet on the recovery Azure virtual network to which this NIC of the protected item should be connected to on failover.
 
 ```yaml
 Type: String
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryResourceGroupId
-{{Fill RecoveryResourceGroupId Description}}
+The ID of the Azure resource group in the recovery region in which the protected item will be recovered on failover.
 
 ```yaml
 Type: String

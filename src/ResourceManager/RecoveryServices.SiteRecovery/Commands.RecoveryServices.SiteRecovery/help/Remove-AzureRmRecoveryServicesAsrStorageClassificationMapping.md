@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping
 
 ## SYNOPSIS
-Removes a storage classification mapping from Site Recovery.
+Deletes the specified ASR storage classification mapping.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping -InputObject <ASRS
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet removes a storage classification mapping from Azure Site Recovery.
+The **Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet deletes the specified Azure Site Recovery storage classification mapping.
 
 ## EXAMPLES
 
@@ -26,12 +26,12 @@ The **Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping** cmdlet rem
 PS C:\> $currentJob = Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping -StorageClassificationMapping $StorageClassificationMapping
 ```
 
-Starts the deletion of passed storage classification mapping and returns the job for tracking.
+Starts the deletion of specified storage classification mapping and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -InputObject
-{{Fill InputObject Description}}
+The input object to the cmdlet: The ASR storage classification mapping object corresponding to the ASR storage classification mapping to be deleted.
 
 ```yaml
 Type: ASRStorageClassificationMapping

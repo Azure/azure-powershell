@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesAsrVaultSettings
 
 ## SYNOPSIS
-Gets settings information for the current Site Recovery vault.
+Gets ASR vault settings information for the Recovery Services vault.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Get-AzureRmRecoveryServicesAsrVaultSettings [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrVaultSettings** cmdlet gets settings information related to the current Azure Site Recovery vault.
+The **Get-AzureRmRecoveryServicesAsrVaultSettings** cmdlet gets ASR vault settings information related to the Recovery Services vault.
 
 ## EXAMPLES
 
@@ -25,7 +25,7 @@ The **Get-AzureRmRecoveryServicesAsrVaultSettings** cmdlet gets settings informa
 PS C:\> $VaultSettings = Get-AzureRmRecoveryServicesAsrVaultSettings
 ```
 
-Gets currently set vault settings.
+Gets the ASR vault settings for the currently active(in the PowerShell session) Recovery Services vault.
 
 ## PARAMETERS
 

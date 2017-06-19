@@ -7,7 +7,7 @@ schema: 2.0.0
 # Start-AzureRmRecoveryServicesAsrPlannedFailoverJob
 
 ## SYNOPSIS
-Starts a Site Recovery planned failover operation.
+Starts a planned failover operation.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Start-AzureRmRecoveryServicesAsrPlannedFailoverJob -RecoveryPlan <ASRRecoveryPla
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmRecoveryServicesAsrPlannedFailoverJob** cmdlet starts a planned failover for an Azure Site Recovery protection entity or recovery plan.
+The **Start-AzureRmRecoveryServicesAsrPlannedFailoverJob** cmdlet starts a planned failover for an Azure Site Recovery replication protected item or recovery plan.
 You can check whether the job succeeds by using the Get-AzureRmRecoveryServicesAsrJob cmdlet.
 
 ## EXAMPLES
@@ -37,12 +37,12 @@ You can check whether the job succeeds by using the Get-AzureRmRecoveryServicesA
 PS C:\> $currentJob = Start-AzureRmRecoveryServicesAsrPlannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
 ```
 
-Starts the planned failover for the passed recovery plan and returns the job for tracking.
+Starts the planned failover for the specified ASR recovery plan and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -CreateVmIfNotFound
-The acceptable values for this parameter are:
+Create the virtual machine if not found while failing back to the primary region (used in alternate location recovery.) The acceptable values for this parameter are:
 
 - Yes
 - No
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPlan
-{{Fill RecoveryPlan Description}}
+Specifies the ASR Recovery plan object corresponding to the recovery plan to be failed over.
 
 ```yaml
 Type: ASRRecoveryPlan
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-{{Fill ReplicationProtectedItem Description}}
+Specifies the ASR replication protected item object corresponding to the replication protected item to be failed over.
 
 ```yaml
 Type: ASRReplicationProtectedItem
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServicesProvider
-{{Fill ServicesProvider Description}}
+Identifies the host to on which to create the virtual machine while failing over to an alternate location by specifying the ASR services provider object corresponding to the ASR services provider running on the host. 
 
 ```yaml
 Type: ASRRecoveryServicesProvider

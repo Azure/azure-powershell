@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRecoveryServicesAsrPolicy
 
 ## SYNOPSIS
-Creates a Site Recovery replication policy.
+Creates an Azure Site Recovery replication policy.
 
 ## SYNTAX
 
@@ -38,12 +38,12 @@ The replication policy is used to specify replication settings such as the repli
 PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrProtectionContainerMapping -Name $PolicyName -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer -RecoveryProtectionContainer $RecoveryContainer
 ```
 
-Starts the policy creation with passed parameters and returns the job for tracking.
+Starts the replication policy creation operation using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -ApplicationConsistentSnapshotFrequencyInHours
-Specifies the frequency of the application consistent snapshot in hours.
+Specifies the frequency(in hours) at which to create application consistent recovery points.
 
 ```yaml
 Type: Int32
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Compression
-{{Fill Compression Description}}
+Specifies if compression should be enabled.
 
 ```yaml
 Type: String
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Encryption
-Specify if encryption needs to be enabled or disabled.
+Specifies if encryption should be enabled or disabled.
 
 ```yaml
 Type: String
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a friendly name which identifies the Site Recovery replication policy.
+Specifies the name of the ASR replication policy.
 
 ```yaml
 Type: String
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAzureStorageAccountId
-Specifies the Azure storage account ID of the replication target.
+Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
 
 ```yaml
 Type: String
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPoints
-Specifies the number of hours to retain recovery points.
+Specifies the number of hours to retain recovery points for.
 
 ```yaml
 Type: Int32
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicaDeletion
-{{Fill ReplicaDeletion Description}}
+Specifies if the replica virtual machine should be deleted on disabling replication from a VMM managed site to another.
 
 ```yaml
 Type: String

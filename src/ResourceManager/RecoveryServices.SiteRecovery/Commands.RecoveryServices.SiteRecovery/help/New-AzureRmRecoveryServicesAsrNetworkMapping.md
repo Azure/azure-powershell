@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRecoveryServicesAsrNetworkMapping
 
 ## SYNOPSIS
-Creates a mapping between virtual networks.
+Creates an ASR network mapping between two networks.
 
 ## SYNTAX
 
@@ -24,7 +24,7 @@ New-AzureRmRecoveryServicesAsrNetworkMapping -Name <String> -PrimaryNetwork <ASR
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet creates a mapping between two virtual networks and returns an Azure Site Recovery job to track it.
+The **New-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet starts the operation of creating an ASR network mapping between two networks and returns the ASR job object for the ASR job used to track the operation.
 
 ## EXAMPLES
 
@@ -33,12 +33,12 @@ The **New-AzureRmRecoveryServicesAsrNetworkMapping** cmdlet creates a mapping be
 PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrNetworkMapping -Name $NetworkMapName -PrimaryNetwork $PrimaryNetwork -RecoveryNetwork $RecoveryNetwork
 ```
 
-Starts the network mapping creation with passed name, primary and recovery networks and returns the job for tracking.
+Starts the network mapping creation operation using the specified name, primary and recovery networks, and returns an ASR job to track the operation.
 
 ## PARAMETERS
 
 ### -Name
-Name of the network mapping.
+Name of the ASR network mapping to create.
 
 ```yaml
 Type: String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryNetwork
-Specifies the primary network object.
+Specifies the primary network object for the network mapping.
 
 ```yaml
 Type: ASRNetwork
@@ -68,13 +68,12 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryAzureNetworkId
-Specified recovery azure network Id.
+Specifies the recovery azure network ID for the network mapping.
 
 ```yaml
 Type: String
 Parameter Sets: EnterpriseToAzure
 Aliases: 
-
 Required: True
 Position: Named
 Default value: None
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryNetwork
-Specifies the recovery network object.
+Specifies the recovery network object for the network mapping.
 
 ```yaml
 Type: ASRNetwork

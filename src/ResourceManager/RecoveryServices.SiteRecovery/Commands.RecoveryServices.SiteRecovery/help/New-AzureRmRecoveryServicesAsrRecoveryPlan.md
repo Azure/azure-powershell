@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmRecoveryServicesAsrRecoveryPlan
 
 ## SYNOPSIS
-Creates a site recovery plan in Site Recovery.
+Creates an ASR recovery plan.
 
 ## SYNTAX
 
@@ -30,9 +30,9 @@ New-AzureRmRecoveryServicesAsrRecoveryPlan -Path <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet creates a recovery plan in Azure Site Recovery.
+The **New-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet creates an Azure Site Recovery recovery plan in the Recovery Services vault.
 
-A recovery plan gathers virtual machines in a group for the purposes of failover and recovery.
+A recovery plan gathers virtual machines belonging to an application into a unit to allow them to be recovered together.
 
 ## EXAMPLES
 
@@ -41,12 +41,12 @@ A recovery plan gathers virtual machines in a group for the purposes of failover
 PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -RecoveryFabric $RecoveryFabric -ReplicationProtectedItem $RPI
 ```
 
-Starts the recovery plan creation with passed parameters and returns the job for tracking.
+Starts the recovery plan creation operation with the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 
 ### -Azure
-To be passed if recovery is Azure.
+Switch parameter to specify that the recovery location for recovery plan is Azure.
 
 ```yaml
 Type: SwitchParameter
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -FailoverDeploymentModel
-Model of recovery plan.
+Specifies the failover deployment model (Classic or Resource Manager) of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: String
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name for the new Recovery plan.
+Name of the recovery plan.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path of the recovery plan file.
+Specifies the path to the recovery plan definition json file. A recovery plan definition json can be used to create the recovery plan.
 
 ```yaml
 Type: String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryFabric
-{{Fill PrimaryFabric Description}}
+Specifies the ASR fabric object for the primary ASR fabric of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: ASRFabric
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryFabric
-{{Fill RecoveryFabric Description}}
+Specifies the ASR fabric object for the recovery ASR fabric of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: ASRFabric
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-{{Fill ReplicationProtectedItem Description}}
+The list of replication protected items to add to the first group of the recovery plan.
 
 ```yaml
 Type: ASRReplicationProtectedItem[]
