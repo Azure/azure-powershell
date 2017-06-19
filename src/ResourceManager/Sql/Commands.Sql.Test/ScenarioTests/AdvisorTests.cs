@@ -113,13 +113,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetElasticPoolAdvisor");
         }
 
-        [Fact(Skip = "Fails when run live due to HTTP 500 error on PATCH .../Microsoft.Sql/servers/{serverName}/elasticPools/{poolName}/advisors/CreateIndex?api-version=2015-05-01-preview")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateElasticPoolAdvisor()
-        {
-            RunPowerShellTest("Test-UpdateElasticPoolAdvisor");
-        }
-
         #endregion
     }
 }

@@ -148,33 +148,6 @@ function Test-GetElasticPool
 
 <# 
     .SYNOPSIS
-    Tests getting an elastic pool metric
-#>
-function Test-GetElasticPoolMetric
-{
-    # This test requires that an elastic pool has been created and has metrics ready
-    # To prevent requiring putting something like a Sleep(10 minutes) in the code
-    # this test requires the server/elastic pool be pre-created with metrics data available.
-    
-    # Setup and retrieve the existing pool
-    $rgName = "test-group"
-    $serverName = "groupserver1"
-    $elasticPoolName = "testpool2"
-
-    $ep1 = Get-AzureRmSqlElasticPool  -ServerName $serverName -ResourceGroupName $rgName `
-        -ElasticPoolName $elasticPoolName
-    Assert-NotNull $ep1
-    
-    # Get pool metrics with all values
-    # Introducing breaking change that requires -MetricNames csv-list as parameter for this call (disabling this part of the test as done before)
-    #$metrics = $ep1 | Get-AzureRmMetric -TimeGrain "0:5:0" -StartTime "2015-04-22T16:00:00Z" -EndTime "2015-04-22T17:00:00Z"
-    #Assert-NotNull $metrics
-    #Assert-True { $metrics.Count -gt 0 }
-}
-
-
-<# 
-    .SYNOPSIS
     Tests removing an elastic pool
 #>
 function Test-RemoveElasticPool
