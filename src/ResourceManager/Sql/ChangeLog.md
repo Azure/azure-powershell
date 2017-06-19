@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated AzureRmSqlServer cmdlets to use new REST API version that avoids timeouts when creating server.
+* Deprecated server upgrade cmdlets because the old server version (2.0) no longer exists.
 
 ## Version 3.1.0
 * Restore-AzureRmSqlDatabase: Update documentation examples
