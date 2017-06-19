@@ -19,7 +19,7 @@ Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [<Comm
 
 ### ByDeletedVault
 ```
-Get-AzureRmKeyVault [-VaultName] <String> -Location <String> [-InRemovedState] [<CommonParameters>]
+Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [<CommonParameters>]
 ```
 
 ### ListVaultsByResourceGroup
@@ -103,7 +103,7 @@ Parameter Sets: ByDeletedVault
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -157,7 +157,7 @@ Specifies the name of the key vault.
 ```yaml
 Type: String
 Parameter Sets: GetVaultByName, ByDeletedVault
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: 0

@@ -323,7 +323,7 @@ function Test-AEMExtensionAdvancedLinuxMD
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType StandardLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 10 | Update-AzureRmVM
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 1023 | Update-AzureRmVM
 		
         
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: VM created"
@@ -331,12 +331,13 @@ function Test-AEMExtensionAdvancedLinuxMD
         # Get with not extension
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Get with no extension"
         $extension = Get-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname
-        Assert-Null $extension
+        Assert-Null $extension "Extension is not null"
 
         # Test with not extension
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test with no extension"
         $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-        Assert-False { $res.Result }
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-False { $res.Result } "Test result is not false $out"
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test done"
 
         $stoname = 'sto' + $rgname + "2";
@@ -361,7 +362,8 @@ function Test-AEMExtensionAdvancedLinuxMD
         # Test command.
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test with extension"
         $res = Test-AzureRmVMAEMExtension -ResourceGroupName $rgname -VMName $vmname -SkipStorageCheck
-        Assert-True { $res.Result }
+		$tmp = $res;$out = &{while ($true) { if ($tmp) { foreach ($tmpRes in $tmp) {($tmpRes.TestName  + " " + $tmpRes.Result)};$tmp = @($tmp.PartialResults)} else {break}}};
+        Assert-True { $res.Result } "Test result is not false $out"
         Assert-True { ($res.PartialResults.Count -gt 0) }
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: Test done"
 
