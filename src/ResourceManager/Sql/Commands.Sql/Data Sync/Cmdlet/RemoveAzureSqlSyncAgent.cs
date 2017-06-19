@@ -81,14 +81,14 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent && !ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentDescription, this.Name),
-                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentWarning, this.Name, this.ResourceGroupName),
-                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            if (ShouldProcess(this.Name))
             {
-                return;
+                if (Force || ShouldContinue(
+                    string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlSyncAgentWarning, this.Name, this.ResourceGroupName), ""))
+                {
+                    base.ExecuteCmdlet();
+                }
             }
-            base.ExecuteCmdlet();
         }
     }
 }

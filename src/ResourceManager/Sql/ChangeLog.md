@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Overview of change #1
-	- Add Data Sync PowerShell Cmdlets to AzureRM.Sql
+* Add Data Sync PowerShell Cmdlets to AzureRM.Sql
 
 ## Version 3.1.0
 * Restore-AzureRmSqlDatabase: Update documentation examples
