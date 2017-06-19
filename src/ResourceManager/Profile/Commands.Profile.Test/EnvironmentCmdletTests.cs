@@ -59,6 +59,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 StorageEndpoint = "endpoint.net",
                 GalleryEndpoint = "http://galleryendpoint.com",
             };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -72,10 +76,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl], cmdlet.ManagementPortalUrl);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.Gallery], "http://galleryendpoint.com");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AddsEnvironmentMultipleTimes()
+        public void AddsAzureEnvironmentUsingARMEndpoint()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+
+            var cmdlet = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                ARMEndpoint = "https://management.azure.com/"
+            };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            cmdlet.SetParameterSet("ARMEndpoint");
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env.Name, cmdlet.Name);
+            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ResourceManager], cmdlet.ResourceManagerEndpoint);
+            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory], cmdlet.ActiveDirectoryEndpoint);
+            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId], cmdlet.ActiveDirectoryServiceEndpointResourceId);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetsEnvironmentMultipleTimes()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             var cmdlet = new AddAzureRMEnvironmentCommand()
@@ -85,6 +119,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 PublishSettingsFileUrl = "http://microsoft.com",
                 EnableAdfsAuthentication = true,
             };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -97,7 +134,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
 
             // Execute the same without PublishSettingsFileUrl and make sure the first value is preserved
-            var cmdlet2 = new AddAzureRMEnvironmentCommand()
+            var cmdlet2 = new SetAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
@@ -115,7 +152,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env2.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
 
             // Execute by toggling EnableAdfsAuthentication
-            var cmdlet3 = new AddAzureRMEnvironmentCommand()
+            var cmdlet3 = new SetAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
@@ -147,6 +184,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 EnableAdfsAuthentication = true,
             };
 
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -173,6 +213,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 ManagementPortalUrl = "management portal url",
                 StorageEndpoint = "endpoint.net"
             };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -181,6 +225,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Add again
             cmdlet.Name = "kAtAl";
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
             AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
@@ -197,6 +242,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 Name = EnvironmentName.AzureCloud,
                 PublishSettingsFileUrl = "http://microsoft.com"
             };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
         }
@@ -216,6 +264,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 PublishSettingsFileUrl = "http://microsoft.com",
                 StorageEndpoint = "core.windows.net",
             };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -256,7 +307,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
                 GraphAudience = "GaraphAudience"
             };
-            
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -285,6 +339,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ThrowsForInvalidUrl()
+        {
+            var commandRuntimeMock = new Mock<ICommandRuntime>();
+            var cmdlet = new AddAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "katal",
+                ARMEndpoint = "foobar.com"
+            };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            cmdlet.SetParameterSet("ARMEndpoint");
+
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateEnvironmentWithTrailingSlashInActiveDirectory()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -297,6 +370,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 Name = "Katal",
                 ActiveDirectoryEndpoint = "https://ActiveDirectoryEndpoint/"
             };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -437,7 +513,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
             }
         }
-
 
         public void Dispose()
         {

@@ -134,6 +134,7 @@
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
     <Compile Include="Environment\AddAzureRMEnvironment.cs" />
+    <Compile Include="Models\MetadataResponse.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\PSAzureContext.cs" />
     <Compile Include="Models\PSAzureEnvironment.cs" />
@@ -156,6 +157,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Tenant\GetAzureRMTenant.cs" />
+    <Compile Include="Utilities\EnvironmentHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
@@ -170,7 +172,6 @@
       <Link>CheckVersions.ps1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    
     <None Include="AzureRmProfileStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
