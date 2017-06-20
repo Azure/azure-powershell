@@ -107,7 +107,6 @@
       <Link>AzureRM.HDInsight.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.HDInsight.dll-help.psd1">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
