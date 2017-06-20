@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureSessionTests.cs" />
     <Compile Include="ClientFactoryHandlerTests.cs" />
     <Compile Include="ClientFactoryTests.cs" />
     <Compile Include="AuthenticationFactoryTests.cs" />
