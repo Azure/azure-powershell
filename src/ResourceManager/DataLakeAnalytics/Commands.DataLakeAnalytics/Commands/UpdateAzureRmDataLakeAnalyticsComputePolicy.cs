@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsData.Update, "AzureRmDataLakeAnalyticsComputePolicy"), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
+    [Cmdlet(VerbsData.Update, "AzureRmDataLakeAnalyticsComputePolicy", SupportsShouldProcess = true), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
     [Alias("Update-AdlAnalyticsComputePolicy")]
     public class UpdateAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {
@@ -62,7 +62,22 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 throw new ArgumentException(Resources.MissingComputePolicyField);
             }
 
-            WriteObject(this.DataLakeAnalyticsClient.UpdateComputePolicy(ResourceGroupName, Account, Name, MaxDegreeOfParallelismPerJob, MinPriorityPerJob));
+            ConfirmAction(
+                string.Format(
+                    Resources.UpdateDataLakeComputePolicy,
+                    Name,
+                    MinPriorityPerJob.HasValue ? "\r\nMinPriorityPerJob: " + MinPriorityPerJob.Value : string.Empty,
+                    MaxDegreeOfParallelismPerJob.HasValue ? "\r\nMaxDegreeOfParallelismPerJob: " + MaxDegreeOfParallelismPerJob.Value : string.Empty),
+                Name, () =>
+                {
+                    WriteObject(
+                        this.DataLakeAnalyticsClient.UpdateComputePolicy(
+                            ResourceGroupName,
+                            Account,
+                            Name,
+                            MaxDegreeOfParallelismPerJob,
+                            MinPriorityPerJob));
+                });
         }
     }
 }
