@@ -4,15 +4,15 @@ online version:
 schema: 2.0.0
 ---
 
-# Show-AzureAnalysisServicesInstance
+# Export-AzureAnalysisServicesInstance
 
 ## SYNOPSIS
-Shows a log from an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
+Exports a log from an instance of Analysis Services server in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
 
 ## SYNTAX
 
 ```
-Show-AzureAnalysisServicesInstanceLog [-Instance] <String> [-WhatIf]
+Export-AzureAnalysisServicesInstanceLog [-Instance] <String> [-OutputPath] <String> [-WhatIf]
 ```
 
 ## DESCRIPTION
@@ -22,8 +22,9 @@ The Restart-AzureAnalysisServicesInstance cmdlet restarts an instance of Azure A
 
 ### Example 1
 ```
-PS C:\>Show-AzureAnalysisServicesInstanceLog
+PS C:\>Export-AzureAnalysisServicesInstanceLog
 Instance: testserver
+OuptutPath: C:\path\to\log\testserver.log
 ```
 
 This command will fetch log from the server 'testserver' in the environment specified in the Add-AzureAnalysisServicesAccount command
@@ -45,13 +46,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutputPath
+Output path to file to export log
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ## INPUTS
 
 ## OUTPUTS
-Log file
 
 ## NOTES
-Alias: Show-AzureAsInstanceLog
+Alias: Export-AzureAsInstanceLog
 
 ## RELATED LINKS
 
