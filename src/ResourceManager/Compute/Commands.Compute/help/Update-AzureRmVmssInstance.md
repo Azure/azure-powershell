@@ -13,8 +13,8 @@ Starts a manual upgrade of the VMSS instance.
 ## SYNTAX
 
 ```
-Update-AzureRmVmssInstance [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-InstanceId] <String[]> [<CommonParameters>]
+Update-AzureRmVmssInstance [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String[]>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

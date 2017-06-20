@@ -13,8 +13,8 @@ Adds a data disk to an image obejct.
 
 ```
 Add-AzureRmImageDataDisk [-Image] <Image> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
- [-DiskSizeGB <Int32>] [-SnapshotId <String>] [-ManagedDiskId <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DiskSizeGB <Int32>] [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>]
+ [-ManagedDiskId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -142,6 +142,21 @@ Specifies the ID of a snapshot.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+The Storage Account type of the data image disk
+
+```yaml
+Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
 

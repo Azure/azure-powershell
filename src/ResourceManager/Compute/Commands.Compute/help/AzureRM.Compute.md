@@ -419,6 +419,9 @@ Sets the Azure SQL Server extension on a virtual machine.
 ### [Set-AzureRmVmss](Set-AzureRmVmss.md)
 Sets specific actions on a specified VMSS.
 
+### [Set-AzureRmVmssBootDiagnostic](Set-AzureRmVmssBootDiagnostic.md)
+Sets the virtual machine scale set boot diagnostics profile.
+
 ### [Set-AzureRmVmssOsProfile](Set-AzureRmVmssOsProfile.md)
 Sets the VMSS operating system profile properties.
 

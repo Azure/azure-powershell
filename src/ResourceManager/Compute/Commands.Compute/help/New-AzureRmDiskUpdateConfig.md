@@ -12,11 +12,10 @@ Creates a configurable disk update object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskUpdateConfig [[-AccountType] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
- [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-CreateOption <DiskCreateOption>] [-StorageAccountId <String>]
- [-ImageReference <ImageDiskReference>] [-SourceUri <String>] [-SourceResourceId <String>]
- [-EncryptionSettingsEnabled <Boolean>] [-DiskEncryptionKey <KeyVaultAndSecretReference>]
- [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmDiskUpdateConfig [-SkuName <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+ [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-EncryptionSettingsEnabled <Boolean>]
+ [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,38 +47,6 @@ PS C:\> New-AzureRmDiskUpdateConfig -DiskSizeGB 10 | Update-AzureRmDisk -Resourc
 This command updates an existing disk with name 'Disk01' in resource group 'ResourceGroup01' to 10 GB disk size.
 
 ## PARAMETERS
-
-### -AccountType
-Specifies the storage account type.
-
-```yaml
-Type: StorageAccountTypes
-Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -CreateOption
-Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
-
-```yaml
-Type: DiskCreateOption
-Parameter Sets: (All)
-Aliases: 
-Accepted values: Empty, Attach, FromImage, Import, Copy, Restore
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DiskEncryptionKey
 Specifies the disk encryption key object on a disk.
@@ -126,21 +93,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ImageReference
-Specifies the image reference on a disk.
-
-```yaml
-Type: ImageDiskReference
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -KeyEncryptionKey
 Specifies the Key encryption key on a disk.
 
@@ -172,43 +124,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SourceResourceId
-Specifies the source resource ID.
+### -SkuName
+Specifies the Sku name of the storage account.
 
 ```yaml
-Type: String
+Type: StorageAccountTypes
 Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SourceUri
-Specifies the source Uri.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StorageAccountId
-Specifies the storage account ID.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Aliases: AccountType
 
 Required: False
 Position: Named

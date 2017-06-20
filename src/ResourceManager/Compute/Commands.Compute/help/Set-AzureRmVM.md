@@ -22,6 +22,11 @@ Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Generalized] [<Co
 Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
 ```
 
+### PerformMaintenanceResourceGroupNameParameterSetName
+```
+Set-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance] [<CommonParameters>]
+```
+
 ### GeneralizeIdParameterSetName
 ```
 Set-AzureRmVM [-Id] <String> [-Name] <String> [-Generalized] [<CommonParameters>]
@@ -30,6 +35,11 @@ Set-AzureRmVM [-Id] <String> [-Name] <String> [-Generalized] [<CommonParameters>
 ### RedeployIdParameterSetName
 ```
 Set-AzureRmVM [-Id] <String> [-Name] <String> [-Redeploy] [<CommonParameters>]
+```
+
+### PerformMaintenanceIdParameterSetName
+```
+Set-AzureRmVM [-Id] <String> [-Name] <String> [-PerformMaintenance] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +77,7 @@ Specifies the Resource ID of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName
+Parameter Sets: GeneralizeIdParameterSetName, RedeployIdParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 
 
 Required: True
@@ -87,6 +97,19 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PerformMaintenance
+To perform the maintenance of virtual machine.```yaml
+Type: SwitchParameter
+Parameter Sets: PerformMaintenanceResourceGroupNameParameterSetName, PerformMaintenanceIdParameterSetName
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -114,7 +137,7 @@ Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName
+Parameter Sets: GeneralizeResourceGroupNameParameterSetName, RedeployResourceGroupNameParameterSetName, PerformMaintenanceResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
