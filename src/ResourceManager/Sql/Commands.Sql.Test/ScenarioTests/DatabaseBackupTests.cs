@@ -32,13 +32,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseRestorePoints()
         {
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             RunPowerShellTest("Test-ListDatabaseRestorePoints");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreGeoBackup()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestoreGeoBackup");
@@ -48,7 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedDatabaseBackup()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
@@ -58,7 +62,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestorePointInTimeBackup()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestorePointInTimeBackup");
@@ -68,7 +73,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerBackupLongTermRetentionVault()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
@@ -78,7 +84,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseBackupLongTermRetentionPolicy()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
@@ -88,7 +95,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreLongTermRetentionBackup()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
@@ -98,7 +106,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGeoBackupPolicy()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
