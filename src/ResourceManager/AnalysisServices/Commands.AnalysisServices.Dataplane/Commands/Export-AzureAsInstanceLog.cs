@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Instrumentation;
@@ -32,10 +33,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// <summary>
     /// Cmdlet to get an Analysis Services server log
     /// </summary>
-    [Cmdlet("Show", "AzureAnalysisServicesInstanceLog")]
-    [Alias("Show-AzureAsInstanceLog")]
+    [Cmdlet("Export", "AzureAnalysisServicesInstanceLog")]
+    [Alias("Export-AzureAsInstanceLog")]
     [OutputType(typeof(void))]
-    public class ShowAzureAnalysisServerLog : AzurePSCmdlet
+    public class ExportAzureAnalysisServerLog : AzurePSCmdlet
     {
         private string serverName;
 
@@ -43,17 +44,21 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [ValidateNotNullOrEmpty]
         public string Instance { get; set; }
 
+        [Parameter(Mandatory = true, HelpMessage = "Path to file to write Azure Analysis Services log")]
+        [ValidateNotNullOrEmpty]
+        public string OutputPath { get; set; }
+
         public IAsAzureHttpClient AsAzureHttpClient { get; private set; }
 
         public ITokenCacheItemProvider TokenCacheItemProvider { get; private set; }
 
-        public ShowAzureAnalysisServerLog()
+        public ExportAzureAnalysisServerLog()
         {
             this.AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
             this.TokenCacheItemProvider = new TokenCacheItemProvider();
         }
 
-        public ShowAzureAnalysisServerLog(IAsAzureHttpClient AsAzureHttpClient, ITokenCacheItemProvider TokenCacheItemProvider)
+        public ExportAzureAnalysisServerLog(IAsAzureHttpClient AsAzureHttpClient, ITokenCacheItemProvider TokenCacheItemProvider)
         {
             this.AsAzureHttpClient = AsAzureHttpClient;
             this.TokenCacheItemProvider = TokenCacheItemProvider;
@@ -151,7 +156,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 accessToken).Result)
             {
                 message.EnsureSuccessStatusCode();
-                Console.WriteLine(message.Content.ReadAsStringAsync().Result);
+                File.WriteAllText(this.OutputPath, message.Content.ReadAsStringAsync().Result);
             }
         }
 
