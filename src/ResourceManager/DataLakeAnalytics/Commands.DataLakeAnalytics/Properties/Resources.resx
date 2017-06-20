@@ -267,4 +267,10 @@
   <data name="InvalidDegreeOfParallelism" xml:space="preserve">
     <value>Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -DegreeOfParallelism. Please adjust your scripts to pass in a value greater than zero</value>
   </data>
+  <data name="NewDataLakeComputePolicy" xml:space="preserve">
+    <value>Creating Data Lake Analytics compute policy '{0}' with the following rules: {1}{2}...</value>
+  </data>
+  <data name="UpdateDataLakeComputePolicy" xml:space="preserve">
+    <value>Update Data Lake Analytics compute policy '{0}' with the following rules: {1}{2}...</value>
+  </data>
 </root>

@@ -268,6 +268,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Data Lake Analytics compute policy &apos;{0}&apos; with the following rules: {1}{2}....
+        /// </summary>
+        internal static string NewDataLakeComputePolicy {
+            get {
+                return ResourceManager.GetString("NewDataLakeComputePolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A port was not specified for host &apos;{0}&apos;. The default port will be used..
         /// </summary>
         internal static string NoPortSpecified {
@@ -489,6 +498,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string StoppingDataLakeAnalyticsJob {
             get {
                 return ResourceManager.GetString("StoppingDataLakeAnalyticsJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Data Lake Analytics compute policy &apos;{0}&apos; with the following rules: {1}{2}....
+        /// </summary>
+        internal static string UpdateDataLakeComputePolicy {
+            get {
+                return ResourceManager.GetString("UpdateDataLakeComputePolicy", resourceCulture);
             }
         }
         
