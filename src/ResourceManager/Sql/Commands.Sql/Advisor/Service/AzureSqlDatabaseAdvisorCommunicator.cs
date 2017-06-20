@@ -36,27 +36,27 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Gets the Azure Sql Database Advisor
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string databaseName, string advisorName, bool expandRecommendedActions, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string databaseName, string advisorName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Get(resourceGroupName, serverName, databaseName, advisorName, expand).Advisor;
+            return GetCurrentSqlClient().DatabaseAdvisors.Get(resourceGroupName, serverName, databaseName, advisorName, expand).Advisor;
         }
 
         /// <summary>
         /// Lists Azure Sql Database Advisors
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, string databaseName, bool expandRecommendedActions, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, string databaseName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.List(resourceGroupName, serverName, databaseName, expand).Advisors;
+            return GetCurrentSqlClient().DatabaseAdvisors.List(resourceGroupName, serverName, databaseName, expand).Advisors;
         }
 
         /// <summary>
         /// Update Advisor Auto Execute Status
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string databaseName, string advisorName, string autoExecuteStatus, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string databaseName, string advisorName, string autoExecuteStatus)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Update(resourceGroupName, serverName, databaseName, advisorName,
+            return GetCurrentSqlClient().DatabaseAdvisors.Update(resourceGroupName, serverName, databaseName, advisorName,
                     new AdvisorUpdateParameters
                     {
                         Properties = new AdvisorUpdateProperties()

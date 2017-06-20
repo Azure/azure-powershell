@@ -44,7 +44,8 @@
 
     { "regex": "Storage", "alias": "Storage" }, 
 
-    { "regex": "ServiceBus", "alias": "Service Bus" }, 
+    { "regex": "Relay", "group": "Service Bus", "alias": "Service Bus" }, 
+    { "regex": "ServiceBus", "group": "Service Bus", "alias": "Service Bus" }, 
 
     { "regex": "Sql", "alias": "SQL" }, 
 
@@ -96,7 +97,8 @@
 
     { "regex": "TrafficManager", "alias": "Traffic Manager" }, 
 
-    { "regex": "Billing", "alias": "Billing" }, 
+    { "regex": "Consumption", "group": "Billing", "alias": "Billing" }, 
+    { "regex": "Billing", "group": "Billing", "alias": "Billing" }, 
 
     { "regex": "Insights", "alias": "Monitor" }, 
 

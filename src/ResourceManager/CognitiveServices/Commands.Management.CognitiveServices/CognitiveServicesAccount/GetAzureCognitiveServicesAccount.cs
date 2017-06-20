@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 if (string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    var cognitiveServicesAccounts = this.CognitiveServicesClient.CognitiveServicesAccounts.List();
+                    var cognitiveServicesAccounts = this.CognitiveServicesClient.Accounts.List();
 
                     WriteCognitiveServicesAccountList(cognitiveServicesAccounts);
                 }
                 else if (string.IsNullOrEmpty(this.Name))
                 {
-                    var cognitiveServicesAccounts = this.CognitiveServicesClient.CognitiveServicesAccounts.ListByResourceGroup(this.ResourceGroupName);
+                    var cognitiveServicesAccounts = this.CognitiveServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName);
                     if (cognitiveServicesAccounts == null)
                     {
                         WriteWarningWithTimestamp("Received empty accounts list");
