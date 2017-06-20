@@ -320,5 +320,125 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 "Hour Frequency is unexpectedly {0}",
                 schedule.Frequency);
         }
+
+        [TestMethod]
+        public void WeeklyWithTimeZoneSetsTheTimeZoneProperty()
+        {
+            // Setup
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string scheduleName = "schedule";
+            byte weekInterval = 2;
+            var startTime = DateTimeOffset.Now;
+            var expiryTime = startTime.AddDays(10);
+            var timeZone = "America/Los_Angeles";
+
+            this.mockAutomationClient
+                .Setup(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()))
+                .Returns((string a, string b, Schedule s) => s);
+
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = scheduleName;
+            this.cmdlet.StartTime = startTime;
+            this.cmdlet.ExpiryTime = expiryTime;
+            this.cmdlet.WeekInterval = weekInterval;
+            this.cmdlet.TimeZone = timeZone;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByWeekly);
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
+
+            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            var schedule = (Schedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
+                .OutputPipeline
+                .FirstOrDefault();
+            Assert.IsNotNull(schedule);
+
+            // Test for correct time zone value
+            Assert.AreEqual(timeZone, schedule.TimeZone);
+        }
+
+        [TestMethod]
+        public void MonthlyDaysOfMonthWithTimeZoneSetsTheTimeZoneProperty()
+        {
+            // Setup
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string scheduleName = "schedule";
+            byte monthInterval = 1;
+            var startTime = DateTimeOffset.Now;
+            var expiryTime = startTime.AddDays(10);
+            var timeZone = "America/Los_Angeles";
+
+            this.mockAutomationClient
+                .Setup(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()))
+                .Returns((string a, string b, Schedule s) => s);
+
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = scheduleName;
+            this.cmdlet.StartTime = startTime;
+            this.cmdlet.ExpiryTime = expiryTime;
+            this.cmdlet.MonthInterval = monthInterval;
+            this.cmdlet.TimeZone = timeZone;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByMonthlyDaysOfMonth);
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
+
+            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            var schedule = (Schedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
+                .OutputPipeline
+                .FirstOrDefault();
+            Assert.IsNotNull(schedule);
+
+            // Test for correct time zone value
+            Assert.AreEqual(timeZone, schedule.TimeZone);
+        }
+
+        [TestMethod]
+        public void MonthlyDayOfWeekWithTimeZoneSetsTheTimeZoneProperty()
+        {
+            // Setup
+            string resourceGroupName = "resourceGroup";
+            string accountName = "automation";
+            string scheduleName = "schedule";
+            byte monthInterval = 1;
+            var startTime = DateTimeOffset.Now;
+            var expiryTime = startTime.AddDays(10);
+            var timeZone = "America/Los_Angeles";
+
+            this.mockAutomationClient
+                .Setup(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()))
+                .Returns((string a, string b, Schedule s) => s);
+
+            this.cmdlet.ResourceGroupName = resourceGroupName;
+            this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.Name = scheduleName;
+            this.cmdlet.StartTime = startTime;
+            this.cmdlet.ExpiryTime = expiryTime;
+            this.cmdlet.MonthInterval = monthInterval;
+            this.cmdlet.TimeZone = timeZone;
+            this.cmdlet.SetParameterSet(AutomationCmdletParameterSets.ByMonthlyDayOfWeek);
+            this.cmdlet.ExecuteCmdlet();
+
+            // Assert
+            this.mockAutomationClient
+                .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
+
+            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            var schedule = (Schedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
+                .OutputPipeline
+                .FirstOrDefault();
+            Assert.IsNotNull(schedule);
+
+            // Test for correct time zone value
+            Assert.AreEqual(timeZone, schedule.TimeZone);
+        }
     }
 }
