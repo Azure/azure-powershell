@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMapper", "TestMapper\TestMapper.csproj", "{5D4F1EE0-A34B-4A59-8768-16A62F8554FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMapper.Test", "TestMapper.Test\TestMapper.Test.csproj", "{28C7D68E-8C85-472D-8D73-2C16D06A89D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D4F1EE0-A34B-4A59-8768-16A62F8554FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D4F1EE0-A34B-4A59-8768-16A62F8554FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D4F1EE0-A34B-4A59-8768-16A62F8554FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D4F1EE0-A34B-4A59-8768-16A62F8554FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C7D68E-8C85-472D-8D73-2C16D06A89D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C7D68E-8C85-472D-8D73-2C16D06A89D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C7D68E-8C85-472D-8D73-2C16D06A89D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C7D68E-8C85-472D-8D73-2C16D06A89D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
