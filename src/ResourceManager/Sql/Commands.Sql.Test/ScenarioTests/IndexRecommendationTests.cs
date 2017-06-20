@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIndexRecommendation()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL index recommendation tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4156
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-GetIndexRecommendations");
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateIndex()
         {
-            // Test cannot be re-recorded because it has hardcoded server name
+            // TODO Rewrite SQL index recommendation tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4156
             if (TestMockSupport.RunningMocked)
             {
                 RunPowerShellTest("Test-CreateIndex");
