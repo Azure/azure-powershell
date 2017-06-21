@@ -28,28 +28,28 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Skip all Stretch edition tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseCreate()
         {
             RunPowerShellTest("Test-CreateStretchDatabase");
         }
 
-        [Fact(Skip = "Skip all Stretch edition tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseUpdate()
         {
             RunPowerShellTest("Test-UpdateStretchDatabase");
         }
 
-        [Fact(Skip = "Skip all Stretch edition tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseGet()
         {
             RunPowerShellTest("Test-GetStretchDatabase");
         }
 
-        [Fact(Skip = "Skip all Stretch edition tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStretchDatabaseRemove()
         {
