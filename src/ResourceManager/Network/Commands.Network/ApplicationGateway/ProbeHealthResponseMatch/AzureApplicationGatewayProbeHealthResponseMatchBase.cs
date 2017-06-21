@@ -12,42 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewaySslPolicyBase : NetworkBaseCmdlet
+    public class AzureApplicationGatewayProbeHealthResponseMatchBase : NetworkBaseCmdlet
     {
+
         [Parameter(
-               HelpMessage = "List of SSL protocols to be disabled")]
-        [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", IgnoreCase = true)]
+            HelpMessage = "Body that must be contained in the health response. Default value is empty")]
         [ValidateNotNullOrEmpty]
-        public List<string> DisabledSslProtocols { get; set; }
+        public string Body { get; set; }
 
         [Parameter(
-               HelpMessage = "Type of Ssl Policy")]
-        [ValidateSet("Predefined", "Custom", IgnoreCase = true)]
-        public string PolicyType { get; set; }
-
-        [Parameter(
-               HelpMessage = "Name of Ssl predefined policy")]
-        public string PolicyName { get; set; }
-
-        [Parameter(
-               HelpMessage = "Ssl cipher suites to be enabled in the specified order to application gateway")]
+            HelpMessage = "Allowed ranges of healthy status codes.Default range of healthy status codes is 200 - 399")]
         [ValidateNotNullOrEmpty]
-        public List<string> CipherSuites { get; set; }
-
-        [Parameter(
-               HelpMessage = "Minimum version of Ssl protocol to be supported on application gateway")]
-        [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", IgnoreCase = true)]
-        public string MinProtocolVersion { get; set; }
+        public List<string> StatusCodes { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+        }
+
+        protected PSApplicationGatewayProbeHealthResponseMatch NewObject()
+        {
+            return new PSApplicationGatewayProbeHealthResponseMatch()
+            {
+                Body = this.Body,
+                StatusCodes = this.StatusCodes
+            };
         }
     }
 }

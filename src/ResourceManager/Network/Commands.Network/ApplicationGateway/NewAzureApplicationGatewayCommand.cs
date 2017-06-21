@@ -130,6 +130,12 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
         [Parameter(
+             Mandatory = true,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of redirect configuration")]
+        public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Firewall configuration")]
@@ -232,6 +238,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.RequestRoutingRules != null)
             {
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules;
+            }
+
+            if (this.RedirectConfigurations != null)
+            {
+                applicationGateway.RedirectConfigurations = this.RedirectConfigurations;
             }
 
             if (this.WebApplicationFirewallConfiguration != null)

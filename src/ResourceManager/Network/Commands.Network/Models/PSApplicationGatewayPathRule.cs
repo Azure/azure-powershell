@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> Paths { get; set; }
         public PSResourceId BackendAddressPool { get; set; }
         public PSResourceId BackendHttpSettings { get; set; }
+        public PSResourceId RedirectConfiguration { get; set; }
 
         [JsonIgnore]
         public string PathsText
@@ -39,6 +40,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BackendHttpSettingsText
         {
             get { return JsonConvert.SerializeObject(BackendHttpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string RedirectConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(RedirectConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

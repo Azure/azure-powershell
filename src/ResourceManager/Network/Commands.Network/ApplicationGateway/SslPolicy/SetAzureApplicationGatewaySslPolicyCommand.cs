@@ -33,13 +33,29 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.ExecuteCmdlet();
 
-                this.ApplicationGateway.SslPolicy = new PSApplicationGatewaySslPolicy();
-                this.ApplicationGateway.SslPolicy.DisabledSslProtocols = new List<string>();
-                foreach (var protocol in this.DisabledSslProtocols)
+                PSApplicationGatewaySslPolicy policy = new PSApplicationGatewaySslPolicy();
+                if (this.DisabledSslProtocols != null)
                 {
-                    this.ApplicationGateway.SslPolicy.DisabledSslProtocols.Add(protocol);
+                    policy.DisabledSslProtocols = new List<string>();
+                    foreach (var protocol in this.DisabledSslProtocols)
+                    {
+                        policy.DisabledSslProtocols.Add(protocol);
+                    }
                 }
 
+                policy.PolicyType = this.PolicyType;
+                policy.PolicyName = this.PolicyName;
+                policy.MinProtocolVersion = this.MinProtocolVersion;
+                if (this.CipherSuites != null)
+                {
+                    policy.CipherSuites = new List<string>();
+                    foreach (var ciphersuite in this.CipherSuites)
+                    {
+                        policy.CipherSuites.Add(ciphersuite);
+                    }
+                }
+
+                this.ApplicationGateway.SslPolicy = policy;
                 WriteObject(this.ApplicationGateway);
             }
         }

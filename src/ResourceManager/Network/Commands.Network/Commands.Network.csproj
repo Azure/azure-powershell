@@ -175,6 +175,10 @@
     <Compile Include="ApplicationGateway\FirewallConfiguration\GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\GetAzureApplicationGatewaySslPredefinedPolicy.cs" />
+    <Compile Include="ApplicationGateway\GetAzureApplicationGatewayAvailableSslOptions.cs" />
+    <Compile Include="ApplicationGateway\ProbeHealthResponseMatch\AzureApplicationGatewayProbeHealthResponseMatchBase.cs" />
+    <Compile Include="ApplicationGateway\ProbeHealthResponseMatch\NewAzureApplicationGatewayProbeHealthResponseMatchCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\AddAzureApplicationGatewayFrontendIPConfigCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\AzureApplicationGatewayFrontendIPConfigBase.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\GetAzureApplicationGatewayFrontendIPConfigCommand.cs" />
@@ -214,6 +218,12 @@
     <Compile Include="ApplicationGateway\Probe\RemoveAzureApplicationGatewayProbeConfigCommand.cs" />
     <Compile Include="ApplicationGateway\Probe\SetAzureApplicationGatewayProbeConfigCommand.cs" />
     <Compile Include="ApplicationGateway\RemoveAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\RedirectConfiguration\AddAzureApplicationGatewayRedirectConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\RedirectConfiguration\AzureApplicationGatewayRedirectConfigurationBase.cs" />
+    <Compile Include="ApplicationGateway\RedirectConfiguration\GetAzureApplicationGatewayRedirectConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\RedirectConfiguration\NewAzureApplicationGatewayRedirectConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\RedirectConfiguration\RemoveAzureApplicationGatewayRedirectConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\RedirectConfiguration\SetAzureApplicationGatewayRedirectConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\AddAzureApplicationGatewayRequestRoutingRuleCommand.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\AzureApplicationGatewayRequestRoutingRuleBase.cs" />
     <Compile Include="ApplicationGateway\RequestRoutingRule\GetAzureApplicationGatewayRequestRoutingRuleCommand.cs" />
@@ -275,6 +285,9 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
+    <Compile Include="Models\PSApplicationGatewaySslPredefinedPolicy.cs" />
+    <Compile Include="Models\PSApplicationGatewayAvailableSslOptions.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
@@ -330,6 +343,7 @@
     <Compile Include="Models\PSPacketCaptureFilter.cs" />
     <Compile Include="Models\PSPacketCaptureResult.cs" />
     <Compile Include="Models\PSPacketCaptureStatus.cs" />
+    <Compile Include="Models\PSApplicationGatewayRedirectConfiguration.cs" />
     <Compile Include="Models\PSRetentionPolicyParameters.cs" />
     <Compile Include="Models\PSSecurityGroupNetworkInterface.cs" />
     <Compile Include="Models\PSNetworkWatcher.cs" />
