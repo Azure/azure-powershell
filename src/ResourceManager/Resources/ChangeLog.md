@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue where Get-AzureRmADApplication only returned 100 items
+    - GitHub issue can be found here: https://github.com/Azure/azure-powershell/issues/3928
+* Get-AzureRmADApplication now supports paging, which enables the following parameters:
+    - First - Gets only the first 'n' objects.
+    - IncludeTotalCount - Reports the number of objects in the data set (an integer) followed by the objects
+    - Skip - Ignores the first 'n' objects and then gets the remaining objects.
 
 ## Version 4.1.0
 * Fixed issue where Get-AzureRMRoleAssignment would result in a Bad Request if the number of roleassignments where greater than 1000
