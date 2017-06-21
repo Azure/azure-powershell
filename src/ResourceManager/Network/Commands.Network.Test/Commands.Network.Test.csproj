@@ -377,6 +377,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\TestVerifyIPFlow.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\TestConnectivityCheck.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherTests\TestNetworkWatcherCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

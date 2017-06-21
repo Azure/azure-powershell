@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
             }
 
             ImportExportResponse response = Communicator.Export(exportRequest.ResourceGroupName, exportRequest.ServerName,
-                exportRequest.DatabaseName, parameters, Util.GenerateTracingId());
+                exportRequest.DatabaseName, parameters);
             return CreateImportExportResponse(response, exportRequest);
         }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 parameters.AuthenticationType = importRequest.AuthenticationType.ToString().ToLowerInvariant();
             }
 
-            ImportExportResponse response = Communicator.Import(importRequest.ResourceGroupName, importRequest.ServerName, parameters, Util.GenerateTracingId());
+            ImportExportResponse response = Communicator.Import(importRequest.ResourceGroupName, importRequest.ServerName, parameters);
 
             return CreateImportExportResponse(response, importRequest);
         }
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
         /// <returns>Operation status response</returns>
         public AzureSqlDatabaseImportExportStatusModel GetStatus(string operationStatusLink)
         {
-            ImportExportOperationStatusResponse resposne = Communicator.GetStatus(operationStatusLink, Util.GenerateTracingId());
+            ImportExportOperationStatusResponse resposne = Communicator.GetStatus(operationStatusLink);
 
             AzureSqlDatabaseImportExportStatusModel status = new AzureSqlDatabaseImportExportStatusModel()
             {

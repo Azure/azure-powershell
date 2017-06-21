@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key Vault key rotation is only supported for User Managed encryption. Current account has Service Managed encryption..
+        /// </summary>
+        internal static string IncorrectEncryptionTypeForUpdate {
+            get {
+                return ResourceManager.GetString("IncorrectEncryptionTypeForUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release..
         /// </summary>
         internal static string IncorrectOutputTypeWarning {
