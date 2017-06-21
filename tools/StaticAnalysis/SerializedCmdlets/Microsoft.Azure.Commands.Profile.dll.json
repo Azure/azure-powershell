@@ -11,7 +11,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -25,7 +30,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -42,7 +52,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "OnPremise": "System.Boolean",
@@ -138,7 +148,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "OnPremise": "System.Boolean",
@@ -234,7 +244,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "OnPremise": "System.Boolean",
@@ -1060,7 +1070,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableAdfsAuthentication": "System.Boolean",
               "OnPremise": "System.Boolean",
@@ -1897,7 +1907,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1914,7 +1929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -2097,7 +2112,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
               "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
@@ -3277,7 +3292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
               "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
@@ -3296,7 +3311,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -3313,7 +3333,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
               "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
@@ -3354,7 +3374,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
               "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
@@ -3469,7 +3489,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Models",
                   "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
                     "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
@@ -3564,7 +3584,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
               "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
@@ -3705,7 +3725,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
               "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
@@ -3875,7 +3895,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
             "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Directory": "System.String",
@@ -3960,7 +3980,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
               "ErrorDetails": "System.Management.Automation.ErrorDetails",
@@ -3978,7 +3998,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "InnerException": "System.Boolean",
               "Exception": "System.Exception",
@@ -4001,7 +4021,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
             "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RequestMessage": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
               "ServerResponse": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
@@ -4257,7 +4277,7 @@
     "Microsoft.Azure.Commands.Profile.Models.PSAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Models",
       "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
         "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
@@ -4356,7 +4376,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4367,7 +4387,7 @@
     "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Models",
       "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EnableAdfsAuthentication": "System.Boolean",
         "OnPremise": "System.Boolean",
@@ -4497,7 +4517,7 @@
     "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
         "Verb": "System.String",
@@ -4539,7 +4559,7 @@
     "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
       "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.Commands.Profile, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
         "ResponseStatusCode": "System.String",
