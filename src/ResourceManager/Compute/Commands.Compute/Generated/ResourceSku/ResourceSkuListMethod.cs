@@ -77,8 +77,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceSku", DefaultParameterSetName = "DefaultParameter")]
-    public partial class GetAzureRmResourceSku : ComputeAutomationBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmComputeResourceSku", DefaultParameterSetName = "DefaultParameter")]
+    public partial class GetAzureRmComputeResourceSku : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {

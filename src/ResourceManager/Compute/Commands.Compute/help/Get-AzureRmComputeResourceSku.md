@@ -4,28 +4,28 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmResourceSku
+# Get-AzureRmComputeResourceSku
 
 ## SYNOPSIS
-List all resource Skus
+List all compute resource Skus
 
 ## SYNTAX
 
 ```
-Get-AzureRmResourceSku [<CommonParameters>]
+Get-AzureRmComputeResourceSku [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+List all compute resource Skus
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmResourceSku | where {$_.Locations.Contains("westus")};
+PS C:\> PS C:\> Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("westus")};
 ```
 
-List all resource skus in West US region
+List all compute resource skus in West US region
 
 ## PARAMETERS
 
@@ -35,6 +35,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 
 ## OUTPUTS
 
