@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export log from Analysis Services server.
+        /// </summary>
+        internal static string ExportingLogFromAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("ExportingLogFromAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The server name {0} is not valid in the current rollout environment. Please login to a specific rollout environment or specify the fully qualified servername..
         /// </summary>
         internal static string InvalidServerName {

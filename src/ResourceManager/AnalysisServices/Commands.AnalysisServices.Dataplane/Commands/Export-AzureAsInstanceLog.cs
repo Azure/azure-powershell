@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// <summary>
     /// Cmdlet to get an Analysis Services server log
     /// </summary>
-    [Cmdlet("Export", "AzureAnalysisServicesInstanceLog")]
+    [Cmdlet("Export", "AzureAnalysisServicesInstanceLog", SupportsShouldProcess=true)]
     [Alias("Export-AzureAsInstanceLog")]
     [OutputType(typeof(void))]
     public class ExportAzureAnalysisServerLog : AzurePSCmdlet
@@ -138,25 +138,34 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public override void ExecuteCmdlet()
         {
-            var context = AsAzureClientSession.Instance.Profile.Context;
-            AsAzureClientSession.Instance.Login(context, null);
-            string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(AsAzureClientSession.TokenCache, context.Account.UniqueId);
-
-            Uri logfileBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
-
-            UriBuilder resolvedUriBuilder = new UriBuilder(logfileBaseUri);
-            resolvedUriBuilder.Host = ClusterResolve(logfileBaseUri, accessToken, serverName);
-                
-            var logfileEndpoint = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.LogfileEndpointFormat], serverName);
-
-            this.AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
-            using (HttpResponseMessage message = AsAzureHttpClient.CallGetAsync(
-                resolvedUriBuilder.Uri,
-                logfileEndpoint,
-                accessToken).Result)
+            if (ShouldProcess(Instance, Resources.ExportingLogFromAnalysisServicesServer))
             {
-                message.EnsureSuccessStatusCode();
-                File.WriteAllText(this.OutputPath, message.Content.ReadAsStringAsync().Result);
+                var context = AsAzureClientSession.Instance.Profile.Context;
+                AsAzureClientSession.Instance.Login(context, null);
+                string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(
+                    AsAzureClientSession.TokenCache, context.Account.UniqueId);
+
+                Uri logfileBaseUri =
+                    new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
+
+                UriBuilder resolvedUriBuilder = new UriBuilder(logfileBaseUri);
+                resolvedUriBuilder.Host = ClusterResolve(logfileBaseUri, accessToken, serverName);
+
+                var logfileEndpoint =
+                    string.Format(
+                        (string)
+                            context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.LogfileEndpointFormat],
+                        serverName);
+
+                this.AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
+                using (HttpResponseMessage message = AsAzureHttpClient.CallGetAsync(
+                    resolvedUriBuilder.Uri,
+                    logfileEndpoint,
+                    accessToken).Result)
+                {
+                    message.EnsureSuccessStatusCode();
+                    File.WriteAllText(this.OutputPath, message.Content.ReadAsStringAsync().Result);
+                }
             }
         }
 

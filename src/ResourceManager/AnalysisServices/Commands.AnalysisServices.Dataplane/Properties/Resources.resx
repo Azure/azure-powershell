@@ -129,6 +129,9 @@
   <data name="RestartingAnalysisServicesServer" xml:space="preserve">
     <value>Restart Analysis Services Server</value>
   </data>
+  <data name="ExportingLogFromAnalysisServicesServer" xml:space="preserve">
+    <value>Export log from Analysis Services server</value>
+  </data>
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unknown Analysis Services environment name specified.</value>
   </data>
