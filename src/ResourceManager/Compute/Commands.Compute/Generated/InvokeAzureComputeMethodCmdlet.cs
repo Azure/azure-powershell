@@ -75,6 +75,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "ImageListByResourceGroup",
             "ImageListByResourceGroupNext",
             "ImageListNext",
+            "ResourceSkuList",
+            "ResourceSkuListNext",
             "SnapshotCreateOrUpdate",
             "SnapshotDelete",
             "SnapshotGet",
@@ -252,6 +254,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "ImageListNext":
                         ExecuteImageListNextMethod(argumentList);
+                        break;
+                    case "ResourceSkuList":
+                        ExecuteResourceSkuListMethod(argumentList);
+                        break;
+                    case "ResourceSkuListNext":
+                        ExecuteResourceSkuListNextMethod(argumentList);
                         break;
                     case "SnapshotCreateOrUpdate":
                         ExecuteSnapshotCreateOrUpdateMethod(argumentList);
@@ -472,6 +480,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "ImageListByResourceGroup": return CreateImageListByResourceGroupDynamicParameters();
                 case "ImageListByResourceGroupNext": return CreateImageListByResourceGroupNextDynamicParameters();
                 case "ImageListNext": return CreateImageListNextDynamicParameters();
+                case "ResourceSkuList": return CreateResourceSkuListDynamicParameters();
+                case "ResourceSkuListNext": return CreateResourceSkuListNextDynamicParameters();
                 case "SnapshotCreateOrUpdate": return CreateSnapshotCreateOrUpdateDynamicParameters();
                 case "SnapshotDelete": return CreateSnapshotDeleteDynamicParameters();
                 case "SnapshotGet": return CreateSnapshotGetDynamicParameters();
