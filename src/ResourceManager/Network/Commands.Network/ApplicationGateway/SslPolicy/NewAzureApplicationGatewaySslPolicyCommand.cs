@@ -29,10 +29,25 @@ namespace Microsoft.Azure.Commands.Network
                 base.ExecuteCmdlet();
 
                 PSApplicationGatewaySslPolicy policy = new PSApplicationGatewaySslPolicy();
-                policy.DisabledSslProtocols = new List<string>();
-                foreach (var protocol in this.DisabledSslProtocols)
+                if (this.DisabledSslProtocols != null)
                 {
-                    policy.DisabledSslProtocols.Add(protocol);
+                    policy.DisabledSslProtocols = new List<string>();
+                    foreach (var protocol in this.DisabledSslProtocols)
+                    {
+                        policy.DisabledSslProtocols.Add(protocol);
+                    }
+                }
+
+                policy.PolicyType = this.PolicyType;
+                policy.PolicyName = this.PolicyName;
+                policy.MinProtocolVersion = this.MinProtocolVersion;
+                if (this.CipherSuites != null)
+                {
+                    policy.CipherSuites = new List<string>();
+                    foreach (var ciphersuite in this.CipherSuites)
+                    {
+                        policy.CipherSuites.Add(ciphersuite);
+                    }
                 }
 
                 WriteObject(policy);

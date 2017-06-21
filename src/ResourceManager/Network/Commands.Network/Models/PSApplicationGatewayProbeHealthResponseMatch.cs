@@ -13,16 +13,13 @@
 // limitations under the License.
 //
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-    
-    public class PSApplicationGatewaySslPolicy
+    public class PSApplicationGatewayProbeHealthResponseMatch
     {
-        public List<string> DisabledSslProtocols { get; set; }
-        public string PolicyType { get; set; }
-        public string PolicyName { get; set; }
-        public string MinProtocolVersion { get; set; }
-        public List<string> CipherSuites { get; set; }
+        public string Body { get; set; }
+        public List<string> StatusCodes { get; set; }
     }
 }

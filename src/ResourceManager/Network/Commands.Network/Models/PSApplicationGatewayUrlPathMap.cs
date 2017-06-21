@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSResourceId DefaultBackendAddressPool { get; set; }
         public PSResourceId DefaultBackendHttpSettings { get; set; }
+        public PSResourceId DefaultRedirectConfiguration { get; set; }
         public List<PSApplicationGatewayPathRule> PathRules { get; set; }
         public string ProvisioningState { get; set; }
         [JsonIgnore]
@@ -33,6 +34,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DefaultBackendHttpSettingsText
         {
             get { return JsonConvert.SerializeObject(DefaultBackendHttpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DefaultRedirectConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(DefaultRedirectConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

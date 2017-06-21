@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -62,6 +63,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public uint UnhealthyThreshold { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Whether the host header should be picked from the backend http settings. Default value is false")]
+        public SwitchParameter PickHostNameFromBackendHttpSettings { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Minimum number of servers that are always marked healthy. Default value is 0")]
+        public uint MinServers { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Body that must be contained in the health response. Default value is empty")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
+
         public PSApplicationGatewayProbe NewObject()
         {
             var probe = new PSApplicationGatewayProbe();
@@ -72,12 +89,16 @@ namespace Microsoft.Azure.Commands.Network
             probe.Interval = this.Interval;
             probe.Timeout = this.Timeout;
             probe.UnhealthyThreshold = this.UnhealthyThreshold;
+            probe.PickHostNameFromBackendHttpSettings = this.PickHostNameFromBackendHttpSettings;
+            probe.MinServers = this.MinServers;
 
             probe.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayProbeName,
                     this.Name);
+
+            probe.Match = this.Match;
 
             return probe;
         }

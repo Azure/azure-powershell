@@ -15,14 +15,15 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System;
     using System.Collections.Generic;
-    
-    public class PSApplicationGatewaySslPolicy
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class PSApplicationGatewaySslPredefinedPolicy: PSChildResource
     {
-        public List<string> DisabledSslProtocols { get; set; }
-        public string PolicyType { get; set; }
-        public string PolicyName { get; set; }
-        public string MinProtocolVersion { get; set; }
         public List<string> CipherSuites { get; set; }
+        public string MinProtocolVersion { get; set; }
     }
 }
