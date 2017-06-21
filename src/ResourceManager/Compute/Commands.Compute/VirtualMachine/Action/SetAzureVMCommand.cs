@@ -25,11 +25,8 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string GeneralizeResourceGroupNameParameterSet = "GeneralizeResourceGroupNameParameterSetName";
         protected const string RedeployResourceGroupNameParameterSet = "RedeployResourceGroupNameParameterSetName";
-        protected const string PerformMaintenanceResourceGroupNameParameterSet = "PerformMaintenanceResourceGroupNameParameterSetName";
         protected const string GeneralizeIdParameterSet = "GeneralizeIdParameterSetName";
         protected const string RedeployIdParameterSet = "RedeployIdParameterSetName";
-        protected const string PerformMaintenanceIdParameterSet = "PerformMaintenanceIdParameterSetName";
-
 
         [Parameter(
            Mandatory = true,
@@ -42,12 +39,6 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = RedeployResourceGroupNameParameterSet,
-           HelpMessage = "The resource group name.")]
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           ParameterSetName = PerformMaintenanceResourceGroupNameParameterSet,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -62,12 +53,6 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = true,
            Position = 0,
            ParameterSetName = RedeployIdParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ParameterSetName = PerformMaintenanceIdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -111,21 +96,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Redeploy { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = PerformMaintenanceResourceGroupNameParameterSet,
-            HelpMessage = "To perform the maintenance of virtual machine.")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = PerformMaintenanceIdParameterSet,
-            HelpMessage = "To perform the maintenance of virtual machine.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter PerformMaintenance { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -146,17 +116,6 @@ namespace Microsoft.Azure.Commands.Compute
                 ExecuteClientAction(() =>
                 {
                     var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
-                        this.ResourceGroupName,
-                        this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-                    WriteObject(result);
-                });
-            }
-            else if (this.PerformMaintenance.IsPresent)
-            {
-                ExecuteClientAction(() =>
-                {
-                    var op = this.VirtualMachineClient.PerformMaintenanceWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
                     var result = Mapper.Map<PSComputeLongRunningOperation>(op);
