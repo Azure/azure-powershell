@@ -3060,7 +3060,7 @@ function Test-VirtualMachinePerformanceMaintenance
         $vm = Get-AzureRmVM -ResourceGroupName $rgname
 
         Assert-ThrowsContains {
-            Set-AzureRmVM -PerformMaintenance -ResourceGroupName $rgname -Name $vmname; } `
+            Restart-AzureRmVM -PerformMaintenance -ResourceGroupName $rgname -Name $vmname; } `
             "since the Subscription of this VM is not eligible.";
     }
     finally

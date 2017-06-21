@@ -12,7 +12,7 @@ List all resource Skus
 ## SYNTAX
 
 ```
-Get-AzureRmResourceSku
+Get-AzureRmResourceSku [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,10 +29,12 @@ List all resource skus in West US region
 
 ## PARAMETERS
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 

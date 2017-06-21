@@ -80,6 +80,9 @@ Gets the properties of an image.
 ### [Get-AzureRmRemoteDesktopFile](Get-AzureRmRemoteDesktopFile.md)
 Gets an .rdp file.
 
+### [Get-AzureRmResourceSku](Get-AzureRmResourceSku.md)
+List all resource Skus
+
 ### [Get-AzureRmSnapshot](Get-AzureRmSnapshot.md)
 Gets the properties of a snapshot
 
