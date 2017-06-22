@@ -14,7 +14,7 @@ Creates an Azure Site Recovery replication policy.
 ### EnterpriseToAzure (Default)
 ```
 New-AzureRmRecoveryServicesAsrPolicy -Name <String> -ReplicationProvider <String>
- -ReplicationFrequencyInSeconds <String> [-NumberOfRecoveryPointstoRetain <Int32>]
+ -ReplicationFrequencyInSeconds <String> [-NumberOfRecoveryPointsToRetain <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-ReplicationStartTime <TimeSpan>]
  [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -22,7 +22,7 @@ New-AzureRmRecoveryServicesAsrPolicy -Name <String> -ReplicationProvider <String
 ### EnterpriseToEnterprise
 ```
 New-AzureRmRecoveryServicesAsrPolicy -Name <String> -ReplicationProvider <String> [-ReplicationMethod <String>]
- -ReplicationFrequencyInSeconds <String> [-NumberOfRecoveryPointstoRetain <Int32>]
+ -ReplicationFrequencyInSeconds <String> [-NumberOfRecoveryPointsToRetain <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-Compression <String>] -ReplicationPort <UInt16>
  [-Authentication <String>] [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -125,7 +125,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NumberOfRecoveryPointstoRetain
+### -NumberOfRecoveryPointsToRetain
 Specifies the number recovery points to retain.
 
 ```yaml

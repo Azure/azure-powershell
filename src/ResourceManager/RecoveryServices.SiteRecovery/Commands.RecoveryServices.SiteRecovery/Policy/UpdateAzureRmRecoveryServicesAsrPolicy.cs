@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public int RecoveryPoints { get; set; }
+        [Alias("RecoveryPoints")]
+        public int NumberOfRecoveryPointsToRetain { get; set; }
 
         /// <summary>
         ///     Gets or sets Application Consistent Snapshot Frequency of the Policy in hours.
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         .ReplicationFrequencyInSeconds;
             this.recoveryPoints =
                 this.MyInvocation.BoundParameters.ContainsKey(
-                    Utilities.GetMemberName(() => this.RecoveryPoints)) ? this.RecoveryPoints
+                    Utilities.GetMemberName(() => this.NumberOfRecoveryPointsToRetain)) ? this.NumberOfRecoveryPointsToRetain
                     : replicationProviderSettings.RecoveryPoints;
             this.applicationConsistentSnapshotFrequencyInHours =
                 this.MyInvocation.BoundParameters.ContainsKey(
@@ -310,7 +311,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         .ReplicationFrequencyInSeconds;
             this.recoveryPoints =
                 this.MyInvocation.BoundParameters.ContainsKey(
-                    Utilities.GetMemberName(() => this.RecoveryPoints)) ? this.RecoveryPoints
+                    Utilities.GetMemberName(() => this.NumberOfRecoveryPointsToRetain)) ? this.NumberOfRecoveryPointsToRetain
                     : replicationProviderSettings.RecoveryPoints;
             this.applicationConsistentSnapshotFrequencyInHours =
                 this.MyInvocation.BoundParameters.ContainsKey(

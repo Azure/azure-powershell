@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         [DefaultValue(0)]
         [Alias("RecoveryPoints")]
-        public int NumberOfRecoveryPointstoRetain { get; set; }
+        public int NumberOfRecoveryPointsToRetain { get; set; }
 
         /// <summary>
         ///     Gets or sets Application Consistent Snapshot Frequency of the Policy in hours.
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         : Constants.Disable,
                 OnlineReplicationStartTime =
                     this.ReplicationStartTime == null ? null : this.ReplicationStartTime.ToString(),
-                RecoveryPointHistoryDuration = this.NumberOfRecoveryPointstoRetain,
+                RecoveryPointHistoryDuration = this.NumberOfRecoveryPointsToRetain,
                 ReplicationInterval = replicationFrequencyInSeconds
             };
 
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                                    StringComparison.OrdinalIgnoreCase) ==
                                                0 ? "OverNetwork" : "Offline",
                     OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
-                    RecoveryPoints = this.NumberOfRecoveryPointstoRetain,
+                    RecoveryPoints = this.NumberOfRecoveryPointsToRetain,
                     ReplicaDeletion =
                         this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.ReplicaDeletion))
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                                        StringComparison.OrdinalIgnoreCase) ==
                                                    0 ? "OverNetwork" : "Offline",
                         OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
-                        RecoveryPoints = this.NumberOfRecoveryPointstoRetain,
+                        RecoveryPoints = this.NumberOfRecoveryPointsToRetain,
                         ReplicaDeletion =
                             this.MyInvocation.BoundParameters.ContainsKey(
                                 Utilities.GetMemberName(() => this.ReplicaDeletion))
