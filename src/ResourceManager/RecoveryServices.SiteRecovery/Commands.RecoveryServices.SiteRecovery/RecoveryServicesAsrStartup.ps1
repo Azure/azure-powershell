@@ -31,6 +31,7 @@
     "Get-ASRServicesProvider" = "Get-AzureRmRecoveryServicesAsrServicesProvider";
     "Get-ASRStorageClassification" = "Get-AzureRmRecoveryServicesAsrStorageClassification";
     "Get-ASRStorageClassificationMapping" = "Get-AzureRmRecoveryServicesAsrStorageClassificationMapping";
+	"Get-AzureRmRecoveryServicesAsrVaultSettings" = "Get-AzureRmRecoveryServicesAsrVaultContext";
     "New-ASRFabric" = "New-AzureRmRecoveryServicesAsrFabric";
     "New-ASRNetworkMapping" = "New-AzureRmRecoveryServicesAsrNetworkMapping";
     "New-ASRPolicy" = "New-AzureRmRecoveryServicesAsrPolicy";
@@ -51,8 +52,9 @@
     "Restart-ASRJob" = "Restart-AzureRmRecoveryServicesAsrJob";
     "Resume-ASRJob" = "Resume-AzureRmRecoveryServicesAsrJob";
     "Set-ASRReplicationProtectedItem" = "Set-AzureRmRecoveryServicesAsrReplicationProtectedItem";
-    "Set-ASRVaultContext" = "Set-AzureRmRecoveryServicesAsrVaultSettings";
-    "Set-ASRVaultSettings" = "Set-AzureRmRecoveryServicesAsrVaultSettings";
+    "Set-ASRVaultContext" = "Set-AzureRmRecoveryServicesAsrVaultContext";
+    "Set-ASRVaultSettings" = "Set-AzureRmRecoveryServicesAsrVaultContext";
+	"Set-AzureRmRecoveryServicesAsrVaultSettings" = "Set-AzureRmRecoveryServicesAsrVaultContext";
     "Start-ASRApplyRecoveryPoint" = "Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint";
     "Start-ASRCommitFailover" = "Start-AzureRmRecoveryServicesAsrCommitFailoverJob";
     "Start-ASRCommitFailoverJob" = "Start-AzureRmRecoveryServicesAsrCommitFailoverJob";

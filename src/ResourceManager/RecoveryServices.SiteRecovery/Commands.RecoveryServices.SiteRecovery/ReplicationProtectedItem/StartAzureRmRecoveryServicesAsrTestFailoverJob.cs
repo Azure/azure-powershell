@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Start,
         "AzureRmRecoveryServicesAsrTestFailoverJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
+        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
+        SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRTFO",
         "Start-ASRTestFailoverJob")]
@@ -122,52 +123,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+            if (this.ShouldProcess(
+                "Protected item or Recovery plan",
+                "Start test failover"))
             {
-                var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
-                this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+                {
+                    var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                    this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+                }
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
-            {
-                var certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
-                this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
+                {
+                    var certBytesSecondary =
+                        File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                    this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+                }
 
-            switch (this.ParameterSetName)
-            {
-                case ASRParameterSets.ByRPIObjectWithVMNetwork:
-                case ASRParameterSets.ByRPObjectWithVMNetwork:
-                    this.networkType = "VmNetworkAsInput";
-                    this.networkId = this.VMNetwork.ID;
-                    break;
-                case ASRParameterSets.ByRPIObjectWithAzureVMNetworkId:
-                case ASRParameterSets.ByRPObjectWithAzureVMNetworkId:
-                    this.networkType = "VmNetworkAsInput";
-                    this.networkId = this.AzureVMNetworkId;
-                    break;
-                case ASRParameterSets.ByRPIObject:
-                case ASRParameterSets.ByRPObject:
-                    this.networkType = "NoNetworkAttachAsInput";
-                    this.networkId = null;
-                    break;
-            }
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByRPIObjectWithVMNetwork:
+                    case ASRParameterSets.ByRPObjectWithVMNetwork:
+                        this.networkType = "VmNetworkAsInput";
+                        this.networkId = this.VMNetwork.ID;
+                        break;
+                    case ASRParameterSets.ByRPIObjectWithAzureVMNetworkId:
+                    case ASRParameterSets.ByRPObjectWithAzureVMNetworkId:
+                        this.networkType = "VmNetworkAsInput";
+                        this.networkId = this.AzureVMNetworkId;
+                        break;
+                    case ASRParameterSets.ByRPIObject:
+                    case ASRParameterSets.ByRPObject:
+                        this.networkType = "NoNetworkAttachAsInput";
+                        this.networkId = null;
+                        break;
+                }
 
-            if ((this.ParameterSetName == ASRParameterSets.ByRPObject) ||
-                (this.ParameterSetName == ASRParameterSets.ByRPObjectWithVMNetwork) ||
-                (this.ParameterSetName == ASRParameterSets.ByRPObjectWithAzureVMNetworkId))
-            {
-                this.StartRpTestFailover();
-            }
-            else
-            {
-                this.protectionContainerName = Utilities.GetValueFromArmId(
-                    this.ReplicationProtectedItem.ID,
-                    ARMResourceTypeConstants.ReplicationProtectionContainers);
-                this.fabricName = Utilities.GetValueFromArmId(
-                    this.ReplicationProtectedItem.ID,
-                    ARMResourceTypeConstants.ReplicationFabrics);
-                this.StartRPITestFailover();
+                if ((this.ParameterSetName == ASRParameterSets.ByRPObject) ||
+                    (this.ParameterSetName == ASRParameterSets.ByRPObjectWithVMNetwork) ||
+                    (this.ParameterSetName == ASRParameterSets.ByRPObjectWithAzureVMNetworkId))
+                {
+                    this.StartRpTestFailover();
+                }
+                else
+                {
+                    this.protectionContainerName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationProtectionContainers);
+                    this.fabricName = Utilities.GetValueFromArmId(
+                        this.ReplicationProtectedItem.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics);
+                    this.StartRPITestFailover();
+                }
             }
         }
 

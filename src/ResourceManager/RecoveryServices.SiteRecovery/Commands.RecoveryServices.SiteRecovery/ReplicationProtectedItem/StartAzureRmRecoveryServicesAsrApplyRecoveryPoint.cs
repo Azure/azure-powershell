@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Start,
         "AzureRmRecoveryServicesAsrApplyRecoveryPoint",
-        DefaultParameterSetName = ASRParameterSets.ByPEObject)]
+        DefaultParameterSetName = ASRParameterSets.ByPEObject,
+        SupportsShouldProcess = true)]
     [Alias("Start-ASRApplyRecoveryPoint")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrApplyRecoveryPoint : SiteRecoveryCmdletBase
@@ -70,29 +71,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+            if (this.ShouldProcess(
+                this.ReplicationProtectedItem.FriendlyName,
+                "Apply recovery point"))
             {
-                var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
-                this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+                {
+                    var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                    this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+                }
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
-            {
-                var certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
-                this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
+                {
+                    var certBytesSecondary =
+                        File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                    this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+                }
 
-            switch (this.ParameterSetName)
-            {
-                case ASRParameterSets.ByPEObject:
-                    this.fabricName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics);
-                    this.protectionContainerName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    this.StartPEApplyRecoveryPoint();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByPEObject:
+                        this.fabricName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics);
+                        this.protectionContainerName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers);
+                        this.StartPEApplyRecoveryPoint();
+                        break;
+                }
             }
         }
 

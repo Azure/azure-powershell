@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet(
         VerbsData.Update,
-        "AzureRmRecoveryServicesAsrPolicy")]
+        "AzureRmRecoveryServicesAsrPolicy",
+        SupportsShouldProcess = true)]
     [Alias("Update-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
@@ -143,26 +144,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if ((string.Compare(
-                     this.InputObject.ReplicationProvider,
-                     Constants.HyperVReplica2012,
-                     StringComparison.OrdinalIgnoreCase) ==
-                 0) ||
-                (string.Compare(
-                     this.InputObject.ReplicationProvider,
-                     Constants.HyperVReplica2012R2,
-                     StringComparison.OrdinalIgnoreCase) ==
-                 0))
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
+                VerbsData.Update))
             {
-                this.EnterpriseToEnterprisePolicyObject();
-            }
-            else if (string.Compare(
+                if ((string.Compare(
                          this.InputObject.ReplicationProvider,
-                         Constants.HyperVReplicaAzure,
+                         Constants.HyperVReplica2012,
                          StringComparison.OrdinalIgnoreCase) ==
-                     0)
-            {
-                this.EnterpriseToAzurePolicyObject();
+                     0) ||
+                    (string.Compare(
+                         this.InputObject.ReplicationProvider,
+                         Constants.HyperVReplica2012R2,
+                         StringComparison.OrdinalIgnoreCase) ==
+                     0))
+                {
+                    this.EnterpriseToEnterprisePolicyObject();
+                }
+                else if (string.Compare(
+                             this.InputObject.ReplicationProvider,
+                             Constants.HyperVReplicaAzure,
+                             StringComparison.OrdinalIgnoreCase) ==
+                         0)
+                {
+                    this.EnterpriseToAzurePolicyObject();
+                }
             }
         }
 

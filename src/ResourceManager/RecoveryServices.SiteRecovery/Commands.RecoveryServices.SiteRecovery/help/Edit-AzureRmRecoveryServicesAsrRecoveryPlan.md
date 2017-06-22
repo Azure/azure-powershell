@@ -13,25 +13,26 @@ Edits a Site Recovery plan.
 
 ### AppendGroup (Default)
 ```
-Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> [-AppendGroup] [<CommonParameters>]
+Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> [-AppendGroup] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveGroup
 ```
 Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> -RemoveGroup <ASRRecoveryPlanGroup>
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddReplicationProtectedItems
 ```
 Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> -Group <ASRRecoveryPlanGroup>
- -AddProtectedItems <ASRReplicationProtectedItem[]> [<CommonParameters>]
+ -AddProtectedItem <ASRReplicationProtectedItem[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveReplicationProtectedItems
 ```
 Edit-AzureRmRecoveryServicesAsrRecoveryPlan -InputObject <ASRRecoveryPlan> -Group <ASRRecoveryPlanGroup>
- -RemoveProtectedItems <ASRReplicationProtectedItem[]> [<CommonParameters>]
+ -RemoveProtectedItem <ASRReplicationProtectedItem[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,13 +49,13 @@ Appends a group to existing Azure Site Recovery recovery plan and returns the in
 
 ## PARAMETERS
 
-### -AddProtectedItems
+### -AddProtectedItem
 List of ASR replication protected items to be added to the recovery plan group in the recovery plan object.
 
 ```yaml
 Type: ASRReplicationProtectedItem[]
 Parameter Sets: AddReplicationProtectedItems
-Aliases: 
+Aliases: AddProtectedItems
 
 Required: True
 Position: Named
@@ -123,15 +124,45 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RemoveProtectedItems
+### -RemoveProtectedItem
 List of ASR replication protected items to be removed from the recovery plan group in the recovery plan object.
 
 ```yaml
 Type: ASRReplicationProtectedItem[]
 Parameter Sets: RemoveReplicationProtectedItems
-Aliases: 
+Aliases: RemoveProtectedItems
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

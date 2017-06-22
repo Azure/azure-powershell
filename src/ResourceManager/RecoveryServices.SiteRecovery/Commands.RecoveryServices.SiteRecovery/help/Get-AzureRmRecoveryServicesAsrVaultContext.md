@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmRecoveryServicesAsrVaultSettings
+# Get-AzureRmRecoveryServicesAsrVaultContext
 
 ## SYNOPSIS
 Gets ASR vault settings information for the Recovery Services vault.
@@ -12,17 +12,17 @@ Gets ASR vault settings information for the Recovery Services vault.
 ## SYNTAX
 
 ```
-Get-AzureRmRecoveryServicesAsrVaultSettings [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrVaultContext
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmRecoveryServicesAsrVaultSettings** cmdlet gets ASR vault settings information related to the Recovery Services vault.
+The **Get-AzureRmRecoveryServicesAsrVaultContext** cmdlet gets ASR vault settings information related to the Recovery Services vault.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $VaultSettings = Get-AzureRmRecoveryServicesAsrVaultSettings
+PS C:\> $VaultSettings = Get-AzureRmRecoveryServicesAsrVaultContext
 ```
 
 Gets the ASR vault settings for the currently active(in the PowerShell session) Recovery Services vault.
@@ -36,12 +36,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings
+
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Set-AzureRmRecoveryServicesAsrVaultSettings](./Set-AzureRmRecoveryServicesAsrVaultSettings.md)

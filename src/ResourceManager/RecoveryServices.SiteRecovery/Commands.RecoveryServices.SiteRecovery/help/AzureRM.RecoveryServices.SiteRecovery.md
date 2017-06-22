@@ -56,7 +56,7 @@ Gets storage classifications in Site Recovery.
 ### [Get-AzureRmRecoveryServicesAsrStorageClassificationMapping](Get-AzureRmRecoveryServicesAsrStorageClassificationMapping.md)
 Gets a storage classification mapping in Site Recovery.
 
-### [Get-AzureRmRecoveryServicesAsrVaultSettings](Get-AzureRmRecoveryServicesAsrVaultSettings.md)
+### [Get-AzureRmRecoveryServicesAsrVaultContext](Get-AzureRmRecoveryServicesAsrVaultContext.md)
 Gets settings information for the current Site Recovery vault.
 
 ### [Import-AzureRmRecoveryServicesAsrVaultSettingsFile](Import-AzureRmRecoveryServicesAsrVaultSettingsFile.md)
@@ -116,7 +116,7 @@ Resumes a suspended Site Recovery job.
 ### [Set-AzureRmRecoveryServicesAsrReplicationProtectedItem](Set-AzureRmRecoveryServicesAsrReplicationProtectedItem.md)
 Sets recovery properties such as target network and virtual machine size for a Replication Protected Item.
 
-### [Set-AzureRmRecoveryServicesAsrVaultSettings](Set-AzureRmRecoveryServicesAsrVaultSettings.md)
+### [Set-AzureRmRecoveryServicesAsrVaultContext](Set-AzureRmRecoveryServicesAsrVaultContext.md)
 Sets the Site Recovery vault context for further operations.
 
 ### [Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint](Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint.md)

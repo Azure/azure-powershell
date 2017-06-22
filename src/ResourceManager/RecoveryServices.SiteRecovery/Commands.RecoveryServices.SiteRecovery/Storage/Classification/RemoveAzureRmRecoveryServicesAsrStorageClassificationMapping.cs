@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrStorageClassificationMapping",
-        DefaultParameterSetName = ASRParameterSets.Default)]
+        DefaultParameterSetName = ASRParameterSets.Default,
+        SupportsShouldProcess = true)]
     [Alias("Remove-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping :
@@ -80,16 +81,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var tokens = this.InputObject.Id.UnFormatArmId(
-                ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
-            var operationResponse = this.RecoveryServicesClient.UnmapStorageClassifications(
-                tokens[0],
-                tokens[1],
-                tokens[2]);
-            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
+            if (this.ShouldProcess(
+                this.InputObject.Name,
+                VerbsCommon.Remove))
+            {
+                var tokens = this.InputObject.Id.UnFormatArmId(
+                    ARMResourceIdPaths.StorageClassificationMappingResourceIdPath);
+                var operationResponse = this.RecoveryServicesClient.UnmapStorageClassifications(
+                    tokens[0],
+                    tokens[1],
+                    tokens[2]);
+                var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient
+                        .GetJobIdFromReponseLocation(operationResponse.Location));
 
-            this.WriteObject(new ASRJob(jobResponse));
+                this.WriteObject(new ASRJob(jobResponse));
+            }
         }
     }
 }

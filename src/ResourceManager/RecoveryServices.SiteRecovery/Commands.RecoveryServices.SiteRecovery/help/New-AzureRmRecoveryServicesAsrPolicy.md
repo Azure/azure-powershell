@@ -14,17 +14,18 @@ Creates an Azure Site Recovery replication policy.
 ### EnterpriseToAzure (Default)
 ```
 New-AzureRmRecoveryServicesAsrPolicy -Name <String> -ReplicationProvider <String>
- -ReplicationFrequencyInSeconds <String> [-RecoveryPoints <Int32>]
+ -ReplicationFrequencyInSeconds <String> [-NumberOfRecoveryPointstoRetain <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-ReplicationStartTime <TimeSpan>]
- [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [<CommonParameters>]
+ [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnterpriseToEnterprise
 ```
 New-AzureRmRecoveryServicesAsrPolicy -Name <String> -ReplicationProvider <String> [-ReplicationMethod <String>]
- -ReplicationFrequencyInSeconds <String> [-RecoveryPoints <Int32>]
+ -ReplicationFrequencyInSeconds <String> [-NumberOfRecoveryPointstoRetain <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-Compression <String>] -ReplicationPort <UInt16>
- [-Authentication <String>] [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>] [<CommonParameters>]
+ [-Authentication <String>] [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,13 +125,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryAzureStorageAccountId
-Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
+### -NumberOfRecoveryPointstoRetain
+Specifies the number recovery points to retain.
 
 ```yaml
-Type: String
-Parameter Sets: EnterpriseToAzure
-Aliases: 
+Type: Int32
+Parameter Sets: (All)
+Aliases: RecoveryPoints
 
 Required: False
 Position: Named
@@ -139,12 +140,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryPoints
-Specifies the number of hours to retain recovery points for.
+### -RecoveryAzureStorageAccountId
+Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
+Type: String
+Parameter Sets: EnterpriseToAzure
 Aliases: 
 
 Required: False
@@ -255,6 +256,36 @@ It must be no later than 24-hours from the start of the job.
 Type: TimeSpan
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

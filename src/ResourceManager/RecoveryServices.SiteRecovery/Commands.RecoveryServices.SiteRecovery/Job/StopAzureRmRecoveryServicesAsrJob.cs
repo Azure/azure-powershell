@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Stop,
         "AzureRmRecoveryServicesAsrJob",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+        DefaultParameterSetName = ASRParameterSets.ByObject,
+        SupportsShouldProcess = true)]
     [Alias("Stop-ASRJob")]
     [OutputType(typeof(ASRJob))]
     public class StopAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
@@ -54,16 +55,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.InputObject.Name,
+                VerbsLifecycle.Stop))
             {
-                case ASRParameterSets.ByObject:
-                    this.Name = this.InputObject.Name;
-                    this.StopByName();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByObject:
+                        this.Name = this.InputObject.Name;
+                        this.StopByName();
+                        break;
 
-                case ASRParameterSets.ByName:
-                    this.StopByName();
-                    break;
+                    case ASRParameterSets.ByName:
+                        this.StopByName();
+                        break;
+                }
             }
         }
 

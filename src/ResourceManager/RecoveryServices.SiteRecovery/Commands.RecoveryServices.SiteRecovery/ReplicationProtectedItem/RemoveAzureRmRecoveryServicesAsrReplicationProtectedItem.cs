@@ -41,11 +41,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private PSSiteRecoveryLongRunningOperation response;
 
         /// <summary>
-        ///     Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
-        /// </summary>
-        private string targetNameOrId = string.Empty;
-
-        /// <summary>
         ///     Gets or sets Replication Protected Item.
         /// </summary>
         [Parameter(
@@ -79,7 +74,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.InputObject.FriendlyName,
                 VerbsCommon.Remove))
             {
-                this.targetNameOrId = this.InputObject.FriendlyName;
 
                 if (!this.Force.IsPresent)
                 {

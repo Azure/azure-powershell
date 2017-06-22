@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.New,
         "AzureRmRecoveryServicesAsrNetworkMapping",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        SupportsShouldProcess = true)]
     [Alias("New-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
@@ -79,14 +80,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.Name,
+                VerbsCommon.New))
             {
-                case ASRParameterSets.EnterpriseToEnterprise:
-                    this.EnterpriseToEnterpriseNetworkMapping();
-                    break;
-                case ASRParameterSets.EnterpriseToAzure:
-                    this.EnterpriseToAzureNetworkMapping();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.EnterpriseToEnterpriseNetworkMapping();
+                        break;
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.EnterpriseToAzureNetworkMapping();
+                        break;
+                }
             }
         }
 

@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsData.Update,
         "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.ByRPObject)]
+        DefaultParameterSetName = ASRParameterSets.ByRPObject,
+        SupportsShouldProcess = true)]
     [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
@@ -59,37 +60,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
+                VerbsData.Update))
             {
-                case ASRParameterSets.ByRPObject:
-                    this.UpdateRecoveryPlan(this.InputObject);
-                    break;
-                case ASRParameterSets.ByRPFile:
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByRPObject:
+                        this.UpdateRecoveryPlan(this.InputObject);
+                        break;
+                    case ASRParameterSets.ByRPFile:
 
-                    if (!File.Exists(this.Path))
-                    {
-                        throw new FileNotFoundException(
-                            string.Format(
-                                Resources.FileNotFound,
-                                this.Path));
+                        if (!File.Exists(this.Path))
+                        {
+                            throw new FileNotFoundException(
+                                string.Format(
+                                    Resources.FileNotFound,
+                                    this.Path));
 
-                        ;
-                    }
+                            ;
+                        }
 
-                    var filePath = this.Path;
+                        var filePath = this.Path;
 
-                    RecoveryPlan recoveryPlan = null;
+                        RecoveryPlan recoveryPlan = null;
 
-                    using (var file = new StreamReader(filePath))
-                    {
-                        recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(
-                            file.ReadToEnd(),
-                            new RecoveryPlanActionDetailsConverter());
-                    }
+                        using (var file = new StreamReader(filePath))
+                        {
+                            recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(
+                                file.ReadToEnd(),
+                                new RecoveryPlanActionDetailsConverter());
+                        }
 
-                    this.UpdateRecoveryPlan(recoveryPlan);
+                        this.UpdateRecoveryPlan(recoveryPlan);
 
-                    break;
+                        break;
+                }
             }
         }
 

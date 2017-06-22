@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet(
         VerbsData.Import,
-        "AzureRmRecoveryServicesAsrVaultSettingsFile")]
+        "AzureRmRecoveryServicesAsrVaultSettingsFile",
+        SupportsShouldProcess = true)]
     [OutputType(typeof(ASRVaultSettings))]
     public class ImportAzureRmRecoveryServicesAsrVaultSettingsFile : SiteRecoveryCmdletBase
     {
@@ -50,68 +51,73 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            this.WriteVerbose("Vault Settings File path: " + this.Path);
-
-            ASRVaultCreds asrVaultCreds = null;
-
-            if (File.Exists(this.Path))
+            if (this.ShouldProcess(
+                "Vault Setting file",
+                VerbsData.Import))
             {
-                try
+                this.WriteVerbose("Vault Settings File path: " + this.Path);
+
+                ASRVaultCreds asrVaultCreds = null;
+
+                if (File.Exists(this.Path))
                 {
-                    var serializer = new DataContractSerializer(typeof(ASRVaultCreds));
-                    using (var s = new FileStream(
-                        this.Path,
-                        FileMode.Open,
-                        FileAccess.Read,
-                        FileShare.Read))
+                    try
                     {
-                        asrVaultCreds = (ASRVaultCreds)serializer.ReadObject(s);
+                        var serializer = new DataContractSerializer(typeof(ASRVaultCreds));
+                        using (var s = new FileStream(
+                            this.Path,
+                            FileMode.Open,
+                            FileAccess.Read,
+                            FileShare.Read))
+                        {
+                            asrVaultCreds = (ASRVaultCreds)serializer.ReadObject(s);
+                        }
+                    }
+                    catch (XmlException xmlException)
+                    {
+                        throw new XmlException(
+                            string.Format(
+                                Resources.InvalidXml,
+                                xmlException));
+                    }
+                    catch (SerializationException serializationException)
+                    {
+                        throw new SerializationException(
+                            string.Format(
+                                Resources.InvalidXml,
+                                serializationException));
                     }
                 }
-                catch (XmlException xmlException)
+                else
                 {
-                    throw new XmlException(
-                        string.Format(
-                            Resources.InvalidXml,
-                            xmlException));
+                    throw new FileNotFoundException(
+                        Resources.VaultSettingFileNotFound,
+                        this.Path);
                 }
-                catch (SerializationException serializationException)
+
+                // Validate required parameters taken from the Vault settings file.
+                if (string.IsNullOrEmpty(asrVaultCreds.ResourceName))
                 {
-                    throw new SerializationException(
-                        string.Format(
-                            Resources.InvalidXml,
-                            serializationException));
+                    throw new ArgumentException(
+                        Resources.ResourceNameNullOrEmpty,
+                        asrVaultCreds.ResourceName);
                 }
-            }
-            else
-            {
-                throw new FileNotFoundException(
-                    Resources.VaultSettingFileNotFound,
-                    this.Path);
-            }
 
-            // Validate required parameters taken from the Vault settings file.
-            if (string.IsNullOrEmpty(asrVaultCreds.ResourceName))
-            {
-                throw new ArgumentException(
-                    Resources.ResourceNameNullOrEmpty,
-                    asrVaultCreds.ResourceName);
-            }
+                if (string.IsNullOrEmpty(asrVaultCreds.ResourceGroupName))
+                {
+                    throw new ArgumentException(
+                        Resources.CloudServiceNameNullOrEmpty,
+                        asrVaultCreds.ResourceGroupName);
+                }
 
-            if (string.IsNullOrEmpty(asrVaultCreds.ResourceGroupName))
-            {
-                throw new ArgumentException(
-                    Resources.CloudServiceNameNullOrEmpty,
+                Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+
+                this.RecoveryServicesClient.ValidateVaultSettings(
+                    asrVaultCreds.ResourceName,
                     asrVaultCreds.ResourceGroupName);
+
+                this.WriteObject(new ASRVaultSettings(asrVaultCreds));
             }
-
-            Utilities.UpdateCurrentVaultContext(asrVaultCreds);
-
-            this.RecoveryServicesClient.ValidateVaultSettings(
-                asrVaultCreds.ResourceName,
-                asrVaultCreds.ResourceGroupName);
-
-            this.WriteObject(new ASRVaultSettings(asrVaultCreds));
         }
     }
 }

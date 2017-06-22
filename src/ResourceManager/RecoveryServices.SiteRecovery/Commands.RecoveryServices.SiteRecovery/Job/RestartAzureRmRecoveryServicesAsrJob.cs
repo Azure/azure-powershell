@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Restart,
         "AzureRmRecoveryServicesAsrJob",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+        DefaultParameterSetName = ASRParameterSets.ByObject,
+        SupportsShouldProcess = true)]
     [Alias("Restart-ASRJob")]
     [OutputType(typeof(ASRJob))]
     public class RestartAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
@@ -54,16 +55,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.InputObject.Name,
+                VerbsLifecycle.Restart))
             {
-                case ASRParameterSets.ByObject:
-                    this.Name = this.InputObject.Name;
-                    this.RestartByName();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByObject:
+                        this.Name = this.InputObject.Name;
+                        this.RestartByName();
+                        break;
 
-                case ASRParameterSets.ByName:
-                    this.RestartByName();
-                    break;
+                    case ASRParameterSets.ByName:
+                        this.RestartByName();
+                        break;
+                }
             }
         }
 
