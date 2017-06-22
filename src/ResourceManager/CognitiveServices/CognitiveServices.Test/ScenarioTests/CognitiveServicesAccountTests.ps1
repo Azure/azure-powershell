@@ -363,7 +363,7 @@ Test Get-AzureRmCognitiveServicesAccount | Set-AzureRmCognitiveServicesAccount
 #>
 function Test-PipingToSetAzureAccount
 {
- # Setup
+	# Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName
 
     try
@@ -398,7 +398,7 @@ Test Get-AzureRmCognitiveServicesAccount | Get-AzureRmCognitiveServicesAccountSk
 #>
 function Test-PipingToGetAccountSkus
 {
- # Setup
+	# Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName
 
     try
@@ -418,6 +418,40 @@ function Test-PipingToGetAccountSkus
         
         $expectedSkus = "F0", "S1", "S2", "S3", "S4"
         Assert-AreEqualArray $expectedSkus $skuNames
+        
+        Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test  New-AzureRmCognitiveServicesAccount
+#>
+function Test-MinMaxAccountName
+{
+	# Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName
+
+    try
+    {
+        # Test
+        $shortname = 'aa';
+		$longname = 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest';
+        $skuname = 'S2';
+        $accounttype = 'TextAnalytics';
+        $loc = 'West US';
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        $shortaccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $shortname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+		$longaccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $longname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+
+		Assert-AreEqual $shortname $shortaccount.AccountName;               
+		Assert-AreEqual $longname $longaccount.AccountName;
         
         Retry-IfException { Remove-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Force; }
     }

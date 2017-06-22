@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     public class RemoveAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
-            HelpMessage = "The Data Lake Analytics account to update the firewall rule in")]
+            HelpMessage = "The Data Lake Analytics account to remove the firewall rule from")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }

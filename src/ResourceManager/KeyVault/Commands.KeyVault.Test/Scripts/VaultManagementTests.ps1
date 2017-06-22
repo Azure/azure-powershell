@@ -126,6 +126,14 @@ function Test_SetRemoveAccessPolicyByUPN
     Test-SetRemoveAccessPolicyByUPN $global:testVault $global:resourceGroupName $user
 }
 
+function Test_SetRemoveAccessPolicyByEmailAddress
+{
+    # ASSUMPTION: The logged in users UPN is the same as their email address.
+    $user = (Get-AzureRmContext).Account.Id
+    Reset-PreCreatedVault
+    Test-SetRemoveAccessPolicyByEmailAddress $global:testVault $global:resourceGroupName $user $user
+}
+
 function Test_SetRemoveAccessPolicyBySPN
 {
     Reset-PreCreatedVault
@@ -230,7 +238,7 @@ function Test_AllPermissionExpansion
 {
     Reset-PreCreatedVault
     $user = (Get-AzureRmContext).Account.Id
-    Test-AllPermissionExpansion $global:testVault $global:resourceGroupName $user 
+    Test-AllPermissionExpansion $global:testVault $global:resourceGroupName $user
 }
 
 #-------------------------------------------------------------------------------------
@@ -330,7 +338,7 @@ function Initialize-TemporaryState
     {
         Write-Host "Skipping resource group creation since the resource group $global:resourceGroupName is already provided."
     }
-    
+
     if ($global:testVault -ne "" -and $global:testVault -ne $null)
     {
         Write-Host "Skipping vault creation since the vault $global:testVault is already provided."
@@ -339,7 +347,7 @@ function Initialize-TemporaryState
 
     # Create a vault using ARM.
     $vaultName = Get-VaultName $suffix
-    $tenantId = (Get-AzureRmContext).Tenant.TenantId
+    $tenantId = (Get-AzureRmContext).Tenant.Id
     $sku = "premium"
     if ($global:standardVaultOnly)
     {
@@ -446,7 +454,7 @@ function Cleanup-TemporaryState([bool]$tempResourceGroup, [bool]$tempVault)
     elseif ($tempVault)
     {
         Write-Host "Starting the deletion of the temporary vault. This can take a minute or so..."
-        $vaultRemoved = Remove-AzureRmKeyVault -VaultName $global:testVault -Force -Confirm:$false
+        $vaultRemoved = Remove-AzureRmKeyVault -VaultName $global:testVault -ResourceGroupName $global:resourceGroupname -Force -Confirm:$false
         if ($vaultRemoved)
         {
             $global:testVault = ""
