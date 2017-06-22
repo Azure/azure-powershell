@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrNetworkMapping")]
+        "AzureRmRecoveryServicesAsrNetworkMapping",
+        SupportsShouldProcess = true)]
     [Alias("Remove-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
@@ -43,21 +44,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var response = this.RecoveryServicesClient.RemoveAzureSiteRecoveryNetworkMapping(
-                Utilities.GetValueFromArmId(
-                    this.InputObject.ID,
-                    ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(
-                    this.InputObject.ID,
-                    "replicationNetworks"),
-                Utilities.GetValueFromArmId(
-                    this.InputObject.ID,
-                    "replicationNetworkMappings"));
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
+                VerbsCommon.Remove))
+            {
+                var response = this.RecoveryServicesClient.RemoveAzureSiteRecoveryNetworkMapping(
+                    Utilities.GetValueFromArmId(
+                        this.InputObject.ID,
+                        ARMResourceTypeConstants.ReplicationFabrics),
+                    Utilities.GetValueFromArmId(
+                        this.InputObject.ID,
+                        "replicationNetworks"),
+                    Utilities.GetValueFromArmId(
+                        this.InputObject.ID,
+                        "replicationNetworkMappings"));
 
-            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            this.WriteObject(new ASRJob(jobResponse));
+                this.WriteObject(new ASRJob(jobResponse));
+            }
         }
     }
 }

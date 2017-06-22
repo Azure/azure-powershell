@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Resume,
         "AzureRmRecoveryServicesAsrJob",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+        DefaultParameterSetName = ASRParameterSets.ByObject,
+        SupportsShouldProcess = true)]
     [Alias("Resume-ASRJob")]
     [OutputType(typeof(ASRJob))]
     public class ResumeAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
@@ -53,7 +54,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public string Comments { get; set; }
+        [Alias("Comments")]
+        public string Comment { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -62,16 +64,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.InputObject.Name,
+                VerbsLifecycle.Resume))
             {
-                case ASRParameterSets.ByObject:
-                    this.Name = this.InputObject.Name;
-                    this.ResumesByName();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByObject:
+                        this.Name = this.InputObject.Name;
+                        this.ResumesByName();
+                        break;
 
-                case ASRParameterSets.ByName:
-                    this.ResumesByName();
-                    break;
+                    case ASRParameterSets.ByName:
+                        this.ResumesByName();
+                        break;
+                }
             }
         }
 
@@ -81,13 +88,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private void ResumesByName()
         {
             var resumeJobParams = new ResumeJobParams();
-            if (string.IsNullOrEmpty(this.Comments))
+            if (string.IsNullOrEmpty(this.Comment))
             {
-                this.Comments = " ";
+                this.Comment = " ";
             }
 
             resumeJobParams.Properties = new ResumeJobParamsProperties();
-            resumeJobParams.Properties.Comments = this.Comments;
+            resumeJobParams.Properties.Comments = this.Comment;
 
             var response = this.RecoveryServicesClient.ResumeAzureSiteRecoveryJob(
                 this.Name,

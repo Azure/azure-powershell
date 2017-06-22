@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.New,
         "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise)]
+        DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
+        SupportsShouldProcess = true)]
     [Alias(
         "New-ASRRP",
         "New-ASRRecoveryPlan")]
@@ -133,53 +134,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.Name,
+                VerbsCommon.New))
             {
-                case ASRParameterSets.EnterpriseToEnterprise:
-                    this.failoverDeploymentModel = Constants.NotApplicable;
-                    this.primaryserver = this.PrimaryFabric.ID;
-                    this.recoveryserver = this.RecoveryFabric.ID;
-                    break;
-                case ASRParameterSets.EnterpriseToAzure:
-                    this.failoverDeploymentModel = this.FailoverDeploymentModel;
-                    this.primaryserver = this.PrimaryFabric.ID;
-                    this.recoveryserver = Constants.AzureContainer;
-                    break;
-                case ASRParameterSets.ByRPFile:
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.failoverDeploymentModel = Constants.NotApplicable;
+                        this.primaryserver = this.PrimaryFabric.ID;
+                        this.recoveryserver = this.RecoveryFabric.ID;
+                        break;
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.failoverDeploymentModel = this.FailoverDeploymentModel;
+                        this.primaryserver = this.PrimaryFabric.ID;
+                        this.recoveryserver = Constants.AzureContainer;
+                        break;
+                    case ASRParameterSets.ByRPFile:
 
-                    if (!File.Exists(this.Path))
-                    {
-                        throw new FileNotFoundException(
-                            string.Format(
-                                Resources.FileNotFound,
-                                this.Path));
+                        if (!File.Exists(this.Path))
+                        {
+                            throw new FileNotFoundException(
+                                string.Format(
+                                    Resources.FileNotFound,
+                                    this.Path));
 
-                        ;
-                    }
+                            ;
+                        }
 
-                    var filePath = this.Path;
+                        var filePath = this.Path;
 
-                    using (var file = new StreamReader(filePath))
-                    {
-                        this.recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(
-                            file.ReadToEnd(),
-                            new RecoveryPlanActionDetailsConverter());
-                    }
+                        using (var file = new StreamReader(filePath))
+                        {
+                            this.recoveryPlan = JsonConvert.DeserializeObject<RecoveryPlan>(
+                                file.ReadToEnd(),
+                                new RecoveryPlanActionDetailsConverter());
+                        }
 
-                    break;
-            }
+                        break;
+                }
 
-            if (string.Compare(
-                    this.ParameterSetName,
-                    ASRParameterSets.ByRPFile,
-                    StringComparison.OrdinalIgnoreCase) ==
-                0)
-            {
-                this.CreateRecoveryPlan(this.recoveryPlan);
-            }
-            else
-            {
-                this.CreateRecoveryPlan();
+                if (string.Compare(
+                        this.ParameterSetName,
+                        ASRParameterSets.ByRPFile,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
+                {
+                    this.CreateRecoveryPlan(this.recoveryPlan);
+                }
+                else
+                {
+                    this.CreateRecoveryPlan();
+                }
             }
         }
 

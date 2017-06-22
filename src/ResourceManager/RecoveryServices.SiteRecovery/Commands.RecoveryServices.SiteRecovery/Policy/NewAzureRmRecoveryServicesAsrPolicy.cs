@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.New,
         "AzureRmRecoveryServicesAsrPolicy",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        SupportsShouldProcess = true)]
     [Alias("New-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
@@ -97,7 +98,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
         [ValidateNotNullOrEmpty]
         [DefaultValue(0)]
-        public int RecoveryPoints { get; set; }
+        [Alias("RecoveryPoints")]
+        public int NumberOfRecoveryPointstoRetain { get; set; }
 
         /// <summary>
         ///     Gets or sets Application Consistent Snapshot Frequency of the Policy in hours.
@@ -182,14 +184,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.Name,
+                VerbsCommon.New))
             {
-                case ASRParameterSets.EnterpriseToEnterprise:
-                    this.EnterpriseToEnterprisePolicyObject();
-                    break;
-                case ASRParameterSets.EnterpriseToAzure:
-                    this.EnterpriseToAzurePolicyObject();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.EnterpriseToEnterprisePolicyObject();
+                        break;
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.EnterpriseToAzurePolicyObject();
+                        break;
+                }
             }
         }
 
@@ -226,7 +233,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         : Constants.Disable,
                 OnlineReplicationStartTime =
                     this.ReplicationStartTime == null ? null : this.ReplicationStartTime.ToString(),
-                RecoveryPointHistoryDuration = this.RecoveryPoints,
+                RecoveryPointHistoryDuration = this.NumberOfRecoveryPointstoRetain,
                 ReplicationInterval = replicationFrequencyInSeconds
             };
 
@@ -312,7 +319,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                                    StringComparison.OrdinalIgnoreCase) ==
                                                0 ? "OverNetwork" : "Offline",
                     OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
-                    RecoveryPoints = this.RecoveryPoints,
+                    RecoveryPoints = this.NumberOfRecoveryPointstoRetain,
                     ReplicaDeletion =
                         this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.ReplicaDeletion))
@@ -344,7 +351,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                                        StringComparison.OrdinalIgnoreCase) ==
                                                    0 ? "OverNetwork" : "Offline",
                         OnlineReplicationStartTime = this.ReplicationStartTime.ToString(),
-                        RecoveryPoints = this.RecoveryPoints,
+                        RecoveryPoints = this.NumberOfRecoveryPointstoRetain,
                         ReplicaDeletion =
                             this.MyInvocation.BoundParameters.ContainsKey(
                                 Utilities.GetMemberName(() => this.ReplicaDeletion))

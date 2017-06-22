@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsData.Update,
         "AzureRmRecoveryServicesAsrProtectionDirection",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
+        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
+        SupportsShouldProcess = true)]
     [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
@@ -88,20 +89,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                "Protected item or Recovery plan",
+                "Update protection direction"))
             {
-                case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    this.fabricName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics);
-                    this.SetRPIReprotect();
-                    break;
-                case ASRParameterSets.ByRPObject:
-                    this.SetRPReprotect();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByRPIObject:
+                        this.protectionContainerName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers);
+                        this.fabricName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics);
+                        this.SetRPIReprotect();
+                        break;
+                    case ASRParameterSets.ByRPObject:
+                        this.SetRPReprotect();
+                        break;
+                }
             }
         }
 

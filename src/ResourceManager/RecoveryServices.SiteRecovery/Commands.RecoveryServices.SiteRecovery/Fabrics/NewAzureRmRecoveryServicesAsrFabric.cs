@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.New,
         "AzureRmRecoveryServicesAsrFabric",
-        DefaultParameterSetName = ASRParameterSets.Default)]
+        DefaultParameterSetName = ASRParameterSets.Default,
+        SupportsShouldProcess = true)]
     [Alias("New-ASRFabric")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
@@ -55,24 +56,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var fabricType = string.IsNullOrEmpty(this.Type) ? FabricProviders.HyperVSite
-                : this.Type;
-
-            var input = new FabricCreationInput();
-            input.Properties = new FabricCreationInputProperties();
-
-            input.Properties.CustomDetails = new FabricSpecificCreationInput();
-
-            var response = this.RecoveryServicesClient.CreateAzureSiteRecoveryFabric(
+            if (this.ShouldProcess(
                 this.Name,
-                input);
+                VerbsCommon.New))
+            {
+                var fabricType = string.IsNullOrEmpty(this.Type) ? FabricProviders.HyperVSite
+                    : this.Type;
 
-            this.WriteObject(response);
+                var input = new FabricCreationInput();
+                input.Properties = new FabricCreationInputProperties();
 
-            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                input.Properties.CustomDetails = new FabricSpecificCreationInput();
 
-            this.WriteObject(new ASRJob(jobResponse));
+                var response = this.RecoveryServicesClient.CreateAzureSiteRecoveryFabric(
+                    this.Name,
+                    input);
+
+                this.WriteObject(response);
+
+                var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                this.WriteObject(new ASRJob(jobResponse));
+            }
         }
     }
 }

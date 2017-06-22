@@ -13,12 +13,14 @@ Resumes a suspended Azure Site Recovery job.
 
 ### ByObject (Default)
 ```
-Resume-AzureRmRecoveryServicesAsrJob -InputObject <ASRJob> [-Comments <String>] [<CommonParameters>]
+Resume-AzureRmRecoveryServicesAsrJob -InputObject <ASRJob> [-Comment <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Resume-AzureRmRecoveryServicesAsrJob -Name <String> [-Comments <String>] [<CommonParameters>]
+Resume-AzureRmRecoveryServicesAsrJob -Name <String> [-Comment <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,13 +37,13 @@ Resume the specified job if it is in a waiting or suspended state and return the
 
 ## PARAMETERS
 
-### -Comments
+### -Comment
 Comments for the job log.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Comments
 
 Required: False
 Position: Named
@@ -74,6 +76,36 @@ Parameter Sets: ByName
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

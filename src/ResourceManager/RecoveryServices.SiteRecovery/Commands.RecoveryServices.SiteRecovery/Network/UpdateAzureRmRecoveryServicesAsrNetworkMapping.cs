@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsData.Update,
         "AzureRmRecoveryServicesAsrNetworkMapping",
-        DefaultParameterSetName = ASRParameterSets.ByNetworkObject)]
+        DefaultParameterSetName = ASRParameterSets.ByNetworkObject,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
@@ -67,21 +68,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
+                VerbsData.Update))
             {
-                case ASRParameterSets.ByNetworkObject:
-                    this.UpdateEnterpriseToEnterpriseNetworkMapping();
-                    break;
-                case ASRParameterSets.ById:
-                    if (this.InputObject.ID.Contains(ARMResourceTypeConstants.AzureNetwork))
-                    {
-                        this.UpdateAzureToAzureNetworkMapping();
-                    }
-                    else
-                    {
-                        this.UpdateEnterpriseToAzureNetworkMapping();
-                    }
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByNetworkObject:
+                        this.UpdateEnterpriseToEnterpriseNetworkMapping();
+                        break;
+                    case ASRParameterSets.ById:
+                        if (this.InputObject.ID.Contains(ARMResourceTypeConstants.AzureNetwork))
+                        {
+                            this.UpdateAzureToAzureNetworkMapping();
+                        }
+                        else
+                        {
+                            this.UpdateEnterpriseToAzureNetworkMapping();
+                        }
+                        break;
+                }
             }
         }
 

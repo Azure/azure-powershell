@@ -23,11 +23,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
-        "AzureRmRecoveryServicesAsrVaultSettings",
-        DefaultParameterSetName = ASRParameterSets.ARSVault)]
+        "AzureRmRecoveryServicesAsrVaultContext",
+        DefaultParameterSetName = ASRParameterSets.ARSVault,
+        SupportsShouldProcess = true)]
     [Alias(
         "Set-ASRVaultContext",
-        "Set-ASRVaultSettings")]
+        "Set-ASRVaultSettings",
+        "Set-AzureRmRecoveryServicesAsrVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {
@@ -48,13 +50,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.Vault.Name,
+                VerbsCommon.Set))
             {
-                case ASRParameterSets.ARSVault:
-                    this.SetARSVaultContext(this.Vault);
-                    break;
-                default:
-                    throw new PSInvalidOperationException(Resources.InvalidParameterSet);
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ARSVault:
+                        this.SetARSVaultContext(this.Vault);
+                        break;
+                    default:
+                        throw new PSInvalidOperationException(Resources.InvalidParameterSet);
+                }
             }
         }
 

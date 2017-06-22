@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.New,
         "AzureRmRecoveryServicesAsrProtectionContainerMapping",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure,
+        SupportsShouldProcess = true)]
     [Alias("New-ASRProtectionContainerMapping")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
@@ -84,14 +85,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            switch (this.ParameterSetName)
+            if (this.ShouldProcess(
+                this.Name,
+                VerbsCommon.New))
             {
-                case ASRParameterSets.EnterpriseToAzure:
-                    this.EnterpriseToAzureAssociation();
-                    break;
-                case ASRParameterSets.EnterpriseToEnterprise:
-                    this.EnterpriseToEnterpriseAssociation();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.EnterpriseToAzureAssociation();
+                        break;
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.EnterpriseToEnterpriseAssociation();
+                        break;
+                }
             }
         }
 

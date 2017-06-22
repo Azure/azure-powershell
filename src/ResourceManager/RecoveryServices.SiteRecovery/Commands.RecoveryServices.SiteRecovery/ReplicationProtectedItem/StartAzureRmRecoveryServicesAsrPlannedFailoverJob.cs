@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Start,
         "AzureRmRecoveryServicesAsrPlannedFailoverJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
+        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
+        SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRPFO",
         "Start-ASRPlannedFailoverJob")]
@@ -119,32 +120,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+            if (this.ShouldProcess(
+                "Protected item or Recovery plan",
+                "Start planned failover"))
             {
-                var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
-                this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+                {
+                    var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                    this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+                }
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
-            {
-                var certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
-                this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
+                {
+                    var certBytesSecondary =
+                        File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                    this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+                }
 
-            switch (this.ParameterSetName)
-            {
-                case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    this.fabricName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics);
-                    this.StartRPIPlannedFailover();
-                    break;
-                case ASRParameterSets.ByRPObject:
-                    this.StartRpPlannedFailover();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByRPIObject:
+                        this.protectionContainerName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers);
+                        this.fabricName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics);
+                        this.StartRPIPlannedFailover();
+                        break;
+                    case ASRParameterSets.ByRPObject:
+                        this.StartRpPlannedFailover();
+                        break;
+                }
             }
         }
 

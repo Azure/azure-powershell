@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.Remove,
         "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+        DefaultParameterSetName = ASRParameterSets.ByObject,
+        SupportsShouldProcess = true)]
     [Alias(
         "Remove-ASRRP",
         "Remove-ASRRecoveryPlan")]
@@ -55,22 +56,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (string.Compare(
-                    this.ParameterSetName,
-                    ASRParameterSets.ByObject,
-                    StringComparison.OrdinalIgnoreCase) ==
-                0)
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
+                VerbsCommon.Remove))
             {
-                this.Name = this.InputObject.Name;
+                if (string.Compare(
+                        this.ParameterSetName,
+                        ASRParameterSets.ByObject,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
+                {
+                    this.Name = this.InputObject.Name;
+                }
+
+                var response =
+                    this.RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.Name);
+
+                var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                this.WriteObject(new ASRJob(jobResponse));
             }
-
-            var response =
-                this.RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.Name);
-
-            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }

@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Start,
         "AzureRmRecoveryServicesAsrUnplannedFailoverJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
+        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
+        SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRFO",
         "Start-ASRUnplannedFailoverJob")]
@@ -66,7 +67,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets switch parameter. This is required to PerformSourceSideActions.
         /// </summary>
         [Parameter]
-        public SwitchParameter PerformSourceSideActions { get; set; }
+        [Alias("PerformSourceSideActions")]
+        public SwitchParameter PerformSourceSideAction { get; set; }
 
         /// <summary>
         ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
@@ -89,32 +91,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+            if (this.ShouldProcess(
+                "Protected item or Recovery plan",
+                "Start failover"))
             {
-                var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
-                this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionPrimaryCertFile))
+                {
+                    var certBytesPrimary = File.ReadAllBytes(this.DataEncryptionPrimaryCertFile);
+                    this.primaryKekCertpfx = Convert.ToBase64String(certBytesPrimary);
+                }
 
-            if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
-            {
-                var certBytesSecondary = File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
-                this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
-            }
+                if (!string.IsNullOrEmpty(this.DataEncryptionSecondaryCertFile))
+                {
+                    var certBytesSecondary =
+                        File.ReadAllBytes(this.DataEncryptionSecondaryCertFile);
+                    this.secondaryKekCertpfx = Convert.ToBase64String(certBytesSecondary);
+                }
 
-            switch (this.ParameterSetName)
-            {
-                case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    this.fabricName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics);
-                    this.StartRPIUnplannedFailover();
-                    break;
-                case ASRParameterSets.ByRPObject:
-                    this.StartRpUnplannedFailover();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByRPIObject:
+                        this.protectionContainerName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers);
+                        this.fabricName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics);
+                        this.StartRPIUnplannedFailover();
+                        break;
+                    case ASRParameterSets.ByRPObject:
+                        this.StartRpUnplannedFailover();
+                        break;
+                }
             }
         }
 
@@ -126,7 +134,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var unplannedFailoverInputProperties = new UnplannedFailoverInputProperties
             {
                 FailoverDirection = this.Direction,
-                SourceSiteOperations = this.PerformSourceSideActions ? "Required" : "NotRequired",
+                SourceSiteOperations = this.PerformSourceSideAction ? "Required" : "NotRequired",
                 ProviderSpecificDetails = new ProviderSpecificFailoverInput()
             };
 
@@ -179,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.Direction == PossibleOperationsDirections.PrimaryToRecovery.ToString()
                             ? PossibleOperationsDirections.PrimaryToRecovery
                             : PossibleOperationsDirections.RecoveryToPrimary,
-                    SourceSiteOperations = this.PerformSourceSideActions
+                    SourceSiteOperations = this.PerformSourceSideAction
                         ? SourceSiteOperations.Required
                         : SourceSiteOperations.NotRequired, //Required|NotRequired
                     ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>()

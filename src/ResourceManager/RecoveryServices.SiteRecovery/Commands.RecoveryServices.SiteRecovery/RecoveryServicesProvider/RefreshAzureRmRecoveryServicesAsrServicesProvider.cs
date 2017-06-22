@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsData.Update,
         "AzureRmRecoveryServicesAsrServicesProvider",
-        DefaultParameterSetName = ASRParameterSets.Default)]
+        DefaultParameterSetName = ASRParameterSets.Default,
+        SupportsShouldProcess = true)]
     [Alias("Update-ASRServicesProvider")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
@@ -44,7 +45,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            this.RefreshServicesProvider();
+
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
+                VerbsData.Update))
+            {
+                this.RefreshServicesProvider();
+            }
         }
 
         /// <summary>

@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsLifecycle.Start,
         "AzureRmRecoveryServicesAsrCommitFailoverJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject)]
+        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
+        SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRCommitFailover",
         "Start-ASRCommitFailoverJob")]
@@ -70,20 +71,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            switch (this.ParameterSetName)
+
+            if (this.ShouldProcess(
+                "Protected item or Recovery plan",
+                "Commit failover"))
             {
-                case ASRParameterSets.ByRPIObject:
-                    this.protectionContainerName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationProtectionContainers);
-                    this.fabricName = Utilities.GetValueFromArmId(
-                        this.ReplicationProtectedItem.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics);
-                    this.SetRPICommit();
-                    break;
-                case ASRParameterSets.ByRPObject:
-                    this.StartRpCommit();
-                    break;
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.ByRPIObject:
+                        this.protectionContainerName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers);
+                        this.fabricName = Utilities.GetValueFromArmId(
+                            this.ReplicationProtectedItem.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics);
+                        this.SetRPICommit();
+                        break;
+                    case ASRParameterSets.ByRPObject:
+                        this.StartRpCommit();
+                        break;
+                }
             }
         }
 

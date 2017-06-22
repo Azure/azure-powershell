@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.New,
         "AzureRmRecoveryServicesAsrStorageClassificationMapping",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+        DefaultParameterSetName = ASRParameterSets.ByObject,
+        SupportsShouldProcess = true)]
     [Alias("New-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrStorageClassificationMapping : SiteRecoveryCmdletBase
@@ -63,24 +64,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var mappingName = this.Name;
-
-            var props = new StorageMappingInputProperties
+            if (this.ShouldProcess(
+                this.Name,
+                VerbsCommon.New))
             {
-                TargetStorageClassificationId = this.RecoveryStorageClassification.Id
-            };
+                var mappingName = this.Name;
 
-            var input = new StorageClassificationMappingInput { Properties = props };
+                var props = new StorageMappingInputProperties
+                {
+                    TargetStorageClassificationId = this.RecoveryStorageClassification.Id
+                };
 
-            var operationResponse = this.RecoveryServicesClient.MapStorageClassification(
-                this.PrimaryStorageClassification,
-                input,
-                mappingName);
+                var input = new StorageClassificationMappingInput { Properties = props };
 
-            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(operationResponse.Location));
+                var operationResponse = this.RecoveryServicesClient.MapStorageClassification(
+                    this.PrimaryStorageClassification,
+                    input,
+                    mappingName);
 
-            this.WriteObject(new ASRJob(jobResponse));
+                var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient
+                        .GetJobIdFromReponseLocation(operationResponse.Location));
+
+                this.WriteObject(new ASRJob(jobResponse));
+            }
         }
     }
 }

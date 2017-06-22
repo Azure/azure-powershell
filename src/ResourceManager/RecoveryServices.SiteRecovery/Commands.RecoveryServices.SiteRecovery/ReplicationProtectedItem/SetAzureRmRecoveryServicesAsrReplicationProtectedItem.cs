@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet(
         VerbsCommon.Set,
         "AzureRmRecoveryServicesAsrReplicationProtectedItem",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+        DefaultParameterSetName = ASRParameterSets.ByObject,
+        SupportsShouldProcess = true)]
     [Alias("Set-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
     public class SetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
@@ -119,329 +120,345 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            var replicationProtectedItemResponse = this.RecoveryServicesClient
-                .GetAzureSiteRecoveryReplicationProtectedItem(
+            if (this.ShouldProcess(
+                this.InputObject.FriendlyName,
+                VerbsCommon.Set))
+            {
+                var replicationProtectedItemResponse = this.RecoveryServicesClient
+                    .GetAzureSiteRecoveryReplicationProtectedItem(
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
+                            ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(
+                            this.InputObject.ID,
+                            ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        this.InputObject.Name);
+
+                var provider = replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
+
+                // Check for Replication Provider type HyperVReplicaAzure/InMageAzureV2
+                if (!(provider is HyperVReplicaAzureReplicationDetails) &&
+                    !(provider is InMageAzureV2ReplicationDetails))
+                {
+                    this.WriteWarning(
+                        Resources.UnsupportedReplicationProvidedForUpdateVmProperties);
+                    return;
+                }
+
+                // Check for at least one option
+                if (string.IsNullOrEmpty(this.Name) &&
+                    string.IsNullOrEmpty(this.Size) &&
+                    string.IsNullOrEmpty(this.PrimaryNic) &&
+                    string.IsNullOrEmpty(this.RecoveryNetworkId) &&
+                    string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
+                    string.IsNullOrEmpty(this.LicenseType))
+                {
+                    this.WriteWarning(Resources.ArgumentsMissingForUpdateVmProperties);
+                    return;
+                }
+
+                // Both primary & recovery inputs should be present
+                if (string.IsNullOrEmpty(this.PrimaryNic) ^
+                    string.IsNullOrEmpty(this.RecoveryNetworkId))
+                {
+                    this.WriteWarning(Resources.NetworkArgumentsMissingForUpdateVmProperties);
+                    return;
+                }
+
+                var vmName = this.Name;
+                var vmSize = this.Size;
+                var vmRecoveryNetworkId = this.RecoveryNetworkId;
+                var licenseType = this.LicenseType;
+                var recoveryResourceGroupId = this.RecoveryResourceGroupId;
+                var vMNicInputDetailsList = new List<VMNicInputDetails>();
+                VMNicDetails vMNicDetailsToBeUpdated;
+                var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
+
+                if (provider is HyperVReplicaAzureReplicationDetails)
+                {
+                    var providerSpecificDetails =
+                        (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse
+                            .Properties.ProviderSpecificDetails;
+
+                    if (string.IsNullOrEmpty(this.RecoveryResourceGroupId))
+                    {
+                        recoveryResourceGroupId =
+                            providerSpecificDetails.RecoveryAzureResourceGroupId;
+                    }
+
+                    var deploymentType = Utilities.GetValueFromArmId(
+                        providerSpecificDetails.RecoveryAzureStorageAccount,
+                        ARMResourceTypeConstants.Providers);
+                    if (deploymentType.ToLower()
+                        .Contains(Constants.Classic.ToLower()))
+                    {
+                        providerSpecificInput =
+                            new HyperVReplicaAzureUpdateReplicationProtectedItemInput
+                            {
+                                RecoveryAzureV1ResourceGroupId = recoveryResourceGroupId,
+                                RecoveryAzureV2ResourceGroupId = null
+                            };
+                    }
+                    else
+                    {
+                        providerSpecificInput =
+                            new HyperVReplicaAzureUpdateReplicationProtectedItemInput
+                            {
+                                RecoveryAzureV1ResourceGroupId = null,
+                                RecoveryAzureV2ResourceGroupId = recoveryResourceGroupId
+                            };
+                    }
+
+                    if (string.IsNullOrEmpty(this.Name))
+                    {
+                        vmName = providerSpecificDetails.RecoveryAzureVMName;
+                    }
+
+                    if (string.IsNullOrEmpty(this.Size))
+                    {
+                        vmSize = providerSpecificDetails.RecoveryAzureVMSize;
+                    }
+
+                    if (string.IsNullOrEmpty(this.RecoveryNetworkId))
+                    {
+                        vmRecoveryNetworkId = providerSpecificDetails
+                            .SelectedRecoveryAzureNetworkId;
+                    }
+
+                    if (string.IsNullOrEmpty(this.LicenseType))
+                    {
+                        //licenseType = providerSpecificDetails.LicenseType;
+                    }
+
+                    if (!string.IsNullOrEmpty(this.PrimaryNic))
+                    {
+                        if (providerSpecificDetails.VmNics != null)
+                        {
+                            vMNicDetailsToBeUpdated =
+                                providerSpecificDetails.VmNics.SingleOrDefault(
+                                    n => string.Compare(
+                                             n.NicId,
+                                             this.PrimaryNic,
+                                             StringComparison.OrdinalIgnoreCase) ==
+                                         0);
+                            if (vMNicDetailsToBeUpdated != null)
+                            {
+                                var vMNicInputDetails = new VMNicInputDetails();
+
+                                vMNicInputDetails.NicId = this.PrimaryNic;
+                                vMNicInputDetails.RecoveryVMSubnetName = this.RecoveryNicSubnetName;
+                                vMNicInputDetails.ReplicaNicStaticIPAddress =
+                                    this.RecoveryNicStaticIPAddress;
+                                vMNicInputDetails.SelectionType =
+                                    string.IsNullOrEmpty(this.NicSelectionType)
+                                        ? Constants.SelectedByUser : this.NicSelectionType;
+                                vMNicInputDetailsList.Add(vMNicInputDetails);
+
+                                var vMNicDetailsListRemaining =
+                                    providerSpecificDetails.VmNics.Where(
+                                        n => string.Compare(
+                                                 n.NicId,
+                                                 this.PrimaryNic,
+                                                 StringComparison.OrdinalIgnoreCase) !=
+                                             0);
+                                foreach (var nDetails in vMNicDetailsListRemaining)
+                                {
+                                    vMNicInputDetails = new VMNicInputDetails();
+
+                                    vMNicInputDetails.NicId = nDetails.NicId;
+                                    vMNicInputDetails.RecoveryVMSubnetName =
+                                        nDetails.RecoveryVMSubnetName;
+                                    vMNicInputDetails.ReplicaNicStaticIPAddress =
+                                        nDetails.ReplicaNicStaticIPAddress;
+                                    vMNicInputDetails.SelectionType = nDetails.SelectionType;
+                                    vMNicInputDetailsList.Add(vMNicInputDetails);
+                                }
+                            }
+                            else
+                            {
+                                throw new PSInvalidOperationException(
+                                    Resources.NicNotFoundInVMForUpdateVmProperties);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        VMNicInputDetails vMNicInputDetails;
+                        foreach (var nDetails in providerSpecificDetails.VmNics)
+                        {
+                            vMNicInputDetails = new VMNicInputDetails();
+
+                            vMNicInputDetails.NicId = nDetails.NicId;
+                            vMNicInputDetails.RecoveryVMSubnetName = nDetails.RecoveryVMSubnetName;
+                            vMNicInputDetails.ReplicaNicStaticIPAddress =
+                                nDetails.ReplicaNicStaticIPAddress;
+                            vMNicInputDetails.SelectionType = nDetails.SelectionType;
+                            vMNicInputDetailsList.Add(vMNicInputDetails);
+                        }
+                    }
+                }
+                else if (provider is InMageAzureV2ReplicationDetails)
+                {
+                    var providerSpecificDetails =
+                        (InMageAzureV2ReplicationDetails)replicationProtectedItemResponse.Properties
+                            .ProviderSpecificDetails;
+
+                    if (string.IsNullOrEmpty(this.RecoveryResourceGroupId))
+                    {
+                        recoveryResourceGroupId =
+                            providerSpecificDetails.RecoveryAzureResourceGroupId;
+                    }
+
+                    var deploymentType = Utilities.GetValueFromArmId(
+                        providerSpecificDetails.RecoveryAzureStorageAccount,
+                        ARMResourceTypeConstants.Providers);
+                    if (deploymentType.ToLower()
+                        .Contains(Constants.Classic.ToLower()))
+                    {
+                        providerSpecificInput =
+                            new InMageAzureV2UpdateReplicationProtectedItemInput
+                            {
+                                RecoveryAzureV1ResourceGroupId = recoveryResourceGroupId,
+                                RecoveryAzureV2ResourceGroupId = null
+                            };
+                    }
+                    else
+                    {
+                        providerSpecificInput =
+                            new InMageAzureV2UpdateReplicationProtectedItemInput
+                            {
+                                RecoveryAzureV1ResourceGroupId = null,
+                                RecoveryAzureV2ResourceGroupId = recoveryResourceGroupId
+                            };
+                    }
+
+                    if (string.IsNullOrEmpty(this.Name))
+                    {
+                        vmName = providerSpecificDetails.RecoveryAzureVMName;
+                    }
+
+                    if (string.IsNullOrEmpty(this.Size))
+                    {
+                        vmSize = providerSpecificDetails.RecoveryAzureVMSize;
+                    }
+
+                    if (string.IsNullOrEmpty(this.RecoveryNetworkId))
+                    {
+                        vmRecoveryNetworkId = providerSpecificDetails
+                            .SelectedRecoveryAzureNetworkId;
+                    }
+
+                    if (string.IsNullOrEmpty(this.LicenseType))
+                    {
+                        //licenseType = providerSpecificDetails.LicenseType;
+                    }
+
+                    if (!string.IsNullOrEmpty(this.PrimaryNic))
+                    {
+                        if (providerSpecificDetails.VmNics != null)
+                        {
+                            vMNicDetailsToBeUpdated =
+                                providerSpecificDetails.VmNics.SingleOrDefault(
+                                    n => string.Compare(
+                                             n.NicId,
+                                             this.PrimaryNic,
+                                             StringComparison.OrdinalIgnoreCase) ==
+                                         0);
+                            if (vMNicDetailsToBeUpdated != null)
+                            {
+                                var vMNicInputDetails = new VMNicInputDetails();
+
+                                vMNicInputDetails.NicId = this.PrimaryNic;
+                                vMNicInputDetails.RecoveryVMSubnetName = this.RecoveryNicSubnetName;
+                                vMNicInputDetails.ReplicaNicStaticIPAddress =
+                                    this.RecoveryNicStaticIPAddress;
+                                vMNicInputDetails.SelectionType =
+                                    string.IsNullOrEmpty(this.NicSelectionType)
+                                        ? Constants.SelectedByUser : this.NicSelectionType;
+                                vMNicInputDetailsList.Add(vMNicInputDetails);
+
+                                var vMNicDetailsListRemaining =
+                                    providerSpecificDetails.VmNics.Where(
+                                        n => string.Compare(
+                                                 n.NicId,
+                                                 this.PrimaryNic,
+                                                 StringComparison.OrdinalIgnoreCase) !=
+                                             0);
+                                foreach (var nDetails in vMNicDetailsListRemaining)
+                                {
+                                    vMNicInputDetails = new VMNicInputDetails();
+
+                                    vMNicInputDetails.NicId = nDetails.NicId;
+                                    vMNicInputDetails.RecoveryVMSubnetName =
+                                        nDetails.RecoveryVMSubnetName;
+                                    vMNicInputDetails.ReplicaNicStaticIPAddress =
+                                        nDetails.ReplicaNicStaticIPAddress;
+                                    vMNicInputDetails.SelectionType = nDetails.SelectionType;
+                                    vMNicInputDetailsList.Add(vMNicInputDetails);
+                                }
+                            }
+                            else
+                            {
+                                throw new PSInvalidOperationException(
+                                    Resources.NicNotFoundInVMForUpdateVmProperties);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        VMNicInputDetails vMNicInputDetails;
+                        foreach (var nDetails in providerSpecificDetails.VmNics)
+                        {
+                            vMNicInputDetails = new VMNicInputDetails();
+
+                            vMNicInputDetails.NicId = nDetails.NicId;
+                            vMNicInputDetails.RecoveryVMSubnetName = nDetails.RecoveryVMSubnetName;
+                            vMNicInputDetails.ReplicaNicStaticIPAddress =
+                                nDetails.ReplicaNicStaticIPAddress;
+                            vMNicInputDetails.SelectionType = nDetails.SelectionType;
+                            vMNicInputDetailsList.Add(vMNicInputDetails);
+                        }
+                    }
+                }
+
+                var updateReplicationProtectedItemInputProperties =
+                    new UpdateReplicationProtectedItemInputProperties
+                    {
+                        RecoveryAzureVMName = vmName,
+                        RecoveryAzureVMSize = vmSize,
+                        SelectedRecoveryAzureNetworkId = vmRecoveryNetworkId,
+                        VmNics = vMNicInputDetailsList,
+                        LicenseType =
+                            licenseType ==
+                            Management.RecoveryServices.SiteRecovery.Models.LicenseType
+                                .NoLicenseType.ToString()
+                                ? Management.RecoveryServices.SiteRecovery.Models.LicenseType
+                                    .NoLicenseType
+                                : Management.RecoveryServices.SiteRecovery.Models.LicenseType
+                                    .WindowsServer,
+                        ProviderSpecificDetails = providerSpecificInput
+                    };
+
+                var input = new UpdateReplicationProtectedItemInput
+                {
+                    Properties = updateReplicationProtectedItemInputProperties
+                };
+
+                var response = this.RecoveryServicesClient.UpdateVmProperties(
                     Utilities.GetValueFromArmId(
                         this.InputObject.ID,
                         ARMResourceTypeConstants.ReplicationFabrics),
                     Utilities.GetValueFromArmId(
                         this.InputObject.ID,
                         ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    this.InputObject.Name);
+                    this.InputObject.Name,
+                    input);
 
-            var provider = replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
+                var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
+                    PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            // Check for Replication Provider type HyperVReplicaAzure/InMageAzureV2
-            if (!(provider is HyperVReplicaAzureReplicationDetails) &&
-                !(provider is InMageAzureV2ReplicationDetails))
-            {
-                this.WriteWarning(Resources.UnsupportedReplicationProvidedForUpdateVmProperties);
-                return;
+                this.WriteObject(new ASRJob(jobResponse));
             }
-
-            // Check for at least one option
-            if (string.IsNullOrEmpty(this.Name) &&
-                string.IsNullOrEmpty(this.Size) &&
-                string.IsNullOrEmpty(this.PrimaryNic) &&
-                string.IsNullOrEmpty(this.RecoveryNetworkId) &&
-                string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
-                string.IsNullOrEmpty(this.LicenseType))
-            {
-                this.WriteWarning(Resources.ArgumentsMissingForUpdateVmProperties);
-                return;
-            }
-
-            // Both primary & recovery inputs should be present
-            if (string.IsNullOrEmpty(this.PrimaryNic) ^
-                string.IsNullOrEmpty(this.RecoveryNetworkId))
-            {
-                this.WriteWarning(Resources.NetworkArgumentsMissingForUpdateVmProperties);
-                return;
-            }
-
-            var vmName = this.Name;
-            var vmSize = this.Size;
-            var vmRecoveryNetworkId = this.RecoveryNetworkId;
-            var licenseType = this.LicenseType;
-            var recoveryResourceGroupId = this.RecoveryResourceGroupId;
-            var vMNicInputDetailsList = new List<VMNicInputDetails>();
-            VMNicDetails vMNicDetailsToBeUpdated;
-            var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
-
-            if (provider is HyperVReplicaAzureReplicationDetails)
-            {
-                var providerSpecificDetails =
-                    (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse
-                        .Properties.ProviderSpecificDetails;
-
-                if (string.IsNullOrEmpty(this.RecoveryResourceGroupId))
-                {
-                    recoveryResourceGroupId = providerSpecificDetails.RecoveryAzureResourceGroupId;
-                }
-
-                var deploymentType = Utilities.GetValueFromArmId(
-                    providerSpecificDetails.RecoveryAzureStorageAccount,
-                    ARMResourceTypeConstants.Providers);
-                if (deploymentType.ToLower()
-                    .Contains(Constants.Classic.ToLower()))
-                {
-                    providerSpecificInput =
-                        new HyperVReplicaAzureUpdateReplicationProtectedItemInput
-                        {
-                            RecoveryAzureV1ResourceGroupId = recoveryResourceGroupId,
-                            RecoveryAzureV2ResourceGroupId = null
-                        };
-                }
-                else
-                {
-                    providerSpecificInput =
-                        new HyperVReplicaAzureUpdateReplicationProtectedItemInput
-                        {
-                            RecoveryAzureV1ResourceGroupId = null,
-                            RecoveryAzureV2ResourceGroupId = recoveryResourceGroupId
-                        };
-                }
-
-                if (string.IsNullOrEmpty(this.Name))
-                {
-                    vmName = providerSpecificDetails.RecoveryAzureVMName;
-                }
-
-                if (string.IsNullOrEmpty(this.Size))
-                {
-                    vmSize = providerSpecificDetails.RecoveryAzureVMSize;
-                }
-
-                if (string.IsNullOrEmpty(this.RecoveryNetworkId))
-                {
-                    vmRecoveryNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
-                }
-
-                if (string.IsNullOrEmpty(this.LicenseType))
-                {
-                    //licenseType = providerSpecificDetails.LicenseType;
-                }
-
-                if (!string.IsNullOrEmpty(this.PrimaryNic))
-                {
-                    if (providerSpecificDetails.VmNics != null)
-                    {
-                        vMNicDetailsToBeUpdated = providerSpecificDetails.VmNics.SingleOrDefault(
-                            n => string.Compare(
-                                     n.NicId,
-                                     this.PrimaryNic,
-                                     StringComparison.OrdinalIgnoreCase) ==
-                                 0);
-                        if (vMNicDetailsToBeUpdated != null)
-                        {
-                            var vMNicInputDetails = new VMNicInputDetails();
-
-                            vMNicInputDetails.NicId = this.PrimaryNic;
-                            vMNicInputDetails.RecoveryVMSubnetName = this.RecoveryNicSubnetName;
-                            vMNicInputDetails.ReplicaNicStaticIPAddress =
-                                this.RecoveryNicStaticIPAddress;
-                            vMNicInputDetails.SelectionType =
-                                string.IsNullOrEmpty(this.NicSelectionType)
-                                    ? Constants.SelectedByUser : this.NicSelectionType;
-                            vMNicInputDetailsList.Add(vMNicInputDetails);
-
-                            var vMNicDetailsListRemaining = providerSpecificDetails.VmNics.Where(
-                                n => string.Compare(
-                                         n.NicId,
-                                         this.PrimaryNic,
-                                         StringComparison.OrdinalIgnoreCase) !=
-                                     0);
-                            foreach (var nDetails in vMNicDetailsListRemaining)
-                            {
-                                vMNicInputDetails = new VMNicInputDetails();
-
-                                vMNicInputDetails.NicId = nDetails.NicId;
-                                vMNicInputDetails.RecoveryVMSubnetName =
-                                    nDetails.RecoveryVMSubnetName;
-                                vMNicInputDetails.ReplicaNicStaticIPAddress =
-                                    nDetails.ReplicaNicStaticIPAddress;
-                                vMNicInputDetails.SelectionType = nDetails.SelectionType;
-                                vMNicInputDetailsList.Add(vMNicInputDetails);
-                            }
-                        }
-                        else
-                        {
-                            throw new PSInvalidOperationException(
-                                Resources.NicNotFoundInVMForUpdateVmProperties);
-                        }
-                    }
-                }
-                else
-                {
-                    VMNicInputDetails vMNicInputDetails;
-                    foreach (var nDetails in providerSpecificDetails.VmNics)
-                    {
-                        vMNicInputDetails = new VMNicInputDetails();
-
-                        vMNicInputDetails.NicId = nDetails.NicId;
-                        vMNicInputDetails.RecoveryVMSubnetName = nDetails.RecoveryVMSubnetName;
-                        vMNicInputDetails.ReplicaNicStaticIPAddress =
-                            nDetails.ReplicaNicStaticIPAddress;
-                        vMNicInputDetails.SelectionType = nDetails.SelectionType;
-                        vMNicInputDetailsList.Add(vMNicInputDetails);
-                    }
-                }
-            }
-            else if (provider is InMageAzureV2ReplicationDetails)
-            {
-                var providerSpecificDetails =
-                    (InMageAzureV2ReplicationDetails)replicationProtectedItemResponse.Properties
-                        .ProviderSpecificDetails;
-
-                if (string.IsNullOrEmpty(this.RecoveryResourceGroupId))
-                {
-                    recoveryResourceGroupId = providerSpecificDetails.RecoveryAzureResourceGroupId;
-                }
-
-                var deploymentType = Utilities.GetValueFromArmId(
-                    providerSpecificDetails.RecoveryAzureStorageAccount,
-                    ARMResourceTypeConstants.Providers);
-                if (deploymentType.ToLower()
-                    .Contains(Constants.Classic.ToLower()))
-                {
-                    providerSpecificInput = new InMageAzureV2UpdateReplicationProtectedItemInput
-                    {
-                        RecoveryAzureV1ResourceGroupId = recoveryResourceGroupId,
-                        RecoveryAzureV2ResourceGroupId = null
-                    };
-                }
-                else
-                {
-                    providerSpecificInput = new InMageAzureV2UpdateReplicationProtectedItemInput
-                    {
-                        RecoveryAzureV1ResourceGroupId = null,
-                        RecoveryAzureV2ResourceGroupId = recoveryResourceGroupId
-                    };
-                }
-
-                if (string.IsNullOrEmpty(this.Name))
-                {
-                    vmName = providerSpecificDetails.RecoveryAzureVMName;
-                }
-
-                if (string.IsNullOrEmpty(this.Size))
-                {
-                    vmSize = providerSpecificDetails.RecoveryAzureVMSize;
-                }
-
-                if (string.IsNullOrEmpty(this.RecoveryNetworkId))
-                {
-                    vmRecoveryNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
-                }
-
-                if (string.IsNullOrEmpty(this.LicenseType))
-                {
-                    //licenseType = providerSpecificDetails.LicenseType;
-                }
-
-                if (!string.IsNullOrEmpty(this.PrimaryNic))
-                {
-                    if (providerSpecificDetails.VmNics != null)
-                    {
-                        vMNicDetailsToBeUpdated = providerSpecificDetails.VmNics.SingleOrDefault(
-                            n => string.Compare(
-                                     n.NicId,
-                                     this.PrimaryNic,
-                                     StringComparison.OrdinalIgnoreCase) ==
-                                 0);
-                        if (vMNicDetailsToBeUpdated != null)
-                        {
-                            var vMNicInputDetails = new VMNicInputDetails();
-
-                            vMNicInputDetails.NicId = this.PrimaryNic;
-                            vMNicInputDetails.RecoveryVMSubnetName = this.RecoveryNicSubnetName;
-                            vMNicInputDetails.ReplicaNicStaticIPAddress =
-                                this.RecoveryNicStaticIPAddress;
-                            vMNicInputDetails.SelectionType =
-                                string.IsNullOrEmpty(this.NicSelectionType)
-                                    ? Constants.SelectedByUser : this.NicSelectionType;
-                            vMNicInputDetailsList.Add(vMNicInputDetails);
-
-                            var vMNicDetailsListRemaining = providerSpecificDetails.VmNics.Where(
-                                n => string.Compare(
-                                         n.NicId,
-                                         this.PrimaryNic,
-                                         StringComparison.OrdinalIgnoreCase) !=
-                                     0);
-                            foreach (var nDetails in vMNicDetailsListRemaining)
-                            {
-                                vMNicInputDetails = new VMNicInputDetails();
-
-                                vMNicInputDetails.NicId = nDetails.NicId;
-                                vMNicInputDetails.RecoveryVMSubnetName =
-                                    nDetails.RecoveryVMSubnetName;
-                                vMNicInputDetails.ReplicaNicStaticIPAddress =
-                                    nDetails.ReplicaNicStaticIPAddress;
-                                vMNicInputDetails.SelectionType = nDetails.SelectionType;
-                                vMNicInputDetailsList.Add(vMNicInputDetails);
-                            }
-                        }
-                        else
-                        {
-                            throw new PSInvalidOperationException(
-                                Resources.NicNotFoundInVMForUpdateVmProperties);
-                        }
-                    }
-                }
-                else
-                {
-                    VMNicInputDetails vMNicInputDetails;
-                    foreach (var nDetails in providerSpecificDetails.VmNics)
-                    {
-                        vMNicInputDetails = new VMNicInputDetails();
-
-                        vMNicInputDetails.NicId = nDetails.NicId;
-                        vMNicInputDetails.RecoveryVMSubnetName = nDetails.RecoveryVMSubnetName;
-                        vMNicInputDetails.ReplicaNicStaticIPAddress =
-                            nDetails.ReplicaNicStaticIPAddress;
-                        vMNicInputDetails.SelectionType = nDetails.SelectionType;
-                        vMNicInputDetailsList.Add(vMNicInputDetails);
-                    }
-                }
-            }
-
-            var updateReplicationProtectedItemInputProperties =
-                new UpdateReplicationProtectedItemInputProperties
-                {
-                    RecoveryAzureVMName = vmName,
-                    RecoveryAzureVMSize = vmSize,
-                    SelectedRecoveryAzureNetworkId = vmRecoveryNetworkId,
-                    VmNics = vMNicInputDetailsList,
-                    LicenseType =
-                        licenseType ==
-                        Management.RecoveryServices.SiteRecovery.Models.LicenseType.NoLicenseType
-                            .ToString()
-                            ? Management.RecoveryServices.SiteRecovery.Models.LicenseType
-                                .NoLicenseType
-                            : Management.RecoveryServices.SiteRecovery.Models.LicenseType
-                                .WindowsServer,
-                    ProviderSpecificDetails = providerSpecificInput
-                };
-
-            var input = new UpdateReplicationProtectedItemInput
-            {
-                Properties = updateReplicationProtectedItemInputProperties
-            };
-
-            var response = this.RecoveryServicesClient.UpdateVmProperties(
-                Utilities.GetValueFromArmId(
-                    this.InputObject.ID,
-                    ARMResourceTypeConstants.ReplicationFabrics),
-                Utilities.GetValueFromArmId(
-                    this.InputObject.ID,
-                    ARMResourceTypeConstants.ReplicationProtectionContainers),
-                this.InputObject.Name,
-                input);
-
-            var jobResponse = this.RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
-                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            this.WriteObject(new ASRJob(jobResponse));
         }
     }
 }
