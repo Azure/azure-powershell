@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ByObjectId = "ByObjectId";
         private const string ByServicePrincipalName = "ByServicePrincipalName";
         private const string ByUserPrincipalName = "ByUserPrincipalName";
+        private const string ByEmail = "ByEmail";
         private const string ForVault = "ForVault";
 
         #endregion
@@ -88,6 +89,16 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.")]
         [ValidateNotNullOrEmpty()]
         public string ObjectId { get; set; }
+
+        /// <summary>
+        /// Email address
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByEmail,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the email address of the user in Azure Active Directory for which to grant permissions.")]
+        [ValidateNotNullOrEmpty()]
+        public string EmailAddress { get; set; }
 
         /// <summary>
         /// Id of the application to which a user delegate to
@@ -160,11 +171,14 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 // Update vault policies
                 var updatedPolicies = existingVault.AccessPolicies;
-                if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || !string.IsNullOrWhiteSpace(this.ObjectId))
+                if (!string.IsNullOrEmpty(UserPrincipalName)
+                    || !string.IsNullOrEmpty(ServicePrincipalName)
+                    || !string.IsNullOrWhiteSpace(this.ObjectId)
+                    || !string.IsNullOrWhiteSpace(this.EmailAddress))
                 {
                     if (string.IsNullOrWhiteSpace(this.ObjectId))
                     {
-                        ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                        ObjectId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.EmailAddress, this.ServicePrincipalName);
                     }
                     updatedPolicies = existingVault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, ObjectId, this.ApplicationId)).ToArray();
                 }
