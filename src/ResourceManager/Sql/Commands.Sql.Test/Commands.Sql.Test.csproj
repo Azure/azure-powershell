@@ -811,6 +811,15 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ImportExportTests\TestImportDatabase.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeAndCancel.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeNegative.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeWithUpgradeHint.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
