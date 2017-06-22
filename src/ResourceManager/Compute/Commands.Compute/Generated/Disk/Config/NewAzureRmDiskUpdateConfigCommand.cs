@@ -60,6 +60,46 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  CreateOption cannot be changed during updating a disk." +
+            "To set CreateOption of a disk, use New-AzureRmDiskConfig command.",
+            false)]
+        public DiskCreateOption? CreateOption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  StorageAccountId cannot be changed during updating a disk." +
+            "To set StorageAccountId of a disk, use New-AzureRmDiskConfig command.",
+            false)]
+        public string StorageAccountId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  ImageReference cannot be changed during updating a disk." +
+            "To set ImageReference of a disk, use New-AzureRmDiskConfig command.",
+            false)]
+        public ImageDiskReference ImageReference { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  SourceUri cannot be changed during updating a disk." +
+            "To set SourceUri of a disk, use New-AzureRmDiskConfig command.",
+            false)]
+        public string SourceUri { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [Obsolete("This parameter is obsolete.  SourceResourceId cannot be changed during updating a disk." +
+            "To set SourceResourceId of a disk, use New-AzureRmDiskConfig command.",
+            false)]
+        public string SourceResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public bool? EncryptionSettingsEnabled { get; set; }
 
         [Parameter(
