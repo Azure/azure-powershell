@@ -538,8 +538,8 @@ function Get-DNSNameBasedOnEnvironment ()
      $connectingString = [System.Environment]::GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")
      $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectingString)
      $environment = $parsedString[[Microsoft.Azure.Test.TestEnvironment]::EnvironmentKey]
-     if ($environment -eq "Prod"){
-         return ".database.windows.net"
+     if ($environment -eq "Dogfood"){
+         return ".sqltest-eg1.mscds.com"
      }
-     return ".sqltest-eg1.mscds.com"
+     return ".database.windows.net"
 }
