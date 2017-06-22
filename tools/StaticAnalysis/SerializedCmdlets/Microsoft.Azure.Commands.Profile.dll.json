@@ -61,11 +61,12 @@
               "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
               "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ActiveDirectoryAuthority": "System.String",
+              "StorageEndpointSuffix": "System.String",
               "SqlDatabaseDnsSuffix": "System.String",
               "ResourceManagerUrl": "System.String",
               "PublishSettingsFileUrl": "System.String",
@@ -74,7 +75,7 @@
               "GalleryUrl": "System.String",
               "AdTenant": "System.String",
               "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "StorageEndpointSuffix": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
               "Name": "System.String"
             },
             "ElementType": null,
@@ -157,11 +158,12 @@
               "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
               "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ActiveDirectoryAuthority": "System.String",
+              "StorageEndpointSuffix": "System.String",
               "SqlDatabaseDnsSuffix": "System.String",
               "ResourceManagerUrl": "System.String",
               "PublishSettingsFileUrl": "System.String",
@@ -170,7 +172,7 @@
               "GalleryUrl": "System.String",
               "AdTenant": "System.String",
               "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "StorageEndpointSuffix": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
               "Name": "System.String"
             },
             "ElementType": null,
@@ -253,11 +255,12 @@
               "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
               "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ActiveDirectoryAuthority": "System.String",
+              "StorageEndpointSuffix": "System.String",
               "SqlDatabaseDnsSuffix": "System.String",
               "ResourceManagerUrl": "System.String",
               "PublishSettingsFileUrl": "System.String",
@@ -266,7 +269,7 @@
               "GalleryUrl": "System.String",
               "AdTenant": "System.String",
               "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "StorageEndpointSuffix": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
               "Name": "System.String"
             },
             "ElementType": null,
@@ -591,6 +594,25 @@
           "AliasList": [
             "GraphEndpointResourceId",
             "GraphResourceId"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DataLakeAudience",
+          "AliasList": [
+            "DataLakeEndpointResourceId",
+            "DataLakeResourceId"
           ],
           "Type": {
             "Namespace": "System",
@@ -1048,6 +1070,31 @@
               },
               "Mandatory": false,
               "Position": 18,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DataLakeAudience",
+                "AliasList": [
+                  "DataLakeEndpointResourceId",
+                  "DataLakeResourceId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 19,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             }
@@ -1079,11 +1126,12 @@
               "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
               "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ActiveDirectoryAuthority": "System.String",
+              "StorageEndpointSuffix": "System.String",
               "SqlDatabaseDnsSuffix": "System.String",
               "ResourceManagerUrl": "System.String",
               "PublishSettingsFileUrl": "System.String",
@@ -1092,7 +1140,7 @@
               "GalleryUrl": "System.String",
               "AdTenant": "System.String",
               "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "StorageEndpointSuffix": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
               "Name": "System.String"
             },
             "ElementType": null,
@@ -1417,6 +1465,25 @@
           "AliasList": [
             "GraphEndpointResourceId",
             "GraphResourceId"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DataLakeAudience",
+          "AliasList": [
+            "DataLakeEndpointResourceId",
+            "DataLakeResourceId"
           ],
           "Type": {
             "Namespace": "System",
@@ -1874,6 +1941,31 @@
               },
               "Mandatory": false,
               "Position": 18,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DataLakeAudience",
+                "AliasList": [
+                  "DataLakeEndpointResourceId",
+                  "DataLakeResourceId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 19,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             }
@@ -4312,6 +4404,7 @@
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
         "AzureKeyVaultDnsSuffix": "System.String",
@@ -4396,11 +4489,12 @@
         "AzureKeyVaultServiceEndpointResourceId": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+        "DataLakeEndpointResourceId": "System.String",
         "AzureKeyVaultDnsSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String",
         "GraphEndpointResourceId": "System.String",
         "GraphUrl": "System.String",
-        "ActiveDirectoryAuthority": "System.String",
+        "StorageEndpointSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
         "ResourceManagerUrl": "System.String",
         "PublishSettingsFileUrl": "System.String",
@@ -4409,7 +4503,7 @@
         "GalleryUrl": "System.String",
         "AdTenant": "System.String",
         "ActiveDirectoryServiceEndpointResourceId": "System.String",
-        "StorageEndpointSuffix": "System.String",
+        "ActiveDirectoryAuthority": "System.String",
         "Name": "System.String"
       },
       "ElementType": null,
