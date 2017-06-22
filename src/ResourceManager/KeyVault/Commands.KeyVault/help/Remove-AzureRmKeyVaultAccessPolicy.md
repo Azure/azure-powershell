@@ -24,6 +24,12 @@ Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <
  -UserPrincipalName <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByUserEmailAddress
+```
+Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
+ -EmailAddress <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByObjectId
 ```
 Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>] -ObjectId <String>
@@ -222,6 +228,20 @@ Specifies the user principal name of the user whose access you want to remove.
 Type: String
 Parameter Sets: ByUserPrincipalName
 Aliases: UPN
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EmailAddress
+Specifies the user email address of the user whose access you want to remove.
+
+```yaml
+Type: String
+Parameter Sets: ByUserEmailAddress
 
 Required: True
 Position: Named

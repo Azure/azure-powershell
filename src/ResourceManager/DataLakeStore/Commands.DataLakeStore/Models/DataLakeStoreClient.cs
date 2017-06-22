@@ -112,7 +112,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.NewTier = tier;
             }
 
-            return  _client.Account.Create(resourceGroupName, accountName, parameters);
+            var toReturn = _client.Account.Create(resourceGroupName, accountName, parameters);
+
+            // enable the key vault for the user so they don't have to run an additional command.
+            if (encryptionType.HasValue && encryptionType.Value == EncryptionConfigType.UserManaged)
+            {
+                this.EnableKeyVault(resourceGroupName, accountName);
+            }
+
+            return toReturn;
         }
 
         public DataLakeStoreAccount UpdateAccount(
@@ -123,7 +131,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             FirewallState firewallState,
             FirewallAllowAzureIpsState azureIpState,
             Hashtable customTags = null,
-            TierType? tier = null)
+            TierType? tier = null,
+            UpdateEncryptionConfig userConfig = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -138,7 +147,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 Tags = tags ?? new Dictionary<string, string>(),
                 TrustedIdProviderState = providerState,
                 FirewallState = firewallState,
-                FirewallAllowAzureIps = azureIpState
+                FirewallAllowAzureIps = azureIpState,
+                EncryptionConfig = userConfig
             };
 
             if (tier.HasValue)
@@ -146,7 +156,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.NewTier = tier;
             }
 
-            return _client.Account.Update(resourceGroupName, accountName, parameters);
+            var toReturn = _client.Account.Update(resourceGroupName, accountName, parameters);
+
+            // auto enable the key vault for the user if they updated it.
+            if (userConfig != null)
+            {
+                this.EnableKeyVault(resourceGroupName, accountName);
+            }
+
+            return toReturn;
         }
 
         public void DeleteAccount(string resourceGroupName, string accountName)
