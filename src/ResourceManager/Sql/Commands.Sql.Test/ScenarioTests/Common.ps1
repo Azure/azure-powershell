@@ -368,6 +368,18 @@ function Create-ServerForTest ($resourceGroup, $location = "westcentralus")
 
 <#
 	.SYNOPSIS
+	Gets the server credential
+#>
+function Get-ServerCredential
+{
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	return $credentials
+}
+
+<#
+	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
 function Create-ServerForTest ($resourceGroup, $location = "Japan East")
