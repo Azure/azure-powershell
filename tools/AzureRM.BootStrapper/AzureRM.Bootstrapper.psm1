@@ -390,7 +390,6 @@ function Invoke-UninstallModule
 function Remove-PreviousVersion
 {
   [CmdletBinding()]
-  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseShouldProcessForStateChangingFunctions", "")]
   param([PSObject]$LatestMap, [hashtable]$AllProfilesInstalled, [String]$Profile, [Array]$Module, [Switch]$RemovePreviousVersions)
 
@@ -641,6 +640,7 @@ function Select-Profile
 # Get the latest version of a module in a profile
 function Get-LatestModuleVersion
 {
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   param ([array]$versions)
 
   $versionEnum = $versions.GetEnumerator()
@@ -717,6 +717,7 @@ function Get-ModVersion
 function Remove-ProfileSetting
 {
   [CmdletBinding(SupportsShouldProcess=$true)]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   param ([string] $profilePath)
 
   $RemoveSettingScriptBlock = {
@@ -964,7 +965,6 @@ function Get-AzureRmProfile
 function Use-AzureRmProfile
 {
   [CmdletBinding(SupportsShouldProcess=$true)] 
-  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
   param()
   DynamicParam
@@ -1056,7 +1056,6 @@ function Use-AzureRmProfile
 function Install-AzureRmProfile
 {
   [CmdletBinding()]
-  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "")]
   param()
   DynamicParam
   {
@@ -1192,6 +1191,7 @@ function Set-BootstrapRepo
 function Set-AzureRmDefaultProfile
 {
   [CmdletBinding(SupportsShouldProcess = $true)]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
   param()
   DynamicParam
   {
@@ -1250,6 +1250,7 @@ function Set-AzureRmDefaultProfile
 function Remove-AzureRmDefaultProfile
 {
   [CmdletBinding(SupportsShouldProcess = $true)]
+  [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidShouldContinueWithoutForce", "")]
   param()
   DynamicParam
   {
