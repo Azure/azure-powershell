@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Set, "AzureRmVmssVM", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class SetAzureRmVmssVM : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

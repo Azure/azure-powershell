@@ -115,6 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Disk))]
     public partial class UpdateAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -127,12 +128,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
                     DiskUpdate disk = this.DiskUpdate;
-                Disk diskOrg = this.Disk;
+                    Disk diskOrg = this.Disk;
 
-                var result = (disk == null)
-                             ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, diskOrg)
-                             : DisksClient.Update(resourceGroupName, diskName, disk);
-                WriteObject(result);
+                    var result = (disk == null)
+                                 ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, diskOrg)
+                                 : DisksClient.Update(resourceGroupName, diskName, disk);
+                    WriteObject(result);
                 }
             });
         }

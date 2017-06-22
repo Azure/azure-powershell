@@ -115,6 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Snapshot))]
     public partial class UpdateAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -127,12 +128,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
                     SnapshotUpdate snapshot = this.SnapshotUpdate;
-                Snapshot snapshotOrg = this.Snapshot;
+                    Snapshot snapshotOrg = this.Snapshot;
 
-                var result = (snapshot == null)
-                             ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotOrg)
-                             : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshot);
-                WriteObject(result);
+                    var result = (snapshot == null)
+                                 ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotOrg)
+                                 : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshot);
+                    WriteObject(result);
                 }
             });
         }

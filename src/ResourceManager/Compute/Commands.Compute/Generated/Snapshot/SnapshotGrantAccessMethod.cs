@@ -128,6 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsSecurity.Grant, "AzureRmSnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(AccessUri))]
     public partial class GrantAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

@@ -109,6 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureRmVmssSku", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(VirtualMachineScaleSetSku))]
     public partial class GetAzureRmVmssSku : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -118,19 +119,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroupName = this.ResourceGroupName;
                 string vmScaleSetName = this.VMScaleSetName;
 
-            var result = VirtualMachineScaleSetsClient.ListSkus(resourceGroupName, vmScaleSetName);
-            var resultList = result.ToList();
-            var nextPageLink = result.NextPageLink;
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var pageResult = VirtualMachineScaleSetsClient.ListSkusNext(nextPageLink);
-                foreach (var pageItem in pageResult)
+                var result = VirtualMachineScaleSetsClient.ListSkus(resourceGroupName, vmScaleSetName);
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
                 {
-                    resultList.Add(pageItem);
+                    var pageResult = VirtualMachineScaleSetsClient.ListSkusNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
                 }
-                nextPageLink = pageResult.NextPageLink;
-            }
-            WriteObject(resultList, true);
+                WriteObject(resultList, true);
             });
         }
 

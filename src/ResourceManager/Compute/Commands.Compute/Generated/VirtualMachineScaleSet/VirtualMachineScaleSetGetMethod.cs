@@ -147,6 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

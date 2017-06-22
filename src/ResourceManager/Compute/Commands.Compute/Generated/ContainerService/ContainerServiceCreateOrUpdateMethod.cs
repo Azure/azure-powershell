@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(ContainerService))]
     public partial class NewAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -159,6 +160,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(ContainerService))]
     public partial class UpdateAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

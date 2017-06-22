@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Snapshot))]
     public partial class NewAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

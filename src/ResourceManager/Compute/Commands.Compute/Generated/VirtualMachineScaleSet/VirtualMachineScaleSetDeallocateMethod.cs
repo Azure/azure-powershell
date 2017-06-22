@@ -117,6 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class StopAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

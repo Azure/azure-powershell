@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Disk))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

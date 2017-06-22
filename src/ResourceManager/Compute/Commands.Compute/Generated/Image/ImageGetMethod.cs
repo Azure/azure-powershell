@@ -161,6 +161,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureRmImage", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSImage))]
     public partial class GetAzureRmImage : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
