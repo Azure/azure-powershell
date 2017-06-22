@@ -20,7 +20,7 @@ function Test-CreateSyncAgent
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
@@ -48,7 +48,7 @@ function Test-GetAndListSyncAgents
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
@@ -83,7 +83,7 @@ function Test-RemoveSyncAgent
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $saName = Get-SyncAgentName
@@ -113,7 +113,7 @@ function Test-CreateSyncAgentKey
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $saName = Get-SyncAgentName
@@ -143,7 +143,7 @@ function Test-ListSyncAgentLinkedDatabase
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
     $saName = Get-SyncAgentName
@@ -171,7 +171,7 @@ function Test-CreateSyncGroup
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -204,7 +204,7 @@ function Test-UpdateSyncGroup
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -239,7 +239,7 @@ function Test-GetAndListSyncGroups
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -281,7 +281,7 @@ function Test-RefreshAndGetSyncGroupHubSchema
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -319,7 +319,7 @@ function Test-RemoveSyncGroup
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $credential = Get-ServerCredential
     $databaseName = Get-DatabaseName
     $db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
@@ -356,7 +356,7 @@ function Test-CreateSyncMember
 {
     # Setup
     $rg = Create-ResourceGroupForTest 
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
@@ -405,7 +405,7 @@ function Test-GetAndListSyncMembers
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
@@ -463,7 +463,7 @@ function Test-UpdateSyncMember
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
@@ -514,7 +514,7 @@ function Test-RefreshAndGetSyncMemberSchema
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
@@ -563,7 +563,7 @@ function Test-RemoveSyncMember
 {
     # Setup
     $rg = Create-ResourceGroupForTest
-    $server = Create-ServerForTest $rg "12.0" "West US 2"
+    $server = Create-ServerForTest $rg "West US 2"
     $serverDNS = Get-DNSNameBasedOnEnvironment
     $serverName = $server.ServerName + $serverDNS
     $credential = Get-ServerCredential
