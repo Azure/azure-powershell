@@ -693,6 +693,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
       ""AzureKeyVaultDnsSuffix"": null,
       ""AzureKeyVaultServiceEndpointResourceId"": null,
       ""GraphEndpointResourceId"": null,
+      ""DataLakeEndpointResourceId"": null,
       ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
       ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
       ""AdTenant"": null,
@@ -743,6 +744,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         ""AzureKeyVaultDnsSuffix"": null,
         ""AzureKeyVaultServiceEndpointResourceId"": null,
         ""GraphEndpointResourceId"": null,
+        ""DataLakeEndpointResourceId"": null,
         ""AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix"": null,
         ""AzureDataLakeStoreFileSystemEndpointSuffix"": null,
         ""AdTenant"": null,
@@ -751,7 +753,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
       },
       ""VersionProfile"": null,
       ""TokenCache"": {
-        ""CacheData"": ""AQIDBAUGCAkA""
+        ""CacheData"": ""AgAAAAAAAAA=""
       },
       ""ExtendedProperties"": {}
     }

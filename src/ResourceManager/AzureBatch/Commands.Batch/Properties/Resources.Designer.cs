@@ -466,6 +466,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Getting job preparation and release status for job &quot;{0}&quot;.
+        /// </summary>
+        internal static string GetJobPreparationAndReleaseStatus {
+            get {
+                return ResourceManager.GetString("GetJobPreparationAndReleaseStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Getting job schedule &quot;{0}&quot;.
         /// </summary>
         internal static string GetJobScheduleById {
