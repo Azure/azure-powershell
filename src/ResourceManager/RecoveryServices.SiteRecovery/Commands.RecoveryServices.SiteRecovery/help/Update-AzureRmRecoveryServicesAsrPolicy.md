@@ -13,7 +13,7 @@ Updates an Azure Site Recovery replication policy.
 
 ```
 Update-AzureRmRecoveryServicesAsrPolicy -InputObject <ASRPolicy> [-ReplicationMethod <String>]
- [-ReplicationFrequencyInSeconds <String>] [-RecoveryPoints <Int32>]
+ [-ReplicationFrequencyInSeconds <String>] [-NumberOfRecoveryPointsToRetain <Int32>]
  [-ApplicationConsistentSnapshotFrequencyInHours <Int32>] [-Compression <String>] [-ReplicationPort <UInt16>]
  [-Authentication <String>] [-ReplicationStartTime <TimeSpan>] [-ReplicaDeletion <String>]
  [-RecoveryAzureStorageAccountId <String>] [-Encryption <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -115,13 +115,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -RecoveryAzureStorageAccountId
-Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
+### -NumberOfRecoveryPointsToRetain
+Specifies the number recovery points to retain.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: RecoveryPoints
 
 Required: False
 Position: Named
@@ -130,11 +130,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryPoints
-Specifies the number of hours to retain recovery points for.
+### -RecoveryAzureStorageAccountId
+Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

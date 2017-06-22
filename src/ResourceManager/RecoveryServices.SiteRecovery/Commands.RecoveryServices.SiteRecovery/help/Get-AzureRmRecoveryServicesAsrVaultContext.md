@@ -12,7 +12,7 @@ Gets ASR vault settings information for the Recovery Services vault.
 ## SYNTAX
 
 ```
-Get-AzureRmRecoveryServicesAsrVaultContext
+Get-AzureRmRecoveryServicesAsrVaultContext [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,11 +36,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings
-
 
 ## NOTES
 

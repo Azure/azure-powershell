@@ -12,7 +12,7 @@ Sets the Recovery Services vault context to be used for subsequent Azure Site Re
 ## SYNTAX
 
 ```
-Set-AzureRmRecoveryServicesAsrVaultContext -Vault <ARSVault> [-WhatIf] [-Confirm]
+Set-AzureRmRecoveryServicesAsrVaultContext -Vault <ARSVault> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,11 +82,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.RecoveryServices.ARSVault
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVaultSettings
-
 
 ## NOTES
 
