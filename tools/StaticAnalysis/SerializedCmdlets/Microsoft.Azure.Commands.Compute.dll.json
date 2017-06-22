@@ -21786,12 +21786,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference, Commands.Common.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
-              "Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference"
+              "Microsoft.Azure.Commands.Network.Models.PSNetworkInterface"
             ]
           },
           "ValidateSet": [],
@@ -21970,12 +21970,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference, Commands.Common.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
-                    "Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference"
+                    "Microsoft.Azure.Commands.Network.Models.PSNetworkInterface"
                   ]
                 },
                 "ValidateSet": [],
@@ -44207,12 +44207,472 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference": {
-      "Namespace": "Microsoft.Azure.Management.Internal.Network.Common",
-      "Name": "Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference, Commands.Common.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.Commands.Network.Models.PSNetworkInterface": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterface",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterface, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Primary": "System.Nullable`1[System.Boolean]"
+        "DnsSettings": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceDnsSettings",
+        "NetworkSecurityGroup": "Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup",
+        "VirtualMachine": "Microsoft.Azure.Commands.Network.Models.PSResourceId",
+        "IpConfigurations": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]",
+        "Tag": "System.Collections.Hashtable",
+        "Primary": "System.Nullable`1[System.Boolean]",
+        "EnableAcceleratedNetworking": "System.Nullable`1[System.Boolean]",
+        "EnableIPForwarding": "System.Nullable`1[System.Boolean]",
+        "Name": "System.String",
+        "TagsTable": "System.String",
+        "Type": "System.String",
+        "ResourceGuid": "System.String",
+        "Location": "System.String",
+        "IpConfigurationsText": "System.String",
+        "NetworkSecurityGroupText": "System.String",
+        "DnsSettingsText": "System.String",
+        "Etag": "System.String",
+        "VirtualMachineText": "System.String",
+        "ProvisioningState": "System.String",
+        "MacAddress": "System.String",
+        "ResourceGroupName": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceDnsSettings": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceDnsSettings",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceDnsSettings, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "DnsServers": "System.Collections.Generic.List`1[System.String]",
+        "AppliedDnsServers": "System.Collections.Generic.List`1[System.String]",
+        "InternalDnsNameLabel": "System.String",
+        "InternalFqdn": "System.String",
+        "InternalDomainNameSuffix": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "NetworkInterfaces": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]",
+        "SecurityRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]",
+        "DefaultSecurityRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]",
+        "Subnets": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]",
+        "Tag": "System.Collections.Hashtable",
+        "Name": "System.String",
+        "TagsTable": "System.String",
+        "Type": "System.String",
+        "ResourceGuid": "System.String",
+        "Location": "System.String",
+        "SubnetsText": "System.String",
+        "Etag": "System.String",
+        "NetworkInterfacesText": "System.String",
+        "DefaultSecurityRulesText": "System.String",
+        "SecurityRulesText": "System.String",
+        "ProvisioningState": "System.String",
+        "ResourceGroupName": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSNetworkInterface"
+      ]
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSSecurityRule, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSSecurityRule"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSSecurityRule": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSSecurityRule",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSSecurityRule, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Priority": "System.Int32",
+        "Description": "System.String",
+        "Protocol": "System.String",
+        "SourcePortRange": "System.String",
+        "DestinationPortRange": "System.String",
+        "SourceAddressPrefix": "System.String",
+        "DestinationAddressPrefix": "System.String",
+        "Access": "System.String",
+        "Direction": "System.String",
+        "ProvisioningState": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSSubnet, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSSubnet"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSSubnet": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSSubnet",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSSubnet, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "NetworkSecurityGroup": "Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup",
+        "RouteTable": "Microsoft.Azure.Commands.Network.Models.PSRouteTable",
+        "IpConfigurations": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIPConfiguration]",
+        "ResourceNavigationLinks": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink]",
+        "AddressPrefix": "System.String",
+        "ProvisioningState": "System.String",
+        "IpConfigurationsText": "System.String",
+        "ResourceNavigationLinksText": "System.String",
+        "NetworkSecurityGroupText": "System.String",
+        "RouteTableText": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSRouteTable": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSRouteTable",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSRouteTable, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Routes": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]",
+        "Subnets": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]",
+        "Tag": "System.Collections.Hashtable",
+        "ProvisioningState": "System.String",
+        "RoutesText": "System.String",
+        "SubnetsText": "System.String",
+        "ResourceGroupName": "System.String",
+        "Location": "System.String",
+        "ResourceGuid": "System.String",
+        "Type": "System.String",
+        "TagsTable": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSRoute, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSRoute"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSRoute": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSRoute",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSRoute, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "AddressPrefix": "System.String",
+        "NextHopType": "System.String",
+        "NextHopIpAddress": "System.String",
+        "ProvisioningState": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Hashtable": {
+      "Namespace": "System.Collections",
+      "Name": "System.Collections.Hashtable",
+      "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIPConfiguration]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIPConfiguration]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIPConfiguration, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSIPConfiguration"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSIPConfiguration": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSIPConfiguration",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSIPConfiguration, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "PublicIpAddress": "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress",
+        "Subnet": "Microsoft.Azure.Commands.Network.Models.PSSubnet",
+        "PrivateIpAddress": "System.String",
+        "PrivateIpAllocationMethod": "System.String",
+        "ProvisioningState": "System.String",
+        "SubnetText": "System.String",
+        "PublicIpAddressText": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "IpConfiguration": "Microsoft.Azure.Commands.Network.Models.PSIPConfiguration",
+        "DnsSettings": "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings",
+        "Tag": "System.Collections.Hashtable",
+        "IdleTimeoutInMinutes": "System.Nullable`1[System.Int32]",
+        "PublicIpAllocationMethod": "System.String",
+        "Name": "System.String",
+        "TagsTable": "System.String",
+        "Type": "System.String",
+        "ResourceGuid": "System.String",
+        "Location": "System.String",
+        "DnsSettingsText": "System.String",
+        "Etag": "System.String",
+        "IpConfigurationText": "System.String",
+        "ProvisioningState": "System.String",
+        "PublicIpAddressVersion": "System.String",
+        "IpAddress": "System.String",
+        "ResourceGroupName": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "DomainNameLabel": "System.String",
+        "Fqdn": "System.String",
+        "ReverseFqdn": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "LinkedResourceType": "System.String",
+        "Link": "System.String",
+        "ProvisioningState": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSResourceId": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSResourceId",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSResourceId, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "PublicIpAddress": "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress",
+        "Subnet": "Microsoft.Azure.Commands.Network.Models.PSSubnet",
+        "Primary": "System.Boolean",
+        "ApplicationGatewayBackendAddressPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]",
+        "LoadBalancerBackendAddressPools": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]",
+        "LoadBalancerInboundNatRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]",
+        "PrivateIpAddressVersion": "System.String",
+        "Name": "System.String",
+        "PublicIpAddressText": "System.String",
+        "SubnetText": "System.String",
+        "ProvisioningState": "System.String",
+        "PrivateIpAddress": "System.String",
+        "Etag": "System.String",
+        "ApplicationGatewayBackendAddressPoolsText": "System.String",
+        "LoadBalancerInboundNatRulesText": "System.String",
+        "LoadBalancerBackendAddressPoolsText": "System.String",
+        "PrivateIpAllocationMethod": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "BackendAddresses": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress]",
+        "BackendIpConfigurations": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]",
+        "ProvisioningState": "System.String",
+        "BackendAddressesText": "System.String",
+        "BackendIpConfigurationsText": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddress, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Fqdn": "System.String",
+        "IpAddress": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "BackendIpConfigurations": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]",
+        "LoadBalancingRules": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSResourceId]",
+        "ProvisioningState": "System.String",
+        "BackendIpConfigurationsText": "System.String",
+        "LoadBalancingRulesText": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSResourceId]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSResourceId]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSResourceId, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSResourceId"
+      ]
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Network.Models.PSInboundNatRule"
+      ]
+    },
+    "Microsoft.Azure.Commands.Network.Models.PSInboundNatRule": {
+      "Namespace": "Microsoft.Azure.Commands.Network.Models",
+      "Name": "Microsoft.Azure.Commands.Network.Models.PSInboundNatRule",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Network.Models.PSInboundNatRule, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "BackendIPConfiguration": "Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration",
+        "FrontendIPConfiguration": "Microsoft.Azure.Commands.Network.Models.PSResourceId",
+        "FrontendPort": "System.Int32",
+        "BackendPort": "System.Int32",
+        "EnableFloatingIP": "System.Nullable`1[System.Boolean]",
+        "IdleTimeoutInMinutes": "System.Nullable`1[System.Int32]",
+        "BackendIPConfigurationText": "System.String",
+        "Protocol": "System.String",
+        "ProvisioningState": "System.String",
+        "FrontendIPConfigurationText": "System.String",
+        "Name": "System.String",
+        "Etag": "System.String",
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -44507,14 +44967,6 @@
         "DiskSizeGB": "System.Nullable`1[System.Int32]",
         "BlobUri": "System.String"
       },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Hashtable": {
-      "Namespace": "System.Collections",
-      "Name": "System.Collections.Hashtable",
-      "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     }

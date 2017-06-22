@@ -5803,7 +5803,7 @@
       "ClassName": "Microsoft.Azure.Commands.ActiveDirectory.GetAzureADApplicationCommand",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
-      "SupportsPaging": true,
+      "SupportsPaging": false,
       "DefaultParameterSetName": "EmptyParameterSet",
       "OutputTypes": [
         {

@@ -1,7 +1,7 @@
 ﻿namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdletAlias
 {
     using System.Management.Automation;
-
+    
     [Cmdlet(VerbsDiagnostic.Test, "RemoveCmdletAlias")]
     public class TestRemoveCmdletAlias : Cmdlet
     {
@@ -66,9 +66,6 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveParameter
     [Cmdlet(VerbsDiagnostic.Test, "RemoveParameter")]
     public class TestRemoveParameter : Cmdlet
     {
-        [Parameter(Mandatory = false)]
-        public SwitchParameter OtherSwitch { get; set; }
-
         protected override void BeginProcessing()
         {
             WriteObject("Test-RemoveParameter BeginProcessing()");
