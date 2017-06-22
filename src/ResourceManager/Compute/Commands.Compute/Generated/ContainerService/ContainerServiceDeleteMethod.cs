@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(void))]
     public partial class RemoveAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
 
-            ContainerServicesClient.Delete(resourceGroupName, containerServiceName);
+                    ContainerServicesClient.Delete(resourceGroupName, containerServiceName);
 
                 }
             });

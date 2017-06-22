@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsSecurity.Revoke, "AzureRmSnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class RevokeAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

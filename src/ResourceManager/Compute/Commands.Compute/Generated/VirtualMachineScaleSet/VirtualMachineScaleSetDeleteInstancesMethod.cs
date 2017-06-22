@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class RemoveAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

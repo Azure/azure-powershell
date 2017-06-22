@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureRmComputeResourceSku", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(ResourceSku))]
     public partial class GetAzureRmComputeResourceSku : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -85,19 +86,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ExecuteClientAction(() =>
             {
 
-            var result = ResourceSkusClient.List();
-            var resultList = result.ToList();
-            var nextPageLink = result.NextPageLink;
-            while (!string.IsNullOrEmpty(nextPageLink))
-            {
-                var pageResult = ResourceSkusClient.ListNext(nextPageLink);
-                foreach (var pageItem in pageResult)
+                var result = ResourceSkusClient.List();
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
                 {
-                    resultList.Add(pageItem);
+                    var pageResult = ResourceSkusClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
                 }
-                nextPageLink = pageResult.NextPageLink;
-            }
-            WriteObject(resultList, true);
+                WriteObject(resultList, true);
             });
         }
 

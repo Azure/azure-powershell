@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class RemoveAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

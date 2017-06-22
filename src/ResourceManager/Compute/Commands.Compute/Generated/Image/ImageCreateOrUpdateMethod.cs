@@ -112,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Image))]
     public partial class NewAzureRmImage : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -160,6 +161,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Image))]
     public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

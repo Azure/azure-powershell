@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class RevokeAzureRmDiskAccess : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

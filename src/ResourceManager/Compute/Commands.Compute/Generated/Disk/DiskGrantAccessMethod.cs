@@ -128,6 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsSecurity.Grant, "AzureRmDiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(AccessUri))]
     public partial class GrantAzureRmDiskAccess : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

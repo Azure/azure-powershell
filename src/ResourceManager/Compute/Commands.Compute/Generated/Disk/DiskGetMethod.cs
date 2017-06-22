@@ -147,6 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSDisk))]
     public partial class GetAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

@@ -117,6 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsLifecycle.Restart, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class RestartAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

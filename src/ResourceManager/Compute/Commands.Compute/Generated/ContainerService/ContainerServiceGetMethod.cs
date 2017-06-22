@@ -147,6 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSContainerService))]
     public partial class GetAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()

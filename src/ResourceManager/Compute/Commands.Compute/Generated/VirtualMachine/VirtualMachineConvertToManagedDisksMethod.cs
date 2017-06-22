@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsData.ConvertTo, "AzureRmVMManagedDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(OperationStatusResponse))]
     public partial class ConvertToAzureRmVMManagedDisk : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
