@@ -22,7 +22,6 @@
     - GitHub issue can be found here: https://github.com/Azure/azure-powershell/issues/3928
 * Get-AzureRmADApplication now supports paging, which enables the following parameters:
     - First - Gets only the first 'n' objects.
-    - IncludeTotalCount - Reports the number of objects in the data set (an integer) followed by the objects
     - Skip - Ignores the first 'n' objects and then gets the remaining objects.
 
 ## Version 4.1.0
