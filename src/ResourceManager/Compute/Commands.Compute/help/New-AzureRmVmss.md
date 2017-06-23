@@ -25,7 +25,7 @@ This cmdlet takes a **VirtualMachineScaleSet** object as input.
 
 ### Example 1: Create a VMSS
 ```
-PS C:\># Common
+# Common
 $LOC = "WestUs";
 $RGName = "rgkyvms";
 

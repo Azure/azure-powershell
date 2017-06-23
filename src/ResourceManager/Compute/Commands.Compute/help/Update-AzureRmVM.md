@@ -31,7 +31,7 @@ The **Update-AzureRmVM** cmdlet updates the state of an Azure virtual machine to
 
 ### Example 1: Update a virtual machine
 ```
-PS C:\>Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
+PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 This command updates the virtual machine, $VirtualMachine, in ResourceGroup11.

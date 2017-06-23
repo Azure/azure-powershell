@@ -30,7 +30,7 @@ The **Set-AzureRmVMBootDiagnostics** cmdlet modifies boot diagnostics properties
 
 ### Example 1: Enable boot diagnostics
 ```
-PS C:\>$VM = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
+PS C:\> $VM = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
 PS C:\> Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
 ```
 

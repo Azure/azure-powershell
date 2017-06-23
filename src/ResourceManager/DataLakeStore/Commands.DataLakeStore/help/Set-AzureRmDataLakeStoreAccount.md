@@ -16,7 +16,7 @@ Modifies a Data Lake Store account.
 Set-AzureRmDataLakeStoreAccount [-Name] <String> [[-DefaultGroup] <String>] [[-Tags] <Hashtable>]
  [[-TrustedIdProviderState] <TrustedIdProviderState>] [[-FirewallState] <FirewallState>]
  [[-ResourceGroupName] <String>] [-Tier <TierType>] [-AllowAzureIpState <FirewallAllowAzureIpsState>]
- [<CommonParameters>]
+ [-KeyVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +76,19 @@ Accepted values: Enabled, Disabled
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -KeyVersion
+If the encryption type is User assigned, the user can rotate their key version with this parameter.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

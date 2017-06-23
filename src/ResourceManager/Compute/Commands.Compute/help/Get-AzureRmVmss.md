@@ -33,7 +33,7 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get the properties of a VMSS
 ```
-PS C:\>Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+PS C:\> Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS named VMSS001 that belongs to the resource group named Group001.

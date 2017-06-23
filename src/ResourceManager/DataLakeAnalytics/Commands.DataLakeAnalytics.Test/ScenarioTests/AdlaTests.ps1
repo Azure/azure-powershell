@@ -1,5 +1,114 @@
 ﻿<#
 .SYNOPSIS
+Tests DataLakeAnalytics Account compute policy lifecycle (Create, Update, Get, List, Delete).
+#>
+function Test-DataLakeAnalyticsComputePolicy
+{
+    param
+	(
+		$resourceGroupName = (Get-ResourceGroupName),
+		$accountName = (Get-DataLakeAnalyticsAccountName),
+		$dataLakeAccountName = (Get-DataLakeStoreAccountName),
+		$location = "West US"
+	)
+	
+	try
+	{
+		# Creating Account
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+
+		New-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+
+		$accountCreated = New-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+    
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+			Assert-False {$i -eq 60} " Data Lake Analytics account is not in succeeded state even after 30 min."
+		}
+
+		# Test to make sure the account does exist
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+
+		# define compute policies
+		$userPolicyObjectId = "8ce05900-7a9e-4895-b3f0-0fbcee507803"
+		$userPolicyName = getAssetName
+		$groupPolicyObjectId = "0583cfd7-60f5-43f0-9597-68b85591fc69"
+		$groupPolicyName = getAssetName
+
+		# Test to confirm there are no compute policies.
+		Assert-AreEqual 0 $accountCreated.ComputePolicies.Count 		
+
+		# attempt to create an empty policy without specifying either max or min
+		Assert-Throws {New-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -ObjectId $userPolicyObjectId -ObjectType "User"}
+
+		# Add a compute policy with one policy for a user
+		New-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -ObjectId $userPolicyObjectId -ObjectType "User" -MaxDegreeOfParallelismPerJob 2
+
+		# Add a compute policy with two policy for a group
+		New-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $groupPolicyName -ObjectId $groupPolicyObjectId -ObjectType "Group" -MaxDegreeOfParallelismPerJob 2 -MinPriorityPerJob 2
+
+		# Get the list of policies
+		$policyResult = Get-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName
+
+		Assert-AreEqual 2 $policyResult.Count
+
+		# Get a specific policy (user policy)
+		$singlePolicy = Get-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $userPolicyName
+		Assert-AreEqual $userPolicyName $singlePolicy.Name
+		Assert-AreEqual 2 $singlePolicy.MaxDegreeOfParallelismPerJob
+
+		# attempt to update that policy with no policy pieces (should fail)
+		Assert-Throws {Update-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName}
+
+		# update the user policy to include a min priority
+		Update-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName  $accountName -Name $userPolicyName -MinPriorityPerJob 2
+
+		# get the policy and confirm the change
+		$singlePolicy = Get-AzureRMDataLakeAnalyticsComputePolicy -ResourceGroupName $resourceGroupName -AccountName $accountName -Name $userPolicyName
+		Assert-AreEqual $userPolicyName $singlePolicy.Name
+		Assert-AreEqual 2 $singlePolicy.MaxDegreeOfParallelismPerJob
+		Assert-AreEqual 2 $singlePolicy.MinPriorityPerJob
+
+		# remove the user policy
+		Remove-AzureRMDataLakeAnalyticsComputePolicy -AccountName $accountName -Name $userPolicyName
+
+		# Make sure get throws.
+		Assert-Throws {Get-AzureRMDataLakeAnalyticsComputePolicy -AccountName $accountName -Name $userPolicyName}
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests DataLakeAnalytics Account firewall rule lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-DataLakeAnalyticsFirewall
@@ -399,6 +508,115 @@ function Test-DataLakeAnalyticsJob
 	}
 }
 
+
+<#
+.SYNOPSIS
+Tests DataLakeAnalytics Job recurrence and pipeline commands (Submit, Get).
+#>
+function Test-DataLakeAnalyticsJobRelationships
+{
+    param
+	(
+		$resourceGroupName = (Get-ResourceGroupName),
+		$accountName = (Get-DataLakeAnalyticsAccountName),
+		$dataLakeAccountName = (Get-DataLakeStoreAccountName),
+		$location = "West US"
+	)
+	try
+	{
+		# Creating Account and initial setup
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
+		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
+		$nowTime = $accountCreated.CreationTime
+        
+		Assert-AreEqual $accountName $accountCreated.Name
+		Assert-AreEqual $location $accountCreated.Location
+		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
+		Assert-True {$accountCreated.Id -like "*$resourceGroupName*"}
+
+		# In loop to check if account exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+			[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+			if ($accountGet[0].ProvisioningState -like "Succeeded")
+			{
+				Assert-AreEqual $accountName $accountGet[0].Name
+				Assert-AreEqual $location $accountGet[0].Location
+				Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountGet[0].Type
+				Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
+				break
+			}
+
+			Write-Host "account not yet provisioned. current state: $($accountGet[0].ProvisioningState)"
+			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
+			Assert-False {$i -eq 60} "dataLakeAnalytics accounts not in succeeded state even after 30 min."
+		}
+
+		# submit a job
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("relationTest01")
+		
+		# define job relationship values
+		$guidForJobRecurrence = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("relationTest02")
+		$guidForJobPipeline = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("relationTest03")
+		$guidForJobRun = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("relationTest04")
+		$pipelineName = getAssetName
+		$recurrenceName = getAssetName
+		$pipelineUri = "https://begoldsm.contoso.com/jobs"
+
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
+		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob `
+			-AccountName $accountName `
+			-Name "TestJob" `
+			-Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;" `
+			-PipelineId $guidForJobPipeline `
+			-RecurrenceId $guidForJobRecurrence `
+			-RecurrenceName $recurrenceName `
+			-PipelineName $pipelineName `
+			-PipelineUri $pipelineUri `
+			-RunId $guidForJobRun
+
+		# wait for the job to finish and then confirm the relationship properties
+		$jobInfo = Wait-AzureRmDataLakeAnalyticsJob -Account $accountName -JobId $jobInfo.JobId
+		
+		Assert-NotNull {$jobInfo}
+		Assert-AreEqual $guidForJobRecurrence $jobInfo.Related.RecurrenceId
+		Assert-AreEqual $guidForJobPipeline $jobInfo.Related.PipelineId
+		Assert-AreEqual $guidForJobRun $jobInfo.Related.RunId
+		Assert-AreEqual $pipelineName $jobInfo.Related.PipelineName
+		Assert-AreEqual $recurrenceName $jobInfo.Related.RecurrenceName
+		Assert-AreEqual $pipelineUri $jobInfo.Related.PipelineUri
+
+		# list all jobs with a specific pipelineId and then a specific recurrenceId
+		$jobList = Get-AzureRmDataLakeAnalyticsJob -Account $accountName -PipelineId $guidForJobPipeline
+		Assert-True {$jobList.Count -ge 1}
+
+		$jobList = Get-AzureRmDataLakeAnalyticsJob -Account $accountName -RecurrenceId $guidForJobRecurrence
+		Assert-True {$jobList.Count -ge 1}
+
+		# get and list pipelines and recurrences
+		$recurrenceList = Get-AzureRmDataLakeAnalyticsJobRecurrence -Account $accountName
+		Assert-True {$recurrenceList.Count -ge 1}
+
+		$recurrence = Get-AzureRmDataLakeAnalyticsJobRecurrence -Account $accountName -RecurrenceId $guidForJobRecurrence
+		Assert-AreEqual $recurrenceName $recurrence.RecurrenceName
+		Assert-AreEqual $guidForJobRecurrence $recurrence.RecurrenceId
+
+		$pipelineList = Get-AzureRmDataLakeAnalyticsJobPipeline -Account $accountName
+		Assert-True {$pipelineList.Count -ge 1}
+
+		$pipeline = Get-AzureRmDataLakeAnalyticsJobPipeline -Account $accountName -PipelineId $guidForJobPipeline
+		Assert-AreEqual $pipelineName $pipeline.PipelineName
+		Assert-AreEqual $guidForJobPipeline $pipeline.PipelineId
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
 
 <#
 .SYNOPSIS
