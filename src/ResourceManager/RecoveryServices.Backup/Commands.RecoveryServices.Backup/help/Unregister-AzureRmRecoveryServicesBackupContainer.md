@@ -28,7 +28,7 @@ Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdle
 ### Example 1: Unregister a Windows Server from the vault
 ```
 PS C:\>$Cont = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType MARS -Name "server01.contoso.com"
-PS C:\> Unregister-AzureRmRecoveryServiceBackupContainer -Container $Cont
+PS C:\> Unregister-AzureRmRecoveryServicesBackupContainer -Container $Cont
 ```
 
 The first command gets the Windows container named server01.contoso.com that is registered in the vault, and then stores it in the $Cont variable.
