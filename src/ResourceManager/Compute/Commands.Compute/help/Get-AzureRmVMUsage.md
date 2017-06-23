@@ -23,7 +23,7 @@ The **Get-AzureRmVMUsage** cmdlet gets the virtual machine core count usage for 
 
 ### Example 1: Get core count usage for a location
 ```
-PS C:\>Get-AzureRmVMUsage -Location "Central US"
+PS C:\> Get-AzureRmVMUsage -Location "Central US"
 ```
 
 This command gets the virtual machine core count usage for the location Central US.
