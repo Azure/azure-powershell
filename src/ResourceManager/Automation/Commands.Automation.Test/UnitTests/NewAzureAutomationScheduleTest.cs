@@ -15,16 +15,18 @@
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System;
 using System.Linq;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
-    [TestClass]
     public class NewAzureAutomationScheduleTest : RMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
@@ -33,8 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         private NewAzureAutomationSchedule cmdlet;
 
-        [TestInitialize]
-        public void SetupTest()
+        public NewAzureAutomationScheduleTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             };
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureAutomationScheduleByOneTimeSuccessfull()
         {
             // Setup
@@ -68,7 +70,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureAutomationScheduleByDailySuccessfull()
         {
             // Setup
@@ -92,7 +95,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureAutomationScheduleByHourlySuccessfull()
         {
             // Setup
@@ -116,7 +120,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureAutomationScheduleByDailyWithDefaultExpiryTimeDayIntervalSuccessfull()
         {
             // Setup
@@ -166,7 +171,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 schedule.Frequency);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureAutomationScheduleByHourlyWithDefaultExpiryTimeDayIntervalSuccessfull()
         {
             // Setup
@@ -216,7 +222,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 schedule.Frequency);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureAutomationScheduleByDailyWithExpiryTimeSuccessfull()
         {
             // Setup
@@ -268,7 +275,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 schedule.Frequency);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureAutomationScheduleByHourlyWithExpiryTimeSuccessfull()
         {
             // Setup
@@ -321,7 +329,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
                 schedule.Frequency);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WeeklyWithTimeZoneSetsTheTimeZoneProperty()
         {
             // Setup
@@ -351,7 +360,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient
                 .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
 
-            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            Assert.AreEqual(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
             var schedule = (Schedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
                 .OutputPipeline
                 .FirstOrDefault();
@@ -361,7 +370,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             Assert.AreEqual(timeZone, schedule.TimeZone);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MonthlyDaysOfMonthWithTimeZoneSetsTheTimeZoneProperty()
         {
             // Setup
@@ -391,7 +401,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient
                 .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
 
-            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            Assert.AreEqual(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
             var schedule = (Schedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
                 .OutputPipeline
                 .FirstOrDefault();
@@ -401,7 +411,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             Assert.AreEqual(timeZone, schedule.TimeZone);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void MonthlyDayOfWeekWithTimeZoneSetsTheTimeZoneProperty()
         {
             // Setup
@@ -431,7 +442,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient
                 .Verify(f => f.CreateSchedule(resourceGroupName, accountName, It.IsAny<Schedule>()), Times.Once());
 
-            Assert.AreEqual<int>(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
+            Assert.AreEqual(1, ((MockCommandRuntime)this.cmdlet.CommandRuntime).OutputPipeline.Count);
             var schedule = (Schedule)((MockCommandRuntime)this.cmdlet.CommandRuntime)
                 .OutputPipeline
                 .FirstOrDefault();
