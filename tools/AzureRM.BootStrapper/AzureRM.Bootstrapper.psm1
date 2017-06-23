@@ -654,6 +654,11 @@ function Get-ModuleVersion
 {
   param ([string] $armProfile, [string] $invocationLine)
 
+  if (-not $invocationLine.ToLower().Contains("azure"))
+  {
+    return
+  }
+
   $ProfileMap = (Get-AzProfile)
   $Modules = ($ProfileMap.$armProfile | Get-Member -MemberType NoteProperty).Name
     
@@ -693,13 +698,23 @@ function Get-ScriptBlock
 function Get-ModVersion
 {
   param (`$armProfile, `$invocationLine)
-        
-  `$BoostrapModule = Get-Module -Name "AzureRM.Bootstrapper" -ListAvailable
-  if (`$null -ne `$BoostrapModule)
+  if (-not `$invocationLine.ToLower().Contains("azure"))
   {
-    Import-Module -Name "AzureRM.Bootstrapper" -RequiredVersion '0.1.0'
-    `$version = Get-ModuleVersion -armProfile `$armProfile -invocationLine `$invocationLine
-    return `$version
+    return
+  }
+  try 
+  {
+    `$BootstrapModule = Get-Module -Name "AzureRM.Bootstrapper" -ListAvailable
+    if (`$null -ne `$BootstrapModule)
+    {
+      Import-Module -Name "AzureRM.Bootstrapper" -RequiredVersion `$BootstrapModule.Version[0]
+      `$version = Get-ModuleVersion -armProfile `$armProfile -invocationLine `$invocationLine
+      return `$version
+    }
+  }
+  catch
+  {
+    return
   }
 } `r`n
 "@

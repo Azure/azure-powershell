@@ -812,9 +812,9 @@ Describe "Get-ModuleVersion" {
         Mock Get-AzProfile -Verifiable { $testProfileMap | ConvertFrom-Json }
         Mock Get-LatestModuleVersion -Verifiable { "2.0" }
         Context "Gets module version" {
-            $RollupModule = "Module1"
+            $RollupModule = "Azure.Module1"
             It "Should return script block" {
-                Get-ModuleVersion -armProfile "Profile1" -invocationLine "ipmo module1" | Should Be "2.0"
+                Get-ModuleVersion -armProfile "Profile1" -invocationLine "ipmo azure.module1" | Should Be "2.0"
                 Assert-VerifiableMocks
             }
         }
