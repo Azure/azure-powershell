@@ -24,14 +24,14 @@ You can specify the name of a specific availability set to get.
 
 ### Example 1: Get a specific availability set
 ```
-PS C:\>Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
+PS C:\> Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
 ```
 
 This command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11.
 
 ### Example 2: Get all availability sets
 ```
-PS C:\>Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11"
+PS C:\> Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets all the availability sets in the resource group named ResourceGroup11.
