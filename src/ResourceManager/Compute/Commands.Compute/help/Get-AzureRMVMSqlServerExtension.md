@@ -24,7 +24,7 @@ The **Get-AzureRmVMSqlServerExtension** cmdlet gets the settings of the SQL Serv
 
 ### Example 1: Get the settings of a SQL Server extension on a virtual machine
 ```
-PS C:\>Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+PS C:\> Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -38,7 +38,7 @@ This command gets the settings of the SQL Server extension on a virtual machine 
 
 ### Example 2: Get the settings by using the pipeline
 ```
-PS C:\>Get-AzureRmVM -ServiceName "Service08" -Name "ContosoVM22" | Get-AzureRmVMSqlServerExtension
+PS C:\> Get-AzureRmVM -ServiceName "Service08" -Name "ContosoVM22" | Get-AzureRmVMSqlServerExtension
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0
@@ -55,7 +55,7 @@ The current command gets the settings of the SQL Server IaaS Agent on that virtu
 
 ### Example 3: Get the settings of specific SQL Server version
 ```
-PS C:\>Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07" -Version "1.0"
+PS C:\> Get-AzureRmVMSqlServerExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07" -Version "1.0"
 ExtensionName        : SqlIaaSAgent
 Publisher            : Microsoft.SqlServer.Management
 Version              : 1.0

@@ -34,21 +34,21 @@ The **Get-AzureRmVMSize** cmdlet gets available virtual machine sizes.
 
 ### Example 1: Get virtual machine sizes for a location
 ```
-PS C:\>Get-AzureRmVMSize -Location "Central US"
+PS C:\> Get-AzureRmVMSize -Location "Central US"
 ```
 
 This command gets the available sizes for virtual machines in the specified location.
 
 ### Example 2: Get sizes for an availability set
 ```
-PS C:\>Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"
+PS C:\> Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -AvailabilitySetName "AvailabilitySet17"
 ```
 
 This command gets available sizes for virtual machines that you can deploy in the availability set named AvailabilitySet17.
 
 ### Example 3: Get sizes for an existing virtual machine
 ```
-PS C:\>Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"
+PS C:\> Get-AzureRmVMSize -ResourceGroupName "ResourceGroup03" -VMName "VirtualMachine12"
 ```
 
 This command gets available sizes for the existing virtual machine named VirtualMachine12.
