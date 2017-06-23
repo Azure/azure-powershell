@@ -709,10 +709,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public IEnumerable<PSADApplication> GetApplicationWithFilters(Rest.Azure.OData.ODataQuery<Application> odataQueryFilter, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             return new PageEnumerable<Application>(
-                delegate()
-                {
-                    return GraphClient.Applications.List(odataQueryFilter);
-                }, GraphClient.Applications.ListNext, first, skip).Select(a => a.ToPSADApplication());
+                () => GraphClient.Applications.List(odataQueryFilter),
+                GraphClient.Applications.ListNext, first, skip).Select(a => a.ToPSADApplication());
         }
 
         public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
