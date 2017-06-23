@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Type": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType",
               "CreationDate": "System.Nullable`1[System.DateTime]",
@@ -714,7 +714,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
             "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -784,7 +784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -984,7 +984,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
             "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1054,7 +1054,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1589,7 +1589,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -1769,7 +1769,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
             "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
             "GenericTypeArguments": []
@@ -1785,7 +1785,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
             "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
             "GenericTypeArguments": []
@@ -1885,7 +1885,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
                   "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
                   "GenericTypeArguments": []
@@ -1907,7 +1907,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
                   "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
                   "GenericTypeArguments": []
@@ -2524,7 +2524,9 @@
       "Parameters": [
         {
           "Name": "ServerName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -2562,7 +2564,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ServerName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -2621,7 +2625,9 @@
       "Parameters": [
         {
           "Name": "ServerName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -2725,7 +2731,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ServerName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -2874,7 +2882,9 @@
       "Parameters": [
         {
           "Name": "ServerName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -2928,7 +2938,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ServerName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -3009,7 +3021,9 @@
       "Parameters": [
         {
           "Name": "ServerName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -3113,7 +3127,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ServerName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -3263,7 +3279,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -3419,7 +3435,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -3613,7 +3629,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model.AzureSqlServerCommunicationLinkModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "ServerName": "System.String",
@@ -3807,7 +3823,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.DatabaseSecureConnectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionStrings": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings",
               "SecureConnectionState": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType",
@@ -4736,7 +4752,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Replication.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4924,7 +4940,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Replication.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -6208,7 +6224,9 @@
       "Parameters": [
         {
           "Name": "FirewallRuleName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -6262,7 +6280,9 @@
             {
               "ParameterMetadata": {
                 "Name": "FirewallRuleName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -6343,7 +6363,9 @@
       "Parameters": [
         {
           "Name": "FirewallRuleName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -6445,7 +6467,9 @@
             {
               "ParameterMetadata": {
                 "Name": "FirewallRuleName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -6690,7 +6714,9 @@
       "Parameters": [
         {
           "Name": "FirewallRuleName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -6760,7 +6786,9 @@
             {
               "ParameterMetadata": {
                 "Name": "FirewallRuleName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -6863,7 +6891,9 @@
       "Parameters": [
         {
           "Name": "FirewallRuleName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -6949,7 +6979,9 @@
             {
               "ParameterMetadata": {
                 "Name": "FirewallRuleName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -7074,7 +7106,9 @@
       "Parameters": [
         {
           "Name": "ElasticPoolName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -7128,7 +7162,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ElasticPoolName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -7517,7 +7553,9 @@
       "Parameters": [
         {
           "Name": "ElasticPoolName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -7537,7 +7575,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -7669,7 +7707,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ElasticPoolName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -7695,7 +7735,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -7884,7 +7924,9 @@
       "Parameters": [
         {
           "Name": "ElasticPoolName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -7954,7 +7996,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ElasticPoolName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -8057,7 +8101,9 @@
       "Parameters": [
         {
           "Name": "ElasticPoolName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -8077,7 +8123,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -8209,7 +8255,9 @@
             {
               "ParameterMetadata": {
                 "Name": "ElasticPoolName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -8235,7 +8283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -9711,7 +9759,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DataMaskingState": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
               "DatabaseName": "System.String",
@@ -9866,7 +9914,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -11003,7 +11051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
             "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "DataMaskingState": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
               "DatabaseName": "System.String",
@@ -12128,7 +12176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -12248,7 +12296,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -12406,7 +12454,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -12482,7 +12530,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
             "GenericTypeArguments": []
@@ -12638,7 +12686,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
                   "GenericTypeArguments": []
@@ -12762,7 +12810,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -12921,7 +12969,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -12998,7 +13046,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
             "GenericTypeArguments": []
@@ -13170,7 +13218,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
                   "GenericTypeArguments": []
@@ -13316,7 +13364,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExcludedDetectionTypes": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
               "ThreatDetectionState": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
@@ -13607,7 +13655,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13687,7 +13735,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -13769,7 +13817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13879,7 +13927,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -13954,7 +14002,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14018,7 +14066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14098,7 +14146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
             "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14158,7 +14206,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -14246,7 +14294,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.StorageKeyType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -14356,7 +14404,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.ImportExport.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ImportExport.Model.AuthenticationType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -14550,7 +14598,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Backup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -14620,7 +14668,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Backup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel+GeoBackupPolicyState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -15413,7 +15461,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -15595,7 +15643,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -15822,7 +15870,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -16005,7 +16053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -16188,7 +16236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -16349,7 +16397,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -16938,7 +16986,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -17095,7 +17143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -17216,7 +17264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -17411,7 +17459,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -17570,7 +17618,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -17595,7 +17643,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -17627,7 +17675,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -17811,7 +17859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -17855,7 +17903,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -18105,7 +18153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -18130,7 +18178,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -18146,7 +18194,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
             "GenericTypeArguments": []
@@ -18314,7 +18362,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -18336,7 +18384,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
                   "GenericTypeArguments": []
@@ -18566,7 +18614,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AuditState": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
               "AuditType": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
@@ -19377,7 +19425,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19485,7 +19533,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -19626,7 +19674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19734,7 +19782,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -19875,7 +19923,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -19967,7 +20015,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20102,7 +20150,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -20186,7 +20234,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -20446,7 +20494,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20478,7 +20526,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -20604,7 +20652,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20648,7 +20696,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -20739,7 +20787,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -20839,7 +20887,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -21127,7 +21175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -21159,7 +21207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
             "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -21241,7 +21289,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -21285,7 +21333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -21513,7 +21561,9 @@
       "Parameters": [
         {
           "Name": "DatabaseName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -21567,7 +21617,9 @@
             {
               "ParameterMetadata": {
                 "Name": "DatabaseName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -21998,7 +22050,9 @@
       "Parameters": [
         {
           "Name": "DatabaseName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -22066,7 +22120,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -22114,7 +22168,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -22200,7 +22254,9 @@
             {
               "ParameterMetadata": {
                 "Name": "DatabaseName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -22292,7 +22348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22358,7 +22414,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22483,7 +22539,9 @@
       "Parameters": [
         {
           "Name": "DatabaseName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -22553,7 +22611,9 @@
             {
               "ParameterMetadata": {
                 "Name": "DatabaseName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -22656,7 +22716,9 @@
       "Parameters": [
         {
           "Name": "DatabaseName",
-          "AliasList": [],
+          "AliasList": [
+            "Name"
+          ],
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
@@ -22692,7 +22754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -22740,7 +22802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
             "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -22808,7 +22870,9 @@
             {
               "ParameterMetadata": {
                 "Name": "DatabaseName",
-                "AliasList": [],
+                "AliasList": [
+                  "Name"
+                ],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -22856,7 +22920,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -22922,7 +22986,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
                   "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -23427,7 +23491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -23519,7 +23583,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -23638,7 +23702,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -23714,7 +23778,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -24022,7 +24086,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
             "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -24114,7 +24178,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet",
                   "Name": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -24317,7 +24381,7 @@
     "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model.AzureSqlServerKeyVaultKeyModel+ServerKeyType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24343,7 +24407,7 @@
     "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties": {
       "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties, Microsoft.Azure.Management.Sql.Legacy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties, Microsoft.Azure.Management.Sql.Legacy, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "TargetEdition": "System.String",
@@ -24355,7 +24419,7 @@
     "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties": {
       "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties, Microsoft.Azure.Management.Sql.Legacy, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties, Microsoft.Azure.Management.Sql.Legacy, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DatabaseCollection": "System.Collections.Generic.IList`1[System.String]",
         "DatabaseDtuMax": "System.Int32",
@@ -24392,7 +24456,7 @@
     "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings": {
       "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.ConnectionStrings, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "AdoNetConnectionString": "System.String",
         "OdbcConnectionString": "System.String",
@@ -24405,7 +24469,7 @@
     "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.SecureConnection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.SecureConnection.Model.SecureConnectionStateType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24421,7 +24485,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DataMaskingStateType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24429,7 +24493,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MaskingFunction": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction",
         "NumberFrom": "System.Nullable`1[System.Double]",
@@ -24450,7 +24514,7 @@
     "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction": {
       "Namespace": "Microsoft.Azure.Commands.Sql.DataMasking.Model",
       "Name": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.DataMasking.Model.MaskingFunction, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24478,7 +24542,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[], Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
       "GenericTypeArguments": []
@@ -24486,7 +24550,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24494,7 +24558,7 @@
     "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model",
       "Name": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ThreatDetectionStateType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24502,7 +24566,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditStateType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24510,7 +24574,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24518,7 +24582,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.StorageKeyKind, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24526,7 +24590,7 @@
     "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Auditing.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24534,7 +24598,7 @@
     "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Edition": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
         "Tags": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -24564,7 +24628,7 @@
     "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -24583,7 +24647,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -24593,7 +24657,7 @@
     "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale": {
       "Namespace": "Microsoft.Azure.Commands.Sql.Database.Model",
       "Name": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale, Microsoft.Azure.Commands.Sql, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []

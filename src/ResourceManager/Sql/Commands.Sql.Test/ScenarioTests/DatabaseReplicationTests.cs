@@ -34,24 +34,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestCreateDatabaseCopyV2()
-        {
-            RunPowerShellTest("Test-CreateDatabaseCopyV2");
-        }
-
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryDatabase()
         {
             RunPowerShellTest("Test-CreateSecondaryDatabase");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestCreateSecondaryDatabaseV2()
-        {
-            RunPowerShellTest("Test-CreateSecondaryDatabaseV2");
         }
 
         [Fact]
@@ -62,24 +48,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestGetReplicationLinkV2()
-        {
-            RunPowerShellTest("Test-GetReplicationLinkV2");
-        }
-
-        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSecondaryDatabase()
         {
             RunPowerShellTest("Test-RemoveSecondaryDatabase");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestRemoveSecondaryDatabaseV2()
-        {
-            RunPowerShellTest("Test-RemoveSecondaryDatabaseV2");
         }
 
         [Fact]

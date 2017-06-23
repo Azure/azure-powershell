@@ -31,7 +31,7 @@ The **Get-AzureRmRemoteDesktopFile** cmdlet gets a Remote Desktop Protocol (.rdp
 
 ### Example 1: Get a Remote Desktop file
 ```
-PS C:\>Get-AzureRmRemoteDesktopFile -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -LocalPath "D:\RemoteDesktopFile07.rdp"
+PS C:\> Get-AzureRmRemoteDesktopFile -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -LocalPath "D:\RemoteDesktopFile07.rdp"
 ```
 
 This command gets the Remote Desktop file for the virtual machine named VirtualMachine07.

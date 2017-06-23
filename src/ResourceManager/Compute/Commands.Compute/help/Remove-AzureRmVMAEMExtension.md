@@ -24,7 +24,7 @@ The **Remove-AzureRmVMAEMExtension** cmdlet removes the Azure Enhanced Monitorin
 
 ### Example 1: Remove the AEM extension
 ```
-PS C:\>Remove-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+PS C:\> Remove-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command removes the AEM extension for the virtual machine named contoso-server.

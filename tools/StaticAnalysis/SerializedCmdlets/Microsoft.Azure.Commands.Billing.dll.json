@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Billing.Models.PSInvoice]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.12.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -29,7 +29,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Billing.Models",
             "Name": "Microsoft.Azure.Commands.Billing.Models.PSInvoice",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.12.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BillingPeriodNames": "System.Collections.Generic.List`1[System.String]",
               "InvoicePeriodStartDate": "System.Nullable`1[System.DateTime]",
@@ -243,7 +243,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.12.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -258,7 +258,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Billing.Models",
             "Name": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.12.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "InvoiceNames": "System.Collections.Generic.List`1[System.String]",
               "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",
@@ -492,7 +492,7 @@
     "Microsoft.Azure.Commands.Billing.Models.PSInvoice": {
       "Namespace": "Microsoft.Azure.Commands.Billing.Models",
       "Name": "Microsoft.Azure.Commands.Billing.Models.PSInvoice",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.12.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BillingPeriodNames": "System.Collections.Generic.List`1[System.String]",
         "InvoicePeriodStartDate": "System.Nullable`1[System.DateTime]",
@@ -537,7 +537,7 @@
     "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod": {
       "Namespace": "Microsoft.Azure.Commands.Billing.Models",
       "Name": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.12.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "InvoiceNames": "System.Collections.Generic.List`1[System.String]",
         "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",

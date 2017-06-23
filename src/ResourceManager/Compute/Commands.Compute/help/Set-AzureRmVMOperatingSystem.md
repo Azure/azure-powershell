@@ -40,7 +40,7 @@ You can specify logon credentials, computer name, and operating system type.
 
 ### Example 1: Set operating system properties for a new virtual machines
 ```
-PS C:\>$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+PS C:\> $SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 PS C:\> $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
 PS C:\> $AvailabilitySet = Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
 PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
