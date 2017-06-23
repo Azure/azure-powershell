@@ -24,7 +24,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Remove, StorageAccountACLRuleNounStr, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, StorageAccountACLRuleNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
     public class RemoveAzureStorageAccountNetworkACLRuleCommand : StorageAccountBaseCmdlet
