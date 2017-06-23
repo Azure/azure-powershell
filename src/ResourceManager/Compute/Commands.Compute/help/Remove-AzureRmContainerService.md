@@ -24,7 +24,7 @@ The **Remove-AzureRmContainerService** cmdlet removes a container service from y
 
 ### Example 1: Remove a container service
 ```
-PS C:\>Remove-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"
+PS C:\> Remove-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"
 ```
 
 This command removes the container service named CSResourceGroup17.

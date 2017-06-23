@@ -31,7 +31,7 @@ The **Stop-AzureRmVM** cmdlet stops an Azure virtual machine.
 
 ### Example 1: Stop a virtual machine
 ```
-PS C:\>Stop-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Stop-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command stops the virtual machine named VirtualMachine07 in ResourceGroup11.

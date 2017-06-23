@@ -23,7 +23,7 @@ The **Get-AzureRmVMExtensionImageType** cmdlet gets the type of an Azure extensi
 
 ### Example 1: Get an extension image type
 ```
-PS C:\>Get-AzureRmVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"
+PS C:\> Get-AzureRmVMExtensionImageType -Location "Central US" -PublisherName "Fabrikam"
 ```
 
 This command gets the extension image type for the specified publisher and location.

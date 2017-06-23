@@ -25,7 +25,7 @@ This is used when the upgrade policy on the VMSS Scale Set is set to manual.
 
 ### Example 1: Start an upgrade of the VMSS instance
 ```
-PS C:\>Update-AzureRmVmssInstance -ResourceGroupName "Group011" -VMScaleSetName "VMScaleSet001" -InstanceId "0"
+PS C:\> Update-AzureRmVmssInstance -ResourceGroupName "Group011" -VMScaleSetName "VMScaleSet001" -InstanceId "0"
 ```
 
 This command starts an upgrade of the VMSS named VMScaleSet001 that has the instance ID of 0.
