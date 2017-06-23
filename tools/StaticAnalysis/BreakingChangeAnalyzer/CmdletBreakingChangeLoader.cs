@@ -164,6 +164,15 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         }
                     }
 
+                    if (cmdletMetadata.ParameterSets.Count == 0)
+                    {
+                        ParameterSetMetadata defaultSet = new ParameterSetMetadata()
+                        {
+                            Name = cmdletMetadata.DefaultParameterSetName
+                        };
+                        cmdletMetadata.ParameterSets.Add(defaultSet);
+                    }
+
                     results.Add(cmdletMetadata);
                 }
             }
