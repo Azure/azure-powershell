@@ -93,7 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -StayProvisioned
-Indicates that this cmdlet deallocates all the virtual machines within the VMSS so that the user is not charged for the stopped virtual machines.
+If specified, the virtual machine will enter stopped state. If not specified, the virtual machine will enter stopped-deallocated state. The user is still charged for VMs in stopped state but not for VMs in stopped-deallocated state.
+
 
 ```yaml
 Type: SwitchParameter
