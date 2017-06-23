@@ -16,23 +16,22 @@ Export-AzureAnalysisServicesInstanceLog [-Instance] <String> [-OutputPath] <Stri
 ```
 
 ## DESCRIPTION
-The Restart-AzureAnalysisServicesInstance cmdlet restarts an instance of Azure Analysis Services server
+The Export-AzureAnalysisServicesInstance cmdlet exports log from an instance of Azure Analysis Services server to file
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Export-AzureAnalysisServicesInstanceLog
-Instance: testserver
-OuptutPath: C:\path\to\log\testserver.log
+PS C:\>Export-AzureAnalysisServicesInstanceLog -Instance testserver -OuptutPath C:\path\to\log\testserver.log
 ```
 
-This command will fetch log from the server 'testserver' in the environment specified in the Add-AzureAnalysisServicesAccount command
+This command will export log from the server 'testserver' in the environment specified in the Add-AzureAnalysisServicesAccount command
+and save it to file specified in OutputPath 'C:\path\to\log\testserver.log'
 
 ## PARAMETERS
 
 ### -Instance
-Name of the Analysis Services server instance to restart
+Name of the Analysis Services server instance
 
 ```yaml
 Type: String
