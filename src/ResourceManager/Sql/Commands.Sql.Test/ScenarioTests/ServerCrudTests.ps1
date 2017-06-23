@@ -107,7 +107,17 @@ function Test-GetServer
 
 		# Test getting all servers in all resource groups
 		$all2 = Get-AzureRmSqlServer
-		Assert-AreEqual 3 $all2.Count
+
+		# It is possible that there were existing servers in the subscription when the test was recorded, so make sure
+		# that the servers that we created are retrieved and ignore the other ones.
+		Assert-AreEqual 3 ($server1,$server2,$server3 | ForEach-Object {  
+			$s1 = $_; 
+			$all2 | ForEach-Object { 
+				if ($s1.ServerName -eq $_.ServerName) { # Only need to compare server names because they are unique per environment.
+					$_.ServerName; # Write out the server name so we have something to count
+				}
+			}
+		}).Count
 	}
 	finally
 	{

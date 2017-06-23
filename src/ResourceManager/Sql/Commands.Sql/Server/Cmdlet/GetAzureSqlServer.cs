@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
+    /// <remarks>
+    /// This class uses <see cref="AzureSqlCmdletBaseBase{}"/> instead of <see cref="AzureSqlCmdletBase{}"/> because in the latter
+    /// the ResourceGroupName parameter is marked as Mandatory. In this specific cmdlet the ResourceGroupName is optional.
+    /// </remarks>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     public class GetAzureSqlServer : AzureSqlCmdletBaseBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>, IModuleAssemblyInitializer
     {
