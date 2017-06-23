@@ -951,23 +951,24 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             }
 
             // Merge all properties
-                mergedEnvironment.ActiveDirectoryAuthority = environment1.ActiveDirectoryAuthority ?? environment2.ActiveDirectoryAuthority;
-                mergedEnvironment.ActiveDirectoryServiceEndpointResourceId = environment1.ActiveDirectoryServiceEndpointResourceId ?? environment2.ActiveDirectoryServiceEndpointResourceId;
-                mergedEnvironment.AdTenant = environment1.AdTenant ?? environment2.AdTenant;
-                mergedEnvironment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = environment1.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix ?? environment2.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
-                mergedEnvironment.AzureDataLakeStoreFileSystemEndpointSuffix = environment1.AzureDataLakeStoreFileSystemEndpointSuffix ?? environment2.AzureDataLakeStoreFileSystemEndpointSuffix;
-                mergedEnvironment.AzureKeyVaultDnsSuffix = environment1.AzureKeyVaultDnsSuffix ?? environment2.AzureKeyVaultDnsSuffix;
-                mergedEnvironment.AzureKeyVaultServiceEndpointResourceId = environment1.AzureKeyVaultServiceEndpointResourceId ?? environment2.AzureKeyVaultServiceEndpointResourceId;
-                mergedEnvironment.GalleryUrl = environment1.GalleryUrl ?? environment2.GalleryUrl;
-                mergedEnvironment.GraphUrl = environment1.GraphUrl ?? environment2.GraphUrl;
-                mergedEnvironment.GraphEndpointResourceId = environment1.GraphEndpointResourceId ?? environment2.GraphEndpointResourceId;
-                mergedEnvironment.ManagementPortalUrl = environment1.ManagementPortalUrl ?? environment2.ManagementPortalUrl;
-                mergedEnvironment.PublishSettingsFileUrl = environment1.PublishSettingsFileUrl ?? environment2.PublishSettingsFileUrl;
-                mergedEnvironment.ResourceManagerUrl = environment1.ResourceManagerUrl ?? environment2.ResourceManagerUrl;
-                mergedEnvironment.ServiceManagementUrl = environment1.ServiceManagementUrl ?? environment2.ServiceManagementUrl;
-                mergedEnvironment.SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix;
-                mergedEnvironment.StorageEndpointSuffix = environment1.StorageEndpointSuffix ?? environment2.StorageEndpointSuffix;
-                mergedEnvironment.TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix;
+            mergedEnvironment.ActiveDirectoryAuthority = environment1.ActiveDirectoryAuthority ?? environment2.ActiveDirectoryAuthority;
+            mergedEnvironment.ActiveDirectoryServiceEndpointResourceId = environment1.ActiveDirectoryServiceEndpointResourceId ?? environment2.ActiveDirectoryServiceEndpointResourceId;
+            mergedEnvironment.AdTenant = environment1.AdTenant ?? environment2.AdTenant;
+            mergedEnvironment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = environment1.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix ?? environment2.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
+            mergedEnvironment.AzureDataLakeStoreFileSystemEndpointSuffix = environment1.AzureDataLakeStoreFileSystemEndpointSuffix ?? environment2.AzureDataLakeStoreFileSystemEndpointSuffix;
+            mergedEnvironment.DataLakeEndpointResourceId = environment1.DataLakeEndpointResourceId ?? environment2.DataLakeEndpointResourceId;
+            mergedEnvironment.AzureKeyVaultDnsSuffix = environment1.AzureKeyVaultDnsSuffix ?? environment2.AzureKeyVaultDnsSuffix;
+            mergedEnvironment.AzureKeyVaultServiceEndpointResourceId = environment1.AzureKeyVaultServiceEndpointResourceId ?? environment2.AzureKeyVaultServiceEndpointResourceId;
+            mergedEnvironment.GalleryUrl = environment1.GalleryUrl ?? environment2.GalleryUrl;
+            mergedEnvironment.GraphUrl = environment1.GraphUrl ?? environment2.GraphUrl;
+            mergedEnvironment.GraphEndpointResourceId = environment1.GraphEndpointResourceId ?? environment2.GraphEndpointResourceId;
+            mergedEnvironment.ManagementPortalUrl = environment1.ManagementPortalUrl ?? environment2.ManagementPortalUrl;
+            mergedEnvironment.PublishSettingsFileUrl = environment1.PublishSettingsFileUrl ?? environment2.PublishSettingsFileUrl;
+            mergedEnvironment.ResourceManagerUrl = environment1.ResourceManagerUrl ?? environment2.ResourceManagerUrl;
+            mergedEnvironment.ServiceManagementUrl = environment1.ServiceManagementUrl ?? environment2.ServiceManagementUrl;
+            mergedEnvironment.SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix;
+            mergedEnvironment.StorageEndpointSuffix = environment1.StorageEndpointSuffix ?? environment2.StorageEndpointSuffix;
+            mergedEnvironment.TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix;
 
             return mergedEnvironment;
         }

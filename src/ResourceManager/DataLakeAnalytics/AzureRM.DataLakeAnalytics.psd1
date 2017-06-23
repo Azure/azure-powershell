@@ -96,7 +96,13 @@ CmdletsToExport = 'Get-AzureRmDataLakeAnalyticsDataSource',
                'Add-AzureRmDataLakeAnalyticsFirewallRule', 
                'Get-AzureRmDataLakeAnalyticsFirewallRule', 
                'Set-AzureRmDataLakeAnalyticsFirewallRule', 
-               'Remove-AzureRmDataLakeAnalyticsFirewallRule'
+               'Remove-AzureRmDataLakeAnalyticsFirewallRule',
+               'New-AzureRmDataLakeAnalyticsComputePolicy',
+               'Get-AzureRmDataLakeAnalyticsComputePolicy',
+               'Update-AzureRmDataLakeAnalyticsComputePolicy',
+               'Remove-AzureRmDataLakeAnalyticsComputePolicy',
+               'Get-AzureRmDataLakeAnalyticsJobPipeline',
+               'Get-AzureRmDataLakeAnalyticsJobRecurrence'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -112,7 +118,10 @@ AliasesToExport = 'Get-AdlAnalyticsDataSource', 'New-AdlCatalogCredential',
                'Get-AdlAnalyticsAccount', 'Submit-AdlJob', 'New-AdlAnalyticsAccount', 
                'Remove-AdlAnalyticsAccount', 'Set-AdlAnalyticsAccount', 
                'Add-AdlAnalyticsFirewallRule', 'Get-AdlAnalyticsFirewallRule', 
-               'Set-AdlAnalyticsFirewallRule', 'Remove-AdlAnalyticsFirewallRule'
+               'Set-AdlAnalyticsFirewallRule', 'Remove-AdlAnalyticsFirewallRule',
+               'New-AdlAnalyticsComputePolicy', 'Get-AdlAnalyticsComputePolicy',
+               'Update-AdlAnalyticsComputePolicy', 'Remove-AdlAnalyticsComputePolicy',
+               'Get-AdlJobPipeline', 'Get-AdlJobRecurrence'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

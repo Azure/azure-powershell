@@ -442,6 +442,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 AdTenant = environment1.AdTenant ?? environment2.AdTenant,
                 AzureDataLakeStoreFileSystemEndpointSuffix = environment1.AzureDataLakeStoreFileSystemEndpointSuffix ?? environment2.AzureDataLakeStoreFileSystemEndpointSuffix,
                 AzureKeyVaultServiceEndpointResourceId = environment1.AzureKeyVaultServiceEndpointResourceId ?? environment2.AzureKeyVaultServiceEndpointResourceId,
+                DataLakeEndpointResourceId = environment1.DataLakeEndpointResourceId ?? environment2.DataLakeEndpointResourceId,
                 GraphUrl = environment1.GraphUrl ?? environment2.GraphUrl,
                 ManagementPortalUrl = environment1.ManagementPortalUrl ?? environment2.ManagementPortalUrl,
                 OnPremise = environment1.OnPremise || environment2.OnPremise,

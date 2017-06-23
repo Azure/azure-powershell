@@ -31,7 +31,7 @@ The **Get-AzureRmVMBootDiagnosticsData** cmdlet gets boot diagnostics data for a
 
 ### Example 1: Get boot diagnostics data
 ```
-PS C:\>Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07" -Windows -LocalPath "C:\Contoso\BootDiagnostics"
+PS C:\> Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07" -Windows -LocalPath "C:\Contoso\BootDiagnostics"
 ```
 
 This command gets boot diagnostics data for the virtual machine named ContosoVM07.

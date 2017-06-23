@@ -24,7 +24,7 @@ The **Remove-AzureRmVMDscExtension** cmdlet removes a Desired State Configuratio
 
 ### Example 1: Remove a DSC extension
 ```
-PS C:\>Remove-AzureRmVMDscExtension -ResouceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
+PS C:\> Remove-AzureRmVMDscExtension -ResouceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
 ```
 
 This command removes the extension named DSC on virtual machine named VM07.

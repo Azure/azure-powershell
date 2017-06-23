@@ -23,7 +23,7 @@ The **Get-AzureRmVMImageSku** cmdlet gets VMImage SKUs.
 
 ### Example 1: Get VMImage SKUs
 ```
-PS C:\>Get-AzureRmVMImageSku -Location "Central US" -PublisherName "Fabrikam" -Offer "LinuxServer"
+PS C:\> Get-AzureRmVMImageSku -Location "Central US" -PublisherName "Fabrikam" -Offer "LinuxServer"
 ```
 
 This command gets the SKUs for the specified publisher and offer.

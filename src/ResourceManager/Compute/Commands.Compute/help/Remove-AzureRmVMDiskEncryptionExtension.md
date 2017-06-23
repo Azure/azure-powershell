@@ -27,14 +27,14 @@ It removes the extension and the associated extension configuration from the vir
 
 ### Example 1: Remove the disk encryption extension from a virtual machine.
 ```
-PS C:\>Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM"
+PS C:\> Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM"
 ```
 
 This command removes the extension with default name AzureDiskEncryption for a virtual machine that runs the Windows operating system or AzureDiskEncryptionForLinux for Linux based virtual machine named MyTestVM.
 
 ### Example 2: Remove a specific disk encryption extension from a virtual machine.
 ```
-PS C:\>Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM" -Name "MyDiskEncryptionExtension"
+PS C:\> Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MyResourceGroup" -VMName "MyTestVM" -Name "MyDiskEncryptionExtension"
 ```
 
 This command removes the encryption extension named MyDiskEncryptionExtension from the virtual machine named MyTestVM.
