@@ -31,7 +31,7 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
     /// <summary>
-    /// Cmdlet to get an Analysis Services server log
+    /// Cmdlet to export an Analysis Services server log to file
     /// </summary>
     [Cmdlet("Export", "AzureAnalysisServicesInstanceLog", SupportsShouldProcess=true)]
     [Alias("Export-AzureAsInstanceLog")]
