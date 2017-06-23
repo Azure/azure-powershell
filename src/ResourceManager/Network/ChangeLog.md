@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
+    - SALifeTimeSeconds defaults to 27000 seconds
+    - SADataSizeKilobytes defaults to 102400000 KB
 
 ## Version 4.1.0
 * Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
@@ -25,9 +28,6 @@
     - VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
 * Set-AzureRmNetworkWatcherConfigFlowLog
   * Fixed  help examples
-* New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
-    - SALifeTimeSeconds defaults to 27000 seconds
-    - SADataSizeKilobytes defaults to 102400000 KB
  
 ## Version 4.0.1
 
