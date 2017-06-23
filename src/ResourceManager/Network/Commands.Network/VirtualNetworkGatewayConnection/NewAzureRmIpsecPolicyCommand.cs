@@ -126,8 +126,8 @@ namespace Microsoft.Azure.Commands.Network
             var ipsecPolicy = new PSIpsecPolicy();
 
             // default SA values
-            ipsecPolicy.SALifeTimeSeconds = (this.SALifeTimeSeconds == 0) ? 27000 : this.SALifeTimeSeconds;
-            ipsecPolicy.SADataSizeKilobytes = (this.SADataSizeKilobytes == 0) ? 102400000 : this.SADataSizeKilobytes;
+            ipsecPolicy.SALifeTimeSeconds = (!this.MyInvocation.BoundParameters.ContainsKey("SALifeTimeSeconds")) ? 27000 : this.SALifeTimeSeconds;
+            ipsecPolicy.SADataSizeKilobytes = (!this.MyInvocation.BoundParameters.ContainsKey("SADataSizeKilobytes")) ? 102400000 : this.SADataSizeKilobytes;
 
             ipsecPolicy.IpsecEncryption = this.IpsecEncryption;
             ipsecPolicy.IpsecIntegrity = this.IpsecIntegrity;
