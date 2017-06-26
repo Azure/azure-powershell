@@ -149,14 +149,13 @@ function Test-CreateServerWithIdentity
 	$rg = Create-ResourceGroupForTest
 	 	
 	$serverName = Get-ServerName
-	$version = "12.0"
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 
 	try
 	{
-		$server1 = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -ServerVersion $version -SqlAdministratorCredentials $credentials -AssignIdentity
+		$server1 = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.Identity.Type SystemAssigned
 		Assert-NotNull $server1.Identity.PrincipalId
@@ -204,7 +203,6 @@ function Test-UpdateServerWithoutIdentity
 	$rg = Create-ResourceGroupForTest
 	 	
 	$serverName = Get-ServerName
-	$version = "12.0"
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
@@ -212,7 +210,7 @@ function Test-UpdateServerWithoutIdentity
 	try
 	{
 		# Create a server with identity
-		$server1 = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -ServerVersion $version -SqlAdministratorCredentials $credentials -AssignIdentity
+		$server1 = New-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.Identity.Type SystemAssigned
 		Assert-NotNull $server1.Identity.PrincipalId
@@ -229,4 +227,3 @@ function Test-UpdateServerWithoutIdentity
 		Remove-ResourceGroupForTest $rg
 	}
 }
-
