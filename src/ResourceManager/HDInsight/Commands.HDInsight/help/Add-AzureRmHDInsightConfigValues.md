@@ -222,7 +222,9 @@ Accept wildcard characters: False
 ```
 
 ### -RServer
-Specifies the RServer configurations. Valid only for RServer clusters.```yaml
+Specifies the RServer configurations. Valid only for RServer clusters.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
@@ -235,7 +237,9 @@ Accept wildcard characters: False
 ```
 
 ### -Spark2Defaults
-Specifies the Spark2 Defaults configurations of this HDInsight cluster.```yaml
+Specifies the Spark2 Defaults configurations of this HDInsight cluster.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
@@ -248,7 +252,9 @@ Accept wildcard characters: False
 ```
 
 ### -Spark2ThriftConf
-Specifies the Spark2 Thrift SparkConf configurations of this HDInsight cluster.```yaml
+Specifies the Spark2 Thrift SparkConf configurations of this HDInsight cluster.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
@@ -261,7 +267,9 @@ Accept wildcard characters: False
 ```
 
 ### -SparkDefaults
-Specifies the Spark Defaults configurations of this HDInsight cluster.```yaml
+Specifies the Spark Defaults configurations of this HDInsight cluster.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
@@ -274,7 +282,9 @@ Accept wildcard characters: False
 ```
 
 ### -SparkThriftConf
-Specifies the Spark Thrift SparkConf configurations of this HDInsight cluster.```yaml
+Specifies the Spark Thrift SparkConf configurations of this HDInsight cluster.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: 
