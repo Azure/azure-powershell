@@ -251,7 +251,7 @@
 
     <!-- Delete build artifacts -->
     <ItemGroup>
-      <GetAllFiles Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
+      <GetAllFiles Include="$(PackageDirectory)\**\netcoreapp2.0\*.*" />
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
 
