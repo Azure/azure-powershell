@@ -49,31 +49,36 @@ namespace Microsoft.Azure.Commands.Sql.Common
             if (typeof(IEnumerable).IsAssignableFrom(model.GetType()))
             {
                 IEnumerator iter = ((IEnumerable)model).GetEnumerator();
-                iter.MoveNext();
-                m = iter.Current;
+                if (iter.MoveNext())
+                {
+                    m = iter.Current;
+                }
             }
             else
             {
                 m = model;
             }
 
-            var serverProperty = m.GetType().GetProperty("ServerName");
-            var serverName = (serverProperty == null) ? string.Empty : serverProperty.GetValue(m).ToString();
-
-            var databaseProperty = m.GetType().GetProperty("DatabaseName");
-            var databaseName = (databaseProperty == null) ? string.Empty : databaseProperty.GetValue(m).ToString();
-
-            if (!string.IsNullOrEmpty(serverName))
+            if (m != null)
             {
+                var serverProperty = m.GetType().GetProperty("ServerName");
+                var serverName = (serverProperty == null) ? string.Empty : serverProperty.GetValue(m).ToString();
+
+                var databaseProperty = m.GetType().GetProperty("DatabaseName");
+                var databaseName = (databaseProperty == null) ? string.Empty : databaseProperty.GetValue(m).ToString();
+
+                if (!string.IsNullOrEmpty(serverName))
+                {
+                    if (!string.IsNullOrEmpty(databaseName))
+                    {
+                        return string.Format("{0}.{1}", serverName, databaseName);
+                    }
+                    return serverName;
+                }
                 if (!string.IsNullOrEmpty(databaseName))
                 {
-                    return string.Format("{0}.{1}", serverName, databaseName);
+                    return databaseName;
                 }
-                return serverName;
-            }
-            if (!string.IsNullOrEmpty(databaseName))
-            {
-                return databaseName;
             }
 
             return string.Empty;
