@@ -847,6 +847,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 GraphEndpointResourceId = environment1.GraphEndpointResourceId ?? environment2.GraphEndpointResourceId,
                 AdTenant = environment1.AdTenant ?? environment2.AdTenant,
                 AzureDataLakeStoreFileSystemEndpointSuffix = environment1.AzureDataLakeStoreFileSystemEndpointSuffix ?? environment2.AzureDataLakeStoreFileSystemEndpointSuffix,
+                DataLakeEndpointResourceId = environment1.DataLakeEndpointResourceId ?? environment2.DataLakeEndpointResourceId,
                 AzureKeyVaultServiceEndpointResourceId = environment1.AzureKeyVaultServiceEndpointResourceId ?? environment2.AzureKeyVaultServiceEndpointResourceId,
                 GraphUrl = environment1.GraphUrl ?? environment2.GraphUrl,
                 ManagementPortalUrl = environment1.ManagementPortalUrl ?? environment2.ManagementPortalUrl,

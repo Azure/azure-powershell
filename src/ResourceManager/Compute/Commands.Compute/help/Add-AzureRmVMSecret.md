@@ -22,13 +22,13 @@ The **Add-AzureRmVMSecret** cmdlet adds a secret to a virtual machine.
 This value lets you add a certificate to the virtual machine.
 The secret must be stored in a Key Vault.
 For more information about Key Vault, see [What is Azure Key Vault?](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
-For more information about the cmdlets, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the Set-AzureKeyVaultSecret cmdlet.
+For more information about the cmdlets, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the [Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md) cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Add a secret to a virtual machine
 ```
-PS C:\>$VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
+PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
 PS C:\> $Credential = Get-Credential
 PS C:\> $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine  -Windows -ComputerName "Contoso26" -Credential $Credential
 PS C:\> $SourceVaultId = "/subscriptions/46f8cea4-2de6-4179-8ab1-365da4211af4/resourceGroups/vault/providers/Microsoft.KeyVault/vaults/keyvault"
@@ -44,7 +44,7 @@ The second command creates a credential object by using the Get-Credential cmdle
 The command prompts you for a user name and password.
 For more information, type `Get-Help Get-Credential`.
 
-The third command uses the Set-AzureRmVMOperatingSystem cmdlet to configure the virtual machine stored in $VirtualMachine.
+The third command uses the **Set-AzureRmVMOperatingSystem** cmdlet to configure the virtual machine stored in $VirtualMachine.
 
 The fourth command assigns a source vault ID to the $SourceVaultId variable for later use.
 The command assumes that the $SubscriptionId variable has an appropriate value.
@@ -122,8 +122,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine object that this cmdlet modifies.
-To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
-You can use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
+To obtain a virtual machine object, use the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
+You can use the [New-AzureRmVMConfig](./New-AzureRmVMConfig.md) cmdlet to create a virtual machine object.
 
 ```yaml
 Type: PSVirtualMachine

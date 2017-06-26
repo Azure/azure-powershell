@@ -43,14 +43,14 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get model and instance view properties
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command gets the model view and instance view properties of the virtual machine named VirtualMachine07.
 
 ### Example 2: Get instance view properties
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Status
 ```
 
 This command gets properties of the virtual machine named VirtualMachine07.
@@ -59,14 +59,14 @@ Therefore, the command gets only the instance view properties.
 
 ### Example 3: Get properties for all virtual machines in a resource group
 ```
-PS C:\>Get-AzureRmVM -ResourceGroupName "ResourceGroup11"
+PS C:\> Get-AzureRmVM -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets properties for all the virtual machines in the resource group named ResourceGroup11.
 
 ### Example 4: Get all virtual machines in your subscription
 ```
-PS C:\>Get-AzureRmVM
+PS C:\> Get-AzureRmVM
 ```
 
 This command gets all the virtual machines in your subscription.

@@ -32,7 +32,7 @@ The only action this cmdlet supports is Reimage.
 
 ### Example 1: Reimage a VMSS
 ```
-PS C:\>Set-AzureRmVmss -Reimage -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
+PS C:\> Set-AzureRmVmss -Reimage -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command reimages the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
