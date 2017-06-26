@@ -21,13 +21,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Services;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
     /// The base class for all Azure Sql cmdlets
     /// </summary>
-    public abstract class AzureSqlCmdletBaseBase<M, A> : AzureRMCmdlet
+    public abstract class AzureSqlCmdletBaseBase<M, A> : AzureRMCmdlet 
     {
         /// <summary>
         /// Stores the per request session Id for all request made in this cmdlet call.
@@ -43,11 +44,24 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
         protected virtual string GetResourceId(M model)
         {
-            var serverProperty = model.GetType().GetProperty("ServerName");
-            var serverName = (serverProperty == null) ? string.Empty : serverProperty.GetValue(model).ToString();
+            object m = null;
 
-            var databaseProperty = model.GetType().GetProperty("DatabaseName");
-            var databaseName = (databaseProperty == null) ? string.Empty : databaseProperty.GetValue(model).ToString();
+            if (typeof(IEnumerable).IsAssignableFrom(model.GetType()))
+            {
+                IEnumerator iter = ((IEnumerable)model).GetEnumerator();
+                iter.MoveNext();
+                m = iter.Current;
+            }
+            else
+            {
+                m = model;
+            }
+
+            var serverProperty = m.GetType().GetProperty("ServerName");
+            var serverName = (serverProperty == null) ? string.Empty : serverProperty.GetValue(m).ToString();
+
+            var databaseProperty = m.GetType().GetProperty("DatabaseName");
+            var databaseName = (databaseProperty == null) ? string.Empty : databaseProperty.GetValue(m).ToString();
 
             if (!string.IsNullOrEmpty(serverName))
             {
@@ -61,6 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {
                 return databaseName;
             }
+
             return string.Empty;
         }
 

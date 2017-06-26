@@ -306,6 +306,7 @@
     <Compile Include="ScenarioTests\ServerKeyVaultKeyTests.cs" />
     <Compile Include="ScenarioTests\IndexRecommendationTests.cs" />
     <Compile Include="ScenarioTests\ImportExportTests.cs" />
+    <Compile Include="UnitTests\AzureSqlCmdletBaseBaseUnitTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseImportExportTests.cs" />
     <Compile Include="UnitTests\AzureSqlCmdletBaseAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseActivationAttributeTest.cs" />
