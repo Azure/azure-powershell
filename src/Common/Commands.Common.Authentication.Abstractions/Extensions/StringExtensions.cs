@@ -11,19 +11,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
+namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
-
     /// <summary>
-    /// String extension methods
+    /// Extension methods for strings.
     /// </summary>
     public static class StringExtensions
     {
+        /// <summary>
+        /// Formats the string with parameters and invariant culture.
+        /// </summary>
+        /// <param name="s">The string</param>
+        /// <param name="args">The arguments</param>
+        public static string FormatInvariant(this string s, params object[] args)
+        {
+            return string.Format(CultureInfo.InvariantCulture, s, args);
+        }
+
         /// <summary>
         /// Coalesces a string. 
         /// </summary>

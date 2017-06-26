@@ -236,8 +236,8 @@ namespace Microsoft.Azure.Commands.Compute
                         var osDiskStorageAccount = storageAccountList.First(e => e.Name.Equals(storageAccountName));
 
                         if (osDiskStorageAccount != null
-                            && osDiskStorageAccount.AccountType.HasValue
-                            && !osDiskStorageAccount.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"))
+                            && osDiskStorageAccount.Sku() != null
+                            && !osDiskStorageAccount.SkuName().ToLowerInvariant().Contains("premium"))
                         {
                             return osDiskStorageAccount.PrimaryEndpoints.Blob;
                         }
@@ -298,8 +298,8 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.First(
-                e => e.AccountType.HasValue
-                    && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
+                e => e.Sku() != null
+                    && !e.SkuName().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
             {
@@ -323,9 +323,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
-                AccountType = AccountType.StandardGRS,
                 Location = this.Location ?? this.VM.Location,
             };
+            storaeAccountParameter.SetAsStandardGRS();
 
             try
             {
