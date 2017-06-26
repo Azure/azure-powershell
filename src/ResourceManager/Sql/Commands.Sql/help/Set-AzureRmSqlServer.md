@@ -42,7 +42,9 @@ This command resets the administrator password on the AzureSQL Server named serv
 ## PARAMETERS
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.```yaml
+Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
