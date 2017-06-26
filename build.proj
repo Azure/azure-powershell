@@ -233,7 +233,7 @@
     <ItemGroup>
       <PackageContent Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
       <SourceFile Include="@(PackageContent)">
-        <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
+        <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '..', '%(FileName)%(Extension)'))</DestinationFolder>
       </SourceFile>
     </ItemGroup>
 
@@ -251,7 +251,7 @@
 
     <!-- Delete build artifacts -->
     <ItemGroup>
-      <GetAllFiles Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
+      <GetAllFiles Include="$(PackageDirectory)\**\netcoreapp2.0\*.*" />
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
 

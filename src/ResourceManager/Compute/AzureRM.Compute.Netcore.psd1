@@ -60,15 +60,15 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Compute.Types.ps1xml'
+TypesToProcess = 'Microsoft.Azure.Commands.Compute.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'netcoreapp2.0\Microsoft.Azure.Commands.Compute.format.ps1xml', 
-               'netcoreapp2.0\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
-               'netcoreapp2.0\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
+FormatsToProcess = 'Microsoft.Azure.Commands.Compute.format.ps1xml', 
+               'Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
+               'Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('netcoreapp2.0\Microsoft.Azure.Commands.Compute.dll')
+NestedModules = @('Microsoft.Azure.Commands.Compute.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
