@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Management.HDInsight;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
@@ -39,6 +40,43 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanCreateNewConfigForRServer()
         {
             CreateNewConfig(setEdgeNodeVmSize: true);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanAddSparkCustomConfigs()
+        {
+            AzureHDInsightConfig config = new AzureHDInsightConfig();
+
+            var addConfigValuesCmdlet = new AddAzureHDInsightConfigValuesCommand
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
+                Config = config,
+                SparkDefaults = new System.Collections.Hashtable() { { @"spark.executor.instances", "3" } },
+                SparkThriftConf = new System.Collections.Hashtable() { { @"spark.executor.cores", "4" } },
+                Spark2Defaults = new System.Collections.Hashtable() { { @"spark.executor.memory", "2048m" } },
+                Spark2ThriftConf = new System.Collections.Hashtable() { { @"spark.driver.memory.overhead", "1024" } },
+            };
+
+            addConfigValuesCmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.Verify(
+                f =>
+                    f.WriteObject(
+                        It.Is<AzureHDInsightConfig>(
+                            c =>
+                                c.Configurations != null &&
+                                c.Configurations.ContainsKey(ConfigurationKey.SparkDefaults) &&
+                                c.Configurations[ConfigurationKey.SparkDefaults]["spark.executor.instances"].Equals("3") &&
+                                c.Configurations.ContainsKey(ConfigurationKey.SparkThriftConf) &&
+                                c.Configurations[ConfigurationKey.SparkThriftConf]["spark.executor.cores"].Equals("4") &&
+                                c.Configurations.ContainsKey(ConfigurationKey.Spark2Defaults) &&
+                                c.Configurations[ConfigurationKey.Spark2Defaults]["spark.executor.memory"].Equals("2048m") &&
+                                c.Configurations.ContainsKey(ConfigurationKey.Spark2ThriftConf) &&
+                                c.Configurations[ConfigurationKey.Spark2ThriftConf]["spark.driver.memory.overhead"].Equals("1024") &&
+                                c.ScriptActions.Count == 0)),
+                Times.Once);
         }
 
         public void CreateNewConfig(bool setEdgeNodeVmSize = false)
