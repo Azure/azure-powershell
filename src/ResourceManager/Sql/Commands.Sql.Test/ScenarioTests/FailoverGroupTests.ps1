@@ -19,8 +19,8 @@ function Handle-FailoverGroupTest($scriptBlock, $primaryLocation = "North Europe
 		$isCreated = $rg -eq $null
 
 		$rg = if ($rg -eq $null) { Create-ResourceGroupForTest } else { $rg }
-		$server1 = if ($server1 -eq $null) { Create-ServerForTest $rg $serverVersion $primaryLocation } else { $server1 }
-		$server2 = if ($server2 -eq $null) { Create-ServerForTest $rg $serverVersion $secondaryLocation } else { $server2 }
+		$server1 = if ($server1 -eq $null) { Create-ServerForTest $rg $primaryLocation } else { $server1 }
+		$server2 = if ($server2 -eq $null) { Create-ServerForTest $rg $secondaryLocation } else { $server2 }
 
 		Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $server1,$server2
 	}
@@ -54,8 +54,9 @@ function Validate-FailoverGroup($server, $partnerServer, $name, $role, $failover
 	Assert-AreEqual $partnerServer.ResourceGroupName $fg.PartnerResourceGroupName "`$fg.PartnerResourceGroupName ($message)"
 	Assert-AreEqual $server.ServerName $fg.ServerName "`$fg.ServerName ($message)"
 	Assert-AreEqual $partnerServer.ServerName $fg.PartnerServerName "`$fg.PartnerServerName ($message)"
-	Assert-AreEqual $server.Location $fg.Location "`$fg.Location ($message)"
-	Assert-AreEqual $partnerServer.Location $fg.PartnerLocation "`$fg.PartnerLocation ($message)"
+	# Commented out because server location is a location id, but FG location is a location friendly name
+	# Assert-AreEqual $server.Location $fg.Location "`$fg.Location ($message)"
+	# Assert-AreEqual $partnerServer.Location $fg.PartnerLocation "`$fg.PartnerLocation ($message)"
 	Assert-AreEqual $role $fg.ReplicationRole "`$fg.ReplicationRole ($message)"
 	Assert-AreEqual $failoverPolicy $fg.ReadWriteFailoverPolicy "`$fg.FailoverPolicy ($message)"
 	Assert-AreEqual $gracePeriod $fg.FailoverWithDataLossGracePeriodHours "`$fg.FailoverWithGraceperiodHours ($message)"

@@ -20,9 +20,11 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Management.Storage;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
@@ -104,7 +106,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.ElasticPool parameters)
         {
-            return GetCurrentSqlClient().ElasticPools.CreateOrUpdate(resourceGroupName, serverName, elasticPoolName, parameters);
+            // Occasionally after PUT elastic pool, if we poll for operation results immediately then
+            // the polling may fail with 404. This is mitigated in the client by adding a brief wait.
+            var client = GetCurrentSqlClient();
+            AzureOperationResponse<Management.Sql.Models.ElasticPool> createOrUpdateResponse =
+                client.ElasticPools.BeginCreateOrUpdateWithHttpMessagesAsync(
+                    resourceGroupName, serverName, elasticPoolName, parameters).Result;
+
+            // Sleep 5 seconds
+            Thread.Sleep(5000);
+
+            return client.GetPutOrPatchOperationResultAsync(
+                createOrUpdateResponse, null, CancellationToken.None).Result.Body;
         }
 
         /// <summary>

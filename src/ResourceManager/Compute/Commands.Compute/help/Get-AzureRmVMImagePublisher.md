@@ -23,7 +23,7 @@ The **Get-AzureRmVMImagePublisher** cmdlet gets the VMImage publishers.
 
 ### Example 1: Get VMImage publishers for a region
 ```
-PS C:\>Get-AzureRmVMImagePublisher -Location "Central US"
+PS C:\> Get-AzureRmVMImagePublisher -Location "Central US"
 ```
 
 This command gets the publishers of VMImage instances for the Central US region within your Azure profile.

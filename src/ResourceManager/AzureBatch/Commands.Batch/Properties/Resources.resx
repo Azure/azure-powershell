@@ -481,4 +481,7 @@
   <data name="GetPoolUsageMetricsByFilter" xml:space="preserve">
     <value>Getting usage metrics, aggregated for pools with the filter {0}.</value>
   </data>
+  <data name="GetJobPreparationAndReleaseStatus" xml:space="preserve">
+    <value>Getting job preparation and release status for job "{0}"</value>
+  </data>
 </root>
