@@ -32,17 +32,19 @@ using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkUsageList"), OutputType(typeof(PSVirtualNetworkUsage))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkUsageList"), OutputType(typeof(List<PSVirtualNetworkUsage>))]
     public partial class GetAzureRmVirtualNetworkUsageList : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual network name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -51,11 +53,13 @@ namespace Microsoft.Azure.Commands.Network.Automation
             base.Execute();
 
             var vVirtualNetworkList = this.NetworkClient.NetworkManagementClient.VirtualNetworks.ListUsage(ResourceGroupName, Name);
+            var vnetUsageList = new List<PSVirtualNetworkUsage>();
             foreach (var vVirtualNetwork in vVirtualNetworkList)
             {
                 var vVirtualNetworkModel = Mapper.Map<CNM.PSVirtualNetworkUsage>(vVirtualNetwork);
-                WriteObject(vVirtualNetworkModel);
+                vnetUsageList.Add(vVirtualNetworkModel);
             }
+            WriteObject(vnetUsageList);
         }
     }
 }
