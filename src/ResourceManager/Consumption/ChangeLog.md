@@ -18,5 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
-* New Cmdlet et-AzureRmConsumptionUsageDetail
+
+## Version 0.2.0
+
+## Version 0.1.1
+
+## Version 0.1.0
+* New Cmdlet Get-AzureRmConsumptionUsageDetail
     - cmdlet to retrieve usage details of the subscription.

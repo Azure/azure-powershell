@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using DatabaseEdition = Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
@@ -40,19 +41,19 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlElasticPoolAdapter(AzureContext context)
+        public AzureSqlElasticPoolAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;
             Context = context;
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The Azure Sql Database ElasticPool object</returns>
         internal AzureSqlElasticPoolModel GetElasticPool(string resourceGroupName, string serverName, string poolName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, poolName);
             return CreateElasticPoolModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlElasticPoolModel> ListElasticPools(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((db) =>
             {
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlElasticPoolModel UpsertElasticPool(AzureSqlElasticPoolModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, Util.GenerateTracingId(), new Management.Sql.Models.ElasticPool
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPool
             {
                 Location = model.Location,
                 Tags = model.Tags,
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <param name="databaseName">The name of the Azure Sql Database to delete</param>
         public void RemoveElasticPool(string resourceGroupName, string serverName, string databaseName)
         {
-            Communicator.Remove(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns></returns>
         public AzureSqlDatabaseModel GetElasticPoolDatabase(string resourceGroupName, string serverName, string poolName, string databaseName)
         {
-            var resp = Communicator.GetDatabase(resourceGroupName, serverName, poolName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.GetDatabase(resourceGroupName, serverName, poolName, databaseName);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlDatabaseModel> ListElasticPoolDatabases(string resourceGroupName, string serverName, string poolName)
         {
-            var resp = Communicator.ListDatabases(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
+            var resp = Communicator.ListDatabases(resourceGroupName, serverName, poolName);
 
             return resp.Select((db) =>
             {
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>A list of Elastic Pool Activities</returns>
         internal IList<AzureSqlElasticPoolActivityModel> GetElasticPoolActivity(string resourceGroupName, string serverName, string poolName)
         {
-            var resp = Communicator.ListActivity(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
+            var resp = Communicator.ListActivity(resourceGroupName, serverName, poolName);
 
             return resp.Select((activity) =>
             {
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>A list of Elastic Pool Database Activities</returns>
         internal IList<AzureSqlDatabaseActivityModel> ListElasticPoolDatabaseActivity(string resourceGroupName, string serverName, string poolName)
         {
-            var resp = Communicator.ListDatabaseActivity(resourceGroupName, serverName, poolName, Util.GenerateTracingId());
+            var resp = Communicator.ListDatabaseActivity(resourceGroupName, serverName, poolName);
 
             return resp.Select((activity) =>
             {

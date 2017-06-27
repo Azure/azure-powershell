@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <returns>A model object</returns>
         protected override ServerThreatDetectionPolicyModel GetEntity()
         {
-            return ModelAdapter.GetServerThreatDetectionPolicy(ResourceGroupName, ServerName, clientRequestId);
+            return ModelAdapter.GetServerThreatDetectionPolicy(ResourceGroupName, ServerName);
         }
 
         /// <summary>
@@ -48,9 +49,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlThreatDetectionAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlThreatDetectionAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new SqlThreatDetectionAdapter(DefaultProfile.Context);
+            return new SqlThreatDetectionAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>
@@ -60,8 +61,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerThreatDetectionPolicyModel PersistChanges(ServerThreatDetectionPolicyModel model)
         {
-            ModelAdapter.SetServerThreatDetectionPolicy(model, clientRequestId,
-                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            ModelAdapter.SetServerThreatDetectionPolicy(model,
+                    DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             return null;
         }
     }

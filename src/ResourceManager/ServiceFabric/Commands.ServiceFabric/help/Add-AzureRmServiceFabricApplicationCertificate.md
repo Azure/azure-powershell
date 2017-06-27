@@ -33,8 +33,8 @@ Add-AzureRmServiceFabricApplicationCertificate [-ResourceGroupName] <String> [-N
 ```
 
 ## DESCRIPTION
-Use  **Add-AzureRmServiceFabricApplicationCertificate**  to install a certificate to all nodes in the cluster. 
-You can specify a certificate you already have or have the system generate an new one for you, and upload it to an new or existing Azure key vault.
+Use **Add-AzureRmServiceFabricApplicationCertificate** to install a certificate to all nodes in the cluster. 
+You can specify a certificate you already have or have the system generate a new one for you, and upload it to a new or existing Azure key vault.
 
 ## EXAMPLES
 
@@ -43,7 +43,7 @@ You can specify a certificate you already have or have the system generate an ne
 PS c:> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -SecretIdentifier 'https://contoso03vault.vault.azure.net/secrets/contoso03vaultrg/7f7de9131c034172b9df37ccc549524f'
 ```
 
-This command will add a certificate from existing Azure key vault to all nodetypes of the cluster
+This command will add a certificate from existing Azure key vault to all node types of the cluster.
 
 ### Example 2
 ```
@@ -52,13 +52,12 @@ PS C:\> Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName 'Group
         -CertificateSubjectName 'cn=Contoso.com' -CertificateOutputFolder 'c:\test' -CertificatePassword $pwd
 ```
 
-This command will create self signed certificate in Azure key vault with the key vault resource group name and key vault Name, then installs to all node types of the cluster, and downloads the certificate under fold 'c:\test', the name of the certificate downloaded 
-is same as the name of key vault certificate
+This command will create a self-signed certificate in the Azure key vault with the key vault resource group name and key vault Name, installs to all node types of the cluster, and downloads the certificate under folder 'c:\test'. The name of the certificate downloaded is same as the name of key vault certificate.
 
 ## PARAMETERS
 
 ### -CertificateFile
-The existing certificate file path
+The existing certificate file path.
 
 ```yaml
 Type: String
@@ -73,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateOutputFolder
-The folder path of the new certificate to be created
+The folder path of the new certificate to be created.
 
 ```yaml
 Type: String
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificatePassword
-The password of the pfx file
+The password of the pfx file.
 
 ```yaml
 Type: SecureString
@@ -103,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateSubjectName
-The Dns name of the certificate to be created
+The Dns name of the certificate to be created.
 
 ```yaml
 Type: String
@@ -117,23 +116,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -KeyVaultName
-Azure key vault name
+Azure key vault name.
 
 ```yaml
 Type: String
@@ -148,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultResouceGroupName
-Azure key vault resource group name
+Azure key vault resource group name.
 
 ```yaml
 Type: String
@@ -163,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -193,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecretIdentifier
-The existing Azure key vault secret uri
+The existing Azure key vault secret uri.
 
 ```yaml
 Type: String
@@ -204,6 +189,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -238,4 +238,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Add-AzureRmServiceFabricClusterCertificate](./Add-AzureRmServiceFabricClusterCertificate.md)
+
 [New-AzureRmServiceFabricCluster](./New-AzureRmServiceFabricCluster.md)

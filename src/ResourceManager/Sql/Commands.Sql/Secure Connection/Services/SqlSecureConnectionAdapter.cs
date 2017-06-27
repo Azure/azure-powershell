@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.SecureConnection.Model;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private AzureSubscription Subscription { get; set; }
+        private IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The end points communicator used by this adapter
@@ -37,9 +38,9 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// The Azure profile used by this adapter
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
-        public SqlSecureConnectionAdapter(AzureContext context)
+        public SqlSecureConnectionAdapter(IAzureContext context)
         {
             Context = context;
             Subscription = context.Subscription;
@@ -49,9 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// Provides the cmdlet model representation of a specific database secure connection policy
         /// </summary>
-        public DatabaseSecureConnectionPolicyModel GetDatabaseSecureConnectionPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
+        public DatabaseSecureConnectionPolicyModel GetDatabaseSecureConnectionPolicy(string resourceGroup, string serverName, string databaseName)
         {
-            DatabaseSecureConnectionPolicy policy = Communicator.GetDatabaseSecureConnectionPolicy(resourceGroup, serverName, databaseName, requestId);
+            DatabaseSecureConnectionPolicy policy = Communicator.GetDatabaseSecureConnectionPolicy(resourceGroup, serverName, databaseName);
             DatabaseSecureConnectionPolicyModel dbPolicyModel = ModelizeDatabaseSecureConnectionPolicy(policy);
             dbPolicyModel.ResourceGroupName = resourceGroup;
             dbPolicyModel.ServerName = serverName;

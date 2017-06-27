@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHdInsightJobManagementClient(string clusterName, BasicAuthenticationCloudCredentials credential)
         {
-            HdInsightJobManagementClient = AzureSession.ClientFactory.CreateCustomClient<HDInsightJobManagementClient>(clusterName, credential, HDInsightJobManagementClient.HDInsightRetryPolicy);
+            HdInsightJobManagementClient = AzureSession.Instance.ClientFactory.CreateCustomClient<HDInsightJobManagementClient>(clusterName, credential, HDInsightJobManagementClient.HDInsightRetryPolicy);
         }
 
         /// <summary>

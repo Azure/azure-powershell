@@ -13,7 +13,7 @@ Gets CORS rules for a Storage service type.
 ## SYNTAX
 
 ```
-Get-AzureStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <AzureStorageContext>]
+Get-AzureStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
@@ -73,7 +73,7 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

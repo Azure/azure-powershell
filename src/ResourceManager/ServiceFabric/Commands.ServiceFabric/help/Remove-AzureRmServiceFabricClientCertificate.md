@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmServiceFabricClientCertificate
 
 ## SYNOPSIS
-Remove a client certificate(s) or certificate subject(s) name(s) from being used for client authenticaton to the cluster.
+Remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Remove-AzureRmServiceFabricClientCertificate [-ResourceGroupName] <String> [-Nam
 ```
 
 ## DESCRIPTION
-Use **Remove-AzureRmServiceFabricClientCertificate** to remove a client certificate(s) or certificate subject(s) name(s) from being used for client authenticaton to the cluster.
+Use **Remove-AzureRmServiceFabricClientCertificate** to remove a client certificate(s) or certificate subject(s) name(s) from being used for client authentication to the cluster.
 
 ## EXAMPLES
 
@@ -46,12 +46,12 @@ Use **Remove-AzureRmServiceFabricClientCertificate** to remove a client certific
 PS c:> Remove-AzureRmServiceFabricClientCertificate -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -Thumbprint 5F3660C715EBBDA31DB1FFDCF508302348DE8E7A
 ```
 
-This command will remove client certificate with thumbprint '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' from the cluster
+This command will remove client certificate with thumbprint '5F3660C715EBBDA31DB1FFDCF508302348DE8E7A' from the cluster.
 
 ## PARAMETERS
 
 ### -AdminClientThumbprint
-Specify client certificate thumbprint which only has admin permission
+Specify client certificate thumbprint that only has admin permission.
 
 ```yaml
 Type: String[]
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClientCertificateCommonName
-Specify client common name , issuer thumbprint and authentication type
+Specify client common name, issuer thumbprint, and authentication type.
 
 ```yaml
 Type: PSClientCertificateCommonName[]
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -CommonName
-Specify client certificate common name
+Specify client certificate common name.
 
 ```yaml
 Type: String
@@ -95,23 +95,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IssuerThumbprint
-Specify client certificate issuer thumbprint
+Specify client certificate issuer thumbprint.
 
 ```yaml
 Type: String
@@ -126,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -141,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReadonlyClientThumbprint
-Specify client certificate thumbprint which only has read only permission
+Specify client certificate thumbprint that has read only permission.
 
 ```yaml
 Type: String[]
@@ -171,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -Thumbprint
-Specify client certificate thumbprint
+Specify client certificate thumbprint.
 
 ```yaml
 Type: String
@@ -182,6 +167,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -207,6 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.Hashtable
 System.String
+
 System.Boolean
 
 ## OUTPUTS

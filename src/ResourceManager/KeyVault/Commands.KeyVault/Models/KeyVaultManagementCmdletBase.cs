@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -32,6 +33,7 @@ using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
+using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -62,9 +64,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _dataServiceCredential = new DataServiceCredential(AzureSession.AuthenticationFactory, DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+                    _dataServiceCredential = new DataServiceCredential(AzureSession.Instance.AuthenticationFactory, DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.Graph);
                     _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
-                        DefaultProfile.Context.Environment.Endpoints[AzureEnvironment.Endpoint.Graph], _dataServiceCredential.TenantId)),
+                        DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph), _dataServiceCredential.TenantId)),
                         () => Task.FromResult(_dataServiceCredential.GetToken()));
                 }
                 return this._activeDirectoryClient;
@@ -165,12 +167,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected Guid GetTenantId()
         {
-            if (DefaultContext.Tenant == null || DefaultContext.Tenant.Id == Guid.Empty)
+            if (DefaultContext.Tenant == null || DefaultContext.Tenant.GetId() == Guid.Empty)
             {
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.InvalidAzureEnvironment);
             }
 
-            return DefaultContext.Tenant.Id;
+            return DefaultContext.Tenant.GetId();
         }
 
         protected string GetCurrentUsersObjectId()
@@ -238,7 +240,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             // In ADFS, object IDs have no additional syntax restrictions.
-            if (DefaultProfile.Context.Environment.OnPremise)
+            if (DefaultProfile.DefaultContext.Environment.OnPremise)
             {
                 return true;
             }
@@ -251,7 +253,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private Expression<Func<IUser, bool>> FilterByUpn(string upn)
         {
             // In ADFS, Graph cannot handle this particular combination of filters.
-            if (!DefaultProfile.Context.Environment.OnPremise)
+            if (!DefaultProfile.DefaultContext.Environment.OnPremise)
             {
                 return u => u.UserPrincipalName.Equals(upn, StringComparison.OrdinalIgnoreCase) ||
                     u.Mail.Equals(upn, StringComparison.OrdinalIgnoreCase) ||
@@ -285,7 +287,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             SecretPerms.Recover
         };
 
-        protected readonly string[] DefaultPermissionsToCertificates = 
+        protected readonly string[] DefaultPermissionsToCertificates =
         {
             CertPerms.Get,
             CertPerms.Delete,
@@ -300,6 +302,21 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Manageissuers,
             CertPerms.Setissuers
         };
+
+        protected readonly string[] DefaultPermissionsToStorage = 
+        {
+            StoragePerms.Delete,
+            StoragePerms.Deletesas,
+            StoragePerms.Get,
+            StoragePerms.Getsas,
+            StoragePerms.List,
+            StoragePerms.Listsas,
+            StoragePerms.Regeneratekey,
+            StoragePerms.Set,
+            StoragePerms.Setsas,
+            StoragePerms.Update,
+        };
+
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
     }

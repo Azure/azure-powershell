@@ -15,7 +15,7 @@ Downloads the contents of a file.
 ### ShareName (Default)
 ```
 Get-AzureStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -127,7 +127,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ShareName
 Aliases: 
 

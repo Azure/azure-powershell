@@ -76,7 +76,7 @@ Specifies the name of the server that this cmdlet modifies.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: 1
@@ -177,6 +177,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

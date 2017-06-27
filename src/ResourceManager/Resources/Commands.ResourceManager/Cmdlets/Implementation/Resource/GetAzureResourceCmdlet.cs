@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
@@ -219,7 +220,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (string.IsNullOrEmpty(this.ResourceId) && !this.TenantLevel)
             {
-                this.SubscriptionId = DefaultContext.Subscription.Id;
+                this.SubscriptionId = DefaultContext.Subscription.GetId();
             }
 
             PaginatedResponseHelper.ForEach(

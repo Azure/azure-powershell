@@ -20,24 +20,24 @@ function Test-GetSubscriptionsEndToEnd
 {
 	$allSubscriptions = Get-AzureRmSubscription
 	$firstSubscription = $allSubscriptions[0]
-	$id = $firstSubscription.SubscriptionId
+	$id = $firstSubscription.Id
 	$tenant = $firstSubscription.TenantId
-	$name = $firstSubscription.SubscriptionName
+	$name = $firstSubscription.Name
 	$subscription = $firstSubscription | Get-AzureRmSubscription
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $id $subscription.SubscriptionId
+	Assert-AreEqual $id $subscription.Id
 	$subscription = Get-AzureRmSubscription -SubscriptionId $id
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $id $subscription.SubscriptionId
+	Assert-AreEqual $id $subscription.Id
 	$subscription = Get-AzureRmSubscription -SubscriptionName $name -Tenant $tenant
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $name $subscription.SubscriptionName
+	Assert-AreEqual $name $subscription.Name
 	$subscription = Get-AzureRmSubscription -SubscriptionName $name
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $name $subscription.SubscriptionName
+	Assert-AreEqual $name $subscription.Name
 	$subscription = Get-AzureRmSubscription -SubscriptionName $name.ToUpper()
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $name $subscription.SubscriptionName
+	Assert-AreEqual $name $subscription.Name
 	$mostSubscriptions = Get-AzureRmSubscription
 	Assert-True {$mostSubscriptions.Count -gt 0}
 	$tenantSubscriptions = Get-AzureRmSubscription -Tenant $tenant
@@ -48,26 +48,26 @@ function Test-PipingWithContext
 {
     $allSubscriptions = Get-AzureRmSubscription
 	$firstSubscription = $allSubscriptions[0]
-	$id = $firstSubscription.SubscriptionId
-	$name = $firstSubscription.SubscriptionName
+	$id = $firstSubscription.Id
+	$name = $firstSubscription.Name
 	$nameContext = Get-AzureRmSubscription -SubscriptionName $name | Set-AzureRmContext
 	$idContext = Get-AzureRmSubscription -SubscriptionId $id | Set-AzureRmContext
 	$contextByName = Set-AzureRmContext -SubscriptionName $name
 	Assert-True { $nameContext -ne $null }
 	Assert-True { $nameContext.Subscription -ne $null }
-	Assert-True { $nameContext.Subscription.SubscriptionId -ne $null }
-	Assert-True { $nameContext.Subscription.SubscriptionName -ne $null }
+	Assert-True { $nameContext.Subscription.Id -ne $null }
+	Assert-True { $nameContext.Subscription.Name -ne $null }
 	Assert-True { $idContext -ne $null }
 	Assert-True { $idContext.Subscription -ne $null }
-	Assert-True { $idContext.Subscription.SubscriptionId -ne $null }
-	Assert-True { $idContext.Subscription.SubscriptionName -ne $null }
-	Assert-AreEqual $idContext.Subscription.SubscriptionId  $nameContext.Subscription.SubscriptionId
-	Assert-AreEqual $idContext.Subscription.SubscriptionName  $nameContext.Subscription.SubscriptionName
+	Assert-True { $idContext.Subscription.Id -ne $null }
+	Assert-True { $idContext.Subscription.Name -ne $null }
+	Assert-AreEqual $idContext.Subscription.Id  $nameContext.Subscription.Id
+	Assert-AreEqual $idContext.Subscription.Name  $nameContext.Subscription.Name
 	Assert-True { $contextByName -ne $null }
 	Assert-True { $contextByName.Subscription -ne $null }
-	Assert-True { $contextByName.Subscription.SubscriptionId -ne $null }
-	Assert-True { $contextByName.Subscription.SubscriptionName -ne $null }
-	Assert-AreEqual $contextByName.Subscription.SubscriptionName  $nameContext.Subscription.SubscriptionName
+	Assert-True { $contextByName.Subscription.Id -ne $null }
+	Assert-True { $contextByName.Subscription.Name -ne $null }
+	Assert-AreEqual $contextByName.Subscription.Name  $nameContext.Subscription.Name
 }
 
 function Test-SetAzureRmContextEndToEnd
@@ -77,9 +77,9 @@ function Test-SetAzureRmContextEndToEnd
     $secondSubscription = $allSubscriptions[1]
     Assert-True { $allSubscriptions[0] -ne $null }
 	Assert-True { $secondSubscription -ne $null }
-    Set-AzureRmContext -SubscriptionId $secondSubscription.SubscriptionId
+    Set-AzureRmContext -SubscriptionId $secondSubscription.Id
     $context = Get-AzureRmContext
-    Assert-AreEqual $context.Subscription.SubscriptionId $secondSubscription.SubscriptionId
+    Assert-AreEqual $context.Subscription.Id $secondSubscription.Id
     $junkSubscriptionId = "49BC3D95-9A30-40F8-81E0-3CDEF0C3F8A5"
     Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId $junkSubscriptionId} "does not exist"
 }
@@ -88,7 +88,7 @@ function Test-SetAzureRmContextWithoutSubscription
 {
     $allSubscriptions = Get-AzureRmSubscription
     $firstSubscription = $allSubscriptions[0]
-    $id = $firstSubscription.SubscriptionId
+    $id = $firstSubscription.Id
     $tenantId = $firstSubscription.TenantId
 
     Assert-True { $tenantId -ne $null }
@@ -98,6 +98,6 @@ function Test-SetAzureRmContextWithoutSubscription
 
     Assert-True { $context.Subscription -ne $null }
     Assert-True { $context.Tenant -ne $null }
-    Assert-AreEqual $context.Tenant.TenantId $firstSubscription.TenantId
-    Assert-AreEqual $context.Subscription.SubscriptionId $firstSubscription.SubscriptionId
+    Assert-AreEqual $context.Tenant.Id $firstSubscription.TenantId
+    Assert-AreEqual $context.Subscription.Id $firstSubscription.Id
 }

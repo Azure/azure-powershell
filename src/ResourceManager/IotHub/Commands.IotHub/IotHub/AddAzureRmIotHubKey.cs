@@ -50,15 +50,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string KeyName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "PrimaryKey")]
-        [ValidateNotNullOrEmpty]
         public string PrimaryKey { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "SecondaryKey")]
-        [ValidateNotNullOrEmpty]
         public string SecondaryKey { get; set; }
 
         [Parameter(

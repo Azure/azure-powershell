@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enabling user supplied KeyVault to the Data Lake Store Account: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string EnableKeyVault {
+            get {
+                return ResourceManager.GetString("EnableKeyVault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find account: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it..
         /// </summary>
         internal static string FailedToDiscoverResourceGroup {
@@ -210,6 +219,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string InvalidContent {
             get {
                 return ResourceManager.GetString("InvalidContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
+        /// </summary>
+        internal static string InvalidDefaultSubscription {
+            get {
+                return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
             }
         }
         
@@ -354,6 +372,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string MoveFailed {
             get {
                 return ResourceManager.GetString("MoveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        /// </summary>
+        internal static string NoSubscriptionInContext {
+            get {
+                return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
             }
         }
         

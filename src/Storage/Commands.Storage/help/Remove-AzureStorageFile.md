@@ -14,7 +14,7 @@ Deletes a file.
 
 ### ShareName (Default)
 ```
-Remove-AzureStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <AzureStorageContext>]
+Remove-AzureStorageFile [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -102,7 +102,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ShareName
 Aliases: 
 

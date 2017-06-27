@@ -114,7 +114,7 @@ Specifies the name of the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: Named
@@ -169,7 +169,7 @@ Specifies the maximum size of the database in bytes.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -179,7 +179,9 @@ Accept wildcard characters: False
 ```
 
 ### -ReadScale
-The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)```yaml
+The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
+
+```yaml
 Type: DatabaseReadScale
 Parameter Sets: (All)
 Aliases: 
@@ -219,6 +221,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SampleName
+The name of the sample schema to apply when creating this database.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: AdventureWorksLT
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -283,19 +301,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SampleName
-The name of the sample schema to apply when creating this database.```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -323,6 +328,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

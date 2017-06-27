@@ -119,8 +119,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.14.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.8.0.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.Network, Version=8.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.8.2.0\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
@@ -334,6 +334,9 @@
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\RunStartAndStopMultipleVirtualMachinesTest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestAzureReservedIPWithIPTags.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.ScenarioTest.ServiceManagementTests\TestGetAzureLocation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -631,6 +634,10 @@
     <None Include="Resources\tipsf004.publishsettings" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Commands.Common.Authentication</Name>

@@ -14,6 +14,7 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization;
@@ -55,10 +56,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Creates PoliciesClient using AzureContext instance.
         /// </summary>
         /// <param name="context">The AzureContext instance</param>
-        public AuthorizationClient(AzureContext context)
+        public AuthorizationClient(IAzureContext context)
         {
             ActiveDirectoryClient = new ActiveDirectoryClient(context);
-            AuthorizationManagementClient = AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            AuthorizationManagementClient = AzureSession.Instance.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -156,9 +157,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             Guid roleAssignmentId = RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue();
+            string scope = parameters.Scope;
+            ValidateScope(scope);
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
-                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(parameters.Scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, parameters.Scope).Id)
-                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(parameters.Scope, parameters.RoleDefinitionId);
+                ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
+                : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
             {
@@ -496,6 +499,67 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }
+        }
+
+        public static void ValidateScope(string scope)
+        {
+
+            if (scope.Length == 0 || !scope.StartsWith("/"))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsOrProviders, scope));
+            }
+
+            // "/" is a valid scope.
+            if (string.Compare(scope, "/") == 0)
+            {
+                return;
+            }
+
+            var parts = scope.Substring(1).Split('/');   // Skip the leading '/'
+
+            if (parts.Contains(string.Empty))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldHaveNoEmptyPart, scope));
+            }
+
+            int count = parts.Count();
+
+            if (count % 2 != 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldHaveEvenNumberOfParts, scope));
+            }
+
+            // For Scope that on tenant level, without subscriptions, should start with "providers"
+            // in this case we only ensure that the number of parts is even.
+            if (string.Compare(parts[0], "providers", true) == 0)
+            {
+                return;
+            }
+            else if (string.Compare(parts[0], "subscriptions", true) != 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsOrProviders, scope));
+            }
+
+            // Now check the case that scope begins with '/subscriptions'
+
+            if (count >= 4 && string.Compare(parts[2], "resourceGroups", true) != 0)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsAndResourceGroups, scope));
+            }
+
+            if (count >= 6)
+            {
+                if (string.Compare(parts[4], "providers", true) != 0)
+                {
+                    throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsAndResourceGroupsAndProviders, scope));
+                }
+
+                if (count < 8)
+                {
+                    throw new ArgumentException(string.Format(ProjectResources.ScopeShouldHaveAtLeastOnePairOfResourceTypeAndName, scope));
+                }
+            }
+
         }
     }
 }

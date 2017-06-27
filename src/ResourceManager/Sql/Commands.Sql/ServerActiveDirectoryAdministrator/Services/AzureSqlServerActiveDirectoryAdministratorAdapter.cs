@@ -1,9 +1,3 @@
-extern alias MicrosoftAzureCommandsResources;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
@@ -18,6 +12,12 @@ using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+extern alias MicrosoftAzureCommandsResources;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// A private instance of ActiveDirectoryClient
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerActiveDirectoryAdministratorAdapter(AzureContext context)
+        public AzureSqlServerActiveDirectoryAdministratorAdapter(IAzureContext context)
         {
             Context = context;
             _subscription = context.Subscription;
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The Azure Sql ServerActiveDirectoryAdministrator object</returns>
         internal AzureSqlServerActiveDirectoryAdministratorModel GetServerActiveDirectoryAdministrator(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName);
             return CreateServerActiveDirectoryAdministratorModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>A list of Azure SQL Server Active Directory administrators objects</returns>
         internal ICollection<AzureSqlServerActiveDirectoryAdministratorModel> ListServerActiveDirectoryAdministrators(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((activeDirectoryAdmin) =>
             {
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
         internal AzureSqlServerActiveDirectoryAdministratorModel UpsertServerActiveDirectoryAdministrator(string resourceGroup, string serverName, AzureSqlServerActiveDirectoryAdministratorModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, Util.GenerateTracingId(), new ServerAdministratorCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAdministratorCreateOrUpdateParameters()
             {
                 Properties = GetActiveDirectoryInformation(model.DisplayName, model.ObjectId)
             });
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
         public void RemoveServerActiveDirectoryAdministrator(string resourceGroupName, string serverName)
         {
-            Communicator.Remove(resourceGroupName, serverName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName);
         }
 
         /// <summary>

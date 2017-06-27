@@ -39,7 +39,7 @@ Specifies the name of the database that this cmdlet removes.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: 2
@@ -149,6 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

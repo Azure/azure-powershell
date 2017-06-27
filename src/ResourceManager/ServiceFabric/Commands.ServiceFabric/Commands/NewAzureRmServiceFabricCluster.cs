@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Alias("ClusterName")]
         public override string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true,
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
                  HelpMessage = "The user name for logging to Vm")]
         [ValidateNotNullOrEmpty()]
         [ValidatePattern("^[a-z][a-z0-9]{1,15}$")]
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    WriteVerbose(string.Format("Found existing cluster {0} which's status is waiting for nodes", this.Name));
+                    WriteVerboseWithTimestamp(string.Format("Found existing cluster {0} which's status is waiting for nodes", this.Name));
                 }
             }
 
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             else
             {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
             }
 
             if (secSourceVaultValue != null && secCertificateThumbprint != null && secCertificateUrlValue != null)
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             else
             {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
             }
 
             var firstCert = GetOrCreateCertificateInformation()[0];

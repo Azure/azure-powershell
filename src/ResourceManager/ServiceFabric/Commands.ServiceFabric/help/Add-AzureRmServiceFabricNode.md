@@ -7,7 +7,7 @@ schema: 2.0.0
 # Add-AzureRmServiceFabricNode
 
 ## SYNOPSIS
-Add nodes to the specific node type in the cluster
+Add nodes to the specific node type in the cluster.
 
 ## SYNTAX
 
@@ -17,36 +17,21 @@ Add-AzureRmServiceFabricNode [-ResourceGroupName] <String> [-Name] <String> -Nod
 ```
 
 ## DESCRIPTION
-User **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a Node Type.
+Use **Add-AzureRmServiceFabricNode** to add nodes to the specific node type. You just need to specify the number of nodes you want to add to a node type.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1''
+PS c:> Add-AzureRmServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1'
 ```
 
-This command will add 2 nodes to the nodetype 'n1'
+This command will add 2 nodes to the node type 'n1'.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-Specify the name of the cluster
+Specify the name of the cluster.
 
 ```yaml
 Type: String
@@ -61,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeType
-Node type name
+Node type name.
 
 ```yaml
 Type: String
@@ -76,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -NumberOfNodesToAdd
-VM instance number
+VM instance number.
 
 ```yaml
 Type: Int32
@@ -102,6 +87,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

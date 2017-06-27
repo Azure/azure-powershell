@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
@@ -27,34 +28,34 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Creates a communicator for Azure Sql Server Advisors
         /// </summary>
-        public AzureSqlServerAdvisorCommunicator(AzureContext context) : base(context)
+        public AzureSqlServerAdvisorCommunicator(IAzureContext context) : base(context)
         {
         }
 
         /// <summary>
         /// Gets the Azure Sql Server Advisor
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string advisorName, bool expandRecommendedActions, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string advisorName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).ServerAdvisors.Get(resourceGroupName, serverName, advisorName, expand).Advisor;
+            return GetCurrentSqlClient().ServerAdvisors.Get(resourceGroupName, serverName, advisorName, expand).Advisor;
         }
 
         /// <summary>
         /// Lists Azure Sql Server Advisors
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, bool expandRecommendedActions, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).ServerAdvisors.List(resourceGroupName, serverName, expand).Advisors;
+            return GetCurrentSqlClient().ServerAdvisors.List(resourceGroupName, serverName, expand).Advisors;
         }
 
         /// <summary>
         /// Update Advisor Auto Execute Status
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string advisorName, string autoExecuteStatus, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string advisorName, string autoExecuteStatus)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerAdvisors.Update(resourceGroupName, serverName, advisorName,
+            return GetCurrentSqlClient().ServerAdvisors.Update(resourceGroupName, serverName, advisorName,
                     new AdvisorUpdateParameters
                     {
                         Properties = new AdvisorUpdateProperties()

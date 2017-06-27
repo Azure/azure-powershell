@@ -16,14 +16,14 @@ Generates an SAS token for an Azure storage container.
 ```
 New-AzureStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <AzureStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzureStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <AzureStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ Specifies an Azure storage context.
 You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 
