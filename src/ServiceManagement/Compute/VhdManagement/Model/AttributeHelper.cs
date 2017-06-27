@@ -30,11 +30,11 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         public VhdEntityAttribute GetEntityAttribute()
         {
             var attributes = type.GetCustomAttributes(typeof(VhdEntityAttribute), false);
-            if (attributes.Length == 0)
+            if (attributes.Count() == 0)
             {
                 throw new InvalidOperationException(String.Format("Entity must have the attribute:{0}", typeof(VhdEntityAttribute).Name));
             }
-            return (VhdEntityAttribute)attributes[0];
+            return (VhdEntityAttribute)attributes.ElementAt(0);
         }
 
         public VhdPropertyAttribute GetAttribute(Expression<Func<object>> propertyNameProvider)
@@ -58,9 +58,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 
             var attributes = from p in type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
                              let vhdPropertyAttributes = p.GetCustomAttributes(typeof(VhdPropertyAttribute), false)
-                             let exists = vhdPropertyAttributes.Length > 0
+                             let exists = vhdPropertyAttributes.Count() > 0
                              where p.Name == propertyName
-                             select (VhdPropertyAttribute)(vhdPropertyAttributes[0]);
+                             select (VhdPropertyAttribute)(vhdPropertyAttributes.ElementAt(0));
             return attributes.FirstOrDefault();
         }
 
@@ -85,9 +85,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 
             var attributes = from p in type.GetProperties(BindingFlags.Instance | BindingFlags.Public)
                              let vhdPropertyAttributes = p.GetCustomAttributes(typeof(VhdPropertyAttribute), false)
-                             let exists = vhdPropertyAttributes.Length > 0
+                             let exists = vhdPropertyAttributes.Count() > 0
                              where p.Name == propertyName
-                             select (VhdPropertyAttribute)(vhdPropertyAttributes[0]);
+                             select (VhdPropertyAttribute)(vhdPropertyAttributes.ElementAt(0));
             return attributes.FirstOrDefault();
         }
     }

@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.True(env.OnPremise);
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl), cmdlet.PublishSettingsFileUrl);
         }
-
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IgnoresAddingDuplicatedEnvironment()
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
         }
-
+#endif
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IgnoresAddingPublicEnvironment()

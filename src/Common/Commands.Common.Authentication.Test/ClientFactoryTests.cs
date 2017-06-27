@@ -97,7 +97,7 @@ namespace Common.Authentication.Test
             // AzureSession.Instance.ClientFactory.AddAction(new RPRegistrationAction());
 
             // Authenticate!
-            AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, "common", password, ShowDialog.Always);
+            AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, "common", password, ShowDialog.Always, null);
             
             AzureSession.Instance.ClientFactory.AddUserAgent("TestUserAgent", "1.0");
             // Create the client
