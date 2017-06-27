@@ -28,7 +28,7 @@ Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmV
 
 ### Example 1: Create a virtual machine
 ```
-PS C:\># Variables    
+PS C:\> # Variables    
 ## Global
 $ResourceGroupName = "ResourceGroup11"
 $Location = "WestEurope"
@@ -82,7 +82,7 @@ This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
 ```
-PS C:\>## VM Account
+PS C:\> ## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force 

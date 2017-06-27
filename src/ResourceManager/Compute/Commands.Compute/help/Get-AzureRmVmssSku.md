@@ -23,7 +23,7 @@ The **Get-AzureRmVmssSku** cmdlet gets the available SKUs for the Virtual Machin
 
 ### Example 1: Get all available SKUs from the VMSS
 ```
-PS C:\>Get-AzureRmVmssSku -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
+PS C:\> Get-AzureRmVmssSku -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command gets all the available SKUs from the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
