@@ -12,23 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-
-namespace Microsoft.WindowsAzure.Commands.Common
+namespace Microsoft.Azure.Commands.Sql.Common
 {
-    /// <summary>
-    /// Extension methods for strings.
-    /// </summary>
-    public static class StringExtensions
+    public enum ResourceIdentityType
     {
-        /// <summary>
-        /// Formats the string with parameters and invariant culture.
-        /// </summary>
-        /// <param name="s">The string</param>
-        /// <param name="args">The arguments</param>
-        public static string FormatInvariant(this string s, params object[] args)
+        SystemAssigned
+    }
+
+    public class ResourceIdentityHelper
+    {
+        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent)
         {
-            return string.Format(CultureInfo.InvariantCulture, s, args);
+            Management.Sql.Models.ResourceIdentity identityResult = null;
+            if (assignIdentityIsPresent)
+            {
+                identityResult = new Management.Sql.Models.ResourceIdentity()
+                {
+                    Type = ResourceIdentityType.SystemAssigned.ToString()
+                };
+            }
+
+            return identityResult;
         }
     }
 }

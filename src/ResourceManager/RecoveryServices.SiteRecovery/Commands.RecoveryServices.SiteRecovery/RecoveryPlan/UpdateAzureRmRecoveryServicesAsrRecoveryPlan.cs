@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             base.ExecuteSiteRecoveryCmdlet();
 
             if (this.ShouldProcess(
-                this.InputObject.FriendlyName,
+                "Recovery plan",
                 VerbsData.Update))
             {
                 switch (this.ParameterSetName)

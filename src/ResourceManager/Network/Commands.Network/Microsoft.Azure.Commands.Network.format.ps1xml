@@ -832,6 +832,10 @@
                 <Label>Primary</Label>
                 <PropertyName>Primary</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>MacAddress</Label>
+                <PropertyName>MacAddress</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
