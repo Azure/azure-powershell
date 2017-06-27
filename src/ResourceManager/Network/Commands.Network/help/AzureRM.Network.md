@@ -218,6 +218,9 @@ Gets a network security group.
 ### [Get-AzureRmNetworkSecurityRuleConfig](Get-AzureRmNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
 
+### [Get-AzureRmNetworkUsage](Get-AzureRmNetworkUsage.md)
+Lists network usages for a subscription
+
 ### [Get-AzureRmNetworkWatcher](Get-AzureRmNetworkWatcher.md)
 Gets the properties of a Network Watcher
 
@@ -727,6 +730,9 @@ Stops a running packet capture session
 
 ### [Test-AzureRmDnsAvailability](Test-AzureRmDnsAvailability.md)
 {{Manually Enter Test-AzureRmDnsAvailability Description Here}}
+
+### [Test-AzureRmNetworkWatcherConnectivity](Test-AzureRmNetworkWatcherConnectivity.md)
+Returns connectivity information for a specified source VM and a destination.
 
 ### [Test-AzureRmNetworkWatcherIPFlow](Test-AzureRmNetworkWatcherIPFlow.md)
 Returns whether the packet is allowed or denied to or from a particular destination.

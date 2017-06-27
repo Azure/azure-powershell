@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -26,8 +27,6 @@ namespace Microsoft.Azure.Commands.Profile
     /// Selects Microsoft Azure profile.
     /// </summary>
     [Cmdlet(VerbsData.Import, "AzureRmContext", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
-    [Alias("Select-AzureRmProfile")]
-    [Obsolete("Select-AzureRmProfile will be renamed to Import-AzureRmContext in the next release.")]
     public class ImportAzureRMContextCommand : AzureRMCmdlet
     {
         internal const string InMemoryProfileParameterSet = "InMemoryProfile";
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = InMemoryProfileParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         [Alias("Profile")]
-        public AzureRMProfile AzureContext { get; set; }
+        public AzureRmProfile AzureContext { get; set; }
 
         [Parameter(ParameterSetName = ProfileFromDiskParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -54,14 +53,14 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 ConfirmAction(string.Format(Resources.ProcessImportContextFromFile, Path), Resources.ImportContextTarget, () =>
                 {
-                    if (!Common.Authentication.AzureSession.DataStore.FileExists(Path))
+                    if (!Common.Authentication.AzureSession.Instance.DataStore.FileExists(Path))
                     {
                         throw new PSArgumentException(string.Format(
                             Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound,
                             Path));
                     }
 
-                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile(Path);
+                    AzureRmProfileProvider.Instance.Profile = new AzureRmProfile(Path);
                     executionComplete = true;
                 });
             }
@@ -81,19 +80,19 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteExceptionError( new ArgumentException(Resources.AzureProfileMustNotBeNull));
                 }
 
-                if (AzureRmProfileProvider.Instance.Profile.Context != null &&
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
-                    !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+                if (AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription != null &&
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State != null &&
+                    !AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State.Equals(
                     "Enabled",
                     StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarning(string.Format(
                                    Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                                   AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
+                                   AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
                 }
 
-                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);
+                WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
             }
         }
     }

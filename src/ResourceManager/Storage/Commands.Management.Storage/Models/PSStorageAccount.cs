@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTier = storageAccount.AccessTier;
             this.CreationTime = storageAccount.CreationTime;
             this.CustomDomain = storageAccount.CustomDomain;
+            this.Identity = storageAccount.Identity;
             this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
             this.PrimaryEndpoints = storageAccount.PrimaryEndpoints;
             this.PrimaryLocation = storageAccount.PrimaryLocation;
@@ -65,6 +68,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public CustomDomain CustomDomain { get; set; }
 
+        public Identity Identity { get; set; }
+
         public DateTime? LastGeoFailoverTime { get; set; }
 
         public Endpoints PrimaryEndpoints { get; set; }
@@ -90,12 +95,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             var result = new PSStorageAccount(storageAccount);
              result.Context = new LazyAzureStorageContext((s) => 
              { 
-                var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(client), result.ResourceGroupName, s); 
-                 return new CloudStorageAccount(credentials, 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Blob), 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Queue), 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.Table), 
-                     ARMStorageService.GetUri(storageAccount.PrimaryEndpoints.File)); 
+                return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);  
              }, result.StorageAccountName) as AzureStorageContext; 
 
             return result;
@@ -113,7 +113,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return null;
         }
 
-        public AzureStorageContext Context { get; private set; }
+        public IStorageContext Context { get; private set; }
+
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Return a string representation of this storage account

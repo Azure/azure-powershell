@@ -7,22 +7,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fcd9bc1d-0bc9-46b9-b120-0a2f5c04d0b5"
+          "f155bf3f-ccbb-4e92-8984-1399cb6ad89f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1637.0",
+          "FxVersion/4.7.2046.0",
           "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
+          "OSVersion/6.3.15063",
           "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/ps1cluster/providers/Microsoft.ServiceFabric/clusters/ps1cluster\",\r\n  \"name\": \"ps1cluster\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"636288152862979134\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"8f025d74-853b-42e2-9f64-81497c0778ed\",\r\n    \"clusterCodeVersion\": \"5.6.180.9494\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://ps1cluster.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/8f025d74-853b-42e2-9f64-81497c0778ed\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"7870EF2BA976B108E97F90FC9E8B5E3D22ED7748\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"NamingService\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"MaxFileOperationTimeout\",\r\n            \"value\": \"5000\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"upgradeDescription\": {\r\n      \"overrideUserUpgradePolicy\": false,\r\n      \"forceRestart\": false,\r\n      \"upgradeReplicaSetCheckTimeout\": \"00:00:01\",\r\n      \"healthCheckWaitDuration\": \"00:00:01\",\r\n      \"healthCheckStableDuration\": \"00:00:01\",\r\n      \"healthCheckRetryTimeout\": \"00:00:00\",\r\n      \"upgradeTimeout\": \"01:00:00\",\r\n      \"upgradeDomainTimeout\": \"01:00:00\"\r\n    },\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"pyaiewshwwfa42\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://pyaiewshwwfa42.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://pyaiewshwwfa42.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://pyaiewshwwfa42.table.core.windows.net/\"\r\n    },\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"vmInstanceCount\": 1,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"None\",\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"5.4.145.9494\",\r\n        \"supportExpiryUtc\": \"2017-05-10T00:00:00\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.4.164.9494\",\r\n        \"supportExpiryUtc\": \"2017-05-10T00:00:00\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.5.216.0\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.5.219.0\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.5.232.0\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.6.180.9494\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/ps1cluster/providers/Microsoft.ServiceFabric/clusters/ps1cluster\",\r\n  \"name\": \"ps1cluster\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"636293792564308198\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"67cbb299-bc70-40c9-a5c8-6bc9346fdbf5\",\r\n    \"clusterCodeVersion\": \"5.6.204.9494\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://ps1cluster.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/67cbb299-bc70-40c9-a5c8-6bc9346fdbf5\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"B7F19FDF7AE755DDE22A3A0E7A8ECEADFFF22465\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [],\r\n    \"upgradeDescription\": {\r\n      \"overrideUserUpgradePolicy\": false,\r\n      \"forceRestart\": false,\r\n      \"upgradeReplicaSetCheckTimeout\": \"10675199.02:48:05.4775807\",\r\n      \"healthCheckWaitDuration\": \"00:05:00\",\r\n      \"healthCheckStableDuration\": \"00:05:00\",\r\n      \"healthCheckRetryTimeout\": \"00:45:00\",\r\n      \"upgradeTimeout\": \"12:00:00\",\r\n      \"upgradeDomainTimeout\": \"02:00:00\",\r\n      \"healthPolicy\": {\r\n        \"maxPercentUnhealthyNodes\": 100,\r\n        \"maxPercentUnhealthyApplications\": 100\r\n      },\r\n      \"deltaHealthPolicy\": {\r\n        \"maxPercentDeltaUnhealthyNodes\": 0,\r\n        \"maxPercentUpgradeDomainDeltaUnhealthyNodes\": 0,\r\n        \"maxPercentDeltaUnhealthyApplications\": 0\r\n      }\r\n    },\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"pyaiewshwwfa42\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://pyaiewshwwfa42.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://pyaiewshwwfa42.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://pyaiewshwwfa42.table.core.windows.net/\"\r\n    },\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"vmInstanceCount\": 1,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      },\r\n      {\r\n        \"name\": \"nnt1\",\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": false,\r\n        \"vmInstanceCount\": 1,\r\n        \"durabilityLevel\": \"Silver\"\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"None\",\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"5.6.204.9494\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3601"
+          "3238"
         ],
         "Content-Type": [
           "application/json"
@@ -40,22 +40,22 @@
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14978"
+          "14951"
         ],
         "x-ms-request-id": [
-          "ee9a210e-fb67-49bc-a369-25162ce2f833"
+          "4ec85390-5c71-49c4-8e64-667351020d23"
         ],
         "x-ms-correlation-request-id": [
-          "ee9a210e-fb67-49bc-a369-25162ce2f833"
+          "4ec85390-5c71-49c4-8e64-667351020d23"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170426T154316Z:ee9a210e-fb67-49bc-a369-25162ce2f833"
+          "WESTUS2:20170508T042721Z:4ec85390-5c71-49c4-8e64-667351020d23"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 26 Apr 2017 15:43:16 GMT"
+          "Mon, 08 May 2017 04:27:20 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
@@ -70,22 +70,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "18e63acf-48ac-4c5c-81f2-3445ac3adfe9"
+          "039e40d9-4c8c-4888-8509-fce7f8ca5d14"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1637.0",
+          "FxVersion/4.7.2046.0",
           "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
+          "OSVersion/6.3.15063",
           "Microsoft.Azure.Management.ServiceFabric.ServiceFabricManagementClient/1.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/ps1cluster/providers/Microsoft.ServiceFabric/clusters/ps1cluster\",\r\n  \"name\": \"ps1cluster\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"636288152862979134\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"8f025d74-853b-42e2-9f64-81497c0778ed\",\r\n    \"clusterCodeVersion\": \"5.6.180.9494\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://ps1cluster.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/8f025d74-853b-42e2-9f64-81497c0778ed\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"7870EF2BA976B108E97F90FC9E8B5E3D22ED7748\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [\r\n      {\r\n        \"name\": \"Security\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"ClusterProtectionLevel\",\r\n            \"value\": \"EncryptAndSign\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"name\": \"NamingService\",\r\n        \"parameters\": [\r\n          {\r\n            \"name\": \"MaxFileOperationTimeout\",\r\n            \"value\": \"5000\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"upgradeDescription\": {\r\n      \"overrideUserUpgradePolicy\": false,\r\n      \"forceRestart\": false,\r\n      \"upgradeReplicaSetCheckTimeout\": \"00:00:01\",\r\n      \"healthCheckWaitDuration\": \"00:00:01\",\r\n      \"healthCheckStableDuration\": \"00:00:01\",\r\n      \"healthCheckRetryTimeout\": \"00:00:00\",\r\n      \"upgradeTimeout\": \"01:00:00\",\r\n      \"upgradeDomainTimeout\": \"01:00:00\"\r\n    },\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"pyaiewshwwfa42\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://pyaiewshwwfa42.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://pyaiewshwwfa42.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://pyaiewshwwfa42.table.core.windows.net/\"\r\n    },\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"vmInstanceCount\": 1,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"None\",\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"5.4.145.9494\",\r\n        \"supportExpiryUtc\": \"2017-05-10T00:00:00\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.4.164.9494\",\r\n        \"supportExpiryUtc\": \"2017-05-10T00:00:00\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.5.216.0\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.5.219.0\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.5.232.0\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      },\r\n      {\r\n        \"codeVersion\": \"5.6.180.9494\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.ServiceFabric/clusters\",\r\n  \"location\": \"South Central US\",\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/ps1cluster/providers/Microsoft.ServiceFabric/clusters/ps1cluster\",\r\n  \"name\": \"ps1cluster\",\r\n  \"tags\": {},\r\n  \"etag\": \"W/\\\"636293792564308198\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"clusterId\": \"67cbb299-bc70-40c9-a5c8-6bc9346fdbf5\",\r\n    \"clusterCodeVersion\": \"5.6.204.9494\",\r\n    \"clusterState\": \"Ready\",\r\n    \"managementEndpoint\": \"https://ps1cluster.southcentralus.cloudapp.azure.com:19080\",\r\n    \"clusterEndpoint\": \"https://warp-test-winfabrp-southcentralus.trafficmanager.net/runtime/clusters/67cbb299-bc70-40c9-a5c8-6bc9346fdbf5\",\r\n    \"certificate\": {\r\n      \"thumbprint\": \"B7F19FDF7AE755DDE22A3A0E7A8ECEADFFF22465\",\r\n      \"x509StoreName\": \"My\"\r\n    },\r\n    \"clientCertificateThumbprints\": [],\r\n    \"clientCertificateCommonNames\": [],\r\n    \"fabricSettings\": [],\r\n    \"upgradeDescription\": {\r\n      \"overrideUserUpgradePolicy\": false,\r\n      \"forceRestart\": false,\r\n      \"upgradeReplicaSetCheckTimeout\": \"10675199.02:48:05.4775807\",\r\n      \"healthCheckWaitDuration\": \"00:05:00\",\r\n      \"healthCheckStableDuration\": \"00:05:00\",\r\n      \"healthCheckRetryTimeout\": \"00:45:00\",\r\n      \"upgradeTimeout\": \"12:00:00\",\r\n      \"upgradeDomainTimeout\": \"02:00:00\",\r\n      \"healthPolicy\": {\r\n        \"maxPercentUnhealthyNodes\": 100,\r\n        \"maxPercentUnhealthyApplications\": 100\r\n      },\r\n      \"deltaHealthPolicy\": {\r\n        \"maxPercentDeltaUnhealthyNodes\": 0,\r\n        \"maxPercentUpgradeDomainDeltaUnhealthyNodes\": 0,\r\n        \"maxPercentDeltaUnhealthyApplications\": 0\r\n      }\r\n    },\r\n    \"diagnosticsStorageAccountConfig\": {\r\n      \"storageAccountName\": \"pyaiewshwwfa42\",\r\n      \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n      \"blobEndpoint\": \"https://pyaiewshwwfa42.blob.core.windows.net/\",\r\n      \"queueEndpoint\": \"https://pyaiewshwwfa42.queue.core.windows.net/\",\r\n      \"tableEndpoint\": \"https://pyaiewshwwfa42.table.core.windows.net/\"\r\n    },\r\n    \"nodeTypes\": [\r\n      {\r\n        \"name\": \"nt1vm\",\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": true,\r\n        \"vmInstanceCount\": 1,\r\n        \"durabilityLevel\": \"Bronze\"\r\n      },\r\n      {\r\n        \"name\": \"nnt1\",\r\n        \"clientConnectionEndpointPort\": 19000,\r\n        \"httpGatewayEndpointPort\": 19080,\r\n        \"applicationPorts\": {\r\n          \"startPort\": 20000,\r\n          \"endPort\": 30000\r\n        },\r\n        \"ephemeralPorts\": {\r\n          \"startPort\": 49152,\r\n          \"endPort\": 65534\r\n        },\r\n        \"isPrimary\": false,\r\n        \"vmInstanceCount\": 1,\r\n        \"durabilityLevel\": \"Silver\"\r\n      }\r\n    ],\r\n    \"vmImage\": \"Windows\",\r\n    \"reliabilityLevel\": \"None\",\r\n    \"upgradeMode\": \"Automatic\",\r\n    \"availableClusterVersions\": [\r\n      {\r\n        \"codeVersion\": \"5.6.204.9494\",\r\n        \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999\",\r\n        \"environment\": \"Windows\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "3601"
+          "3238"
         ],
         "Content-Type": [
           "application/json"
@@ -103,22 +103,22 @@
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14977"
+          "14950"
         ],
         "x-ms-request-id": [
-          "c14cbda7-eb90-4b08-b2aa-e9232b66bbb0"
+          "a38fa0b4-a359-4c86-b553-f8679dd80968"
         ],
         "x-ms-correlation-request-id": [
-          "c14cbda7-eb90-4b08-b2aa-e9232b66bbb0"
+          "a38fa0b4-a359-4c86-b553-f8679dd80968"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20170426T154317Z:c14cbda7-eb90-4b08-b2aa-e9232b66bbb0"
+          "WESTUS2:20170508T042721Z:a38fa0b4-a359-4c86-b553-f8679dd80968"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 26 Apr 2017 15:43:16 GMT"
+          "Mon, 08 May 2017 04:27:20 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"

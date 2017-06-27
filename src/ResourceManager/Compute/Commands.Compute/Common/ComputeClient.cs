@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Compute;
 using System;
@@ -27,8 +28,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public Action<string> ErrorLogger { get; set; }
 
-        public ComputeClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public ComputeClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

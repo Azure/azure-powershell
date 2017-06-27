@@ -90,7 +90,7 @@ Specifies the name of the new firewall rule.
 ```yaml
 Type: String
 Parameter Sets: UserSpecifiedRuleSet
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: Named
@@ -195,6 +195,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlServerFirewallRule](./Set-AzureRmSqlServerFirewallRule.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

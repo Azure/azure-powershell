@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
@@ -35,19 +36,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs an adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerCommunicationLinkAdapter(AzureContext context)
+        public AzureSqlServerCommunicationLinkAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;
             Context = context;
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <returns>The Azure Sql server communication link object</returns>
         internal AzureSqlServerCommunicationLinkModel GetServerCommunicationLink(string resourceGroupName, string serverName, string communicationLinkName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, communicationLinkName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, communicationLinkName);
             return CreateServerCommunicationLinkModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <returns>A list of server communication link objects</returns>
         internal ICollection<AzureSqlServerCommunicationLinkModel> ListServerCommunicationLinks(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((l) =>
             {
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <returns>The upserted Azure Sql server communication link</returns>
         internal AzureSqlServerCommunicationLinkModel UpsertServerCommunicationLink(AzureSqlServerCommunicationLinkModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.Name, Util.GenerateTracingId(), new ServerCommunicationLinkCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.Name, new ServerCommunicationLinkCreateOrUpdateParameters()
             {
                 Location = model.Location,
                 Properties = new ServerCommunicationLinkCreateOrUpdateProperties()
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <param name="communicationLinkName">The name of the Azure Sql server communication link to delete</param>
         public void RemoveServerCommunicationLink(string resourceGroupName, string serverName, string communicationLinkName)
         {
-            Communicator.Remove(resourceGroupName, serverName, communicationLinkName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, communicationLinkName);
         }
 
         /// <summary>

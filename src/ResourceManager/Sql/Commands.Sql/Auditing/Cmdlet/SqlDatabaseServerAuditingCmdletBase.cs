@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
@@ -67,9 +68,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlAuditAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlAuditAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new SqlAuditAdapter(DefaultProfile.Context);
+            return new SqlAuditAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>
@@ -81,13 +82,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             if (AuditType == AuditType.Table)
             {
-                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerAuditingPolicyModel, clientRequestId, 
-                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerAuditingPolicyModel, 
+                    DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             if (AuditType == AuditType.Blob)
             {
-                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerBlobAuditingPolicyModel, clientRequestId,
-                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerBlobAuditingPolicyModel,
+                    DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             return null;
         }
@@ -97,14 +98,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (AuditType == AuditType.Table)
             {
                 ServerAuditingPolicyModel model;
-                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, clientRequestId, out model);
+                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, out model);
                 return model;
             }
 
             if (AuditType == AuditType.Blob)
             {
                 ServerBlobAuditingPolicyModel blobModel;
-                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, clientRequestId, out blobModel);
+                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, out blobModel);
                 return blobModel;
             }
 

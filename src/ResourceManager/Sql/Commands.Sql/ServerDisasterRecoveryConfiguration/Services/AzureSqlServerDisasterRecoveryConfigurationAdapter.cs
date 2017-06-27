@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
@@ -36,19 +37,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a Server Disaster Recovery Configuration adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerDisasterRecoveryConfigurationAdapter(AzureContext context)
+        public AzureSqlServerDisasterRecoveryConfigurationAdapter(IAzureContext context)
         {
             Context = context;
             _subscription = context.Subscription;
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <returns>The Azure Sql Server Disaster Recovery Configuration object</returns>
         internal AzureSqlServerDisasterRecoveryConfigurationModel GetServerDisasterRecoveryConfiguration(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
             return CreateServerDisasterRecoveryConfigurationModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <returns>A list of Server Disaster Recovery Configuration objects</returns>
         internal ICollection<AzureSqlServerDisasterRecoveryConfigurationModel> ListServerDisasterRecoveryConfigurations(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((serverDisasterRecoveryConfigurationName) => CreateServerDisasterRecoveryConfigurationModelFromResponse(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName)).ToList();
         }
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <returns>The created Azure Sql Server Disaster Recovery Configuration</returns>
         internal AzureSqlServerDisasterRecoveryConfigurationModel CreateServerDisasterRecoveryConfiguration(string resourceGroup, string serverName, string partnerServerId, AzureSqlServerDisasterRecoveryConfigurationModel model)
         {
-            var resp = Communicator.Create(resourceGroup, serverName, model.ServerDisasterRecoveryConfigurationName, Util.GenerateTracingId(), new ServerDisasterRecoveryConfigurationCreateOrUpdateParameters()
+            var resp = Communicator.Create(resourceGroup, serverName, model.ServerDisasterRecoveryConfigurationName, new ServerDisasterRecoveryConfigurationCreateOrUpdateParameters()
             {
                 Location = model.Location,
                 Properties = new ServerDisasterRecoveryConfigurationCreateOrUpdateProperties()
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <param name="allowDataLoss">Whether or not potential data loss is allowed during the failover</param>
         internal void FailoverServerDisasterRecoveryConfiguration(string resourceGroup, string serverName, AzureSqlServerDisasterRecoveryConfigurationModel model, bool allowDataLoss)
         {
-            Communicator.Failover(resourceGroup, serverName, model.ServerDisasterRecoveryConfigurationName, allowDataLoss, Util.GenerateTracingId());
+            Communicator.Failover(resourceGroup, serverName, model.ServerDisasterRecoveryConfigurationName, allowDataLoss);
         }
 
         /// <summary>
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <param name="serverDisasterRecoveryConfigurationName">The name of the Azure Sql Server Disaster Recovery Configuration to delete</param>
         public void RemoveServerDisasterRecoveryConfiguration(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName)
         {
-            Communicator.Remove(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, serverDisasterRecoveryConfigurationName);
         }
 
         /// <summary>
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
 
         internal IEnumerable<AzureSqlServerDisasterRecoveryConfigurationActivityModel> ListServerDisasterRecoveryConfigurationActivity(string resourceGroupName, string serverName, string serverDisasterRecoveryConfigurationName, Guid? operationId)
         {
-            var response = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var response = Communicator.List(resourceGroupName, serverName);
 
             IEnumerable<AzureSqlServerDisasterRecoveryConfigurationActivityModel> list = response.Select((r) =>
             {

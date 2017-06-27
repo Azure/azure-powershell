@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
     {
         public override void ExecuteCmdlet()
         {
-            var policy = DataServiceClient.Policy.GetResource(
+            var policy = DataServiceClient.Policies.Get(
                 ResourceGroupName,
                 LabName,
                 Constants.Default,

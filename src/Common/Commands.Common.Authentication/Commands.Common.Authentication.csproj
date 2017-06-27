@@ -72,11 +72,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -122,50 +122,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\AadAuthenticationException.cs" />
+    <Compile Include="Authentication\AuthenticationStoreTokenCache.cs" />
     <Compile Include="Authentication\AccessTokenCredential.cs" />
     <Compile Include="Authentication\AdalConfiguration.cs" />
     <Compile Include="Authentication\AdalTokenProvider.cs" />
     <Compile Include="Authentication\CertificateApplicationCredentialProvider.cs" />
     <Compile Include="Authentication\ConsoleParentWindow.cs" />
     <Compile Include="Authentication\CredStore.cs" />
-    <Compile Include="Authentication\IAccessToken.cs" />
     <Compile Include="Authentication\ITokenProvider.cs" />
     <Compile Include="Authentication\KeyStoreApplicationCredentialProvider.cs" />
-    <Compile Include="Authentication\LoginType.cs" />
     <Compile Include="Authentication\ProtectedFileTokenCache.cs" />
     <Compile Include="Authentication\ServicePrincipalKeyStore.cs" />
     <Compile Include="Authentication\ServicePrincipalTokenProvider.cs" />
-    <Compile Include="Authentication\ShowDialog.cs" />
     <Compile Include="Authentication\UserTokenProvider.cs" />
-    <Compile Include="AzureSession.cs" />
-    <Compile Include="Common\AzureModule.cs" />
-    <Compile Include="Common\ProfileData.cs" />
-    <Compile Include="Common\Validate.cs" />
+    <Compile Include="AzureSessionInitializer.cs" />
     <Compile Include="Extensions\CloudExceptionExtensions.cs" />
     <Compile Include="Factories\AuthenticationFactory.cs" />
     <Compile Include="Factories\ClientFactory.cs" />
-    <Compile Include="Interfaces\IAuthenticationFactory.cs" />
-    <Compile Include="Interfaces\IClientFactory.cs" />
-    <Compile Include="Interfaces\IDataStore.cs" />
-    <Compile Include="Interfaces\IProfileSerializer.cs" />
     <Compile Include="LegacySupport.cs" />
-    <Compile Include="Models\AzureAccount.cs" />
-    <Compile Include="Models\AzureAccount.Methods.cs" />
-    <Compile Include="Models\AzureContext.cs" />
-    <Compile Include="Models\AzureEnvironment.cs" />
-    <Compile Include="Models\AzureEnvironment.Methods.cs" />
-    <Compile Include="Models\AzureRMProfile.cs" />
-    <Compile Include="Models\AzureSMProfile.cs" />
-    <Compile Include="Models\AzureSubscription.cs" />
-    <Compile Include="Models\AzureSubscription.Methods.cs" />
-    <Compile Include="Models\AzureTenant.cs" />
-    <Compile Include="Models\DiskDataStore.cs" />
-    <Compile Include="Models\IAzureProfile.cs" />
-    <Compile Include="Models\IClientAction.cs" />
-    <Compile Include="Models\JsonProfileSerializer.cs" />
     <Compile Include="Models\MemoryDataStore.cs" />
-    <Compile Include="Models\XmlProfileSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -173,10 +148,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\AdalTokenCache.cs" />
-    <Compile Include="Utilities\DictionaryExtensions.cs" />
-    <Compile Include="Utilities\FileUtilities.cs" />
-    <Compile Include="Utilities\JsonUtilities.cs" />
-    <Compile Include="Utilities\XmlUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -187,5 +158,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

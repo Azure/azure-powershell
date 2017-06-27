@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile
                     throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
                 }
 
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
                     if (!string.IsNullOrWhiteSpace(SubscriptionId) || !string.IsNullOrWhiteSpace(SubscriptionName))
                     {
                         if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, 
@@ -107,18 +108,18 @@ namespace Microsoft.Azure.Commands.Profile
 
         private void CompleteContextProcessing()
         {
-            if (AzureRmProfileProvider.Instance.Profile.Context != null &&
-                AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
-                AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
-                !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+            if (AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State != null &&
+                !AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State.Equals(
                 "Enabled",
                 StringComparison.OrdinalIgnoreCase))
             {
                 WriteWarning(string.Format(
                                Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                               AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
+                               AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
             }
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.Profile.DefaultContext));
         }
     }
 }

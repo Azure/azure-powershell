@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Services;
@@ -34,14 +35,14 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a ServiceObjective adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerServiceObjectiveAdapter(AzureContext context)
+        public AzureSqlServerServiceObjectiveAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlServerServiceObjectiveCommunicator(Context);
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <returns>The ServiceObjective</returns>
         public AzureSqlServerServiceObjectiveModel GetServiceObjective(string resourceGroupName, string serverName, string serviceObjectiveName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, serviceObjectiveName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, serviceObjectiveName);
             return CreateServiceObjectiveModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <returns>A list of all the ServiceObjectives</returns>
         public List<AzureSqlServerServiceObjectiveModel> ListServiceObjectives(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((s) =>
             {

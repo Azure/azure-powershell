@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.1.0
+* Restore-AzureRmSqlDatabase: Update documentation examples
+
+## Version 3.0.1
+
+## Version 3.0.0
 * Added -SampleName parameter to New-AzureRmSqlDatabase
 * Updates to Failover Group cmdlets
 	- Remove 'Tag' parameters
@@ -29,6 +36,7 @@
 	- Fix bug causing Switch- cmdlet to return immediately rather than waiting for operation to complete
 	- Fix integer overflow bug when high grace period values are used
 	- Adjust grace period to a minimum of 1 hour if a lower one is provided
+* Remove "Usage_Anomaly" from the accepted values for "ExcludedDetectionType" parameter of Set-AzureRmSqlDatabaseThreatDetectionPolicy cmdlet and Set-AzureRmSqlServerThreatDetectionPolicy cmdlet. 
 
 ## Version 2.8.0
 * Bug fixes on Azure Failover Group Cmdlets

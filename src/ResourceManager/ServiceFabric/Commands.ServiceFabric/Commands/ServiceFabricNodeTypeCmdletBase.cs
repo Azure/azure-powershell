@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -49,13 +50,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public ServiceFabricNodeTypeCmdletBase()
         {
             storageManagementClient = new Lazy<IStorageManagementClient>(() =>
-             AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
-                AzureRmProfileProvider.Instance.Profile.Context,
+             AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
             networkManagementClient = new Lazy<INetworkManagementClient>(() =>
-            AzureSession.ClientFactory.CreateArmClient<NetworkManagementClient>(
-               AzureRmProfileProvider.Instance.Profile.Context,
+            AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(
+               DefaultContext,
                AzureEnvironment.Endpoint.ResourceManager));
         }
 

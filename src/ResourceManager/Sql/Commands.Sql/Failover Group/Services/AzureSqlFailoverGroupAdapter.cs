@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
 {
@@ -37,19 +38,19 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlFailoverGroupAdapter(AzureContext context)
+        public AzureSqlFailoverGroupAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;
             Context = context;
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <returns>The Azure Sql Database FailoverGroup object</returns>
         internal AzureSqlFailoverGroupModel GetFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, failoverGroupName);
 
             return CreateFailoverGroupModelFromResponse(resp);
         }
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlFailoverGroupModel> ListFailoverGroups(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((db) =>
             {
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
             }
 
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, new FailoverGroupCreateOrUpdateParameters()
             {
                 Location = model.Location,
                 Properties = new FailoverGroupCreateOrUpdateProperties()
@@ -148,7 +149,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
                 readWriteEndpoint.FailoverWithDataLossGracePeriodMinutes = checked(model.FailoverWithDataLossGracePeriodHours * 60);
             }
 
-            var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
+            var resp = Communicator.PatchUpdate(model.ResourceGroupName, model.ServerName, model.FailoverGroupName, new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,
                 Properties = new FailoverGroupPatchUpdateProperties()
@@ -168,7 +169,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <param name="failvoerGroupName">The name of the Azure SQL Database Failover Group to delete</param>
         public void RemoveFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName)
         {
-            Communicator.Remove(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, failoverGroupName);
         }
 
         /// <summary>
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlDatabaseModel> ListDatabasesOnServer(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.ListDatabasesOnServer(resourceGroupName, serverName,Util.GenerateTracingId());
+            var resp = Communicator.ListDatabasesOnServer(resourceGroupName, serverName);
 
             return resp.Select((db) =>
             {
@@ -197,7 +198,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         /// <returns>The updated Azure Sql Database FailoverGroup</returns>
         internal AzureSqlFailoverGroupModel AddOrRemoveDatabaseToFailoverGroup(string resourceGroupName, string serverName, string failoverGroupName, AzureSqlFailoverGroupModel model)
         {
-            var resp = Communicator.PatchUpdate(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId(), new FailoverGroupPatchUpdateParameters()
+            var resp = Communicator.PatchUpdate(resourceGroupName, serverName, failoverGroupName, new FailoverGroupPatchUpdateParameters()
             {
                 Location = model.Location,
                 Properties = new FailoverGroupPatchUpdateProperties()
@@ -223,11 +224,11 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
         {
             if (!allowDataLoss)
             {
-                Communicator.Failover(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
+                Communicator.Failover(resourceGroupName, serverName, failoverGroupName);
             }
             else
             {
-                Communicator.ForceFailoverAllowDataLoss(resourceGroupName, serverName, failoverGroupName, Util.GenerateTracingId());
+                Communicator.ForceFailoverAllowDataLoss(resourceGroupName, serverName, failoverGroupName);
             }
 
             return null;

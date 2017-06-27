@@ -12,25 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
-using Xunit.Sdk;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -46,9 +39,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]
@@ -68,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
             var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("test", context.Subscription.SubscriptionName);
+            Assert.Equal("test", context.Subscription.Name);
         }
 
         [Fact]
@@ -80,7 +73,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             var profile = AzureRmProfileProvider.Instance.Profile;
-            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+            AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
 
             try
             {
@@ -97,7 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
             var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Null(context);
+            Assert.True(context == null || context.Account == null || context.Account.Id == null);
             Assert.True(commandRuntimeMock.ErrorStream.Count == 1);
             var error = commandRuntimeMock.ErrorStream[0];
             Assert.Equal("Run Login-AzureRmAccount to login.", error.Exception.Message);
@@ -115,7 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Make sure that the tenant ID we are attempting to set is
             // valid for the account
-            var account = AzureRmProfileProvider.Instance.Profile.Context.Account;
+            var account = AzureRmProfileProvider.Instance.Profile.DefaultContext.Account;
             var existingTenants = account.GetProperty(AzureAccount.Property.Tenants);
             var allowedTenants = existingTenants == null ? tenantToSet : existingTenants + "," + tenantToSet;
             account.SetProperty(AzureAccount.Property.Tenants, allowedTenants);
@@ -133,7 +126,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
 
             // TenantId is not sufficient to change the context.
-            Assert.NotEqual(tenantToSet, context.Tenant.TenantId);
+            Assert.NotEqual(tenantToSet, context.Tenant.Id);
         }
 
         [Fact]

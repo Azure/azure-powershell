@@ -141,6 +141,9 @@
   <data name="DownloadFileDataMessage" xml:space="preserve">
     <value>Download file data</value>
   </data>
+  <data name="EnableKeyVault" xml:space="preserve">
+    <value>Enabling user supplied KeyVault to the Data Lake Store Account: '{0}' ...</value>
+  </data>
   <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
     <value>Could not find account: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it.</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="InvalidContent" xml:space="preserve">
     <value>Invalid content passed in. Only byte[] and string content is supported. If bytes are passed in, 'Byte' encoding must be selected.</value>
+  </data>
+  <data name="InvalidDefaultSubscription" xml:space="preserve">
+    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
   <data name="InvalidEncoding" xml:space="preserve">
     <value>Invalid encoding selected. 'Byte' encoding can only be used with byte content. Use text encoding instead.</value>
@@ -215,6 +221,9 @@
   </data>
   <data name="MoveFailed" xml:space="preserve">
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
+  </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
   </data>
   <data name="ObsoleteWarningForAclObjects" xml:space="preserve">
     <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry</value>

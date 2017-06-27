@@ -29,15 +29,15 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Hyak.Common;
-
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     public class ExpressRouteClient
     {
         public ExpressRouteManagementClient Client { get; internal set; }
 
-        private static ClientType CreateClient<ClientType>(AzureSMProfile profile, AzureSubscription subscription) where ClientType : ServiceClient<ClientType>
+        private static ClientType CreateClient<ClientType>(AzureSMProfile profile, IAzureSubscription subscription) where ClientType : ServiceClient<ClientType>
         {
-            return AzureSession.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            return AzureSession.Instance.ClientFactory.CreateClient<ClientType>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         /// <param name="profile">Azure Profile</param>
-        public ExpressRouteClient(AzureSMProfile profile, AzureSubscription subscription)
+        public ExpressRouteClient(AzureSMProfile profile, IAzureSubscription subscription)
             : this(CreateClient<ExpressRouteManagementClient>(profile, subscription))
         {
         }
@@ -79,19 +79,20 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             return Client.BorderGatewayProtocolPeerings.Get(serviceKey.ToString(), accessType).BgpPeering;
         }
 
-        public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn, string primaryPeerSubnet,
-            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null)
+        public AzureBgpPeering NewAzureBGPPeering(Guid serviceKey, string advertisedPublicPrefixes, UInt32 customerAsn, UInt32 peerAsn,string primaryPeerSubnet,
+            string routingRegistryName, string secondaryPeerSubnet, UInt32 vlanId, BgpPeeringAccessType accessType, string sharedKey = null, UInt32 legacyMode = 0)
         {
             var result = Client.BorderGatewayProtocolPeerings.New(serviceKey.ToString(), accessType, new BorderGatewayProtocolPeeringNewParameters()
            {
                AdvertisedPublicPrefixes = advertisedPublicPrefixes,
                CustomerAutonomousSystemNumber = customerAsn,
+               LegacyMode = legacyMode,
                PeerAutonomousSystemNumber = peerAsn,
                PrimaryPeerSubnet = primaryPeerSubnet,
                RoutingRegistryName = routingRegistryName,
                SecondaryPeerSubnet = secondaryPeerSubnet,
                SharedKey = sharedKey,
-               VirtualLanId = vlanId
+               VirtualLanId = vlanId,
            });
 
             if (result.HttpStatusCode.Equals(HttpStatusCode.OK))

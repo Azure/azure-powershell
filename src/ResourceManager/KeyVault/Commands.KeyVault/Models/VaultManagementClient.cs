@@ -23,15 +23,16 @@ using System.Linq;
 using System.Net;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class VaultManagementClient
     {
-        public VaultManagementClient(AzureContext context)
+        public VaultManagementClient(IAzureContext context)
         {
-            KeyVaultManagementClient = AzureSession.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            KeyVaultManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -166,7 +167,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                             {
                                 Keys = a.PermissionsToKeys.ToArray(),
                                 Secrets = a.PermissionsToSecrets.ToArray(),
-                                Certificates = a.PermissionsToCertificates.ToArray()
+                                Certificates = a.PermissionsToCertificates.ToArray(),
+                                Storage = a.PermissionsToStorage.ToArray(),
                             }
                         }).ToList();
 

@@ -25,20 +25,37 @@
     { "regex": "Websites", "group": "App Service", "alias": "App Service" }, 
     { "regex": "WebApp", "group": "App Service", "alias": "App Service" }, 
 
+    { "regex": "ACS", "alias": "Azure Stack Storage" }, 
+    { "regex": "AzureStackAdmin", "alias": "Azure Stack Admin" }, 
+    { "regex": "AzureStackStorage", "alias": "Azure Stack Storage" }, 
+
+    { "regex": "DataLakeAnalytics", "group": "Data Lake", "alias": "Data Lake Analytics" },
+    { "regex": "DataLakeStore", "group": "Data Lake", "alias": "Data Lake Store" },
+    { "regex": "DataLake", "group": "Data Lake", "alias": "Data Lake" }, 
+
+    { "regex": "Dtl", "group": "DevTest Labs", "alias": "DevTest Labs" }, 
+    { "regex": "DevTestLabs", "group": "DevTest Labs", "alias": "DevTest Labs" }, 
+
+    { "regex": "DataFactory", "group": "Data Factories", "alias": "Data Factories" }, 
+    { "regex": "DataFactories", "group": "Data Factories", "alias": "Data Factories" }, 
+
+    { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" }, 
+    { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" }, 
+
     { "regex": "Storage", "alias": "Storage" }, 
 
-    { "regex": "ServiceBus", "alias": "Service Bus" }, 
+    { "regex": "Relay", "group": "Service Bus", "alias": "Service Bus" }, 
+    { "regex": "ServiceBus", "group": "Service Bus", "alias": "Service Bus" }, 
 
     { "regex": "Sql", "alias": "SQL" }, 
 
-    { "regex": "ContainerService", "group": "Container Service", "alias": "Container Service" }, 
-    { "regex": "ACS", "group": "Container Service", "alias": "Container Service" }, 
+    { "regex": "ContainerRegistry", "alias": "Container Registry" }, 
+
+    { "regex": "ServiceFabric", "alias": "Service Fabric" }, 
 
     { "regex": "KeyVault", "alias": "Key Vault" }, 
 
     { "regex": "Iot", "alias": "IoT" }, 
-
-    { "regex": "DataLake", "alias": "Data Lake" }, 
 
     { "regex": "Batch", "alias": "Batch" }, 
 
@@ -46,7 +63,7 @@
 
     { "regex": "Automation", "alias": "Automation" }, 
 
-    { "regex": "Recovery", "alias": "Recovery" }, 
+    { "regex": "RecoveryServices", "alias": "Recovery Services" }, 
 
     { "regex": "Backup", "alias": "Backup" }, 
 
@@ -62,9 +79,7 @@
 
     { "regex": "LogicApp", "alias": "Logic Apps" }, 
 
-    { "regex": "IntegrationAccount", "alias": "Integration Accounts" }, 
-
-    { "regex": "NotificationHub", "alias": "Notification Hubs" }, 
+    { "regex": "NotificationHubs", "alias": "Notification Hubs" }, 
 
     { "regex": "OperationalInsights", "alias": "Operational Insights" }, 
 
@@ -82,18 +97,10 @@
 
     { "regex": "TrafficManager", "alias": "Traffic Manager" }, 
 
-    { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" }, 
-    { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" }, 
+    { "regex": "Consumption", "group": "Billing", "alias": "Billing" }, 
+    { "regex": "Billing", "group": "Billing", "alias": "Billing" }, 
 
-    { "regex": "Billing", "alias": "Billing" }, 
-
-    { "regex": "Insights", "alias": "Monitoring" }, 
-
-    { "regex": "Dtl", "group": "DevTest Labs", "alias": "DevTest Labs" }, 
-    { "regex": "DevTestLabs", "group": "DevTest Labs", "alias": "DevTest Labs" }, 
-
-    { "regex": "DataFactory", "group": "Data Factories", "alias": "Data Factories" }, 
-    { "regex": "DataFactories", "group": "Data Factories", "alias": "Data Factories" }, 
+    { "regex": "Insights", "alias": "Monitor" }, 
 
     { "regex": "Media", "alias": "Media Services" }, 
 
@@ -105,5 +112,5 @@
 
     { "regex": "Policy", "group": "Resources", "alias": "Policies" }, 
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 
-    { "regex": "Resource", "group": "Resources", "alias": "Resources" }
+    { "regex": "Resources", "group": "Resources", "alias": "Resources" }
 ]

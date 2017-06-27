@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             this.TokenCacheItemProvider = TokenCacheItemProvider;
         }
 
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {

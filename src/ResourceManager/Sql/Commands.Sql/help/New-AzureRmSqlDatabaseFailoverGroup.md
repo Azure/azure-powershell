@@ -12,15 +12,16 @@ This command creates a new Azure SQL Database Failover Group.
 ## SYNTAX
 
 ```
-New-AzureRmSqlDatabaseFailoverGroup -ServerName <String> -FailoverGroupName <String>
+New-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> -FailoverGroupName <String>
  [-PartnerResourceGroupName <String>] -PartnerServerName <String> [-FailoverPolicy <FailoverPolicy>]
- [-GracePeriodWithDataLossHours <Int32>] -ResourceGroupName <String> [<CommonParameters>]
+ [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
+ [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Creates a new Azure SQL Database Failover Group for the specified servers.
 
-Two Azure SQL Database TDS endpoints are created at '<FailoverGroupName>.<SqlDatabaseDnsSuffix>' (for example, '<FailoverGroupName>.database.windows.net') and '<FailoverGroupName>.secondary.<SqlDatabaseDnsSuffix>.' These endpoints may be used to connect to the primary and secondary servers in the Failover Group, respectively. If the primary server is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Failover Group's failover policy and grace period.
+Two Azure SQL Database TDS endpoints are created at FailoverGroupName.SqlDatabaseDnsSuffix (for example, FailoverGroupName.database.windows.net) and FailoverGroupName.secondary.SqlDatabaseDnsSuffix. These endpoints may be used to connect to the primary and secondary servers in the Failover Group, respectively. If the primary server is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Failover Group's failover policy and grace period.
 
 Newly created Failover Groups do not contain any databases. To control the set of databases in a Failover Group, use the 'Add-AzureRmSqlDatabaseToFailoverGroup' and 'Remove-AzureRmSqlDatabaseFromFailoverGroup' cmdlets.
 
@@ -51,6 +52,7 @@ Whether an outage on the secondary server should trigger automatic failover of t
 Type: AllowReadOnlyFailoverToPrimary
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -191,3 +193,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Switch-AzureRmSqlDatabaseFailoverGroup](./Switch-AzureRmSqlDatabaseFailoverGroup.md)
 
 [Remove-AzureRmSqlDatabaseFailoverGroup](./Remove-AzureRmSqlDatabaseFailoverGroup.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

@@ -435,6 +435,12 @@ function Test-CRUDNotificationHub
     $createdNotificationHub.WnsCredential.PackageSid = "ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699"
     $createdNotificationHub.WnsCredential.SecretKey = "w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp"
     $createdNotificationHub.WnsCredential.WindowsLiveEndpoint = "http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf"
+	$createdNotificationHub.ApnsCredential = New-Object 'Microsoft.Azure.Management.NotificationHubs.Models.ApnsCredential'
+	$createdNotificationHub.ApnsCredential.KeyId = "TXRXD9P6K7"
+	$createdNotificationHub.ApnsCredential.Token = "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgpVB15km4qskA5Ra5XvdtOwWPvaXIhVVQZdonzINh+hGgCgYIKoZIzj0DAQehRANCAASS3ek04J20BqA6WWDlD6+xd3dJEifhW87wI0nnkfUB8LDb424TiWlzGIgnxV79hb3QHCAUNsPdBfLLF+Od8yqL"
+	$createdNotificationHub.ApnsCredential.AppName = "Sample"
+	$createdNotificationHub.ApnsCredential.AppId = "EF9WEB9D5K"
+	$createdNotificationHub.ApnsCredential.Endpoint = "https://api.push.apple.com:443/3/device"
     $result = New-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHubObj $createdNotificationHub
 
     Write-Debug " Get the PNS credentials for the second notificationHub created"
@@ -442,7 +448,11 @@ function Test-CRUDNotificationHub
     Assert-AreEqual  $createdNotificationHub.WnsCredential.PackageSid $pnsCredentials.WnsCredential.PackageSid
     Assert-AreEqual  $createdNotificationHub.WnsCredential.SecretKey $pnsCredentials.WnsCredential.SecretKey
     Assert-AreEqual  $createdNotificationHub.WnsCredential.WindowsLiveEndpoint $pnsCredentials.WnsCredential.WindowsLiveEndpoint
-    
+    Assert-AreEqual  $createdNotificationHub.ApnsCredential.KeyId $pnsCredentials.ApnsCredential.KeyId
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.Token $pnsCredentials.ApnsCredential.Token
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.AppName $pnsCredentials.ApnsCredential.AppName
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.AppId $pnsCredentials.ApnsCredential.AppId
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.Endpoint $pnsCredentials.ApnsCredential.Endpoint
     Write-Debug " Get all the created notificationHub "
     $createdNotificationHubList = Get-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName
 
@@ -468,7 +478,13 @@ function Test-CRUDNotificationHub
     $createdNotificationHub.WnsCredential = New-Object 'Microsoft.Azure.Management.NotificationHubs.Models.WnsCredential'
     $createdNotificationHub.WnsCredential.PackageSid = "ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699"
     $createdNotificationHub.WnsCredential.SecretKey = "w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp"
+	$createdNotificationHub.ApnsCredential.KeyId = "TXRXD9P6K7"
+	$createdNotificationHub.ApnsCredential.Token = "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgpVB15km4qskA5Ra5XvdtOwWPvaXIhVVQZdonzINh+hGgCgYIKoZIzj0DAQehRANCAASS3ek04J20BqA6WWDlD6+xd3dJEifhW87wI0nnkfUB8LDb424TiWlzGIgnxV79hb3QHCAUNsPdBfLLF+Od8yqL"
+	$createdNotificationHub.ApnsCredential.AppName = "Sample2"
+	$createdNotificationHub.ApnsCredential.AppId = "EF9WEB9D5K"
+	$createdNotificationHub.ApnsCredential.Endpoint = "https://api.push.apple.com:443/3/device"
     $createdNotificationHub.WnsCredential.WindowsLiveEndpoint = "http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf"
+
     $result = Set-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHubObj $createdNotificationHub -Force
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
@@ -480,6 +496,11 @@ function Test-CRUDNotificationHub
     Assert-AreEqual  $createdNotificationHub.WnsCredential.PackageSid $pnsCredentials.WnsCredential.PackageSid
     Assert-AreEqual  $createdNotificationHub.WnsCredential.SecretKey $pnsCredentials.WnsCredential.SecretKey
     Assert-AreEqual  $createdNotificationHub.WnsCredential.WindowsLiveEndpoint $pnsCredentials.WnsCredential.WindowsLiveEndpoint
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.KeyId $pnsCredentials.ApnsCredential.KeyId
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.Token $pnsCredentials.ApnsCredential.Token
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.AppName $pnsCredentials.ApnsCredential.AppName
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.AppId $pnsCredentials.ApnsCredential.AppId
+	Assert-AreEqual  $createdNotificationHub.ApnsCredential.Endpoint $pnsCredentials.ApnsCredential.Endpoint
 
 	#Test NotificationHub creation with tags as null
 	$result = New-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -InputFile .\Resources\NewNotificationHubNoTags.json

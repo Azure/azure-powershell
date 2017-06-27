@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -47,45 +48,31 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {
                     var testSubscription = new AzureSubscription()
                     {
-                        Id = new Guid(csmEnvironment.SubscriptionId),
-                        Name = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name,
-                        Environment = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Environment,
-                        Account = user,
-                        Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        {
-                            AzureSubscription.Property.Default, "True"
-                        },
-                        {
-                            AzureSubscription.Property.StorageAccount,
-                            Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT")
-                        },
-                        {
-                            AzureSubscription.Property.Tenants, tenantId
-                        },
-                    }
+                        Id = csmEnvironment.SubscriptionId,
+                        Name = AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Name,
                     };
 
+                    testSubscription.SetAccount(user);
+                    testSubscription.SetEnvironment(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.GetEnvironment());
+                    testSubscription.SetDefault();
+                    testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
+                    testSubscription.SetTenant(tenantId);
                     var testAccount = new AzureAccount()
                     {
                         Id = user,
                         Type = AzureAccount.AccountType.User,
-                        Properties = new Dictionary<AzureAccount.Property, string>
-                    {
-                        {
-                            AzureAccount.Property.Subscriptions, csmEnvironment.SubscriptionId
-                        },
-                    }
                     };
 
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name = testSubscription.Name;
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = testSubscription.Id;
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Account = testSubscription.Account;
+                    testAccount.SetSubscriptions(csmEnvironment.SubscriptionId);
 
-                    var environment = AzureRmProfileProvider.Instance.Profile.Environments[AzureRmProfileProvider.Instance.Profile.Context.Subscription.Environment];
-                    environment.Endpoints[AzureEnvironment.Endpoint.Graph] = csmEnvironment.Endpoints.GraphUri.AbsoluteUri;
-                    environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = "core.windows.net";
-                    AzureRmProfileProvider.Instance.Profile.Save();
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Name = testSubscription.Name;
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = testSubscription.Id;
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.SetAccount(testSubscription.GetAccount());
+
+                    var environment = AzureRmProfileProvider.Instance.Profile.GetEnvironment(AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.GetEnvironment());
+                    environment.SetEndpoint(AzureEnvironment.Endpoint.Graph, csmEnvironment.Endpoints.GraphUri.AbsoluteUri);
+                    environment.SetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, "core.windows.net");
+                    AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().Save();
                 }
             }
         }
