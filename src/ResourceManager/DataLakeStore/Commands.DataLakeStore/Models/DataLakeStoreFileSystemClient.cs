@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     public class DataLakeStoreFileSystemClient
     {
         private const decimal MaximumBytesPerDownloadRequest = 32 * 1024 * 1024; //32MB
-        private const decimal bytesPerAppend = 20 * 1024 * 1024; //20MB
+        private const decimal MaximumBytesPerAppendRequest = 20 * 1024 * 1024; //20MB
 
         /// <summary>
         /// The lock object
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void CreateFile(string filePath, string accountName, MemoryStream contents = null, bool overwrite = false)
         {
-            if (contents.Length <= bytesPerAppend)   
+            if (contents.Length <= MaximumBytesPerAppendRequest)   
             {
                 // use content-length header for request
                 _client.FileSystem.Create(accountName, filePath, contents, overwrite: overwrite);
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void AppendToFile(string filePath, string accountName, MemoryStream contents)
         {
-            if (contents.Length <= bytesPerAppend)
+            if (contents.Length <= MaximumBytesPerAppendRequest)
             {
                 // use content-length header for request
                 _client.FileSystem.Append(accountName, filePath, contents);
