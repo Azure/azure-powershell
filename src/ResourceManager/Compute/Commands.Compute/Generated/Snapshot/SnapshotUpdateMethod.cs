@@ -114,97 +114,77 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsData.Update, "AzureRmSnapshot", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
-    public partial class UpdateAzureRmSnapshot : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsData.Update, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Snapshot))]
+    public partial class UpdateAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "SnapshotUpdate";
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsData.Update))
+            ExecuteClientAction(() =>
             {
-                base.ProcessRecord();
-            }
+                if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
+                {
+
+                    string resourceGroupName = this.ResourceGroupName;
+                    string snapshotName = this.SnapshotName;
+                    SnapshotUpdate snapshot = this.SnapshotUpdate;
+                    Snapshot snapshotOrg = this.Snapshot;
+
+                    var result = (snapshot == null)
+                                 ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotOrg)
+                                 : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshot);
+                    WriteObject(result);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pSnapshotName = new RuntimeDefinedParameter();
-            pSnapshotName.Name = "SnapshotName";
-            pSnapshotName.ParameterType = typeof(string);
-            pSnapshotName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pSnapshotName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pSnapshotName.Attributes.Add(new AliasAttribute("Name"));
-            pSnapshotName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("SnapshotName", pSnapshotName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string SnapshotName { get; set; }
 
-            var pSnapshot = new RuntimeDefinedParameter();
-            pSnapshot.Name = "SnapshotUpdate";
-            pSnapshot.ParameterType = typeof(SnapshotUpdate);
-            pSnapshot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = false,
-                ValueFromPipeline = true
-            });
-            pSnapshot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("SnapshotUpdate", pSnapshot);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            ValueFromPipeline = true)]
+        [AllowNull]
+        public SnapshotUpdate SnapshotUpdate { get; set; }
 
-            var pSnapshotOrg = new RuntimeDefinedParameter();
-            pSnapshotOrg.Name = "Snapshot";
-            pSnapshotOrg.ParameterType = typeof(Snapshot);
-            pSnapshotOrg.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParametersForFriendMethod",
-                Position = 4,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = false,
-                ValueFromPipeline = true
-            });
-            pSnapshotOrg.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Snapshot", pSnapshotOrg);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 4,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            ValueFromPipeline = true)]
+        [AllowNull]
+        public Snapshot Snapshot { get; set; }
     }
 }

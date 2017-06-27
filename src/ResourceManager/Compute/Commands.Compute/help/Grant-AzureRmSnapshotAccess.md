@@ -12,8 +12,8 @@ Grants an access to a snapshot.
 ## SYNTAX
 
 ```
-Grant-AzureRmSnapshotAccess [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-SnapshotName] <String>
- [[-Access] <AccessLevel>] [[-DurationInSecond] <Int32>] [<CommonParameters>]
+Grant-AzureRmSnapshotAccess [-ResourceGroupName] <String> [-SnapshotName] <String> [[-Access] <AccessLevel>]
+ [[-DurationInSecond] <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

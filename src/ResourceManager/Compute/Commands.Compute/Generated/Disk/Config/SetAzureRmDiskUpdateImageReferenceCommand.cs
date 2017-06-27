@@ -63,38 +63,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.Id != null)
-            {
-
-                // CreationData
-                if (this.DiskUpdate.CreationData == null)
-                {
-                    this.DiskUpdate.CreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                // ImageReference
-                if (this.DiskUpdate.CreationData.ImageReference == null)
-                {
-                    this.DiskUpdate.CreationData.ImageReference = new Microsoft.Azure.Management.Compute.Models.ImageDiskReference();
-                }
-                this.DiskUpdate.CreationData.ImageReference.Id = this.Id;
-            }
-
-            if (this.Lun != null)
-            {
-
-                // CreationData
-                if (this.DiskUpdate.CreationData == null)
-                {
-                    this.DiskUpdate.CreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                // ImageReference
-                if (this.DiskUpdate.CreationData.ImageReference == null)
-                {
-                    this.DiskUpdate.CreationData.ImageReference = new Microsoft.Azure.Management.Compute.Models.ImageDiskReference();
-                }
-                this.DiskUpdate.CreationData.ImageReference.Lun = this.Lun;
-            }
-
             WriteObject(this.DiskUpdate);
         }
     }

@@ -68,6 +68,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string[] LoadBalancerInboundNatPoolsId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PrivateIPAddressVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PublicIPAddressConfigurationName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public int? PublicIPAddressConfigurationIdleTimeoutInMinutes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DnsSetting { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -80,23 +100,65 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             var vIpConfigurations = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration();
 
-            // Subnet
-            vIpConfigurations.Subnet = new Microsoft.Azure.Management.Compute.Models.ApiEntityReference();
-
-            // ApplicationGatewayBackendAddressPools
-            vIpConfigurations.ApplicationGatewayBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
-
-            // LoadBalancerBackendAddressPools
-            vIpConfigurations.LoadBalancerBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
-
-            // LoadBalancerInboundNatPools
-            vIpConfigurations.LoadBalancerInboundNatPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
-
             vIpConfigurations.Name = this.Name;
+            vIpConfigurations.PrivateIPAddressVersion = this.PrivateIPAddressVersion;
             vIpConfigurations.Id = this.Id;
-            vIpConfigurations.Subnet.Id = this.SubnetId;
+
+            // SubnetId
+            if (this.SubnetId != null)
+            {
+                if (vIpConfigurations.Subnet == null)
+                {
+                    vIpConfigurations.Subnet = new Microsoft.Azure.Management.Compute.Models.ApiEntityReference();
+                }
+
+                vIpConfigurations.Subnet.Id = this.SubnetId;
+            }
+
+            // PublicIPAddressConfigurationName
+            if (this.PublicIPAddressConfigurationName != null)
+            {
+                if (vIpConfigurations.PublicIPAddressConfiguration == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetPublicIPAddressConfiguration();
+                }
+
+                vIpConfigurations.PublicIPAddressConfiguration.Name = this.PublicIPAddressConfigurationName;
+            }
+
+            // PublicIPAddressConfigurationIdleTimeoutInMinutes
+            if (this.PublicIPAddressConfigurationIdleTimeoutInMinutes != null)
+            {
+                if (vIpConfigurations.PublicIPAddressConfiguration == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetPublicIPAddressConfiguration();
+                }
+
+                vIpConfigurations.PublicIPAddressConfiguration.IdleTimeoutInMinutes = this.PublicIPAddressConfigurationIdleTimeoutInMinutes;
+            }
+
+            // DnsSetting
+            if (this.DnsSetting != null)
+            {
+                if (vIpConfigurations.PublicIPAddressConfiguration == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetPublicIPAddressConfiguration();
+                }
+                if (vIpConfigurations.PublicIPAddressConfiguration.DnsSettings == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration.DnsSettings = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings();
+                }
+
+                vIpConfigurations.PublicIPAddressConfiguration.DnsSettings.DomainNameLabel = this.DnsSetting;
+            }
+
+            // ApplicationGatewayBackendAddressPoolsId
             if (this.ApplicationGatewayBackendAddressPoolsId != null)
             {
+                if (vIpConfigurations.ApplicationGatewayBackendAddressPools == null)
+                {
+                    vIpConfigurations.ApplicationGatewayBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
+                }
                 foreach (var element in this.ApplicationGatewayBackendAddressPoolsId)
                 {
                     var vApplicationGatewayBackendAddressPools = new Microsoft.Azure.Management.Compute.Models.SubResource();
@@ -105,8 +167,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            // LoadBalancerBackendAddressPoolsId
             if (this.LoadBalancerBackendAddressPoolsId != null)
             {
+                if (vIpConfigurations.LoadBalancerBackendAddressPools == null)
+                {
+                    vIpConfigurations.LoadBalancerBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
+                }
                 foreach (var element in this.LoadBalancerBackendAddressPoolsId)
                 {
                     var vLoadBalancerBackendAddressPools = new Microsoft.Azure.Management.Compute.Models.SubResource();
@@ -115,8 +182,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
             }
 
+            // LoadBalancerInboundNatPoolsId
             if (this.LoadBalancerInboundNatPoolsId != null)
             {
+                if (vIpConfigurations.LoadBalancerInboundNatPools == null)
+                {
+                    vIpConfigurations.LoadBalancerInboundNatPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
+                }
                 foreach (var element in this.LoadBalancerInboundNatPoolsId)
                 {
                     var vLoadBalancerInboundNatPools = new Microsoft.Azure.Management.Compute.Models.SubResource();

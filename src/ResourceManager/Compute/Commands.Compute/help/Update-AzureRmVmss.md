@@ -13,8 +13,8 @@ Updates the state of a VMSS.
 ## SYNTAX
 
 ```
-Update-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String>
- [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [<CommonParameters>]
+Update-AzureRmVmss [-ResourceGroupName] <String> -VMScaleSetName <String>
+ [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,21 +30,6 @@ PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -Virtua
 This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the VMSS that this cmdlet updates the state for.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 Specifies the name of the resource group the VMSS belongs to.
@@ -75,6 +60,21 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VMScaleSetName
+Specifies the name of the VMSS that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
