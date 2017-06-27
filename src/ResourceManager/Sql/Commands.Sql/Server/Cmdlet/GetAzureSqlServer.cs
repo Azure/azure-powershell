@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.Collections.Generic;
@@ -28,12 +25,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
-    /// <remarks>
-    /// This class uses <see cref="AzureSqlCmdletBaseBase{}"/> instead of <see cref="AzureSqlCmdletBase{}"/> because in the latter
-    /// the ResourceGroupName parameter is marked as Mandatory. In this specific cmdlet the ResourceGroupName is optional.
-    /// </remarks>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
-    public class GetAzureSqlServer : AzureSqlCmdletBaseBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>, IModuleAssemblyInitializer
+    public class GetAzureSqlServer : AzureSqlServerCmdletBase, IModuleAssemblyInitializer
     {
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -43,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -55,17 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
-
-        /// <summary>
-        /// Intializes the model adapter
-        /// </summary>
-        /// <param name="subscription">The subscription the cmdlets are operation under</param>
-        /// <returns>The server adapter</returns>
-        protected override AzureSqlServerAdapter InitModelAdapter(IAzureSubscription subscription)
-        {
-            return new AzureSqlServerAdapter(DefaultContext);
-        }
-
+        
         /// <summary>
         /// Gets a server from the service.
         /// </summary>

@@ -177,7 +177,6 @@
     <Compile Include="Database Backup\Model\AzureSqlServerBackupLongTermRetentionVaultModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
-    <Compile Include="Common\AzureSqlCmdletBaseBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
