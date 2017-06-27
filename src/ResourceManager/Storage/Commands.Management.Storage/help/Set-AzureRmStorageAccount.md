@@ -18,7 +18,7 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
  [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
  [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
+ [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-NetworkAcl <PSNetworkACL>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
  [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-InformationAction <ActionPreference>]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkAcl <PSNetworkACL>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -95,6 +95,26 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 ```
 
 This command disables encryption on File Services with KeySource set to "Microsoft.Storage"
+
+### Example 7: Set NetworkAcls property of a Storage Account with JSON
+```
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -NetworkAcl (@{bypass="Logging,Metrics";
+    ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
+            @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
+    virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
+                        @{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2";Action="allow"});
+    defaultAction="allow"})
+```
+
+This command sets NetworkAcls property of a Storage Account with JSON
+
+### Example 8: Get NetworkAcls property from a Storage Account, and set it to another storage account 
+```
+PS C:\> $networkacl = (Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount").NetworkAcls 
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount2" -NetworkAcl $networkacl
+```
+
+This first command gets NetworkAcls property from a Storage Account, and the second command sets it to another storage account 
 
 ## PARAMETERS
 
@@ -313,6 +333,19 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkAcl
+Specify the NetworksAcl Set to the Storage Account.```yaml
+Type: PSNetworkACL
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

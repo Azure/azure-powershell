@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -68,6 +69,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public FirewallAllowAzureIpsState? AllowAzureIpState { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "If the encryption type is User assigned, the user can rotate their key version with this parameter.")]
+        [ValidateNotNull]
+        public string KeyVersion { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
@@ -103,6 +109,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 AllowAzureIpState = currentAccount.FirewallAllowAzureIps;
             }
 
+            UpdateEncryptionConfig updateConfig = null;
+            if (!string.IsNullOrEmpty(KeyVersion))
+            {
+                if (currentAccount.EncryptionConfig.Type == EncryptionConfigType.ServiceManaged)
+                {
+                    throw new ArgumentException(Resources.IncorrectEncryptionTypeForUpdate);
+                }
+
+                updateConfig = new UpdateEncryptionConfig
+                {
+                    KeyVaultMetaInfo = new UpdateKeyVaultMetaInfo
+                    {
+                        EncryptionKeyVersion = KeyVersion
+                    }
+                };
+            }
+
             WriteObject(
                 new PSDataLakeStoreAccount(
                     DataLakeStoreClient.UpdateAccount(
@@ -113,7 +136,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         FirewallState.GetValueOrDefault(),
                         AllowAzureIpState.GetValueOrDefault(),
                         Tags,
-                        tier: Tier)));
+                        tier: Tier,
+                        userConfig: updateConfig)));
         }
     }
 }

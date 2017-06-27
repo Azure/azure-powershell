@@ -150,7 +150,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 LoadTelemetryClientContext(qos, client.Context);
                 PopulatePropertiesFromQos(qos, eventProperties);
                 // qos.Exception contains exception message which may contain Users specific data. 
-                // We should not collect users specific data. 
+                // We should not collect users specific data.
+                eventProperties.Add("Message", "Message removed due to PII.");
                 eventProperties.Add("StackTrace", qos.Exception.StackTrace);
                 eventProperties.Add("ExceptionType", qos.Exception.GetType().ToString());
                 client.TrackException(null, eventProperties, eventMetrics);

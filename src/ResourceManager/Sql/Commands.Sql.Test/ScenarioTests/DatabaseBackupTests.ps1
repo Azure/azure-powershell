@@ -25,7 +25,7 @@ function Test-ListDatabaseRestorePoints
 
 	try
 	{
-		$server = Create-ServerForTest $rg $serverVersion $location
+		$server = Create-ServerForTest $rg $location
 
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
@@ -46,7 +46,7 @@ function Test-ListDatabaseRestorePoints
 		$restorePoint = $restorePoints[0]
 		Assert-AreEqual $restorePoint.RestorePointType Continuous
 		Assert-Null $restorePoint.RestorePointCreationDate
-		Assert-True { $restorePoint.EarliestRestoreDate -le [DateTime]::UtcNow }
+		Assert-AreEqual $restorePoint.EarliestRestoreDate.Kind Utc
 	}
 	finally
 	{

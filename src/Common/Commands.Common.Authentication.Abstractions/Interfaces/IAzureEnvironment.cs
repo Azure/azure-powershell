@@ -103,6 +103,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         string GraphEndpointResourceId { get; set; }
 
         /// <summary>
+        /// The token audience required to authenticate with the Azure Active Directory Data Lake services
+        /// </summary>
+        string DataLakeEndpointResourceId { get; set; }
+
+        /// <summary>
         ///  The domain name suffix for Azure DataLake Catalog and Job services
         /// </summary>
         string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }

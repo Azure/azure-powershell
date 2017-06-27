@@ -24,7 +24,7 @@ The **Update-AzureRmVmss** cmdlet updates the state of a Virtual Machine Scale S
 
 ### Example 1: Update the state of a VMSS to the state of a local VMSS object.
 ```
-PS C:\>Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet "LocalVMSS"
+PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet "LocalVMSS"
 ```
 
 This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
