@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     public class DataLakeStoreFileSystemClient
     {
         private const decimal MaximumBytesPerDownloadRequest = 32 * 1024 * 1024; //32MB
+        private const decimal MaximumBytesPerAppendRequest = 20 * 1024 * 1024; //20MB
 
         /// <summary>
         /// The lock object
@@ -421,9 +422,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 deleteDirectory);
         }
 
-        public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false)
+        public void CreateFile(string filePath, string accountName, MemoryStream contents = null, bool overwrite = false)
         {
-            _client.FileSystem.Create(accountName, filePath, contents, overwrite: overwrite);
+            if (contents.Length <= MaximumBytesPerAppendRequest)   
+            {
+                // use content-length header for request
+                _client.FileSystem.Create(accountName, filePath, contents, overwrite: overwrite);
+            }
+            else
+            {
+                // use transfer-encoding: chunked header for request
+                var customHeaders = new Dictionary<string, List<string>>();
+                customHeaders.Add("Transfer-Encoding", new List<string> { "Chunked" });
+                _client.FileSystem.CreateWithHttpMessagesAsync(
+                    accountName,
+                    filePath,
+                    contents,
+                    overwrite: overwrite,
+                    customHeaders: customHeaders).GetAwaiter().GetResult();
+            }
+
+
         }
 
         public bool CreateDirectory(string dirPath, string accountName)
@@ -432,9 +451,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return boolean != null && boolean.Value;
         }
 
-        public void AppendToFile(string filePath, string accountName, Stream contents)
+        public void AppendToFile(string filePath, string accountName, MemoryStream contents)
         {
-            _client.FileSystem.Append(accountName, filePath, contents);
+            if (contents.Length <= MaximumBytesPerAppendRequest)
+            {
+                // use content-length header for request
+                _client.FileSystem.Append(accountName, filePath, contents);
+            }
+            else
+            {
+                // use transfer-encoding: chunked header for request
+                var customHeaders = new Dictionary<string, List<string>>();
+                customHeaders.Add("Transfer-Encoding", new List<string> { "Chunked" });
+                _client.FileSystem.AppendWithHttpMessagesAsync(
+                    accountName,
+                    filePath,
+                    contents,
+                    customHeaders: customHeaders).GetAwaiter().GetResult();
+            }
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,
