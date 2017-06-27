@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -128,6 +129,12 @@ namespace Microsoft.Azure.Commands.Network
             // default SA values
             ipsecPolicy.SALifeTimeSeconds = (!this.MyInvocation.BoundParameters.ContainsKey("SALifeTimeSeconds")) ? 27000 : this.SALifeTimeSeconds;
             ipsecPolicy.SADataSizeKilobytes = (!this.MyInvocation.BoundParameters.ContainsKey("SADataSizeKilobytes")) ? 102400000 : this.SADataSizeKilobytes;
+
+            // GCM matching check
+            if ((this.IpsecEncryption.Contains("GCM") || this.IpsecIntegrity.Contains("GCM")) && this.IpsecEncryption != this.IpsecIntegrity)
+            {
+                throw new ArgumentException("IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+            }
 
             ipsecPolicy.IpsecEncryption = this.IpsecEncryption;
             ipsecPolicy.IpsecIntegrity = this.IpsecIntegrity;
