@@ -37,11 +37,11 @@ using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -138,34 +138,34 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             sfrpClient = new Lazy<IServiceFabricManagementClient>(() =>
             {
-                var armClient = AzureSession.ClientFactory.
+                var armClient = AzureSession.Instance.ClientFactory.
                 CreateArmClient<ServiceFabricManagementClient>(
-                DefaultProfile.Context,
+                DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager);
                 return armClient;
             });
 
             computeClient = new Lazy<IComputeManagementClient>(() =>
-            AzureSession.ClientFactory.CreateArmClient<ComputeManagementClient>(
-                DefaultProfile.Context,
+            AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
+                DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
             keyVaultManageClient = new Lazy<IKeyVaultManagementClient>(() =>
-            AzureSession.ClientFactory.CreateArmClient<KeyVaultManagementClient>(
-                DefaultProfile.Context,
+            AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(
+                DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
             resourcesClient = new Lazy<IResourceManagementClient>(() =>
-            AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(
-                DefaultProfile.Context,
+            AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(
+                DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
             keyVaultClient = new Lazy<IKeyVaultClient>(() =>
             new KeyVaultClient(AuthenticationCallback));
 
             graphClient = new Lazy<GraphRbacManagementClient>(() =>
-             AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
-                DefaultProfile.Context, AzureEnvironment.Endpoint.Graph));
+             AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+                DefaultContext, AzureEnvironment.Endpoint.Graph));
         }
 
         #endregion
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vault;
         }
 
-        protected Guid GetTenantId(AzureContext context)
+        protected Guid GetTenantId(IAzureContext context)
         {
             var tenantId = string.Empty;
             if (context.Account == null)
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     .FirstOrDefault();
             }
 
-            if (string.IsNullOrWhiteSpace(tenantId) && context.Tenant != null && context.Tenant.Id != Guid.Empty)
+            if (string.IsNullOrWhiteSpace(tenantId) && context.Tenant != null && context.Tenant.GetId() != Guid.Empty)
             {
                 tenantId = context.Tenant.Id.ToString();
             }
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             var fileContentEncoded = Convert.ToBase64String(clearBytes);
 
-            WriteVerbose(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
+            WriteVerboseWithTimestamp(string.Format("Importing certificate to Azure KeyVault {0}", certificateName));
             var certificateBundle = this.KeyVaultClient.ImportCertificateAsync(
                 CreateVaultUri(keyVaultName).ToString(),
                 certificateName,
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 ).GetAwaiter().GetResult();
 
-            WriteVerbose(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
+            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
 
             return certificateBundle;
         }
@@ -460,22 +460,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 objectId = user.ObjectId;
             }
-            catch (GraphErrorException e)
+            catch (GraphErrorException)
             {
-                if (e.Body != null && e.Body.Code == "Authorization_RequestDenied")
+                var user = GraphClient.ServicePrincipals.List(
+                    new Rest.Azure.OData.ODataQuery<ServicePrincipal>(
+                        string.Format("$filter=servicePrincipalNames/any(c: c eq '{0}')", DefaultContext.Account.Id))
+                    ).FirstOrDefault();
+
+                if (user == null)
                 {
-                    var user = GraphClient.ServicePrincipals.List(
-                        new Rest.Azure.OData.ODataQuery<ServicePrincipal>(
-                            string.Format("$filter=servicePrincipalNames/any(c: c eq '{0}')", DefaultContext.Account.Id))
-                        ).FirstOrDefault();
-
-                    if (user == null)
-                    {
-                        return null;
-                    }
-
-                    objectId = user.ObjectId;
+                    return null;
                 }
+
+                objectId = user.ObjectId;  
             }
 
             return objectId;
@@ -484,9 +481,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         protected Uri CreateVaultUri(string vaultName)
         {
             string suffix = string.Empty;
-            if (DefaultContext.Environment.Endpoints.ContainsKey(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix))
+            if (!string.IsNullOrEmpty(DefaultContext.Environment.AzureKeyVaultDnsSuffix))
             {
-                suffix = DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix];
+                suffix = DefaultContext.Environment.AzureKeyVaultDnsSuffix;
             }
             else
             {
@@ -500,25 +497,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private Task<string> AuthenticationCallback(string authority, string resource, string scope)
         {
-            if (!string.IsNullOrEmpty(resource))
-            {
-                DefaultContext.Environment.Endpoints
-                    [AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = resource;
-            }
-
-            var tokenCache = AzureSession.TokenCache;
-            if (DefaultContext.TokenCache != null && DefaultContext.TokenCache.Length > 0)
-            {
-                tokenCache = new TokenCache(DefaultContext.TokenCache);
-            }
-
-            var accesstoken = AzureSession.AuthenticationFactory.Authenticate(
+            var accesstoken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                 DefaultContext.Account,
                 DefaultContext.Environment,
                 GetTenantId(DefaultContext).ToString(),
                 null,
                 ShowDialog.Never,
-                tokenCache,
+                null,
                 AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
             var tokenStr = string.Empty;
             accesstoken.AuthorizeRequest((tokenType, tokenValue) =>

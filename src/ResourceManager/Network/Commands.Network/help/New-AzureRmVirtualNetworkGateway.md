@@ -36,10 +36,20 @@ You can also choose to include other features like BGP and Active-Active.
 
 ### 1: Create a Virtual Network Gateway
 ```
-New-AzureRmVirtualNetworkGateway -Name myGW -ResourceGroupName myRG -Location "West US" -IpConfigurations $gwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Standard"
-```
+New-AzureRmResourceGroup -Location "UK West" -Name "vnet-gateway"
+New-AzureRMVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
 
-Creates the Virtual Network Gateway in Azure with the name "myGW" within the resource group "myRG" in the location "West US" with the previously created IP configurations saved in the variable "gwIpConfig," the gateway type of "Vpn," the vpn type "RouteBased," and the sku "Standard."
+$ngwpip = New-AzureRMPublicIpAddress -Name ngwpip -ResourceGroupName "vnet-gateway" -Location "UK West" -AllocationMethod Dynamic
+$vnet = New-AzureRmVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" -Name vnet-gateway -ResourceGroupName "vnet-gateway" -Subnet $subnet
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
+$ngwipconfig = New-AzureRMVirtualNetworkGatewayIpConfig -Name ngwipconfig -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
+
+New-AzureRmVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Basic"
+```
+The above will create a resource group, request a Public IP Address, create a Virtual Network and subnet and create a Virtual Network Gateway in Azure. 
+
+The gateway will be called "vngw" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic."
+
 
 ## PARAMETERS
 
@@ -117,7 +127,7 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3
 
 Required: False
 Position: Named

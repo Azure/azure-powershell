@@ -19,6 +19,15 @@
 -->
 ## Current Release
 
+## Version 4.1.0
+- Added new Get-AzureBatchJobPreparationAndReleaseTaskStatus cmdlet.
+
+## Version 3.1.0
+
+## Version 3.0.1
+
+## Version 3.0.0
+
 ## Version 2.8.0
 
 ## Version 2.7.0

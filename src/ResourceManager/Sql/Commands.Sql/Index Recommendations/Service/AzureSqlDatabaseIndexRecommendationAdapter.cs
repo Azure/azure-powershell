@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Model;
 using Microsoft.Azure.Commands.Sql.Services;
@@ -37,14 +38,14 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseIndexRecommendationAdapter(AzureContext context)
+        public AzureSqlDatabaseIndexRecommendationAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlDatabaseIndexRecommendationCommunicator(Context);
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <returns></returns>
         public List<IndexRecommendation> ListRecommendedIndexes(string resourceGroupName, string serverName, string databaseName)
         {
-            return Communicator.ListRecommendedIndexes(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            return Communicator.ListRecommendedIndexes(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <param name="indexRecommendation">Index recommendation</param>
         public void UpdateRecommendationState(string resourceGroupName, string serverName, IndexRecommendation indexRecommendation)
         {
-            Communicator.UpdateRecommendedIndexState(resourceGroupName, serverName, indexRecommendation.DatabaseName, indexRecommendation.Schema, indexRecommendation.Table, indexRecommendation.Name, indexRecommendation.State, Util.GenerateTracingId());
+            Communicator.UpdateRecommendedIndexState(resourceGroupName, serverName, indexRecommendation.DatabaseName, indexRecommendation.Schema, indexRecommendation.Table, indexRecommendation.Name, indexRecommendation.State);
         }
     }
 }

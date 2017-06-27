@@ -31,7 +31,7 @@ The **Remove-AzureRmVmssNetworkInterfaceConfiguration** cmdlet removes a network
 
 ### Example 1: Remove an interface configuration
 ```
-PS C:\>$VMSS = Get-AzureRmVmss -ResourceGroupName "ResourceGroup11" -VMScaleSetName "ContosoVMSS14"
+PS C:\> $VMSS = Get-AzureRmVmss -ResourceGroupName "ResourceGroup11" -VMScaleSetName "ContosoVMSS14"
 PS C:\> Remove-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "ContosoVmssInterface02"
 ```
 

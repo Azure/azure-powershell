@@ -37,8 +37,50 @@ function Test-AzureRmIotHubLifecycle
 	# Create or Update Resource Group
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
+	Write-Debug " Create new eventHub " 
+	$namespaceName = "IotHubPSEHNamespaceTest"
+    $result = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
+
+	Wait-Seconds 15
+    
+	# Assert
+	Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+    Write-Debug " Create new eventHub "    
+	$eventHubName = "IotHubPSEHTest"
+	$msgRetentionInDays = 3
+	$partionCount = 2
+    $result = New-AzureRmEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
+
+	# Create AuthRule
+	$authRuleName = "IotHubPSEHAuthRule"
+	$rights = "Listen","Send"
+	$authRule = New-AzureRmEventHubAuthorizationRule -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -Rights $rights
+	$keys = Get-AzureRmEventHubKey -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName
+	$ehConnectionString = $keys.PrimaryConnectionString
+
 	# Create Iot Hub
-	$newIothub1 = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
+	$properties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties
+	$routingProperties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties
+	$routingEndpoints = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints
+	$routingEndpoints.EventHubs = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]'
+	$eventHubRouting = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties
+	$eventHubRouting.Name = "eh1"
+	$eventHubRouting.ConnectionString = $ehConnectionString
+	$routingEndpoints.EventHubs.Add($eventHubRouting)
+	$routingProperties.Endpoints = $routingEndpoints
+
+	$routeProp = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata
+	$routeProp.Name = "route"
+	$routeProp.Condition = "true"
+	$routeProp.IsEnabled = 1
+	$routeProp.EndpointNames = New-Object 'System.Collections.Generic.List[String]'
+	$routeProp.EndpointNames.Add("eh1")
+	$routeProp.Source = "DeviceMessages"
+	$routingProperties.Routes = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]'
+	$routingProperties.Routes.Add($routeProp)
+	$properties.Routing = $routingProperties
+	$newIothub1 = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 -Properties $properties
 
 	# Get Iot Hub in resourcegroup
 	$allIotHubsInResourceGroup =  Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName 
@@ -48,6 +90,9 @@ function Test-AzureRmIotHubLifecycle
 
 	Assert-True { $allIotHubsInResourceGroup.Count -eq 1 }
 	Assert-True { $iotHub.Name -eq $IotHubName }
+	Assert-True { $iotHub.Properties.Routing.Routes.Count -eq 1}
+    Assert-True { $iotHub.Properties.Routing.Routes[0].Name -eq "route"}
+    Assert-True { $iotHub.Properties.Routing.Endpoints.EventHubs[0].Name -eq "eh1"}
 
 	# Get Quota Metrics
 	$quotaMetrics = Get-AzureRmIotHubQuotaMetric -ResourceGroupName $ResourceGroupName -Name $IotHubName
@@ -102,7 +147,7 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True { $eventubConsumerGroup.Count -eq 1 }
 
 	# Add Key
-	Add-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -PrimaryKey primarykey -SecondaryKey secondarykey -Rights RegistryRead
+	Add-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -Rights RegistryRead
 
 	# Get Keys
 	$keys = Get-AzureRmIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
@@ -135,6 +180,51 @@ function Test-AzureRmIotHubLifecycle
 	$op.OperationMonitoringEvents["Connections"] = "Information"
 	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -OperationsMonitoringProperties $op
 	Assert-True { $iothubUpdated.Properties.OperationsMonitoringProperties.OperationMonitoringEvents["Connections"] -eq "Information" }
+
+	# Routing Properties Update
+	$routingProperties = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties
+	$routeProp = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata
+	$routeProp.Name = "route1"
+	$routeProp.Condition = "true"
+	$routeProp.IsEnabled = 1
+	$routeProp.EndpointNames = New-Object 'System.Collections.Generic.List[String]'
+	$routeProp.EndpointNames.Add("events")
+	$routeProp.Source = "DeviceMessages"
+	$routingProperties.Routes = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]'
+	$routingProperties.Routes.Add($routeProp)
+	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -RoutingProperties $routingProperties
+    Assert-True { $iotHubUpdated.Properties.Routing.Routes.Count -eq 1}
+    Assert-True { $iotHubUpdated.Properties.Routing.Routes[0].Name -eq "route1"}
+
+	# Route Properties Update
+	$routeProp1 = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata
+	$routeProp1.Name = "route2"
+	$routeProp1.Condition = "true"
+	$routeProp1.IsEnabled = 1
+	$routeProp1.EndpointNames = New-Object 'System.Collections.Generic.List[String]'
+	$routeProp1.EndpointNames.Add("events")
+	$routeProp1.Source = "DeviceMessages"
+
+	$routeProp2 = New-Object Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata
+	$routeProp2.Name = "route3"
+	$routeProp2.Condition = "true"
+	$routeProp2.IsEnabled = 1
+	$routeProp2.EndpointNames = New-Object 'System.Collections.Generic.List[String]'
+	$routeProp2.EndpointNames.Add("events")
+	$routeProp2.Source = "DeviceMessages"
+
+	$routes = New-Object 'System.Collections.Generic.List[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]'
+	$routes.Add($routeProp1)
+	$routes.Add($routeProp2)
+	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Routes $routes	
+    Assert-True { $iotHubUpdated.Properties.Routing.Routes.Count -eq 2}
+    Assert-True { $iotHubUpdated.Properties.Routing.Routes[0].Name -eq "route2"}
+	Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 0}
+
+	$iothub = Get-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName 
+	$iothub.Properties.Routing.FallbackRoute.IsEnabled = 1
+	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -FallbackRoute $iothub.Properties.Routing.FallbackRoute	
+    Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 1}
 
 	# Remove IotHub
 	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName

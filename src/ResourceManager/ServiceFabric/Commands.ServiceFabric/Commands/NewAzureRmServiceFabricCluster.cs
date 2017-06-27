@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public const string LinuxTemplateRelativePath = @"Template\Linux";
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
-
+        
         public readonly Dictionary<OperatingSystem, string> OsToVmSkuString = new Dictionary<OperatingSystem, string>()
         {
             {OperatingSystem.WindowsServer2012R2Datacenter, "2012-R2-Datacenter"},
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Alias("ClusterName")]
         public override string Name { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true,
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = ByDefaultArmTemplate,
                  HelpMessage = "The user name for logging to Vm")]
         [ValidateNotNullOrEmpty()]
         [ValidatePattern("^[a-z][a-z0-9]{1,15}$")]
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 else
                 {
-                    WriteVerbose(string.Format("Found existing cluster {0} which's status is waiting for nodes", this.Name));
+                    WriteVerboseWithTimestamp(string.Format("Found existing cluster {0} which's status is waiting for nodes", this.Name));
                 }
             }
 
@@ -434,8 +434,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             ParseTemplate(false);
             TranslateParameters(false);
             var parameters = (JObject)deployment.Properties.Parameters;
-            var template = (JObject)deployment.Properties.Template;
-            deployment.Properties.Template = ModifyDefaultTemplateStorageAccount(ref template);
 
             SetParameter(ref parameters, this.clusterNameParameter, this.Name);
 
@@ -492,7 +490,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             else
             {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
             }
 
             if (secSourceVaultValue != null && secCertificateThumbprint != null && secCertificateUrlValue != null)
@@ -505,7 +503,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             else
             {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidTemplateParameterFile);
+                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidCertificateInformationInParameterFile);
             }
 
             var firstCert = GetOrCreateCertificateInformation()[0];
@@ -1040,57 +1038,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.DeploymentFailed);
             } 
-        }
-
-        private JObject ModifyDefaultTemplateStorageAccount(ref JObject templateJObject)
-        {
-            var storageNameArray = templateJObject.SelectToken("variables.uniqueStringArray0", true) as JArray;
-            if (storageNameArray == null)
-            {
-                throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
-            }
-
-            storageNameArray.Clear();
-            for (int i = 0; i < this.clusterSize; i++)
-            {
-                storageNameArray.Add(string.Format("[concat(variables('vmStorageAccountName0'), '{0}')]", i));
-            }
-
-            var resources = templateJObject.SelectToken("resources", true);
-
-            foreach (var resource in resources)
-            {
-                if (resource["type"] == null)
-                {
-                    throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
-                }
-
-                var resourceType = resource["type"];
-                if (resourceType.ToString().Equals(Constants.VirtualMachineScaleSetsType, StringComparison.OrdinalIgnoreCase))
-                {
-                    var dependsOn = resource.SelectToken("dependsOn", true) as JArray;
-
-                    if (dependsOn == null)
-                    {
-                        throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidTemplateFile);
-                    }
-
-                    for (int i = 1; i < this.clusterSize; i++)
-                    {
-                        dependsOn.Add(string.Format("[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[{0}])]", i));
-                    }
-
-                    var osDisks = resource.SelectToken("properties.virtualMachineProfile.storageProfile.osDisk.vhdContainers", true) as JArray;
-                    osDisks.Clear();
-                    for (int i = 0; i < this.clusterSize; i++)
-                    {
-                        osDisks.Add(string.Format(
-                            "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray0')[{0}]), variables('storageApiVersion')).primaryEndpoints.blob, variables('vmStorageAccountContainerName'))]", i));
-                    }
-                }
-            }
-
-            return templateJObject;
         }
     }
 }

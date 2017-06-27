@@ -14,7 +14,7 @@ Gets the stored access policy or policies for an Azure storage container.
 
 ```
 Get-AzureStorageContainerStoredAccessPolicy [-Container] <String> [[-Policy] <String>]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Specifies the Azure storage context.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

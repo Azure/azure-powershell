@@ -17,12 +17,9 @@ using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.IO;
 using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {

@@ -13,11 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.WebSites;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -66,8 +69,26 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+            helper.TracingInterceptor = logger;
+
+            RunPsTestWorkflow(
+                () => scripts,
+                // no custom initializer
+                null,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
+        }
+
         public void RunPsTest(params string[] scripts)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 

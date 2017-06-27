@@ -13,8 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest;
 using System;
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 if (dataLakeClient == null)
                 {
-                    dataLakeClient = new DataLakeStoreClient(DefaultProfile.Context);
+                    dataLakeClient = new DataLakeStoreClient(DefaultProfile.DefaultContext);
                 }
                 return dataLakeClient;
             }
@@ -46,15 +45,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             set { dataLakeClient = value; }
         }
 
-        internal static TClient CreateAdlsClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint, bool parameterizedBaseUri = false) where TClient : ServiceClient<TClient>
+        internal static TClient CreateAdlsClient<TClient>(IAzureContext context, string endpoint, bool parameterizedBaseUri = false) where TClient : ServiceClient<TClient>
         {
             if (context == null)
             {
-                throw new ApplicationException(Resources.NoSubscriptionInContext);
+                throw new ApplicationException(Properties.Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
-            var clientFactory = AzureSession.ClientFactory;
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var clientFactory = AzureSession.Instance.ClientFactory;
             var newHandlers = clientFactory.GetCustomHandlers();
             TClient client;
             if (!parameterizedBaseUri)

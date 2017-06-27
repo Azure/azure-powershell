@@ -99,9 +99,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[New-AzureRmADUser]()
+[New-AzureRmADUser](./New-AzureRmADUser.md)
 
-[Get-AzureRmADUser]()
+[Get-AzureRmADUser](./Get-AzureRmADUser.md)
 
-[Set-AzureRmADUser]()
+[Set-AzureRmADUser](./Set-AzureRmADUser.md)
 

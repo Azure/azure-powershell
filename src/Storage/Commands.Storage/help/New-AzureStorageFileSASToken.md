@@ -16,14 +16,14 @@ Generates a shared access signature token for a Storage file.
 ```
 New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <AzureStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ### NameSasPolicy
 ```
 New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <AzureStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
 ```
 
 ### FileSasPermission
@@ -74,7 +74,7 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: NameSasPermission, NameSasPolicy
 Aliases: 
 

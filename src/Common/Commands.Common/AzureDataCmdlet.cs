@@ -13,46 +13,86 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Management.Automation.Host;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class AzureDataCmdlet : AzurePSCmdlet
     {
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
-                if (RMProfile != null && RMProfile.Context != null)
+                if (RMProfile != null && RMProfile.DefaultContext != null && RMProfile.DefaultContext.Environment != null)
                 {
-                    return RMProfile.Context;
+                    return RMProfile.DefaultContext;
                 }
-
-                if (SMProfile == null || SMProfile.Context == null)
+#if !NETSTANDARD
+                if (SMProfile == null || SMProfile.DefaultContext == null)
                 {
                     throw new InvalidOperationException(Resources.NoCurrentContextForDataCmdlet);
                 }
 
-                return SMProfile.Context;
+                return SMProfile.DefaultContext;
+#else
+                return null;
+#endif
             }
         }
 
-        public AzureSMProfile SMProfile
+        public IAzureContextContainer RMProfile
         {
-            get { return AzureSMProfileProvider.Instance.Profile; }
+            get
+            {
+                IAzureContextContainer result = null;
+                if (AzureRmProfileProvider.Instance != null)
+                {
+                    result = AzureRmProfileProvider.Instance.Profile;
+                }
+
+                return result;
+            }
+        }
+        /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
+        /// particular action (e.g. a resource is being overwritten). By default, both 
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// must have a force parameter.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        protected override void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+            Action action)
+        {
+            ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
         }
 
-        public AzureRMProfile RMProfile
+#if !NETSTANDARD
+        public IAzureContextContainer SMProfile
         {
-            get { return AzureRmProfileProvider.Instance.Profile; }
+            get
+            {
+                IAzureContextContainer result = null;
+                if (AzureSMProfileProvider.Instance != null)
+                {
+                    result = AzureSMProfileProvider.Instance.Profile;
+                }
+
+                return result;
+            }
         }
+#endif
 
         protected override void SaveDataCollectionProfile()
         {
@@ -61,13 +101,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 InitializeDataCollectionProfile();
             }
 
-            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
             {
-                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
             }
-            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
@@ -114,28 +154,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 SaveDataCollectionProfile();
             }
         }
+
         protected override void InitializeQosEvent()
         {
         }
-
-        /// <summary>
-        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
-        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
-        /// particular action (e.g. a resource is being overwritten). By default, both 
-        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
-        /// must have a force parameter.
-        /// </summary>
-        /// <param name="force">Do not ask for confirmation</param>
-        /// <param name="continueMessage">Message to describe the action</param>
-        /// <param name="processMessage">Message to prompt after the active is performed.</param>
-        /// <param name="target">The target name.</param>
-        /// <param name="action">The action code</param>
-        protected override void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
-            Action action)
-        {
-            ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
-        }
-
-
     }
 }

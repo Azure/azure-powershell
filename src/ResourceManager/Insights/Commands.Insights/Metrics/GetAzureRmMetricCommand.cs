@@ -154,7 +154,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
             // If fullDetails is present full details of the records are displayed, otherwise only a summary of the records is displayed
             var records = this.MonitorClient.Metrics.List(resourceUri: this.ResourceId, odataQuery: new ODataQuery<Metric>(queryFilter))
                 .Select(e => fullDetails ? new PSMetric(e) : new PSMetricNoDetails(e)).ToArray();
-
             WriteObject(sendToPipeline: records, enumerateCollection: true);
         }
     }

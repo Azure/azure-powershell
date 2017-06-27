@@ -13,16 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -43,15 +45,12 @@ namespace Microsoft.Azure.Commands.Profile
         private const string AccessTokenParameterSetWithSubscriptionId = "AccessTokenWithSubscriptionId";
         private const string AccessTokenParameterSetWithSubscriptionName = "AccessTokenWithSubscriptionName";
 
-        [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
-        [Obsolete("This parameter is only for backwards compatibility; users should use EnvironmentName instead.")]
-        [ValidateNotNullOrEmpty]
-        public AzureEnvironment Environment { get; set; }
+        protected IAzureEnvironment _environment =AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the environment containing the account to log into")]
+        [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
-
-        public string EnvironmentName { get; set; }
+        public string Environment { get; set; }
 
         
         [Parameter(ParameterSetName = UserParameterSetWithSubscriptionId, 
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
 
-        protected override AzureContext DefaultContext
+        protected override IAzureContext DefaultContext
         {
             get
             {
@@ -153,24 +152,19 @@ namespace Microsoft.Azure.Commands.Profile
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-#pragma warning disable 0618
-            if (Environment == null && EnvironmentName == null)
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(Environment)))
             {
-                Environment = AzureEnvironment.PublicEnvironments[Common.Authentication.Models.EnvironmentName.AzureCloud];
-            }
-            else if (Environment == null && EnvironmentName != null)
-            {
-                if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(EnvironmentName))
+                var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+                if (profile.EnvironmentTable.ContainsKey(Environment))
                 {
-                    Environment = AzureRmProfileProvider.Instance.Profile.Environments[EnvironmentName];
+                    _environment = profile.EnvironmentTable[Environment];
                 }
                 else
                 {
                     throw new PSInvalidOperationException(
-                        string.Format(Resources.UnknownEnvironment, EnvironmentName));
+                        string.Format(Resources.UnknownEnvironment, Environment));
                 }
             }
-#pragma warning restore 0618
         }
 
         public override void ExecuteCmdlet()
@@ -232,20 +226,25 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
-#pragma warning disable 0618
-            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, Environment.Name), "log in"))
+
+            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
                 {
-                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+                    AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
                 }
 
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
 
-                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
-                    SubscriptionName, password));
+                WriteObject((PSAzureProfile) profileClient.Login(
+					azureAccount, 
+					_environment, 
+					TenantId, 
+					SubscriptionId,
+                    SubscriptionName, 
+                    password, 
+                    (s) => WriteWarning(s)));
             }
-#pragma warning restore 0618
         }
 
         /// <summary>
@@ -253,20 +252,33 @@ namespace Microsoft.Azure.Commands.Profile
         /// </summary>
         public void OnImport()
         {
+#if DEBUG
             try
             {
+#endif
+                AzureSessionInitializer.InitializeAzureSession();
+                ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+#if DEBUG
+                if (!TestMockSupport.RunningMocked)
+                {
+#endif
+                    AzureSession.Instance.DataStore = new DiskDataStore();
+#if DEBUG
+                }
+#endif
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "AzureRmProfileStartup.ps1")));
                 invoker.Invoke();
+#if DEBUG
             }
-            catch
+            catch (Exception) when (TestMockSupport.RunningMocked)
             {
                 // This will throw exception for tests, ignore.
             }
+#endif
         }
-
     }
 }

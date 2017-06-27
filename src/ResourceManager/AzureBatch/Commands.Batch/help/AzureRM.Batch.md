@@ -47,6 +47,9 @@ Gets Batch compute nodes from a pool.
 ### [Get-AzureBatchJob](Get-AzureBatchJob.md)
 Gets Batch jobs for a Batch account or job schedule.
 
+### [Get-AzureBatchJobPreparationAndReleaseTaskStatus](Get-AzureBatchJobPreparationAndReleaseTaskStatus.md)
+Gets Batch job preparation and release task status.
+
 ### [Get-AzureBatchJobSchedule](Get-AzureBatchJobSchedule.md)
 Gets Batch job schedules.
 

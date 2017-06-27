@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
     public class StorageCredentialsFactory
     {
         private StorageManagementClient client;
-        private AzureSubscription currentSubscription;
+        private IAzureSubscription currentSubscription;
         public string resourceGroupName { get; set; }
 
         public static bool IsChannelRequired(Uri destination)
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             this.resourceGroupName = null;
         }
 
-        public StorageCredentialsFactory(string resourceGroupName, StorageManagementClient client, AzureSubscription currentSubscription)
+        public StorageCredentialsFactory(string resourceGroupName, StorageManagementClient client, IAzureSubscription currentSubscription)
         {
             this.resourceGroupName = resourceGroupName;
             this.client = client;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     throw new ArgumentException(Rsrc.StorageCredentialsFactoryCurrentSubscriptionNotSet, "SubscriptionId");
                 }
                 var storageKeys = this.client.StorageAccounts.ListKeys(this.resourceGroupName, destination.StorageAccountName);
-                return new StorageCredentials(destination.StorageAccountName, storageKeys.Key1);
+                return new StorageCredentials(destination.StorageAccountName, storageKeys.GetKey1());
             }
 
             return new StorageCredentials(destination.Uri.Query);

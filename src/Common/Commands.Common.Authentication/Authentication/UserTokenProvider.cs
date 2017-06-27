@@ -11,14 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Authentication;
 using System.Threading;
@@ -42,17 +41,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
-            ShowDialog promptBehavior,
+            string promptBehavior,
+            Action<string> promptAction,
             string userId,
             SecureString password,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             if (credentialType != AzureAccount.AccountType.User)
             {
                 throw new ArgumentException(string.Format(Resources.InvalidCredentialType, "User"), "credentialType");
             }
 
-            return new AdalAccessToken(AcquireToken(config, promptBehavior, userId, password), this, config);
+            return new AdalAccessToken(AcquireToken(config, promptBehavior, promptAction, userId, password), this, config);
         }
 
         private readonly static TimeSpan expirationThreshold = TimeSpan.FromMinutes(5);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (IsExpired(token))
             {
                 TracingAdapter.Information(Resources.UPNExpiredTokenTrace);
-                AuthenticationResult result = AcquireToken(token.Configuration, ShowDialog.Never, token.UserId, null);
+                AuthenticationResult result = AcquireToken(token.Configuration, ShowDialog.Never, null, token.UserId, null);
 
                 if (result == null)
                 {
@@ -120,20 +120,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
-        private AuthenticationResult AcquireToken(AdalConfiguration config, ShowDialog promptBehavior, string userId,
+        private AuthenticationResult AcquireToken(
+            AdalConfiguration config, 
+            string promptBehavior, 
+            Action<string> promptAction, 
+            string userId,
             SecureString password)
         {
             AuthenticationResult result = null;
             Exception ex = null;
             if (promptBehavior == ShowDialog.Never)
             {
-                result = SafeAquireToken(config, promptBehavior, userId, password, out ex);
+                result = SafeAquireToken(config, promptBehavior, promptAction, userId, password, out ex);
             }
             else
             {
                 var thread = new Thread(() =>
                 {
-                    result = SafeAquireToken(config, promptBehavior, userId, password, out ex);
+                    result = SafeAquireToken(config, promptBehavior, promptAction, userId, password, out ex);
                 });
 
                 thread.SetApartmentState(ApartmentState.STA);
@@ -164,7 +168,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private AuthenticationResult SafeAquireToken(
             AdalConfiguration config,
-            ShowDialog showDialog,
+            string showDialog,
+            Action<string> promptAction,
             string userId,
             SecureString password,
             out Exception ex)
@@ -174,7 +179,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 ex = null;
                 var promptBehavior = (PromptBehavior)Enum.Parse(typeof(PromptBehavior), showDialog.ToString());
 
-                return DoAcquireToken(config, promptBehavior, userId, password);
+                return DoAcquireToken(config, promptBehavior, promptAction, userId, password);
             }
             catch (AdalException adalEx)
             {
@@ -209,6 +214,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private AuthenticationResult DoAcquireToken(
             AdalConfiguration config,
             PromptBehavior promptBehavior,
+            Action<string> promptAction,
             string userId,
             SecureString password)
         {
@@ -300,15 +306,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string TenantId { get { return AuthResult.TenantId; } }
 
-            public LoginType LoginType
+            public string LoginType
             {
                 get
                 {
                     if (AuthResult.UserInfo.IdentityProvider != null)
                     {
-                        return LoginType.LiveId;
+                        return Authentication.LoginType.LiveId;
                     }
-                    return LoginType.OrgId;
+                    return Authentication.LoginType.OrgId;
                 }
             }
         }
@@ -317,10 +323,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalConfiguration config,
             string clientId,
             string certificate,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             throw new NotImplementedException();
         }
     }
 }
-

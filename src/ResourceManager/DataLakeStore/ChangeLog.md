@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added support for user managed KeyVault key rotations in the Set-AzureRMDataLakeStoreAccount cmdlet
+* Added a quality of life update to automatically trigger an `enableKeyVault` call when a user managed KeyVault is added or a key is rotated.
+* Updated the token audience for job and catalog APIs to use the correct Data Lake specific audience instead of the Azure Resource audience.
+
+## Version 4.1.0
+* Enable-AzureRmDataLakeStoreKeyVault (Enable-AdlStoreKeyVault)
+  * Enable KeyVault managed encryption for a DataLake Store
+
+## Version 4.0.1
+
+## Version 4.0.0
 * For `Import-AzureRMDataLakeStoreItem` and `Export-AzureRMDataLakeStoreItem` trace logging has been disabled by default to improve performance. If trace logging is desired please use the `-DiagnosticLogLevel` and `-DiagnosticLogPath` parameters
 * Fixed a bug that would sometimes cause PowerShell to crash when uploading lots of small file to ADLS.
 

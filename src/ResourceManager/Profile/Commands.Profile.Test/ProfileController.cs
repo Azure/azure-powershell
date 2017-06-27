@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
@@ -29,7 +30,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public sealed class ProfileController
     {
-        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
@@ -52,15 +52,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public void RunPsTest(XunitTracingInterceptor logger, string tenant, params string[] scripts)
         {
+#if !NETSTANDARD
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+#else
+            StackTrace st = new StackTrace();
+            StackFrame sf = st.GetFrame(1);
 
+            var callingClassType = sf.GetMethod().ReflectedType.ToString();
+            var mockName = sf.GetMethod().Name;
+#endif
             logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
             helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -70,10 +75,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         private void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
-            string mockName, string tenant)
+            string mockName, 
+            string tenant)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
@@ -86,18 +91,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
                 SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                var oldFactory = AzureSession.AuthenticationFactory as MockTokenAuthenticationFactory;
-                AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
+                var oldFactory = AzureSession.Instance.AuthenticationFactory as MockTokenAuthenticationFactory;
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(oldFactory.Token.UserId, oldFactory.Token.AccessToken, tenant);
 
                 var callingClassName = callingClassType
                     .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Relay.Models;
 using Microsoft.Azure.Management.Relay;
 using Microsoft.Azure.Management.Relay.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Relay
 {
@@ -31,9 +32,9 @@ namespace Microsoft.Azure.Commands.Relay
 
         public Action<string> WarningLogger { get; set; }
 
-        public RelayClient(AzureContext context)
+        public RelayClient(IAzureContext context)
         {
-            this.Client = AzureSession.ClientFactory.CreateArmClient<RelayManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<RelayManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
         }
         public RelayManagementClient Client

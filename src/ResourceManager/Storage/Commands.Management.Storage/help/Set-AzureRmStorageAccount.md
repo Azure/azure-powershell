@@ -12,13 +12,26 @@ Modifies a Storage account.
 
 ## SYNTAX
 
+### StorageEncryption (Default)
 ```
 Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [[-SkuName] <String>]
  [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
  [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
  [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-NetworkAcl <PSNetworkACL>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### KeyvaultEncryption
+```
+Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [[-SkuName] <String>]
+ [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
+ [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
+ [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkAcl <PSNetworkACL>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,89 +70,53 @@ The command sets the Access Tier value to be cool.
 
 ### Example 4: Set the custom domain and tags
 ```
-PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -CustomDomainName "www.domainname.com" –UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
 The command sets the Access Tier value to be cool.
 
+### Example 5: Enable encryption on Blob Services with Keyvault
+```
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -AssignIdentity
+PS C:\>$account = Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount"
+
+PS C:\>$keyVault = New-AzureRmKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
+PS C:\>$key = Add-AzureKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
+PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey
+
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -EnableEncryptionService "Blob" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+```
+
+This command enables Storage Service encryption on Blob with a new created Keyvault.
+
+### Example 6: Disable encryption on File Services with KeySource set to "Microsoft.Storage"
+```
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -DisableEncryptionService File  -StorageEncryption
+```
+
+This command disables encryption on File Services with KeySource set to "Microsoft.Storage"
+
+### Example 7: Set NetworkAcls property of a Storage Account with JSON
+```
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -NetworkAcl (@{bypass="Logging,Metrics";
+    ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
+            @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
+    virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
+                        @{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2";Action="allow"});
+    defaultAction="allow"})
+```
+
+This command sets NetworkAcls property of a Storage Account with JSON
+
+### Example 8: Get NetworkAcls property from a Storage Account, and set it to another storage account 
+```
+PS C:\> $networkacl = (Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount").NetworkAcls 
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount2" -NetworkAcl $networkacl
+```
+
+This first command gets NetworkAcls property from a Storage Account, and the second command sets it to another storage account 
+
 ## PARAMETERS
-
-### -ResourceGroupName
-Specifies the name of the resource group in which to modify the Storage account.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the Storage account to create.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: StorageAccountName, AccountName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Force
-If you change the access tier, it may result in additional charges.
-For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
-If the kind of Storage account is Storage, do not specify this parameter.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-Specifies the SKU name of the storage account.
-The acceptable values for this parameter are:
-
-- Standard_LRS.
-Locally-redundant storage. 
-- Standard_ZRS.
-Zone-redundant storage.
-- Standard_GRS.
-Geo-redundant storage. 
-- Standard_RAGRS.
-Read access geo-redundant storage. 
-- Premium_LRS.
-Premium locally-redundant storage.
-
-You cannot change Standard_ZRS and Premium_LRS types to other account types.
-You cannot change other account types to Standard_ZRS or Premium_LRS.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: StorageAccountType, AccountType, Type
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -AccessTier
 Specifies the access tier of the Storage account that this cmdlet modifies.
@@ -161,6 +138,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AssignIdentity
+Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomDomainName
 Specifies the name of the custom domain.
 
@@ -171,37 +161,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseSubDomain
-Indicates whether to enable indirect CName validation.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableEncryptionService
-Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
-Azure Blob and Azure File Services are supported.
-
-```yaml
-Type: EncryptionSupportServiceEnum
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -223,20 +182,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-If you specify a value of BlobStorage for the *Kind* parameter of the New-AzureRmStorageAccount cmdlet, you must specify a value for the *AccessTier* parameter.
-
-If you specify a value of Storage for this *Kind* parameter, do not specify the *AccessTier* parameter.
+### -EnableEncryptionService
+Indicates whether this cmdlet enables Storage Service encryption on the Storage Service.
+Azure Blob and Azure File Services are supported.
 
 ```yaml
-Type: Hashtable
+Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases: Tags
+Aliases: 
 
 Required: False
-Position: 8
+Position: 6
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -250,6 +208,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Force
+If you change the access tier, it may result in additional charges.
+For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
+If the kind of Storage account is Storage, do not specify this parameter.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -287,6 +262,178 @@ Aliases: iv
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyName
+Storage Account encryption keySource KeyVault KeyName```yaml
+Type: String
+Parameter Sets: KeyvaultEncryption
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyvaultEncryption
+Whether to set Storage Account Encryption KeySource to Microsoft.Keyvault or not. 
+If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account encryption keySource will also be set to Microsoft.Keyvault weather this parameter is set or not.
+```yaml
+Type: SwitchParameter
+Parameter Sets: KeyvaultEncryption
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUri
+Storage Account encryption keySource KeyVault KeyVaultUri```yaml
+Type: String
+Parameter Sets: KeyvaultEncryption
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVersion
+Storage Account encryption keySource KeyVault KeyVersion```yaml
+Type: String
+Parameter Sets: KeyvaultEncryption
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the Storage account to Modify.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: StorageAccountName, AccountName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkAcl
+Specify the NetworksAcl Set to the Storage Account.```yaml
+Type: PSNetworkACL
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group in which to modify the Storage account.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuName
+Specifies the SKU name of the storage account.
+The acceptable values for this parameter are:
+
+- Standard_LRS.
+Locally-redundant storage. 
+- Standard_ZRS.
+Zone-redundant storage.
+- Standard_GRS.
+Geo-redundant storage. 
+- Standard_RAGRS.
+Read access geo-redundant storage. 
+- Premium_LRS.
+Premium locally-redundant storage.
+
+You cannot change Standard_ZRS and Premium_LRS types to other account types.
+You cannot change other account types to Standard_ZRS or Premium_LRS.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: StorageAccountType, AccountType, Type
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageEncryption
+Whether to set Storage Account Encryption KeySource to Microsoft.Storage or not.```yaml
+Type: SwitchParameter
+Parameter Sets: StorageEncryption
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+If you specify a value of BlobStorage for the *Kind* parameter of the New-AzureRmStorageAccount cmdlet, you must specify a value for the *AccessTier* parameter.
+
+If you specify a value of Storage for this *Kind* parameter, do not specify the *AccessTier* parameter.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: Tags
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UseSubDomain
+Indicates whether to enable indirect CName validation.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -159,6 +160,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string ProfileCannotBeNull {
             get {
                 return ResourceManager.GetString("ProfileCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Azure PowerShell context has not been properly initialized.  Please import the module and try again..
+        /// </summary>
+        public static string ProfileNotInitialized {
+            get {
+                return ResourceManager.GetString("ProfileNotInitialized", resourceCulture);
             }
         }
         

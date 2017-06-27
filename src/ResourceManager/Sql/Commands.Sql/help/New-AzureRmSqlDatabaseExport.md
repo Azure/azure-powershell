@@ -254,4 +254,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzureRmSqlDatabaseImport](./New-AzureRmSqlDatabaseImport.md)
 
-
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

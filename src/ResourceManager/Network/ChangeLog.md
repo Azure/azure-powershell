@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
+    - SALifeTimeSeconds defaults to 27000 seconds
+    - SADataSizeKilobytes defaults to 102400000 KB
+
+## Version 4.1.0
+* Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
+* Added new GatewaySku options for VirtualNetworkGateways
+    - VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
+* Set-AzureRmNetworkWatcherConfigFlowLog
+  * Fixed  help examples
+ 
+## Version 4.0.1
+
+## Version 4.0.0
+* Added Test-AzureRmNetworkWatcherConnectivity cmdlet
+    - Returns connectivity information for a specified source VM and a destination
+    - If connectivity between the source and destination cannot be established, the cmdlet returns details about the issue
 
 ## Version 3.7.0
 * Added support for new web application firewall features to Application Gateways

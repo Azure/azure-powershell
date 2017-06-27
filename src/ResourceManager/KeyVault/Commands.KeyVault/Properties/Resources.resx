@@ -210,6 +210,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="InvalidVaultName" xml:space="preserve">
     <value>Invalid vault name.</value>
   </data>
+  <data name="InvalidManagedStorageAccountName" xml:space="preserve">
+    <value>Invalid key vault managed storage acccount name.</value>
+  </data>
   <data name="InvalidVaultUri" xml:space="preserve">
     <value>Invalid vault uri '{0}'. Vault uri must contain valid dns host name with domain suffix '{1}'.</value>
   </data>
@@ -246,6 +249,24 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RemoveSecretWhatIfMessage" xml:space="preserve">
     <value>Remove secret</value>
   </data>
+  <data name="RemoveManagedStorageAccountWarning" xml:space="preserve">
+    <value>Are you sure you want to remove managed storage account '{0}'</value>
+  </data>
+  <data name="RemoveManagedStorageAccountWhatIfMessage" xml:space="preserve">
+    <value>Remove managed storage account</value>
+  </data>
+  <data name="RemoveManagedStorageSasDefinitionWarning" xml:space="preserve">
+    <value>Are you sure you want to remove managed storage sas definition '{0}'</value>
+  </data>
+  <data name="RemoveManagedStorageSasDefinitionWhatIfMessage" xml:space="preserve">
+    <value>Remove managed storage sas definition</value>
+  </data>
+  <data name="RegenerateManagedStorageAccountKeyWarning" xml:space="preserve">
+    <value>Are you sure you want to regenerate '{0}' of storage account '{1}' and make it an active key of Key Vault managed Storage Account.</value>
+  </data>
+  <data name="RegenerateManagedStorageAccountKeyWhatIfMessage" xml:space="preserve">
+    <value>Regenerate '{0}'</value>
+  </data>
   <data name="RemoveVaultWarning" xml:space="preserve">
     <value>Are you sure you want to remove vault '{0}'.</value>
   </data>
@@ -262,7 +283,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>The specified vault already exists.</value>
   </data>
   <data name="VaultNoAccessPolicyWarning" xml:space="preserve">
-    <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
+    <value>Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VaultNotFound" xml:space="preserve">
     <value>Cannot find vault '{0}' in resource group '{1}'.</value>
@@ -323,6 +344,15 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="SetSecretAttribute" xml:space="preserve">
     <value>Set  secret attribute</value>
+  </data>
+  <data name="AddManagedStorageAccount" xml:space="preserve">
+    <value>Add Key Vault managed Storage Account</value>
+  </data>
+  <data name="SetManagedStorageAccountKeysAttribute" xml:space="preserve">
+    <value>Set Key Vault managed Storage Account attribute</value>
+  </data>
+  <data name="SetManagedStorageSasDefinition" xml:space="preserve">
+    <value>Set Key Vault managed Storage SAS definition</value>
   </data>
   <data name="StopCertificateOperation" xml:space="preserve">
     <value>Stop certificate operation</value>
@@ -413,6 +443,11 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="DeletedVaultNotFound" xml:space="preserve">
     <value>Cannot find deleted vault '{0}' in location '{1}'</value>
->>>>>>> be40276d6... Key Vault soft-delete for Keys, Secrets and Vaults
+  <data name="InvalidSasPermission" xml:space="preserve">
+    <value>Invalid Sas permission '{0}'.</value>
+  </data>
+  <data name="ADObjectAmbiguous" xml:space="preserve">
+    <value>The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active Directory.</value>
+>>>>>>> refs/remotes/Azure/preview
   </data>
 </root>

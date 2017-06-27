@@ -12,6 +12,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Model;
 using Microsoft.Azure.Commands.Sql.Services;
@@ -29,14 +30,14 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlCapabilitiesAdapter(AzureContext context)
+        public AzureSqlCapabilitiesAdapter(IAzureContext context)
         {
             Context = context;
             _communicator = new AzureSqlCapabilitiesCommunicator(Context);
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <returns></returns>
         public LocationCapabilityModel GetLocationCapabilities(string locationName)
         {
-            var resp = _communicator.Get(locationName, Util.GenerateTracingId());
+            var resp = _communicator.Get(locationName);
             return CreateLocationCapabilityModel(resp);
         }
 

@@ -13,7 +13,7 @@ Removes the specified storage container.
 ## SYNTAX
 
 ```
-Remove-AzureStorageContainer [-Name] <String> [-Force] [-PassThru] [-Context <AzureStorageContext>]
+Remove-AzureStorageContainer [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -73,7 +73,7 @@ Specifies a context for the container you want to remove.
 You can use the New-AzureStorageContext cmdlet to create it.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases: 
 

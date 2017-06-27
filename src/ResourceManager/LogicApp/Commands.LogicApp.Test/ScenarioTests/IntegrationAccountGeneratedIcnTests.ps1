@@ -51,6 +51,63 @@ function InitializeGeneratedControlNumberSession([Object] $resourceGroup, [Strin
 	}
 }
 
+<#
+.SYNOPSIS
+Test Get-AzureRmIntegrationAccountGeneratedIcn command
+#>
+function Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType()
+{
+	$agreementFilePath = "$TestOutputRoot\Resources\IntegrationAccountX12AgreementContent.json"
+	$agreementContent = [IO.File]::ReadAllText($agreementFilePath)
+
+	# This error string is less than ideal due to AutoRest bug https://github.com/Azure/autorest/issues/2022
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName "Random83da135" -Name "DoesNotMatter" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
+
+	$resourceGroup = TestSetup-CreateNamedResourceGroup "IntegrationAccountPsCmdletTest"
+	$integrationAccountName = getAssetname
+	$integrationAccountAgreementName = getAssetname + "X12"
+
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name "Random83da135" -AgreementName "DoesNotMatter" } "Operation returned an invalid status code 'NotFound'"
+
+	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
+	
+	$hostPartnerName = getAssetname
+	$guestPartnerName = getAssetname
+	$hostBusinessIdentities = @(("AA","AA"), ("BB","BB"))
+	$guestBusinessIdentities = @(("ZZ","ZZ"), ("XX","XX"))
+	$hostPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $hostPartnerName -BusinessIdentities $hostBusinessIdentities
+	$guestPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $guestPartnerName -BusinessIdentities $guestBusinessIdentities
+
+	$integrationAccountAgreement0 =  New-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -GuestIdentityQualifierValue "ZZ" -HostIdentityQualifierValue "AA" -AgreementContent $agreementContent
+
+	$result =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+	Assert-AreEqual $integrationAccountAgreementName $result.Name
+
+	$result1 =  Get-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	Assert-True { $result1.Count -gt 0 }
+
+	# Because there is no actual B2B connector activity, no generated control number will exist by default.
+	# We also do not expose a Create cmdlet on generated control numbers because the operators should not create one where does not exist.
+	# So working this around by using ARM resource cmdlet to create a dummy entry.
+
+	# Before the workaround the control number containing session ressource cannot be found in the integration account.
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName } "Operation returned an invalid status code 'NotFound'"
+
+	# Now we create one with the legacy raw control number content. This cmdlet will intentionally fail to deserialize: it is meant only to operate on new control numbers that have been replicated for the purpose of disaster recovery.
+	InitializeGeneratedControlNumberSession -agreementType "X12" -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountAgreementName $integrationAccountAgreementName -oldformat $true
+	Assert-ThrowsContains { Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName } "is not in a valid format."
+
+	InitializeGeneratedControlNumberSession -agreementType "X12" -resourceGroup $resourceGroup -integrationAccountName $integrationAccountName -integrationAccountAgreementName $integrationAccountAgreementName -oldformat $false
+	$result =  Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+	Assert-AreEqual "1000" $result.ControlNumber
+	Assert-AreEqual "02/22/2017 20:05:41" $result.ControlNumberChangedTime
+    Assert-AreEqual "X12" $result.MessageType
+
+	$result1 =  Get-AzureRmIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	Assert-True { $result1.Count -gt 0 }
+
+	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
+}
 
 <#
 .SYNOPSIS
@@ -112,7 +169,7 @@ function Test-GetIntegrationAccountGeneratedControlNumberInternal([String] $agre
 	$result =  Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
 	Assert-AreEqual "1000" $result.ControlNumber
 	Assert-AreEqual "02/22/2017 20:05:41" $result.ControlNumberChangedTime
-  Assert-AreEqual $agreementType $result.MessageType
+    Assert-AreEqual $agreementType $result.MessageType
 
 	$result1 =  Get-AzureRmIntegrationAccountGeneratedIcn -AgreementType $agreementType -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
 	Assert-True { $result1.Count -gt 0 }

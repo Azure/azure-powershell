@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
@@ -32,17 +33,17 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        protected static AzureSubscription Subscription { get; set; }
+        protected static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Base class contructor for RecommendedAction REST API Communicators.
         /// </summary>
-        public AzureSqlRecommendedActionCommunicatorBase(AzureContext context)
+        public AzureSqlRecommendedActionCommunicatorBase(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -57,16 +58,13 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        protected SqlManagementClient GetCurrentSqlClient(string clientRequestId)
+        protected SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

@@ -32,6 +32,8 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
+    using Common.Authentication.Abstractions;
+    using ResourceManager.Common;
     using System.IO;
 
     public class SqlTestsBase : RMTestBase
@@ -56,15 +58,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var storageClient = GetStorageClient();
-            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, resourcesClient, authorizationClient);
+            var resourcesClient = GetResourcesClient();
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient);
         }
         
         protected void RunPowerShellTest(params string[] scripts)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
@@ -175,12 +175,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId;
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory = UserDomain;
                 }
             }
 

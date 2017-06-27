@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions

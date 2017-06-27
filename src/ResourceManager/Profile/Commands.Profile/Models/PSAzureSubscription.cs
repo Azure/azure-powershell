@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
     /// <summary>
     /// Azure subscription details.
     /// </summary>
-    public class PSAzureSubscription
+    public class PSAzureSubscription : IAzureSubscription
     {
         /// <summary>
         /// Convert between formats of AzureSubscription information.
@@ -35,22 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var subscription = new PSAzureSubscription
-            {
-                SubscriptionId = other.Id.ToString(),
-                SubscriptionName = other.Name,
-                State = other.State,
-                TenantId = other.IsPropertySet(AzureSubscription.Property.Tenants) ?
-                other.GetProperty(AzureSubscription.Property.Tenants) : null
-            };
-
-            if (other.IsPropertySet(AzureSubscription.Property.StorageAccount))
-            {
-                subscription.CurrentStorageAccount = other.GetProperty(AzureSubscription.Property.StorageAccount);
-                subscription.CurrentStorageAccountName = GetAccountName(subscription.CurrentStorageAccount);
-            }
-
-            return subscription;
+            return new PSAzureSubscription(other);
         }
 
         /// <summary>
@@ -65,47 +50,37 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var result = new AzureSubscription
-            {
-                Name = other.SubscriptionName
-            };
+            var subscription = new AzureSubscription();
+            subscription.CopyFrom(other);
+            return subscription;
+        }
 
-            if (other.SubscriptionId != null)
-            {
-                Guid subscriptionId;
-                if (Guid.TryParse(other.SubscriptionId, out subscriptionId))
-                {
-                    result.Id = subscriptionId;
-                }
-            }
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public PSAzureSubscription()
+        {
 
-            if (other.TenantId != null)
-            {
-                result.Properties.SetProperty(AzureSubscription.Property.Tenants, other.TenantId);
-            }
+        }
 
-            if (other.CurrentStorageAccount != null)
-            {
-                result.Properties.SetProperty(AzureSubscription.Property.StorageAccount, other.CurrentStorageAccount);
-            }
-
-            if (other.State != null)
-            {
-                result.State = other.State;
-            }
-
-            return result;
+        /// <summary>
+        /// Copy constructor
+        /// </summary>
+        /// <param name="other">Environment to copy from</param>
+        public PSAzureSubscription(IAzureSubscription other)
+        {
+            this.CopyFrom(other);
         }
 
         /// <summary>
         /// The subscription id.
         /// </summary>
-        public string SubscriptionId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// The name of the subscription.
         /// </summary>
-        public string SubscriptionName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets subscription State
@@ -115,15 +90,43 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant home for the subscription.
         /// </summary>
-        public string TenantId { get; set; }
+        public string TenantId
+        {
+            get
+            {
+                return this.GetTenant();
+            }
+            set
+            {
+                this.SetTenant(value);
+            }
+        }
 
-        public string CurrentStorageAccountName { get; set; }
+        public string CurrentStorageAccountName
+        {
+            get
+            {
+                return GetAccountName(CurrentStorageAccount);
+            }
+        }
 
-        internal string CurrentStorageAccount { get; set; }
+        public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        internal string CurrentStorageAccount
+        {
+            get
+            {
+                return this.GetStorageAccount();
+            }
+            set
+            {
+                this.SetStorageAccount(value);
+            }
+        }
 
         public override string ToString()
         {
-            return this.SubscriptionId;
+            return this.GetId().ToString();
         }
 
         public static string GetAccountName(string connectionString)

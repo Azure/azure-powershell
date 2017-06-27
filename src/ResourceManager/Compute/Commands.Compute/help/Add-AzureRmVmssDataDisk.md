@@ -127,7 +127,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specify the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -192,4 +192,3 @@ System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.StorageAccountTypes
 ## NOTES
 
 ## RELATED LINKS
-

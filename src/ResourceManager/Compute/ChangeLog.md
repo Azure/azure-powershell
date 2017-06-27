@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,11 +19,33 @@
 -->
 ## Current Release
 
+## Version 3.1.0
+* Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
+* Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks
+* Add-AzureRmVhd: The size limit on vhd is increased to 4TB.
+* Stop-AzureRmVM: Clarify documentation for STayProvisioned parameter
+* New-AzureRmDiskUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmDiskUpdateImageReference: Deprecated cmdlet
+* New-AzureRmSnapshotUpdateConfig
+  * Deprecated parameters CreateOption, StorageAccountId, ImageReference, SourceUri, SourceResourceId
+* Set-AzureRmSnapshotUpdateImageReference: Deprecated Cmdlet
+
+## Version 3.0.1
+
+## Version 3.0.0
+* Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks
 * Backup encryption settings for IaaS VMs and restore on failure
 * ChefServiceInterval option is renamed to ChefDaemonInterval now. Old one will continue to work however.
+* Remove duplicated DataDiskNames and NetworkInterfaceIDs properties from PS VM object.
+  - Make DataDiskNames and NetworkInterfaceIDs parameters optional in Remove-AzureRmVMDataDisk and Remove-AzureRmVMNetworkInterface, respectively.
+* Fix the piping issue of Get cmdlets when the Get cmdlets return a list object.
+* Cmdlets that conflicted with RDFE cmdlets have been renamed. See issue https://github.com/Azure/azure-powershell/issues/2917 for more details
+    - `New-AzureVMSqlServerAutoBackupConfig` has been renamed to `New-AzureRmVMSqlServerAutoBackupConfig`
+    - `New-AzureVMSqlServerAutoPatchingConfig` has been renamed to `New-AzureRmVMSqlServerAutoPatchingConfig`
+    - `New-AzureVMSqlServerKeyVaultCredentialConfig` has been renamed to `New-AzureRmVMSqlServerKeyVaultCredentialConfig`
 
 ## Version 2.9.0
-
 * Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)
 
 ## Version 2.8.0

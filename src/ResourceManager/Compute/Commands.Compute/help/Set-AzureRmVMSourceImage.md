@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmVMSourceImage
 
 ## SYNOPSIS
-Specifies the platform image for a virtual machine.
+Specifies the image for a virtual machine.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ The **Set-AzureRmVMSourceImage** cmdlet specifies the platform image to use for 
 
 ### Example 1: Set values for an image
 ```
-PS C:\>AvailabilitySet = Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
+PS C:\> AvailabilitySet = Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
 PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id 
 PS C:\> Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer" -Skus "2012-R2-Datacenter" -Version "latest"
 ```

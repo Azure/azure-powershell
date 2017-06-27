@@ -31,7 +31,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.ResultType = metadata.ResultType;
                 this.Top = metadata.Top;
                 this.Total = metadata.Total;
-                this.Id = metadata.Id;
+                if (metadata.Id != null)
+                {
+                    this.Id = new Guid(metadata.Id);
+                }
+
                 List<PSCoreSummary> summaryList = new List<PSCoreSummary>();
                 if (metadata.CoreSummaries != null)
                 {

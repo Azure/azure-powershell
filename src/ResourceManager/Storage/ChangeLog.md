@@ -18,9 +18,29 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add NeworkAcls support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+    - Get-AzureStorageAccountNetworkACL
+    - Update-AzureStorageAccountNetworkACL
+    - Add-AzureStorageAccountNetworkACLRule
+    - Remove-AzureStorageAccountNetworkACLRule
+
+## Version 3.1.0
+* Add AssignIdentity setting support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+* Add Customer Key Support to resource mode storage account cmdlets
+    - Set-AzureRmStorageAccount
+    - New-AzureRmStorageAccountEncryptionKeySource
+
+## Version 3.0.2
+
+## Version 3.0.0
 * Upgrade SRP SDK to 6.3.0
 * New/Set-AzureRmStorageAccount:Add a new parameter to support EnableHttpsTrafficOnly
 * New/Set/Get-AzureRmStorageAccount: Returned Storage Account contains a new attribute EnableHttpsTrafficOnly
+
 ## Version 2.8.0
 
 ## Version 2.7.0

@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -301,7 +302,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 if (ArchiveStorageEndpointSuffix == null)
                 {
                     ArchiveStorageEndpointSuffix =
-                        DefaultProfile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                        DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                 }
 
                 if (!(Regex.Match(Version, VersionRegexExpr).Success))
@@ -460,7 +461,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     configurationDataBlobReference.Uri.AbsoluteUri,
                     () =>
                     {
-                        if (!Force && configurationDataBlobReference.Exists())
+                        if (!Force && configurationDataBlobReference.ExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult())
                         {
                             ThrowTerminatingError(
                                 new ErrorRecord(
@@ -474,7 +475,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(ConfigurationData);
+                        configurationDataBlobReference.UploadFromFileAsync(ConfigurationData).ConfigureAwait(false).GetAwaiter().GetResult();
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);

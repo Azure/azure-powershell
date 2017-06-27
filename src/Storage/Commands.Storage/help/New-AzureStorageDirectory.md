@@ -14,7 +14,7 @@ Creates a directory.
 
 ### ShareName (Default)
 ```
-New-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-Context <AzureStorageContext>]
+New-AzureStorageDirectory [-ShareName] <String> [-Path] <String> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
@@ -95,7 +95,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
-Type: AzureStorageContext
+Type: IStorageContext
 Parameter Sets: ShareName
 Aliases: 
 
