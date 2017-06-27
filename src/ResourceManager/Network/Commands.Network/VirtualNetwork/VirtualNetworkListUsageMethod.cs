@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 var vVirtualNetworkModel = Mapper.Map<CNM.PSVirtualNetworkUsage>(vVirtualNetwork);
                 vnetUsageList.Add(vVirtualNetworkModel);
             }
-            WriteObject(vnetUsageList);
+            WriteObject(vnetUsageList, true);
         }
     }
 }

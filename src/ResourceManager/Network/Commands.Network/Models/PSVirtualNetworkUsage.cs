@@ -2,10 +2,10 @@
 {
     public partial class PSVirtualNetworkUsage
     {
-        public string Id;
-        public long CurrentValue;
-        public long Limit;
-        public string Unit;
-        public PSUsageName Name;
+        public string Id { get; set; }
+        public long CurrentValue { get; set; }
+        public long Limit { get; set; }
+        public string Unit { get; set; }
+        public PSUsageName Name { get; set; }
     }
 }
