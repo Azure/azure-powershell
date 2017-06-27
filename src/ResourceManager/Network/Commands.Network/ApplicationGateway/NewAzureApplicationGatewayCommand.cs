@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of redirect configuration")]
         public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }

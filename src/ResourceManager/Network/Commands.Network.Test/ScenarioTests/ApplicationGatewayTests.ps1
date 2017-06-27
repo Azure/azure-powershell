@@ -12,6 +12,24 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AvailableSslOptions
+{
+	$result = Get-AzureRmApplicationGatewayAvailableWafRuleSets
+
+	Assert-NotNull $result
+	Assert-NotNull $result.Value
+	Assert-True { $result.Value.Count -gt 0 }
+	Assert-NotNull $result.Value[0].Name
+	Assert-NotNull $result.Value[0].RuleSetType
+	Assert-NotNull $result.Value[0].RuleSetVersion
+	Assert-NotNull $result.Value[0].RuleGroups
+	Assert-True { $result.Value[0].RuleGroups.Count -gt 0 }
+	Assert-NotNull $result.Value[0].RuleGroups[0].RuleGroupName
+	Assert-NotNull $result.Value[0].RuleGroups[0].Rules
+	Assert-True { $result.Value[0].RuleGroups[0].Rules.Count -gt 0 }
+	Assert-NotNull $result.Value[0].RuleGroups[0].Rules[0].RuleId
+}
+
 function Test-AvailableWafRuleSets
 {
 	$result = Get-AzureRmApplicationGatewayAvailableWafRuleSets
@@ -374,4 +392,5 @@ function Compare-AzureRmApplicationGateway($expected, $actual)
 
 	Assert-AreEqual $expected.HttpListeners.Count $actual.HttpListeners.Count
 	Assert-AreEqual $expected.RequestRoutingRules.Count $actual.RequestRoutingRules.Count
+	Assert-AreEqual $expected.RedirectConfigurations.Count $actual.RedirectConfigurations.Count
 }
