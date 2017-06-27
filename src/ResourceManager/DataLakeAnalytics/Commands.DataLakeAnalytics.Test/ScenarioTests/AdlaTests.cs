@@ -56,6 +56,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlaComputePolicy()
+        {
+            AdlaTestsBase.NewInstance.RunPsTest(false,
+                string.Format(
+                    "Test-DataLakeAnalyticsComputePolicy -location '{0}'",
+                    AdlaTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlaCatalog()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
@@ -71,6 +81,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             AdlaTestsBase.NewInstance.RunPsTest(false,
                 string.Format(
                     "Test-DataLakeAnalyticsJob -location '{0}'",
+                    AdlaTestsBase.resourceGroupLocation));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAdlaJobRelationships()
+        {
+            AdlaTestsBase.NewInstance.RunPsTest(false,
+                string.Format(
+                    "Test-DataLakeAnalyticsJobRelationships -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
         }
 

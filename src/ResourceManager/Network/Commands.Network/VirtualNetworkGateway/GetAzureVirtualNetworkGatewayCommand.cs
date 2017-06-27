@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -48,7 +49,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var vnetGatewayList = this.VirtualNetworkGatewayClient.List(this.ResourceGroupName);
+                var vnetGatewayPage = this.VirtualNetworkGatewayClient.List(this.ResourceGroupName);
+
+                // Get all resources by polling on next page link
+                var vnetGatewayList = ListNextLink<VirtualNetworkGateway>.GetAllResourcesByPollingNextLink(vnetGatewayPage, this.VirtualNetworkGatewayClient.ListNext);
 
                 var psVnetGateways = new List<PSVirtualNetworkGateway>();
                 foreach (var virtualNetworkGateway in vnetGatewayList)
