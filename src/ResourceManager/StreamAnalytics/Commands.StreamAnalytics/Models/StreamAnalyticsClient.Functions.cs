@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             var response = StreamAnalyticsManagementClient.Functions.Get(
                 resourceGroupName, jobName, name);
 
-            return new PSFunction(response.Function)
+            return new PSFunction(response)
             {
                 ResourceGroupName = resourceGroupName,
                 JobName = jobName
@@ -41,11 +42,11 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSFunction> functions = new List<PSFunction>();
 
-            var response = StreamAnalyticsManagementClient.Functions.ListFunctionsInJob(resourceGroupName, jobName);
+            var response = StreamAnalyticsManagementClient.Functions.ListByStreamingJob(resourceGroupName, jobName);
 
-            if (response != null && response.Value != null)
+            if (response != null)
             {
-                foreach (var function in response.Value)
+                foreach (var function in response)
                 {
                     functions.Add(new PSFunction(function)
                     {
@@ -96,14 +97,18 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 throw new ArgumentNullException("rawJsonContent");
             }
 
+            Function function = SafeJsonConvert.DeserializeObject<Function>(
+                rawJsonContent,
+                StreamAnalyticsClientExtensions.DeserializationSettings);
+
             // If create failed, the current behavior is to throw
-            var response = StreamAnalyticsManagementClient.Functions.CreateOrUpdateWithRawJsonContent(
+            var response = StreamAnalyticsManagementClient.Functions.CreateOrReplace(
+                    function,
                     resourceGroupName,
                     jobName,
-                    functionName,
-                    new FunctionCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
+                    functionName);
 
-            return response.Function;
+            return response;
         }
 
         public virtual PSFunction CreatePSFunction(CreatePSFunctionParameter parameter)
@@ -146,16 +151,14 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return function;
         }
 
-        public virtual HttpStatusCode RemovePSFunction(string resourceGroupName, string jobName, string functionName)
+        public virtual void RemovePSFunction(string resourceGroupName, string jobName, string functionName)
         {
-            AzureOperationResponse response = StreamAnalyticsManagementClient.Functions.Delete(resourceGroupName, jobName, functionName);
-
-            return response.StatusCode;
+            StreamAnalyticsManagementClient.Functions.Delete(resourceGroupName, jobName, functionName);
         }
 
-        public virtual ResourceTestConnectionResponse TestPSFunction(string resourceGroupName, string jobName, string functionName)
+        public virtual ResourceTestStatus TestPSFunction(string resourceGroupName, string jobName, string functionName)
         {
-            return StreamAnalyticsManagementClient.Functions.TestConnection(resourceGroupName, jobName, functionName);
+            return StreamAnalyticsManagementClient.Functions.Test(resourceGroupName, jobName, functionName);
         }
 
         public virtual PSFunction RetrieveDefaultPSFunctionDefinition(RetrieveDefaultPSFunctionDefinitionParameter parameter)
@@ -165,11 +168,14 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 throw new ArgumentNullException("parameter");
             }
 
-            var response = StreamAnalyticsManagementClient.Functions.RetrieveDefaultDefinitionWithRawJsonContent(
-                parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName,
-                new FunctionRetrieveDefaultDefinitionWithRawJsonContentParameters() { Content = parameter.RawJsonContent });
+            FunctionRetrieveDefaultDefinitionParameters functionRetrieveDefaultDefinitionParameters = SafeJsonConvert.DeserializeObject<FunctionRetrieveDefaultDefinitionParameters>(
+                parameter.RawJsonContent,
+                StreamAnalyticsClientExtensions.DeserializationSettings);
 
-            return new PSFunction(response.Function)
+            var response = StreamAnalyticsManagementClient.Functions.RetrieveDefaultDefinition(
+                parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName, functionRetrieveDefaultDefinitionParameters);
+
+            return new PSFunction(response)
             {
                 ResourceGroupName = parameter.ResourceGroupName,
                 JobName = parameter.JobName
