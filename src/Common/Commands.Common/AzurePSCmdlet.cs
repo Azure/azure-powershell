@@ -234,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Prompt for the current data collection profile
         /// </summary>
-        protected abstract void PromptForDataCollectionProfileIfNotExists();
+        protected abstract void SetDataCollectionProfileIfNotExists();
 
         protected virtual void LogCmdletStartInvocationInfo()
         {
@@ -294,7 +294,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
-            PromptForDataCollectionProfileIfNotExists();
+            SetDataCollectionProfileIfNotExists();
             InitializeQosEvent();
             LogCmdletStartInvocationInfo();
             SetupDebuggingTraces();

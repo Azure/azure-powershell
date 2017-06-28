@@ -760,9 +760,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
         ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string DataCollectionPrompt {
+        public static string DataCollectionMessage {
             get {
-                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
+                return ResourceManager.GetString("DataCollectionMessage", resourceCulture);
             }
         }
         
