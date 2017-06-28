@@ -56,8 +56,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
+            if (this.InputObject != null)
+            {
+                this.Name = this.InputObject.Name;
+            }
+
             if (this.ShouldProcess(
-                this.InputObject.FriendlyName,
+                this.Name,
                 VerbsCommon.Remove))
             {
                 if (string.Compare(

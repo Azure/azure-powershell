@@ -18,11 +18,10 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Net;
+using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class NetworkSecurityGroupBaseCmdlet : NetworkBaseCmdlet
     {
         public INetworkSecurityGroupsOperations NetworkSecurityGroupClient
