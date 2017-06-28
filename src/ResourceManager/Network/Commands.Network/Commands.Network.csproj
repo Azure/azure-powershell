@@ -90,11 +90,11 @@
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.5\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -349,6 +349,9 @@
     <Compile Include="Models\PSTroubleshootDetails.cs" />
     <Compile Include="Models\PSTroubleshootRecommendedActions.cs" />
     <Compile Include="Models\PSTroubleshootResult.cs" />
+    <Compile Include="Models\PSUsage.cs" />
+    <Compile Include="Models\PSUsageCustom.cs" />
+    <Compile Include="Models\PSUsageName.cs" />
     <Compile Include="Models\PSViewNsgRules.cs" />
     <Compile Include="Models\PSServiceProviderProperties.cs" />
     <Compile Include="Models\PSPeering.cs" />
@@ -395,6 +398,7 @@
     <Compile Include="NetworkWatcher\PacketCapture\StopAzureNetworkWatcherPacketCaptureCommand.cs" />
     <Compile Include="NetworkWatcher\RemoveAzureNetworkWatcherCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
     <Compile Include="RouteFilter\GetAzureRouteFilterCommand.cs" />
     <Compile Include="RouteFilter\NewAzureRouteFilterCommand.cs" />

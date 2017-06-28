@@ -13,17 +13,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -39,7 +39,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -55,7 +55,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -71,7 +71,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -87,16 +87,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -111,7 +111,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
             "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -135,7 +135,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -157,7 +157,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -179,7 +179,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -201,7 +201,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -230,7 +230,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -252,16 +252,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "Name": "System.String",
-                    "NameServers": "System.Collections.Generic.List`1[System.String]",
-                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Hashtable"
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -282,7 +282,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -311,7 +311,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]",
                   "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -347,8 +347,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordBase",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -364,7 +364,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -380,7 +380,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -396,7 +396,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -412,7 +412,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -428,7 +428,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -444,7 +444,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -460,7 +460,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -476,7 +476,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -492,7 +492,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -508,7 +508,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -524,7 +524,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -540,7 +540,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -562,7 +562,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -589,7 +589,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -616,7 +616,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -643,7 +643,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -665,7 +665,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -692,7 +692,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -719,7 +719,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -746,7 +746,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -768,7 +768,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -790,7 +790,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -812,7 +812,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -839,7 +839,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -873,7 +873,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -890,7 +890,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -906,7 +906,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Dns.Models",
-            "Name": "RecordType",
+            "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -922,7 +922,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -938,7 +938,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -954,16 +954,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -978,17 +978,17 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1003,7 +1003,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1019,7 +1019,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1035,7 +1035,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1057,7 +1057,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1079,7 +1079,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
-                  "Name": "RecordType",
+                  "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1101,7 +1101,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1123,7 +1123,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1145,7 +1145,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1167,7 +1167,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1194,7 +1194,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1216,7 +1216,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
-                  "Name": "RecordType",
+                  "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1238,16 +1238,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "Name": "System.String",
-                    "NameServers": "System.Collections.Generic.List`1[System.String]",
-                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Hashtable"
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1268,7 +1268,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1290,7 +1290,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1317,17 +1317,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1348,7 +1348,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1370,7 +1370,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1392,7 +1392,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1419,7 +1419,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1441,7 +1441,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1475,17 +1475,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1501,17 +1501,17 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1526,7 +1526,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1548,17 +1548,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1584,7 +1584,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1606,17 +1606,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1649,17 +1649,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1675,17 +1675,17 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1700,7 +1700,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1716,7 +1716,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1732,7 +1732,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1748,7 +1748,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1764,7 +1764,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1780,7 +1780,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1796,7 +1796,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1812,7 +1812,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1828,7 +1828,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1844,7 +1844,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1860,7 +1860,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1876,7 +1876,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1898,17 +1898,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1934,7 +1934,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1956,17 +1956,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1992,7 +1992,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2014,17 +2014,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2050,7 +2050,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2072,17 +2072,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2108,7 +2108,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2130,7 +2130,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2152,17 +2152,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2188,7 +2188,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2210,17 +2210,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2246,7 +2246,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2268,17 +2268,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2304,7 +2304,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2326,7 +2326,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2348,7 +2348,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2370,7 +2370,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2392,17 +2392,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2428,7 +2428,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2450,17 +2450,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2493,17 +2493,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2519,17 +2519,17 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2544,7 +2544,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2560,7 +2560,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2576,7 +2576,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2592,7 +2592,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2608,7 +2608,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2624,7 +2624,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2640,7 +2640,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2656,7 +2656,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2672,7 +2672,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2688,7 +2688,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2704,7 +2704,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt16",
+            "Name": "System.UInt16",
             "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2720,7 +2720,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2742,17 +2742,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2778,7 +2778,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2800,17 +2800,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2836,7 +2836,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2858,17 +2858,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2894,7 +2894,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2916,17 +2916,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2952,7 +2952,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2974,7 +2974,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2996,17 +2996,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3032,7 +3032,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3054,17 +3054,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3090,7 +3090,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3112,17 +3112,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3148,7 +3148,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3170,7 +3170,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3192,7 +3192,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3214,7 +3214,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt16",
+                  "Name": "System.UInt16",
                   "AssemblyQualifiedName": "System.UInt16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3236,17 +3236,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3272,7 +3272,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3294,17 +3294,17 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
                     "Metadata": "System.Collections.Hashtable",
                     "Name": "System.String",
-                    "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-                    "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+                    "ZoneName": "System.String",
                     "ResourceGroupName": "System.String",
-                    "Ttl": "System.UInt32",
-                    "ZoneName": "System.String"
+                    "Etag": "System.String",
+                    "Ttl": "System.UInt32"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3337,17 +3337,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordSet",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordSet, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
               "Metadata": "System.Collections.Hashtable",
               "Name": "System.String",
-              "Records": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
-              "RecordType": "Microsoft.Azure.Management.Dns.Models.RecordType",
+              "ZoneName": "System.String",
               "ResourceGroupName": "System.String",
-              "Ttl": "System.UInt32",
-              "ZoneName": "System.String"
+              "Etag": "System.String",
+              "Ttl": "System.UInt32"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3363,7 +3363,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3379,7 +3379,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3395,7 +3395,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3411,16 +3411,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3435,7 +3435,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "UInt32",
+            "Name": "System.UInt32",
             "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3451,7 +3451,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Dns.Models",
-            "Name": "RecordType",
+            "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3467,7 +3467,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3483,8 +3483,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsRecordBase[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
             "GenericTypeArguments": []
@@ -3499,7 +3499,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3515,7 +3515,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3537,7 +3537,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3559,7 +3559,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt32",
+                  "Name": "System.UInt32",
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3581,7 +3581,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
-                  "Name": "RecordType",
+                  "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3603,7 +3603,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3625,8 +3625,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
                   "GenericTypeArguments": []
@@ -3647,7 +3647,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3669,7 +3669,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3696,7 +3696,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3718,7 +3718,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3740,7 +3740,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3762,7 +3762,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt32",
+                  "Name": "System.UInt32",
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3784,7 +3784,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
-                  "Name": "RecordType",
+                  "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3806,7 +3806,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3828,8 +3828,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
                   "GenericTypeArguments": []
@@ -3850,7 +3850,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3872,7 +3872,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3899,16 +3899,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "Name": "System.String",
-                    "NameServers": "System.Collections.Generic.List`1[System.String]",
-                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Hashtable"
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3929,7 +3929,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3951,7 +3951,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "UInt32",
+                  "Name": "System.UInt32",
                   "AssemblyQualifiedName": "System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3973,7 +3973,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Dns.Models",
-                  "Name": "RecordType",
+                  "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3995,7 +3995,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4017,8 +4017,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsRecordBase[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase[], Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
                   "GenericTypeArguments": []
@@ -4039,7 +4039,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4061,7 +4061,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4095,16 +4095,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4120,7 +4120,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4136,7 +4136,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4158,7 +4158,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4180,7 +4180,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4214,7 +4214,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4231,7 +4231,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4247,7 +4247,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4263,16 +4263,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4287,7 +4287,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -4303,7 +4303,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -4319,7 +4319,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -4341,7 +4341,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4363,7 +4363,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4385,7 +4385,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4407,7 +4407,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4434,16 +4434,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "Name": "System.String",
-                    "NameServers": "System.Collections.Generic.List`1[System.String]",
-                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Hashtable"
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4464,7 +4464,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4486,7 +4486,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4508,7 +4508,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4535,7 +4535,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4557,7 +4557,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4591,16 +4591,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4616,7 +4616,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4632,7 +4632,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4650,7 +4650,7 @@
           ],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4666,16 +4666,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4690,7 +4690,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -4712,7 +4712,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4734,7 +4734,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4758,7 +4758,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4785,16 +4785,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Dns",
-                  "Name": "DnsZone",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Etag": "System.String",
+                    "NameServers": "System.Collections.Generic.List`1[System.String]",
+                    "Tags": "System.Collections.Hashtable",
+                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "Name": "System.String",
-                    "NameServers": "System.Collections.Generic.List`1[System.String]",
-                    "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
                     "ResourceGroupName": "System.String",
-                    "Tags": "System.Collections.Hashtable"
+                    "Etag": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -4815,7 +4815,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4849,16 +4849,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Dns",
-            "Name": "DnsZone",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Dns.DnsZone",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsZone, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Etag": "System.String",
+              "NameServers": "System.Collections.Generic.List`1[System.String]",
+              "Tags": "System.Collections.Hashtable",
+              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "MaxNumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "Name": "System.String",
-              "NameServers": "System.Collections.Generic.List`1[System.String]",
-              "NumberOfRecordSets": "System.Nullable`1[System.Int64]",
               "ResourceGroupName": "System.String",
-              "Tags": "System.Collections.Hashtable"
+              "Etag": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4874,7 +4874,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4890,7 +4890,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4908,7 +4908,7 @@
           ],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4930,7 +4930,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4952,7 +4952,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4976,7 +4976,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -5111,18 +5111,18 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Hashtable": {
-      "Namespace": "System.Collections",
-      "Name": "Hashtable",
-      "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "Microsoft.Azure.Management.Dns.Models.RecordType": {
+      "Namespace": "Microsoft.Azure.Management.Dns.Models",
+      "Name": "Microsoft.Azure.Management.Dns.Models.RecordType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Dns.DnsRecordBase]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5131,38 +5131,38 @@
     },
     "Microsoft.Azure.Commands.Dns.DnsRecordBase": {
       "Namespace": "Microsoft.Azure.Commands.Dns",
-      "Name": "DnsRecordBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Dns.DnsRecordBase",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Dns.DnsRecordBase, Microsoft.Azure.Commands.Dns, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.Dns.Models.RecordType": {
-      "Namespace": "Microsoft.Azure.Management.Dns.Models",
-      "Name": "RecordType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+    "System.Collections.Hashtable": {
+      "Namespace": "System.Collections",
+      "Name": "System.Collections.Hashtable",
+      "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
-    },
-    "System.Nullable`1[System.Int64]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Int64"
-      ]
     },
     "System.Collections.Generic.List`1[System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
+      "Name": "System.Collections.Generic.List`1[System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String"
+      ]
+    },
+    "System.Nullable`1[System.Int64]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int64]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int64"
       ]
     }
   }
