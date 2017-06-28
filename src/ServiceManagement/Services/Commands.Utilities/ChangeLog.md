@@ -86,3 +86,9 @@
 * For more information about Managed Cache service deprecation, see http://go.microsoft.com/fwlink/?LinkID=717458
 
 ## Version 3.1.0
+* Updated New-AzureBgpPeering cmdlet to add following new options :
+    - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to create a BGP Peering of the corresponding address family type	
+* Updated Set-AzureBgpPeering cmdlet to add following new options :
+    - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to update BGP Peering of the corresponding address family type
+* Updated Remove-AzureBgpPeering cmdlet to add following new options :
+    - PeerAddressType : Values of "IPv4", "IPv6" or All can be specified to remove BGP Peering of the corresponding address family type or all of them
