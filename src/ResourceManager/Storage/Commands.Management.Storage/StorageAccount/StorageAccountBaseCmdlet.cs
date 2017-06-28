@@ -29,8 +29,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageAccountNounStr = "AzureRmStorageAccount";
         protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
-        protected const string StorageAccountACLNounStr = StorageAccountNounStr + "NetworkACL";
-        protected const string StorageAccountACLRuleNounStr = StorageAccountACLNounStr + "Rule";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
         protected const string AccountNameAlias = "AccountName";
