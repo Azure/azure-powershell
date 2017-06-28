@@ -105,12 +105,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-SetAzureRmStorageAccountKeySource");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNetworkAcl()
-        {
-            TestController.NewInstance.RunPsTest("Test-NetworkAcl");
-        }
-
     }
 }
