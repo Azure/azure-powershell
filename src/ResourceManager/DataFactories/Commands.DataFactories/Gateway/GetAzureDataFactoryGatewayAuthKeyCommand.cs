@@ -25,9 +25,10 @@ namespace Microsoft.Azure.Commands.DataFactories
     [Cmdlet(VerbsCommon.Get, Constants.GatewayAuthKey, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
     public class GetAzureDataFactoryGatewayAuthKeyCommand : DataFactoryBaseCmdlet
     {
-        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The data factory object.")]
-        public PSDataFactory DataFactory { get; set; }
+        [Alias("DataFactory")]
+        public PSDataFactory InputObject { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory name.")]
@@ -44,13 +45,13 @@ namespace Microsoft.Azure.Commands.DataFactories
         {
             if (ParameterSetName == ByFactoryObject)
             {
-                if (DataFactory == null)
+                if (InputObject == null)
                 {
                     throw new PSArgumentNullException(string.Format(CultureInfo.InvariantCulture, Resources.DataFactoryArgumentInvalid));
                 }
 
-                DataFactoryName = DataFactory.DataFactoryName;
-                ResourceGroupName = DataFactory.ResourceGroupName;
+                DataFactoryName = InputObject.DataFactoryName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
 
             PSDataFactoryGatewayAuthKey authKey = DataFactoryClient.ListGatewayAuthKeys(ResourceGroupName, DataFactoryName, GatewayName);

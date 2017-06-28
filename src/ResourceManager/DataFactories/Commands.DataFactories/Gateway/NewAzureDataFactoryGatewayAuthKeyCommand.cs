@@ -19,12 +19,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.GatewayAuthKey, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
+    [Cmdlet(VerbsCommon.New, Constants.GatewayAuthKey, DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
     public class NewAzureDataFactoryGatewayAuthKeyCommand : DataFactoryBaseCmdlet
     {
-        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The data factory object.")]
-        public PSDataFactory DataFactory { get; set; }
+        [Alias("DataFactory")]
+        public PSDataFactory InputObject { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory name.")]
@@ -39,19 +40,25 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of gateway auth key to be regenerated, either 'key1' or 'key2'.")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("key1", "key2", IgnoreCase = true)]
         public string KeyName { get; set; }
         
         public override void ExecuteCmdlet()
         {
+            if (!ShouldProcess("New-AzureRmDataFactoryGatewayAuthKey"))
+            {
+                return;
+            }
+
             if (ParameterSetName == ByFactoryObject)
             {
-                if (DataFactory == null)
+                if (InputObject == null)
                 {
                     throw new PSArgumentNullException(string.Format(CultureInfo.InvariantCulture, Resources.DataFactoryArgumentInvalid));
                 }
 
-                DataFactoryName = DataFactory.DataFactoryName;
-                ResourceGroupName = DataFactory.ResourceGroupName;
+                DataFactoryName = InputObject.DataFactoryName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
 
             NewDataFactoryGatewayAuthKeyParameters param = new NewDataFactoryGatewayAuthKeyParameters()
