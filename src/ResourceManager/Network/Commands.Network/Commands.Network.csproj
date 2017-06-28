@@ -276,6 +276,7 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSVirtualNetworkUsage.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
@@ -369,6 +370,7 @@
     <Compile Include="Models\PSTopologyResource.cs" />
     <Compile Include="Models\PSVirtualNetworkPeering.cs" />
     <Compile Include="Models\PSTunnelConnectionHealth.cs" />
+    <Compile Include="Models\PSVirtualNetworkUsageCustom.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveNetworkSecurityGroupCommand.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveRouteTableCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\AddAzureNetworkInterfaceIpConfigCommand.cs" />
@@ -377,26 +379,9 @@
     <Compile Include="NetworkInterface\IpConfiguration\NewAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
-    <Compile Include="NetworkWatcher\TestAzureNetworkWatcherConnectivityCommand.cs" />
+   
     <Compile Include="ProviderWideCmdlets\GetAzureBgpServiceCommunityCommand.cs" />
-    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherCommand.cs" />
-    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherFlowLogStatusCommand.cs" />
-    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherTroubleshootingResult.cs" />
-    <Compile Include="NetworkWatcher\SetAzureNetworkWatcherConfigFlowLogCommand.cs" />
-    <Compile Include="NetworkWatcher\TestAzureNetworkWatcherIPFlowCommand.cs" />
-    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherNextHopCommand.cs" />
-    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherSecurityGroupViewCommand.cs" />
-    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherTopologyCommand.cs" />
-    <Compile Include="NetworkWatcher\StartAzureNetworkWatcherResourceTroubleshootingCommand.cs" />
-    <Compile Include="NetworkWatcher\NetworkWatcherBaseCmdlet.cs" />
-    <Compile Include="NetworkWatcher\NewAzureNetworkWatcherCommand.cs" />
-    <Compile Include="NetworkWatcher\PacketCapture\GetAzureNetworkWatcherPacketCaptureCommand.cs" />
-    <Compile Include="NetworkWatcher\PacketCapture\NewAzureNetworkWatcherPacketCaptureCommand.cs" />
-    <Compile Include="NetworkWatcher\PacketCapture\NewPacketCaptureFilterCommand.cs" />
-    <Compile Include="NetworkWatcher\PacketCapture\PacketCaptureBaseCmdlet.cs" />
-    <Compile Include="NetworkWatcher\PacketCapture\RemoveAzureNetworkWatcherPacketCaptureCommand.cs" />
-    <Compile Include="NetworkWatcher\PacketCapture\StopAzureNetworkWatcherPacketCaptureCommand.cs" />
-    <Compile Include="NetworkWatcher\RemoveAzureNetworkWatcherCommand.cs" />
+    
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
     <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
@@ -578,6 +563,7 @@
     <Compile Include="VirtualNetwork\GetAzureVirtualNetworkCommand.cs" />
     <Compile Include="VirtualNetwork\NewAzureVirtualNetworkCommand.cs" />
     <Compile Include="VirtualNetwork\VirtualNetworkBaseCmdlet.cs" />
+    <Compile Include="VirtualNetwork\VirtualNetworkListUsageMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -605,7 +591,9 @@
       <Name>Commands.Tags</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.Network.psd1">
       <Link>AzureRM.Network.psd1</Link>

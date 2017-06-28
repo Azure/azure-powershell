@@ -76,10 +76,14 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSAddressSpace, MNM.AddressSpace>();
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.VirtualNetwork>();
+                cfg.CreateMap<CNM.PSVirtualNetworkUsage, MNM.VirtualNetworkUsage>();
+                cfg.CreateMap<CNM.PSUsageName, MNM.VirtualNetworkUsageName>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
                 cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>();
+                cfg.CreateMap<MNM.VirtualNetworkUsage, CNM.PSVirtualNetworkUsage>();
+                cfg.CreateMap<MNM.VirtualNetworkUsageName, CNM.PSUsageName>();
 
                 // PublicIpAddress
                 // CNM to MNM

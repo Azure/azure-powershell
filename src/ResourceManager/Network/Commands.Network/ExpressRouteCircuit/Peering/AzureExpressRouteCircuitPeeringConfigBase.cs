@@ -111,6 +111,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The legacy mode of the Peering")]
-        public LegacyMode LegacyMode { get; set; }
+        public bool LegacyMode { get; set; }
     }
 }

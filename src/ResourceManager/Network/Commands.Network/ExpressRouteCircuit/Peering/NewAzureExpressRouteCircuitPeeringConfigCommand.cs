@@ -74,10 +74,4 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(peering);
         }
     }
-
-    public enum LegacyMode
-    {
-        False = 0,
-        True = 1
-    }
 }

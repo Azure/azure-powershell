@@ -1,41 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
   <ViewDefinitions>
-    <View>
-      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkACL</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSNetworkACL</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Bypass</Label>
-                <PropertyName>bypass</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>DefaultAction</Label>
-                <PropertyName>defaultAction</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>IpRules</Label>
-                <ScriptBlock>
-                  $_.ipRules.GetType()
-                </ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>VirtualNetworkRules</Label>
-                <ScriptBlock>
-                  $_.virtualNetworkRules.GetType()
-                </ScriptBlock>
-              </ListItem>             
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>      
-    </View>    
   </ViewDefinitions>
 </Configuration>
-
- 
