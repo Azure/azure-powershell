@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Commands.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -126,14 +125,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
-        [Parameter(HelpMessage = "Storage Account NetworkAcls",
-            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public PSNetworkACL NetworkAcl
-        {
-            get; set;
-        }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -187,10 +178,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (AssignIdentity.IsPresent)
             {
                 createParameters.Identity = new Identity();
-            }
-            if (NetworkAcl != null)
-            {
-                createParameters.NetworkAcls = PSNetworkACL.ParseStorageNetworkACL(NetworkAcl);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
