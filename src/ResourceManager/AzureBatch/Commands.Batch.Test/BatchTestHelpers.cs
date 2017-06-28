@@ -313,6 +313,20 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return interceptor;
         }
 
+        public static RequestInterceptor ExamineRequestInterceptor<T>(Action<T> assertAction) where T : class, IBatchRequest
+        {
+            RequestInterceptor interceptor = new RequestInterceptor(baseRequest =>
+            {
+                var request = baseRequest as T;
+
+                if (request != null)
+                {
+                    assertAction(request);
+                }
+            });
+            return interceptor;
+        }
+
         /// <summary>
         /// Builds a CertificateGetResponse object
         /// </summary>

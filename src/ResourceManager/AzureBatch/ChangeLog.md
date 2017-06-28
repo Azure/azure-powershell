@@ -18,9 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+- Added new Get-AzureBatchJobPreparationAndReleaseTaskStatus cmdlet.
+- Added byte range start and end to Get-AzureBatchNodeFileContent parameters.
 
 ## Version 4.1.0
-- Added new Get-AzureBatchJobPreparationAndReleaseTaskStatus cmdlet.
 
 ## Version 3.1.0
 
