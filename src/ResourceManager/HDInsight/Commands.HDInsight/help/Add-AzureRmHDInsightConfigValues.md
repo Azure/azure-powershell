@@ -12,13 +12,22 @@ Adds a Hadoop configuration value customization and/or a Hive shared library cus
 
 ## SYNTAX
 
+### Spark1
 ```
 Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
  [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
  [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
  [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
- [-SparkDefaults <Hashtable>] [-SparkThriftConf <Hashtable>] [-Spark2Defaults <Hashtable>]
- [-Spark2ThriftConf <Hashtable>] [<CommonParameters>]
+ [-SparkDefaults <Hashtable>] [-SparkThriftConf <Hashtable>] [<CommonParameters>]
+```
+
+### Spark2
+```
+Add-AzureRmHDInsightConfigValues [-Config] <AzureHDInsightConfig> [-Core <Hashtable>] [-HiveSite <Hashtable>]
+ [-HiveEnv <Hashtable>] [-OozieSite <Hashtable>] [-OozieEnv <Hashtable>] [-WebHCat <Hashtable>]
+ [-HBaseSite <Hashtable>] [-HBaseEnv <Hashtable>] [-Storm <Hashtable>] [-Yarn <Hashtable>]
+ [-MapRed <Hashtable>] [-Tez <Hashtable>] [-Hdfs <Hashtable>] [-RServer <Hashtable>]
+ [-Spark2Defaults <Hashtable>] [-Spark2ThriftConf <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,7 +250,7 @@ Specifies the Spark2 Defaults configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: (All)
+Parameter Sets: Spark2
 Aliases: 
 
 Required: False
@@ -256,7 +265,7 @@ Specifies the Spark2 Thrift SparkConf configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: (All)
+Parameter Sets: Spark2
 Aliases: 
 
 Required: False
@@ -271,7 +280,7 @@ Specifies the Spark Defaults configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: (All)
+Parameter Sets: Spark1
 Aliases: 
 
 Required: False
@@ -286,7 +295,7 @@ Specifies the Spark Thrift SparkConf configurations of this HDInsight cluster.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: (All)
+Parameter Sets: Spark1
 Aliases: 
 
 Required: False

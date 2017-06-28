@@ -82,16 +82,16 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets the RServer configurations.")]
         public Hashtable RServer { get; set; }
 
-        [Parameter(HelpMessage = "Gets the Spark Defaults configurations of this HDInsight cluster.")]
+        [Parameter(HelpMessage = "Gets the Spark Defaults configurations of this HDInsight cluster.", ParameterSetName = "Spark1")]
         public Hashtable SparkDefaults { get; set; }
 
-        [Parameter(HelpMessage = "Gets the Spark Thrift SparkConf configurations of this HDInsight cluster.")]
+        [Parameter(HelpMessage = "Gets the Spark Thrift SparkConf configurations of this HDInsight cluster.", ParameterSetName = "Spark1")]
         public Hashtable SparkThriftConf { get; set; }
 
-        [Parameter(HelpMessage = "Gets the Spark2 Defaults configurations of this HDInsight cluster.")]
+        [Parameter(HelpMessage = "Gets the Spark2 Defaults configurations of this HDInsight cluster.", ParameterSetName = "Spark2")]
         public Hashtable Spark2Defaults { get; set; }
 
-        [Parameter(HelpMessage = "Gets the Spark2 Thrift SparkConf configurations of this HDInsight cluster.")]
+        [Parameter(HelpMessage = "Gets the Spark2 Thrift SparkConf configurations of this HDInsight cluster.", ParameterSetName = "Spark2")]
         public Hashtable Spark2ThriftConf { get; set; }
 
         #endregion
