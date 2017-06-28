@@ -66,9 +66,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public PSRouteFilter RouteFilter { get; set; }
 
-        [JsonProperty(Order = 1)]
-        public PSIpv6PeeringConfig Ipv6PeeringConfig { get; set; }
-
         [JsonIgnore]
         public string MicrosoftPeeringConfigText
         {
@@ -86,10 +83,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(RouteFilter, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-
-        [JsonIgnore]
-        public string Ipv6PeeringConfigText
-        {
-            get { return JsonConvert.SerializeObject(Ipv6PeeringConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
+    }
 }
