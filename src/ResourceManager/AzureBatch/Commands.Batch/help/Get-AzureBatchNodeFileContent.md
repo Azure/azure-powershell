@@ -15,37 +15,39 @@ Gets a Batch node file.
 ### Task_Id_Path
 ```
 Get-AzureBatchNodeFileContent -JobId <String> -TaskId <String> [-Name] <String> -DestinationPath <String>
- -BatchContext <BatchAccountContext> [<CommonParameters>]
+ [-ByteRangeStart <Int64>] [-ByteRangeEnd <Int64>] -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### Task_Id_Stream
 ```
 Get-AzureBatchNodeFileContent -JobId <String> -TaskId <String> [-Name] <String> -DestinationStream <Stream>
- -BatchContext <BatchAccountContext> [<CommonParameters>]
+ [-ByteRangeStart <Int64>] [-ByteRangeEnd <Int64>] -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### ComputeNode_Id_Path
 ```
 Get-AzureBatchNodeFileContent [-PoolId] <String> [-ComputeNodeId] <String> [-Name] <String>
- -DestinationPath <String> -BatchContext <BatchAccountContext> [<CommonParameters>]
+ -DestinationPath <String> [-ByteRangeStart <Int64>] [-ByteRangeEnd <Int64>]
+ -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### ComputeNode_Id_Stream
 ```
 Get-AzureBatchNodeFileContent [-PoolId] <String> [-ComputeNodeId] <String> [-Name] <String>
- -DestinationStream <Stream> -BatchContext <BatchAccountContext> [<CommonParameters>]
+ -DestinationStream <Stream> [-ByteRangeStart <Int64>] [-ByteRangeEnd <Int64>]
+ -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### InputObject_Path
 ```
-Get-AzureBatchNodeFileContent [[-InputObject] <PSNodeFile>] -DestinationPath <String>
- -BatchContext <BatchAccountContext> [<CommonParameters>]
+Get-AzureBatchNodeFileContent [[-InputObject] <PSNodeFile>] -DestinationPath <String> [-ByteRangeStart <Int64>]
+ [-ByteRangeEnd <Int64>] -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ### InputObject_Stream
 ```
 Get-AzureBatchNodeFileContent [[-InputObject] <PSNodeFile>] -DestinationStream <Stream>
- -BatchContext <BatchAccountContext> [<CommonParameters>]
+ [-ByteRangeStart <Int64>] [-ByteRangeEnd <Int64>] -BatchContext <BatchAccountContext> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +129,34 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ByteRangeEnd
+The end of the byte range to be downloaded.
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ByteRangeStart
+The start of the byte range to be downloaded.
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

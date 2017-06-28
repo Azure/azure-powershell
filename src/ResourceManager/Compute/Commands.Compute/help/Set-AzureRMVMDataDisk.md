@@ -31,7 +31,7 @@ The **Set-AzureRmVMDataDisk** cmdlet modifies properties of a virtual machine da
 
 ### Example 1: Modify the caching mode of a data disk
 ```
-PS C:\>$VM = Get-AzureRMVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+PS C:\> $VM = Get-AzureRMVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
 PS C:\> Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzureRmVM
 ```
 

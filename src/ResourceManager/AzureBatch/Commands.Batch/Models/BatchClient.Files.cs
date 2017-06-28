@@ -17,6 +17,9 @@ using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Protocol = Microsoft.Azure.Batch.Protocol;
+using BatchRequests = Microsoft.Azure.Batch.Protocol.BatchRequests;
 using NodeFile = Microsoft.Azure.Batch.NodeFile;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -219,12 +222,36 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     }
             }
 
-            DownloadNodeFileByInstance(nodeFile, options.DestinationPath, options.Stream, options.AdditionalBehaviors);
+            DownloadNodeFileByInstance(nodeFile, options.DestinationPath, options.Stream, options.Range, options.AdditionalBehaviors);
         }
 
         // Downloads the file represented by an NodeFile instance to the specified path.
-        private void DownloadNodeFileByInstance(NodeFile file, string destinationPath, Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        private void DownloadNodeFileByInstance(NodeFile file, string destinationPath, Stream stream, DownloadNodeFileOptions.ByteRange byteRange, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
         {
+            // TODO: Update this to use the new built in support in the C# SDK when we update the C# SDK to 6.x or later
+            Protocol.RequestInterceptor interceptor = new Protocol.RequestInterceptor(baseRequest =>
+            {
+                var fromTaskRequest = baseRequest as BatchRequests.FileGetFromTaskBatchRequest;
+                if (fromTaskRequest != null && byteRange != null)
+                {
+                    fromTaskRequest.Options.OcpRange = $"bytes={byteRange.Start}-{byteRange.End}";
+                }
+
+                var fromNodeRequest = baseRequest as BatchRequests.FileGetFromComputeNodeBatchRequest;
+                if (fromNodeRequest != null && byteRange != null)
+                {
+                    fromNodeRequest.Options.OcpRange = $"bytes={byteRange.Start}-{byteRange.End}";
+                }
+            });
+
+            additionalBehaviors = additionalBehaviors != null ? new List<BatchClientBehavior> { interceptor }.Union(additionalBehaviors) :
+                new List<BatchClientBehavior>() { interceptor };
+
+            if (byteRange != null)
+            {
+                WriteVerbose(string.Format(Resources.DownloadingNodeFileByteRange, byteRange.Start, byteRange.End));
+            }
+
             if (stream != null)
             {
                 // Don't dispose supplied Stream

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>A model object</returns>
         protected override DatabaseDataMaskingPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseDataMaskingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseDataMaskingPolicy(ResourceGroupName, ServerName, DatabaseName);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override DatabaseDataMaskingPolicyModel PersistChanges(DatabaseDataMaskingPolicyModel model)
         {
-            ModelAdapter.SetDatabaseDataMaskingPolicy(model, clientRequestId);
+            ModelAdapter.SetDatabaseDataMaskingPolicy(model);
             return null;
         }
     }

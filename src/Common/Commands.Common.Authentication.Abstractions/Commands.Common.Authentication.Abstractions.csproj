@@ -114,6 +114,7 @@
     <Compile Include="EnvironmentName.cs" />
     <Compile Include="Extensions\ModelExtensions.cs" />
     <Compile Include="Extensions\AzureTenantExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\IAccessToken.cs" />
     <Compile Include="Interfaces\IExtensibleSettings.cs" />
     <Compile Include="Interfaces\IExtensibleModel.cs" />

@@ -14,8 +14,8 @@ Creates a SQL Database server.
 
 ```
 New-AzureRmSqlServer -ServerName <String> -SqlAdministratorCredentials <PSCredential> -Location <String>
- [-Tags <Hashtable>] [-ServerVersion <String>] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tags <Hashtable>] [-ServerVersion <String>] [-AssignIdentity] [-ResourceGroupName] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,21 @@ Tags                     :
 This command creates a version 12 Azure SQL Database server.
 
 ## PARAMETERS
+
+### -AssignIdentity
+Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location of the data center where this cmdlet creates the server.
@@ -75,7 +90,7 @@ Specifies the name of the new server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: Named

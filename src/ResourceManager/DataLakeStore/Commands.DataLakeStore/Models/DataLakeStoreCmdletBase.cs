@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new ApplicationException(Properties.Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context);
+            var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
             var clientFactory = AzureSession.Instance.ClientFactory;
             var newHandlers = clientFactory.GetCustomHandlers();
             TClient client;
