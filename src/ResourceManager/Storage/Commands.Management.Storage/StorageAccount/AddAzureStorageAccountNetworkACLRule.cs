@@ -23,7 +23,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Add, StorageAccountACLRuleNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
+    [Cmdlet(VerbsCommon.Add, StorageAccountACLRuleNounStr, SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet})]
     public class AddAzureStorageAccountNetworkACLRuleCommand : StorageAccountBaseCmdlet
