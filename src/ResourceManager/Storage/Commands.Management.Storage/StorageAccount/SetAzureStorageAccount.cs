@@ -178,14 +178,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
-        [Parameter(HelpMessage = "Storage Account NetworkAcls",
-            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
-        public PSNetworkACL NetworkAcl
-        {
-            get; set;
-        }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -240,10 +232,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             keyvaultEncryption = true;
                         }
                         updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
-                    }
-                    if (NetworkAcl !=null)
-                    {
-                        updateParameters.NetworkAcls = PSNetworkACL.ParseStorageNetworkACL(NetworkAcl);
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
