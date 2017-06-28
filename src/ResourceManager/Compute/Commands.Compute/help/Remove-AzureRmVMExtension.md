@@ -24,7 +24,7 @@ The **Remove-AzureRmVMExtension** cmdlet removes an extension from the Virtual M
 
 ### Example 1: Remove an extension from a virtual machine
 ```
-PS C:\>Remove-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
+PS C:\> Remove-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Name "ContosoTest" -VMName "VirtualMachine22"
 ```
 
 This command removes the extension named ContosoTest from the virtual machine named VirtualMachine22 in ResourceGroup11.

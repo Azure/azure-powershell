@@ -58,13 +58,21 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public UInt32 VlanId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Microsoft, Public or Private")]
+        [ValidateSet("Microsoft", "Public", "Private")]
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Bgp Peer Address Type: IPv4, IPv6")]
+        [ValidateSet("IPv4", "IPv6")]
+        [DefaultValue("IPv4")]
+        public PeerAddressTypeValues PeerAddressType { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var route = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, CustomerAsn, PeerAsn,
-                PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet, VlanId, AccessType, SharedKey, Convert.ToUInt32(LegacyMode));
+            AzureBgpPeering route = null;
+            route = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, PeerAddressType, AdvertisedPublicPrefixes, CustomerAsn, PeerAsn, PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet,
+                                                          VlanId, AccessType, SharedKey, Convert.ToUInt32(LegacyMode));
+            
             WriteObject(route);
         }
     }
@@ -73,5 +81,11 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         False = 0,
         True = 1
+    }
+
+    public enum PeerAddressTypeValues
+    {
+        IPv4 = 0,
+        IPv6 = 1
     }
 }

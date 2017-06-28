@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
 
                 var accesstoken = authFactory.Authenticate(context.Account, context.Environment, tenantId, null, ShowDialog.Never,
-                    tokenCache, resourceIdEndpoint);
+                    null, tokenCache, resourceIdEndpoint);
 
                 if (context.TokenCache != null && context.TokenCache.CacheData != null && context.TokenCache.CacheData.Length > 0)
                 {

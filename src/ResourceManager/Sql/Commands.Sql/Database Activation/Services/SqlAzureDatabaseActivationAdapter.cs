@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <returns>The paused Azure SQL Data Warehouse database object</returns>
         internal AzureSqlDatabaseModel PauseDatabase(string resourceGroup, string serverName, string databaseName)
         {
-            var resp = Communicator.Pause(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.Pause(resourceGroup, serverName, databaseName);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
         }
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <returns>The resumed Azure SQL Data Warehouse database object</returns>
         internal AzureSqlDatabaseModel ResumeDatabase(string resourceGroup, string serverName, string databaseName)
         {
-            var resp = Communicator.Resume(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.Resume(resourceGroup, serverName, databaseName);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
         }
     }

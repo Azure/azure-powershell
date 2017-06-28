@@ -28,6 +28,14 @@ Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <Str
  [<CommonParameters>]
 ```
 
+### ByUserEmailAddress
+```
+Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
+ -EmailAddress <String> [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>]
+ [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### ByObjectId
 ```
 Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>] -ObjectId <String>
@@ -412,6 +420,21 @@ This user principal name must exist in the directory associated with the current
 Type: String
 Parameter Sets: ByUserPrincipalName
 Aliases: UPN
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EmailAddress
+Specifies the user email address of the user to whom to grant permissions.
+This email address must exist in the directory associated with the current subscription and be unique.
+
+```yaml
+Type: String
+Parameter Sets: ByUserEmailAddress
 
 Required: True
 Position: Named

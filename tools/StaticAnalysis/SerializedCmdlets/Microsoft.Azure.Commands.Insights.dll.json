@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric[], Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric[], Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric",
             "GenericTypeArguments": []
@@ -239,7 +239,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[], Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[], Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition",
             "GenericTypeArguments": []
@@ -388,7 +388,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[], Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[], Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric",
             "GenericTypeArguments": []
@@ -902,7 +902,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfileCollection, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Item": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
               "Count": "System.Int32",
@@ -979,7 +979,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1265,7 +1265,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2371,7 +2371,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Logs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
@@ -2814,7 +2814,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Logs": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Management.Models.LogSettings]",
@@ -4369,7 +4369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAutoscaleSettingOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SettingSpec": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleSettingResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -4390,7 +4390,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Profiles": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
               "Tags": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
@@ -4539,7 +4539,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
                   "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Profiles": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
                     "Tags": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
@@ -4839,7 +4839,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -5491,7 +5491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -5994,7 +5994,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -6531,7 +6531,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
             "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AlertRule": "Microsoft.Azure.Management.Monitor.Management.Models.AlertRuleResource",
               "StatusCode": "System.Net.HttpStatusCode",
@@ -6992,7 +6992,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7265,7 +7265,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -7996,7 +7996,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSUsageMetric, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
         "NextResetTime": "System.Nullable`1[System.DateTime]",
@@ -8069,7 +8069,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
         "MetricAvailabilities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Monitor.Models.MetricAvailability]",
@@ -8141,7 +8141,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Management.Monitor.Models.LocalizableString",
         "Unit": "Microsoft.Azure.Management.Monitor.Models.Unit",
@@ -8190,7 +8190,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSLogProfile, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "RetentionPolicy": "Microsoft.Azure.Management.Monitor.Management.Models.RetentionPolicy",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -8241,7 +8241,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.IPSEventData, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -8576,7 +8576,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleProfilesList, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Item": "Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile",
         "Count": "System.Int32",
@@ -8588,7 +8588,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSDictionaryElement, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Content": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
       },
@@ -8664,7 +8664,7 @@
     "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor": {
       "Namespace": "Microsoft.Azure.Commands.Insights.OutputClasses",
       "Name": "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor, Microsoft.Azure.Commands.Insights, Version=3.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Insights.OutputClasses.PSManagementItemDescriptor, Microsoft.Azure.Commands.Insights, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "Location": "System.String",

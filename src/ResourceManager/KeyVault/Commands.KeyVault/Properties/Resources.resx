@@ -283,7 +283,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>The specified vault already exists.</value>
   </data>
   <data name="VaultNoAccessPolicyWarning" xml:space="preserve">
-    <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
+    <value>Access policy is not set. No user or application have access permission to use this vault. This can happen if the vault was created by a service principal. Please use Set-AzureRmKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VaultNotFound" xml:space="preserve">
     <value>Cannot find vault '{0}' in resource group '{1}'.</value>
@@ -413,5 +413,8 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="InvalidSasPermission" xml:space="preserve">
     <value>Invalid Sas permission '{0}'.</value>
+  </data>
+  <data name="ADObjectAmbiguous" xml:space="preserve">
+    <value>The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active Directory.</value>
   </data>
 </root>

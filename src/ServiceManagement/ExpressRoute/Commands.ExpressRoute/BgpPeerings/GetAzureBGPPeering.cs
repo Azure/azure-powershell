@@ -27,7 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             HelpMessage = "Service Key representing the Azure Circuit")]
         public Guid ServiceKey { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Public or Private")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Microsoft, Public or Private")]
+        [ValidateSet("Microsoft", "Public", "Private")]
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
 

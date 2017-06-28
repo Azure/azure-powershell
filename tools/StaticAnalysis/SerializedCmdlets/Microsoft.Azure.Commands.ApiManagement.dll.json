@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -50,7 +50,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -101,7 +101,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -137,7 +137,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "Location": "System.String",
@@ -164,7 +164,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -227,7 +227,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -275,7 +275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "Location": "System.String",
@@ -425,7 +425,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
               "Hostname": "System.String"
@@ -539,7 +539,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
               "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
@@ -596,7 +596,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "Location": "System.String",
@@ -669,7 +669,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "Location": "System.String",
@@ -708,7 +708,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "Location": "System.String",
@@ -824,7 +824,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -860,7 +860,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -917,7 +917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -992,7 +992,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -1028,7 +1028,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -1095,7 +1095,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
               "Hostname": "System.String"
@@ -1114,7 +1114,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
               "Hostname": "System.String"
@@ -1155,7 +1155,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -1267,7 +1267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
                     "Hostname": "System.String"
@@ -1292,7 +1292,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
                     "Hostname": "System.String"
@@ -1378,7 +1378,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -1414,7 +1414,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -1497,7 +1497,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1529,7 +1529,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "Location": "System.String",
@@ -1550,7 +1550,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1566,7 +1566,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1606,7 +1606,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -1740,7 +1740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1784,7 +1784,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "Location": "System.String",
@@ -1811,7 +1811,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1833,7 +1833,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1918,7 +1918,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -1954,7 +1954,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -2005,7 +2005,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2037,7 +2037,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "Location": "System.String",
@@ -2064,7 +2064,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -2127,7 +2127,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2171,7 +2171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "Location": "System.String",
@@ -2210,7 +2210,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Expiry": "System.DateTime",
               "Subject": "System.String",
@@ -2263,7 +2263,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2377,7 +2377,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2477,7 +2477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -2779,7 +2779,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2919,7 +2919,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -3035,7 +3035,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3075,7 +3075,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3095,7 +3095,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "VnetId": "System.Guid",
               "Location": "System.String",
@@ -3135,7 +3135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
             "GenericTypeArguments": []
@@ -3267,7 +3267,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3319,7 +3319,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3345,7 +3345,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "VnetId": "System.Guid",
                     "Location": "System.String",
@@ -3397,7 +3397,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
                   "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
                   "GenericTypeArguments": []
@@ -3580,7 +3580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
             "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
@@ -3985,7 +3985,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
         "Hostname": "System.String"
@@ -3996,7 +3996,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Expiry": "System.DateTime",
         "Subject": "System.String",
@@ -4016,7 +4016,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4024,7 +4024,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "VnetId": "System.Guid",
         "Location": "System.String",
@@ -4045,7 +4045,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
@@ -4064,7 +4064,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4074,7 +4074,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
         "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
@@ -4114,7 +4114,7 @@
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
       "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
         "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",

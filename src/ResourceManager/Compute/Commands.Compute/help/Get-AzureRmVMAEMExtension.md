@@ -24,7 +24,7 @@ The **Get-AzureRmVMAEMExtension** cmdlet gets information about the Azure Enhanc
 
 ### Example 1: Get the AEM extension
 ```
-PS C:\>Get-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
+PS C:\> Get-AzureRmVMAEMExtension -ResourceGroupName "ResourceGroup11" -VMName "contoso-server"
 ```
 
 This command gets information for the AEM extension for the virtual machine named contoso-server.

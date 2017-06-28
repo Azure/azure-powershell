@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -GeoMapping
-The list of regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.
+The list of regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager documentation for a [full list of accepted values](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-geographic-regions).
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
