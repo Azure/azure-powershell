@@ -129,7 +129,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                         {
                             Keys = DefaultPermissionsToKeys,
                             Secrets = DefaultPermissionsToSecrets,
-                            Certificates = DefaultPermissionsToCertificates
+                            Certificates = DefaultPermissionsToCertificates,
+                            Storage = DefaultPermissionsToStorage
                         }
                     };
                 }
