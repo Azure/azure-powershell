@@ -39,14 +39,14 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [DefaultValue(LegacyMode.False)]
         public LegacyMode LegacyMode { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Primary Peer Subnet")]
         [ValidateNotNullOrEmpty]
         public string PrimaryPeerSubnet { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Routing Registry Name for Prefix Validation")]
         public string RoutingRegistryName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Secondary Peer Subnet")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Secondary Peer Subnet")]
         [ValidateNotNullOrEmpty]
         public string SecondaryPeerSubnet { get; set; }
 
