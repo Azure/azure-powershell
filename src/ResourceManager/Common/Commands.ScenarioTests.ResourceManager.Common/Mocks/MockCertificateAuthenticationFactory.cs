@@ -16,6 +16,7 @@ using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 
@@ -41,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             string tenant,
             SecureString password,
             string promptBehavior,
+            Action<string> promptAction,
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
@@ -65,9 +67,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             string tenant,
             SecureString password,
             string promptBehavior,
+            Action<string> promptAction,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.Instance.TokenCache, resourceId);
+            return Authenticate(account, environment, tenant, password, promptBehavior, promptAction, AzureSession.Instance.TokenCache, resourceId);
         }
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(IAzureContext context)

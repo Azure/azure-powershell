@@ -90,9 +90,10 @@ namespace Microsoft.Azure.Commands.Insights.Events
         public string ResourceProvider { get; set; }
 
         /// <summary>
-        /// Gets or sets the max number of events to fetch parameter of the cmdlet
+        /// Gets or sets the max number of records to fetch parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of events to fetch")]
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to fetch. Alias: MaxRecords")]
+        [Alias("MaxRecords")]
         [ValidateNotNullOrEmpty]
         public virtual int MaxEvents { get; set; }
 
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            this.SetMaxEventsIfPresent(currentQueryFilter, "MaxEvents", this.MaxEvents);
+            this.SetMaxEventsIfPresent(currentQueryFilter, this.MaxEvents);
 
             string extendedQuery = this.AddConditionIfPResent(currentQueryFilter, "correlationId", this.CorrelationId);
             extendedQuery = this.AddConditionIfPResent(extendedQuery, "resourceGroupName", this.ResourceGroup);

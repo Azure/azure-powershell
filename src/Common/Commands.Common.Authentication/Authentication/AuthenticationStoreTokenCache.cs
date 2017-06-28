@@ -22,19 +22,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     [Serializable]
     public class AuthenticationStoreTokenCache : TokenCache, IAzureTokenCache, IDisposable
     {
-        AzureTokenCache _tokenStore;
-
+        IAzureTokenCache _store = new AzureTokenCache();
         public byte[] CacheData
         {
             get
             {
-                return _tokenStore.CacheData;
+               return Serialize();
             }
 
             set
             {
-                this.Clear();
-                _tokenStore.CacheData = value;
+                this.Deserialize(value);
             }
         }
 
@@ -45,10 +43,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentNullException("store");
             }
 
-            _tokenStore = store;
-            if (_tokenStore != null && _tokenStore.CacheData != null && _tokenStore.CacheData.Length > 0)
+            if (store.CacheData != null && store.CacheData.Length > 0)
             {
-                base.Deserialize(_tokenStore.CacheData);
+                CacheData = store.CacheData;
             }
 
             AfterAccess += HandleAfterAccess;
@@ -59,30 +56,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <param name="cache">The cache to copy</param>
         /// <param name="store">The store to use for persisting state</param>
-        public AuthenticationStoreTokenCache(TokenCache cache, AzureTokenCache store) : this(store)
+        public AuthenticationStoreTokenCache(TokenCache cache) : base()
         {
             if (null == cache)
             {
                 throw new ArgumentNullException("Cache");
             }
 
-            Deserialize(cache.Serialize());
+            CacheData = cache.Serialize();
+            AfterAccess += HandleAfterAccess;
         }
-
-        /// <summary>
-        /// Create a token cache, copying any data from the given token cache
-        /// </summary>
-        /// <param name="cache">The cache to copy</param>
-        public AuthenticationStoreTokenCache(TokenCache cache) : this(cache, new AzureTokenCache())
-        {
-        }
-
 
         public void HandleAfterAccess(TokenCacheNotificationArgs args)
         {
             if (HasStateChanged)
             {
-                _tokenStore.CacheData = Serialize();
+                _store.CacheData = Serialize();
             }
         }
 
@@ -90,10 +79,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             if (disposing)
             {
-                var cache = Interlocked.Exchange(ref _tokenStore, null);
+                var cache = Interlocked.Exchange(ref _store, null);
                 if (cache != null)
                 {
-                    cache.CacheData = base.Serialize();
+                    cache.CacheData = Serialize();
                 }
             }
         }

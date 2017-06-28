@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 baseAccount.CurrentTier,
                 baseAccount.FirewallState,
                 baseAccount.FirewallAllowAzureIps,
-                baseAccount.FirewallRules)
+                baseAccount.FirewallRules,
+                baseAccount.MaxDegreeOfParallelismPerJob,
+                baseAccount.MinPriorityPerJob,
+                baseAccount.ComputePolicies)
         {
             Properties = new PSDataLakeAnalyticsAccountProperties(baseAccount);
         }

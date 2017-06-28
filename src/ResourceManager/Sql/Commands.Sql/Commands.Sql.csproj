@@ -52,6 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Common\ResourceIdentityHelper.cs" />
     <Compile Include="Database\Model\DatabaseReadScale.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseCreateOrUpdateModel.cs" />
     <Compile Include="Failover Group\Cmdlet\AddAzureSqlDatabaseToFailoverGroup.cs" />
@@ -116,6 +117,42 @@
     <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseGeoBackupPolicy.cs" />
     <Compile Include="Database Backup\Cmdlet\SetAzureSqlDatabaseGeoBackupPolicy.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupPolicyModel.cs" />
+    <Compile Include="Data Sync\Cmdlet\AzureSqlSyncAgentCmdletBase.cs" />
+    <Compile Include="Data Sync\Cmdlet\AzureSqlSyncGroupCmdletBase.cs" />
+    <Compile Include="Data Sync\Cmdlet\AzureSqlSyncMemberCmdletBase.cs" />
+    <Compile Include="Data Sync\Cmdlet\AzureSqlSyncSchemaCmdletBase.cs" />
+    <Compile Include="Data Sync\Cmdlet\GetAzureSqlSyncAgent.cs" />
+    <Compile Include="Data Sync\Cmdlet\GetAzureSqlSyncAgentLinkedDatabase.cs" />
+    <Compile Include="Data Sync\Cmdlet\GetAzureSqlSyncGroup.cs" />
+    <Compile Include="Data Sync\Cmdlet\GetAzureSqlSyncGroupLog.cs" />
+    <Compile Include="Data Sync\Cmdlet\GetAzureSqlSyncMember.cs" />
+    <Compile Include="Data Sync\Cmdlet\GetAzureSqlSyncSchema.cs" />
+    <Compile Include="Data Sync\Cmdlet\NewAzureSqlSyncAgent.cs" />
+    <Compile Include="Data Sync\Cmdlet\NewAzureSqlSyncAgentKey.cs" />
+    <Compile Include="Data Sync\Cmdlet\NewAzureSqlSyncGroup.cs" />
+    <Compile Include="Data Sync\Cmdlet\NewAzureSqlSyncMember.cs" />
+    <Compile Include="Data Sync\Cmdlet\RemoveAzureSqlSyncAgent.cs" />
+    <Compile Include="Data Sync\Cmdlet\RemoveAzureSqlSyncGroup.cs" />
+    <Compile Include="Data Sync\Cmdlet\RemoveAzureSqlSyncMember.cs" />
+    <Compile Include="Data Sync\Cmdlet\UpdateAzureSqlSyncGroup.cs" />
+    <Compile Include="Data Sync\Cmdlet\UpdateAzureSqlSyncMember.cs" />
+    <Compile Include="Data Sync\Cmdlet\StartAzureSqlSyncGroupSync.cs" />
+    <Compile Include="Data Sync\Cmdlet\UpdateAzureSqlSyncSchema.cs" />
+    <Compile Include="Data Sync\Cmdlet\StopAzureSqlSyncGroupSync.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncAgentKeyModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncAgentLinkedDatabaseModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncAgentModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncGroupLogModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncGroupModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncMemberModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncFullSchemaModel.cs" />
+    <Compile Include="Data Sync\Services\AzureSqlDataSyncAdapter.cs" />
+    <Compile Include="Data Sync\Services\AzureSqlDataSyncCommunicator.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncFullSchemaColumnModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncFullSchemaTableModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncGroupSchemaColumnModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncGroupSchemaModel.cs" />
+    <Compile Include="Data Sync\Model\AzureSqlSyncGroupSchemaTableModel.cs" />
     <Compile Include="ImportExport\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
     <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportStatusModel.cs" />
     <Compile Include="ImportExport\Cmdlet\ImportExportCmdletBase.cs" />
@@ -396,8 +433,10 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <!--<Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.5.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

@@ -274,5 +274,36 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             return psJobStatistics;
         }
+
+        /// <summary>
+        /// Lists the job prep and release status matching the specified filter options.
+        /// </summary>
+        /// <param name="options">The Batch account context.</param>
+        public IEnumerable<PSJobPreparationAndReleaseTaskExecutionInformation> ListJobPreparationAndReleaseStatus(ListJobPreparationAndReleaseStatusOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException(nameof(options));
+            }
+
+            string jobId = options.JobId ?? options.Job.Id;
+
+            if (jobId == null)
+            {
+                throw new ArgumentNullException(nameof(jobId));
+            }
+            
+            WriteVerbose(string.Format(Resources.GetJobPreparationAndReleaseStatus, jobId));
+            JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
+            ODATADetailLevel getDetailLevel = new ODATADetailLevel(filterClause: options.Filter, selectClause: options.Select, expandClause: options.Expand);
+            IPagedEnumerable<JobPreparationAndReleaseTaskExecutionInformation> jobPrepAndReleaseDetails =
+                jobOperations.ListJobPreparationAndReleaseTaskStatus(jobId, getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
+
+            Func<JobPreparationAndReleaseTaskExecutionInformation, PSJobPreparationAndReleaseTaskExecutionInformation> mappingFunction = 
+                j => new PSJobPreparationAndReleaseTaskExecutionInformation(j);
+
+            return PSPagedEnumerable<PSJobPreparationAndReleaseTaskExecutionInformation, JobPreparationAndReleaseTaskExecutionInformation>.CreateWithMaxCount(
+                jobPrepAndReleaseDetails, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+        }
     }
 }

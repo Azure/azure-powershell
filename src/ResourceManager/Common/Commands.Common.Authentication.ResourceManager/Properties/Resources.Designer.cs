@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties.Resourc" +
-                            "es", typeof(Resources).Assembly);
+                            "es", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

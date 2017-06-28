@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
         /// <returns>A model object</returns>
         protected override DatabaseSecureConnectionPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseSecureConnectionPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseSecureConnectionPolicy(ResourceGroupName, ServerName, DatabaseName);
         }
 
         /// <summary>
