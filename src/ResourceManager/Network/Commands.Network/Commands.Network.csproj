@@ -331,7 +331,6 @@
     <Compile Include="Models\PSPacketCaptureResult.cs" />
     <Compile Include="Models\PSPacketCaptureStatus.cs" />
     <Compile Include="Models\PSRetentionPolicyParameters.cs" />
-    <Compile Include="Models\PSIpv6PeeringConfig.cs" />
     <Compile Include="Models\PSSecurityGroupNetworkInterface.cs" />
     <Compile Include="Models\PSNetworkWatcher.cs" />
     <Compile Include="Models\PSResourceNavigationLink.cs" />
