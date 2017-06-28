@@ -54,7 +54,7 @@
 
 #>
 
-#NOTE: The functionality of this script was based on 
+# NOTE: The functionality of this script was based on 
 #      the sample "Create a web app and deploy code from a local Git repository"
 #      from https://docs.microsoft.com/en-us/azure/app-service-web/scripts/app-service-powershell-deploy-local-git
 
@@ -89,7 +89,7 @@ function New-AzureRmWebAppExperimental{
         # validate parameters        
         # NOTE: $PSBoundParameters automatic variable is used to detect passed parameters.
 
-        if(-Not $PSBoundParameters.ContainsKey('Location')){
+        if(-Not $PSBoundParameters.ContainsKey('WebAppLocation')){
             $WebAppLocation="West Europe"
             # TODO: Implement a 'smarter' way to choose a location.
             # For this experiment a random location where web
@@ -109,7 +109,7 @@ function New-AzureRmWebAppExperimental{
             $AppServicePlanName = $WebAppName
         }
 
-        if(-Not $PSBoundParameters.ContainsKey('AppServicePlanName')){
+        if(-Not $PSBoundParameters.ContainsKey('AppServicePlanLocation')){
             $AppServicePlanLocation = $WebAppLocation
         }
 
@@ -120,10 +120,9 @@ function New-AzureRmWebAppExperimental{
         }
         
         try
-        {
+        {            
             # Create a resource group.
             New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation | Out-Null
-         
 
             # Create an App Service plan in "Free" tier.
             New-AzureRmAppServicePlan -Name $AppServicePlanName -Location $AppServicePlanLocation `
@@ -135,16 +134,22 @@ function New-AzureRmWebAppExperimental{
         }
         catch
         {
-            $message ="WebApp could not be created. Check: 1) You are logged into an Azure account. 2) Optional parameters are correct. "+
-                      "The maximum number of ServerFarms for your subscription has not been reached."
+            $message ="WebApp could not be created. Check: 1) You are logged into an Azure account. 2) Optional parameters are correct (eg. Location is valid). "+
+                      "3) The maximum number of ServerFarms for your subscription has not been reached. 4) A valid App Service Plan Tier was provided."
             $exception = New-Object -TypeName System.Exception -ArgumentList $message, $_.Exception
             throw $exception           
         }
+        # Extract info from site object returned
+        $name = $WebApp.SiteName
+        $parsedServerFarmId = $webApp.ServerFarmId.split('/')
+        $plan = $parsedServerFarmId[$parsedServerFarmId.Count - 1]
+        $resourceGroup = $webApp.ResourceGroup
+       
 
         Write-Host "Webapp creation successful."
-        Write-Host "Name: $WebAppName."
-        Write-Host "Plan: $AppServicePlanName."
-        Write-Host "Resource Group: $ResourceGroupName."
+        Write-Host "Name: $name."
+        Write-Host "Plan: $plan."
+        Write-Host "Resource Group: $resourceGroup."
 
         # Deploy web app code in a local Git repository.
         try
