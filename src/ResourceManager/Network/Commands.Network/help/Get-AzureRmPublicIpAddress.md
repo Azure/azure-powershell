@@ -65,7 +65,8 @@ Accept wildcard characters: False
 ```
 
 ### -IpConfigurationName
-Network Interface IP Configuration Name.```yaml
+Network Interface IP Configuration Name.
+```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
 Aliases: 
@@ -117,7 +118,8 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkInterfaceName
-Virtual Machine Network Interface Name.```yaml
+Virtual Machine Network Interface Name.
+```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
 Aliases: 
@@ -169,7 +171,8 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualMachineIndex
-Virtual Machine Index.```yaml
+Virtual Machine Index.
+```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
 Aliases: 
@@ -194,7 +197,8 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualMachineScaleSetName
-Virtual Machine Scale Set Name.```yaml
+Virtual Machine Scale Set Name.
+```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
 Aliases: 
