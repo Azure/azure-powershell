@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added support to enable / disable Operations Management Suite(OMS)
+* New cmdlets
+    - Enable-AzureRmHDInsightOperationsManagementSuite
+    - Disable-AzureRmHDInsightOperationsManagementSuite
+    - Get-AzureRmHDInsightOperationsManagementSuite
 
 ## Version 3.0.0
 

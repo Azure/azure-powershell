@@ -24,13 +24,9 @@ The **Get-AzureRmHDInsightOperationsManagementSuite** cmdlet gets the status of 
 ### Example 1
 ```
 PS C:\> Get-AzureRmHDInsightOMS -Name testcluster
-```
 
-```
 ClusterMonitoringEnabled
-```
 
-```
 {'ClusterMonitoringEnabled':'true', 'workspaceId':'1d364e89-bb71-4503-aa3d-a23535aea7bd'}
 ```
 
@@ -39,13 +35,9 @@ Operations Management Suite (OMS) is enabled on the cluster because the ClusterM
 ### Example 2
 ```
 PS C:\> Get-AzureRmHDInsightOMS -Name testcluster -ResourceGroupName testrg
-```
 
-```
 ClusterMonitoringEnabled
-```
 
-```                                                                                                                                                                                                                                                                                                                                            
 {'ClusterMonitoringEnabled':'true', 'workspaceId':'1d364e89-bb71-4503-aa3d-a23535aea7bd'}
 ```
 
@@ -54,13 +46,9 @@ Operations Management Suite (OMS) is enabled on the cluster because the ClusterM
 ### Example 3
 ```
 PS C:\> Get-AzureRmHDInsightOMS -Name testcluster
-```
 
-```
 ClusterMonitoringEnabled
-```
 
-```                                                                                                                                                                                                                                                                                                                                            
 {'ClusterMonitoringEnabled':'false'}
 ```
 
@@ -69,13 +57,9 @@ Operations Management Suite (OMS) is disabled on the cluster because the Cluster
 ### Example 4
 ```
 PS C:\> Get-AzureRmHDInsightOMS -Name testcluster -ResourceGroupName testrg
-```
 
-```
 ClusterMonitoringEnabled
-```
 
-```                                                                                                                                                                                                                                                                                                                                            
 {'ClusterMonitoringEnabled':'false'}
 ```
 
@@ -94,7 +78,7 @@ Aliases: ClusterName
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue, ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
