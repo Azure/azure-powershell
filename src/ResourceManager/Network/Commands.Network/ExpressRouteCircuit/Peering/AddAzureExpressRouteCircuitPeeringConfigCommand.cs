@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
             peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
-            
+
 
             if (!string.IsNullOrEmpty(this.SharedKey))
             {
