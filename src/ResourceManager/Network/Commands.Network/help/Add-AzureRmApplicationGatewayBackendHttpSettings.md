@@ -18,6 +18,7 @@ Add-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway <PSApplicat
  [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
+ [-PickHostNameFromBackendAddress] [-AffinityCookieName <String>] [-ProbeEnabled] [-Path <String>]
  [<CommonParameters>]
 ```
 
@@ -37,6 +38,19 @@ PS C:\> $AppGw = Add-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGa
 The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.The second command adds back-end HTTP settings to the application gateway, setting the port to 88 and the protocol to HTTP and names the settings Setting02.
 
 ## PARAMETERS
+
+### -AffinityCookieName
+Cookie name to use for the affinity cookie```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationGateway
 Specifies the name of application gateway for which this cmdlet adds settings.
@@ -113,6 +127,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Path
+Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PickHostNameFromBackendAddress
+Whether to pick host header should be picked from the host name of the backend server. Default value is false```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Port
 Specifies the port of the back-end server pool.
 
@@ -133,6 +173,19 @@ Specifies a probe to associate with a back-end server.
 
 ```yaml
 Type: PSApplicationGatewayProbe
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeEnabled
+Whether the probe is enabled. Default value is false```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
