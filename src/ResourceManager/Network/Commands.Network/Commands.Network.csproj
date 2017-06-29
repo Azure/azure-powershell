@@ -379,9 +379,26 @@
     <Compile Include="NetworkInterface\IpConfiguration\NewAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
-   
+    <Compile Include="NetworkWatcher\TestAzureNetworkWatcherConnectivityCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureBgpServiceCommunityCommand.cs" />
-    
+    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherCommand.cs" />
+    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherFlowLogStatusCommand.cs" />
+    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherTroubleshootingResult.cs" />
+    <Compile Include="NetworkWatcher\SetAzureNetworkWatcherConfigFlowLogCommand.cs" />
+    <Compile Include="NetworkWatcher\TestAzureNetworkWatcherIPFlowCommand.cs" />
+    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherNextHopCommand.cs" />
+    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherSecurityGroupViewCommand.cs" />
+    <Compile Include="NetworkWatcher\GetAzureNetworkWatcherTopologyCommand.cs" />
+    <Compile Include="NetworkWatcher\StartAzureNetworkWatcherResourceTroubleshootingCommand.cs" />
+    <Compile Include="NetworkWatcher\NetworkWatcherBaseCmdlet.cs" />
+    <Compile Include="NetworkWatcher\NewAzureNetworkWatcherCommand.cs" />
+    <Compile Include="NetworkWatcher\PacketCapture\GetAzureNetworkWatcherPacketCaptureCommand.cs" />
+    <Compile Include="NetworkWatcher\PacketCapture\NewAzureNetworkWatcherPacketCaptureCommand.cs" />
+    <Compile Include="NetworkWatcher\PacketCapture\NewPacketCaptureFilterCommand.cs" />
+    <Compile Include="NetworkWatcher\PacketCapture\PacketCaptureBaseCmdlet.cs" />
+    <Compile Include="NetworkWatcher\PacketCapture\RemoveAzureNetworkWatcherPacketCaptureCommand.cs" />
+    <Compile Include="NetworkWatcher\PacketCapture\StopAzureNetworkWatcherPacketCaptureCommand.cs" />
+    <Compile Include="NetworkWatcher\RemoveAzureNetworkWatcherCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
     <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
