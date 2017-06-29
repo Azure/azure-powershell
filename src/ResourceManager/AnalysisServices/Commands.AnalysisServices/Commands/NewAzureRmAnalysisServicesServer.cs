@@ -57,10 +57,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
         [ValidateNotNull]
         public string Administrator { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+            HelpMessage = "The Uri of blob container for backing up the server")]
+        [ValidateNotNullOrEmpty]
+        public string BackupBlobContainerUri { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -92,7 +97,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     }
                 }
 
-                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator);
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }
