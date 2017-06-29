@@ -318,11 +318,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
             cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(21));
             nextLink = null;
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
-
-            cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromDays(30));
-            cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromDays(14));
-            nextLink = null;
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
 
         #endregion
