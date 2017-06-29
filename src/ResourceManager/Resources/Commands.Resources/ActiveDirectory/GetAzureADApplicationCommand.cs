@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Gets the AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADApplication>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), 
+        OutputType(typeof(List<PSADApplication>))]
     public class GetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
@@ -70,7 +71,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.IdentifierUris.Contains(IdentifierUri));
                     }
 
-                    WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter), enumerateCollection: true);
+                    ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                    ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+
+                    WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter, first, skip), enumerateCollection: true);
                 }
             });
         }

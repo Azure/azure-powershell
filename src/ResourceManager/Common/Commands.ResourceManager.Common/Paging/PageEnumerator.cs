@@ -17,23 +17,36 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace Microsoft.Azure.Internal.Subscriptions.Models
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Paging
 {
-    public class PageEnumerator : IEnumerator<Subscription>
+    public class PageEnumerator<T> : IEnumerator<T>
     {
-        private ISubscriptionClient _client;
-        private IEnumerator<Subscription> _currentEnumerator;
+        private Func<IPage<T>> _list;
+        private Func<string, IPage<T>> _listNext;
+        private ulong _first;
+        private ulong _skip;
+
+        private IEnumerator<T> _currentEnumerator;
         private string _nextPageLink;
 
-        public PageEnumerator(ISubscriptionClient client)
+        public PageEnumerator(Func<IPage<T>> list, Func<string, IPage<T>> listNext, ulong first, ulong skip)
         {
-            IPage<Subscription> tempPage = client.Subscriptions.List();
-            _client = client;
+            _list = list;
+            _listNext = listNext;
+            _first = first;
+            _skip = skip;
+
+            IPage<T> tempPage = _list();
             _currentEnumerator = tempPage.GetEnumerator();
             _nextPageLink = tempPage.NextPageLink;
+
+            while (_skip > 0 && _currentEnumerator.MoveNext())
+            {
+                _skip--;
+            }
         }
 
-        public Subscription Current
+        public T Current
         {
             get
             {
@@ -56,8 +69,14 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
 
         public bool MoveNext()
         {
+            if (_first == 0)
+            {
+                return false;
+            }
+
             if (_currentEnumerator.MoveNext())
             {
+                _first--;
                 return true;
             }
 
@@ -66,7 +85,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
                 return false;
             }
 
-            IPage<Subscription> tempPage = _client.Subscriptions.ListNext(_nextPageLink);
+            IPage<T> tempPage = _listNext(_nextPageLink);
             _currentEnumerator = tempPage.GetEnumerator();
             _nextPageLink = tempPage.NextPageLink;
             return this.MoveNext();
@@ -74,7 +93,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
 
         public void Reset()
         {
-            IPage<Subscription> tempPage = _client.Subscriptions.List();
+            IPage<T> tempPage = _list();
             _currentEnumerator = tempPage.GetEnumerator();
             _nextPageLink = tempPage.NextPageLink;
         }

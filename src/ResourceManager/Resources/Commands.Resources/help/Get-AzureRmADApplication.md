@@ -14,27 +14,31 @@ Lists existing azure active directory applications.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADApplication [<CommonParameters>]
+Get-AzureRmADApplication [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdParameterSet
 ```
-Get-AzureRmADApplication -ObjectId <Guid> [<CommonParameters>]
+Get-AzureRmADApplication -ObjectId <Guid> [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Get-AzureRmADApplication -ApplicationId <Guid> [<CommonParameters>]
+Get-AzureRmADApplication -ApplicationId <Guid> [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [<CommonParameters>]
 ```
 
 ### ApplicationDisplayNameParameterSet
 ```
-Get-AzureRmADApplication -DisplayNameStartWith <String> [<CommonParameters>]
+Get-AzureRmADApplication -DisplayNameStartWith <String> [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
 ```
-Get-AzureRmADApplication -IdentifierUri <String> [<CommonParameters>]
+Get-AzureRmADApplication -IdentifierUri <String> [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +94,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -First
+Gets only the first 'n' objects.
+
+```yaml
+Type: UInt64
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentifierUri
 Unique identifier Uri of the application to fetch.
 
@@ -105,6 +124,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IncludeTotalCount
+Reports the number of objects in the data set (an integer) followed by the objects. If the cmdlet cannot determine the total count, it returns "Unknown total count".
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object id of the application to fetch.
 
@@ -117,6 +151,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Skip
+Ignores the first 'n' objects and then gets the remaining objects.
+
+```yaml
+Type: UInt64
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
