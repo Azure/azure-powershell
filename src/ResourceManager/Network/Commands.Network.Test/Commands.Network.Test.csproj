@@ -261,6 +261,12 @@
     <None Include="ScenarioTests\PublicIpAddressTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestApplicationGatewayCRUD2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestAvailableSslOptions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestAvailableWafRuleSets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
