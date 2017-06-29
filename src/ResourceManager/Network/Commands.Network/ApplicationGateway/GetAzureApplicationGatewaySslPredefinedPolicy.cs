@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Name of the ssl predefined policy")]
         [ValidateNotNullOrEmpty]
-        public string PredefinedPolicyName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (this.PredefinedPolicyName != null)
+            if (this.Name != null)
             {
-                var policy = this.ApplicationGatewayClient.GetSslPredefinedPolicy(this.PredefinedPolicyName);
+                var policy = this.ApplicationGatewayClient.GetSslPredefinedPolicy(this.Name);
                 var psPolicy = Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy);
                 WriteObject(psPolicy);
             }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
                     psPolicies.Add(Mapper.Map<PSApplicationGatewaySslPolicy>(policy));
                 }
 
-                WriteObject(psPolicies);
+                WriteObject(psPolicies, true);
             }
         }
     }

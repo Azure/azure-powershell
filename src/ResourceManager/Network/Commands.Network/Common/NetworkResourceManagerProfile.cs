@@ -419,7 +419,10 @@ namespace Microsoft.Azure.Commands.Network
             // CNM to MNM
             Mapper.CreateMap<CNM.PSApplicationGateway, MNM.ApplicationGateway>();
             Mapper.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>();
-            Mapper.CreateMap<CNM.PSApplicationGatewaySslPolicy, MNM.ApplicationGatewaySslPolicy>();
+            Mapper.CreateMap<CNM.PSApplicationGatewaySslPolicy, MNM.ApplicationGatewaySslPolicy>()
+                .AfterMap((src, dest) =>
+                { dest.CipherSuites = src.CipherSuites == null ? null : dest.CipherSuites;
+                    dest.DisabledSslProtocols = src.DisabledSslProtocols == null ? null : dest.DisabledSslProtocols; });
             Mapper.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
             Mapper.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
             Mapper.CreateMap<CNM.PSApplicationGatewayProbe, MNM.ApplicationGatewayProbe>();
@@ -454,7 +457,12 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
             Mapper.CreateMap<MNM.ApplicationGatewaySku, CNM.PSApplicationGatewaySku>();
-            Mapper.CreateMap<MNM.ApplicationGatewaySslPolicy, CNM.PSApplicationGatewaySslPolicy>();
+            Mapper.CreateMap<MNM.ApplicationGatewaySslPolicy, CNM.PSApplicationGatewaySslPolicy>()
+                .AfterMap((src, dest) =>
+                {
+                    dest.CipherSuites = src.CipherSuites == null ? null : dest.CipherSuites;
+                    dest.DisabledSslProtocols = src.DisabledSslProtocols == null ? null : dest.DisabledSslProtocols;
+                });
             Mapper.CreateMap<MNM.ApplicationGatewayPathRule, CNM.PSApplicationGatewayPathRule>();
             Mapper.CreateMap<MNM.ApplicationGatewayUrlPathMap, CNM.PSApplicationGatewayUrlPathMap>();
             Mapper.CreateMap<MNM.ApplicationGatewayProbe, CNM.PSApplicationGatewayProbe>();

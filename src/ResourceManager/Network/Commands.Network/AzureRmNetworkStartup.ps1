@@ -15,4 +15,5 @@
 @{
     "List-AzureRmApplicationGatewayAvailableWafRuleSets" = "Get-AzureRmApplicationGatewayAvailableWafRuleSets"
 	"List-AzureRmApplicationGatewayAvailableSslOptions" = "Get-AzureRmApplicationGatewayAvailableSslOptions"
+	"List-AzureRmApplicationGatewaySslPredefinedPolicy" = "Get-AzureRmApplicationGatewaySslPredefinedPolicy"
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"

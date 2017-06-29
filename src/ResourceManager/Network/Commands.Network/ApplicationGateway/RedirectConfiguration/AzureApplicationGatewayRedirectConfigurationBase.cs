@@ -43,9 +43,10 @@ namespace Microsoft.Azure.Commands.Network
                 ParameterSetName = "SetByResource",
                 HelpMessage = "HTTPListener to redirect the request to")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayBackendHttpSettings TargetListener { get; set; }
+        public PSApplicationGatewayHttpListener TargetListener { get; set; }
 
         [Parameter(
+                ParameterSetName = "SetByURL",
                 HelpMessage = "Target URL fo redirection")]
         [ValidateNotNullOrEmpty]
         public string TargetUrl { get; set; }
@@ -76,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var redirectConfiguration = new PSApplicationGatewayRedirectConfiguration();
             redirectConfiguration.Name = this.Name;
+            redirectConfiguration.RedirectType = this.RedirectType;
 
             if (this.TargetUrl != null
                 && this.TargetListenerID != null
@@ -92,8 +94,14 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             redirectConfiguration.TargetUrl = this.TargetUrl;
-            redirectConfiguration.IncludePath = this.IncludePath;
-            redirectConfiguration.IncludeQueryString = this.IncludeQueryString;
+            if (this.IncludePath)
+            {
+                redirectConfiguration.IncludePath = this.IncludePath;
+            }
+            if (this.IncludeQueryString)
+            {
+                redirectConfiguration.IncludeQueryString = this.IncludeQueryString;
+            }
 
 
             

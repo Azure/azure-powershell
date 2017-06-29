@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Protocol { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            HelpMessage = "Host name to send probe to")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            HelpMessage = "Minimum number of servers that are always marked healthy. Default value is 0")]
+        [ValidateRange(0, int.MaxValue)]
         public uint MinServers { get; set; }
 
         [Parameter(

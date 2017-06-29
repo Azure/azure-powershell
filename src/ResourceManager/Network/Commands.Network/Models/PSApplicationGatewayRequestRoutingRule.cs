@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId UrlPathMap { get; set; }
         public PSResourceId RedirectConfiguration { get; set; }
         public string ProvisioningState { get; set; }
+        public string Type { get; set; }
 
         [JsonIgnore]
         public string BackendAddressPoolText
