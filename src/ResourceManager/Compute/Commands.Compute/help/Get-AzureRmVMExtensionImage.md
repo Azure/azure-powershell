@@ -24,7 +24,7 @@ The **Get-AzureRmVMExtensionImage** cmdlet gets all versions for an Azure extens
 
 ### Example 1: Get the versions of an extension image
 ```
-PS C:\>Get-AzureRmVMExtensionImage -Location "Central US" -PublisherName "Fabrikam" -Type "FabrikamEndpointProtection"
+PS C:\> Get-AzureRmVMExtensionImage -Location "Central US" -PublisherName "Fabrikam" -Type "FabrikamEndpointProtection"
 ```
 
 This command gets all the versions of the extension image for the specified location, publisher, and type.

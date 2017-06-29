@@ -94,7 +94,7 @@ Accept wildcard characters: False
 
 ### -Sku
 The name of the Sku for the server.
-The supported values are 'S1', 'S2', 'S4' for the Standard tier and 'D1' for Development.
+The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2' for the Basic tier and 'D1' for Development tier.
 
 ```yaml
 Type: String

@@ -32,6 +32,16 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
+Gets a location for testing.
+#>
+function Get-Location
+{
+	# TODO: should be implemented via Get-AzureRmResourceProvider 
+	return "West US"
+}
+
+<#
+.SYNOPSIS
 Executes a cmdlet and enables ignoring of errors if desired
 NOTE: this only catches errors that are thrown. If the command calls to Write-Error
 the user must specify the errorAction to be silent or store the record in an error variable.

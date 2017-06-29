@@ -134,9 +134,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRMEnvironment]()
+[Add-AzureRMEnvironment](./Add-AzureRMEnvironment.md)
 
-[Get-AzureRMEnvironment]()
+[Get-AzureRMEnvironment](./Get-AzureRMEnvironment.md)
 
-[Set-AzureRMEnvironment]()
+[Set-AzureRMEnvironment](./Set-AzureRMEnvironment.md)
 

@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 0.4.0
+* New SKUs added: B1, B2, S0
+* Scale up/down support added
+
+## Version 0.3.1
+
 ## Version 0.3.0
 
 ## Version 0.2.0

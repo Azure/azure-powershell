@@ -24,7 +24,7 @@ The **Remove-AzureRmContainerServiceAgentPoolProfile** cmdlet removes an agent p
 
 ### Example 1: Remove a profile from a container service
 ```
-PS C:\>$Container = Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" 
+PS C:\> $Container = Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" 
 PS C:\> Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Container -Name "AgentPool01"
 ```
 

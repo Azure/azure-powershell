@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <returns>The firewall rule</returns>
         public AzureSqlServerFirewallRuleModel GetFirewallRule(string resourceGroupName, string serverName, string firewallRuleName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, firewallRuleName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, firewallRuleName);
             return CreateFirewallRuleModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <returns>A list of all the firewall rules</returns>
         public List<AzureSqlServerFirewallRuleModel> ListFirewallRules(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
             return resp.Select((s) =>
             {
                 return CreateFirewallRuleModelFromResponse(resourceGroupName, serverName, s);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerFirewallRuleModel UpsertFirewallRule(AzureSqlServerFirewallRuleModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FirewallRuleName, Util.GenerateTracingId(), new FirewallRuleCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FirewallRuleName, new FirewallRuleCreateOrUpdateParameters()
             {
                 Properties = new FirewallRuleCreateOrUpdateProperties()
                 {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <param name="firewallRuleName">The name of the firewall rule to remove</param>
         public void RemoveFirewallRule(string resourceGroupName, string serverName, string firewallRuleName)
         {
-            Communicator.Remove(resourceGroupName, serverName, firewallRuleName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, firewallRuleName);
         }
 
         /// <summary>

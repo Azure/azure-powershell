@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         public AzureSqlServerKeyVaultKeyModel Get(string resourceGroupName, string serverName, string keyId)
         {
             string keyName = AzureSqlServerKeyVaultKeyModel.CreateServerKeyNameFromKeyId(keyId);
-            var resp = Communicator.Get(resourceGroupName, serverName, keyName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, keyName);
             return CreateServerKeyModelFromResponse(resourceGroupName, serverName, keyName, resp);
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <returns>The list of Server Key Vault Keys on the server</returns>
         public IList<AzureSqlServerKeyVaultKeyModel> List(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
             return resp.Select((serverKey) =>
             {
                 return CreateServerKeyModelFromResponse(resourceGroupName, serverName, serverKey.Name, serverKey);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <returns>The updated server key Vault Key model</returns>
         public AzureSqlServerKeyVaultKeyModel CreateOrUpdate(AzureSqlServerKeyVaultKeyModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ServerKeyName, Util.GenerateTracingId(), new ServerKeyCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ServerKeyName, new ServerKeyCreateOrUpdateParameters()
             {
                 Properties = new ServerKeyCreateOrUpdateProperties()
                 {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         public void Delete(string resourceGroupName, string serverName, string keyId)
         {
             string keyName = AzureSqlServerKeyVaultKeyModel.CreateServerKeyNameFromKeyId(keyId);
-            Communicator.Delete(resourceGroupName, serverName, keyName, Util.GenerateTracingId());
+            Communicator.Delete(resourceGroupName, serverName, keyName);
         }
 
         /// <summary>

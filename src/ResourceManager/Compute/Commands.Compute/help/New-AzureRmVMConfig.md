@@ -24,7 +24,7 @@ Other cmdlets can be used to configure a virtual machine object, such as Set-Azu
 
 ### Example 1: Create a virtual machine object
 ```
-PS C:\>$AvailabilitySet = Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
+PS C:\> $AvailabilitySet = Get-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03"
 PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
 ```
 
