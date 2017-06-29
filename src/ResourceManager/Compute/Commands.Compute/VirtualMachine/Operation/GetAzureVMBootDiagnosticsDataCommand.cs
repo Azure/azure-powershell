@@ -172,13 +172,13 @@ namespace Microsoft.Azure.Commands.Compute
             if (storageService != null)
             {
                 var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.Name);
-                storagekey = storageKeys.Key1;
+                storagekey = storageKeys.GetKey1();
             }
 
             StorageCredentials storagecred = new StorageCredentials(blobUri.StorageAccountName, storagekey);
             var blob = new CloudBlob(sourceUri, storagecred);
 
-            blob.DownloadToFile(localFileInfo, FileMode.Create);
+            blob.DownloadToFileAsync(localFileInfo, FileMode.Create).ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }

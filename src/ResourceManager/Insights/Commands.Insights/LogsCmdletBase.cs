@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Insights
         private static readonly TimeSpan MaximumDateDifferenceAllowedInDays = TimeSpan.FromDays(15);
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromDays(7);
         private const int MaxNumberOfReturnedRecords = 1000;
-        private int MaxEvents = 0;
+        private int MaxRecords = 0;
 
         internal const string SubscriptionLevelName = "Query at subscription level";
         internal const string ResourceProviderName = "Query on ResourceProvider";
@@ -105,19 +105,17 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Sets the max number of records to fetch
         /// </summary>
-        protected virtual void SetMaxEventsIfPresent(string currentQueryFilter, string name, int value)
+        protected virtual void SetMaxEventsIfPresent(string currentQueryFilter, int value)
         {
-            if (value > 0 && value <= 100000)
-            {
-                this.MaxEvents = value;
-            }
+            // If value is not acceptable this forces the use of the default value
+            this.MaxRecords = (value > 0 && value <= 100000) ? value : 0;
         }
 
         /// <summary>
         /// Validates that the range of dates (start / end) makes sense, it is not to great (less 15 days), and adds the defaul values if needed
         /// </summary>
         /// <returns>A query filter string with the time conditions</returns>
-        private string ValidateDateTimeRangeAndAdddefaults()
+        private string ValidateDateTimeRangeAndAddDefaults()
         {
             // EndTime is optional
             DateTime endTime = this.EndTime.HasValue ? this.EndTime.Value : DateTime.Now;
@@ -153,7 +151,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <returns>The query filter with the conditions for general parameters (i.e. defined by this class) added</returns>
         private string ProcessGeneralParameters()
         {
-            string queryFilter = this.ValidateDateTimeRangeAndAdddefaults();
+            string queryFilter = this.ValidateDateTimeRangeAndAddDefaults();
 
             // Include the status if present
             queryFilter = this.AddConditionIfPResent(queryFilter, "status", this.Status);
@@ -204,16 +202,18 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteDebug("Processing parameters");
             string queryFilter = this.ProcessParameters();
 
             // Retrieve the records
             var fullDetails = this.DetailedOutput.IsPresent;
 
             //Number of records to retrieve
-            int maxNumberOfRecords = this.MaxEvents > 0 ? this.MaxEvents : MaxNumberOfReturnedRecords;
+            int maxNumberOfRecords = this.MaxRecords > 0 ? this.MaxRecords : MaxNumberOfReturnedRecords;
 
             // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
+            WriteDebug("First call");
             var query = new ODataQuery<EventData>(queryFilter);
             IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, select: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
             var records = new List<IPSEventData>();
@@ -224,14 +224,20 @@ namespace Microsoft.Azure.Commands.Insights
             // Adding a safety check to stop returning records if too many have been read already.
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
+                WriteDebug("Following continuation token");
                 response = this.MonitorClient.ActivityLogs.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
+                enumerator = response.GetEnumerator();
+                WriteDebug(string.Format("Merging records with {0} records", records.Count));
                 enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
+                WriteDebug(string.Format("Merged records. Now with {0} records", records.Count));
                 nextLink = response.NextPageLink;
             }
 
+            WriteDebug("Done following continuation token");
             var recordsReturned = new List<IPSEventData>();
             if (records.Count > maxNumberOfRecords)
             {
+                WriteDebug("Complying with maxNumberOfRecords");
                 recordsReturned.AddRange(records.Take(maxNumberOfRecords));
             }
             else

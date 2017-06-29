@@ -162,17 +162,26 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[New-AzureRmNetworkWatcherPacketCapture]()
-[New-AzureRmPacketCaptureFilterConfig]()
-[Get-AzureRmNetworkWatcherPacketCapture]()
-[Stop-AzureRmNetworkWatcherPacketCapture]()
+[New-AzureRmNetworkWatcherPacketCapture](./New-AzureRmNetworkWatcherPacketCapture.md)
 
-[New-AzureRmNetworkWatcher]()
-[Get-AzureRmNetworkWatcher]()
-[Remove-AzureRmNetworkWatcher]()
+[New-AzureRmPacketCaptureFilterConfig](./New-AzureRmPacketCaptureFilterConfig.md)
 
-[Test-AzureRmNetworkWatcherIPFlow]()
-[Get-AzureRmNetworkWatcherNextHop]()
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
-[Get-AzureRmNetworkWatcherTopology]()
-[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+[Get-AzureRmNetworkWatcherPacketCapture](./Get-AzureRmNetworkWatcherPacketCapture.md)
+
+[Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
+
+[New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
+
+[Get-AzureRmNetworkWatcher](./Get-AzureRmNetworkWatcher.md)
+
+[Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)
+
+[Test-AzureRmNetworkWatcherIPFlow](./Test-AzureRmNetworkWatcherIPFlow.md)
+
+[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
+
+[Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
+
+[Get-AzureRmNetworkWatcherTopology](./Get-AzureRmNetworkWatcherTopology.md)
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting](./Start-AzureRmNetworkWatcherResourceTroubleshooting.md)

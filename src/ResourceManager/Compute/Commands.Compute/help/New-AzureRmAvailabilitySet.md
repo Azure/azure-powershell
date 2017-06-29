@@ -25,7 +25,7 @@ The **New-AzureRmAvailabilitySet** cmdlet creates an Azure availability set.
 
 ### Example 1: Create an availability set
 ```
-PS C:\>New-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
+PS C:\> New-AzureRmAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" -Location "West US"
 ```
 
 This command creates an availability set named AvailablitySet03 in the resource group named ResourceGroup11.

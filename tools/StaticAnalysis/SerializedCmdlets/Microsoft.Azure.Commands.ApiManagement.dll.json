@@ -13,27 +13,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -49,27 +49,27 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -84,7 +84,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -100,8 +100,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -118,7 +118,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -136,13 +136,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "VnetId": "System.Guid",
               "Location": "System.String",
-              "SubnetName": "System.String",
               "SubnetResourceId": "System.String",
-              "VnetId": "System.Guid"
+              "SubnetName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -163,27 +163,27 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Name": "System.String",
-                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "PortalUrl": "System.String",
-                    "ProvisioningState": "System.String",
-                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ResourceGroupName": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
                     "RuntimeUrl": "System.String",
-                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                    "StaticIPs": "System.String[]",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+                    "StaticIPs": "System.String[]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -204,7 +204,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -226,8 +226,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -250,7 +250,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -274,13 +274,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "VnetId": "System.Guid",
                     "Location": "System.String",
-                    "SubnetName": "System.String",
                     "SubnetResourceId": "System.String",
-                    "VnetId": "System.Guid"
+                    "SubnetName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -313,7 +313,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -330,7 +330,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -346,7 +346,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -368,7 +368,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -390,7 +390,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -424,11 +424,11 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Hostname": "System.String",
-              "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
+              "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+              "Hostname": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -444,7 +444,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -460,7 +460,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -482,7 +482,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -504,7 +504,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -538,14 +538,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementRegion",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
               "Capacity": "System.Int32",
               "Location": "System.String",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -561,7 +561,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -577,7 +577,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -595,13 +595,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "VnetId": "System.Guid",
               "Location": "System.String",
-              "SubnetName": "System.String",
               "SubnetResourceId": "System.String",
-              "VnetId": "System.Guid"
+              "SubnetName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -622,7 +622,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -644,7 +644,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -668,13 +668,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "VnetId": "System.Guid",
                     "Location": "System.String",
-                    "SubnetName": "System.String",
                     "SubnetResourceId": "System.String",
-                    "VnetId": "System.Guid"
+                    "SubnetName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -707,13 +707,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "VnetId": "System.Guid",
               "Location": "System.String",
-              "SubnetName": "System.String",
               "SubnetResourceId": "System.String",
-              "VnetId": "System.Guid"
+              "SubnetName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -729,7 +729,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -745,7 +745,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -767,7 +767,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -789,7 +789,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -823,27 +823,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -859,27 +859,27 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -894,7 +894,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -916,27 +916,27 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Name": "System.String",
-                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "PortalUrl": "System.String",
-                    "ProvisioningState": "System.String",
-                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ResourceGroupName": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
                     "RuntimeUrl": "System.String",
-                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                    "StaticIPs": "System.String[]",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+                    "StaticIPs": "System.String[]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -957,7 +957,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -991,27 +991,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1027,27 +1027,27 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1062,7 +1062,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1078,7 +1078,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1094,11 +1094,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Hostname": "System.String",
-              "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
+              "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+              "Hostname": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1113,11 +1113,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementHostnameConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Hostname": "System.String",
-              "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
+              "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+              "Hostname": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1132,7 +1132,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1154,27 +1154,27 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Name": "System.String",
-                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "PortalUrl": "System.String",
-                    "ProvisioningState": "System.String",
-                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ResourceGroupName": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
                     "RuntimeUrl": "System.String",
-                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                    "StaticIPs": "System.String[]",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+                    "StaticIPs": "System.String[]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1195,7 +1195,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1222,7 +1222,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1244,7 +1244,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1266,11 +1266,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementHostnameConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Hostname": "System.String",
-                    "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
+                    "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+                    "Hostname": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1291,11 +1291,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementHostnameConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Hostname": "System.String",
-                    "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
+                    "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+                    "Hostname": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1316,7 +1316,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1343,7 +1343,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1377,27 +1377,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1413,27 +1413,27 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1448,7 +1448,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1464,7 +1464,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1480,7 +1480,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1496,8 +1496,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1512,7 +1512,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
+            "Name": "System.Int32",
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1528,13 +1528,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "VnetId": "System.Guid",
               "Location": "System.String",
-              "SubnetName": "System.String",
               "SubnetResourceId": "System.String",
-              "VnetId": "System.Guid"
+              "SubnetName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1549,8 +1549,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVpnType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1565,8 +1565,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1583,7 +1583,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1605,27 +1605,27 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Name": "System.String",
-                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "PortalUrl": "System.String",
-                    "ProvisioningState": "System.String",
-                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ResourceGroupName": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
                     "RuntimeUrl": "System.String",
-                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                    "StaticIPs": "System.String[]",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+                    "StaticIPs": "System.String[]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1646,7 +1646,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1673,7 +1673,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1695,7 +1695,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1717,7 +1717,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1739,8 +1739,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1761,7 +1761,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
+                  "Name": "System.Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1783,13 +1783,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "VnetId": "System.Guid",
                     "Location": "System.String",
-                    "SubnetName": "System.String",
                     "SubnetResourceId": "System.String",
-                    "VnetId": "System.Guid"
+                    "SubnetName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1810,8 +1810,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementVpnType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1832,8 +1832,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "IList",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1856,7 +1856,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1883,7 +1883,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1917,27 +1917,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1953,27 +1953,27 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1988,7 +1988,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2004,8 +2004,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2020,7 +2020,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
+            "Name": "System.Int32",
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2036,13 +2036,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "VnetId": "System.Guid",
               "Location": "System.String",
-              "SubnetName": "System.String",
               "SubnetResourceId": "System.String",
-              "VnetId": "System.Guid"
+              "SubnetName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2063,27 +2063,27 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagement",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
                     "Capacity": "System.Int32",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Name": "System.String",
-                    "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "PortalUrl": "System.String",
-                    "ProvisioningState": "System.String",
-                    "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
                     "ResourceGroupName": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Location": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
                     "RuntimeUrl": "System.String",
-                    "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-                    "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-                    "StaticIPs": "System.String[]",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-                    "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+                    "StaticIPs": "System.String[]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2104,7 +2104,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2126,8 +2126,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2148,7 +2148,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
+                  "Name": "System.Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2170,13 +2170,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "VnetId": "System.Guid",
                     "Location": "System.String",
-                    "SubnetName": "System.String",
                     "SubnetResourceId": "System.String",
-                    "VnetId": "System.Guid"
+                    "SubnetName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2209,8 +2209,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementHostnameCertificate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Expiry": "System.DateTime",
               "Subject": "System.String",
@@ -2230,7 +2230,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2246,7 +2246,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2262,8 +2262,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementHostnameType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2278,7 +2278,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2294,7 +2294,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2310,7 +2310,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2332,7 +2332,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2354,7 +2354,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2376,8 +2376,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementHostnameType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2398,7 +2398,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2420,7 +2420,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2442,7 +2442,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2476,27 +2476,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2512,7 +2512,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2528,7 +2528,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2544,18 +2544,18 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "IStorageContext",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BlobEndPoint": "System.String",
-              "ConnectionString": "System.String",
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
-              "EndPointSuffix": "System.String",
-              "FileEndPoint": "System.String",
               "Name": "System.String",
+              "BlobEndPoint": "System.String",
+              "TableEndPoint": "System.String",
               "QueueEndPoint": "System.String",
+              "FileEndPoint": "System.String",
               "StorageAccountName": "System.String",
-              "TableEndPoint": "System.String"
+              "EndPointSuffix": "System.String",
+              "ConnectionString": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2570,7 +2570,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2586,7 +2586,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2602,7 +2602,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2624,7 +2624,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2646,7 +2646,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2668,18 +2668,18 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "IStorageContext",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BlobEndPoint": "System.String",
-                    "ConnectionString": "System.String",
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
-                    "EndPointSuffix": "System.String",
-                    "FileEndPoint": "System.String",
                     "Name": "System.String",
+                    "BlobEndPoint": "System.String",
+                    "TableEndPoint": "System.String",
                     "QueueEndPoint": "System.String",
+                    "FileEndPoint": "System.String",
                     "StorageAccountName": "System.String",
-                    "TableEndPoint": "System.String"
+                    "EndPointSuffix": "System.String",
+                    "ConnectionString": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2700,7 +2700,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2722,7 +2722,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2744,7 +2744,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2778,8 +2778,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2797,7 +2797,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2813,7 +2813,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2835,7 +2835,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2862,7 +2862,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2884,7 +2884,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2918,27 +2918,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2954,7 +2954,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2970,7 +2970,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2986,7 +2986,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3002,7 +3002,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3018,7 +3018,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3034,8 +3034,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -3056,7 +3056,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3074,8 +3074,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVpnType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3094,13 +3094,13 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementVirtualNetwork",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "VnetId": "System.Guid",
               "Location": "System.String",
-              "SubnetName": "System.String",
               "SubnetResourceId": "System.String",
-              "VnetId": "System.Guid"
+              "SubnetName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3115,7 +3115,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "Dictionary",
+            "Name": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3134,8 +3134,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagementRegion[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
             "GenericTypeArguments": []
@@ -3156,7 +3156,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3178,7 +3178,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3200,7 +3200,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3222,7 +3222,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3244,7 +3244,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3266,8 +3266,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3294,7 +3294,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3318,8 +3318,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementVpnType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3344,13 +3344,13 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementVirtualNetwork",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "VnetId": "System.Guid",
                     "Location": "System.String",
-                    "SubnetName": "System.String",
                     "SubnetResourceId": "System.String",
-                    "VnetId": "System.Guid"
+                    "SubnetName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3371,7 +3371,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "Dictionary",
+                  "Name": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
                   "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3396,8 +3396,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-                  "Name": "PsApiManagementRegion[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[], Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
                   "GenericTypeArguments": []
@@ -3430,7 +3430,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3447,7 +3447,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3463,7 +3463,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3479,7 +3479,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3501,7 +3501,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3523,7 +3523,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3545,7 +3545,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3579,27 +3579,27 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-            "Name": "PsApiManagement",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
               "Capacity": "System.Int32",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Name": "System.String",
-              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "PortalUrl": "System.String",
-              "ProvisioningState": "System.String",
-              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
               "ResourceGroupName": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
               "RuntimeUrl": "System.String",
-              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-              "StaticIPs": "System.String[]",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+              "StaticIPs": "System.String[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3615,7 +3615,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3631,7 +3631,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3647,18 +3647,18 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-            "Name": "IStorageContext",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BlobEndPoint": "System.String",
-              "ConnectionString": "System.String",
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
-              "EndPointSuffix": "System.String",
-              "FileEndPoint": "System.String",
               "Name": "System.String",
+              "BlobEndPoint": "System.String",
+              "TableEndPoint": "System.String",
               "QueueEndPoint": "System.String",
+              "FileEndPoint": "System.String",
               "StorageAccountName": "System.String",
-              "TableEndPoint": "System.String"
+              "EndPointSuffix": "System.String",
+              "ConnectionString": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3673,7 +3673,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3689,7 +3689,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3705,7 +3705,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3727,7 +3727,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3749,7 +3749,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3771,18 +3771,18 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-                  "Name": "IStorageContext",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "BlobEndPoint": "System.String",
-                    "ConnectionString": "System.String",
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
-                    "EndPointSuffix": "System.String",
-                    "FileEndPoint": "System.String",
                     "Name": "System.String",
+                    "BlobEndPoint": "System.String",
+                    "TableEndPoint": "System.String",
                     "QueueEndPoint": "System.String",
+                    "FileEndPoint": "System.String",
                     "StorageAccountName": "System.String",
-                    "TableEndPoint": "System.String"
+                    "EndPointSuffix": "System.String",
+                    "ConnectionString": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3803,7 +3803,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3825,7 +3825,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3847,7 +3847,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3982,82 +3982,21 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
-      ]
-    },
-    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "PsApiManagementRegion",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Capacity": "System.Int32",
-        "Location": "System.String",
-        "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-        "StaticIPs": "System.String[]",
-        "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "PsApiManagementSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.String[]": {
-      "Namespace": "System",
-      "Name": "String[]",
-      "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": "System.String",
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "PsApiManagementVirtualNetwork",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Location": "System.String",
-        "SubnetName": "System.String",
-        "SubnetResourceId": "System.String",
-        "VnetId": "System.Guid"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Guid": {
-      "Namespace": "System",
-      "Name": "Guid",
-      "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "PsApiManagementHostnameConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Hostname": "System.String",
-        "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate"
+        "HostnameCertificate": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+        "Hostname": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "PsApiManagementHostnameCertificate",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameCertificate, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Expiry": "System.DateTime",
         "Subject": "System.String",
@@ -4068,15 +4007,52 @@
     },
     "System.DateTime": {
       "Namespace": "System",
-      "Name": "DateTime",
+      "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku": {
+      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork": {
+      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "VnetId": "System.Guid",
+        "Location": "System.String",
+        "SubnetResourceId": "System.String",
+        "SubnetName": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Guid": {
+      "Namespace": "System",
+      "Name": "System.Guid",
+      "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType": {
+      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4085,55 +4061,79 @@
         "System.String"
       ]
     },
-    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "PsApiManagementVpnType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
+      ]
+    },
+    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion": {
+      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+        "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+        "Capacity": "System.Int32",
+        "Location": "System.String",
+        "StaticIPs": "System.String[]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.String[]": {
+      "Namespace": "System",
+      "Name": "System.String[]",
+      "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": "System.String",
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
-      "Name": "IStorageContext",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "BlobEndPoint": "System.String",
-        "ConnectionString": "System.String",
         "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext",
-        "EndPointSuffix": "System.String",
-        "FileEndPoint": "System.String",
         "Name": "System.String",
+        "BlobEndPoint": "System.String",
+        "TableEndPoint": "System.String",
         "QueueEndPoint": "System.String",
+        "FileEndPoint": "System.String",
         "StorageAccountName": "System.String",
-        "TableEndPoint": "System.String"
+        "EndPointSuffix": "System.String",
+        "ConnectionString": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement": {
       "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "PsApiManagement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+        "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+        "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+        "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+        "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+        "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+        "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
         "Capacity": "System.Int32",
-        "Id": "System.String",
-        "Location": "System.String",
-        "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-        "Name": "System.String",
-        "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
         "PortalUrl": "System.String",
-        "ProvisioningState": "System.String",
-        "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
         "ResourceGroupName": "System.String",
+        "ProvisioningState": "System.String",
+        "Location": "System.String",
+        "Name": "System.String",
+        "Id": "System.String",
         "RuntimeUrl": "System.String",
-        "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-        "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-        "StaticIPs": "System.String[]",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-        "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType"
+        "StaticIPs": "System.String[]"
       },
       "ElementType": null,
       "GenericTypeArguments": []

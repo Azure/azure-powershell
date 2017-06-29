@@ -34,35 +34,35 @@ The **Publish-AzureRmVMDscConfiguration** cmdlet uploads a Desired State Configu
 
 ### Example 1: Create a .zip package an upload it to Azure storage
 ```
-PS C:\>Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1"
+PS C:\> Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1"
 ```
 
 This command creates a .zip package for the given script and any dependent resource modules and uploads it to Azure storage.
 
 ### Example 2: Create a .zip package and store it to a local file
 ```
-PS C:\>Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1" -OutputArchivePath ".\MyConfiguration.ps1.zip"
+PS C:\> Publish-AzureRmVMDscConfiguration ".\MyConfiguration.ps1" -OutputArchivePath ".\MyConfiguration.ps1.zip"
 ```
 
 This command creates a .zip package for the given script and any dependent resource modules and stores it in the local file that is named .\MyConfiguration.ps1.zip.
 
 ### Example 3: Add configuration to the archive and then upload it to storage
 ```
-PS C:\>Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -SkipDependencyDetection
+PS C:\> Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -SkipDependencyDetection
 ```
 
 This command adds configuration named Sample.ps1 to the configuration archive to upload to Azure storage and skips dependent resource modules.
 
 ### Example 4: Add configuration and configuration data to the archive and then upload it to storage
 ```
-PS C:\>Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -ConfigurationDataPath "C:\SampleData.psd1"
+PS C:\> Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -ConfigurationDataPath "C:\SampleData.psd1"
 ```
 
 This command adds configuration named Sample.ps1 and configuration data named SampleData.psd1 to the configuration archive to upload to Azure storage.
 
 ### Example 5: Add configuration, configuration data, and additional content to the archive and then upload it to storage
 ```
-PS C:\>Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPath @("C:\ContentDir1", "C:\File.txt") -ConfigurationDataPath "C:\SampleData.psd1"
+PS C:\> Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPath @("C:\ContentDir1", "C:\File.txt") -ConfigurationDataPath "C:\SampleData.psd1"
 ```
 
 This command adds configuration named Sample.ps1, configuration data SampleData.psd1, and additional content to configuration archive to upload to Azure storage.

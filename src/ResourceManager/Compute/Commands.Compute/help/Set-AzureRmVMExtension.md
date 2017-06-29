@@ -35,7 +35,7 @@ The **Set-AzureRmVMExtension** cmdlet updates properties for existing Virtual Ma
 
 ### Example 1: Modify settings by using hash tables
 ```
-PS C:\>$Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
 PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
 PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
 ```
@@ -49,7 +49,7 @@ The command specifies other required information that includes the publisher and
 
 ### Example 2: Modify settings by using strings
 ```
-PS C:\>$SettingsString = '{"fileUris":[],"commandToExecute":""}';
+PS C:\> $SettingsString = '{"fileUris":[],"commandToExecute":""}';
 PS C:\> $ProtectedSettingsString = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
 PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "CustomScriptExtension" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -SettingString $SettingsString -ProtectedSettingString $ProtectedSettingsString ;
 ```
