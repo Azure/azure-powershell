@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 var policies = this.ApplicationGatewayClient.ListAvailableSslPredefinedPolicies();
-                var psPolicies = new List<PSApplicationGatewaySslPolicy>();
+                var psPolicies = new List<PSApplicationGatewaySslPredefinedPolicy>();
                 foreach (var policy in policies)
                 {
-                    psPolicies.Add(Mapper.Map<PSApplicationGatewaySslPolicy>(policy));
+                    psPolicies.Add(Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy));
                 }
 
                 WriteObject(psPolicies, true);

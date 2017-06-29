@@ -14,20 +14,20 @@
 
 function Test-AvailableSslOptions
 {
-	$result = Get-AzureRmApplicationGatewayAvailableWafRuleSets
-
+	$result = Get-AzureRmApplicationGatewayAvailableSslOptions
 	Assert-NotNull $result
-	Assert-NotNull $result.Value
-	Assert-True { $result.Value.Count -gt 0 }
-	Assert-NotNull $result.Value[0].Name
-	Assert-NotNull $result.Value[0].RuleSetType
-	Assert-NotNull $result.Value[0].RuleSetVersion
-	Assert-NotNull $result.Value[0].RuleGroups
-	Assert-True { $result.Value[0].RuleGroups.Count -gt 0 }
-	Assert-NotNull $result.Value[0].RuleGroups[0].RuleGroupName
-	Assert-NotNull $result.Value[0].RuleGroups[0].Rules
-	Assert-True { $result.Value[0].RuleGroups[0].Rules.Count -gt 0 }
-	Assert-NotNull $result.Value[0].RuleGroups[0].Rules[0].RuleId
+	Assert-NotNull $result.DefaultPolicy
+
+	$result = Get-AzureRmApplicationGatewaySslPredefinedPolicy
+	Assert-NotNull $result
+	Assert-True { $result.Count -gt 0 }
+	Assert-NotNull $result[0].MinProtocolVersion
+	Assert-True { $result[0].CipherSuites -gt 0 }
+
+	$result = Get-AzureRmApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy20170401
+	Assert-NotNull $result
+	Assert-NotNull $result.MinProtocolVersion
+	Assert-True { $result.CipherSuites -gt 0 }
 }
 
 function Test-AvailableWafRuleSets

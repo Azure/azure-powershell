@@ -29,25 +29,22 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGateway ApplicationGateway { get; set; }
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
+            base.ExecuteCmdlet();
+
+            var oldRedirectConfiguration = this.ApplicationGateway.RedirectConfigurations.SingleOrDefault
+                (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (oldRedirectConfiguration == null)
             {
-                base.ExecuteCmdlet();
-
-                var oldRedirectConfiguration = this.ApplicationGateway.RedirectConfigurations.SingleOrDefault
-                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-                if (oldRedirectConfiguration == null)
-                {
-                    throw new ArgumentException("RedirectConfiguration with the specified name does not exist");
-                }
-
-                var newRedirectConfiguration = base.NewObject();
-
-                this.ApplicationGateway.RedirectConfigurations.Remove(oldRedirectConfiguration);
-                this.ApplicationGateway.RedirectConfigurations.Add(newRedirectConfiguration);
-
-                WriteObject(this.ApplicationGateway);
+                throw new ArgumentException("RedirectConfiguration with the specified name does not exist");
             }
+
+            var newRedirectConfiguration = base.NewObject();
+
+            this.ApplicationGateway.RedirectConfigurations.Remove(oldRedirectConfiguration);
+            this.ApplicationGateway.RedirectConfigurations.Add(newRedirectConfiguration);
+
+            WriteObject(this.ApplicationGateway);
         }
     }
 }
