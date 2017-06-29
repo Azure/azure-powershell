@@ -14,17 +14,22 @@
 
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.GatewayKey, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGatewayKey))]
-    public class NewAzureDataFactoryGatewayKeyCommand : DataFactoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, Constants.GatewayAuthKey, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
+    public class GetAzureDataFactoryGatewayAuthKeyCommand : DataFactoryBaseCmdlet
     {
-        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-HelpMessage = "The data factory object.")]
-        public PSDataFactory DataFactory { get; set; }
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = "The data factory object.")]
+        [Alias("DataFactory")]
+        [ValidateNotNull]
+        public PSDataFactory InputObject { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory name.")]
@@ -32,26 +37,21 @@ HelpMessage = "The data factory object.")]
         public string DataFactoryName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-    HelpMessage = "The data factory gateway name.")]
+            HelpMessage = "The data factory gateway name.")]
         [ValidateNotNullOrEmpty]
         public string GatewayName { get; set; }
 
+        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("This cmdlet is deprecated and you should use New-AzureRmDataFactoryGatewayAuthKey instead.");
             if (ParameterSetName == ByFactoryObject)
             {
-                if (DataFactory == null)
-                {
-                    throw new PSArgumentNullException(string.Format(CultureInfo.InvariantCulture, Resources.DataFactoryArgumentInvalid));
-                }
-
-                DataFactoryName = DataFactory.DataFactoryName;
-                ResourceGroupName = DataFactory.ResourceGroupName;
+                DataFactoryName = InputObject.DataFactoryName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
 
-            PSDataFactoryGatewayKey gatewayKey = DataFactoryClient.RegenerateGatewayKey(ResourceGroupName, DataFactoryName, GatewayName);
-            WriteObject(gatewayKey);
+            PSDataFactoryGatewayAuthKey authKey = DataFactoryClient.ListGatewayAuthKeys(ResourceGroupName, DataFactoryName, GatewayName);
+            WriteObject(authKey);
         }
     }
 }
