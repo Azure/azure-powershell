@@ -32,7 +32,7 @@ function Assert-KeyAttributes($keyAttr, $keytype, $keyenable, $keyexp, $keynbf, 
          Assert-True { Equal-OperationList  $keyops $keyAttr.KeyOps} "Expect $keyops. Get $keyAttr.KeyOps"
     } 
     Assert-True { Equal-Hashtable $tags $keyAttr.Tags} "Expected $tags. Get $keyAttr.Tags"
-	Assert-NotNull $keyAttr.PurgeDisabled, "Purge Disabled is null."
+	Assert-NotNull $keyAttr.RecoveryLevel, "Deletion recovery level is null."
 }
 
 function BulkCreateSoftKeys ($vault, $prefix, $total)

@@ -443,11 +443,11 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="DeletedVaultNotFound" xml:space="preserve">
     <value>Cannot find deleted vault '{0}' in location '{1}'</value>
+  </data>
   <data name="InvalidSasPermission" xml:space="preserve">
     <value>Invalid Sas permission '{0}'.</value>
   </data>
   <data name="ADObjectAmbiguous" xml:space="preserve">
     <value>The Email argument specified, &apos;{1}&apos;, matches multiple objects in the Azure Active Directory tenant &apos;{2}&apos;. Please use -UserPrincipalName to narrow down the filter to a single object. The TenantID displayed by the cmdlet 'Get-AzureRmContext' is the current subscription's Azure Active Directory.</value>
->>>>>>> refs/remotes/Azure/preview
   </data>
 </root>
