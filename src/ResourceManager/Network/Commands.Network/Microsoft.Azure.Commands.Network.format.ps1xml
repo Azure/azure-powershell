@@ -2160,6 +2160,14 @@
                 <Label>CommunityPrefixes</Label>
                 <PropertyName>CommunityPrefixesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>IsAuthorizedToUse</Label>
+                <PropertyName>IsAuthorizedToUseText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceGroup</Label>
+                <PropertyName>ServiceGroupText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
