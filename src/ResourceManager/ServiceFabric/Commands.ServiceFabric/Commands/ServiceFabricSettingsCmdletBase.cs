@@ -110,7 +110,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 foreach (var setting in fabricSettings)
                 {
-                    settings[setting.Name] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                    if (!settings.ContainsKey(setting.Name))
+                    {
+                        settings[setting.Name] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                    }
+
                     foreach (var ps in setting.Parameters)
                     {
                         if (settings[setting.Name].ContainsKey(ps.Name))
