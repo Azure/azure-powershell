@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                HelpMessage = "Ssl cipher suites to be enabled in the specified order to application gateway")]
         [ValidateNotNullOrEmpty]
-        public List<string> CipherSuites { get; set; }
+        public List<string> CipherSuite { get; set; }
 
         [Parameter(
                HelpMessage = "Minimum version of Ssl protocol to be supported on application gateway")]
@@ -48,6 +49,33 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+        }
+
+        public PSApplicationGatewaySslPolicy NewObject()
+        {
+            var policy = new PSApplicationGatewaySslPolicy();
+            if (this.DisabledSslProtocols != null)
+            {
+                policy.DisabledSslProtocols = new List<string>();
+                foreach (var protocol in this.DisabledSslProtocols)
+                {
+                    policy.DisabledSslProtocols.Add(protocol);
+                }
+            }
+
+            policy.PolicyType = this.PolicyType;
+            policy.PolicyName = this.PolicyName;
+            policy.MinProtocolVersion = this.MinProtocolVersion;
+            if (this.CipherSuite != null)
+            {
+                policy.CipherSuites = new List<string>();
+                foreach (var ciphersuite in this.CipherSuite)
+                {
+                    policy.CipherSuites.Add(ciphersuite);
+                }
+            }
+
+            return policy;
         }
     }
 }

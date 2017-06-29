@@ -176,7 +176,7 @@
     <Compile Include="ApplicationGateway\FirewallConfiguration\NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FirewallConfiguration\SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayAvailableSslOptions.cs" />
-    <Compile Include="ApplicationGateway\ListAzureApplicationGatewaySslPredefinedPolicy.cs" />
+    <Compile Include="ApplicationGateway\GetAzureApplicationGatewaySslPredefinedPolicy.cs" />
     <Compile Include="ApplicationGateway\ProbeHealthResponseMatch\AzureApplicationGatewayProbeHealthResponseMatchBase.cs" />
     <Compile Include="ApplicationGateway\ProbeHealthResponseMatch\NewAzureApplicationGatewayProbeHealthResponseMatchCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\AddAzureApplicationGatewayFrontendIPConfigCommand.cs" />

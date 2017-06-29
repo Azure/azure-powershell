@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(redirectConfiguration);
+                WriteObject(redirectConfiguration, true);
             }
             else
             {

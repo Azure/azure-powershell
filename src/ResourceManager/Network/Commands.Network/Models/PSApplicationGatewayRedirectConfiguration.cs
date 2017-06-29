@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSResourceId> RequestRoutingRules { get; set; }
         public List<PSResourceId> UrlPathMaps { get; set; }
         public List<PSResourceId> PathRules { get; set; }
+        public string Type { get; set; }
 
         [JsonIgnore]
         public string TargetListenerText

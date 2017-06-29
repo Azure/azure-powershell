@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Path which should be used as a prefix for all HTTP requests. Null means no path will be prefixed. Default value is null")]
+            HelpMessage = "Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
@@ -144,12 +144,18 @@ namespace Microsoft.Azure.Commands.Network
                         });
                 }
             }
-            backendHttpSettings.PickHostNameFromBackendAddress = this.PickHostNameFromBackendAddress;
+            if(this.PickHostNameFromBackendAddress.IsPresent)
+            {
+                backendHttpSettings.PickHostNameFromBackendAddress = true;
+            }
             if (this.AffinityCookieName != null)
             {
                 backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
             }
-            backendHttpSettings.ProbeEnabled = this.ProbeEnabled;
+            if (this.ProbeEnabled.IsPresent)
+            {
+                backendHttpSettings.ProbeEnabled = true;
+            }
             if (this.Path != null)
             {
                 backendHttpSettings.Path = this.Path;

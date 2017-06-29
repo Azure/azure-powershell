@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool ProbeEnabled { get; set; }
         public string Path { get; set; }
         public string ProvisioningState { get; set; }
+        public string Type { get; set; }
 
         [JsonIgnore]
         public string ConnectionDrainingText
