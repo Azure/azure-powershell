@@ -18,6 +18,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
     public abstract class TrafficManagerBaseCmdlet : AzureRMCmdlet
     {
+        public const string FieldsParameterSet = "Fields";
+        public const string ObjectParameterSet = "Object";
+
         private TrafficManagerClient trafficManagerClient;
 
         public TrafficManagerClient TrafficManagerClient

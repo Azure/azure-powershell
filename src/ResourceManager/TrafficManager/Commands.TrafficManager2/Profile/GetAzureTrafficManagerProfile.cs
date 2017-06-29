@@ -32,23 +32,19 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            if (this.ResourceGroupName == null && this.Name != null)
-            {
-                // Throw an error
-            }
-            else if (this.ResourceGroupName != null && this.Name != null)
+            if (this.ResourceGroupName != null && this.Name != null)
             {
                 TrafficManagerProfile profile = this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
 
                 this.WriteVerbose(ProjectResources.Success);
                 this.WriteObject(profile);
             }
-            else
+            else if (this.Name == null)
             {
                 TrafficManagerProfile[] profiles = this.TrafficManagerClient.ListTrafficManagerProfiles(this.ResourceGroupName);
 
                 this.WriteVerbose(ProjectResources.Success);
-                this.WriteObject(profiles, enumerateCollection: true);
+                this.WriteObject(profiles);
             }
         }
     }

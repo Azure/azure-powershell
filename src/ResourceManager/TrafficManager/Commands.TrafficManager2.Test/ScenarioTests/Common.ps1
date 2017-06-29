@@ -97,6 +97,19 @@ function TestSetup-AddEndpoint($endpointName, $profile)
 
 <#
 .SYNOPSIS
+Creates a profile group to use in tests
+#>
+function TestSetup-CreateExternalEndpoint($profileName, $resourceGroupName, $endpointName, $endpointStatus = "Enabled")
+{
+	$relativeName = getAssetName
+
+	$endpoint = New-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus $endpointStatus -EndpointLocation "North Europe"
+
+	return $endpoint
+}
+
+<#
+.SYNOPSIS
 Cleans the created resource groups
 #>
 function TestCleanup-RemoveResourceGroup($rgname)

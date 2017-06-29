@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     public class TrafficManagerEndpoint
     {
@@ -50,34 +49,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         public uint? MinChildEndpoints { get; set; }
 
         public List<string> GeoMapping { get; set; }
-
-        public Endpoint ToSDKEndpoint()
-        {
-            return new Endpoint
-            {
-                Id = this.Id,
-                Name = this.Name,
-                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
-                EndpointLocation = this.Location,
-                EndpointStatus = this.EndpointStatus,
-                GeoMapping = this.GeoMapping,
-                MinChildEndpoints = this.MinChildEndpoints,
-                Priority = this.Priority,
-                Target = this.Target,
-                TargetResourceId = this.TargetResourceId,                   
-                Weight = this.Weight,
-            };
-        }
-
-        public Endpoint ToSDKEndpointForPatch()
-        {
-            return new Endpoint
-            {
-                Id = this.Id,
-                Name = this.Name,
-                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
-            };
-        }
 
         public static string ToFullEndpointType(string endpointType)
         {

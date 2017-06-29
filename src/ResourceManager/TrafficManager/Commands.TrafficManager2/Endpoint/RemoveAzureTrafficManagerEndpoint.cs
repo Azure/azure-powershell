@@ -23,24 +23,24 @@ namespace Microsoft.Azure.Commands.TrafficManager
         OutputType(typeof(bool))]
     public class RemoveAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The type of the endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateSet(Constants.AzureEndpoint, Constants.ExternalEndpoint, Constants.NestedEndpoint, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Type { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = TrafficManagerBaseCmdlet.ObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public TrafficManagerEndpoint TrafficManagerEndpoint { get; set; }
 
@@ -49,36 +49,23 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            var deleted = false;
-            TrafficManagerEndpoint trafficManagerEndpointToDelete = null;
-
-            if (this.ParameterSetName == "Fields")
-            {
-                trafficManagerEndpointToDelete = new TrafficManagerEndpoint
-                {
-                    Name = this.Name,
-                    ProfileName = this.ProfileName,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Type = this.Type
-                };
-            }
-            else if (this.ParameterSetName == "Object")
-            {
-                trafficManagerEndpointToDelete = this.TrafficManagerEndpoint;
-            }
+            string resourceGroup = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.ResourceGroupName : this.TrafficManagerEndpoint.ResourceGroupName;
+            string profileName = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.ProfileName : this.TrafficManagerEndpoint.ProfileName;
+            string endpointType = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.Type : this.TrafficManagerEndpoint.Type;
+            string endpointName = this.ParameterSetName.Equals(TrafficManagerBaseCmdlet.FieldsParameterSet) ? this.Name : this.TrafficManagerEndpoint.Name;
 
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_RemoveEndpoint, trafficManagerEndpointToDelete.Name, trafficManagerEndpointToDelete.ProfileName, trafficManagerEndpointToDelete.ResourceGroupName),
+                string.Format(ProjectResources.Confirm_RemoveEndpoint, endpointName, profileName, resourceGroup),
                 ProjectResources.Progress_RemovingEndpoint,
                 this.Name,
                 () =>
                 {
-                    deleted = this.TrafficManagerClient.DeleteTrafficManagerEndpoint(trafficManagerEndpointToDelete);
+                    bool deleted = this.TrafficManagerClient.DeleteTrafficManagerEndpoint(resourceGroup, profileName, endpointType, endpointName);
                     if (deleted)
                     {
                         this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_RemoveEndpoint, trafficManagerEndpointToDelete.Name, trafficManagerEndpointToDelete.ProfileName, trafficManagerEndpointToDelete.ResourceGroupName));
+                        this.WriteVerbose(string.Format(ProjectResources.Success_RemoveEndpoint, endpointName, profileName, resourceGroup));
                     }
 
                     this.WriteObject(deleted);

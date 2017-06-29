@@ -20,8 +20,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
     using System.Collections.Generic;
     using System.Management.Automation;
     using WindowsAzure.Commands.Test.Utilities.Common;
+    using Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests;
     using Xunit;
     using Xunit.Abstractions;
+
     public class AddAzureTrafficManagerEndpointConfigTests : RMTestBase
     {
         public AddAzureTrafficManagerEndpointConfigTests(ITestOutputHelper output)
@@ -50,6 +52,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
 
             var exception = Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
             Assert.Equal("There is already an existing endpoint with name 'Name'.", exception.Message);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-AddEndpoint");
         }
     }
 }

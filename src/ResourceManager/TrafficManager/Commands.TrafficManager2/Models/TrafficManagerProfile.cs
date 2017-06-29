@@ -48,35 +48,5 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         public int? MonitorToleratedNumberOfFailures { get; set; }
 
         public List<TrafficManagerEndpoint> Endpoints { get; set; }
-
-        public Profile ToSDKProfile()
-        {
-            var profile = new Profile(this.Id, this.Name, Constants.ProfileType, TrafficManagerClient.ProfileResourceLocation)
-            { 
-                ProfileStatus = this.ProfileStatus,
-                TrafficRoutingMethod = this.TrafficRoutingMethod,
-                DnsConfig = new DnsConfig
-                {
-                    RelativeName = this.RelativeDnsName,
-                    Ttl = this.Ttl
-                },
-                MonitorConfig = new MonitorConfig
-                {
-                    Protocol = this.MonitorProtocol,
-                    Port = this.MonitorPort,
-                    Path = this.MonitorPath,
-                    IntervalInSeconds = this.MonitorIntervalInSeconds,
-                    TimeoutInSeconds = this.MonitorTimeoutInSeconds,
-                    ToleratedNumberOfFailures = this.MonitorToleratedNumberOfFailures,
-                }
-            };
-
-            if (this.Endpoints != null && this.Endpoints.Any())
-            {
-                profile.Endpoints = this.Endpoints.Select(endpoint => endpoint.ToSDKEndpoint()).ToList();
-            }
-
-            return profile;
-        }
     }
 }

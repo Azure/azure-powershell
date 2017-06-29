@@ -19,19 +19,18 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true), 
-        OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = TrafficManagerBaseCmdlet.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = TrafficManagerBaseCmdlet.ObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
@@ -40,34 +39,21 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         public override void ExecuteCmdlet()
         {
-            var deleted = false;
-            TrafficManagerProfile profileToDelete = null;
-
-            if (this.ParameterSetName == "Fields")
-            {
-                profileToDelete = new TrafficManagerProfile
-                {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName
-                };
-            }
-            else if (this.ParameterSetName == "Object")
-            {
-                profileToDelete = this.TrafficManagerProfile;
-            }
+            string resourceGroupName = this.ParameterSetName == TrafficManagerBaseCmdlet.FieldsParameterSet ? this.ResourceGroupName : this.TrafficManagerProfile.ResourceGroupName;
+            string profileName = this.ParameterSetName == TrafficManagerBaseCmdlet.FieldsParameterSet ? this.Name : this.TrafficManagerProfile.Name;
 
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(ProjectResources.Confirm_RemoveProfile, profileToDelete.Name),
+                string.Format(ProjectResources.Confirm_RemoveProfile, profileName),
                 ProjectResources.Progress_RemovingProfile,
                 this.Name,
                 () =>
                 {
-                    deleted = this.TrafficManagerClient.DeleteTrafficManagerProfile(profileToDelete);
+                    bool deleted = this.TrafficManagerClient.DeleteTrafficManagerProfile(resourceGroupName, profileName);
                     if (deleted)
                     {
                         this.WriteVerbose(ProjectResources.Success);
-                        this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileToDelete.Name, profileToDelete.ResourceGroupName));
+                        this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileName, resourceGroupName));
                     }
 
                     this.WriteObject(deleted);

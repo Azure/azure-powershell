@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-
 namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
-    using Common.Authentication.Abstractions;
-    using Management.TrafficManager;
-    using Management.TrafficManager.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Models;
+    
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
+
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Microsoft.Azure.Commands.TrafficManager.Models;
+    using Microsoft.Azure.Management.TrafficManager;
+    using Microsoft.Azure.Management.TrafficManager.Models;
 
     public class TrafficManagerClient
     {
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     Tags = TagsConversionHelper.CreateTagDictionary(tag, validate: true),
                 });
 
-            return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response);
+            return Convert.ToTrafficManagerProfile(resourceGroupName, profileName, response);
         }
 
         public TrafficManagerEndpoint CreateTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, string targetResourceId, string target, string endpointStatus, uint? weight, uint? priority, string endpointLocation, uint? minChildEndpoints, IList<string> geoMapping)
@@ -95,21 +96,21 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     Weight = weight,
                 });
 
-            return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(response.Id, resourceGroupName, profileName, endpointType, endpointName, response);
+            return Convert.ToTrafficManagerEndpoint(response.Id, resourceGroupName, profileName, endpointType, endpointName, response);
         }
 
         public TrafficManagerProfile GetTrafficManagerProfile(string resourceGroupName, string profileName)
         {
             Profile response = this.TrafficManagerManagementClient.Profiles.Get(resourceGroupName, profileName);
 
-            return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response);
+            return Convert.ToTrafficManagerProfile(resourceGroupName, profileName, response);
         }
 
         public TrafficManagerEndpoint GetTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName)
         {
             Endpoint response = this.TrafficManagerManagementClient.Endpoints.Get(resourceGroupName, profileName, endpointType, endpointName);
 
-            return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(
+            return Convert.ToTrafficManagerEndpoint(
                 response.Id,
                 resourceGroupName,
                 profileName,
@@ -125,15 +126,15 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 this.TrafficManagerManagementClient.Profiles.ListAll() :
                 this.TrafficManagerManagementClient.Profiles.ListAllInResourceGroup(resourceGroupName);
 
-            return response.Select(profile => TrafficManagerClient.GetPowershellTrafficManagerProfile(
-                resourceGroupName ?? TrafficManagerClient.ExtractResourceGroupFromId(profile.Id),
+            return response.Select(profile => Convert.ToTrafficManagerProfile(
+                resourceGroupName ?? new TrafficManagerProfileResourceId(profile.Id).ResourceGroup,
                 profile.Name,
                 profile)).ToArray();
         }
 
         public TrafficManagerProfile SetTrafficManagerProfile(TrafficManagerProfile profile)
         {
-            Profile profileToSet = profile.ToSDKProfile();
+            Profile profileToSet = Convert.ToSDKProfile(profile);
 
             Profile response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 profile.ResourceGroupName,
@@ -141,12 +142,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 profileToSet
                 );
 
-            return TrafficManagerClient.GetPowershellTrafficManagerProfile(profile.ResourceGroupName, profile.Name, response);
+            return Convert.ToTrafficManagerProfile(profile.ResourceGroupName, profile.Name, response);
         }
 
         public TrafficManagerEndpoint SetTrafficManagerEndpoint(TrafficManagerEndpoint endpoint)
         {
-            Endpoint endpointToSet = endpoint.ToSDKEndpoint();
+            Endpoint endpointToSet = Convert.ToSDKEndpoint(endpoint);
 
             Endpoint response = this.TrafficManagerManagementClient.Endpoints.CreateOrUpdate(
                 endpoint.ResourceGroupName,
@@ -155,7 +156,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 endpoint.Name,
                 endpointToSet);
 
-            return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(
+            return Convert.ToTrafficManagerEndpoint(
                 endpoint.Id,
                 endpoint.ResourceGroupName,
                 endpoint.ProfileName,
@@ -164,33 +165,21 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 response);
         }
 
-        public bool DeleteTrafficManagerProfile(TrafficManagerProfile profile)
+        public bool DeleteTrafficManagerProfile(string resourceGroupName, string profileName)
         {
-            // DeleteOperationResult response = 
-            HttpStatusCode code =
-                this.DeleteTrafficManagerProfile(profile.ResourceGroupName, profile.Name);
+            HttpStatusCode code = this.DeleteTrafficManagerProfileAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
 
             return code == HttpStatusCode.OK;
         }
 
-        public bool DeleteTrafficManagerEndpoint(TrafficManagerEndpoint trafficManagerEndpoint)
+        public bool DeleteTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName)
         {
-            // DeleteOperationResult response = 
-            HttpStatusCode code =
-            this.DeleteTrafficManagerEndpoint(
-                trafficManagerEndpoint.ResourceGroupName,
-                trafficManagerEndpoint.ProfileName,
-                trafficManagerEndpoint.Type,
-                trafficManagerEndpoint.Name);
+            HttpStatusCode code = this.DeleteTrafficManagerEndpointAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
 
             return code == HttpStatusCode.OK;
         }
 
         #region BUG#1226881 Traffic Manager does not return a response body to Delete operations
-        private HttpStatusCode DeleteTrafficManagerProfile(string resourceGroupName, string profileName)
-        {
-            return this.DeleteTrafficManagerProfileAsync(resourceGroupName, profileName).GetAwaiter().GetResult();
-        }
 
         private async System.Threading.Tasks.Task<HttpStatusCode> DeleteTrafficManagerProfileAsync(string resourceGroupName, string profileName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
@@ -200,11 +189,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             }
         }
 
-        private HttpStatusCode DeleteTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName)
-        {
-            return this.DeleteTrafficManagerEndpointAsync(resourceGroupName, profileName, endpointType, endpointName).GetAwaiter().GetResult();
-        }
-
         private async System.Threading.Tasks.Task<HttpStatusCode> DeleteTrafficManagerEndpointAsync(string resourceGroupName, string profileName, string endpointType, string endpointName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await this.TrafficManagerManagementClient.Endpoints.DeleteWithHttpMessagesAsync(resourceGroupName, profileName, endpointType, endpointName, null, cancellationToken).ConfigureAwait(false))
@@ -212,104 +196,45 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 return _result.Response.StatusCode;
             }
         }
+
         #endregion
 
-        public bool EnableDisableTrafficManagerProfile(TrafficManagerProfile profile, bool shouldEnableProfileStatus)
+        public bool EnableTrafficManagerProfile(string resourceGroup, string profileName)
         {
-            profile.ProfileStatus = shouldEnableProfileStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
+            return this.EnableDisableTrafficManagerProfile(resourceGroup, profileName, shouldEnableProfileStatus: true);
+        }
 
-            Profile sdkProfile = profile.ToSDKProfile();
-            sdkProfile.DnsConfig = null;
-            sdkProfile.Endpoints = null;
-            sdkProfile.TrafficRoutingMethod = null;
-            sdkProfile.MonitorConfig = null;
+        public bool DisableTrafficManagerProfile(string resourceGroup, string profileName)
+        {
+            return this.EnableDisableTrafficManagerProfile(resourceGroup, profileName, shouldEnableProfileStatus: false);
+        }
 
-            Profile response = this.TrafficManagerManagementClient.Profiles.Update(profile.ResourceGroupName, profile.Name, sdkProfile);
+        private bool EnableDisableTrafficManagerProfile(string resourceGroup, string profileName, bool shouldEnableProfileStatus)
+        {
+            var profile = new Profile(profileStatus: shouldEnableProfileStatus ? Constants.StatusEnabled : Constants.StatusDisabled);
+
+            this.TrafficManagerManagementClient.Profiles.Update(resourceGroup, profileName, profile);
 
             return true;
         }
 
-        public bool EnableDisableTrafficManagerEndpoint(TrafficManagerEndpoint endpoint, bool shouldEnableEndpointStatus)
+        public bool EnableTrafficManagerEndpoint(string resourceGroup, string profileName, string endpointType, string endpointName)
         {
-            endpoint.EndpointStatus = shouldEnableEndpointStatus ? Constants.StatusEnabled : Constants.StatusDisabled;
+            return this.EnableDisableTrafficManagerEndpoint(resourceGroup, profileName, endpointType, endpointName, shouldEnableEndpointStatus: true);
+        }
 
-            Endpoint sdkEndpoint = endpoint.ToSDKEndpointForPatch();
-            sdkEndpoint.EndpointStatus = endpoint.EndpointStatus;
+        public bool DisableTrafficManagerEndpoint(string resourceGroup, string profileName, string endpointType, string endpointName)
+        {
+            return this.EnableDisableTrafficManagerEndpoint(resourceGroup, profileName, endpointType, endpointName, shouldEnableEndpointStatus: false);
+        }
 
-            Endpoint response = this.TrafficManagerManagementClient.Endpoints.Update(
-                endpoint.ResourceGroupName,
-                endpoint.ProfileName,
-                endpoint.Type,
-                endpoint.Name,
-                sdkEndpoint);
+        private bool EnableDisableTrafficManagerEndpoint(string resourceGroup, string profileName, string endpointType, string endpointName, bool shouldEnableEndpointStatus)
+        {
+            var sdkEndpoint = new Endpoint(name: endpointName, type: TrafficManagerEndpoint.ToFullEndpointType(endpointType), endpointStatus: shouldEnableEndpointStatus ? Constants.StatusEnabled : Constants.StatusDisabled);
+
+            this.TrafficManagerManagementClient.Endpoints.Update(resourceGroup, profileName, endpointType, endpointName, sdkEndpoint);
 
             return true;
-        }
-
-        private static TrafficManagerProfile GetPowershellTrafficManagerProfile(string resourceGroupName, string profileName, Profile sdkProfile)
-        {
-            var profile = new TrafficManagerProfile
-            {
-                Id = sdkProfile.Id,
-                Name = profileName,
-                ResourceGroupName = resourceGroupName,
-                ProfileStatus = sdkProfile.ProfileStatus,
-                RelativeDnsName = sdkProfile.DnsConfig.RelativeName,
-                Ttl = (uint)sdkProfile.DnsConfig.Ttl,
-                TrafficRoutingMethod = sdkProfile.TrafficRoutingMethod,
-                MonitorProtocol = sdkProfile.MonitorConfig.Protocol,
-                MonitorPort = (uint)sdkProfile.MonitorConfig.Port,
-                MonitorPath = sdkProfile.MonitorConfig.Path,
-                MonitorIntervalInSeconds = (int?)sdkProfile.MonitorConfig.IntervalInSeconds,
-                MonitorTimeoutInSeconds = (int?)sdkProfile.MonitorConfig.TimeoutInSeconds,
-                MonitorToleratedNumberOfFailures = (int?)sdkProfile.MonitorConfig.ToleratedNumberOfFailures,
-            };
-
-            if (sdkProfile.Endpoints != null)
-            {
-                profile.Endpoints = new List<TrafficManagerEndpoint>();
-
-                foreach (Endpoint endpoint in sdkProfile.Endpoints)
-                {
-                    profile.Endpoints.Add(
-                        GetPowershellTrafficManagerEndpoint(
-                            endpoint.Id,
-                            resourceGroupName,
-                            profileName,
-                            endpoint.Type,
-                            endpoint.Name, 
-                            endpoint));
-                }
-            }
-
-            return profile;
-        }
-
-        private static string ExtractResourceGroupFromId(string id)
-        {
-            return id.Split('/')[4];
-        }
-
-        private static TrafficManagerEndpoint GetPowershellTrafficManagerEndpoint(string id, string resourceGroupName, string profileName, string endpointType, string endpointName, Endpoint sdkEndpoint)
-        {
-            return new TrafficManagerEndpoint
-            {
-                Id = id,
-                ResourceGroupName = resourceGroupName,
-                ProfileName = profileName,
-                Name = endpointName,
-                Type = TrafficManagerEndpoint.ToShortEndpointType(endpointType),
-
-                EndpointStatus = sdkEndpoint.EndpointStatus,
-                EndpointMonitorStatus = sdkEndpoint.EndpointMonitorStatus,
-                GeoMapping = sdkEndpoint.GeoMapping != null ? sdkEndpoint.GeoMapping.ToList() : null,
-                Location = sdkEndpoint.EndpointLocation,
-                MinChildEndpoints = (uint?)sdkEndpoint.MinChildEndpoints,
-                Priority = (uint?)sdkEndpoint.Priority,
-                Target = sdkEndpoint.Target,
-                TargetResourceId = sdkEndpoint.TargetResourceId,
-                Weight = (uint?)sdkEndpoint.Weight,
-            };
         }
     }
 }

@@ -82,10 +82,12 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -135,7 +137,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\EnableAzureTrafficManagerProfileTests.cs" />
+    <Compile Include="ScenarioTests\EnableAzureTrafficManagerEndpointTests.cs" />
+    <Compile Include="ScenarioTests\DisableAzureTrafficManagerProfileTests.cs" />
+    <Compile Include="ScenarioTests\DisableAzureTrafficManagerEndpointTests.cs" />
+    <Compile Include="ScenarioTests\RemoveAzureTrafficManagerProfileTests.cs" />
+    <Compile Include="ScenarioTests\RemoveAzureTrafficManagerEndpointTests.cs" />
+    <Compile Include="ScenarioTests\RemoveAzureTrafficManagerEndpointConfigTests.cs" />
+    <Compile Include="ScenarioTests\NewAzureTrafficManagerEndpointTests.cs" />
+    <Compile Include="ScenarioTests\GetAzureTrafficManagerEndpointTests.cs" />
     <Compile Include="ScenarioTests\NestedEndpointsTests.cs" />
+    <Compile Include="ScenarioTests\GetAzureTrafficManagerProfileTests.cs" />
+    <Compile Include="ScenarioTests\NewAzureTrafficManagerProfileTests.cs" />
     <Compile Include="ScenarioTests\ProfileTests.cs" />
     <Compile Include="ScenarioTests\EndpointTests.cs" />
     <Compile Include="ScenarioTests\TestController.cs" />
@@ -146,15 +159,54 @@
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">
       <Link>ScenarioTests\AzureRM.Resources.ps1</Link>
     </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\DisableAzureTrafficManagerProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\DisableAzureTrafficManagerEndpointTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\EnableAzureTrafficManagerEndpointTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\RemoveAzureTrafficManagerProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\RemoveAzureTrafficManagerEndpointTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\RemoveAzureTrafficManagerEndpointConfigTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\NewAzureTrafficManagerEndpointTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\GetAzureTrafficManagerEndpointTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\EndpointTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\AddAzureTrafficManagerEndpointConfigTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\NestedEndpointsTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\EnableAzureTrafficManagerProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\GetAzureTrafficManagerProfileTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\NewAzureTrafficManagerProfileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ProfileTests.ps1">
