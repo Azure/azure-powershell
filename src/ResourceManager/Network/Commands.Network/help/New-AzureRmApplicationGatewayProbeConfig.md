@@ -13,8 +13,9 @@ Creates a health probe.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayProbeConfig -Name <String> -Protocol <String> -HostName <String> -Path <String>
- -Interval <UInt32> -Timeout <UInt32> -UnhealthyThreshold <UInt32> [<CommonParameters>]
+New-AzureRmApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] -Path <String>
+ -Interval <UInt32> -Timeout <UInt32> -UnhealthyThreshold <UInt32> [-PickHostNameFromBackendHttpSettings]
+ [-MinServers <UInt32>] [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -57,6 +58,32 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Match
+Body that must be contained in the health response. Default value is empty```yaml
+Type: PSApplicationGatewayProbeHealthResponseMatch
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinServers
+Minimum number of servers that are always marked healthy. Default value is 0```yaml
+Type: UInt32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,6 +116,19 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PickHostNameFromBackendHttpSettings
+Whether the host header should be picked from the backend http settings. Default value is false```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -18,6 +18,7 @@ Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway <PSApplicat
  [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
+ [-PickHostNameFromBackendAddress] [-AffinityCookieName <String>] [-ProbeEnabled] [-Path <String>]
  [<CommonParameters>]
 ```
 
@@ -38,6 +39,19 @@ The first command gets the application gateway named ApplicationGateway01 that b
 The second command updates the HTTP settings of the application gateway in the $AppGw variable to use port 88, the HTTP protocol and enables cookie-based affinity.
 
 ## PARAMETERS
+
+### -AffinityCookieName
+Cookie name to use for the affinity cookie```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApplicationGateway
 Specifies an application gateway object with which this cmdlet associates back-end HTTP settings.
@@ -114,6 +128,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Path
+Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PickHostNameFromBackendAddress
+Whether to pick host header should be picked from the host name of the backend server. Default value is false```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Port
 Specifies the port to use for each server in the back-end server pool.
 
@@ -134,6 +174,19 @@ Specifies a probe to associate with the back-end HTTP settings.
 
 ```yaml
 Type: PSApplicationGatewayProbe
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeEnabled
+Whether the probe is enabled. Default value is false```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
