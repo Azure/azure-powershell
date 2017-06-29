@@ -1,0 +1,155 @@
+{
+  ".github": [],
+  "documentation": [],
+  "setup": [
+    ".\\tools\\StaticAnalysis\\StaticAnalysis.Test\\bin\\Debug\\StaticAnalysis.Test.dll"
+  ],
+  "src/Common": [
+    ".\\src\\Common\\Commands.Common.Authentication.Test\\bin\\Debug\\Microsoft.Azure.Commands.Common.Authentication.Test.dll"
+  ],
+  "src/ResourceManager/AnalysisServices/": [],
+  "src/ResourceManager/ApiManagement/": [
+    ".\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApiManagement.Test.dll"
+  ],
+  "src/ResourceManager/Automation/": [
+    ".\\src\\ResourceManager\\Automation\\Commands.Automation.Test\\bin\\Debug\\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"
+  ],
+  "src/ResourceManager/AzureBackup/": [
+    ".\\src\\ResourceManager\\AzureBackup\\Commands.AzureBackup.Test\\bin\\Debug\\Microsoft.Azure.Commands.AzureBackup.Test.dll"
+  ],
+  "src/ResourceManager/AzureBatch/": [
+    ".\\src\\ResourceManager\\AzureBatch\\Commands.Batch.Test\\bin\\Debug\\Microsoft.Azure.Commands.Batch.Test.dll"
+  ],
+  "src/ResourceManager/AzureStackStorage/": [],
+  "src/ResourceManager/Billing/": [
+    ".\\src\\ResourceManager\\Billing\\Commands.Billing.Test\\bin\\Debug\\Microsoft.Azure.Commands.Billing.Test.dll"
+  ],
+  "src/ResourceManager/Cdn/": [
+    ".\\src\\ResourceManager\\Cdn\\Commands.Cdn.Test\\bin\\Debug\\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"
+  ],
+  "src/ResourceManager/CognitiveServices/": [
+    ".\\src\\ResourceManager\\CognitiveServices\\CognitiveServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"
+  ],
+  "src/ResourceManager/Compute/": [
+    ".\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\bin\\Debug\\Microsoft.Azure.Commands.Compute.Test.dll"
+  ],
+  "src/ResourceManager/Consumption/": [
+    ".\\src\\ResourceManager\\Consumption\\Commands.Consumption.Test\\bin\\Debug\\Microsoft.Azure.Commands.Consumption.Test.dll"
+  ],
+  "src/ResourceManager/ContainerRegistry/": [
+    ".\\src\\ResourceManager\\ContainerRegistry\\Commands.ContainerRegistry.Test\\bin\\Debug\\Microsoft.Azure.Commands.ContainerRegistry.Test.dll"
+  ],
+  "src/ResourceManager/DataFactories/": [
+    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactories.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactories.Test.dll"
+  ],
+  "src/ResourceManager/DataLakeAnalytics/": [
+    ".\\src\\ResourceManager\\DataLakeAnalytics\\Commands.DataLakeAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"
+  ],
+  "src/ResourceManager/DataLakeStore/": [
+    ".\\src\\ResourceManager\\DataLakeStore\\Commands.DataLakeStore.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataLake.Test.dll"
+  ],
+  "src/ResourceManager/DevTestLabs/": [],
+  "src/ResourceManager/Dns/": [
+    ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"
+  ],
+  "src/ResourceManager/EventHub/": [
+    ".\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\bin\\Debug\\Microsoft.Azure.Commands.EventHubs.Test.dll"
+  ],
+  "src/ResourceManager/HDInsight/": [
+    ".\\src\\ResourceManager\\HDInsight\\Commands.HDInsight.Test\\bin\\Debug\\Commands.HDInsight.Test.dll"
+  ],
+  "src/ResourceManager/Insights/": [
+    ".\\src\\ResourceManager\\Insights\\Commands.Insights.Test\\bin\\Debug\\Microsoft.Azure.Commands.Insights.Test.dll"
+  ],
+  "src/ResourceManager/IotHub/": [
+    ".\\src\\ResourceManager\\IotHub\\Commands.IotHub.Test\\bin\\Debug\\Microsoft.Azure.Commands.IotHub.Test.dll"
+  ],
+  "src/ResourceManager/KeyVault/": [
+    ".\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\bin\\Debug\\Microsoft.Azure.Commands.KeyVault.Test.dll"
+  ],
+  "src/ResourceManager/LogicApp/": [
+    ".\\src\\ResourceManager\\LogicApp\\Commands.LogicApp.Test\\bin\\Debug\\Microsoft.Azure.Commands.LogicApp.Test.dll"
+  ],
+  "src/ResourceManager/MachineLearning/": [],
+  "src/ResourceManager/Media/": [],
+  "src/ResourceManager/Network/": [
+    ".\\src\\ResourceManager\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.Azure.Commands.Network.Test.dll"
+  ],
+  "src/ResourceManager/NotificationHubs /": [
+    ".\\src\\ResourceManager\\NotificationHubs\\Commands.NotificationHubs.Test\\bin\\Debug\\Microsoft.Azure.Commands.NotificationHubs.Test.dll"
+  ],
+  "src/ResourceManager/OperationalInsights/": [
+    ".\\src\\ResourceManager\\OperationalInsights\\Commands.OperationalInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.OperationalInsights.Test.dll"
+  ],
+  "src/ResourceManager/PowerBIEmbedded/": [
+    ".\\src\\ResourceManager\\PowerBIEmbedded\\Commands.PowerBIEmbedded.Test\\bin\\Debug\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"
+  ],
+  "src/ResourceManager/Profile/": [
+    ".\\src\\ResourceManager\\Profile\\Commands.Profile.Test\\bin\\Debug\\Microsoft.Azure.Commands.Profile.Test.dll"
+  ],
+  "src/ResourceManager/RecoveryServices.Backup/": [
+    ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"
+  ],
+  "src/ResourceManager/RecoveryServices/": [
+    ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll"
+  ],
+  "src/ResourceManager/RedisCache/": [
+    ".\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\bin\\Debug\\Microsoft.Azure.Commands.RedisCache.Test.dll"
+  ],
+  "src/ResourceManager/Relay/": [
+    ".\\src\\ResourceManager\\Relay\\Commands.Relay.Test\\bin\\Debug\\Microsoft.Azure.Commands.Relay.Test.dll"
+  ],
+  "src/ResourceManager/Resources/": [
+    ".\\src\\ResourceManager\\Resources\\Commands.Resources.Test\\bin\\Debug\\Microsoft.Azure.Commands.Resources.Test.dll"
+  ],
+  "src/ResourceManager/Scheduler/": [
+    ".\\src\\ResourceManager\\Scheduler\\Commands.Scheduler.Test\\bin\\Debug\\Microsoft.Azure.Commands.Scheduler.Test.dll"
+  ],
+  "src/ResourceManager/ServerManagement/": [],
+  "src/ResourceManager/ServiceBus/": [
+    ".\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceBus.Test.dll"
+  ],
+  "src/ResourceManager/ServiceFabric/": [
+    ".\\src\\ResourceManager\\ServiceFabric\\Commands.ServiceFabric.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceFabric.Test.dll"
+  ],
+  "src/ResourceManager/SiteRecovery/": [
+    ".\\src\\ResourceManager\\SiteRecovery\\Commands.SiteRecovery.Test\\bin\\Debug\\Microsoft.Azure.Commands.SiteRecovery.Test.dll"
+  ],
+  "src/ResourceManager/Sql/": [
+    ".\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\bin\\Debug\\Microsoft.Azure.Commands.Sql.Test.dll"
+  ],
+  "src/ResourceManager/Storage/": [
+    ".\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\bin\\Debug\\Microsoft.Azure.Commands.Management.Storage.Test.dll"
+  ],
+  "src/ResourceManager/StreamAnalytics/": [
+    ".\\src\\ResourceManager\\StreamAnalytics\\Commands.StreamAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"
+  ],
+  "src/ResourceManager/Tags/": [],
+  "src/ResourceManager/TrafficManager/": [
+    ".\\src\\ResourceManager\\TrafficManager\\Commands.TrafficManager2.Test\\bin\\Debug\\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"
+  ],
+  "src/ResourceManager/UsageAggregates/": [
+    ".\\src\\ResourceManager\\UsageAggregates\\Commands.UsageAggregates.Test\\bin\\Debug\\Microsoft.Azure.Commands.UsageAggregates.Test.dll"
+  ],
+  "src/ResourceManager/Websites/": [
+    ".\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\bin\\Debug\\Microsoft.Azure.Commands.Websites.Test.dll"
+  ],
+  "src/ServiceManagement/": [
+    ".\\src\\ServiceManagement\\Common\\Commands.Common.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Common.Test.dll",
+    ".\\src\\ServiceManagement\\Services\\Commands.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Test.dll",
+    ".\\src\\ServiceManagement\\StorSimple\\Commands.StorSimple.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll",
+    ".\\src\\ServiceManagement\\RemoteApp\\Commands.RemoteApp.Test\\bin\\Debug\\Microsoft.Azure.Commands.RemoteApp.Tests.dll",
+    ".\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\bin\\Debug\\Microsoft.WindowsAzure.Commands.ScenarioTest.dll",
+    ".\\src\\ServiceManagement\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Test.dll",
+    ".\\src\\ServiceManagement\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"
+  ],
+  "src/Storage/": [
+    ".\\src\\Storage\\Commands.Storage.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Storage.Test.dll"
+  ],
+  ".gitattributes": [],
+  "CONTRIBUTING.md": [],
+  "ChangeLog.md": [],
+  "LICENSE.txt": [],
+  "README.md": [],
+  "appveyor.yml": []
+}
