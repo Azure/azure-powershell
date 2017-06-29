@@ -24,21 +24,13 @@ The **Disable-AzureRmHDInsightOperationsManagementSuite** cmdlet disables Operat
 ### Example 1
 ```
 PS C:\> Disable-AzureRmHDInsightOMS -Name testcluster
-```
 
-```
 ErrorInfo  :
-```
 
-``` 
 State      : Succeeded
-```
 
-```
 RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-```
 
-```
 StatusCode : OK
 ```
 
@@ -47,21 +39,13 @@ Operations Management Suite (OMS) will be disabled on the HDInsight cluster and 
 ### Example 2
 ```
 PS C:\> Disable-AzureRmHDInsightOMS -Name testcluster -ResourceGroupName testrg
-```
 
-```
 ErrorInfo  :
-```
 
-``` 
 State      : Succeeded
-```
 
-```
 RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-```
 
-```
 StatusCode : OK
 ```
 
@@ -80,7 +64,7 @@ Aliases: ClusterName
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue, ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

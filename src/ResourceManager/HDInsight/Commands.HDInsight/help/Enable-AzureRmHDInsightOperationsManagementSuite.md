@@ -24,21 +24,13 @@ The **Enable-AzureRmHDInsightOperationsManagementSuite** cmdlet enables Operatio
 ### Example 1
 ```
 PS C:\> Enable-AzureRmHDInsightOMS -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
-```
 
-```
-ErrorInfo  : 
-```
+ErrorInfo  :
 
-```
 State      : Succeeded
-```
 
-```
 RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-```
 
-```
 StatusCode : OK
 ```
 
@@ -47,21 +39,13 @@ Operations Management Suite (OMS) will be enabled on the HDInsight cluster and r
 ### Example 2
 ```
 PS C:\> Enable-AzureRmHDInsightOMS -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
-```
 
-```
 ErrorInfo  :
-```
 
-``` 
 State      : Succeeded
-```
 
-```
 RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-```
 
-```
 StatusCode : OK
 ```
 
@@ -80,7 +64,7 @@ Aliases: ClusterName
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue, ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

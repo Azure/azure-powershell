@@ -21,7 +21,10 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsLifecycle.Enable, Constants.CommandNames.AzureHDInsightOMS)]
+    [Cmdlet(
+        VerbsLifecycle.Enable,
+        Constants.CommandNames.AzureHDInsightOMS,
+        SupportsShouldProcess = true)]
     [Alias("Enable-AzureRmHDInsightOMS")]
     [OutputType(typeof(OperationResource))]
     public class EnableAzureHDInsightOMSCommand : HDInsightCmdletBase, IModuleAssemblyInitializer
@@ -69,8 +72,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 PrimaryKey = PrimaryKey
             };
 
-            var operationResource = HDInsightManagementClient.EnableOMS(ResourceGroupName, Name, monitoringParams);
-            WriteObject(operationResource);
+            if (ShouldProcess("Enable Operations Management Suite"))
+            {
+                var operationResource = HDInsightManagementClient.EnableOMS(ResourceGroupName, Name, monitoringParams);
+                WriteObject(operationResource);
+            }
         }
 
         /// <summary>
