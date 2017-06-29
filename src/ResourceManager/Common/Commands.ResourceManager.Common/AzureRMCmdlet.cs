@@ -193,7 +193,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             _dataCollectionProfile.EnableAzureDataCollection = true;
             SaveDataCollectionProfile();
-            }
         }
 
         protected override void InitializeQosEvent()
