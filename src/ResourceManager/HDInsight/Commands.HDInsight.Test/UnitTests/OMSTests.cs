@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableOMS()
         {
+            SetupConfirmation(commandRuntimeMock);
+
             var enableOMScmdlet = new EnableAzureHDInsightOMSCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -63,7 +65,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 .Verifiable();
 
             enableOMScmdlet.ExecuteCmdlet();
-            commandRuntimeMock.VerifyAll();
+
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<OperationResource>(
                 omsout =>
                     omsout.ErrorInfo == null &&
@@ -94,7 +96,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             getOMScmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.VerifyAll();
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightOMS>(
                 omsout =>
                     omsout.ClusterMonitoringEnabled.Contains("1d364e89-bb71-4503-aa3d-a23535aea7bd"))),
@@ -105,6 +106,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableOMS()
         {
+            SetupConfirmation(commandRuntimeMock);
+
             var disableOMScmdlet = new DisableAzureHDInsightOMSCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -124,7 +127,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             disableOMScmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.VerifyAll();
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<OperationResource>(
                 omsout =>
                     omsout.ErrorInfo == null &&
