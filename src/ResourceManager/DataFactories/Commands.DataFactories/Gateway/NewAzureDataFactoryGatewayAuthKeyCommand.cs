@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The data factory object.")]
         [Alias("DataFactory")]
+        [ValidateNotNull]
         public PSDataFactory InputObject { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -45,18 +46,8 @@ namespace Microsoft.Azure.Commands.DataFactories
         
         public override void ExecuteCmdlet()
         {
-            if (!ShouldProcess("New-AzureRmDataFactoryGatewayAuthKey"))
-            {
-                return;
-            }
-
             if (ParameterSetName == ByFactoryObject)
             {
-                if (InputObject == null)
-                {
-                    throw new PSArgumentNullException(string.Format(CultureInfo.InvariantCulture, Resources.DataFactoryArgumentInvalid));
-                }
-
                 DataFactoryName = InputObject.DataFactoryName;
                 ResourceGroupName = InputObject.ResourceGroupName;
             }
@@ -66,8 +57,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                 KeyName = KeyName
             };
 
-            PSDataFactoryGatewayAuthKey gatewayKey = DataFactoryClient.RegenerateGatewayAuthKey(ResourceGroupName, DataFactoryName, GatewayName, param);
-            WriteObject(gatewayKey);
+            if (ShouldProcess(this.DataFactoryName, "New Data Factory Gateway Auth Key"))
+            {
+                PSDataFactoryGatewayAuthKey gatewayKey = DataFactoryClient.RegenerateGatewayAuthKey(ResourceGroupName, DataFactoryName, GatewayName, param);
+                WriteObject(gatewayKey);
+            }
+
         }
     }
 }
