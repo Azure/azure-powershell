@@ -357,6 +357,13 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ExpressRouteCircuitPeering, CNM.PSPeering>();
             Mapper.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
 
+            // Ipv6ExpressRouteCircuitPeeringConfig
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSIpv6PeeringConfig, MNM.Ipv6ExpressRouteCircuitPeeringConfig>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.Ipv6ExpressRouteCircuitPeeringConfig, CNM.PSIpv6PeeringConfig>();
+
             // ExpressRouteServiceProvider
             // CNM to MNM
             Mapper.CreateMap<CNM.PSExpressRouteServiceProvider, MNM.ExpressRouteServiceProvider>();
