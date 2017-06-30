@@ -12,8 +12,8 @@ Grants an access to a disk.
 ## SYNTAX
 
 ```
-Grant-AzureRmDiskAccess [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String>
- [[-Access] <AccessLevel>] [[-DurationInSecond] <Int32>] [<CommonParameters>]
+Grant-AzureRmDiskAccess [-ResourceGroupName] <String> [-DiskName] <String> [[-Access] <AccessLevel>]
+ [[-DurationInSecond] <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
