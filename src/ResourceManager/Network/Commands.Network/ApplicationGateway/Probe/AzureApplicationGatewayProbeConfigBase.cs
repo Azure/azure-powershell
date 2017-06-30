@@ -90,16 +90,18 @@ namespace Microsoft.Azure.Commands.Network
             probe.Interval = this.Interval;
             probe.Timeout = this.Timeout;
             probe.UnhealthyThreshold = this.UnhealthyThreshold;
-            probe.PickHostNameFromBackendHttpSettings = this.PickHostNameFromBackendHttpSettings;
+            if (this.PickHostNameFromBackendHttpSettings.IsPresent)
+            {
+                probe.PickHostNameFromBackendHttpSettings = true;
+            }
             probe.MinServers = this.MinServers;
+            probe.Match = this.Match;
 
             probe.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayProbeName,
                     this.Name);
-
-            probe.Match = this.Match;
 
             return probe;
         }

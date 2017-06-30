@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Whether to pick host header should be picked from the host name of the backend server. Default value is false")]
+            HelpMessage = "Flag if host header should be picked from the host name of the backend server.")]
         public SwitchParameter PickHostNameFromBackendAddress { get; set; }
 
         [Parameter(
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Whether the probe is enabled. Default value is false")]
+            HelpMessage = "Flag if probe should be enabled.")]
         public SwitchParameter ProbeEnabled { get; set; }
 
         [Parameter(

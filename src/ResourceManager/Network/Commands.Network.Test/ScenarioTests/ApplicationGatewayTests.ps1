@@ -378,7 +378,7 @@ function Test-ApplicationGatewayCRUD2
 		Assert-AreEqual $redirect01.TargetListenerId $redirect02.TargetListenerId
 		$getgw = Set-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirect01Name -RedirectType Permanent -TargetUrl "https://www.bing.com"
 
-		$getgw = Add-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirect03Name -RedirectType Permanent -TargetListener $listener01 -IncludePath
+		$getgw = Add-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirect03Name -RedirectType Permanent -TargetListener $listener01 -IncludePath $true
 		$getgw = Remove-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirect03Name
 
 		# Get for SslPolicy

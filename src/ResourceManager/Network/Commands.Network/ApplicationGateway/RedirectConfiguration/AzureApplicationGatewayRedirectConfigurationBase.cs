@@ -52,13 +52,12 @@ namespace Microsoft.Azure.Commands.Network
         public string TargetUrl { get; set; }
 
         [Parameter(
-                HelpMessage = "Include path in the redirected url")]
-        public SwitchParameter IncludePath { get; set; }
+                HelpMessage = "Include path in the redirected url. Default is true.")]
+        public bool? IncludePath { get; set; }
 
         [Parameter(
-                HelpMessage = "Include query string in the redirected url")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter IncludeQueryString { get; set; }
+                HelpMessage = "Include query string in the redirected url. Default is true.")]
+        public bool? IncludeQueryString { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -94,11 +93,11 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             redirectConfiguration.TargetUrl = this.TargetUrl;
-            if (this.IncludePath)
+            if (this.IncludePath != null)
             {
                 redirectConfiguration.IncludePath = this.IncludePath;
             }
-            if (this.IncludeQueryString)
+            if (this.IncludeQueryString != null)
             {
                 redirectConfiguration.IncludeQueryString = this.IncludeQueryString;
             }
