@@ -1638,42 +1638,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                IPage<DeletedSecretItem> result;
-
-                if ( string.IsNullOrEmpty( options.NextLink ) )
-                    result = this.keyVaultClient.GetDeletedSecretsAsync( vaultAddress ).GetAwaiter( ).GetResult( );
-                else
-                    result = this.keyVaultClient.GetDeletedSecretsNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
-
-                options.NextLink = result.NextPageLink;
-                return ( result == null ) ? new List<DeletedSecretIdentityItem>( ) :
-                    result.Select( ( deletedSecretItem ) => new DeletedSecretIdentityItem( deletedSecretItem, this.vaultUriHelper ) );
-            }
-            catch ( Exception ex )
-            {
-                throw GetInnerException( ex );
-            }
-
-
-            if ( options == null )
-                throw new ArgumentNullException( nameof( options ) );
-            if ( string.IsNullOrEmpty( options.VaultName ) )
-                throw new ArgumentException( KeyVaultProperties.Resources.InvalidVaultName );
-
-            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
-
-            try
-            {
                 IPage<DeletedCertificateItem> result;
 
                 if ( string.IsNullOrEmpty( options.NextLink ) )
-                    result = this.keyVaultClient.GetDeletedSecretsAsync( vaultAddress ).GetAwaiter( ).GetResult( );
+                    result = this.keyVaultClient.GetDeletedCertificatesAsync( vaultAddress ).GetAwaiter( ).GetResult( );
                 else
-                    result = this.keyVaultClient.GetDeletedSecretsNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
+                    result = this.keyVaultClient.GetDeletedCertificatesNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
 
                 options.NextLink = result.NextPageLink;
-                return ( result == null ) ? new List<DeletedSecretIdentityItem>( ) :
-                    result.Select( ( deletedSecretItem ) => new DeletedSecretIdentityItem( deletedSecretItem, this.vaultUriHelper ) );
+                return ( result == null ) ? new List<DeletedCertificateIdentityItem>( ) :
+                    result.Select( ( deletedItem ) => new DeletedCertificateIdentityItem( deletedItem, this.vaultUriHelper ) );
             }
             catch ( Exception ex )
             {
