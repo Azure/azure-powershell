@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public uint Interval { get; set; }
         public uint Timeout { get; set; }
         public uint UnhealthyThreshold { get; set; }
-        public bool PickHostNameFromBackendHttpSettings { get; set; }
-        public uint MinServers { get; set; }
+        public bool? PickHostNameFromBackendHttpSettings { get; set; }
+        public uint? MinServers { get; set; }
         public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
         public string ProvisioningState { get; set; }
         public string Type { get; set; }

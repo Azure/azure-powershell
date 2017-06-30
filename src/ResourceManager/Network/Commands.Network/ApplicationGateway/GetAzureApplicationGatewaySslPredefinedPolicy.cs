@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var policy = this.ApplicationGatewayClient.GetSslPredefinedPolicy(this.Name);
                 var psPolicy = Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy);
-                WriteObject(psPolicy);
+                WriteObject(psPolicy, true);
             }
             else
             {

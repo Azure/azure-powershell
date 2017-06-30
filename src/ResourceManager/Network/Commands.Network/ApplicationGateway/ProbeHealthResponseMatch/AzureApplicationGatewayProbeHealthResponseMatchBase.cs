@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Body { get; set; }
 
         [Parameter(
-            HelpMessage = "Allowed ranges of healthy status codes.Default range of healthy status codes is 200 - 399")]
+            HelpMessage = "Allowed ranges of healthy status codes. Default range of healthy status codes is 200 - 399")]
         [ValidateNotNullOrEmpty]
         public List<string> StatusCode { get; set; }
 
