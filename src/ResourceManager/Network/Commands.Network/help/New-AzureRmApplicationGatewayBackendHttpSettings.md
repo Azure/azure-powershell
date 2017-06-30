@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: C1B2D38F-E38E-4219-B375-C3CD16EE3A85
 online version: 
 schema: 2.0.0
 ---
@@ -23,7 +22,7 @@ New-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -Port <Int32> -P
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationGatewayBackendHttpSettings** cmdlet creates back-end HTTP settings for an application gateway.
+The New-AzureRmApplicationGatewayBackendHttpSettings cmdlet creates back-end HTTP settings for an application gateway.
 Back-end HTTP settings are applied to all back-end servers in a pool.
 
 ## EXAMPLES
@@ -39,7 +38,9 @@ The settings are stored in the $Setting variable.
 ## PARAMETERS
 
 ### -AffinityCookieName
-Cookie name to use for the affinity cookie```yaml
+Cookie name to use for the affinity cookie
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -67,7 +68,9 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionDraining
-Connection draining of the backend http settings resource.```yaml
+Connection draining of the backend http settings resource.
+
+```yaml
 Type: PSApplicationGatewayConnectionDraining
 Parameter Sets: (All)
 Aliases: 
@@ -111,7 +114,10 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.```yaml
+Path which should be used as a prefix for all HTTP requests.
+If no value is provided for this parameter, then no path will be prefixed.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -124,7 +130,9 @@ Accept wildcard characters: False
 ```
 
 ### -PickHostNameFromBackendAddress
-Whether to pick host header should be picked from the host name of the backend server. Default value is false```yaml
+Flag if host header should be picked from the host name of the backend server.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -167,7 +175,9 @@ Accept wildcard characters: False
 ```
 
 ### -ProbeEnabled
-Whether the probe is enabled. Default value is false```yaml
+Flag if probe should be enabled.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -241,12 +251,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayBackendHttpSettings](./Add-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Add-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Get-AzureRmApplicationGatewayBackendHttpSettings](./Get-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Get-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Remove-AzureRmApplicationGatewayBackendHttpSettings](./Remove-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Remove-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Set-AzureRmApplicationGatewayBackendHttpSettings](./Set-AzureRmApplicationGatewayBackendHttpSettings.md)
-
+[Set-AzureRmApplicationGatewayBackendHttpSettings]()
 

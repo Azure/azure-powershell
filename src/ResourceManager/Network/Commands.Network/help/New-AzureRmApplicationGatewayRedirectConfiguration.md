@@ -14,19 +14,20 @@ schema: 2.0.0
 ### SetByResourceId
 ```
 New-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <String>
- [-TargetListenerID <String>] [-IncludePath] [-IncludeQueryString]
+ [-TargetListenerID <String>] [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 New-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <String>
- [-TargetListener <PSApplicationGatewayHttpListener>] [-IncludePath] [-IncludeQueryString]
+ [-TargetListener <PSApplicationGatewayHttpListener>] [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>]
+ [<CommonParameters>]
 ```
 
 ### SetByURL
 ```
 New-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <String> [-TargetUrl <String>]
- [-IncludePath] [-IncludeQueryString]
+ [-IncludePath <Boolean>] [-IncludeQueryString <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,10 +45,11 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -IncludePath
-Include path in the redirected url
+Include path in the redirected url.
+Default is true.
 
 ```yaml
-Type: SwitchParameter
+Type: Boolean
 Parameter Sets: (All)
 Aliases: 
 
@@ -59,10 +61,11 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeQueryString
-Include query string in the redirected url
+Include query string in the redirected url.
+Default is true.
 
 ```yaml
-Type: SwitchParameter
+Type: Boolean
 Parameter Sets: (All)
 Aliases: 
 
@@ -149,15 +152,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
-
 
 ## NOTES
 

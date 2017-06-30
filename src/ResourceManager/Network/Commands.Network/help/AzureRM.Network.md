@@ -35,6 +35,9 @@ Adds an IP configuration to an application gateway.
 ### [Add-AzureRmApplicationGatewayProbeConfig](Add-AzureRmApplicationGatewayProbeConfig.md)
 Adds a health probe to an Application Gateway.
 
+### [Add-AzureRmApplicationGatewayRedirectConfiguration](Add-AzureRmApplicationGatewayRedirectConfiguration.md)
+{{Fill in the Synopsis}}
+
 ### [Add-AzureRmApplicationGatewayRequestRoutingRule](Add-AzureRmApplicationGatewayRequestRoutingRule.md)
 Adds a request routing rule to an application gateway.
 
@@ -101,6 +104,9 @@ Gets an application gateway.
 ### [Get-AzureRmApplicationGatewayAuthenticationCertificate](Get-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Gets an authentication certificate for an application gateway.
 
+### [Get-AzureRmApplicationGatewayAvailableSslOptions](Get-AzureRmApplicationGatewayAvailableSslOptions.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmApplicationGatewayAvailableWafRuleSets](Get-AzureRmApplicationGatewayAvailableWafRuleSets.md)
 Gets all available web application firewall rule sets.
 
@@ -131,6 +137,9 @@ Gets the IP configuration of an application gateway.
 ### [Get-AzureRmApplicationGatewayProbeConfig](Get-AzureRmApplicationGatewayProbeConfig.md)
 Gets an existing health probe configuration from an Application Gateway.
 
+### [Get-AzureRmApplicationGatewayRedirectConfiguration](Get-AzureRmApplicationGatewayRedirectConfiguration.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmApplicationGatewayRequestRoutingRule](Get-AzureRmApplicationGatewayRequestRoutingRule.md)
 Gets the request routing rule of an application gateway.
 
@@ -142,6 +151,9 @@ Gets an SSL certificate for an application gateway.
 
 ### [Get-AzureRmApplicationGatewaySslPolicy](Get-AzureRmApplicationGatewaySslPolicy.md)
 Gets the SSL policy of an application gateway.
+
+### [Get-AzureRmApplicationGatewaySslPredefinedPolicy](Get-AzureRmApplicationGatewaySslPredefinedPolicy.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmApplicationGatewayUrlPathMapConfig](Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Gets an array of URL path mappings to a backend server pool.
@@ -332,6 +344,12 @@ Creates an application gateway path rule.
 ### [New-AzureRmApplicationGatewayProbeConfig](New-AzureRmApplicationGatewayProbeConfig.md)
 Creates a health probe.
 
+### [New-AzureRmApplicationGatewayProbeHealthResponseMatch](New-AzureRmApplicationGatewayProbeHealthResponseMatch.md)
+{{Fill in the Synopsis}}
+
+### [New-AzureRmApplicationGatewayRedirectConfiguration](New-AzureRmApplicationGatewayRedirectConfiguration.md)
+{{Fill in the Synopsis}}
+
 ### [New-AzureRmApplicationGatewayRequestRoutingRule](New-AzureRmApplicationGatewayRequestRoutingRule.md)
 Creates a request routing rule for an application gateway.
 
@@ -472,6 +490,9 @@ Removes an IP configuration from an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayProbeConfig](Remove-AzureRmApplicationGatewayProbeConfig.md)
 Removes a health probe from an existing application gateway.
+
+### [Remove-AzureRmApplicationGatewayRedirectConfiguration](Remove-AzureRmApplicationGatewayRedirectConfiguration.md)
+{{Fill in the Synopsis}}
 
 ### [Remove-AzureRmApplicationGatewayRequestRoutingRule](Remove-AzureRmApplicationGatewayRequestRoutingRule.md)
 Removes a request routing rule from an application gateway.
@@ -616,6 +637,9 @@ Modifies an IP configuration for an application gateway.
 
 ### [Set-AzureRmApplicationGatewayProbeConfig](Set-AzureRmApplicationGatewayProbeConfig.md)
 Sets the health probe configuration on an existing Application Gateway.
+
+### [Set-AzureRmApplicationGatewayRedirectConfiguration](Set-AzureRmApplicationGatewayRedirectConfiguration.md)
+{{Fill in the Synopsis}}
 
 ### [Set-AzureRmApplicationGatewayRequestRoutingRule](Set-AzureRmApplicationGatewayRequestRoutingRule.md)
 Modifies a request routing rule for an application gateway.

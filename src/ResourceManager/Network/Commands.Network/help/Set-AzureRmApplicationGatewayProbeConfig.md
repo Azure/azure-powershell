@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 02FC4035-27DF-4D4C-A65A-8417F9AE5A64
 online version: 
 schema: 2.0.0
 ---
@@ -20,7 +19,7 @@ Set-AzureRmApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGatew
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApplicationGatewayProbeConfig** cmdlet sets the health probe configuration on an existing Application Gateway.
+The Set-AzureRmApplicationGatewayProbeConfig cmdlet sets the health probe configuration on an existing Application Gateway.
 
 ## EXAMPLES
 
@@ -82,7 +81,10 @@ Accept wildcard characters: False
 ```
 
 ### -Match
-Body that must be contained in the health response. Default value is empty```yaml
+Body that must be contained in the health response.
+Default value is empty
+
+```yaml
 Type: PSApplicationGatewayProbeHealthResponseMatch
 Parameter Sets: (All)
 Aliases: 
@@ -95,7 +97,10 @@ Accept wildcard characters: False
 ```
 
 ### -MinServers
-Minimum number of servers that are always marked healthy. Default value is 0```yaml
+Minimum number of servers that are always marked healthy.
+Default value is 0
+
+```yaml
 Type: UInt32
 Parameter Sets: (All)
 Aliases: 
@@ -140,7 +145,10 @@ Accept wildcard characters: False
 ```
 
 ### -PickHostNameFromBackendHttpSettings
-Whether the host header should be picked from the backend http settings. Default value is false```yaml
+Whether the host header should be picked from the backend http settings.
+Default value is false
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -213,12 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayProbeConfig](./Add-AzureRmApplicationGatewayProbeConfig.md)
+[Add-AzureRmApplicationGatewayProbeConfig]()
 
-[Get-AzureRmApplicationGatewayProbeConfig](./Get-AzureRmApplicationGatewayProbeConfig.md)
+[Get-AzureRmApplicationGatewayProbeConfig]()
 
-[New-AzureRmApplicationGatewayProbeConfig](./New-AzureRmApplicationGatewayProbeConfig.md)
+[New-AzureRmApplicationGatewayProbeConfig]()
 
-[Remove-AzureRmApplicationGatewayProbeConfig](./Remove-AzureRmApplicationGatewayProbeConfig.md)
-
+[Remove-AzureRmApplicationGatewayProbeConfig]()
 
