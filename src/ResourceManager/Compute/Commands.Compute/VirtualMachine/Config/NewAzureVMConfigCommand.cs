@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -50,6 +51,23 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetId { get; set; }
 
+        [Parameter(
+            Position = 3,
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string LicenseType { get; set; }
+
+        [Parameter(
+            Position = 4,
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public ResourceIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public Hashtable Tags { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -63,7 +81,10 @@ namespace Microsoft.Azure.Commands.Compute
                 AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null : new SubResource
                 {
                     Id = this.AvailabilitySetId
-                }
+                },
+                LicenseType = this.LicenseType,
+                Identity = this.IdentityType != null ? new VirtualMachineIdentity(null, null, this.IdentityType) : null,
+                Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
             };
 
             if (!string.IsNullOrEmpty(this.VMSize))

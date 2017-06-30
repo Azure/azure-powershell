@@ -36,6 +36,12 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ValueFromPipelineByPropertyName = false)]
         public Hashtable Tags { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public ResourceIdentityType? IdentityType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -55,7 +61,8 @@ namespace Microsoft.Azure.Commands.Compute
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
                         LicenseType = this.VM.LicenseType,
-                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
+                        Identity = this.IdentityType != null ? new VirtualMachineIdentity(null, null, this.IdentityType) : this.VM.Identity
                     };
 
                     var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
