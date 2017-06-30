@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public string ResourceGroupName { get; set; }
 
-        public TransformationProperties Properties
+        public Transformation Properties
         {
             get
             {
-                return transformation.Properties;
+                return transformation;
             }
             internal set
             {
-                transformation.Properties = value;
+                transformation = value;
             }
         }
 

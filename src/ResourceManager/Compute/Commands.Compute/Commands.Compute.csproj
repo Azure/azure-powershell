@@ -262,6 +262,7 @@
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionStatusContext.cs" />
+    <Compile Include="Extension\NetcoreExtension.cs" />
     <Compile Include="Extension\SetAzureVMExtensionBaseCmdlet.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />

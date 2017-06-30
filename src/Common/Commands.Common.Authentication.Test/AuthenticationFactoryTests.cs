@@ -94,7 +94,7 @@ namespace Common.Authentication.Test
                 }
             );
 
-            var credential = authFactory.Authenticate(context.Account, context.Environment, "common", null, ShowDialog.Always);
+            var credential = authFactory.Authenticate(context.Account, context.Environment, "common", null, ShowDialog.Always, null);
            
             Assert.False(((MockAccessTokenProvider)authFactory.TokenProvider).AdalConfiguration.ValidateAuthority);            
         }

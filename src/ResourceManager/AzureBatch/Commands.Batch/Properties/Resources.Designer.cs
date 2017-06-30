@@ -214,6 +214,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Downloading byte range {0} to {1}.
+        /// </summary>
+        internal static string DownloadingNodeFileByteRange {
+            get {
+                return ResourceManager.GetString("DownloadingNodeFileByteRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Downloading Remote Desktop Protocol file for compute node {0} to: {1}.
         /// </summary>
         internal static string DownloadingRDPFile {

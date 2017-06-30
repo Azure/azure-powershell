@@ -213,6 +213,9 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\Data\VmssDeploymentTemplate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\ExpressRouteServiceProviderTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -268,6 +271,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestAvailableWafRuleSets.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteBgpServiceCommunitiesGet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\TestFlowLog.json">
@@ -405,6 +411,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressIpVersion.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressVmss.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTests\TestEmptyRouteTable.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -493,6 +502,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkUsage.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 AdministratorLogin = model.SqlAdministratorLogin,
                 AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
                 Version = model.ServerVersion,
+                Identity = model.Identity
             });
 
             return CreateServerModelFromResponse(model.ResourceGroupName, resp);
@@ -123,6 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.SqlAdministratorLogin = resp.AdministratorLogin;
             server.Location = resp.Location;
             server.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false);
+            server.Identity = resp.Identity;
 
             return server;
         }
