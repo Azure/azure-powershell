@@ -93,5 +93,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public DisplayHintType DisplayHint { get; set; }
 
+        // Gets or sets the virtual machine identity.
+        public VirtualMachineIdentity Identity { get; set; }
+
     }
 }

@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public StorageAccountTypes? StorageAccountType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string SnapshotId { get; set; }
 
         [Parameter(
@@ -100,6 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDataDisks.BlobUri = this.BlobUri;
             vDataDisks.Caching = this.Caching;
             vDataDisks.DiskSizeGB = this.DiskSizeGB;
+            vDataDisks.StorageAccountType = this.StorageAccountType;
             if (this.SnapshotId != null)
             {
                 // Snapshot

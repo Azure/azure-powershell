@@ -12,7 +12,7 @@ Creats an image.
 ## SYNTAX
 
 ```
-New-AzureRmImage [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <Image>
+New-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <Image> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

@@ -12,7 +12,7 @@ Converts a virtual machine with blob-based disks to a virtual machine with manag
 ## SYNTAX
 
 ```
-ConvertTo-AzureRmVMManagedDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMName] <String>
+ConvertTo-AzureRmVMManagedDisk [-ResourceGroupName] <String> [-VMName] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
