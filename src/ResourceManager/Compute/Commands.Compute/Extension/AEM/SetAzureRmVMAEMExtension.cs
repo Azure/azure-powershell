@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        this._Helper.WriteHost("[INFO] {0} is of type {1} - Storage Account Metrics are not available for Premium Type Storage.", storage.Name, storage.AccountType.Value.ToString());
+                        this._Helper.WriteHost("[INFO] {0} is of type {1} - Storage Account Metrics are not available for Premium Type Storage.", storage.Name, storage.SkuName());
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".hour.ispremium"), Value = 1 });
                         sapmonPublicConfig.Add(new KeyValuePair() { Key = ((storage.Name) + ".minute.ispremium"), Value = 1 });
                     }
@@ -534,7 +534,8 @@ namespace Microsoft.Azure.Commands.Compute
             var credentials = new StorageCredentials(storageAccountName, key);
             var cloudStorageAccount = new CloudStorageAccount(credentials, true);
 
-            cloudStorageAccount.CreateCloudBlobClient().SetServiceProperties(props);
+            cloudStorageAccount.CreateCloudBlobClient().SetServicePropertiesAsync(props)
+                                                       .ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }

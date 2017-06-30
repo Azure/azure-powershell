@@ -484,4 +484,7 @@
   <data name="GetJobPreparationAndReleaseStatus" xml:space="preserve">
     <value>Getting job preparation and release status for job "{0}"</value>
   </data>
+  <data name="DownloadingNodeFileByteRange" xml:space="preserve">
+    <value>Downloading byte range {0} to {1}</value>
+  </data>
 </root>

@@ -56,5 +56,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// Gets or sets the tags associated with the server.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the server.
+        /// </summary>
+        public Management.Sql.Models.ResourceIdentity Identity { get; set; }
     }
 }
