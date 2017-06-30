@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Analysis, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\taiwu\Documents\GitHub\azure-sdk-for-net\src\SDKs\AnalysisServices\Management.Analysis\bin\Debug\net452\Microsoft.Azure.Management.Analysis.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Analysis.1.1.2\lib\net452\Microsoft.Azure.Management.Analysis.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
