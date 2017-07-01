@@ -1,4 +1,4 @@
-// 
+﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,22 +19,34 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
 using Microsoft.Azure.Management.Compute.Models;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSDisk : Disk
+    public partial class PSSnapshot : Snapshot
     {
-        // Gets or sets the property of 'ResourceGroupName'
-        public string ResourceGroupName
+        public string AccountType
         {
             get
             {
-                if (string.IsNullOrEmpty(Id)) return null;
-                Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
-                Match m = r.Match(Id);
-                return m.Success ? m.Groups["rgname"].Value : null;
+                return this. Sku.Name.ToString();
+            }
+            set
+            {
+                Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value);
+            }
+        }
+
+        public string OwnerId
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
             }
         }
     }
