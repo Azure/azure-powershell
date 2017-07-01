@@ -111,67 +111,52 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureRmSnapshot", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
-    public partial class NewAzureRmSnapshot : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(Snapshot))]
+    public partial class NewAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "SnapshotCreateOrUpdate";
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.New))
+            ExecuteClientAction(() =>
             {
-                base.ProcessRecord();
-            }
+                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                {
+                    string resourceGroupName = this.ResourceGroupName;
+                    string snapshotName = this.SnapshotName;
+                    Snapshot snapshot = this.Snapshot;
+
+                    var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
+                    WriteObject(result);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pSnapshotName = new RuntimeDefinedParameter();
-            pSnapshotName.Name = "SnapshotName";
-            pSnapshotName.ParameterType = typeof(string);
-            pSnapshotName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pSnapshotName.Attributes.Add(new AliasAttribute("Name"));
-            pSnapshotName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("SnapshotName", pSnapshotName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string SnapshotName { get; set; }
 
-            var pSnapshot = new RuntimeDefinedParameter();
-            pSnapshot.Name = "Snapshot";
-            pSnapshot.ParameterType = typeof(Snapshot);
-            pSnapshot.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = false,
-                ValueFromPipeline = true
-            });
-            pSnapshot.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Snapshot", pSnapshot);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            ValueFromPipeline = true)]
+        [AllowNull]
+        public Snapshot Snapshot { get; set; }
     }
 }
