@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
@@ -37,5 +38,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 return m.Success ? m.Groups["rgname"].Value : null;
             }
         }
-    }
+
+		public string AccountType
+		{
+			get
+			{
+				return Sku.Name.ToString();
+			}
+			set
+			{
+				Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value);
+			}
+		}
+
+		public string OwnerId
+		{
+			get
+			{
+				return string.Empty;
+			}
+		}
+	}
 }

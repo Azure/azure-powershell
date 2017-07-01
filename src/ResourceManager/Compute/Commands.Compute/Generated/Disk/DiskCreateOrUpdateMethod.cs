@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pDisk = new RuntimeDefinedParameter();
             pDisk.Name = "Disk";
-            pDisk.ParameterType = typeof(Disk);
+            pDisk.ParameterType = typeof(PSDisk);
             pDisk.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            Disk disk = (Disk)ParseParameter(invokeMethodInputParameters[2]);
+            PSDisk disk = (PSDisk)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
             WriteObject(result);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string diskName = string.Empty;
-            Disk disk = new Disk();
+            PSDisk disk = new PSDisk();
 
             return ConvertFromObjectsToArguments(
                  new string[] { "ResourceGroupName", "DiskName", "Disk" },
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(Disk))]
+    [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
-                    Disk disk = this.Disk;
+					PSDisk disk = this.Disk;
 
                     var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
                     WriteObject(result);
@@ -157,6 +157,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public Disk Disk { get; set; }
+        public PSDisk Disk { get; set; }
     }
 }

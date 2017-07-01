@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
             DiskUpdate disk = (DiskUpdate)ParseParameter(invokeMethodInputParameters[2]);
-            Disk diskOrg = (Disk)ParseParameter(invokeMethodInputParameters[3]);
+            PSDisk diskOrg = (PSDisk)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = (disk == null)
                          ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, diskOrg)
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(Disk))]
+    [OutputType(typeof(PSDisk))]
     public partial class UpdateAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
                     DiskUpdate disk = this.DiskUpdate;
-                    Disk diskOrg = this.Disk;
+                    PSDisk diskOrg = this.Disk;
 
                     var result = (disk == null)
                                  ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, diskOrg)
@@ -185,6 +185,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public Disk Disk { get; set; }
+        public PSDisk Disk { get; set; }
     }
 }

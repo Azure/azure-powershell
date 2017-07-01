@@ -25,11 +25,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmDiskConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(Disk))]
+    [OutputType(typeof(PSDisk))]
     public class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -203,7 +204,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            var vDisk = new Disk
+            var vDisk = new PSDisk
             {
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,
