@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        public StorageAccountTypes? AccountType { get; set; }
+        [Alias("AccountType")]
+        public StorageAccountTypes? SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -121,76 +122,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            // CreationData
-            Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;
-
             // EncryptionSettings
             Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
 
-#pragma warning disable CS0618 // Type or member is obsolete
-            if (this.CreateOption.HasValue)
-#pragma warning restore CS0618 // Type or member is obsolete
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-#pragma warning disable CS0618 // Type or member is obsolete
-                vCreationData.CreateOption = this.CreateOption.Value;
-#pragma warning restore CS0618 // Type or member is obsolete
-            }
-
-#pragma warning disable CS0618 // Type or member is obsolete
-            if (this.StorageAccountId != null)
-#pragma warning restore CS0618 // Type or member is obsolete
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-#pragma warning disable CS0618 // Type or member is obsolete
-                vCreationData.StorageAccountId = this.StorageAccountId;
-#pragma warning restore CS0618 // Type or member is obsolete
-            }
-
-#pragma warning disable CS0618 // Type or member is obsolete
-            if (this.ImageReference != null)
-#pragma warning restore CS0618 // Type or member is obsolete
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-#pragma warning disable CS0618 // Type or member is obsolete
-                vCreationData.ImageReference = this.ImageReference;
-#pragma warning restore CS0618 // Type or member is obsolete
-            }
-
-#pragma warning disable CS0618 // Type or member is obsolete
-            if (this.SourceUri != null)
-#pragma warning restore CS0618 // Type or member is obsolete
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-#pragma warning disable CS0618 // Type or member is obsolete
-                vCreationData.SourceUri = this.SourceUri;
-#pragma warning restore CS0618 // Type or member is obsolete
-            }
-
-#pragma warning disable CS0618 // Type or member is obsolete
-            if (this.SourceResourceId != null)
-#pragma warning restore CS0618 // Type or member is obsolete
-            {
-                if (vCreationData == null)
-                {
-                    vCreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-#pragma warning disable CS0618 // Type or member is obsolete
-                vCreationData.SourceResourceId = this.SourceResourceId;
-#pragma warning restore CS0618 // Type or member is obsolete
-            }
+            // Sku
+            Microsoft.Azure.Management.Compute.Models.DiskSku vSku = null;
 
             if (this.EncryptionSettingsEnabled != null)
             {
@@ -219,15 +155,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryptionSettings.KeyEncryptionKey = this.KeyEncryptionKey;
             }
 
+            if (this.SkuName != null)
+            {
+                if (vSku == null)
+                {
+                    vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();
+                }
+                vSku.Name = this.SkuName;
+            }
+
 
             var vSnapshotUpdate = new SnapshotUpdate
             {
-                AccountType = this.AccountType,
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
-                CreationData = vCreationData,
                 EncryptionSettings = vEncryptionSettings,
+                Sku = vSku,
             };
 
             WriteObject(vSnapshotUpdate);
