@@ -65,6 +65,8 @@ namespace Microsoft.Azure.Commands.Resources
                 RoleDefinitionName = Name,
             };
 
+            AuthorizationClient.ValidateScope(options.Scope, true);
+
             WriteObject(PoliciesClient.FilterRoleDefinitions(options), enumerateCollection: true);
         }
     }
