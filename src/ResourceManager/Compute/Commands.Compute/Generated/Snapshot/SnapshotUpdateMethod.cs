@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pSnapshot = new RuntimeDefinedParameter();
             pSnapshot.Name = "Snapshot";
-            pSnapshot.ParameterType = typeof(SnapshotUpdate);
+            pSnapshot.ParameterType = typeof(PSSnapshotUpdate);
             pSnapshot.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            SnapshotUpdate snapshot = (SnapshotUpdate)ParseParameter(invokeMethodInputParameters[2]);
+            PSSnapshotUpdate snapshot = (PSSnapshotUpdate)ParseParameter(invokeMethodInputParameters[2]);
             PSSnapshot snapshotOrg = (PSSnapshot)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = (snapshot == null)
@@ -106,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string snapshotName = string.Empty;
-            SnapshotUpdate snapshot = new SnapshotUpdate();
+            PSSnapshotUpdate snapshot = new PSSnapshotUpdate();
 
             return ConvertFromObjectsToArguments(
                  new string[] { "ResourceGroupName", "SnapshotName", "Snapshot" },
@@ -127,13 +128,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
-                    SnapshotUpdate snapshot = this.SnapshotUpdate;
+                    PSSnapshotUpdate snapshot = this.SnapshotUpdate;
                     PSSnapshot snapshotOrg = this.Snapshot;
 
                     var result = (snapshot == null)
                                  ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotOrg)
                                  : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshot);
-                    WriteObject(result);
+
+					var psObject = new PSSnapshot();
+					Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+
+					WriteObject(psObject);
                 }
             });
         }
@@ -176,7 +181,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public SnapshotUpdate SnapshotUpdate { get; set; }
+        public PSSnapshotUpdate SnapshotUpdate { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
