@@ -12,8 +12,8 @@ Creates a snapshot.
 ## SYNTAX
 
 ```
-New-AzureRmSnapshot [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-SnapshotName] <String>
- [-Snapshot] <Snapshot> [<CommonParameters>]
+New-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <Snapshot> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
