@@ -25,11 +25,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmSnapshotConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(Snapshot))]
+    [OutputType(typeof(PSSnapshot))]
     public class NewAzureRmSnapshotConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -203,7 +204,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            var vSnapshot = new Snapshot
+            var vSnapshot = new PSSnapshot
             {
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,

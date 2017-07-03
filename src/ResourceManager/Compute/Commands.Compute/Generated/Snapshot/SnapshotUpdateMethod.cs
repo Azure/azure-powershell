@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
             SnapshotUpdate snapshot = (SnapshotUpdate)ParseParameter(invokeMethodInputParameters[2]);
-            Snapshot snapshotOrg = (Snapshot)ParseParameter(invokeMethodInputParameters[3]);
+            PSSnapshot snapshotOrg = (PSSnapshot)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = (snapshot == null)
                          ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotOrg)
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(Snapshot))]
+    [OutputType(typeof(PSSnapshot))]
     public partial class UpdateAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
                     SnapshotUpdate snapshot = this.SnapshotUpdate;
-                    Snapshot snapshotOrg = this.Snapshot;
+                    PSSnapshot snapshotOrg = this.Snapshot;
 
                     var result = (snapshot == null)
                                  ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotOrg)
@@ -185,6 +185,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public Snapshot Snapshot { get; set; }
+        public PSSnapshot Snapshot { get; set; }
     }
 }
