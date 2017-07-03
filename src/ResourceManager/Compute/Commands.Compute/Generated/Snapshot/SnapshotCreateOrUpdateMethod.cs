@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pSnapshot = new RuntimeDefinedParameter();
             pSnapshot.Name = "Snapshot";
-            pSnapshot.ParameterType = typeof(Snapshot);
+            pSnapshot.ParameterType = typeof(PSSnapshot);
             pSnapshot.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            Snapshot snapshot = (Snapshot)ParseParameter(invokeMethodInputParameters[2]);
+            PSSnapshot snapshot = (PSSnapshot)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
             WriteObject(result);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string snapshotName = string.Empty;
-            Snapshot snapshot = new Snapshot();
+            PSSnapshot snapshot = new PSSnapshot();
 
             return ConvertFromObjectsToArguments(
                  new string[] { "ResourceGroupName", "SnapshotName", "Snapshot" },
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmSnapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(Snapshot))]
+    [OutputType(typeof(PSSnapshot))]
     public partial class NewAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
-                    Snapshot snapshot = this.Snapshot;
+                    PSSnapshot snapshot = this.Snapshot;
 
                     var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
                     WriteObject(result);
@@ -157,6 +157,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public Snapshot Snapshot { get; set; }
+        public PSSnapshot Snapshot { get; set; }
     }
 }
