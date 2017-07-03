@@ -25,13 +25,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Obsolete("This cmdlet will be removed in an upcoming release.  Updating the image reference of a disk is not supported." +
         "To set the image reference of a disk, please use Set-AzureRmDiskImageReference command." )]
     [Cmdlet("Set", "AzureRmDiskUpdateImageReference", SupportsShouldProcess = true)]
-    [OutputType(typeof(DiskUpdate))]
+    [OutputType(typeof(PSDiskUpdate))]
     public class SetAzureRmDiskUpdateImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public DiskUpdate DiskUpdate { get; set; }
+        public PSDiskUpdate DiskUpdate { get; set; }
 
         [Parameter(
             Mandatory = false,
