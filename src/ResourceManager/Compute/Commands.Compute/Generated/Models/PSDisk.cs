@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             }
         }
 
+		[Obsolete("This property is deprecated and will be removed in a future release")]
 		public string AccountType
 		{
 			get
@@ -47,10 +48,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 			}
 			set
 			{
-				Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value); 
+				Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value);
 			}
 		}
 
+		[Obsolete("This property is deprecated and will be removed in a future release")]
 		public string OwnerId
 		{
 			get
@@ -61,6 +63,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 			{
 				ManagedBy = value;
 			}
-		}		
+		}
 	}
 }
