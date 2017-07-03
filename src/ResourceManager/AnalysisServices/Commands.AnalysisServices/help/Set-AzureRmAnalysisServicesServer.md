@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ The Set-AzureRmAnalysisServicesServer cmdlet modifies an instance of Analysis Se
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup" -Tag "key1:value1,key2:value2" -Administrator "testuser1@contoso.com"
+PS C:\> Set-AzureRmAnalysisServicesServer -Name "testserver" -ResourceGroupName "testgroup" -Tag @{key0="value0";key1=$null;key2="value2"} -Administrator "testuser1@contoso.com"
 ```
 
 Modifies the server named testserver in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
@@ -32,13 +32,12 @@ Modifies the server named testserver in resourcegroup testgroup to set the tags 
 
 ### -Administrator
 A string representing a comma separated list of users or groups to be set as administrators on the server.
-The users or groups need to be specified UPN format e.g.
-user@contoso.com or groups@contoso.com
+The users or groups need to be specified UPN format, for example: user@contoso.com or groups@contoso.com
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -53,7 +52,7 @@ Name of the Analysis Services server
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -68,7 +67,7 @@ Will return the deleted server details if the operation completes successfully
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -83,7 +82,7 @@ Name of the Azure resource group to which the server belongs
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -99,8 +98,8 @@ The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: S1, S2, S4
+Aliases:
+Accepted values: S1, S2, S4, B1, B2, D1
 
 Required: False
 Position: 2
@@ -110,12 +109,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table set as tags on the server.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3

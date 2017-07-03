@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ Get-AzureRmApiManagementProperty -Context <PsApiManagementContext> [-Tag <String
 
 ### 1:
 ```
-PS C:\>
+PS C:\> Get-AzureRmApiManagementProperty -Context $Context -Name $PropertyName
 ```
 
 ## PARAMETERS
@@ -46,7 +46,7 @@ PS C:\>
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: Find properties containing Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: Get by property ID
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,10 +82,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
 ```yaml
 Type: String
 Parameter Sets: Find properties by Tag
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,4 +108,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: CE32F620-8DB2-4004-8012-F1C4AA235B60
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -23,9 +23,8 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
 ```
 
 ## DESCRIPTION
-The **New-AzureRmVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS) object.
-Other cmdlets are needed to configure the VMSS object.
-These cmdlets are:
+The **New-AzureRmVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
+object. Other cmdlets are needed to configure the VMSS object. These cmdlets are:
 
 - Set-AzureRmVmssOsProfile
 - Set-AzureRmVmssStorageProfile
@@ -48,20 +47,21 @@ PS C:\> $VMSS = New-AzureRmVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "St
 New-AzureRmVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;
 ```
 
-This example creates a VMSS configuration object.
-The first command uses the **New-AzureRmVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
-The second command uses the **New-AzureRmVmss** cmdlet to create a VMSS that uses the VMSS configuration object created in the first command.
+This example creates a VMSS configuration object. The first command uses the
+**New-AzureRmVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the
+variable named $VMSS. The second command uses the **New-AzureRmVmss** cmdlet to create a VMSS that
+uses the VMSS configuration object created in the first command.
 
 ## PARAMETERS
 
 ### -Extension
-Specifies the extension information object for the VMSS.
-You can use the **Add-AzureRmVmssExtension** cmdlet to add this object.
+Specifies the extension information object for the VMSS. You can use the
+**Add-AzureRmVmssExtension** cmdlet to add this object.
 
 ```yaml
 Type: VirtualMachineScaleSetExtension[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 10
@@ -76,7 +76,7 @@ Specifies the Azure location where the VMSS is created.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -92,7 +92,7 @@ You can use the **Add-AzureRmVmssNetworkInterfaceConfiguration** cmdlet to add t
 ```yaml
 Type: VirtualMachineScaleSetNetworkConfiguration[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 9
@@ -108,7 +108,7 @@ You can use the **Set-AzureRmVmssOsProfile** cmdlet to set this object.
 ```yaml
 Type: VirtualMachineScaleSetOSProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -123,7 +123,7 @@ Indicates whether the cmdlet overprovisions the VMSS.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -138,7 +138,7 @@ Specifies the plan name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +153,7 @@ Specifies the plan product.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +168,7 @@ Specifies the plan promotion code.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,7 +183,7 @@ Specifies the plan publisher.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,7 +198,7 @@ Specifies the single placement group.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -213,7 +213,7 @@ Specifies the number of instances in the VMSS.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -228,7 +228,7 @@ Specifies the size of all the instances of VMSS.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -238,9 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Specifies the tier of VMSS.
-
-The acceptable values for this parameter are:
+Specifies the tier of VMSS. The acceptable values for this parameter are:
 
 - Standard
 - Basic
@@ -248,7 +246,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -264,7 +262,7 @@ You can use the **Set-AzureRmVmssStorageProfile** cmdlet to set this object.
 ```yaml
 Type: VirtualMachineScaleSetStorageProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -274,12 +272,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the tags that will be assigned to the VMSS.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -299,7 +299,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: UpgradeMode
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Automatic, Manual
 
 Required: False
@@ -346,7 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+This cmdlet does not generate any output.
 
 ## NOTES
 
@@ -361,5 +361,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzureRmVmssExtension](./Add-AzureRmVmssExtension.md)
 
 [New-AzureRmVmss](./New-AzureRmVmss.md)
-
-
