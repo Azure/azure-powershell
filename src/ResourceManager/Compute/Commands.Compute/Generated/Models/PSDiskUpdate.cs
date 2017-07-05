@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 			{
 				Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value);
 			}
-		}		
+		}
+
+		[Obsolete("This property is deprecated and will be removed in a future release")]
+		public CreationData CreationData { get; set; }
 	}
 }
