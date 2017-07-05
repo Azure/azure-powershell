@@ -112,7 +112,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResource",
             HelpMessage = "PeerAddressType")]
         [ValidateSet(
            IPv4,
