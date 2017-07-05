@@ -13,8 +13,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Billing.Models.PSInvoice]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -28,17 +28,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Billing.Models",
-            "Name": "PSInvoice",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Billing.Models.PSInvoice",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BillingPeriodNames": "System.Collections.Generic.List`1[System.String]",
-              "DownloadUrl": "System.String",
+              "InvoicePeriodStartDate": "System.Nullable`1[System.DateTime]",
+              "InvoicePeriodEndDate": "System.Nullable`1[System.DateTime]",
               "DownloadUrlExpiry": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
-              "InvoicePeriodEndDate": "System.Nullable`1[System.DateTime]",
-              "InvoicePeriodStartDate": "System.Nullable`1[System.DateTime]",
               "Name": "System.String",
-              "Type": "System.String"
+              "Type": "System.String",
+              "DownloadUrl": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -54,7 +54,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -70,7 +70,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -88,7 +88,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -106,7 +106,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -128,7 +128,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -155,7 +155,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.String]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -184,7 +184,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -208,7 +208,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -242,8 +242,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -257,13 +257,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Billing.Models",
-            "Name": "PSBillingPeriod",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "BillingPeriodEndDate": "System.Nullable`1[System.DateTime]",
-              "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",
-              "Id": "System.String",
               "InvoiceNames": "System.Collections.Generic.List`1[System.String]",
+              "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",
+              "BillingPeriodEndDate": "System.Nullable`1[System.DateTime]",
+              "Id": "System.String",
               "Name": "System.String",
               "Type": "System.String"
             },
@@ -281,7 +281,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
+            "Name": "System.Collections.Generic.List`1[System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -299,7 +299,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -323,7 +323,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections.Generic",
-                  "Name": "List",
+                  "Name": "System.Collections.Generic.List`1[System.String]",
                   "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -352,7 +352,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -491,24 +491,24 @@
     },
     "Microsoft.Azure.Commands.Billing.Models.PSInvoice": {
       "Namespace": "Microsoft.Azure.Commands.Billing.Models",
-      "Name": "PSInvoice",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Billing.Models.PSInvoice",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSInvoice, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BillingPeriodNames": "System.Collections.Generic.List`1[System.String]",
-        "DownloadUrl": "System.String",
+        "InvoicePeriodStartDate": "System.Nullable`1[System.DateTime]",
+        "InvoicePeriodEndDate": "System.Nullable`1[System.DateTime]",
         "DownloadUrlExpiry": "System.Nullable`1[System.DateTime]",
         "Id": "System.String",
-        "InvoicePeriodEndDate": "System.Nullable`1[System.DateTime]",
-        "InvoicePeriodStartDate": "System.Nullable`1[System.DateTime]",
         "Name": "System.String",
-        "Type": "System.String"
+        "Type": "System.String",
+        "DownloadUrl": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.List`1[System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
+      "Name": "System.Collections.Generic.List`1[System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -518,7 +518,7 @@
     },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.DateTime]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -528,7 +528,7 @@
     },
     "System.DateTime": {
       "Namespace": "System",
-      "Name": "DateTime",
+      "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -536,13 +536,13 @@
     },
     "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod": {
       "Namespace": "Microsoft.Azure.Commands.Billing.Models",
-      "Name": "PSBillingPeriod",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.12.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod, Microsoft.Azure.Commands.Billing, Version=0.13.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "BillingPeriodEndDate": "System.Nullable`1[System.DateTime]",
-        "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",
-        "Id": "System.String",
         "InvoiceNames": "System.Collections.Generic.List`1[System.String]",
+        "BillingPeriodStartDate": "System.Nullable`1[System.DateTime]",
+        "BillingPeriodEndDate": "System.Nullable`1[System.DateTime]",
+        "Id": "System.String",
         "Name": "System.String",
         "Type": "System.String"
       },

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <returns></returns>
         public List<IndexRecommendation> ListRecommendedIndexes(string resourceGroupName, string serverName, string databaseName)
         {
-            return Communicator.ListRecommendedIndexes(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            return Communicator.ListRecommendedIndexes(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <param name="indexRecommendation">Index recommendation</param>
         public void UpdateRecommendationState(string resourceGroupName, string serverName, IndexRecommendation indexRecommendation)
         {
-            Communicator.UpdateRecommendedIndexState(resourceGroupName, serverName, indexRecommendation.DatabaseName, indexRecommendation.Schema, indexRecommendation.Table, indexRecommendation.Name, indexRecommendation.State, Util.GenerateTracingId());
+            Communicator.UpdateRecommendedIndexState(resourceGroupName, serverName, indexRecommendation.DatabaseName, indexRecommendation.Schema, indexRecommendation.Table, indexRecommendation.Name, indexRecommendation.State);
         }
     }
 }

@@ -150,7 +150,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                             SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24.0),
                             Permissions = SharedAccessBlobPermissions.Read
                         });
-                    cloudBlob.FetchAttributes();
+                    cloudBlob.FetchAttributesAsync()
+                             .ConfigureAwait(false).GetAwaiter().GetResult();
 
                     return (int?)(cloudBlob.Properties.Length / (1024 * 1024 * 1024));
                 }
@@ -312,9 +313,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             var resourceGroup = this.GetResourceGroupFromId(account.Id);
             var keys = this._StorageClient.StorageAccounts.ListKeys(resourceGroup, account.Name);
 
-            _StorageKeyCache.Add(account.Name, keys.Key1);
+            _StorageKeyCache.Add(account.Name, keys.GetKey1());
 
-            return keys.Key1;
+            return keys.GetKey1();
         }
 
         internal string GetCoreEndpoint(string storageAccountName)
@@ -347,9 +348,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal bool IsPremiumStorageAccount(StorageAccount account)
         {
-            if (account.AccountType.HasValue)
+            if (account.Sku() != null)
             {
-                return (account.AccountType.Value == AccountType.PremiumLRS);
+                return account.IsPremiumLrs();
             }
 
             WriteError("No AccountType for storage account {0} found", account.Name);
@@ -712,7 +713,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             var key = this.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
             var cloudStorageAccount = new CloudStorageAccount(credentials, true);
-            return cloudStorageAccount.CreateCloudBlobClient().GetServiceProperties();
+            return cloudStorageAccount.CreateCloudBlobClient().GetServicePropertiesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         internal bool CheckStorageAnalytics(string storageAccountName, ServiceProperties currentConfig)
@@ -754,7 +755,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 {
                     try
                     {
-                        table = tableClient.ListTables().FirstOrDefault(tab => tab.Name.StartsWith("WADMetricsPT1M"));
+                        table = tableClient.ListTablesSegmentedAsync(currentToken: null)
+                            .ConfigureAwait(false).GetAwaiter().GetResult()
+                            .FirstOrDefault(tab => tab.Name.StartsWith("WADMetricsPT1M"));
                     }
                     catch { } //#table name should be sorted 
                 }
@@ -769,11 +772,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
                 while (wait)
                 {
-                    if (table != null && table.Exists())
+                    if (table != null && table.ExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult())
                     {
                         TableQuery query = new TableQuery();
                         query.FilterString = FilterString;
-                        var results = table.ExecuteQuery(query);
+                        var results = table.ExecuteQuerySegmentedAsync(query, token: null)
+                            .ConfigureAwait(false).GetAwaiter().GetResult();
                         if (results.Count() > 0)
                         {
                             tableExists = true;
@@ -787,7 +791,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     {
                         try
                         {
-                            table = tableClient.ListTables().FirstOrDefault(tab => tab.Name.StartsWith("WADMetricsPT1M"));
+                            table = tableClient.ListTablesSegmentedAsync(currentToken: null)
+                                .ConfigureAwait(false).GetAwaiter().GetResult().FirstOrDefault(tab => tab.Name.StartsWith("WADMetricsPT1M"));
                         }
                         catch { } //#table name should be sorted 
                     }
@@ -840,7 +845,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     bool wait = true;
                     while (wait)
                     {
-                        var results = perfCounterTable.ExecuteQuery(new TableQuery() { FilterString = query });
+                        var results = perfCounterTable.ExecuteQuerySegmentedAsync(new TableQuery() { FilterString = query }, token: null)
+                            .ConfigureAwait(false).GetAwaiter().GetResult();
                         if (results.Count() > 0)
                         {
                             tableExists &= true;

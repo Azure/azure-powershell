@@ -358,3 +358,60 @@ function Test-PublicIpAddressIpVersion
         Clean-ResourceGroup $rgname
     }
 }
+
+function Get-NameById($Id, $ResourceType)
+{
+    $name = $Id.Substring($Id.IndexOf($ResourceType + '/') + $ResourceType.Length + 1);
+    if ($name.IndexOf('/') -ne -1)
+    {
+        $name = $name.Substring(0, $name.IndexOf('/'));
+    }
+    return $name;
+}
+
+<#
+.SYNOPSIS
+Tests checking VMSSPublicIP features.
+#>
+function Test-PublicIpAddressVmss
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Compute/virtualMachineScaleSets"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        $vmssName = "vmssip"
+        $deploymentName = "vmssDeployment";
+        $templateFile = ".\ScenarioTests\Data\VmssDeploymentTemplate.json"
+        AzureRm.Resources\New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rgname -TemplateFile $templateFile;
+
+        $listAllResults = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName;
+        Assert-NotNull $listAllResults;
+
+        $listFirstResultId = $listAllResults[0].Id;
+        $vmIndex = Get-NameById $listFirstResultId "virtualMachines";
+        $nicName = Get-NameById $listFirstResultId "networkInterfaces";
+        $ipConfigName = Get-NameById $listFirstResultId "ipConfigurations";
+        $ipName = Get-NameById $listFirstResultId "publicIPAddresses";
+
+        $listResults = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName -VirtualmachineIndex $vmIndex -NetworkInterfaceName $nicName -IpConfigurationName $ipConfigName;
+        Assert-NotNull $listResults;
+        Assert-AreEqualObjectProperties $listAllResults[0] $listResults[0] "List and list all results should contain equal items";
+
+        $vmssIp = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName -VirtualmachineIndex $vmIndex -NetworkInterfaceName $nicName -IpConfigurationName $ipConfigName -Name $ipName;
+        Assert-NotNull $vmssIp;
+        Assert-AreEqualObjectProperties $vmssIp $listResults[0] "List and get results should contain equal items";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

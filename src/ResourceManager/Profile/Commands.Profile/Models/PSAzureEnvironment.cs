@@ -165,6 +165,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string AzureKeyVaultDnsSuffix { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource Id to use for contacting the Data Lake services endpoint
+        /// </summary>
+        public string DataLakeEndpointResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the domain name suffix for Data Lake store filesystem services.
         /// </summary>
         public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }

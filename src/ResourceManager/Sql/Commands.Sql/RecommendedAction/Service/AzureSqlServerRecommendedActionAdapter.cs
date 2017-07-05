@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>The Azure Sql Server RecommendedAction object</returns>
         internal AzureSqlServerRecommendedActionModel GetServerRecommendedAction(string resourceGroupName, string serverName, string advisorName, string RecommendedActionName)
         {
-            var response = Communicator.Get(resourceGroupName, serverName, advisorName, RecommendedActionName, Util.GenerateTracingId());
+            var response = Communicator.Get(resourceGroupName, serverName, advisorName, RecommendedActionName);
             return new AzureSqlServerRecommendedActionModel(resourceGroupName, serverName, advisorName, response);
         }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>A list of Server Recommended Action objects</returns>
         internal ICollection<AzureSqlServerRecommendedActionModel> ListServerRecommendedActions(string resourceGroupName, string serverName, string advisorName)
         {
-            var response = Communicator.List(resourceGroupName, serverName, advisorName, Util.GenerateTracingId());
+            var response = Communicator.List(resourceGroupName, serverName, advisorName);
             return response.Select(adv => new AzureSqlServerRecommendedActionModel(resourceGroupName, serverName, advisorName, adv)).ToList();
         }
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>The upserted Azure Sql Server Recommended Action</returns>
         internal AzureSqlServerRecommendedActionModel UpdateState(AzureSqlServerRecommendedActionModel model)
         {
-            var response = Communicator.UpdateState(model.ResourceGroupName, model.ServerName, model.AdvisorName, model.RecommendedActionName, model.State.CurrentValue, Util.GenerateTracingId());
+            var response = Communicator.UpdateState(model.ResourceGroupName, model.ServerName, model.AdvisorName, model.RecommendedActionName, model.State.CurrentValue);
             return new AzureSqlServerRecommendedActionModel(model.ResourceGroupName, model.ServerName, model.AdvisorName, response);
         }
     }

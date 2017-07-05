@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -60,25 +59,25 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates new export request
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).ImportExport.Export(resourceGroupName, serverName, databaseName, parameters);
+            return GetCurrentSqlClient().ImportExport.Export(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
         /// Creates new import request
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ImportExportResponse Import(string resourceGroupName, string serverName, ImportRequestParameters parameters, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportResponse Import(string resourceGroupName, string serverName, ImportRequestParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).ImportExport.Import(resourceGroupName, serverName, parameters);
+            return GetCurrentSqlClient().ImportExport.Import(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
         /// Gets the status of an import/export operations
         /// </summary>
-        public Management.Sql.LegacySdk.Models.ImportExportOperationStatusResponse GetStatus(string operationStatusLink, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ImportExportOperationStatusResponse GetStatus(string operationStatusLink)
         {
-            return GetCurrentSqlClient(clientRequestId).ImportExport.GetImportExportOperationStatus(operationStatusLink);
+            return GetCurrentSqlClient().ImportExport.GetImportExportOperationStatus(operationStatusLink);
         }
 
         /// <summary>
@@ -86,15 +85,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }
