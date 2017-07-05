@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmApplicationGatewaySslPredefinedPolicy
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets Predefined SSL Policies provided by Application Gateway.
 
 ## SYNTAX
 
@@ -16,16 +16,23 @@ Get-AzureRmApplicationGatewaySslPredefinedPolicy [-Name <String>] [<CommonParame
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmApplicationGatewaySslPredefinedPolicy** cmdlet gets Predefined SSL Policies provided by Application Gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$policies = Get-AzureRmApplicationGatewaySslPredefinedPolicy
 ```
 
-{{ Add example description here }}
+This commands returns all the predefined SSL policies.
+
+### Example 2
+```
+PS C:\>$policy = Get-AzureRmApplicationGatewaySslPredefinedPolicy -Name AppGwSslPolicy20170401
+```
+
+This commands returns predefined policy with name AppGwSslPolicy20170401.
 
 ## PARAMETERS
 

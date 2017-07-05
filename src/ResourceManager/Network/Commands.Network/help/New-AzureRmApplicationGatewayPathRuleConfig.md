@@ -186,7 +186,9 @@ Accept wildcard characters: False
 ```
 
 ### -RedirectConfiguration
-Application gateway RedirectConfiguration```yaml
+Application gateway RedirectConfiguration
+
+```yaml
 Type: PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
 Aliases: 
@@ -199,7 +201,9 @@ Accept wildcard characters: False
 ```
 
 ### -RedirectConfigurationId
-ID of the application gateway RedirectConfiguration```yaml
+ID of the application gateway RedirectConfiguration
+
+```yaml
 Type: String
 Parameter Sets: SetByResourceId
 Aliases: 

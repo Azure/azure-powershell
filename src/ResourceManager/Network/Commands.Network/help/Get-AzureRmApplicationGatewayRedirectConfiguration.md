@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmApplicationGatewayRedirectConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets an existing redirect configuration from an Application Gateway.
 
 ## SYNTAX
 
@@ -17,16 +17,18 @@ Get-AzureRmApplicationGatewayRedirectConfiguration [-Name <String>] -Application
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmApplicationGatewayRedirectConfiguration** cmdlet gets an existing redirect configuration from an Application Gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $RedirectConfig = Get-AzureRmApplicationGatewayRedirectConfiguration -Name "Redirect01" -ApplicationGateway $AppGW
 ```
 
-{{ Add example description here }}
+The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
+The second command gets the redirect configuration named Redirect01 from the Application Gateway stored in the variable named $AppGW.
 
 ## PARAMETERS
 

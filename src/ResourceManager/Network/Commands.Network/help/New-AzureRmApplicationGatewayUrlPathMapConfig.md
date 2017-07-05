@@ -104,7 +104,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultRedirectConfiguration
-Application gateway default RedirectConfiguration```yaml
+Application gateway default RedirectConfiguration
+
+```yaml
 Type: PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
 Aliases: 
@@ -117,7 +119,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultRedirectConfigurationId
-ID of the application gateway default RedirectConfiguration```yaml
+ID of the application gateway default RedirectConfiguration
+
+```yaml
 Type: String
 Parameter Sets: SetByResourceId
 Aliases: 

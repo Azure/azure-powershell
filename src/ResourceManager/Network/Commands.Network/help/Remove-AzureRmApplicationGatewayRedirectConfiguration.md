@@ -7,7 +7,7 @@ schema: 2.0.0
 # Remove-AzureRmApplicationGatewayRedirectConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a redirect configuration from an existing Application Gateway.
 
 ## SYNTAX
 
@@ -17,16 +17,19 @@ Remove-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -Applicatio
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmApplicationGatewayRedirectConfiguration** cmdlet removes a redirect configuration from an existing Application Gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\>$AppGw = Remove-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $AppGw -Name "Redirect01"
 ```
 
-{{ Add example description here }}
+The first command gets an application gateway and stores it in the $AppGw variable.
+
+The second command removes the redirect configuration named Redirect01 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
 
