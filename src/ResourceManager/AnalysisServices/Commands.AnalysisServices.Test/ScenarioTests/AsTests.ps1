@@ -228,6 +228,29 @@ function Test-NegativeAnalysisServicesServer
 
 <#
 .SYNOPSIS
+Test log exporting from Azure Analysis Service server.
+#>
+function Test-AnalysisServicesServerLogExport
+{
+    try
+    {
+        $tempFile = [System.IO.Path]::GetTempFileName()
+        Login-AzureAsAccount
+        Export-AzureAnalysisServicesInstanceLog -Instance asazure://westus.asazure.windows.net/oratest -OutputPath $tempFile
+        Assert-Exists $temFile
+        $logContent = [System.IO.File]::ReadAllText($tempFile)
+        Assert-False ([string]::IsNullOrEmpty($logContent))
+    }
+    finally
+    {
+        if (Test-Path $tempFile) {
+            Remove-Item $tmpFile
+        }
+    }
+}
+
+<#
+.SYNOPSIS
 Tests Analysis Services server Login and restart.
 In order to run this test successfully, Following environment variables need to be set.
 ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'

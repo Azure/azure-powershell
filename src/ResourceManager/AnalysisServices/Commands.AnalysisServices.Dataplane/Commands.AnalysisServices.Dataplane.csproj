@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddAzureASAccount.cs" />
+    <Compile Include="Commands\Export-AzureAsInstanceLog.cs" />
     <Compile Include="Models\AsAzureAccount.cs" />
     <Compile Include="Models\AsAzureClientSession.cs" />
     <Compile Include="Models\ASAzureContext.cs" />
@@ -139,6 +140,7 @@
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+    <Copy SourceFiles="..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll" DestinationFolder="$(OutputPath)" ContinueOnError="false" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
