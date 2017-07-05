@@ -33,6 +33,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Sync.Upload;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                     CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, azContext.Environment.GetEndpointSuffix(AzureEnvironment.Endpoint.StorageEndpointSuffix), true);
                     CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
                     CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobUri.BlobContainerName);
-                    IEnumerable<IListBlobItem> blobs = blobContainer.ListBlobs(null, true, BlobListingDetails.All);
+                    IEnumerable<IListBlobItem> blobs = blobContainer.ListContainerBlobs(true, BlobListingDetails.All, null);
                     foreach (var blob in blobs)
                     {
                         if (blob is CloudPageBlob)
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             }
             return snapshots;
         }
+
         internal string GetResourceGroupFromId(string id)
         {
             var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/(\\w+)");
@@ -207,7 +209,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             {
                 foreach (CloudPageBlob snapshot in snapshots)
                 {
-                    snapshot.Delete();
+                    snapshot.DeleteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
                 }
             }
         }

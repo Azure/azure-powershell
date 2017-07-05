@@ -248,11 +248,26 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return result;
         }
 
+        /// <summary>
+        /// The graph getobjectsbyObjectId API supports 1000 objectIds per call.
+        /// Due to this we are batching objectIds by chunk size of 1000 per APi call if it exceeds 1000
+        /// </summary>
         public List<PSADObject> GetObjectsByObjectId(List<string> objectIds)
         {
             List<PSADObject> result = new List<PSADObject>();
-            var adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = objectIds, IncludeDirectoryObjectReferences = true });
-            result.AddRange(adObjects.Select(o => o.ToPSADObject()));
+            IPage<AADObject> adObjects;
+            int objectIdBatchCount;
+            for(int i=0; i<objectIds.Count; i+=1000)
+            {
+                if((i+1000) > objectIds.Count){
+                    objectIdBatchCount = objectIds.Count - i;
+                }
+                else{
+                    objectIdBatchCount = 1000;
+                }
+                adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = objectIds.GetRange(i, objectIdBatchCount), IncludeDirectoryObjectReferences = true });
+                result.AddRange(adObjects.Select(o => o.ToPSADObject()));
+            }
             return result;
         }
 

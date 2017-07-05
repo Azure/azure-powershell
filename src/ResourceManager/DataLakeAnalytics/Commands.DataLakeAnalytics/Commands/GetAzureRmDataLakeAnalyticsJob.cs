@@ -92,6 +92,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public int? Top { get; set; }
 
+        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true,
+            Mandatory = false, HelpMessage = "An optional ID that indicates only jobs part of the specified pipeline should be returned.")]
+        [ValidateNotNullOrEmpty]
+        public Guid? PipelineId { get; set; }
+
+        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true,
+            Mandatory = false, HelpMessage = "An optional ID that indicates only jobs part of the specified recurrence should be returned.")]
+        [ValidateNotNullOrEmpty]
+        public Guid? RecurrenceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (JobId != null && JobId != Guid.Empty)
@@ -167,6 +177,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     filter.Add("(" +
                                string.Join(" or ",
                                    Result.Select(result => string.Format("result eq '{0}'", result)).ToArray()) + ")");
+                }
+
+                if (PipelineId.HasValue)
+                {
+                    filter.Add(string.Format("related/pipelineId eq guid'{0}'", PipelineId.Value));
+                }
+
+                if (RecurrenceId.HasValue)
+                {
+                    filter.Add(string.Format("related/recurrenceId eq guid'{0}'", RecurrenceId.Value));
                 }
 
                 var filterString = string.Join(" and ", filter.ToArray());

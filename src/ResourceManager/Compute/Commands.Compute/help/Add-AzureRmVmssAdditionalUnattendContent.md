@@ -25,7 +25,7 @@ The **Add-AzureRmVmssAdditionalUnattendContent** cmdlet adds information to the 
 
 ### Example 1: Add information to the unattended Windows Setup answer file
 ```
-PS C:\>Add-AzureRmVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
+PS C:\> Add-AzureRmVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
 ```
 
 This command adds information to the unattended Windows Setup answer file.
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specify the virtual machine **Scale Set** object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -159,5 +159,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-

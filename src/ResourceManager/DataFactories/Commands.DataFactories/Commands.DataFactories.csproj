@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.11.1\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.13.0\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -87,7 +87,7 @@
       <HintPath>..\..\..\packages\Microsoft.DataTransfer.Gateway.Encryption.1.7.5798-preview-001\lib\net45\Microsoft.DataTransfer.Gateway.Encryption.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -149,7 +149,9 @@
     <Compile Include="DataSlices\SaveAzureDataFactoryLog.cs" />
     <Compile Include="DataSlices\SetAzureDataFactorySliceStatusCommand.cs" />
     <Compile Include="Encrypt\NewAzureDataFactoryEncryptValueCommand.cs" />
+    <Compile Include="Gateway\GetAzureDataFactoryGatewayAuthKeyCommand.cs" />
     <Compile Include="Gateway\GetAzureDataFactoryGatewayCommand.cs" />
+    <Compile Include="Gateway\NewAzureDataFactoryGatewayAuthKeyCommand.cs" />
     <Compile Include="Gateway\NewAzureDataFactoryGatewayCommand.cs" />
     <Compile Include="Gateway\NewAzureDataFactoryGatewayKeyCommand.cs" />
     <Compile Include="Gateway\RemoveAzureDataFactoryGatewayCommand.cs" />
@@ -180,6 +182,8 @@
     <Compile Include="Models\PipelineFilterOptions.cs" />
     <Compile Include="Models\DataSliceFilterOptions.cs" />
     <Compile Include="Models\PSActivityWindow.cs" />
+    <Compile Include="Models\PSDataFactoryGatewayAuthKey.cs" />
+    <Compile Include="Models\NewDataFactoryGatewayAuthKeyParameters.cs" />
     <Compile Include="ProvisioningFailedException.cs" />
     <Compile Include="Models\PSDataSlice.cs" />
     <Compile Include="Models\PSDataSliceRun.cs" />

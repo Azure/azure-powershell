@@ -13,15 +13,15 @@
           "116"
         ],
         "x-ms-client-request-id": [
-          "eaae5153-b832-44a7-a204-6ddc5353e3b5"
+          "1b93a2bf-7fc9-4098-a943-265a85d8a85a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.1637.0",
+          "FxVersion/4.7.2046.0",
           "OSName/Windows_10_Enterprise",
-          "OSVersion/6.3.14393",
+          "OSVersion/6.3.15063",
           "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
@@ -40,19 +40,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "6rYfSx5eihZ9Q2i6FKQXKKC19x05KAqAuf33k4227ww="
+          "9v5aY2QFzxkwn3T2am+/aCvnGmYkbjZiUZErMLpMcAk="
         ],
         "request-id": [
-          "17bda828-a6e1-4a1f-813c-795f57adfa2f"
+          "1ec3f8be-ecd5-4a91-8e4b-e5f9f682f55b"
         ],
         "client-request-id": [
-          "9c07dd30-2c5e-4644-9021-c677cbe5bd49"
+          "a4b0a76f-c20b-4092-a4cc-3ac74241ef3f"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "JjS1zJnGJAy4cHhGUoy7xMCRV-YncphXTCScI6NB9iReuWgW0c7UlQoFIqBuWU8oEREMDurxAVaKmCrJNdUufl6syxavig09Z7n9OWoMyKRoVWkznRLJpsCg-cB5cl6x5tnih5DCPPw1cYnfHL7abw.oeR6v4YDGiP3zejnECcSQw2x5AgJFmA5BFainj2LKxs"
+          "7CJxbe4qbDUUXXqAkHlneDu_xGsUjL-kkrRzktoiVK_LEx-pu3XjwYLQGlud9B4j0H989zCfVd4hXMkXCFcAnZRxo6oOqYcrYhT2SVhwsVOWyDEM9KyJPhFf-8XavfP1euQ-E7Wo--LBOvcuZTqMDQ.KcIFL4ur3_LxIVdM-jYsJf2fCO_SHeBqwW7dQyG3T8Y"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -67,7 +67,7 @@
           "*"
         ],
         "Duration": [
-          "1197891"
+          "708165"
         ],
         "Cache-Control": [
           "no-cache"
@@ -83,7 +83,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 27 Apr 2017 23:15:50 GMT"
+          "Thu, 18 May 2017 23:08:33 GMT"
         ]
       },
       "StatusCode": 200

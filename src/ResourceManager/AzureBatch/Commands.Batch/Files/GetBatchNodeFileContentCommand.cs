@@ -83,10 +83,44 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public Stream DestinationStream { get; set; }
 
+        [Parameter(HelpMessage = "The start of the byte range to be downloaded. If this is not specified and ByteRangeEnd is, this defaults to 0.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateRange(0, long.MaxValue)]
+        public long? ByteRangeStart { get; set; }
+
+        [Parameter(HelpMessage = "The end of the byte range to be downloaded. If this is not specified and ByteRangeStart is, this defaults to the end of the file.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateRange(0, long.MaxValue)]
+        public long? ByteRangeEnd { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            DownloadNodeFileOptions options = new DownloadNodeFileOptions(this.BatchContext, this.JobId, this.TaskId, this.PoolId,
-                this.ComputeNodeId, this.Name, this.InputObject, this.DestinationPath, this.DestinationStream, this.AdditionalBehaviors);
+            if (this.ByteRangeEnd != null && this.ByteRangeStart == null)
+            {
+                this.ByteRangeStart = 0;
+            }
+
+            if (this.ByteRangeEnd == null && this.ByteRangeStart != null)
+            {
+                this.ByteRangeEnd = long.MaxValue;
+            }
+
+            var byteRange = this.ByteRangeStart != null && this.ByteRangeEnd != null
+                ? new DownloadNodeFileOptions.ByteRange(this.ByteRangeStart.Value, this.ByteRangeEnd.Value)
+                : null;
+
+            DownloadNodeFileOptions options = new DownloadNodeFileOptions(
+                this.BatchContext,
+                this.JobId,
+                this.TaskId,
+                this.PoolId,
+                this.ComputeNodeId,
+                this.Name,
+                this.InputObject,
+                this.DestinationPath,
+                this.DestinationStream,
+                byteRange,
+                this.AdditionalBehaviors);
 
             BatchClient.DownloadNodeFile(options);
         }

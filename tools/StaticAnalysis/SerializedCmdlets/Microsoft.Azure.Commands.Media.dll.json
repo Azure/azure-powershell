@@ -13,7 +13,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -30,7 +30,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -49,7 +49,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -67,7 +67,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -89,7 +89,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -114,7 +114,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -138,7 +138,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -172,8 +172,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSServiceKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKey, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKey",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKey, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Key": "System.String",
               "KeyType": "System.String"
@@ -192,7 +192,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -211,7 +211,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -227,7 +227,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Media.Models",
-            "Name": "KeyType",
+            "Name": "Microsoft.Azure.Management.Media.Models.KeyType",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.Media.Models.KeyType, Microsoft.Azure.Management.Media, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -249,7 +249,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -274,7 +274,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -296,7 +296,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Media.Models",
-                  "Name": "KeyType",
+                  "Name": "Microsoft.Azure.Management.Media.Models.KeyType",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.Media.Models.KeyType, Microsoft.Azure.Management.Media, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -330,14 +330,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSServiceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryAuthEndpoint": "System.String",
-              "PrimaryKey": "System.String",
-              "Scope": "System.String",
               "SecondaryAuthEndpoint": "System.String",
-              "SecondaryKey": "System.String"
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String",
+              "Scope": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -353,7 +353,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -372,7 +372,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -394,7 +394,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -419,7 +419,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -453,12 +453,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSCheckNameAvailabilityOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Message": "System.String",
               "NameAvailable": "System.Boolean",
-              "Reason": "System.String"
+              "Reason": "System.String",
+              "Message": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -469,7 +469,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -485,13 +490,13 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AccountName": "System.String",
-              "Id": "System.String",
               "IsPrimary": "System.Nullable`1[System.Boolean]",
-              "ResourceGroupName": "System.String"
+              "Id": "System.String",
+              "ResourceGroupName": "System.String",
+              "AccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -502,7 +507,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -518,7 +528,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -535,7 +545,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -554,7 +564,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -570,7 +580,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -592,7 +602,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -617,7 +627,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -639,7 +649,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -673,17 +683,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AccountName": "System.String",
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ResourceGroupName": "System.String",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
               "Tags": "System.Collections.Hashtable",
-              "Type": "System.String"
+              "Id": "System.String",
+              "AccountName": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -699,7 +709,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -718,7 +728,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -734,7 +744,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -752,7 +762,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -768,8 +778,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSStorageAccount[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
             "GenericTypeArguments": []
@@ -784,7 +794,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -806,7 +816,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -831,7 +841,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -853,7 +863,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -877,7 +887,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -899,7 +909,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -926,7 +936,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -951,7 +961,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -973,7 +983,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -995,8 +1005,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Media.Models",
-                  "Name": "PSStorageAccount[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
                   "GenericTypeArguments": []
@@ -1017,7 +1027,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1044,7 +1054,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1078,17 +1088,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AccountName": "System.String",
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ResourceGroupName": "System.String",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
               "Tags": "System.Collections.Hashtable",
-              "Type": "System.String"
+              "Id": "System.String",
+              "AccountName": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1104,7 +1114,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1123,7 +1133,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1145,7 +1155,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1172,7 +1182,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1197,7 +1207,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1231,17 +1241,17 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AccountName": "System.String",
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-              "Id": "System.String",
-              "Location": "System.String",
-              "ResourceGroupName": "System.String",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
               "Tags": "System.Collections.Hashtable",
-              "Type": "System.String"
+              "Id": "System.String",
+              "AccountName": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ResourceGroupName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1257,7 +1267,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1276,7 +1286,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1292,7 +1302,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1308,8 +1318,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
-            "Name": "PSStorageAccount[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
             "GenericTypeArguments": []
@@ -1330,7 +1340,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1355,7 +1365,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1377,7 +1387,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1399,8 +1409,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Media.Models",
-                  "Name": "PSStorageAccount[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
                   "GenericTypeArguments": []
@@ -1536,7 +1546,7 @@
     },
     "System.Nullable`1[System.Boolean]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.Boolean]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -1546,8 +1556,8 @@
     },
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "ICollection",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1556,8 +1566,8 @@
     },
     "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.Media.Models",
-      "Name": "PSApiEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Endpoint": "System.String",
         "MajorVersion": "System.String"
@@ -1567,8 +1577,8 @@
     },
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "ICollection",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1577,20 +1587,20 @@
     },
     "Microsoft.Azure.Commands.Media.Models.PSStorageAccount": {
       "Namespace": "Microsoft.Azure.Commands.Media.Models",
-      "Name": "PSStorageAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.6.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.Commands.Media, Version=0.7.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "AccountName": "System.String",
-        "Id": "System.String",
         "IsPrimary": "System.Nullable`1[System.Boolean]",
-        "ResourceGroupName": "System.String"
+        "Id": "System.String",
+        "ResourceGroupName": "System.String",
+        "AccountName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Hashtable": {
       "Namespace": "System.Collections",
-      "Name": "Hashtable",
+      "Name": "System.Collections.Hashtable",
       "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
