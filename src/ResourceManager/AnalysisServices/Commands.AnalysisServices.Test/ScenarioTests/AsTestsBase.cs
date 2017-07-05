@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
-            
+
         #region client creation helpers
 
         private NewResourceManagementClient GetNewResourceManagementClient(MockContext context)
