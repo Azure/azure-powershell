@@ -17,7 +17,7 @@ Describe "Get-ResourceGroupNameJustDoIt" {
     Context "[mock] When ParametersProvided hashset does not contain ResourceGroupName, 
             and it does not contain AppServiceName: " {
 
-            Mock Get-Random { return 1 }
+            Mock Get-Random { return $randomNumber }
 
         It "Returns the default name." {
             $result = Get-ResourceGroupNameJustDoIt -ProvidedParameters $testCases[0].ProvidedParameters -AppServicePlans $testCases[0].AppServicePlans
@@ -36,7 +36,7 @@ Describe "Get-ResourceGroupNameJustDoIt" {
             but it contains AppServicePlanName. However, AppServicePlanName does not match 
             any AppServicePlan from the passed list: " {
 
-            Mock Get-Random { return 1 }
+            Mock Get-Random { return $randomNumber }
 
         It "Returns the default name." {
             $result = Get-ResourceGroupNameJustDoIt -ProvidedParameters $testCases[2].ProvidedParameters -AppServicePlans $testCases[2].AppServicePlans
@@ -202,7 +202,7 @@ Describe "Get-AppServicePlanNameJustDoIt" {
 
     Context "[mock] When ParametersProvided hashset does not contain AppServicePlanName: " {
 
-        Mock Get-Random { return 1 }
+        Mock Get-Random { return $randomNumber }
 
         It "Returns the default name." {
             $result = Get-AppServicePlanNameJustDoIt -ProvidedParameters $testCases[0].ProvidedParameters 
@@ -212,7 +212,7 @@ Describe "Get-AppServicePlanNameJustDoIt" {
 
     Context "[mock] When ParametersProvided hashset contains AppServicePlanName: " {
 
-        Mock Get-Random { return 1 }
+        Mock Get-Random { return $randomNumber }
 
         It "Returns the name specified." {
             $result = Get-AppServicePlanNameJustDoIt -ProvidedParameters $testCases[1].ProvidedParameters 
@@ -248,17 +248,101 @@ Describe "Get-AppServicePlanLocationJustDoIt" {
 $defaultTier = "Free"
 
 $testCases = @(
-    @{ProvidedParameters=@{};ResourceGroup=@{Location="Loc1"}},
-    @{ProvidedParameters=@{Location="Loc"};ResourceGroup=@{Location="Loc1"}}
+    @{ProvidedParameters=@{}},
+    @{ProvidedParameters=@{Tier="Basic"}}
 )
 
 Describe "Get-AppServicePlanTierJustDoIt" {
 
     Context "[mock] When ParametersProvided hashset does not contain Tier: " {
 
-        It "Returns the default of the ResourceGroup passed." {
-            $result = Get-AppServicePlanLocationJustDoIt -ProvidedParameters $testCases[0].ProvidedParameters -ResourceGroup $testCases[0].ResourceGroup
-            $result | Should be $testCases[0].ResourceGroup.Location          
+        It "Returns the default Tier." {
+            $result = Get-AppServicePlanTierJustDoIt -ProvidedParameters $testCases[0].ProvidedParameters 
+            $result | Should be $defaultTier          
+        }                
+    }
+
+     Context "[mock] When ParametersProvided hashset does not contain Tier: " {
+
+        It "Returns the default Tier." {
+            $result = Get-AppServicePlanTierJustDoIt -ProvidedParameters $testCases[1].ProvidedParameters 
+            $result | Should be $testCases[1].ProvidedParameters.Tier       
+        }                
+    }
+}
+
+
+$testCases = @(
+    @{ProvidedParameters=@{}; AppServicePlans=@(); ResourceGroup=@{ResourceGroupName="RG1"; Location="Loc1"}},
+    @{ProvidedParameters=@{Location="Loc2"}; AppServicePlans=@(); ResourceGroup=@{ResourceGroupName="RG3"; Location="Loc3"}},
+    @{ProvidedParameters=@{Location="Loc3"; AppServicePlanName="ASPCustom"}; AppServicePlans=@(@{Name="ASP1"; Location="Loc1"; ResourceGroup="RG4"}); ResourceGroup=@{ResourceGroupName="RG4"; Location="Loc4"}},
+    @{ProvidedParameters=@{Location="Loc4"; AppServicePlanName="ASP5"}; AppServicePlans=@(@{Name="ASP5"; Location="Loc5"; ResourceGroup="RG5";Tier="Basic"}); ResourceGroup=@{ResourceGroupName="RG5"; Location="Loc6"}}
+)
+
+$randomNumber = 1
+$defaultName = "AppServicePlan$randomNumber"
+$defaultTier = "Free"
+
+Describe "Get-AppServicePlanJustDoIt" {
+
+    Context "[mock] When ParametersProvided hashset does not contain any elements: " {
+
+        Mock Get-Random { return $randomNumber }
+        Mock New-AzureRmAppServicePlan { return @{Name=$Name; Tier=$Tier; Location=$Location;ResourceGroupName=$ResourceGroupName} }
+
+        It "Returns an AppServicePlan with the same location as the passed ResourceGroup,
+           , with a default name, default Tier and the same ResourceGroup passed ." {
+            $result = Get-AppServicePlanJustDoIt -ProvidedParameters $testCases[0].ProvidedParameters -AppServicePlans $testCases[0].AppServicePlans -ResourceGroup $testCases[0].ResourceGroup
+            $result.Name | Should be $defaultName
+            $result.Tier | Should be $defaultTier     
+            $result.Location |  Should be $testCases[0].ResourceGroup.Location
+            $result.ResourceGroupName | Should be $testCases[0].ResourceGroup.ResourceGroupName    
+        }                
+    }
+
+    Context "[mock] When ParametersProvided hashset just contains Location for WebApp: " {
+
+        Mock Get-Random { return $randomNumber }
+        Mock New-AzureRmAppServicePlan { return @{Name=$Name; Tier=$Tier; Location=$Location;ResourceGroup=$ResourceGroupName} }
+
+        It "Returns an AppServicePlan with the same location as the passed Location for the WebApp,
+           but with a default name, default Tier, and the same ResourceGroup passed." {
+            $result = Get-AppServicePlanJustDoIt -ProvidedParameters $testCases[1].ProvidedParameters -AppServicePlans $testCases[1].AppServicePlans -ResourceGroup $testCases[1].ResourceGroup
+            $result.Name | Should be $defaultName
+            $result.Tier | Should be $defaultTier     
+            $result.Location |  Should be $testCases[1].ProvidedParameters.Location
+            $result.ResourceGroup | Should be $testCases[1].ResourceGroup.ResourceGroupName    
+        }                
+    }
+
+    Context "[mock] When ParametersProvided hashset contains Location for WebApp, 
+            and an AppServicePlanName that does not exist: " {
+
+        Mock Get-Random { return $randomNumber }
+        Mock New-AzureRmAppServicePlan { return @{Name=$Name; Tier=$Tier; Location=$Location;ResourceGroup=$ResourceGroupName} }
+
+        It "Returns an AppServicePlan with the same location as the passed Location for the WebApp,
+           with the AppServicePlanName specified, default Tier, and the same ResourceGroup passed." {
+            $result = Get-AppServicePlanJustDoIt -ProvidedParameters $testCases[2].ProvidedParameters -AppServicePlans $testCases[2].AppServicePlans -ResourceGroup $testCases[2].ResourceGroup
+            $result.Name | Should be $testCases[2].ProvidedParameters.AppServicePlanName
+            $result.Tier | Should be $defaultTier     
+            $result.Location |  Should be $testCases[2].ProvidedParameters.Location
+            $result.ResourceGroup | Should be $testCases[2].ResourceGroup.ResourceGroupName    
+        }                
+    }
+
+    Context "[mock] When ParametersProvided hashset contains Location for WebApp, 
+            and an AppServicePlanName that already exists: " {
+
+        Mock Get-Random { return $randomNumber }
+        Mock New-AzureRmAppServicePlan { return @{Name=$Name; Tier=$Tier; Location=$Location;ResourceGroup=$ResourceGroupName} }
+
+        It "Returns the same AppServicePlan that matches the name passed." {
+            $result = Get-AppServicePlanJustDoIt -ProvidedParameters $testCases[3].ProvidedParameters -AppServicePlans $testCases[3].AppServicePlans -ResourceGroup $testCases[3].ResourceGroup
+            $result.Name | Should be $testCases[3].AppServicePlans[0].Name
+            $result.Tier | Should be $testCases[3].AppServicePlans[0].Tier    
+            $result.Location |  Should be $testCases[3].AppServicePlans[0].Location
+            $result.ResourceGroup | Should be $testCases[3].AppServicePlans[0].ResourceGroup   
         }                
     }
 }
