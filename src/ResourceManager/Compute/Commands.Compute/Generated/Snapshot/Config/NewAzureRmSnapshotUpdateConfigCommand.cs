@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            var vSnapshotUpdate = new SnapshotUpdate
+            var vSnapshotUpdate = new PSSnapshotUpdate
             {
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,
