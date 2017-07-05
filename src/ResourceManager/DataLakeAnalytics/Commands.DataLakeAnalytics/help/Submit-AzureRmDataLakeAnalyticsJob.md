@@ -114,6 +114,7 @@ Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
+
 Required: False
 Position: 5
 Default value: None
@@ -152,7 +153,9 @@ Accept wildcard characters: False
 ```
 
 ### -PipelineId
-An ID that indicates the submission of this job is a part of a set of recurring jobs and also associated with a job pipeline.```yaml
+An ID that indicates the submission of this job is a part of a set of recurring jobs and also associated with a job pipeline.
+
+```yaml
 Type: Guid
 Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
 Aliases: 
@@ -165,7 +168,9 @@ Accept wildcard characters: False
 ```
 
 ### -PipelineName
-An optional friendly name for the pipeline associated with this job.```yaml
+An optional friendly name for the pipeline associated with this job.
+
+```yaml
 Type: String
 Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
 Aliases: 
@@ -178,7 +183,9 @@ Accept wildcard characters: False
 ```
 
 ### -PipelineUri
-An optional uri that links to the originating service associated with this pipeline.```yaml
+An optional uri that links to the originating service associated with this pipeline.
+
+```yaml
 Type: String
 Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
 Aliases: 
@@ -193,7 +200,7 @@ Accept wildcard characters: False
 ### -Priority
 Specifies the priority of the job.
 If not specified, the priority is 1000.
-A lower the number indicates a higher job priority.
+A low number indicates a higher job priority.
 
 ```yaml
 Type: Int32
@@ -208,7 +215,9 @@ Accept wildcard characters: False
 ```
 
 ### -RecurrenceId
-An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.```yaml
+An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.
+
+```yaml
 Type: Guid
 Parameter Sets: Submit job with script path for U-SQL with reucurrence information, Submit U-SQL Job with recurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
 Aliases: 
@@ -221,7 +230,9 @@ Accept wildcard characters: False
 ```
 
 ### -RecurrenceName
-An optional friendly name for the recurrence correlation between jobs.```yaml
+An optional friendly name for the recurrence correlation between jobs.
+
+```yaml
 Type: String
 Parameter Sets: Submit job with script path for U-SQL with reucurrence information, Submit U-SQL Job with recurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
 Aliases: 
@@ -234,7 +245,9 @@ Accept wildcard characters: False
 ```
 
 ### -RunId
-An ID that identifies this specific run iteration of the pipeline.```yaml
+An ID that identifies this specific run iteration of the pipeline.
+
+```yaml
 Type: Guid
 Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
 Aliases: 
