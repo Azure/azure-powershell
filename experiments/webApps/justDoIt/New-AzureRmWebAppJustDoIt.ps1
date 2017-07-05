@@ -1,77 +1,147 @@
-﻿function Get-ResourceGroupJustDoIt{
+﻿
+function Get-ResourceGroupLocationJustDoIt{
     Param(
+        [Parameter(Mandatory=$true)]
+        [hashtable]$ProvidedParameters
+    )
+    $resourceGroupLocation = ""
+    $defaultLocation = "West Europe"
+    
+    if($ProvidedParameters.ContainsKey('Location')){
+        $resourceGroupLocation = $ProvidedParameters.Location
+    } else { 
+        $resourceGroupLocation = $defaultLocation;
+    }
+
+    return $resourceGroupLocation
+}
+
+function Get-ResourceGroupNameJustDoIt{
+    Param(
+        [Parameter(Mandatory=$true)]
+        [hashtable]$ProvidedParameters,
         [Parameter(Mandatory=$false)]
-        [hashtable]$ProvidedParameters     
+        [object[]]$AppServicePlans
     )
     $resourceGroupName = ""
-    $resourceGroupLocation = ""
+    $defaultName= "ResourceGroup$(Get-Random)"     
 
-    if(-Not $ProvidedParameters.ContainsKey('ResourceGroupName')){
-            $resourceGroupName = "ResourceGroup$(Get-Random)"            
-    } else {
+    if($ProvidedParameters.ContainsKey('ResourceGroupName')){
         $resourceGroupName = $ProvidedParameters.ResourceGroupName
-    }
-
-    if(-Not $ProvidedParameters.ContainsKey('ResourceGroupLocation')){
-            $resourceGroupLocation = "West Europe"
-            # TODO: Implement a 'smarter' way to choose a location.
-            # For this experiment a random location where web
-            # services is available was chosen.
+    } elseif($ProvidedParameters.ContainsKey('AppServicePlanName')) {
+        $appServicePlanName = $ProvidedParameters.AppServicePlanName
+        $appServicePlanMatch = $AppServicePlans | Where-Object {$_.Name -eq $appServicePlanName}
+        if($appServicePlanMatch){
+            $resourceGroupName = $appServicePlanMatch.ResourceGroup
+        } else {
+            $resourceGroupName = $defaultName
+        }
     } else {
-        $resourceGroupLocation = $ProvidedParameters.ResourceGroupLocation
+         $resourceGroupName = $defaultName
     }
 
-    $resourceGroupMatch = Get-AzureRmResourceGroup | Where-Object {$_.ResourceGroupName -eq $resourceGroupName}
+    return $resourceGroupName
+}
 
-    if($resourceGroupMatch){
-        if($resourceGroupMatch.Location -eq $resourceGroupLocation){
-            return $resourceGroupMatch
-        }    
+function Get-ResourceGroupJustDoIt{
+    Param(
+        [Parameter(Mandatory=$true)]
+        [hashtable]$ProvidedParameters,
+        [Parameter(Mandatory=$false)]
+        [object[]]$ResourceGroups,
+        [Parameter(Mandatory=$false)]
+        [object[]]$AppServicePlans
+    )
+    $resourceGroupLocation = ""
+    $resourceGroupName = ""
+     
+    $resourceGroupName = Get-ResourceGroupNameJustDoIt -ProvidedParameters $ProvidedParameters `
+                         -AppServicePlans $AppServicePlans
+    $resourceGroupMatch = $ResourceGroups | Where-Object {$_.ResourceGroupName -eq $resourceGroupName}
+    if($resourceGroupMatch){            
+        return $resourceGroupMatch
     }
-    return New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+    $resourceGroupLocation = Get-ResourceGroupLocationJustDoIt -ProvidedParameters $ProvidedParameters 
+    return New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation     
     
+}
+       
+function Get-AppServicePlanNameJustDoIt{
+    Param(
+        [Parameter(Mandatory=$true)]
+        [hashtable]$ProvidedParameters
+    )
+    $appServicePlanName = ""
+    $defaultName= "AppServicePlan$(Get-Random)"     
+
+    if($ProvidedParameters.ContainsKey('AppServicePlanName')){
+        $appServicePlanName = $ProvidedParameters.AppServicePlanName
+    } else {
+        $appServicePlanName = $defaultName
+    }
+
+    return $appServicePlanName
+}
+
+function Get-AppServicePlanLocationJustDoIt{
+    Param(
+        [Parameter(Mandatory=$true)]
+        [hashtable]$ProvidedParameters,
+        [Parameter(Mandatory=$true)]
+        [object]$ResourceGroup  
+    )
+    $appServicePlanLocation = ""
+
+    if($ProvidedParameters.ContainsKey('Location')){
+        $appServicePlanLocation = $ProvidedParameters.Location
+    } else { 
+        $appServicePlanLocation = $ResourceGroup.Location;
+    }
+
+    return $appServicePlanLocation
+}
+
+function Get-AppServicePlanTierJustDoIt{
+    Param(
+        [Parameter(Mandatory=$true)]
+        [hashtable]$ProvidedParameters
+    )
+    $appServicePlanTier = ""
+    $defaultTier= "Free"     
+
+    if($ProvidedParameters.ContainsKey('Tier')){
+        $appServicePlanTier = $ProvidedParameters.Tier
+    } else {
+        $appServicePlanTier = $defaultTier
+    }
+
+    return $appServicePlanName
 }
 
 function Get-AppServicePlanJustDoIt{
     Param(
-        [Parameter(Mandatory=$false)]
-        [hashtable ]$ProvidedParameters, 
         [Parameter(Mandatory=$true)]
-        [string]$ResourceGroupName     
+        [hashtable ]$ProvidedParameters,
+        [Parameter(Mandatory=$true)]
+        [object[]]$AppServicePlans,
+        [Parameter(Mandatory=$true)]
+        [object]$ResourceGroup   
     )
     $appServicePlanName = ""
     $appServicePlanLocation = ""
-
-    if(-Not $ProvidedParameters.ContainsKey('AppServicePlanName')){
-            $appServicePlanName = "AppServicePlan$(Get-Random)"
-    } else {
-        $appServicePlanName = $ProvidedParameters.AppServicePlanName
+    $tier = ""
+    
+    $appServicePlanName = Get-AppServicePlanNameJustDoIt -ProvidedParameters $ProvidedParameters 
+    $appServicePlanMatch = $AppServicePlans | Where-Object {$_.Name -eq $appServicePlanName}
+    if($appServicePlanMatch){            
+        return $appServicePlanMatch
     }
-
-    if(-Not $ProvidedParameters.ContainsKey('AppServicePlanLocation')){
-            $appServicePlanLocation = "West Europe"
-            # TODO: Implement a 'smarter' way to choose a location.
-            # For this experiment a random location where web
-            # services is available was chosen.
-    } else {
-        $appServicePlanLocation = $ProvidedParameters.AppServicePlanLocation
-    }
-
-    if(-Not $ProvidedParameters.ContainsKey('Tier')){
-            $tier = "Free"
-    } else {
-        $tier = $ProvidedParameters.Tier
-    }
-
-    $appServicePlanMatch = Get-AzureRmAppServicePlan | Where-Object {$_.Name -eq $appServicePlanName}
-
-    if($appServicePlanMatch){
-        if($appServicePlanMatch.Location -eq $appServicePlanLocation){
-            return $appServicePlanMatch
-        }    
-    }
+    $appServicePlanLocation = Get-AppServicePlanLocationJustDoIt -ProvidedParameters $ProvidedParameters `
+                                -ResourceGroup $ResourceGroup
+    $tier = Get-AppServicePlanTierJustDoIt -ProvidedParameters $ProvidedParameter
+   
     return New-AzureRmAppServicePlan -Name $appServicePlanName -Location $appServicePlanLocation `
-    -ResourceGroupName $ResourceGroupName -Tier $tier
+    -ResourceGroupName $ResourceGroup.ResourceGrouName -Tier $tier 
 }
 
 function New-AzureRmWebAppJustDoIt{
@@ -80,19 +150,14 @@ function New-AzureRmWebAppJustDoIt{
     )]
     Param(
         [Parameter(Mandatory=$false)]
+        [Alias("Name")]
         [string]$WebAppName,
         [Parameter(Mandatory=$false)]
-        [string]$WebAppLocation,
+        [string]$Location,
         [Parameter(Mandatory=$false)]
         [string]$ResourceGroupName, 
         [Parameter(Mandatory=$false)]
-        [string]$ResourceGroupLocation,
-        [Parameter(Mandatory=$false)]
-        [string]$AppServicePlanName,        
-        [Parameter(Mandatory=$false)]
-        [string]$AppServicePlanLocation, 
-        [Parameter(Mandatory=$false)]
-        [string]$Tier="Free",       
+        [string]$AppServicePlanName,  
         [Parameter(Mandatory=$false)]
         [string]$GitRepositoryPath
     )
@@ -100,37 +165,35 @@ function New-AzureRmWebAppJustDoIt{
         # This setting will cause all errors to be treated as terminating errors.
         # This means that try/catches will be triggered in all classes (e.g. git errors)
         $ErrorActionPreference = 'Stop'
-
-        # validate parameters        
-        # NOTE: $PSBoundParameters automatic variable is used to detect passed parameters.
-
-        if(-Not $PSBoundParameters.ContainsKey('WebAppName')){
-            $WebAppName ="WebApp$(Get-Random)"
-        }
-
-        if(-Not $PSBoundParameters.ContainsKey('WebAppLocation')){
-            $WebAppLocation="West Europe"
-            # TODO: Implement a 'smarter' way to choose a location.
-            # For this experiment a random location where web
-            # services is available was chosen.
-        }  
-
-        # By default the current path where the script is run will
-        # be used for web app code deployement.
-        if(-Not $PSBoundParameters.ContainsKey('GitRepositoryPath')){
-            $GitRepositoryPath = (Get-Location).Path 
-        }
+               
+        # NOTE: $PSBoundParameters automatic variable is used to detect passed parameters.      
         
         try
-        {            
-            # Create a resource group.
-            $resourceGroup = Get-ResourceGroupJustDoIt -ProvidedParameters $PSBoundParameters
+        {
+            # Get currently available resource groups and app service plans.
+            $resourceGroups = Get-AzureRmResourceGroup
+            $appServicePlans = Get-AzureRmAppServicePlan
+                        
+            # Get a resource group.
+            $resourceGroup = Get-ResourceGroupJustDoIt -ProvidedParameters $PSBoundParameters `
+                            -ResourceGroups $resourceGroups -AppServicePlans $appServicePlans
 
-            # Create an App Service plan in "Free" tier.
-            $appServicePlan = Get-AppServicePlanJustDoIt -ProvidedParameters $PSBoundParameters -ResourceGroupName $resourceGroup.ResourceGroupName
+            # Get an App Service Plan.
+            $appServicePlan = Get-AppServicePlanJustDoIt -ProvidedParameters $PSBoundParameters `
+                                -ResourceGroup $resourceGroup
 
+            # Get Name for Web App if not specified.           
+            if(-Not $PSBoundParameters.ContainsKey('WebAppName')){
+                $WebAppName ="WebApp$(Get-Random)"
+            }
+            
+            # Get Location for Web App if not specified.
+            if(-Not $PSBoundParameters.ContainsKey('Location')){
+                $Location = $appServicePlan.Location
+            }
+            
             # Create a web app.
-            $webApp = New-AzureRmWebApp -Name $WebAppName -Location $WebAppLocation -AppServicePlan $appServicePlan.Name `
+            $webApp = New-AzureRmWebApp -Name $WebAppName -Location $Location -AppServicePlan $appServicePlan.Name `
             -ResourceGroupName $resourceGroup.ResourceGroupName
         }
         catch
@@ -141,18 +204,26 @@ function New-AzureRmWebAppJustDoIt{
             throw $exception           
         }  
 
-        Write-Host "Webapp creation successful."       
+        Write-Host "Webapp creation successful."  
+        Write-Output $webApp     
 
-        # Deploy web app code in a local Git repository.
+        ### Deploy web app code in a local Git repository.
+
+        # By default the current path where the script is run will
+        # be used for web app code deployement.
+        if(-Not $PSBoundParameters.ContainsKey('GitRepositoryPath')){
+            $GitRepositoryPath = (Get-Location).Path 
+        }
+
         try
         {
             git -C $GitRepositoryPath status | Out-Null
         }
         catch
-        {
-            Write-Host "Web app code could not be deployed. The current path or path provided does not contain a local Git Repository."
-            Write-Output $webApp
-            return
+        {          
+            $message ="Web app code could not be deployed. The current path or path provided does not contain a local Git Repository."
+            $exception = New-Object -TypeName System.Exception -ArgumentList $message, $_.Exception      
+            throw $exception
         }
         
         # Get app-level deployment credentials
@@ -168,13 +239,11 @@ function New-AzureRmWebAppJustDoIt{
         }
         catch
         {
-            Write-Host "Git repository could not be added to remote 'azure'."
-            write-Output $webApp
-            return 
+            $message ="Git repository could not be added to remote 'azure'."
+            $exception = New-Object -TypeName System.Exception -ArgumentList $message, $_.Exception      
+            throw $exception
         }
 
-        Write-Host "Git repository detected, added remote 'azure'. " 
-
-        Write-Output $webApp                  
+        Write-Host "Git repository detected, added remote 'azure'. "                  
     }
 }    
