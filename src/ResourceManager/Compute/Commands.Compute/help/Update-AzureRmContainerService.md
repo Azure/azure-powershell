@@ -13,8 +13,8 @@ Updates the state of a container service.
 ## SYNTAX
 
 ```
-Update-AzureRmContainerService [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <ContainerService> [<CommonParameters>]
+Update-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
+ [-ContainerService] <ContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -12,7 +12,7 @@ Removes an image.
 ## SYNTAX
 
 ```
-Remove-AzureRmImage [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-ImageName] <String> [-Force]
+Remove-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
