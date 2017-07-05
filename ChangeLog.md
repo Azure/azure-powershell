@@ -1,3 +1,20 @@
+## 2017.07.07 version 1.2.10
+* AzureRM.AzureStackAdmin Module
+  * Cmdlet prefixes are shortened to 'Azs' from 'AzureRm' with proper alias support for backward compatibility
+    * ```<Verb>-AzureRmResourceProviderRegistration``` renamed to ```<Verb>-AzsResourceProviderManifest```
+    * ```<Verb>-AzureRmManagedSubscription``` renamed to ```<Verb>-AzsTenantSubscription```
+    * ```<Verb>-AzureRmTenantSubscription``` renamed to ```<Verb>-AzsManagedSubscription```
+    * ```<Verb>-AzureRmManagedLocation``` renamed to ```<Verb>-AzsLocation```
+  * ```<Verb>-AzsResourceProviderManifest``` cmdlet takes optional ```Signature``` parameter and ```Extensions``` json string parameter format is changed
+* AzureRM.UsageAggregates
+  * Update to latest service api-version
+* AzureRM.Network
+  * Fixed exceptions in ```New-AzureRmVirtualNetworkGatewayConnection``` cmdlet
+  * Added new cmdlet parameters for BGP Peering with VPN Gateway support
+    * ```New-AzureRmLocalNetworkGateway -ASN, -BgpPeeringAddress, -PeerWeight```
+    * ```New-AzureRmVirtualNetworkGateway -ASN, -PeerWeight```
+    * ```New-AzureRmVirtualNetworkGatewayConnection -EnableBgp```
+
 ## 2017.03.13 version 1.2.9
 * AzureRm.AzureStackAdmin Module
   * Changes in the Add-AzureRmResourceProviderRegistration cmdlet for the support of Admin Azure resource manager and tenant azure resource manager split. A new parameter -ResourceManagerType has been added.
