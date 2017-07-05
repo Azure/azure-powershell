@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vVaultCertificates.CertificateUrl = this.CertificateUrl;
             vVaultCertificates.CertificateStore = this.CertificateStore;
+
             WriteObject(vVaultCertificates);
         }
     }

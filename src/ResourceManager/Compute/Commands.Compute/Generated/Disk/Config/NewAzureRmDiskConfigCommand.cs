@@ -25,18 +25,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmDiskConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(Disk))]
+    [OutputType(typeof(PSDisk))]
     public class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        public StorageAccountTypes? AccountType { get; set; }
+        [Alias("AccountType")]
+        public StorageAccountTypes? SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -111,11 +113,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
+            // Sku
+            Microsoft.Azure.Management.Compute.Models.DiskSku vSku = null;
+
             // CreationData
             Microsoft.Azure.Management.Compute.Models.CreationData vCreationData = null;
 
             // EncryptionSettings
             Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
+
+            if (this.SkuName != null)
+            {
+                if (vSku == null)
+                {
+                    vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();
+                }
+                vSku.Name = this.SkuName;
+            }
 
             if (this.CreateOption.HasValue)
             {
@@ -190,13 +204,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            var vDisk = new Disk
+            var vDisk = new PSDisk
             {
-                AccountType = this.AccountType,
                 OsType = this.OsType,
                 DiskSizeGB = this.DiskSizeGB,
                 Location = this.Location,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
+                Sku = vSku,
                 CreationData = vCreationData,
                 EncryptionSettings = vEncryptionSettings,
             };
