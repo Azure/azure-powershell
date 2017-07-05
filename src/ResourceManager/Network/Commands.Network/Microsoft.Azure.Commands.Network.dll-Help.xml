@@ -14759,6 +14759,27 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">List`1[String]</command:parameterValue>
 			</command:parameter>
+      		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        		<maml:name>Asn</maml:name>
+        		<maml:description>
+          			<maml:para />
+        		</maml:description>
+        		<command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+      		</command:parameter>
+      		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        		<maml:name>BgpPeeringAddress</maml:name>
+        		<maml:description>
+          			<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">List`1[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>PeerWeight</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
@@ -14836,6 +14857,42 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <maml:name>Asn</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
+			<dev:type>
+				<maml:name>UInt32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <maml:name>BgpPeeringAddress</maml:name>
+      <maml:description>
+        <maml:para />
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      <dev:type>
+        <maml:name>String</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>none</dev:defaultValue>
+    </command:parameter>
+    <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <maml:name>PeerWeight</maml:name>
+      <maml:description>
+        <maml:para />
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+      <dev:type>
+        <maml:name>Int32</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>none</dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
@@ -17102,6 +17159,13 @@ Subnets           : []</dev:code>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>Asn</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">UInt32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>EnableBgp</maml:name>
 				<maml:description>
 					<maml:para />
@@ -17109,6 +17173,13 @@ Subnets           : []</dev:code>
 				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>PeerWeight</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+				<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>GatewayDefaultSite</maml:name>
 				<maml:description>
 					<maml:para />
@@ -17205,6 +17276,18 @@ Subnets           : []</dev:code>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>Asn</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">UIn32</command:parameterValue>
+			<dev:type>
+				<maml:name>UInt32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>EnableBgp</maml:name>
 			<maml:description>
 				<maml:para />
@@ -17212,6 +17295,18 @@ Subnets           : []</dev:code>
 			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
 			<dev:type>
 				<maml:name>Boolean</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>PeerWeight</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">In32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -17388,6 +17483,13 @@ Subnets           : []</dev:code>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ConnectionType</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>EnableBgp</maml:name>
 				<maml:description>
 					<maml:para />
 				</maml:description>
@@ -17616,6 +17718,18 @@ Subnets           : []</dev:code>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>SharedKey</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>EnableBgp</maml:name>
 			<maml:description>
 				<maml:para />
 			</maml:description>
