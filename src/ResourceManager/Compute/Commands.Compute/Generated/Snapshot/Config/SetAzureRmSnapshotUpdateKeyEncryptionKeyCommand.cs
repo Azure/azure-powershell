@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public SnapshotUpdate SnapshotUpdate { get; set; }
+        public PSSnapshotUpdate SnapshotUpdate { get; set; }
 
         [Parameter(
             Mandatory = false,

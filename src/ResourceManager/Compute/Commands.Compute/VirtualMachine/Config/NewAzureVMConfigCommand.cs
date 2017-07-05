@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tags { get; set; }
+		[Alias("Tag")]
+		public Hashtable Tags { get; set; }
 
         protected override bool IsUsageMetricEnabled
         {
