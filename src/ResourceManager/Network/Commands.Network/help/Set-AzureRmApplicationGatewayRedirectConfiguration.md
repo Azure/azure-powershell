@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureRmApplicationGatewayRedirectConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Sets the redirect configuration on an existing Application Gateway.
 
 ## SYNTAX
 
@@ -33,16 +33,19 @@ Set-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway <PSApplic
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+**The Set-AzureRmApplicationGatewayRequestRoutingRule** cmdlet modifies a redirect configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $AppGw =  Set-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name "RedirectConfig01" -RedirectType Permanent -TargetUrl "https://www.contoso.com"
 ```
 
-{{ Add example description here }}
+The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
+
+The second command modifies the redirect configuration for the application gateway to redirect type Permanent and use a target url.
 
 ## PARAMETERS
 

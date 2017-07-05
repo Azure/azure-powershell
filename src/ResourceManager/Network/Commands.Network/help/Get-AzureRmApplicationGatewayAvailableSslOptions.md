@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmApplicationGatewayAvailableSslOptions
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets all available ssl options for ssl policy for Application Gateway.
 
 ## SYNTAX
 
@@ -16,16 +16,16 @@ Get-AzureRmApplicationGatewayAvailableSslOptions [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmApplicationGatewayAvailableSslOptions** cmdlet gets all available ssl options for ssl policy
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$sslOptions = Get-AzureRmApplicationGatewayAvailableSslOptions
 ```
 
-{{ Add example description here }}
+This commands returns all available ssl options for ssl policy.
 
 ## PARAMETERS
 

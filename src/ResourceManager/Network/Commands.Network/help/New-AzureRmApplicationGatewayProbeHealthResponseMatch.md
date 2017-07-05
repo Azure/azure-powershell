@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmApplicationGatewayProbeHealthResponseMatch
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a health probe response match used by Health Probe for an application gateway.
 
 ## SYNTAX
 
@@ -17,16 +17,16 @@ New-AzureRmApplicationGatewayProbeHealthResponseMatch [-Body <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+**The Add-AzureRmApplicationGatewayProbeHealthResponseMatch** cmdlet creates a health probe response match used by Health Probe for an application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$responsematch = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "helloworld" -StatusCode "200-399","503"
 ```
 
-{{ Add example description here }}
+This command creates a health response match which can be passed to ProbeConfig as a parameter.
 
 ## PARAMETERS
 

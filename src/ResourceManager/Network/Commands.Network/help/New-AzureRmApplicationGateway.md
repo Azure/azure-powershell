@@ -262,7 +262,9 @@ Accept wildcard characters: False
 ```
 
 ### -RedirectConfigurations
-The list of redirect configuration```yaml
+The list of redirect configuration
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration]
 Parameter Sets: (All)
 Aliases: 

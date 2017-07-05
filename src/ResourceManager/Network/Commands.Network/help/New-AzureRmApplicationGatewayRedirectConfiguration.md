@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzureRmApplicationGatewayRedirectConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a redirect configuration for an application gateway.
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ New-AzureRmApplicationGatewayRedirectConfiguration -Name <String> -RedirectType 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+**The New-AzureRmApplicationGatewayRedirectConfiguration** cmdlet creates a redirect configuration for an application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$RedirectConfig = New-AzureRmApplicationGatewayRedirectConfiguration -Name "Redirect01" -RedirectType Permanent -TargetListener $listener01
 ```
 
-{{ Add example description here }}
+This command creates a redirect configuration named Redirect01 and stores the result in the variable named $RedirectConfig.
 
 ## PARAMETERS
 
