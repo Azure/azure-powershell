@@ -323,7 +323,7 @@ function Test-AEMExtensionAdvancedLinuxMD
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 1023 | Update-AzureRmVM
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
 		
         
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: VM created"
@@ -757,5 +757,5 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
 function Get-LinuxImage
 {
-    return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP1' 'latest';
+    return Create-ComputeVMImageObject 'SUSE' 'SLES' '12-SP2' 'latest';
 }
