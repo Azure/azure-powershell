@@ -24,11 +24,16 @@ Sets the given profile as a default profile to be used with all API version prof
 PS C:\> Set-AzureRmDefaultProfile -Profile '2017-03-09-profile'
 ```
 
-Set profile '2017-03-09-profile' as a default profile. After setting, any API Version profile cmdlet can be executed as follows:
+Set profile '2017-03-09-profile' as a default profile. After setting, any API Version profile cmdlet can be executed without providing a profile parameter as follows:
 ```
 Install-AzureRmProfile
 ```
-This will install profile '2017-03-09-profile'
+This will install profile '2017-03-09-profile'.  Additionally, when importing AzureRM modules, you will import the version of the module associated with the default profile setting, unless you explicitly specify a RequiredVersion.
+
+```
+Import-Module AzureRM.Compute
+```
+Imports a version of the Compute module compatible with the ```2017-03-09-profile``` profile.
 
 
 ## PARAMETERS

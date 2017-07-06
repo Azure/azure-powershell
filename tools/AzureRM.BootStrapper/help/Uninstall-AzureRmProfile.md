@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -Profile
-The profile version to load in the current PowerShell session.
+The profile version to uninstall.
 
 ```yaml
 Type: String

@@ -6,7 +6,7 @@ schema: 2.0.0
 
 # Update-AzureRmProfile
 ## SYNOPSIS
-Update a profile to the latest versions in that profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
+Update modules to the latest versions consitent with the given profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
 
 ## SYNTAX
 
@@ -15,7 +15,7 @@ Update-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Module <String[
 ```
 
 ## DESCRIPTION
-Update a profile to the latest versions in that profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
+Update modules to the latest versions consitent with the given profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
 
 ## EXAMPLES
 
