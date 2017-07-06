@@ -172,7 +172,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
             return serverList;
         }
-        
+
+        public SkuEnumerationForNewResourceResult ListSkusForNew()
+        {
+            return _client.Servers.ListSkusForNew();
+        }
+
+        public SkuEnumerationForExistingResourceResult ListSkusForExisting(string resourceGroupName, string serverName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByServer(serverName);
+            }
+
+            return _client.Servers.ListSkusForExisting(resourceGroupName, serverName);
+        }
+
         private string GetResourceGroupByServer(string serverName)
         {
             try

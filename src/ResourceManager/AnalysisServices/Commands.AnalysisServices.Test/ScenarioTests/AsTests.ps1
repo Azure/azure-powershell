@@ -145,7 +145,6 @@ function Test-AnalysisServicesServerScaleUpDown
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
-    
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
@@ -193,7 +192,8 @@ function Test-NegativeAnalysisServicesServer
 {
     param
 	(
-		$fakeserverName = "psfakeservertest"
+		$fakeserverName = "psfakeservertest",
+		$invalidSku = "INVALID"
 	)
 	
 	try
@@ -204,12 +204,12 @@ function Test-NegativeAnalysisServicesServer
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
-    
+
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
-       
+
 		# attempt to recreate the already created server
 		Assert-Throws {New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location}
 
@@ -219,6 +219,12 @@ function Test-NegativeAnalysisServicesServer
 
 		# attempt to get a non-existent server
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName}
+
+		# attempt to create a server with invalid Sku
+		Assert-Throws {New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'}
+
+		# attempt to scale a server to invalid Sku
+		Assert-Throws {Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Sku $invalidSku}
 
 		# Delete Analysis Servicesserver
 		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru

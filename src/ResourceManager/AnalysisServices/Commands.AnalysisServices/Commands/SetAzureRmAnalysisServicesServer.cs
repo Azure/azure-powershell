@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
@@ -41,7 +42,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 "Name of the Sku used to create the server"
             )]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("B1", "B2", "S0", "S1", "S2", "S4")]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
@@ -78,6 +78,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 if (!AnalysisServicesClient.TestServer(ResourceGroupName, Name, out currentServer))
                 {
                     throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
+                }
+
+                var availableSkus = AnalysisServicesClient.ListSkusForExisting(ResourceGroupName, Name);
+                if (Sku != null && !availableSkus.Value.Any(v => v.Sku.Name == Sku))
+                {
+                    throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Sku.Name))));
                 }
 
                 var location = currentServer.Location;
