@@ -77,6 +77,28 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag if host header should be picked from the host name of the backend server.")]
+        public SwitchParameter PickHostNameFromBackendAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Cookie name to use for the affinity cookie")]
+        [ValidateNotNullOrEmpty]
+        public string AffinityCookieName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag if probe should be enabled.")]
+        public SwitchParameter ProbeEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.")]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -122,11 +144,28 @@ namespace Microsoft.Azure.Commands.Network
                         });
                 }
             }
+            if(this.PickHostNameFromBackendAddress.IsPresent)
+            {
+                backendHttpSettings.PickHostNameFromBackendAddress = true;
+            }
+            if (this.AffinityCookieName != null)
+            {
+                backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
+            }
+            if (this.ProbeEnabled.IsPresent)
+            {
+                backendHttpSettings.ProbeEnabled = true;
+            }
+            if (this.Path != null)
+            {
+                backendHttpSettings.Path = this.Path;
+            }
 
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
                                     this.Name);
+
             return backendHttpSettings;
         }
     }
