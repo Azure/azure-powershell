@@ -12,7 +12,7 @@ Creates a configurable disk object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskConfig [[-AccountType] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmDiskConfig [-SkuName <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Tag <Hashtable>] [-CreateOption <DiskCreateOption>]
  [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
@@ -42,22 +42,6 @@ The second and third commands set the disk encryption key and key encryption key
 The last command takes the disk object and creates a disk with name 'Disk01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
-
-### -AccountType
-Specifies the storage account type.
-
-```yaml
-Type: StorageAccountTypes
-Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
@@ -176,6 +160,21 @@ Accepted values: Windows, Linux
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuName
+Specifies the Sku name of the storage account.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: AccountType
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
