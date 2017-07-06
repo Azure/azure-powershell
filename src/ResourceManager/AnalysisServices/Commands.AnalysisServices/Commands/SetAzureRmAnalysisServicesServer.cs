@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter DisableBackup { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(Name))
@@ -81,6 +84,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 if (Tag == null && currentServer.Tags != null)
                 {
                     Tag = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
+                }
+
+                if (DisableBackup.IsPresent)
+                {
+                    BackupBlobContainerUri = "-";
                 }
 
                 AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri);

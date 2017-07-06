@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Management.Analysis.Models;
 using System.Collections.Generic;
 
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ServerFullName = server.ServerFullName,
                 Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new ServerSku(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
-                BackupBlobContainerUri = server.BackupBlobContainerUri
+                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri
             };
         }
 
