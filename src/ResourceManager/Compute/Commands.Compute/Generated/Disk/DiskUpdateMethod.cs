@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pDisk = new RuntimeDefinedParameter();
             pDisk.Name = "Disk";
-            pDisk.ParameterType = typeof(PSDiskUpdate);
+            pDisk.ParameterType = typeof(DiskUpdate);
             pDisk.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            PSDiskUpdate disk = (PSDiskUpdate)ParseParameter(invokeMethodInputParameters[2]);
-            PSDisk diskOrg = (PSDisk)ParseParameter(invokeMethodInputParameters[3]);
+            DiskUpdate disk = (DiskUpdate)ParseParameter(invokeMethodInputParameters[2]);
+            Disk diskOrg = (Disk)ParseParameter(invokeMethodInputParameters[3]);
 
             var result = (disk == null)
                          ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, diskOrg)
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string diskName = string.Empty;
-            PSDiskUpdate disk = new PSDiskUpdate();
+            DiskUpdate disk = new DiskUpdate();
 
             return ConvertFromObjectsToArguments(
                  new string[] { "ResourceGroupName", "DiskName", "Disk" },
@@ -121,6 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
@@ -128,17 +129,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
-                    PSDiskUpdate disk = this.DiskUpdate;
-                    PSDisk diskOrg = this.Disk;
+                    DiskUpdate disk = this.DiskUpdate;
+                    Disk diskOrg = this.Disk;
 
                     var result = (disk == null)
                                  ? DisksClient.CreateOrUpdate(resourceGroupName, diskName, diskOrg)
                                  : DisksClient.Update(resourceGroupName, diskName, disk);
-
-					var psObject = new PSDisk();
-					Mapper.Map<Disk, PSDisk>(result, psObject);
-
-					WriteObject(psObject);
+                    var psObject = new PSDisk();
+                    Mapper.Map<Disk, PSDisk>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }

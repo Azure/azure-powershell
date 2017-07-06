@@ -96,9 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(imageName))
             {
                 var result = ImagesClient.Get(resourceGroupName, imageName, expand);
-                var psObject = new PSImage();
-                Mapper.Map<Image, PSImage>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -114,12 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSImageList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<Image, PSImageList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -135,12 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSImageList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<Image, PSImageList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
         }
 

@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pSnapshot = new RuntimeDefinedParameter();
             pSnapshot.Name = "Snapshot";
-            pSnapshot.ParameterType = typeof(PSSnapshot);
+            pSnapshot.ParameterType = typeof(Snapshot);
             pSnapshot.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            PSSnapshot snapshot = (PSSnapshot)ParseParameter(invokeMethodInputParameters[2]);
+            Snapshot snapshot = (Snapshot)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
             WriteObject(result);
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string snapshotName = string.Empty;
-            PSSnapshot snapshot = new PSSnapshot();
+            Snapshot snapshot = new Snapshot();
 
             return ConvertFromObjectsToArguments(
                  new string[] { "ResourceGroupName", "SnapshotName", "Snapshot" },
@@ -117,16 +118,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
-                    PSSnapshot snapshot = this.Snapshot;
+                    Snapshot snapshot = this.Snapshot;
 
                     var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
-                    WriteObject(result);
+                    var psObject = new PSSnapshot();
+                    Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
