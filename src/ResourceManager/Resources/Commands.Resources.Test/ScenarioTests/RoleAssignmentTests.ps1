@@ -60,7 +60,7 @@ function Test-RaNegativeScenarios
     
     # Bad Scope
     $badScope = '/subscriptions/'+ $subscription[0].Id +'/providers/nonexistent'
-    $badScopeException = "InvalidResourceNamespace: The resource namespace 'nonexistent' is invalid."
+    $badScopeException = "The resource namespace 'nonexistent' is invalid."
     Assert-Throws { Get-AzureRmRoleAssignment -Scope $badScope } $badScopeException
 }
 
@@ -152,7 +152,7 @@ function Test-RaByResource
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("78D6502F-74FC-4800-BB0A-0E1A7BEBECA4")
     $newAssignment = New-AzureRmRoleAssignment `
-                        -ObjectId $groups[0].Id.Guid `
+                        -ObjectId $groups[0].Id `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resource.ResourceGroupName `
                         -ResourceType $resource.ResourceType `

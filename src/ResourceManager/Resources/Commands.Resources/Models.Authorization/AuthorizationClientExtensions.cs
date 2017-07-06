@@ -123,15 +123,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 assignment.Properties.RoleDefinitionId = assignment.Properties.RoleDefinitionId.GuidFromFullyQualifiedId();
 #if !NETSTANDARD
-                PSADObject adObject = adObjects.SingleOrDefault(o => 
-                    o.Id == assignment.Properties.PrincipalId) ?? 
-                    new PSADObject() { Id = assignment.Properties.PrincipalId };
+				PSADObject adObject = adObjects.SingleOrDefault(o =>
+					o.Id.ToString() == assignment.Properties.PrincipalId) ??
+					new PSADObject() { Id = Guid.Parse(assignment.Properties.PrincipalId)};
 #else
                 PSADObject adObject = adObjects.SingleOrDefault(o =>
                     o.Id == Guid.Parse(assignment.Properties.PrincipalId)) ??
                     new PSADObject() { Id = Guid.Parse(assignment.Properties.PrincipalId) };
 #endif
-                PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.Properties.RoleDefinitionId) ?? new PSRoleDefinition() { Id = assignment.Properties.RoleDefinitionId };
+				PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.Properties.RoleDefinitionId) ?? new PSRoleDefinition() { Id = assignment.Properties.RoleDefinitionId };
 
                 if (adObject is PSADUser)
                 {

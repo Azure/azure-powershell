@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
+            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             GraphClient = GetGraphClient(context);
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient(context);
@@ -241,10 +241,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return client;
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
+			return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+		}
 
         private FeatureClient GetFeatureClient(MockContext context)
         {
