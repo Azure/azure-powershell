@@ -1156,6 +1156,20 @@ Describe "Use-AzureRmProfile" {
                 $useError.exception.message.contains("A different profile version of module") | Should Be $true
             }
         }
+
+        # User has module2 from profile1 imported; tries to execute Use-AzureRmProfile for profile1 with module1. Should import.
+        Context "A different module from same profile was previously imported" {
+            Mock Get-AzureRmModule -Verifiable { "1.0" } 
+            $VersionObj = New-Object -TypeName System.Version -ArgumentList "1.0" 
+            $moduleObj = New-Object -TypeName PSObject 
+            $moduleObj | Add-Member NoteProperty -Name "Name" -Value "Module2"
+            $moduleObj | Add-Member NoteProperty Version($VersionObj)
+            Mock Get-Module -Verifiable { $moduleObj }
+            It "Should import module" {
+                $result = Use-AzureRmProfile -Profile 'Profile1' -Module 'Module1' 
+                Assert-MockCalled Import-Module -Times 1
+            }
+        }
     }
 }
 
