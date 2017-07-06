@@ -18,7 +18,20 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Adding new updated cmdlets for Auditing settings
+	- Adding Get-AzureRmSqlDatabaseAuditing cmdlet which gets the auditing settings of an Azure SQL database.
+	- Adding Get-AzureRmSqlServerAuditing cmdlet which gets the auditing settings of an Azure SQL server.
+	- Adding Set-AzureRmSqlDatabaseAuditing cmdlet which changes the auditing settings for an Azure SQL database.
+	- Adding Set-AzureRmSqlServerAuditing cmdlet which changes the auditing settings of an Azure SQL server.
+* Deprecating the existing Auditing policy cmdlets
+	- Deprecating Get-AzureRmSqlDatabaseAuditingPolicy
+	- Deprecating Get-AzureRmSqlServerAuditingPolicy
+	- Deprecating Set-AzureRmSqlDatabaseAuditingPolicy
+	- Deprecating Set-AzureRmSqlServerAuditingPolicy
+	- Deprecating Use-AzureRmSqlServerAuditingPolicy
+	- Deprecating Remove-AzureRmSqlDatabaseAuditing
+	- Deprecating Remove-AzureRmSqlServerAuditing
+	
 ## Version 3.0.0
 * Added -SampleName parameter to New-AzureRmSqlDatabase
 * Updates to Failover Group cmdlets

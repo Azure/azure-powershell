@@ -76,18 +76,24 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="model">A model object</param>
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
         {
+            // Persist changes for current policy type
             base.PersistChanges(model);
             Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
+
+            // Since this is UseServerDefault cmdlet, we need to save changes for both policies.
+            // If current selected audit type is Blob for example, we need to swap audit type so we can save auditing policy (With use server policy enabled).
             swapAuditType();
             var otherAuditingTypePolicyModel = GetEntity();
             if (otherAuditingTypePolicyModel != null)
             {
-                if (otherAuditingTypePolicyModel.AuditType == AuditType.Table)
+                if (AuditType == AuditType.Table)
                 {
+                    // Apply user input to table auditing policy (Use server default = true)
                     ApplyUserInputToTableAuditingModel(otherAuditingTypePolicyModel as DatabaseAuditingPolicyModel);
                 }
                 else
                 {
+                    // Apply user input to blob auditing policy by turning it off.
                     ApplyUserInputToBlobAuditingModel(otherAuditingTypePolicyModel as DatabaseBlobAuditingPolicyModel);
                 }
                 base.PersistChanges(otherAuditingTypePolicyModel);
