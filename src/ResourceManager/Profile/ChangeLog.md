@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed error when using Import-AzureRmContext or Save-AzureRmContext
+    - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3954
 
 ## Version 3.1.0
 * Resolve-AzureRmError
