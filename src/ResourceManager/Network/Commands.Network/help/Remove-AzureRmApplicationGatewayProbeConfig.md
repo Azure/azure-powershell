@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: C5D49E3A-8A75-40D5-BD1E-4ECC467B4F5D
-online version: 
+online version: https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#remove-a-probe-from-an-existing-application-gateway
 schema: 2.0.0
 ---
 
@@ -18,7 +17,7 @@ Remove-AzureRmApplicationGatewayProbeConfig -Name <String> -ApplicationGateway <
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApplicationGatewayProbeConfig** cmdlet removes a heath probe from an existing application gateway.
+The Remove-AzureRmApplicationGatewayProbeConfig cmdlet removes a heath probe from an existing application gateway.
 
 ## EXAMPLES
 
@@ -74,12 +73,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Remove a probe from an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#remove-a-probe-from-an-existing-application-gateway)
 
-[Add-AzureRmApplicationGatewayProbeConfig](./Add-AzureRmApplicationGatewayProbeConfig.md)
+[Add-AzureRmApplicationGatewayProbeConfig]()
 
-[Get-AzureRmApplicationGatewayProbeConfig](./Get-AzureRmApplicationGatewayProbeConfig.md)
+[Get-AzureRmApplicationGatewayProbeConfig]()
 
-[New-AzureRmApplicationGatewayProbeConfig](./New-AzureRmApplicationGatewayProbeConfig.md)
+[New-AzureRmApplicationGatewayProbeConfig]()
 
-[Set-AzureRmApplicationGatewayProbeConfig](./Set-AzureRmApplicationGatewayProbeConfig.md)
-
+[Set-AzureRmApplicationGatewayProbeConfig]()
 

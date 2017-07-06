@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         public string Protocol { get; set; }
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            HelpMessage = "Host name to send probe to")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
@@ -62,6 +63,23 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public uint UnhealthyThreshold { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Whether the host header should be picked from the backend http settings. Default value is false")]
+        public SwitchParameter PickHostNameFromBackendHttpSettings { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Minimum number of servers that are always marked healthy. Default value is 0")]
+        [ValidateRange(0, int.MaxValue)]
+        public uint MinServers { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Body that must be contained in the health response. Default value is empty")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
+
         public PSApplicationGatewayProbe NewObject()
         {
             var probe = new PSApplicationGatewayProbe();
@@ -72,6 +90,12 @@ namespace Microsoft.Azure.Commands.Network
             probe.Interval = this.Interval;
             probe.Timeout = this.Timeout;
             probe.UnhealthyThreshold = this.UnhealthyThreshold;
+            if (this.PickHostNameFromBackendHttpSettings.IsPresent)
+            {
+                probe.PickHostNameFromBackendHttpSettings = true;
+            }
+            probe.MinServers = this.MinServers;
+            probe.Match = this.Match;
 
             probe.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
