@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pDisk = new RuntimeDefinedParameter();
             pDisk.Name = "Disk";
-            pDisk.ParameterType = typeof(Disk);
+            pDisk.ParameterType = typeof(PSDisk);
             pDisk.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            Disk disk = (Disk)ParseParameter(invokeMethodInputParameters[2]);
+            PSDisk disk = (PSDisk)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
             WriteObject(result);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string diskName = string.Empty;
-            Disk disk = new Disk();
+            PSDisk disk = new PSDisk();
 
             return ConvertFromObjectsToArguments(
                  new string[] { "ResourceGroupName", "DiskName", "Disk" },
@@ -111,67 +111,52 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureRmDisk", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
-    public partial class NewAzureRmDisk : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSDisk))]
+    public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "DiskCreateOrUpdate";
-            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.New))
+            ExecuteClientAction(() =>
             {
-                base.ProcessRecord();
-            }
+                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
+                {
+                    string resourceGroupName = this.ResourceGroupName;
+                    string diskName = this.DiskName;
+					PSDisk disk = this.Disk;
+
+                    var result = DisksClient.CreateOrUpdate(resourceGroupName, diskName, disk);
+                    WriteObject(result);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pDiskName = new RuntimeDefinedParameter();
-            pDiskName.Name = "DiskName";
-            pDiskName.ParameterType = typeof(string);
-            pDiskName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pDiskName.Attributes.Add(new AliasAttribute("Name"));
-            pDiskName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DiskName", pDiskName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string DiskName { get; set; }
 
-            var pDisk = new RuntimeDefinedParameter();
-            pDisk.Name = "Disk";
-            pDisk.ParameterType = typeof(Disk);
-            pDisk.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = false,
-                ValueFromPipeline = true
-            });
-            pDisk.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Disk", pDisk);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            ValueFromPipeline = true)]
+        [AllowNull]
+        public PSDisk Disk { get; set; }
     }
 }

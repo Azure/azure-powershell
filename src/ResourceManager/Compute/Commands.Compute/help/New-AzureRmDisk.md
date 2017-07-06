@@ -12,7 +12,7 @@ Creates a managed disk.
 ## SYNTAX
 
 ```
-New-AzureRmDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <Disk>
+New-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <Disk> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

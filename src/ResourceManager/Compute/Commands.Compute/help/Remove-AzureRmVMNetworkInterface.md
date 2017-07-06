@@ -13,7 +13,7 @@ Removes a network interface from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMNetworkInterface [-VM] <PSVirtualMachine> [-NetworkInterfaceIDs] <String[]> [-WhatIf]
+Remove-AzureRmVMNetworkInterface [-VM] <PSVirtualMachine> [[-NetworkInterfaceIDs] <String[]>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,10 +37,10 @@ Type: String[]
 Parameter Sets: (All)
 Aliases: Id, NicIds
 
-Required: True
+Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

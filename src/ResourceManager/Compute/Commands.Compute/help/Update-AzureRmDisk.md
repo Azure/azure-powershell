@@ -11,15 +11,15 @@ Updates a disk.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
-Update-AzureRmDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String>
- [-DiskUpdate] <DiskUpdate> [<CommonParameters>]
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-DiskUpdate] <DiskUpdate> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
-Update-AzureRmDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <Disk>
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <Disk> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -67,7 +67,7 @@ Specifies a local disk object.
 
 ```yaml
 Type: Disk
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
@@ -97,7 +97,7 @@ Specifies a local disk update object.
 
 ```yaml
 Type: DiskUpdate
-Parameter Sets: InvokeByDynamicParameters
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True
