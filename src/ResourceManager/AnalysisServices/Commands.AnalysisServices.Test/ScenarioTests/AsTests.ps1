@@ -237,14 +237,14 @@ function Test-AnalysisServicesServerLogExport
         $tempFile = [System.IO.Path]::GetTempFileName()
         Login-AzureAsAccount
         Export-AzureAnalysisServicesInstanceLog -Instance asazure://westus.asazure.windows.net/oratest -OutputPath $tempFile
-        Assert-Exists $temFile
+        Assert-Exists $tempFile
         $logContent = [System.IO.File]::ReadAllText($tempFile)
         Assert-False ([string]::IsNullOrEmpty($logContent))
     }
     finally
     {
         if (Test-Path $tempFile) {
-            Remove-Item $tmpFile
+            Remove-Item $tempFile
         }
     }
 }
