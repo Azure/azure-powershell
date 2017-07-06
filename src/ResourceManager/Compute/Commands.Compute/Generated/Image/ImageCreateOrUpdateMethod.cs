@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -112,11 +113,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(Image))]
+    [OutputType(typeof(PSImage))]
     public partial class NewAzureRmImage : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
@@ -126,7 +128,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Image parameters = this.Image;
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
-                    WriteObject(result);
+                    var psObject = new PSImage();
+                    Mapper.Map<Image, PSImage>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -157,15 +161,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public Image Image { get; set; }
+        public PSImage Image { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(Image))]
+    [OutputType(typeof(PSImage))]
     public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
@@ -175,7 +180,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Image parameters = this.Image;
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
-                    WriteObject(result);
+                    var psObject = new PSImage();
+                    Mapper.Map<Image, PSImage>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -206,6 +213,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public Image Image { get; set; }
+        public PSImage Image { get; set; }
     }
 }

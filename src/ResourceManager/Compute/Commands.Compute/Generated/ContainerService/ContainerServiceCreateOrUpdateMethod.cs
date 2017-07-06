@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -112,11 +113,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.New, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(ContainerService))]
+    [OutputType(typeof(PSContainerService))]
     public partial class NewAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
@@ -126,7 +128,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ContainerService parameters = this.ContainerService;
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
-                    WriteObject(result);
+                    var psObject = new PSContainerService();
+                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -156,15 +160,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public ContainerService ContainerService { get; set; }
+        public PSContainerService ContainerService { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(ContainerService))]
+    [OutputType(typeof(PSContainerService))]
     public partial class UpdateAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
@@ -174,7 +179,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ContainerService parameters = this.ContainerService;
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
-                    WriteObject(result);
+                    var psObject = new PSContainerService();
+                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
@@ -204,6 +211,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public ContainerService ContainerService { get; set; }
+        public PSContainerService ContainerService { get; set; }
     }
 }

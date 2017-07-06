@@ -51,43 +51,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         protected override void Configure()
         {
-            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
             Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySetList>();
             Mapper.CreateMap<TO.PSAvailabilitySetList, TO.PSAvailabilitySet>();
             Mapper.CreateMap<TO.PSAvailabilitySet, TO.PSAvailabilitySetList>();
-            Mapper.CreateMap<FROM.ContainerService, TO.PSContainerService>();
             Mapper.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
             Mapper.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
             Mapper.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
-            Mapper.CreateMap<FROM.Disk, TO.PSDisk>();
             Mapper.CreateMap<FROM.Disk, TO.PSDiskList>();
             Mapper.CreateMap<TO.PSDiskList, TO.PSDisk>();
             Mapper.CreateMap<TO.PSDisk, TO.PSDiskList>();
-            Mapper.CreateMap<FROM.Image, TO.PSImage>();
             Mapper.CreateMap<FROM.Image, TO.PSImageList>();
             Mapper.CreateMap<TO.PSImageList, TO.PSImage>();
             Mapper.CreateMap<TO.PSImage, TO.PSImageList>();
-            Mapper.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
             Mapper.CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
             Mapper.CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
             Mapper.CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
-            Mapper.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
             Mapper.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
             Mapper.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>();
             Mapper.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
-            Mapper.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
             Mapper.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
             Mapper.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>();
             Mapper.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>();
-            Mapper.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVM>();
             Mapper.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
             Mapper.CreateMap<TO.PSVirtualMachineScaleSetVMList, TO.PSVirtualMachineScaleSetVM>();
             Mapper.CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
-            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
             Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>();
             Mapper.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
             Mapper.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
-            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
             Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>();
             Mapper.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>();
             Mapper.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>();
@@ -95,6 +85,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             Mapper.CreateMap<FROM.DiskUpdate, FROM.Disk>();
             Mapper.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
             Mapper.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
+            Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
+            Mapper.CreateMap<FROM.OperationStatusResponse, TO.PSOperationStatusResponse>();
+            Mapper.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
+            Mapper.CreateMap<FROM.ContainerService, TO.PSContainerService>();
+            Mapper.CreateMap<FROM.Disk, TO.PSDisk>();
+            Mapper.CreateMap<FROM.AccessUri, TO.PSAccessUri>();
+            Mapper.CreateMap<FROM.Image, TO.PSImage>();
+            Mapper.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
+            Mapper.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
+            Mapper.CreateMap<FROM.RunCommandDocument, TO.PSRunCommandDocument>();
+            Mapper.CreateMap<FROM.RunCommandDocumentBase, TO.PSRunCommandDocumentBase>();
+            Mapper.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>();
+            Mapper.CreateMap<FROM.VirtualMachineScaleSetInstanceView, TO.PSVirtualMachineScaleSetInstanceView>();
+            Mapper.CreateMap<FROM.VirtualMachineScaleSetSku, TO.PSVirtualMachineScaleSetSku>();
+            Mapper.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVM>();
+            Mapper.CreateMap<FROM.VirtualMachineScaleSetVMInstanceView, TO.PSVirtualMachineScaleSetVMInstanceView>();
+            Mapper.CreateMap<FROM.VirtualMachineCaptureResult, TO.PSVirtualMachineCaptureResult>();
+            Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
+            Mapper.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();
+
         }
     }
 }

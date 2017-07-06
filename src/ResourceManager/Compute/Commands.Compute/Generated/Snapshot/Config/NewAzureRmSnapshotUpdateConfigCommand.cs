@@ -19,19 +19,19 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmSnapshotUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
-    public class NewAzureRmSnapshotUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public partial class NewAzureRmSnapshotUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -57,46 +57,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  CreateOption cannot be changed during updating a snapshot." +
-            "To set the CreateOption of a snapshot, use New-AzureRmSnapshotConfig command.",
-            false)]
-        public DiskCreateOption? CreateOption { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  StorageAccountId cannot be changed during updating a snapshot." +
-            "To set the StorageAccountId of a snapshot, use New-AzureRmSnapshotConfig command.",
-            false)]
-        public string StorageAccountId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  ImageReference cannot be changed during updating a snapshot." +
-            "To set the ImageReference of a snapshot, use New-AzureRmSnapshotConfig command.",
-            false)]
-        public ImageDiskReference ImageReference { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  SourceUri cannot be changed during updating a snapshot." +
-            "To set the SourceUri of a snapshot, use New-AzureRmSnapshotConfig command.",
-            false)]
-        public string SourceUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  SourceResourceId cannot be changed during updating a snapshot." +
-            "To set the SourceResourceId of a snapshot, use New-AzureRmSnapshotConfig command.",
-            false)]
-        public string SourceResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,

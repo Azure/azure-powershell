@@ -284,6 +284,7 @@
     <Compile Include="Extension\SqlServer\SetAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\VirtualMachineSqlServerExtensionContext.cs" />
     <Compile Include="Generated\**\*.cs" />
+    <Compile Include="Manual\*.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\AzureDiskEncryptionStatusContext.cs" />
