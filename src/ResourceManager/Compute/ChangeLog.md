@@ -50,7 +50,7 @@
     - 'RecoveryPolicyMode' paramter is added to New-AzureRmVmssConfig
 
 * Compute Resource Sku feature:
-    - New cmdlet 'New-AzureRmComputeResourceSku' list all compute resource skus
+    - New cmdlet 'Get-AzureRmComputeResourceSku' list all compute resource skus
 
 ## Version 3.1.0
 * Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
