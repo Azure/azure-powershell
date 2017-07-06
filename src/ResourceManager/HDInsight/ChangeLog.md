@@ -23,6 +23,9 @@
     - Enable-AzureRmHDInsightOperationsManagementSuite
     - Disable-AzureRmHDInsightOperationsManagementSuite
     - Get-AzureRmHDInsightOperationsManagementSuite
+* Add new parameters to set Spark custom configurations to Add-AzureRmHDInsightConfigValues
+    - Parameters SparkDefaults and SparkThriftConf for Spark 1.6
+    - Parameters Spark2Defaults and Spark2ThriftConf for Spark 2.0
 
 ## Version 3.1.0
 
