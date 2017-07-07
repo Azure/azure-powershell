@@ -13,8 +13,7 @@ Unregisters a Windows Server or other container from the vault.
 ## SYNTAX
 
 ```
-Unregister-AzureRmRecoveryServicesBackupContainer [-Container] <ContainerBase>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Unregister-AzureRmRecoveryServicesBackupContainer [-Container] <ContainerBase> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +28,7 @@ Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdle
 ### Example 1: Unregister a Windows Server from the vault
 ```
 PS C:\>$Cont = Get-AzureRmRecoveryServicesContainer -ContainerType "Windows" -BackupManagementType MARS -Name "server01.contoso.com"
-PS C:\> Unregister-AzureRmRecoveryServiceBackupContainer -Container $Cont
+PS C:\> Unregister-AzureRmRecoveryServicesBackupContainer -Container $Cont
 ```
 
 The first command gets the Windows container named server01.contoso.com that is registered in the vault, and then stores it in the $Cont variable.
@@ -37,45 +36,6 @@ The first command gets the Windows container named server01.contoso.com that is 
 The second command unregisters the specified Windows Server from the Azure Backup vault.
 
 ## PARAMETERS
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Container
 Specifies a Backup container object to unregister.

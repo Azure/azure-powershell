@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
@@ -37,19 +37,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Elastic Pool
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlServerCommunicationLinkCommunicator(AzureContext context)
+        public AzureSqlServerCommunicationLinkCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -62,34 +62,34 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// <summary>
         /// Gets a server communication link
         /// </summary>
-        public Management.Sql.Models.ServerCommunicationLink Get(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.ServerCommunicationLink Get(string resourceGroupName, string serverName, string communicationLinkName)
         {
-            return GetCurrentSqlClient(clientRequestId).CommunicationLinks.Get(resourceGroupName, serverName, communicationLinkName).ServerCommunicationLink;
+            return GetCurrentSqlClient().CommunicationLinks.Get(resourceGroupName, serverName, communicationLinkName).ServerCommunicationLink;
         }
 
         /// <summary>
         /// Lists server communication links
         /// </summary>
-        public IList<Management.Sql.Models.ServerCommunicationLink> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.ServerCommunicationLink> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient(clientRequestId).CommunicationLinks.List(resourceGroupName, serverName).ServerCommunicationLinks;
+            return GetCurrentSqlClient().CommunicationLinks.List(resourceGroupName, serverName).ServerCommunicationLinks;
         }
 
         /// <summary>
         /// Creates or updates a server communication link
         /// </summary>
-        public Management.Sql.Models.ServerCommunicationLink CreateOrUpdate(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId, ServerCommunicationLinkCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.ServerCommunicationLink CreateOrUpdate(string resourceGroupName, string serverName, string communicationLinkName, ServerCommunicationLinkCreateOrUpdateParameters parameters)
         {
-            var resp = GetCurrentSqlClient(clientRequestId).CommunicationLinks.CreateOrUpdate(resourceGroupName, serverName, communicationLinkName, parameters);
+            var resp = GetCurrentSqlClient().CommunicationLinks.CreateOrUpdate(resourceGroupName, serverName, communicationLinkName, parameters);
             return resp.ServerCommunicationLink;
         }
 
         /// <summary>
         /// Deletes a server communication link
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string communicationLinkName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string communicationLinkName)
         {
-            GetCurrentSqlClient(clientRequestId).CommunicationLinks.Delete(resourceGroupName, serverName, communicationLinkName);
+            GetCurrentSqlClient().CommunicationLinks.Delete(resourceGroupName, serverName, communicationLinkName);
         }
 
         /// <summary>
@@ -97,15 +97,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

@@ -84,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>Return an CloudBlob if the specific blob exists on azure, otherwise return null</returns>
-        CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext);
+        CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, DateTimeOffset? SnapshotTime = null);
 
         /// <summary>
         /// Whether the container is exists or not
@@ -316,6 +316,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
         Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+        
+        /// <summary>
+        /// Return a task that asynchronously start Incremental copy operation to a page blob.
+        /// </summary>
+        /// <param name="blob">Dest CloudPageBlob object</param>
+        /// <param name="source">Source Page Blob snapshot</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        Task<string> StartIncrementalCopyAsync(CloudPageBlob blob, CloudPageBlob source, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
 
         /// <summary>
         /// Return a task that asynchronously set the container permission

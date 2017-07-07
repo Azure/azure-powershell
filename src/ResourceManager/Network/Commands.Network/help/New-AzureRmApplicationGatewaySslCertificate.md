@@ -14,7 +14,7 @@ Creates an SSL certificate for an Azure application gateway.
 
 ```
 New-AzureRmApplicationGatewaySslCertificate -Name <String> -CertificateFile <String> -Password <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +31,8 @@ This command creates a SSL certificate named Cert01 for the default application 
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the SSL certificate that this cmdlet creates.
+### -CertificateFile
+Specifies the path of the .pfx file of the SSL certificate that this cmdlet creates.
 
 ```yaml
 Type: String
@@ -46,8 +46,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CertificateFile
-Specifies the path of the .pfx file of the SSL certificate that this cmdlet creates.
+### -Name
+Specifies the name of the SSL certificate that this cmdlet creates.
 
 ```yaml
 Type: String
@@ -70,45 +70,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -182,7 +183,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                                         this.Parameters.Cast<DictionaryEntry>()
                                                 .ToDictionary(
                                                     kvp => kvp.Key as string,
-                                                    kvp => kvp.Value as string)
+                                                    kvp => kvp.Value as WebServiceParameter)
                                         : null,
                         Package = this.Package
                     }

@@ -80,33 +80,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             {
                 ProviderNamespace = provider.NamespaceProperty,
                 RegistrationState = provider.RegistrationState,
-                ResourceTypes =
-                    provider.ResourceTypes.Select(
-                        resourceType =>
-                            new PSResourceProviderResourceType
-                            {
-                                ResourceTypeName = resourceType.ResourceType,
-                                Locations = resourceType.Locations != null ? resourceType.Locations.ToArray() : null,
-                                ApiVersions = resourceType.ApiVersions != null ? resourceType.ApiVersions.ToArray() : null,
-                                ZoneMappings = ResourcesExtensions.BuildZoneMappings(resourceType.ZoneMappings)
-                            }).ToArray(),
+                ResourceTypes = provider.ResourceTypes.Select(resourceType => new PSResourceProviderResourceType
+                {
+                    ResourceTypeName = resourceType.ResourceType,
+                    Locations = resourceType.Locations != null ? resourceType.Locations.ToArray() : null,
+                    ApiVersions = resourceType.ApiVersions != null ? resourceType.ApiVersions.ToArray() : null,
+                }).ToArray(),
             };
-        }
-
-        public static Hashtable BuildZoneMappings(IList<ZoneMappingType> zoneMappings)
-        {
-            if (zoneMappings == null)
-            {
-                return null;
-            }
-
-            Hashtable zonesHash = new Hashtable();
-            foreach (var zoneMapping in zoneMappings)
-            {
-                zonesHash[zoneMapping.Location] = zoneMapping.Zones.ToArray();
-            }
-
-            return zonesHash;
         }
 
         public static string ConstructTagsTable(Hashtable tags)

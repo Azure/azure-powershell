@@ -13,16 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -31,16 +32,12 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
-        AzureVMSqlServerAutoBackupConfigNoun,
+        ProfileNouns.VirtualMachineSqlServerAutoBackupConfig,
         DefaultParameterSetName = StorageUriParamSetName),
-    Alias(
-        VerbsCommon.New + "-" + ProfileNouns.VirtualMachineSqlServerAutoBackupConfig),
     OutputType(
         typeof(AutoBackupSettings))]
     public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
     {
-        protected const string AzureVMSqlServerAutoBackupConfigNoun = "AzureVMSqlServerAutoBackupConfig";
-
         protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";
         protected const string StorageUriParamSetName = "StorageUriSqlServerAutoBackup";
 
@@ -212,12 +209,12 @@ namespace Microsoft.Azure.Commands.Compute
 
                 case StorageUriParamSetName:
                     autoBackupSettings.StorageUrl = (StorageUri == null) ? null : StorageUri.ToString();
-                    autoBackupSettings.StorageAccessKey = (StorageKey == null) ? null : ConvertToUnsecureString(StorageKey);
+                    autoBackupSettings.StorageAccessKey = (StorageKey == null) ? null : ConversionUtilities.SecureStringToString(StorageKey);
                     break;
             }
 
             // Check if certificate password was set
-            autoBackupSettings.Password = (CertificatePassword == null) ? null : ConvertToUnsecureString(CertificatePassword);
+            autoBackupSettings.Password = (CertificatePassword == null) ? null : ConversionUtilities.SecureStringToString(CertificatePassword);
 
             autoBackupSettings.BackupSystemDbs = BackupSystemDbs.IsPresent ? BackupSystemDbs.ToBool() : false;
             autoBackupSettings.BackupScheduleType = BackupScheduleType;
@@ -243,7 +240,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext,
                         AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);
@@ -254,40 +251,12 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (keys != null)
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.Key1) ?
-                            keys.Key1 :
-                            keys.Key2;
+                        storageKey = keys.GetFirstAvailableKey();
                     }
                 }
             }
 
             return storageKey;
-        }
-
-        /// <summary>
-        /// convert secure string to regular string
-        /// $Issue -  for ARM cmdlets, check if there is a similair helper class library like Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
-        /// </summary>
-        /// <param name="securePassword"></param>
-        /// <returns></returns>
-        [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
-        private static string ConvertToUnsecureString(SecureString securePassword)
-        {
-            if (securePassword == null)
-            {
-                throw new ArgumentNullException("securePassword");
-            }
-
-            IntPtr unmanagedString = IntPtr.Zero;
-            try
-            {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(securePassword);
-                return Marshal.PtrToStringUni(unmanagedString);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
-            }
         }
 
         /// <summary>

@@ -13,12 +13,12 @@ Gets the properties of a Network Watcher
 
 ### Get
 ```
-Get-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String>
+Get-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String> [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzureRmNetworkWatcher [-ResourceGroupName <String>]
+Get-AzureRmNetworkWatcher [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,9 +26,7 @@ The Get-AzureRmNetworkWatcher cmdlet gets one or more Azure Network Watcher reso
 
 ## EXAMPLES
 
-###  --------------------------  Example 1: Get a Network Watcher  --------------------------
-
-
+### --------------------------  Example 1: Get a Network Watcher  --------------------------
 ```
 Get-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 
@@ -39,6 +37,7 @@ Location          : westcentralus
 Tags              : 
 ProvisioningState : Succeeded
 ```
+
 Gets the Network Watcher named NetworkWatcher_westcentralus in the resource group NetworkWatcherRG.
 
 ## PARAMETERS
@@ -85,6 +84,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
@@ -97,17 +99,27 @@ Accept wildcard characters: False
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher 
 
 ## RELATED LINKS
-[New-AzureRmNetworkWatcher]()
-[Remove-AzureRmNetworkWatcher]()
 
-[New-AzureRmNetworkWatcherPacketCapture]()
-[New-AzureRmPacketCaptureFilterConfig]()
-[Get-AzureRmNetworkWatcherPacketCapture]()
-[Remove-AzureRmNetworkWatcherPacketCapture]()
-[Stop-AzureRmNetworkWatcherPacketCapture]()
+[New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
 
-[Test-AzureRmNetworkWatcherIPFlow]()
-[Get-AzureRmNetworkWatcherNextHop]()
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
-[Get-AzureRmNetworkWatcherTopology]()
-[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+[Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)
+
+[New-AzureRmNetworkWatcherPacketCapture](./New-AzureRmNetworkWatcherPacketCapture.md)
+
+[New-AzureRmPacketCaptureFilterConfig](./New-AzureRmPacketCaptureFilterConfig.md)
+
+[Get-AzureRmNetworkWatcherPacketCapture](./Get-AzureRmNetworkWatcherPacketCapture.md)
+
+[Remove-AzureRmNetworkWatcherPacketCapture](./Remove-AzureRmNetworkWatcherPacketCapture.md)
+
+[Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
+
+[Test-AzureRmNetworkWatcherIPFlow](./Test-AzureRmNetworkWatcherIPFlow.md)
+
+[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
+
+[Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
+
+[Get-AzureRmNetworkWatcherTopology](./Get-AzureRmNetworkWatcherTopology.md)
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting](./Start-AzureRmNetworkWatcherResourceTroubleshooting.md)

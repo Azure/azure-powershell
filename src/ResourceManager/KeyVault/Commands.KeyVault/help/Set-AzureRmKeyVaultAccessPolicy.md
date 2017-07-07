@@ -16,22 +16,32 @@ Grants or modifies existing permissions for a user, application, or security gro
 ```
 Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
  -ServicePrincipalName <String> [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>]
- [-PermissionsToCertificates <String[]>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByUserPrincipalName
 ```
 Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
  -UserPrincipalName <String> [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>]
- [-PermissionsToCertificates <String[]>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByUserEmailAddress
+```
+Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
+ -EmailAddress <String> [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>]
+ [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectId
 ```
 Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>] -ObjectId <String>
  [-ApplicationId <Guid>] [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>]
- [-PermissionsToCertificates <String[]>] [-BypassObjectIdValidation] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>] [-BypassObjectIdValidation]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ForVault
@@ -65,8 +75,8 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 
 ### Example 1: Grant permissions to a user for a key vault Key Vault and modify the permissionskey vault
 ```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets 'Set,Delete'
-PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets 'Set,Delete,Get' -PassThru
+PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets 'set,delete'
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets 'set,delete,get' -PassThru
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys @() -PassThru
 ```
 
@@ -175,6 +185,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnabledForDeployment
 Enables the Microsoft.Compute resource provider to retrieve secrets from this key vault when this key vault is referenced in resource creation, for example when creating a virtual machine.
 
@@ -253,12 +278,26 @@ Accept wildcard characters: False
 
 ### -PermissionsToCertificates
 Specifies an array of certificate permissions to grant to a user or service principal.
+The acceptable values for this parameter are:
+
+- Get
+- List
+- Delete
+- Create
+- Import
+- Update
+- Managecontacts
+- Getissuers
+- Listissuers
+- Setissuers
+- Deleteissuers
+- Manageissuers
 
 ```yaml
 Type: String[]
 Parameter Sets: ByServicePrincipalName, ByUserPrincipalName, ByObjectId
 Aliases: 
-Accepted values: get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, all
+Accepted values: get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, all
 
 Required: False
 Position: Named
@@ -285,13 +324,14 @@ The acceptable values for this parameter are:
 - Delete
 - Backup
 - Restore
-- All
+- Recover
+- Purge
 
 ```yaml
 Type: String[]
 Parameter Sets: ByServicePrincipalName, ByUserPrincipalName, ByObjectId
 Aliases: 
-Accepted values: decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, all
+Accepted values: decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, recover, purge, all
 
 Required: False
 Position: Named
@@ -308,13 +348,30 @@ The acceptable values for this parameter are:
 - List
 - Set
 - Delete
-- All
+- Backup
+- Restore
+- Recover
+- Purge
 
 ```yaml
 Type: String[]
 Parameter Sets: ByServicePrincipalName, ByUserPrincipalName, ByObjectId
 Aliases: 
-Accepted values: get, list, set, delete, all
+Accepted values: get, list, set, delete, backup, restore, recover, purge, all
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PermissionsToStorage
+Specifies managed storage account and sas definition operation permissions to grant to a user or service principal.```yaml
+Type: String[]
+Parameter Sets: ByServicePrincipalName, ByUserPrincipalName, ByObjectId
+Aliases: 
+Accepted values: get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, all
 
 Required: False
 Position: Named
@@ -332,7 +389,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -371,6 +428,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EmailAddress
+Specifies the user email address of the user to whom to grant permissions.
+This email address must exist in the directory associated with the current subscription and be unique.
+
+```yaml
+Type: String
+Parameter Sets: ByUserEmailAddress
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VaultName
 Specifies the name of a key vault.
 This cmdlet modifies the access policy for the key vault that this parameter specifies.
@@ -381,24 +453,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

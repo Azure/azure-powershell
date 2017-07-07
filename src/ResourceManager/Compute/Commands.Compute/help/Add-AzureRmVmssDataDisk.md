@@ -13,8 +13,8 @@ Adds a data disk to the VMSS.
 
 ```
 Add-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Name] <String>] [[-Lun] <Int32>]
- [[-Caching] <CachingTypes>] [[-CreateOption] <DiskCreateOptionTypes>] [[-DiskSizeGB] <Int32>]
- [[-StorageAccountType] <StorageAccountTypes>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Caching] <CachingTypes>] [-CreateOption <DiskCreateOptionTypes>] [-DiskSizeGB <Int32>]
+ [-StorageAccountType <StorageAccountTypes>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ Aliases:
 Accepted values: FromImage, Empty, Attach
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -73,7 +73,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -119,7 +119,7 @@ Aliases:
 Accepted values: StandardLRS, PremiumLRS
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specify the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -192,4 +192,3 @@ System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.StorageAccountTypes
 ## NOTES
 
 ## RELATED LINKS
-

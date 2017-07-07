@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// Get the history of events related to an Alert rule
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmAlertHistory"), OutputType(typeof(List<IPSEventData>))]
-    public class GetAzureRmAlertHistoryCommand : EventCmdletBase
+    public class GetAzureRmAlertHistoryCommand : LogsCmdletBase
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(24);
 

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             get
             {
                 return dataLakeFileSystemClient ??
-                       (dataLakeFileSystemClient = new DataLakeStoreFileSystemClient(DefaultProfile.Context));
+                       (dataLakeFileSystemClient = new DataLakeStoreFileSystemClient(DefaultProfile.DefaultContext));
             }
 
             set { dataLakeFileSystemClient = value; }
@@ -161,35 +161,40 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return GetBytes(contentString, encoding);
         }
 
-        internal static string BytesToString(byte[] content, FileSystemCmdletProviderEncoding type)
+        internal static Encoding GetEncoding(FileSystemCmdletProviderEncoding type)
         {
             switch (type)
             {
                 case FileSystemCmdletProviderEncoding.String:
-                    return Encoding.UTF8.GetString(content);
+                    return Encoding.UTF8;
                 case FileSystemCmdletProviderEncoding.Unicode:
-                    return Encoding.Unicode.GetString(content);
+                    return Encoding.Unicode;
                 case FileSystemCmdletProviderEncoding.BigEndianUnicode:
-                    return Encoding.BigEndianUnicode.GetString(content);
+                    return Encoding.BigEndianUnicode;
                 case FileSystemCmdletProviderEncoding.UTF8:
-                    return Encoding.UTF8.GetString(content);
+                    return Encoding.UTF8;
                 case FileSystemCmdletProviderEncoding.UTF7:
-                    return Encoding.UTF7.GetString(content);
+                    return Encoding.UTF7;
                 case FileSystemCmdletProviderEncoding.UTF32:
-                    return Encoding.UTF32.GetString(content);
+                    return Encoding.UTF32;
                 case FileSystemCmdletProviderEncoding.Ascii:
-                    return Encoding.ASCII.GetString(content);
+                    return Encoding.ASCII;
                 case FileSystemCmdletProviderEncoding.Default:
-                    return Encoding.UTF8.GetString(content);
+                    return Encoding.UTF8;
                 case FileSystemCmdletProviderEncoding.Oem:
                     {
                         var oemCP = NativeMethods.GetOEMCP();
-                        return Encoding.GetEncoding((int)oemCP).GetString(content);
+                        return Encoding.GetEncoding((int)oemCP);
                     }
                 default:
                     // Default to unicode encoding
-                    return Encoding.UTF8.GetString(content);
+                    return Encoding.UTF8;
             }
+        }
+
+        internal static string BytesToString(byte[] content, FileSystemCmdletProviderEncoding type)
+        {
+            return GetEncoding(type).GetString(content);
         }
 
         /// <summary>

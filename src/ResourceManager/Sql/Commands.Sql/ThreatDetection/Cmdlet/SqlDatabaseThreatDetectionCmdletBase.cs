@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
@@ -30,8 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <returns>A model object</returns>
         protected override DatabaseThreatDetectionPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseThreatDetectionPolicy(ResourceGroupName, ServerName, DatabaseName,
-                clientRequestId);
+            return ModelAdapter.GetDatabaseThreatDetectionPolicy(ResourceGroupName, ServerName, DatabaseName);
         }
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlThreatDetectionAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlThreatDetectionAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new SqlThreatDetectionAdapter(DefaultProfile.Context);
+            return new SqlThreatDetectionAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override DatabaseThreatDetectionPolicyModel PersistChanges(DatabaseThreatDetectionPolicyModel model)
         {
-            ModelAdapter.SetDatabaseThreatDetectionPolicy(model, clientRequestId,
-                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            ModelAdapter.SetDatabaseThreatDetectionPolicy(model,
+                    DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             return null;
         }
     }

@@ -33,17 +33,17 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
  [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Deployment via template uri and template parameters file
-```
-New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
- [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterFile <String> -TemplateUri <String>
- [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### Deployment via template file and template parameters file
 ```
 New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
  [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterFile <String> -TemplateFile <String>
+ [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Deployment via template uri and template parameters file
+```
+New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> [-Mode <DeploymentMode>]
+ [-DeploymentDebugLogLevel <String>] [-Force] -TemplateParameterFile <String> -TemplateUri <String>
  [-ApiVersion <String>] [-Pre] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -103,121 +103,19 @@ It uses the *TemplateVersion* parameter to specify the version of the template.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the resource group deployment to create.
+### -ApiVersion
+Specifies the API version that is supported by the resource Provider.
+You can specify a different version than the default version.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: DeploymentName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group to deploy.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateParameterObject
-Specifies a hash table of template parameter names and values.
-For help with hash tables in Windows PowerShell, type `Get-Help about_Hash_Tables`.
-If a template has parameters, you must specify parameter values.
-Template parameters are dynamically added to the command when you specify a template.
-
-```yaml
-Type: Hashtable
-Parameter Sets: Deployment via template file and template parameters object, Deployment via template uri and template parameters object
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateUri
-Specifies the URI of a JSON template file.
-This file can be a custom template or a gallery template that is saved as a JSON file, such as by using **Save-AzureRmResourceGroupGalleryTemplate**.
-
-```yaml
-Type: String
-Parameter Sets: Deployment via template uri and template parameters object, Deployment via template uri and template parameters file, Deployment via template uri and template parameters uri, Deployment via template uri without parameters
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateFile
-Specifies the full path of a JSON template file.
-This can be a custom template or a gallery template that is saved as a JSON file, such as one created by using the **Save-AzureRmResourceGroupGalleryTemplate** cmdlet.
-
-```yaml
-Type: String
-Parameter Sets: Deployment via template file without parameters, Deployment via template file and template parameters object, Deployment via template file and template parameters file, Deployment via template file template parameters uri
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TemplateParameterFile
-Specifies the full path of a JSON file that contains the names and values of the template parameters.
-If a template has parameters, you must specify the parameter values with the *TemplateParameterFile* parameter or the *TemplateParameterObject* parameter.
-Template parameters are dynamically added to the command when you specify a template.
-
-To use the dynamic parameters, type a minus sign (-) to indicate a parameter name and then use the Tab key to cycle through the available parameters.
-
-```yaml
-Type: String
-Parameter Sets: Deployment via template uri and template parameters file, Deployment via template file and template parameters file
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Mode
-Specifies the deployment mode.
-The acceptable values for this parameter are:
-
-- Complete 
-- Incremental
-
-```yaml
-Type: DeploymentMode
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -257,34 +155,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ApiVersion
-Specifies the API version that is supported by the resource Provider.
-You can specify a different version than the default version.
+### -Mode
+Specifies the deployment mode. The acceptable values for this parameter are:
+
+- Complete 
+- Incremental
 
 ```yaml
-Type: String
+Type: DeploymentMode
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
+Default value: Incremental
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Name
+Specifies the name of the resource group deployment to create.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases: DeploymentName
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -303,6 +203,74 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+Specifies the name of the resource group to deploy.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateFile
+Specifies the full path of a JSON template file.
+This can be a custom template or a gallery template that is saved as a JSON file, such as one created by using the **Save-AzureRmResourceGroupGalleryTemplate** cmdlet.
+
+```yaml
+Type: String
+Parameter Sets: Deployment via template file without parameters, Deployment via template file and template parameters object, Deployment via template file and template parameters file, Deployment via template file template parameters uri
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateParameterFile
+Specifies the full path of a JSON file that contains the names and values of the template parameters.
+If a template has parameters, you must specify the parameter values with the *TemplateParameterFile* parameter or the *TemplateParameterObject* parameter.
+Template parameters are dynamically added to the command when you specify a template.
+
+To use the dynamic parameters, type a minus sign (-) to indicate a parameter name and then use the Tab key to cycle through the available parameters.
+
+```yaml
+Type: String
+Parameter Sets: Deployment via template file and template parameters file, Deployment via template uri and template parameters file
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateParameterObject
+Specifies a hash table of template parameter names and values.
+For help with hash tables in Windows PowerShell, type `Get-Help about_Hash_Tables`.
+If a template has parameters, you must specify parameter values.
+Template parameters are dynamically added to the command when you specify a template.
+
+```yaml
+Type: Hashtable
+Parameter Sets: Deployment via template file and template parameters object, Deployment via template uri and template parameters object
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -TemplateParameterUri
 Specifies the URI of a template parameters file.
 
@@ -315,6 +283,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TemplateUri
+Specifies the URI of a JSON template file.
+This file can be a custom template or a gallery template that is saved as a JSON file, such as by using **Save-AzureRmResourceGroupGalleryTemplate**.
+
+```yaml
+Type: String
+Parameter Sets: Deployment via template uri and template parameters object, Deployment via template uri and template parameters file, Deployment via template uri and template parameters uri, Deployment via template uri without parameters
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

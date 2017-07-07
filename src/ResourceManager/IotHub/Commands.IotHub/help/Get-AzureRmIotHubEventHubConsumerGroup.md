@@ -17,7 +17,7 @@ Get-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <St
 ```
 
 ## DESCRIPTION
-Gets all the eventhub consumergroups for the different EventHubs used by IotHub. 
+Gets all the eventhub consumergroups for the different EventHubs used by IotHub.
 
 ## EXAMPLES
 
@@ -38,7 +38,8 @@ Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub
 ## PARAMETERS
 
 ### -EventHubEndpointName
-Name of the Event Hub endpoint. The possible values are events, operationsMonitoringEvents.
+Name of the Event Hub endpoint.
+Possible values events, operationsMonitoringEvents
 
 ```yaml
 Type: String
@@ -53,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of hte IoT hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String

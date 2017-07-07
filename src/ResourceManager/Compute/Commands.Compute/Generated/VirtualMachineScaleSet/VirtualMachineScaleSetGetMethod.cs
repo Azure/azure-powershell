@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     nextPageLink = pageResult.NextPageLink;
                 }
                 var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in result)
+                foreach (var r in resultList)
                 {
                     psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
             else
             {
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     nextPageLink = pageResult.NextPageLink;
                 }
                 var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in result)
+                foreach (var r in resultList)
                 {
                     psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 

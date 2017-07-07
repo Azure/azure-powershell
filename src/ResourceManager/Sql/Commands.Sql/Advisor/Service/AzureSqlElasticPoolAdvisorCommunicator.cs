@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Service
@@ -28,34 +28,34 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Creates a communicator for Azure Sql Elastic Pool Advisors
         /// </summary>
-        public AzureSqlElasticPoolAdvisorCommunicator(AzureContext context) : base(context)
+        public AzureSqlElasticPoolAdvisorCommunicator(IAzureContext context) : base(context)
         {
         }
 
         /// <summary>
         /// Gets the Azure Sql Elastic Pool Advisor
         /// </summary>
-        public Management.Sql.Models.Advisor Get(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, bool expandRecommendedActions, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.Get(resourceGroupName, serverName, elasticPoolName, advisorName, expand).Advisor;
+            return GetCurrentSqlClient().ElasticPoolAdvisors.Get(resourceGroupName, serverName, elasticPoolName, advisorName, expand).Advisor;
         }
 
         /// <summary>
         /// Lists Azure Sql Elastic Pool Advisors
         /// </summary>
-        public IList<Management.Sql.Models.Advisor> List(string resourceGroupName, string serverName, string elasticPoolName, bool expandRecommendedActions, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, string elasticPoolName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.List(resourceGroupName, serverName, elasticPoolName, expand).Advisors;
+            return GetCurrentSqlClient().ElasticPoolAdvisors.List(resourceGroupName, serverName, elasticPoolName, expand).Advisors;
         }
 
         /// <summary>
         /// Update Advisor Auto Execute Status
         /// </summary>
-        public Management.Sql.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string autoExecuteStatus, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string autoExecuteStatus)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.Update(resourceGroupName, serverName, elasticPoolName, advisorName,
+            return GetCurrentSqlClient().ElasticPoolAdvisors.Update(resourceGroupName, serverName, elasticPoolName, advisorName,
                     new AdvisorUpdateParameters
                     {
                         Properties = new AdvisorUpdateProperties()

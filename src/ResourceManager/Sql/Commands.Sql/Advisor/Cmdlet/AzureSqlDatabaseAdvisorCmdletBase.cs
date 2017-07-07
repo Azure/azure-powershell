@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Advisor.Model;
 using Microsoft.Azure.Commands.Sql.Advisor.Service;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
@@ -49,9 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The advisor adapter</returns>
-        protected override AzureSqlDatabaseAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseAdvisorAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlDatabaseAdvisorAdapter(DefaultProfile.Context);
+            return new AzureSqlDatabaseAdvisorAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

@@ -28,7 +28,7 @@ Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmV
 
 ### Example 1: Create a virtual machine
 ```
-PS C:\># Variables    
+PS C:\> # Variables    
 ## Global
 $ResourceGroupName = "ResourceGroup11"
 $Location = "WestEurope"
@@ -82,7 +82,7 @@ This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
 ```
-PS C:\>## VM Account
+PS C:\> ## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
 $VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force 
@@ -147,7 +147,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -185,7 +185,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -200,7 +200,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -234,7 +234,7 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False

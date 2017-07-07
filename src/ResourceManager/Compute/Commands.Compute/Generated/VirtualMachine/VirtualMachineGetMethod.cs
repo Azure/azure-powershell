@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     nextPageLink = pageResult.NextPageLink;
                 }
                 var psObject = new List<PSVirtualMachineList>();
-                foreach (var r in result)
+                foreach (var r in resultList)
                 {
                     psObject.Add(Mapper.Map<VirtualMachine, PSVirtualMachineList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
             else
             {
@@ -136,11 +136,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     nextPageLink = pageResult.NextPageLink;
                 }
                 var psObject = new List<PSVirtualMachineList>();
-                foreach (var r in result)
+                foreach (var r in resultList)
                 {
                     psObject.Add(Mapper.Map<VirtualMachine, PSVirtualMachineList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 

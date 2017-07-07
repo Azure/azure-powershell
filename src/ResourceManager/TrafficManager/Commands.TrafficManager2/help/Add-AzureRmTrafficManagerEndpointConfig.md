@@ -15,7 +15,8 @@ Adds an endpoint to a local Traffic Manager profile object.
 ```
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName <String> -TrafficManagerProfile <TrafficManagerProfile>
  -Type <String> [-TargetResourceId <String>] [-Target <String>] -EndpointStatus <String> [-Weight <UInt32>]
- [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>] [<CommonParameters>]
+ [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>]
+ [-GeoMapping <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +104,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GeoMapping
+The list of regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager documentation for a [full list of accepted values](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-geographic-regions).
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinChildEndpoints
+Specify an Azure region name.
+For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
+
+```yaml
+Type: UInt32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Priority
 Specifies the priority that Traffic Manager assigns to the endpoint.
 This parameter is used only if the Traffic Manager profile is configured with the for Priority traffic-routing method.
@@ -129,6 +160,23 @@ Specifies the fully qualified DNS name of the endpoint.
 Traffic Manager returns this value in DNS responses when it directs traffic to this endpoint.
 Specify this parameter only for the ExternalEndpoints endpoint type.
 For other endpoint types, specify the *TargetResourceId* parameter instead.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceId
+Specifies resource ID of the target.
+Specify this parameter only for the AzureEndpoints and NestedEndpoints endpoint types.
+For the ExternalEndpoints endpoint type, specify the *Target* parameter instead.
 
 ```yaml
 Type: String
@@ -188,39 +236,6 @@ This parameter is used only if the Traffic Manager profile is configured with th
 
 ```yaml
 Type: UInt32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MinChildEndpoints
-Specify an Azure region name.
-For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
-
-```yaml
-Type: UInt32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetResourceId
-Specifies resource ID of the target.
-Specify this parameter only for the AzureEndpoints and NestedEndpoints endpoint types.
-For the ExternalEndpoints endpoint type, specify the *Target* parameter instead.
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases: 
 

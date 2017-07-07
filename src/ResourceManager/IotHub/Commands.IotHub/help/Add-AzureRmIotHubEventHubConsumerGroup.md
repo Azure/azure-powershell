@@ -18,7 +18,7 @@ Add-AzureRmIotHubEventHubConsumerGroup [-ResourceGroupName] <String> [-Name] <St
 ```
 
 ## DESCRIPTION
-Creates a consumer group in the Eventhub associated with the specified IotHub. 
+Creates a consumer group in the Eventhub associated with the specified IotHub.
 
 ## EXAMPLES
 
@@ -54,7 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubEndpointName
-Name of the EventHub endpoint. The possible values for this are events, operationsMonitoringEvents
+Name of the EventHub Endpoint.
+Possible values events, operationsMonitoringEvents
 
 ```yaml
 Type: String
@@ -69,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Iot Hub.
+Name of the Iot Hub
 
 ```yaml
 Type: String
@@ -108,13 +109,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -123,7 +125,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

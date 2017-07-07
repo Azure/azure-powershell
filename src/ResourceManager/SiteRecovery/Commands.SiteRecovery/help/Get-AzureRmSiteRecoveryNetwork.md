@@ -17,9 +17,9 @@ Gets information about the networks managed by Site Recovery for the current vau
 Get-AzureRmSiteRecoveryNetwork [<CommonParameters>]
 ```
 
-### ByFriendlyNameLegacy
+### ByServerObject
 ```
-Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> [<CommonParameters>]
 ```
 
 ### ByNameLegacy
@@ -27,14 +27,14 @@ Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -FriendlyName <String> [<Comm
 Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -Name <String> [<CommonParameters>]
 ```
 
-### ByServerObject
+### ByFriendlyNameLegacy
 ```
-Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Server <ASRServer> -FriendlyName <String> [<CommonParameters>]
 ```
 
-### ByFriendlyName
+### ByFabricObject
 ```
-Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> [<CommonParameters>]
 ```
 
 ### ByName
@@ -42,9 +42,9 @@ Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -FriendlyName <String> [<Comm
 Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -Name <String> [<CommonParameters>]
 ```
 
-### ByFabricObject
+### ByFriendlyName
 ```
-Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> [<CommonParameters>]
+Get-AzureRmSiteRecoveryNetwork -Fabric <ASRFabric> -FriendlyName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,37 +54,10 @@ The **Get-AzureRmSiteRecoveryNetwork** cmdlet gets information about Azure Site 
 
 ## PARAMETERS
 
-### -Server
+### -Fabric
 ```yaml
-Type: ASRServer
-Parameter Sets: ByFriendlyNameLegacy, ByNameLegacy, ByServerObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the virtual machine network.
-
-```yaml
-Type: String
-Parameter Sets: ByNameLegacy
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ByName
+Type: ASRFabric
+Parameter Sets: ByFabricObject, ByName, ByFriendlyName
 Aliases: 
 
 Required: True
@@ -121,10 +94,37 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Fabric
+### -Name
+Specifies the name of the virtual machine network.
+
 ```yaml
-Type: ASRFabric
-Parameter Sets: ByFriendlyName, ByName, ByFabricObject
+Type: String
+Parameter Sets: ByNameLegacy
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Server
+```yaml
+Type: ASRServer
+Parameter Sets: ByServerObject, ByNameLegacy, ByFriendlyNameLegacy
 Aliases: 
 
 Required: True

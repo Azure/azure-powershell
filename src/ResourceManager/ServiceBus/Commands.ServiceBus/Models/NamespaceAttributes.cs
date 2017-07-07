@@ -108,10 +108,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary>
         public bool? Enabled { get; set; }
 
-        /// <summary>
-        /// Gets or sets the name of the resource group the Namespace is in
-        /// </summary>
-        [ObsoleteAttribute("ResourceGroupName property is obsolete.", false)]
-        public string ResourceGroupName { get; set; }
+        
     }
 }

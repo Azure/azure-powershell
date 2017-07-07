@@ -29,6 +29,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
+    using Azure.Commands.Common.Authentication.Abstractions;
+    using Commands.Utilities.Common;
     using System.Globalization;
 
     public class GetAzureWebsiteMetricsTests : WebsitesTestBase
@@ -70,9 +72,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object
             };
             currentProfile = new AzureSMProfile();
-            var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
-            subscription.Properties[AzureSubscription.Property.Default] = "True";
-            currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
+            var subscription = new AzureSubscription { Id = base.subscriptionId };
+            subscription.SetDefault();
+            currentProfile.SubscriptionTable[new Guid(base.subscriptionId)] = subscription;
 
             command.ExecuteCmdlet();
             Assert.Equal(1, ((MockCommandRuntime)command.CommandRuntime).OutputPipeline.Count);

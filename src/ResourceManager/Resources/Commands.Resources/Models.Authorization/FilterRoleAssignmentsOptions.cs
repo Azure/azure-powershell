@@ -31,23 +31,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             get
             {
-                string result;
-                string resourceIdentifier = ResourceIdentifier.ToString();
-
                 if (!string.IsNullOrEmpty(scope))
                 {
-                    result = scope;
-                }
-                else if (!string.IsNullOrEmpty(resourceIdentifier))
-                {
-                    result = resourceIdentifier;
-                }
-                else
-                {
-                    result = null;
+                    return scope;
                 }
 
-                return result;
+                string resourceIdentifier = ResourceIdentifier.ToString();
+
+                if (!string.IsNullOrEmpty(resourceIdentifier))
+                {
+                    return resourceIdentifier;
+                }
+
+                return null;
             }
             set
             {

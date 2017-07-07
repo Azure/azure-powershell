@@ -18,7 +18,7 @@ Creates an eventhub consumer group.
 Creates an IotHub Key.
 
 ### [Get-AzureRmIotHub](Get-AzureRmIotHub.md)
-Gets information about the IotHubs in a subscription. 
+Gets information about the IotHubs in a subscription.
 
 ### [Get-AzureRmIotHubConnectionString](Get-AzureRmIotHubConnectionString.md)
 Gets the IotHub connectionstrings.

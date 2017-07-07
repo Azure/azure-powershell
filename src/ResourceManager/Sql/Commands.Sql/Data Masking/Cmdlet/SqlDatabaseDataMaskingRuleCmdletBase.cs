@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>A model object</returns>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> GetEntity()
         {
-            return ModelAdapter.GetDatabaseDataMaskingRules(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseDataMaskingRules(ResourceGroupName, ServerName, DatabaseName);
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             DatabaseDataMaskingRuleModel model = rules.First();
-            ModelAdapter.SetDatabaseDataMaskingRule(model, clientRequestId);
+            ModelAdapter.SetDatabaseDataMaskingRule(model);
             return null;
         }
 
@@ -90,9 +91,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// </summary>
         /// <param name="subscription">The AzureSubscription in which the current execution is performed</param>
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
-        protected override SqlDataMaskingAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override SqlDataMaskingAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new SqlDataMaskingAdapter(DefaultProfile.Context);
+            return new SqlDataMaskingAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

@@ -25,7 +25,7 @@ This cmdlet takes a **VirtualMachineScaleSet** object as input.
 
 ### Example 1: Create a VMSS
 ```
-PS C:\># Common
+# Common
 $LOC = "WestUs";
 $RGName = "rgkyvms";
 
@@ -137,7 +137,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -152,7 +152,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -167,7 +167,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

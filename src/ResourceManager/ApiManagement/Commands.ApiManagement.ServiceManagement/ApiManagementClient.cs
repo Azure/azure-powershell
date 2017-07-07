@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 {
     using AutoMapper;
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.SmapiModels;
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         internal const string PeriodPattern = "^(?<" + PeriodGroupName + ">[DdMmYy]{1})(?<" + ValueGroupName + @">\d+)$";
         static readonly Regex PeriodRegex = new Regex(PeriodPattern, RegexOptions.Compiled);
 
-        private readonly AzureContext _context;
+        private readonly IAzureContext _context;
         private Management.ApiManagement.ApiManagementClient _client;
 
         private readonly JsonSerializerSettings _jsonSerializerSetting = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
@@ -224,7 +225,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             Mapper.CreateMap<Hashtable, Hashtable>();
         }
 
-        public ApiManagementClient(AzureContext context)
+        public ApiManagementClient(IAzureContext context)
         {
             if (context == null)
             {
@@ -243,7 +244,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         private Management.ApiManagement.ApiManagementClient CreateClient()
         {
-            return AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
+            return AzureSession.Instance.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
                 _context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
@@ -1059,12 +1060,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         #endregion
 
         #region Groups
-        public PsApiManagementGroup GroupCreate(PsApiManagementContext context, string groupId, string name, string description)
+        public PsApiManagementGroup GroupCreate(
+            PsApiManagementContext context,
+            string groupId,
+            string name, 
+            string description,
+            PsApiManagementGroupType? type,
+            string externalId)
         {
             var groupCreateParameters = new GroupCreateParameters(name)
             {
                 Description = description
             };
+
+            if (type.HasValue)
+            {
+                groupCreateParameters.Type = Mapper.Map<GroupTypeContract>(type.Value);
+            }
+            else
+            {
+                groupCreateParameters.Type = Mapper.Map<GroupTypeContract>(PsApiManagementGroupType.Custom);
+            }
+
+            if (!string.IsNullOrEmpty(externalId))
+            {
+                groupCreateParameters.ExternalId = externalId;
+            }
 
             Client.Groups.Create(context.ResourceGroupName, context.ServiceName, groupId, groupCreateParameters);
 
@@ -1118,17 +1139,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             Client.Groups.Delete(context.ResourceGroupName, context.ServiceName, groupId, "*");
         }
 
-        public void GroupSet(PsApiManagementContext context, string groupId, string name, string description)
+        public void GroupSet(
+            PsApiManagementContext context,
+            string groupId,
+            string name,
+            string description)
         {
+            var groupUpdate = new GroupUpdateParameters
+            {
+                Name = name,
+                Description = description
+            };
+
             Client.Groups.Update(
                 context.ResourceGroupName,
                 context.ServiceName,
                 groupId,
-                new GroupUpdateParameters
-                {
-                    Name = name,
-                    Description = description
-                },
+                groupUpdate,
                 "*");
         }
         #endregion

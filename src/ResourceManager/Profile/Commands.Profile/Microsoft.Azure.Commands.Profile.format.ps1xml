@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
+  <SelectionSets>
+    <SelectionSet>
+      <Name>AzureErrorRecords</Name>
+      <Types>
+        <TypeName>Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord</TypeName>
+      </Types>
+    </SelectionSet>
+  </SelectionSets>
   <ViewDefinitions>
     <View>
       <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureProfile</Name>
@@ -28,7 +38,7 @@
               </ListItem>
               <ListItem>
                 <Label>SubscriptionName</Label>
-                <ScriptBlock>$_.Context.Subscription.SubscriptionName.ToString()</ScriptBlock>
+                <ScriptBlock>$_.Context.Subscription.Name</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>CurrentStorageAccount</Label>
@@ -64,7 +74,7 @@
               </ListItem>
               <ListItem>
                 <Label>SubscriptionName</Label>
-                <ScriptBlock>$_.Subscription.SubscriptionName.ToString()</ScriptBlock>
+                <ScriptBlock>$_.Subscription.Name</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>CurrentStorageAccount</Label>
@@ -85,10 +95,10 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <PropertyName>SubscriptionName</PropertyName>
+                <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>SubscriptionId</PropertyName>
+                <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>TenantId</PropertyName>
@@ -111,10 +121,138 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <PropertyName>TenantId</PropertyName>
+                <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>Domain</PropertyName>
+                <PropertyName>Directory</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord</Name>
+      <ViewSelectedBy>
+        <SelectionSetName>AzureErrorRecords</SelectionSetName>
+      </ViewSelectedBy>
+      <GroupBy>
+        <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
+        <Label>HistoryId</Label>
+      </GroupBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>ErrorCategory</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ErrorDetail</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>InvocationInfo</Label>
+                <ScriptBlock>"{" + $_.InvocationInfo.MyCommand + "}"</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Line</Label>
+                <ScriptBlock>$_.InvocationInfo.Line</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Position</Label>
+                <ScriptBlock>$_.InvocationInfo.PositionMessage</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>BoundParameters</Label>
+                <ScriptBlock>$_.InvocationInfo.BoundParameters</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>UnboundParameters</Label>
+                <ScriptBlock>$_.InvocationInfo.UnboundParameters</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HistoryId</Label>
+                <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+          <ListEntry>
+            <EntrySelectedBy>
+              <SelectionCondition>
+                <SelectionSetName>AzureErrorRecords</SelectionSetName>
+                <ScriptBlock>$_.GetType() -eq [Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord]</ScriptBlock>
+              </SelectionCondition>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>RequestId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Message</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ServerMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ServerResponse</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>RequestMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>InvocationInfo</Label>
+                <ScriptBlock>"{" + $_.InvocationInfo.MyCommand + "}"</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Line</Label>
+                <ScriptBlock>$_.InvocationInfo.Line</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Position</Label>
+                <ScriptBlock>$_.InvocationInfo.PositionMessage</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StackTrace</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>HistoryId</Label>
+                <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+          <ListEntry>
+            <EntrySelectedBy>
+              <SelectionCondition>
+                <SelectionSetName>AzureErrorRecords</SelectionSetName>
+                <ScriptBlock>$_.GetType() -eq [Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord]</ScriptBlock>
+              </SelectionCondition>
+            </EntrySelectedBy>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Message</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>StackTrace</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Exception</Label>
+                <ScriptBlock>$_.Exception.GetType()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>InvocationInfo</Label>
+                <ScriptBlock>"{" + $_.InvocationInfo.MyCommand + "}"</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Line</Label>
+                <ScriptBlock>$_.InvocationInfo.Line</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Position</Label>
+                <ScriptBlock>$_.InvocationInfo.PositionMessage</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>HistoryId</Label>
+                <ScriptBlock>$_.InvocationInfo.HistoryId</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>

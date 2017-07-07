@@ -32,14 +32,14 @@ You can use the *InstanceId* parameter to select a set of virtual machines.
 
 ### Example 1: Stop all the virtual machines within the VMSS
 ```
-PS C:\>Stop-AzureRmVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
+PS C:\> Stop-AzureRmVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command stops all virtual machines that belong to the VMSS named ContosoVMSS.
 
 ### Example 2: Stop a specific set of virtual machines within the VMSS
 ```
-PS C:\>Stop-AzureRmVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS" -InstanceId "3","5"
+PS C:\> Stop-AzureRmVmss -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS" -InstanceId "3","5"
 ```
 
 This command stops a specific set of virtual machines specified by the instance ID string array that belong to the VMSS named ContosoVMSS.
@@ -55,7 +55,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -71,7 +71,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -86,14 +86,15 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -StayProvisioned
-Indicates that this cmdlet deallocates all the virtual machines within the VMSS so that the user is not charged for the stopped virtual machines.
+If specified, the virtual machine will enter stopped state. If not specified, the virtual machine will enter stopped-deallocated state. The user is still charged for VMs in stopped state but not for VMs in stopped-deallocated state.
+
 
 ```yaml
 Type: SwitchParameter
@@ -116,7 +117,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
