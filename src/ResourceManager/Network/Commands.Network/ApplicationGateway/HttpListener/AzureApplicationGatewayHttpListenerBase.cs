@@ -106,7 +106,16 @@ namespace Microsoft.Azure.Commands.Network
             httpListener.Name = this.Name;
             httpListener.Protocol = this.Protocol;
             httpListener.HostName = this.HostName;
-            httpListener.RequireServerNameIndication = this.RequireServerNameIndication;
+
+            switch (this.RequireServerNameIndication)
+            {
+                case "true":
+                    httpListener.RequireServerNameIndication = true;
+                    break;
+                case "false":
+                    httpListener.RequireServerNameIndication = false;
+                    break;
+            }
 
             if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
             {

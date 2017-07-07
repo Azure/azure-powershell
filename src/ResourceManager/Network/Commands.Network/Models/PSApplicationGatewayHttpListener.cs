@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
         public string HostName { get; set; }
         public PSResourceId SslCertificate { get; set; }
-        public string RequireServerNameIndication { get; set; }
+        public bool RequireServerNameIndication { get; set; }
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
 
