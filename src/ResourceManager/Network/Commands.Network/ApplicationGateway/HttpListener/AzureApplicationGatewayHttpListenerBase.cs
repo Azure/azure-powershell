@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -107,14 +108,13 @@ namespace Microsoft.Azure.Commands.Network
             httpListener.Protocol = this.Protocol;
             httpListener.HostName = this.HostName;
 
-            switch (this.RequireServerNameIndication)
+            if(string.Equals(this.RequireServerNameIndication,"true", StringComparison.OrdinalIgnoreCase))
             {
-                case "true":
-                    httpListener.RequireServerNameIndication = true;
-                    break;
-                case "false":
-                    httpListener.RequireServerNameIndication = false;
-                    break;
+                httpListener.RequireServerNameIndication = true;
+            }
+            else if(string.Equals(this.RequireServerNameIndication, "false", StringComparison.OrdinalIgnoreCase))
+            {
+                httpListener.RequireServerNameIndication = false;
             }
 
             if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
