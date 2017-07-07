@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway's ASN, used to set up BGP sessions inside IPsec tunnels")]
-        public uint Asn { get; set; }
+        public long Asn { get; set; }
 
         [Parameter(
             Mandatory = false,

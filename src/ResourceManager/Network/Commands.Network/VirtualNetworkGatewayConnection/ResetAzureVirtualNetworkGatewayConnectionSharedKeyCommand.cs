@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "The virtual network connection reset shared key length")]
         [ValidateNotNullOrEmpty]
-        public uint KeyLength { get; set; }
+        public int KeyLength { get; set; }
 
         [Parameter(
             Mandatory = false,
