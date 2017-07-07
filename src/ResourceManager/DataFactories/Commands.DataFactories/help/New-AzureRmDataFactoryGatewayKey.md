@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmDataFactoryGatewayKey
 
 ## SYNOPSIS
-Creates a gateway key for an Azure Data Factory.
+Creates a gateway key for an Azure Data Factory. This cmdlet is deprecated, and you should use **New-AzureRmDataFactoryGatewayAuthKey** instead.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ New-AzureRmDataFactoryGatewayKey [-DataFactory] <PSDataFactory> [-GatewayName] <
 
 ## DESCRIPTION
 The **New-AzureRmDataFactoryGatewayKey** cmdlet creates a gateway key for a specified Azure Data Factory gateway.
-You register the gateway with a cloud service by using this key.
+You register the gateway with a cloud service by using this key. This cmdlet is deprecated, and you should use **New-AzureRmDataFactoryGatewayAuthKey** instead.
 
 ## EXAMPLES
 
@@ -119,5 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [New-AzureRmDataFactoryGateway](./New-AzureRmDataFactoryGateway.md)
+[Get-AzureRmDataFactoryGatewayAuthKey](./Get-AzureRmDataFactoryGatewayAuthKey.md)
+[New-AzureRmDataFactoryGatewayAuthKey](./New-AzureRmDataFactoryGatewayAuthKey.md)
 
 

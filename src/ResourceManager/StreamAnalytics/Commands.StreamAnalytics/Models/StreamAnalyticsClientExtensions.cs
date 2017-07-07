@@ -13,20 +13,82 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     internal static class StreamAnalyticsClientExtensions
     {
-        public static string ToFormattedString(this JobProperties properties)
+        /// <summary>
+        /// Gets or sets json serialization settings.
+        /// </summary>
+        public static JsonSerializerSettings SerializationSettings { get; private set; }
+
+        /// <summary>
+        /// Gets or sets json deserialization settings.
+        /// </summary>
+        public static JsonSerializerSettings DeserializationSettings { get; private set; }
+
+        static StreamAnalyticsClientExtensions()
         {
-            return JsonConvert.SerializeObject(properties, Formatting.Indented);
+            SerializationSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                DateFormatHandling = DateFormatHandling.IsoDateFormat,
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+                NullValueHandling = NullValueHandling.Ignore,
+                ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+                ContractResolver = new DefaultContractResolver(),
+                Converters = new List<JsonConverter>
+                    {
+                        new Iso8601TimeSpanConverter()
+                    }
+            };
+            SerializationSettings.Converters.Add(new TransformationJsonConverter());
+            DeserializationSettings = new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.IsoDateFormat,
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc,
+                NullValueHandling = NullValueHandling.Ignore,
+                ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
+                ContractResolver = new ReadOnlyJsonContractResolver(),
+                Converters = new List<JsonConverter>
+                    {
+                        new Iso8601TimeSpanConverter()
+                    }
+            };
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<Serialization>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<Serialization>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<InputProperties>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<InputProperties>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<OutputDataSource>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<OutputDataSource>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<FunctionProperties>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<FunctionProperties>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<StreamInputDataSource>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<StreamInputDataSource>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<ReferenceInputDataSource>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<ReferenceInputDataSource>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<FunctionBinding>("type"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<FunctionBinding>("type"));
+            SerializationSettings.Converters.Add(new PolymorphicSerializeJsonConverter<FunctionRetrieveDefaultDefinitionParameters>("bindingType"));
+            DeserializationSettings.Converters.Add(new PolymorphicDeserializeJsonConverter<FunctionRetrieveDefaultDefinitionParameters>("bindingType"));
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
+            DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
+        }
+
+        public static string ToFormattedString(this StreamingJob properties)
+        {
+            return SafeJsonConvert.SerializeObject(properties, SerializationSettings);
         }
 
         public static string ToFormattedString<T>(this T objectToSerialize)
         {
-            return JsonConvert.SerializeObject(objectToSerialize, Formatting.Indented);
+            return SafeJsonConvert.SerializeObject(objectToSerialize, SerializationSettings);
         }
     }
 }

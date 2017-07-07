@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <returns>A model object</returns>
         protected override ServerThreatDetectionPolicyModel GetEntity()
         {
-            return ModelAdapter.GetServerThreatDetectionPolicy(ResourceGroupName, ServerName, clientRequestId);
+            return ModelAdapter.GetServerThreatDetectionPolicy(ResourceGroupName, ServerName);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerThreatDetectionPolicyModel PersistChanges(ServerThreatDetectionPolicyModel model)
         {
-            ModelAdapter.SetServerThreatDetectionPolicy(model, clientRequestId,
+            ModelAdapter.SetServerThreatDetectionPolicy(model,
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             return null;
         }

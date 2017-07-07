@@ -84,12 +84,12 @@
     <Compile Include="Commands\AddAzureRmServiceFabricClientCertificate.cs" />
     <Compile Include="Commands\AddAzureRmServiceFabricClusterCertificate.cs" />
     <Compile Include="Commands\AddAzureRmServiceFabricNodeType.cs" />
+    <Compile Include="Commands\RemoveAzureRmServiceFabricNodeType.cs" />
     <Compile Include="Commands\ServiceFabricClientCertificateBase.cs" />
     <Compile Include="Common\CmdletNoun.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Commands\GetAzureRmServiceFabricClusterResouce.cs" />
     <Compile Include="Commands\NewAzureRmServiceFabricCluster.cs" />
-    <Compile Include="Commands\RemoveAzureRmServiceFabricNodeType.cs" />
     <Compile Include="Commands\RemoveAzureRmServiceFabricClientCertificate.cs" />
     <Compile Include="Commands\RemoveAzureRmServiceFabricClusterCertificate.cs" />
     <Compile Include="Commands\RemoveAzureRmServiceFabricNode.cs" />
