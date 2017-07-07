@@ -299,7 +299,9 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayBgpPeerStatus', 
                'Get-AzureRmVirtualNetworkGatewayAdvertisedRoute', 
                'Get-AzureRmVirtualNetworkGatewayLearnedRoute', 
-               'Get-AzureRmNetworkUsage', 'Get-AzureRmVirtualNetworkUsageList'
+               'Get-AzureRmNetworkUsage',
+               'Get-AzureRmVirtualNetworkUsageList',
+               'Get-AzureRmVirtualNetworkPrivateAccessService'
 
 # Variables to export from this module
 # VariablesToExport = @()
