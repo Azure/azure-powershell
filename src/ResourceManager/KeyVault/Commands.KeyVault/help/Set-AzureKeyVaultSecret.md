@@ -27,7 +27,7 @@ cmdlet creates a new version of that secret.
 
 ### Example 1: Modify the value of a secret using default attributes
 ```
-PS C:\>$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
 ```
 
@@ -40,7 +40,7 @@ secret value becomes the value stored in $Secret.
 
 ### Example 2: Modify the value of a secret using custom attributes
 ```
-PS C:\>$Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $NBF =(Get-Date).ToUniversalTime()
 PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = null }
