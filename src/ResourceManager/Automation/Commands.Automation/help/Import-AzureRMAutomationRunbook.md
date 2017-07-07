@@ -29,7 +29,7 @@ definition that matches the name of the file.
 
 ### Example 1: Import a runbook from a file
 ```
-PS C:\> $Tags = @{"tag01"='value01"; "tag02"="value02"}
+PS C:\> $Tags = @{"tag01"="value01"; "tag02"="value02"}
 PS C:\> Import-AzureRmAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowershell
 ```
 
