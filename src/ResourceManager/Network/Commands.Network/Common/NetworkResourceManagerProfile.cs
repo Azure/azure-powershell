@@ -447,7 +447,6 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayIPConfiguration, CNM.PSApplicationGatewayIPConfiguration>();
                 cfg.CreateMap<MNM.ApplicationGatewayRequestRoutingRule, CNM.PSApplicationGatewayRequestRoutingRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayRedirectConfiguration, CNM.PSApplicationGatewayRedirectConfiguration>();
-                
                 cfg.CreateMap<MNM.ApplicationGatewayAuthenticationCertificate, CNM.PSApplicationGatewayAuthenticationCertificate>();
                 cfg.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendHealth, CNM.PSApplicationGatewayBackendHealth>();
