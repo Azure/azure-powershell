@@ -1070,7 +1070,7 @@ function Use-AzureRmProfile
 #>
 function Install-AzureRmProfile
 {
-  [CmdletBinding()]
+  [CmdletBinding(SupportsShouldProcess=$true)]
   param()
   DynamicParam
   {
@@ -1110,9 +1110,12 @@ function Install-AzureRmProfile
       {
         $versions = $ProfileMap.$Profile.$Module
         $version = Get-LatestModuleVersion -versions $versions
-        Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
-        Write-Verbose "Installing module $module" 
-        Invoke-InstallModule -module $Module -version $version -scope $scope
+        if ($PSCmdlet.ShouldProcess($Module, "Installing Module $Module version: $version"))
+        {
+          Write-Progress -Activity "Installing Module $Module version: $version" -Status "Progress:" -PercentComplete ($ModuleCount/($Modules.Length)*100)
+          Write-Verbose "Installing module $module" 
+          Invoke-InstallModule -module $Module -version $version -scope $scope
+        }
       }
     }
   }

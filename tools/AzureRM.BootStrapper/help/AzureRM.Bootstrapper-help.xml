@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<helpItems schema="maml">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems xmlns="http://msh" schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <command:details><command:name>Get-AzureRmModule</command:name>
@@ -13,7 +13,7 @@
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmModule</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to check for the given module.
 </maml:para>
 </maml:Description>
@@ -23,36 +23,36 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
-<maml:Description><maml:para>The AzureRM module to retreive the version for.
+<maml:Description><maml:para>The AzureRM module to retrieve the version for.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
-<maml:Description><maml:para>The AzureRM module to retreive the version for.
+<maml:Description><maml:para>The AzureRM module to retrieve the version for.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to check for the given module.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 </command:parameters>
 <command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
@@ -76,7 +76,7 @@
 <command:examples><command:example><maml:title>Example 1</maml:title>
 <dev:code>PS C:\&gt; Get-AzureRmModule -Profile 2017-03-09-profile -Module AzureRM.Storage
 
-1.0.4.3</dev:code>
+1.0.4.4</dev:code>
 <dev:remarks><maml:para>The version of the AzureRM.Storage module that supports profile 2017-03-09-profile is version 1.0.4.3.
 </maml:para>
 </dev:remarks>
@@ -175,24 +175,12 @@
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Install-AzureRmProfile</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to install.  You can get a list of available profile versions using Get-AzureRmProfile -ListAvailable
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
 <command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
-</command:parameterValueGroup>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
-<maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
-</maml:para>
-</maml:Description>
-<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">CurrentUser</command:parameterValue>
-<command:parameterValue required="false" variableLength="false">AllUsers</command:parameterValue>
 </command:parameterValueGroup>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
@@ -207,16 +195,53 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
+<maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">CurrentUser</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AllUsers</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to install.  You can get a list of available profile versions using Get-AzureRmProfile -ListAvailable
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
 <maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
@@ -227,8 +252,287 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; Install-AzureRmProfile -Profile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Install all the modules associated with profile '2017-03-09-profile'
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Install-AzureRmProfile</command:name>
+<command:verb>Install</command:verb>
+<command:noun>AzureRmProfile</command:noun>
+<maml:description><maml:para>Install all the latest modules associated with a particular AzureRM Profile on the machine.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>Install all the latest modules associated with a particular AzureRM Profile on the machine.  Modules for a particular profile can be loaded in a new PowerShell session using Use-AzureRmProfile .
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Install-AzureRmProfile</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
+<maml:Description><maml:para>The profile version to install.  You can get a list of available profile versions using Get-AzureRmProfile -ListAvailable
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
 <maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
+<maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">CurrentUser</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AllUsers</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
+<maml:Description><maml:para>The profile version to install.  You can get a list of available profile versions using Get-AzureRmProfile -ListAvailable
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
+<maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:parameters>
+<command:inputTypes><command:inputType><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:inputType>
+</command:inputTypes>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
+<maml:alertSet><maml:alert><maml:para>
+</maml:para>
+</maml:alert>
+</maml:alertSet>
+<command:examples><command:example><maml:title>Example 1</maml:title>
+<dev:code>PS C:\&gt; Install-AzureRmProfile -Profile '2017-03-09-profile'</dev:code>
+<dev:remarks><maml:para>Install all the modules associated with profile '2017-03-09-profile'
+</maml:para>
+</dev:remarks>
+</command:example>
+</command:examples>
+<command:relatedLinks></command:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<command:details><command:name>Install-AzureRmProfile</command:name>
+<command:verb>Install</command:verb>
+<command:noun>AzureRmProfile</command:noun>
+<maml:description><maml:para>Install all the latest modules associated with a particular AzureRM Profile on the machine.
+</maml:para>
+</maml:description>
+</command:details>
+<maml:description><maml:para>Install all the latest modules associated with a particular AzureRM Profile on the machine.  Modules for a particular profile can be loaded in a new PowerShell session using Use-AzureRmProfile .
+</maml:para>
+</maml:description>
+<command:syntax><command:syntaxItem><maml:name>Install-AzureRmProfile</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
+<maml:Description><maml:para>The profile version to install.  You can get a list of available profile versions using Get-AzureRmProfile -ListAvailable
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2017-03-09-profile</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">&lt;others&gt;</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
+<maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
+</maml:para>
+</maml:Description>
+<command:parameterValueGroup><command:parameterValue required="false" variableLength="false">CurrentUser</command:parameterValue>
+<command:parameterValue required="false" variableLength="false">AllUsers</command:parameterValue>
+</command:parameterValueGroup>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+</command:syntax>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
+<maml:Description><maml:para>The profile version to install.  You can get a list of available profile versions using Get-AzureRmProfile -ListAvailable
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
+<maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -276,8 +580,8 @@
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Uninstall-AzureRmProfile</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
-<maml:Description><maml:para>The profile version to load in the current PowerShell session.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
+<maml:Description><maml:para>The profile version to uninstall.
 </maml:para>
 </maml:Description>
 <command:parameterValueGroup><command:parameterValue required="false" variableLength="false">2016-09</command:parameterValue>
@@ -287,18 +591,18 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<maml:Description><maml:para>Automatically remove all given modules without propmpting.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
-<maml:Description><maml:para>Automatically remove all given modules without propmpting.
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Request confirmation for any change made by the cmdlet
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -315,16 +619,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
 <maml:Description><maml:para>Automatically remove all given modules without propmpting.
 </maml:para>
 </maml:Description>
@@ -333,14 +628,23 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
-<maml:Description><maml:para>The profile version to load in the current PowerShell session.
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
+<maml:Description><maml:para>The profile version to uninstall.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Request confirmation for any change made by the cmdlet
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Print the changes that would be made in executing the cmdlets, but do not make any changes.
@@ -383,15 +687,15 @@
 <command:details><command:name>Update-AzureRmProfile</command:name>
 <command:verb>Update</command:verb>
 <command:noun>AzureRmProfile</command:noun>
-<maml:description><maml:para>Update a profile to the latest versions in that profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
+<maml:description><maml:para>Update modules to the latest versions consitent with the given profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
 </maml:para>
 </maml:description>
 </command:details>
-<maml:description><maml:para>Update a profile to the latest versions in that profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
+<maml:description><maml:para>Update modules to the latest versions consitent with the given profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Update-AzureRmProfile</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to load in the current PowerShell session.
 </maml:para>
 </maml:Description>
@@ -402,24 +706,16 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
 <maml:Description><maml:para>The module name to be updated.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+<dev:type><maml:name>Array</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
 <maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
@@ -429,7 +725,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="r"><maml:name>RemovePreviousVersions</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RemovePreviousVersions</maml:name>
 <maml:Description><maml:para>Automatically remove old versions of the modules currently installed.
 </maml:para>
 </maml:Description>
@@ -449,6 +745,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Print the changes that would be made in executing the cmdlets, but do not make any changes.
 </maml:para>
@@ -459,16 +763,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
 <maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
 </maml:para>
 </maml:Description>
@@ -477,7 +772,25 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="r"><maml:name>RemovePreviousVersions</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
+<maml:Description><maml:para>The module name to be updated.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+<dev:type><maml:name>Array</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
+<maml:Description><maml:para>The profile version to load in the current PowerShell session.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>RemovePreviousVersions</maml:name>
 <maml:Description><maml:para>Automatically remove old versions of the modules currently installed.
 </maml:para>
 </maml:Description>
@@ -485,24 +798,6 @@
 <dev:type><maml:name>SwitchParameter</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
-<maml:Description><maml:para>The profile version to load in the current PowerShell session.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
-<maml:Description><maml:para>The module name to be updated.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
 <maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
@@ -512,6 +807,15 @@
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Print the changes that would be made in executing the cmdlets, but do not make any changes.
@@ -574,7 +878,7 @@
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Use-AzureRmProfile</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to load in the current PowerShell session.
 </maml:para>
 </maml:Description>
@@ -585,24 +889,16 @@
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
 <maml:Description><maml:para>The module name to be used.
 </maml:para>
 </maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
+<command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+<dev:type><maml:name>Array</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
 <maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
@@ -624,6 +920,14 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Print the changes that would be made in executing the cmdlets, but do not make any changes.
 </maml:para>
@@ -634,16 +938,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
-</maml:para>
-</maml:Description>
-<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
+<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Force</maml:name>
 <maml:Description><maml:para>Automatically install modules for the given profile if they are not already installed.
 </maml:para>
 </maml:Description>
@@ -652,23 +947,23 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none"><maml:name>Profile</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
+<maml:Description><maml:para>The module name to be used.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Array</command:parameterValue>
+<dev:type><maml:name>Array</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>The profile version to load in the current PowerShell session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none"><maml:name>Module</maml:name>
-<maml:Description><maml:para>The module name to be used.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue></dev:defaultValue>
+<dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Scope</maml:name>
 <maml:Description><maml:para>Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser. The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer. The CurrentUser scope lets modules be installed in a location that is available only to the current user.
@@ -678,6 +973,15 @@
 <dev:type><maml:name>String</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Request confrimation for any change made by the cmdlet
+</maml:para>
+</maml:Description>
+<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
 <maml:Description><maml:para>Print the changes that would be made in executing the cmdlets, but do not make any changes.

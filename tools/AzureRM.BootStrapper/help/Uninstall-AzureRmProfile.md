@@ -5,13 +5,14 @@ schema: 2.0.0
 ---
 
 # Uninstall-AzureRmProfile
+
 ## SYNOPSIS
 Uninstall all modules associated with the given profile version.
 
 ## SYNTAX
 
 ```
-Uninstall-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Force]
+Uninstall-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Force] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,21 +29,6 @@ Uninstall all modules associated with the '2017-03-09-profile' profile on the ma
 
 ## PARAMETERS
 
-### -Confirm
-Request confirmation for any change made by the cmdlet
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: 
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Force
 Automatically remove all given modules without propmpting.
 
@@ -53,7 +39,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -69,7 +55,22 @@ Accepted values: 2016-09, 2017-03-09-profile, <others>
 
 Required: True
 Position: 0
-Default value: 
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Request confirmation for any change made by the cmdlet
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -84,15 +85,17 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: 
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 

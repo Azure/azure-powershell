@@ -5,13 +5,15 @@ schema: 2.0.0
 ---
 
 # Update-AzureRmProfile
+
 ## SYNOPSIS
 Update modules to the latest versions consitent with the given profile and import updated modules to the current session. This should always be executed in a new PowerShell session.
 
 ## SYNTAX
 
 ```
-Update-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Module <String[]>] [-Force] [-RemovePreviousVersions] [-Scope <String>]
+Update-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Force] [-RemovePreviousVersions]
+ [[-Module] <Array>] [-Scope <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,23 +42,7 @@ PS C:\> Update-AzureRmProfile -Profile 'Latest' -Module 'AzureRM', 'Azure.Storag
 
 Update the modules 'AzureRM', 'Azure.Storage'  with profile version 'Latest' and load the modules in the current session. It downloads and installs the required modules in the CurrentUser scope. This should be executed after opening a new PowerShell session.
 
-
 ## PARAMETERS
-
-### -Confirm
-Request confrimation for any change made by the cmdlet
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: 
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Force
 Automatically install modules for the given profile if they are not already installed.
@@ -68,22 +54,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RemovePreviousVersions
-Automatically remove old versions of the modules currently installed.
+### -Module
+The module name to be updated.
 
 ```yaml
-Type: SwitchParameter
+Type: Array
 Parameter Sets: (All)
-Aliases: r
+Aliases: 
 
 Required: False
-Position: Named
-Default value: 
+Position: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -99,21 +85,22 @@ Accepted values: 2017-03-09-profile, Latest, <others>
 
 Required: True
 Position: 0
-Default value: 
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
-### -Module
-The module name to be updated.
+
+### -RemovePreviousVersions
+Automatically remove old versions of the modules currently installed.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
-Default value: 
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -136,6 +123,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Request confrimation for any change made by the cmdlet
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Print the changes that would be made in executing the cmdlets, but do not make any changes.
 
@@ -146,10 +148,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: 
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -162,3 +167,4 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
