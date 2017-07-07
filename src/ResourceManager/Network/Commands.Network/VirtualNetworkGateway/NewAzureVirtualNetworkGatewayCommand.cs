@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway's ASN for BGP over VPN")]
-        public uint Asn { get; set; }
+        public long Asn { get; set; }
 
         [Parameter(
             Mandatory = false,
