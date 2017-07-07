@@ -14,12 +14,14 @@
 
 using System;
 using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Instrumentation;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -30,6 +32,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
+
     /// <summary>
     /// Cmdlet to export an Analysis Services server log to file
     /// </summary>
@@ -47,6 +50,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         [Parameter(Mandatory = true, HelpMessage = "Path to file to write Azure Analysis Services log")]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Overwrite file if exists")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Force { get; set; }
 
         public IAsAzureHttpClient AsAzureHttpClient { get; private set; }
 
@@ -159,10 +166,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 using (HttpResponseMessage message = AsAzureHttpClient.CallGetAsync(
                     resolvedUriBuilder.Uri,
                     logfileEndpoint,
-                    accessToken).Result)
+                    accessToken).ConfigureAwait(false).GetAwaiter().GetResult())
                 {
                     message.EnsureSuccessStatusCode();
-                    File.WriteAllText(this.OutputPath, message.Content.ReadAsStringAsync().Result);
+                    string actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ExportingLogOverwriteWarning, this.OutputPath);
+                    if (AzureSession.Instance.DataStore.FileExists(this.OutputPath) && !this.Force.IsPresent && !ShouldContinue(actionWarning, Resources.Confirm))
+                    {
+                        return;
+                    }
+                    AzureSession.Instance.DataStore.WriteFile(this.OutputPath, message.Content.ReadAsStringAsync().Result);
                 }
             }
         }
