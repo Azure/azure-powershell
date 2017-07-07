@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "The virtual network connection reset shared key length")]
         [ValidateNotNullOrEmpty]
-        public int KeyLength { get; set; }
+        public uint KeyLength { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         private string ResetVirtualNetworkGatewayConnectionSharedKey()
         {
             var vnetGatewayConnectionSharedKey = new PSConnectionResetSharedKey();
-            vnetGatewayConnectionSharedKey.KeyLength = KeyLength;
+            vnetGatewayConnectionSharedKey.KeyLength = (int)KeyLength;
 
             // Map to the sdk object
             var vnetGatewayConnectionSharedKeyModel = Mapper.Map<MNM.ConnectionResetSharedKey>(vnetGatewayConnectionSharedKey);
