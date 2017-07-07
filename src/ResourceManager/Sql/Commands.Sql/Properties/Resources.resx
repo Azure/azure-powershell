@@ -318,7 +318,7 @@
   <data name="RemoveAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
   </data>
-    <data name="RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
+  <data name="RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
     <value>Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
   </data>
   <data name="RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
@@ -332,5 +332,38 @@
   </data>
   <data name="FailoverGroupRemoveDatabaseNotExists" xml:space="preserve">
     <value>Database to be removed with id {0} in Failover Group with name: '{1}'  in server '{2} does not exist'.</value>
+  </data>
+  <data name="FailoverGroupDataLossHoursOverflow" xml:space="preserve">
+    <value>Value {0} is too large for the 'GracePeriodWithDataLossHours' parameter. Using the largest supported value, {1}.</value>
+  </data>
+  <data name="FailoverGroupDataLossHoursUnsupportedLowValue" xml:space="preserve">
+    <value>A value of {0} is not yet supported for the 'GracePeriodWithDataLossHours' parameter. Using the smallest supported value, {1}.</value>
+  </data>
+  <data name="RemoveAzureSqlSyncGroupDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Sync Group '{0}'.</value>
+  </data>
+  <data name="SyncGroupNameExists" xml:space="preserve">
+    <value>Sync Group with name: ‘{0}' already exists in database '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlSyncMemberDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Sync Member '{0}'.</value>
+  </data>
+  <data name="SyncMemberNameExists" xml:space="preserve">
+    <value>Sync Member with name: ‘{0}' already exists in Sync Group '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlSyncAgentDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Sync Agent '{0}'.</value>
+  </data>
+  <data name="SyncAgentNameExists" xml:space="preserve">
+    <value>Sync Agent with name: ‘{0}' already exists in Resource Group '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlSyncAgentWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Sync Agent '{0}' for  Resource Group '{1}' ?</value>
+  </data>
+  <data name="RemoveAzureSqlSyncGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Sync Group '{0}' for database '{1}'?</value>
+  </data>
+  <data name="RemoveAzureSqlSyncMemberWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Sync Member '{0}' for Sync Group '{1}'?</value>
   </data>
 </root>

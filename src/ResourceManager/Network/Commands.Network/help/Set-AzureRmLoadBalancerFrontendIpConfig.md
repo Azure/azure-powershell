@@ -12,32 +12,28 @@ Sets the goal state for a front-end IP configuration in a load balancer.
 
 ## SYNTAX
 
-### SetByResourceIdSubnet
-```
-Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -SubnetId <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### SetByResourceSubnet
 ```
 Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -Subnet <PSSubnet> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-PrivateIpAddress <String>] -Subnet <PSSubnet> [<CommonParameters>]
+```
+
+### SetByResourceIdSubnet
+```
+Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
+ [-PrivateIpAddress <String>] -SubnetId <String> [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
 Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddressId <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -PublicIpAddressId <String> [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
 Set-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddress <PSPublicIpAddress> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -PublicIpAddress <PSPublicIpAddress> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,21 +59,6 @@ The fourth command passes the load balancer in $slb to **Set-AzureRmLoadBalancer
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the front-end IP configuration to set.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -LoadBalancer
 Specifies a load balancer.
 This cmdlet sets the goal state for a front-end configuration for the load balancer that this parameter specifies.
@@ -94,28 +75,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PrivateIpAddress
-Specifies the private IP address of the load balancer that is associated with the front-end IP configuration to set.
-Specify this parameter only if you also specify the *Subnet* parameter.
+### -Name
+Specifies the name of the front-end IP configuration to set.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceIdSubnet, SetByResourceSubnet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subnet
-Specifies the **Subnet** object that contains the front-end IP configuration that this cmdlet sets.
-
-```yaml
-Type: PSSubnet
-Parameter Sets: SetByResourceSubnet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -125,22 +90,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -PrivateIpAddress
+Specifies the private IP address of the load balancer that is associated with the front-end IP configuration to set.
+Specify this parameter only if you also specify the *Subnet* parameter.
 
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: String
+Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
+Aliases: 
 
 Required: False
 Position: Named
@@ -149,27 +106,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -PublicIpAddress
+Specifies the **PublicIpAddress** object that is associated with the front-end IP configuration to set.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubnetId
-Specifies the ID of the subnet that contains the front-end IP configuration that this cmdlet sets.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceIdSubnet
+Type: PSPublicIpAddress
+Parameter Sets: SetByResourcePublicIpAddress
 Aliases: 
 
 Required: True
@@ -194,12 +136,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
-Specifies the **PublicIpAddress** object that is associated with the front-end IP configuration to set.
+### -Subnet
+Specifies the **Subnet** object that contains the front-end IP configuration that this cmdlet sets.
 
 ```yaml
-Type: PSPublicIpAddress
-Parameter Sets: SetByResourcePublicIpAddress
+Type: PSSubnet
+Parameter Sets: SetByResourceSubnet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetId
+Specifies the ID of the subnet that contains the front-end IP configuration that this cmdlet sets.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceIdSubnet
 Aliases: 
 
 Required: True

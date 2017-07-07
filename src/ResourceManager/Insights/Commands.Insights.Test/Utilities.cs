@@ -14,22 +14,19 @@
 
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
-using Microsoft.Azure.Insights.Legacy.Models;
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xunit;
-using LocalizableString = Microsoft.Azure.Insights.Models.LocalizableString;
+using LocalizableString = Microsoft.Azure.Management.Monitor.Models.LocalizableString;
+using Microsoft.Azure.Commands.Insights.Events;
 
 namespace Microsoft.Azure.Commands.Insights.Test
 {
@@ -46,10 +43,10 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
         #region Events
 
-        public static EventData CreateFakeEvent()
+        public static EventData CreateFakeEvent(string id = null)
         {
             return new EventData(
-                id: "ac7d2ab5-698a-4c33-9c19-0a93d3d7f527",
+                id: id ?? "ac7d2ab5-698a-4c33-9c19-0a93d3d7f527",
                 eventName: new LocalizableString(
                     localizedValue: "Start request",
                     value: "Start request"),
@@ -69,7 +66,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 },
                 correlationId: Correlation,
                 description: "fake event",
-                channels: EventChannels.Operation,
                 level: EventLevel.Informational,
                 eventTimestamp: DateTime.Now,
                 operationId: "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
@@ -96,15 +92,48 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 submissionTimestamp: DateTime.Now);
         }
 
-        public static AzureOperationResponse<IPage<EventData>> InitializeResponse()
+        public static List<EventData> CreateListOfFakeEvents(int numEvents = 1)
         {
-            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
-            EventData eventData = Utilities.CreateFakeEvent();
-            var x = JsonConvert.SerializeObject(eventData);
+            List<EventData> events = new List<EventData>(numEvents);
+
+            // The first one is always completely known at compile time
+            events.Add(CreateFakeEvent());
+            for (int i = 0; i < numEvents - 1; i++)
+            {
+                // The rest of the events in the list have a unique id
+                events.Add(CreateFakeEvent(Guid.NewGuid().ToString()));
+            }
+
+            return events;
+        }
+
+        public static AzureOperationResponse<IPage<EventData>> InitializeResponse(int numRecords = 10)
+        {
+            // 200 is the default page lenght of the backend, but these are tests -> using 10 as page length
+            if (numRecords < 10)
+            {
+                return InitializeFinalResponse(numRecords);
+            }
+
+            List<EventData> events = Utilities.CreateListOfFakeEvents(numRecords);
+            var x = JsonConvert.SerializeObject(events);
+            x = string.Concat("{", string.Format("\"value\":{0},\"nextLink\":\"{1}\"", x, Utilities.ContinuationToken), "}");
 
             return new AzureOperationResponse<IPage<EventData>>()
             {
-                Body = JsonConvert.DeserializeObject<Azure.Insights.Models.Page<EventData>>(x)
+                Body = JsonConvert.DeserializeObject<Azure.Management.Monitor.Models.Page1<EventData>>(x)
+            };
+        }
+
+        public static AzureOperationResponse<IPage<EventData>> InitializeFinalResponse(int numRecords = 5)
+        {
+            List<EventData> eventData = Utilities.CreateListOfFakeEvents(numRecords);
+            var x = JsonConvert.SerializeObject(eventData);
+            x = string.Concat("{\"value\":", x, ",\"nextLink\":null}");
+
+            return new AzureOperationResponse<IPage<EventData>>()
+            {
+                Body = JsonConvert.DeserializeObject<Azure.Management.Monitor.Models.Page1<EventData>>(x)
             };
         }
 
@@ -116,48 +145,33 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             return new AzureOperationResponse<LogProfileResource>()
             {
-                Body = new LogProfileResource(location: "East US", id: "MyLogProfileId", locations: new string[] { "EastUs" })
+                Body = new LogProfileResource(
+                    name:Utilities.Name,
+                    location: "East US", 
+                    id: "MyLogProfileId", 
+                    locations: new string[] { "EastUs" }, 
+                    categories: new List<string>() { "cat2" },
+                    retentionPolicy: new RetentionPolicy(enabled: true, days: 10))
 
                 {
-                    Categories = new List<string>() { "cat2" },
                     ServiceBusRuleId = "myBusId",
                     StorageAccountId = "myStorageAccId",
-                    Name = Utilities.Name,
-                    RetentionPolicy = new RetentionPolicy(enabled: true, days: 10),
                     Tags = null
                 }
             };
         }
 
-        public static MetricListResponse InitializeMetricResponse()
+        public static IEnumerable<Metric> InitializeMetricResponse()
         {
-            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
-            return new MetricListResponse
-            {
-                MetricCollection = new MetricCollection
-                {
-                    Value = new List<Microsoft.Azure.Insights.Legacy.Models.Metric>()
-                },
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK
-            };
+            return new List<Metric>();
         }
 
-        public static MetricDefinitionListResponse InitializeMetricDefinitionResponse()
+        public static IEnumerable<MetricDefinition> InitializeMetricDefinitionResponse()
         {
-            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
-            return new MetricDefinitionListResponse
-            {
-                MetricDefinitionCollection = new MetricDefinitionCollection
-                {
-                    Value = new Microsoft.Azure.Insights.Legacy.Models.MetricDefinition[] { }
-                },
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK
-            };
+            return new List<MetricDefinition>();
         }
 
-        public static void VerifyDetailedOutput(EventCmdletBase cmdlet, ref string selected)
+        public static void VerifyDetailedOutput(LogsCmdletBase cmdlet, ref string selected)
         {
             // Calling with detailed output
             cmdlet.DetailedOutput = true;
@@ -165,17 +179,9 @@ namespace Microsoft.Azure.Commands.Insights.Test
             Assert.Null(selected); // Incorrect nameOrTargetUri clause with detailed output on
         }
 
-        public static void VerifyContinuationToken(AzureOperationResponse<IPage<EventData>> response, Mock<IEventsOperations> insinsightsEventOperationsMockightsClientMock, EventCmdletBase cmdlet)
+        public static void VerifyContinuationToken(string nextLink)
         {
-            // Make sure calls to Next work also
-            string nextToken = ContinuationToken;
-            insinsightsEventOperationsMockightsClientMock.Setup(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(response))
-                .Callback((string n, Dictionary<string, List<string>> h, CancellationToken t) => nextToken = n);
-
-            // Calling without optional parameters
-            cmdlet.ExecuteCmdlet();
-            Assert.Equal(Utilities.ContinuationToken, nextToken, ignoreCase:true, ignoreLineEndingDifferences:true,ignoreWhiteSpaceDifferences:true);
+            Assert.Equal(Utilities.ContinuationToken, nextLink, ignoreCase:true, ignoreLineEndingDifferences:true,ignoreWhiteSpaceDifferences:true);
         }
 
         public static void VerifyFilterIsUsable(ODataQuery<EventData> filter)
@@ -222,7 +228,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyConditionInFilter(filter: filter, field: "status", value: Utilities.Status);
         }
 
-        public static void ExecuteVerifications(EventCmdletBase cmdlet, Mock<IEventsOperations> insinsightsEventOperationsMockightsClientMock, string requiredFieldName, string requiredFieldValue, ref ODataQuery<EventData> filter, ref string selected, DateTime startDate, AzureOperationResponse<IPage<EventData>> response)
+        public static void ExecuteVerifications(LogsCmdletBase cmdlet, Mock<IActivityLogsOperations> insinsightsEventOperationsMockightsClientMock, string requiredFieldName, string requiredFieldValue, ref ODataQuery<EventData> filter, ref string selected, DateTime startDate, ref string nextLink)
         {
             // Calling without optional parameters
             cmdlet.ExecuteCmdlet();
@@ -231,50 +237,91 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyStartDateInFilter(filter: filter, startDate: null);
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
             Assert.True(string.Equals(PSEventDataNoDetails.SelectedFieldsForQuery, selected, StringComparison.OrdinalIgnoreCase), "Incorrect nameOrTargetUri clause without optional parameters");
+            VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with only start date
             cmdlet.StartTime = startDate;
+            nextLink = null;
             cmdlet.ExecuteCmdlet();
 
             VerifyFilterIsUsable(filter: filter);
             VerifyStartDateInFilter(filter: filter, startDate: startDate);
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
+            VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with only start and end date
             cmdlet.EndTime = startDate.AddSeconds(2);
+            nextLink = null;
             cmdlet.ExecuteCmdlet();
 
             VerifyFilterIsUsable(filter: filter);
             VerifyStartDateInFilter(filter: filter, startDate: startDate);
             VerifyEndDateInFilter(filter: filter, endDate: startDate.AddSeconds(2));
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
+            VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with only caller
             cmdlet.EndTime = null;
             cmdlet.Caller = Utilities.Caller;
+            nextLink = null;
             cmdlet.ExecuteCmdlet();
 
             VerifyCallerInCall(filter: filter, startDate: startDate, filedName: requiredFieldName, fieldValue: requiredFieldValue);
+            VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with caller and status
             cmdlet.Status = Utilities.Status;
+            nextLink = null;
             cmdlet.ExecuteCmdlet();
 
             VerifyStatusAndCallerInCall(filter: filter, startDate: startDate, filedName: requiredFieldName, fieldValue: requiredFieldValue);
-
             VerifyDetailedOutput(cmdlet: cmdlet, selected: ref selected);
-            VerifyContinuationToken(response: response, insinsightsEventOperationsMockightsClientMock: insinsightsEventOperationsMockightsClientMock, cmdlet: cmdlet);
+            VerifyContinuationToken(nextLink: nextLink);
+
+            // Calling with maxEvents (Note: # of returned objects is not testable here, only the call is being tested)
+            var cmdLetLogs = cmdlet as GetAzureRmLogCommand;
+            if (cmdLetLogs != null)
+            {
+                cmdLetLogs.Caller = null;
+                cmdLetLogs.Status = null;
+                nextLink = null;
+                cmdLetLogs.MaxEvents = 3;
+                cmdLetLogs.ExecuteCmdlet();
+
+                VerifyFilterIsUsable(filter: filter);
+                VerifyStartDateInFilter(filter: filter, startDate: null);
+                VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
+
+                // Negative value
+                nextLink = null;
+                cmdLetLogs.MaxEvents = -1;
+                cmdLetLogs.ExecuteCmdlet();
+
+                VerifyFilterIsUsable(filter: filter);
+                VerifyStartDateInFilter(filter: filter, startDate: null);
+                VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
+
+                // The default should have been used, check continuation token
+                VerifyContinuationToken(nextLink: nextLink);
+
+                cmdLetLogs.MaxEvents = 0;
+            }
 
             // Execute negative tests
+            cmdlet.Caller = null;
+            cmdlet.Status = null;
             cmdlet.StartTime = DateTime.Now.AddSeconds(1);
+            nextLink = null;
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(20));
             cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(21));
+            nextLink = null;
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromDays(30));
             cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromDays(14));
+            nextLink = null;
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
 
@@ -284,27 +331,29 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
         public static AlertRuleResource CreateFakeRuleResource()
         {
+            var condition = new ThresholdRuleCondition()
+            {
+                DataSource = new RuleMetricDataSource()
+                {
+                    MetricName = "CpuTime",
+                    ResourceUri = ResourceUri,
+                },
+                OperatorProperty = ConditionOperator.GreaterThan,
+                Threshold = 3,
+                TimeAggregation = TimeAggregationOperator.Total,
+                WindowSize = TimeSpan.FromMinutes(5),
+            };
+
             return new AlertRuleResource(
                 id: "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/checkrule3-4b135401-a30c-4224-ae21-fa53a5bd253d",
                 location: "East US",
                 alertRuleResourceName: Name,
-                isEnabled: true)
+                isEnabled: true,
+                condition: condition)
             {
                 Actions = new BindingList<RuleAction>()
                 {
                     new RuleEmailAction(),
-                },
-                Condition = new ThresholdRuleCondition()
-                {
-                    DataSource = new RuleMetricDataSource()
-                    {
-                        MetricName = "CpuTime",
-                        ResourceUri = ResourceUri,
-                    },
-                    OperatorProperty = ConditionOperator.GreaterThan,
-                    Threshold = 3,
-                    TimeAggregation = TimeAggregationOperator.Total,
-                    WindowSize = TimeSpan.FromMinutes(5),
                 },
                 Description = null,
                 Tags = new Dictionary<string, string>()

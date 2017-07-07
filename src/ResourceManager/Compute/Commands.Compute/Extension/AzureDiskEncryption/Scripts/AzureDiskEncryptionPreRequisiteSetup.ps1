@@ -81,11 +81,11 @@ $ErrorActionPreference = “Stop”
     {
         if(-not $aadClientSecret)
         {
-            $aadClientSecret = Read-Host -Prompt "Aad application ($aadAppName) was alerady created, input corresponding aadClientSecret and hit ENTER. It can be retrieved from https://manage.windowsazure.com portal" ;
+            $aadClientSecret = Read-Host -Prompt "Aad application ($aadAppName) was already created, input corresponding aadClientSecret and hit ENTER. It can be retrieved from https://manage.windowsazure.com portal" ;
         }
         if(-not $aadClientSecret)
         {
-            Write-Error "Aad application ($aadAppName) was alerady created. Re-run the script by supplying aadClientSecret parameter with corresponding secret from https://manage.windowsazure.com portal";
+            Write-Error "Aad application ($aadAppName) was already created. Re-run the script by supplying aadClientSecret parameter with corresponding secret from https://manage.windowsazure.com portal";
             return;
         }
         $aadClientID = $SvcPrincipals[0].ApplicationId;
@@ -179,5 +179,5 @@ $ErrorActionPreference = “Stop”
 ########################################################################################################################
 # For each VM you want to encrypt, run the below cmdlet
 #    $vmName = 'Name of VM to encrypt';
-#    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId;
+#    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType $volumeType
 ########################################################################################################################

@@ -1,0 +1,116 @@
+[
+    { "regex": "ApiManagement", "alias": "API Management" }, 
+    
+    { "regex": "Snapshot", "group": "Virtual Machines", "alias": "VM Snapshots" }, 
+    { "regex": "Image", "group": "Virtual Machines", "alias": "VM Images" }, 
+    { "regex": "Vmss", "group": "Virtual Machines", "alias": "VM Scale Sets" }, 
+    { "regex": "Vhd", "group": "Virtual Machines", "alias": "VM VHDs" }, 
+    { "regex": "Disk", "group": "Virtual Machines", "alias": "VM Disks" }, 
+    { "regex": "ContainerService", "group": "Virtual Machines", "alias": "Container Service" }, 
+    { "regex": "VM.*Extension", "group": "Virtual Machines", "alias": "VM Extensions" }, 
+    { "regex": "Compute", "group": "Virtual Machines", "alias": "Virtual Machines" }, 
+    { "regex": "VM", "group": "Virtual Machines", "alias": "Virtual Machines" }, 
+
+    { "regex": "ApplicationGateway", "group": "Network", "alias": "Application Gateway" }, 
+    { "regex": "ExpressRoute", "group": "Network", "alias": "ExpressRoute" }, 
+    { "regex": "LoadBalancer", "group": "Network", "alias": "Load Balancer" }, 
+    { "regex": "VirtualNetwork", "group": "Network", "alias": "Virtual Network" }, 
+    { "regex": "Vpn","group": "Network",  "alias": "VPN" }, 
+    { "regex": "Route", "group": "Network", "alias": "Route" }, 
+    { "regex": "Dns", "group": "Network", "alias": "DNS" }, 
+    { "regex": "NetworkWatcher", "group": "Network", "alias": "Network Watcher" }, 
+    { "regex": "Network","group": "Network",  "alias": "Networking" }, 
+
+    { "regex": "AppService", "group": "App Service", "alias": "App Service" }, 
+    { "regex": "Websites", "group": "App Service", "alias": "App Service" }, 
+    { "regex": "WebApp", "group": "App Service", "alias": "App Service" }, 
+
+    { "regex": "ACS", "alias": "Azure Stack Storage" }, 
+    { "regex": "AzureStackAdmin", "alias": "Azure Stack Admin" }, 
+    { "regex": "AzureStackStorage", "alias": "Azure Stack Storage" }, 
+
+    { "regex": "DataLakeAnalytics", "group": "Data Lake", "alias": "Data Lake Analytics" },
+    { "regex": "DataLakeStore", "group": "Data Lake", "alias": "Data Lake Store" },
+    { "regex": "DataLake", "group": "Data Lake", "alias": "Data Lake" }, 
+
+    { "regex": "Dtl", "group": "DevTest Labs", "alias": "DevTest Labs" }, 
+    { "regex": "DevTestLabs", "group": "DevTest Labs", "alias": "DevTest Labs" }, 
+
+    { "regex": "DataFactory", "group": "Data Factories", "alias": "Data Factories" }, 
+    { "regex": "DataFactories", "group": "Data Factories", "alias": "Data Factories" }, 
+
+    { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" }, 
+    { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" }, 
+
+    { "regex": "Storage", "alias": "Storage" }, 
+
+    { "regex": "Relay", "group": "Service Bus", "alias": "Service Bus" }, 
+    { "regex": "ServiceBus", "group": "Service Bus", "alias": "Service Bus" }, 
+
+    { "regex": "Sql", "alias": "SQL" }, 
+
+    { "regex": "ContainerRegistry", "alias": "Container Registry" }, 
+
+    { "regex": "ServiceFabric", "alias": "Service Fabric" }, 
+
+    { "regex": "KeyVault", "alias": "Key Vault" }, 
+
+    { "regex": "Iot", "alias": "IoT" }, 
+
+    { "regex": "Batch", "alias": "Batch" }, 
+
+    { "regex": "AnalysisServices", "alias": "Analysis Services" }, 
+
+    { "regex": "Automation", "alias": "Automation" }, 
+
+    { "regex": "RecoveryServices", "alias": "Recovery Services" }, 
+
+    { "regex": "Backup", "alias": "Backup" }, 
+
+    { "regex": "Cdn", "alias": "CDN" }, 
+
+    { "regex": "CognitiveService", "alias": "Cognitive Services" }, 
+
+    { "regex": "AvailabilitySet", "alias": "Availability Sets" }, 
+
+    { "regex": "EventHub", "alias": "Event Hub" }, 
+
+    { "regex": "HDInsight", "alias": "HD Insights" }, 
+
+    { "regex": "LogicApp", "alias": "Logic Apps" }, 
+
+    { "regex": "NotificationHubs", "alias": "Notification Hubs" }, 
+
+    { "regex": "OperationalInsights", "alias": "Operational Insights" }, 
+
+    { "regex": "PowerBI", "alias": "Power BI" }, 
+
+    { "regex": "RedisCache", "alias": "Redis Cache" }, 
+
+    { "regex": "Scheduler", "alias": "Scheduler" }, 
+
+    { "regex": "SiteRecovery", "alias": "Site Recovery" }, 
+
+    { "regex": "ServerManagement", "alias": "Server Management" }, 
+
+    { "regex": "StreamAnalytics", "alias": "Stream Analytics" }, 
+
+    { "regex": "TrafficManager", "alias": "Traffic Manager" }, 
+
+    { "regex": "Consumption", "group": "Billing", "alias": "Billing" }, 
+    { "regex": "Billing", "group": "Billing", "alias": "Billing" }, 
+
+    { "regex": "Insights", "alias": "Monitor" }, 
+
+    { "regex": "Media", "alias": "Media Services" }, 
+
+    { "regex": "UsageAggregates", "alias": "Usage Aggregates" }, 
+
+    { "regex": "Tags", "alias": "Tags" }, 
+    
+    { "regex": "Profile", "alias": "Profile" }, 
+
+    { "regex": "Policy", "group": "Resources", "alias": "Policies" }, 
+    { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 
+    { "regex": "Resources", "group": "Resources", "alias": "Resources" }
+]

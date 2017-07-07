@@ -26,7 +26,7 @@ function Test-StorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'eastasia';
+        $loc = Get-ProviderLocation ResourceManagement;
 		$encryptionServiceBF = "Blob,File"
 		$encryptionServiceB = "Blob"
 		$encryptionServiceF = "File"
@@ -126,7 +126,7 @@ function Test-NewAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = Get-ProviderLocation ResourceManagement;
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -155,12 +155,12 @@ function Test-GetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = Get-ProviderLocation ResourceManagement;
 		$kind = 'Storage'
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype ;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stotype = 'StandardGRS';
@@ -168,12 +168,14 @@ function Test-GetAzureStorageAccount
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
         Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.EnableHttpsTrafficOnly $false;
 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
         Assert-AreEqual $stos[0].StorageAccountName $stoname;
         Assert-AreEqual $stos[0].Sku.Name $stotype;
         Assert-AreEqual $stos[0].Location $loc;
         Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.EnableHttpsTrafficOnly $false;
 
         Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -198,12 +200,12 @@ function Test-SetAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'eastasia';
+        $loc = Get-ProviderLocation ResourceManagement;
 		$kind = 'Storage'
 		$encryptionServiceBF = "File,Blob"
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableEncryptionService $encryptionServiceBF;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableEncryptionService $encryptionServiceBF -EnableHttpsTrafficOnly $true;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         $stotype = 'StandardGRS';
@@ -211,6 +213,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
         Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.EnableHttpsTrafficOnly $true;
 		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
 		Assert-AreEqual $sto.Encryption.Services.File.Enabled $true
         
@@ -219,12 +222,13 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $stos[0].Sku.Name $stotype;
         Assert-AreEqual $stos[0].Location $loc;
         Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.EnableHttpsTrafficOnly $true;
 		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
 		Assert-AreEqual $sto.Encryption.Services.File.Enabled $true
 
         $stotype = 'Standard_LRS';
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -DisableEncryptionService $encryptionServiceBF; }
+        Retry-IfException { Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -DisableEncryptionService $encryptionServiceBF -EnableHttpsTrafficOnly $false; }
         $stotype = 'Standard_RAGRS';
         Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
 
@@ -234,6 +238,7 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $sto.Sku.Name $stotype;
         Assert-AreEqual $sto.Location $loc;
         Assert-AreEqual $sto.Kind $kind;
+        Assert-AreEqual $sto.EnableHttpsTrafficOnly $false;
 		Assert-AreEqual $sto.Encryption $null
 
         Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
@@ -259,13 +264,65 @@ function Test-RemoveAzureStorageAccount
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = Get-ProviderLocation ResourceManagement;
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         
         Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzureRmStorageAccountEncryptionKeySource
+#>
+function Test-SetAzureRmStorageAccountKeySource
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+		
+		$sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableEncryptionService Blob -StorageEncryption
+		$stotype = 'StandardGRS';
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
+        Assert-AreEqual $sto.Encryption.KeySource Microsoft.Storage;
+        Assert-AreEqual $sto.Encryption.Keyvaultproperties.Keyname $null;
+        Assert-AreEqual $sto.Encryption.Keyvaultproperties.KeyVersion $null;
+        Assert-AreEqual $sto.Encryption.Keyvaultproperties.KeyVaultUri $null;
+		
+		$sto = Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableEncryptionService File -AssignIdentity
+        Assert-AreEqual $sto.StorageAccountName $stoname;
+        Assert-AreEqual $sto.Sku.Name $stotype;
+        Assert-AreEqual $sto.Location $loc;
+		Assert-AreNotEqual $sto.Identity.Type SystemAssigned $null
+		Assert-AreEqual $sto.Encryption.Services.Blob.Enabled $true
+		Assert-AreEqual $sto.Encryption.Services.File.Enabled $true
+        Assert-AreEqual $sto.Encryption.KeySource Microsoft.Storage;
+        Assert-AreEqual $sto.Encryption.Keyvaultproperties.Keyname $null;
+        Assert-AreEqual $sto.Encryption.Keyvaultproperties.KeyVersion $null;
+        Assert-AreEqual $sto.Encryption.Keyvaultproperties.KeyVaultUri $null;
+		
+        Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; 
     }
     finally
     {
@@ -288,7 +345,7 @@ function Test-GetAzureStorageAccountKey
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = Get-ProviderLocation ResourceManagement;
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -320,7 +377,7 @@ function Test-NewAzureStorageAccountKey
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = Get-ProviderLocation ResourceManagement;
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -364,7 +421,7 @@ function Test-PipingGetAccountToGetKey
         # Test
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        $loc = 'westus';
+        $loc = Get-ProviderLocation ResourceManagement;
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -396,14 +453,15 @@ function Test-PipingToSetAzureRmCurrentStorageAccount
         # Test
         $stoname = 'sto' + $rgname
         $stotype = 'Standard_GRS'
-        $loc = 'westus'
+        $loc = Get-ProviderLocation ResourceManagement
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname }
 		$global:sto | Set-AzureRmCurrentStorageAccount
 		$context = Get-AzureRmContext
-		Assert-AreEqual $stoname $context.Subscription.CurrentStorageAccountName
+		$sub = New-Object -TypeName Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription -ArgumentList $context.Subscription
+		Assert-AreEqual $stoname $sub.CurrentStorageAccountName
 		$global:sto | Remove-AzureRmStorageAccount -Force
     }
     finally
@@ -427,7 +485,7 @@ function Test-SetAzureRmCurrentStorageAccount
         # Test
         $stoname = 'sto' + $rgname
         $stotype = 'Standard_GRS'
-        $loc = 'westus'
+        $loc = Get-ProviderLocation ResourceManagement
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype

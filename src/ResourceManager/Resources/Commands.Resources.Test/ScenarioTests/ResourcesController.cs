@@ -37,6 +37,7 @@ using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public FeatureClient FeatureClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
+        public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
@@ -224,7 +225,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
                 {
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = HttpMockServer.Variables[SubscriptionIdKey];
                 }
             }
 
@@ -232,10 +233,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             client.TenantID = tenantId;
             if (AzureRmProfileProvider.Instance != null &&
                 AzureRmProfileProvider.Instance.Profile != null &&
-                AzureRmProfileProvider.Instance.Profile.Context != null &&
-                AzureRmProfileProvider.Instance.Profile.Context.Tenant != null)
+                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
             {
-                AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = Guid.Parse(client.TenantID);
+                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
             }
             return client;
         }
@@ -265,9 +266,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<LegacyRMSubscription.SubscriptionClient>(this.csmTestFactory);
         }
 
-        private SubscriptionClient GetSubscriptionClient(MockContext context)
+        private Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
-            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()

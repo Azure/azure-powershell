@@ -16,7 +16,7 @@ Gets a Data Lake Analytics job.
 ```
 Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submitter] <String>]
  [[-SubmittedAfter] <DateTimeOffset>] [[-SubmittedBefore] <DateTimeOffset>] [[-State] <JobState[]>]
- [[-Result] <JobResult[]>] [-Top <Int32>] [<CommonParameters>]
+ [[-Result] <JobResult[]>] [-Top <Int32>] [-PipelineId <Guid>] [-RecurrenceId <Guid>] [<CommonParameters>]
 ```
 
 ### Specific JobInformation
@@ -75,6 +75,7 @@ The acceptable values for this parameter are:
 Type: ExtendedJobData
 Parameter Sets: Specific JobInformation
 Aliases: 
+Accepted values: None, All, DebugInfo, Statistics
 
 Required: False
 Position: 2
@@ -119,6 +120,32 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PipelineId
+An optional ID that indicates only jobs part of the specified pipeline should be returned.```yaml
+Type: Guid
+Parameter Sets: All In Resource Group and Account
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RecurrenceId
+An optional ID that indicates only jobs part of the specified recurrence should be returned.```yaml
+Type: Guid
+Parameter Sets: All In Resource Group and Account
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Result
 Specifies a result filter for the job results.
 The acceptable values for this parameter are:
@@ -132,6 +159,7 @@ The acceptable values for this parameter are:
 Type: JobResult[]
 Parameter Sets: All In Resource Group and Account
 Aliases: 
+Accepted values: None, Succeeded, Cancelled, Failed
 
 Required: False
 Position: 6
@@ -158,6 +186,7 @@ The acceptable values for this parameter are:
 Type: JobState[]
 Parameter Sets: All In Resource Group and Account
 Aliases: 
+Accepted values: Accepted, Compiling, Ended, New, Queued, Running, Scheduling, Starting, Paused, WaitingForCapacity
 
 Required: False
 Position: 5
@@ -215,7 +244,9 @@ Accept wildcard characters: False
 ```
 
 ### -Top
-An optional value which indicates the number of jobs to return. Default value is 500```yaml
+An optional value which indicates the number of jobs to return. Default value is 500
+
+```yaml
 Type: Int32
 Parameter Sets: All In Resource Group and Account
 Aliases: 

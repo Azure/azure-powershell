@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         [Parameter(Mandatory = true,
             HelpMessage = "Azure Sql Database Server Firewall Rule Name.",
             ParameterSetName = UserSpecifiedRuleSet)]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string FirewallRuleName { get; set; }
 

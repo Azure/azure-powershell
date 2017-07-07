@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Advisor.Model;
 using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Advisor.Service
 {
@@ -33,12 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
-        public AzureSqlDatabaseAdvisorAdapter(AzureContext context)
+        public AzureSqlDatabaseAdvisorAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlDatabaseAdvisorCommunicator(Context);
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>The Azure Sql Database Advisor object</returns>
         internal AzureSqlDatabaseAdvisorModel GetDatabaseAdvisor(string resourceGroupName, string serverName, string databaseName, string advisorName, bool expandRecommendedActions)
         {
-            var response = Communicator.Get(resourceGroupName, serverName, databaseName, advisorName, expandRecommendedActions, Util.GenerateTracingId());
+            var response = Communicator.Get(resourceGroupName, serverName, databaseName, advisorName, expandRecommendedActions);
             return new AzureSqlDatabaseAdvisorModel(resourceGroupName, serverName, databaseName, response);
         }
 
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>A list of database advisor objects</returns>
         internal ICollection<AzureSqlDatabaseAdvisorModel> ListDatabaseAdvisors(string resourceGroupName, string serverName, string databaseName, bool expandRecommendedActions)
         {
-            var response = Communicator.List(resourceGroupName, serverName, databaseName, expandRecommendedActions, Util.GenerateTracingId());
+            var response = Communicator.List(resourceGroupName, serverName, databaseName, expandRecommendedActions);
             return response.Select(adv => new AzureSqlDatabaseAdvisorModel(resourceGroupName, serverName, databaseName, adv)).ToList();
         }
 
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <returns>The upserted Azure Sql Database Advisor</returns>
         internal AzureSqlDatabaseAdvisorModel UpdateAutoExecuteStatus(AzureSqlDatabaseAdvisorModel model)
         {
-            var response = Communicator.UpdateAutoExecuteStatus(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.AdvisorName, model.AutoExecuteStatus, Util.GenerateTracingId());
+            var response = Communicator.UpdateAutoExecuteStatus(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.AdvisorName, model.AutoExecuteStatus);
             return new AzureSqlDatabaseAdvisorModel(model.ResourceGroupName, model.ServerName, model.DatabaseName, response);
         }
     }

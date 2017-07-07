@@ -561,4 +561,61 @@ function Test-FlowLog
     }
 }
 
+<#
+.SYNOPSIS
+Test ConnectivityCheck NetworkWatcher API.
+#>
+function Test-ConnectivityCheck
+{
+    # Setup
+    $resourceGroupName = Get-ResourceGroupName
+    $nwName = Get-ResourceName
+    $location = "westcentralus"
+    $resourceTypeParent = "Microsoft.Network/networkWatchers"
+    $nwLocation = Get-ProviderLocation $resourceTypeParent
+    $nwRgName = Get-ResourceGroupName
+    $securityGroupName = Get-ResourceName
+    $templateFile = "..\..\TestData\Deployment.json"
+    $pcName1 = Get-ResourceName
+    $pcName2 = Get-ResourceName
+    
+    try 
+    {
+        # Create Resource group
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeployment -rgn "$resourceGroupName"
+        
+        # Create Resource group for Network Watcher
+        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        
+        # Create Network Watcher
+        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+
+        #Get Vm
+        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        
+        #Install networkWatcherAgent on Vm
+        Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher"
+
+        #Connectivity check
+        $check = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" -DestinationPort 80
+
+        #Verification
+        Assert-AreEqual $check.ConnectionStatus "Reachable"
+        Assert-AreEqual $check.ProbesFailed 0
+        Assert-AreEqual $check.Hops.Count 2
+        Assert-AreEqual $check.Hops[0].Type "Source"
+        Assert-AreEqual $check.Hops[1].Type "Internet"
+        Assert-AreEqual $check.Hops[0].Address "10.17.3.4"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
 

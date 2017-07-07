@@ -12,9 +12,8 @@ Creates a route filter rule for a route filter.
 ## SYNTAX
 
 ```
-New-AzureRmRouteFilterRuleConfig -Name <String> -Access <String> -RouteFilterRuleType <String>
- -Communities <System.Collections.Generic.List`1[System.String]> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+New-AzureRmRouteFilterRuleConfig [-Force] -Name <String> -Access <String> -RouteFilterRuleType <String>
+ -CommunityList <System.Collections.Generic.List`1[System.String]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,11 +30,26 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Name
-Specifies a name for the route filter rule.
+### -Access
+Access for route filter rule.
+Valid values are Allow or Deny.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Allow, Deny
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CommunityList
+The list of community value that route filter will filter on```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
 
@@ -46,9 +60,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Access
-Access for route filter rule.
-Valid values are Allow or Deny.
+### -Force
+Do not ask for confirmation if you want to overrite a resource```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies a name for the route filter rule.
 
 ```yaml
 Type: String
@@ -70,6 +96,7 @@ Valid values are: Community
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Community
 
 Required: True
 Position: Named
@@ -78,28 +105,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Communities
-List of community value that want to be filtered.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-@{Text=}
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Aliases: cf
 
 Required: False
 Position: Named
@@ -108,13 +120,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-@{Text=}
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: iv
+Aliases: wi
 
 Required: False
 Position: Named
@@ -122,6 +134,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -132,11 +147,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 ## RELATED LINKS
 
-[Add-AzureRmRouteFilterRuleConfig]()
+[Add-AzureRmRouteFilterRuleConfig](./Add-AzureRmRouteFilterRuleConfig.md)
 
-[Get-AzureRmRouteFilterRuleConfig]()
+[Get-AzureRmRouteFilterRuleConfig](./Get-AzureRmRouteFilterRuleConfig.md)
 
-[Remove-AzureRmRouteFilterRuleConfig]()
+[Remove-AzureRmRouteFilterRuleConfig](./Remove-AzureRmRouteFilterRuleConfig.md)
 
-[Set-AzureRmRouteFilterRuleConfig]()
+[Set-AzureRmRouteFilterRuleConfig](./Set-AzureRmRouteFilterRuleConfig.md)
 

@@ -35,14 +35,14 @@ It does not apply any Virtual Hard Disk (VHD) format conversion.
 
 ### Example 1: Download an image
 ```
-PS C:\>Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
+PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
 ```
 
 This command downloads a .vhd file, and stores it in the local path C:\vhd\Win7Image.vhd.
 
 ### Example 2: Download an image and overwrite the local file
 ```
-PS C:\>Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
+PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -51,7 +51,7 @@ Therefore, if C:\vhd\Win7Image.vhd already exists, this command replaces it.
 
 ### Example 3: Download an image by using a specified number of threads
 ```
-PS C:\>Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32
+PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -60,7 +60,7 @@ Therefore, the cmdlet uses 32 threads for this action.
 
 ### Example 4: Download an image and specify the storage key
 ```
-PS C:\>Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw=="
+PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw=="
 ```
 
 This command downloads a .vhd file and specifies the storage key.
@@ -76,7 +76,7 @@ Parameter Sets: (All)
 Aliases: lf
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -91,7 +91,7 @@ Parameter Sets: (All)
 Aliases: th
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,7 +106,7 @@ Parameter Sets: (All)
 Aliases: o
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -121,7 +121,7 @@ Parameter Sets: ResourceGroupParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -136,7 +136,7 @@ Parameter Sets: (All)
 Aliases: src, Source
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -152,7 +152,7 @@ Parameter Sets: StorageKeyParameterSetName
 Aliases: sk
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -196,6 +196,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.RunPowerShellTest("Test-MigrationAzureReservedIP");
         }
 
+        [Fact]        
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureReservedIPWithIPTags()
+        {
+            this.RunPowerShellTest("Test-AzureReservedIPWithIPTags");
+        }
+
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -248,6 +255,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void RunRedeployVirtualMachineTest()
         {
             this.RunPowerShellTest("Run-RedeployVirtualMachineTest");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunInitiateMaintenanceTest()
+        {
+            this.RunPowerShellTest("Run-InitiateMaintenanceTest");
         }
     }
 }

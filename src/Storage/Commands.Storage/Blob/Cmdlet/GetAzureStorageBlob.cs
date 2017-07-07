@@ -42,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private const string PrefixParameterSet = "BlobPrefix";
 
         [Parameter(Position = 0, HelpMessage = "Blob name", ParameterSetName = NameParameterSet)]
+        [SupportsWildcards()]
         public string Blob
         {
             get

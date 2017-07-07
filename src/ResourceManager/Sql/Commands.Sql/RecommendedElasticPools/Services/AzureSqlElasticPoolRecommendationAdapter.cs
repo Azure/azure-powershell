@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,19 +34,19 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
         /// </summary>
-        private AzureSubscription _subscription { get; set; }
+        private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
         /// Constructs a recommended elastic pool adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlElasticPoolRecommendationAdapter(AzureContext context)
+        public AzureSqlElasticPoolRecommendationAdapter(IAzureContext context)
         {
             _subscription = context.Subscription;
             Context = context;
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<UpgradeRecommendedElasticPoolProperties> ListRecommendedElasticPoolProperties(string resourceGroupName, string serverName)
         {
-            var resp = RecommendationCommunicator.ListExpanded(resourceGroupName, serverName, "databases", Util.GenerateTracingId());
+            var resp = RecommendationCommunicator.ListExpanded(resourceGroupName, serverName, "databases");
             return resp.Select(CreateRecommendedElasticPoolPropertiesFromResponse).ToList();
         }
 

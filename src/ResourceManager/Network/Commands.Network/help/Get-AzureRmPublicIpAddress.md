@@ -12,16 +12,29 @@ Gets a public IP address.
 
 ## SYNTAX
 
-### NoExpand
+### NoExpandStandAloneIp (Default)
 ```
-Get-AzureRmPublicIpAddress [-Name <String>] [-ResourceGroupName <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmPublicIpAddress [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
-### Expand
+### ExpandStandAloneIp
 ```
 Get-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
+```
+
+### NoExpandScaleSetIp
+```
+Get-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-VirtualMachineScaleSetName <String>]
+ [-VirtualMachineIndex <String>] [-NetworkInterfaceName <String>] [-IpConfigurationName <String>]
+ [<CommonParameters>]
+```
+
+### ExpandScaleSetIp
+```
+Get-AzureRmPublicIpAddress -Name <String> -ResourceGroupName <String> -VirtualMachineScaleSetName <String>
+ -VirtualMachineIndex <String> -NetworkInterfaceName <String> -IpConfigurationName <String>
+ -ExpandResource <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,16 +46,56 @@ The **Get-AzureRmPublicIPAddress** cmdlet gets one or more public IP addresses i
 ```
 $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName $publicIp
 ```
+
 This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
 
 ## PARAMETERS
+
+### -ExpandResource
+```yaml
+Type: String
+Parameter Sets: ExpandStandAloneIp, ExpandScaleSetIp
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpConfigurationName
+Network Interface IP Configuration Name.
+```yaml
+Type: String
+Parameter Sets: NoExpandScaleSetIp
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ExpandScaleSetIp
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the public IP address that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: NoExpand
+Parameter Sets: NoExpandStandAloneIp, NoExpandScaleSetIp
 Aliases: ResourceName
 
 Required: False
@@ -54,8 +107,34 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Expand
+Parameter Sets: ExpandStandAloneIp, ExpandScaleSetIp
 Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkInterfaceName
+Virtual Machine Network Interface Name.
+```yaml
+Type: String
+Parameter Sets: NoExpandScaleSetIp
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ExpandScaleSetIp
+Aliases: 
 
 Required: True
 Position: Named
@@ -69,7 +148,7 @@ Specifies the name of the resource group that contains the public IP address tha
 
 ```yaml
 Type: String
-Parameter Sets: NoExpand
+Parameter Sets: NoExpandStandAloneIp
 Aliases: 
 
 Required: False
@@ -81,7 +160,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Expand
+Parameter Sets: ExpandStandAloneIp, NoExpandScaleSetIp, ExpandScaleSetIp
 Aliases: 
 
 Required: True
@@ -91,49 +170,49 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
+### -VirtualMachineIndex
+Virtual Machine Index.
 ```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
+Type: String
+Parameter Sets: NoExpandScaleSetIp
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
-
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
+Parameter Sets: ExpandScaleSetIp
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualMachineScaleSetName
+Virtual Machine Scale Set Name.
+```yaml
+Type: String
+Parameter Sets: NoExpandScaleSetIp
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
 ```yaml
 Type: String
-Parameter Sets: Expand
+Parameter Sets: ExpandScaleSetIp
 Aliases: 
 
 Required: True

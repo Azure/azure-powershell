@@ -68,6 +68,7 @@ The acceptable values for this parameter are:
 Type: CatalogItemType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Database, Schema, Assembly, Table, TablePartition, TableValuedFunction, TableStatistics, ExternalDataSource, View, Procedure, Secret, Credential, Types, Package
 
 Required: True
 Position: 1

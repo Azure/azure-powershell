@@ -32,6 +32,7 @@
 		<InsightsTestDebug>.\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll</InsightsTestDebug>
 		<StorageTestDebug>.\src\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
 		<KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
+        <ServiceFabricTestDebug>.\src\ResourceManager\ServiceFabric\Commands.ServiceFabric.Test\bin\Debug\Microsoft.Azure.Commands.ServiceFabric.Test.dll</ServiceFabricTestDebug>
 		<DataLakeAnalyticsTestDebug>.\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll</DataLakeAnalyticsTestDebug>
 		<DataLakeStoreTestDebug>.\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeStore.Test.dll</DataLakeStoreTestDebug>
 		<UsageAggregationTestDebug>.\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
@@ -64,7 +65,8 @@
 			<AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
 			<AsmXUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
 			<AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
-		</ItemGroup>	
+      <AsmXUnitTests Include=".\src\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll"/>
+    </ItemGroup>	
 		<ItemGroup Condition=" '$(scope)' == 'all' ">
 			<XUnitTests Include=".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
@@ -74,7 +76,9 @@
 			<XUnitTests Include=".\src\ResourceManager\Billing\Commands.Billing.Test\bin\Debug\Microsoft.Azure.Commands.Billing.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\ContainerRegistry\Commands.ContainerRegistry.Test\bin\Debug\Microsoft.Azure.Commands.ContainerRegistry.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Consumption\Commands.Consumption.Test\bin\Debug\Microsoft.Azure.Commands.Consumption.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>
@@ -84,7 +88,10 @@
 			<XUnitTests Include=".\src\ResourceManager\Insights\Commands.Insights.Test\bin\Debug\Microsoft.Azure.Commands.Insights.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\IotHub\Commands.IotHub.Test\bin\Debug\Microsoft.Azure.Commands.IotHub.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
+            <XUnitTests Include=".\src\ResourceManager\ServiceFabric\Commands.ServiceFabric.Test\bin\Debug\Microsoft.Azure.Commands.ServiceFabric.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\LogicApp\Commands.LogicApp.Test\bin\Debug\Microsoft.Azure.Commands.LogicApp.Test.dll"/>
+			<!-- <XUnitTests Include=".\src\ResourceManager\MachineLearning\Commands.MachineLearning.Test\bin\Debug\Microsoft.Azure.Commands.MachineLearning.Test.dll"/> -->
+			<!-- <XUnitTests Include=".\src\ResourceManager\Media\Commands.Media.Test\bin\Debug\Microsoft.Azure.Commands.Media.Test.dll"/> -->
 			<XUnitTests Include=".\src\ResourceManager\Network\Commands.Network.Test\bin\Debug\Microsoft.Azure.Commands.Network.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll"/>
@@ -96,6 +103,7 @@
 			<XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Scheduler\Commands.Scheduler.Test\bin\Debug\Microsoft.Azure.Commands.Scheduler.Test.dll"/>
 			<!-- <XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/> -->
+			<!-- <XUnitTests Include=".\src\ResourceManager\ServiceFabric\Commands.ServiceFabric.Test\bin\Debug\Microsoft.Azure.Commands.ServiceFabric.Test.dll"/> -->
 			<XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
 			<XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>
@@ -106,6 +114,7 @@
 			<XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\ServiceBus\Commands.ServiceBus.Test\bin\Debug\Microsoft.Azure.Commands.ServiceBus.Test.dll"/>
 			<XUnitTests Include=".\src\ResourceManager\EventHub\Commands.EventHub.Test\bin\Debug\Microsoft.Azure.Commands.EventHubs.Test.dll"/>
+			<XUnitTests Include=".\src\ResourceManager\Relay\Commands.Relay.Test\bin\Debug\Microsoft.Azure.Commands.Relay.Test.dll"/>
 			<XUnitTests Include="@(AsmXUnitTests)"/>
 		</ItemGroup>
 		<ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
@@ -146,7 +155,7 @@
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
 			ParallelizeAssemblies="true"
-			ExcludeTraits="RunType=LiveOnly"
+			ExcludeTraits="RunType=LiveOnly;AcceptanceType=CheckIn"
 			Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
 			MaxParallelThreads="10"
 			DiagnosticMessages="false"
@@ -369,6 +378,13 @@
 	<Target Name="KeyVaultTests">
 		<Message Importance="high" Text="Running KeyVault tests" />
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(KeyVaultTestDebug)" Html="$(TestOutputDirectory)\KeyVaultTests.xunit.dll.html" Verbose="true"
+		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+	</Target>
+    
+    <!-- Run the ServiceFabric tests -->
+	<Target Name="ServiceFabricTests">
+		<Message Importance="high" Text="Running ServiceFabric tests" />
+		<Xunit.Runner.MSBuild.xunit Assemblies="$(KeyVaultTestDebug)" Html="$(TestOutputDirectory)\ServiceFabricTests.xunit.dll.html" Verbose="true"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
 	</Target>
 

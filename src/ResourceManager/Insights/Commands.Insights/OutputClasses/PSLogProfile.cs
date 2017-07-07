@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights.Models;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -24,22 +22,18 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSLogProfile : LogProfileResource
     {
         /// <summary>
-        /// Gets or sets the retention policy for this log
-        /// </summary>
-        public new PSRetentionPolicy RetentionPolicy { get; set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="PSLogProfile"/> class.
         /// </summary>
         /// <param name="logProfile">The input logProfile</param>
         public PSLogProfile(LogProfileResource logProfile)
-            : base(id: logProfile.Id, location: logProfile.Location, locations: logProfile.Locations)
+            : base(
+                id: logProfile.Id, 
+                name: logProfile.Name,
+                location: logProfile.Location, 
+                locations: logProfile.Locations, 
+                categories: logProfile.Categories,
+                retentionPolicy: new PSRetentionPolicy(logProfile.RetentionPolicy))
         {
-            base.RetentionPolicy = logProfile.RetentionPolicy;
-
-            this.Name = logProfile.Name;
-            this.Categories = logProfile.Categories;
-            this.RetentionPolicy = new PSRetentionPolicy(logProfile.RetentionPolicy);
             this.ServiceBusRuleId = logProfile.ServiceBusRuleId;
             this.StorageAccountId = logProfile.StorageAccountId;
         }

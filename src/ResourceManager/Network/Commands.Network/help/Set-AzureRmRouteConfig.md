@@ -14,8 +14,7 @@ Sets the goal state for a route.
 
 ```
 Set-AzureRmRouteConfig -Name <String> -RouteTable <PSRouteTable> [-AddressPrefix <String>]
- -NextHopType <String> [-NextHopIpAddress <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -NextHopType <String> [-NextHopIpAddress <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +64,21 @@ The current cmdlet modifies the route named Route02, and then passes the result 
 
 ## PARAMETERS
 
+### -AddressPrefix
+Specifies the destination, in Classless Interdomain Routing (CIDR) format, to which the route applies.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the route that this cmdlet modifies.
 
@@ -80,23 +94,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RouteTable
-Specifies the route table with which this route is associated.
-
-```yaml
-Type: PSRouteTable
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AddressPrefix
-Specifies the destination, in Classless Interdomain Routing (CIDR) format, to which the route applies.
+### -NextHopIpAddress
+Specifies the IP address of a virtual appliance that you add to your Azure virtual network.
+This route forwards packets to that address.
+Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
 
 ```yaml
 Type: String
@@ -130,6 +131,7 @@ If you have two subnets, 10.1.0.0/16 and 10.2.0.0/16 in the same virtual network
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Internet, None, VirtualAppliance, VirtualNetworkGateway, VnetLocal
 
 Required: True
 Position: Named
@@ -138,59 +140,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NextHopIpAddress
-Specifies the IP address of a virtual appliance that you add to your Azure virtual network.
-This route forwards packets to that address.
-Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
+### -RouteTable
+Specifies the route table with which this route is associated.
 
 ```yaml
-Type: String
+Type: PSRouteTable
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

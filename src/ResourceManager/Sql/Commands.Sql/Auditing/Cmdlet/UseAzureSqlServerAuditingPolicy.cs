@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <returns>A storage account name</returns>
         protected string GetStorageAccountName()
         {
-            var storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
+            var storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName);
             if (string.IsNullOrEmpty(storageAccountName))
             {
                 throw new Exception(string.Format(Properties.Resources.UseServerWithoutStorageAccount));

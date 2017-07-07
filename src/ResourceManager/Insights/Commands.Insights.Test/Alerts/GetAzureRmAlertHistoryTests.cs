@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Insights;
-using Microsoft.Azure.Insights.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -26,32 +26,39 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
     public class GetAzureRmAlertHistoryTests
     {
         private readonly GetAzureRmAlertHistoryCommand cmdlet;
-        private readonly Mock<InsightsClient> insightsClientMock;
-        private readonly Mock<IEventsOperations> insightsEventOperationsMock;
+        private readonly Mock<MonitorClient> MonitorClientMock;
+        private readonly Mock<IActivityLogsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse<IPage<EventData>> response;
+        private AzureOperationResponse<IPage<EventData>> finalResponse;
         private ODataQuery<EventData> filter;
         private string selected;
+        private string nextLink;
 
         public GetAzureRmAlertHistoryTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             //XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            insightsEventOperationsMock = new Mock<IEventsOperations>();
-            insightsClientMock = new Mock<InsightsClient>();
+            insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
+            MonitorClientMock = new Mock<MonitorClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAlertHistoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                InsightsClient = insightsClientMock.Object
+                MonitorClient = MonitorClientMock.Object
             };
 
             response = Test.Utilities.InitializeResponse();
+            finalResponse = Utilities.InitializeFinalResponse();
 
             insightsEventOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<ODataQuery<EventData>>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(response))
@@ -61,7 +68,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                     selected = s;
                 });
 
-            insightsClientMock.SetupGet(f => f.Events).Returns(this.insightsEventOperationsMock.Object);
+            insightsEventOperationsMock.Setup(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(finalResponse))
+                .Callback((string next, Dictionary<string, List<string>> headers, CancellationToken t) =>
+                {
+                    nextLink = next;
+                });
+
+            MonitorClientMock.SetupGet(f => f.ActivityLogs).Returns(this.insightsEventOperationsMock.Object);
         }
 
         [Fact]
@@ -78,7 +92,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 filter: ref this.filter,
                 selected: ref this.selected,
                 startDate: startDate,
-                response: response);
+                nextLink: ref this.nextLink);
         }
     }
 }

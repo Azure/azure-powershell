@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Management.HDInsight.Models;
@@ -22,9 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 {
     public class AzureHdInsightManagementClient
     {
-        public AzureHdInsightManagementClient(AzureContext context)
+        public AzureHdInsightManagementClient(IAzureContext context)
         {
-            HdInsightManagementClient = AzureSession.ClientFactory.CreateClient<HDInsightManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            HdInsightManagementClient = AzureSession.Instance.ClientFactory.CreateClient<HDInsightManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

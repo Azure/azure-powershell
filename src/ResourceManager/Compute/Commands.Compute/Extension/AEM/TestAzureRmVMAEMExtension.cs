@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AEM;
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
-                AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager),
+                AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
                 this.DefaultContext.Subscription);
 
             this._Helper.WriteVerbose("Starting TestAzureRmVMAEMExtension");
@@ -190,17 +191,12 @@ namespace Microsoft.Azure.Commands.Compute
                     osaccountName = accountName;
                     accounts.Add(accountName);
                 }
-                else
-                {
-                    this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
-                }
 
                 var dataDisks = selectedVM.StorageProfile.DataDisks;
                 foreach (var disk in dataDisks)
                 {
                     if (disk.ManagedDisk != null)
-                    {
-                        this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                    {                        
                         continue;
                     }
                     var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
@@ -267,6 +263,10 @@ namespace Microsoft.Azure.Commands.Compute
                             this._Helper.WriteHost("\t\tStorage Metrics not available for Premium Storage account {0}...", false, account);
                             this._Helper.WriteHost("OK ", ConsoleColor.Green);
                         }
+                    }
+                    if (accounts.Count == 0)
+                    {
+                        metricsResult.Result = true;
                     }
                 }
                 else
@@ -355,9 +355,23 @@ namespace Microsoft.Azure.Commands.Compute
                         this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA IOPS", "osdisk.sla.throughput", sapmonPublicConfig, sla.TP, aemConfigResult);
                         this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA Throughput", "osdisk.sla.iops", sapmonPublicConfig, sla.IOPS, aemConfigResult);
 
-                    } else
+                    }
+                    else
                     {
-                        this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
+                        var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
+                            this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
+                        if (osDiskMD.AccountType == StorageAccountTypes.PremiumLRS)
+                        {
+                            var sla = this._Helper.GetDiskSLA(osDiskMD.DiskSizeGB, null);
+
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk Type", "osdisk.type", sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM_MD, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA IOPS", "osdisk.sla.throughput", sapmonPublicConfig, sla.TP, aemConfigResult);
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM OS Disk SLA Throughput", "osdisk.sla.iops", sapmonPublicConfig, sla.IOPS, aemConfigResult);
+                        }
+                        else
+                        {
+                            this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported.");
+                        }
                     }
 
                     if (osdisk.ManagedDisk == null)
@@ -371,36 +385,53 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         if (disk.ManagedDisk != null)
                         {
-                            this._Helper.WriteWarning("[WARN] Managed Disks are not yet supported. Extension will be installed but no disk metrics will be available.");
-                            continue;
-                        }
+                            var diskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(disk.ManagedDisk.Id),
+                                this._Helper.GetResourceNameFromId(disk.ManagedDisk.Id));
 
-                        var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
-                        storage = this._Helper.GetStorageAccountFromCache(accountName);
-                        var accountIsPremium = this._Helper.IsPremiumStorageAccount(storage);
+                            if (diskMD.AccountType == StorageAccountTypes.PremiumLRS)
+                            {
+                                var sla = this._Helper.GetDiskSLA(diskMD.DiskSizeGB, null);
 
-                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " LUN", "disk.lun." + diskNumber, sapmonPublicConfig, disk.Lun, aemConfigResult);
-                        if (!accountIsPremium)
-                        {
-                            var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
-                            var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM_MD, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, sla.TP, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, sla.IOPS, aemConfigResult);
+                            }
+                            else
+                            {
+                                this._Helper.WriteWarning("[WARN] Standard Managed Disks are not supported.");
 
-                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Key", "disk.connminute." + diskNumber, sapmonPublicConfig, accountName + ".minute", aemConfigResult);
-                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Value", accountName + ".minute.uri", sapmonPublicConfig, minuteUri, aemConfigResult);
-                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Name", accountName + ".minute.name", sapmonPublicConfig, accountName, aemConfigResult);
-                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_STANDARD, aemConfigResult);
-
+                            }
                         }
                         else
                         {
-                            var sla = this._Helper.GetDiskSLA(disk);
 
-                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM, aemConfigResult);
-                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, sla.TP, aemConfigResult);
-                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, sla.IOPS, aemConfigResult);
+                            var accountName = this._Helper.GetStorageAccountFromUri(disk.Vhd.Uri);
+                            storage = this._Helper.GetStorageAccountFromCache(accountName);
+                            var accountIsPremium = this._Helper.IsPremiumStorageAccount(storage);
+
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " LUN", "disk.lun." + diskNumber, sapmonPublicConfig, disk.Lun, aemConfigResult);
+                            if (!accountIsPremium)
+                            {
+                                var endpoint = this._Helper.GetAzureSAPTableEndpoint(storage);
+                                var minuteUri = endpoint + "$MetricsMinutePrimaryTransactionsBlob";
+
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Key", "disk.connminute." + diskNumber, sapmonPublicConfig, accountName + ".minute", aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Value", accountName + ".minute.uri", sapmonPublicConfig, minuteUri, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " URI Name", accountName + ".minute.name", sapmonPublicConfig, accountName, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_STANDARD, aemConfigResult);
+
+                            }
+                            else
+                            {
+                                var sla = this._Helper.GetDiskSLA(disk);
+
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " Type", "disk.type." + diskNumber, sapmonPublicConfig, AEMExtensionConstants.DISK_TYPE_PREMIUM, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA IOPS", "disk.sla.throughput." + diskNumber, sapmonPublicConfig, sla.TP, aemConfigResult);
+                                this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " SLA Throughput", "disk.sla.iops." + diskNumber, sapmonPublicConfig, sla.IOPS, aemConfigResult);
+                            }
+
+                            this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " name", "disk.name." + diskNumber, sapmonPublicConfig, this._Helper.GetDiskName(disk.Vhd.Uri), aemConfigResult);
                         }
-
-                        this._Helper.CheckMonitoringProperty("Azure Enhanced Monitoring Extension for SAP public configuration check: VM Data Disk " + diskNumber + " name", "disk.name." + diskNumber, sapmonPublicConfig, this._Helper.GetDiskName(disk.Vhd.Uri), aemConfigResult);
 
                         diskNumber += 1;
                     }
@@ -566,4 +597,3 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
-

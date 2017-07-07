@@ -13,7 +13,7 @@ Creates a new packet capture filter object.
 
 ```
 New-AzureRmPacketCaptureFilterConfig [-Protocol <String>] [-RemoteIPAddress <String>]
- [-LocalIPAddress <String>] [-LocalPort <String>] [-RemotePort <String>] [-WhatIf] [-Confirm]
+ [-LocalIPAddress <String>] [-LocalPort <String>] [-RemotePort <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,6 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName contosoResourceGr
 $filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
 $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP 
 New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2
-
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
@@ -45,9 +44,9 @@ Note: The Azure Network Watcher extension must be installed on the target virtua
 ### -LocalIPAddress
 Specifies the Local IP Address to filter on.
 Example inputs:
-“127.0.0.1” for single address entry.
-“127.0.0.1-127.0.0.255” for range.
-“127.0.0.1;127.0.0.5;” for multiple entries.
+"127.0.0.1" for single address entry.
+"127.0.0.1-127.0.0.255" for range.
+"127.0.0.1;127.0.0.5;" for multiple entries.
 
 ```yaml
 Type: String
@@ -64,9 +63,9 @@ Accept wildcard characters: False
 ### -LocalPort
 Specifies the Local IP Address to filter on.
 Example inputs:
-“127.0.0.1” for single address entry.
-“127.0.0.1-127.0.0.255” for range.
-“127.0.0.1;127.0.0.5;” for multiple entries.
+"127.0.0.1" for single address entry.
+"127.0.0.1-127.0.0.255" for range.
+"127.0.0.1;127.0.0.5;" for multiple entries.
 
 ```yaml
 Type: String
@@ -98,9 +97,9 @@ Accept wildcard characters: False
 ### -RemoteIPAddress
 Specifies the remote IP address to filter on.
 Example inputs:
-“127.0.0.1” for single address entry.
-“127.0.0.1-127.0.0.255” for range.
-“127.0.0.1;127.0.0.5;” for multiple entries.
+"127.0.0.1" for single address entry.
+"127.0.0.1-127.0.0.255" for range.
+"127.0.0.1;127.0.0.5;" for multiple entries.
 
 ```yaml
 Type: String
@@ -118,9 +117,9 @@ Accept wildcard characters: False
 Specifies the Remote Port to filter on.
 Remote port
 Example inputs:
-“80” for single port entry.
-“80-85” for range.
-“80;443;” for multiple entries.
+"80" for single port entry.
+"80-85" for range.
+"80;443;" for multiple entries.
 
 ```yaml
 Type: String
@@ -134,36 +133,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -177,17 +148,27 @@ Accept wildcard characters: False
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, watcher, packet, capture, traffic, filter 
 
 ## RELATED LINKS
-[New-AzureRmNetworkWatcherPacketCapture]()
-[Get-AzureRmNetworkWatcherPacketCapture]()
-[Remove-AzureRmNetworkWatcherPacketCapture]()
-[Stop-AzureRmNetworkWatcherPacketCapture]()
 
-[New-AzureRmNetworkWatcher]()
-[Get-AzureRmNetworkWatcher]()
-[Remove-AzureRmNetworkWatcher]()
+[New-AzureRmNetworkWatcherPacketCapture](./New-AzureRmNetworkWatcherPacketCapture.md)
 
-[Test-AzureRmNetworkWatcherIPFlow]()
-[Get-AzureRmNetworkWatcherNextHop]()
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
-[Get-AzureRmNetworkWatcherTopology]()
-[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+[Get-AzureRmNetworkWatcherPacketCapture](./Get-AzureRmNetworkWatcherPacketCapture.md)
+
+[Remove-AzureRmNetworkWatcherPacketCapture](./Remove-AzureRmNetworkWatcherPacketCapture.md)
+
+[Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
+
+[New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
+
+[Get-AzureRmNetworkWatcher](./Get-AzureRmNetworkWatcher.md)
+
+[Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)
+
+[Test-AzureRmNetworkWatcherIPFlow](./Test-AzureRmNetworkWatcherIPFlow.md)
+
+[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
+
+[Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
+
+[Get-AzureRmNetworkWatcherTopology](./Get-AzureRmNetworkWatcherTopology.md)
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting](./Start-AzureRmNetworkWatcherResourceTroubleshooting.md)

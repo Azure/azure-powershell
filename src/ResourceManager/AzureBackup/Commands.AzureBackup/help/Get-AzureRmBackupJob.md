@@ -224,6 +224,7 @@ Currently, the only supported value is AzureVM.
 Type: String
 Parameter Sets: FiltersSet
 Aliases: 
+Accepted values: AzureVM
 
 Required: False
 Position: Named

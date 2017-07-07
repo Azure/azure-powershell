@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -28,6 +29,9 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureEnvironment))]
     public class AddAzureRMEnvironmentCommand : AzureRMCmdlet
     {
+        // Currently, this is the only resource endpoint used for both AzureCloud and all dogfood for Data Lake
+        // This ensures that existing scripts will automatically pick up the right environment with no changes.
+        private string _defaultDataLakeResourceEndpoint = "https://datalake.azure.net";
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
@@ -104,6 +108,21 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("GraphEndpointResourceId", "GraphResourceId")]
         public string GraphAudience { get; set; }
 
+        [Parameter(Position = 19, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The audience for tokens authenticating with the AD Data Lake services Endpoint.")]
+        [Alias("DataLakeEndpointResourceId", "DataLakeResourceId")]
+        public string DataLakeAudience
+        {
+            get
+            {
+                return _defaultDataLakeResourceEndpoint;
+            }
+            set
+            {
+                _defaultDataLakeResourceEndpoint = value;
+            }
+        }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -114,7 +133,7 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction("adding environment", Name,
                 () =>
                 {
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
 
                     var newEnvironment = new AzureEnvironment
                     {
@@ -122,31 +141,32 @@ namespace Microsoft.Azure.Commands.Profile
                         OnPremise = EnableAdfsAuthentication
                     };
 
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl] = PublishSettingsFileUrl;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = ServiceEndpoint;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = ResourceManagerEndpoint;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = ManagementPortalUrl;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = StorageEndpoint;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] =
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ResourceManager, ResourceManagerEndpoint);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl, ManagementPortalUrl);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix, StorageEndpoint);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectory,
                         ActiveDirectoryEndpoint != null ? GeneralUtilities.EnsureTrailingSlash(ActiveDirectoryEndpoint) 
-                                                        : ActiveDirectoryEndpoint;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] =
-                        ActiveDirectoryServiceEndpointResourceId;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = GalleryEndpoint;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = GraphEndpoint;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] = AzureKeyVaultDnsSuffix;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] =
-                        AzureKeyVaultServiceEndpointResourceId;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] =
-                        TrafficManagerDnsSuffix;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = SqlDatabaseDnsSuffix;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
-                        ] = AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] =
-                        AzureDataLakeStoreFileSystemEndpointSuffix;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = AdTenant;
-                    newEnvironment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId] = GraphAudience;
-                    WriteObject((PSAzureEnvironment)profileClient.AddOrSetEnvironment(newEnvironment));
+                                                        : ActiveDirectoryEndpoint);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
+                        ActiveDirectoryServiceEndpointResourceId);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.Gallery, GalleryEndpoint);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.Graph, GraphEndpoint);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureKeyVaultDnsSuffix);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId,
+                        AzureKeyVaultServiceEndpointResourceId);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix,
+                        TrafficManagerDnsSuffix);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, SqlDatabaseDnsSuffix);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix
+                        , AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix,
+                        AzureDataLakeStoreFileSystemEndpointSuffix);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AdTenant, AdTenant);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId, GraphAudience);
+                    newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.DataLakeEndpointResourceId, DataLakeAudience);
+                    WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                 });
         }
     }

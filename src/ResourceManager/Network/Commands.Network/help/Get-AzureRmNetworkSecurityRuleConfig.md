@@ -14,7 +14,7 @@ Get a network security rule configuration for a network security group.
 
 ```
 Get-AzureRmNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-DefaultRules] [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-DefaultRules] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,17 +27,33 @@ The **Get-AzureRmNetworkSecurityRuleConfig** cmdlet gets a network security rule
 Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
     | Get-AzureRmNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
 ```
-This command retrieves the default rule named "AllowInternetOutBound" from Azure network security group named "nsg1" in resource group "rg1"
 
+This command retrieves the default rule named "AllowInternetOutBound" from Azure network security group named "nsg1" in resource group "rg1"
 
 ### 2: Retrieving a network security rule config using only the name
 ```
- Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
+Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
     | Get-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule"
 ```
+
 This command retrieves user defined rule named "rdp-rule" from Azure network security group named "nsg1" in resource group "rg1"
 
 ## PARAMETERS
+
+### -DefaultRules
+Indicates whether this cmdlet gets a user-created rule configuration or a default rule configuration.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the network security rule configuration to get.
@@ -66,60 +82,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DefaultRules
-Indicates whether this cmdlet gets a user-created rule configuration or a default rule configuration.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.DevTestLabs.Properties;
 using Microsoft.Azure.Management.DevTestLabs;
 using Microsoft.Azure.Management.DevTestLabs.Models;
 using Microsoft.Rest.Azure;
-using System;
 using System.Globalization;
 using System.Management.Automation;
 
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
 
             try
             {
-                inputPolicy = DataServiceClient.Policy.GetResource(
+                inputPolicy = DataServiceClient.Policies.Get(
                                 ResourceGroupName,
                                 LabName,
                                 Constants.Default,
@@ -123,8 +122,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
                 return;
             }
 
-            var outputPolicy = DataServiceClient.Policy.CreateOrUpdateResource(
-                ResourceGroupName,
+            var outputPolicy = DataServiceClient.Policies.CreateOrUpdate(
                 LabName,
                 Constants.Default,
                 PolicyName,

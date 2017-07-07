@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Storage.File;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.File;
@@ -43,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     {
         [Parameter(HelpMessage = "Azure Storage Context Object",
             ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
-        public virtual AzureStorageContext Context { get; set; }
+        public virtual IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "The server time out for each request in seconds.")]
         public virtual int? ServerTimeoutPerRequest { get; set; }
@@ -226,13 +227,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>Storage account</returns>
         internal AzureStorageContext GetCmdletStorageContext()
         {
-            this.Context = this.GetCmdletStorageContext(this.Context);
-
-            return this.Context;
+            var context = this.GetCmdletStorageContext(this.Context);
+            this.Context = context;
+            return context;
         }
 
-        internal AzureStorageContext GetCmdletStorageContext(AzureStorageContext context)
+        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext)
         {
+            AzureStorageContext context = inContext as AzureStorageContext;
+            if (context == null && inContext != null)
+            {
+                context = new AzureStorageContext(inContext.GetCloudStorageAccount());
+            }
+
             if (context != null)
             {
                 WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, context.StorageAccountName));
@@ -292,14 +299,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Get the current storage account
         /// </summary>
         /// <returns>True if it need to init the service channel, otherwise false</returns>
-        internal virtual bool TryGetStorageAccount(IAzureProfile profile, out string account)
+        internal virtual bool TryGetStorageAccount(IAzureContextContainer profile, out string account)
         {
             account = null;
             bool result = false;
             //Storage Context is empty and have already set the current storage account in subscription
-            if (Context == null && profile != null && profile.Context != null && profile.Context.Subscription != null)
+            if (Context == null && profile != null && profile.DefaultContext != null && profile.DefaultContext.Subscription != null)
             {
-                account = profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                account = profile.DefaultContext.GetCurrentStorageAccountConnectionString();
                 result = !string.IsNullOrWhiteSpace(account);
             }
 

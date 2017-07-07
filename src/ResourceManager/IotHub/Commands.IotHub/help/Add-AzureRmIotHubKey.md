@@ -12,12 +12,14 @@ Creates an IotHub Key.
 ## SYNTAX
 
 ```
-Add-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String> [-PrimaryKey] <String>
- [-SecondaryKey] <String> [-Rights] <PSAccessRights> [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIotHubKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+ [[-PrimaryKey] <String>] [[-SecondaryKey] <String>] [-Rights] <PSAccessRights> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a Key for the provided IotHub. KeyNames are not unique and need to be managed carefully.
+Creates a Key for the provided IotHub.
+KeyNames are not unique and need to be managed carefully.
 
 ## EXAMPLES
 
@@ -31,7 +33,7 @@ Creates a key named "mykey" for the iothub "myiothub" with RegistryRead permissi
 ## PARAMETERS
 
 ### -KeyName
-Name of the key.
+Name of the Key
 
 ```yaml
 Type: String
@@ -46,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Iot Hub.
+Name of the IotHub
 
 ```yaml
 Type: String
@@ -61,14 +63,14 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryKey
-The Primary Key.
+The primary key
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -76,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group.
+Resource Group Name
 
 ```yaml
 Type: String
@@ -91,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Access Rights that determine what kind of access the key will provide to the user of the key.
+The permissions for this IOTHub
 
 ```yaml
 Type: PSAccessRights
@@ -107,14 +109,14 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryKey
-The Secondary Key.
+The Secondary Key
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
@@ -131,13 +133,14 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -146,7 +149,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -162,7 +165,7 @@ Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\]\]
 
 ## NOTES
 

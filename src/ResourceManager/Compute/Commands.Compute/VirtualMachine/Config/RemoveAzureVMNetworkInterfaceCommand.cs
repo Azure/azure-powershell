@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("Id", "NicIds")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.VMNetworkInterfaceID)]
         [ValidateNotNullOrEmpty]
         public string[] NetworkInterfaceIDs { get; set; }
@@ -54,8 +54,6 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (this.ShouldProcess("NetworkInterface", VerbsCommon.Remove))
             {
-                WriteWarning("Breaking change notice: In upcoming release, NetworkInterfaceIDs will no longer support pipeline.  This parameter will be optional.  All network interfaces will be removed from a given VM object if a user does not give this parameter.");
-
                 var networkProfile = this.VM.NetworkProfile;
 
                 if (NetworkInterfaceIDs == null)

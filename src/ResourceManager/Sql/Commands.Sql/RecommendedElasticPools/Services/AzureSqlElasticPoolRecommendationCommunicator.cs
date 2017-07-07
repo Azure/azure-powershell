@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using System;
+using Microsoft.Azure.Management.Sql.LegacySdk;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
@@ -34,19 +34,19 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription { get; set; }
+        private static IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Recommended Elastic Pool
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlElasticPoolRecommendationCommunicator(AzureContext context)
+        public AzureSqlElasticPoolRecommendationCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -62,11 +62,10 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <param name="resourceGroupName">Resource group name</param>
         /// <param name="serverName">Server name</param>
         /// <param name="expand">Expanded properties</param>
-        /// <param name="clientRequestId">Request id</param>
         /// <returns>IList of RecommendedElasticPool</returns>
-        public IList<Management.Sql.Models.RecommendedElasticPool> ListExpanded(string resourceGroupName, string serverName, string expand, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.RecommendedElasticPool> ListExpanded(string resourceGroupName, string serverName, string expand)
         {
-            return GetCurrentSqlClient(clientRequestId).RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
+            return GetCurrentSqlClient().RecommendedElasticPools.ListExpanded(resourceGroupName, serverName, expand).RecommendedElasticPools;
         }
 
         /// <summary>
@@ -74,15 +73,13 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

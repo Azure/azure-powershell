@@ -15,14 +15,14 @@ Creates an Azure App Service plan in a given Geo location.
 ### S1
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
  [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
 ```
 
 ### S2
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
- [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
+ [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
  [-AppServicePlan] <ServerFarmWithRichSku> [<CommonParameters>]
 ```
 
@@ -41,63 +41,18 @@ The command specifies a Basic Tier and allocates two small workers.
 
 ## PARAMETERS
 
-### -Location
-Location 
+### -AppServicePlan
+App Service Plan Object
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: ServerFarmWithRichSku
+Parameter Sets: S2
 Aliases: 
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tier
-Tier
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: Free
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NumberofWorkers
-Number Of Workers
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: 1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkerSize
-Size of web worker
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
-Default value: Small
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -131,16 +86,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group Name
+### -Location
+Location 
 
 ```yaml
 Type: String
-Parameter Sets: S1
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,18 +116,78 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppServicePlan
-App Service Plan Object
+### -NumberofWorkers
+Number Of Workers
 
 ```yaml
-Type: ServerFarmWithRichSku
-Parameter Sets: S2
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: 1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PerSiteScaling
+Whether or not to enable Per Site Scaling```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: String
+Parameter Sets: S1
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tier
+Tier
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Free, Shared, Basic, Standard, Premium
+
+Required: False
+Position: 3
+Default value: Free
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkerSize
+Size of web worker
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Small, Medium, Large, ExtraLarge
+
+Required: False
+Position: 5
+Default value: Small
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

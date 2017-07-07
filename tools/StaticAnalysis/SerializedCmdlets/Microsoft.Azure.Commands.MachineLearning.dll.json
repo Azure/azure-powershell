@@ -13,16 +13,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
               "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -35,8 +35,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "GenericTypeArguments": []
@@ -52,7 +52,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -68,7 +68,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -84,7 +84,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -100,7 +100,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -122,7 +122,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -144,7 +144,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -166,7 +166,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -188,7 +188,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -222,16 +222,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
               "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -244,8 +244,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "GenericTypeArguments": []
@@ -261,7 +261,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -277,7 +277,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -293,7 +293,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -315,7 +315,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -337,7 +337,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -359,7 +359,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -393,8 +393,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "PlanUsageHistory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory[], Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory",
             "GenericTypeArguments": []
@@ -410,7 +410,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -426,7 +426,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -448,7 +448,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -470,7 +470,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -504,7 +504,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Void",
+            "Name": "System.Void",
             "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -521,7 +521,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -537,7 +537,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -553,16 +553,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
               "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -578,7 +578,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -600,7 +600,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -622,7 +622,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -644,7 +644,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -671,16 +671,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-                  "Name": "CommitmentPlan",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Etag": "System.String",
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
                     "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Etag": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -702,7 +702,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -729,7 +729,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -763,16 +763,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
               "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -789,7 +789,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -805,7 +805,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -821,7 +821,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -837,7 +837,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -853,7 +853,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
+            "Name": "System.Int32",
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -869,7 +869,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -885,7 +885,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -907,7 +907,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -929,7 +929,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -951,7 +951,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -973,7 +973,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -995,7 +995,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
+                  "Name": "System.Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1017,7 +1017,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1039,7 +1039,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1073,16 +1073,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
               "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1095,8 +1095,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
             "GenericTypeArguments": []
@@ -1112,7 +1112,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1128,7 +1128,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1150,7 +1150,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1172,7 +1172,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1206,7 +1206,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "Void",
+            "Name": "System.Void",
             "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1223,7 +1223,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1239,7 +1239,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1255,14 +1255,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1278,7 +1278,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1300,7 +1300,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1322,7 +1322,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1344,7 +1344,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1371,14 +1371,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -1400,7 +1400,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1427,7 +1427,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1461,14 +1461,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1481,8 +1481,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService[], Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService[]",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
             "GenericTypeArguments": []
@@ -1498,7 +1498,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1514,7 +1514,23 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Region",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1536,7 +1552,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1558,7 +1574,29 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Region",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1592,14 +1630,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1616,7 +1654,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1632,7 +1670,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1648,7 +1686,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1664,7 +1702,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1680,7 +1718,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1696,8 +1734,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebServiceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Primary": "System.String",
               "Secondary": "System.String"
@@ -1715,7 +1753,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1731,8 +1769,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "DiagnosticsConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Expiry": "System.Nullable`1[System.DateTime]",
               "Level": "System.String"
@@ -1750,8 +1788,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "RealtimeConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "MaxConcurrentCalls": "System.Nullable`1[System.Int32]"
             },
@@ -1768,7 +1806,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1784,12 +1822,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "ServiceInputOutputSpecification",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Description": "System.String",
               "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
               "Title": "System.String",
+              "Description": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1805,12 +1843,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "ServiceInputOutputSpecification",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Description": "System.String",
               "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
               "Title": "System.String",
+              "Description": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1826,7 +1864,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1842,12 +1880,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "GraphPackage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Edges": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]",
+              "Nodes": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]",
               "GraphParameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]",
-              "Nodes": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]"
+              "Edges": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1862,14 +1900,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -1885,7 +1923,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1907,7 +1945,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1929,7 +1967,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1951,7 +1989,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1978,7 +2016,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2000,7 +2038,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2022,7 +2060,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2044,8 +2082,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebServiceKeys",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Primary": "System.String",
                     "Secondary": "System.String"
@@ -2069,7 +2107,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2091,8 +2129,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "DiagnosticsConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Expiry": "System.Nullable`1[System.DateTime]",
                     "Level": "System.String"
@@ -2116,8 +2154,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "RealtimeConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "MaxConcurrentCalls": "System.Nullable`1[System.Int32]"
                   },
@@ -2140,7 +2178,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2162,12 +2200,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "ServiceInputOutputSpecification",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Description": "System.String",
                     "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
                     "Title": "System.String",
+                    "Description": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2189,12 +2227,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "ServiceInputOutputSpecification",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Description": "System.String",
                     "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
                     "Title": "System.String",
+                    "Description": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2216,7 +2254,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2238,12 +2276,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "GraphPackage",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphPackage, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Edges": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]",
+                    "Nodes": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]",
                     "GraphParameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]",
-                    "Nodes": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]"
+                    "Edges": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -2264,7 +2302,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2286,7 +2324,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2308,7 +2346,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2335,14 +2373,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2364,7 +2402,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2386,7 +2424,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2408,7 +2446,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2442,7 +2480,7 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2459,14 +2497,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -2482,7 +2520,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2498,7 +2536,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2514,7 +2552,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2536,14 +2574,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2565,7 +2603,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2592,7 +2630,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2614,14 +2652,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2643,7 +2681,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2670,7 +2708,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2692,14 +2730,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2721,7 +2759,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2755,8 +2793,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebServiceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Primary": "System.String",
               "Secondary": "System.String"
@@ -2775,7 +2813,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2791,7 +2829,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2807,14 +2845,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -2836,7 +2874,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2858,7 +2896,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2885,14 +2923,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -2926,14 +2964,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -2950,7 +2988,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2966,7 +3004,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2988,7 +3026,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3015,7 +3053,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3049,16 +3087,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "CommitmentPlan",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Etag": "System.String",
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
               "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Etag": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -3075,7 +3113,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3091,7 +3129,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3107,7 +3145,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3123,7 +3161,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3139,7 +3177,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3155,7 +3193,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int32",
+            "Name": "System.Int32",
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3171,7 +3209,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3193,7 +3231,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3215,7 +3253,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3237,7 +3275,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3259,7 +3297,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3281,7 +3319,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3303,7 +3341,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int32",
+                  "Name": "System.Int32",
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3325,7 +3363,201 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Add",
+      "NounName": "AzureRmMlWebServiceRegionalProperty",
+      "Name": "Add-AzureRmMlWebServiceRegionalProperty",
+      "ClassName": "Microsoft.Azure.Commands.MachineLearning.Cmdlets.AddAzureMLWebServiceRegionalProperty",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Region",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Region",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3359,14 +3591,14 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -3383,7 +3615,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3399,7 +3631,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3415,7 +3647,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3431,7 +3663,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3447,14 +3679,14 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "WebService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Location": "System.String",
               "Type": "System.String"
             },
             "ElementType": null,
@@ -3470,7 +3702,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3492,7 +3724,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3514,7 +3746,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3536,7 +3768,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3558,7 +3790,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3585,7 +3817,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3607,7 +3839,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3629,7 +3861,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3651,7 +3883,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3673,7 +3905,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3700,14 +3932,14 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-                  "Name": "WebService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
-                    "Id": "System.String",
-                    "Location": "System.String",
-                    "Name": "System.String",
                     "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Location": "System.String",
                     "Type": "System.String"
                   },
                   "ElementType": null,
@@ -3729,7 +3961,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3751,7 +3983,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3773,7 +4005,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3795,7 +4027,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3932,55 +4164,27 @@
     },
     "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-      "Name": "CommitmentPlanProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
+        "IncludedQuantities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity]",
         "ChargeForOverage": "System.Nullable`1[System.Boolean]",
         "ChargeForPlan": "System.Nullable`1[System.Boolean]",
+        "SuspendPlanOnOverage": "System.Nullable`1[System.Boolean]",
         "CreationDate": "System.Nullable`1[System.DateTime]",
-        "IncludedQuantities": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity]",
         "MaxAssociationLimit": "System.Nullable`1[System.Int32]",
         "MaxCapacityLimit": "System.Nullable`1[System.Int32]",
         "MinCapacityLimit": "System.Nullable`1[System.Int32]",
-        "PlanMeter": "System.String",
         "RefillFrequencyInDays": "System.Nullable`1[System.Int32]",
-        "SuspendPlanOnOverage": "System.Nullable`1[System.Boolean]"
+        "PlanMeter": "System.String"
       },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[System.Boolean]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Boolean"
-      ]
-    },
-    "System.Nullable`1[System.DateTime]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.DateTime"
-      ]
-    },
-    "System.DateTime": {
-      "Namespace": "System",
-      "Name": "DateTime",
-      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3990,8 +4194,8 @@
     },
     "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-      "Name": "PlanQuantity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanQuantity, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Allowance": "System.Nullable`1[System.Double]",
         "Amount": "System.Nullable`1[System.Double]",
@@ -4003,7 +4207,7 @@
     },
     "System.Nullable`1[System.Double]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.Double]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4011,9 +4215,37 @@
         "System.Double"
       ]
     },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ]
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "System.Nullable`1[System.Int32]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.Int32]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4023,8 +4255,8 @@
     },
     "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-      "Name": "ResourceSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capacity": "System.Nullable`1[System.Int32]",
         "Name": "System.String",
@@ -4035,7 +4267,7 @@
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4046,16 +4278,16 @@
     },
     "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-      "Name": "CommitmentPlan",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Etag": "System.String",
-        "Id": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
         "Properties": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlanProperties",
         "Sku": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.ResourceSku",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Etag": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Location": "System.String",
         "Type": "System.String"
       },
       "ElementType": null,
@@ -4063,8 +4295,8 @@
     },
     "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-      "Name": "PlanUsageHistory",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PlanDeletionOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
         "PlanMigrationOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
@@ -4079,7 +4311,7 @@
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4090,161 +4322,49 @@
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "WebServiceProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Assets": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]",
+        "PayloadsLocation": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
         "CommitmentPlan": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan",
-        "CreatedOn": "System.Nullable`1[System.DateTime]",
-        "Description": "System.String",
         "Diagnostics": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
         "ExampleRequest": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest",
-        "ExposeSampleData": "System.Nullable`1[System.Boolean]",
-        "Input": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
-        "Keys": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
         "MachineLearningWorkspace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace",
-        "ModifiedOn": "System.Nullable`1[System.DateTime]",
-        "Output": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
-        "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "ProvisioningState": "System.String",
-        "ReadOnlyProperty": "System.Nullable`1[System.Boolean]",
         "RealtimeConfiguration": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
+        "Output": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+        "Input": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
         "StorageAccount": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount",
+        "Keys": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
+        "Assets": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]",
+        "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]",
+        "ReadOnlyProperty": "System.Nullable`1[System.Boolean]",
+        "ExposeSampleData": "System.Nullable`1[System.Boolean]",
+        "PayloadsInBlobStorage": "System.Nullable`1[System.Boolean]",
+        "ModifiedOn": "System.Nullable`1[System.DateTime]",
+        "CreatedOn": "System.Nullable`1[System.DateTime]",
         "SwaggerLocation": "System.String",
+        "ProvisioningState": "System.String",
+        "Description": "System.String",
         "Title": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem": {
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "AssetItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "InputPorts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]",
-        "LocationInfo": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetLocation",
-        "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Name": "System.String",
-        "OutputPorts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]",
-        "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "InputPort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetLocation": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "AssetLocation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetLocation, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Credentials": "System.String",
-        "Uri": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "OutputPort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "ModuleAssetParameter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "ModeValuesInfo": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]",
-        "Name": "System.String",
-        "ParameterType": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "ModeValueInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "InterfaceString": "System.String",
-        "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]"
+        "Uri": "System.String",
+        "Credentials": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "CommitmentPlan",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.CommitmentPlan, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -4253,8 +4373,8 @@
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "DiagnosticsConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.DiagnosticsConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Expiry": "System.Nullable`1[System.DateTime]",
         "Level": "System.String"
@@ -4264,37 +4384,18 @@
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "ExampleRequest",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ExampleRequest, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "GlobalParameters": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
-        "Inputs": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]]"
+        "Inputs": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]]",
+        "GlobalParameters": "System.Collections.Generic.IDictionary`2[System.String,System.Object]"
       },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IDictionary`2[System.String,System.Object]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "System.Object"
-      ]
-    },
-    "System.Object": {
-      "Namespace": "System",
-      "Name": "Object",
-      "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]]",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.IList`1[[System.Collections.Generic.IList`1[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4305,7 +4406,7 @@
     },
     "System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList",
+      "Name": "System.Collections.Generic.IList`1[System.Collections.Generic.IList`1[System.Object]]",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Collections.Generic.IList`1[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4315,7 +4416,7 @@
     },
     "System.Collections.Generic.IList`1[System.Object]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IList",
+      "Name": "System.Collections.Generic.IList`1[System.Object]",
       "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -4323,14 +4424,53 @@
         "System.Object"
       ]
     },
+    "System.Object": {
+      "Namespace": "System",
+      "Name": "System.Object",
+      "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,System.Object]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.Object"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Id": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "MaxConcurrentCalls": "System.Nullable`1[System.Int32]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "ServiceInputOutputSpecification",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ServiceInputOutputSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Description": "System.String",
         "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
         "Title": "System.String",
+        "Description": "System.String",
         "Type": "System.String"
       },
       "ElementType": null,
@@ -4338,8 +4478,8 @@
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4349,22 +4489,22 @@
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "TableSpecification",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.TableSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Description": "System.String",
-        "Format": "System.String",
         "Properties": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification]",
         "Title": "System.String",
-        "Type": "System.String"
+        "Description": "System.String",
+        "Type": "System.String",
+        "Format": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4374,22 +4514,33 @@
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "ColumnSpecification",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ColumnSpecification, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "EnumProperty": "System.Collections.Generic.IList`1[System.Object]",
-        "Format": "System.String",
-        "Type": "System.String",
         "XMsIsnullable": "System.Nullable`1[System.Boolean]",
-        "XMsIsordered": "System.Nullable`1[System.Boolean]"
+        "XMsIsordered": "System.Nullable`1[System.Boolean]",
+        "Type": "System.String",
+        "Format": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Name": "System.String",
+        "Key": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "WebServiceKeys",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Primary": "System.String",
         "Secondary": "System.String"
@@ -4397,123 +4548,161 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace": {
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "MachineLearningWorkspace",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.MachineLearningWorkspace, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.AssetItem, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String"
+        "LocationInfo": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.BlobLocation",
+        "InputPorts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]",
+        "OutputPorts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]",
+        "Metadata": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
+        "Name": "System.String",
+        "Id": "System.String",
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration": {
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "RealtimeConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.RealtimeConfiguration, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.InputPort, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "MaxConcurrentCalls": "System.Nullable`1[System.Int32]"
+        "Type": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount": {
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "StorageAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.StorageAccount, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.OutputPort, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Key": "System.String",
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "ModeValuesInfo": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]",
+        "ParameterType": "System.String",
         "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModeValueInfo, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Parameters": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.ModuleAssetParameter]",
+        "InterfaceString": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Value": "System.Object",
+        "CertificateThumbprint": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "WebService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
-        "Id": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
         "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Location": "System.String",
         "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "GraphEdge",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "SourceNodeId": "System.String",
-        "SourcePortId": "System.String",
-        "TargetNodeId": "System.String",
-        "TargetPortId": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String",
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "GraphParameter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Description": "System.String",
-        "Links": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink"
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "GraphParameterLink",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "NodeId": "System.String",
-        "ParameterKey": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4523,13 +4712,80 @@
     },
     "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode": {
       "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "GraphNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode, Microsoft.Azure.Management.MachineLearning, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphNode, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
+        "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceParameter]",
         "AssetId": "System.String",
         "InputId": "System.String",
-        "OutputId": "System.String",
-        "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
+        "OutputId": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameter, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Links": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]",
+        "Type": "System.String",
+        "Description": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphParameterLink, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "NodeId": "System.String",
+        "ParameterKey": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge"
+      ]
+    },
+    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge": {
+      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
+      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.GraphEdge, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "SourceNodeId": "System.String",
+        "SourcePortId": "System.String",
+        "TargetNodeId": "System.String",
+        "TargetPortId": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

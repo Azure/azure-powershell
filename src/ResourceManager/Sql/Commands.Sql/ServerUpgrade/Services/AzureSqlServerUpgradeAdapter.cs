@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
@@ -33,14 +34,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerUpgradeAdapter(AzureContext context)
+        public AzureSqlServerUpgradeAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlServerUpgradeCommunicator(Context);
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <returns>The server</returns>
         public AzureSqlServerUpgradeModel GetUpgrade(string resourceGroupName, string serverName)
         {
-            var upgradeDetails = Communicator.GetUpgrade(resourceGroupName, serverName, Util.GenerateTracingId());
+            var upgradeDetails = Communicator.GetUpgrade(resourceGroupName, serverName);
             ServerUpgradeStatus status;
             if (!Enum.TryParse(upgradeDetails.Status, out status))
             {
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
                     ElasticPoolCollection = model.ElasticPoolCollection
                 }
             };
-            Communicator.Start(model.ResourceGroupName, model.ServerName, parameters, Util.GenerateTracingId());
+            Communicator.Start(model.ResourceGroupName, model.ServerName, parameters);
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <param name="serverName">The name of the server to cancel upgrade</param>
         public void Cancel(string resourceGroupName, string serverName)
         {
-            Communicator.Cancel(resourceGroupName, serverName, Util.GenerateTracingId());
+            Communicator.Cancel(resourceGroupName, serverName);
         }
     }
 }

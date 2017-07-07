@@ -7,13 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f7c222a9-44a5-4ae2-8df7-807820bd7359"
+          "d3f98776-a7d4-4b07-a119-4a96a565d5a4"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.2.0-preview"
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.4.0-preview"
         ]
       },
       "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Resource 'baadc0de-baad-c0de-baad-c0debaadc0de' does not exist or one of its queried reference-property objects are not present.\"\r\n    }\r\n  }\r\n}",
@@ -25,19 +28,19 @@
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "iuPmgCujsBOHP5ZHyhzOWZQ0FRP7jUfzbegvNsa5PFc="
+          "NhmNzC7xYSG6p1RBfBqgeSEzxdFtwIuKLO06kq/4oCk="
         ],
         "request-id": [
-          "996f3a75-3a86-4c0e-bd2c-6247f420a4ca"
+          "b804dde4-92fc-4dfa-8be3-b2947e0173b0"
         ],
         "client-request-id": [
-          "0f064a97-3736-449c-a23c-fc580d90ede7"
+          "32613622-0f19-411e-9fff-7eedecef93c8"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "TVwPllvQhwOBoYsuYER5otMi4WPHLzla0C-E-LWZcPrrB-bwa9J7hASD9cWjUaQzeBNoD078R4pMh7wXipA4Jj8znrEbv6FoRuovRkYbW9-62qm6FFF1R48pXuU0EJu8ibMiT3JK3Rzt6TcFWDfV-A.MKneDi8X_jfyRxIYFBw186x4KC5a4l_2ssRDFl_prWo"
+          "x4dwH8DeM96Njud6Ahp0uuB6F0J8B_k4y93DaV_cxw47mlPbiaUK_wfD9B9xr0eYIur1YaVs3f2UMkJxaCY4eaXYZ-TUYouq8jOvCYEli_2qADEvtmVh9jXaP5klSFWN6CnlotYWfMX2Iz1TkiuWGg.XKRPL2PAPcDJpnCuveVNRY9NINkTUc2d5t5E_7MApPQ"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,7 +49,7 @@
           "*"
         ],
         "Duration": [
-          "1172051"
+          "513004"
         ],
         "Cache-Control": [
           "private"
@@ -62,7 +65,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Mon, 17 Oct 2016 22:26:03 GMT"
+          "Thu, 18 May 2017 23:08:27 GMT"
         ]
       },
       "StatusCode": 404

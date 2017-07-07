@@ -102,9 +102,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public bool? SinglePlacementGroup { get; set; }
+
         [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true)]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string PlanName { get; set; }
 
         [Parameter(
