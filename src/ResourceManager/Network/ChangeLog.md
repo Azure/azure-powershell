@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.2.0
 * New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
     - SALifeTimeSeconds defaults to 27000 seconds
     - SADataSizeKilobytes defaults to 102400000 KB

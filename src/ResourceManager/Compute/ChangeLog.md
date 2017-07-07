@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-
+## Version 3.2.0
 * Storage account type support for Image disk:
     - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk
 

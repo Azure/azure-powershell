@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.2.0
+
 ## Version 4.1.0
 * Fixed issue where Get-AzureRMRoleAssignment would result in a Bad Request if the number of roleassignments where greater than 1000
     - Users can now use Get-AzureRMRoleAssignment even if the roleassignments to be returned is greater than 1000

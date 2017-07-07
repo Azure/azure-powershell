@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.2.0
 * Add Data Sync PowerShell Cmdlets to AzureRM.Sql
 * Updated AzureRmSqlServer cmdlets to use new REST API version that avoids timeouts when creating server.
 * Deprecated server upgrade cmdlets because the old server version (2.0) no longer exists.
