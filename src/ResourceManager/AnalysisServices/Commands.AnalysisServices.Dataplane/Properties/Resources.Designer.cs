@@ -61,11 +61,29 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export log from Analysis Services server.
         /// </summary>
         internal static string ExportingLogFromAnalysisServicesServer {
             get {
                 return ResourceManager.GetString("ExportingLogFromAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Writing log to file {0}.
+        /// </summary>
+        internal static string ExportingLogOverwriteWarning {
+            get {
+                return ResourceManager.GetString("ExportingLogOverwriteWarning", resourceCulture);
             }
         }
         
