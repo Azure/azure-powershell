@@ -31,7 +31,7 @@
     * RecoveryPolicyMode support:
         - 'RecoveryPolicyMode' paramter is added to New-AzureRmVmssConfig
     * Compute Resource Sku feature:
-        - New cmdlet 'New-AzureRmComputeResourceSku' list all compute resource skus
+        - New cmdlet 'Get-AzureRmComputeResourceSku' list all compute resource skus
 * DataFactories
     * Deprecate New-AzureRmDataFactoryGatewayKey
     * Introduce gateway auth key feature by adding New-AzureRmDataFactoryGatewayAuthKey and Get-AzureRmDataFactoryGatewayAuthKey
