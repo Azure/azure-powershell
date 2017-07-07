@@ -4,33 +4,46 @@ online version:
 schema: 2.0.0
 ---
 
-# Install-AzureRmProfile
+# Set-AzureRmDefaultProfile
 
 ## SYNOPSIS
-Install all the latest modules associated with a particular AzureRM Profile on the machine.
+Sets the given profile as a default profile to be used with all API version profile cmdlets.
 
 ## SYNTAX
 
 ```
-Install-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Scope <String>] [-Force] [<CommonParameters>]
+Set-AzureRmDefaultProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Force] [-Scope <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Install all the latest modules associated with a particular AzureRM Profile on the machine.  Modules for a particular profile can be loaded in a new PowerShell session using *Use-AzureRmProfile*.
+Sets the given profile as a default profile to be used with all API version profile cmdlets. Default profile selection is persisted across sessions and shells.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Using Default Version Profile to Automatically Load Module Versions
 ```
-PS C:\> Install-AzureRmProfile -Profile '2017-03-09-profile'
+PS C:\> Set-AzureRmDefaultProfile -Profile '2017-03-09-profile'
+PS C:\> Import-Module AzureRM.Compute
 ```
 
-Install all the modules associated with profile '2017-03-09-profile'
+Sets profile '2017-03-09-profile' as the default profile. 
+When importing AzureRM modules like AzureRM.Compute, you will automatically import a version of the module compatible with the default profile setting, 
+unless you explicitly specify a RequiredVersion.
+
+### Example 2 - Using Default Version Profile to Set Default Profile for BootStrapper cmdlets
+```
+PS C:\> Set-AzureRmDefaultProfile -Profile '2017-03-09-profile'
+PS c:\> Install-AzureRmProfile
+```
+
+Sets the default profile as '2017-03-09-profile'.  After this, BootStrapper cmdlets will automatically use the default profile if no profile is set.
+In this case, 'Install-AzureRmProfile'  will install profile '2017-03-09-profile', since this profile was set as the default.
 
 ## PARAMETERS
 
 ### -Force
-Automatically install modules for the given profile if they are not already installed.
+Set the given profile as default without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -45,13 +58,13 @@ Accept wildcard characters: False
 ```
 
 ### -Profile
-The profile version to install.  You can get a list of available profile versions using *Get-AzureRmProfile -ListAvailable*
+The profile version to set as default.  You can get a list of available profile versions using *Get-AzureRmProfile -ListAvailable*
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: 2017-03-09-profile, <others>
+Accepted values: 2017-03-09-profile, latest, <others>
 
 Required: True
 Position: 0

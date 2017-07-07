@@ -16,7 +16,7 @@ Install-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Scope <String>
 ```
 
 ## DESCRIPTION
-Install all the latest modules associated with a particular AzureRM Profile on the machine.  Modules for a particular profile can be loaded in a new PowerShell session using *Use-AzureRmProfile*.
+Install all the latest modules associated with a particular AzureRM Profile on the machine.  Modules for a particular profile can be loaded in a new PowerShell session using 'Use-AzureRmProfile'.
 
 ## EXAMPLES
 

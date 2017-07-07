@@ -4,72 +4,36 @@ online version:
 schema: 2.0.0
 ---
 
-# Install-AzureRmProfile
+# Remove-AzureRmDefaultProfile
 
 ## SYNOPSIS
-Install all the latest modules associated with a particular AzureRM Profile on the machine.
+Removes the default profile setting.
 
 ## SYNTAX
 
 ```
-Install-AzureRmProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Scope <String>] [-Force] [<CommonParameters>]
+Remove-AzureRmDefaultProfile [-WhatIf] [-Confirm] [-Force] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Install all the latest modules associated with a particular AzureRM Profile on the machine.  Modules for a particular profile can be loaded in a new PowerShell session using *Use-AzureRmProfile*.
+Removes the default profile setting that was set using 'Set-AzureRmDefaultProfile' cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Install-AzureRmProfile -Profile '2017-03-09-profile'
+PS C:\> Remove-AzureRmDefaultProfile
 ```
-
-Install all the modules associated with profile '2017-03-09-profile'
 
 ## PARAMETERS
 
 ### -Force
-Automatically install modules for the given profile if they are not already installed.
+Removes the default profile setting without prompting for confirmation.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Profile
-The profile version to install.  You can get a list of available profile versions using *Get-AzureRmProfile -ListAvailable*
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: 2017-03-09-profile, <others>
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Scope
-Specifies the installation scope of the modules. The acceptable values for this parameter are: AllUsers and CurrentUser.
-The AllUsers scope lets modules be installed in a location that is accessible to all users of the computer.
-The CurrentUser scope lets modules be installed in a location that is available only to the current user.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: CurrentUser, AllUsers
 
 Required: False
 Position: Named
