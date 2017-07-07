@@ -35,9 +35,9 @@ This command exports data from an Azure Redis Cache instance into the container 
 Specifies the Service SAS URL of container where this cmdlet exports data. You can generate a Service SAS URL using the following PowerShell commands:
 
 ```
-$storageAccountContext = New-AzureStorageContext -StorageAccountName “storageName” -StorageAccountKey “key”
+$storageAccountContext = New-AzureStorageContext -StorageAccountName "storageName" -StorageAccountKey "key"
 
-$sasKeyForContainer = New-AzureStorageContainerSASToken -Name “containername” -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(3) -Context $storageAccountContext -FullUri 
+$sasKeyForContainer = New-AzureStorageContainerSASToken -Name "containername" -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(3) -Context $storageAccountContext -FullUri 
 ```
 
 ```yaml
