@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Request Timeout. Default value 30 seconds.")]
         [ValidateNotNullOrEmpty]
-        public uint RequestTimeout { get; set; }
+        public int RequestTimeout { get; set; }
 
 
         [Parameter(

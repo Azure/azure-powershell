@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The local network gateway's ASN")]
-        public uint Asn { get; set; }
+        public long Asn { get; set; }
 
         [Parameter(
             Mandatory = false,
