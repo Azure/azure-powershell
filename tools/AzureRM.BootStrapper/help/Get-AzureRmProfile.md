@@ -5,20 +5,20 @@ schema: 2.0.0
 ---
 
 # Get-AzureRmProfile
+
 ## SYNOPSIS
 List the supported AzureRM profiles.
 
 ## SYNTAX
 
 ```
-Get-AzureRmProfile [-ListAvailable] [-Update]
+Get-AzureRmProfile [-ListAvailable] [-Update] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Lists the supported AzureRM profiles.  If no parameters are given, returns the profile version supported by modules on the current machine.  If *-ListAvailable* is specified, lists all profiles that could be installed on the machine.
 
 ## EXAMPLES
-
 
 ### Example 2
 ```
@@ -42,7 +42,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -57,15 +57,17 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 

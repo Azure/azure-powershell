@@ -5,13 +5,15 @@ schema: 2.0.0
 ---
 
 # Set-AzureRmDefaultProfile
+
 ## SYNOPSIS
 Sets the given profile as a default profile to be used with all API version profile cmdlets.
 
 ## SYNTAX
 
 ```
-Set-AzureRmDefaultProfile [-Profile] <String> [-Scope <String>] [-Force]
+Set-AzureRmDefaultProfile [-WhatIf] [-Confirm] [-Profile] <String> [-Force] [-Scope <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -19,24 +21,41 @@ Sets the given profile as a default profile to be used with all API version prof
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Using Default Version Profile to Automatically Load Module Versions
 ```
 PS C:\> Set-AzureRmDefaultProfile -Profile '2017-03-09-profile'
+PS C:\> Import-Module AzureRM.Compute
 ```
 
-Set profile '2017-03-09-profile' as a default profile. After setting, any API Version profile cmdlet can be executed without providing a profile parameter as follows:
-```
-Install-AzureRmProfile
-```
-This will install profile '2017-03-09-profile'.  Additionally, when importing AzureRM modules, you will import the version of the module associated with the default profile setting, unless you explicitly specify a RequiredVersion.
+Sets profile '2017-03-09-profile' as the default profile. 
+When importing AzureRM modules like AzureRM.Compute, you will automatically import a version of the module compatible with the default profile setting, 
+unless you explicitly specify a RequiredVersion.
 
+### Example 2 - Using Default Version Profile to Set Default Profile for BootStrapper cmdlets
 ```
-Import-Module AzureRM.Compute
+PS C:\> Set-AzureRmDefaultProfile -Profile '2017-03-09-profile'
+PS c:\> Install-AzureRmProfile
 ```
-Imports a version of the Compute module compatible with the ```2017-03-09-profile``` profile.
 
+Sets the default profile as '2017-03-09-profile'.  After this, BootStrapper cmdlets will automatically use the default profile if no profile is set.
+In this case, 'Install-AzureRmProfile'  will install profile '2017-03-09-profile', since this profile was set as the default.
 
 ## PARAMETERS
+
+### -Force
+Set the given profile as default without prompting for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Profile
 The profile version to set as default.  You can get a list of available profile versions using *Get-AzureRmProfile -ListAvailable*
@@ -49,8 +68,8 @@ Accepted values: 2017-03-09-profile, latest, <others>
 
 Required: True
 Position: 0
-Default value: 
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -72,25 +91,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Set the given profile as default without prompting for confirmation.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: 
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 
 ## OUTPUTS
 
