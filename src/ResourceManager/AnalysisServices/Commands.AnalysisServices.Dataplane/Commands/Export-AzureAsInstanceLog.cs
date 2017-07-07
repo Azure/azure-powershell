@@ -151,13 +151,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 UriBuilder resolvedUriBuilder = new UriBuilder(logfileBaseUri);
                 resolvedUriBuilder.Host = ClusterResolve(logfileBaseUri, accessToken, serverName);
 
-                var logfileEndpoint =
-                    string.Format(
-                        (string)
-                            context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.LogfileEndpointFormat],
+                var logfileEndpoint = string.Format(
+                        (string) context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.LogfileEndpointFormat],
                         serverName);
 
-                this.AsAzureHttpClient = new AsAzureHttpClient(() => new HttpClient());
+                this.AsAzureHttpClient.resetHttpClient();
                 using (HttpResponseMessage message = AsAzureHttpClient.CallGetAsync(
                     resolvedUriBuilder.Uri,
                     logfileEndpoint,
