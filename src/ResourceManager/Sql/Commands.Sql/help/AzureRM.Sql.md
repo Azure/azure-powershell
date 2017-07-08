@@ -152,6 +152,24 @@ Gets the status of an Azure SQL Database server upgrade.
 ### [Get-AzureRmSqlServerUpgradeHint](Get-AzureRmSqlServerUpgradeHint.md)
 Gets pricing tier hints for upgrading an Azure SQL Database server.
 
+### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
+Returns information about Azure SQL Sync Agents.
+
+### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
+Returns information about SQL Server databases linked by a sync agent.
+
+### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
+Returns information about Azure SQL Database Sync Groups.
+
+### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
+Returns the logs of an Azure SQL Database Sync Group.
+
+### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
+Returns information about Azure SQL Database Sync Members.
+
+### [Get-AzureRmSqlSyncSchema](Get-AzureRmSqlSyncSchema.md)
+Returns information about the sync schema of a member database or a hub database.
+
 ### [New-AzureRmSqlDatabase](New-AzureRmSqlDatabase.md)
 Creates a database or an elastic database.
 
@@ -187,6 +205,18 @@ Creates a database server system recovery configuration.
 
 ### [New-AzureRmSqlServerFirewallRule](New-AzureRmSqlServerFirewallRule.md)
 Creates a firewall rule for a SQL Database server.
+
+### [New-AzureRmSqlSyncAgent](New-AzureRmSqlSyncAgent.md)
+Creates an Azure SQL Sync Agent.
+
+### [New-AzureRmSqlSyncAgentKey](New-AzureRmSqlSyncAgentKey.md)
+Creates an Azure SQL Sync Agent Key.
+
+### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
+Creates an Azure SQL Database Sync Group.
+
+### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
+Creates an Azure SQL Database Sync Member.
 
 ### [Remove-AzureRmSqlDatabase](Remove-AzureRmSqlDatabase.md)
 Removes an Azure SQL database.
@@ -235,6 +265,15 @@ Removes a Key Vault key from a SQL server.
 
 ### [Remove-AzureRmSqlServerThreatDetectionPolicy](Remove-AzureRmSqlServerThreatDetectionPolicy.md)
 Removes the threat detection policy from a server.
+
+### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
+Removes an Azure SQL Sync Agent.
+
+### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
+Removes an Azure SQL Database Sync Group.
+
+### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
+Removes an Azure SQL Database Sync Member.
 
 ### [Restore-AzureRmSqlDatabase](Restore-AzureRmSqlDatabase.md)
 Restores a SQL database.
@@ -323,11 +362,17 @@ Starts the workflow that runs a recommended index operation.
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
 
+### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
+Starts a sync group synchronization.
+
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
 ### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.
+
+### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
+Stops a sync group synchronization.
 
 ### [Suspend-AzureRmSqlDatabase](Suspend-AzureRmSqlDatabase.md)
 Suspends a SQL Data Warehouse database.
@@ -335,53 +380,17 @@ Suspends a SQL Data Warehouse database.
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
 
+### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
+Updates an Azure SQL Database Sync Group.
+
+### [Update-AzureRmSqlSyncMember](Update-AzureRmSqlSyncMember.md)
+Updates an Azure SQL Database Sync Member.
+
+### [Update-AzureRmSqlSyncSchema](Update-AzureRmSqlSyncSchema.md)
+Update the sync schema for a sync member database or a sync hub database.
+It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
+
 ### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.
 
-### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
-Creates an Azure SQL Database Sync Group.
-
-### [Set-AzureRmSqlSyncGroup](Set-AzureRmSqlSyncGroup.md)
-Updates an Azure SQL Database Sync Group.
-
-### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
-Returns information about Azure SQL Database Sync Groups.
-
-### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
-Removes an Azure SQL Database Sync Group.
-
-### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
-Starts a sync group synchronization.
-
-### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
-Stops a sync group synchronization.
-
-### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
-Returns the logs of an Azure SQL Database Sync Group.
-
-### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
-Creates an Azure SQL Database Sync Member.
-
-### [Set-AzureRmSqlSyncMember](Set-AzureRmSqlSyncMember.md)
-Updates an Azure SQL Database Sync Member.
-
-### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
-Returns information about Azure SQL Database Sync Members.
-
-### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
-Removes an Azure SQL Database Sync Member.
-
-### [New-AzureRmSqlSyncAgent](New-AzureRmSqlSyncAgent.md)
-Creates an Azure SQL Sync Agent.
-
-### [New-AzureRmSqlSyncAgentKey](New-AzureRmSqlSyncAgentKey.md)
-Creates an Azure SQL Sync Agent Key.
-
-### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
-Returns information about Azure SQL Sync Agents.
-
-### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
-Removes an Azure SQL Sync Agent.
-
-### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
-Returns information about SQL Server databases linked by a sync agent.

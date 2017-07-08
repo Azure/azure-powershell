@@ -366,4 +366,13 @@
   <data name="RemoveAzureSqlSyncMemberWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Sync Member '{0}' for Sync Group '{1}'?</value>
   </data>
+  <data name="RemoveAzureSqlServerVirtualNetworkRuleDescription" xml:space="preserve">
+    <value>Permanently removing Virtual Network Rule '{0}' for Azure Sql Server '{1}'</value>
+  </data>
+  <data name="RemoveAzureSqlServerVirtualNetworkRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Virtual Network Rule '{0}' for Azure Sql Server  '{1}'?</value>
+  </data>
+  <data name="ServerVirtualNetworkRuleNameExists" xml:space="preserve">
+    <value>Virtual Network Rule with name: '{0}' already exists for server '{1}'</value>
+  </data>
 </root>

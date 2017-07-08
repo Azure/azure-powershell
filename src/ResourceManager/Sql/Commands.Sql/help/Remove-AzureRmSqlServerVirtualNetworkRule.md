@@ -4,32 +4,46 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmSqlSyncAgentKey
+# Remove-AzureRmSqlServerVirtualNetworkRule
 
 ## SYNOPSIS
-Creates an Azure SQL Sync Agent Key.
+Deletes an Azure SQL Server Virtual Network Rule.
 
 ## SYNTAX
 
 ```
-New-AzureRmSqlSyncAgentKey [-ServerName] <String> [-SyncAgentName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmSqlServerVirtualNetworkRule -VirtualNetworkRuleName <String> [-Force] -ServerName <String>
+ [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlSyncAgentKey** cmdlet creates an Azure SQL Sync Agent key.
+This command deletes an Azure SQL Server Virtual Network Rule.
 
 ## EXAMPLES
 
-### Example 1: Create a sync agent key for an Azure SQL sync agent.
+### Example 1
 ```
-PS C:\> New-AzureRmSqlSyncAgentKey -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -SyncAgentName "SyncAgent01"
-SyncAgentKey                  : Key
+PS C:\> $virtualNetworkRule = Remove-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName
 ```
 
-This command creates a sync agent key for an Azure SQL Sync Agent.
+Deletes an existing Azure SQL Server virtual network rule
 
 ## PARAMETERS
+
+### -Force
+Skip confirmation message for performing the action
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 The name of the resource group.
@@ -47,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The name of the Azure SQL Server the sync agent is in.
+The Azure Sql Server name.
 
 ```yaml
 Type: String
@@ -55,14 +69,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SyncAgentName
-The sync agent name.
+### -VirtualNetworkRuleName
+Azure Sql Server Virtual Network Rule name
 
 ```yaml
 Type: String
@@ -70,9 +84,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -107,14 +121,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
-
 ## INPUTS
+
+### System.String
+
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncAgentKeyModel
+### System.Object
 
 ## NOTES
 

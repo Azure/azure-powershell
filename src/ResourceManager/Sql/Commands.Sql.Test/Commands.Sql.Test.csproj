@@ -78,7 +78,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.5.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.6.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -302,6 +302,7 @@
     <Compile Include="ScenarioTests\SqlTestsBase.cs" />
     <Compile Include="ScenarioTests\TransparentDataEncryptionCrudTests.cs" />
     <Compile Include="ScenarioTests\ServerKeyVaultKeyTests.cs" />
+    <Compile Include="ScenarioTests\VirtualNetworkRuleTest.cs" />
     <Compile Include="ScenarioTests\IndexRecommendationTests.cs" />
     <Compile Include="ScenarioTests\ImportExportTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseImportExportTests.cs" />
@@ -395,6 +396,9 @@
     <None Include="ScenarioTests\ServerKeyVaultKeyTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\VirtualNetworkRuleTest.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>	
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AdvisorTests\TestGetElasticPoolAdvisor.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -401,6 +401,14 @@
     <Compile Include="ServerKeyVaultKey\Model\AzureSqlServerKeyVaultKeyModel.cs" />
     <Compile Include="ServerKeyVaultKey\Services\AzureSqlServerKeyVaultKeyAdapter.cs" />
     <Compile Include="ServerKeyVaultKey\Services\AzureSqlServerKeyVaultKeyCommunicator.cs" />
+    <Compile Include="VirtualNetworkRule\Cmdlet\AzureSqlServerVirtualNetworkRuleCmdletBase.cs" />
+    <Compile Include="VirtualNetworkRule\Cmdlet\GetAzureSqlServerVirtualNetworkRule.cs" />
+    <Compile Include="VirtualNetworkRule\Cmdlet\NewAzureSqlServerVirtualNetworkRule.cs" />
+    <Compile Include="VirtualNetworkRule\Cmdlet\RemoveAzureSqlServerVirtualNetworkRule.cs" />
+    <Compile Include="VirtualNetworkRule\Cmdlet\SetAzureSqlServerVirtualNetworkRule.cs" />
+    <Compile Include="VirtualNetworkRule\Model\AzureSqlServerVirtualNetworkRuleModel.cs" />
+    <Compile Include="VirtualNetworkRule\Services\AzureSqlServerVirtualNetworkRuleAdapter.cs" />
+    <Compile Include="VirtualNetworkRule\Services\AzureSqlServerVirtualNetworkRuleCommunicator.cs" />	
     <None Include="SqlStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -436,7 +444,7 @@
     <!--<Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.5.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.6.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
