@@ -49,19 +49,19 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            HelpMessage = "Probe interval in seconds. This is the time interval between two consecutive probes")]
         [ValidateNotNullOrEmpty]
-        public uint Interval { get; set; }
+        public int Interval { get; set; }
 
         [Parameter(
            Mandatory = true,
            HelpMessage = "Probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period")]
         [ValidateNotNullOrEmpty]
-        public uint Timeout { get; set; }
+        public int Timeout { get; set; }
 
         [Parameter(
            Mandatory = true,
            HelpMessage = "Probe retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold")]
         [ValidateNotNullOrEmpty]
-        public uint UnhealthyThreshold { get; set; }
+        public int UnhealthyThreshold { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            HelpMessage = "Minimum number of servers that are always marked healthy. Default value is 0")]
         [ValidateRange(0, int.MaxValue)]
-        public uint MinServers { get; set; }
+        public int MinServers { get; set; }
 
         [Parameter(
            Mandatory = false,
