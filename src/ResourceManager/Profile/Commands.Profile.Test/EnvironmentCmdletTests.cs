@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ResourceManager], cmdlet.ResourceManagerEndpoint);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory], cmdlet.ActiveDirectoryEndpoint);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId], cmdlet.ActiveDirectoryServiceEndpointResourceId);
+            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId], cmdlet.GraphAudience);
         }
 
         [Fact]

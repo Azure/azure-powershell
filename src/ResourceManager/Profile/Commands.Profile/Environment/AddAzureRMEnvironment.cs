@@ -135,6 +135,7 @@ namespace Microsoft.Azure.Commands.Profile
                     ActiveDirectoryServiceEndpointResourceId = metadataEndpoints.authentication.Audiences[0];
                     GalleryEndpoint = metadataEndpoints.GalleryEndpoint;
                     GraphEndpoint = metadataEndpoints.GraphEndpoint;
+                    GraphAudience = metadataEndpoints.GraphEndpoint;
                     AzureKeyVaultDnsSuffix = string.Format("vault.{0}", domain).ToLowerInvariant();
                     AzureKeyVaultServiceEndpointResourceId = string.Format("https://vault.{0}", domain).ToLowerInvariant();
                     StorageEndpoint = domain;
