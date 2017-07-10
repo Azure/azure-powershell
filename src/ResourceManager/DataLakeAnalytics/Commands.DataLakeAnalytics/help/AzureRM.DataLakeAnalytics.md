@@ -4,6 +4,7 @@ Module Guid: eca73aa1-a68f-4ceb-9775-70759316a57b
 Download Help Link: None
 Help Version: 1.0.0.0
 Locale: en-US
+manager: jhubbard
 ---
 
 # AzureRM.DataLakeAnalytics Module
