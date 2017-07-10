@@ -3,6 +3,7 @@ external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: A0293D80-5935-4D2C-AF11-2837FEC95760
 online version: 
 schema: 2.0.0
+manager: jhubbard
 ---
 
 # Get-AzureRmDataLakeAnalyticsJob
@@ -16,7 +17,7 @@ Gets a Data Lake Analytics job.
 ```
 Get-AzureRmDataLakeAnalyticsJob [-Account] <String> [[-Name] <String>] [[-Submitter] <String>]
  [[-SubmittedAfter] <DateTimeOffset>] [[-SubmittedBefore] <DateTimeOffset>] [[-State] <JobState[]>]
- [[-Result] <JobResult[]>] [-Top <Int32>] [<CommonParameters>]
+ [[-Result] <JobResult[]>] [-Top <Int32>] [-PipelineId <Guid>] [-RecurrenceId <Guid>] [<CommonParameters>]
 ```
 
 ### Specific JobInformation
@@ -115,6 +116,32 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PipelineId
+An optional ID that indicates only jobs part of the specified pipeline should be returned.```yaml
+Type: Guid
+Parameter Sets: All In Resource Group and Account
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RecurrenceId
+An optional ID that indicates only jobs part of the specified recurrence should be returned.```yaml
+Type: Guid
+Parameter Sets: All In Resource Group and Account
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

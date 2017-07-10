@@ -3,6 +3,7 @@ external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: 5EB9E134-C789-47A5-9AF8-CD4A475559C2
 online version: 
 schema: 2.0.0
+manager: jhubbard
 ---
 
 # Stop-AzureRmDataLakeAnalyticsJob

@@ -3,6 +3,7 @@ external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: ED17430D-4DAF-4B9E-937D-0F8A843DAB96
 online version: 
 schema: 2.0.0
+manager: jhubbard
 ---
 
 # Test-AzureRmDataLakeAnalyticsCatalogItem
@@ -68,7 +69,7 @@ The acceptable values for this parameter are:
 Type: CatalogItemType
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Database, Schema, Assembly, Table, TablePartition, TableValuedFunction, TableStatistics, ExternalDataSource, View, Procedure, Secret, Credential, Types
+Accepted values: Database, Schema, Assembly, Table, TablePartition, TableValuedFunction, TableStatistics, ExternalDataSource, View, Procedure, Secret, Credential, Types, Package
 
 Required: True
 Position: 1

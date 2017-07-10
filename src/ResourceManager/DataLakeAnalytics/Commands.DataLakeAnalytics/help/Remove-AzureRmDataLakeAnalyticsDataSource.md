@@ -3,6 +3,7 @@ external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: E0E2617F-F6F1-434E-AD7C-27D309C2C3DA
 online version: 
 schema: 2.0.0
+manager: jhubbard
 ---
 
 # Remove-AzureRmDataLakeAnalyticsDataSource

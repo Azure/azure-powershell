@@ -27,7 +27,7 @@ You can add a data disk when you create a virtual machine, or you can add a data
 
 ### Example 1: Add data disks to a new virtual machine
 ```
-PS C:\>$VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
+PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
 PS C:\> $DataDiskVhdUri01 = "https://contoso.blob.core.windows.net/test/data1.vhd"
 PS C:\> $DataDiskVhdUri02 = "https://contoso.blob.core.windows.net/test/data2.vhd"
 PS C:\> $DataDiskVhdUri03 = "https://contoso.blob.core.windows.net/test/data3.vhd"
@@ -48,12 +48,12 @@ The URI of each disk is stored in $DataDiskVhdUri01, $DataDiskVhdUri02, and $Dat
 
 ### Example 2: Add a data disk to an existing virtual machine
 ```
-PS C:\>$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> $VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 PS C:\> Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -VhdUri "https://contoso.blob.core.windows.net/vhds/diskstandard03.vhd" -LUN 0 -Caching ReadOnly -DiskSizeinGB 1 -CreateOption Empty
 PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
-The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
+The first command gets the virtual machine named VirtualMachine07 by using the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
 
 The second command adds a data disk to the virtual machine stored in $VirtualMachine.
@@ -62,7 +62,7 @@ The final command updates the state of the virtual machine stored in $VirtualMac
 
 ### Example 3: Add a data disk to a new virtual machine from a generalized user image
 ```
-PS C:\>$VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
+PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
 PS C:\> $DataImageUri = "https://contoso.blob.core.windows.net/system/Microsoft.Compute/Images/captured/dataimage.vhd"
 PS C:\> $DataDiskUri = "https://contoso.blob.core.windows.net/test/datadisk.vhd"
 PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" -SourceImageUri $DataImageUri -VhdUri $DataDiskUri -Lun 0 -DiskSizeinGB 10 -CreateOption FromImage
@@ -79,7 +79,7 @@ The command specifies the name and location for the disk and other properties of
 
 ### Example 4: Add data disks to a new virtual machine from a specialized user image
 ```
-PS C:\>$VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
+PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1"
 PS C:\> $DataDiskUri = "https://contoso.blob.core.windows.net/test/datadisk.vhd"
 PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "dd1" -VhdUri $DataDiskUri -Lun 0 -DiskSizeinGB 10 -CreateOption Attach
 ```
@@ -259,8 +259,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the local virtual machine object to which to add a data disk.
-You can use the Get-AzureRmVM cmdlet to obtain a virtual machine object.
-You can use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
+You can use the **Get-AzureRmVM** cmdlet to obtain a virtual machine object.
+You can use the **New-AzureRmVMConfig** cmdlet to create a virtual machine object.
 
 ```yaml
 Type: PSVirtualMachine

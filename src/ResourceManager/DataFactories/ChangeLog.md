@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+* Deprecate New-AzureRmDataFactoryGatewayKey
+* Introduce gateway auth key feature by adding New-AzureRmDataFactoryGatewayAuthKey and Get-AzureRmDataFactoryGatewayAuthKey
+
 ## Version 3.1.0
 
 ## Version 3.0.1

@@ -3,6 +3,7 @@ external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: BB6AF5A9-49BD-4A76-9F3F-44B62D2AB842
 online version: 
 schema: 2.0.0
+manager: jhubbard
 ---
 
 # New-AzureRmDataLakeAnalyticsCatalogCredential
