@@ -148,7 +148,9 @@ namespace Microsoft.Azure.Commands.Network
             foreach (var cipher in policy.CipherSuites)
             {
                 output.AppendFormat("{0}{1}", prefix, cipher);
+                output.AppendLine();
             }
+            output.AppendLine();
 
             return output.ToString();
         }
@@ -167,11 +169,13 @@ namespace Microsoft.Azure.Commands.Network
             prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
             foreach (var policy in availableSslOptions.PredefinedPolicies)
             {
-                output.AppendFormat("{0}{1}", prefix, policy);
+                output.AppendFormat("{0}{1}", prefix, policy.Id);
+                output.AppendLine();
             }
-            depth--;
             output.AppendLine();
 
+            depth--;
+            prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
             output.AppendFormat("{0}{1}:", prefix, "AvailableCipherSuites");
             output.AppendLine();
             depth++;
@@ -179,10 +183,12 @@ namespace Microsoft.Azure.Commands.Network
             foreach (var cipher in availableSslOptions.AvailableCipherSuites)
             {
                 output.AppendFormat("{0}{1}", prefix, cipher);
+                output.AppendLine();
             }
-            depth--;
             output.AppendLine();
 
+            depth--;
+            prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
             output.AppendFormat("{0}{1}:", prefix, "AvailableProtocols");
             output.AppendLine();
             depth++;
@@ -190,8 +196,8 @@ namespace Microsoft.Azure.Commands.Network
             foreach (var protocol in availableSslOptions.AvailableProtocols)
             {
                 output.AppendFormat("{0}{1}", prefix, protocol);
+                output.AppendLine();
             }
-            depth--;
 
             return output.ToString();
         }
