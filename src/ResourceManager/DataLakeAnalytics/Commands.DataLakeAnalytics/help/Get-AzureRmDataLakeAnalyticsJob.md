@@ -121,7 +121,9 @@ Accept wildcard characters: False
 ```
 
 ### -PipelineId
-An optional ID that indicates only jobs part of the specified pipeline should be returned.```yaml
+An optional ID that indicates only jobs part of the specified pipeline should be returned.
+
+```yaml
 Type: Guid
 Parameter Sets: All In Resource Group and Account
 Aliases: 
@@ -134,7 +136,9 @@ Accept wildcard characters: False
 ```
 
 ### -RecurrenceId
-An optional ID that indicates only jobs part of the specified recurrence should be returned.```yaml
+An optional ID that indicates only jobs part of the specified recurrence should be returned.
+
+```yaml
 Type: Guid
 Parameter Sets: All In Resource Group and Account
 Aliases: 

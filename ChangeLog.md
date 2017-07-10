@@ -1,4 +1,7 @@
 ﻿## 2017.7.10 - Version 4.2.0
+* AnalysisServices
+    * Add new dataplane API
+        - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog
 * Automation
     * Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
         - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
@@ -67,6 +70,7 @@
         - Parameters SparkDefaults and SparkThriftConf for Spark 1.6
         - Parameters Spark2Defaults and Spark2ThriftConf for Spark 2.0
 * Insights
+    * Issue #4215 (change request) remove the 15 days limit in the time window for the Get-AzureRmLog cmdlet. Also minor changes to the unit test names.
     * Issue #3957 fixed for Get-AzureRmLog
         - Issue #1: The backend returns the records in pages of 200 records each, linked by the continuation token to the next page. The customers were seeing the cmdlet returning only 200 records when they knew there were more. This was happening regardless of the value they set for MaxEvents, unless that value was less than 200.
         - Issue #2: The documentation contained incorrect data about this cmdlet, e.g.: the default timewindow was 1 hour.
