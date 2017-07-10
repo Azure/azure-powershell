@@ -129,5 +129,71 @@ namespace Microsoft.Azure.Commands.Network
                 return str;
             }
         }
+
+        public static string Format(PSApplicationGatewaySslPredefinedPolicy policy, int depth = 0)
+        {
+            string prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
+            StringBuilder output = new StringBuilder();
+
+            output.AppendFormat("{0}{1}: {2}", prefix, "Name" , policy.Name);
+            output.AppendLine();
+
+            output.AppendFormat("{0}{1}: {2}", prefix, "MinProtocolVersion", policy.MinProtocolVersion);
+            output.AppendLine();
+
+            output.AppendFormat("{0}{1}:", prefix, "CipherSuites");
+            output.AppendLine();
+            depth++;
+            prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
+            foreach (var cipher in policy.CipherSuites)
+            {
+                output.AppendFormat("{0}{1}", prefix, cipher);
+            }
+
+            return output.ToString();
+        }
+
+        public static string Format(PSApplicationGatewayAvailableSslOptions availableSslOptions, int depth = 0)
+        {
+            string prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
+            StringBuilder output = new StringBuilder();
+
+            output.AppendFormat("{0}{1}: {2}", prefix, "DefaultPolicy", availableSslOptions.DefaultPolicy);
+            output.AppendLine();
+            
+            output.AppendFormat("{0}{1}:", prefix, "PredefinedPolicies");
+            output.AppendLine();
+            depth++;
+            prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
+            foreach (var policy in availableSslOptions.PredefinedPolicies)
+            {
+                output.AppendFormat("{0}{1}", prefix, policy);
+            }
+            depth--;
+            output.AppendLine();
+
+            output.AppendFormat("{0}{1}:", prefix, "AvailableCipherSuites");
+            output.AppendLine();
+            depth++;
+            prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
+            foreach (var cipher in availableSslOptions.AvailableCipherSuites)
+            {
+                output.AppendFormat("{0}{1}", prefix, cipher);
+            }
+            depth--;
+            output.AppendLine();
+
+            output.AppendFormat("{0}{1}:", prefix, "AvailableProtocols");
+            output.AppendLine();
+            depth++;
+            prefix = new string(' ', depth * ApplicationGatewayPowerShellFormatting.TabSize);
+            foreach (var protocol in availableSslOptions.AvailableProtocols)
+            {
+                output.AppendFormat("{0}{1}", prefix, protocol);
+            }
+            depth--;
+
+            return output.ToString();
+        }
     }
 }
