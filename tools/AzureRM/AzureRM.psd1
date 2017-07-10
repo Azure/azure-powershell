@@ -154,13 +154,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '## 2017.7.10 - Version 4.2.0
+        ReleaseNotes = '## 2017.7.11 - Version 4.2.0
 * AnalysisServices
     * Add new dataplane API
         - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog
 * Automation
     * Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
-        - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
+        - More information: https://github.com/Azure/azure-powershell/issues/3043
 * AzureBatch
     - Added new Get-AzureBatchJobPreparationAndReleaseTaskStatus cmdlet.
     - Added byte range start and end to Get-AzureBatchNodeFileContent parameters.
@@ -196,10 +196,7 @@ PrivateData = @{
     * Introduce gateway auth key feature by adding New-AzureRmDataFactoryGatewayAuthKey and Get-AzureRmDataFactoryGatewayAuthKey
 * DataLakeAnalytics
     * Add support for Compute Policy CRUD through the following commands:
-        - New-AzureRMDataLakeAnalyticsComputePolicy
-        - Get-AzureRMDataLakeAnalyticsComputePolicy
-        - Remove-AzureRMDataLakeAnalyticsComputePolicy
-        - Update-AzureRMDataLakeAnalyticsComputePolicy
+        - Get/New/Removed/Update-AzureRMDataLakeAnalyticsComputePolicy
     * Add support for job relationship metadata for help with recurring jobs and job pipelines. The following commands were updated or added:
         - Submit-AzureRMDataLakeAnalyticsJob
         - Get-AzureRMDataLakeAnalyticsJob
@@ -215,7 +212,7 @@ PrivateData = @{
         - Add-AzureRmDataLakeStoreItemContent
 * Dns
     * Fix bug in the piping scenario for Get-AzureRmDnsZone
-        - More information can be found here: https://github.com/Azure/azure-powershell/issues/4203
+        - More information: https://github.com/Azure/azure-powershell/issues/4203
 * HDInsight
     * Added support to enable / disable Operations Management Suite(OMS)
     * New cmdlets
@@ -239,9 +236,7 @@ PrivateData = @{
         - SADataSizeKilobytes defaults to 102400000 KB
     * Added support for custom cipher suite configuration using ssl policy and listing all ssl options api in Application Gateway
         - Added optional parameter -PolicyType, -PolicyName, -MinProtocolVersion, -Ciphersuite
-            - Add-AzureRmApplicationGatewaySslPolicy
-            - New-AzureRmApplicationGatewaySslPolicy
-            - Set-AzureRmApplicationGatewaySslPolicy
+            - Add/New/Set-AzureRmApplicationGatewaySslPolicy
         - Added Get-AzureRmApplicationGatewayAvailableSslOptions
         - Added Get-AzureRmApplicationGatewaySslPredefinedPolicy
     * Added redirect support in Application Gateway
@@ -251,34 +246,23 @@ PrivateData = @{
         - Added Remove-AzureRmApplicationGatewayRedirectConfiguration
         - Added Set-AzureRmApplicationGatewayRedirectConfiguration
         - Added optional parameter -RedirectConfiguration
-            - Add-AzureRmApplicationGatewayRequestRoutingRule
-            - New-AzureRmApplicationGatewayRequestRoutingRule
-            - Set-AzureRmApplicationGatewayRequestRoutingRule
-            - Add-AzureRmApplicationGatewayPathRuleConfig
-            - New-AzureRmApplicationGatewayPathRuleConfig
-            - Set-AzureRmApplicationGatewayPathRuleConfig
-            - New-AzureRmApplicationGateway 
-            - Set-AzureRmApplicationGateway
+            - Add/New/Set-AzureRmApplicationGatewayRequestRoutingRule
+            - Add/New/Set-AzureRmApplicationGatewayPathRuleConfig
+            - New/Set-AzureRmApplicationGateway
         - Added optional parameter -DefaultRedirectConfiguration
-            - Add-AzureRmApplicationGatewayUrlPathMapConfig
-            - New-AzureRmApplicationGatewayUrlPathMapConfig
-            - Set-AzureRmApplicationGatewayUrlPathMapConfig
+            - Add/New/Set-AzureRmApplicationGatewayUrlPathMapConfig
     * Added support for azure websites in Application Gateway
         - Added New-AzureRmApplicationGatewayProbeHealthResponseMatch
         - Added optional parameters -PickHostNameFromBackendHttpSettings, -MinServers, -Match
-            - Add-AzureRmApplicationGatewayProbeConfig 
-            - New-AzureRmApplicationGatewayProbeConfig
-            - Set-AzureRmApplicationGatewayProbeConfig
+            - Add/New/Set-AzureRmApplicationGatewayProbeConfig
         - Added optional parameters -PickHostNameFromBackendAddress, -AffinityCookieName, -ProbeEnabled, -Path
-            - Add-AzureRmApplicationGatewayBackendHttpSettings
-            - New-AzureRmApplicationGatewayBackendHttpSettings
-            - Set-AzureRmApplicationGatewayBackendHttpSettings
+            - Add/New/Set-AzureRmApplicationGatewayBackendHttpSettings
     * Update Get-AzureRmPublicIPaddress to retrieve publicipaddress resources created via VM Scale Set
     * Added cmdlet to get virtual network current usage
         - Get-AzureRmVirtualNetworkUsageList
 * Profile
     * Fixed error when using Import-AzureRmContext or Save-AzureRmContext
-        - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3954
+        - More information: https://github.com/Azure/azure-powershell/issues/3954
 * RecoveryServices.SiteRecovery
     * Introducing a new module for Azure Site Recovery operations.
         - All cmdlets begin with AzureRmRecoveryServicesAsr*
@@ -288,13 +272,13 @@ PrivateData = @{
     * Deprecated server upgrade cmdlets because the old server version (2.0) no longer exists.
     * Add new optional switch paramter "AssignIdentity" to New-AzureRmSqlServer and Set-AzureRmSqlServer cmdlets to support provisioning of a resource identity for the SQL server resource
     * The parameter ResourceGroupName is now optional for Get-AzureRmSqlServer
-        - More information can be found in the following issue: https://github.com/Azure/azure-powershell/issues/635
+        - More information: https://github.com/Azure/azure-powershell/issues/635
 * ServiceManagement
-    * Updated New-AzureBgpPeering cmdlet to add following new options :
+    * Updated New-AzureBgpPeering:
         - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to create a BGP Peering of the corresponding address family type    
-    * Updated Set-AzureBgpPeering cmdlet to add following new options :
+    * Updated Set-AzureBgpPeering:
         - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to update BGP Peering of the corresponding address family type
-    * Updated Remove-AzureBgpPeering cmdlet to add following new options :
+    * Updated Remove-AzureBgpPeering:
         - PeerAddressType : Values of "IPv4", "IPv6" or All can be specified to remove BGP Peering of the corresponding address family type or all of them'
 
         # External dependent modules of this module
