@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add new dataplane API
+    - Introduced API to fetch AS server log, we don't want this API to be documented, we want it to be just accessible and downloadable.
 
 ## Version 0.4.0
 * New SKUs added: B1, B2, S0
