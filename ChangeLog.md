@@ -1,4 +1,4 @@
-﻿## 2017.7.10 - Version 4.2.0
+﻿## 2017.7.11 - Version 4.2.0
 * AnalysisServices
     * Add new dataplane API
         - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog
