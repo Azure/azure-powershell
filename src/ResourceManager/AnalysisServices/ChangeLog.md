@@ -20,6 +20,8 @@
 ## Current Release
 
 ## Version 0.4.1
+* Add new dataplane API
+    - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog
 
 ## Version 0.4.0
 * New SKUs added: B1, B2, S0
