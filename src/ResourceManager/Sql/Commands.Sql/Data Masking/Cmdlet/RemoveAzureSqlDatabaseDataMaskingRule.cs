@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
                 return null;
             }
 
-            ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First(), clientRequestId);
+            ModelAdapter.RemoveDatabaseDataMaskingRule(rules.First());
 
             return null;
         }

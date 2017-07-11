@@ -20,6 +20,8 @@ using System.Management.Automation;
 using System.Reflection;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -123,7 +125,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             }
         }
 
-
         /// <summary>
         /// Load global aliases for ARM
         /// </summary>
@@ -138,11 +139,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     "WebsitesStartup.ps1")));
                 invoker.Invoke();
             }
-            catch
+            catch(Exception) when (TestMockSupport.RunningMocked)
             {
                 // This will throw exception for tests, ignore.
             }
         }
-
     }
 }

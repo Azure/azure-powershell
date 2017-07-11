@@ -709,5 +709,5 @@ Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight,
 
 ## RELATED LINKS
 
-[New-AzureRmHDInsightClusterConfig]()
+[New-AzureRmHDInsightClusterConfig](./New-AzureRmHDInsightClusterConfig.md)
 

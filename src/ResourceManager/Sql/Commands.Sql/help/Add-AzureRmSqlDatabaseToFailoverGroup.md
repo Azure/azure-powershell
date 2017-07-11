@@ -12,9 +12,9 @@ Adds one or more databases to an Azure SQL Database Failover Group.
 ## SYNTAX
 
 ```
-Add-AzureRmSqlDatabaseToFailoverGroup -ServerName <String> -FailoverGroupName <String>
+Add-AzureRmSqlDatabaseToFailoverGroup [-ServerName] <String> [-FailoverGroupName] <String>
  -Database <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
- -ResourceGroupName <String> [<CommonParameters>]
+ [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -17,6 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System;
     using System.Linq;
 
     [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Network
                 peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
                 peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                 peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+                peering.MicrosoftPeeringConfig.LegacyMode = Convert.ToInt32(this.LegacyMode);
             }
 
             if (!string.IsNullOrEmpty(this.RouteFilterId))

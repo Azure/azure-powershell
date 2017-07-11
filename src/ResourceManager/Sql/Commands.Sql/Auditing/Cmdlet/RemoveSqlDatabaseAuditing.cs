@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -21,6 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Disables auditing on a specific database.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
+    [Obsolete]
     public class RemoveSqlDatabaseAuditing : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>

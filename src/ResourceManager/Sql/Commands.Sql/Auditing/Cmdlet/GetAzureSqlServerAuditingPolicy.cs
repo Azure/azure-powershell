@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof (AuditingPolicyModel))]
     [Alias("Get-AzureRmSqlDatabaseServerAuditingPolicy")]
+    [Obsolete]
     public class GetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
         /// <summary>

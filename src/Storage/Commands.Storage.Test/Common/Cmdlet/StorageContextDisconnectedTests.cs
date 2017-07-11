@@ -89,21 +89,55 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateStorageContextNameAndKey()
+        public AzureSMProfileProvider smProvider = AzureSMProfileProvider.Instance;
+        public AzureRmProfileProvider rmProvider = AzureRmProfileProvider.Instance;
+
+        public void InitSession()
         {
             AzureSessionInitializer.InitializeAzureSession();
-            var smProvider = AzureSMProfileProvider.Instance;
-            var rmProvider = AzureRmProfileProvider.Instance;
+            smProvider = AzureSMProfileProvider.Instance;
+            rmProvider = AzureRmProfileProvider.Instance;
             AzureRmProfileProvider.SetInstance(() => new TestProfileProvider(), true);
-            AzureSMProfileProvider.SetInstance(()=> new TestSMProfileProvider(), true);
+            AzureSMProfileProvider.SetInstance(() => new TestSMProfileProvider(), true);
+
+        }
+
+        public void SetSM_RMProfile(bool isSMProfileNull = false, bool isRMProfileNull = false)
+        {
+            if (isSMProfileNull)
+            {
+                AzureSMProfileProvider.Instance.Profile = null;
+            }
+            else
+            {
+                AzureSMProfileProvider.Instance.Profile = new TestContextContainer();
+            }
+            if (isRMProfileNull)
+            {
+                AzureRmProfileProvider.Instance.Profile = null;
+            }
+            else
+            {
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+            }
+        }
+
+        public void CleanupSession()
+        {
+            AzureSMProfileProvider.SetInstance(() => smProvider, true);
+            AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextNameAndKey_SmNull_RmNull()
+        {
+            InitSession();
             try
             {
                 var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: true);
 
-                AzureSMProfileProvider.Instance.Profile = null;
-                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
                 var cmdlet = new NewAzureStorageContext
                 {
                     CommandRuntime = mock,
@@ -118,30 +152,116 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 var storageContext = output.First() as AzureStorageContext;
                 Assert.NotNull(storageContext);
                 Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
-
             }
             finally
             {
-                AzureSMProfileProvider.SetInstance(() => smProvider, true);
-                AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+                CleanupSession();
             }
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateStorageContextInChinaCloud()
+        public void CanCreateStorageContextNameAndKey_SmNull_RmNotNull()
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            var smProvider = AzureSMProfileProvider.Instance;
-            var rmProvider = AzureRmProfileProvider.Instance;
-            AzureRmProfileProvider.SetInstance(() => new TestProfileProvider(), true);
-            AzureSMProfileProvider.SetInstance(() => new TestSMProfileProvider(), true);
+            InitSession();
             try
             {
                 var mock = new MockCommandRuntime();
 
-                AzureSMProfileProvider.Instance.Profile = null;
-                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: false);
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKey");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextNameAndKey_SmNotNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: true);
+
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKey");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextNameAndKey_SmNotNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: false);
+
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKey");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextInChinaCloud_SmNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: false);
+
                 var cmdlet = new NewAzureStorageContext
                 {
                     CommandRuntime = mock,
@@ -158,28 +278,88 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 Assert.NotNull(storageContext);
                 Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
                 Assert.True(storageContext.BlobEndPoint.Contains(".cn"));
-
             }
             finally
             {
-                AzureSMProfileProvider.SetInstance(() => smProvider, true);
-                AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+                CleanupSession();
             }
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateStorageContextSASToken()
+        public void CanCreateStorageContextInChinaCloud_SmNotNull_RmNull()
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            var smProvider = AzureSMProfileProvider.Instance;
-            var rmProvider = AzureRmProfileProvider.Instance;
-            AzureRmProfileProvider.SetInstance(() => new TestProfileProvider(), true);
-            AzureSMProfileProvider.SetInstance(() => new TestSMProfileProvider(), true);
+            InitSession();
             try
             {
                 var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: true);
+
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                    Environment = EnvironmentName.AzureChinaCloud
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKeyEnvironment");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+                Assert.True(storageContext.BlobEndPoint.Contains(".cn"));
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextInChinaCloud_SmNotNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: false);
+
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                    Environment = EnvironmentName.AzureChinaCloud
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKeyEnvironment");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+                Assert.True(storageContext.BlobEndPoint.Contains(".cn"));
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextSASToken_SmNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: true);
 
                 AzureSMProfileProvider.Instance.Profile = null;
                 AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
@@ -200,23 +380,118 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
             finally
             {
-                AzureSMProfileProvider.SetInstance(() => smProvider, true);
-                AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+                CleanupSession();
             }
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanCreateStorageContextAnonymous()
+        public void CanCreateStorageContextSASToken_SmNull_RmNotNull()
         {
-            AzureSessionInitializer.InitializeAzureSession();
-            var smProvider = AzureSMProfileProvider.Instance;
-            var rmProvider = AzureRmProfileProvider.Instance;
-            AzureRmProfileProvider.SetInstance(() => new TestProfileProvider(), true);
-            AzureSMProfileProvider.SetInstance(() => new TestSMProfileProvider(), true);
+            InitSession();
             try
             {
                 var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    SasToken = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("SasToken");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextSASToken_SmNotNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: true);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    SasToken = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("SasToken");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextSASToken_SmNotNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    SasToken = "AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("SasToken");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[SasToken]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextAnonymous_SmNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: true);
 
                 AzureSMProfileProvider.Instance.Profile = null;
                 AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
@@ -237,10 +512,375 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
             finally
             {
-                AzureSMProfileProvider.SetInstance(() => smProvider, true);
-                AzureRmProfileProvider.SetInstance(() => rmProvider, true);
+                CleanupSession();
             }
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextAnonymous_SmNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    Anonymous = true,
+                };
+
+                cmdlet.SetParameterSet("AnonymousAccount");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextAnonymous_SmNotNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: true);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    Anonymous = true,
+                };
+
+                cmdlet.SetParameterSet("AnonymousAccount");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextAnonymous_SmNotNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    Anonymous = true,
+                };
+
+                cmdlet.SetParameterSet("AnonymousAccount");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("[Anonymous]", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextEndPoint_SmNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: true);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                    Endpoint = "core.chinacloudapi.cn",
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKey");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+                Assert.True(storageContext.BlobEndPoint.Contains("core.chinacloudapi.cn"));
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextEndPoint_SmNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                    Endpoint = "core.chinacloudapi.cn",
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKey");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+                Assert.True(storageContext.BlobEndPoint.Contains("core.chinacloudapi.cn"));
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextEndPoint_SmNotNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: true);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                    Endpoint = "core.chinacloudapi.cn",
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKey");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+                Assert.True(storageContext.BlobEndPoint.Contains("core.chinacloudapi.cn"));
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextEndPoint_SmNotNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    StorageAccountName = "contosostorage",
+                    StorageAccountKey = "AAAAAAAA",
+                    Endpoint = "core.chinacloudapi.cn",
+                };
+
+                cmdlet.SetParameterSet("AccountNameAndKey");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal(cmdlet.StorageAccountName, storageContext.StorageAccountName);
+                Assert.True(storageContext.BlobEndPoint.Contains("core.chinacloudapi.cn"));
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextConnectionString_SmNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: true);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    ConnectionString = "DefaultEndpointsProtocol=https;AccountName=contosostorage;AccountKey=AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("ConnectionString");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("contosostorage", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextConnectionString_SmNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: true, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    ConnectionString = "DefaultEndpointsProtocol=https;AccountName=contosostorage;AccountKey=AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("ConnectionString");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("contosostorage", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextConnectionString_SmNotNull_RmNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: true);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    ConnectionString = "DefaultEndpointsProtocol=https;AccountName=contosostorage;AccountKey=AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("ConnectionString");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("contosostorage", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanCreateStorageContextConnectionString_SmNotNull_RmNotNull()
+        {
+            InitSession();
+            try
+            {
+                var mock = new MockCommandRuntime();
+                SetSM_RMProfile(isSMProfileNull: false, isRMProfileNull: false);
+
+                AzureSMProfileProvider.Instance.Profile = null;
+                AzureRmProfileProvider.Instance.Profile = new TestContextContainer();
+                var cmdlet = new NewAzureStorageContext
+                {
+                    CommandRuntime = mock,
+                    ConnectionString = "DefaultEndpointsProtocol=https;AccountName=contosostorage;AccountKey=AAAAAAAA",
+                };
+
+                cmdlet.SetParameterSet("ConnectionString");
+                cmdlet.ExecuteCmdlet();
+                var output = mock.OutputPipeline;
+                Assert.NotNull(output);
+                var storageContext = output.First() as AzureStorageContext;
+                Assert.NotNull(storageContext);
+                Assert.Equal("contosostorage", storageContext.StorageAccountName);
+            }
+            finally
+            {
+                CleanupSession();
+            }
+        }
     }
 }

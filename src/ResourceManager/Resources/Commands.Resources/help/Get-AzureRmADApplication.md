@@ -131,15 +131,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Remove-AzureRmADAppCredential]()
+[Remove-AzureRmADAppCredential](./Remove-AzureRmADAppCredential.md)
 
-[New-AzureRmADAppCredential]()
+[New-AzureRmADAppCredential](./New-AzureRmADAppCredential.md)
 
-[Get-AzureRmADAppCredential]()
+[Get-AzureRmADAppCredential](./Get-AzureRmADAppCredential.md)
 
-[Remove-AzureRmADApplication]()
+[Remove-AzureRmADApplication](./Remove-AzureRmADApplication.md)
 
-[Set-AzureRmADApplication]()
+[Set-AzureRmADApplication](./Set-AzureRmADApplication.md)
 
-[New-AzureRmADApplication]()
+[New-AzureRmADApplication](./New-AzureRmADApplication.md)
 

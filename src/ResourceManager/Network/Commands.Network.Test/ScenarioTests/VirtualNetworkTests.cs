@@ -53,5 +53,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ResourceNavigationLinksCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkUsage()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkUsage");
+        }
     }
 }

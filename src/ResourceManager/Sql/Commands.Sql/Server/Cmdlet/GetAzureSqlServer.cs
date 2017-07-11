@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "SQL Database server name.")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 

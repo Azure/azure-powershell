@@ -417,9 +417,9 @@ This cmdlet returns the set of endpoints and metadata needed to communicate with
 
 ## RELATED LINKS
 
-[Get-AzureRMEnvironment]()
+[Get-AzureRMEnvironment](./Get-AzureRMEnvironment.md)
 
-[Remove-AzureRMEnvironment]()
+[Remove-AzureRMEnvironment](./Remove-AzureRMEnvironment.md)
 
-[Set-AzureRMEnvironment]()
+[Set-AzureRMEnvironment](./Set-AzureRMEnvironment.md)
 
