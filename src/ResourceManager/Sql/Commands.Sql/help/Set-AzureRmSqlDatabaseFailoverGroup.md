@@ -12,9 +12,10 @@ Modifies the configuration of an Azure SQL Database Failover Group.
 ## SYNTAX
 
 ```
-Set-AzureRmSqlDatabaseFailoverGroup -ServerName <String> -FailoverGroupName <String>
+Set-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [-FailoverGroupName] <String>
  [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- -ResourceGroupName <String> [<CommonParameters>]
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-ResourceGroupName] <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,7 @@ Whether outages on the secondary server should trigger automatic failover of the
 Type: AllowReadOnlyFailoverToPrimary
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named

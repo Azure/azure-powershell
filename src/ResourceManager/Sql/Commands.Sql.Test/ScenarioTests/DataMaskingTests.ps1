@@ -20,7 +20,7 @@ function Test-DatabaseDataMaskingPrivilegedUsersChanges
 {
 
 	# Setup
-	$testSuffix = 30379
+	$testSuffix = getAssetName
 	Create-DataMaskingTestEnvironment $testSuffix
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
@@ -84,7 +84,7 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 {
 
 	# Setup
-	$testSuffix = 40225
+	$testSuffix = getAssetName
 	Create-DataMaskingTestEnvironment $testSuffix
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
@@ -157,7 +157,7 @@ function Test-DatabaseDataMaskingNumberRuleLifecycle
 {
 
 	# Setup
-	$testSuffix = 51792
+	$testSuffix = getAssetName
 	Create-DataMaskingTestEnvironment $testSuffix
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
@@ -229,7 +229,7 @@ function Test-DatabaseDataMaskingTextRuleLifecycle
 {
 
 	# Setup
-	$testSuffix = 60222
+	$testSuffix = getAssetName
 	Create-DataMaskingTestEnvironment $testSuffix
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
@@ -301,7 +301,7 @@ function Test-DatabaseDataMaskingRuleCreationFailures
 {
 
 	# Setup
-	$testSuffix = 70232
+	$testSuffix = getAssetName
 	Create-DataMaskingTestEnvironment $testSuffix
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 
@@ -332,7 +332,7 @@ function Test-DatabaseDataMaskingRuleCreationWithoutPolicy
 {
 
 	# Setup
-	$testSuffix = 4578221
+	$testSuffix = getAssetName
 	Create-DataMaskingTestEnvironment $testSuffix
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 

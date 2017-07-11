@@ -101,7 +101,7 @@ Specifies the name of the database to retrieve.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: False
 Position: 2

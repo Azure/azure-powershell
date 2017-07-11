@@ -224,6 +224,7 @@
     <Compile Include="JobSchedules\StopBatchJobScheduleCommandTests.cs" />
     <Compile Include="Jobs\DisableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\EnableBatchJobCommandTests.cs" />
+    <Compile Include="Jobs\GetBatchJobPreparationAndReleaseTaskStatusTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommandTests.cs" />
     <Compile Include="Jobs\NewBatchJobCommandTests.cs" />

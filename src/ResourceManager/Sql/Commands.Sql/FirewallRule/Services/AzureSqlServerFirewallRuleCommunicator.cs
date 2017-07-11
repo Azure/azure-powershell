@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
@@ -61,33 +60,33 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// <summary>
         /// Gets the Azure Sql Database Server FirewallRules
         /// </summary>
-        public Management.Sql.LegacySdk.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName)
         {
-            return GetCurrentSqlClient(clientRequestId).FirewallRules.Get(resourceGroupName, serverName, firewallRuleName).FirewallRule;
+            return GetCurrentSqlClient().FirewallRules.Get(resourceGroupName, serverName, firewallRuleName).FirewallRule;
         }
 
         /// <summary>
         /// Lists Azure Sql Databases Server FirewallRules
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.FirewallRule> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.FirewallRule> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient(clientRequestId).FirewallRules.List(resourceGroupName, serverName).FirewallRules;
+            return GetCurrentSqlClient().FirewallRules.List(resourceGroupName, serverName).FirewallRules;
         }
 
         /// <summary>
         /// Creates or updates an Azure Sql Database Server FirewallRule
         /// </summary>
-        public Management.Sql.LegacySdk.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId, FirewallRuleCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, FirewallRuleCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters).FirewallRule;
+            return GetCurrentSqlClient().FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters).FirewallRule;
         }
 
         /// <summary>
         /// Deletes an Azure Sql Database Server FirewallRule
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string firewallRuleName)
         {
-            GetCurrentSqlClient(clientRequestId).FirewallRules.Delete(resourceGroupName, serverName, firewallRuleName);
+            GetCurrentSqlClient().FirewallRules.Delete(resourceGroupName, serverName, firewallRuleName);
         }
 
         /// <summary>
@@ -95,15 +94,13 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

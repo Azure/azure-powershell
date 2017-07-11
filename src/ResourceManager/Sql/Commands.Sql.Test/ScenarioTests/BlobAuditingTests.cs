@@ -36,13 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public BlobAuditingTests(ITestOutputHelper output) : base(output)
         {
         }
-     
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestBlobAuditingUpdatePolicyWithClassicStorage()
-        {
-            RunPowerShellTest("Test-BlobAuditingUpdatePolicyWithClassicStorage");
-        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

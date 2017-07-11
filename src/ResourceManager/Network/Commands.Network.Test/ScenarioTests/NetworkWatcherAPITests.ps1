@@ -568,31 +568,53 @@ Test ConnectivityCheck NetworkWatcher API.
 function Test-ConnectivityCheck
 {
     # Setup
+    $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "West US"
+    $location = "westcentralus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
-	$nwRgName = Get-ResourceGroupName
+    $nwRgName = Get-ResourceGroupName
+    $securityGroupName = Get-ResourceName
+    $templateFile = "..\..\TestData\Deployment.json"
+    $pcName1 = Get-ResourceName
+    $pcName2 = Get-ResourceName
     
     try 
     {
+        # Create Resource group
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Deploy resources
+        Get-TestResourcesDeployment -rgn "$resourceGroupName"
+        
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
         # Create Network Watcher
         $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
-		
-		#Connectivity check
-		$check = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId "/subscriptions/6926fc75-ce7d-4c9e-a87f-c4e38c594eb5/resourceGroups/NwRgStage1/providers/Microsoft.Compute/virtualMachines/MultiTierApp0" -DestinationAddress "204.79.197.200" -DestinationPort 80
-    
+
+        #Get Vm
+        $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
+        
+        #Install networkWatcherAgent on Vm
+        Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher"
+
+        #Connectivity check
+        $check = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" -DestinationPort 80
+
         #Verification
-        #Assert-AreEqual $check.ConnectionStatus "Reachable"
-        #Assert-AreEqual $check.ProbesFailed 0
+        Assert-AreEqual $check.ConnectionStatus "Reachable"
+        Assert-AreEqual $check.ProbesFailed 0
+        Assert-AreEqual $check.Hops.Count 2
+        Assert-AreEqual $check.Hops[0].Type "Source"
+        Assert-AreEqual $check.Hops[1].Type "Internet"
+        Assert-AreEqual $check.Hops[0].Address "10.17.3.4"
     }
     finally
     {
         # Cleanup
-        #Clean-ResourceGroup $nwRgName
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
     }
 }
 

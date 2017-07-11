@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.Rest.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             var response = StreamAnalyticsManagementClient.Inputs.Get(
                 resourceGroupName, jobName, name);
 
-            return new PSInput(response.Input)
+            return new PSInput(response)
             {
                 ResourceGroupName = resourceGroupName,
                 JobName = jobName
@@ -41,11 +42,11 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
         {
             List<PSInput> inputs = new List<PSInput>();
 
-            var response = StreamAnalyticsManagementClient.Inputs.ListInputInJob(resourceGroupName, jobName, new InputListParameters("*"));
+            var response = StreamAnalyticsManagementClient.Inputs.ListByStreamingJob(resourceGroupName, jobName, "*");
 
-            if (response != null && response.Value != null)
+            if (response != null)
             {
-                foreach (var input in response.Value)
+                foreach (var input in response)
                 {
                     inputs.Add(new PSInput(input)
                     {
@@ -96,14 +97,18 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 throw new ArgumentNullException("rawJsonContent");
             }
 
+            Input input = SafeJsonConvert.DeserializeObject<Input>(
+                rawJsonContent,
+                StreamAnalyticsClientExtensions.DeserializationSettings);
+
             // If create failed, the current behavior is to throw
-            var response = StreamAnalyticsManagementClient.Inputs.CreateOrUpdateWithRawJsonContent(
+            var response = StreamAnalyticsManagementClient.Inputs.CreateOrReplace(
+                    input,
                     resourceGroupName,
                     jobName,
-                    inputName,
-                    new InputCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
+                    inputName);
 
-            return response.Input;
+            return response;
         }
 
         public virtual PSInput CreatePSInput(CreatePSInputParameter parameter)
@@ -146,16 +151,14 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             return input;
         }
 
-        public virtual HttpStatusCode RemovePSInput(string resourceGroupName, string jobName, string inputName)
+        public virtual void RemovePSInput(string resourceGroupName, string jobName, string inputName)
         {
-            AzureOperationResponse response = StreamAnalyticsManagementClient.Inputs.Delete(resourceGroupName, jobName, inputName);
-
-            return response.StatusCode;
+            StreamAnalyticsManagementClient.Inputs.Delete(resourceGroupName, jobName, inputName);
         }
 
-        public virtual ResourceTestConnectionResponse TestPSInput(string resourceGroupName, string jobName, string inputName)
+        public virtual ResourceTestStatus TestPSInput(string resourceGroupName, string jobName, string inputName)
         {
-            return StreamAnalyticsManagementClient.Inputs.TestConnection(resourceGroupName, jobName, inputName);
+            return StreamAnalyticsManagementClient.Inputs.Test(resourceGroupName, jobName, inputName);
         }
 
         private bool CheckInputExists(string resourceGroupName, string jobName, string inputName)

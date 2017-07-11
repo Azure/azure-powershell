@@ -12,9 +12,9 @@ Removes one or more databases from an Azure SQL Database Failover Group.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlDatabaseFromFailoverGroup -ServerName <String> -FailoverGroupName <String>
+Remove-AzureRmSqlDatabaseFromFailoverGroup [-ServerName] <String> [-FailoverGroupName] <String>
  -Database <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel]>
- [-Force] -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +76,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -121,7 +121,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

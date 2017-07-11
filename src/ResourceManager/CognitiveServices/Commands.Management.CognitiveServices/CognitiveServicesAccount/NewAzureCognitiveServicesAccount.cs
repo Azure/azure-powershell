@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
-        [ValidateLength(3, 24)]
+        [ValidateLength(2, 64)]
         public string Name { get; set; }
 
         [Parameter(

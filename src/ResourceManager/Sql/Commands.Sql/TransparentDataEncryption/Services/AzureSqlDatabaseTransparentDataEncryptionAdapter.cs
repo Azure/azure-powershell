@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <returns>The Transparent Data Encryption</returns>
         public AzureSqlDatabaseTransparentDataEncryptionModel GetTransparentDataEncryption(string resourceGroupName, string serverName, string databaseName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, databaseName);
             return CreateTransparentDataEncryptionModelFromResponse(resourceGroupName, serverName, databaseName, resp);
         }
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlDatabaseTransparentDataEncryptionModel UpsertTransparentDataEncryption(AzureSqlDatabaseTransparentDataEncryptionModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), new TransparentDataEncryptionCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.DatabaseName, new TransparentDataEncryptionCreateOrUpdateParameters()
             {
                 Properties = new TransparentDataEncryptionCreateOrUpdateProperties()
                 {
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <returns>The encryption protector model</returns>
         public AzureSqlServerTransparentDataEncryptionProtectorModel GetEncryptionProtector(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.GetEncryptionProtector(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.GetEncryptionProtector(resourceGroupName, serverName);
             return CreateEncryptionProtectorModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <returns>The created or updated encryption protector model</returns>
         public AzureSqlServerTransparentDataEncryptionProtectorModel CreateOrUpdateEncryptionProtector(AzureSqlServerTransparentDataEncryptionProtectorModel model)
         {
-            var resp = Communicator.CreateOrUpdateEncryptionProtector(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new EncryptionProtectorCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdateEncryptionProtector(model.ResourceGroupName, model.ServerName, new EncryptionProtectorCreateOrUpdateParameters()
             {
                 Properties = new EncryptionProtectorCreateOrUpdateProperties()
                 {
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         {
             List<AzureSqlDatabaseTransparentDataEncryptionActivityModel> list = new List<AzureSqlDatabaseTransparentDataEncryptionActivityModel>();
 
-            var resp = Communicator.ListActivity(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.ListActivity(resourceGroupName, serverName, databaseName);
 
             return resp.Select((tdeActivity) =>
             {

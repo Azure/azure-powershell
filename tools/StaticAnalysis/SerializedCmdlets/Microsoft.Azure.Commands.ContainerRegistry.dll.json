@@ -13,22 +13,22 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
-              "Location": "System.String",
-              "LoginServer": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
-              "StorageAccountName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "LoginServer": "System.String",
+              "StorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -44,7 +44,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -64,7 +64,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -86,7 +86,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -113,7 +113,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -139,7 +139,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -173,12 +173,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
-            "Name": "RegistryNameStatus",
+            "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryNameStatus",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryNameStatus, Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
-              "Message": "System.String",
               "NameAvailable": "System.Nullable`1[System.Boolean]",
-              "Reason": "System.String"
+              "Reason": "System.String",
+              "Message": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -198,7 +198,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -224,7 +224,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -258,12 +258,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistryCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Username": "System.String",
               "Password": "System.String",
-              "Password2": "System.String",
-              "Username": "System.String"
+              "Password2": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -279,7 +279,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -299,7 +299,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -315,22 +315,22 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
-              "Location": "System.String",
-              "LoginServer": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
-              "StorageAccountName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "LoginServer": "System.String",
+              "StorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -351,7 +351,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -377,7 +377,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -404,22 +404,22 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-                  "Name": "PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
                     "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
                     "Id": "System.String",
-                    "Location": "System.String",
-                    "LoginServer": "System.String",
-                    "Name": "System.String",
-                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
                     "ResourceGroupName": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Location": "System.String",
                     "SkuName": "System.String",
                     "SkuTier": "System.String",
-                    "StorageAccountName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String"
+                    "LoginServer": "System.String",
+                    "StorageAccountName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -452,22 +452,22 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
-              "Location": "System.String",
-              "LoginServer": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
-              "StorageAccountName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "LoginServer": "System.String",
+              "StorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -483,7 +483,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -503,7 +503,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -521,7 +521,7 @@
           ],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -539,7 +539,7 @@
           ],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -557,7 +557,7 @@
           ],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -573,7 +573,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -595,7 +595,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -621,7 +621,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -645,7 +645,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -667,7 +667,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -696,7 +696,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -720,7 +720,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -742,7 +742,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -768,7 +768,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -792,7 +792,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -814,7 +814,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -843,7 +843,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -867,7 +867,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -889,7 +889,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -915,7 +915,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -939,7 +939,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -961,7 +961,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -998,7 +998,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1018,7 +1018,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1034,22 +1034,22 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
-              "Location": "System.String",
-              "LoginServer": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
-              "StorageAccountName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "LoginServer": "System.String",
+              "StorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1070,7 +1070,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1096,7 +1096,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1123,22 +1123,22 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-                  "Name": "PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
                     "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
                     "Id": "System.String",
-                    "Location": "System.String",
-                    "LoginServer": "System.String",
-                    "Name": "System.String",
-                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
                     "ResourceGroupName": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Location": "System.String",
                     "SkuName": "System.String",
                     "SkuTier": "System.String",
-                    "StorageAccountName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String"
+                    "LoginServer": "System.String",
+                    "StorageAccountName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1171,22 +1171,22 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
-              "Location": "System.String",
-              "LoginServer": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
-              "StorageAccountName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "LoginServer": "System.String",
+              "StorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1202,7 +1202,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1222,7 +1222,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1241,7 +1241,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1259,7 +1259,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1277,7 +1277,7 @@
           ],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1295,7 +1295,7 @@
           ],
           "Type": {
             "Namespace": "System.Collections",
-            "Name": "Hashtable",
+            "Name": "System.Collections.Hashtable",
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1311,7 +1311,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1333,7 +1333,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1359,7 +1359,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1384,7 +1384,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1408,7 +1408,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1432,7 +1432,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1456,7 +1456,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Collections",
-                  "Name": "Hashtable",
+                  "Name": "System.Collections.Hashtable",
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1478,7 +1478,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1512,12 +1512,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistryCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Username": "System.String",
               "Password": "System.String",
-              "Password2": "System.String",
-              "Username": "System.String"
+              "Password2": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1533,7 +1533,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1553,7 +1553,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1569,22 +1569,22 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-            "Name": "PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Id": "System.String",
-              "Location": "System.String",
-              "LoginServer": "System.String",
-              "Name": "System.String",
-              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
               "ResourceGroupName": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
               "SkuName": "System.String",
               "SkuTier": "System.String",
-              "StorageAccountName": "System.String",
-              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "LoginServer": "System.String",
+              "StorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1599,7 +1599,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
-            "Name": "PasswordName",
+            "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
             "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1621,7 +1621,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1647,7 +1647,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1669,7 +1669,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
-                  "Name": "PasswordName",
+                  "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1696,22 +1696,22 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-                  "Name": "PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
                     "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
                     "CreationDate": "System.Nullable`1[System.DateTime]",
                     "Id": "System.String",
-                    "Location": "System.String",
-                    "LoginServer": "System.String",
-                    "Name": "System.String",
-                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
                     "ResourceGroupName": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "Location": "System.String",
                     "SkuName": "System.String",
                     "SkuTier": "System.String",
-                    "StorageAccountName": "System.String",
-                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-                    "Type": "System.String"
+                    "LoginServer": "System.String",
+                    "StorageAccountName": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1732,7 +1732,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
-                  "Name": "PasswordName",
+                  "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1759,7 +1759,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
-                  "Name": "PasswordName",
+                  "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
                   "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1894,37 +1894,20 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Nullable`1[System.Boolean]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "System.Boolean"
+        "System.String",
+        "System.String"
       ]
-    },
-    "System.Nullable`1[System.DateTime]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.DateTime"
-      ]
-    },
-    "System.DateTime": {
-      "Namespace": "System",
-      "Name": "DateTime",
-      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
     },
     "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState]",
       "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState, Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -1934,22 +1917,39 @@
     },
     "Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState": {
       "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
-      "Name": "ProvisioningState",
+      "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState",
       "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.ProvisioningState, Microsoft.Azure.Management.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "System.String",
-        "System.String"
+        "System.Boolean"
       ]
+    },
+    "System.Nullable`1[System.DateTime]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.DateTime]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.DateTime"
+      ]
+    },
+    "System.DateTime": {
+      "Namespace": "System",
+      "Name": "System.DateTime",
+      "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
     }
   }
 }

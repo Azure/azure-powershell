@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
              ParameterSetName = "SetByResource")]
+        [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
         [Alias("Name")]
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of network watcher.",
             ParameterSetName = "SetByName")]
+        [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
         [Parameter(
@@ -45,6 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -58,6 +61,8 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The source port from which a connectivity check will be performed.")]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
         public int SourcePort { get; set; }
 
         [Parameter(
@@ -75,7 +80,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Port on which check connectivity will be performed.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
+        [ValidateRange(1, int.MaxValue)]
         public int DestinationPort { get; set; }
 
         public override void Execute()

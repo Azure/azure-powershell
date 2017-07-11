@@ -146,7 +146,7 @@ Specifies the name of the elastic pool that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: False
 Position: 2
