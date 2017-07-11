@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix set operation deleting admins
 
 ## Version 0.4.0
 * New SKUs added: B1, B2, S0

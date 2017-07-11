@@ -87,9 +87,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
                 {
                     Sku = skuName == null ? existingServer.Sku : GetResourceSkuFromName(skuName),
-                    Tags = tags,
-                    AsAdministrators = new ServerAdministrators(adminList)
+                    Tags = tags
                 };
+
+                if (adminList.Count > 0)
+                {
+                    updateParameters.AsAdministrators = new ServerAdministrators(adminList);
+                }
 
                 newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
             }
