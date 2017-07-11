@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The Azure Sql ServerActiveDirectoryAdministrator object</returns>
         internal AzureSqlServerActiveDirectoryAdministratorModel GetServerActiveDirectoryAdministrator(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName);
             return CreateServerActiveDirectoryAdministratorModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>A list of Azure SQL Server Active Directory administrators objects</returns>
         internal ICollection<AzureSqlServerActiveDirectoryAdministratorModel> ListServerActiveDirectoryAdministrators(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((activeDirectoryAdmin) =>
             {
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The upserted Azure SQL Server Active Directory administrator</returns>
         internal AzureSqlServerActiveDirectoryAdministratorModel UpsertServerActiveDirectoryAdministrator(string resourceGroup, string serverName, AzureSqlServerActiveDirectoryAdministratorModel model)
         {
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, Util.GenerateTracingId(), new ServerAdministratorCreateOrUpdateParameters()
+            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, new ServerAdministratorCreateOrUpdateParameters()
             {
                 Properties = GetActiveDirectoryInformation(model.DisplayName, model.ObjectId)
             });
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <param name="serverName">The name of the Azure Sql ServerActiveDirectoryAdministrator Server</param>
         public void RemoveServerActiveDirectoryAdministrator(string resourceGroupName, string serverName)
         {
-            Communicator.Remove(resourceGroupName, serverName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName);
         }
 
         /// <summary>

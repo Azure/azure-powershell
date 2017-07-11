@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
                         {
                             var accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(account,
                                 context.Environment,
-                                tenant, null, ShowDialog.Never);
+                                tenant, null, ShowDialog.Never, null);
                             Assert.IsNotNull(accessToken);
                             Assert.IsNotNull(accessToken.AccessToken);
                             token = accessToken.AccessToken;

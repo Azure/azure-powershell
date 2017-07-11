@@ -15,6 +15,8 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
+
     using Microsoft.Azure.Commands.Network.Models;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
@@ -104,5 +106,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "RouteFilter")]
         [ValidateNotNullOrEmpty]
         public PSRouteFilter RouteFilter { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The legacy mode of the Peering")]
+        public bool LegacyMode { get; set; }
     }
 }

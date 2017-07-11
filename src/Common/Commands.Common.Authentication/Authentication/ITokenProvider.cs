@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <param name="config">Configuration.</param>
         /// <param name="promptBehavior">Prompt behavior.</param>
+        /// <param name="promptAction">Prompt action for device flow.</param>
         /// <param name="userId">User ID/Service principal to get the token for.</param>
         /// <param name="password">Secure strings with password/service principal key.</param>
         /// <param name="credentialType">Credential type.</param>
@@ -36,10 +38,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         IAccessToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
+			Action<string> promptAction,
             string userId,
             SecureString password,
             string credentialType);
-
+			
+#if !NETSTANDARD
         /// <summary>
         /// Get a new authentication token for the given environment
         /// </summary>
@@ -53,5 +57,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string principalId,
             string certificateThumbprint,
             string credentialType);
+#endif	
     }
 }

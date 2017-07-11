@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 if (storageService != null)
                 {
                     var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.Name);
-                    storagekey = storageKeys.Key1;
+                    storagekey = storageKeys.GetKey1();
                 }
             }
 

@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                 Logger(GeneralUtilities.GetHttpRequestLog(
                 request.Method,
                 request.RequestUri.ToString(),
-                request.Headers,
+                HttpRestMessageInspector.ConvertHeadersToDictionary(request.Headers),
                 string.Empty));
             }
         }

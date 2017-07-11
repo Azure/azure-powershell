@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Alias("Remove-AzureRmSqlDatabaseServerAuditing")]
+    [Obsolete]
     public class RemoveSqlServerAuditing : SqlDatabaseServerAuditingCmdletBase
     {
         /// <summary>

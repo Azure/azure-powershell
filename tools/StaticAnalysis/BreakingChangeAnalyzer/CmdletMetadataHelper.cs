@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
@@ -215,14 +216,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // This dictionary will map an output type name to the corresponding type metadata
-            Dictionary<string, TypeMetadata> outputDictionary = new Dictionary<string, TypeMetadata>();
+            Dictionary<string, TypeMetadata> outputDictionary = new Dictionary<string, TypeMetadata>(new TypeNameComparer());
 
             // Add each output in the new metadata to the dictionary
             foreach (var newOutput in newCmdlet.OutputTypes)
             {
-                if (!outputDictionary.ContainsKey(newOutput.Type.AssemblyQualifiedName))
+                if (!outputDictionary.ContainsKey(newOutput.Type.Name))
                 {
-                    outputDictionary.Add(newOutput.Type.AssemblyQualifiedName, newOutput.Type);
+                    outputDictionary.Add(newOutput.Type.Name, newOutput.Type);
                 }
             }
 
@@ -232,9 +233,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             {
                 // If the output can be found, use the TypeMetadataHelper to
                 // check the type for any breaking changes
-                if (outputDictionary.ContainsKey(oldOutput.Type.AssemblyQualifiedName))
+                if (outputDictionary.ContainsKey(oldOutput.Type.Name))
                 {
-                    var newOutputType = outputDictionary[oldOutput.Type.AssemblyQualifiedName];
+                    var newOutputType = outputDictionary[oldOutput.Type.Name];
 
                     _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
                 }
@@ -310,6 +311,26 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         remediation: string.Format(Properties.Resources.ChangeDefaultParameterRemediation,
                             oldCmdlet.Name, oldCmdlet.DefaultParameterSetName));
                 }
+            }
+        }
+
+        /// <summary>
+        /// Comparer for assebly qualified names.  Parses of the PublicKeyToken, so that types from signed and unsigned assemblies match 
+        /// </summary>
+        class TypeNameComparer : IEqualityComparer<string>
+        {
+            Regex keyToken = new Regex(@", PublicKeyToken=\w+");
+            public bool Equals(string x, string y)
+            {
+                var newX = keyToken.Replace(x, "");
+                var newY = keyToken.Replace(y, "");
+                return StringComparer.OrdinalIgnoreCase.Equals(newX, newY);
+            }
+
+            public int GetHashCode(string obj)
+            {
+                var newObj = keyToken.Replace(obj, "");
+                return StringComparer.OrdinalIgnoreCase.GetHashCode(newObj);
             }
         }
     }

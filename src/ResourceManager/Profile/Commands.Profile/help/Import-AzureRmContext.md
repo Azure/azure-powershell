@@ -53,7 +53,7 @@ SubscriptionName      : Test Subscription
 CurrentStorageAccount :
 ```
 
-This example selects a context from a JSON file that is passed through to the cmdlet. This JSON file can be created from Import-AzureRmContext.
+This example selects a context from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzureRmContext.
 
 ## PARAMETERS
 

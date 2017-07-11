@@ -72,33 +72,5 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RemoveDatabase");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseCreateV2()
-        {
-            RunPowerShellTest("Test-CreateDatabaseV2");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseUpdateV2()
-        {
-            RunPowerShellTest("Test-UpdateDatabaseV2");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseGetV2()
-        {
-            RunPowerShellTest("Test-GetDatabaseV2");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseRemoveV2()
-        {
-            RunPowerShellTest("Test-RemoveDatabaseV2");
-        }
     }
 }

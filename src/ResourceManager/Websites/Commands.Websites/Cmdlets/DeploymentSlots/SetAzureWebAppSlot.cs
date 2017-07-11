@@ -140,7 +140,30 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     siteConfig = WebApp.SiteConfig;
 
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, WebApp.SiteConfig == null ? null : WebApp.SiteConfig.AppSettings.ToDictionary(nvp => nvp.Name, nvp => nvp.Value, StringComparer.OrdinalIgnoreCase), WebApp.SiteConfig == null ? null : WebApp.SiteConfig.ConnectionStrings.ToDictionary(nvp => nvp.Name, nvp => new ConnStringValueTypePair { Type = nvp.Type, Value = nvp.ConnectionString }, StringComparer.OrdinalIgnoreCase));
+                    WebsitesClient.UpdateWebAppConfiguration(
+                        ResourceGroupName, 
+                        location, 
+                        Name, 
+                        Slot, 
+                        siteConfig, 
+                        WebApp.SiteConfig == null ? 
+                            null : 
+                            WebApp.SiteConfig.AppSettings
+                                .ToDictionary(
+                                    nvp => nvp.Name, 
+                                    nvp => nvp.Value, 
+                                    StringComparer.OrdinalIgnoreCase), 
+                        WebApp.SiteConfig == null ? 
+                            null : 
+                            WebApp.SiteConfig.ConnectionStrings
+                                .ToDictionary(
+                                nvp => nvp.Name, 
+                                nvp => new ConnStringValueTypePair
+                                {
+                                    Type = nvp.Type.Value,
+                                    Value = nvp.ConnectionString
+                                }, 
+                                StringComparer.OrdinalIgnoreCase));
 
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
                     WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName);

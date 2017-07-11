@@ -75,24 +75,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             if (AuditType == AuditType.Table)
             {
-                ModelAdapter.SetDatabaseAuditingPolicy(model as DatabaseAuditingPolicyModel, clientRequestId,
+                ModelAdapter.SetDatabaseAuditingPolicy(model as DatabaseAuditingPolicyModel,
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             if (AuditType == AuditType.Blob)
             {
-                ModelAdapter.SetDatabaseAuditingPolicy(model as DatabaseBlobAuditingPolicyModel, clientRequestId,
+                ModelAdapter.SetDatabaseAuditingPolicy(model as DatabaseBlobAuditingPolicyModel,
                     DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
             }
             return null;
-        }
-
-        /// <summary>
-        /// Execute the cmdlet
-        /// </summary>
-        protected override void ProcessRecord()
-        {
-            SqlDatabaseServerAuditingCmdletBase.PrintDeprecationMessageForAuditingCmdlets(this);
-            base.ProcessRecord();
         }
 
         private AuditingPolicyModel GetEntityHelper()
@@ -100,14 +91,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (AuditType == AuditType.Table)
             {
                 DatabaseAuditingPolicyModel model;
-                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out model);
+                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, out model);
                 return model;
             }
 
             if (AuditType == AuditType.Blob)
             {
                 DatabaseBlobAuditingPolicyModel blobModel;
-                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out blobModel);
+                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, out blobModel);
                 return blobModel;
             }
 

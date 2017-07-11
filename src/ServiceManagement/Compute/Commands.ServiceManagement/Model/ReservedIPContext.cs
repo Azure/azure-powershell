@@ -14,6 +14,8 @@
 
 
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Network.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 {
@@ -38,5 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string DeploymentName { get; set; }
 
         public string VirtualIPName { get; set; }
+
+        public List<IPTag> IPTags { get; set; }
     }
 }

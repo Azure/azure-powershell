@@ -25,7 +25,7 @@ The **Add-AzureRmVmssNetworkInterfaceConfiguration** cmdlet adds a network inter
 
 ### Example 1: Add a network interface configuration to the VMSS
 ```
-PS C:\>Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
+PS C:\> Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
 ```
 
 This command adds a network interface configuration to the VMSS.
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -153,5 +153,3 @@ This cmdlet does not generate any output.
 ## RELATED LINKS
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-

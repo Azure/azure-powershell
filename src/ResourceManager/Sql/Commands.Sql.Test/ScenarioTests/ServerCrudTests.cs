@@ -53,5 +53,26 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RemoveServer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerCreateWithIdentity()
+        {
+            RunPowerShellTest("Test-CreateServerWithIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithIdentity()
+        {
+            RunPowerShellTest("Test-UpdateServerWithIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerUpdateWithoutIdentity()
+        {
+            RunPowerShellTest("Test-UpdateServerWithoutIdentity");
+        }
     }
 }
