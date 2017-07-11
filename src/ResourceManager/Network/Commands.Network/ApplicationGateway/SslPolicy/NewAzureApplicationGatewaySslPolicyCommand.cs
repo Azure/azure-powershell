@@ -27,15 +27,7 @@ namespace Microsoft.Azure.Commands.Network
             if (ShouldProcess("AzureApplicationGatewaySslPolicy", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
                 base.ExecuteCmdlet();
-
-                PSApplicationGatewaySslPolicy policy = new PSApplicationGatewaySslPolicy();
-                policy.DisabledSslProtocols = new List<string>();
-                foreach (var protocol in this.DisabledSslProtocols)
-                {
-                    policy.DisabledSslProtocols.Add(protocol);
-                }
-
-                WriteObject(policy);
+                WriteObject(this.NewObject());
             }
         }
     }

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
             peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
-            
+
 
             if (!string.IsNullOrEmpty(this.SharedKey))
             {
@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Network
                 peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
                 peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                 peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+                peering.MicrosoftPeeringConfig.LegacyMode = Convert.ToInt32(this.LegacyMode);
             }
 
             if (!string.IsNullOrEmpty(this.RouteFilterId))

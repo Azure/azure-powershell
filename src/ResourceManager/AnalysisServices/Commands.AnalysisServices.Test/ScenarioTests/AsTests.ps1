@@ -245,6 +245,51 @@ function Test-NegativeAnalysisServicesServer
 
 <#
 .SYNOPSIS
+Test log exporting from Azure Analysis Service server.
+In order to run this test successfully, Following environment variables need to be set.
+ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
+ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
+#>
+function Test-AnalysisServicesServerLogExport
+{
+    param
+	(
+		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+	)
+    try
+    {
+        $location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$serverName = Get-AnalysisServicesServerName
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
+		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverCreated.State -like "Succeeded"}
+
+        $secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
+		$cred = New-Object System.Management.Automation.PSCredential ('aztest1@aspaastestloop1.ccsctp.net', $secpasswd)
+		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
+		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+
+        $tempFile = [System.IO.Path]::GetTempFileName()
+        Export-AzureAnalysisServicesInstanceLog -Instance $serverName -OutputPath $tempFile
+        Assert-Exists $tempFile
+        $logContent = [System.IO.File]::ReadAllText($tempFile)
+        Assert-False { [string]::IsNullOrEmpty($logContent); }
+    }
+    finally
+    {
+        if (Test-Path $tempFile) {
+            Remove-Item $tempFile
+        }
+        Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
+    }
+}
+
+<#
+.SYNOPSIS
 Tests Analysis Services server Login and restart.
 In order to run this test successfully, Following environment variables need to be set.
 ASAZURE_TEST_ROLLOUT e.x. value 'aspaasnightly1.asazure-int.windows.net'

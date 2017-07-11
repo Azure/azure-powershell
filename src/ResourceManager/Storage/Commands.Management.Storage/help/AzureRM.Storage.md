@@ -11,9 +11,6 @@ Locale: en-US
 This topic displays help topics for the Azure Storage Management Cmdlets.
 
 ## AzureRM.Storage Cmdlets
-### [Add-AzureRmStorageAccountNetworkACLRule](Add-AzureRmStorageAccountNetworkACLRule.md)
- Add IpRules or VirtualNetworkRules to the NetworkAcls property of a Storage Account
-
 ### [Get-AzureRmStorageAccount](Get-AzureRmStorageAccount.md)
 Gets a Storage account.
 
@@ -22,9 +19,6 @@ Gets the access keys for an Azure Storage account.
 
 ### [Get-AzureRmStorageAccountNameAvailability](Get-AzureRmStorageAccountNameAvailability.md)
 Checks the availability of a storage account name.
-
-### [Get-AzureRmStorageAccountNetworkACL](Get-AzureRmStorageAccountNetworkACL.md)
-Get the NetworkAcls property of a Storage Account
 
 ### [Get-AzureRmStorageUsage](Get-AzureRmStorageUsage.md)
 Gets the Storage resource usage of the current subscription.
@@ -38,15 +32,9 @@ Regenerates a storage key for an Azure Storage account.
 ### [Remove-AzureRmStorageAccount](Remove-AzureRmStorageAccount.md)
 Removes a Storage account from Azure.
 
-### [Remove-AzureRmStorageAccountNetworkACLRule](Remove-AzureRmStorageAccountNetworkACLRule.md)
-Remove IpRules or VirtualNetworkRules from the NetworkAcls property of a Storage Account
-
 ### [Set-AzureRmCurrentStorageAccount](Set-AzureRmCurrentStorageAccount.md)
 Modifies the current Storage account of the specified subscription.
 
 ### [Set-AzureRmStorageAccount](Set-AzureRmStorageAccount.md)
 Modifies a Storage account.
-
-### [Update-AzureRmStorageAccountNetworkACL](Update-AzureRmStorageAccountNetworkACL.md)
-Update the NetworkAcls property of a Storage Account
 

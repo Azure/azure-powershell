@@ -18,9 +18,52 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.2.0
 * New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
     - SALifeTimeSeconds defaults to 27000 seconds
     - SADataSizeKilobytes defaults to 102400000 KB
+* Added support for custom cipher suite configuration using ssl policy and listing all ssl options api in Application Gateway
+    - Added optional parameter -PolicyType, -PolicyName, -MinProtocolVersion, -Ciphersuite
+        - Add-AzureRmApplicationGatewaySslPolicy
+        - New-AzureRmApplicationGatewaySslPolicy
+        - Set-AzureRmApplicationGatewaySslPolicy
+    - Added Get-AzureRmApplicationGatewayAvailableSslOptions (Alias: List-AzureRmApplicationGatewayAvailableSslOptions)
+    - Added Get-AzureRmApplicationGatewaySslPredefinedPolicy (Alias: List-AzureRmApplicationGatewaySslPredefinedPolicy)
+* Added redirect support in Application Gateway
+    - Added Add-AzureRmApplicationGatewayRedirectConfiguration
+    - Added Get-AzureRmApplicationGatewayRedirectConfiguration
+    - Added New-AzureRmApplicationGatewayRedirectConfiguration
+    - Added Remove-AzureRmApplicationGatewayRedirectConfiguration
+    - Added Set-AzureRmApplicationGatewayRedirectConfiguration
+    - Added optional parameter -RedirectConfiguration
+        - Add-AzureRmApplicationGatewayRequestRoutingRule
+        - New-AzureRmApplicationGatewayRequestRoutingRule
+        - Set-AzureRmApplicationGatewayRequestRoutingRule
+    - Added optional parameter -DefaultRedirectConfiguration
+        - Add-AzureRmApplicationGatewayUrlPathMapConfig
+        - New-AzureRmApplicationGatewayUrlPathMapConfig
+        - Set-AzureRmApplicationGatewayUrlPathMapConfig
+    - Added optional parameter -RedirectConfiguration
+        - Add-AzureRmApplicationGatewayPathRuleConfig
+        - New-AzureRmApplicationGatewayPathRuleConfig
+        - Set-AzureRmApplicationGatewayPathRuleConfig
+    - Added optional parameter -RedirectConfigurations
+        - New-AzureRmApplicationGateway 
+        - Set-AzureRmApplicationGateway
+* Added support for azure websites in Application Gateway
+    - Added New-AzureRmApplicationGatewayProbeHealthResponseMatch
+    - Added optional parameters -PickHostNameFromBackendHttpSettings, -MinServers, -Match
+        - Add-AzureRmApplicationGatewayProbeConfig 
+        - New-AzureRmApplicationGatewayProbeConfig
+        - Set-AzureRmApplicationGatewayProbeConfig
+    - Added optional parameters -PickHostNameFromBackendAddress, -AffinityCookieName, -ProbeEnabled, -Path
+        - Add-AzureRmApplicationGatewayBackendHttpSettings
+        - New-AzureRmApplicationGatewayBackendHttpSettings
+        - Set-AzureRmApplicationGatewayBackendHttpSettings
+* Update Get-AzureRmPublicIPaddress to retrieve publicipaddress resources created via VM Scale Set
+* Added cmdlet to get virtual network current usage
+    - Get-AzureRmVirtualNetworkUsageList
 
 ## Version 4.1.0
 * Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
