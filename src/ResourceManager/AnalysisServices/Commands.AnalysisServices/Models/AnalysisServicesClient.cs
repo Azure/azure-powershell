@@ -22,6 +22,7 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
@@ -88,10 +89,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
                 {
                     Sku = skuName == null ? existingServer.Sku : GetResourceSkuFromName(skuName),
-                    Tags = tags
+                    Tags = tags,
                 };
 
-                if (administrators != null)
+                if (adminList.Count > 0)
                 {
                     updateParameters.AsAdministrators = new ServerAdministrators(adminList);
                 }

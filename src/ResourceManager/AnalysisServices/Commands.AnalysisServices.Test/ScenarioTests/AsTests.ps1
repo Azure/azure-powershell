@@ -254,7 +254,7 @@ function Test-AnalysisServicesServerLogExport
 {
     param
 	(
-		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+		$rolloutEnvironment = $env:ASAZURE_TEST_ROLLOUT
 	)
     try
     {
@@ -263,12 +263,13 @@ function Test-AnalysisServicesServerLogExport
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators $env:ASAZURE_TEST_ADMUSERS
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$serverCreated.State -like "Succeeded"}
 
-        $secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
-		$cred = New-Object System.Management.Automation.PSCredential ('aztest1@aspaastestloop1.ccsctp.net', $secpasswd)
+        $secpasswd = ConvertTo-SecureString $env:ASAZURE_TESTUSER_PWD -AsPlainText -Force
+		$admuser0 = $env:ASAZURE_TEST_ADMUSERS.Split(',')[0]
+		$cred = New-Object System.Management.Automation.PSCredential ($admuser0, $secpasswd)
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
 
