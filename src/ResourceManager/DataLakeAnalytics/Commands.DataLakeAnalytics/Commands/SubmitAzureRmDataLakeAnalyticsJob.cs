@@ -26,39 +26,61 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Submit-AdlJob")]
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
-        // internal const string HiveJobWithScriptPath = "Submit job with script path for Hive";
-        internal const string USqlJobWithScriptPath = "Submit job with script path for SQL-IP";
-        internal const string USqlJobParameterSetName = "Submit SQL-IP Job";
+        internal const string USqlJobWithScriptPath = "Submit job with script path for U-SQL";
+        internal const string USqlJobParameterSetName = "Submit U-SQL Job";
+        internal const string USqlJobWithScriptPathAndRecurrence = "Submit job with script path for U-SQL with reucurrence information";
+        internal const string USqlJobParameterSetNameAndRecurrence = "Submit U-SQL Job with recurrence information";
+        internal const string USqlJobWithScriptPathAndPipeline = "Submit job with script path for U-SQL with reucurrence and pipeline information";
+        internal const string USqlJobParameterSetNameAndPipeline = "Submit U-SQL Job with recurrence and pipeline information";
+
         private int _degreeOfParallelism = 1;
         private int _priority = 1000;
-        // internal const string HiveJobParameterSetName = "Submit Hive Job";
 
-        // TODO: Remove this once hive jobs are enabled
-        private SwitchParameter sqlip = true;
+        // TODO: Remove this once other job types are enabled
+        private SwitchParameter usql = true;
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 0,
             Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted."
             )]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted.")]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 0,
             Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted."
             )]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 0,
+            Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 0,
+            Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 0,
+            Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 0,
+            Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted."
+            )]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 1,
             Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 1,
             Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 1,
+            Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 1,
+            Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 1,
+            Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 1,
+            Mandatory = true, HelpMessage = "The friendly name of the job to submit.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = true, HelpMessage = "Path to the script file to submit.")]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 2,
+            Mandatory = true, HelpMessage = "Path to the script file to submit.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 2,
+            Mandatory = true, HelpMessage = "Path to the script file to submit.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 2,
             Mandatory = true, HelpMessage = "Path to the script file to submit.")]
         [ValidateNotNullOrEmpty]
         public string ScriptPath { get; set; }
@@ -66,22 +88,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, Position = 2,
             ParameterSetName = USqlJobParameterSetName, Mandatory = true,
             HelpMessage = "Script to execute (written inline).")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, ParameterSetName = HiveJobParameterSetName, Mandatory = true, HelpMessage = "Script to execute (written inline).")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, Position = 2,
+            ParameterSetName = USqlJobParameterSetNameAndRecurrence, Mandatory = true,
+            HelpMessage = "Script to execute (written inline).")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, Position = 2,
+            ParameterSetName = USqlJobParameterSetNameAndPipeline, Mandatory = true,
+            HelpMessage = "Script to execute (written inline).")]
         [ValidateNotNullOrEmpty]
         public string Script { get; set; }
 
-        // TODO: Uncomment this out when hive is enabled
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Mandatory = true, HelpMessage = "Indicates that a SQL-IP job is being submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Mandatory = true, HelpMessage = "Indicates that a SQL-IP job is being submitted.")]
+        // TODO: re-work into a parameter once other job types are enabled
         public SwitchParameter USql
         {
-            get { return sqlip; }
-            set { sqlip = value; }
+            get { return usql; }
+            set { usql = value; }
         }
-
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = true, HelpMessage = "Indicates that a Hive job is being submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = true, HelpMessage = "Indicates that a Hive job is being submitted.")]
-        public SwitchParameter Hive { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 3,
             Mandatory = false,
@@ -89,6 +110,26 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 "Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 3,
+            Mandatory = false,
+            HelpMessage =
+                "Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 3,
+            Mandatory = false,
+            HelpMessage =
+                "Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 3,
+            Mandatory = false,
+            HelpMessage =
+                "Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 3,
+            Mandatory = false,
+            HelpMessage =
+                "Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 3,
             Mandatory = false,
             HelpMessage =
                 "Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used."
@@ -106,6 +147,26 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage =
                 "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
             )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 4,
+            Mandatory = false,
+            HelpMessage =
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 4,
+            Mandatory = false,
+            HelpMessage =
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 4,
+            Mandatory = false,
+            HelpMessage =
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 4,
+            Mandatory = false,
+            HelpMessage =
+                "The type of compilation to be done on this job. Valid values are: 'Semantic' (Only erforms semantic checks and necessary sanity checks), 'Full' (full compilation) and 'SingleBox' (Full compilation performed locally)"
+            )]
         [ValidateSet("Semantic", "Full", "SingleBox")]
         public string CompileMode { get; set; }
 
@@ -113,6 +174,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             Mandatory = false,
             HelpMessage = "Indicates that the submission should only build the job and not execute if set to true.")]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 5,
+            Mandatory = false,
+            HelpMessage = "Indicates that the submission should only build the job and not execute if set to true.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 5,
+            Mandatory = false,
+            HelpMessage = "Indicates that the submission should only build the job and not execute if set to true.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 5,
+            Mandatory = false,
+            HelpMessage = "Indicates that the submission should only build the job and not execute if set to true.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 5,
+            Mandatory = false,
+            HelpMessage = "Indicates that the submission should only build the job and not execute if set to true.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 5,
             Mandatory = false,
             HelpMessage = "Indicates that the submission should only build the job and not execute if set to true.")]
         [ValidateNotNullOrEmpty]
@@ -124,6 +197,26 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 6,
+            Mandatory = false,
+            HelpMessage =
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 6,
+            Mandatory = false,
+            HelpMessage =
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 6,
+            Mandatory = false,
+            HelpMessage =
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 6,
+            Mandatory = false,
+            HelpMessage =
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 6,
             Mandatory = false,
             HelpMessage =
                 "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
@@ -144,15 +237,106 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage =
                 "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
             )]
-        [ValidateRange(1, int.MaxValue)]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence, Position = 7,
+            Mandatory = false,
+            HelpMessage =
+                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence, Position = 7,
+            Mandatory = false,
+            HelpMessage =
+                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline, Position = 7,
+            Mandatory = false,
+            HelpMessage =
+                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline, Position = 7,
+            Mandatory = false,
+            HelpMessage =
+                "The priority for this job with a range from 1 to 1000, where 1000 is the lowest priority and 1 is the highest."
+            )]
+        [ValidateRange(0, int.MaxValue)]
         public int Priority
         {
             get { return _priority; }
             set { _priority = value; }
         }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence,
+            Mandatory = true,
+            HelpMessage = "An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence,
+            Mandatory = true,
+            HelpMessage = "An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline,
+            Mandatory = true,
+            HelpMessage = "An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline,
+            Mandatory = true,
+            HelpMessage = "An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.")]
+        [ValidateNotNullOrEmpty]
+        public Guid RecurrenceId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndRecurrence,
+            Mandatory = false,
+            HelpMessage = "An optional friendly name for the recurrence correlation between jobs.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndRecurrence,
+            Mandatory = false,
+            HelpMessage = "An optional friendly name for the recurrence correlation between jobs.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An optional friendly name for the recurrence correlation between jobs.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An optional friendly name for the recurrence correlation between jobs.")]
+        [ValidateNotNullOrEmpty]
+        public string RecurrenceName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline,
+            Mandatory = true,
+            HelpMessage = "An ID that indicates the submission of this job is a part of a set of recurring jobs and also associated with a job pipeline.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline,
+            Mandatory = true,
+            HelpMessage = "An ID that indicates the submission of this job is a part of a set of recurring jobs and also associated with a job pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public Guid PipelineId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An optional friendly name for the pipeline associated with this job.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An optional friendly name for the pipeline associated with this job.")]
+        [ValidateNotNullOrEmpty]
+        public string PipelineName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An optional uri that links to the originating service associated with this pipeline.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An optional uri that links to the originating service associated with this pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public string PipelineUri { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPathAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An ID that identifies this specific run iteration of the pipeline.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetNameAndPipeline,
+            Mandatory = false,
+            HelpMessage = "An ID that identifies this specific run iteration of the pipeline.")]
+        [ValidateNotNullOrEmpty]
+        public Guid? RunId { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if(DegreeOfParallelism < 1)
+            {
+                WriteWarning(Resources.InvalidDegreeOfParallelism);
+            }
+
             // error handling for not passing or passing both script and script path
             if ((string.IsNullOrEmpty(Script) && string.IsNullOrEmpty(ScriptPath)) ||
                 (!string.IsNullOrEmpty(Script) && !string.IsNullOrEmpty(ScriptPath)))
@@ -199,14 +383,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
                 properties = sqlIpProperties;
             }
-            else if (Hive)
-            {
-                jobType = JobType.Hive;
-                properties = new HiveJobProperties
-                {
-                    Script = Script
-                };
-            }
             else
             {
                 throw new CloudException(Resources.InvalidJobType);
@@ -221,6 +397,27 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 degreeOfParallelism: DegreeOfParallelism,
                 priority: Priority
             );
+
+            if (ParameterSetName.Equals(USqlJobParameterSetNameAndRecurrence) ||
+                    ParameterSetName.Equals(USqlJobParameterSetNameAndPipeline) ||
+                    ParameterSetName.Equals(USqlJobWithScriptPathAndRecurrence) ||
+                    ParameterSetName.Equals(USqlJobWithScriptPathAndPipeline))
+            {
+                jobInfo.Related = new JobRelationshipProperties
+                {
+                    RecurrenceId = RecurrenceId,
+                    RecurrenceName = RecurrenceName
+                };
+
+                if (ParameterSetName.Equals(USqlJobParameterSetNameAndPipeline) ||
+                    ParameterSetName.Equals(USqlJobWithScriptPathAndPipeline))
+                {
+                    jobInfo.Related.PipelineId = PipelineId;
+                    jobInfo.Related.PipelineName = PipelineName;
+                    jobInfo.Related.PipelineUri = PipelineUri;
+                    jobInfo.Related.RunId = RunId;
+                }
+            }
 
             WriteObject(CompileOnly
                 ? DataLakeAnalyticsClient.BuildJob(Account, jobInfo)

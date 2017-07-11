@@ -12,7 +12,7 @@ Removes a disk.
 ## SYNTAX
 
 ```
-Remove-AzureRmDisk [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String> [-Force]
+Remove-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

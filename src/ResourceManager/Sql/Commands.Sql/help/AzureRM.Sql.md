@@ -8,7 +8,7 @@ Locale: en-US
 
 # AzureRM.Sql Module
 ## Description
-This topic displays help topics for the [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) Cmdlets.
+This topic displays help topics for the Azure SQL Database Cmdlets.
 
 ## AzureRM.Sql Cmdlets
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
@@ -338,3 +338,50 @@ Executes a failover of an Azure SQL Database Failover Group.
 ### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.
 
+### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
+Creates an Azure SQL Database Sync Group.
+
+### [Set-AzureRmSqlSyncGroup](Set-AzureRmSqlSyncGroup.md)
+Updates an Azure SQL Database Sync Group.
+
+### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
+Returns information about Azure SQL Database Sync Groups.
+
+### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
+Removes an Azure SQL Database Sync Group.
+
+### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
+Starts a sync group synchronization.
+
+### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
+Stops a sync group synchronization.
+
+### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
+Returns the logs of an Azure SQL Database Sync Group.
+
+### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
+Creates an Azure SQL Database Sync Member.
+
+### [Set-AzureRmSqlSyncMember](Set-AzureRmSqlSyncMember.md)
+Updates an Azure SQL Database Sync Member.
+
+### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
+Returns information about Azure SQL Database Sync Members.
+
+### [Remove-AzureRmSqlSyncMember](Remove-AzureRmSqlSyncMember.md)
+Removes an Azure SQL Database Sync Member.
+
+### [New-AzureRmSqlSyncAgent](New-AzureRmSqlSyncAgent.md)
+Creates an Azure SQL Sync Agent.
+
+### [New-AzureRmSqlSyncAgentKey](New-AzureRmSqlSyncAgentKey.md)
+Creates an Azure SQL Sync Agent Key.
+
+### [Get-AzureRmSqlSyncAgent](Get-AzureRmSqlSyncAgent.md)
+Returns information about Azure SQL Sync Agents.
+
+### [Remove-AzureRmSqlSyncAgent](Remove-AzureRmSqlSyncAgent.md)
+Removes an Azure SQL Sync Agent.
+
+### [Get-AzureRmSqlSyncAgentLinkedDatabase](Get-AzureRmSqlSyncAgentLinkedDatabase.md)
+Returns information about SQL Server databases linked by a sync agent.

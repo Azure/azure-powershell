@@ -28,6 +28,40 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkUsage</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>NameText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CurrentValue</Label>
+                <PropertyName>CurrentValue</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Limit</Label>
+                <PropertyName>Limit</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Unit</Label>
+                <PropertyName>Unit</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork</TypeName>
@@ -831,6 +865,10 @@
               <ListItem>
                 <Label>Primary</Label>
                 <PropertyName>Primary</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MacAddress</Label>
+                <PropertyName>MacAddress</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2122,6 +2160,14 @@
                 <Label>CommunityPrefixes</Label>
                 <PropertyName>CommunityPrefixesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>IsAuthorizedToUse</Label>
+                <PropertyName>IsAuthorizedToUseText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ServiceGroup</Label>
+                <PropertyName>ServiceGroupText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -2316,6 +2362,44 @@
                 <ScriptBlock>
                     [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
                 </ScriptBlock>  
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPredefinedPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPredefinedPolicy</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
               </ExpressionBinding>
             </CustomItem>
           </CustomEntry>

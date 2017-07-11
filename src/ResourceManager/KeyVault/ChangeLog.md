@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.2.0
+* Remove email address from the directory query when -UserPrincipalName is specified to the Set-AzureRMKeyVaultAccessPolicy and Remove-AzureRMKeyVaultAccessPolicy cmdlets.
+  - Both Cmdlets now have an -EmailAddress parameter that can be used instead of the -UserPrincipalName parameter when querying for email address is appropriate.  If there are more than one matching email addresses in the directory then the Cmdlet will fail.
+
 ## Version 3.1.0
 * New Cmdlets to support KeyVault Managed Storage Account Keys
   * Get-AzureKeyVaultManagedStorageAccount
@@ -38,10 +42,10 @@
 
 * Backup cmdlets for Keys and Secrets now accept a corresponding object as an input parameter
     - The caller may chain retrieval and backup operations: Get-AzureKeyVaultKey -VaultName myVault -Name myKey | Backup-AzureKeyVaultKey
-    
+
 * Backup cmdlets now support a -Force switch to overwrite an existing file
     - Note that attempting to overwrite an existing file will no longer throw, and will instead prompt the user for a choice on how to proceed.
-      
+
 ## Version 2.8.0
 
 ## Version 2.7.0

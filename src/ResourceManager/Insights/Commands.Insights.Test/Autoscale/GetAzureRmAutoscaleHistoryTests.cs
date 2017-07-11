@@ -25,8 +25,6 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
@@ -38,8 +36,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         private readonly Mock<IActivityLogsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse<IPage<EventData>> response;
+        private AzureOperationResponse<IPage<EventData>> finalResponse;
         private ODataQuery<EventData> filter;
         private string selected;
+        private string nextLink;
 
         public GetAzureRmAutoscaleHistoryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             };
 
             response = Test.Utilities.InitializeResponse();
+            finalResponse = Utilities.InitializeFinalResponse();
 
             insightsEventOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<ODataQuery<EventData>>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(response))
@@ -62,6 +63,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 {
                     filter = f;
                     selected = s;
+                });
+
+            insightsEventOperationsMock.Setup(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<AzureOperationResponse<IPage<EventData>>>(finalResponse))
+                .Callback((string next, Dictionary<string, List<string>> headers, CancellationToken t) =>
+                {
+                    nextLink = next;
                 });
 
             MonitorClientMock.SetupGet(f => f.ActivityLogs).Returns(this.insightsEventOperationsMock.Object);
@@ -81,7 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 filter: ref this.filter,
                 selected: ref this.selected,
                 startDate: startDate,
-                response: response);
+                nextLink: ref this.nextLink);
         }
     }
 }

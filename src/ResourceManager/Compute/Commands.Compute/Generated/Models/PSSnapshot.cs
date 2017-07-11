@@ -20,22 +20,49 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSSnapshot : Snapshot
-    {
-        // Gets or sets the property of 'ResourceGroupName'
-        public string ResourceGroupName
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(Id)) return null;
-                Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
-                Match m = r.Match(Id);
-                return m.Success ? m.Groups["rgname"].Value : null;
-            }
-        }
-    }
+	public class PSSnapshot : Snapshot
+	{
+		// Gets or sets the property of 'ResourceGroupName'
+		public string ResourceGroupName
+		{
+			get
+			{
+				if (string.IsNullOrEmpty(Id)) return null;
+				Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+				Match m = r.Match(Id);
+				return m.Success ? m.Groups["rgname"].Value : null;
+			}
+		}
+
+		[Obsolete("This property is deprecated and will be removed in a future release")]
+		public string AccountType
+		{
+			get
+			{
+				return Sku.Name.ToString();
+			}
+			set
+			{
+				Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value);
+			}
+		}
+
+		[Obsolete("This property is deprecated and will be removed in a future release")]
+		public string OwnerId
+		{
+			get
+			{
+				return ManagedBy;
+			}
+			set
+			{
+				ManagedBy = value;
+			}
+		}
+	}
 }

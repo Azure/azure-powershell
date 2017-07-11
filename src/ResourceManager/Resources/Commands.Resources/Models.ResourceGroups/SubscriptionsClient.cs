@@ -15,9 +15,15 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Collections.Generic;
+
+#if !NETSTANDARD
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Subscriptions.Models;
-using System.Collections.Generic;
+#else
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+#endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -30,7 +36,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="context">Profile containing resources to manipulate</param>
         public SubscriptionsClient(IAzureContext context)
+#if !NETSTANDARD
             : this(AzureSession.Instance.ClientFactory.CreateClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+#else
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+#endif
         {
 
         }
@@ -49,7 +59,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             var locationList = new List<Location>();
 
             var tempResult = this.SubscriptionClient.Subscriptions.ListLocations(subscriptionId);
-            locationList.AddRange(tempResult.Locations);
+            locationList.AddRange(tempResult.Locations());
 
             return locationList;
         }

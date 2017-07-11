@@ -82,8 +82,8 @@
             "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Bar": "System.Collections.Generic.List`1[System.Int32]",
-              "Foo": "System.Collections.Generic.List`1[System.Int32]"
+              "Foo": "System.Collections.Generic.List`1[System.Int32]",
+              "Bar": "System.Collections.Generic.List`1[System.Int32]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -107,8 +107,8 @@
                   "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericTypeArgument.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Bar": "System.Collections.Generic.List`1[System.Int32]",
-                    "Foo": "System.Collections.Generic.List`1[System.Int32]"
+                    "Foo": "System.Collections.Generic.List`1[System.Int32]",
+                    "Bar": "System.Collections.Generic.List`1[System.Int32]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -147,8 +147,8 @@
             "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Bar": "System.Collections.Generic.List`1[System.Int32]",
-              "Foo": "System.Collections.Generic.List`1[System.Int32]"
+              "Foo": "System.Collections.Generic.List`1[System.Int32]",
+              "Bar": "System.Collections.Generic.List`1[System.Int32]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -172,8 +172,8 @@
                   "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeGenericType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Bar": "System.Collections.Generic.List`1[System.Int32]",
-                    "Foo": "System.Collections.Generic.List`1[System.Int32]"
+                    "Foo": "System.Collections.Generic.List`1[System.Int32]",
+                    "Bar": "System.Collections.Generic.List`1[System.Int32]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -212,8 +212,8 @@
             "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Bar": "System.Int32[]",
-              "Foo": "System.Int32[]"
+              "Foo": "System.Int32[]",
+              "Bar": "System.Int32[]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -237,8 +237,8 @@
                   "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test",
                   "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeElementType.Test, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Bar": "System.Int32[]",
-                    "Foo": "System.Int32[]"
+                    "Foo": "System.Int32[]",
+                    "Bar": "System.Int32[]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -832,7 +832,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -862,7 +867,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -892,7 +902,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -920,7 +935,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1617,8 +1637,8 @@
             "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestOutput",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestOutput, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "PropertyOne": "System.String",
-              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType"
+              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType",
+              "PropertyOne": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1629,7 +1649,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1648,8 +1673,8 @@
             "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestOutput",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestOutput, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "PropertyOne": "System.String",
-              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType"
+              "PropertyTwo": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType",
+              "PropertyOne": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1660,7 +1685,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1679,9 +1709,9 @@
             "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName.TestOutput",
             "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputTypeName.TestOutput, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "PropertyOne": "System.String",
               "PropertyThree": "System.Boolean",
-              "PropertyTwo": "System.Int32"
+              "PropertyTwo": "System.Int32",
+              "PropertyOne": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1692,7 +1722,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -1720,7 +1755,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2235,7 +2275,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2249,7 +2294,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2263,7 +2313,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2277,7 +2332,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": [
         "Test-CmdletAlias"
       ]
@@ -2293,7 +2353,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2307,7 +2372,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2321,7 +2391,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2335,7 +2410,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2467,7 +2547,12 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -2891,9 +2976,9 @@
       "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType",
       "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveProperty.TestType, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "PropertyOne": "System.String",
         "PropertyThree": "System.Boolean",
-        "PropertyTwo": "System.Int32"
+        "PropertyTwo": "System.Int32",
+        "PropertyOne": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
@@ -2903,9 +2988,9 @@
       "Name": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType",
       "AssemblyQualifiedName": "StaticAnalysis.Test.CmdletTest.BreakingChange.ChangePropertyType.TestType, TestCmdletsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "PropertyOne": "System.String",
         "PropertyThree": "System.Boolean",
-        "PropertyTwo": "System.Int32"
+        "PropertyTwo": "System.Int32",
+        "PropertyOne": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []

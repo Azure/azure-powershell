@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The Azure Sql Database object</returns>
         internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, databaseName);
             return CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The Azure Sql Database object</returns>
         internal AzureSqlDatabaseModelExpanded GetDatabaseExpanded(string resourceGroupName, string serverName, string databaseName)
         {
-            var resp = Communicator.GetExpanded(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = Communicator.GetExpanded(resourceGroupName, serverName, databaseName);
             return CreateExpandedDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlDatabaseModel> ListDatabases(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((db) =>
             {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>A list of database objects</returns>
         internal ICollection<AzureSqlDatabaseModelExpanded> ListDatabasesExpanded(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.ListExpanded(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.ListExpanded(resourceGroupName, serverName);
 
             return resp.Select((db) =>
             {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             if (!string.IsNullOrEmpty(model.SampleName))
             {
                 // Use AutoRest SDK
-                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new Management.Sql.Models.Database
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new Management.Sql.Models.Database
                 {
                     Location = model.Database.Location,
                     Tags = model.Database.Tags,
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             else
             {
                 // Use Hyak SDK
-                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters
+                var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new DatabaseCreateOrUpdateParameters
                 {
                     Location = model.Database.Location,
                     Tags = model.Database.Tags,
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <param name="databaseName">The name of the Azure Sql Database to delete</param>
         public void RemoveDatabase(string resourceGroupName, string serverName, string databaseName)
         {
-            Communicator.Remove(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         {
             if (!string.IsNullOrEmpty(elasticPoolName))
             {
-                var response = ElasticPoolCommunicator.ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, Util.GenerateTracingId());
+                var response = ElasticPoolCommunicator.ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName);
                 IEnumerable<AzureSqlDatabaseActivityModel> list = response.Select((r) =>
                    {
                        return new AzureSqlDatabaseActivityModel()

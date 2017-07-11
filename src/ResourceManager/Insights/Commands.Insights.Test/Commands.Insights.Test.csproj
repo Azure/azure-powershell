@@ -139,6 +139,7 @@
     <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookTests.cs" />
     <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingTests.cs" />
     <None Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
+    <Compile Include="CustomPrinterTests.cs" />
     <Compile Include="Diagnostics\SetDiagnosticSettingCommandTests.cs" />
     <Compile Include="Diagnostics\GetDiagnosticSettingCommandTests.cs" />
     <Compile Include="ActivityLogs\GetAzureRmLogTests.cs" />
@@ -211,6 +212,12 @@
     </None>
     <None Include="ScenarioTests\UsageMetricsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureSubscriptionIdLogMaxEvents.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.ActivityLogsTests\TestGetAzureSubscriptionIdLogPaged.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestGetAzureRmAlertRuleByName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

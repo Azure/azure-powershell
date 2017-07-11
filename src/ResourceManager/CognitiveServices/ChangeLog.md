@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.8.1
+* Integrate with Cognitive Services Management SDK version 1.0.0.
+* Fix an account name length checking bug.
+
 ## Version 0.8.0
 * Update detailed display of license agreements when creating Cognitive Services resources
 

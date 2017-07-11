@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 3.2.0
+* Add support for Compute Policy CRUD through the following commands:
+    - New-AzureRMDataLakeAnalyticsComputePolicy
+    - Get-AzureRMDataLakeAnalyticsComputePolicy
+    - Remove-AzureRMDataLakeAnalyticsComputePolicy
+    - Update-AzureRMDataLakeAnalyticsComputePolicy
+* Add support for job relationship metadata for help with recurring jobs and job pipelines. The following commands were updated or added:
+    - Submit-AzureRMDataLakeAnalyticsJob
+    - Get-AzureRMDataLakeAnalyticsJob
+    - Get-AzureRMDataLakeAnalyticsJobRecurrence
+    - Get-AzureRMDataLakeAnalyticsJobPipeline
+* Updated the token audience for job and catalog APIs to use the correct Data Lake specific audience instead of the Azure Resource audience.
+    
 ## Version 3.1.0
 
 ## Version 3.0.1

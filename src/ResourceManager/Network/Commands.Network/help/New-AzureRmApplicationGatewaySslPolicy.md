@@ -13,8 +13,10 @@ Creates an SSL policy for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySslPolicy -DisabledSslProtocols <System.Collections.Generic.List`1[System.String]>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmApplicationGatewaySslPolicy
+ [-DisabledSslProtocols <System.Collections.Generic.List`1[System.String]>] [-PolicyType <String>]
+ [-PolicyName <String>] [-CipherSuite <System.Collections.Generic.List`1[System.String]>]
+ [-MinProtocolVersion <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +26,27 @@ The **New-AzureRmApplicationGatewaySslPolicy** cmdlet creates an SSL policy for 
 
 ### 1:
 ```
-
+PS C:\>$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
+This command creates a custom policy.
+
 ## PARAMETERS
+
+### -CipherSuite
+Ssl cipher suites to be enabled in the specified order to application gateway
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DisabledSslProtocols
 Specifies which protocols are disabled.
@@ -43,7 +62,52 @@ Parameter Sets: (All)
 Aliases: 
 Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinProtocolVersion
+Minimum version of Ssl protocol to be supported on application gateway
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyName
+Name of Ssl predefined policy
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicyType
+Type of Ssl Policy
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

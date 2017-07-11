@@ -14,7 +14,7 @@ Creates a local configuration object for a container service.
 
 ```
 New-AzureRmContainerServiceConfig [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-OrchestratorType] <ContainerServiceOchestratorTypes>] [[-MasterCount] <Int32>]
+ [[-OrchestratorType] <ContainerServiceOrchestratorTypes>] [[-MasterCount] <Int32>]
  [[-MasterDnsPrefix] <String>] [[-AgentPoolProfile] <ContainerServiceAgentPoolProfile[]>]
  [[-WindowsProfileAdminUsername] <String>] [[-WindowsProfileAdminPassword] <String>]
  [[-AdminUsername] <String>] [[-SshPublicKey] <String[]>] [[-VmDiagnosticsEnabled] <Boolean>]
@@ -30,7 +30,7 @@ Provide this object to the New-AzureRmContainerService cmdlet to create a contai
 
 ### Example 1: Create a container service configuration
 ```
-PS C:\>$Container = New-AzureRmContainerServiceConfig -Location "Australia Southeast" -OrchestratorType "DCOS" -MasterDnsPrefix "MasterResourceGroup17" -AdminUsername "AcsLinuxAdmin" -SshPublicKey "<ssh-key>" | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
+PS C:\> $Container = New-AzureRmContainerServiceConfig -Location "Australia Southeast" -OrchestratorType "DCOS" -MasterDnsPrefix "MasterResourceGroup17" -AdminUsername "AcsLinuxAdmin" -SshPublicKey "<ssh-key>" | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
 ```
 
 This command creates a container, and then stores it in the $Container variable.
@@ -139,7 +139,7 @@ Specifies the type of orchestrator for the container service.
 The acceptable values for this parameter are: DCOS and Swarm.
 
 ```yaml
-Type: ContainerServiceOchestratorTypes
+Type: ContainerServiceOrchestratorTypes
 Parameter Sets: (All)
 Aliases: 
 Accepted values: Swarm, DCOS, Custom, Kubernetes
