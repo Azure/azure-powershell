@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
                     AzureDataLakeStoreFileSystemEndpointSuffix = AzureEnvironmentConstants.AzureDataLakeStoreFileSystemEndpointSuffix,
                     GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
+                    DataLakeEndpointResourceId = AzureEnvironmentConstants.AzureDataLakeServiceEndpointResourceId,
                     AdTenant = "Common"
                 }
             },
@@ -223,6 +224,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public string GraphEndpointResourceId { get; set; }
 
         /// <summary>
+        /// The token audience required for communicating with the Azure Active Directory Data Lake service in this environment
+        /// </summary>
+        public string DataLakeEndpointResourceId { get; set; }
+
+        /// <summary>
         /// The domain name suffix for Azure DataLake Catalog and Job services created in this environment
         /// </summary>
         public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
@@ -268,7 +274,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 PublishSettingsFileUrl = "PublishSettingsFileUrl",
                 ManagementPortalUrl = "ManagementPortalUrl",
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix",
-                AzureDataLakeStoreFileSystemEndpointSuffix = "AzureDataLakeStoreFileSystemEndpointSuffix";
+                AzureDataLakeStoreFileSystemEndpointSuffix = "AzureDataLakeStoreFileSystemEndpointSuffix",
+                DataLakeEndpointResourceId = "DataLakeEndpointResourceId";
 
         }
     }

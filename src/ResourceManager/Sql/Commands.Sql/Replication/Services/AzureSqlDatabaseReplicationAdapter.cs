@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <returns>The Azure SQL Database object</returns>
         internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
         {
-            var resp = DatabaseCommunicator.Get(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = DatabaseCommunicator.Get(resourceGroupName, serverName, databaseName);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <returns>The Azure SQL Database Copy object</returns>
         internal AzureSqlDatabaseCopyModel CopyDatabase(string copyResourceGroup, string copyServerName, AzureSqlDatabaseCopyModel model)
         {
-            var resp = ReplicationCommunicator.CreateCopy(copyResourceGroup, copyServerName, model.CopyDatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
+            var resp = ReplicationCommunicator.CreateCopy(copyResourceGroup, copyServerName, model.CopyDatabaseName, new DatabaseCreateOrUpdateParameters()
             {
                 Location = model.CopyLocation,
                 Properties = new DatabaseCreateOrUpdateProperties()
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureReplicationLinkModel CreateLink(string resourceGroupName, string serverName, AzureReplicationLinkModel model)
         {
-            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
+            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.DatabaseName, new DatabaseCreateOrUpdateParameters()
             {
                 Location = model.PartnerLocation,
                 Properties = new DatabaseCreateOrUpdateProperties()
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             // partnerResourceGroupName is required because it is not exposed in any reponse from the service.
 
-            var resp = ReplicationCommunicator.GetLink(resourceGroupName, serverName, databaseName, linkId, Util.GenerateTracingId());
+            var resp = ReplicationCommunicator.GetLink(resourceGroupName, serverName, databaseName, linkId);
 
             return CreateReplicationLinkModelFromReplicationLinkResponse(resourceGroupName, serverName, databaseName, partnerResourceGroupName, resp);
         }
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             CheckPartnerResourceGroupValid(partnerResourceGroupName);
 
-            var resp = ReplicationCommunicator.ListLinks(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = ReplicationCommunicator.ListLinks(resourceGroupName, serverName, databaseName);
 
             return resp.Select((link) =>
             {
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         private void CheckPartnerResourceGroupValid(string partnerResourceGroupName)
         {
             // checking if the resource group is valid as a partner resource group
-            ServerCommunicator.List(partnerResourceGroupName, Util.GenerateTracingId());
+            ServerCommunicator.ListByResourceGroup(partnerResourceGroupName);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             AzureReplicationLinkModel link = GetLink(resourceGroupName, serverName, databaseName, partnerResourceGroupName, partnerServerName);
 
-            ReplicationCommunicator.RemoveLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
+            ReplicationCommunicator.RemoveLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId);
         }
 
         /// <summary>
@@ -312,11 +312,11 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
 
             if (allowDataLoss)
             {
-                ReplicationCommunicator.FailoverLinkAllowDataLoss(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
+                ReplicationCommunicator.FailoverLinkAllowDataLoss(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId);
             }
             else
             {
-                ReplicationCommunicator.FailoverLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
+                ReplicationCommunicator.FailoverLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId);
             }
 
             return GetLink(link.PartnerResourceGroupName, link.PartnerServerName, link.DatabaseName, link.PartnerResourceGroupName, link.PartnerServerName);

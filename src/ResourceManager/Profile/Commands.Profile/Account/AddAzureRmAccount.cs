@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -25,6 +24,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -236,8 +236,14 @@ namespace Microsoft.Azure.Commands.Profile
 
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
 
-                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, _environment, TenantId, SubscriptionId,
-                    SubscriptionName, password));
+                WriteObject((PSAzureProfile) profileClient.Login(
+					azureAccount, 
+					_environment, 
+					TenantId, 
+					SubscriptionId,
+                    SubscriptionName, 
+                    password, 
+                    (s) => WriteWarning(s)));
             }
         }
 
@@ -268,7 +274,7 @@ namespace Microsoft.Azure.Commands.Profile
                 invoker.Invoke();
 #if DEBUG
             }
-            catch
+            catch (Exception) when (TestMockSupport.RunningMocked)
             {
                 // This will throw exception for tests, ignore.
             }

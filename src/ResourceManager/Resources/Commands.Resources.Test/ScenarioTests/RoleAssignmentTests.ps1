@@ -171,6 +171,60 @@ function Test-RaByResource
 
 <#
 .SYNOPSIS
+Tests validate input parameters 
+#>
+function Test-RaValidateInputParameters
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
+    $definitionName = 'Owner'
+    $groups = Get-AzureRmADGroup | Select-Object -Last 1 -Wait
+    Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
+    $resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
+    Assert-NotNull $resource "Cannot find any resource to continue test execution."
+    
+    # Test
+    # Check if Scope is valid.
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
+    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
+    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
+    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
+    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    
+    # Check if ResourceType is valid
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("4FAB3AF0-E7CF-4305-97D1-23A65EDCE8E6")
+    Assert-AreEqual $resource.ResourceType "Microsoft.Sql/servers"
+    
+    # Below invalid resource type should not return 'Not supported api version'.
+    $resource.ResourceType = "Microsoft.Sql/"
+    $invalidResourceType = "Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testrg16987/providers/Microsoft.Sql/testserver13673' should have even number of parts."
+    Assert-Throws { New-AzureRmRoleAssignment `
+                        -ObjectId $groups[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -ResourceGroupName $resource.ResourceGroupName `
+                        -ResourceType $resource.ResourceType `
+                        -ResourceName $resource.Name } $invalidResourceType   
+}
+
+<#
+.SYNOPSIS
 Tests verifies creation and deletion of a RoleAssignments for Service principal name 
 #>
 function Test-RaByServicePrincipal

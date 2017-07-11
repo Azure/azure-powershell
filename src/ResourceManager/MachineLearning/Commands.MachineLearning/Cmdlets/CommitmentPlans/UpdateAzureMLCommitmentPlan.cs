@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
+    using Common.Authentication.Abstractions;
     using System.Collections.Generic;
     using System.Linq;
 

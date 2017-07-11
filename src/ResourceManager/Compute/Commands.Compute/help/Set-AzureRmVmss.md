@@ -12,15 +12,15 @@ Sets specific actions on a specified VMSS.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
-Set-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Reimage]
+Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Reimage] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
-Set-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-ReimageAll]
+Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-ReimageAll] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ The only action this cmdlet supports is Reimage.
 
 ### Example 1: Reimage a VMSS
 ```
-PS C:\>Set-AzureRmVmss -Reimage -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
+PS C:\> Set-AzureRmVmss -Reimage -ResourceGroupName "ContosoGroup" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command reimages the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
@@ -44,7 +44,7 @@ Indicates that the cmdlet reimages the VMSS.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParameters
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True
@@ -59,7 +59,7 @@ Indicates that the cmdlet reimages all the disks in the VMSS.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True

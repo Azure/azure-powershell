@@ -199,8 +199,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2Mz9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2Mz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -250,8 +250,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2Mz9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2Mz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -303,9 +303,63 @@
       },
       "StatusCode": 200
     },
+{
+      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourcegroups/sql-ie-cmdlet-test-rg90063?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlZ3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzP2FwaS12ZXJzaW9uPTIwMTYtMDItMDE=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"Australia East\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "36"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063\",\r\n  \"name\": \"sql-ie-cmdlet-test-rg90063\",\r\n  \"location\": \"australiaeast\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "212"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "c2c9b15c-5ef9-4807-b2dd-b51e4907ca7f"
+        ],
+        "x-ms-correlation-request-id": [
+          "c2c9b15c-5ef9-4807-b2dd-b51e4907ca7f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160418T174218Z:c2c9b15c-5ef9-4807-b2dd-b51e4907ca7f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 18 Apr 2016 17:42:17 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
     {
-      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2Mz9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2Mz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"12.0\",\r\n    \"administratorLogin\": \"testuser\",\r\n    \"administratorLoginPassword\": \"IEp@ssw0rd8170\"\r\n  },\r\n  \"location\": \"Australia East\"\r\n}",
       "RequestHeaders": {
@@ -416,6 +470,69 @@
         ]
       },
       "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2Mz9hcGktdmVyc2lvbj0yMDE1LTA1LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"12.0\",\r\n    \"administratorLogin\": \"testuser\",\r\n    \"administratorLoginPassword\": \"IEp@ssw0rd8170\"\r\n  },\r\n  \"location\": \"Australia East\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "176"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "43d7334f-9de7-4ec2-88f6-5da300f200f7"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063\",\r\n  \"name\": \"sql-ie-cmdlet-server90063\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"Australia East\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"sql-ie-cmdlet-server90063.database.windows.net\",\r\n    \"administratorLogin\": \"testuser\",\r\n    \"administratorLoginPassword\": \"IEp@ssw0rd8170\",\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "537"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "23c928d8-ff15-4e44-bb09-02de954be126"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Preference-Applied": [
+          "return-content"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "050ed8f2-7b9e-484d-8623-555577259096"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160418T174314Z:050ed8f2-7b9e-484d-8623-555577259096"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Mon, 18 Apr 2016 17:43:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063?api-version=2014-04-01",

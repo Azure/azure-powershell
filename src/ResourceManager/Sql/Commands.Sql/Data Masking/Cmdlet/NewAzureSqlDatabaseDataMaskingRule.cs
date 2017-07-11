@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>A model object</returns>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> GetEntity()
         {
-            return ModelAdapter.GetDatabaseDataMaskingRules(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseDataMaskingRules(ResourceGroupName, ServerName, DatabaseName);
         }
 
         /// <summary>

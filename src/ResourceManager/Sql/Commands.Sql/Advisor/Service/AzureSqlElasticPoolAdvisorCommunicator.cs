@@ -35,27 +35,27 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// <summary>
         /// Gets the Azure Sql Elastic Pool Advisor
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, bool expandRecommendedActions, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor Get(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.Get(resourceGroupName, serverName, elasticPoolName, advisorName, expand).Advisor;
+            return GetCurrentSqlClient().ElasticPoolAdvisors.Get(resourceGroupName, serverName, elasticPoolName, advisorName, expand).Advisor;
         }
 
         /// <summary>
         /// Lists Azure Sql Elastic Pool Advisors
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, string elasticPoolName, bool expandRecommendedActions, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.Advisor> List(string resourceGroupName, string serverName, string elasticPoolName, bool expandRecommendedActions)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.List(resourceGroupName, serverName, elasticPoolName, expand).Advisors;
+            return GetCurrentSqlClient().ElasticPoolAdvisors.List(resourceGroupName, serverName, elasticPoolName, expand).Advisors;
         }
 
         /// <summary>
         /// Update Advisor Auto Execute Status
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string autoExecuteStatus, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string autoExecuteStatus)
         {
-            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.Update(resourceGroupName, serverName, elasticPoolName, advisorName,
+            return GetCurrentSqlClient().ElasticPoolAdvisors.Update(resourceGroupName, serverName, elasticPoolName, advisorName,
                     new AdvisorUpdateParameters
                     {
                         Properties = new AdvisorUpdateProperties()

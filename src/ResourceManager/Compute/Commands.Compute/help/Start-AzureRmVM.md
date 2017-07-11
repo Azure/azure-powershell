@@ -29,7 +29,7 @@ The **Start-AzureRmVM** cmdlet starts an Azure virtual machine.
 
 ### Example 1: Start a virtual machine
 ```
-PS C:\>Start-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Start-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command starts the virtual machine named VirtualMachine07 in ResourceGroup11.

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <returns>The ServiceObjective</returns>
         public AzureSqlServerServiceObjectiveModel GetServiceObjective(string resourceGroupName, string serverName, string serviceObjectiveName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, serviceObjectiveName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, serviceObjectiveName);
             return CreateServiceObjectiveModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <returns>A list of all the ServiceObjectives</returns>
         public List<AzureSqlServerServiceObjectiveModel> ListServiceObjectives(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName);
 
             return resp.Select((s) =>
             {
