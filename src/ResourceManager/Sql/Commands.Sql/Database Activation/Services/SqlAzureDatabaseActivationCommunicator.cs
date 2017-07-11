@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
-using System;
 
 namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
 {
@@ -59,17 +58,17 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <summary>
         /// Pause a Azure SQL Data Warehouse database.
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database Pause(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database Pause(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseActivation.Pause(resourceGroupName, serverName, databaseName).Database;
+            return GetCurrentSqlClient().DatabaseActivation.Pause(resourceGroupName, serverName, databaseName).Database;
         }
 
         /// <summary>
         /// Resume a Azure SQL Data Warehouse database.
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database Resume(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.Database Resume(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseActivation.Resume(resourceGroupName, serverName, databaseName).Database;
+            return GetCurrentSqlClient().DatabaseActivation.Resume(resourceGroupName, serverName, databaseName).Database;
         }
 
         /// <summary>
@@ -77,15 +76,13 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
+        // Currently, this is the only resource endpoint used for both AzureCloud and all dogfood for Data Lake
+        // This ensures that existing scripts will automatically pick up the right environment with no changes.
+        private string _defaultDataLakeResourceEndpoint = "https://datalake.azure.net";
+
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
@@ -106,6 +110,21 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("GraphEndpointResourceId", "GraphResourceId")]
         public string GraphAudience { get; set; }
 
+        [Parameter(Position = 19, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The audience for tokens authenticating with the AD Data Lake services Endpoint.")]
+        [Alias("DataLakeEndpointResourceId", "DataLakeResourceId")]
+        public string DataLakeAudience
+        {
+            get
+            {
+                return _defaultDataLakeResourceEndpoint;
+            }
+            set
+            {
+                _defaultDataLakeResourceEndpoint = value;
+            }
+        }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -166,6 +185,8 @@ namespace Microsoft.Azure.Commands.Profile
                         SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AdTenant, AdTenant);
                         SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
                             GraphAudience);
+                        SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.DataLakeEndpointResourceId,
+                            DataLakeAudience);
                         profileClient.AddOrSetEnvironment(newEnvironment);
                         WriteObject(new PSAzureEnvironment(newEnvironment));
                     }

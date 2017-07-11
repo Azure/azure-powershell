@@ -143,7 +143,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/connections"
     $location = Get-ProviderLocation $resourceTypeParent
-    
+
 	try 
      {
       # Create the resource group
@@ -167,8 +167,11 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
       $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10
       $localnetGateway = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
 
-	  # Create IpsecPolicy
-	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 300 -SADataSizeKilobytes 1024 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+	  # Create IpsecPolicy and test defaults creation
+	  $ipsecPolicy = New-AzureRmIpsecPolicy -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+	  Assert-AreEqual $ipsecPolicy.SALifeTimeSeconds 27000
+	  Assert-AreEqual $ipsecPolicy.SADataSizeKilobytes 102400000 
+	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 3000 -SADataSizeKilobytes 10000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 
       # Create & Get VirtualNetworkGatewayConnection w/ policy based TS
       $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy

@@ -14,48 +14,12 @@
 
 <#
 .SYNOPSIS
-Tests setting and getting blob auditing policy with classic storage
-#>
-function Test-BlobAuditingUpdatePolicyWithClassicStorage
-{
-	# Setup
-	$testSuffix = 10362
-	Create-BlobAuditingClassicTestEnvironment $testSuffix
-	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
-
-	try 
-	{
-		# Test - Blob database Auditing
-		Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-		$policy = Get-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
-		# Assert
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
-		Assert-AreEqual $policy.AuditState "Enabled"  
-
-		# Test - Blob server Auditing
-		Set-AzureRmSqlServerAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
-		$policy = Get-AzureRmSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
-	
-		# Assert
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
-		Assert-AreEqual $policy.AuditState "Enabled" 
-	}
-	finally
-	{
-		# Cleanup
-		Remove-BlobAuditingTestEnvironment $testSuffix
-	}
-}
-
-<#
-.SYNOPSIS
 Tests that when setting the storage account property's value in a database's blob auditing policy, that value is later fetched properly
 #>
 function Test-BlobAuditingDatabaseUpdatePolicyWithStorage
 {
 	# Setup
-	$testSuffix = 1015632
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -83,7 +47,7 @@ Tests the flow in which re-setting the policy with storage account that has the 
 function Test-BlobAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion
 {
 	# Setup
-	$testSuffix = 912
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -123,7 +87,7 @@ Tests that when setting the storage account property's value in a server's blob 
 function Test-BlobAuditingServerUpdatePolicyWithStorage
 {
 	# Setup
-	$testSuffix = 2419
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -152,7 +116,7 @@ storage account, you don't need to provide it.
 function Test-BlobAuditingDatabaseUpdatePolicyKeepPreviousStorage
 {
 	# Setup
-	$testSuffix = 35612
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -185,7 +149,7 @@ storage account, you don't need to provide it.
 function Test-BlobAuditingServerUpdatePolicyKeepPreviousStorage
 {
 	# Setup
-	$testSuffix = 425782
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -217,7 +181,7 @@ Tests that when asking to disable blob auditing of a database, later when fetchi
 function Test-BlobAuditingDisableDatabaseAuditing
 {
 	# Setup
-	$testSuffix = 90252
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -252,7 +216,7 @@ Tests that when asking to disable auditing of a server, later when fetching the 
 function Test-BlobAuditingDisableServerAuditing
 {
 	# Setup
-	$testSuffix = 81522
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -280,7 +244,7 @@ Tests that a failure occurs when trying to set a policy to a database, and that 
 function Test-BlobAuditingFailedDatabaseUpdatePolicyWithNoStorage
 {
 	# Setup
-	$testSuffix = 15152
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -303,7 +267,7 @@ Tests that a failure occurs when trying to set a policy to a server, and that po
 function Test-BlobAuditingFailedServerUpdatePolicyWithNoStorage
 {
 	# Setup
-	$testSuffix = 16152
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -326,7 +290,7 @@ Tests that it is impossible to use non existing database with the cmdlets
 function Test-BlobAuditingFailWithBadDatabaseIndentity
 {
 	# Setup
-	$testSuffix = 18152
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -352,7 +316,7 @@ Tests that it is impossible to use non existing server with the cmdlets
 function Test-BlobAuditingFailWithBadServerIndentity
 {
 	# Setup
-	$testSuffix = 19152
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -378,7 +342,7 @@ Tests that storage key rotation process for a policy of a Sql database server is
 function Test-BlobAuditingServerStorageKeyRotation
 {
 	# Setup
-	$testSuffix = 60522
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -419,7 +383,7 @@ Tests that storage key rotation process for a policy of a Sql database is manage
 function Test-BlobAuditingDatabaseStorageKeyRotation
 {
 	# Setup
-	$testSuffix = 68512
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -460,7 +424,7 @@ Tests that after setting the retention values to a server auditing policy, this 
 function Test-BlobAuditingServerRetentionKeepProperties
 {
 	# Setup
-	$testSuffix = 2772
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -496,7 +460,7 @@ Tests that after setting the retention values to a database auditing policy, thi
 function Test-BlobAuditingDatabaseRetentionKeepProperties
 {
 	# Setup
-	$testSuffix = 215382
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -532,7 +496,7 @@ Tests that when modifying properties of a databases's blob auditing policy, thes
 function Test-BlobAuditingOnDatabase
 {
 	# Setup
-	$testSuffix = 79222
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$dbName = $params.databaseName
@@ -587,7 +551,7 @@ Tests that when modifying properties of a server's blob auditing policy, these p
 function Test-BlobAuditingOnServer
 {
 	# Setup
-	$testSuffix = 8812673
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -637,7 +601,7 @@ Tests that when modifying the auditActionGroup property of a blob auditing polic
 #>
 function Test-BlobAuditingWithAuditActionGroups
 {
-	$testSuffix = 50182
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 
@@ -731,7 +695,7 @@ Tests moving between deprecated cmdlets to new cmdlet on server level
 function Test-DeprecatedServerAuditingCmdletToBlobAuditingNewCmdlet
 {
 	# Setup
-	$testSuffix = 14673
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$retentionTableIdentifier = "retentionTableIdentifier" + $testSuffix;
@@ -786,7 +750,7 @@ Tests moving between deprecated cmdlets to new cmdlet on database level
 function Test-DeprecatedDatabaseAuditingCmdletToBlobAuditingNewCmdlet
 {
 	# Setup
-	$testSuffix = 12947
+	$testSuffix = getAssetName
 	Create-BlobAuditingTestEnvironment $testSuffix
 	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	$retentionTableIdentifier = "retentionTableIdentifier" + $testSuffix;

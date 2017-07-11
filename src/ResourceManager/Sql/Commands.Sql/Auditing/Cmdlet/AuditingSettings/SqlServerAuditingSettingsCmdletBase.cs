@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         protected override ServerBlobAuditingSettingsModel GetEntity()
         {
             ServerBlobAuditingSettingsModel model;
-            ModelAdapter.GetServerBlobAuditingPolicyV2(ResourceGroupName, ServerName, clientRequestId, out model);
+            ModelAdapter.GetServerBlobAuditingPolicyV2(ResourceGroupName, ServerName, out model);
             return model;
         }
 
@@ -61,8 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="baseModel">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel baseModel)
         {
-            ModelAdapter.SetServerAuditingPolicy(baseModel, clientRequestId,
-                DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+            ModelAdapter.SetServerAuditingPolicy(baseModel, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
           
             return null;
         }

@@ -14,6 +14,7 @@
 
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.Azure.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 using System.Security;
 using System.Threading.Tasks;
 
@@ -50,8 +51,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             });
             task.Start();
             var key = await task.ConfigureAwait(false);
-
+#if !NETSTANDARD
             return await context.AcquireTokenAsync(audience, new ClientCredential(clientId, key));
+#else
+            return await context.AcquireTokenAsync(audience, new ClientCredential(clientId,
+                ConversionUtilities.SecureStringToString(key)));
+#endif
         }
     }
 }

@@ -520,6 +520,60 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Agent &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlSyncAgentDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncAgentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Agent &apos;{0}&apos; for  Resource Group &apos;{1}&apos; ?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncAgentWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncAgentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Group &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlSyncGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Group &apos;{0}&apos; for database &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Member &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlSyncMemberDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncMemberDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Sync Member &apos;{0}&apos; for Sync Group &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlSyncMemberWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlSyncMemberWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing data masking rule for column:&quot;{0}&quot; table:&quot;{1}&quot; schema:&quot;{2}&quot;.
         /// </summary>
         internal static string RemoveDatabaseDataMaskingRuleDescription {
@@ -714,6 +768,33 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string StorageAccountNotFound {
             get {
                 return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Agent with name: ‘{0}&apos; already exists in Resource Group &apos;{1}&apos;..
+        /// </summary>
+        internal static string SyncAgentNameExists {
+            get {
+                return ResourceManager.GetString("SyncAgentNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Group with name: ‘{0}&apos; already exists in database &apos;{1}&apos;..
+        /// </summary>
+        internal static string SyncGroupNameExists {
+            get {
+                return ResourceManager.GetString("SyncGroupNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Member with name: ‘{0}&apos; already exists in Sync Group &apos;{1}&apos;..
+        /// </summary>
+        internal static string SyncMemberNameExists {
+            get {
+                return ResourceManager.GetString("SyncMemberNameExists", resourceCulture);
             }
         }
         

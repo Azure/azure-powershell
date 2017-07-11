@@ -113,13 +113,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetElasticPoolAdvisor");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateElasticPoolAdvisor()
-        {
-            RunPowerShellTest("Test-UpdateElasticPoolAdvisor");
-        }
-
         #endregion
     }
 }

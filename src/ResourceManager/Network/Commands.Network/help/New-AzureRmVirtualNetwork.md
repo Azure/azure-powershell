@@ -25,7 +25,7 @@ The **New-AzureRmVirtualNetwork** cmdlet creates an Azure virtual network.
 
 ## EXAMPLES
 
-### 1:
+### 1:  Create a virtual network with two subnets
 ```
 New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet 

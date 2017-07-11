@@ -12,7 +12,7 @@ Creates an IPSec Policy.
 ## SYNTAX
 
 ```
-New-AzureRmIpsecPolicy -SALifeTimeSeconds <Int32> -SADataSizeKilobytes <Int32> -IpsecEncryption <String>
+New-AzureRmIpsecPolicy [-SALifeTimeSeconds <Int32>] [-SADataSizeKilobytes <Int32>] -IpsecEncryption <String>
  -IpsecIntegrity <String> -IkeEncryption <String> -IkeIntegrity <String> -DhGroup <String> -PfsGroup <String>
  [<CommonParameters>]
 ```
@@ -136,7 +136,7 @@ Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +151,7 @@ Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

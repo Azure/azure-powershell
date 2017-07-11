@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {

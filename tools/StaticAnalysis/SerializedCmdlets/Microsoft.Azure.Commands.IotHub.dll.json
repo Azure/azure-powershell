@@ -13,12 +13,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSSharedAccessSignatureAuthorizationRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "KeyName": "System.String",
               "PrimaryKey": "System.String",
-              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "SecondaryKey": "System.String"
             },
             "ElementType": null,
@@ -31,8 +31,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -50,7 +50,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -66,7 +66,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -82,7 +82,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -98,7 +98,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -107,14 +107,14 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "SecondaryKey",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -123,15 +123,15 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "Rights",
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSAccessRights",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -152,7 +152,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -174,7 +174,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -196,7 +196,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -218,7 +218,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -227,9 +227,9 @@
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
+                "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -240,7 +240,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -249,9 +249,9 @@
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
+                "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -262,8 +262,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-                  "Name": "PSAccessRights",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -296,7 +296,7 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IEnumerable",
+            "Name": "System.Collections.Generic.IEnumerable`1[System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -315,7 +315,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -331,7 +331,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -347,7 +347,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -372,7 +372,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -394,7 +394,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -416,7 +416,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -455,12 +455,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSSharedAccessSignatureAuthorizationRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "KeyName": "System.String",
               "PrimaryKey": "System.String",
-              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "SecondaryKey": "System.String"
             },
             "ElementType": null,
@@ -473,8 +473,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -492,7 +492,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -508,7 +508,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -524,7 +524,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -546,7 +546,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -568,7 +568,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -590,7 +590,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -624,16 +624,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHubJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
-              "FailureReason": "System.String",
-              "JobId": "System.String",
-              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
               "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-              "StatusMessage": "System.String",
-              "Type": "System.String"
+              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+              "JobId": "System.String",
+              "Type": "System.String",
+              "FailureReason": "System.String",
+              "StatusMessage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -645,8 +645,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -664,7 +664,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -680,7 +680,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -696,7 +696,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -718,7 +718,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -740,7 +740,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -762,7 +762,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -796,12 +796,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSSharedAccessSignatureAuthorizationRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
+              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "KeyName": "System.String",
               "PrimaryKey": "System.String",
-              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "SecondaryKey": "System.String"
             },
             "ElementType": null,
@@ -814,8 +814,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -833,7 +833,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -849,7 +849,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -865,7 +865,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -887,7 +887,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -909,7 +909,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -931,7 +931,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -965,8 +965,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -984,7 +984,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1000,7 +1000,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1022,7 +1022,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1044,7 +1044,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1078,18 +1078,18 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-              "Resourcegroup": "System.String",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-              "Subscriptionid": "System.String",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "Subscriptionid": "System.String",
+              "Resourcegroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1101,8 +1101,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1120,7 +1120,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1136,7 +1136,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1158,7 +1158,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1180,7 +1180,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1207,7 +1207,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1241,8 +1241,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1260,7 +1260,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1276,7 +1276,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1298,7 +1298,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1320,7 +1320,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1354,8 +1354,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IList",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription]",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1373,7 +1373,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1389,7 +1389,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1411,7 +1411,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1433,7 +1433,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1467,7 +1467,7 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IEnumerable",
+            "Name": "System.Collections.Generic.IEnumerable`1[System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1486,7 +1486,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1502,7 +1502,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1518,7 +1518,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1537,7 +1537,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1559,7 +1559,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1581,7 +1581,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1603,7 +1603,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1628,7 +1628,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1664,18 +1664,18 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-              "Resourcegroup": "System.String",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-              "Subscriptionid": "System.String",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "Subscriptionid": "System.String",
+              "Resourcegroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1691,7 +1691,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1707,7 +1707,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1723,8 +1723,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHubSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1739,7 +1739,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int64",
+            "Name": "System.Int64",
             "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1755,7 +1755,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1771,18 +1771,19 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHubInputProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
-              "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-              "Comments": "System.String",
-              "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
-              "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
               "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
-              "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+              "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
               "OperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-              "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]"
+              "Routing": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
+              "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
+              "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+              "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
+              "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+              "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
+              "Comments": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1803,7 +1804,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1825,7 +1826,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1847,8 +1848,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-                  "Name": "PSIotHubSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1869,7 +1870,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int64",
+                  "Name": "System.Int64",
                   "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1891,7 +1892,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1913,18 +1914,19 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-                  "Name": "PSIotHubInputProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
-                    "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-                    "Comments": "System.String",
-                    "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
-                    "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
                     "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
-                    "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+                    "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
                     "OperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-                    "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]"
+                    "Routing": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
+                    "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
+                    "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+                    "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
+                    "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+                    "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
+                    "Comments": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -1957,16 +1959,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHubJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
-              "FailureReason": "System.String",
-              "JobId": "System.String",
-              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
               "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-              "StatusMessage": "System.String",
-              "Type": "System.String"
+              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+              "JobId": "System.String",
+              "Type": "System.String",
+              "FailureReason": "System.String",
+              "StatusMessage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1982,7 +1984,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1998,7 +2000,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2014,7 +2016,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2036,7 +2038,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2058,7 +2060,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2080,7 +2082,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2114,16 +2116,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHubJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
-              "FailureReason": "System.String",
-              "JobId": "System.String",
-              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
               "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-              "StatusMessage": "System.String",
-              "Type": "System.String"
+              "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+              "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+              "JobId": "System.String",
+              "Type": "System.String",
+              "FailureReason": "System.String",
+              "StatusMessage": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2139,7 +2141,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2155,7 +2157,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2171,7 +2173,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2187,7 +2189,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2209,7 +2211,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2231,7 +2233,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2253,7 +2255,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2275,7 +2277,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2312,7 +2314,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2328,7 +2330,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2350,7 +2352,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2372,7 +2374,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2406,7 +2408,7 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "IEnumerable",
+            "Name": "System.Collections.Generic.IEnumerable`1[System.String]",
             "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2425,7 +2427,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2441,7 +2443,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2457,7 +2459,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2476,7 +2478,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2498,7 +2500,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2520,7 +2522,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2542,7 +2544,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2567,7 +2569,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2603,8 +2605,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2622,7 +2624,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2638,7 +2640,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2654,7 +2656,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2676,7 +2678,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2698,7 +2700,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2720,7 +2722,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2754,18 +2756,18 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Id": "System.String",
-              "Location": "System.String",
-              "Name": "System.String",
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-              "Resourcegroup": "System.String",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-              "Subscriptionid": "System.String",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-              "Type": "System.String"
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "Subscriptionid": "System.String",
+              "Resourcegroup": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2781,7 +2783,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2797,7 +2799,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2813,8 +2815,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSIotHubSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2829,7 +2831,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int64",
+            "Name": "System.Int64",
             "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2845,7 +2847,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Int64",
+            "Name": "System.Int64",
             "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2861,7 +2863,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2877,7 +2879,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2893,7 +2895,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "TimeSpan",
+            "Name": "System.TimeSpan",
             "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2909,7 +2911,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "TimeSpan",
+            "Name": "System.TimeSpan",
             "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2925,7 +2927,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2943,7 +2945,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Boolean",
+            "Name": "System.Boolean",
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2959,12 +2961,12 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSCloudToDeviceProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
               "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
-              "MaxDeliveryCount": "System.Nullable`1[System.Int32]"
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+              "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -2979,9 +2981,68 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-            "Name": "PSOperationsMonitoringProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "RoutingProperties",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Endpoints": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
+              "FallbackRoute": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
+              "Routes": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Routes",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections.Generic",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata"
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "FallbackRoute",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.IotHub.Models",
+            "Name": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "IsEnabled": "System.Boolean",
+              "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
+              "Condition": "System.String",
+              "Source": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": []
           },
@@ -3001,7 +3062,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3023,7 +3084,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3050,8 +3111,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-                  "Name": "PSIotHubSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3072,7 +3133,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int64",
+                  "Name": "System.Int64",
                   "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3094,7 +3155,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3116,7 +3177,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3143,7 +3204,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Int64",
+                  "Name": "System.Int64",
                   "AssemblyQualifiedName": "System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3165,7 +3226,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3187,7 +3248,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3214,7 +3275,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3236,7 +3297,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3258,7 +3319,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "TimeSpan",
+                  "Name": "System.TimeSpan",
                   "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3280,7 +3341,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "TimeSpan",
+                  "Name": "System.TimeSpan",
                   "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3302,7 +3363,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3326,7 +3387,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Boolean",
+                  "Name": "System.Boolean",
                   "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3348,7 +3409,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3370,7 +3431,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3397,12 +3458,12 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-                  "Name": "PSCloudToDeviceProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
                     "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
-                    "MaxDeliveryCount": "System.Nullable`1[System.Int32]"
+                    "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+                    "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3423,7 +3484,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3445,7 +3506,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3472,8 +3533,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-                  "Name": "PSOperationsMonitoringProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3494,7 +3555,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3516,7 +3577,231 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "UpdateRoutingProperties",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "RoutingProperties",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Endpoints": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
+                    "FallbackRoute": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
+                    "Routes": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "UpdateRouteProperties",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Routes",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Collections.Generic",
+                  "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata"
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            }
+          ]
+        },
+        {
+          "Name": "UpdateFallbackRouteProperty",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "FallbackRoute",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.IotHub.Models",
+                  "Name": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "IsEnabled": "System.Boolean",
+                    "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
+                    "Condition": "System.String",
+                    "Source": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3653,28 +3938,46 @@
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSAccessRights",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSSharedAccessSignatureAuthorizationRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
         "KeyName": "System.String",
         "PrimaryKey": "System.String",
-        "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
         "SecondaryKey": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus"
+      ]
+    },
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus": {
+      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.DateTime]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -3684,102 +3987,105 @@
     },
     "System.DateTime": {
       "Namespace": "System",
-      "Name": "DateTime",
+      "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus"
-      ]
-    },
-    "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus": {
-      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubJobStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubJobResponse",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "EndTimeUtc": "System.Nullable`1[System.DateTime]",
-        "FailureReason": "System.String",
-        "JobId": "System.String",
-        "StartTimeUtc": "System.Nullable`1[System.DateTime]",
         "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-        "StatusMessage": "System.String",
-        "Type": "System.String"
+        "StartTimeUtc": "System.Nullable`1[System.DateTime]",
+        "EndTimeUtc": "System.Nullable`1[System.DateTime]",
+        "JobId": "System.String",
+        "Type": "System.String",
+        "FailureReason": "System.String",
+        "StatusMessage": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubQuotaMetric",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "Name": "System.String",
         "CurrentValue": "System.String",
-        "MaxValue": "System.String",
-        "Name": "System.String"
+        "MaxValue": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
-        "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-        "Comments": "System.String",
-        "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
-        "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]",
         "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
-        "HostName": "System.String",
-        "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+        "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
         "OperationsMonitoringProperties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-        "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]"
+        "Routing": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
+        "EventHubEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]",
+        "MessagingEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+        "StorageEndpoints": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
+        "AuthorizationPolicies": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+        "EnableFileUploadNotifications": "System.Nullable`1[System.Boolean]",
+        "HostName": "System.String",
+        "Comments": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities": {
+      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule"
-      ]
+      "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSCloudToDeviceProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
         "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
-        "MaxDeliveryCount": "System.Nullable`1[System.Int32]"
+        "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+        "DefaultTtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties": {
+      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+        "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
+        "LockDurationAsIso8601": "System.Nullable`1[System.TimeSpan]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ]
+    },
     "System.Nullable`1[System.TimeSpan]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.TimeSpan]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -3789,48 +4095,164 @@
     },
     "System.TimeSpan": {
       "Namespace": "System",
-      "Name": "TimeSpan",
+      "Name": "System.TimeSpan",
       "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties": {
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSFeedbackProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties": {
+      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "LockDurationAsIso8601": "System.Nullable`1[System.TimeSpan]",
-        "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
-        "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
+        "Endpoints": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
+        "FallbackRoute": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
+        "Routes": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Nullable`1[System.Int32]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints": {
+      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "EventHubs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]",
+        "ServiceBusQueues": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties]",
+        "ServiceBusTopics": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "System.Int32"
+        "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties"
       ]
     },
-    "System.Nullable`1[System.Boolean]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties": {
+      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "ConnectionString": "System.String",
+        "Name": "System.String",
+        "SubscriptionId": "System.String",
+        "ResourceGroup": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "System.Boolean"
+        "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties"
       ]
+    },
+    "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties": {
+      "Namespace": "Microsoft.Azure.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "ConnectionString": "System.String",
+        "Name": "System.String",
+        "SubscriptionId": "System.String",
+        "ResourceGroup": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties"
+      ]
+    },
+    "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties": {
+      "Namespace": "Microsoft.Azure.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "ConnectionString": "System.String",
+        "Name": "System.String",
+        "SubscriptionId": "System.String",
+        "ResourceGroup": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata": {
+      "Namespace": "Microsoft.Azure.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "IsEnabled": "System.Boolean",
+        "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
+        "Condition": "System.String",
+        "Source": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IList`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
+    "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata"
+      ]
+    },
+    "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata": {
+      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "IsEnabled": "System.Boolean",
+        "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "Condition": "System.String",
+        "Source": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3840,31 +4262,21 @@
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSEventHubProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Endpoint": "System.String",
-        "PartitionCount": "System.Nullable`1[System.Int32]",
         "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
+        "PartitionCount": "System.Nullable`1[System.Int32]",
+        "RetentionTimeInDays": "System.Nullable`1[System.Int64]",
         "Path": "System.String",
-        "RetentionTimeInDays": "System.Nullable`1[System.Int64]"
+        "Endpoint": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.IList`1[System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "IList",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String"
-      ]
-    },
     "System.Nullable`1[System.Int64]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.Int64]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -3872,18 +4284,10 @@
         "System.Int64"
       ]
     },
-    "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities": {
-      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSCapabilities",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3893,28 +4297,20 @@
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSMessagingEndpointProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "LockDurationAsIso8601": "System.Nullable`1[System.TimeSpan]",
         "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
-        "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
+        "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
+        "LockDurationAsIso8601": "System.Nullable`1[System.TimeSpan]"
       },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties": {
-      "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSOperationsMonitoringProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3924,47 +4320,67 @@
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSStorageEndpointProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "SasTtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
         "ConnectionString": "System.String",
-        "ContainerName": "System.String",
-        "SasTtlAsIso8601": "System.Nullable`1[System.TimeSpan]"
+        "ContainerName": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule"
+      ]
+    },
+    "System.Nullable`1[System.Boolean]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Boolean"
+      ]
+    },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubSkuInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Capacity": "System.Nullable`1[System.Int64]",
         "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
-        "Tier": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier"
+        "Tier": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier",
+        "Capacity": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubSkuTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -3975,63 +4391,63 @@
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHub",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Id": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
         "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-        "Resourcegroup": "System.String",
         "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-        "Subscriptionid": "System.String",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Type": "System.String"
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String",
+        "Location": "System.String",
+        "Subscriptionid": "System.String",
+        "Resourcegroup": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubRegistryStatistics",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "DisabledDeviceCount": "System.Nullable`1[System.Int64]",
+        "TotalDeviceCount": "System.Nullable`1[System.Int64]",
         "EnabledDeviceCount": "System.Nullable`1[System.Int64]",
-        "TotalDeviceCount": "System.Nullable`1[System.Int64]"
+        "DisabledDeviceCount": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubSkuDescription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Capacity": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity",
-        "ResourceType": "System.String",
-        "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo"
+        "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
+        "ResourceType": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubCapacity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "DefaultProperty": "System.Nullable`1[System.Int64]",
-        "Maximum": "System.Nullable`1[System.Int64]",
+        "ScaleType": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]",
         "Minimum": "System.Nullable`1[System.Int64]",
-        "ScaleType": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]"
+        "Maximum": "System.Nullable`1[System.Int64]",
+        "DefaultProperty": "System.Nullable`1[System.Int64]"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]": {
       "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4040,16 +4456,16 @@
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSIotHubScaleType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4059,8 +4475,8 @@
     },
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
-      "Name": "PSEventHubInputProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.Commands.IotHub, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PartitionCount": "System.Nullable`1[System.Int32]",
         "RetentionTimeInDays": "System.Nullable`1[System.Int64]"

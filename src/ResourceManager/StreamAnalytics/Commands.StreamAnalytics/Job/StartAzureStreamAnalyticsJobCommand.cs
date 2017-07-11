@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             {
                 ResourceGroupName = ResourceGroupName,
                 JobName = Name,
-                StartParameters = new JobStartParameters()
+                StartParameters = new StartStreamingJobParameters()
                 {
                     OutputStartMode = OutputStartMode,
                     OutputStartTime = OutputStartTime
@@ -59,19 +59,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
             try
             {
-                HttpStatusCode statusCode = StreamAnalyticsClient.StartPSJob(parameter);
-                if (statusCode == HttpStatusCode.OK)
-                {
-                    WriteObject(true);
-                }
-                else if (statusCode == HttpStatusCode.NoContent)
-                {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.JobNotFound, Name, ResourceGroupName));
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                StreamAnalyticsClient.StartPSJob(parameter);
+                WriteObject(true);
             }
             catch
             {
