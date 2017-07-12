@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Set-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Remove-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
 
 ## Version 4.2.0
 * New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
