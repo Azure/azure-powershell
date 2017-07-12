@@ -13,8 +13,8 @@ Creates a VMSS.
 ## SYNTAX
 
 ```
-New-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String>
- [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [<CommonParameters>]
+New-AzureRmVmss [-ResourceGroupName] <String> -VMScaleSetName <String>
+ [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,21 +128,6 @@ The nineteenth command uses the **New-AzureRmVmss** cmdlet to create the VMSS.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the VMSS that this cmdlet creates.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group of the VMSS.
 
@@ -170,6 +155,21 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VMScaleSetName
+Specifies the name of the VMSS that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -49,7 +49,6 @@ Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Co
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.Intune\AzureRM.Intune.psd1 -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.RecoveryServices.Backup\AzureRM.RecoveryServices.psd1 -ErrorAction SilentlyContinue
-Remove-Item -Recurse -Force $resourceManagerPath\Azure.AnalysisServices\ -ErrorAction SilentlyContinue
 
 Write-Verbose "Removing duplicated Resources folder"
 Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue
