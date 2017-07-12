@@ -93,12 +93,28 @@ Accept wildcard characters: False
 ```
 
 ### -Tier
-Tier.
+Vm Sku Tier.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DurabilityLevel
+Specify the durability level of the NodeType.
+
+```yaml
+Type: DurabilityLevel
+Parameter Sets: (All)
+Aliases: Level
+Accepted values: Bronze, Silver, Gold
 
 Required: False
 Position: Named

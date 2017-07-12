@@ -15,6 +15,8 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
+
     using Microsoft.Azure.Commands.Network.Models;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
@@ -118,6 +120,12 @@ namespace Microsoft.Azure.Commands.Network
            IPv6,
            IgnoreCase = true)]
         public string PeerAddressType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The legacy mode of the Peering")]
+        public bool LegacyMode { get; set; }
 
         public void ConstructMicrosoftConfig(PSPeering peering)
         {

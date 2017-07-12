@@ -24,7 +24,7 @@ The **Get-AzureRmVMDiagnosticsExtension** cmdlet gets the settings of the Azure 
 
 ### Example 1: Get the diagnostics extension applied to a virtual machine
 ```
-PS C:\>Get-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22"
+PS C:\> Get-AzureRmVMDiagnosticsExtension -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM22"
 ```
 
 This command gets the diagnostics extension applied to the virtual machine named ContosoVM22.

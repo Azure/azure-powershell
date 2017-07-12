@@ -16,6 +16,18 @@
 .SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
 #>
+function Test-ExpressRouteBGPServiceCommunities
+{
+	$communities = Get-AzureRmBgpServiceCommunity
+
+	Assert-NotNull $communities
+	Assert-NotNull $communities[0].BgpCommunities
+	Assert-AreEqual true $communities[0].BgpCommunities[0].IsAuthorizedToUse
+}
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitCRUD.
+#>
 function Test-ExpressRouteCircuitStageCRUD
 {
     # Setup
@@ -256,7 +268,7 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation    
         # Create the ExpressRouteCircuit with peering
-        $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 223 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC 
+        $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 223 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC -LegacyMode $true 
         $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering
     
         #verification

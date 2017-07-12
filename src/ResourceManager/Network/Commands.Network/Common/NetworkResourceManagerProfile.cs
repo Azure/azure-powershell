@@ -20,53 +20,15 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
-
-    public static class NetworkManagementMapperExtension
-    {
-        public static IMappingExpression<TSource, TDestination> ForItems<TSource, TDestination, T>(
-                 this IMappingExpression<TSource, TDestination> mapper)
-            where TSource : IEnumerable
-            where TDestination : ICollection<T>
-        {
-            mapper.AfterMap((c, s) =>
-            {
-                if (c != null && s != null)
-                {
-                    foreach (var t in c)
-                    {
-                        s.Add(Mapper.Map<T>(t));
-                    }
-                }
-            });
-
-            return mapper;
-        }
-    }
-
+    
     public class NetworkResourceManagerProfile : Profile
     {
-        private static readonly Lazy<bool> initialize;
-
-        static NetworkResourceManagerProfile()
-        {
-            initialize = new Lazy<bool>(() =>
-            {
-                Mapper.AddProfile<NetworkResourceManagerProfile>();
-                return true;
-            });
-        }
-
         public override string ProfileName
         {
             get { return "NetworkResourceManagerProfile"; }
         }
 
-        public static bool Initialize()
-        {
-            return initialize.Value;
-        }
-
-        protected override void Configure()
+        public static void Initialize()
         {
             Mapper.CreateMap<CNM.PSResourceId, MNM.SubResource>();
             Mapper.CreateMap<MNM.SubResource, CNM.PSResourceId>();
@@ -485,5 +447,5 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ApplicationGatewayFirewallRuleGroup, CNM.PSApplicationGatewayFirewallRuleGroup>();
             Mapper.CreateMap<MNM.ApplicationGatewayFirewallRuleSet, CNM.PSApplicationGatewayFirewallRuleSet>();
         }
-}
+    }
 }
