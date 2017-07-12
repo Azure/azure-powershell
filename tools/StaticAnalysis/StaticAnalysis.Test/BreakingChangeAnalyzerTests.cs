@@ -153,30 +153,6 @@ namespace StaticAnalysis.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RemoveParameter()
-        {
-            cmdletBreakingChangeAnalyzer.Analyze(
-                new List<string> { _testCmdletDirPath },
-                ((dirList) => { return new List<string> { _testCmdletDirPath }; }),
-                (cmdletName) => cmdletName.Equals("Test-RemoveParameter", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletBreakingChangeAnalyzer.GetAnalysisReport();
-
-            string output = "Test-RemoveParameter\nProblemId Count: " + testReport.ProblemIdList.Count;
-
-            foreach (var problemId in testReport.ProblemIdList)
-            {
-                output += "\nProblemId: " + problemId;
-            }
-
-            xunitOutput.WriteLine(output);
-
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameter)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameter));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveParameterAlias()
         {
             cmdletBreakingChangeAnalyzer.Analyze(

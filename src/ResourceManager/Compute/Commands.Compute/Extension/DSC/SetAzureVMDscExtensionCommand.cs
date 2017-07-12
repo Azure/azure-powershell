@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                     configurationDataBlobReference.Uri.AbsoluteUri,
                     () =>
                     {
-                        if (!Force && configurationDataBlobReference.Exists())
+                        if (!Force && configurationDataBlobReference.ExistsAsync().ConfigureAwait(false).GetAwaiter().GetResult())
                         {
                             ThrowTerminatingError(
                                 new ErrorRecord(
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                                     null));
                         }
 
-                        configurationDataBlobReference.UploadFromFile(ConfigurationData);
+                        configurationDataBlobReference.UploadFromFileAsync(ConfigurationData).ConfigureAwait(false).GetAwaiter().GetResult();
 
                         var configurationDataBlobSasToken =
                             configurationDataBlobReference.GetSharedAccessSignature(blobAccessPolicy);

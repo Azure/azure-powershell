@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public virtual string ResourceGroupName { get; set; }
 
         /// <summary>
         /// The ModelAdapter object used by this cmdlet

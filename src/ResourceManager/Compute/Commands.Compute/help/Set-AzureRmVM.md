@@ -40,7 +40,7 @@ Before you run this cmdlet, log on to the virtual machine and use Sysprep to pre
 
 ### Example 1: Mark a virtual machine as generalized
 ```
-PS C:\>Set-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
+PS C:\> Set-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -Generalized
 ```
 
 This command marks the virtual machine named VirtualMachine07 as generalized.

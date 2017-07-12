@@ -120,9 +120,6 @@
   <data name="EndDateEarlierThanStartDate" xml:space="preserve">
     <value>EndDate '{0:o}' is earlier than StartDate '{1:o}'.</value>
   </data>
-  <data name="StartAndEndDatesTooFarAppart" xml:space="preserve">
-    <value>The longest supported query time is '{0}' days, but '{1}' days found.</value>
-  </data>
   <data name="StartDateLaterThanNow" xml:space="preserve">
     <value>Invalid StartDate '{0:o}', since it is later than the current time '{1:o}'.</value>
   </data>
