@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetsEnvironmentMultipleTimes()
+        public void AddsEnvironmentMultipleTimes()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             var cmdlet = new AddAzureRMEnvironmentCommand()
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
 
             // Execute the same without PublishSettingsFileUrl and make sure the first value is preserved
-            var cmdlet2 = new SetAzureRMEnvironmentCommand()
+            var cmdlet2 = new AddAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env2.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
 
             // Execute by toggling EnableAdfsAuthentication
-            var cmdlet3 = new SetAzureRMEnvironmentCommand()
+            var cmdlet3 = new AddAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "Katal",
