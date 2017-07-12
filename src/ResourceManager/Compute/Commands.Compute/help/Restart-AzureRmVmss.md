@@ -13,8 +13,8 @@ Restarts the VMSS or a virtual machine within the VMSS.
 ## SYNTAX
 
 ```
-Restart-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [[-InstanceId] <String[]>] [<CommonParameters>]
+Restart-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -14,7 +14,8 @@ Sets the operating system disk properties on an image object.
 ```
 Set-AzureRmImageOsDisk [-Image] <Image> [[-OsType] <OperatingSystemTypes>]
  [[-OsState] <OperatingSystemStateTypes>] [[-BlobUri] <String>] [-Caching <CachingTypes>] [-DiskSizeGB <Int32>]
- [-SnapshotId <String>] [-ManagedDiskId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-ManagedDiskId <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,6 +160,21 @@ Specifies the ID of a snapshot.
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+The Storage Account type of Os Image Disk
+
+```yaml
+Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
 

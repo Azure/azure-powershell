@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 847729B7-634A-4F54-839F-46606F28F783
-online version: 
+online version: https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway
 schema: 2.0.0
 ---
 
@@ -18,7 +17,7 @@ Get-AzureRmApplicationGatewayProbeConfig [-Name <String>] -ApplicationGateway <P
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGatewayProbeConfig** cmdlet gets an existing health probe configuration from an Application Gateway.
+The Get-AzureRmApplicationGatewayProbeConfig cmdlet gets an existing health probe configuration from an Application Gateway.
 
 ## EXAMPLES
 
@@ -74,12 +73,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Add a probe to an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway)
 
-[Add-AzureRmApplicationGatewayProbeConfig](./Add-AzureRmApplicationGatewayProbeConfig.md)
+[Add-AzureRmApplicationGatewayProbeConfig]()
 
-[New-AzureRmApplicationGatewayProbeConfig](./New-AzureRmApplicationGatewayProbeConfig.md)
+[New-AzureRmApplicationGatewayProbeConfig]()
 
-[Remove-AzureRmApplicationGatewayProbeConfig](./Remove-AzureRmApplicationGatewayProbeConfig.md)
+[Remove-AzureRmApplicationGatewayProbeConfig]()
 
-[Set-AzureRmApplicationGatewayProbeConfig](./Set-AzureRmApplicationGatewayProbeConfig.md)
-
+[Set-AzureRmApplicationGatewayProbeConfig]()
 

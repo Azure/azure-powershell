@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerLogExport()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerLogExport");
+        }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
         public void TestAnalysisServicesServerRestart()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerRestart");

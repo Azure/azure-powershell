@@ -25,11 +25,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set", "AzureRmSnapshotImageReference", SupportsShouldProcess = true)]
-    [OutputType(typeof(Snapshot))]
+    [OutputType(typeof(PSSnapshot))]
     public class SetAzureRmSnapshotImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public Snapshot Snapshot { get; set; }
+        public PSSnapshot Snapshot { get; set; }
 
         [Parameter(
             Mandatory = false,

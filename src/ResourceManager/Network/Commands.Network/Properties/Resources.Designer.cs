@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to redirectConfigurations.
+        /// </summary>
+        public static string ApplicationGatewayRedirectConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayRedirectConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to requestRoutingRules.
         /// </summary>
         public static string ApplicationGatewayRequestRoutingRuleName {
