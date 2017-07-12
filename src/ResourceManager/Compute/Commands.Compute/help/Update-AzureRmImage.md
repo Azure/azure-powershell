@@ -12,7 +12,7 @@ Updates an image.
 ## SYNTAX
 
 ```
-Update-AzureRmImage [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <Image>
+Update-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <Image> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

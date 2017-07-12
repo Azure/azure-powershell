@@ -16,7 +16,8 @@ Sets configuration for an array of URL path mappings to a backend server pool.
 ```
 Set-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
- [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>] [<CommonParameters>]
+ [-DefaultBackendAddressPoolId <String>] [-DefaultBackendHttpSettingsId <String>]
+ [-DefaultRedirectConfigurationId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -24,7 +25,8 @@ Set-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplication
 Set-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
  -PathRules <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]>
  [-DefaultBackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>] [<CommonParameters>]
+ [-DefaultBackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-DefaultRedirectConfiguration <PSApplicationGatewayRedirectConfiguration>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +103,36 @@ Accept wildcard characters: False
 
 ### -DefaultBackendHttpSettingsId
 Specifies the default backend HTTP settings ID.
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRedirectConfiguration
+Application gateway default RedirectConfiguration
+
+```yaml
+Type: PSApplicationGatewayRedirectConfiguration
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultRedirectConfigurationId
+ID of the application gateway default RedirectConfiguration
 
 ```yaml
 Type: String

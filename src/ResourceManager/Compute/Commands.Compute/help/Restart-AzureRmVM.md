@@ -12,14 +12,26 @@ Restarts an Azure virtual machine.
 
 ## SYNTAX
 
-### ResourceGroupNameParameterSetName (Default)
+### RestartResourceGroupNameParameterSetName (Default)
 ```
-Restart-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### IdParameterSetName
+### PerformMaintenanceResourceGroupNameParameterSetName
 ```
-Restart-AzureRmVM [-Name] <String> [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzureRmVM [-ResourceGroupName] <String> [-Name] <String> [-PerformMaintenance] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RestartIdParameterSetName
+```
+Restart-AzureRmVM [-Id] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PerformMaintenanceIdParameterSetName
+```
+Restart-AzureRmVM [-Id] <String> [-Name] <String> [-PerformMaintenance] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +51,7 @@ This command restarts the virtual machine named VirtualMachine07 in ResourceGrou
 ### -Id
 The resource group name.```yaml
 Type: String
-Parameter Sets: IdParameterSetName
+Parameter Sets: RestartIdParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 
 
 Required: True
@@ -62,12 +74,25 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PerformMaintenance
+To perform the maintenance of virtual machine.```yaml
+Type: SwitchParameter
+Parameter Sets: PerformMaintenanceResourceGroupNameParameterSetName, PerformMaintenanceIdParameterSetName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSetName
+Parameter Sets: RestartResourceGroupNameParameterSetName, PerformMaintenanceResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
