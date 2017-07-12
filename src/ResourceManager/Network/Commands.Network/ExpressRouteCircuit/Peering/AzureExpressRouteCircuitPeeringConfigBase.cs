@@ -77,28 +77,31 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes",
-            ParameterSetName = "MicrosoftPeeringConfig")]
+            ParameterSetName = "MicrosoftPeeringConfigRoutFilter")]
+        [Parameter(ParameterSetName = "MicrosoftPeeringConfigRoutFilterId")]
         [ValidateNotNullOrEmpty]
         public List<string> MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The customerAsn",
-            ParameterSetName = "MicrosoftPeeringConfig")]
+            ParameterSetName = "MicrosoftPeeringConfigRoutFilter")]
+        [Parameter(ParameterSetName = "MicrosoftPeeringConfigRoutFilterId")]
         [ValidateNotNullOrEmpty]
         public int MicrosoftConfigCustomerAsn { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The MircosoftConfigRoutingRegistryName",
-            ParameterSetName = "MicrosoftPeeringConfig")]
+            ParameterSetName = "MicrosoftPeeringConfigRoutFilter")]
+        [Parameter(ParameterSetName = "MicrosoftPeeringConfigRoutFilterId")]
         [ValidateNotNullOrEmpty]
         public string MicrosoftConfigRoutingRegistryName { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = "MicrosoftPeeringConfigRoutFilterId",
             HelpMessage = "RouteFilterId")]
         [ValidateNotNullOrEmpty]
         public string RouteFilterId { get; set; }
@@ -106,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResource",
+            ParameterSetName = "MicrosoftPeeringConfigRoutFilter",
             HelpMessage = "RouteFilter")]
         [ValidateNotNullOrEmpty]
         public PSRouteFilter RouteFilter { get; set; }
