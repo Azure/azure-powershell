@@ -132,6 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     }
 
                     context = new AzureContext(DefaultSubscription, account, environment);
+                    context.TokenCache = AzureSession.Instance.TokenCache;
                 }
 
                 return context;
