@@ -12,7 +12,7 @@ Creates a configurable snapshot object.
 ## SYNTAX
 
 ```
-New-AzureRmSnapshotConfig [-SkuName <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmSnapshotConfig [[-SkuName] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Tag <Hashtable>] [-CreateOption <DiskCreateOption>]
  [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
@@ -50,7 +50,7 @@ Specifies whether this cmdlet creates a disk in the virtual machine from a platf
 Type: DiskCreateOption
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Empty, Attach, FromImage, Import, Copy, Restore
+Accepted values: Empty, Attach, FromImage, Import, Copy
 
 Required: False
 Position: Named
@@ -172,9 +172,10 @@ Specifies the Sku name of the storage account.
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: AccountType
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
