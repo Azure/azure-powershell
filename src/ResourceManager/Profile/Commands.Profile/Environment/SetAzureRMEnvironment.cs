@@ -168,6 +168,10 @@ namespace Microsoft.Azure.Commands.Profile
             if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
             {
                 newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
+                if (EnableAdfsAuthentication.IsPresent)
+                {
+                    newEnvironment.OnPremise = EnableAdfsAuthentication;
+                }
             }
 
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);

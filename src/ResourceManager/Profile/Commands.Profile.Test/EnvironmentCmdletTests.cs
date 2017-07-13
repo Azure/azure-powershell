@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ResourceManager], cmdlet.ResourceManagerEndpoint);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory], cmdlet.ActiveDirectoryEndpoint);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId], cmdlet.ActiveDirectoryServiceEndpointResourceId);
-            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId], cmdlet.GraphAudience);
+            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId], "https://graph.windows.net/");
         }
 
         [Fact]
@@ -446,6 +446,72 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 Assert.Equal(savedValue, newValue);
                 Assert.NotEqual(cmdlet.PublishSettingsFileUrl, newValue);
             }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetEnvironmentWithOnPremise()
+        {
+            // Setup a new environment
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            var cmdlet = new SetAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                PublishSettingsFileUrl = "http://microsoft.com",
+                EnableAdfsAuthentication = false
+            };
+
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env.Name, cmdlet.Name);
+            Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
+            Assert.False(env.OnPremise);
+
+            // Update onpremise to true
+            var cmdlet2 = new SetAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                EnableAdfsAuthentication = true
+            };
+
+            cmdlet2.InvokeBeginProcessing();
+            cmdlet2.ExecuteCmdlet();
+            cmdlet2.InvokeEndProcessing();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Exactly(2));
+            AzureEnvironment env2 = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env2.Name, cmdlet2.Name);
+            Assert.Equal(env2.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
+            Assert.True(env2.OnPremise);
+
+            // Update gallery endpoint
+            var cmdlet3 = new SetAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                Name = "Katal",
+                GalleryEndpoint = "http://galleryendpoint.com",
+            };
+
+            cmdlet3.InvokeBeginProcessing();
+            cmdlet3.ExecuteCmdlet();
+            cmdlet3.InvokeEndProcessing();
+
+            // Ensure gallery endpoint is updated and OnPremise value is preserved
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Exactly(3));
+            AzureEnvironment env3 = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
+            Assert.Equal(env3.Name, cmdlet3.Name);
+            Assert.Equal(env3.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
+            Assert.True(env3.OnPremise);
+            Assert.Equal(env3.Endpoints[AzureEnvironment.Endpoint.Gallery], cmdlet3.GalleryEndpoint);
         }
 
         [Fact]
