@@ -204,8 +204,3 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
-*.projhash
-*.userData
-*.sln
-*.slnhash
-*.assemblies
