@@ -67,14 +67,14 @@ This command lists at most 100 events associated with the user's subscription ID
 PS C:\>Get-AzureRmLog -StartTime 2017-06-01T10:30
 ```
 
-This command lists at most 1000 events associated with the user's subscription ID that took place on or after 2017-06-01T10:30 local time if that date/time is not older than 15 days from the current date/time.
+This command lists at most 1000 events associated with the user's subscription ID that took place on or after 2017-06-01T10:30 local time if that date/time is not older than 90 days from the current date/time.
 
 ### Example 4: Get an event log by subscription ID with a start time and end time.
 ```
 PS C:\>Get-AzureRmLog -StartTime 2017-04-01T10:30 -EndTime 2017-04-14T11:30
 ```
 
-This command lists at most 1000 of the events associated with the user's subscription ID that took place on or after 2017-04-01T10:30 local time, and before 2017-04-14T11:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period, and the time range is not wider than 15 days.
+This command lists at most 1000 of the events associated with the user's subscription ID that took place on or after 2017-04-01T10:30 local time, and before 2017-04-14T11:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 5: Get an event log by correlation ID
 ```
@@ -97,7 +97,7 @@ This command lists at most 100 events associated with the specified correlation 
 PS C:\>Get-AzureRmLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-05-22T04:30:00
 ```
 
-This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 15 days from the current date/time.
+This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 **NOTE**: this is usually only one event.
 
 ### Example 8: Get an event log by correlation ID with start time and end time
@@ -105,7 +105,7 @@ This command lists at most 1000 events associated with the specified correlation
 PS C:\>Get-AzureRmLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-04-15T04:30:00 -EndTime 2017-04-25T12:30:00
 ```
 
-This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period, and the time range is not wider than 15 days.
+This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 9: Get an event log for a resource group
 ```
@@ -126,14 +126,14 @@ This command lists at most 100 events associated with the specified resource gro
 PS C:\>Get-AzureRmLog -ResourceGroup "Contoso-Web-CentralUS" -StartTime 2017-05-22T04:30:00
 ```
 
-This command lists at most 1000 evetns associated with the specified resource group that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 15 days from the current date/time.
+This command lists at most 1000 evetns associated with the specified resource group that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 
 ### Example 12: Get an event log for a resource group with a start time and end time
 ```
 PS C:\>Get-AzureRmLog -ResourceGroup "Contoso-Web-CentralUS" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
 ```
 
-This command lists at most 1000 events associated with the specified resource group that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period, and the time range is not wider than 15 days.
+This command lists at most 1000 events associated with the specified resource group that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 13: Get an event log by resource ID
 ```
@@ -154,14 +154,14 @@ This command lists at most 100 events associated with the specified resource ID 
 PS C:\>Get-AzureRmLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -StartTime 2017-05-22T04:30
 ```
 
-This command lists at most 1000 events associated with the specified resource ID that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 15 days from the current date/time.
+This command lists at most 1000 events associated with the specified resource ID that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 
 ### Example 16: Get an event log by resource ID with a start time and end time
 ```
 PS C:\>Get-AzureRmLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
 ```
 
-This command lists at most 1000 events associated with the specified resource ID that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period, and the time range is not wider than 15 days.
+This command lists at most 1000 events associated with the specified resource ID that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 17: Get an event log by resource provider
 ```
@@ -182,14 +182,14 @@ This command lists at most 100 events associated with the specified resource pro
 PS C:\>Get-AzureRmLog -ResourceProvider "Microsoft.Web" -StartTime 2017-05-22T04:30
 ```
 
-This command lists at most 1000 events associated with the specified resource provider that took place on or after  2017-05-22T04:30:00 local time if the start time is not older than 15 days from the current date/time.
+This command lists at most 1000 events associated with the specified resource provider that took place on or after  2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 
 ### Example 20: Get an event log by resource provider with a start time and end time
 ```
 PS C:\>Get-AzureRmLog -ResourceProvider "Microsoft.Web" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
 ```
 
-This command lists at most 1000 events associated with the specified resource provider that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period, and the time range is not wider than 15 days.
+This command lists at most 1000 events associated with the specified resource provider that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ## PARAMETERS
 
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 ### -EndTime
 Specifies the end time of the query in local time.
 The default value is the current time.
-The value must be later than *StartTime*, but not by more than 15 days.
+The value must be later than *StartTime*.
 
 You can use the Get-Date cmdlet to get a **DateTime** object.
 
@@ -254,7 +254,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Current time/date
+Default value: Current date (time: 00:00:00 AM) + 1 day
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
