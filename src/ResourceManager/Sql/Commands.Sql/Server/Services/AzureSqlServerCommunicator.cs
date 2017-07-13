@@ -69,11 +69,19 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         }
 
         /// <summary>
-        /// Lists Azure Sql Database Servers
+        /// Lists Azure Sql Servers in a resource group
         /// </summary>
-        public IList<Management.Sql.Models.Server> List(string resourceGroupName)
+        public IList<Management.Sql.Models.Server> ListByResourceGroup(string resourceGroupName)
         {
             return GetCurrentSqlClient().Servers.ListByResourceGroup(resourceGroupName).ToList();
+        }
+
+        /// <summary>
+        /// Lists Azure Sql Servers
+        /// </summary>
+        public IList<Management.Sql.Models.Server> List()
+        {
+            return GetCurrentSqlClient().Servers.List().ToList();
         }
 
         /// <summary>

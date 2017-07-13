@@ -157,5 +157,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 clusterName,
                 configurationName).Configuration;
         }
+
+        public virtual OperationResource EnableOMS(string resourceGroupName, string clusterName, ClusterMonitoringRequest clusterMonitoringParameters)
+        {
+            return HdInsightManagementClient.Clusters.EnableMonitoring(resourceGroupName, clusterName, clusterMonitoringParameters);
+        }
+
+        public virtual OperationResource DisableOMS(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.DisableMonitoring(resourceGroupName, clusterName);
+        }
+
+        public virtual ClusterMonitoringResponse GetOMS(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Clusters.GetMonitoringStatus(resourceGroupName, clusterName);
+        }
     }
 }
