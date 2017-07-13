@@ -76,30 +76,24 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes",
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilter")]
-        [Parameter(ParameterSetName = "MicrosoftPeeringConfigRoutFilterId")]
+            HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes")]
         [ValidateNotNullOrEmpty]
         public List<string> MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The customerAsn",
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilter")]
-        [Parameter(ParameterSetName = "MicrosoftPeeringConfigRoutFilterId")]
+            HelpMessage = "The customerAsn")]
         [ValidateNotNullOrEmpty]
         public int MicrosoftConfigCustomerAsn { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The MircosoftConfigRoutingRegistryName",
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilter")]
-        [Parameter(ParameterSetName = "MicrosoftPeeringConfigRoutFilterId")]
+            HelpMessage = "The MircosoftConfigRoutingRegistryName")]
         [ValidateNotNullOrEmpty]
         public string MicrosoftConfigRoutingRegistryName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "MicrosoftPeeringConfigRoutFilterId",
             HelpMessage = "RouteFilterId")]
@@ -107,7 +101,7 @@ namespace Microsoft.Azure.Commands.Network
         public string RouteFilterId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "MicrosoftPeeringConfigRoutFilter",
             HelpMessage = "RouteFilter")]
