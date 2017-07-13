@@ -111,11 +111,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Guid
+### System.Guid
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation
 
 ## NOTES
 
