@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public string AdvertisedPublicPrefixes;
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number")]
-        public UInt32 CustomerAsn { get; set; }
+        public UInt32? CustomerAsn { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Peer Asn")]
@@ -57,18 +57,30 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         public UInt32? VlanId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Microsoft, Public or Private")]
+        [ValidateSet("Microsoft", "Public", "Private")]
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Bgp Peer Address Type: IPv4, IPv6")]
+        [ValidateSet("IPv4", "IPv6")]
+        [DefaultValue("IPv4")]
+        public PeerAddressTypeValues PeerAddressType { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
                 var route = ExpressRouteClient.GetAzureBGPPeering(ServiceKey, AccessType);
-                var updatedRoute = ExpressRouteClient.UpdateAzureBGPPeering(ServiceKey, AccessType, CustomerAsn,
-                    PeerAsn.HasValue ? PeerAsn.Value : route.PeerAsn, PrimaryPeerSubnet ?? route.PrimaryPeerSubnet, RoutingRegistryName,
-                    SecondaryPeerSubnet ?? route.SecondaryPeerSubnet, VlanId.HasValue ? VlanId.Value : route.VlanId,
-                    SharedKey.Trim());
+
+                var advertisedPublicPrefixes = AdvertisedPublicPrefixes ?? ((PeerAddressType == PeerAddressTypeValues.IPv4) ? route.AdvertisedPublicPrefixes : route.AdvertisedPublicPrefixesIpv6);
+                var routingRegistryName = RoutingRegistryName ?? ((PeerAddressType == PeerAddressTypeValues.IPv4) ? route.RoutingRegistryName : route.RoutingRegistryNameIpv6);
+                var customerAsn = (CustomerAsn.HasValue) ? CustomerAsn.Value : ((PeerAddressType == PeerAddressTypeValues.IPv4) ? route.CustomerAutonomousSystemNumber : route.CustomerAutonomousSystemNumberIpv6);
+
+                var updatedRoute = ExpressRouteClient.UpdateAzureBGPPeering(ServiceKey, PeerAddressType, AccessType,
+                    advertisedPublicPrefixes, customerAsn, PeerAsn.HasValue ? PeerAsn.Value : route.PeerAsn, PrimaryPeerSubnet,
+                    routingRegistryName, SecondaryPeerSubnet, VlanId.HasValue ? VlanId.Value : route.VlanId,
+                    string.IsNullOrWhiteSpace(SharedKey) ? null : SharedKey.Trim());
+
                 WriteObject(updatedRoute, false);
             }
             catch
@@ -93,9 +105,8 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
                     throw new ArgumentException(Resources.SecondaryPeerSubnetRequired);
                 }
 
-                var newRoute = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, AdvertisedPublicPrefixes, CustomerAsn,
-                    PeerAsn.Value, PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet, VlanId.Value, AccessType,
-                    SharedKey);
+                var newRoute = ExpressRouteClient.NewAzureBGPPeering(ServiceKey, PeerAddressType, AdvertisedPublicPrefixes, CustomerAsn.Value, PeerAsn.Value, PrimaryPeerSubnet, RoutingRegistryName, SecondaryPeerSubnet,
+                    VlanId.Value, AccessType, SharedKey);
                 WriteObject(newRoute);
             }
         }

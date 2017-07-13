@@ -18,13 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Add NeworkAcls support to resource mode storage account cmdlets
-    - New-AzureRmStorageAccount
-    - Set-AzureRmStorageAccount
-    - Get-AzureStorageAccountNetworkACL
-    - Update-AzureStorageAccountNetworkACL
-    - Add-AzureStorageAccountNetworkACLRule
-    - Remove-AzureStorageAccountNetworkACLRule
+
+## Version 3.2.0
 
 ## Version 3.1.0
 * Add AssignIdentity setting support to resource mode storage account cmdlets

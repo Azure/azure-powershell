@@ -19,7 +19,9 @@ using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -42,6 +44,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("After the NodeType is removed, you may see the nodes of the NodeType are in error state," +
+                 "you need to run 'Remove-ServiceFabricNodeState' on those nodes to fix them, read this document for details on how to " +
+                 " https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
+
             if (!CheckNodeTypeExistence())
             {
                 throw new PSArgumentException(this.NodeType);
@@ -87,9 +93,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} ", this.NodeType)))
             {
-                this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
-
                 cluster = RemoveNodeTypeFromSfrp();
+                this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
 
                 WriteObject((PSCluster)cluster, true);
             }

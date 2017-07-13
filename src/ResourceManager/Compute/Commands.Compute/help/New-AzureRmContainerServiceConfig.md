@@ -14,7 +14,7 @@ Creates a local configuration object for a container service.
 
 ```
 New-AzureRmContainerServiceConfig [[-Location] <String>] [[-Tag] <Hashtable>]
- [[-OrchestratorType] <ContainerServiceOchestratorTypes>] [[-MasterCount] <Int32>]
+ [[-OrchestratorType] <ContainerServiceOrchestratorTypes>] [[-MasterCount] <Int32>]
  [[-MasterDnsPrefix] <String>] [[-AgentPoolProfile] <ContainerServiceAgentPoolProfile[]>]
  [[-WindowsProfileAdminUsername] <String>] [[-WindowsProfileAdminPassword] <String>]
  [[-AdminUsername] <String>] [[-SshPublicKey] <String[]>] [[-VmDiagnosticsEnabled] <Boolean>]
@@ -139,7 +139,7 @@ Specifies the type of orchestrator for the container service.
 The acceptable values for this parameter are: DCOS and Swarm.
 
 ```yaml
-Type: ContainerServiceOchestratorTypes
+Type: ContainerServiceOrchestratorTypes
 Parameter Sets: (All)
 Aliases: 
 Accepted values: Swarm, DCOS, Custom, Kubernetes

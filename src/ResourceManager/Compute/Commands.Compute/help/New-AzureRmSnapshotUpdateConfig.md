@@ -12,7 +12,7 @@ Creates a configurable snapshot update object.
 ## SYNTAX
 
 ```
-New-AzureRmSnapshotUpdateConfig [[-AccountType] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmSnapshotUpdateConfig [-SkuName <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-CreateOption <DiskCreateOption>] [-StorageAccountId <String>]
  [-ImageReference <ImageDiskReference>] [-SourceUri <String>] [-SourceResourceId <String>]
  [-EncryptionSettingsEnabled <Boolean>] [-DiskEncryptionKey <KeyVaultAndSecretReference>]
@@ -49,24 +49,8 @@ This command updates an existing snapshot with name 'Snapshot01' in resource gro
 
 ## PARAMETERS
 
-### -AccountType
-Specifies the storage account type.
-
-```yaml
-Type: StorageAccountTypes
-Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -CreateOption
-Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
+Specifies whether this cmdlet creates a snapshot in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
 
 ```yaml
 Type: DiskCreateOption
@@ -167,6 +151,21 @@ Accepted values: Windows, Linux
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuName
+Specifies the Sku name of the storage account.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: AccountType
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

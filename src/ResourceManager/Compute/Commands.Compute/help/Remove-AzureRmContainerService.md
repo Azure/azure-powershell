@@ -13,7 +13,7 @@ Removes a container service.
 ## SYNTAX
 
 ```
-Remove-AzureRmContainerService [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String> [-Force]
+Remove-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String> [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

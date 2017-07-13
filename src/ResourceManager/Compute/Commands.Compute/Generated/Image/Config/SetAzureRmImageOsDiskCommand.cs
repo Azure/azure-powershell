@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public StorageAccountTypes? StorageAccountType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string SnapshotId { get; set; }
 
         [Parameter(
@@ -167,6 +172,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
                 }
                 this.Image.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeGB;
+            }
+
+            if (this.StorageAccountType != null)
+            {
+
+                // StorageProfile
+                if (this.Image.StorageProfile == null)
+                {
+                    this.Image.StorageProfile = new Microsoft.Azure.Management.Compute.Models.ImageStorageProfile();
+                }
+                // OsDisk
+                if (this.Image.StorageProfile.OsDisk == null)
+                {
+                    this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
+                }
+                this.Image.StorageProfile.OsDisk.StorageAccountType = this.StorageAccountType;
             }
 
             if (this.SnapshotId != null)

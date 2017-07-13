@@ -999,7 +999,14 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">UInt32</command:parameterValue>
         </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>PeerAddressType</maml:name>
+          <maml:description>
+            <maml:para>Specifies the address family (IPv4 or IPv6) to create the peering.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PeerAddressTypeValues</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>PrimaryPeerSubnet</maml:name>
           <maml:description>
             <maml:para>Specifies one of the peering subnets in CIDR notation from which I addresses will be selected for establishing a BGP session. If the subnet 10.0.0.0/30 is specified, the customer uses 10.0.0.1 for their VRF and Azure will select 10.0.0.2 for it's VRF to establish a BGP session. This subnet must not overlap with any of the virtual networks' address ranges used in Microsoft Azure.</maml:para>
@@ -1070,7 +1077,7 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>PrimaryPeerSubnet</maml:name>
         <maml:description>
           <maml:para>Specifies one of the peering subnets in CIDR notation from which I addresses will be selected for establishing a BGP session. If the subnet 10.0.0.0/30 is specified, the customer uses 10.0.0.1 for their VRF and Azure will select 10.0.0.2 for it's VRF to establish a BGP session. This subnet must not overlap with any of the virtual networks' address ranges used in Microsoft Azure.</maml:para>
@@ -1083,7 +1090,7 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>SecondaryPeerSubnet</maml:name>
         <maml:description>
           <maml:para>Specifies the second peering subnets in CIDR notation from which I addresses will be selected for establishing a BGP session. If the subnet 10.0.0.4/30 is specified, the customer uses 10.0.0.5 for their VRF and Azure will select 10.0.0.6 for it's VRF to establish a BGP session. This subnet must not overlap with any of the virtual networks' address ranges used in Microsoft Azure.</maml:para>
@@ -1199,9 +1206,9 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt; C:\PS&gt;New-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab" -VlanId 100 -PeerAsn 65014 -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -LegacyMode True</dev:code>
+        <dev:code>PS C:\&gt; C:\PS&gt;New-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab" -VlanId 100 -PeerAsn 65014 -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAddressType IPv4 -LegacyMode True</dev:code>
         <dev:remarks>
-          <maml:para>Creates a new BGP session for an ExpressRoute circuit with service key "12345678-1234-1234-abcd-1234567890ab". The BGP session with AS number 65014 is established on VLAN ID 100 which advertised all routes for microsoft peering</maml:para>
+          <maml:para>Creates a new BGP session for an ExpressRoute circuit with service key "12345678-1234-1234-abcd-1234567890ab". The BGP session for Ipv4 and Ipv6 protocols with AS number 65014 is established on VLAN ID 100 which advertised all routes for microsoft peering.</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -2046,6 +2053,13 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BgpPeeringAccessType</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>PeerAddressType</maml:name>
+          <maml:description>
+            <maml:para>Specifies the address family (IPv4, IPv6, All) to delete the peering for.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">BgpPeerAddressType</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Force</maml:name>
           <maml:description>
@@ -2166,7 +2180,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt; C:\PS&gt;Remove-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab"</dev:code>
+        <dev:code>PS C:\&gt; C:\PS&gt;Remove-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab -PeerAddressType IPv4"</dev:code>
         <dev:remarks>
           <maml:para>This command removes the routing configuration for the ExpressRoute circuit with service key "12345678-1234-1234-abcd-1234567890ab".</maml:para>
         </dev:remarks>
@@ -3012,6 +3026,13 @@
           <command:parameterValue required="true" variableLength="true">Nullable`1[UInt32]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>PeerAddressType</maml:name>
+          <maml:description>
+            <maml:para>Specifies the address family (IPv4 or IPv6) to update the peering.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PeerAddressTypeValues</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>PrimaryPeerSubnet</maml:name>
           <maml:description>
             <maml:para>Specifies one of the peering subnets in CIDR notation from which I addresses will be selected for establishing a BGP session. If the subnet 10.0.0.0/30 is specified, the customer uses 10.0.0.1 for their VRF and Azure will select 10.0.0.2 for it's VRF to establish a BGP session. This subnet must not overlap with any of the virtual networks' address ranges used in Microsoft Azure.</maml:para>
@@ -3191,9 +3212,9 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt; C:\PS&gt;Set-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab" -VlanId 100 -PeerAsn 65014 -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30"</dev:code>
+        <dev:code>PS C:\&gt; C:\PS&gt;Set-AzureBGPPeering -ServiceKey "12345678-1234-1234-abcd-1234567890ab" -VlanId 100 -PeerAsn 65014 -PrimaryPeerSubnet "10.0.0.0/30" -SecondaryPeerSubnet "10.0.0.4/30" -PeerAddressType IPv4"</dev:code>
         <dev:remarks>
-          <maml:para>Updates the BGP session for an ExpressRoute circuit with service key "12345678-1234-1234-abcd-1234567890ab". The BGP session with AS number 65014 is established on VLAN ID 100.</maml:para>
+          <maml:para>Updates the BGP session for an ExpressRoute circuit with service key "12345678-1234-1234-abcd-1234567890ab". The BGP session for Ipv4 and Ipv6 protocols with AS number 65014 is established on VLAN ID 100.</maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>

@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Insights
     /// </summary>
     public abstract class LogsCmdletBase : MonitorClientCmdletBase
     {
-        private static readonly TimeSpan MaximumDateDifferenceAllowedInDays = TimeSpan.FromDays(15);
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromDays(7);
         private const int MaxNumberOfReturnedRecords = 1000;
         private int MaxRecords = 0;
@@ -117,29 +116,25 @@ namespace Microsoft.Azure.Commands.Insights
         /// <returns>A query filter string with the time conditions</returns>
         private string ValidateDateTimeRangeAndAddDefaults()
         {
-            // EndTime is optional
-            DateTime endTime = this.EndTime.HasValue ? this.EndTime.Value : DateTime.Now;
+            // Removing time in the default current date, but including the whole day: date will be Now + 1 day, the time 00:00:00 AM
+            var currentDateTime = DateTime.Now;
+
+            // EndTime is optional.
+            DateTime endTime = this.EndTime ?? currentDateTime.AddDays(1).Date;
 
             // StartTime is optional
-            DateTime startTime = this.StartTime.HasValue ? this.StartTime.Value : endTime.Subtract(this.GetDefaultQueryTimeRange());
+            DateTime startTime = this.StartTime ?? endTime.Subtract(this.GetDefaultQueryTimeRange());
 
             // Check the value of StartTime
-            if (startTime > DateTime.Now)
+            if (startTime > currentDateTime)
             {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForEventCmdlets.StartDateLaterThanNow, startTime, DateTime.Now));
+                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForEventCmdlets.StartDateLaterThanNow, startTime, currentDateTime));
             }
 
             // Check that the dateTime range makes sense
             if (endTime < startTime)
             {
                 throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForEventCmdlets.EndDateEarlierThanStartDate, endTime, startTime));
-            }
-
-            // Validate start and end dates difference is reasonable (<= MaximumDateDifferenceAllowedInDays)
-            var dateDifference = endTime.Subtract(startTime);
-            if (dateDifference > MaximumDateDifferenceAllowedInDays)
-            {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, ResourcesForEventCmdlets.StartAndEndDatesTooFarAppart, MaximumDateDifferenceAllowedInDays.TotalDays, dateDifference.TotalDays));
             }
 
             return string.Format("eventTimestamp ge '{0:o}' and eventTimestamp le '{1:o}'", startTime.ToUniversalTime(), endTime.ToUniversalTime());
