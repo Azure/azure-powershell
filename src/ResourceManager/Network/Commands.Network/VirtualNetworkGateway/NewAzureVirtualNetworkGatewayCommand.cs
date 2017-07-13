@@ -120,12 +120,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "P2S VPN client tunneling protocol")]
+            HelpMessage = "The list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnClientProtocol.SSTP,
             MNM.VpnClientProtocol.IkeV2)]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientProtocols { get; set; }
+        public List<string> VpnClientProtocol { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -291,9 +291,9 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
                 }
 
-                if (this.VpnClientProtocols != null)
+                if (this.VpnClientProtocol != null)
                 {
-                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocols;
+                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
                 }
 
                 if (this.VpnClientRootCertificates != null)
