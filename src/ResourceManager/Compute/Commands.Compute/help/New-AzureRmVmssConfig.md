@@ -93,6 +93,7 @@ Specify the identity of the virtual machine scale set, if configured.
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -245,6 +246,7 @@ Specify the recovery policy.
 Type: RecoveryMode
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, OverProvision, Reprovision
 
 Required: False
 Position: Named

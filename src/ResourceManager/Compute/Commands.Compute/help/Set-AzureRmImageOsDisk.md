@@ -177,6 +177,7 @@ The Storage Account type of Os Image Disk
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named
