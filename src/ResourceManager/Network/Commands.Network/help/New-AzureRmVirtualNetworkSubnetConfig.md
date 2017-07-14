@@ -15,13 +15,15 @@ Creates a virtual network subnet configuration.
 ### SetByResource (Default)
 ```
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [<CommonParameters>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
+ [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String> [-NetworkSecurityGroupId <String>]
- [-RouteTableId <String>] [<CommonParameters>]
+ [-RouteTableId <String>] [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,6 +107,19 @@ Specifies the ID of a network security group.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PrivateAccessService
+Private Access Service```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
