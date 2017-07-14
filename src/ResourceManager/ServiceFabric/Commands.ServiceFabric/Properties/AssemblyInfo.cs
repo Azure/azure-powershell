@@ -18,8 +18,8 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: Guid("B965F0A8-D610-4275-B5EA-8F2D806F337C")]
-[assembly: AssemblyVersion("0.2.1")]
-[assembly: AssemblyFileVersion("0.2.1")]
+[assembly: AssemblyVersion("0.2.2")]
+[assembly: AssemblyFileVersion("0.2.2")]
 
 [assembly: AssemblyTitle("Microsoft Azure Powershell - Service Fabric")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
