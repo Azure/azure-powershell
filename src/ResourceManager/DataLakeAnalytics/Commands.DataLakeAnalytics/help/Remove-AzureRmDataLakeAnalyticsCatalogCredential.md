@@ -3,6 +3,7 @@ external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: C6BB6E4D-6009-4796-866B-17115FDFA06D
 online version: 
 schema: 2.0.0
+manager: jhubbard
 ---
 
 # Remove-AzureRmDataLakeAnalyticsCatalogCredential

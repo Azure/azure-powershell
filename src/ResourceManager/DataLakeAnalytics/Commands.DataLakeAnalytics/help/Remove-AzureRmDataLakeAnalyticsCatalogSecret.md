@@ -3,6 +3,7 @@ external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 ms.assetid: 7F063C03-3EAA-4D90-BC4B-E29721B328D9
 online version: 
 schema: 2.0.0
+manager: jhubbard
 ---
 
 # Remove-AzureRmDataLakeAnalyticsCatalogSecret
