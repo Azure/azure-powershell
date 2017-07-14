@@ -1,4 +1,10 @@
-﻿## 2017.7.11 - Version 4.2.0
+﻿## 2017.07.17 - Version 4.2.1
+* Profile
+    - Fix issue with non-interactive user authentication in RDFE (link)[https://github.com/Azure/azure-powershell/issues/4299]
+* ServiceManagement
+    - Fix issue with non-interactive user authentication (link)[https://github.com/Azure/azure-powershell/issues/4299]
+
+## 2017.7.11 - Version 4.2.0
 * AnalysisServices
     * Add new dataplane API
         - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog
