@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+- Fix issue with VM DIsk and VM Disk snapshot create and update cmdlets, (link)[https://github.com/azure/azure-powershell/issues/4309]
+  - New-AzureRmDisk
+  - New-AzureRmSnapshot
+  - Update-AzureRmDisk
+  - Update-AzureRmSnapshot
+  
 ## Version 3.2.0
 * Storage account type support for Image disk:
     - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk
