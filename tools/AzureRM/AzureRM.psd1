@@ -155,6 +155,12 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '## 2017.07.17 - Version 4.2.1
+* Compute
+    - Fix issue with VM DIsk and VM Disk snapshot create and update cmdlets, (link)[https://github.com/azure/azure-powershell/issues/4309]
+      - New-AzureRmDisk
+      - New-AzureRmSnapshot
+      - Update-AzureRmDisk
+      - Update-AzureRmSnapshot
 * Profile
     - Fix issue with non-interactive user authentication in RDFE (link)[https://github.com/Azure/azure-powershell/issues/4299]'
 
