@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+
 ## Version 3.2.0
 * Issue #4215 (change request) remove the 15 days limit in the time window for the Get-AzureRmLog cmdlet. Also minor changes to the unit test names.
 * Issue #3957 fixed for Get-AzureRmLog
