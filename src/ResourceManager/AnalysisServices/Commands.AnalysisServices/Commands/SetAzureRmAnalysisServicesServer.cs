@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
@@ -41,7 +42,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 "Name of the Sku used to create the server"
             )]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("B1", "B2", "S0", "S1", "S2", "S4")]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
@@ -54,8 +54,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNull]
         public string Administrator { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "The Uri of blob container for backing up the server")]
+        [ValidateNotNullOrEmpty]
+        public string BackupBlobContainerUri { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter DisableBackup { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -72,13 +80,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
                 }
 
+                var availableSkus = AnalysisServicesClient.ListSkusForExisting(ResourceGroupName, Name);
+                if (Sku != null && !availableSkus.Value.Any(v => v.Sku.Name == Sku))
+                {
+                    throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Sku.Name))));
+                }
+
                 var location = currentServer.Location;
                 if (Tag == null && currentServer.Tags != null)
                 {
                     Tag = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer);
+                if (DisableBackup.IsPresent)
+                {
+                    BackupBlobContainerUri = "-";
+                }
+
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri);
 
                 if(PassThru.IsPresent)
                 {

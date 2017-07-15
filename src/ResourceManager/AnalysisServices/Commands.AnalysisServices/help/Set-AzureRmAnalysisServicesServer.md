@@ -13,7 +13,7 @@ Modifies  an instance of Analysis Services server
 
 ```
 Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
- [[-Tag] <Hashtable>] [[-Administrator] <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +42,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackupBlobContainerUri
+The blob container Uri for backup the Analysis Services server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

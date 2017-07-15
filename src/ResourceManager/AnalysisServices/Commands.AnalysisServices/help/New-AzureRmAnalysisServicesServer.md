@@ -13,7 +13,7 @@ Creates a new Analysis Services server
 
 ```
 New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackupBlobContainerUri
+The blob container Uri for backup the Analysis Services server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
