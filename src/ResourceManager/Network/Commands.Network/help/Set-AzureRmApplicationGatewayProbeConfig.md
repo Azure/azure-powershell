@@ -13,8 +13,8 @@ Sets the health probe configuration on an existing Application Gateway.
 
 ```
 Set-AzureRmApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Protocol <String> [-HostName <String>] -Path <String> -Interval <UInt32> -Timeout <UInt32>
- -UnhealthyThreshold <UInt32> [-PickHostNameFromBackendHttpSettings] [-MinServers <UInt32>]
+ -Protocol <String> [-HostName <String>] -Path <String> -Interval <Int32> -Timeout <Int32>
+ -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings] [-MinServers <Int32>]
  [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ This is the time interval between two consecutive probes.
 This value is between 1 second and 86400 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -101,7 +101,7 @@ Minimum number of servers that are always marked healthy.
 Default value is 0
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -182,7 +182,7 @@ This cmdlet marks the probe as failed if a valid response is not received with t
 Valid values are between 1 second and 86400 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -199,7 +199,7 @@ The backend server is marked down after consecutive probe failure count reaches 
 Valid values are between 1 second and 20 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
