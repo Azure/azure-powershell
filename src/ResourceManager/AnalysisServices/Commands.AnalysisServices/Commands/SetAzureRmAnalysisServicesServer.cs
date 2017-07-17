@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
@@ -26,36 +27,53 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     [Alias("Set-AzureAs")]
     public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+        private const string ParamSetDefault = "Defualt";
+        private const string ParamSetDisableBackup = "Disablebackup";
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, 
+            ParameterSetName = ParamSetDefault,
             HelpMessage = "Name of the server.")]
+        [Parameter(ParameterSetName = ParamSetDisableBackup)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            ParameterSetName = ParamSetDefault,
             HelpMessage = "Name of resource group under which you want to update the server.")]
+        [Parameter(ParameterSetName = ParamSetDisableBackup)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
-            HelpMessage =
-                "Name of the Sku used to create the server"
-            )]
+            ParameterSetName = ParamSetDefault,
+            HelpMessage = "Name of the Sku used to create the server")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("B1", "B2", "S0", "S1", "S2", "S4")]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            ParameterSetName = ParamSetDefault,
             HelpMessage = "A string,string dictionary of tags associated with this server")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            ParameterSetName = ParamSetDefault,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
         [ValidateNotNull]
         public string Administrator { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            ParameterSetName = ParamSetDefault,
+            HelpMessage = "The Uri of blob container for backing up the server")]
+        [ValidateNotNullOrEmpty]
+        public string BackupBlobContainerUri { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ParamSetDefault)]
+        [Parameter(ParameterSetName = ParamSetDisableBackup)]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ParamSetDisableBackup)]
+        public SwitchParameter DisableBackup { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -72,13 +90,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     throw new InvalidOperationException(string.Format(Properties.Resources.ServerDoesNotExist, Name));
                 }
 
+                var availableSkus = AnalysisServicesClient.ListSkusForExisting(ResourceGroupName, Name);
+                if (Sku != null && !availableSkus.Value.Any(v => v.Sku.Name == Sku))
+                {
+                    throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Sku.Name))));
+                }
+
                 var location = currentServer.Location;
                 if (Tag == null && currentServer.Tags != null)
                 {
                     Tag = TagsConversionHelper.CreateTagHashtable(currentServer.Tags);
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer);
+                if (DisableBackup.IsPresent)
+                {
+                    BackupBlobContainerUri = "-";
+                }
+
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri);
 
                 if(PassThru.IsPresent)
                 {
