@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Sets the auditing settings properties for a specific database.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
-    public class SetAzureSqlDatabaseAuditingSettings : SqlDatabaseAuditingSettingsCmdletBase
+    public class SetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>
         /// Gets or sets the state of the auditing policy

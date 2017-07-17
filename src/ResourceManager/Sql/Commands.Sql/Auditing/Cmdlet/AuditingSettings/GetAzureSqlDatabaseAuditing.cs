@@ -18,16 +18,16 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     /// <summary>
-    /// Returns the auditing settings of a specific database server.
+    /// Returns the auditing settings of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditing", SupportsShouldProcess = true), OutputType(typeof (ServerBlobAuditingSettingsModel))]
-    public class GetAzureSqlServerAuditingSettings : SqlServerAuditingSettingsCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof (DatabaseBlobAuditingSettingsModel))]
+    public class GetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerBlobAuditingSettingsModel PersistChanges(ServerBlobAuditingSettingsModel model)
+        protected override DatabaseBlobAuditingSettingsModel PersistChanges(DatabaseBlobAuditingSettingsModel model)
         {
             return null;
         }
