@@ -18,6 +18,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSApplicationGatewayConnectionDraining
     {
         public bool Enabled { get; set; }
-        public uint DrainTimeoutInSec { get; set; }
+        public int DrainTimeoutInSec { get; set; }
     }
 }
