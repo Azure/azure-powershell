@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Returns the auditing policy of a specific database.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof (AuditingPolicyModel))]
-    [Obsolete]
+    [Obsolete("Get-AzureRmSqlDatabaseAuditingPolicy is obsolete. It will be removed in a future release. Please use the Get-AzureSqlDatabaseAuditing cmdlet instead.", false)]
     public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>

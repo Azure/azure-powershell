@@ -116,6 +116,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseBlobAuditingSettingsModel
+
 ## NOTES
 
 ## RELATED LINKS
