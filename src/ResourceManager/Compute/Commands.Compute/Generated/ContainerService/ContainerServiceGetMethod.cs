@@ -146,49 +146,86 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class GetAzureRmContainerService : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSContainerService))]
+    public partial class GetAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "ContainerServiceGet";
-            base.ProcessRecord();
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
+            ExecuteClientAction(() =>
+            {
+                string resourceGroupName = this.ResourceGroupName;
+                string containerServiceName = this.Name;
+
+                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(containerServiceName))
+                {
+                    var result = ContainerServicesClient.Get(resourceGroupName, containerServiceName);
+                    var psObject = new PSContainerService();
+                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else if (!string.IsNullOrEmpty(resourceGroupName))
+                {
+                    var result = ContainerServicesClient.ListByResourceGroup(resourceGroupName);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = ContainerServicesClient.ListByResourceGroupNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSContainerServiceList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+                else
+                {
+                    var result = ContainerServicesClient.List();
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = ContainerServicesClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSContainerServiceList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "Name";
-            pContainerServiceName.ParameterType = typeof(string);
-            pContainerServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pContainerServiceName);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string Name { get; set; }
     }
 }

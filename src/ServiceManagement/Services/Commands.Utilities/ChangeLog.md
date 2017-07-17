@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.2.0
 For ExpressRoute:
 * Updated New-AzureBgpPeering cmdlet to add following new options :
     - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to create a BGP Peering of the corresponding address family type	

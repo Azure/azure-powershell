@@ -12,7 +12,7 @@ Revokes an access to a snapshot.
 ## SYNTAX
 
 ```
-Revoke-AzureRmSnapshotAccess [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-SnapshotName] <String>
+Revoke-AzureRmSnapshotAccess [-ResourceGroupName] <String> [-SnapshotName] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
