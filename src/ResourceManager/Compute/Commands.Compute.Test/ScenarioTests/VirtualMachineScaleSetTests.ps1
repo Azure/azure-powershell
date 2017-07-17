@@ -867,11 +867,15 @@ function Test-VirtualMachineScaleSetNetworking
     $rgname = Get-ComputeTestResourceName
     $ipName = Get-ComputeTestResourceName
     $nsgName = Get-ComputeTestResourceName
+    $namespace = "Microsoft.Compute";
+    $type = "virtualMachineScaleSets/publicIPAddresses";
+    $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type};
+    $loc = "";
+    if($location) { $loc = $location.Locations[0] } else { $loc = "southeastasia" };
 
     try
     {
         # Common
-        $loc = 'southeastasia';
         New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # SRP
