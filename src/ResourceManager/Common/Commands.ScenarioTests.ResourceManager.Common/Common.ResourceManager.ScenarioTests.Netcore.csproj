@@ -31,7 +31,7 @@
     <PackageReference Include="Moq" Version="4.7.10" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.3" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.4" />
     
     <!-- This is needed for discovering tests in test explorer -->
     <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" /> 

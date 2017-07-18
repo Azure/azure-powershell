@@ -78,6 +78,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmApplicationGatewayAuthenticationCertificate', 
                'Set-AzureRmApplicationGatewayAuthenticationCertificate', 
                'Get-AzureRmApplicationGatewayAvailableWafRuleSets', 
+               'Get-AzureRmApplicationGatewayAvailableSslOptions', 
                'Add-AzureRmApplicationGatewayBackendAddressPool', 
                'Get-AzureRmApplicationGatewayBackendAddressPool', 
                'New-AzureRmApplicationGatewayBackendAddressPool', 
@@ -125,12 +126,18 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmApplicationGatewayProbeConfig', 
                'Remove-AzureRmApplicationGatewayProbeConfig', 
                'Set-AzureRmApplicationGatewayProbeConfig', 
+               'New-AzureRmApplicationGatewayProbeHealthResponseMatch', 
                'Remove-AzureRmApplicationGateway', 
                'Add-AzureRmApplicationGatewayRequestRoutingRule', 
                'Get-AzureRmApplicationGatewayRequestRoutingRule', 
                'New-AzureRmApplicationGatewayRequestRoutingRule', 
                'Remove-AzureRmApplicationGatewayRequestRoutingRule', 
                'Set-AzureRmApplicationGatewayRequestRoutingRule', 
+               'Add-AzureRmApplicationGatewayRedirectConfiguration', 
+               'Get-AzureRmApplicationGatewayRedirectConfiguration', 
+               'New-AzureRmApplicationGatewayRedirectConfiguration', 
+               'Remove-AzureRmApplicationGatewayRedirectConfiguration', 
+               'Set-AzureRmApplicationGatewayRedirectConfiguration', 
                'Set-AzureRmApplicationGateway', 'Get-AzureRmApplicationGatewaySku', 
                'New-AzureRmApplicationGatewaySku', 
                'Set-AzureRmApplicationGatewaySku', 
@@ -143,6 +150,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmApplicationGatewaySslPolicy', 
                'Remove-AzureRmApplicationGatewaySslPolicy', 
                'Set-AzureRmApplicationGatewaySslPolicy', 
+               'Get-AzureRmApplicationGatewaySslPredefinedPolicy', 
                'Start-AzureRmApplicationGateway', 'Stop-AzureRmApplicationGateway', 
                'Add-AzureRmApplicationGatewayUrlPathMapConfig', 
                'Get-AzureRmApplicationGatewayUrlPathMapConfig', 
@@ -291,13 +299,15 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayBgpPeerStatus', 
                'Get-AzureRmVirtualNetworkGatewayAdvertisedRoute', 
                'Get-AzureRmVirtualNetworkGatewayLearnedRoute', 
-               'Get-AzureRmNetworkUsage'
+               'Get-AzureRmNetworkUsage', 'Get-AzureRmVirtualNetworkUsageList'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'List-AzureRmApplicationGatewayAvailableWafRuleSets'
+AliasesToExport = 'List-AzureRmApplicationGatewayAvailableWafRuleSets', 
+               'List-AzureRmApplicationGatewayAvailableSslOptions', 
+               'List-AzureRmApplicationGatewaySslPredefinedPolicy'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -326,11 +336,50 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
-* Added new GatewaySku options for VirtualNetworkGateways
-    - VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
-* Set-AzureRmNetworkWatcherConfigFlowLog
-  * Fixed  help examples
+        ReleaseNotes = '* New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
+    - SALifeTimeSeconds defaults to 27000 seconds
+    - SADataSizeKilobytes defaults to 102400000 KB
+* Added support for custom cipher suite configuration using ssl policy and listing all ssl options api in Application Gateway
+    - Added optional parameter -PolicyType, -PolicyName, -MinProtocolVersion, -Ciphersuite
+        - Add-AzureRmApplicationGatewaySslPolicy
+        - New-AzureRmApplicationGatewaySslPolicy
+        - Set-AzureRmApplicationGatewaySslPolicy
+    - Added Get-AzureRmApplicationGatewayAvailableSslOptions (Alias: List-AzureRmApplicationGatewayAvailableSslOptions)
+    - Added Get-AzureRmApplicationGatewaySslPredefinedPolicy (Alias: List-AzureRmApplicationGatewaySslPredefinedPolicy)
+* Added redirect support in Application Gateway
+    - Added Add-AzureRmApplicationGatewayRedirectConfiguration
+    - Added Get-AzureRmApplicationGatewayRedirectConfiguration
+    - Added New-AzureRmApplicationGatewayRedirectConfiguration
+    - Added Remove-AzureRmApplicationGatewayRedirectConfiguration
+    - Added Set-AzureRmApplicationGatewayRedirectConfiguration
+    - Added optional parameter -RedirectConfiguration
+        - Add-AzureRmApplicationGatewayRequestRoutingRule
+        - New-AzureRmApplicationGatewayRequestRoutingRule
+        - Set-AzureRmApplicationGatewayRequestRoutingRule
+    - Added optional parameter -DefaultRedirectConfiguration
+        - Add-AzureRmApplicationGatewayUrlPathMapConfig
+        - New-AzureRmApplicationGatewayUrlPathMapConfig
+        - Set-AzureRmApplicationGatewayUrlPathMapConfig
+    - Added optional parameter -RedirectConfiguration
+        - Add-AzureRmApplicationGatewayPathRuleConfig
+        - New-AzureRmApplicationGatewayPathRuleConfig
+        - Set-AzureRmApplicationGatewayPathRuleConfig
+    - Added optional parameter -RedirectConfigurations
+        - New-AzureRmApplicationGateway 
+        - Set-AzureRmApplicationGateway
+* Added support for azure websites in Application Gateway
+    - Added New-AzureRmApplicationGatewayProbeHealthResponseMatch
+    - Added optional parameters -PickHostNameFromBackendHttpSettings, -MinServers, -Match
+        - Add-AzureRmApplicationGatewayProbeConfig 
+        - New-AzureRmApplicationGatewayProbeConfig
+        - Set-AzureRmApplicationGatewayProbeConfig
+    - Added optional parameters -PickHostNameFromBackendAddress, -AffinityCookieName, -ProbeEnabled, -Path
+        - Add-AzureRmApplicationGatewayBackendHttpSettings
+        - New-AzureRmApplicationGatewayBackendHttpSettings
+        - Set-AzureRmApplicationGatewayBackendHttpSettings
+* Update Get-AzureRmPublicIPaddress to retrieve publicipaddress resources created via VM Scale Set
+* Added cmdlet to get virtual network current usage
+    - Get-AzureRmVirtualNetworkUsageList
 '
 
         # External dependent modules of this module

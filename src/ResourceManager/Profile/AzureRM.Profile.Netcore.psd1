@@ -112,12 +112,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Resolve-AzureRmError
-  * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
-* Send-Feedback
-  * Enabled sending feedback without logging in
-* Get-AzureRmSubscription
-  * Fix bug in retrieving CSP subscriptions
+        ReleaseNotes = '* Fixed error when using Import-AzureRmContext or Save-AzureRmContext
+    - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3954
 '
 
         # External dependent modules of this module

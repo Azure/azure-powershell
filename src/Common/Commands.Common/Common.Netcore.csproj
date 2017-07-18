@@ -25,9 +25,9 @@
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.Net.WebHeaderCollection" Version="4.3.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.3" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.4" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
-    <PackageReference Include="System.Management.Automation" Version="6.0.0-beta.3" />
+    <PackageReference Include="System.Management.Automation" Version="6.0.0-beta.4" />
   </ItemGroup>
 
   <ItemGroup>

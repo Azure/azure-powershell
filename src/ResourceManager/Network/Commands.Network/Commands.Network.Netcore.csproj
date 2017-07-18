@@ -26,7 +26,7 @@
     <PackageReference Include="Microsoft.Azure.Common" Version="2.1.4" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="10.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="11.1.0-preview" />
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
@@ -34,7 +34,7 @@
     <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
     <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.3" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.0-beta.4" />
   </ItemGroup>
 
   <ItemGroup>

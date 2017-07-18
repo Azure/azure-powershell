@@ -77,11 +77,7 @@ CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
                'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
                'Set-AzureRmStorageAccount', 
                'Get-AzureRmStorageAccountNameAvailability', 
-               'Get-AzureRmStorageUsage',
-               'Update-AzureRmStorageAccountNetworkACL',
-               'Get-AzureRmStorageAccountNetworkACL',
-               'Add-AzureRmStorageAccountNetworkACLRule',
-               'Remove-AzureRmStorageAccountNetworkACLRule'
+               'Get-AzureRmStorageUsage'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -116,13 +112,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add AssignIdentity setting support to resource mode storage account cmdlets
-    - New-AzureRmStorageAccount
-    - Set-AzureRmStorageAccount
-* Add Customer Key Support to resource mode storage account cmdlets
-    - Set-AzureRmStorageAccount
-    - New-AzureRmStorageAccountEncryptionKeySource
-'
+        ReleaseNotes = 'Updated for common code changes'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

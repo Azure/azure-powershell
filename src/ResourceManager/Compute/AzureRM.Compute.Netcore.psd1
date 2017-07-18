@@ -161,13 +161,14 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Update-AzureRmImage', 'Get-AzureRmImage', 'Remove-AzureRmImage', 
                'New-AzureRmImageConfig', 'Set-AzureRmImageOsDisk', 
                'Add-AzureRmImageDataDisk', 'Remove-AzureRmImageDataDisk', 
-               'ConvertTo-AzureRmVMManagedDisk'
+               'ConvertTo-AzureRmVMManagedDisk', 'Set-AzureRmVmssBootDiagnostic', 
+               'Get-AzureRmComputeResourceSku'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = ''
+AliasesToExport = @()
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -196,16 +197,29 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks
-* Backup encryption settings for IaaS VMs and restore on failure
-* ChefServiceInterval option is renamed to ChefDaemonInterval now. Old one will continue to work however.
-* Remove duplicated DataDiskNames and NetworkInterfaceIDs properties from PS VM object.
-  - Make DataDiskNames and NetworkInterfaceIDs parameters optional in Remove-AzureRmVMDataDisk and Remove-AzureRmVMNetworkInterface, respectively.
-* Fix the piping issue of Get cmdlets when the Get cmdlets return a list object.
-* Cmdlets that conflicted with RDFE cmdlets have been renamed. See issue https://github.com/Azure/azure-powershell/issues/2917 for more details
-    - `New-AzureVMSqlServerAutoBackupConfig` has been renamed to `New-AzureRmVMSqlServerAutoBackupConfig`
-    - `New-AzureVMSqlServerAutoPatchingConfig` has been renamed to `New-AzureRmVMSqlServerAutoPatchingConfig`
-    - `New-AzureVMSqlServerKeyVaultCredentialConfig` has been renamed to `New-AzureRmVMSqlServerKeyVaultCredentialConfig`
+        ReleaseNotes = '* Storage account type support for Image disk:
+    - ''StorageAccountType'' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk
+* PrivateIP and PublicIP feature in Vmss Ip Configuration:
+    - ''PrivateIPAddressVersion'', ''PublicIPAddressConfigurationName'', ''PublicIPAddressConfigurationIdleTimeoutInMinutes'', ''DnsSetting'' names are added to New-AzureRmVmssIpConfig
+    - ''PrivateIPAddressVersion'' parameter for specifying IPv4 or IPv6 is added to New-AzureRmVmssIpConfig
+* Performance Maintenance feature:
+    - ''PerformMaintenance'' switch parameter is added to Restart-AzureRmVM.
+    - Get-AzureRmVM -Status shows the information of performance maintenance of the given VM
+* Virtual Machine Identity feature:
+    - ''IdentityType'' parameter is added to New-AzureRmVMConfig and UpdateAzureRmVM
+    - Get-AzureRmVM shows the information of the identity of the given VM
+* Vmss Identity feature:
+    - ''IdentityType'' parameter is added to to New-AzureRmVmssConfig
+    - Get-AzureRmVmss shows the information of the identity of the given Vmss
+* Vmss Boot Diagnostics feature:
+    - New cmdlet for setting boot diagnostics of Vmss object: Set-AzureRmVmssBootDiagnostics
+    - ''BootDiagnostic'' parameter is added to New-AzureRmVmssConfig
+* Vmss LicenseType feature:
+    - ''LicenseType'' parameter is added to New-AzureRmVmssConfig
+* RecoveryPolicyMode support:
+    - ''RecoveryPolicyMode'' paramter is added to New-AzureRmVmssConfig
+* Compute Resource Sku feature:
+    - New cmdlet ''Get-AzureRmComputeResourceSku'' list all compute resource skus
 '
 
         # External dependent modules of this module
