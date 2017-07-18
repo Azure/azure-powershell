@@ -13,8 +13,8 @@ Creates a container service.
 ## SYNTAX
 
 ```
-New-AzureRmContainerService [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <ContainerService> [<CommonParameters>]
+New-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
+ [-ContainerService] <ContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

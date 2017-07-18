@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.2.0
+* Fixed error when using Import-AzureRmContext or Save-AzureRmContext
+    - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3954
+
 ## Version 3.1.0
 * Resolve-AzureRmError
   * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data

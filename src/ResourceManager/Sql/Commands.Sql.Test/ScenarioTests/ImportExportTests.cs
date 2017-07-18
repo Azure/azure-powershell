@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportDatabase()
         {
             RunPowerShellTest("Test-ImportDatabase");

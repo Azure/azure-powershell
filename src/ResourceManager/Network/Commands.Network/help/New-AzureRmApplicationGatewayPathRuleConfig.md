@@ -16,7 +16,7 @@ Creates an application gateway path rule.
 ```
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]> [-BackendAddressPoolId <String>]
- [-BackendHttpSettingsId <String>] [<CommonParameters>]
+ [-BackendHttpSettingsId <String>] [-RedirectConfigurationId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -24,7 +24,8 @@ New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
 New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
  -Paths <System.Collections.Generic.List`1[System.String]>
  [-BackendAddressPool <PSApplicationGatewayBackendAddressPool>]
- [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>] [<CommonParameters>]
+ [-BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>]
+ [-RedirectConfiguration <PSApplicationGatewayRedirectConfiguration>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -178,6 +179,36 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedirectConfiguration
+Application gateway RedirectConfiguration
+
+```yaml
+Type: PSApplicationGatewayRedirectConfiguration
+Parameter Sets: SetByResource
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RedirectConfigurationId
+ID of the application gateway RedirectConfiguration
+
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

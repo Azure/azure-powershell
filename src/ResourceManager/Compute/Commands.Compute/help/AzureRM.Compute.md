@@ -68,6 +68,9 @@ Disables encryption on an IaaS virtual machine.
 ### [Get-AzureRmAvailabilitySet](Get-AzureRmAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
 
+### [Get-AzureRmComputeResourceSku](Get-AzureRmComputeResourceSku.md)
+List all compute resource Skus
+
 ### [Get-AzureRmContainerService](Get-AzureRmContainerService.md)
 Gets a container service.
 
@@ -418,6 +421,9 @@ Sets the Azure SQL Server extension on a virtual machine.
 
 ### [Set-AzureRmVmss](Set-AzureRmVmss.md)
 Sets specific actions on a specified VMSS.
+
+### [Set-AzureRmVmssBootDiagnostic](Set-AzureRmVmssBootDiagnostic.md)
+Sets the virtual machine scale set boot diagnostics profile.
 
 ### [Set-AzureRmVmssOsProfile](Set-AzureRmVmssOsProfile.md)
 Sets the VMSS operating system profile properties.

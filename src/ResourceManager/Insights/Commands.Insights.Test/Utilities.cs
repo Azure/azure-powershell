@@ -43,8 +43,9 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
         #region Events
 
-        public static EventData CreateFakeEvent(string id = null)
+        public static EventData CreateFakeEvent(string id = null, bool newDates = true)
         {
+            var fixedDate = new DateTime(2017, 06, 07, 22, 54, 0, DateTimeKind.Utc);
             return new EventData(
                 id: id ?? "ac7d2ab5-698a-4c33-9c19-0a93d3d7f527",
                 eventName: new LocalizableString(
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 correlationId: Correlation,
                 description: "fake event",
                 level: EventLevel.Informational,
-                eventTimestamp: DateTime.Now,
+                eventTimestamp: newDates ? DateTime.Now : fixedDate,
                 operationId: "c0f2e85f-efb0-47d0-bf90-f983ec8be91d",
                 operationName: new LocalizableString(
                     localizedValue: "Microsoft.Resources/subscriptions/resourcegroups/deployments/write",
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
                     clientRequestId: "1234",
                     clientIpAddress: "123.123.123.123"),
                 properties: new Dictionary<string, string>(),
-                submissionTimestamp: DateTime.Now);
+                submissionTimestamp: newDates ? DateTime.Now : fixedDate);
         }
 
         public static List<EventData> CreateListOfFakeEvents(int numEvents = 1)
@@ -316,11 +317,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(20));
             cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(21));
-            nextLink = null;
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
-
-            cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromDays(30));
-            cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromDays(14));
             nextLink = null;
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }

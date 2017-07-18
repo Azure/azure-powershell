@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public string Type { get; set; }
+
         [JsonIgnore]
         public string BackendAddressesText
         {
