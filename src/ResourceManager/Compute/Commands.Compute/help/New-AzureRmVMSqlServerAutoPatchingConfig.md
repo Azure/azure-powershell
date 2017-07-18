@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.WindowsAzure.Commands.ServiceManagement.dll-Help.xml
+external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 7016BAA9-C25D-404E-9F75-2BE49FBF91A8
 online version: 
 schema: 2.0.0
 ---
 
-# New-AzureVMSqlServerAutoPatchingConfig
+# New-AzureRmVMSqlServerAutoPatchingConfig
 
 ## SYNOPSIS
 Creates a configuration object for automatic patching on a virtual machine.
@@ -13,18 +13,19 @@ Creates a configuration object for automatic patching on a virtual machine.
 ## SYNTAX
 
 ```
-New-AzureVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
- [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>] [<CommonParameters>]
+New-AzureRmVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
+ [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureVMSqlServerAutoPatchingConfig** cmdlet creates a configuration object for automatic patching on a virtual machine.
+The **New-AzureRmVMSqlServerAutoPatchingConfig** cmdlet creates a configuration object for automatic patching on a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Create a configuration object to configure automatic patching
 ```
-PS C:\> $AutoPatchingConfig = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+PS C:\> $AutoPatchingConfig = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 Enable                        : True
 DayOfWeek                     : Thursday
 MaintenanceWindowStartingHour : 11
@@ -58,7 +59,6 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Everyday
 
 Required: False
 Position: Named
@@ -76,6 +76,32 @@ If you disable automated patching, Windows Update settings do not change.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InformationAction
+@{Text=}```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: infa
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InformationVariable
+@{Text=}```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: iv
 
 Required: False
 Position: Named
@@ -124,7 +150,6 @@ Specifies whether important updates should be included.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Important
 
 Required: False
 Position: Named

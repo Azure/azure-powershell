@@ -125,7 +125,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
-                    VirtualMachineScaleSet parameters = this.VirtualMachineScaleSet;
+                    VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
+                    Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
                     var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                     var psObject = new PSVirtualMachineScaleSet();
@@ -177,7 +178,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string vmScaleSetName = this.VMScaleSetName;
-                    VirtualMachineScaleSet parameters = this.VirtualMachineScaleSet;
+                    VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
+                    Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
                     var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
                     var psObject = new PSVirtualMachineScaleSet();

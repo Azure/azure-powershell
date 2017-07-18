@@ -74,22 +74,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string PrivateIPAddressVersion { get; set; }
 
-        [Alias("PublicIPAddressName")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("PublicIPAddressName")]
         public string PublicIPAddressConfigurationName { get; set; }
 
-        [Alias("PublicIPAddressIdleTimeoutInMinutes")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("PublicIPAddressIdleTimeoutInMinutes")]
         public int? PublicIPAddressConfigurationIdleTimeoutInMinutes { get; set; }
 
-        [Alias("PublicIPAddressDomainNameLabel")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("PublicIPAddressDomainNameLabel")]
         public string DnsSetting { get; set; }
 
         protected override void ProcessRecord()

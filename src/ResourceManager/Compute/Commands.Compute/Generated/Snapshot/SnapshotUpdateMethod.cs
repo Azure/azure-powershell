@@ -121,28 +121,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            ComputeAutomationAutoMapperProfile.Initialize();
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
                 {
+
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
-
-                    Snapshot snapshotObj = new Snapshot();
-                    Mapper.Map<PSSnapshot, Snapshot>(this.Snapshot, snapshotObj);
-
-                    SnapshotUpdate snapshotUpdateObj = new SnapshotUpdate();
-                    Mapper.Map<PSSnapshotUpdate, SnapshotUpdate>(this.SnapshotUpdate, snapshotUpdateObj);
+                    SnapshotUpdate snapshotupdate = new SnapshotUpdate();
+                    Mapper.Map<PSSnapshotUpdate, SnapshotUpdate>(this.SnapshotUpdate, snapshotupdate);
+                    Snapshot snapshot = new Snapshot();
+                    Mapper.Map<PSSnapshot, Snapshot>(this.Snapshot, snapshot);
 
                     var result = (this.SnapshotUpdate == null)
-                                 ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotObj)
-                                 : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshotUpdateObj);
-
-					var psObject = new PSSnapshot();
-					Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
-
-					WriteObject(psObject);
+                                 ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot)
+                                 : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshotupdate);
+                    var psObject = new PSSnapshot();
+                    Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }

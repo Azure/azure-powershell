@@ -13,7 +13,7 @@ Adds information to the unattended Windows Setup answer file.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssAdditionalUnattendContent [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
+Add-AzureRmVmssAdditionalUnattendContent [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-PassName] <PassNames>] [[-ComponentName] <ComponentNames>] [[-SettingName] <SettingNames>]
  [[-Content] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -106,7 +106,7 @@ Specify the virtual machine **Scale Set** object.
 You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 

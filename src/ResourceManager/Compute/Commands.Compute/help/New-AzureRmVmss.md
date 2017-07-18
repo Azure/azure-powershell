@@ -13,8 +13,8 @@ Creates a VMSS.
 ## SYNTAX
 
 ```
-New-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmVmss [-ResourceGroupName] <String> -VMScaleSetName <String>
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the **VirtualMachineScaleSet** object that contains the properties of the VMSS that this cmdlet creates.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
