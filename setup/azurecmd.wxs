@@ -5,7 +5,7 @@
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
-  <?define version="4.2.0" ?>
+  <?define version="4.2.1" ?>
 
   <Product Id="*"
            Name="$(var.productName)"
