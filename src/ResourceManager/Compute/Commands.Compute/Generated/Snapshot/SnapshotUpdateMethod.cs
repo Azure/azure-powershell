@@ -121,23 +121,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
+            ComputeAutomationAutoMapperProfile.Initialize();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsData.Update))
                 {
-
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
-                    SnapshotUpdate snapshot = this.SnapshotUpdate;
-                    Snapshot snapshotOrg = this.Snapshot;
 
-                    var result = (snapshot == null)
-                                 ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotOrg)
-                                 : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshot);
-                    var psObject = new PSSnapshot();
-                    Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
-                    WriteObject(psObject);
+                    Snapshot snapshotObj = new Snapshot();
+                    Mapper.Map<PSSnapshot, Snapshot>(this.Snapshot, snapshotObj);
+
+                    SnapshotUpdate snapshotUpdateObj = new SnapshotUpdate();
+                    Mapper.Map<PSSnapshotUpdate, SnapshotUpdate>(this.SnapshotUpdate, snapshotUpdateObj);
+
+                    var result = (this.SnapshotUpdate == null)
+                                 ? SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshotObj)
+                                 : SnapshotsClient.Update(resourceGroupName, snapshotName, snapshotUpdateObj);
+
+					var psObject = new PSSnapshot();
+					Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+
+					WriteObject(psObject);
                 }
             });
         }

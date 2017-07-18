@@ -93,6 +93,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             Mapper.CreateMap<FROM.AccessUri, TO.PSAccessUri>();
             Mapper.CreateMap<FROM.Image, TO.PSImage>();
             Mapper.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
+            Mapper.CreateMap<TO.PSDisk, FROM.Disk>();
+            Mapper.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>();
+            Mapper.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
             Mapper.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
             Mapper.CreateMap<FROM.RunCommandDocument, TO.PSRunCommandDocument>();
             Mapper.CreateMap<FROM.RunCommandDocumentBase, TO.PSRunCommandDocumentBase>();
@@ -104,7 +107,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             Mapper.CreateMap<FROM.VirtualMachineCaptureResult, TO.PSVirtualMachineCaptureResult>();
             Mapper.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>();
             Mapper.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();
-
+            Mapper.CreateMap<TO.PSSnapshot, FROM.Snapshot>();
+            Mapper.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
+            Mapper.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
         }
     }
 }
