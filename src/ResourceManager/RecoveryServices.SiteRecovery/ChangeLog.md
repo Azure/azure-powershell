@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.1.1
+
 ## Version 0.1.0
 
 * Introducing a new module for Azure Site Recovery operations.

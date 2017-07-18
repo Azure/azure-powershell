@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.2.1
+
 ## Version 4.2.0
 * Added support for user managed KeyVault key rotations in the Set-AzureRMDataLakeStoreAccount cmdlet
 * Added a quality of life update to automatically trigger an `enableKeyVault` call when a user managed KeyVault is added or a key is rotated.
