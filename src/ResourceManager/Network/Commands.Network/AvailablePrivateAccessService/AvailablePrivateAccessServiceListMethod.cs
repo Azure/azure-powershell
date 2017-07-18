@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             {
                 psAvailablePrivateAccess.Add(Mapper.Map<CNM.PSPrivateAccessServiceResult>(vAvailablePrivateAccessService));
             }
-            WriteObject(psAvailablePrivateAccess);
+            WriteObject(psAvailablePrivateAccess, true);
         }
     }
 }

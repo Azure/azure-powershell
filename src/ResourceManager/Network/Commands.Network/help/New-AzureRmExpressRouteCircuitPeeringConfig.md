@@ -72,7 +72,9 @@ New-AzureRmExpressRouteCircuit @parameters
 ## PARAMETERS
 
 ### -LegacyMode
-The legacy mode of the Peering```yaml
+The legacy mode of the Peering
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 
