@@ -72,7 +72,7 @@ The concatenation of the domain name label and vm index will be the domain name 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: PublicIPAddressDomainNameLabel
 
 Required: False
 Position: Named
@@ -166,7 +166,7 @@ The idle timeout of the public IP address.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases: PublicIPAddressIdleTimeoutInMinutes
 
 Required: False
 Position: Named
@@ -181,7 +181,7 @@ The publicIP address configuration name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: PublicIPAddressName
 
 Required: False
 Position: Named

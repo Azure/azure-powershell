@@ -39,7 +39,7 @@ List of dns server IP addresses for dns settings.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases: DnsServer
 
 Required: False
 Position: Named

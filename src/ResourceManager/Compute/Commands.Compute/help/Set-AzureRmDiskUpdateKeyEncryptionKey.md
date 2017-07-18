@@ -12,7 +12,7 @@ Sets the key encryption key properties on a disk update object.
 ## SYNTAX
 
 ```
-Set-AzureRmDiskUpdateKeyEncryptionKey [-DiskUpdate] <DiskUpdate> [[-KeyUrl] <String>]
+Set-AzureRmDiskUpdateKeyEncryptionKey [-DiskUpdate] <PSDiskUpdate> [[-KeyUrl] <String>]
  [[-SourceVaultId] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ The last command takes the disk update object and updates an existing disk with 
 Specifies a local disk update object.
 
 ```yaml
-Type: DiskUpdate
+Type: PSDiskUpdate
 Parameter Sets: (All)
 Aliases: 
 

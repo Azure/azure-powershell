@@ -14,13 +14,13 @@ Updates a snapshot.
 ### DefaultParameter (Default)
 ```
 Update-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String>
- [-SnapshotUpdate] <SnapshotUpdate> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SnapshotUpdate] <PSSnapshotUpdate> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
-Update-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <Snapshot> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <PSSnapshot>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Specifies a local snapshot object.
 
 ```yaml
-Type: Snapshot
+Type: PSSnapshot
 Parameter Sets: FriendMethod
 Aliases: 
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies a local snapshot update object.
 
 ```yaml
-Type: SnapshotUpdate
+Type: PSSnapshotUpdate
 Parameter Sets: DefaultParameter
 Aliases: 
 
