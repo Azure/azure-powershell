@@ -21,6 +21,31 @@
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series
 
+## Version 3.2.0
+* Storage account type support for Image disk:
+    - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk
+* PrivateIP and PublicIP feature in Vmss Ip Configuration:
+    - 'PrivateIPAddressVersion', 'PublicIPAddressConfigurationName', 'PublicIPAddressConfigurationIdleTimeoutInMinutes', 'DnsSetting' names are added to New-AzureRmVmssIpConfig
+    - 'PrivateIPAddressVersion' parameter for specifying IPv4 or IPv6 is added to New-AzureRmVmssIpConfig
+* Performance Maintenance feature:
+    - 'PerformMaintenance' switch parameter is added to Restart-AzureRmVM.
+    - Get-AzureRmVM -Status shows the information of performance maintenance of the given VM
+* Virtual Machine Identity feature:
+    - 'IdentityType' parameter is added to New-AzureRmVMConfig and UpdateAzureRmVM
+    - Get-AzureRmVM shows the information of the identity of the given VM
+* Vmss Identity feature:
+    - 'IdentityType' parameter is added to to New-AzureRmVmssConfig
+    - Get-AzureRmVmss shows the information of the identity of the given Vmss
+* Vmss Boot Diagnostics feature:
+    - New cmdlet for setting boot diagnostics of Vmss object: Set-AzureRmVmssBootDiagnostics
+    - 'BootDiagnostic' parameter is added to New-AzureRmVmssConfig
+* Vmss LicenseType feature:
+    - 'LicenseType' parameter is added to New-AzureRmVmssConfig
+* RecoveryPolicyMode support:
+    - 'RecoveryPolicyMode' paramter is added to New-AzureRmVmssConfig
+* Compute Resource Sku feature:
+    - New cmdlet 'Get-AzureRmComputeResourceSku' list all compute resource skus
+
 ## Version 3.1.0
 * Fix Test-AzureRmVMAEMExtension for virtual machines with multiple managed disks
 * Updated Set-AzureRmVMAEMExtension: Add caching information for Premium managed disks

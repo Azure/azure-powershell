@@ -76,7 +76,7 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 ### Example 1: Grant permissions to a user for a key vault Key Vault and modify the permissionskey vault
 ```
 PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets 'set,delete'
-PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets 'set,delete,get' -PassThru
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets set,delete,get -PassThru
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys @() -PassThru
 ```
 
@@ -92,7 +92,7 @@ The *PassThru* parameter results in the updated object being returned by the cmd
 
 ### Example 2: Grant permissions for an application service principal to read and write secrets
 ```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets 'Get,Set'
+PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
 ```
 
 This command grants permissions for an application for a key vault named Contoso03Vault.
@@ -103,7 +103,7 @@ This example specifies the service principal name http://payroll.contoso.com, an
 
 ### Example 3: Grant permissions for an application using its object ID
 ```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets 'Get,Set'
+PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets Get,Set
 ```
 
 This command grants the application permissions to read and write secrets.
@@ -111,7 +111,7 @@ This example specifies the application using the object ID of the service princi
 
 ### Example 4: Grant permissions for a user principal name
 ```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets 'Get,List,Set'
+PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets Get,List,Set
 ```
 
 This command grants get, list, and set permissions for the specified user principal name for access to secrets.

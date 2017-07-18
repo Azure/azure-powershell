@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: CB7DED0C-52C6-45A0-955B-7B82738BE3FC
 online version: 
 schema: 2.0.0
 ---
@@ -18,7 +17,7 @@ Remove-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -ApplicationG
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApplicationGatewayBackendHttpSettings** cmdlet removes back-end Hypertext Transfer Protocol (HTTP) settings from an Azure application gateway.
+The Remove-AzureRmApplicationGatewayBackendHttpSettings cmdlet removes back-end Hypertext Transfer Protocol (HTTP) settings from an Azure application gateway.
 
 ## EXAMPLES
 
@@ -77,12 +76,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayBackendHttpSettings](./Add-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Add-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[New-AzureRmApplicationGatewayBackendHttpSettings](./New-AzureRmApplicationGatewayBackendHttpSettings.md)
+[New-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Get-AzureRmApplicationGatewayBackendHttpSettings](./Get-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Get-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Set-AzureRmApplicationGatewayBackendHttpSettings](./Set-AzureRmApplicationGatewayBackendHttpSettings.md)
-
+[Set-AzureRmApplicationGatewayBackendHttpSettings]()
 
