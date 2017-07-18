@@ -125,7 +125,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
-                    ContainerService parameters = this.ContainerService;
+                    ContainerService parameters = new ContainerService();
+                    Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
                     var psObject = new PSContainerService();
@@ -176,7 +177,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
-                    ContainerService parameters = this.ContainerService;
+                    ContainerService parameters = new ContainerService();
+                    Mapper.Map<PSContainerService, ContainerService>(this.ContainerService, parameters);
 
                     var result = ContainerServicesClient.CreateOrUpdate(resourceGroupName, containerServiceName, parameters);
                     var psObject = new PSContainerService();

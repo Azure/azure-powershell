@@ -125,7 +125,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
-                    Image parameters = this.Image;
+                    Image parameters = new Image();
+                    Mapper.Map<PSImage, Image>(this.Image, parameters);
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();
@@ -177,7 +178,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string imageName = this.ImageName;
-                    Image parameters = this.Image;
+                    Image parameters = new Image();
+                    Mapper.Map<PSImage, Image>(this.Image, parameters);
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();

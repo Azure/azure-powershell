@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string NetworkSecurityGroupId { get; set; }
 
-        [Alias("DnsServer")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("DnsServer")]
         public string[] DnsSettingsDnsServer { get; set; }
 
         protected override void ProcessRecord()

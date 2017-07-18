@@ -1,11 +1,11 @@
 ---
-external help file: Microsoft.WindowsAzure.Commands.ServiceManagement.dll-Help.xml
+external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: B30C2BDD-6DA9-47B5-88FE-3AD43E15A072
 online version: 
 schema: 2.0.0
 ---
 
-# New-AzureVMSqlServerKeyVaultCredentialConfig
+# New-AzureRmVMSqlServerKeyVaultCredentialConfig
 
 ## SYNOPSIS
 Creates a configuration object for SQL server key vault credential on a virtual machine.
@@ -13,7 +13,7 @@ Creates a configuration object for SQL server key vault credential on a virtual 
 ## SYNTAX
 
 ```
-New-AzureVMSqlServerKeyVaultCredentialConfig [-Enable] [[-CredentialName] <String>]
+New-AzureRmVMSqlServerKeyVaultCredentialConfig [-Enable] [[-CredentialName] <String>]
  [[-AzureKeyVaultUrl] <String>] [[-ServicePrincipalName] <String>] [[-ServicePrincipalSecret] <SecureString>]
  [-Profile <AzureSMProfile>] [<CommonParameters>]
 ```

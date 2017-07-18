@@ -12,7 +12,7 @@ Adds a data disk to an image obejct.
 ## SYNTAX
 
 ```
-Add-AzureRmImageDataDisk [-Image] <Image> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
+Add-AzureRmImageDataDisk [-Image] <PSImage> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
  [-DiskSizeGB <Int32>] [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>]
  [-ManagedDiskId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specifies a local image object.
 
 ```yaml
-Type: Image
+Type: PSImage
 Parameter Sets: (All)
 Aliases: 
 
