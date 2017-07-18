@@ -23,41 +23,34 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAnalysisServicesServer", SupportsShouldProcess = true, DefaultParameterSetName = ParamSetDefault), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Set-AzureAs")]
     public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
-        private const string ParamSetDefault = "Defualt";
-        private const string ParamSetDisableBackup = "Disablebackup";
+        private const string ParamSetDefault = "Default";
+        private const string ParamSetDisableBackup = "Disable Backup";
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, 
-            ParameterSetName = ParamSetDefault,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of the server.")]
-        [Parameter(ParameterSetName = ParamSetDisableBackup)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
-            ParameterSetName = ParamSetDefault,
             HelpMessage = "Name of resource group under which you want to update the server.")]
-        [Parameter(ParameterSetName = ParamSetDisableBackup)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
-            ParameterSetName = ParamSetDefault,
             HelpMessage = "Name of the Sku used to create the server")]
         [ValidateNotNullOrEmpty]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            ParameterSetName = ParamSetDefault,
             HelpMessage = "A string,string dictionary of tags associated with this server")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            ParameterSetName = ParamSetDefault,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
         [ValidateNotNull]
         public string Administrator { get; set; }
@@ -68,11 +61,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string BackupBlobContainerUri { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ParamSetDefault)]
-        [Parameter(ParameterSetName = ParamSetDisableBackup)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ParamSetDisableBackup)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = true,
+            ParameterSetName = ParamSetDisableBackup,
+            HelpMessage = "The switch to turn off backup of the server.")]
         public SwitchParameter DisableBackup { get; set; }
 
         public override void ExecuteCmdlet()
