@@ -15,7 +15,8 @@ Adds a network interface configuration to the VMSS.
 ```
 Add-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
  [[-Name] <String>] [[-Primary] <Boolean>] [[-Id] <String>]
- [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-NetworkSecurityGroupId <String>]
+ [-DnsSettingsDnsServer <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +32,21 @@ PS C:\> Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VM
 This command adds a network interface configuration to the VMSS.
 
 ## PARAMETERS
+
+### -DnsSettingsDnsServer
+List of dns server IP addresses for dns settings.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Id
 Specifies the Resource ID of the virtual machine.
@@ -72,6 +88,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroupId
+Id of the network security group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         private void CheckPartnerResourceGroupValid(string partnerResourceGroupName)
         {
             // checking if the resource group is valid as a partner resource group
-            ServerCommunicator.List(partnerResourceGroupName);
+            ServerCommunicator.ListByResourceGroup(partnerResourceGroupName);
         }
 
         /// <summary>

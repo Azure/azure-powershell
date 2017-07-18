@@ -12,7 +12,7 @@ Creates a new connection draining configuration for back-end HTTP settings.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayConnectionDraining -Enabled <Boolean> -DrainTimeoutInSec <UInt32>
+New-AzureRmApplicationGatewayConnectionDraining -Enabled <Boolean> -DrainTimeoutInSec <Int32>
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ The number of seconds connection draining is active.
 Acceptable values are from 1 second to 3600 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
