@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Request Timeout. Default value 30 seconds.")]
         [ValidateNotNullOrEmpty]
-        public uint RequestTimeout { get; set; }
+        public int RequestTimeout { get; set; }
 
 
         [Parameter(
@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag if host header should be picked from the host name of the backend server.")]
         public SwitchParameter PickHostNameFromBackendAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sets host header to be sent to the backend servers.")]
+        public string HostName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -147,6 +152,10 @@ namespace Microsoft.Azure.Commands.Network
             if(this.PickHostNameFromBackendAddress.IsPresent)
             {
                 backendHttpSettings.PickHostNameFromBackendAddress = true;
+            }
+            if(this.HostName != null)
+            {
+                backendHttpSettings.HostName = this.HostName;
             }
             if (this.AffinityCookieName != null)
             {

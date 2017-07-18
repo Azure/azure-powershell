@@ -94,6 +94,7 @@ Minimum version of Ssl protocol to be supported on application gateway
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
 Required: False
 Position: Named
@@ -124,6 +125,7 @@ Type of Ssl Policy
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Predefined, Custom
 
 Required: False
 Position: Named

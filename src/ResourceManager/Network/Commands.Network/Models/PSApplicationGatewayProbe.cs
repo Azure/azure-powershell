@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
         public string Host { get; set; }
         public string Path { get; set; }
-        public uint Interval { get; set; }
-        public uint Timeout { get; set; }
-        public uint UnhealthyThreshold { get; set; }
+        public int? Interval { get; set; }
+        public int? Timeout { get; set; }
+        public int? UnhealthyThreshold { get; set; }
         public bool? PickHostNameFromBackendHttpSettings { get; set; }
-        public uint? MinServers { get; set; }
+        public int? MinServers { get; set; }
         public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
