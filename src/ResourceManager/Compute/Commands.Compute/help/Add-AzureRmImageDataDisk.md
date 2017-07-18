@@ -159,6 +159,7 @@ The Storage Account type of the data image disk
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named
@@ -215,3 +216,4 @@ System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, Pub
 ## NOTES
 
 ## RELATED LINKS
+
