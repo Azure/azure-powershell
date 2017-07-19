@@ -73,16 +73,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string PrivateIPAddressVersion { get; set; }
 
+        [Alias("PublicIPAddressName")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string PublicIPAddressConfigurationName { get; set; }
 
+        [Alias("PublicIPAddressIdleTimeoutInMinutes")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public int? PublicIPAddressConfigurationIdleTimeoutInMinutes { get; set; }
 
+        [Alias("PublicIPAddressDomainNameLabel")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]

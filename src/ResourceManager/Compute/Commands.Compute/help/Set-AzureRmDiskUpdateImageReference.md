@@ -12,7 +12,7 @@ Sets the image reference properties on a disk update object.
 ## SYNTAX
 
 ```
-Set-AzureRmDiskUpdateImageReference [-DiskUpdate] <DiskUpdate> [[-Id] <String>] [[-Lun] <Int32>] [-WhatIf]
+Set-AzureRmDiskUpdateImageReference [-DiskUpdate] <PSDiskUpdate> [[-Id] <String>] [[-Lun] <Int32>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ The last command takes the disk update object and updates an existing disk with 
 Specifies a local disk update object.
 
 ```yaml
-Type: DiskUpdate
+Type: PSDiskUpdate
 Parameter Sets: (All)
 Aliases: 
 

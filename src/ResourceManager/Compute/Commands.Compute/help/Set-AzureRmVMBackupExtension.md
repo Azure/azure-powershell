@@ -23,7 +23,7 @@ Set-AzureRmVMBackupExtension [-ResourceGroupName] <String> [-VMName] <String> [-
 
 ### 1:
 ```
-PS C:\> 
+PS C:\>
 ```
 
 ## PARAMETERS

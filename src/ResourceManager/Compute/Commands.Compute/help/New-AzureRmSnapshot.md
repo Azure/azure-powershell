@@ -12,7 +12,7 @@ Creates a snapshot.
 ## SYNTAX
 
 ```
-New-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <Snapshot> [-WhatIf]
+New-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <PSSnapshot> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies a local snapshot object.
 
 ```yaml
-Type: Snapshot
+Type: PSSnapshot
 Parameter Sets: (All)
 Aliases: 
 

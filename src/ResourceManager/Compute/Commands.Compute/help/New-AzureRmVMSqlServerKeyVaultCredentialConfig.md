@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.WindowsAzure.Commands.ServiceManagement.dll-Help.xml
 ms.assetid: B30C2BDD-6DA9-47B5-88FE-3AD43E15A072
 online version: 
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates a configuration object for SQL server key vault credential on a virtual 
 ## SYNTAX
 
 ```
-New-AzureVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable] [-CredentialName <String>]
- [-AzureKeyVaultUrl <String>] [-ServicePrincipalName <String>] [-ServicePrincipalSecret <SecureString>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureVMSqlServerKeyVaultCredentialConfig [-Enable] [[-CredentialName] <String>]
+ [[-AzureKeyVaultUrl] <String>] [[-ServicePrincipalName] <String>] [[-ServicePrincipalSecret] <SecureString>]
+ [-Profile <AzureSMProfile>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -44,7 +44,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -57,22 +57,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-```yaml
-Type: String
+### -Profile
+In-memory profile.```yaml
+Type: AzureSMProfile
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -83,7 +83,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -96,41 +96,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

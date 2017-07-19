@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+external help file: Microsoft.WindowsAzure.Commands.ServiceManagement.dll-Help.xml
 ms.assetid: 0AC17275-17A9-47DE-BF04-C1A51DF057DC
 online version: 
 schema: 2.0.0
@@ -14,20 +14,20 @@ Creates a configuration object for SQL Server automatic backup.
 
 ### StorageUriSqlServerAutoBackup (Default)
 ```
-New-AzureVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
- [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageUri] <Uri>]
- [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
- [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
- [-LogBackupFrequencyInMinutes <Int32>] [<CommonParameters>]
+New-AzureVMSqlServerAutoBackupConfig [-Enable] [[-RetentionPeriodInDays] <Int32>] [-EnableEncryption]
+ [[-CertificatePassword] <SecureString>] [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>]
+ [-BackupSystemDbs] [-BackupScheduleType <String>] [-FullBackupFrequency <String>]
+ [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>] [-LogBackupFrequencyInMinutes <Int32>]
+ [-Profile <AzureSMProfile>] [<CommonParameters>]
 ```
 
 ### StorageContextSqlServerAutoBackup
 ```
-New-AzureVMSqlServerAutoBackupConfig [-ResourceGroupName] <String> [-Enable] [[-RetentionPeriodInDays] <Int32>]
- [-EnableEncryption] [[-CertificatePassword] <SecureString>] [[-StorageContext] <AzureStorageContext>]
- [[-StorageUri] <Uri>] [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
+New-AzureVMSqlServerAutoBackupConfig [-Enable] [[-RetentionPeriodInDays] <Int32>] [-EnableEncryption]
+ [[-CertificatePassword] <SecureString>] [[-StorageContext] <AzureStorageContext>] [[-StorageUri] <Uri>]
+ [[-StorageKey] <SecureString>] [-BackupSystemDbs] [-BackupScheduleType <String>]
  [-FullBackupFrequency <String>] [-FullBackupStartHour <Int32>] [-FullBackupWindowInHours <Int32>]
- [-LogBackupFrequencyInMinutes <Int32>] [<CommonParameters>]
+ [-LogBackupFrequencyInMinutes <Int32>] [-Profile <AzureSMProfile>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,7 +115,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -132,7 +132,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -147,7 +147,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -206,18 +206,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of the resource group of the virtual machine.
-
-```yaml
-Type: String
+### -Profile
+In-memory profile.```yaml
+Type: AzureSMProfile
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -230,7 +228,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -247,7 +245,7 @@ Parameter Sets: StorageContextSqlServerAutoBackup
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
