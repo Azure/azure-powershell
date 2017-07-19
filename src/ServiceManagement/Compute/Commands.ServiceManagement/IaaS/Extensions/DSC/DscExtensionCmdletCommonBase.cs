@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 
             if (storageContext != null)
             {
-                credentials = storageContext.StorageAccount.Credentials;
+                credentials = storageContext.GetCloudStorageAccount().Credentials;
             }
             else
             {
