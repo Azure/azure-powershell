@@ -23,7 +23,7 @@ Remove-AzureRmWebAppBackup [-BackupId] <String> [-WebApp] <Site> [<CommonParamet
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmWebAppBackup** cmdlet gets the specified backup of an Azure Web App.
+The **Remove-AzureRmWebAppBackup** cmdlet removes the specified backup of an Azure Web App.
 
 ## EXAMPLES
 
