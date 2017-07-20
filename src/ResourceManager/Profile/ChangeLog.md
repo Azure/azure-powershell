@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+- Fix issue with non-interactive user authentication in RDFE (link)[https://github.com/Azure/azure-powershell/issues/4299]
+
 ## Version 3.2.0
 * Fixed error when using Import-AzureRmContext or Save-AzureRmContext
     - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3954

@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -117,16 +118,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
+            ComputeAutomationAutoMapperProfile.Initialize();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
-                    PSSnapshot snapshot = this.Snapshot;
+                    Snapshot snapshot = new Snapshot();
+                    Mapper.Map<PSSnapshot, Snapshot>(this.Snapshot, snapshot);
 
                     var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
-                    WriteObject(result);
+
+                    PSSnapshot psResult = new PSSnapshot();
+                    Mapper.Map<Snapshot, PSSnapshot>(result, psResult);
+                    WriteObject(psResult);
                 }
             });
         }
