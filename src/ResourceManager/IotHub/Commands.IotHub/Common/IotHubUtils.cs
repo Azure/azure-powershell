@@ -128,6 +128,26 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<PSIotHubSkuInfo, IotHubSkuInfo>(psIotHubSkuInfo);
         }
 
+        public static RoutingProperties ToRoutingProperties(PSRoutingProperties psRoutingProperties)
+        {
+            return ConvertObject<PSRoutingProperties, RoutingProperties>(psRoutingProperties);
+        }
+
+        public static List<RouteProperties> ToRouteProperties(List<PSRouteMetadata> psRouteProperties)
+        {
+            return ConvertObject<List<PSRouteMetadata>, List<RouteProperties>>(psRouteProperties);
+        }
+
+        public static RouteProperties ToRouteProperty(PSRouteMetadata psRouteProperty)
+        {
+            return ConvertObject<PSRouteMetadata, RouteProperties>(psRouteProperty);
+        }
+
+        public static FallbackRouteProperties ToFallbackRouteProperty(PSFallbackRouteMetadata psRouteProperty)
+        {
+            return ConvertObject<PSFallbackRouteMetadata, FallbackRouteProperties>(psRouteProperty);
+        }
+
         public static IList<PSIotHubConnectionString> ToPSIotHubConnectionStrings(IEnumerable<SharedAccessSignatureAuthorizationRule> authorizationPolicies, string hostName)
         {
             var psConnectionStrings = new List<PSIotHubConnectionString>();

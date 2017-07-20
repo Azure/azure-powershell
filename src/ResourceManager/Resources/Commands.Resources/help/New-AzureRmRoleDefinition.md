@@ -18,14 +18,12 @@ Finally, use this command to create a custom role using role definition.
 
 ### InputFileParameterSet
 ```
-New-AzureRmRoleDefinition [-InputFile] <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+New-AzureRmRoleDefinition [-InputFile] <String> [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
-New-AzureRmRoleDefinition [-Role] <PSRoleDefinition> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+New-AzureRmRoleDefinition [-Role] <PSRoleDefinition> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,8 +81,6 @@ Following is a sample json role definition that can be provided as input
 ## EXAMPLES
 
 ### --------------------------  Create using PSRoleDefinitionObject  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Id = $null
@@ -102,15 +98,13 @@ PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/resources/read")
           PS C:\> $role.Actions.Add("Microsoft.Insights/alertRules/*")
           PS C:\> $role.Actions.Add("Microsoft.Support/*")
-          PS C:\> $role.AssignableScopes.Remove("/") | Out-Null
+          PS C:\> $role.AssignableScopes.Clear()
           PS C:\> $role.AssignableScopes.Add("/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e")
 
           PS C:\> New-AzureRmRoleDefinition -Role $role
 ```
 
 ### --------------------------  Create using JSON file  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> New-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
@@ -132,45 +126,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Role
 Role definition object.
 
@@ -186,6 +141,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
@@ -195,11 +153,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[Get-AzureRmProviderOperation]()
+[Get-AzureRmProviderOperation](./Get-AzureRmProviderOperation.md)
 
-[Get-AzureRmRoleDefinition]()
+[Get-AzureRmRoleDefinition](./Get-AzureRmRoleDefinition.md)
 
-[Set-AzureRmRoleDefinition]()
+[Set-AzureRmRoleDefinition](./Set-AzureRmRoleDefinition.md)
 
-[Remove-AzureRmRoleDefinition]()
+[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleDefinition.md)
 

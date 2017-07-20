@@ -14,12 +14,12 @@ Starts an Azure virtual machine.
 
 ### ResourceGroupNameParameterSetName (Default)
 ```
-Start-AzureRmVM -Name <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSetName
 ```
-Start-AzureRmVM -Name <String> -Id <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzureRmVM [-Name] <String> [-Id] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ The **Start-AzureRmVM** cmdlet starts an Azure virtual machine.
 
 ### Example 1: Start a virtual machine
 ```
-PS C:\>Start-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> Start-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 ```
 
 This command starts the virtual machine named VirtualMachine07 in ResourceGroup11.
@@ -43,7 +43,7 @@ Parameter Sets: IdParameterSetName
 Aliases: 
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -56,7 +56,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -71,7 +71,7 @@ Parameter Sets: ResourceGroupNameParameterSetName
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

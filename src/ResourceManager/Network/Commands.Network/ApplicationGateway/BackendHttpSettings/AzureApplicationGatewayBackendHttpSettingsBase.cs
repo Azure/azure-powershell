@@ -50,7 +50,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Request Timeout. Default value 30 seconds.")]
         [ValidateNotNullOrEmpty]
-        public uint RequestTimeout { get; set; }
+        public int RequestTimeout { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Connection draining of the backend http settings resource.")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayConnectionDraining ConnectionDraining { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -69,6 +76,33 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Application gateway Authentication Certificates")]
         [ValidateNotNullOrEmpty]
         public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag if host header should be picked from the host name of the backend server.")]
+        public SwitchParameter PickHostNameFromBackendAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Sets host header to be sent to the backend servers.")]
+        public string HostName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Cookie name to use for the affinity cookie")]
+        [ValidateNotNullOrEmpty]
+        public string AffinityCookieName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag if probe should be enabled.")]
+        public SwitchParameter ProbeEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.")]
+        [ValidateNotNullOrEmpty]
+        public string Path { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -94,6 +128,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 backendHttpSettings.RequestTimeout = this.RequestTimeout;
             }
+            if(this.ConnectionDraining != null)
+            {
+                backendHttpSettings.ConnectionDraining = this.ConnectionDraining;
+            }
             if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 backendHttpSettings.Probe = new PSResourceId();
@@ -111,10 +149,32 @@ namespace Microsoft.Azure.Commands.Network
                         });
                 }
             }
+            if(this.PickHostNameFromBackendAddress.IsPresent)
+            {
+                backendHttpSettings.PickHostNameFromBackendAddress = true;
+            }
+            if(this.HostName != null)
+            {
+                backendHttpSettings.HostName = this.HostName;
+            }
+            if (this.AffinityCookieName != null)
+            {
+                backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
+            }
+            if (this.ProbeEnabled.IsPresent)
+            {
+                backendHttpSettings.ProbeEnabled = true;
+            }
+            if (this.Path != null)
+            {
+                backendHttpSettings.Path = this.Path;
+            }
+
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
                                     this.Name);
+
             return backendHttpSettings;
         }
     }

@@ -14,14 +14,12 @@ Creates an IP configuration for an application gateway.
 
 ### SetByResourceId
 ```
-New-AzureRmApplicationGatewayIPConfiguration -Name <String> [-SubnetId <String>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmApplicationGatewayIPConfiguration -Name <String> [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
-New-AzureRmApplicationGatewayIPConfiguration -Name <String> [-Subnet <PSSubnet>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+New-AzureRmApplicationGatewayIPConfiguration -Name <String> [-Subnet <PSSubnet>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,13 +58,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetId
-Specifies the subnet ID.
-This is the subnet in which the application gateway would be deployed.
+### -Subnet
+Specifies the subnet object.
+This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSSubnet
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -76,52 +74,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -SubnetId
+Specifies the subnet ID.
+This is the subnet in which the application gateway would be deployed.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subnet
-Specifies the subnet object.
-This is the subnet in which the application gateway is deployed.
-
-```yaml
-Type: PSSubnet
-Parameter Sets: SetByResource
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False

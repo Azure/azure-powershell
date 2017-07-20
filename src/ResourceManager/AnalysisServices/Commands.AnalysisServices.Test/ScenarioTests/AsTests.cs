@@ -28,14 +28,28 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServer()
         {
-            NewInstance.RunPsTest(string.Format("Test-AnalysisServicesServer -location '{0}'", AsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest("Test-AnalysisServicesServer");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalysisServicesServerScaleUpDown()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerScaleUpDown");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAnalysisServicesServer()
         {
-            NewInstance.RunPsTest(string.Format("Test-NegativeAnalysisServicesServer -location '{0}'", AsTestsBase.resourceGroupLocation));
+            NewInstance.RunPsTest("Test-NegativeAnalysisServicesServer");
+        }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerLogExport()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerLogExport");
         }
 
         [Fact]

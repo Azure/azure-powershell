@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 9F4A59BF-C2F4-4816-A975-7F21D587677A
 online version: 
 schema: 2.0.0
 ---
@@ -14,14 +13,16 @@ Updates back-end HTTP settings for an application gateway.
 
 ```
 Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Port <Int32> -Protocol <String> -CookieBasedAffinity <String> [-RequestTimeout <UInt32>] [-ProbeId <String>]
+ -Port <Int32> -Protocol <String> -CookieBasedAffinity <String> [-RequestTimeout <Int32>]
+ [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-PickHostNameFromBackendAddress] [-HostName <String>] [-AffinityCookieName <String>] [-ProbeEnabled]
+ [-Path <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApplicationGatewayBackendHttpSettings** cmdlet updates the back-end Hypertext Transfer Protocol (HTTP) settings for an Azure application gateway.
+The Set-AzureRmApplicationGatewayBackendHttpSettings cmdlet updates the back-end Hypertext Transfer Protocol (HTTP) settings for an Azure application gateway.
 Back-end HTTP settings are applied to all back-end servers in a pool.
 
 ## EXAMPLES
@@ -38,6 +39,21 @@ The second command updates the HTTP settings of the application gateway in the $
 
 ## PARAMETERS
 
+### -AffinityCookieName
+Cookie name to use for the affinity cookie
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApplicationGateway
 Specifies an application gateway object with which this cmdlet associates back-end HTTP settings.
 
@@ -53,6 +69,68 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -AuthenticationCertificates
+Specifies authentication certificates for the application gateway.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionDraining
+Connection draining of the backend http settings resource.
+
+```yaml
+Type: PSApplicationGatewayConnectionDraining
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CookieBasedAffinity
+Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool.
+The acceptable values for this parameter are: Disabled or Enabled.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Enabled, Disabled
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostName
+Sets host header to be sent to the backend servers.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the back-end HTTP settings object.
 
@@ -62,6 +140,37 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Path
+Path which should be used as a prefix for all HTTP requests.
+If no value is provided for this parameter, then no path will be prefixed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PickHostNameFromBackendAddress
+Flag if host header should be picked from the host name of the backend server.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,44 +192,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocol
-Specifies the protocol to use for communication between the application gateway and back-end servers.
-The acceptable values for this parameter are: Http and Https.
-This parameter is case-sensitive.
+### -Probe
+Specifies a probe to associate with the back-end HTTP settings.
 
 ```yaml
-Type: String
+Type: PSApplicationGatewayProbe
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CookieBasedAffinity
-Specifies whether cookie-based affinity should be enabled or disabled for the backend server pool.
-The acceptable values for this parameter are: Disabled or Enabled.
+### -ProbeEnabled
+Flag if probe should be enabled.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestTimeout
-Specifies a request time-out value.
-
-```yaml
-Type: UInt32
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -146,67 +237,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Probe
-Specifies a probe to associate with the back-end HTTP settings.
-
-```yaml
-Type: PSApplicationGatewayProbe
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AuthenticationCertificates
-Specifies authentication certificates for the application gateway.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Protocol
+Specifies the protocol to use for communication between the application gateway and back-end servers.
+The acceptable values for this parameter are: Http and Https.
+This parameter is case-sensitive.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+Accepted values: Http, Https
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestTimeout
+Specifies a request time-out value.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -230,12 +285,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayBackendHttpSettings](./Add-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Add-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Get-AzureRmApplicationGatewayBackendHttpSettings](./Get-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Get-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[New-AzureRmApplicationGatewayBackendHttpSettings](./New-AzureRmApplicationGatewayBackendHttpSettings.md)
+[New-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Remove-AzureRmApplicationGatewayBackendHttpSettings](./Remove-AzureRmApplicationGatewayBackendHttpSettings.md)
-
+[Remove-AzureRmApplicationGatewayBackendHttpSettings]()
 

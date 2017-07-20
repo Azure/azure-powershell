@@ -28,14 +28,14 @@ Shared access signature (SAS) URI is supported also.
 
 ### Example 1: Add a VHD file
 ```
-PS C:\>Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
+PS C:\> Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
 ```
 
 This command adds a .vhd file to a storage account.
 
 ### Example 2: Add a VHD file and overwrite the destination
 ```
-PS C:\>Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
+PS C:\> Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
 ```
 
 This command adds a .vhd file to a storage account.
@@ -43,7 +43,7 @@ The command overwrites an existing file.
 
 ### Example 3: Add a VHD file and specify the number of threads
 ```
-PS C:\>Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32
+PS C:\> Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32
 ```
 
 This command adds a .vhd file to a storage account.
@@ -51,7 +51,7 @@ The command specifies the number of threads to use to upload the file.
 
 ### Example 4: Add a VHD file and specify the SAS URI
 ```
-PS C:\>Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01 -09T22%3A15%3A49Z&amp;se=2013-01-09T23%3A10%3A49Z&amp;sr=b&amp;sp=w&amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveO SIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd"
+PS C:\> Add-AzureRmVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01 -09T22%3A15%3A49Z&amp;se=2013-01-09T23%3A10%3A49Z&amp;sr=b&amp;sp=w&amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveO SIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd"
 ```
 
 This command adds a .vhd file to a storage account and specifies the SAS URI.
@@ -68,7 +68,7 @@ Parameter Sets: (All)
 Aliases: bs
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -84,7 +84,7 @@ Parameter Sets: (All)
 Aliases: dst
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -99,7 +99,7 @@ Parameter Sets: (All)
 Aliases: lf
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -114,7 +114,7 @@ Parameter Sets: (All)
 Aliases: th
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -129,7 +129,7 @@ Parameter Sets: (All)
 Aliases: o
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -144,7 +144,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

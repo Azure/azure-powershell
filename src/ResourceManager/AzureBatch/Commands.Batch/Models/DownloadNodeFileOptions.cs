@@ -22,8 +22,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class DownloadNodeFileOptions : NodeFileOperationParameters
     {
-        public DownloadNodeFileOptions(BatchAccountContext context, string jobId, string taskId, string poolId, string computeNodeId, string nodeFileName,
-            PSNodeFile nodeFile, string destinationPath, Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public class ByteRange
+        {
+            public ByteRange(long start, long end)
+            {
+                this.Start = start;
+                this.End = end;
+            }
+
+            public long Start { get; }
+            public long End { get; }
+        }
+
+        public DownloadNodeFileOptions(
+            BatchAccountContext context,
+            string jobId,
+            string taskId,
+            string poolId,
+            string computeNodeId,
+            string nodeFileName,
+            PSNodeFile nodeFile,
+            string destinationPath,
+            Stream stream,
+            ByteRange byteRange,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, jobId, taskId, poolId, computeNodeId, nodeFileName, nodeFile, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)
@@ -32,6 +54,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             this.DestinationPath = destinationPath;
+            this.Range = byteRange;
             this.Stream = stream;
         }
 
@@ -39,6 +62,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The path to the directory where the node file will be downloaded
         /// </summary>
         public string DestinationPath { get; set; }
+
+        /// <summary>
+        /// The byte range to be downloaded.
+        /// </summary>
+        public ByteRange Range { get; }
 
         /// <summary>
         /// The Stream into which the node file data will be written. This stream will not be closed or rewound by this call.

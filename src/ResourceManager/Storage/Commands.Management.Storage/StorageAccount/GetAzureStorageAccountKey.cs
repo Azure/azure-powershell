@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                  this.ResourceGroupName,
                  this.Name).Keys;
 
-            WriteObject(storageKeys);
+            WriteObject(storageKeys, true);
         }
     }
 }

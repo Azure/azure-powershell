@@ -14,17 +14,17 @@ Resizes an existing virtual network gateway.
 
 ```
 Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> -GatewaySku <String>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Resize-AzureRmVirtualNetworkGateway** cmdlet enables you to change the stock-keeping unit (SKU) for a virtual network gateway.
 SKUs determine the capabilities of a gateway, including such things as throughput and the maximum number of IP tunnels that are allowed.
-Azure supports Basic, Standard, and High-Performance SKUs (sometimes referred to as Small, Medium, and Large SKUs).
-For detailed information about the capabilities of each SKU type, see https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.
+Azure supports Basic, Standard, High-Performance, VpnGw1, VpnGw2 and VpnGw3 SKUs (sometimes referred to as Small, Medium, and Large SKUs).
+For detailed information about the capabilities of each SKU type, see https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.
 
 Keep in mind that SKUs differ in pricing as well as capabilities.
-For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/.
+For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/.
 
 ## EXAMPLES
 
@@ -42,6 +42,30 @@ The second command then uses the **Resize-AzureRmVirtualNetworkGateway** cmdlet 
 
 ## PARAMETERS
 
+### -GatewaySku
+Specifies the new type of gateway SKU.
+The acceptable values for this parameter are:
+
+- Basic
+- Standard
+- High Performance
+- VpnGw1
+- VpnGw2
+- VpnGw3
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetworkGateway
 Specifies an object reference to the virtual network gateway to be resized.
 You can create this object reference by using the Get-AzureRmVirtualNetworkGateway and specifying the name of the gateway.
@@ -55,65 +79,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -GatewaySku
-Specifies the new type of gateway SKU.
-The acceptable values for this parameter are:
-
-- Basic
-- Standard
-- High Performance
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

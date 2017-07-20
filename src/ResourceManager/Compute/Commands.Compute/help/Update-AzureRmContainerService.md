@@ -13,8 +13,8 @@ Updates the state of a container service.
 ## SYNTAX
 
 ```
-Update-AzureRmContainerService [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <ContainerService> [<CommonParameters>]
+Update-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
+ [-ContainerService] <ContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Update-AzureRmContainerService** cmdlet updates the state of a container s
 
 ### Example 1: Update a container service
 ```
-PS C:\>Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" | Remove-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17" -Count 2 | Update-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"
+PS C:\> Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" | Remove-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17" -Count 2 | Update-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17"
 ```
 
 This command gets the container service named CSResourceGroup17 by using the Get-AzureRmContainerService cmdlet.
@@ -49,7 +49,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -64,7 +64,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -79,7 +79,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

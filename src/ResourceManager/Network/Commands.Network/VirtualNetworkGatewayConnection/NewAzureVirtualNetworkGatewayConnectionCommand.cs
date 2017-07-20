@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Whether to establish a BGP session over a S2S VPN tunnel")]
-        public string EnableBgp { get; set; }
+        public bool EnableBgp { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -129,6 +130,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to use policy-based traffic selectors for a S2S connection")]
+        public bool UsePolicyBasedTrafficSelectors { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of IPSec policies.")]
+        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
         public override void Execute()
         {
@@ -160,22 +172,14 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.ConnectionType = this.ConnectionType;
             vnetGatewayConnection.RoutingWeight = this.RoutingWeight;
             vnetGatewayConnection.SharedKey = this.SharedKey;
-
-            if (!string.IsNullOrEmpty(this.EnableBgp))
-            {
-                vnetGatewayConnection.EnableBgp = bool.Parse(this.EnableBgp);
-            }
-            else
-            {
-                vnetGatewayConnection.EnableBgp = false;
-            }
+            vnetGatewayConnection.EnableBgp = this.EnableBgp;
+            vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
 
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {
                 vnetGatewayConnection.AuthorizationKey = this.AuthorizationKey;
             }
-
-
+            
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.Peer != null)
@@ -188,6 +192,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 vnetGatewayConnection.Peer = new PSResourceId();
                 vnetGatewayConnection.Peer.Id = this.PeerId;
+            }
+            
+            if (this.IpsecPolicies != null)
+            {
+                vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies;
             }
 
             // Map to the sdk object

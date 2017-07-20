@@ -48,6 +48,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCrudGeo()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudGeo");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudPiping()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EndpointCrudPiping");
@@ -88,28 +95,35 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingEndpointFromProfile");
         }
 
-        [Fact(Skip = "TFS#5185296")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EnableEndpoint");
         }
 
-        [Fact(Skip = "TFS#5185296")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest("Test-DisableEndpoint");
         }
 
-        [Fact(Skip = "TFS#5185296")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableEndpointUsingPiping()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EnableEndpointUsingPiping");
         }
 
-        [Fact(Skip = "TFS#5185296")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableEndpointUsingPipingFromGetProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EnableEndpointUsingPipingFromGetProfile");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEndpointUsingPiping()
         {
@@ -128,6 +142,27 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         public void TestDisableNonExistingEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest("Test-DisableNonExistingEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointTypeCaseInsensitive()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-EndpointTypeCaseInsensitive");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipeEndpointFromGetEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-PipeEndpointFromGetEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPipeEndpointFromGetProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-PipeEndpointFromGetProfile");
         }
     }
 }

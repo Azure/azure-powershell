@@ -28,19 +28,41 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
     {
         HttpClient HttpClient { get; set; }
 
-        Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken);
+        Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, HttpContent content = null);
+
+        Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken);
+
+        void resetHttpClient();
     }
 
     public class AsAzureHttpClient : IAsAzureHttpClient
     {
         public HttpClient HttpClient { get; set; }
 
+        private Func<HttpClient> HttpClientProvider { get; set; } 
+
         public AsAzureHttpClient(Func<HttpClient> httpClientProvider)
         {
-            HttpClient = httpClientProvider();
+            this.HttpClientProvider = httpClientProvider;
+            this.HttpClient = this.HttpClientProvider();
         }
 
-        public async Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken)
+        public async Task<HttpResponseMessage> CallGetAsync(Uri baseURI, string requestURL, string accessToken)
+        {
+            return await CallAsync(HttpMethod.Get, baseURI, requestURL, accessToken);
+        }
+
+        public async Task<HttpResponseMessage> CallPostAsync(Uri baseURI, string requestURL, string accessToken, HttpContent content = null)
+        {
+            return await CallAsync(HttpMethod.Post, baseURI, requestURL, accessToken, content);
+        }
+
+        public void resetHttpClient()
+        {
+            this.HttpClient = this.HttpClientProvider();
+        }
+
+        private async Task<HttpResponseMessage> CallAsync(HttpMethod method, Uri baseURI, string requestURL, string accessToken, HttpContent content = null)
         {
             using (HttpClient)
             {
@@ -48,12 +70,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 {
                     throw new PSArgumentNullException("accessToken", string.Format(Resources.NotLoggedInMessage, ""));
                 }
-
                 HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 HttpClient.BaseAddress = baseURI;
-                HttpResponseMessage response = await HttpClient.PostAsync(requestURL, new StringContent(""));
-                return response;
+                if (method == HttpMethod.Get)
+                {
+                    return await HttpClient.GetAsync(requestURL);
+                }
+
+                if (content == null)
+                {
+                    content = new StringContent("");
+                }
+                return await HttpClient.PostAsync(requestURL, content);
             }
-        }
+        } 
     }
 }

@@ -8,114 +8,73 @@ schema: 2.0.0
 # Get-AzureRmExpressRouteCircuitStats
 
 ## SYNOPSIS
+Gets usage statistics of an ExpressRoute circuit.
 
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitStats [-Name <String>] -ResourceGroupName <String>
- -ExpressRouteCircuitName <String> [-PeeringType <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmExpressRouteCircuitStats -ResourceGroupName <String> -ExpressRouteCircuitName <String>
+ [-PeeringType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmExpressRouteCircuitStats** cmdlet retrieves traffic statistics for an ExpressRoute
+circuit. The statistics include the number of bytes sent and received over both the primary and
+secondary routes.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Display the traffic statistics for an ExpressRoute peer
 ```
-PS C:\>
+Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 ```
 
 ## PARAMETERS
 
-### -Name
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ExpressRouteCircuitName
+The name of the ExpressRoute circuit being examined.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name, ResourceName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -PeeringType
+The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePublicPeering`, and
+`MicrosoftPeering`
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group containing the ExpressRoute circuit.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -130,3 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzureRmExpressRouteCircuitARPTable](Get-AzureRmExpressRouteCircuitARPTable.md)
+
+[Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
+
+[Get-AzureRmExpressRouteCircuitRouteTableSummary](Get-AzureRmExpressRouteCircuitRouteTableSummary.md)

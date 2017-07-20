@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlServerDisasterRecoveryConfigurationModel from Management.Sql.Models.ServerDisasterRecoveryConfiguration object
+        /// Construct AzureSqlServerDisasterRecoveryConfigurationModel from Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration object
         /// </summary>
         /// <param name="resourceGroup">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="serverDisasterRecoveryConfiguration">ServerDisasterRecoveryConfiguration object</param>
-        public AzureSqlServerDisasterRecoveryConfigurationModel(string resourceGroup, string serverName, Management.Sql.Models.ServerDisasterRecoveryConfiguration serverDisasterRecoveryConfiguration)
+        public AzureSqlServerDisasterRecoveryConfigurationModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.ServerDisasterRecoveryConfiguration serverDisasterRecoveryConfiguration)
         {
             ResourceGroupName = resourceGroup;
             ServerName = serverName;

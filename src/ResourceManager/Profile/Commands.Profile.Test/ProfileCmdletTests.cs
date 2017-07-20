@@ -13,8 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
@@ -36,22 +39,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         public ProfileCmdletTests(ITestOutputHelper output)
         {
+            TestExecutionHelpers.SetUpSessionAndProfile();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
+            AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileInMemory()
         {
-            var profile = new AzureRMProfile();
-            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+            var profile = new AzureRmProfile { DefaultContext = new AzureContext() };
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
-            cmdlt.Profile = profile;
+            cmdlt.AzureContext = profile;
             cmdlt.CommandRuntime = commandRuntimeMock;
 
             // Act
@@ -60,32 +64,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey("foo"));
+            Assert.True(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey("foo"));
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SelectAzureProfileNull()
-        {
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            Assert.Throws<ArgumentException>(() => cmdlt.ExecuteCmdlet());
-            cmdlt.InvokeEndProcessing();
-        }
-
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileBadPath()
         {
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             cmdlt.Path = "z:\non-existent-path\non-existent-file.ext";
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.MyInvocation.BoundParameters.Add("Path", cmdlt.Path);
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -96,30 +88,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileFromDisk()
         {
-            var profile = new AzureRMProfile();
-            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            var profile = new AzureRmProfile();
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(new AzureEnvironment( AzureEnvironment.PublicEnvironments.Values.FirstOrDefault())));
+            profile.EnvironmentTable["foo"].Name = "foo";
             profile.Save("X:\\foo.json");
-            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+            ImportAzureRMContextCommand cmdlt = new ImportAzureRMContextCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
-
+            cmdlt.MyInvocation.BoundParameters.Add("Path", cmdlt.Path);
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey("foo"));
+            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.Any((e) => string.Equals(e.Name, "foo")));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileInMemory()
         {
-            var profile = new AzureRMProfile();
-            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
+            var profile = new AzureRmProfile();
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            profile.EnvironmentTable["foo"].Name = "foo";
+            SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
             // Setup
             cmdlt.Profile = profile;
             cmdlt.Path = "X:\\foo.json";
@@ -131,16 +125,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
-            var profile2 = new AzureRMProfile("X:\\foo.json");
-            Assert.True(profile2.Environments.ContainsKey("foo"));
+            Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
+            var profile2 = new AzureRmProfile("X:\\foo.json");
+            Assert.True(profile2.Environments.Any((e) => string.Equals(e.Name, "foo")));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileNull()
         {
-            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
+#pragma warning disable CS0618 // Suppress obsolescence warning: cmdlet name is changing
+            SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
+#pragma warning restore CS0618 // Suppress obsolescence warning: cmdlet name is changing
             // Setup
             AzureRmProfileProvider.Instance.Profile = null;
             cmdlt.Path = "X:\\foo.json";
@@ -154,11 +150,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileFromDefault()
         {
-            var profile = new AzureRMProfile();
-            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
+            var profile = new AzureRmProfile();
+            profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
+            profile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.EnvironmentTable["foo"]);
             AzureRmProfileProvider.Instance.Profile = profile;
-            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
+            SaveAzureRMContextCommand cmdlt = new SaveAzureRMContextCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -169,9 +165,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
-            var profile2 = new AzureRMProfile("X:\\foo.json");
-            Assert.True(profile2.Environments.ContainsKey("foo"));
+            Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
+            var profile2 = new AzureRmProfile("X:\\foo.json");
+            Assert.True(profile2.EnvironmentTable.ContainsKey("foo"));
         }
     }
 }

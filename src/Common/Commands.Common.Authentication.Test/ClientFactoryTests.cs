@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Common.Authentication.Test
 {
@@ -72,34 +73,35 @@ namespace Common.Authentication.Test
             {
                 return;
             }
-
+            var sub = new AzureSubscription()
+            {
+                Id = subscriptionId,
+            };
+            sub.SetAccount(userAccount);
+            sub.SetEnvironment("AzureCloud");
+            sub.SetTenant("common");
+            var account = new AzureAccount()
+            {
+                Id = userAccount,
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetTenants("common");
             AzureContext context = new AzureContext
             (
-                new AzureSubscription()
-                {
-                    Account = userAccount,
-                    Environment = "AzureCloud",
-                    Id = Guid.Parse(subscriptionId),
-                    Properties = new Dictionary<AzureSubscription.Property, string>() { { AzureSubscription.Property.Tenants, "common" } }
-                }, 
-                new AzureAccount()
-                {
-                    Id = userAccount,
-                    Type = AzureAccount.AccountType.User,
-                    Properties = new Dictionary<AzureAccount.Property, string>() { { AzureAccount.Property.Tenants, "common" } }
-                },
+                sub, 
+                account,
                 AzureEnvironment.PublicEnvironments["AzureCloud"]
             );
             
             // Add registration action to make sure we register for the used provider (if required)
-            // AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
+            // AzureSession.Instance.ClientFactory.AddAction(new RPRegistrationAction());
 
             // Authenticate!
-            AzureSession.AuthenticationFactory.Authenticate(context.Account, context.Environment, "common", password, ShowDialog.Always);
+            AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, "common", password, ShowDialog.Always, null);
             
-            AzureSession.ClientFactory.AddUserAgent("TestUserAgent", "1.0");
+            AzureSession.Instance.ClientFactory.AddUserAgent("TestUserAgent", "1.0");
             // Create the client
-            var client = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
+            var client = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
 
             // List storage accounts
             var storageAccounts = client.StorageAccounts.List().StorageAccounts;

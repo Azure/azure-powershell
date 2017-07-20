@@ -13,12 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest.Azure.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Security;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -28,10 +31,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public IAccessToken GetAccessToken(
             AdalConfiguration config,
-            ShowDialog promptBehavior,
+            string promptBehavior,
+			Action<string> promptAction,
             string userId,
             SecureString password,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)
             {
@@ -44,7 +48,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             AdalConfiguration config,
             string clientId,
             string certificateThumbprint,
-            AzureAccount.AccountType credentialType)
+            string credentialType)
         {
             if (credentialType == AzureAccount.AccountType.User)
             {
@@ -70,24 +74,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             StoreAppKey(appId, config.AdDomain, appKey);
-            var credential = new ClientCredential(appId, appKey);
             var context = GetContext(config);
+#if !NETSTANDARD
+            var credential = new ClientCredential(appId, appKey);
             return context.AcquireToken(config.ResourceClientUri, credential);
-        }
+#else
+            var credential = new ClientCredential(appId, ConversionUtilities.SecureStringToString(appKey));
+            return context.AcquireTokenAsync(context.Authority, credential)
+						  .ConfigureAwait(false).GetAwaiter().GetResult();
+#endif        
+		}
 
         private AuthenticationResult AcquireTokenWithCertificate(
             AdalConfiguration config,
             string appId,
             string thumbprint)
         {
-            var certificate = AzureSession.DataStore.GetCertificate(thumbprint);
+            var certificate = AzureSession.Instance.DataStore.GetCertificate(thumbprint);
             if (certificate == null)
             {
                 throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, thumbprint));
             }
 
             var context = GetContext(config);
+#if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
+#else
+            return context.AcquireTokenAsync(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate))
+                          .ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
         }
 
         private AuthenticationResult RenewWithSecret(AdalConfiguration config, string appId)
@@ -162,7 +177,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string AccessToken { get { return AuthResult.AccessToken; } }
 
-            public LoginType LoginType { get { return LoginType.OrgId; } }
+            public string LoginType { get { return Authentication.LoginType.OrgId; } }
 
             public string TenantId { get { return this.Configuration.AdDomain; } }
 

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -41,9 +42,9 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.Context);
+            return new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.DefaultContext);
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ Revokes an access to a disk.
 ## SYNTAX
 
 ```
-Revoke-AzureRmDiskAccess [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-DiskName] <String>
+Revoke-AzureRmDiskAccess [-ResourceGroupName] <String> [-DiskName] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

@@ -19,6 +19,23 @@
 -->
 ## Current Release
 
+## Version 0.4.2
+
+## Version 0.4.1
+
+## Version 0.4.0
+
+## Version 0.3.1
+
+## Version 0.3.0
+* Bug fix : 
+	- Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName' 
+    - Set-AzureRmEventHub - Fix 'Object reference not set to an instance of an object' error while updating EventHub  
+
+## Version 0.2.0
+
+## Version 0.1.0
+
 ## Version 0.0.3
 * Future Breaking Change Notification: We've added a warning about removing property 'ResourceGroupName' from the returned NamespceAttributes from cmdlets New-AzureRmEventHubNamespace, Get-AzureRmEvnetHubNamespace and Set-AzureRmEvnetHubNamespace
 

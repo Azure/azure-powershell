@@ -14,10 +14,9 @@ Sets a stored access policy for an Azure storage container.
 
 ```
 Set-AzureStorageContainerStoredAccessPolicy [-Container] <String> [-Policy] <String> [-Permission <String>]
- [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-NoStartTime] [-NoExpiryTime]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-NoStartTime] [-NoExpiryTime] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,152 +24,14 @@ The **Set-AzureStorageContainerStoredAccessPolicy** cmdlet sets a stored access 
 
 ## EXAMPLES
 
-### Example 1: Set a stored access policy in a storage container
+### Example 1: Set a stored access policy in a storage container with full permission
 ```
-PS C:\>Set-AzureStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06"
+PS C:\>Set-AzureStorageContainerStoredAccessPolicy -Container "MyContainer" -Policy "Policy06" -Permission rwdl
 ```
 
 This command sets an access policy named Policy06 for storage container named MyContainer.
 
 ## PARAMETERS
-
-### -Container
-Specifies the Azure storage container name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: N, Name
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Policy
-Specifies a stored access policy, which includes the permissions for this Shared Access Signature (SAS) token.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Permission
-Specifies the level of public access to this container.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StartTime
-Specifies the time at which the stored access policy becomes valid.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExpiryTime
-Specifies the time at which the stored access policy becomes invalid.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoStartTime
-Sets the start time to be $Null.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoExpiryTime
-Indicates that the access policy has no expiration date.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the New-AzureStorageContext cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-Specifies the client-side time-out interval, in seconds, for one service request.
-If the previous call fails in the specified interval, this cmdlet retries the request.
-If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClientTimeoutPerRequest
 Specifies the client-side time-out interval, in seconds, for one service request.
@@ -208,22 +69,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Container
+Specifies the Azure storage container name.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: N, Name
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Context
+Specifies an Azure storage context.
+To obtain a storage context, use the New-AzureStorageContext cmdlet.
+
+```yaml
+Type: IStorageContext
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ExpiryTime
+Specifies the time at which the stored access policy becomes invalid.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -232,13 +115,90 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -NoExpiryTime
+Indicates that the access policy has no expiration date.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoStartTime
+Sets the start time to be $Null.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Permission
+Specifies permissions in the stored access policy to access the storage container.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Policy
+Specifies the name for the stored access policy.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerTimeoutPerRequest
+Specifies the client-side time-out interval, in seconds, for one service request.
+If the previous call fails in the specified interval, this cmdlet retries the request.
+If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartTime
+Specifies the time at which the stored access policy becomes valid.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -254,21 +214,6 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
 
 Required: False
 Position: Named

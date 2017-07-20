@@ -95,6 +95,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             expectedProfile.Context.TokenCache = Encoding.ASCII.GetBytes(testToken);
 
             // Setup
+            // Clear the the current profile
+            AsAzureClientSession.Instance.Profile.Environments.Clear();
+
             var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
             mockAuthenticationProvider.Setup(
                 authProvider => authProvider.GetAadAuthenticatedToken(
@@ -167,8 +170,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             // Set up AsAzureHttpClient mock
             var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
             mockAsAzureHttpClient
-                .Setup(obj => obj.CallPostAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns( Task<HttpResponseMessage>.FromResult(new HttpResponseMessage(HttpStatusCode.OK)));
+                .Setup(obj => obj.CallPostAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<HttpContent>()))
+                .Returns(Task<HttpResponseMessage>.FromResult(new HttpResponseMessage(HttpStatusCode.OK)));
 
             var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
             mockTokenCacheItemProvider
@@ -263,6 +266,79 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             catch(Exception ex)
             {
                 Assert.IsType<TargetInvocationException>(ex);
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ExportAzureASInstanceLogTest()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            // Setup
+            // Clear the the current profile
+            AsAzureClientSession.Instance.Profile.Environments.Clear();
+            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
+            mockAuthenticationProvider.Setup(
+                authProvider => authProvider.GetAadAuthenticatedToken(
+                    It.IsAny<AsAzureContext>(),
+                    It.IsAny<SecureString>(),
+                    It.IsAny<PromptBehavior>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<Uri>())).Returns(testToken);
+            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            // Set up AsAzureHttpClient mock
+            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
+            mockAsAzureHttpClient
+                .Setup(obj => obj.CallPostAsync(
+                    It.IsAny<Uri>(),
+                    It.Is<string>(s => s.Contains("clusterResolve")),
+                    It.IsAny<string>(),
+                    It.IsAny<HttpContent>()))
+                .Returns(Task<HttpResponseMessage>.FromResult(
+                    new HttpResponseMessage(HttpStatusCode.OK)
+                    {
+                        Content = new StringContent("{\"clusterFQDN\": \"resolved.westcentralus.asazure.windows.net\"}")
+                    }));
+            mockAsAzureHttpClient.Setup(obj => obj.CallGetAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>())).Returns(
+                Task<HttpResponseMessage>.FromResult(
+                    new HttpResponseMessage(HttpStatusCode.OK)
+                    {
+                        Content = new StringContent("MOCKED STREAM CONTENT")
+                    }));
+            
+            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
+            mockTokenCacheItemProvider
+                .Setup(obj => obj.GetTokenFromTokenCache(It.IsAny<TokenCache>(), It.IsAny<string>()))
+                .Returns(testToken);
+
+            var exportLogCmdlet = new ExportAzureAnalysisServerLog(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+            
+            var addAmdlet = new AddAzureASAccountCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+
+            DoLogin(addAmdlet);
+            exportLogCmdlet.Instance = testServer;
+            try
+            {
+                exportLogCmdlet.OutputPath = System.IO.Path.GetTempFileName();
+                exportLogCmdlet.InvokeBeginProcessing();
+                exportLogCmdlet.ExecuteCmdlet();
+                exportLogCmdlet.InvokeEndProcessing();
+            }
+            finally
+            {
+                if (System.IO.File.Exists(exportLogCmdlet.OutputPath))
+                {
+                    System.IO.File.Delete(exportLogCmdlet.OutputPath);
+                }
             }
         }
 

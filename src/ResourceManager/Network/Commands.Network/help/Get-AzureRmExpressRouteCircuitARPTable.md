@@ -8,83 +8,37 @@ schema: 2.0.0
 # Get-AzureRmExpressRouteCircuitARPTable
 
 ## SYNOPSIS
+Gets the ARP table from an ExpressRoute circuit.
 
 ## SYNTAX
 
 ```
-Get-AzureRmExpressRouteCircuitARPTable [-Name <String>] -ResourceGroupName <String>
- -ExpressRouteCircuitName <String> [-PeeringType <String>] -DevicePath <DevicePathEnum>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName <String> -ExpressRouteCircuitName <String>
+ [-PeeringType <String>] -DevicePath <DevicePathEnum> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+The **Get-AzureRmExpressRouteCircuitARPTable** cmdlet retrieves the ARP table from both interfaces
+of an ExpressRoute circuit. The ARP table provides a mapping of the IPv4 address to MAC address for
+a particular peering. You can use the ARP table to validate layer 2 configuration and connectivity.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Display the ARP table for an ExpressRoute peer
 ```
-PS C:\>
+Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType MicrosoftPeering -DevicePath Primary
 ```
 
 ## PARAMETERS
 
-### -Name
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ExpressRouteCircuitName
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PeeringType
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DevicePath
+The acceptable values for this parameter are: `Primary` or `Secondary`
+
 ```yaml
 Type: DevicePathEnum
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Primary, Secondary
 
 Required: True
 Position: Named
@@ -93,22 +47,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ExpressRouteCircuitName
+The name of the ExpressRoute circuit being examined.
 
 ```yaml
-Type: ActionPreference
+Type: String
 Parameter Sets: (All)
-Aliases: infa
+Aliases: Name, ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PeeringType
+The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePublicPeering`, and
+`MicrosoftPeering`
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: False
 Position: Named
@@ -117,18 +79,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -ResourceGroupName
+The name of the resource group containing the ExpressRoute circuit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -143,3 +105,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
+
+[Get-AzureRmExpressRouteCircuitRouteTableSummary](Get-AzureRmExpressRouteCircuitRouteTableSummary.md)
+
+[Get-AzureRmExpressRouteCircuitStats](Get-AzureRmExpressRouteCircuitStats.md)

@@ -16,20 +16,18 @@ Creates a virtual network subnet configuration.
 ```
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String> [-NetworkSecurityGroupId <String>]
- [-RouteTableId <String>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+ [-RouteTableId <String>] [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 **The New-AzureRmVirtualNetworkSubnetConfig** cmdlet creates a virtual network subnet configuration.
-
-## EXAMPLES
 
 ## EXAMPLES
 
@@ -48,6 +46,7 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup 
     -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
 ```
+
 This example creates two new subnet configurations using the 
     New-AzureRmVirtualSubnetConfig cmdlet, and then uses them to create a virtual network. 
     The New-AzureRmVirtualSubnetConfig template only creates an in-memory representation of 
@@ -57,8 +56,8 @@ This example creates two new subnet configurations using the
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the subnet configuration to create.
+### -AddressPrefix
+Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
 Type: String
@@ -72,8 +71,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AddressPrefix
-Specifies a range of IP addresses for a subnet configuration.
+### -Name
+Specifies the name of the subnet configuration to create.
 
 ```yaml
 Type: String
@@ -102,12 +101,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RouteTable
-Specifies the route table associated with the subnet configuration.
+### -NetworkSecurityGroupId
+Specifies the ID of a network security group.
 
 ```yaml
-Type: PSRouteTable
-Parameter Sets: SetByResource
+Type: String
+Parameter Sets: SetByResourceId
 Aliases: 
 
 Required: False
@@ -117,51 +116,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -PrivateAccessService
+Specifies private access services associated with the subnet configuration.
 
 ```yaml
-Type: ActionPreference
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -RouteTable
+Specifies the route table associated with the subnet configuration.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NetworkSecurityGroupId
-Specifies the ID of a network security group.
-
-```yaml
-Type: String
-Parameter Sets: SetByResourceId
+Type: PSRouteTable
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False

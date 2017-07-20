@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account map.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true)]
+    [OutputType(typeof(IntegrationAccountMap))]
     public class UpdateAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
@@ -108,30 +109,43 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Name,
                 this.MapName);
 
+            var integrationAccountMapCopy = new IntegrationAccountMap(mapType: integrationAccountMap.MapType,
+                id: integrationAccountMap.Id,
+                name: integrationAccountMap.Name,
+                type: integrationAccountMap.Type,
+                location: integrationAccountMap.Location,
+                tags: integrationAccountMap.Tags,
+                parametersSchema: integrationAccountMap.ParametersSchema,
+                createdTime: integrationAccountMap.CreatedTime,
+                changedTime: integrationAccountMap.ChangedTime,
+                content: integrationAccountMap.Content,
+                contentLink: null,
+                metadata: integrationAccountMap.Metadata);
+
             if (!string.IsNullOrEmpty(this.MapFilePath))
             {
-                integrationAccountMap.Content = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
+                integrationAccountMapCopy.Content = CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.MapDefinition))
             {
-                integrationAccountMap.Content = this.MapDefinition;
+                integrationAccountMapCopy.Content = this.MapDefinition;
                 CmdletHelper.GetContentFromFile(this.TryResolvePath(this.MapFilePath));
             }
 
             if (!string.IsNullOrEmpty(this.ContentType))
             {
-                integrationAccountMap.ContentType = this.contentType;
+                integrationAccountMapCopy.ContentType = this.contentType;
             }
 
             if (!string.IsNullOrEmpty(this.MapType))
             {
-                integrationAccountMap.MapType = (MapType) Enum.Parse(typeof (MapType), this.MapType);
+                integrationAccountMapCopy.MapType = (MapType)Enum.Parse(typeof(MapType), this.MapType);
             }
 
             if (this.Metadata != null)
             {
-                integrationAccountMap.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
+                integrationAccountMapCopy.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
             ConfirmAction(Force.IsPresent,
@@ -145,7 +159,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     this.WriteObject(
                         IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name,
                             this.MapName,
-                            integrationAccountMap), true);
+                            integrationAccountMapCopy), true);
                 },
                 null);
         }

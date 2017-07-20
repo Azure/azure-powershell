@@ -674,7 +674,7 @@ function Test-MigrationAbortAzureDeployment
     Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     $result = Move-AzureService -Validate -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
-    Assert-AreEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Passed.")}
     $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
@@ -712,7 +712,7 @@ function Test-MigrationValidateAzureDeployment
     Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     $result = Move-AzureService -Validate -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
-    Assert-AreNotEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Failed.")}
     Assert-AreNotEqual 0 $result.ValidationMessages.Count;
 }
 
@@ -766,7 +766,7 @@ function Test-MigrationAbortAzureVNet
     Get-AzureVNetSite;
 
     $result = Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName;
-    Assert-AreEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Passed.")}
     Get-AzureVNetSite;
 
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
@@ -813,7 +813,7 @@ function Test-MigrationAbortAzureStorageAccount
 
     # Test
     $result = Move-AzureStorageAccount -Validate -StorageAccountName $storageName;
-    Assert-AreEqual "Succeeded" $result.Result;
+    Assert-True {$result.Result.Contains("Validation Passed.")}
     Get-AzureStorageAccount -StorageAccountName $storageName;
 
     Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
@@ -912,6 +912,30 @@ function Test-MigrationAzureReservedIP
     Assert-AreEqual $removeReservedIP.OperationStatus "Succeeded"
 }
 
+<#
+.SYNOPSIS
+Tests New-AzureReservedIPWithTags
+#>
+function Test-AzureReservedIPWithIPTags
+{
+    # Setu
+    $name = getAssetName
+    $location = "West Central US"
+    $iptag  = New-AzureIPTag -IPTagType "FirstPartyUsage" -Value "/tagTypes/SystemService/operators/Microsoft/platforms/Azure/services/Microsoft.AzureAD"
+    # Test Create Reserved IP
+    New-AzureReservedIP -ReservedIPName $name -Location $location -IPTagList $iptag
+    $reservedIP = Get-AzureReservedIP -ReservedIPName $name 
+    #-IPTags $iptag
+    # Assert
+    Assert-NotNull($reservedIP)
+    Assert-AreEqual $reservedIP.Location $location
+    Assert-NotNull($reservedIP.IPTags)
+   
+    #Test Remove reserved IP
+    $removeReservedIP = Remove-AzureReservedIP -ReservedIPName $name -Force
+    Assert-AreEqual $removeReservedIP.OperationStatus "Succeeded"
+}
+
 function Test-NewAzureVMWithBYOL
 {
     # Setup
@@ -997,7 +1021,7 @@ function Run-RedeployVirtualMachineTest
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
         # Test Redeploy
-        Restart-AzureVM -Redeploy -ServiceName $svcName -Name $vmName;
+        $vm | Restart-AzureVM -Redeploy;
 
         $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
     }
@@ -1006,4 +1030,62 @@ function Run-RedeployVirtualMachineTest
         # Cleanup
         Cleanup-CloudService $svcName;
     }
+}
+
+# Test Initiate Maintenance VM
+function Run-InitiateMaintenanceTest
+{
+    # Depending on the environment, the initiate maintenance operation may return 200
+    # or 400 with error message like "User initiated maintenance on the virtual machine was
+    # successfully completed". Both are expected reponses.
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+	$tempErrorActionPreference = $ErrorActionPreference;
+    $ErrorActionPreference = 'SilentlyContinue';
+	
+	# Setup
+	$location = "Central US EUAP";
+	$imgName = Get-DefaultImage $location;
+
+	$storageName = 'pstest' + (getAssetName);
+	New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+
+	# Associate the new storage account with the current subscription
+	Set-CurrentStorageAccountName $storageName;
+
+	$vmName = "psvm01";
+	$svcName = 'pstest' + (Get-CloudServiceName);
+	$userName = "pstestuser";
+	$password = $PLACEHOLDER;
+
+	# Test
+	New-AzureService -ServiceName $svcName -Location $location;
+
+	try
+	{
+		New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername $userName -Password $password;
+        #Start-Sleep -s 300; #Uncomment this line for record mode testing.
+
+		# Get VM
+		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+		Assert-NotNull $vm;
+		Assert-NotNull $vm.MaintenanceStatus;
+
+		# Test Initiate Maintenance
+		$result = Restart-AzureVM -InitiateMaintenance -ServiceName $svcName -Name $vmName;
+
+		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+		Assert-NotNull $vm.MaintenanceStatus; 
+    }
+    catch
+    {
+	    Assert-True {$result.Result.Contains("User initiated maintenance on the Virtual Machine was successfully completed.")};
+        $vm = Get-AzureVM -ServiceName $svcName -Name $vmName
+        Assert-NotNull $vm.MaintenanceStatus;
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-CloudService $srcName;
+		$ErrorActionPreference = $tempErrorActionPreference;
+	}
 }

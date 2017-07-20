@@ -12,12 +12,12 @@ Gets the properties of a VMSS.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
 Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
 Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-InstanceView]
  [<CommonParameters>]
@@ -33,7 +33,7 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 
 ### Example 1: Get the properties of a VMSS
 ```
-PS C:\>Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+PS C:\> Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS named VMSS001 that belongs to the resource group named Group001.
@@ -46,11 +46,11 @@ Indicates that this cmdlet gets only the instance view of the virtual machine.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -65,7 +65,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -80,7 +80,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

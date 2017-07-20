@@ -14,8 +14,7 @@ Gets information about VPN root certificates.
 
 ```
 Get-AzureRmVpnClientRootCertificate [-VpnClientRootCertificateName <String>]
- -VirtualNetworkGatewayName <String> -ResourceGroupName <String> [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ -VirtualNetworkGatewayName <String> -ResourceGroupName <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,15 +43,17 @@ In this case, however, the *VpnClientRootCertificateName* parameter is included 
 
 ## PARAMETERS
 
-### -VpnClientRootCertificateName
-Specifies the name of the client root certificate that this cmdlet gets.
+### -ResourceGroupName
+Specifies the name of the resource group that the virtual network gateway is assigned to.
+
+Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -74,59 +75,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of the resource group that the virtual network gateway is assigned to.
-
-Resource groups categorize items to help simplify inventory management and general Azure administration.
+### -VpnClientRootCertificateName
+Specifies the name of the client root certificate that this cmdlet gets.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

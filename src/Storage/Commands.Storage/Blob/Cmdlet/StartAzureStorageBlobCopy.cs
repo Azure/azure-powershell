@@ -16,6 +16,9 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Adapters;
+    using Azure.Commands.Common.Authentication.Abstractions;
+    using Commands.Common;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
@@ -87,14 +90,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string UriParameterSet = "UriPipeline";
 
-        [Alias("SrcICloudBlob", "SrcCloudBlob", "ICloudBlob")]
+        [Alias("SrcICloudBlob", "SrcCloudBlob", "ICloudBlob", "SourceICloudBlob", "SourceCloudBlob")]
         [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
         public CloudBlob CloudBlob { get; set; }
 
+        [Alias("SourceCloudBlobContainer")]
         [Parameter(HelpMessage = "CloudBlobContainer Object", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
         public CloudBlobContainer CloudBlobContainer { get; set; }
 
+        [Alias("SourceBlob")]
         [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerParameterSet, Mandatory = true, Position = 0)]
         [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerNameParameterSet, Mandatory = true, Position = 0)]
         public string SrcBlob
@@ -104,6 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private string BlobName = String.Empty;
 
+        [Alias("SourceContainer")]
         [Parameter(HelpMessage = "Source Container name", Mandatory = true, ParameterSetName = ContainerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SrcContainer
@@ -113,34 +119,40 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private string ContainerName = String.Empty;
 
+        [Alias("SourceShareName")]
         [Parameter(HelpMessage = "Source share name", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SrcShareName { get; set; }
 
+        [Alias("SourceShare")]
         [Parameter(HelpMessage = "Source share", Mandatory = true, ParameterSetName = ShareParameterSet)]
         [ValidateNotNull]
         public CloudFileShare SrcShare { get; set; }
 
+        [Alias("SourceDir")]
         [Parameter(HelpMessage = "Source file directory", Mandatory = true, ParameterSetName = DirParameterSet)]
         [ValidateNotNull]
         public CloudFileDirectory SrcDir { get; set; }
 
+        [Alias("SourceFilePath")]
         [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
         [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = ShareParameterSet)]
         [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = DirParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SrcFilePath { get; set; }
 
+        [Alias("SourceFile")]
         [Parameter(HelpMessage = "Source file", Mandatory = true, ValueFromPipeline = true, ParameterSetName = FileParameterSet)]
         [Parameter(HelpMessage = "Source file", Mandatory = true, ValueFromPipeline = true, ParameterSetName = FileToBlobParameterSet)]
         [ValidateNotNull]
         public CloudFile SrcFile { get; set; }
 
-        [Alias("SrcUri")]
+        [Alias("SrcUri", "SourceUri")]
         [Parameter(HelpMessage = "Source blob uri", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = UriParameterSet)]
         public string AbsoluteUri { get; set; }
 
+        [Alias("DestinationContainer")]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = UriParameterSet)]
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = BlobParameterSet)]
@@ -151,6 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = FileParameterSet)]
         public string DestContainer { get; set; }
 
+        [Alias("DestinationBlob")]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = true, ParameterSetName = UriParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = BlobParameterSet)]
@@ -161,12 +174,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = FileParameterSet)]
         public string DestBlob { get; set; }
 
-        [Alias("DestICloudBlob")]
+        [Alias("DestICloudBlob", "DestinationCloudBlob", "DestinationICloudBlob")]
         [Parameter(HelpMessage = "Destination CloudBlob object", Mandatory = true, ParameterSetName = BlobToBlobParameterSet)]
         [Parameter(HelpMessage = "Destination CloudBlob object", Mandatory = true, ParameterSetName = FileToBlobParameterSet)]
         public CloudBlob DestCloudBlob { get; set; }
 
-        [Alias("SrcContext")]
+        [Alias("SrcContext", "SourceContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobToBlobParameterSet)]
@@ -177,10 +190,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ParameterSetName = UriParameterSet)]
-        public override AzureStorageContext Context { get; set; }
+        public override IStorageContext Context { get; set; }
 
+        [Alias("DestinationContext")]
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
-        public AzureStorageContext DestContext { get; set; }
+        public IStorageContext DestContext { get; set; }
 
         private bool skipSourceChannelInit;
 
@@ -245,7 +259,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 else
                 {
-                    destChannel = CreateChannel(DestContext);
+                    destChannel = CreateChannel(this.GetCmdletStorageContext(DestContext));
                 }
             }
 
@@ -271,7 +285,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case UriParameterSet:
-                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, Context);
+                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, (Context != null? GetCmdletStorageContext(Context) : null));
                     target = AbsoluteUri;
                     break;
 

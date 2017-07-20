@@ -63,6 +63,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public VirtualMachineScaleSetIPConfiguration[] IpConfiguration { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string NetworkSecurityGroupId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] DnsSettingsDnsServer { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Add"))
@@ -96,6 +106,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vNetworkInterfaceConfigurations.Name = this.Name;
             vNetworkInterfaceConfigurations.Primary = this.Primary;
             vNetworkInterfaceConfigurations.Id = this.Id;
+            if (this.NetworkSecurityGroupId != null)
+            {
+                // NetworkSecurityGroup
+                vNetworkInterfaceConfigurations.NetworkSecurityGroup = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                vNetworkInterfaceConfigurations.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+            if (this.DnsSettingsDnsServer != null)
+            {
+                // DnsSettings
+                vNetworkInterfaceConfigurations.DnsSettings = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfigurationDnsSettings();
+                vNetworkInterfaceConfigurations.DnsSettings.DnsServers = this.DnsSettingsDnsServer;
+            }
             vNetworkInterfaceConfigurations.IpConfigurations = this.IpConfiguration;
             this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations.Add(vNetworkInterfaceConfigurations);
             WriteObject(this.VirtualMachineScaleSet);

@@ -24,7 +24,7 @@ The **Add-AzureRmVMSshPublicKey** cmdlet adds the public keys that you can use t
 
 ### Example 1: Add a public key to a virtual machine
 ```
-PS C:\>$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
+PS C:\> $VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 PS C:\> $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyData "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSq12Ib3DQEB21QUAMEUxCzAJBgNV" -Path "/home/admin/.ssh/authorized_keys"
 ```
 
@@ -45,7 +45,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -61,7 +61,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -69,8 +69,8 @@ Accept wildcard characters: False
 
 ### -VM
 Specifies the virtual machine object that this cmdlet modifies.
-To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
-You can use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
+To obtain a virtual machine object, use the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
+You can use the [New-AzureRmVMConfig](./New-AzureRmVMConfig.md) cmdlet to create a virtual machine object.
 
 ```yaml
 Type: PSVirtualMachine
@@ -78,7 +78,7 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -98,5 +98,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzureRmVM](./Get-AzureRmVM.md)
 
 [New-AzureRmVMConfig](./New-AzureRmVMConfig.md)
-
-

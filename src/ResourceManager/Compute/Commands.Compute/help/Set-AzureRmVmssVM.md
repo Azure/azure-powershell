@@ -12,16 +12,16 @@ Modifies the state of a VMSS instance.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
-Set-AzureRmVmssVM [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-InstanceId] <String> [-Reimage] [<CommonParameters>]
+Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-Reimage]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
-Set-AzureRmVmssVM [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-InstanceId] <String> [-ReimageAll] [<CommonParameters>]
+Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-ReimageAll]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -51,11 +51,11 @@ Indicates that this cmdlet reimages the VMSS instance.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParameters
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -66,11 +66,11 @@ Indicates that the cmdlet reimages all the disks in the VMSS instance.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -85,7 +85,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -100,7 +100,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

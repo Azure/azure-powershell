@@ -13,6 +13,7 @@ Removes a Network Watcher.
 
 ```
 Remove-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String> [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +109,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -120,17 +124,27 @@ Accept wildcard characters: False
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher
 
 ## RELATED LINKS
-[New-AzureRmNetworkWatcher]()
-[Get-AzureRmNetworkWatcher]()
 
-[New-AzureRmNetworkWatcherPacketCapture]()
-[New-AzureRmPacketCaptureFilterConfig]()
-[Get-AzureRmNetworkWatcherPacketCapture]()
-[Remove-AzureRmNetworkWatcherPacketCapture]()
-[Stop-AzureRmNetworkWatcherPacketCapture]()
+[New-AzureRmNetworkWatcher](./New-AzureRmNetworkWatcher.md)
 
-[Test-AzureRmNetworkWatcherIPFlow]()
-[Get-AzureRmNetworkWatcherNextHop]()
-[Get-AzureRmNetworkWatcherSecurityGroupView]()
-[Get-AzureRmNetworkWatcherTopology]()
-[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+[Get-AzureRmNetworkWatcher](./Get-AzureRmNetworkWatcher.md)
+
+[New-AzureRmNetworkWatcherPacketCapture](./New-AzureRmNetworkWatcherPacketCapture.md)
+
+[New-AzureRmPacketCaptureFilterConfig](./New-AzureRmPacketCaptureFilterConfig.md)
+
+[Get-AzureRmNetworkWatcherPacketCapture](./Get-AzureRmNetworkWatcherPacketCapture.md)
+
+[Remove-AzureRmNetworkWatcherPacketCapture](./Remove-AzureRmNetworkWatcherPacketCapture.md)
+
+[Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
+
+[Test-AzureRmNetworkWatcherIPFlow](./Test-AzureRmNetworkWatcherIPFlow.md)
+
+[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
+
+[Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
+
+[Get-AzureRmNetworkWatcherTopology](./Get-AzureRmNetworkWatcherTopology.md)
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting](./Start-AzureRmNetworkWatcherResourceTroubleshooting.md)

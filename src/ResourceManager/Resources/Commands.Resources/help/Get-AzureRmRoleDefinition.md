@@ -14,20 +14,17 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ### RoleDefinitionNameParameterSet
 ```
-Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-AtScopeAndBelow]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-AtScopeAndBelow] [<CommonParameters>]
 ```
 
 ### RoleDefinitionIdParameterSet
 ```
-Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>]
+Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionCustomParameterSet
 ```
-Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-AtScopeAndBelow]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>]
+Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-AtScopeAndBelow] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +34,6 @@ To inspect individual operations that a role grants access to, review the Action
 ## EXAMPLES
 
 ### --------------------------  Example 1  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Get-AzureRmRoleDefinition -Name Reader
 ```
@@ -46,8 +41,6 @@ PS C:\> Get-AzureRmRoleDefinition -Name Reader
 Get the Reader role definition
 
 ### --------------------------  Example 2  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Get-AzureRmRoleDefinition
 ```
@@ -55,6 +48,51 @@ PS C:\> Get-AzureRmRoleDefinition
 Lists all RBAC role definitions
 
 ## PARAMETERS
+
+### -AtScopeAndBelow
+If specified, displays all role definitions.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: RoleDefinitionNameParameterSet, RoleDefinitionCustomParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Custom
+If specified, only displays the custom created roles in the directory.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: RoleDefinitionCustomParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Id
+Role definition Id.
+
+```yaml
+Type: Guid
+Parameter Sets: RoleDefinitionIdParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Name
 Role definition name.
@@ -88,89 +126,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -AtScopeAndBelow
-If specified, displays all role definitions.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: RoleDefinitionNameParameterSet, RoleDefinitionCustomParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Role definition Id.
-
-```yaml
-Type: Guid
-Parameter Sets: RoleDefinitionIdParameterSet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Custom
-If specified, only displays the custom created roles in the directory.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: RoleDefinitionCustomParameterSet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -181,11 +138,11 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 
 ## RELATED LINKS
 
-[New-AzureRmRoleAssignment]()
+[New-AzureRmRoleAssignment](./New-AzureRmRoleAssignment.md)
 
-[Get-AzureRmRoleAssignment]()
+[Get-AzureRmRoleAssignment](./Get-AzureRmRoleAssignment.md)
 
-[New-AzureRmRoleDefinition]()
+[New-AzureRmRoleDefinition](./New-AzureRmRoleDefinition.md)
 
-[Remove-AzureRmRoleDefinition]()
+[Remove-AzureRmRoleDefinition](./Remove-AzureRmRoleDefinition.md)
 

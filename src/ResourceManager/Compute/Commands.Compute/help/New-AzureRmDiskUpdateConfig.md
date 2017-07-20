@@ -12,12 +12,11 @@ Creates a configurable disk update object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskUpdateConfig [[-AccountType] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
- [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [[-CreateOption] <DiskCreateOption>]
- [[-StorageAccountId] <String>] [[-ImageReference] <ImageDiskReference>] [[-SourceUri] <String>]
- [[-SourceResourceId] <String>] [[-EncryptionSettingsEnabled] <Boolean>]
- [[-DiskEncryptionKey] <KeyVaultAndSecretReference>] [[-KeyEncryptionKey] <KeyVaultAndKeyReference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmDiskUpdateConfig [-SkuName <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+ [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-CreateOption <DiskCreateOption>] [-StorageAccountId <String>]
+ [-ImageReference <ImageDiskReference>] [-SourceUri <String>] [-SourceResourceId <String>]
+ [-EncryptionSettingsEnabled <Boolean>] [-DiskEncryptionKey <KeyVaultAndSecretReference>]
+ [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,22 +49,6 @@ This command updates an existing disk with name 'Disk01' in resource group 'Reso
 
 ## PARAMETERS
 
-### -AccountType
-Specifies the storage account type.
-
-```yaml
-Type: StorageAccountTypes
-Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
 
@@ -76,7 +59,7 @@ Aliases:
 Accepted values: Empty, Attach, FromImage, Import, Copy, Restore
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -91,7 +74,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -121,7 +104,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 9
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -136,7 +119,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -151,7 +134,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -173,6 +156,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SkuName
+Specifies the Sku name of the storage account.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: AccountType
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SourceResourceId
 Specifies the source resource ID.
 
@@ -182,7 +180,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -197,7 +195,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -212,7 +210,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

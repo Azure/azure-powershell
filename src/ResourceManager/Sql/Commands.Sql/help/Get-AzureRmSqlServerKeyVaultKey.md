@@ -13,7 +13,7 @@ Gets a SQL server's Key Vault keys.
 
 ```
 Get-AzureRmSqlServerKeyVaultKey [[-KeyId] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,8 +23,6 @@ You can view all keys on a server or view a specific key by providing the KeyId.
 ## EXAMPLES
 
 ### --------------------------  Example 1: Get all Key Vault keys  --------------------------
-@{paragraph=PS C:\\\>}
-
 ```
 PS C:\> Get-AzureRmSqlServerKeyVaultKey -ServerName 'ContosoServer' -ResourceGroupName 'ContosoResourceGroup'
 ```
@@ -133,6 +131,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
@@ -145,3 +146,4 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

@@ -115,11 +115,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     nextPageLink = pageResult.NextPageLink;
                 }
                 var psObject = new List<PSImageList>();
-                foreach (var r in result)
+                foreach (var r in resultList)
                 {
                     psObject.Add(Mapper.Map<Image, PSImageList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
             else
             {
@@ -136,11 +136,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     nextPageLink = pageResult.NextPageLink;
                 }
                 var psObject = new List<PSImageList>();
-                foreach (var r in result)
+                foreach (var r in resultList)
                 {
                     psObject.Add(Mapper.Map<Image, PSImageList>(r));
                 }
-                WriteObject(psObject);
+                WriteObject(psObject, true);
             }
         }
 
@@ -160,64 +160,97 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmImage", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class GetAzureRmImage : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmImage", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSImage))]
+    public partial class GetAzureRmImage : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "ImageGet";
-            base.ProcessRecord();
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
+            ExecuteClientAction(() =>
+            {
+                string resourceGroupName = this.ResourceGroupName;
+                string imageName = this.ImageName;
+                string expand = this.Expand;
+
+                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(imageName))
+                {
+                    var result = ImagesClient.Get(resourceGroupName, imageName, expand);
+                    var psObject = new PSImage();
+                    Mapper.Map<Image, PSImage>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else if (!string.IsNullOrEmpty(resourceGroupName))
+                {
+                    var result = ImagesClient.ListByResourceGroup(resourceGroupName);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = ImagesClient.ListByResourceGroupNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSImageList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<Image, PSImageList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+                else
+                {
+                    var result = ImagesClient.List();
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = ImagesClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    var psObject = new List<PSImageList>();
+                    foreach (var r in resultList)
+                    {
+                        psObject.Add(Mapper.Map<Image, PSImageList>(r));
+                    }
+                    WriteObject(psObject, true);
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pImageName = new RuntimeDefinedParameter();
-            pImageName.Name = "ImageName";
-            pImageName.ParameterType = typeof(string);
-            pImageName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pImageName.Attributes.Add(new AliasAttribute("Name"));
-            pImageName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ImageName", pImageName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string ImageName { get; set; }
 
-            var pExpand = new RuntimeDefinedParameter();
-            pExpand.Name = "Expand";
-            pExpand.ParameterType = typeof(string);
-            pExpand.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pExpand.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Expand", pExpand);
-
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string Expand { get; set; }
     }
 }

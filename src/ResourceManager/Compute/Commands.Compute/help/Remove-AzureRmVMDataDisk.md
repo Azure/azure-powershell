@@ -13,7 +13,7 @@ Removes a data disk from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-DataDiskNames] <String[]> [-WhatIf] [-Confirm]
+Remove-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-DataDiskNames] <String[]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **Remove-AzureRmVMDataDisk** cmdlet removes a data disk from a virtual machi
 
 ### Example 1: Remove a data disk from a virtual machine
 ```
-PS C:\>$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
+PS C:\> $VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
 PS C:\> Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "Disk3"
 PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
@@ -46,10 +46,10 @@ Type: String[]
 Parameter Sets: (All)
 Aliases: Name
 
-Required: True
-Position: 2
+Required: False
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -63,14 +63,15 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.```yaml
+Prompts you for confirmation before running the cmdlet.
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -83,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.```yaml
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi

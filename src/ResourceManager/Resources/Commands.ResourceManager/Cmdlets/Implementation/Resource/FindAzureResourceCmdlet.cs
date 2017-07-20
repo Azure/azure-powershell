@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Commands.Common.Authentication.Abstractions;
     using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
@@ -27,7 +28,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Cmdlet to get existing resources from ARM cache.
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (!this.TenantLevel)
             {
-                this.SubscriptionId = DefaultContext.Subscription.Id;
+                this.SubscriptionId = DefaultContext.Subscription.GetId();
             }
 
             PaginatedResponseHelper.ForEach(

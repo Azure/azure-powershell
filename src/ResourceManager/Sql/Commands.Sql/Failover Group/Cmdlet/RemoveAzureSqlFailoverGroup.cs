@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Sql.FailoverGroup.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
@@ -23,6 +24,16 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         SupportsShouldProcess = true)]
     public class RemoveAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the name of the server to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the primary Azure SQL Database Server of the Failover Group.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the FailoverGroup to remove.
         /// </summary>
@@ -34,25 +45,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         public string FailoverGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner resource group name for Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The partner resource group name for Azure SQL Database Failover Group.")]
-        [ValidateNotNullOrEmpty]
-        public string PartnerResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the partner server name for Azure SQL Database Failover Group
-        /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The partner server name for Azure SQL Database Failover Group.")]
-        [ValidateNotNullOrEmpty]
-        public string PartnerServerName { get; set; }
-
-        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -73,15 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlFailoverGroupModel> ApplyUserInputToModel(IEnumerable<AzureSqlFailoverGroupModel> model)
         {
-            List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
-            newEntity.Add(new AzureSqlFailoverGroupModel()
-            {
-                ResourceGroupName = ResourceGroupName,
-                ServerName = ServerName,
-                PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
-                PartnerServerName = PartnerServerName,
-            });
-            return newEntity;
+            return model;
         }
 
         /// <summary>

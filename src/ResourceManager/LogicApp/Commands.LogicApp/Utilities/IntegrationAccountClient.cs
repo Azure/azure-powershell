@@ -16,12 +16,10 @@
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
     using System;
-    using System.Management.Automation;
-    using System.Globalization;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
-    using Microsoft.Azure.Management.Logic.Models;
+    using Common.Authentication.Abstractions;
 
     /// <summary>
     /// Integration Account client class
@@ -41,10 +39,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <summary>
         /// Creates new LogicManagement client instance.
         /// </summary>
-        /// <param name="context">The Azure context instance</param>        
-        public IntegrationAccountClient(AzureContext context)
+        /// <param name="context">The Azure context instance</param>
+        public IntegrationAccountClient(IAzureContext context)
         {
-            this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
+            this.LogicManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
             this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();            
         }
 

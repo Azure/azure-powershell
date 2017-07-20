@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,26 +26,17 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            var sqlCSMClient = GetSqlClient();
-            var storageClient = GetStorageClient();
+            var sqlClient = GetSqlClient(context);
+            var sqlLegacyClient = GetLegacySqlClient();
             var storageV2Client = GetStorageV2Client();
-            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient,
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, resourcesClient,
                 authorizationClient);
         }
 
-        public ThreatDetectionTests(ITestOutputHelper output)
+        public ThreatDetectionTests(ITestOutputHelper output) : base(output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ThreatDetectionUpdatePolicyWithClassicStorage()
-        {
-            RunPowerShellTest("Test-ThreatDetectionUpdatePolicyWithClassicStorage");
         }
 
         [Fact]

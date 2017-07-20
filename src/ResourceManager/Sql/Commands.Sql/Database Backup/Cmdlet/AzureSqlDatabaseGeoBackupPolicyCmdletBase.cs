@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Sql.Backup.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
@@ -31,9 +32,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription to operate on</param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlDatabaseBackupAdapter(DefaultProfile.Context);
+            return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

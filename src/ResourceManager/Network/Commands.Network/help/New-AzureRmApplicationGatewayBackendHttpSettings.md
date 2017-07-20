@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: C1B2D38F-E38E-4219-B375-C3CD16EE3A85
 online version: 
 schema: 2.0.0
 ---
@@ -14,14 +13,16 @@ Creates back-end HTTP settings for an application gateway.
 
 ```
 New-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -Port <Int32> -Protocol <String>
- -CookieBasedAffinity <String> [-RequestTimeout <UInt32>] [-ProbeId <String>]
+ -CookieBasedAffinity <String> [-RequestTimeout <Int32>]
+ [-ConnectionDraining <PSApplicationGatewayConnectionDraining>] [-ProbeId <String>]
  [-Probe <PSApplicationGatewayProbe>]
  [-AuthenticationCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate]>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-PickHostNameFromBackendAddress] [-HostName <String>] [-AffinityCookieName <String>] [-ProbeEnabled]
+ [-Path <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationGatewayBackendHttpSettings** cmdlet creates back-end HTTP settings for an application gateway.
+The New-AzureRmApplicationGatewayBackendHttpSettings cmdlet creates back-end HTTP settings for an application gateway.
 Back-end HTTP settings are applied to all back-end servers in a pool.
 
 ## EXAMPLES
@@ -36,102 +37,11 @@ The settings are stored in the $Setting variable.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the back-end HTTP settings that this cmdlet creates.
+### -AffinityCookieName
+Cookie name to use for the affinity cookie
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Port
-Specifies the port of the back-end server pool.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the protocol to use for communication between the application gateway and the back-end servers.
-The acceptable values for this parameter are: Http and Https.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CookieBasedAffinity
-Specifies whether cookie-based affinity should be enabled or disabled for the back-end server pool.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestTimeout
-Specifies a request time-out value.
-
-```yaml
-Type: UInt32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProbeId
-Specifies the ID of the probe to associate with the back-end server pool.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Probe
-Specifies a probe to associate with the back-end server pool.
-
-```yaml
-Type: PSApplicationGatewayProbe
 Parameter Sets: (All)
 Aliases: 
 
@@ -157,22 +67,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ConnectionDraining
+Connection draining of the backend http settings resource.
 
 ```yaml
-Type: ActionPreference
+Type: PSApplicationGatewayConnectionDraining
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
@@ -181,13 +82,167 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -CookieBasedAffinity
+Specifies whether cookie-based affinity should be enabled or disabled for the back-end server pool.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
+Accepted values: Enabled, Disabled
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HostName
+Sets host header to be sent to the backend servers.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the back-end HTTP settings that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Path
+Path which should be used as a prefix for all HTTP requests.
+If no value is provided for this parameter, then no path will be prefixed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PickHostNameFromBackendAddress
+Flag if host header should be picked from the host name of the backend server.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Port
+Specifies the port of the back-end server pool.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Probe
+Specifies a probe to associate with the back-end server pool.
+
+```yaml
+Type: PSApplicationGatewayProbe
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeEnabled
+Flag if probe should be enabled.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProbeId
+Specifies the ID of the probe to associate with the back-end server pool.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies the protocol to use for communication between the application gateway and the back-end servers.
+The acceptable values for this parameter are: Http and Https.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Http, Https
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestTimeout
+Specifies a request time-out value.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
@@ -211,12 +266,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayBackendHttpSettings](./Add-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Add-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Get-AzureRmApplicationGatewayBackendHttpSettings](./Get-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Get-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Remove-AzureRmApplicationGatewayBackendHttpSettings](./Remove-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Remove-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Set-AzureRmApplicationGatewayBackendHttpSettings](./Set-AzureRmApplicationGatewayBackendHttpSettings.md)
-
+[Set-AzureRmApplicationGatewayBackendHttpSettings]()
 

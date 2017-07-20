@@ -19,6 +19,29 @@
 -->
 ## Current Release
 
+## Version 4.2.1
+
+## Version 4.2.0
+
+## Version 4.1.0
+
+## Version 4.0.1
+
+## Version 4.0.0
+* Added support for configuring external groups in New-AzureRmApiManagementGroup.
+
+## Version 3.6.0
+
+## Version 3.5.0
+* Added new cmdlets to manage Backend entity
+    - New-AzureRmApiManagementBackend
+    - Get-AzureRmApiManagementBackend
+    - Set-AzureRmApiManagementBackend
+    - Remove-AzureRmApiManagementBackend
+* Created supporting cmdlets to create in-memory objects required while Creating or Updating Backend entity
+    - New-AzureRmApiManagementBackendCredential
+    - New-AzureRmApiManagementBackendProxy
+	
 ## Version 3.4.0
 
 ## Version 3.3.0

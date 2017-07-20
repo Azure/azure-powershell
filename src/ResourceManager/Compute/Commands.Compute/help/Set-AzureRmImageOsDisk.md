@@ -13,9 +13,9 @@ Sets the operating system disk properties on an image object.
 
 ```
 Set-AzureRmImageOsDisk [-Image] <Image> [[-OsType] <OperatingSystemTypes>]
- [[-OsState] <OperatingSystemStateTypes>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
- [[-DiskSizeGB] <Int32>] [[-SnapshotId] <String>] [[-ManagedDiskId] <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-OsState] <OperatingSystemStateTypes>] [[-BlobUri] <String>] [-Caching <CachingTypes>] [-DiskSizeGB <Int32>]
+ [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-ManagedDiskId <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,7 @@ Aliases:
 Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -87,7 +87,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -117,7 +117,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -164,7 +164,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountType
+The Storage Account type of Os Image Disk
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

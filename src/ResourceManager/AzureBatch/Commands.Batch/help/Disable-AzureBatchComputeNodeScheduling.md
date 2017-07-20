@@ -126,6 +126,7 @@ No new tasks will be scheduled on this node.
 Type: DisableComputeNodeSchedulingOption
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Requeue, Terminate, TaskCompletion
 
 Required: False
 Position: Named

@@ -46,7 +46,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public TypeMetadata(Type inputType)
         {
             Namespace = inputType.Namespace;
-            Name = inputType.Name;
+            Name = inputType.ToString();
             AssemblyQualifiedName = inputType.AssemblyQualifiedName;
 
             // Get the properties of the type
@@ -55,7 +55,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // Sort the properties by name to retain ordering when loading cmdlets
             Array.Sort(properties, delegate (PropertyInfo p1, PropertyInfo p2)
                                     {
-                                        return p1.Name.CompareTo(p2.Name);
+                                        return p1.PropertyType.ToString().CompareTo(p2.PropertyType.ToString());
                                     });
 
             ModuleMetadata moduleMetadata = CmdletBreakingChangeLoader.ModuleMetadata;
@@ -81,9 +81,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // If the type is a generic
             if (inputType.IsGenericType)
             {
-                // Get the generic type name
-                Name = inputType.Name.Substring(0, inputType.Name.IndexOf('`'));
-
                 // Get the argument types
                 var genericTypeArguments = inputType.GetGenericArguments();
 
@@ -129,7 +126,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 }
 
                 // Add the property to the dictionary
-                if (!_properties.ContainsKey(property.Name))
+                if (!_properties.ContainsKey(property.Name.ToString()))
                 {
                     _properties.Add(property.Name, propertyType.ToString());
                 }

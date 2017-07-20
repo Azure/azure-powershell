@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
@@ -41,8 +42,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public Action<string> WarningLogger { get; set; }
 
-        public NetworkClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public NetworkClient(IAzureContext context)
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<NetworkManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // 1. Send Async request to generate vpn client package          
             string baseUrl = NetworkManagementClient.BaseUri.ToString();
-            string apiVersion = "2016-09-01";
+            string apiVersion = "2016-12-01";
 
             if (resourceGroupName == null)
             {

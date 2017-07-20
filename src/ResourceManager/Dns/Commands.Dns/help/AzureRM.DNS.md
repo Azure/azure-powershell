@@ -4,7 +4,6 @@ Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
-ms.assetid: 81574D24-6FD4-4A2B-AE87-C938DEDB57DF
 ---
 
 # AzureRM.DNS Module
@@ -31,7 +30,7 @@ Creates a DNS record set.
 Creates a new DNS zone.
 
 ### [Remove-AzureRmDnsRecordConfig](Remove-AzureRmDnsRecordConfig.md)
-Removes a DNS record from a local record set.
+Removes a DNS record from a local record set object.
 
 ### [Remove-AzureRmDnsRecordSet](Remove-AzureRmDnsRecordSet.md)
 Deletes a record set.
@@ -44,3 +43,4 @@ Updates a DNS record set.
 
 ### [Set-AzureRmDnsZone](Set-AzureRmDnsZone.md)
 Updates the properties of a DNS zone.
+

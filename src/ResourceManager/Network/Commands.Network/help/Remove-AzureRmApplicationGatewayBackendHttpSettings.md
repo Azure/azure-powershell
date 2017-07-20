@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: CB7DED0C-52C6-45A0-955B-7B82738BE3FC
 online version: 
 schema: 2.0.0
 ---
@@ -14,11 +13,11 @@ Removes back-end HTTP settings from an application gateway.
 
 ```
 Remove-AzureRmApplicationGatewayBackendHttpSettings -Name <String> -ApplicationGateway <PSApplicationGateway>
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmApplicationGatewayBackendHttpSettings** cmdlet removes back-end Hypertext Transfer Protocol (HTTP) settings from an Azure application gateway.
+The Remove-AzureRmApplicationGatewayBackendHttpSettings cmdlet removes back-end Hypertext Transfer Protocol (HTTP) settings from an Azure application gateway.
 
 ## EXAMPLES
 
@@ -33,21 +32,6 @@ The first command gets an application gateway named ApplicationGateway01 that be
 The second command removes the back-end HTTP setting named BackEndSetting02 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of the back-end HTTP settings that this cmdlet removes.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ApplicationGateway
 Specifies the application gateway from which this cmdlet removes back-end HTTP settings.
@@ -64,39 +48,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
+### -Name
+Specifies the name of the back-end HTTP settings that this cmdlet removes.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,12 +76,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayBackendHttpSettings](./Add-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Add-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[New-AzureRmApplicationGatewayBackendHttpSettings](./New-AzureRmApplicationGatewayBackendHttpSettings.md)
+[New-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Get-AzureRmApplicationGatewayBackendHttpSettings](./Get-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Get-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Set-AzureRmApplicationGatewayBackendHttpSettings](./Set-AzureRmApplicationGatewayBackendHttpSettings.md)
-
+[Set-AzureRmApplicationGatewayBackendHttpSettings]()
 

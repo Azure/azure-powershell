@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.RecoveryServices</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.RecoveryServicesRdfe</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -69,7 +69,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.4\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.5\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -91,6 +91,9 @@
     <Reference Include="Microsoft.WindowsAzure.Management">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServicesVaultUpgrade.1.0.0-preview\lib\net40\Microsoft.WindowsAzure.Management.RecoveryServicesVaultUpgrade.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.SiteRecovery, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.0.5.1-preview\lib\net40\Microsoft.WindowsAzure.Management.SiteRecovery.dll</HintPath>
@@ -110,7 +113,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -132,6 +134,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\PSVaultUpgradeObjects.cs" />
     <Compile Include="lib\PSStorageObjects.cs" />
     <Compile Include="lib\PSNetworkObjects.cs" />
     <Compile Include="lib\CertUtils.cs" />
@@ -148,6 +151,7 @@
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesCloudServiceClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesProtectionProfileClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesClientHelper.cs" />
+    <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesVaultUpgradeClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesSiteClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageClient.cs" />
     <Compile Include="PSRecoveryServicesClient\PSRecoveryServicesStorageMappingClient.cs" />
@@ -171,6 +175,8 @@
     <Compile Include="Service\NewAzureSiteRecoverySite.cs" />
     <Compile Include="Service\GetAzureSiteRecoverySite.cs" />
     <Compile Include="Service\SetAzureSiteRecoveryVM.cs" />
+    <Compile Include="Service\TestAzureRecoveryServicesVaultUpgrade.cs" />
+    <Compile Include="Service\InvokeAzureRecoveryServicesVaultUpgrade.cs" />
     <Compile Include="Service\StartAzureSiteRecoveryProtectionProfileAssociationJob.cs" />
     <Compile Include="Service\CreateAzureSiteRecoveryProtectionProfileObject.cs" />
     <Compile Include="Service\NewAzureSiteRecoveryVault.cs" />
@@ -208,9 +214,9 @@
     <Compile Include="Service\UpdateAzureSiteRecoveryProtectionEntity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
-      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Commands.Common.Authentication</Name>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>

@@ -31,7 +31,7 @@ The **Set-AzureRmVMDataDisk** cmdlet modifies properties of a virtual machine da
 
 ### Example 1: Modify the caching mode of a data disk
 ```
-PS C:\>$VM = Get-AzureRMVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+PS C:\> $VM = Get-AzureRMVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
 PS C:\> Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Update-AzureRmVM
 ```
 
@@ -60,9 +60,10 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -77,7 +78,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,7 +93,7 @@ Parameter Sets: ChangeWithLun
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,7 +108,7 @@ Parameter Sets: ChangeWithName
 Aliases: 
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -123,7 +124,7 @@ Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False

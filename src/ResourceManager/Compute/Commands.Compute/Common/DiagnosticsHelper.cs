@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Newtonsoft.Json;
@@ -568,9 +571,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
             if (TryGetStorageAccount(storageClient, storageAccountName, out storageAccount))
             {
+                var account = new ARMStorageProvider(storageClient).GetCloudStorageAccount(storageAccount.Name, ARMStorageService.ParseResourceGroupFromId(storageAccount.Id));
                 // Help user retrieve the storage account key
-                var credentials = StorageUtilities.GenerateStorageCredentials(new ARMStorageProvider(storageClient),
-                    ARMStorageService.ParseResourceGroupFromId(storageAccount.Id), storageAccount.Name);
+                var credentials = account.Credentials;
                 storageAccountKey = credentials.ExportBase64EncodedKey();
             }
             else
@@ -591,7 +594,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         /// 4. The one get from current Azure Environment
         /// </summary>
         public static string InitializeStorageAccountEndpoint(string storageAccountName, string storageAccountKey, IStorageManagementClient storageClient,
-            AzureStorageContext storageContext = null, string configurationPath = null, AzureContext defaultContext = null)
+            AzureStorageContext storageContext = null, string configurationPath = null, IAzureContext defaultContext = null)
         {
             string storageAccountEndpoint = null;
             StorageAccount storageAccount = null;

@@ -30,9 +30,30 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAvailableSslOptions()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableSslOptions"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAvailableWafRuleSets()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableWafRuleSets"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestApplicationGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestApplicationGatewayCRUD2()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
     }
 }

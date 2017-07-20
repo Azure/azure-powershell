@@ -15,7 +15,7 @@ Sets the storage profile properties for the VMSS.
 ```
 Set-AzureRmVmssStorageProfile [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
  [[-ImageReferencePublisher] <String>] [[-ImageReferenceOffer] <String>] [[-ImageReferenceSku] <String>]
- [[-ImageReferenceVersion] <String>] [[-Name] <String>] [[-OsDiskCaching] <CachingTypes>]
+ [[-ImageReferenceVersion] <String>] [-OsDiskName <String>] [[-OsDiskCaching] <CachingTypes>]
  [[-OsDiskCreateOption] <DiskCreateOptionTypes>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
  [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-ManagedDisk <StorageAccountTypes>]
  [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -28,7 +28,7 @@ The **Set-AzureRmVmssStorageProfile** cmdlet sets the storage profile properties
 
 ### Example 1: Set the storage profile properties for the VMSS
 ```
-PS C:\>Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
+PS C:\> Set-AzureRmVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
             -ImageReferenceOffer $ImgRef.Offer -ImageReferenceSku $ImgRef.Skus -ImageReferenceVersion $ImgRef.Version `
             -ImageReferencePublisher $ImgRef.PublisherName -VhdContainer $VhdContainer
 ```
@@ -62,7 +62,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 10
+Position: 9
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -93,7 +93,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -109,7 +109,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -125,7 +125,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -141,7 +141,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -154,24 +154,10 @@ Specifies the managed disk.
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies the name of the operating system disk.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -193,9 +179,10 @@ This setting affects the consistency and performance of the disk.
 Type: CachingTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -217,7 +204,22 @@ Aliases:
 Accepted values: FromImage, Empty, Attach
 
 Required: False
-Position: 8
+Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OsDiskName
+Specifies the name of the operating system disk.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -231,9 +233,10 @@ This is only needed for user image scenarios and not for a platform image.
 Type: OperatingSystemTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Windows, Linux
 
 Required: False
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -248,7 +251,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -264,7 +267,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False

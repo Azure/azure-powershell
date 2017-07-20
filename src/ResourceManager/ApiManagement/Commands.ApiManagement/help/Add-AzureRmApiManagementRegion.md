@@ -14,8 +14,7 @@ Adds new deployment regions to a PsApiManagement instance.
 
 ```
 Add-AzureRmApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> [-Sku <PsApiManagementSku>]
- [-Capacity <Int32>] [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-Capacity <Int32>] [-VirtualNetwork <PsApiManagementVirtualNetwork>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +33,7 @@ This command adds two premium SKU units and the region named East US to the **Ps
 
 ### Example 2: Add new deployment regions to a PsApiManagement instance and then update deployment
 ```
-PS C:\>Get-AzureRmApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi" | Add-AzureRmApiManagementRegion -Location "East US" -Sku "Premium" -Capacity 2 | Update-AzureRmApiManagementDeployments
+PS C:\>Get-AzureRmApiManagement -ResourceGroupName "Contoso" -Name "ContosoApi" | Add-AzureRmApiManagementRegion -Location "East US" -Sku "Premium" -Capacity 2 | Update-AzureRmApiManagementDeployment
 ```
 
 This command gets a **PsApiManagement** object, adds two premium SKU units for the region named East US, and then updates deployment.
@@ -53,6 +52,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Capacity
+Specifies the SKU capacity of the deployment region.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -101,21 +115,7 @@ Valid values are:
 Type: PsApiManagementSku
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Capacity
-Specifies the SKU capacity of the deployment region.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
+Accepted values: Developer, Standard, Premium
 
 Required: False
 Position: Named
@@ -131,45 +131,6 @@ Specifies a virtual network configuration.
 Type: PsApiManagementVirtualNetwork
 Parameter Sets: (All)
 Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
 
 Required: False
 Position: Named

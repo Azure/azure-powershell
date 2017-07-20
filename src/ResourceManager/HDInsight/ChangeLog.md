@@ -19,6 +19,31 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+
+## Version 3.2.0
+* Added support to enable / disable Operations Management Suite(OMS)
+* New cmdlets
+    - Enable-AzureRmHDInsightOperationsManagementSuite
+    - Disable-AzureRmHDInsightOperationsManagementSuite
+    - Get-AzureRmHDInsightOperationsManagementSuite
+* Add new parameters to set Spark custom configurations to Add-AzureRmHDInsightConfigValues
+    - Parameters SparkDefaults and SparkThriftConf for Spark 1.6
+    - Parameters Spark2Defaults and Spark2ThriftConf for Spark 2.0
+
+## Version 3.1.0
+
+## Version 3.0.1
+
+## Version 3.0.0
+
+## Version 2.8.0
+* Added support for RServer cluster type
+    - Edgenode VM size can be specified for RServer cluster in New-AzureRmHDInsightCluster or New-AzureRmHDInsightClusterConfig
+    - RServer is now a configuration option in Add-AzureRmHDInsightConfigValues. It allows for RStudio flag to be set to indicate that R Studio installation should be done.
+
+## Version 2.7.0
+
 ## Version 2.6.0
 
 ## Version 2.5.0

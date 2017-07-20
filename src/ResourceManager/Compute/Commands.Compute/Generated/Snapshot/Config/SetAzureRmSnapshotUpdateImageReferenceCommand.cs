@@ -25,11 +25,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [Obsolete("This cmdlet will be removed in the upcoming release.  Updating the image reference of a snapshot is not supported." +
+        "To set image reference of a snapshot, please use Set-AzureRmSnapshotImageReference command.")]
     [Cmdlet("Set", "AzureRmSnapshotUpdateImageReference", SupportsShouldProcess = true)]
-    [OutputType(typeof(SnapshotUpdate))]
+    [OutputType(typeof(PSSnapshotUpdate))]
     public class SetAzureRmSnapshotUpdateImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -37,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public SnapshotUpdate SnapshotUpdate { get; set; }
+        public PSSnapshotUpdate SnapshotUpdate { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -61,38 +64,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.Id != null)
-            {
-
-                // CreationData
-                if (this.SnapshotUpdate.CreationData == null)
-                {
-                    this.SnapshotUpdate.CreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                // ImageReference
-                if (this.SnapshotUpdate.CreationData.ImageReference == null)
-                {
-                    this.SnapshotUpdate.CreationData.ImageReference = new Microsoft.Azure.Management.Compute.Models.ImageDiskReference();
-                }
-                this.SnapshotUpdate.CreationData.ImageReference.Id = this.Id;
-            }
-
-            if (this.Lun != null)
-            {
-
-                // CreationData
-                if (this.SnapshotUpdate.CreationData == null)
-                {
-                    this.SnapshotUpdate.CreationData = new Microsoft.Azure.Management.Compute.Models.CreationData();
-                }
-                // ImageReference
-                if (this.SnapshotUpdate.CreationData.ImageReference == null)
-                {
-                    this.SnapshotUpdate.CreationData.ImageReference = new Microsoft.Azure.Management.Compute.Models.ImageDiskReference();
-                }
-                this.SnapshotUpdate.CreationData.ImageReference.Lun = this.Lun;
-            }
-
             WriteObject(this.SnapshotUpdate);
         }
     }

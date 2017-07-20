@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSBgpCommunity
     {
-        public string Region { get; set; }
+        public string ServiceSupportedRegion { get; set; }
 
         public string CommunityName { get; set; }
 
@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> CommunityPrefixes { get; set; }
 
+        public bool IsAuthorizedToUse { get; set; }
+
+        public string ServiceGroup { get; set; }
+
+        [JsonIgnore]
         public string CommunityPrefixesText
         {
             get { return JsonConvert.SerializeObject(CommunityPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }

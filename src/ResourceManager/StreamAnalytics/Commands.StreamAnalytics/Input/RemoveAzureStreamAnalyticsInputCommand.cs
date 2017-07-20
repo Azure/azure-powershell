@@ -63,15 +63,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 
         private void ExecuteDelete()
         {
-            HttpStatusCode statusCode = StreamAnalyticsClient.RemovePSInput(ResourceGroupName, JobName, Name);
-            if (statusCode == HttpStatusCode.NoContent)
-            {
-                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.InputNotFound, Name, JobName, ResourceGroupName));
-            }
-            else
-            {
-                WriteObject(true);
-            }
+            StreamAnalyticsClient.RemovePSInput(ResourceGroupName, JobName, Name);
+            WriteObject(true);
         }
     }
 }

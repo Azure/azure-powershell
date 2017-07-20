@@ -15,10 +15,12 @@
 using System.Globalization;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 {
     using AutoMapper;
+    using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.SmapiModels;
@@ -45,7 +47,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         internal const string PeriodPattern = "^(?<" + PeriodGroupName + ">[DdMmYy]{1})(?<" + ValueGroupName + @">\d+)$";
         static readonly Regex PeriodRegex = new Regex(PeriodPattern, RegexOptions.Compiled);
 
-        private readonly AzureContext _context;
+        private readonly IAzureContext _context;
         private Management.ApiManagement.ApiManagementClient _client;
 
         private readonly JsonSerializerSettings _jsonSerializerSetting = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
@@ -67,6 +69,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             Mapper.CreateMap<PsApiManagementRequest, RequestContract>();
             Mapper.CreateMap<PsApiManagementResponse, ResponseContract>();
             Mapper.CreateMap<PsApiManagementRepresentation, RepresentationContract>();
+            Mapper.CreateMap<PsApiManagementAuthorizationHeaderCredential, AuthorizationHeaderCredentialsContract>();
         }
 
         private static void ConfigureSmapiToPowershellMappings()
@@ -183,9 +186,46 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 .ForMember(dest => dest.ClientSecret, opt => opt.MapFrom(src => src.ClientSecret))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
                 .ForMember(dest => dest.AllowedTenants, opt => opt.MapFrom(src => src.AllowedTenants == null ? new string[0] : src.AllowedTenants.ToArray()));
+
+            Mapper
+                .CreateMap<BackendProxyContract, PsApiManagementBackendProxy>()
+                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Username));
+
+            Mapper
+                .CreateMap<BackendCredentialsContract, PsApiManagementBackendCredential>()
+                .ForMember(dest => dest.Certificate, opt => opt.MapFrom(src => src.Certificate))
+                .ForMember(dest => dest.Query, opt => opt.Ignore())
+                .ForMember(dest => dest.Header, opt => opt.Ignore())
+                .AfterMap((src, dest) =>
+                    dest.Query = src.Query == null
+                        ? (Hashtable)null
+                        : DictionaryToHashTable(src.Query))
+                .AfterMap((src, dest) =>
+                    dest.Header = src.Header == null
+                        ? (Hashtable)null
+                        : DictionaryToHashTable(src.Header));
+            Mapper
+                .CreateMap<AuthorizationHeaderCredentialsContract, PsApiManagementAuthorizationHeaderCredential>()
+                .ForMember(dest => dest.Scheme, opt => opt.MapFrom(src => src.Scheme))
+                .ForMember(dest => dest.Parameter, opt => opt.MapFrom(src => src.Parameter));
+
+            Mapper
+                .CreateMap<BackendGetContract, PsApiManagementBackend>()
+                .ForMember(dest => dest.BackendId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                .ForMember(dest => dest.Protocol, opt => opt.MapFrom(src => src.Protocol))
+                .ForMember(dest => dest.ResourceId, opt => opt.MapFrom(src => src.ResourceId))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src.Properties))
+                .ForMember(dest => dest.Proxy, opt => opt.MapFrom(src => src.Proxy));
+
+            Mapper.CreateMap<Hashtable, Hashtable>();
         }
 
-        public ApiManagementClient(AzureContext context)
+        public ApiManagementClient(IAzureContext context)
         {
             if (context == null)
             {
@@ -204,7 +244,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         private Management.ApiManagement.ApiManagementClient CreateClient()
         {
-            return AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
+            return AzureSession.Instance.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
                 _context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
@@ -1020,12 +1060,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         #endregion
 
         #region Groups
-        public PsApiManagementGroup GroupCreate(PsApiManagementContext context, string groupId, string name, string description)
+        public PsApiManagementGroup GroupCreate(
+            PsApiManagementContext context,
+            string groupId,
+            string name, 
+            string description,
+            PsApiManagementGroupType? type,
+            string externalId)
         {
             var groupCreateParameters = new GroupCreateParameters(name)
             {
                 Description = description
             };
+
+            if (type.HasValue)
+            {
+                groupCreateParameters.Type = Mapper.Map<GroupTypeContract>(type.Value);
+            }
+            else
+            {
+                groupCreateParameters.Type = Mapper.Map<GroupTypeContract>(PsApiManagementGroupType.Custom);
+            }
+
+            if (!string.IsNullOrEmpty(externalId))
+            {
+                groupCreateParameters.ExternalId = externalId;
+            }
 
             Client.Groups.Create(context.ResourceGroupName, context.ServiceName, groupId, groupCreateParameters);
 
@@ -1079,17 +1139,23 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             Client.Groups.Delete(context.ResourceGroupName, context.ServiceName, groupId, "*");
         }
 
-        public void GroupSet(PsApiManagementContext context, string groupId, string name, string description)
+        public void GroupSet(
+            PsApiManagementContext context,
+            string groupId,
+            string name,
+            string description)
         {
+            var groupUpdate = new GroupUpdateParameters
+            {
+                Name = name,
+                Description = description
+            };
+
             Client.Groups.Update(
                 context.ResourceGroupName,
                 context.ServiceName,
                 groupId,
-                new GroupUpdateParameters
-                {
-                    Name = name,
-                    Description = description
-                },
+                groupUpdate,
                 "*");
         }
         #endregion
@@ -1876,6 +1942,244 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 context.ServiceName,
                 identityProviderName,
                 parameters,
+                "*");
+        }
+        #endregion
+
+        #region Backends
+        public PsApiManagementBackend BackendCreate(
+            PsApiManagementContext context,
+            string backendId,
+            string url,
+            string protocol,
+            string title,
+            string description,
+            string resourceId,
+            bool? skipCertificateChainValidation,
+            bool? skipCertificateNameValidation,
+            PsApiManagementBackendCredential credential,
+            PsApiManagementBackendProxy proxy)
+        {
+            var backendCreateParams = new BackendCreateParameters(url, protocol);
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                backendCreateParams.ResourceId = resourceId;
+            }
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                backendCreateParams.Title = title;
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                backendCreateParams.Description = description;
+            }
+
+            if (skipCertificateChainValidation.HasValue || skipCertificateNameValidation.HasValue)
+            {
+                backendCreateParams.Properties = new Dictionary<string, object>();
+                if (skipCertificateNameValidation.HasValue)
+                {
+                    backendCreateParams.Properties.Add("skipCertificateNameValidation", skipCertificateNameValidation.Value);
+                }
+
+                if (skipCertificateChainValidation.HasValue)
+                {
+                    backendCreateParams.Properties.Add("skipCertificateChainValidation", skipCertificateChainValidation.Value);
+                }
+            }
+
+            if (credential != null)
+            {
+                backendCreateParams.Credentials = new BackendCredentialsContract();
+                if (credential.Query != null)
+                {
+                    backendCreateParams.Credentials.Query = HashTableToDictionary(credential.Query);
+                }
+
+                if (credential.Header != null)
+                {
+                    backendCreateParams.Credentials.Header = HashTableToDictionary(credential.Header);
+                }
+
+                if (credential.Certificate != null && credential.Certificate.Any())
+                {
+                    backendCreateParams.Credentials.Certificate = credential.Certificate.ToList();
+                }
+
+                if (credential.Authorization != null)
+                {
+                    backendCreateParams.Credentials.Authorization =
+                        Mapper.Map<AuthorizationHeaderCredentialsContract>(credential.Authorization);
+                }
+            }
+
+            if (proxy != null)
+            {
+                backendCreateParams.Proxy = Mapper.Map<PsApiManagementBackendProxy, BackendProxyContract>(proxy);
+            }
+
+            Client.Backends.Create(context.ResourceGroupName, context.ServiceName, backendId, backendCreateParams);
+
+            var response = Client.Backends.Get(context.ResourceGroupName, context.ServiceName, backendId);
+            var backend = Mapper.Map<BackendGetContract, PsApiManagementBackend>(response.Value);
+
+            return backend;
+        }
+
+        static Dictionary<string, List<string>> HashTableToDictionary(Hashtable table)
+        {
+            if (table == null)
+            {
+                return null;
+            }
+
+            var result = new Dictionary<string, List<string>>();
+            foreach (var entry in table.Cast<DictionaryEntry>())
+            {
+                var entryValue = entry.Value as object[];
+                if (entryValue == null)
+                {
+                    throw new ArgumentException(
+                        string.Format(CultureInfo.InvariantCulture,
+                            "Invalid input type specified for Key '{0}', expected string[]",
+                            entry.Key));
+                }
+                result.Add(entry.Key.ToString(), entryValue.Select(i => i.ToString()).ToList());
+            }
+
+            return result;
+        }
+
+        static Hashtable DictionaryToHashTable(IDictionary<string, List<string>> dictionary)
+        {
+            if (dictionary == null)
+            {
+                return null;
+            }
+
+            var result = new Hashtable();
+            foreach (var keyEntry in dictionary.Keys)
+            {
+                var keyValue = dictionary[keyEntry];
+
+                result.Add(keyEntry, keyValue.Cast<object>().ToArray());
+            }
+
+            return result;
+        }
+
+        public IList<PsApiManagementBackend> BackendsList(PsApiManagementContext context)
+        {
+            var results = ListPagedAndMap<PsApiManagementBackend, BackendGetContract>(
+                () => Client.Backends.List(context.ResourceGroupName, context.ServiceName, null),
+                nextLink => Client.Backends.ListNext(nextLink));
+
+            return results;
+        }
+
+        public PsApiManagementBackend BackendById(PsApiManagementContext context, string loggerId)
+        {
+            var response = Client.Backends.Get(context.ResourceGroupName, context.ServiceName, loggerId);
+            var backend = Mapper.Map<PsApiManagementBackend>(response.Value);
+
+            return backend;
+        }
+
+        public void BackendRemove(PsApiManagementContext context, string backendId)
+        {
+            Client.Backends.Delete(context.ResourceGroupName, context.ServiceName, backendId, "*");
+        }
+
+        public void BackendSet(
+            PsApiManagementContext context,
+            string backendId,
+            string url,
+            string protocol,
+            string title,
+            string description,
+            string resourceId,
+            bool? skipCertificateChainValidation,
+            bool? skipCertificateNameValidation,
+            PsApiManagementBackendCredential credential,
+            PsApiManagementBackendProxy proxy)
+        {
+            var backendUpdateParams = new BackendUpdateParameters();
+            if (!string.IsNullOrEmpty(url))
+            {
+                backendUpdateParams.Url = url;
+            }
+
+            if (!string.IsNullOrEmpty(protocol))
+            {
+                backendUpdateParams.Protocol = protocol;
+            }
+
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                backendUpdateParams.ResourceId = resourceId;
+            }
+
+            if (!string.IsNullOrEmpty(title))
+            {
+                backendUpdateParams.Title = title;
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                backendUpdateParams.Description = description;
+            }
+
+            if (skipCertificateChainValidation.HasValue || skipCertificateNameValidation.HasValue)
+            {
+                backendUpdateParams.Properties = new Dictionary<string, object>();
+                if (skipCertificateNameValidation.HasValue)
+                {
+                    backendUpdateParams.Properties.Add("skipCertificateNameValidation", skipCertificateNameValidation.Value);
+                }
+
+                if (skipCertificateChainValidation.HasValue)
+                {
+                    backendUpdateParams.Properties.Add("skipCertificateChainValidation", skipCertificateChainValidation.Value);
+                }
+            }
+
+            if (credential != null)
+            {
+                backendUpdateParams.Credentials = new BackendCredentialsContract();
+                if (credential.Query != null)
+                {
+                    backendUpdateParams.Credentials.Query = HashTableToDictionary(credential.Query);
+                }
+
+                if (credential.Header != null)
+                {
+                    backendUpdateParams.Credentials.Header = HashTableToDictionary(credential.Header);
+                }
+
+                if (credential.Certificate != null && credential.Certificate.Any())
+                {
+                    backendUpdateParams.Credentials.Certificate = credential.Certificate.ToList();
+                }
+
+                if (credential.Authorization != null)
+                {
+                    backendUpdateParams.Credentials.Authorization =
+                        Mapper.Map<AuthorizationHeaderCredentialsContract>(credential.Authorization);
+                }
+            }
+
+            if (proxy != null)
+            {
+                backendUpdateParams.Proxy = Mapper.Map<PsApiManagementBackendProxy, BackendProxyContract>(proxy);
+            }
+
+            Client.Backends.Update(
+                context.ResourceGroupName,
+                context.ServiceName,
+                backendId,
+                backendUpdateParams,
                 "*");
         }
         #endregion

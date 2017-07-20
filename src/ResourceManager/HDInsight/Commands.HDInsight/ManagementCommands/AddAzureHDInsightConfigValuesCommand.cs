@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         private Dictionary<string, Hashtable> _configurations;
 
+        private const string RServerConfigurationKey = "RServer";
+
         #region Input Parameter Definitions
 
         [Parameter(Position = 0,
@@ -77,6 +79,21 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets the Hdfs Site configurations of this HDInsight cluster.")]
         public Hashtable Hdfs { get; set; }
 
+        [Parameter(HelpMessage = "Gets the RServer configurations.")]
+        public Hashtable RServer { get; set; }
+
+        [Parameter(HelpMessage = "Gets the Spark Defaults configurations of this HDInsight cluster.", ParameterSetName = "Spark1")]
+        public Hashtable SparkDefaults { get; set; }
+
+        [Parameter(HelpMessage = "Gets the Spark Thrift SparkConf configurations of this HDInsight cluster.", ParameterSetName = "Spark1")]
+        public Hashtable SparkThriftConf { get; set; }
+
+        [Parameter(HelpMessage = "Gets the Spark2 Defaults configurations of this HDInsight cluster.", ParameterSetName = "Spark2")]
+        public Hashtable Spark2Defaults { get; set; }
+
+        [Parameter(HelpMessage = "Gets the Spark2 Thrift SparkConf configurations of this HDInsight cluster.", ParameterSetName = "Spark2")]
+        public Hashtable Spark2ThriftConf { get; set; }
+
         #endregion
 
         public AddAzureHDInsightConfigValuesCommand()
@@ -94,6 +111,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             MapRed = new Hashtable();
             Tez = new Hashtable();
             Hdfs = new Hashtable();
+            RServer = new Hashtable();
+            SparkDefaults = new Hashtable();
+            SparkThriftConf = new Hashtable();
+            Spark2Defaults = new Hashtable();
+            Spark2ThriftConf = new Hashtable();
         }
 
         public override void ExecuteCmdlet()
@@ -113,6 +135,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             AddConfigToConfigurations(MapRed, ConfigurationKey.MapRedSite);
             AddConfigToConfigurations(Tez, ConfigurationKey.TezSite);
             AddConfigToConfigurations(Hdfs, ConfigurationKey.HdfsSite);
+            AddConfigToConfigurations(RServer, RServerConfigurationKey);
+            AddConfigToConfigurations(SparkDefaults, ConfigurationKey.SparkDefaults);
+            AddConfigToConfigurations(SparkThriftConf, ConfigurationKey.SparkThriftConf);
+            AddConfigToConfigurations(Spark2Defaults, ConfigurationKey.Spark2Defaults);
+            AddConfigToConfigurations(Spark2ThriftConf, ConfigurationKey.Spark2ThriftConf);
 
             WriteObject(Config);
         }

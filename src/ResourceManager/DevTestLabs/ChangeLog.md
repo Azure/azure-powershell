@@ -19,6 +19,21 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+
+## Version 3.2.0
+
+## Version 3.1.0
+* Update cmdlets to work with current and updated DevTest Labs API version.
+
+## Version 3.0.1
+
+## Version 3.0.0
+
+## Version 2.8.0
+
+## Version 2.7.0
+
 ## Version 2.6.0
 
 ## Version 2.5.0

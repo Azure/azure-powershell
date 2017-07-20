@@ -15,25 +15,22 @@ Uploads the contents of a file.
 ### ShareName (Default)
 ```
 Set-AzureStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
- [-Context <AzureStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [-PipelineVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Share
 ```
 Set-AzureStorageFileContent [-Share] <CloudFileShare> [-Source] <String> [[-Path] <String>] [-PassThru]
  [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-PipelineVariable <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Set-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Source] <String> [[-Path] <String>] [-PassThru]
  [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-PipelineVariable <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,123 +69,6 @@ For more information about script blocks, type `Get-Help about_Script_Blocks`.
 
 ## PARAMETERS
 
-### -ShareName
-Specifies the name of the file share.
-This cmdlet uploads to a file in the file share this parameter specifies.
-
-```yaml
-Type: String
-Parameter Sets: ShareName
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Source
-Specifies the source file that this cmdlet uploads.
-If you specify a file that does not exist, this cmdlet returns an error.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: FullName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Path
-Specifies the path of a file or folder.
-This cmdlet uploads contents to the file that this parameter specifies, or to a file in the folder that this parameter specifies.
-If you specify a folder, this cmdlet creates a file that has the same name as the source file.
-
-If you specify a path of a file that does not exist, this cmdlet creates that file and saves the contents to that file.
-If you specify a file that already exists, and you specify the _Force_ parameter, this cmdlet overwrites the contents of the file.
-If you specify a file that already exists and you do not specify _Force_, this cmdlet makes no change, and returns an error.
-
-If you specify a path of a folder that does not exist, this cmdlet makes no change, and returns an error.
-
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Indicates that this cmdlet returns the **AzureStorageFile** object that it creates or uploads.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Indicates that this cmdlet overwrites an existing Azure storage file.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Context
-Specifies an Azure storage context.
-To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
-
-```yaml
-Type: AzureStorageContext
-Parameter Sets: ShareName
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerTimeoutPerRequest
-Specifies the length of the time-out period for the server part of a request.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ClientTimeoutPerRequest
 Specifies the client-side time-out interval, in seconds, for one service request.
 If the previous call fails in the specified interval, this cmdlet retries the request.
@@ -225,22 +105,47 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -Context
+Specifies an Azure storage context.
+To obtain a storage context, use the [New-AzureStorageContext](./New-AzureStorageContext.md) cmdlet.
 
 ```yaml
-Type: ActionPreference
+Type: IStorageContext
+Parameter Sets: ShareName
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Directory
+Specifies a folder as a **CloudFileDirectory** object.
+This cmdlet uploads the file to the folder that this parameter specifies.
+To obtain a directory, use the New-AzureStorageDirectory cmdlet.
+You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
+
+```yaml
+Type: CloudFileDirectory
+Parameter Sets: Directory
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Force
+Indicates that this cmdlet overwrites an existing Azure storage file.
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
@@ -249,48 +154,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -PassThru
+Indicates that this cmdlet returns the **AzureStorageFile** object that it creates or uploads.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Path
+Specifies the path of a file or folder.
+This cmdlet uploads contents to the file that this parameter specifies, or to a file in the folder that this parameter specifies.
+If you specify a folder, this cmdlet creates a file that has the same name as the source file.
+
+If you specify a path of a file that does not exist, this cmdlet creates that file and saves the contents to that file.
+If you specify a file that already exists, and you specify the _Force_ parameter, this cmdlet overwrites the contents of the file.
+If you specify a file that already exists and you do not specify _Force_, this cmdlet makes no change, and returns an error.
+
+If you specify a path of a folder that does not exist, this cmdlet makes no change, and returns an error.
+
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -ServerTimeoutPerRequest
+Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
-Type: SwitchParameter
+Type: Int32
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -314,35 +227,65 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Directory
-Specifies a folder as a **CloudFileDirectory** object.
-This cmdlet uploads the file to the folder that this parameter specifies.
-To obtain a directory, use the New-AzureStorageDirectory cmdlet.
-You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
+### -ShareName
+Specifies the name of the file share.
+This cmdlet uploads to a file in the file share this parameter specifies.
 
 ```yaml
-Type: CloudFileDirectory
-Parameter Sets: Directory
+Type: String
+Parameter Sets: ShareName
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PipelineVariable
-Stores the value of the current pipeline element as a variable, for any named command as it flows through the pipeline.
+### -Source
+Specifies the source file that this cmdlet uploads.
+If you specify a file that does not exist, this cmdlet returns an error.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: pv
+Aliases: FullName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

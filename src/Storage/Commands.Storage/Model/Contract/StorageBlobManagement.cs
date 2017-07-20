@@ -165,11 +165,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>Return an CloudBlob if the specific blob exists on azure, otherwise return null</returns>
-        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, DateTimeOffset? SnapshotTime = null)
         {
             try
             {
-                CloudBlob blob = Util.GetBlobReferenceFromServer(container, blobName, accessCondition, options, operationContext);
+                CloudBlob blob = Util.GetBlobReferenceFromServer(container, blobName, accessCondition, options, operationContext, SnapshotTime);
                 return blob;
             }
             catch (StorageException e)
@@ -650,6 +650,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public Task<string> StartCopyAsync(CloudBlob blob, Uri source, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.StartCopyAsync(source, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously start Incremental copy operation to a page blob.
+        /// </summary>
+        /// <param name="blob">Dest CloudPageBlob object</param>
+        /// <param name="source">Source Page Blob snapshot</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        public Task<string> StartIncrementalCopyAsync(CloudPageBlob blob, CloudPageBlob source, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return blob.StartIncrementalCopyAsync(source, destAccessCondition, options, operationContext, cancellationToken);
         }
     }
 }

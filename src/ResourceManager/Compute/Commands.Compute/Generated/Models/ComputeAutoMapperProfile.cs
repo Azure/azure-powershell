@@ -95,7 +95,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             Mapper.CreateMap<FROM.DiskUpdate, FROM.Disk>();
             Mapper.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
             Mapper.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-
+            Mapper.CreateMap<FROM.Disk, TO.PSDisk>();
+            Mapper.CreateMap<TO.PSDisk, FROM.Disk>();
+            Mapper.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>();
+            Mapper.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
+            Mapper.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
+            Mapper.CreateMap<TO.PSSnapshot, FROM.Snapshot>();
+            Mapper.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
+            Mapper.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
         }
     }
 }

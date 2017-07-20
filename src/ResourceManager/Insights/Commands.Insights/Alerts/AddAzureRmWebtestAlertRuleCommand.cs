@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmWebtestAlertRule"), OutputType(typeof(List<PSObject>))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmWebtestAlertRule"), OutputType(typeof(PSAddAlertRuleOperationResponse))]
     public class AddAzureRmWebtestAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             {
                 DataSource = dataSource,
                 FailedLocationCount = this.FailedLocationCount,
-                WindowSize = this.WindowSize,
+                WindowSize = this.WindowSize
             };
         }
 
@@ -79,11 +80,14 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             RuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
-            return new AlertRuleResource(location: this.Location, isEnabled: !this.DisableRule, alertRuleResourceName: this.Name)
+            return new AlertRuleResource()
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("webtest alert rule"),
                 Condition = condition,
                 Actions = this.Actions,
+                Location = this.Location,
+                IsEnabled = !this.DisableRule,
+                AlertRuleResourceName = this.Name,
 
                 // DO NOT REMOVE OR CHANGE the following. The two elements in the Tags are required by other services.
                 Tags = new Dictionary<string, string>()

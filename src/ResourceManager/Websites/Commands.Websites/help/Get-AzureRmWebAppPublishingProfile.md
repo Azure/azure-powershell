@@ -31,28 +31,13 @@ The **Get-AzureRmWebAppPublishingProfile** cmdlet gets an Azure Web App publishi
 
 ### 1:
 ```
-PS C:\> Get-AzureRmWebAppSlotPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Format "Ftp" -OutputFile "C:\Users\contoso\outputfile"
+PS C:\> Get-AzureRmWebAppPublishingProfile -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Format "Ftp" -OutputFile "C:\Users\contoso\outputfile"
 ```
 
 This command gets the publishing profile in Ftp format for Web App ContosoWebApp associated with the resource group Default-Web-WestUS
     and stores it in the specified output file.
 
 ## PARAMETERS
-
-### -OutputFile
-Output File
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Format
 Format
@@ -61,24 +46,10 @@ Format
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: WebDeploy, FileZilla3, Ftp
 
 Required: False
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name
-
-```yaml
-Type: String
-Parameter Sets: S1
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -96,6 +67,36 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OutputFile
+Output File
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name
+
+```yaml
+Type: String
+Parameter Sets: S1
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -14,7 +14,7 @@ Gets the outputs defined in a specified Stream Analytics job or output.
 
 ```
 Get-AzureRmStreamAnalyticsOutput [-JobName] <String> [[-Name] <String>] [-ResourceGroupName] <String>
- [-PipelineVariable <String>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,21 +80,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PipelineVariable
-Not Specified
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: pv
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

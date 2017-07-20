@@ -186,21 +186,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServerName
-Specifies the name of the server for the advisor that this cmdlet requests.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies name of the resource group of the server.
 
@@ -211,6 +196,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+Specifies the name of the server for the advisor that this cmdlet requests.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -238,4 +238,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzureRmSqlServerAdvisorAutoExecuteStatus](./Set-AzureRmSqlServerAdvisorAutoExecuteStatus.md)
 
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 

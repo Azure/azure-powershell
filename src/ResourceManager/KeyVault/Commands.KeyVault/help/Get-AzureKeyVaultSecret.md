@@ -27,6 +27,11 @@ Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <Stri
 Get-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions] [<CommonParameters>]
 ```
 
+### ByDeletedSecrets
+```
+Get-AzureKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzureKeyVaultSecret** cmdlet gets secrets in a key vault.
 This cmdlet gets a specific secret or all the secrets in a key vault.
@@ -69,7 +74,35 @@ PS C:\> Write-Host "Secret Value is: " $secret.SecretValueText
 
 These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
 
+### Example 6: Get all the keys that have been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultSecret -VaultName 'Contoso' -InRemovedState
+```
+
+This command gets all the secrets that have been previously deleted, but not purged, in the key vault named Contoso.
+
+### Example 7: Gets the secret ITSecret that has been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultSecret -VaultName 'Contoso' -KeyName 'ITSecret' -InRemovedState
+```
+
+This command gets the secret ITSecret that has been previously deleted, but not purged, in the key vault named Contoso.
+This command will return metadata such as the deletion date, and the scheduled purging date of this deleted secret.
+
 ## PARAMETERS
+
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output.```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedSecrets
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a secret.
@@ -99,7 +132,19 @@ Parameter Sets: BySecretName, BySecretVersions
 Aliases: SecretName
 
 Required: True
-Position: 2
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByDeletedSecrets
+Aliases: SecretName
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -115,7 +160,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -131,7 +176,7 @@ Parameter Sets: BySecretName
 Aliases: SecretVersion
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -146,13 +191,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.Secret>, Microsoft.Azure.Commands.KeyVault.Models.Secret
+### List<Microsoft.Azure.Commands.KeyVault.Models.SecretIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.Secret, List<Microsoft.Azure.Commands.KeyVault.Models.DeletedSecretIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.DeletedSecret
 
 ## NOTES
 
 ## RELATED LINKS
 
 [Remove-AzureKeyVaultSecret](./Remove-AzureKeyVaultSecret.md)
+
+[Undo-AzureKeyVaultSecretRemoval](./Undo-AzureKeyVaultSecretRemoval.md)
 
 [Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md)
 

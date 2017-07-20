@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 02FC4035-27DF-4D4C-A65A-8417F9AE5A64
 online version: 
 schema: 2.0.0
 ---
@@ -14,13 +13,13 @@ Sets the health probe configuration on an existing Application Gateway.
 
 ```
 Set-AzureRmApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Protocol <String> -HostName <String> -Path <String> -Interval <UInt32> -Timeout <UInt32>
- -UnhealthyThreshold <UInt32> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ -Protocol <String> [-HostName <String>] -Path <String> -Interval <Int32> -Timeout <Int32>
+ -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings] [-MinServers <Int32>]
+ [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmApplicationGatewayProbeConfig** cmdlet sets the health probe configuration on an existing Application Gateway.
+The Set-AzureRmApplicationGatewayProbeConfig cmdlet sets the health probe configuration on an existing Application Gateway.
 
 ## EXAMPLES
 
@@ -49,39 +48,72 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the probe.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the protocol used to send probe.
-This cmdlet supports HTTP only.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -HostName
 Specifies the host name that this cmdlet sends the probe to.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Interval
+Specifies the probe interval in seconds.
+This is the time interval between two consecutive probes.
+This value is between 1 second and 86400 seconds.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Match
+Body that must be contained in the health response.
+Default value is empty
+
+```yaml
+Type: PSApplicationGatewayProbeHealthResponseMatch
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinServers
+Minimum number of servers that are always marked healthy.
+Default value is 0
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the probe.
 
 ```yaml
 Type: String
@@ -112,15 +144,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Interval
-Specifies the probe interval in seconds.
-This is the time interval between two consecutive probes.
-This value is between 1 second and 86400 seconds.
+### -PickHostNameFromBackendHttpSettings
+Whether the host header should be picked from the backend http settings.
+Default value is false
 
 ```yaml
-Type: UInt32
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies the protocol used to send probe.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Http, Https
 
 Required: True
 Position: Named
@@ -135,7 +182,7 @@ This cmdlet marks the probe as failed if a valid response is not received with t
 Valid values are between 1 second and 86400 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -152,50 +199,11 @@ The backend server is marked down after consecutive probe failure count reaches 
 Valid values are between 1 second and 20 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
-
-```yaml
-Type: ActionPreference
-Parameter Sets: (All)
-Aliases: infa
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InformationVariable
-Specifies an information variable.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: iv
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -213,12 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayProbeConfig](./Add-AzureRmApplicationGatewayProbeConfig.md)
+[Add-AzureRmApplicationGatewayProbeConfig]()
 
-[Get-AzureRmApplicationGatewayProbeConfig](./Get-AzureRmApplicationGatewayProbeConfig.md)
+[Get-AzureRmApplicationGatewayProbeConfig]()
 
-[New-AzureRmApplicationGatewayProbeConfig](./New-AzureRmApplicationGatewayProbeConfig.md)
+[New-AzureRmApplicationGatewayProbeConfig]()
 
-[Remove-AzureRmApplicationGatewayProbeConfig](./Remove-AzureRmApplicationGatewayProbeConfig.md)
-
+[Remove-AzureRmApplicationGatewayProbeConfig]()
 

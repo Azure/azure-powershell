@@ -11,10 +11,13 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
-      "AliasList": [
-        "Disable-AzureDataCollection"
-      ]
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
+      "AliasList": []
     },
     {
       "VerbName": "Enable",
@@ -27,10 +30,13 @@
       "DefaultParameterSetName": "__AllParameterSets",
       "OutputTypes": [],
       "Parameters": [],
-      "ParameterSets": [],
-      "AliasList": [
-        "Enable-AzureDataCollection"
-      ]
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
+      "AliasList": []
     },
     {
       "VerbName": "Remove",
@@ -45,28 +51,32 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveDirectoryAuthority": "System.String",
-              "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "AdTenant": "System.String",
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
-              "AzureKeyVaultServiceEndpointResourceId": "System.String",
-              "EnableAdfsAuthentication": "System.Boolean",
-              "GalleryUrl": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ManagementPortalUrl": "System.String",
-              "Name": "System.String",
-              "PublishSettingsFileUrl": "System.String",
-              "ResourceManagerUrl": "System.String",
-              "ServiceManagementUrl": "System.String",
-              "SqlDatabaseDnsSuffix": "System.String",
               "StorageEndpointSuffix": "System.String",
-              "TrafficManagerDnsSuffix": "System.String"
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -82,7 +92,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -104,7 +114,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -138,28 +148,32 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveDirectoryAuthority": "System.String",
-              "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "AdTenant": "System.String",
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
-              "AzureKeyVaultServiceEndpointResourceId": "System.String",
-              "EnableAdfsAuthentication": "System.Boolean",
-              "GalleryUrl": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ManagementPortalUrl": "System.String",
-              "Name": "System.String",
-              "PublishSettingsFileUrl": "System.String",
-              "ResourceManagerUrl": "System.String",
-              "ServiceManagementUrl": "System.String",
-              "SqlDatabaseDnsSuffix": "System.String",
               "StorageEndpointSuffix": "System.String",
-              "TrafficManagerDnsSuffix": "System.String"
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -175,7 +189,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -197,7 +211,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -231,28 +245,32 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveDirectoryAuthority": "System.String",
-              "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "AdTenant": "System.String",
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
-              "AzureKeyVaultServiceEndpointResourceId": "System.String",
-              "EnableAdfsAuthentication": "System.Boolean",
-              "GalleryUrl": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ManagementPortalUrl": "System.String",
-              "Name": "System.String",
-              "PublishSettingsFileUrl": "System.String",
-              "ResourceManagerUrl": "System.String",
-              "ServiceManagementUrl": "System.String",
-              "SqlDatabaseDnsSuffix": "System.String",
               "StorageEndpointSuffix": "System.String",
-              "TrafficManagerDnsSuffix": "System.String"
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -268,7 +286,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -284,7 +302,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -303,7 +321,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -319,7 +337,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -337,7 +355,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -357,7 +375,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -376,7 +394,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -395,7 +413,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -411,7 +429,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -430,7 +448,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -446,7 +464,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -462,7 +480,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -478,7 +496,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -494,7 +512,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -510,7 +528,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -526,7 +544,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -544,7 +562,7 @@
           ],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -560,7 +578,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -579,7 +597,26 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DataLakeAudience",
+          "AliasList": [
+            "DataLakeEndpointResourceId",
+            "DataLakeResourceId"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -601,7 +638,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -623,7 +660,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -648,7 +685,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -670,7 +707,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -694,7 +731,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -720,7 +757,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -745,7 +782,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -770,7 +807,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -792,7 +829,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -817,7 +854,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -839,7 +876,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -861,7 +898,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -883,7 +920,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -905,7 +942,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -927,7 +964,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -949,7 +986,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -973,7 +1010,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -995,7 +1032,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1020,7 +1057,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1033,6 +1070,31 @@
               },
               "Mandatory": false,
               "Position": 18,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DataLakeAudience",
+                "AliasList": [
+                  "DataLakeEndpointResourceId",
+                  "DataLakeResourceId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 19,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
             }
@@ -1054,28 +1116,32 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "ActiveDirectoryAuthority": "System.String",
-              "ActiveDirectoryServiceEndpointResourceId": "System.String",
-              "AdTenant": "System.String",
+              "EnableAdfsAuthentication": "System.Boolean",
+              "OnPremise": "System.Boolean",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+              "AzureKeyVaultServiceEndpointResourceId": "System.String",
               "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
               "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+              "DataLakeEndpointResourceId": "System.String",
               "AzureKeyVaultDnsSuffix": "System.String",
-              "AzureKeyVaultServiceEndpointResourceId": "System.String",
-              "EnableAdfsAuthentication": "System.Boolean",
-              "GalleryUrl": "System.String",
+              "TrafficManagerDnsSuffix": "System.String",
               "GraphEndpointResourceId": "System.String",
               "GraphUrl": "System.String",
-              "ManagementPortalUrl": "System.String",
-              "Name": "System.String",
-              "PublishSettingsFileUrl": "System.String",
-              "ResourceManagerUrl": "System.String",
-              "ServiceManagementUrl": "System.String",
-              "SqlDatabaseDnsSuffix": "System.String",
               "StorageEndpointSuffix": "System.String",
-              "TrafficManagerDnsSuffix": "System.String"
+              "SqlDatabaseDnsSuffix": "System.String",
+              "ResourceManagerUrl": "System.String",
+              "PublishSettingsFileUrl": "System.String",
+              "ServiceManagementUrl": "System.String",
+              "ManagementPortalUrl": "System.String",
+              "GalleryUrl": "System.String",
+              "AdTenant": "System.String",
+              "ActiveDirectoryServiceEndpointResourceId": "System.String",
+              "ActiveDirectoryAuthority": "System.String",
+              "Name": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1091,7 +1157,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1107,7 +1173,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1126,7 +1192,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1142,7 +1208,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1160,7 +1226,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1180,7 +1246,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1199,7 +1265,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1218,7 +1284,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1234,7 +1300,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1253,7 +1319,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1269,7 +1335,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1285,7 +1351,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1301,7 +1367,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1317,7 +1383,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1333,7 +1399,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1349,7 +1415,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1367,7 +1433,7 @@
           ],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -1383,7 +1449,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1402,7 +1468,26 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DataLakeAudience",
+          "AliasList": [
+            "DataLakeEndpointResourceId",
+            "DataLakeResourceId"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1424,7 +1509,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1446,7 +1531,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1471,7 +1556,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1493,7 +1578,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1517,7 +1602,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1543,7 +1628,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1568,7 +1653,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1593,7 +1678,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1615,7 +1700,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1640,7 +1725,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1662,7 +1747,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1684,7 +1769,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1706,7 +1791,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1728,7 +1813,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1750,7 +1835,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1772,7 +1857,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1796,7 +1881,7 @@
                 ],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -1818,7 +1903,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1843,7 +1928,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1858,8 +1943,66 @@
               "Position": 18,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DataLakeAudience",
+                "AliasList": [
+                  "DataLakeEndpointResourceId",
+                  "DataLakeResourceId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 19,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
             }
           ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Send",
+      "NounName": "Feedback",
+      "Name": "Send-Feedback",
+      "ClassName": "Microsoft.Azure.Commands.Profile.SendFeedbackCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
         }
       ],
       "AliasList": []
@@ -1877,14 +2020,15 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "CurrentStorageAccountName": "System.String",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
               "State": "System.String",
-              "SubscriptionId": "System.String",
-              "SubscriptionName": "System.String",
-              "TenantId": "System.String"
+              "TenantId": "System.String",
+              "CurrentStorageAccountName": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -1900,7 +2044,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1916,7 +2060,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1932,7 +2076,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -1954,7 +2098,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -1976,7 +2120,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2003,7 +2147,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2025,7 +2169,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2059,8 +2203,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
               "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
@@ -2076,31 +2220,12 @@
       "Parameters": [
         {
           "Name": "Environment",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-            "Name": "AzureEnvironment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-              "Name": "System.String",
-              "OnPremise": "System.Boolean",
-              "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-            },
-            "ElementType": null,
-            "GenericTypeArguments": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
-        },
-        {
-          "Name": "EnvironmentName",
-          "AliasList": [],
+          "AliasList": [
+            "EnvironmentName"
+          ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2116,7 +2241,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "PSCredential",
+            "Name": "System.Management.Automation.PSCredential",
             "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2132,7 +2257,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2148,7 +2273,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2164,7 +2289,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -2182,7 +2307,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2198,7 +2323,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2214,7 +2339,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2230,7 +2355,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2246,7 +2371,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -2265,37 +2390,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2322,7 +2422,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2346,7 +2446,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2368,7 +2468,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2387,37 +2487,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2444,7 +2519,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2468,7 +2543,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2490,7 +2565,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2509,37 +2584,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2566,7 +2616,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2588,7 +2638,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2612,7 +2662,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2634,7 +2684,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2653,37 +2703,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2710,7 +2735,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "PSCredential",
+                  "Name": "System.Management.Automation.PSCredential",
                   "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2732,7 +2757,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2756,7 +2781,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2778,7 +2803,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2797,37 +2822,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2854,7 +2854,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2876,7 +2876,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2898,7 +2898,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -2922,7 +2922,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2944,7 +2944,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -2963,37 +2963,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3020,7 +2995,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3042,7 +3017,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3064,7 +3039,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -3088,7 +3063,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3110,7 +3085,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3129,37 +3104,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3188,7 +3138,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3210,7 +3160,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3232,7 +3182,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3254,7 +3204,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3273,37 +3223,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3332,7 +3257,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3354,7 +3279,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3376,7 +3301,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3398,7 +3323,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3417,37 +3342,12 @@
             {
               "ParameterMetadata": {
                 "Name": "Environment",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureEnvironment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-                  "Properties": {
-                    "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-                    "Name": "System.String",
-                    "OnPremise": "System.Boolean",
-                    "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-                  },
-                  "ElementType": null,
-                  "GenericTypeArguments": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "EnvironmentName",
-                "AliasList": [],
+                "AliasList": [
+                  "EnvironmentName"
+                ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3483,13 +3383,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureContext",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Account": "Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount",
-              "Environment": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-              "Subscription": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
-              "Tenant": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant"
+              "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+              "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+              "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+              "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+              "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfile": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3500,7 +3403,12 @@
         }
       ],
       "Parameters": [],
-      "ParameterSets": [],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": []
+        }
+      ],
       "AliasList": []
     },
     {
@@ -3516,13 +3424,16 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureContext",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Account": "Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount",
-              "Environment": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-              "Subscription": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
-              "Tenant": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant"
+              "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+              "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+              "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+              "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+              "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfile": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3538,7 +3449,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3554,13 +3465,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureContext",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Account": "Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount",
-              "Environment": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-              "Subscription": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
-              "Tenant": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant"
+              "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+              "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+              "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+              "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+              "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "VersionProfile": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -3577,7 +3491,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3593,7 +3507,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3615,7 +3529,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3639,7 +3553,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3666,13 +3580,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-                  "Name": "PSAzureContext",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Account": "Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount",
-                    "Environment": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-                    "Subscription": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
-                    "Tenant": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant"
+                    "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+                    "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+                    "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+                    "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+                    "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "VersionProfile": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": []
@@ -3700,7 +3617,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3722,7 +3639,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3746,11 +3663,11 @@
       ]
     },
     {
-      "VerbName": "Select",
-      "NounName": "AzureRmProfile",
-      "Name": "Select-AzureRmProfile",
-      "ClassName": "Microsoft.Azure.Commands.Profile.SelectAzureRMProfileCommand",
-      "SupportsShouldProcess": false,
+      "VerbName": "Import",
+      "NounName": "AzureRmContext",
+      "Name": "Import-AzureRmContext",
+      "ClassName": "Microsoft.Azure.Commands.Profile.ImportAzureRMContextCommand",
+      "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -3758,8 +3675,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
               "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
@@ -3774,15 +3691,22 @@
       ],
       "Parameters": [
         {
-          "Name": "Profile",
-          "AliasList": [],
+          "Name": "AzureContext",
+          "AliasList": [
+            "Profile"
+          ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-            "Name": "AzureRMProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
-              "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+              "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
               "ProfilePath": "System.String"
             },
             "ElementType": null,
@@ -3798,7 +3722,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3807,7 +3731,7 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         }
       ],
       "ParameterSets": [
@@ -3816,15 +3740,22 @@
           "Parameters": [
             {
               "ParameterMetadata": {
-                "Name": "Profile",
-                "AliasList": [],
+                "Name": "AzureContext",
+                "AliasList": [
+                  "Profile"
+                ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureRMProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
-                    "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+                    "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
@@ -3851,7 +3782,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -3860,7 +3791,7 @@
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": 0,
@@ -3874,9 +3805,9 @@
     },
     {
       "VerbName": "Save",
-      "NounName": "AzureRmProfile",
-      "Name": "Save-AzureRmProfile",
-      "ClassName": "Microsoft.Azure.Commands.Profile.SaveAzureRMProfileCommand",
+      "NounName": "AzureRmContext",
+      "Name": "Save-AzureRmContext",
+      "ClassName": "Microsoft.Azure.Commands.Profile.SaveAzureRMContextCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
@@ -3885,8 +3816,8 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureProfile, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
               "Environments": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]"
@@ -3905,11 +3836,16 @@
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-            "Name": "AzureRMProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
-              "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+              "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
               "ProfilePath": "System.String"
             },
             "ElementType": null,
@@ -3925,7 +3861,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -3941,7 +3877,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -3963,11 +3899,16 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-                  "Name": "AzureRMProfile",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile, Microsoft.Azure.Commands.Common.Authentication.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
-                    "Context": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext",
-                    "Environments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]",
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Contexts": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+                    "EnvironmentTable": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
@@ -3989,7 +3930,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4011,7 +3952,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -4045,11 +3986,12 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-            "Name": "PSAzureTenant",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+            "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
-              "Domain": "System.String",
-              "TenantId": "System.String"
+              "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "Directory": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": []
@@ -4068,7 +4010,7 @@
           ],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -4093,7 +4035,7 @@
                 ],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -4114,6 +4056,179 @@
       ],
       "AliasList": [
         "Get-AzureRmDomain"
+      ]
+    },
+    {
+      "VerbName": "Resolve",
+      "NounName": "AzureRmError",
+      "Name": "Resolve-AzureRmError",
+      "ClassName": "Microsoft.Azure.Commands.Profile.Errors.ResolveError",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "AnyErrorParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
+            "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
+              "ErrorDetails": "System.Management.Automation.ErrorDetails",
+              "InvocationInfo": "System.Management.Automation.InvocationInfo",
+              "ScriptStackTrace": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
+            "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "InnerException": "System.Boolean",
+              "Exception": "System.Exception",
+              "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
+              "ErrorDetails": "System.Management.Automation.ErrorDetails",
+              "InvocationInfo": "System.Management.Automation.InvocationInfo",
+              "Message": "System.String",
+              "StackTrace": "System.String",
+              "HelpLink": "System.String",
+              "ScriptStackTrace": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
+            "Name": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "RequestMessage": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
+              "ServerResponse": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
+              "InnerException": "System.Boolean",
+              "Exception": "System.Exception",
+              "ErrorCategory": "System.Management.Automation.ErrorCategoryInfo",
+              "ErrorDetails": "System.Management.Automation.ErrorDetails",
+              "InvocationInfo": "System.Management.Automation.InvocationInfo",
+              "ServerMessage": "System.String",
+              "RequestId": "System.String",
+              "Message": "System.String",
+              "StackTrace": "System.String",
+              "HelpLink": "System.String",
+              "ScriptStackTrace": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Error",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.ErrorRecord[]",
+            "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord[], System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": "System.Management.Automation.ErrorRecord",
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Last",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "AnyErrorParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Error",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.ErrorRecord[]",
+                  "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord[], System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": "System.Management.Automation.ErrorRecord",
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "LastErrorParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Last",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": [
+        "Resolve-Error"
       ]
     }
   ],
@@ -4230,100 +4345,131 @@
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Profile.Models.PSAzureContext": {
-      "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-      "Name": "PSAzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Account": "Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount",
-        "Environment": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
-        "Subscription": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription",
-        "Tenant": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount": {
-      "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-      "Name": "PSAzureRmAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AccessToken": "System.String",
-        "AccountType": "System.String",
-        "CertificateThumbprint": "System.String",
-        "Id": "System.String",
-        "Tenants": "System.Collections.Generic.List`1[System.String]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.List`1[System.String]": {
+    "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "List",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.String"
+      ]
+    },
+    "System.Collections.Generic.IList`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String"
       ]
     },
-    "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment": {
+    "Microsoft.Azure.Commands.Profile.Models.PSAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-      "Name": "PSAzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureContext, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "ActiveDirectoryAuthority": "System.String",
-        "ActiveDirectoryServiceEndpointResourceId": "System.String",
-        "AdTenant": "System.String",
-        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+        "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+        "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+        "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+        "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+        "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "VersionProfile": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "TenantMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Id": "System.String",
+        "Credential": "System.String",
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "OnPremise": "System.Boolean",
+        "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
-        "AzureKeyVaultDnsSuffix": "System.String",
-        "AzureKeyVaultServiceEndpointResourceId": "System.String",
-        "EnableAdfsAuthentication": "System.Boolean",
-        "GalleryUrl": "System.String",
+        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "DataLakeEndpointResourceId": "System.String",
         "GraphEndpointResourceId": "System.String",
-        "GraphUrl": "System.String",
-        "ManagementPortalUrl": "System.String",
-        "Name": "System.String",
-        "PublishSettingsFileUrl": "System.String",
-        "ResourceManagerUrl": "System.String",
-        "ServiceManagementUrl": "System.String",
+        "AzureKeyVaultServiceEndpointResourceId": "System.String",
+        "AzureKeyVaultDnsSuffix": "System.String",
+        "TrafficManagerDnsSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
         "StorageEndpointSuffix": "System.String",
-        "TrafficManagerDnsSuffix": "System.String"
+        "ActiveDirectoryServiceEndpointResourceId": "System.String",
+        "GraphUrl": "System.String",
+        "GalleryUrl": "System.String",
+        "ActiveDirectoryAuthority": "System.String",
+        "PublishSettingsFileUrl": "System.String",
+        "ManagementPortalUrl": "System.String",
+        "ResourceManagerUrl": "System.String",
+        "ServiceManagementUrl": "System.String",
+        "AdTenant": "System.String",
+        "Name": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription": {
-      "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-      "Name": "PSAzureSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "CurrentStorageAccountName": "System.String",
-        "State": "System.String",
-        "SubscriptionId": "System.String",
-        "SubscriptionName": "System.String",
-        "TenantId": "System.String"
+        "Id": "System.String",
+        "Name": "System.String",
+        "State": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant": {
-      "Namespace": "Microsoft.Azure.Commands.Profile.Models",
-      "Name": "PSAzureTenant",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureTenant, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null",
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Domain": "System.String",
-        "TenantId": "System.String"
+        "Id": "System.String",
+        "Directory": "System.String"
       },
       "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "CacheData": "System.Byte[]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Byte[]": {
+      "Namespace": "System",
+      "Name": "System.Byte[]",
+      "AssemblyQualifiedName": "System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": "System.Byte",
       "GenericTypeArguments": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4331,161 +4477,197 @@
         "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment"
       ]
     },
-    "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint",
-        "System.String"
-      ]
-    },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "Endpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
+    "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment": {
+      "Namespace": "Microsoft.Azure.Commands.Profile.Models",
+      "Name": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "EnableAdfsAuthentication": "System.Boolean",
+        "OnPremise": "System.Boolean",
+        "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "AzureKeyVaultServiceEndpointResourceId": "System.String",
+        "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
+        "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
+        "DataLakeEndpointResourceId": "System.String",
+        "AzureKeyVaultDnsSuffix": "System.String",
+        "TrafficManagerDnsSuffix": "System.String",
+        "GraphEndpointResourceId": "System.String",
+        "GraphUrl": "System.String",
+        "StorageEndpointSuffix": "System.String",
+        "SqlDatabaseDnsSuffix": "System.String",
+        "ResourceManagerUrl": "System.String",
+        "PublishSettingsFileUrl": "System.String",
+        "ServiceManagementUrl": "System.String",
+        "ManagementPortalUrl": "System.String",
+        "GalleryUrl": "System.String",
+        "AdTenant": "System.String",
+        "ActiveDirectoryServiceEndpointResourceId": "System.String",
+        "ActiveDirectoryAuthority": "System.String",
+        "Name": "System.String"
+      },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]": {
+    "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
+      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+      "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
+        "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
+        "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
+        "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
+        "TokenCache": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
+        "VersionProfile": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String",
-        "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment"
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext"
       ]
     },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "AzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Endpoints": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment+Endpoint,System.String]",
-        "Name": "System.String",
-        "OnPremise": "System.Boolean",
-        "PublicEnvironments": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "AzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureContext, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Account": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount",
-        "Environment": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureEnvironment",
-        "Subscription": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription",
-        "Tenant": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureTenant",
-        "TokenCache": "System.Byte[]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "AzureAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Id": "System.String",
-        "Properties": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property,System.String]",
-        "Type": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+AccountType"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property,System.String]": {
+    "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property",
-        "System.String"
+        "System.String",
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
       ]
     },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "Property",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+AccountType": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "AccountType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureAccount+AccountType, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "AzureSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Account": "System.String",
-        "Environment": "System.String",
-        "Id": "System.Guid",
-        "Name": "System.String",
-        "Properties": "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property,System.String]",
-        "State": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Guid": {
-      "Namespace": "System",
-      "Name": "Guid",
-      "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
-    "System.Collections.Generic.Dictionary`2[Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property,System.String]": {
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "Dictionary",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property",
-        "System.String"
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount"
       ]
     },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "Property",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureSubscription+Property, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
+      ]
+    },
+    "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
+      ]
+    },
+    "System.Management.Automation.ErrorCategoryInfo": {
+      "Namespace": "System.Management.Automation",
+      "Name": "System.Management.Automation.ErrorCategoryInfo",
+      "AssemblyQualifiedName": "System.Management.Automation.ErrorCategoryInfo, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "Microsoft.Azure.Commands.Common.Authentication.Models.AzureTenant": {
-      "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Models",
-      "Name": "AzureTenant",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Models.AzureTenant, Microsoft.Azure.Commands.Common.Authentication, Version=3.4.0.0, Culture=neutral, PublicKeyToken=null",
+    "System.Management.Automation.ErrorDetails": {
+      "Namespace": "System.Management.Automation",
+      "Name": "System.Management.Automation.ErrorDetails",
+      "AssemblyQualifiedName": "System.Management.Automation.ErrorDetails, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Management.Automation.InvocationInfo": {
+      "Namespace": "System.Management.Automation",
+      "Name": "System.Management.Automation.InvocationInfo",
+      "AssemblyQualifiedName": "System.Management.Automation.InvocationInfo, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Exception": {
+      "Namespace": "System",
+      "Name": "System.Exception",
+      "AssemblyQualifiedName": "System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo": {
+      "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
+      "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpRequestInfo, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "Domain": "System.String",
-        "Id": "System.Guid"
+        "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
+        "Verb": "System.String",
+        "Body": "System.String",
+        "Uri": "System.Uri"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
-    "System.Byte[]": {
-      "Namespace": "System",
-      "Name": "Byte[]",
-      "AssemblyQualifiedName": "System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+    "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
-      "ElementType": "System.Byte",
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String",
+        "System.Collections.Generic.IEnumerable`1[System.String]"
+      ]
+    },
+    "System.Collections.Generic.IEnumerable`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IEnumerable`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String"
+      ]
+    },
+    "System.Uri": {
+      "Namespace": "System",
+      "Name": "System.Uri",
+      "AssemblyQualifiedName": "System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo": {
+      "Namespace": "Microsoft.Azure.Commands.Profile.Errors",
+      "Name": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Profile.Errors.HttpResponseInfo, Microsoft.Azure.Commands.Profile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.Collections.Generic.IEnumerable`1[System.String]]",
+        "ResponseStatusCode": "System.String",
+        "Body": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Management.Automation.ErrorRecord": {
+      "Namespace": "System.Management.Automation",
+      "Name": "System.Management.Automation.ErrorRecord",
+      "AssemblyQualifiedName": "System.Management.Automation.ErrorRecord, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
       "GenericTypeArguments": []
     }
   }

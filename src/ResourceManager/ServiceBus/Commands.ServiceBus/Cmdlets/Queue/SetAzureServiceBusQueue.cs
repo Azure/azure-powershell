@@ -55,14 +55,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         public override void ExecuteCmdlet()
         {
             QueueAttributes queueAttributes = new QueueAttributes();
+
             if (QueueObj != null)
-            {
+               {
+                NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
+                QueueObj.Location = getNamespaceLoc.Location;
                 queueAttributes = QueueObj;
-            }
-            else
-            {
-                //queueAttributes = QueueObj;
-            }
+               }
 
             if (ShouldProcess(target: QueueName, action: string.Format("Updating Queue:{0} of the NameSpace:{1}", QueueName, NamespaceName)))
             {

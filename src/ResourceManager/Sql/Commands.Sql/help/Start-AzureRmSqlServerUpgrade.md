@@ -16,8 +16,7 @@ Starts the upgrade of a SQL Database server.
 Start-AzureRmSqlServerUpgrade -ServerVersion <String> [-ScheduleUpgradeAfterUtcDateTime <DateTime>]
  [-DatabaseCollection <RecommendedDatabaseProperties[]>]
  [-ElasticPoolCollection <UpgradeRecommendedElasticPoolProperties[]>] -ServerName <String>
- [-ResourceGroupName] <String> [-InformationAction <ActionPreference>] [-InformationVariable <String>]
- [<CommonParameters>]
+ [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,39 +61,6 @@ After the upgrade, the database contosodb will be running the Standard edition a
 
 ## PARAMETERS
 
-### -ServerVersion
-Specifies the version to which this cmdlet upgrades the server.
-The only valid value is 12.0.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleUpgradeAfterUtcDateTime
-Specifies the earliest time, as a **DateTime** object, to upgrade the server.
-Specify a value in the ISO8601 format, in Coordinated Universal Time (UTC).
-For more information, type `Get-Help Get-Date`.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseCollection
 Specifies an array of **RecommendedDatabaseProperties** objects that this cmdlet uses for the server upgrade.
 
@@ -125,21 +91,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ServerName
-Specifies the name of the server that this cmdlet upgrades.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group to which the server is assigned.
 
@@ -155,22 +106,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InformationAction
-Specifies how this cmdlet responds to an information event.
-
-The acceptable values for this parameter are:
-
-- Continue
-- Ignore
-- Inquire
-- SilentlyContinue
-- Stop
-- Suspend
+### -ScheduleUpgradeAfterUtcDateTime
+Specifies the earliest time, as a **DateTime** object, to upgrade the server.
+Specify a value in the ISO8601 format, in Coordinated Universal Time (UTC).
+For more information, type `Get-Help Get-Date`.
 
 ```yaml
-Type: ActionPreference
+Type: DateTime
 Parameter Sets: (All)
-Aliases: infa
+Aliases: 
 
 Required: False
 Position: Named
@@ -179,15 +123,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InformationVariable
-Specifies an information variable.
+### -ServerName
+Specifies the name of the server that this cmdlet upgrades.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: iv
+Aliases: 
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerVersion
+Specifies the version to which this cmdlet upgrades the server.
+The only valid value is 12.0.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -211,6 +171,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Stop-AzureRmSqlServerUpgrade](./Stop-AzureRmSqlServerUpgrade.md)
 
-[Azure SQL Database Cmdlets](./AzureRM.Sql.md)
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
 
 

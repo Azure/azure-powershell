@@ -14,7 +14,9 @@ Modifies the WAF configuration of an application gateway.
 
 ```
 Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway <PSApplicationGateway>
- -Enabled <Boolean> -FirewallMode <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Enabled <Boolean> -FirewallMode <String> [-RuleSetType <String>] [-RuleSetVersion <String>]
+ [-DisabledRuleGroups <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,13 +26,13 @@ The **Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration** cmdlet 
 
 ### Example 1: Update the application gateway web application firewall configuration
 ```
-PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGw -Enabled $True -FirewallMode "Detection"
+PS C:\> $AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $AppGw -Enabled $True -FirewallMode "Detection" -RuleSetType "OWASP" -RuleSetVersion "3.0"
 ```
 
-The first command gets the application gateway named ApplicationGateway01, and then stores it in the $AppGw variable.
+The first command gets the application gateway named ApplicationGateway01 and then stores it in the $AppGw variable.
 
-The second command enables the firewall configuration for the application gateway in $AppGw, and sets the firewall mode to Detection.
+The second command enables the firewall configuration for the application gateway stored in $AppGw and sets the firewall mode to "Detection", RuleSetType to "OWASP" and the RuleSetVersion to "3.0".
 
 ## PARAMETERS
 
@@ -47,6 +49,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DisabledRuleGroups
+The disabled rule groups.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallDisabledRuleGroup]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -76,10 +93,50 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Detection, Prevention
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetType
+The type of the web application firewall rule set. 
+The acceptable values for this parameter are: 
+
+- OWASP
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: OWASP
+
+Required: False
+Position: Named
+Default value: OWASP
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetVersion
+The version of the rule set type.
+The acceptable values for this parameter are: 
+
+- 3.0
+- 2.2.9
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: 3.0, 2.2.9
+
+Required: False
+Position: Named
+Default value: 3.0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -100,8 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter

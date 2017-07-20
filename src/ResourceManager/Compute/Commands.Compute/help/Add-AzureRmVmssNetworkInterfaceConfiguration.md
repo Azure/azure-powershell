@@ -15,7 +15,8 @@ Adds a network interface configuration to the VMSS.
 ```
 Add-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
  [[-Name] <String>] [[-Primary] <Boolean>] [[-Id] <String>]
- [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-NetworkSecurityGroupId <String>]
+ [-DnsSettingsDnsServer <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,12 +26,27 @@ The **Add-AzureRmVmssNetworkInterfaceConfiguration** cmdlet adds a network inter
 
 ### Example 1: Add a network interface configuration to the VMSS
 ```
-PS C:\>Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
+PS C:\> Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $VMSS -Name "Test" -Primary $True -IPConfiguration $IPCfg
 ```
 
 This command adds a network interface configuration to the VMSS.
 
 ## PARAMETERS
+
+### -DnsSettingsDnsServer
+List of dns server IP addresses for dns settings.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Id
 Specifies the Resource ID of the virtual machine.
@@ -41,7 +57,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -56,7 +72,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -71,7 +87,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 2
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkSecurityGroupId
+Id of the network security group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -86,7 +117,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -94,7 +125,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
 Type: VirtualMachineScaleSet
@@ -102,7 +133,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -153,5 +184,3 @@ This cmdlet does not generate any output.
 ## RELATED LINKS
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-
