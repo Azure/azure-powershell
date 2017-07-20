@@ -247,22 +247,24 @@ namespace StaticAnalysis.DependencyAnalyzer
                     AddSharedAssembly(assembly);
                 }
 
-                foreach (var parent in assembly.ReferencingAssembly)
-                {
-                    _dependencyMapLogger.LogRecord(
-                        new DependencyMap {
-                            AssemblyName = assembly.Name,
-                            AssemblyVersion = assembly.Version.ToString(),
-                            ReferencingAssembly = parent.Name,
-                            ReferencingAssemblyVersion = parent.Version.ToString(),
-                            Severity = 3
-                            });
-                }
             }
 
             // Now check for assembly mismatches
             foreach (var assembly in _assemblies.Values)
             {
+                foreach (var parent in assembly.ReferencingAssembly)
+                {
+                    _dependencyMapLogger.LogRecord(
+                        new DependencyMap
+                        {
+                            AssemblyName = assembly.Name,
+                            AssemblyVersion = assembly.Version.ToString(),
+                            ReferencingAssembly = parent.Name,
+                            ReferencingAssemblyVersion = parent.Version.ToString(),
+                            Severity = 3
+                        });
+                }
+
                 foreach (var reference in assembly.Children)
                 {
                     CheckAssemblyReference(reference, assembly);
