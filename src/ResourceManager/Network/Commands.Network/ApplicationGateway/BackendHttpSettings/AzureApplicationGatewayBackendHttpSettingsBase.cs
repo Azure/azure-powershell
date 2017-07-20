@@ -84,6 +84,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Sets host header to be sent to the backend servers.")]
+        public string HostName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Cookie name to use for the affinity cookie")]
         [ValidateNotNullOrEmpty]
         public string AffinityCookieName { get; set; }
@@ -147,6 +152,10 @@ namespace Microsoft.Azure.Commands.Network
             if(this.PickHostNameFromBackendAddress.IsPresent)
             {
                 backendHttpSettings.PickHostNameFromBackendAddress = true;
+            }
+            if(this.HostName != null)
+            {
+                backendHttpSettings.HostName = this.HostName;
             }
             if (this.AffinityCookieName != null)
             {
