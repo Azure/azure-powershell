@@ -58,7 +58,7 @@ function Test-Disk
         # Get disk test
         $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual 5 $disk.DiskSizeGB;
-        Assert-AreEqual StandardLRS $disk.AccountType;
+        Assert-AreEqual StandardLRS $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
         Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
@@ -68,7 +68,7 @@ function Test-Disk
         Revoke-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname;
 
         # Config update test
-        $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty;
+        $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
         Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
 
         # Remove test
@@ -123,7 +123,7 @@ function Test-Snapshot
         # Get snapshot test
         $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
-        Assert-AreEqual StandardLRS $snapshot.AccountType;
+        Assert-AreEqual StandardLRS $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
         Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
@@ -133,7 +133,7 @@ function Test-Snapshot
         Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname;
 
         # Config update test
-        $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption Empty;
+        $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
         Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig;
 
         # Remove test

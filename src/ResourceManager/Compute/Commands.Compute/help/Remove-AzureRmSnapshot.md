@@ -12,7 +12,7 @@ Removes a snapshot.
 ## SYNTAX
 
 ```
-Remove-AzureRmSnapshot [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-SnapshotName] <String> [-Force]
+Remove-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 

@@ -1,4 +1,164 @@
-﻿## 2017.06.07 - Version 4.1.0
+﻿## 2017.07.17 - Version 4.2.1
+* Compute
+    - Fix issue with VM DIsk and VM Disk snapshot create and update cmdlets, (link)[https://github.com/azure/azure-powershell/issues/4309]
+      - New-AzureRmDisk
+      - New-AzureRmSnapshot
+      - Update-AzureRmDisk
+      - Update-AzureRmSnapshot
+* Profile
+    - Fix issue with non-interactive user authentication in RDFE (link)[https://github.com/Azure/azure-powershell/issues/4299]
+* ServiceManagement
+    - Fix issue with non-interactive user authentication (link)[https://github.com/Azure/azure-powershell/issues/4299]
+
+## 2017.7.11 - Version 4.2.0
+* AnalysisServices
+    * Add new dataplane API
+        - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog
+* Automation
+    * Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
+        - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
+* AzureBatch
+    - Added new Get-AzureBatchJobPreparationAndReleaseTaskStatus cmdlet.
+    - Added byte range start and end to Get-AzureBatchNodeFileContent parameters.
+* CognitiveServices
+    * Integrate with Cognitive Services Management SDK version 1.0.0.
+    * Fix an account name length checking bug.
+* Compute
+    * Storage account type support for Image disk:
+        - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk
+    * PrivateIP and PublicIP feature in Vmss Ip Configuration:
+        - 'PrivateIPAddressVersion', 'PublicIPAddressConfigurationName', 'PublicIPAddressConfigurationIdleTimeoutInMinutes', 'DnsSetting' names are added to New-AzureRmVmssIpConfig
+        - 'PrivateIPAddressVersion' parameter for specifying IPv4 or IPv6 is added to New-AzureRmVmssIpConfig
+    * Performance Maintenance feature:
+        - 'PerformMaintenance' switch parameter is added to Restart-AzureRmVM.
+        - Get-AzureRmVM -Status shows the information of performance maintenance of the given VM
+    * Virtual Machine Identity feature:
+        - 'IdentityType' parameter is added to New-AzureRmVMConfig and UpdateAzureRmVM
+        - Get-AzureRmVM shows the information of the identity of the given VM
+    * Vmss Identity feature:
+        - 'IdentityType' parameter is added to to New-AzureRmVmssConfig
+        - Get-AzureRmVmss shows the information of the identity of the given Vmss
+    * Vmss Boot Diagnostics feature:
+        - New cmdlet for setting boot diagnostics of Vmss object: Set-AzureRmVmssBootDiagnostics
+        - 'BootDiagnostic' parameter is added to New-AzureRmVmssConfig
+    * Vmss LicenseType feature:
+        - 'LicenseType' parameter is added to New-AzureRmVmssConfig
+    * RecoveryPolicyMode support:
+        - 'RecoveryPolicyMode' paramter is added to New-AzureRmVmssConfig
+    * Compute Resource Sku feature:
+        - New cmdlet 'Get-AzureRmComputeResourceSku' list all compute resource skus
+* DataFactories
+    * Deprecate New-AzureRmDataFactoryGatewayKey
+    * Introduce gateway auth key feature by adding New-AzureRmDataFactoryGatewayAuthKey and Get-AzureRmDataFactoryGatewayAuthKey
+* DataLakeAnalytics
+    * Add support for Compute Policy CRUD through the following commands:
+        - New-AzureRMDataLakeAnalyticsComputePolicy
+        - Get-AzureRMDataLakeAnalyticsComputePolicy
+        - Remove-AzureRMDataLakeAnalyticsComputePolicy
+        - Update-AzureRMDataLakeAnalyticsComputePolicy
+    * Add support for job relationship metadata for help with recurring jobs and job pipelines. The following commands were updated or added:
+        - Submit-AzureRMDataLakeAnalyticsJob
+        - Get-AzureRMDataLakeAnalyticsJob
+        - Get-AzureRMDataLakeAnalyticsJobRecurrence
+        - Get-AzureRMDataLakeAnalyticsJobPipeline
+    * Updated the token audience for job and catalog APIs to use the correct Data Lake specific audience instead of the Azure Resource audience.
+* DataLakeStore
+    * Added support for user managed KeyVault key rotations in the Set-AzureRMDataLakeStoreAccount cmdlet
+    * Added a quality of life update to automatically trigger an `enableKeyVault` call when a user managed KeyVault is added or a key is rotated.
+    * Updated the token audience for job and catalog APIs to use the correct Data Lake specific audience instead of the Azure Resource audience.
+    * Fixed a bug limiting the size of files created/appended using the following cmdlets:
+        - New-AzureRmDataLakeStoreItem
+        - Add-AzureRmDataLakeStoreItemContent
+* Dns
+    * Fix bug in the piping scenario for Get-AzureRmDnsZone
+        - More information can be found here: https://github.com/Azure/azure-powershell/issues/4203
+* HDInsight
+    * Added support to enable / disable Operations Management Suite(OMS)
+    * New cmdlets
+        - Enable-AzureRmHDInsightOperationsManagementSuite
+        - Disable-AzureRmHDInsightOperationsManagementSuite
+        - Get-AzureRmHDInsightOperationsManagementSuite
+    * Add new parameters to set Spark custom configurations to Add-AzureRmHDInsightConfigValues
+        - Parameters SparkDefaults and SparkThriftConf for Spark 1.6
+        - Parameters Spark2Defaults and Spark2ThriftConf for Spark 2.0
+* Insights
+    * Issue #4215 (change request) remove the 15 days limit in the time window for the Get-AzureRmLog cmdlet. Also minor changes to the unit test names.
+    * Issue #3957 fixed for Get-AzureRmLog
+        - Issue #1: The backend returns the records in pages of 200 records each, linked by the continuation token to the next page. The customers were seeing the cmdlet returning only 200 records when they knew there were more. This was happening regardless of the value they set for MaxEvents, unless that value was less than 200.
+        - Issue #2: The documentation contained incorrect data about this cmdlet, e.g.: the default timewindow was 1 hour.
+        - Fix #1: The cmdlet now follows the continuation token returned by the backend until it reaches MaxEvents or the end of the set.<br>The default value for MaxEvents is 1000 and its maximum is 100000. Any value for MaxEvents that is less than 1 is ignored and the default is used instead. These values and behavior did not change, now they are correctly documented.<br>An alias for MaxEvents has been added -MaxRecords- since the name of the cmdlet does not speak about events anymore, but only about Logs.
+        - Fix #2: The documentation contains correct and more detailed information: new alias, correct time window, correct default, minimum, and maximum values.
+* KeyVault
+    * Remove email address from the directory query when -UserPrincipalName is specified to the Set-AzureRMKeyVaultAccessPolicy and Remove-AzureRMKeyVaultAccessPolicy cmdlets.
+      - Both Cmdlets now have an -EmailAddress parameter that can be used instead of the -UserPrincipalName parameter when querying for email address is appropriate.  If there are more than one matching email addresses in the directory then the Cmdlet will fail.
+* Network
+    * New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
+        - SALifeTimeSeconds defaults to 27000 seconds
+        - SADataSizeKilobytes defaults to 102400000 KB
+    * Added support for custom cipher suite configuration using ssl policy and listing all ssl options api in Application Gateway
+        - Added optional parameter -PolicyType, -PolicyName, -MinProtocolVersion, -Ciphersuite
+            - Add-AzureRmApplicationGatewaySslPolicy
+            - New-AzureRmApplicationGatewaySslPolicy
+            - Set-AzureRmApplicationGatewaySslPolicy
+        - Added Get-AzureRmApplicationGatewayAvailableSslOptions (Alias: List-AzureRmApplicationGatewayAvailableSslOptions)
+        - Added Get-AzureRmApplicationGatewaySslPredefinedPolicy (Alias: List-AzureRmApplicationGatewaySslPredefinedPolicy)
+    * Added redirect support in Application Gateway
+        - Added Add-AzureRmApplicationGatewayRedirectConfiguration
+        - Added Get-AzureRmApplicationGatewayRedirectConfiguration
+        - Added New-AzureRmApplicationGatewayRedirectConfiguration
+        - Added Remove-AzureRmApplicationGatewayRedirectConfiguration
+        - Added Set-AzureRmApplicationGatewayRedirectConfiguration
+        - Added optional parameter -RedirectConfiguration
+            - Add-AzureRmApplicationGatewayRequestRoutingRule
+            - New-AzureRmApplicationGatewayRequestRoutingRule
+            - Set-AzureRmApplicationGatewayRequestRoutingRule
+        - Added optional parameter -DefaultRedirectConfiguration
+            - Add-AzureRmApplicationGatewayUrlPathMapConfig
+            - New-AzureRmApplicationGatewayUrlPathMapConfig
+            - Set-AzureRmApplicationGatewayUrlPathMapConfig
+        - Added optional parameter -RedirectConfiguration
+            - Add-AzureRmApplicationGatewayPathRuleConfig
+            - New-AzureRmApplicationGatewayPathRuleConfig
+            - Set-AzureRmApplicationGatewayPathRuleConfig
+        - Added optional parameter -RedirectConfigurations
+            - New-AzureRmApplicationGateway 
+            - Set-AzureRmApplicationGateway
+    * Added support for azure websites in Application Gateway
+        - Added New-AzureRmApplicationGatewayProbeHealthResponseMatch
+        - Added optional parameters -PickHostNameFromBackendHttpSettings, -MinServers, -Match
+            - Add-AzureRmApplicationGatewayProbeConfig 
+            - New-AzureRmApplicationGatewayProbeConfig
+            - Set-AzureRmApplicationGatewayProbeConfig
+        - Added optional parameters -PickHostNameFromBackendAddress, -AffinityCookieName, -ProbeEnabled, -Path
+            - Add-AzureRmApplicationGatewayBackendHttpSettings
+            - New-AzureRmApplicationGatewayBackendHttpSettings
+            - Set-AzureRmApplicationGatewayBackendHttpSettings
+    * Update Get-AzureRmPublicIPaddress to retrieve publicipaddress resources created via VM Scale Set
+    * Added cmdlet to get virtual network current usage
+        - Get-AzureRmVirtualNetworkUsageList
+* Profile
+    * Fixed error when using Import-AzureRmContext or Save-AzureRmContext
+        - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3954
+* RecoveryServices.SiteRecovery
+    * Introducing a new module for Azure Site Recovery operations.
+    	- All cmdlets begin with AzureRmRecoveryServicesAsr*
+* Sql
+    * Add Data Sync PowerShell Cmdlets to AzureRM.Sql
+    * Updated AzureRmSqlServer cmdlets to use new REST API version that avoids timeouts when creating server.
+    * Deprecated server upgrade cmdlets because the old server version (2.0) no longer exists.
+    * Add new optional switch paramter "AssignIdentity" to New-AzureRmSqlServer and Set-AzureRmSqlServer cmdlets to support provisioning of a resource identity for the SQL server resource
+    * The parameter ResourceGroupName is now optional for Get-AzureRmSqlServer
+    	- More information can be found in the following issue: https://github.com/Azure/azure-powershell/issues/635
+* ServiceManagement
+    For ExpressRoute:
+    * Updated New-AzureBgpPeering cmdlet to add following new options :
+        - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to create a BGP Peering of the corresponding address family type	
+    * Updated Set-AzureBgpPeering cmdlet to add following new options :
+        - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to update BGP Peering of the corresponding address family type
+    * Updated Remove-AzureBgpPeering cmdlet to add following new options :
+        - PeerAddressType : Values of "IPv4", "IPv6" or All can be specified to remove BGP Peering of the corresponding address family type or all of them
+
+## 2017.06.07 - Version 4.1.0
 * AnalysisServices
     * New SKUs added: B1, B2, S0
     * Scale up/down support added

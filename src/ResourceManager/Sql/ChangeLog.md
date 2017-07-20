@@ -18,10 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.2.1
+
+## Version 3.2.0
 * Add Data Sync PowerShell Cmdlets to AzureRM.Sql
 * Updated AzureRmSqlServer cmdlets to use new REST API version that avoids timeouts when creating server.
 * Deprecated server upgrade cmdlets because the old server version (2.0) no longer exists.
 * Add new optional switch paramter "AssignIdentity" to New-AzureRmSqlServer and Set-AzureRmSqlServer cmdlets to support provisioning of a resource identity for the SQL server resource
+* The parameter ResourceGroupName is now optional for Get-AzureRmSqlServer
+	- More information can be found in the following issue: https://github.com/Azure/azure-powershell/issues/635
 
 ## Version 3.1.0
 * Restore-AzureRmSqlDatabase: Update documentation examples
