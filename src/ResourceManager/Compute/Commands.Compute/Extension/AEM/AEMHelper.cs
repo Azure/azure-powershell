@@ -285,6 +285,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.IOPS = 80000;
                     result.TP = 2000;
                     break;
+                case "Standard_M64ms":
+                    result.HasSLA = true;
+                    result.IOPS = 40000;
+                    result.TP = 1000;
+                    break;
+                case "Standard_M128s":
+                    result.HasSLA = true;
+                    result.IOPS = 80000;
+                    result.TP = 2000;
+                    break;
                 default:
                     break;
             }
@@ -370,23 +380,47 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             }
 
             AzureSLA sla = new AzureSLA();
-            if (diskSize > 0 && diskSize < 129)
+            if (diskSize > 0 && diskSize <= 32)
+            {
+                // P4
+                sla.IOPS = 120;
+                sla.TP = 125;
+            }
+            else if (diskSize > 0 && diskSize <= 64)
+            {
+                // P6
+                sla.IOPS = 240;
+                sla.TP = 50;
+            }
+            else if (diskSize > 0 && diskSize <= 128)
             {
                 // P10
                 sla.IOPS = 500;
                 sla.TP = 100;
             }
-            else if (diskSize > 0 && diskSize < 513)
+            else if (diskSize > 0 && diskSize <= 512)
             {
                 // P20
                 sla.IOPS = 2300;
                 sla.TP = 150;
             }
-            else if (diskSize > 0 && diskSize < 1024)
+            else if (diskSize > 0 && diskSize <= 1024)
             {
                 // P30
                 sla.IOPS = 5000;
                 sla.TP = 200;
+            }
+            else if (diskSize > 0 && diskSize <= 2048)
+            {
+                // P40
+                sla.IOPS = 7500;
+                sla.TP = 250;
+            }
+            else if (diskSize > 0 && diskSize <= 4095)
+            {
+                // P50
+                sla.IOPS = 7500;
+                sla.TP = 250;
             }
             else
             {
