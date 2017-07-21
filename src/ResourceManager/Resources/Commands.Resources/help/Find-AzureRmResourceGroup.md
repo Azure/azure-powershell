@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 ms.assetid: EFBBFB60-D972-47B8-997E-B737F0CA007E
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -30,14 +30,14 @@ This command finds all resource groups.
 
 ### Example 2: Find resource groups by tag name
 ```
-PS C:\>Find-AzureRmResourceGroup -Tag @{ Name = "testtag" }
+PS C:\>Find-AzureRmResourceGroup -Tag @{ "testtag" = $null }
 ```
 
 This command finds all resource groups that have a tag named testtag.
 
 ### Example 3: Find resource groups by tag name and value
 ```
-PS C:\>Find-AzureRmResourceGroup -Tag @{ Name = "testtag"; Value = "testval" }
+PS C:\>Find-AzureRmResourceGroup -Tag @{"testtag" = "testval" }
 ```
 
 This command finds all resource groups that have a tag named testtag and the value testval.
@@ -45,13 +45,13 @@ This command finds all resource groups that have a tag named testtag and the val
 ## PARAMETERS
 
 ### -ApiVersion
-Specifies the version of the resource provider API to use.
-If you do not specify a version, this cmdlet uses the latest available version.
+Specifies the version of the resource provider API to use. If you do not specify a version, this
+cmdlet uses the latest available version.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -66,7 +66,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -76,16 +76,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies tag information, as a hash table, to filter your results.
-Use the following formats: 
+Specifies tag information, as a hash table, to filter your results. Use the following formats:
 
-`@{Name = '`tagName`'}`
-`@{Name = '`tagName`'; Value = '`tagValue`'}`
+@{tagName=$null} or @{tagName = 'tagValue'}.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,4 +102,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 ms.assetid: D2DB7821-A7D2-4017-8522-78793DDE040E
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -36,16 +36,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 268435456000
 Status                        : Online
 CreationDate                  : 7/3/2015 7:33:37 AM
 CurrentServiceObjectiveId     : f1173c43-91bd-4aaa-973c-54e79e15235b
 CurrentServiceObjectiveName   : S0
 RequestedServiceObjectiveId   : f1173c43-91bd-4aaa-973c-54e79e15235b
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -61,16 +61,16 @@ Location                      : Central US
 DatabaseId                    : 7bd9d561-42a7-484e-bf05-62ddef8015ab
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 268435456000
 Status                        : Online
 CreationDate                  : 8/26/2015 10:04:29 PM
 CurrentServiceObjectiveId     : d1737d22-a8ea-4de7-9bd0-33395d2a7419
 CurrentServiceObjectiveName   : ElasticPool
 RequestedServiceObjectiveId   : d1737d22-a8ea-4de7-9bd0-33395d2a7419
-RequestedServiceObjectiveName : 
+RequestedServiceObjectiveName :
 ElasticPoolName               : ElasticPool01
-EarliestRestoreDate           : 
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -84,7 +84,7 @@ Specifies the name of the SQL database catalog collation.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ Specifies the name of the SQL database collation.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Edition
-Specifies the edition to assign to the database.
-The acceptable values for this parameter are:
+Specifies the edition to assign to the database. The acceptable values for this parameter are:
 
 - Default
 - None
@@ -138,7 +137,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -154,7 +153,7 @@ Specifies the name of the elastic pool in which to put the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -169,7 +168,7 @@ Specifies the maximum size of the database in bytes.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,7 +183,7 @@ The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
 ```yaml
 Type: DatabaseReadScale
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Disabled, Enabled
 
 Required: False
@@ -200,7 +199,7 @@ Specifies the name of the service objective to assign to the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -215,7 +214,7 @@ Specifies the name of the resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -230,7 +229,7 @@ The name of the sample schema to apply when creating this database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AdventureWorksLT
 
 Required: False
@@ -246,7 +245,7 @@ Specifies the name of the server that hosts the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -256,7 +255,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the new database.
+Specifies a dictionary of Key-value pairs in the form of a hash table that this cmdlet associates
+with the new database. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -329,5 +331,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-
-
