@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replicate databases from the processing server to the query scale-out servers.
+        /// </summary>
+        internal static string SynchronizingAnalysisServicesServer {
+            get {
+                return ResourceManager.GetString("SynchronizingAnalysisServicesServer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown Analysis Services environment name specified..
         /// </summary>
         internal static string UnknownEnvironment {
