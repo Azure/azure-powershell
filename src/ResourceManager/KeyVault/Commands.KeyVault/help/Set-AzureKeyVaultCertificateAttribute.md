@@ -25,32 +25,32 @@ The **Set-AzureKeyVaultCertificateAttribute** cmdlet modifies the editable attri
 ### Example 1: Modify the tags associated with a certificate
 ```
 PS C:\>$Tags = @{ "Team" = "Azure" ; "Role" = "Engg" }
-PS C:\> Set-AzureKeyVaultCertificateAttribute -VaultName "ContosoKV01" -Name "TestCert01" -Tags $Tags
-PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" 
+PS C:\> Set-AzureKeyVaultCertificateAttribute -VaultName "ContosoKV01" -Name "TestCert01" -Tag $Tags
+PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 Name        : "TestCert01"
-Certificate : [Subject] 
+Certificate : [Subject]
                 CN=AZURE
 
-              [Issuer] 
+              [Issuer]
                 CN=AZURE
 
-              [Serial Number] 
+              [Serial Number]
                 5A2EF60501F241D6A4336841B36FEA41
 
-              [Not Before] 
+              [Not Before]
                 7/27/2016 6:50:01 PM
 
-              [Not After] 
+              [Not After]
                 7/27/2018 7:00:01 PM
 
-              [Thumbprint] 
+              [Thumbprint]
                 A565D568082FEE2BE33B356ECC3703C2E9886555
 
 Id          : https://ContosoKV01.vault.azure.net:443/certificates/tt02
 KeyId       : https://ContosoKV01.vault.azure.net:443/keys/tt02
 SecretId    : https://ContosoKV01.vault.azure.net:443/secrets/tt02
 Thumbprint  : A565D568082FEE2BE33B356ECC3703C2E9886555
-Tags        : {[Role, Engg], [Team, Azure]} 
+Tags        : {[Role, Engg], [Team, Azure]}
 Enabled     : True
 Created     : 7/28/2016 2:00:01 AM
 Updated     : 8/1/2016 5:37:48 PM
@@ -86,7 +86,7 @@ Specify $True to enable or $False to disable.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,8 +96,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the certificate to modify.
-This cmdlet constructs the FQDN of a certificate based on the key vault name, your currently selected environment, the certificate name, and the certificate version.
+Specifies the name of the certificate to modify. This cmdlet constructs the FQDN of a certificate
+based on the key vault name, your currently selected environment, the certificate name, and the
+certificate version.
 
 ```yaml
 Type: String
@@ -118,7 +119,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,14 +129,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a hash table that contains certificate tags.
-If not specified, the existing tags of the sertificate remain unchanged.
-Remove a tag by specifying an empty Hashtable.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,7 +152,7 @@ This cmdlet constructs the FQDN of a key vault based on the name and currently s
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -204,4 +205,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)
-

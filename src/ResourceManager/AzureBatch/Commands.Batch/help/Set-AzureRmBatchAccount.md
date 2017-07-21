@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 ms.assetid: 9BEE5888-304D-4438-BE97-D1FE254AEE98
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -25,29 +25,19 @@ Currently, this cmdlet can update only tags.
 
 ### Example 1: Update the tags on a Batch account
 ```
-PS C:\>Set-AzureRmBatchAccount -AccountName "cmdletexample" -Tag @(@{Name = "tag1";Value = "value1"},@{Name = "tag2";Value = "value2"})
+PS C:\>Set-AzureRmBatchAccount -AccountName "cmdletexample" -Tag @{key0="value0";key1=$null;key2="value2"}
 AccountName                  : cmdletexample
-
 Location                     : westus
-
 ResourceGroupName            : CmdletExampleRG
-
 CoreQuota                    : 20
-
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
-Tags                         : 
-
+Tags                         :
                                Name  Value
-
                                ====  ======
-
-                               tag1  value1
-
-                               tag2  value2
-
+                               key0  value0
+                               key1
+                               key2  value2
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 ```
 
@@ -76,7 +66,7 @@ Specifies the resource ID of the storage account to be used for auto storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,7 +81,7 @@ Specifies the resource group of the account that this cmdlet updates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +91,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies an array of hash tables of tags for the account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -135,5 +127,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmBatchAccount](./Remove-AzureRmBatchAccount.md)
 
 [Azure Batch Cmdlets](./AzureRM.Batch.md)
-
-
