@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: B1897EFC-0184-4A8B-B8E4-203CC8E3B179
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -60,15 +60,15 @@ Accept wildcard characters: False
 
 ### -Plan
 Specifies the plan for the Automation account.
-Valid values are: 
+Valid values are:
 
-- Basic 
+- Basic
 - Free
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Free, Basic
 
 Required: False
@@ -84,7 +84,7 @@ Specifies the name of a resource group that contains the Automation account that
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -94,7 +94,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies Automation account tags for the Automation account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -124,5 +126,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmAutomationAccount](./New-AzureRmAutomationAccount.md)
 
 [Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
-
-

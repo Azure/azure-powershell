@@ -68,6 +68,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.11.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -347,6 +348,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineScaleSetTests\TestVirtualMachineScaleSetBootDiagnostics.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineScaleSetTests\TestVirtualMachineScaleSetNetworking.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Templates\azuredeploy.json">

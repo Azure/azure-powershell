@@ -16,7 +16,8 @@ Saves a modified ExpressRoute peering configuration.
 ```
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>] [-RouteFilter <PSRouteFilter>] [<CommonParameters>]
+ -VlanId <Int32> [-SharedKey <String>] [-RouteFilter <PSRouteFilter>] [-LegacyMode <Boolean>]
+ [<CommonParameters>]
 ```
 
 ### MicrosoftPeeringConfig
@@ -25,14 +26,15 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
  -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
  -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] [<CommonParameters>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] [-LegacyMode <Boolean>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
  -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>] [-RouteFilterId <String>] [<CommonParameters>]
+ -VlanId <Int32> [-SharedKey <String>] [-RouteFilterId <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +73,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LegacyMode
+The legacy mode of the Peering
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
