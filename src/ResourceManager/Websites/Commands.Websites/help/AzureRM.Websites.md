@@ -12,25 +12,25 @@ ARM (Azure Resource Manager) Web App and App Service Plan commands.
 
 ## AzureRM.Websites Cmdlets
 ### [Edit-AzureRmWebAppBackupConfiguration](Edit-AzureRmWebAppBackupConfiguration.md)
-{{Manually Enter Edit-AzureRmWebAppBackupConfiguration Description Here}}
+Edits the current configuration backup for an Azure Web App.
 
 ### [Get-AzureRmAppServicePlan](Get-AzureRmAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
 ### [Get-AzureRmAppServicePlanMetrics](Get-AzureRmAppServicePlanMetrics.md)
-{{Manually Enter Get-AzureRmAppServicePlanMetrics Description Here}}
+Gets the App Service Plan metrics.
 
 ### [Get-AzureRmWebApp](Get-AzureRmWebApp.md)
 Gets Azure Web Apps in the specified resource group.
 
 ### [Get-AzureRmWebAppBackup](Get-AzureRmWebAppBackup.md)
-{{Manually Enter Get-AzureRmWebAppBackup Description Here}}
+Gets the specified backup of an Azure Web App.
 
 ### [Get-AzureRmWebAppBackupConfiguration](Get-AzureRmWebAppBackupConfiguration.md)
-{{Manually Enter Get-AzureRmWebAppBackupConfiguration Description Here}}
+Gets the backup configuration of an Azure Web App.
 
 ### [Get-AzureRmWebAppBackupList](Get-AzureRmWebAppBackupList.md)
-{{Manually Enter Get-AzureRmWebAppBackupList Description Here}}
+Gets a list of backups for an Azure Web App.
 
 ### [Get-AzureRmWebAppCertificate](Get-AzureRmWebAppCertificate.md)
 Gets an Azure Web App certificate.
@@ -63,10 +63,10 @@ Creates an Azure App Service plan in a given Geo location.
 Creates an Azure Web App.
 
 ### [New-AzureRmWebAppBackup](New-AzureRmWebAppBackup.md)
-{{Manually Enter New-AzureRmWebAppBackup Description Here}}
+Creates an Azure Web App Backup.
 
 ### [New-AzureRmWebAppDatabaseBackupSetting](New-AzureRmWebAppDatabaseBackupSetting.md)
-{{Manually Enter New-AzureRmWebAppDatabaseBackupSetting Description Here}}
+Creates a new Azure Web App Backup setting.
 
 ### [New-AzureRmWebAppSlot](New-AzureRmWebAppSlot.md)
 Creates an Azure Web App slot.
@@ -81,28 +81,28 @@ Removes an Azure App Service plan.
 Removes an Azure Web App.
 
 ### [Remove-AzureRmWebAppBackup](Remove-AzureRmWebAppBackup.md)
-{{Manually Enter Remove-AzureRmWebAppBackup Description Here}}
+Removes the specified backup of an Azure Web App.
 
 ### [Remove-AzureRmWebAppSlot](Remove-AzureRmWebAppSlot.md)
-{{Manually Enter Remove-AzureRmWebAppSlot Description Here}}
+Removes an Azure Web App Slot provided the resource group and Web App name.
 
 ### [Remove-AzureRmWebAppSSLBinding](Remove-AzureRmWebAppSSLBinding.md)
 Removes an SSL binding from an uploaded certificate.
 
 ### [Reset-AzureRmWebAppPublishingProfile](Reset-AzureRmWebAppPublishingProfile.md)
-{{Manually Enter Reset-AzureRmWebAppPublishingProfile Description Here}}
+Resets the publishing profile for the specified Web App.
 
 ### [Reset-AzureRmWebAppSlotPublishingProfile](Reset-AzureRmWebAppSlotPublishingProfile.md)
-{{Manually Enter Reset-AzureRmWebAppSlotPublishingProfile Description Here}}
+Resets the publishing profile for the specified Web App Slot.
 
 ### [Restart-AzureRmWebApp](Restart-AzureRmWebApp.md)
 Restarts an Azure Web App.
 
 ### [Restart-AzureRmWebAppSlot](Restart-AzureRmWebAppSlot.md)
-{{Manually Enter Restart-AzureRmWebAppSlot Description Here}}
+Stops and then starts an Azure Web App Slot.
 
 ### [Restore-AzureRmWebAppBackup](Restore-AzureRmWebAppBackup.md)
-{{Manually Enter Restore-AzureRmWebAppBackup Description Here}}
+Restores an Azure Web App Backup.
 
 ### [Set-AzureRmAppServicePlan](Set-AzureRmAppServicePlan.md)
 Sets an Azure App Service plan.

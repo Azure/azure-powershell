@@ -25,11 +25,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set", "AzureRmDiskUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
-    [OutputType(typeof(DiskUpdate))]
+    [OutputType(typeof(PSDiskUpdate))]
     public class SetAzureRmDiskUpdateDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public DiskUpdate DiskUpdate { get; set; }
+        public PSDiskUpdate DiskUpdate { get; set; }
 
         [Parameter(
             Mandatory = false,

@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+
+## Version 3.2.0
+
 ## Version 3.1.0
 * Add AssignIdentity setting support to resource mode storage account cmdlets
     - New-AzureRmStorageAccount

@@ -42,6 +42,7 @@ PS C:\>Get-AzureRmDataLakeAnalyticsJobPipeline -AccountName "contosoadla"
 
 This command gets a list of all pipelines in the account "contosoadla"
 
+
 ## PARAMETERS
 
 ### -Account
@@ -75,7 +76,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubmittedAfter
-An optional filter which returns job pipeline(s) only submitted after the specified time.```yaml
+An optional filter which returns job pipeline(s) only submitted after the specified time.
+
+```yaml
 Type: DateTimeOffset
 Parameter Sets: (All)
 Aliases: 
@@ -88,7 +91,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubmittedBefore
-An optional filter which returns job pipeline(s) only submitted before the specified time.```yaml
+An optional filter which returns job pipeline(s) only submitted before the specified time.
+
+```yaml
 Type: DateTimeOffset
 Parameter Sets: (All)
 Aliases: 
@@ -106,12 +111,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Guid
+### System.Guid
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobPipelineInformation
 
 ## NOTES
 

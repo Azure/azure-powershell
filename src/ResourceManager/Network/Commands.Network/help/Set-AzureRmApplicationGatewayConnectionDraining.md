@@ -13,7 +13,7 @@ Modifies the connection draining configuration of a back-end HTTP settings objec
 
 ```
 Set-AzureRmApplicationGatewayConnectionDraining -BackendHttpSettings <PSApplicationGatewayBackendHttpSettings>
- -Enabled <Boolean> -DrainTimeoutInSec <UInt32> [<CommonParameters>]
+ -Enabled <Boolean> -DrainTimeoutInSec <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +54,7 @@ The number of seconds connection draining is active.
 Acceptable values are from 1 second to 3600 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 

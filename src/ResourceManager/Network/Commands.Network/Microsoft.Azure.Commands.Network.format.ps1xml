@@ -652,6 +652,10 @@
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PrivateAccessServices</Label>
+                <PropertyName>PrivateAccessServicesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -2362,6 +2366,44 @@
                 <ScriptBlock>
                     [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
                 </ScriptBlock>  
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPredefinedPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPredefinedPolicy</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>
+                  [Microsoft.Azure.Commands.Network.ApplicationGatewayPowerShellFormatting]::Format($_, 0)
+                </ScriptBlock>
               </ExpressionBinding>
             </CustomItem>
           </CustomEntry>

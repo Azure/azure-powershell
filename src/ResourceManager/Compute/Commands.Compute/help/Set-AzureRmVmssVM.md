@@ -12,16 +12,16 @@ Modifies the state of a VMSS instance.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
-Set-AzureRmVmssVM [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-InstanceId] <String> [-Reimage] [<CommonParameters>]
+Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-Reimage]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
-Set-AzureRmVmssVM [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-InstanceId] <String> [-ReimageAll] [<CommonParameters>]
+Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-ReimageAll]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Indicates that this cmdlet reimages the VMSS instance.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParameters
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True
@@ -66,7 +66,7 @@ Indicates that the cmdlet reimages all the disks in the VMSS instance.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
