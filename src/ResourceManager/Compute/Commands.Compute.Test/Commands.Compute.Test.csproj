@@ -350,6 +350,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineScaleSetTests\TestVirtualMachineScaleSetBootDiagnostics.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineScaleSetTests\TestVirtualMachineScaleSetNetworking.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Templates\azuredeploy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
