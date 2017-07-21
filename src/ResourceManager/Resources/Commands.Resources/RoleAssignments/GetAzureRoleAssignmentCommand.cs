@@ -237,6 +237,8 @@ namespace Microsoft.Azure.Commands.Resources
                 ExcludeAssignmentsForDeletedPrincipals = true
             };
 
+            AuthorizationClient.ValidateScope(options.Scope, true);
+
             List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString());
 
             WriteObject(ra, enumerateCollection: true);
