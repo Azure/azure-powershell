@@ -30,7 +30,9 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -Force
-Do not ask for confirmation if you want to overrite a resource```yaml
+Do not ask for confirmation if you want to overrite a resource
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

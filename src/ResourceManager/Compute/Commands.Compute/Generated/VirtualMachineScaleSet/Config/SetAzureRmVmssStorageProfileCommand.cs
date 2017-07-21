@@ -67,7 +67,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public string Name { get; set; }
+        [Alias("Name")]
+        public string OsDiskName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -229,7 +230,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
 
-            if (this.Name != null)
+            if (this.OsDiskName != null)
             {
 
                 // VirtualMachineProfile
@@ -247,7 +248,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSDisk();
                 }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Name = this.Name;
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Name = this.OsDiskName;
             }
 
             if (this.OsDiskCaching != null)

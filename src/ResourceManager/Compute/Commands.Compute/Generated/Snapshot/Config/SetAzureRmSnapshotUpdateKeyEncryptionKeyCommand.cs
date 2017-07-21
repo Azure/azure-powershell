@@ -25,11 +25,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set", "AzureRmSnapshotUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
-    [OutputType(typeof(SnapshotUpdate))]
+    [OutputType(typeof(PSSnapshotUpdate))]
     public class SetAzureRmSnapshotUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public SnapshotUpdate SnapshotUpdate { get; set; }
+        public PSSnapshotUpdate SnapshotUpdate { get; set; }
 
         [Parameter(
             Mandatory = false,

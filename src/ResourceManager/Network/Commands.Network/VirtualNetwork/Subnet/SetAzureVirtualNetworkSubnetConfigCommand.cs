@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -71,6 +72,21 @@ namespace Microsoft.Azure.Commands.Network
             {
                 subnet.RouteTable = new PSRouteTable();
                 subnet.RouteTable.Id = this.RouteTableId;
+            }
+
+            if (this.PrivateAccessService != null)
+            {
+                subnet.PrivateAccessServices = new List<PSPrivateAccessService>();
+                foreach (var item in this.PrivateAccessService)
+                {
+                    var service = new PSPrivateAccessService();
+                    service.Service = item;
+                    subnet.PrivateAccessServices.Add(service);
+                }
+            }
+            else
+            {
+                subnet.PrivateAccessServices = null;
             }
 
             WriteObject(this.VirtualNetwork);

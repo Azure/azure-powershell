@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: 3D94518E-8369-437F-85BD-48AA127DBE24
-online version: 
+online version: https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#
 schema: 2.0.0
 ---
 
@@ -13,12 +12,13 @@ Creates a health probe.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewayProbeConfig -Name <String> -Protocol <String> -HostName <String> -Path <String>
- -Interval <UInt32> -Timeout <UInt32> -UnhealthyThreshold <UInt32> [<CommonParameters>]
+New-AzureRmApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] -Path <String>
+ -Interval <Int32> -Timeout <Int32> -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings]
+ [-MinServers <Int32>] [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmApplicationGatewayProbeConfig** cmdlet creates a health probe.
+The New-AzureRmApplicationGatewayProbeConfig cmdlet creates a health probe.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -52,11 +52,43 @@ This is the time interval between two consecutive probes.
 This value is between 1 second and 86400 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Match
+Body that must be contained in the health response.
+Default value is empty
+
+```yaml
+Type: PSApplicationGatewayProbeHealthResponseMatch
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinServers
+Minimum number of servers that are always marked healthy.
+Default value is 0
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,6 +127,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PickHostNameFromBackendHttpSettings
+Whether the host header should be picked from the backend http settings.
+Default value is false
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Protocol
 Specifies the protocol used to send probe.
 
@@ -117,7 +165,7 @@ This cmdlet marks the probe as failed if a valid response is not received with t
 Valid values are between 1 second and 86400 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -134,7 +182,7 @@ The backend server is marked down after consecutive probe failure count reaches 
 Valid values are between 1 second and 20 seconds.
 
 ```yaml
-Type: UInt32
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
@@ -158,12 +206,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Create custom probe for Application Gateway using PowerShell for Azure Resource Manager](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#)
 
-[Add-AzureRmApplicationGatewayProbeConfig](./Add-AzureRmApplicationGatewayProbeConfig.md)
+[Add-AzureRmApplicationGatewayProbeConfig]()
 
-[Get-AzureRmApplicationGatewayProbeConfig](./Get-AzureRmApplicationGatewayProbeConfig.md)
+[Get-AzureRmApplicationGatewayProbeConfig]()
 
-[Remove-AzureRmApplicationGatewayProbeConfig](./Remove-AzureRmApplicationGatewayProbeConfig.md)
+[Remove-AzureRmApplicationGatewayProbeConfig]()
 
-[Set-AzureRmApplicationGatewayProbeConfig](./Set-AzureRmApplicationGatewayProbeConfig.md)
-
+[Set-AzureRmApplicationGatewayProbeConfig]()
 

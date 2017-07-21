@@ -70,15 +70,6 @@ namespace Microsoft.Azure.Commands.Insights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The longest supported query time is &apos;{0}&apos; days, but &apos;{1}&apos; days found..
-        /// </summary>
-        internal static string StartAndEndDatesTooFarAppart {
-            get {
-                return ResourceManager.GetString("StartAndEndDatesTooFarAppart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid StartDate &apos;{0:o}&apos;, since it is later than the current time &apos;{1:o}&apos;..
         /// </summary>
         internal static string StartDateLaterThanNow {

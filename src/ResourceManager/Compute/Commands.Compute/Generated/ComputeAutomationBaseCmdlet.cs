@@ -112,11 +112,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IResourceSkusOperations ResourceSkusClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.ResourceSkus;
+            }
+        }
+
         public ISnapshotsOperations SnapshotsClient
         {
             get
             {
                 return ComputeClient.ComputeManagementClient.Snapshots;
+            }
+        }
+
+        public IVirtualMachineRunCommandsOperations VirtualMachineRunCommandsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineRunCommands;
             }
         }
 
