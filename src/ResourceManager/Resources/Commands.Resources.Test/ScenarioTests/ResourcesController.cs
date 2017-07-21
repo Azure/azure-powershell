@@ -243,8 +243,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-			return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-		}
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
         private FeatureClient GetFeatureClient(MockContext context)
         {

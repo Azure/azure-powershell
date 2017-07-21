@@ -31,6 +31,7 @@ using System.Net;
 #if !NETSTANDARD
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using RMProviderOperationsMetadata = Microsoft.Azure.Management.Resources.Models.ProviderOperationsMetadata;
 #else
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -157,10 +158,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
             var permissionsResult = AuthorizationManagementClient.Permissions.ListForResource(
                     identity.ResourceGroupName,
 #if !NETSTANDARD
-					identity.ResourceProviderNamespace,
-					identity.ParentResource,
-					identity.ResourceType,
-					identity.ResourceName);
+                    identity.ResourceProviderNamespace,
+                    identity.ParentResource,
+                    identity.ResourceType,
+                    identity.ResourceName);
 #else
                     resourceIdentity.ResourceProviderNamespace,
                     resourceIdentity.ParentResourcePath??"",
@@ -168,10 +169,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     resourceIdentity.ResourceName);
 #endif
 
-			if (permissionsResult != null)
-			{
-				return permissionsResult.Select(p => p.ToPSPermission()).ToList();
-			}
+            if (permissionsResult != null)
+            {
+                return permissionsResult.Select(p => p.ToPSPermission()).ToList();
+            }
 
             return null;
         }
@@ -377,19 +378,19 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return resources;
         }
 
-        public Management.Resources.Models.ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+        public RMProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
         {
             ProviderOperationsMetadataGetResult result = this.ResourceManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
             return result.Provider;
         }
 
-        public IList<Management.Resources.Models.ProviderOperationsMetadata> ListProviderOperationsMetadata()
+        public IList<RMProviderOperationsMetadata> ListProviderOperationsMetadata()
         {
             ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
             return result.Providers;
         }
 #else
-        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+         public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
         {
             return AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "2015-07-01");
         }

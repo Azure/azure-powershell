@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         }
 
         /// <summary>
-        /// Creates PoliciesClient using AzureContext instance.
+        /// Creates AuthorizationClient using AzureContext instance.
         /// </summary>
         /// <param name="context">The AzureContext instance</param>
         public AuthorizationClient(IAzureContext context)
@@ -78,12 +78,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <param name="roleId">RoleId guid</param>
         public PSRoleDefinition GetRoleDefinition(Guid roleId, string scope)
         {
-			return AuthorizationManagementClient.RoleDefinitions.Get(scope, roleId.ToString()).ToPSRoleDefinition();
-		}
+            return AuthorizationManagementClient.RoleDefinitions.Get(scope, roleId.ToString()).ToPSRoleDefinition();
+        }
 
         /// <summary>
         /// Filters the existing role Definitions.
-        /// If name is not provided, all role definitions are fetched.
+        /// If scopeAndBelow is true, Will fetch Roledefinitions with scopeAndBelow and provided name.
+        /// Otherwise  will fetch Roledefinitions with provided name
         /// </summary>
         /// <param name="name">The role name</param>
         /// <returns>The matched role Definitions</returns>
@@ -164,8 +165,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The created role assignment object</returns>
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters)
         {
-			string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter).ToString();
-			string roleAssignmentId = (RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue()).ToString();
+            string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter).ToString();
+            string roleAssignmentId = (RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue()).ToString();
             string scope = parameters.Scope;
             ValidateScope(scope);
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
@@ -207,7 +208,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleAssignment> result = new List<PSRoleAssignment>();
             List<RoleAssignment> roleAssignments = new List<RoleAssignment>();
-			ODataQuery<RoleAssignmentFilter> parameters = new ODataQuery<RoleAssignmentFilter>();
+            ODataQuery<RoleAssignmentFilter> parameters = new ODataQuery<RoleAssignmentFilter>();
 
             PSADObject adObject = null;
             if (options.ADObjectFilter.HasFilter)
@@ -230,13 +231,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
                     }
 
-					parameters = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == adObject.Id.ToString());
-				}
+                    parameters = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == adObject.Id.ToString());
+                }
                 else
                 {
-					string principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
-					parameters = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
-				}
+                    string principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
+                    parameters = new ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
+                }
 
                 var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
                 roleAssignments.AddRange(tempResult.ToList());
@@ -255,10 +256,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else if (!string.IsNullOrEmpty(options.Scope))
             {
-				// Filter by scope and above directly
-				parameters = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
+                // Filter by scope and above directly
+                parameters = new ODataQuery<RoleAssignmentFilter>(f => f.AtScope());
 
-				var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters);
+                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters);
                 roleAssignments.AddRange(tempResult.ToList());
 
                 while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
@@ -292,11 +293,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             if (options.IncludeClassicAdministrators)
             {
-				// Get classic administrator access assignments 				
-				//TODO:Because ARM team hasn’t published the api-version 2015-07-01 for the classicadministrators call,so hardcode to '2015-06-01'
-				//List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List(AuthorizationManagementClient.ApiVersion).ToList();
-				List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List("2015-06-01").ToList();
-				List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
+                // Get classic administrator access assignments 				
+                //TODO:Because ARM team hasn’t published the api-version 2015-07-01 for the classicadministrators call,so hardcode to '2015-06-01'
+                //List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List(AuthorizationManagementClient.ApiVersion).ToList();
+                List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List("2015-06-01").ToList();
+                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
 
                 // Filter by principal if provided
                 if (options.ADObjectFilter.HasFilter)
@@ -594,8 +595,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Type = "CustomRole"
                 }
             };
-			try
-			{
+            try
+            {
                 roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(roleDefinition.AssignableScopes.First(), roleDefinitionId.ToString(),parameters).ToPSRoleDefinition();
             }
             catch (CloudException ce)
