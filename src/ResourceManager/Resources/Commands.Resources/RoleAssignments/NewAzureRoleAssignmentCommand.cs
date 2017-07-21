@@ -167,6 +167,8 @@ namespace Microsoft.Azure.Commands.Resources
                 }
             };
 
+            AuthorizationClient.ValidateScope(parameters.Scope, false);
+
             WriteObject(PoliciesClient.CreateRoleAssignment(parameters));
         }
     }
