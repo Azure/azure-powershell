@@ -58,6 +58,7 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Everyday
 
 Required: False
 Position: Named
@@ -123,6 +124,7 @@ Specifies whether important updates should be included.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+Accepted values: Important
 
 Required: False
 Position: Named
