@@ -219,8 +219,8 @@ function Test-AnalysisServicesServerDisableBackup
 		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
 		
 		# Update backup container
-	    $backupBlobContainerUriToUpdate = $env:AAS_SECOND_BACKUP_BLOB_CONTAINER_URI
-	    $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -BackupBlobContainerUri "$backupBlobContainerUriToUpdate" -PassThru
+		$backupBlobContainerUriToUpdate = $env:AAS_SECOND_BACKUP_BLOB_CONTAINER_URI
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -BackupBlobContainerUri "$backupBlobContainerUriToUpdate" -PassThru
 		Assert-NotNull $serverUpdated.BackupBlobContainerUri "The backup blob container Uri is empty"
 		Assert-True {$backupBlobContainerUriToUpdate.contains($serverUpdated.BackupBlobContainerUri)}
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
@@ -323,7 +323,7 @@ function Test-AnalysisServicesServerLogExport
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$serverCreated.State -like "Succeeded"}
 
-        $secpasswd = ConvertTo-SecureString $env:ASAZURE_TESTUSER_PWD -AsPlainText -Force
+		$secpasswd = ConvertTo-SecureString $env:ASAZURE_TESTUSER_PWD -AsPlainText -Force
 		$admuser0 = $env:ASAZURE_TEST_ADMUSERS.Split(',')[0]
 		$cred = New-Object System.Management.Automation.PSCredential ($admuser0, $secpasswd)
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
