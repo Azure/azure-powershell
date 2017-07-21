@@ -114,7 +114,7 @@ System.Guid
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation
 
 ## NOTES
 
