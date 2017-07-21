@@ -1,9 +1,6 @@
 ﻿<#
 .SYNOPSIS
 Tests Analysis Services server lifecycle (Create, Update, Get, List, Delete).
-In order to run this test successfully, Following environment variables need to be set.
-AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest?<serviceSasToken1>'
-AAS_SECOND_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest2?<serviceSasToken2>'
 #>
 function Test-AnalysisServicesServer
 {
@@ -17,13 +14,12 @@ function Test-AnalysisServicesServer
 
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net' -BackupBlobContainerUri $backupBlobContainerUri
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
     
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-AreEqual 2 $serverCreated.AsAdministrators.Count
-		Assert-True {$backupBlobContainerUri.Contains($serverCreated.BackupBlobContainerUri)}
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
 	
@@ -37,7 +33,6 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $location $serverGetItem.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
 		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
-		Assert-True {$backupBlobContainerUri.Contains($serverGetItem.BackupBlobContainerUri)}
 
 		# Test to make sure the server does exist
 		Assert-True {Test-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
@@ -53,12 +48,6 @@ function Test-AnalysisServicesServer
 
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrator list is empty"
-		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
-    
-	    $backupBlobContainerUriToUpdate = $env:AAS_SECOND_BACKUP_BLOB_CONTAINER_URI
-	    $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -BackupBlobContainerUri "$backupBlobContainerUriToUpdate" -PassThru
-		Assert-NotNull $serverUpdated.BackupBlobContainerUri "The backup blob container Uri is empty"
-		Assert-True {$backupBlobContainerUriToUpdate.contains($serverUpdated.BackupBlobContainerUri)}
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
 
 		Assert-AreEqual $serverName $serverUpdated.Name
@@ -193,6 +182,7 @@ function Test-AnalysisServicesServerScaleUpDown
 Tests disable backup blob container
 In order to run this test successfully, Following environment variables need to be set.
 AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest?<serviceSasToken1>'
+AAS_SECOND_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest2?<serviceSasToken2>'
 #>
 function Test-AnalysisServicesServerDisableBackup
 {
@@ -228,6 +218,13 @@ function Test-AnalysisServicesServerDisableBackup
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
 		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
 		
+		# Update backup container
+	    $backupBlobContainerUriToUpdate = $env:AAS_SECOND_BACKUP_BLOB_CONTAINER_URI
+	    $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -BackupBlobContainerUri "$backupBlobContainerUriToUpdate" -PassThru
+		Assert-NotNull $serverUpdated.BackupBlobContainerUri "The backup blob container Uri is empty"
+		Assert-True {$backupBlobContainerUriToUpdate.contains($serverUpdated.BackupBlobContainerUri)}
+		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
+
 		# Disable Backup
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -Name $serverName -DisableBackup -PassThru
 		Assert-True {[string]::IsNullOrEmpty($serverUpdated.BackupBlobContainerUri)}
