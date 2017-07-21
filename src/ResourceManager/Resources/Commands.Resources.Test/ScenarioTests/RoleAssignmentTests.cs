@@ -83,7 +83,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaValidateInputParameters()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaValidateInputParameters");
+            var instance = ResourcesController.NewInstance;
+            instance.RunPsTest("Test-RaValidateInputParameters Get-AzureRmRoleAssignment");
+            instance.RunPsTest("Test-RaValidateInputParameters New-AzureRmRoleAssignment");
+            instance.RunPsTest("Test-RaValidateInputParameters Remove-AzureRmRoleAssignment");
         }
 
         [Fact]

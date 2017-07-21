@@ -168,7 +168,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter).ToString();
             string roleAssignmentId = (RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue()).ToString();
             string scope = parameters.Scope;
-            ValidateScope(scope);
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
                 ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
                 : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
@@ -636,13 +635,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
         }
 
-        public static void ValidateScope(string scope)
+        public static void ValidateScope(string scope, bool allowEmpty)
         {
+            if (allowEmpty && string.IsNullOrEmpty(scope))
+                return;
 
             if (scope.Length == 0 || !scope.StartsWith("/"))
             {
                 throw new ArgumentException(string.Format(ProjectResources.ScopeShouldBeginWithSubscriptionsOrProviders, scope));
-    }
+            }
 
             // "/" is a valid scope.
             if (string.Compare(scope, "/") == 0)

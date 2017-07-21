@@ -179,6 +179,8 @@ namespace Microsoft.Azure.Commands.Resources
                 IncludeClassicAdministrators = false
             };
 
+            AuthorizationClient.ValidateScope(options.Scope, true);
+
             ConfirmAction(
                 ProjectResources.RemovingRoleAssignment,
                 string.Empty,

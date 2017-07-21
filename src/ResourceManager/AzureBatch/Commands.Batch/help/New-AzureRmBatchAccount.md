@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 ms.assetid: 82C7B128-8818-4390-B1A5-CB40AC9D53CA
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -26,18 +26,12 @@ The **New-AzureRmBatchAccount** cmdlet creates an Azure Batch account for the sp
 ```
 PS C:\>New-AzureRmBatchAccount -AccountName "pfuller" -ResourceGroupName "ResourceGroup03" -Location "WestUS"
 AccountName                  : pfuller
-
 Location                     : westus
-
 ResourceGroupName            : ResourceGroup03
-
 CoreQuota                    : 20
-
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
-Tags                         : 
+Tags                         :
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 ```
 
@@ -68,7 +62,7 @@ Specifies the resource ID of the storage account to be used for auto storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -79,12 +73,12 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the region where this cmdlet creates the account.
-For more information, see Azure Regionshttps://azure.microsoft.com/en-us/regions/ (https://azure.microsoft.com/en-us/regions).
+For more information, see [Azure Regions](https://azure.microsoft.com/en-us/regions).
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -99,7 +93,7 @@ Specifies the name of the resource group in which this cmdlet creates the accoun
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -109,7 +103,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies an array of hash tables of tags for the account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -143,5 +139,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzureRmBatchAccount](./Set-AzureRmBatchAccount.md)
 
 [Azure Batch Cmdlets](./AzureRM.Batch.md)
-
-

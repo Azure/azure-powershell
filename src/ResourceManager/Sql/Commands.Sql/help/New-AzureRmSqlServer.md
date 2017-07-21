@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 ms.assetid: 7039528F-42AE-45DB-BF81-FE5003F8AEE2
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
 ```
@@ -45,7 +45,7 @@ Generate and assign an Azure Active Directory Identity for this server for use w
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -60,7 +60,7 @@ Specifies the location of the data center where this cmdlet creates the server.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -75,7 +75,7 @@ Specifies the name of the resource group to which this cmdlet assigns the server
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -100,15 +100,14 @@ Accept wildcard characters: False
 ```
 
 ### -ServerVersion
-Specifies the version of the new server.
-The acceptable values for this parameter are: 2.0 and 12.0.
+Specifies the version of the new server. The acceptable values for this parameter are: 2.0 and 12.0.
 
 Specify 2.0 to create a version 11 server, or 12.0 to create a version 12 server.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,14 +117,14 @@ Accept wildcard characters: False
 ```
 
 ### -SqlAdministratorCredentials
-Specifies the SQL Database server administrator credentials for the new server.
-To obtain a **PSCredential** object, use the Get-Credential cmdlet.
-For more information, type `Get-Help Get-Credential`.
+Specifies the SQL Database server administrator credentials for the new server. To obtain a
+**PSCredential** object, use the Get-Credential cmdlet. For more information, type `Get-Help
+Get-Credential`.
 
 ```yaml
 Type: PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -135,7 +134,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the new server.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -187,7 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
 ## NOTES
 
@@ -202,5 +203,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmSqlServerFirewallRule](./New-AzureRmSqlServerFirewallRule.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-
-
