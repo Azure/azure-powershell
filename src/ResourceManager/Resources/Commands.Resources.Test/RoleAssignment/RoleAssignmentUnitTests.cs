@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Resources.Test {
         {
             try
             {
-                AuthorizationClient.ValidateScope(scope);
+                AuthorizationClient.ValidateScope(scope, false);
                 Assert.True(false);
             }
             catch(ArgumentException ex)
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources.Test {
 
         private void VerifyValidScope(string scope) 
         {
-            AuthorizationClient.ValidateScope(scope);
+            AuthorizationClient.ValidateScope(scope, false);
         }
 
         [Fact]
@@ -57,6 +57,10 @@ namespace Microsoft.Azure.Commands.Resources.Test {
             {
                 VerifyValidScope(scope);
             }
+
+            // verify empty scope
+
+            AuthorizationClient.ValidateScope(null, true);
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 ms.assetid: 009899E5-83BF-4A3F-877E-70C16D5CD1AC
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -41,27 +41,24 @@ StorageMB         : 409600
 Tags              :
 ```
 
-This command creates an elastic pool in the Standard service tier named ElasticPool01.
-The server named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool in.
-The command specifies DTU property values for the pool and the databases in the pool.
+This command creates an elastic pool in the Standard service tier named ElasticPool01. The server
+named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool
+in. The command specifies DTU property values for the pool and the databases in the pool.
 
 ## PARAMETERS
 
 ### -DatabaseDtuMax
 Specifies the maximum number of Database Throughput Units (DTUs) that any single database in the pool can consume.
-The default values for the different editions are as follows: 
+The default values for the different editions are as follows:
 
-- Basic.
-5 DTUs 
-- Standard.
-100 DTUs
-- Premium.
-125 DTUs
+- Basic. 5 DTUs
+- Standard. 100 DTUs
+- Premium. 125 DTUs
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,7 +74,7 @@ The default value is zero (0).
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,10 +85,10 @@ Accept wildcard characters: False
 
 ### -Dtu
 Specifies the total number of shared DTUs for the elastic pool.
-The default values for the different editions are as follows: 
+The default values for the different editions are as follows:
 
 - Basic.
-100 DTUs 
+100 DTUs
 - Standard.
 100 DTUs
 - Premium.
@@ -100,7 +97,7 @@ The default values for the different editions are as follows:
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,14 +110,14 @@ Accept wildcard characters: False
 Specifies the edition of the Azure SQL Database used for the elastic pool.
 The acceptable values for this parameter are:
 
-- Premium 
-- Basic 
+- Premium
+- Basic
 - Standard
 
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -151,7 +148,7 @@ Specifies the name of the resource group to which this cmdlet assigns the elasti
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -166,7 +163,7 @@ Specifies the name of the server that hosts the elastic pool.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -176,14 +173,16 @@ Accept wildcard characters: False
 ```
 
 ### -StorageMB
-Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this parameter, this cmdlet calculates a value that depends on the value of the *Dtu* parameter.
 
-See [eDTU and storage limits](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools) for possible values.
+Specifies the storage limit, in megabytes, for the elastic pool. If you do not specify this
+parameter, this cmdlet calculates a value that depends on the value of the *Dtu* parameter.
+
+See [eDTU and storage limits](/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools) for possible values.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -193,7 +192,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the elastic pool.
+Specifies a dictionary of Key-value pairs in the form of a hash table that this cmdlet associates
+with the elastic pool. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -245,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
+Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
 
 ## NOTES
 
@@ -262,5 +264,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzureRmSqlElasticPool](./Set-AzureRmSqlElasticPool.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-
-

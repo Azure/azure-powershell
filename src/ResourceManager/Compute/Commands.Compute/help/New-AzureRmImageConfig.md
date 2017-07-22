@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -35,8 +35,9 @@ PS C:\> New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -ResourceG
 
 The first command creates an image object, and then stores it in the $imageConfig variable.
 
-The next three commands assign paths of os disk and two data disks to the $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2 variables.
-This approach is only for readability of the following commands.
+The next three commands assign paths of os disk and two data disks to the $osDiskVhdUri,
+$dataDiskVhdUri1, and $dataDiskVhdUri2 variables. This approach is only for readability of the
+following commands.
 
 The next three commands each adds an os disk and two data disks to the image stored in $imageConfig.
 The URI of each disk is stored in $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2.
@@ -51,7 +52,7 @@ Specifies the data disk object.
 ```yaml
 Type: ImageDataDisk[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -66,7 +67,7 @@ Specifies a location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -81,7 +82,7 @@ Specifies the operating system Disk.
 ```yaml
 Type: ImageOSDisk
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -96,7 +97,7 @@ Specifies the source virtual machine ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -106,12 +107,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies that resources and resource groups can be tagged with a set of name-value pairs.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -155,16 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Collections.Hashtable
-Microsoft.Azure.Management.Compute.Models.ImageOSDisk
-Microsoft.Azure.Management.Compute.Models.ImageDataDisk[]
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Image
+Microsoft.Azure.Management.Compute.Models.Image
 
 ## NOTES
 
 ## RELATED LINKS
-

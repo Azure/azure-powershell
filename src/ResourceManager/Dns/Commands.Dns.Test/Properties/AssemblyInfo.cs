@@ -33,6 +33,6 @@ using Xunit;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("4623A8BD-075F-4B7C-9971-FBEDBFBDE521")]
 
-[assembly: AssemblyVersion("3.2.0")]
-[assembly: AssemblyFileVersion("3.2.0")]
+[assembly: AssemblyVersion("3.2.1")]
+[assembly: AssemblyFileVersion("3.2.1")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
