@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 ms.assetid: FAAF458C-1662-4130-9A16-0514B714D11D
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ ResourceGroupName        : ResourceGroup01
 ServerName               : Server01
 Location                 : Australia East
 SqlAdministratorLogin    : adminLogin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
 ```
@@ -47,7 +47,7 @@ Generate and assign an Azure Active Directory Identity for this server for use w
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -62,7 +62,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,7 +77,7 @@ Specifies the name of the resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -102,13 +102,13 @@ Accept wildcard characters: False
 ```
 
 ### -ServerVersion
-Specifies the version to which this cmdlet changes the server.
-The acceptable values for this parameter are: 2.0 and 12.0.
+Specifies the version to which this cmdlet changes the server. The acceptable values for this
+parameter are: 2.0 and 12.0.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,14 +118,14 @@ Accept wildcard characters: False
 ```
 
 ### -SqlAdministratorPassword
-Specifies a new password, as a **SecureString**, for the database server administrator.
-To obtain a **SecureString**, use the Get-Credential cmdlet.
-For more information, type `Get-Help ConvertTo-SecureString`.
+Specifies a new password, as a **SecureString**, for the database server administrator. To obtain a
+**SecureString**, use the Get-Credential cmdlet. For more information, type `Get-Help
+ConvertTo-SecureString`.
 
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -135,7 +135,10 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the server.
+Specifies a dictionary of tags that this cmdlet associates with the server. Key-value pairs in the
+form of a hash table set as tags on the server. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -194,5 +197,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-
-
