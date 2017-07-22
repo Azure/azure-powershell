@@ -25,6 +25,8 @@
 * Updated Sku lookup in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer
     - Changed hard coded Sku into dynamic lookup.
 
+## Version 0.4.2
+
 ## Version 0.4.1
 * Add new dataplane API
     - Introduced API to fetch AS server log, Export-AzureAnalysisServicesInstanceLog

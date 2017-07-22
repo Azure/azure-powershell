@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: BA508F0B-847F-4531-9D5D-A5A044A2D207
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -29,9 +29,9 @@ Specify the path of an APS script that contains a single DSC configuration.
 PS C:\>Import-AzureRmAutomationDscConfiguration -AutomationAccountName "Contoso17"-ResourceGroupName "ResourceGroup01" -SourcePath "C:\DSC\client.ps1" -Force
 ```
 
-This command imports the DSC configuration in the file named client.ps1 into the Automation account named Contoso17.
-The command specifies the *Force* parameter.
-If there is an existing DSC configuration, this command replaces it.
+This command imports the DSC configuration in the file named client.ps1 into the Automation account
+named Contoso17. The command specifies the *Force* parameter. If there is an existing DSC
+configuration, this command replaces it.
 
 ## PARAMETERS
 
@@ -41,7 +41,7 @@ Specifies the name of the Automation account into which this cmdlet imports a DS
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -56,7 +56,7 @@ Specifies a description of the configuration that this cmdlet imports.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -71,7 +71,7 @@ Indicates that this cmdlet replaces an existing DSC configuration in Automation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,13 +81,13 @@ Accept wildcard characters: False
 ```
 
 ### -LogVerbose
-Specifies whether this cmdlet turns verbose logging on or off for compilation jobs of this DSC configuration.
-Specify a value of $True to turn verbose logging on or $False to turn it off.
+Specifies whether this cmdlet turns verbose logging on or off for compilation jobs of this DSC
+configuration. Specify a value of $True to turn verbose logging on or $False to turn it off.
 
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,7 +102,7 @@ Indicates that this cmdlet imports the DSC configuration in the published state.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ Specifies the name of a resource group for which this cmdlet imports a DSC confi
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -142,7 +142,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -201,5 +203,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Export-AzureRmAutomationDscConfiguration](./Export-AzureRmAutomationDscConfiguration.md)
 
 [Get-AzureRmAutomationDscConfiguration](./Get-AzureRmAutomationDscConfiguration.md)
-
-
