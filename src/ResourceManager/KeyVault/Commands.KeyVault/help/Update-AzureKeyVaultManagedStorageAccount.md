@@ -18,7 +18,7 @@ Update-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <
 ```
 
 ## DESCRIPTION
-Update the editable attributes of a Key Vault managed Azure Storage Account.  
+Update the editable attributes of a Key Vault managed Azure Storage Account.
 
 ## EXAMPLES
 
@@ -27,12 +27,16 @@ Update the editable attributes of a Key Vault managed Azure Storage Account.
 PS C:\> Update-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -ActiveKeyName 'key2'
 ```
 
-Updates the Key Vault managed Azure Storage Account active key to 'key2'. 'key2' will be used to generate SAS tokens after this update. 
+Updates the Key Vault managed Azure Storage Account active key to 'key2'. 'key2' will be used to
+generate SAS tokens after this update.
 
 ## PARAMETERS
 
 ### -AccountName
-Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently selected environment and manged storage account name.```yaml
+Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account
+name from vault name, currently selected environment and manged storage account name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountName, Name
@@ -51,7 +55,7 @@ If not specified, the existing value of managed storage account's active key nam
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,7 +71,7 @@ If not specified, the existing value of auto regenerate key of managed storage a
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,14 +96,15 @@ Accept wildcard characters: False
 ```
 
 ### -Enable
-If present, enables a use of a managed storage account key for sas token generation if value is true.
-Disables use of a managed storage account key for sas token generation if value is false.
-If not specified, the existing value of the storage account's enabled/disabled state remains unchanged.
+If present, enables a use of a managed storage account key for sas token generation if value is
+true. Disables use of a managed storage account key for sas token generation if value is false. If
+not specified, the existing value of the storage account's enabled/disabled state remains
+unchanged.
 
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -109,13 +114,13 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Cmdlet does not return object by default.
-If this switch is specified, return managed storage account object.
+Cmdlet does not return object by default. If this switch is specified, return managed storage
+account object.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,14 +130,15 @@ Accept wildcard characters: False
 ```
 
 ### -RegenerationPeriod
-Regeneration period.
-If auto regenerate key is enabled, this value specifies the timespan after which managed storage account's inactive keygets auto regenerated and becomes the active key.
-If not specified, the existing value of regeneration period of keys of managed storage account remains unchanged
+Regeneration period. If auto regenerate key is enabled, this value specifies the timespan after
+which managed storage account's inactive keygets auto regenerated and becomes the active key. If
+not specified, the existing value of regeneration period of keys of managed storage account remains
+unchanged
 
 ```yaml
 Type: TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,9 +148,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing tags of managed storage account.
-If not specified, the existing tags of the managed storage account remain unchanged.
-Remove tags by specifying an empty Hashtable.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -165,7 +171,7 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -195,17 +201,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Nullable`1[[System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Collections.Hashtable
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
+Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
 
 ## NOTES
 
 ## RELATED LINKS
 
-[https://msdn.microsoft.com/en-us/library/dn868052.aspx](https://msdn.microsoft.com/en-us/library/dn868052.aspx)
+[AzureRM.KeyVault](/powershell/module/azurerm.keyvault)

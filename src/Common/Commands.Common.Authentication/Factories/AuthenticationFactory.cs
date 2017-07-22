@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     context.Account.Id,
                     context.Environment.Name,
                     tenant);
-                if (context.TokenCache != null)
+                if (context.TokenCache != null && context.TokenCache.CacheData != null && context.TokenCache.CacheData.Length > 0)
                 {
                     tokenCache = context.TokenCache;
                 }

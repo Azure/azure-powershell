@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: 6A278F91-C078-4DD4-82D0-2E4FA549A089
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGr
                     k/routeTables/myroutetable
 Etag              : W/"db5f4e12-3f34-465b-92dd-0ab3bf6fc274"
 ProvisioningState : Succeeded
-Tags              : 
+Tags              :
 Routes            : [
                       {
                         "Name": "route07",
@@ -43,18 +43,19 @@ Routes            : [
                     soft.Network/routeTables/routetable01/routes/route07",
                         "AddressPrefix": "10.1.0.0/16",
                         "NextHopType": "VnetLocal",
-                        "NextHopIpAddress": null, 
+                        "NextHopIpAddress": null,
                         "ProvisioningState": "Succeeded"
                       }
-                    ] 
+                    ]
 Subnets           : []
 ```
 
-The first command creates a route named Route07 by using the New-AzureRmRouteConfig cmdlet, and then stores it in the $Route variable.
-This route forwards packets to the local virtual network.
+The first command creates a route named Route07 by using the New-AzureRmRouteConfig cmdlet, and
+then stores it in the $Route variable. This route forwards packets to the local virtual network.
 
-The second command creates a route table named RouteTable01, and adds the route stored in $Route to the new table.
-The command specifies the resource group to which the table belongs and the location for the table.
+The second command creates a route table named RouteTable01, and adds the route stored in $Route to
+the new table. The command specifies the resource group to which the table belongs and the location
+for the table.
 
 ## PARAMETERS
 
@@ -64,7 +65,7 @@ Indicates that this cmdlet creates a route table even if a route table that has 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -74,13 +75,13 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Specifies the Azureregion in which this cmdlet creates a route table.
-For more information, see Azure Regionshttp://azure.microsoft.com/en-us/regions/ (http://azure.microsoft.com/en-us/regions/).
+Specifies the Azure region in which this cmdlet creates a route table.
+For more information, see [Azure Regions](http://azure.microsoft.com/en-us/regions/).
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,7 +111,7 @@ Specifies the name of the resource group in which this cmdlet creates a route ta
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -125,7 +126,7 @@ Specifies an array of **Route** objects to associate with the route table.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRoute]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -135,12 +136,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a dictionary of tags to associate with the route table.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,5 +201,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmRouteTable](./Remove-AzureRmRouteTable.md)
 
 [Set-AzureRmRouteTable](./Set-AzureRmRouteTable.md)
-
-
