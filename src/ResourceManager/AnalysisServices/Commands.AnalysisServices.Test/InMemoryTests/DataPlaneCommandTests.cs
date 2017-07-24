@@ -65,6 +65,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                                         + "65kxhZWVUbTHaPuEvg03ZQ3esDb6wxQewJPAL-GARg6S9wIN776Esw8-53AWhzFu0fIut-9FXGma6jV7"
                                         + "MYPoUUcFuQzLZgphecPyMPXSVhummVCdBwX9sizxnmFA";
 
+        private static readonly string[] testDatabases = new string[] { "db1", "db2" };
+
         public DataPlaneCommandTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
@@ -101,11 +103,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
             mockAuthenticationProvider.Setup(
                 authProvider => authProvider.GetAadAuthenticatedToken(
-                    It.IsAny<AsAzureContext>(), 
-                    It.IsAny<SecureString>(), 
-                    It.IsAny<PromptBehavior>(), 
-                    It.IsAny<string>(), 
-                    It.IsAny<string>(), 
+                    It.IsAny<AsAzureContext>(),
+                    It.IsAny<SecureString>(),
+                    It.IsAny<PromptBehavior>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
             AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
 
@@ -308,7 +310,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                     {
                         Content = new StringContent("MOCKED STREAM CONTENT")
                     }));
-            
+
             var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
             mockTokenCacheItemProvider
                 .Setup(obj => obj.GetTokenFromTokenCache(It.IsAny<TokenCache>(), It.IsAny<string>()))
@@ -318,7 +320,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
-            
+
             var addAmdlet = new AddAzureASAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
@@ -341,6 +343,166 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 }
             }
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SynchronizeAzureASInstance_Succeeds()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            // Setup
+            // Clear the the current profile
+            AsAzureClientSession.Instance.Profile.Environments.Clear();
+            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
+            mockAuthenticationProvider.Setup(
+                authProvider => authProvider.GetAadAuthenticatedToken(
+                    It.IsAny<AsAzureContext>(),
+                    It.IsAny<SecureString>(),
+                    It.IsAny<PromptBehavior>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<Uri>())).Returns(testToken);
+            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            // Set up AsAzureHttpClient mock
+            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
+            mockAsAzureHttpClient
+                .Setup(obj => obj.CallPostAsync(It.IsAny<Uri>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<HttpContent>()))
+                .Returns(Task<HttpResponseMessage>.FromResult(new HttpResponseMessage(HttpStatusCode.OK)));
+
+            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
+            mockTokenCacheItemProvider
+                .Setup(obj => obj.GetTokenFromTokenCache(It.IsAny<TokenCache>(), It.IsAny<string>()))
+                .Returns(testToken);
+            var syncCmdlet = new SynchronizeAzureAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+
+            var addAmdlet = new AddAzureASAccountCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+
+            DoLogin(addAmdlet);
+            syncCmdlet.Instance = testServer;
+            syncCmdlet.Databases = testDatabases;
+
+            // Act
+            syncCmdlet.InvokeBeginProcessing();
+            syncCmdlet.ExecuteCmdlet();
+            syncCmdlet.InvokeEndProcessing();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SynchronizeAzureASInstance_NullInstanceThrows()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+
+            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
+            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
+            var syncCmdlet = new SynchronizeAzureAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+
+            // Setup
+            // Clear the the current profile
+            AsAzureClientSession.Instance.Profile.Environments.Clear();
+            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
+            mockAuthenticationProvider.Setup(
+                authProvider => authProvider.GetAadAuthenticatedToken(
+                    It.IsAny<AsAzureContext>(),
+                    It.IsAny<SecureString>(),
+                    It.IsAny<PromptBehavior>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<Uri>())).Returns(testToken);
+            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            syncCmdlet.Instance = null;
+            syncCmdlet.Databases = testDatabases;
+            // Act
+            Assert.Throws<TargetInvocationException>(() => syncCmdlet.InvokeBeginProcessing());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SynchronizeAzureASInstance_NullDatabasesThrows()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+
+            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
+            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
+            var syncCmdlet = new SynchronizeAzureAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+
+            // Setup
+            // Clear the the current profile
+            AsAzureClientSession.Instance.Profile.Environments.Clear();
+            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
+            mockAuthenticationProvider.Setup(
+                authProvider => authProvider.GetAadAuthenticatedToken(
+                    It.IsAny<AsAzureContext>(),
+                    It.IsAny<SecureString>(),
+                    It.IsAny<PromptBehavior>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<Uri>())).Returns(testToken);
+            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
+            syncCmdlet.Instance = testServer;
+            syncCmdlet.Databases = null;
+            // Act
+            Assert.Throws<TargetInvocationException>(() => syncCmdlet.InvokeBeginProcessing());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SynchronizeAzureASInstance_NotLoggedInThrows()
+        {
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+
+            var mockAsAzureHttpClient = new Mock<IAsAzureHttpClient>();
+            var mockTokenCacheItemProvider = new Mock<ITokenCacheItemProvider>();
+            var syncCmdlet = new SynchronizeAzureAzureAnalysisServer(mockAsAzureHttpClient.Object, mockTokenCacheItemProvider.Object)
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+
+            // Setup
+            // Clear the the current profile
+            AsAzureClientSession.Instance.Profile.Environments.Clear();
+            var mockAuthenticationProvider = new Mock<IAsAzureAuthenticationProvider>();
+            mockAuthenticationProvider.Setup(
+                authProvider => authProvider.GetAadAuthenticatedToken(
+                    It.IsAny<AsAzureContext>(),
+                    It.IsAny<SecureString>(),
+                    It.IsAny<PromptBehavior>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<Uri>())).Returns(testToken);
+            AsAzureClientSession.Instance.SetAsAzureAuthenticationProvider(mockAuthenticationProvider.Object);
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            syncCmdlet.Instance = testServer;
+            syncCmdlet.Databases = testDatabases;
+
+            // Act
+            try
+            {
+                syncCmdlet.InvokeBeginProcessing();
+            }
+            catch (Exception ex)
+            {
+                Assert.IsType<TargetInvocationException>(ex);
+            }
+        }
+
 
         private void DoLogin(AddAzureASAccountCommand addAmdlet)
         {

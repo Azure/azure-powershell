@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Instrumentation;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -35,10 +30,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public string Instance { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The list of databases that need to be replicated. Omitting this parameter will replicate all databases.",
+            Mandatory = true,
+            HelpMessage = "The list of databases that need to be replicated",
             Position = 1,
             ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
         public string[] Databases { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -67,7 +63,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             this.TokenCacheItemProvider = TokenCacheItemProvider;
         }
 
-        public override void ExecuteCmdlet()
+        public async override void ExecuteCmdlet()
         {
             if (ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))
             {
@@ -77,48 +73,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
                 Uri syncBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
 
-                var synchronize = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.SynchronizeEndpointFormat], serverName);
+                var syncResults = await Task.WhenAll(Databases.Select(databaseName => SynchronizeDatabaseAsync(context, syncBaseUri, databaseName, accessToken)));
 
-                HttpContent requestBody = CreateRequestBodyFromDatabases(Databases);
-
-                // POST synchronize request
-                Uri pollingUrl;
-                using (HttpResponseMessage message = AsAzureHttpClient.CallPostAsync(
-                    syncBaseUri,
-                    synchronize,
-                    accessToken,
-                    content: requestBody).Result)
+                if (PassThru.IsPresent)
                 {
-                    message.EnsureSuccessStatusCode();
-                    pollingUrl = message.Headers.Location;
-                }
-
-                // GET operation status until terminated (succeed / fail)
-                if (pollingUrl != null)
-                {
-                    bool done = false;
-                    do
-                    {
-                        using (HttpResponseMessage message = AsAzureHttpClient.CallGetAsync(
-                            pollingUrl,
-                            string.Empty,
-                            accessToken).Result)
-                        {
-                            done = !message.StatusCode.Equals(System.Net.HttpStatusCode.SeeOther);
-                            if (done)
-                            {
-                                message.EnsureSuccessStatusCode();
-                                if (PassThru.IsPresent)
-                                {
-                                    WriteObject(true);
-                                }
-                            }
-                            else
-                            {
-                                pollingUrl = message.Headers.Location;
-                            }
-                        }
-                    } while (!done);
+                    WriteObject(syncResults, false);
                 }
             }
         }
@@ -186,15 +145,77 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             // No data collection for this commandlet
         }
 
-        private static StringContent CreateRequestBodyFromDatabases(IEnumerable<string> databaseNames)
+        private async Task<SynchronizationResult> SynchronizeDatabaseAsync(AsAzureContext context, Uri syncBaseUri, string databaseName, string accessToken)
         {
-            var requestPayloadModel = new SynchronizeModel
+            var synchronize = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.SynchronizeEndpointFormat], serverName, databaseName);
+
+            var syncResult = new SynchronizationResult
             {
-                Databases = databaseNames
+                DatabaseName = databaseName,
+                Synchronized = false
             };
 
-            var content = JsonConvert.SerializeObject(requestPayloadModel);
-            return new StringContent(content);
+            return await Task.Run(async () =>
+            {
+                Uri pollingUrl;
+                using (HttpResponseMessage message = AsAzureHttpClient.CallPostAsync(
+                    syncBaseUri,
+                    synchronize,
+                    accessToken).Result)
+                {
+
+                    if (message.IsSuccessStatusCode)
+                    {
+                        pollingUrl = message.Headers.Location;
+                    }
+                    else
+                    {
+                        return syncResult;
+                    }
+                }
+
+                if (pollingUrl != null)
+                {
+                    syncResult.Synchronized = await PollSyncStatusAsync(accessToken, pollingUrl);
+                }
+
+                return syncResult;
+            });
+        }
+
+        private async Task<bool> PollSyncStatusAsync(string accessToken, Uri pollingUrl)
+        {
+            return await Task.Run(async () =>
+            {
+                bool done = false;
+                do
+                {
+                    using (HttpResponseMessage message = await AsAzureHttpClient.CallGetAsync(
+                        pollingUrl,
+                        string.Empty,
+                        accessToken))
+                    {
+                        done = !message.StatusCode.Equals(HttpStatusCode.SeeOther);
+                        if (done)
+                        {
+                            return message.IsSuccessStatusCode;
+                        }
+                        else
+                        {
+                            pollingUrl = message.Headers.Location;
+                        }
+                    }
+                } while (!done);
+
+                return false;
+            });
+        }
+
+        class SynchronizationResult
+        {
+            public string DatabaseName { get; set; }
+
+            public bool Synchronized { get; set; }
         }
     }
 }
