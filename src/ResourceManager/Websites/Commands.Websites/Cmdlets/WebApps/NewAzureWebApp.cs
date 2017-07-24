@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebApp", DefaultParameterSetName = ParameterSet1Name)]
+    [Cmdlet(VerbsCommon.New, "AzureRmWebApp", DefaultParameterSetName = ParameterSet1Name), OutputType(typeof(Site))]
     public class NewAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
         const string ParameterSet1Name = "S1";
