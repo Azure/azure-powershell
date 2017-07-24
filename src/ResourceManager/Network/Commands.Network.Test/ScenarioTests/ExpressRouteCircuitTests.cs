@@ -19,21 +19,21 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class ExpressRouteCircuitTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact(Skip = "Skip until necessary fixes done")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitStageCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitStageCRUD");
         }
 
-        [Fact(Skip = "Skip until necessary fixes done")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
         }
 
-        [Fact(Skip = "Skip until necessary fixes done")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
         }
 
-        [Fact(Skip = "Skip until necessary fixes done")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitAuthorizationCRUD()
         {
