@@ -126,6 +126,46 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HandlesNullValuesInArmExceptions()
+        {
+            var runtime = new MockCommandRuntime();
+            var hyakException = new TestHyakException(null, null, null);
+
+            var autorestException = new Microsoft.Rest.Azure.CloudException();
+
+            var cmdlet = new ResolveError
+            {
+                Error = new[]
+                {
+                    new ErrorRecord(new Exception(), null, ErrorCategory.AuthenticationError, null),
+                    new ErrorRecord(hyakException, null, ErrorCategory.ConnectionError, null),
+                    new ErrorRecord(autorestException , null, ErrorCategory.InvalidOperation, null),
+                },
+                CommandRuntime = runtime
+            };
+
+            cmdlet.ExecuteCmdlet();
+            Assert.NotNull(runtime.OutputPipeline);
+            Assert.Equal(3, runtime.OutputPipeline.Count);
+            var errorResult = runtime.OutputPipeline[0] as AzureExceptionRecord;
+            Assert.NotNull(errorResult);
+            Assert.Equal(ErrorCategory.AuthenticationError, errorResult.ErrorCategory.Category);
+            Assert.NotNull(errorResult.Exception);
+            Assert.Equal(errorResult.Exception.GetType(), typeof(Exception));
+            var hyakResult = runtime.OutputPipeline[1] as AzureRestExceptionRecord;
+            Assert.NotNull(hyakResult);
+            Assert.Equal(ErrorCategory.ConnectionError, hyakResult.ErrorCategory.Category);
+            Assert.NotNull(errorResult.Exception);
+            Assert.Equal(hyakResult.Exception.GetType(), typeof(TestHyakException));
+            var autorestResult = runtime.OutputPipeline[2] as AzureRestExceptionRecord;
+            Assert.NotNull(autorestResult);
+            Assert.Equal(ErrorCategory.InvalidOperation, autorestResult.ErrorCategory.Category);
+            Assert.NotNull(autorestResult.Exception);
+            Assert.Equal(autorestResult.Exception.GetType(), typeof(Microsoft.Rest.Azure.CloudException));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void LastParameterFindsLastError()
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
