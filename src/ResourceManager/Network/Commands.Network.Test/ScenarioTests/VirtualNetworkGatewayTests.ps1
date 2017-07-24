@@ -486,3 +486,76 @@ function Test-VirtualNetworkGatewayBgpRouteApi
 		Clean-ResourceGroup $rgname
 	}
 }
+
+<#
+.SYNOPSIS
+Virtual network gateway BGP route API test
+#>
+function Test-VirtualNetworkGatewayIkeV2
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+		# Create the resource group
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+		# Create the Virtual Network
+		$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+		# Create the publicip
+		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+		$clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
+		$sampleClientCertName = "sampleClientCert.cer"
+		$sampleClinentCertThumbprint = "5405D9A8AB2A303D4E772C444BC88C3B97F55F78"
+
+		# Create & Get IkeV2 + SSTP virtualnetworkgateway
+		$vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+		$rootCert = New-AzureRmVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+		$clientCert = New-AzureRmVpnClientRevokedCertificate -Name $sampleClientCertName -Thumbprint $sampleClinentCertThumbprint
+      
+		$actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocols @( "IkeV2", "SSTP" ) -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
+		$expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+		Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+		Assert-AreEqual $expected.Name $actual.Name	
+		Assert-AreEqual "Vpn" $expected.GatewayType
+		Assert-AreEqual "RouteBased" $expected.VpnType
+		Assert-AreEqual "VpnGw1" $expected.Sku.Tier
+		Assert-AreEqual 2 $expected.VpnClientAddressPool.VpnClientProtocols.Count
+		Assert-That $expected.VpnClientAddressPool.VpnClientProtocols -Contains "SSTP"
+		Assert-That $expected.VpnClientAddressPool.VpnClientProtocols -Contains "IkeV2"
+		Assert-AreEqual "201.169.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
+		Assert-AreEqual $clientRootCertName $expected.VpnClientConfiguration.VpnClientRevokedCertificates[0].name
+		Assert-AreEqual $sampleClientCertName $expected.VpnClientConfiguration.VpnClientRootCertificates[0].name
+
+		# Update gateway to IkeV2 only
+		$actual = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -VpnClientProtocols IkeV2
+		$expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+		Assert-AreEqual 1 $expected.VpnClientAddressPool.VpnClientProtocols.Count
+		Assert-That $expected.VpnClientAddressPool.VpnClientProtocols -Contains "IkeV2"
+
+		# Generate P2S Vpnclient package
+		$packageUrl = Get-AzureRmVpnClientPackage -ResourceGroupName $expected.ResourceGroupName -VirtualNetworkGatewayName $expected.Name -ProcessorArchitecture Amd64
+		#Assert-NotNull $packageUrl
+	 }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}
