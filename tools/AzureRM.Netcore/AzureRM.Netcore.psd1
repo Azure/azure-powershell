@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '0.9.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,13 +51,13 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; RequiredVersion = '0.9.0'; }, 
-               @{ModuleName = 'AzureRM.Compute.Netcore'; RequiredVersion = '0.9.0'; }, 
-               @{ModuleName = 'AzureRM.Network.Netcore'; RequiredVersion = '0.9.0'; }, 
-               @{ModuleName = 'AzureRM.Resources.Netcore'; RequiredVersion = '0.9.0'; }, 
-               @{ModuleName = 'AzureRM.Storage.Netcore'; RequiredVersion = '0.9.0'; }, 
-               @{ModuleName = 'AzureRM.Tags.Netcore'; RequiredVersion = '0.9.0'; }, 
-               @{ModuleName = 'AzureRM.Websites.Netcore'; RequiredVersion = '0.9.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; RequiredVersion = '0.9.1'; }, 
+               @{ModuleName = 'AzureRM.Compute.Netcore'; RequiredVersion = '0.9.1'; }, 
+               @{ModuleName = 'AzureRM.Network.Netcore'; RequiredVersion = '0.9.1'; }, 
+               @{ModuleName = 'AzureRM.Resources.Netcore'; RequiredVersion = '0.9.1'; }, 
+               @{ModuleName = 'AzureRM.Storage.Netcore'; RequiredVersion = '0.9.1'; }, 
+               @{ModuleName = 'AzureRM.Tags.Netcore'; RequiredVersion = '0.9.1'; }, 
+               @{ModuleName = 'AzureRM.Websites.Netcore'; RequiredVersion = '0.9.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
