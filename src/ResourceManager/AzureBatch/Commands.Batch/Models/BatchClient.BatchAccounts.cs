@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Batch.Properties;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,6 +25,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Rest.Azure;
 using CloudException = Hyak.Common.CloudException;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -274,14 +275,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
         internal string GetGroupForAccountNoThrow(string accountName)
         {
-            var response = ResourceManagementClient.Resources.List(new Management.Resources.Models.ResourceListParameters()
-            {
-                ResourceType = accountSearch
-            });
+            var response = ResourceManagementClient.Resources.List(new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
+                r => r.ResourceType == accountName));
 
             string groupName = null;
 
-            foreach (var res in response.Resources)
+            foreach (var res in response)
             {
                 if (res.Name == accountName)
                 {
