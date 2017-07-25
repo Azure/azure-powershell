@@ -24,6 +24,47 @@ function Test-ExpressRouteBGPServiceCommunities
 	Assert-NotNull $communities[0].BgpCommunities
 	Assert-AreEqual true $communities[0].BgpCommunities[0].IsAuthorizedToUse
 }
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitCRUD.
+#>
+function Test-ExpressRouteRouteFilters
+{
+	$rgname = "filter"
+    $location = "westus"
+    $filterName = "filter"
+    $ruleName = "rule"
+
+    try
+    {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location
+
+      # Create the route filter
+      $filter = New-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname -Location $location
+
+      # Get the route filter
+      $getFilter = Get-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname
+
+      #verification
+      Assert-AreEqual $rgName $getFilter.ResourceGroupName
+      Assert-AreEqual $filterName $getFilter.Name
+      Assert-NotNull $getFilter.Location
+      Assert-AreEqual 0 @($getFilter.Rules).Count
+
+	  $rule = New-AzureRmRouteFilterRuleConfig -Name $ruleName -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010" -Force
+	  $filter = Get-AzureRmRouteFilter -Name filter -ResourceGroupName filter
+	  $filter.Rules.Add($rule)
+	  $filter = Set-AzureRmRouteFilter -RouteFilter $filter -Force
+    }
+    finally
+    {
+    # Cleanup
+      Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
