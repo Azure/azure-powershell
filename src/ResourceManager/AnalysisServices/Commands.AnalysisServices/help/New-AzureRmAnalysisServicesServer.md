@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Creates a new Analysis Services server
 
 ```
 New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,7 @@ A string representing a comma separated list of users or groups to be set as adm
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 5
@@ -51,7 +52,7 @@ The blob container Uri for backup the Analysis Services server
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 6
@@ -66,7 +67,7 @@ The Azure region where the Analysis Services server is hosted
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: North Central US, South Central US, Central US, West Europe, North Europe, West US, East US, East US 2, Japan East, Japan West, Brazil South, Southeast Asia, East Asia, Australia East, Australia Southeast
 
 Required: True
@@ -82,7 +83,7 @@ Name of the Analysis Services server
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -97,7 +98,7 @@ Name of the Azure resource group to which the server belongs
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -113,8 +114,7 @@ The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
-Accepted values: S1, S2, S4, B1, B2, D1
+Aliases: 
 
 Required: True
 Position: 3
@@ -124,15 +124,12 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table set as tags on the server. For example:
-
-@{key0=$null;key1="value1";key2="value2"}
-
+Key-value pairs in the form of a hash table set as tags on the server.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
