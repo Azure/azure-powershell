@@ -296,6 +296,9 @@ Gets the virtual network peering.
 ### [Get-AzureRmVirtualNetworkSubnetConfig](Get-AzureRmVirtualNetworkSubnetConfig.md)
 Gets a subnet in a virtual network.
 
+### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
+Gets virtual network current usage.
+
 ### [Get-AzureRmVpnClientPackage](Get-AzureRmVpnClientPackage.md)
 Gets information about a VPN client package.
 
