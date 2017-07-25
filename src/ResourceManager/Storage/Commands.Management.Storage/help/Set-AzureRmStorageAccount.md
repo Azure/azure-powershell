@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -102,14 +102,17 @@ This command disables encryption on File Services with KeySource set to "Microso
 Specifies the access tier of the Storage account that this cmdlet modifies.
 The acceptable values for this parameter are: Hot and Cool.
 
-If you change the access tier, it may result in additional charges.
-For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
-If the kind of Storage account is Storage, do not specify this parameter.
+If you change the access tier, it may result in additional charges. For more information, see
+[Azure Blob Storage: Hot and cool storage tiers](http://go.microsoft.com/fwlink/?LinkId=786482).
+
+If you specify a value of BlobStorage for the *Kind* parameter of the New-AzureRmStorageAccount
+cmdlet, you must specify a value for the *AccessTier* parameter. If you specify a value of Storage
+for this *Kind* parameter, do not specify the *AccessTier* parameter.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -119,10 +122,12 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.```yaml
+Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +142,7 @@ Specifies the name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -153,7 +158,7 @@ Azure Blob and Azure File Services are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -169,7 +174,7 @@ Azure Blob and Azure File Services are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -179,10 +184,12 @@ Accept wildcard characters: False
 ```
 
 ### -EnableHttpsTrafficOnly
-Indicates whether or not the Storage Account only enable https traffic.```yaml
+Indicates whether or not the Storage Account only enable https traffic.
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -192,14 +199,12 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-If you change the access tier, it may result in additional charges.
-For more information, see Azure Blob Storage: Hot and cool storage tiershttp://go.microsoft.com/fwlink/?LinkId=786482 (http://go.microsoft.com/fwlink/?LinkId=786482).
-If the kind of Storage account is Storage, do not specify this parameter.
+Forces the change to be written to the Storage account.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -248,10 +253,12 @@ Accept wildcard characters: False
 ```
 
 ### -KeyName
-Storage Account encryption keySource KeyVault KeyName```yaml
+Storage Account encryption keySource KeyVault KeyName
+
+```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -261,12 +268,13 @@ Accept wildcard characters: False
 ```
 
 ### -KeyvaultEncryption
-Whether to set Storage Account Encryption KeySource to Microsoft.Keyvault or not. 
-If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account encryption keySource will also be set to Microsoft.Keyvault weather this parameter is set or not.
+Whether to set Storage Account Encryption KeySource to Microsoft.Keyvault or not.
+If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account encryption keySource will also be set to Microsoft.Keyvault whether this parameter is set or not.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -276,10 +284,12 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultUri
-Storage Account encryption keySource KeyVault KeyVaultUri```yaml
+Storage Account encryption keySource KeyVault KeyVaultUri
+
+```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -289,10 +299,12 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVersion
-Storage Account encryption keySource KeyVault KeyVersion```yaml
+Storage Account encryption keySource KeyVault KeyVersion
+
+```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -322,7 +334,7 @@ Specifies the name of the resource group in which to modify the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -335,16 +347,11 @@ Accept wildcard characters: False
 Specifies the SKU name of the storage account.
 The acceptable values for this parameter are:
 
-- Standard_LRS.
-Locally-redundant storage. 
-- Standard_ZRS.
-Zone-redundant storage.
-- Standard_GRS.
-Geo-redundant storage. 
-- Standard_RAGRS.
-Read access geo-redundant storage. 
-- Premium_LRS.
-Premium locally-redundant storage.
+- Standard_LRS - Locally-redundant storage.
+- Standard_ZRS - Zone-redundant storage.
+- Standard_GRS - Geo-redundant storage.
+- Standard_RAGRS - Read access geo-redundant storage.
+- Premium_LRS - Premium locally-redundant storage.
 
 You cannot change Standard_ZRS and Premium_LRS types to other account types.
 You cannot change other account types to Standard_ZRS or Premium_LRS.
@@ -362,10 +369,12 @@ Accept wildcard characters: False
 ```
 
 ### -StorageEncryption
-Whether to set Storage Account Encryption KeySource to Microsoft.Storage or not.```yaml
+Whether to set Storage Account Encryption KeySource to Microsoft.Storage or not.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: StorageEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -375,9 +384,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-If you specify a value of BlobStorage for the *Kind* parameter of the New-AzureRmStorageAccount cmdlet, you must specify a value for the *AccessTier* parameter.
+Key-value pairs in the form of a hash table set as tags on the server. For example:
 
-If you specify a value of Storage for this *Kind* parameter, do not specify the *AccessTier* parameter.
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -397,7 +406,7 @@ Indicates whether to enable indirect CName validation.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -453,5 +462,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmStorageAccount](./New-AzureRmStorageAccount.md)
 
 [Remove-AzureRmStorageAccount](./Remove-AzureRmStorageAccount.md)
-
-

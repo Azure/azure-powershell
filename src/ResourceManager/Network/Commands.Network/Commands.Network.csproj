@@ -74,7 +74,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.11.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
       <SpecificVersion>False</SpecificVersion>
@@ -253,6 +255,9 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="AvailablePrivateAccessService\AvailablePrivateAccessServiceListMethod.cs" />
+    <Compile Include="Models\PSPrivateAccessService.cs" />
+    <Compile Include="Models\PSPrivateAccessServiceResult.cs" />
     <Compile Include="Common\ListNextLink.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
@@ -338,6 +343,7 @@
     <Compile Include="Models\PSIpsecPolicy.cs" />
     <Compile Include="Models\PSIpFlowVerify.cs" />
     <Compile Include="Models\PSIPFlowVerifyResult.cs" />
+    <Compile Include="Models\PSIpv6PeeringConfig.cs" />
     <Compile Include="Models\PSNetworkInterfaceAssociation.cs" />
     <Compile Include="Models\PSNextHopResult.cs" />
     <Compile Include="Models\PSPacketCapture.cs" />

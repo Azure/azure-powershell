@@ -64,7 +64,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.11.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
@@ -110,6 +112,7 @@
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.5.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
@@ -176,6 +179,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
+    <Compile Include="ScenarioTests\AvailablePrivateAccessServiceTests.cs" />
     <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteServiceProviderTests.cs" />
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
@@ -205,6 +209,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\ApplicationGatewayTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AvailablePrivateAccessServiceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Data\ApplicationGatewayAuthCert.cer">
@@ -271,6 +278,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestAvailableWafRuleSets.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailablePrivateAccessServiceTests\TestAvailablePrivateAccessServicesList.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteBgpServiceCommunitiesGet.json">
@@ -502,6 +512,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetPrivateAccess.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkUsage.json">

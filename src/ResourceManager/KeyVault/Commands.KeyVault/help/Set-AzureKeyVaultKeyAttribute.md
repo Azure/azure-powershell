@@ -24,24 +24,23 @@ The **Set-AzureKeyVaultKeyAttribute** cmdlet updates the editable attributes of 
 
 ### Example 1: Modify a key to enable it, and set the expiration date and tags
 ```
-PS C:\>$Expires = (Get-Date).AddYears(2).ToUniversalTime() 
+PS C:\>$Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = null}
-PS C:\> Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tags $Tags -PassThru
+PS C:\> Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
 ```
 
-The first command creates a **DateTime** object by using the **Get-Date** cmdlet.
-That object specifies a time two years in the future.
-The command stores that date in the $Expires variable.
+The first command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
+specifies a time two years in the future. The command stores that date in the $Expires variable.
 For more information, type `Get-Help Get-Date`.
 
 The second command creates a variable to store tag values of high severity and Accounting.
 
-The final command modifies a key named ITSoftware.
-The command enables the key, sets its expiration time to the time stored in $Expires, and sets the tags that are stored in $Tags.
+The final command modifies a key named ITSoftware. The command enables the key, sets its expiration
+time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ### Example 2: Modify a key to delete all tags
 ```
-PS C:\>Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tags @{}
+PS C:\>Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tag @{}
 ```
 
 This commands deletes all tags for a specific version of a key named ITSoftware.
@@ -64,15 +63,14 @@ Accept wildcard characters: False
 ```
 
 ### -Enable
-Specifies whether to enable or disable a key.
-A value of $True enables the key.
-A value of $False disables the key.
-If you do not specify this parameter, this cmdlet does not modify the status of the key.
+Specifies whether to enable or disable a key. A value of $True enables the key. A value of $False
+disables the key. If you do not specify this parameter, this cmdlet does not modify the status of
+the key.
 
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,15 +80,14 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time, as a **DateTime** object, for the key that this cmdlet updates.
-This parameter uses Coordinated Universal Time (UTC).
-To obtain a **DateTime** object, use the **Get-Date** cmdlet.
-For more information, type `Get-Help Get-Date`.
+Specifies the expiration time, as a **DateTime** object, for the key that this cmdlet updates. This
+parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** object, use the
+**Get-Date** cmdlet. For more information, type `Get-Help Get-Date`.
 
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -103,8 +100,8 @@ Accept wildcard characters: False
 Specifies an array of operations that can be performed by using the key that this cmdlet adds.
 If you do not specify this parameter, all operations can be performed.
 
-The acceptable values for this parameter are a comma-separated list of key operations as defined by the JSON Web Key specification.
-These values (case-sensitive) are: 
+The acceptable values for this parameter are a comma-separated list of key operations as defined by
+the JSON Web Key specification. These values (case-sensitive) are:
 
 - encrypt
 - decrypt
@@ -118,7 +115,7 @@ These values (case-sensitive) are:
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,8 +125,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the key to update.
-This cmdlet constructs the fully qualified domain name (FQDN) of a key based on the name that this parameter specifies, the name of the key vault, and your current environment.
+Specifies the name of the key to update. This cmdlet constructs the fully qualified domain name
+(FQDN) of a key based on the name that this parameter specifies, the name of the key vault, and
+your current environment.
 
 ```yaml
 Type: String
@@ -151,7 +149,7 @@ To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,7 +165,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -177,8 +175,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a hash table that contains certificate tags.
-If not specified, the existings tags of the key remain unchanged.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -199,7 +198,7 @@ This cmdlet constructs the FQDN of a key vault based on the name that this param
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -245,11 +244,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String, Boolean, DateTime
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
 
 ## NOTES
 
@@ -260,4 +257,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
 
 [Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
-

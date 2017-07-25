@@ -82,6 +82,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.DiskUpdate, FROM.Disk>();
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
+                cfg.CreateMap<FROM.Disk, TO.PSDisk>();
+                cfg.CreateMap<TO.PSDisk, FROM.Disk>();
+                cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>();
+                cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
+                cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
+                cfg.CreateMap<TO.PSSnapshot, FROM.Snapshot>();
+                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
+                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
             });
         }
     }

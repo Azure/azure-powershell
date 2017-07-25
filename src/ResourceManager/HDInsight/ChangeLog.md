@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+
 ## Version 3.2.0
 * Added support to enable / disable Operations Management Suite(OMS)
 * New cmdlets

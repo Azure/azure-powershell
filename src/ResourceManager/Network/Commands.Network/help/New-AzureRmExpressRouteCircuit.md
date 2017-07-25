@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: E40CAF2F-ED57-4AC1-8B9A-E48042DD8F91
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -50,7 +50,7 @@ circuit.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,7 +65,7 @@ A list of circuit authorizations.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -80,7 +80,7 @@ The bandwidth of the circuit. This must be a value that is supported by the serv
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,7 +95,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +110,7 @@ The location of the circuit.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -140,7 +140,7 @@ A list peer configurations.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPeering]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,7 +155,7 @@ The name of the peering location supported by the service provider.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -170,7 +170,7 @@ The resource group that will contain the circuit.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -186,7 +186,7 @@ Get-AzureRmExpressRouteServiceProvider cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -203,7 +203,7 @@ you can't change the type from UnlimitedData to MeteredData.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: MeteredData, UnlimitedData
 
 Required: False
@@ -219,7 +219,7 @@ The tier of service for the circuit. Possible values for this parameter are: `St
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Standard, Premium
 
 Required: False
@@ -230,12 +230,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hastable of resource tags to be assigned to the circuit.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
