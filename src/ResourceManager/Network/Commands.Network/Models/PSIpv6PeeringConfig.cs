@@ -19,19 +19,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     using Newtonsoft.Json;
 
-    public class PSPeering : PSChildResource
+    public class PSIpv6PeeringConfig : PSChildResource
     {
         [JsonProperty(Order = 1)]
-        public string PeeringType { get; set; }
-
-        [JsonProperty(Order = 1)]
         public string State { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public int AzureASN { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public int PeerASN { get; set; }
 
         [JsonProperty(Order = 1)]
         public string PrimaryPeerAddressPrefix { get; set; }
@@ -40,34 +31,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SecondaryPeerAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string PrimaryAzurePort { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string SecondaryAzurePort { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string SharedKey { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public int VlanId { get; set; }
-
-        [JsonProperty(Order = 1)]
         public PSPeeringConfig MicrosoftPeeringConfig { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string ProvisioningState { get; set; }
-
-         [JsonProperty(Order = 1)]  
-        public string GatewayManagerEtag { get; set; }  
- 
-        [JsonProperty(Order = 1)]  
-        public string LastModifiedBy { get; set; }
-
-        [JsonProperty(Order = 1)]
         public PSRouteFilter RouteFilter { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public PSIpv6PeeringConfig Ipv6PeeringConfig { get; set; }
 
         [JsonIgnore]
         public string MicrosoftPeeringConfigText
@@ -76,22 +43,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string PeerASNText
-        {
-            get { return JsonConvert.SerializeObject(PeerASN, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-        
-
-        [JsonIgnore]
         public string RouteFilterText
         {
             get { return JsonConvert.SerializeObject(RouteFilter, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string Ipv6PeeringConfigText
-        {
-            get { return JsonConvert.SerializeObject(Ipv6PeeringConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

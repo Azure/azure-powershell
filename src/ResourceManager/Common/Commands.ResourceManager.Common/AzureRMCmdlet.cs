@@ -311,11 +311,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void BeginProcessing()
         {
             AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
-            AzureSession.Instance.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
-                () => new ResourceManagementClient(
-                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                    AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager)),
-                s => DebugMessages.Enqueue(s)));
+            if (DefaultContext != null && DefaultContext.Subscription != null)
+            {
+                AzureSession.Instance.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                    () =>
+                    {
+                        var client = new ResourceManagementClient(
+                            DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                            AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
+                        client.SubscriptionId = DefaultContext.Subscription.Id;
+                        return client;
+                    },
+                    s => DebugMessages.Enqueue(s)));
+            }
 
             base.BeginProcessing();
         }
