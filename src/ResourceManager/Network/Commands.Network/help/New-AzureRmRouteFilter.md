@@ -20,6 +20,15 @@ New-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> -Location <Str
 ## DESCRIPTION
 The New-AzureRmRouteFilter cmdlet creates an Azure route filter.
 
+## EXAMPLES
+ 
+### Example 1
+```
+PS C:\> {{ Add example code here }}
+```
+ 
+{{ Add example description here }}
+
 ## PARAMETERS
 
 ### -Force
