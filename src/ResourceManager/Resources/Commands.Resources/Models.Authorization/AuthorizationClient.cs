@@ -595,7 +595,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             ValidateRoleDefinition(roleDefinition);
 
-            PSRoleDefinition fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId.ToString());
+			PSRoleDefinition fetchedRoleDefinition = null;
+			foreach (String scope in roleDefinition.AssignableScopes)
+			{
+				fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
+				if (fetchedRoleDefinition != null)
+				{
+					break;
+				}
+			}
+
             if (fetchedRoleDefinition == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, roleDefinition.Id));
