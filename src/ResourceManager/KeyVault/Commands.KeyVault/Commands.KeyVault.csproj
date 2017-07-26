@@ -89,6 +89,7 @@
     <Compile Include="Commands\RemoveAzureKeyVaultCertificateOperation.cs" />
     <Compile Include="Commands\SetAzureKeyVaultCertificateIssuer.cs" />
     <Compile Include="Commands\SetAzureKeyVaultCertificatePolicy.cs" />
+    <Compile Include="Commands\UndoAzureKeyVaultCertificateRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultKeyRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultSecretRemoval.cs" />
