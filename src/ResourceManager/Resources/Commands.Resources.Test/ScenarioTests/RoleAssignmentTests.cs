@@ -95,6 +95,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
