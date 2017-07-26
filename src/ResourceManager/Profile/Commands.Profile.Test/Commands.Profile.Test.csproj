@@ -191,6 +191,7 @@
     <Compile Include="MockSubscriptionClientFactory.cs" />
     <Compile Include="NullClient.cs" />
     <Compile Include="ProfileController.cs" />
+    <Compile Include="ProtectedFileProviderTests.cs" />
     <Compile Include="RPRegistrationDelegatingHandlerTests.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />
     <Compile Include="SendFeedbackTests.cs" />

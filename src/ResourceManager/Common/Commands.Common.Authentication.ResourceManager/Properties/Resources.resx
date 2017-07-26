@@ -120,6 +120,10 @@
   <data name="CertificateNotFoundInStore" xml:space="preserve">
     <value>No certificate was found in the certificate store with thumbprint {0}</value>
   </data>
+  <data name="FileLockFailure" xml:space="preserve">
+    <value>Could not acquire access to file '{0}' please try again in a few minutes.</value>
+    <comment>{0} is the file path</comment>
+  </data>
   <data name="IllegalPath" xml:space="preserve">
     <value>Illegal characters in path.</value>
   </data>
@@ -129,8 +133,14 @@
   <data name="InvalidDnsName" xml:space="preserve">
     <value>"{0}" is an invalid DNS name for {1}</value>
   </data>
+  <data name="InvalidFilePath" xml:space="preserve">
+    <value>A valid file path must be provided.</value>
+  </data>
   <data name="NoInternetConnection" xml:space="preserve">
     <value>Please connect to internet before executing this cmdlet</value>
+  </data>
+  <data name="NullDataStore" xml:space="preserve">
+    <value>A valid implementation of IDataStore must be provided.</value>
   </data>
   <data name="ProfileLockReadDisposed" xml:space="preserve">
     <value>Attempted to read from the Azure PowerShell context after it was disposed.  Please reload the module and try this operation again.</value>

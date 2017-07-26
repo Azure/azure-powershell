@@ -74,6 +74,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         void RenameFile(string oldPath, string newPath);
 
         /// <summary>
+        /// Open the file for shared Read access
+        /// </summary>
+        /// <param name="path">Path to the file</param>
+        /// <returns>A FileSTream poiinting to the beginning of the file</returns>
+        Stream OpenForSharedRead(string path);
+
+        /// <summary>
+        /// Open the file for exclusive read/write access
+        /// </summary>
+        /// <param name="path">Path to the file to open</param>
+        /// <returns>A FileSTream pointing to the beginning of the file</returns>
+        Stream OpenForExclusiveWrite(string path);
+
+        /// <summary>
         /// Copy the given file to the target path.  Overwirtes the file if it exists
         /// </summary>
         /// <param name="oldPath">Source file path</param>

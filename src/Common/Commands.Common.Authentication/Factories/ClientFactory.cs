@@ -28,6 +28,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]
     public class ClientFactory : IClientFactory
     {
         private static readonly char[] uriPathSeparator = { '/' };

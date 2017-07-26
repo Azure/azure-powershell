@@ -34,7 +34,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading;
 
 #if !NETSTANDARD
