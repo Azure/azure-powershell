@@ -45,7 +45,7 @@ PS C:\>Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemove
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso permanently.
-This flag requires the user to have special 'purge' persmissions on the key vault.
+Executing this cmdlet requires the 'purge' permission, which must have been previously and explicitly granted to the user for this key vault.
 
 ### Example 4: Remove keys by using the pipeline operator
 ```
@@ -57,21 +57,6 @@ That cmdlet passes the keys that have a value of $False for the **Enabled** attr
 That cmdlet removes those keys.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -111,7 +96,7 @@ Parameter Sets: (All)
 Aliases: KeyName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -143,9 +128,24 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

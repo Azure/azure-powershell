@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
-            DateTime? created, DateTime? updated, string contentType, IDictionary<string, string> tags)
+            DateTime? created, DateTime? updated, string contentType, string deletionRecoveryLevel, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.Created = created;
             this.Updated = updated;
             this.ContentType = contentType;
+            this.RecoveryLevel = deletionRecoveryLevel;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
         }
 
@@ -60,6 +61,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string ContentType { get; set; }
 
         public Hashtable Tags { get; set; }
+
+        public string RecoveryLevel { get; private set; }
+
         public string TagsTable
         {
             get
