@@ -75,6 +75,8 @@ namespace Microsoft.Azure.Commands.Resources
                 }
             };
 
+            AuthorizationClient.ValidateScope(options.Scope, true);
+
             ConfirmAction(
                 Force.IsPresent,
                 confirmMessage,

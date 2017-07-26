@@ -62,5 +62,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RDGet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RdValidateInputParameters() 
+        {
+            var instance = ResourcesController.NewInstance;
+            instance.RunPsTest("Test-RdValidateInputParameters Get-AzureRmRoleDefinition");
+            instance.RunPsTest("Test-RdValidateInputParameters Remove-AzureRmRoleDefinition");
+            instance.RunPsTest("Test-RdValidateInputParameters2 New-AzureRmRoleDefinition");
+            instance.RunPsTest("Test-RdValidateInputParameters2 Set-AzureRmRoleDefinition");
+        }
     }
 }

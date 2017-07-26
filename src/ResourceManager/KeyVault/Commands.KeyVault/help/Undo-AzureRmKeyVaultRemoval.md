@@ -17,8 +17,8 @@ Undo-AzureRmKeyVaultRemoval [-VaultName] <String> [-ResourceGroupName] <String> 
 ```
 
 ## DESCRIPTION
-The **Undo-AzureRmKeyVaultRemoval** cmdlet will recover a previously deleted key vault.
-The recovered vault will be active after recovery
+The **Undo-AzureRmKeyVaultRemoval** cmdlet will recover a previously deleted key vault. The
+recovered vault will be active after recovery
 
 ## EXAMPLES
 
@@ -27,7 +27,9 @@ The recovered vault will be active after recovery
 PS C:\> Undo-AzureRmKeyVaultRemoval -VaultName 'MyKeyVault' -ResourceGroupName 'MyResourceGroup' -Location 'eastus2' -Tag @{"x"= "y"}
 ```
 
-This command will recover the key vault 'MyKeyVault' that was previously deleted from eastus2 region and 'MyResourceGroup' resource group, into an active and usable state. It also replaces the tags with new tag.
+This command will recover the key vault 'MyKeyVault' that was previously deleted from eastus2
+region and 'MyResourceGroup' resource group, into an active and usable state. It also replaces the
+tags with new tag.
 
 ## PARAMETERS
 
@@ -52,7 +54,7 @@ Specifies the deleted vault original Azure region.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -67,7 +69,7 @@ Specifies the name of an existing resource group in which to create the key vaul
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -77,12 +79,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hash table which represents resource tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +102,7 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
