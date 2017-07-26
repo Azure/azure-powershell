@@ -25,7 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
@@ -41,7 +41,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
     <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
@@ -80,11 +80,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.14.0.0-prerelease\lib\net45\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=10.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.10.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=11.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.11.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

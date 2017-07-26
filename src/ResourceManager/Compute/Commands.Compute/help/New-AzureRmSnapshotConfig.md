@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -12,7 +12,7 @@ Creates a configurable snapshot object.
 ## SYNTAX
 
 ```
-New-AzureRmSnapshotConfig [[-AccountType] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmSnapshotConfig [-SkuName <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Tag <Hashtable>] [-CreateOption <DiskCreateOption>]
  [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
@@ -43,29 +43,13 @@ The last command takes the snapshot object and creates a snapshot with name 'Sna
 
 ## PARAMETERS
 
-### -AccountType
-Specifies the storage account type.
-
-```yaml
-Type: StorageAccountTypes
-Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
 
 ```yaml
 Type: DiskCreateOption
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Empty, Attach, FromImage, Import, Copy, Restore
 
 Required: False
@@ -81,7 +65,7 @@ Specifies the disk encryption key object on a snapshot.
 ```yaml
 Type: KeyVaultAndSecretReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,7 +80,7 @@ Specifies the size of the disk in GB.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -111,7 +95,7 @@ Enable encryption settings.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +110,7 @@ Specifies the image reference on a snapshot.
 ```yaml
 Type: ImageDiskReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,7 +125,7 @@ Specifies the Key encryption key on a snapshot.
 ```yaml
 Type: KeyVaultAndKeyReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +140,7 @@ Specifies a location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -171,11 +155,26 @@ Specifies the OS type.
 ```yaml
 Type: OperatingSystemTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Windows, Linux
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkuName
+Specifies the Sku name of the storage account.
+
+```yaml
+Type: StorageAccountTypes
+Parameter Sets: (All)
+Aliases: AccountType
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -187,7 +186,7 @@ Specifies the source resource ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,7 +201,7 @@ Specifies the source Uri.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -217,7 +216,7 @@ Specifies the storage account ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -227,12 +226,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies that resources and resource groups can be tagged with a set of name-value pairs.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -276,22 +277,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.StorageAccountTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.String
-System.Collections.Hashtable
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.DiskCreateOption, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-Microsoft.Azure.Management.Compute.Models.ImageDiskReference
-System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
-
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Snapshot
+Microsoft.Azure.Management.Compute.Models.Snapshot
 
 ## NOTES
 
 ## RELATED LINKS
-

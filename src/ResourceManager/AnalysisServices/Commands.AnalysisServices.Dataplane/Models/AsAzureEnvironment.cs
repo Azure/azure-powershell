@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public enum AsRolloutEndpoints
         {
             AdAuthorityBaseUrl,
-            RestartEndpointFormat
+            RestartEndpointFormat,
+            LogfileEndpointFormat
         }
     }
 }

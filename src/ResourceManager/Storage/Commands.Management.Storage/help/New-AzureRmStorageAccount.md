@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 ms.assetid: A3DA1205-B8FB-4B4C-9C40-AD303D038EDF
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Creates a Storage account.
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
  [-Location] <String> [[-Kind] <String>] [[-AccessTier] <String>] [[-CustomDomainName] <String>]
  [[-UseSubDomain] <Boolean>] [[-EnableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkAcl <PSNetworkACL>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,20 +45,8 @@ The account has enabled Storage Service encryption on Blob Service.
 PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -SkuName "Standard_GRS" -EnableEncryptionService "Blob,File" -AssignIdentity
 ```
 
-This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be used to manage 
+This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be used to manage
 account keys through Azure KeyVault.
-
-### Example 4: Create a Storage Account with NetworkAcls from JSON
-```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -Type "Standard_LRS" -NetworkAcl (@{bypass="Logging,Metrics";
-    ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
-            @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
-    virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
-                        @{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2";Action="allow"});
-    defaultAction="Deny"})
-```
-
-This command creates a Storage account that has NetworkAcls property from JSON
 
 ## PARAMETERS
 
@@ -66,14 +54,14 @@ This command creates a Storage account that has NetworkAcls property from JSON
 Specifies the access tier of the Storage account that this cmdlet creates.
 The acceptable values for this parameter are: Hot and Cool.
 
-If you specify a value of BlobStorage for the *Kind* parameter, you must specify a value for the *AccessTier* parameter.
-
-If you specify a value of Storage for this *Kind* parameter, do not specify the *AccessTier* parameter.
+If you specify a value of BlobStorage for the *Kind* parameter, you must specify a value for the
+*AccessTier* parameter. If you specify a value of Storage for this *Kind* parameter, do not specify
+the *AccessTier* parameter.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -83,10 +71,12 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.```yaml
+Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,7 +92,7 @@ The default value is Storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -118,7 +108,7 @@ Azure Blob and Azure File Services are supported.
 ```yaml
 Type: EncryptionSupportServiceEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -128,10 +118,12 @@ Accept wildcard characters: False
 ```
 
 ### -EnableHttpsTrafficOnly
-Indicates whether or not the Storage Account only enable https traffic.```yaml
+Indicates whether or not the Storage Account only enable https traffic.
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,19 +175,15 @@ Accept wildcard characters: False
 Specifies the kind of Storage account that this cmdlet creates.
 The acceptable values for this parameter are:
 
-- Storage.
-General purpose storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
- 
-- BlobStorage.
-Blob storage account which supports storage of Blobs only.
- 
+- Storage. General purpose storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
+- BlobStorage. Blob storage account which supports storage of Blobs only.
 
 The default value is Storage.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -210,7 +198,7 @@ Specifies the location of the Storage account to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 5
@@ -234,26 +222,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NetworkAcl
-Specify the NetworksAcl Set to the Storage Account to create.```yaml
-Type: PSNetworkACL
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group in which to add the Storage account.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -266,16 +241,11 @@ Accept wildcard characters: False
 Specifies the SKU name of the storage account that this cmdlet creates.
 The acceptable values for this parameter are:
 
-- Standard_LRS.
-Locally-redundant storage. 
-- Standard_ZRS.
-Zone-redundant storage.
-- Standard_GRS.
-Geo-redundant storage. 
-- Standard_RAGRS.
-Read access geo-redundant storage. 
-- Premium_LRS.
-Premium locally-redundant storage.
+- Standard_LRS. Locally-redundant storage.
+- Standard_ZRS. Zone-redundant storage.
+- Standard_GRS. Geo-redundant storage.
+- Standard_RAGRS. Read access geo-redundant storage.
+- Premium_LRS. Premium locally-redundant storage.
 
 ```yaml
 Type: String
@@ -290,9 +260,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-If you specify a value of BlobStorage for the *Kind* parameter, you must specify a value for the *AccessTier* parameter.
+Key-value pairs in the form of a hash table set as tags on the server. For example:
 
-If you specify a value of Storage for this *Kind* parameter, do not specify the *AccessTier* parameter.
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -312,7 +282,7 @@ Indicates whether to enable indirect CName validation.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -337,5 +307,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmStorageAccount](./Remove-AzureRmStorageAccount.md)
 
 [Set-AzureRmStorageAccount](./Set-AzureRmStorageAccount.md)
-
-

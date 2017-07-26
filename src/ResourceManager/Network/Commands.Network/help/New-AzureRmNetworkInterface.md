@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: B2F2082F-4BAA-4FBE-8846-2D436A433570
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -67,9 +67,10 @@ The **New-AzureRmNetworkInterface** cmdlet creates an Azure network interface.
 PS C:\>New-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Network/virtualNetworks/VirtualNetwork1/subnets/Subnet1" -IpConfigurationName "IPConfiguration1" -DnsServer "8.8.8.8", "8.8.4.4"
 ```
 
-This command creates a network interface named NetworkInterface001 with a dynamically assigned private IP address from Subnet1 in the virtual network named VirtualNetwork1.
-The command also assigns two DNS servers to the network interface.
-The IPConfiguration child resource will be created automatically using the name IPConfiguration1.
+This command creates a network interface named NetworkInterface001 with a dynamically assigned
+private IP address from Subnet1 in the virtual network named VirtualNetwork1. The command also
+assigns two DNS servers to the network interface. The IPConfiguration child resource will be
+created automatically using the name IPConfiguration1.
 
 ### Example 2: Create an Azure network interface using an IP configuration object
 ```
@@ -77,12 +78,14 @@ PS C:\>$IPconfig = New-AzureRmNetworkInterfaceIpConfig -Name "IPConfig1" -Privat
 PS C:\> New-AzureRmNetworkInterface -Name "NetworkInterface1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -IpConfiguration $IPconfig
 ```
 
-This example creates a new network interface using an IP configuration object.
-The IP configuration object specifies a static private IPv4 address.
+This example creates a new network interface using an IP configuration object. The IP configuration
+object specifies a static private IPv4 address.
 
-The first command creates a network interface IP configuration named IPConfig1 and stores the configuration in the variable named $IPconfig.
+The first command creates a network interface IP configuration named IPConfig1 and stores the
+configuration in the variable named $IPconfig.
 
-The second command creates a network interface named NetworkInterface1 that uses the network interface IP configuration stored in the variable named $IPconfig.
+The second command creates a network interface named NetworkInterface1 that uses the network
+interface IP configuration stored in the variable named $IPconfig.
 
 ## PARAMETERS
 
@@ -92,7 +95,7 @@ Specifies an **ApplicationGatewayBackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -107,7 +110,7 @@ Specifies the ID of a **ApplicationGatewayBackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,7 +125,7 @@ Specifies the DNS server for the network interface.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +140,7 @@ Enables accelerated networking.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +156,7 @@ IP forwarding allows a virtual machine to receive traffic addressed to other des
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +171,7 @@ Forces the creation of the network interface even if a network interface with th
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,7 +186,7 @@ Specifies the internal DNS name label for the new network interface.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,7 +201,7 @@ Specifies the IP configuration that this cmdlet uses for the network interface.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration]
 Parameter Sets: SetByIpConfigurationResource, SetByIpConfigurationResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -213,7 +216,7 @@ Specifies the name of an IP configuration.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId, SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -228,7 +231,7 @@ Specifies a **BackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -243,7 +246,7 @@ Specifies the ID of a **BackendAddressPool** object.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -258,7 +261,7 @@ Specifies an inbound NAT rule configuration for a load balancer.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -273,7 +276,7 @@ Specifies the ID of an inbound NAT rule configuration for a load balancer.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -288,7 +291,7 @@ Specifies the region for a network interface.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -318,7 +321,7 @@ Specifies a **NetworkSecurityGroup** object.
 ```yaml
 Type: PSNetworkSecurityGroup
 Parameter Sets: SetByIpConfigurationResourceId, SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -333,7 +336,7 @@ Specifies the ID of a network security group.
 ```yaml
 Type: String
 Parameter Sets: SetByIpConfigurationResourceId, SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -348,7 +351,7 @@ Specifies a static IPv4 IP address to assign to this network interface.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId, SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -363,7 +366,7 @@ Specifies a **PublicIPAddress** object to assign to a network interface.
 ```yaml
 Type: PSPublicIpAddress
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -378,7 +381,7 @@ Specifies the ID of a **PublicIPAddress** object to assign to a network interfac
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -393,7 +396,7 @@ Specifies the name of a resource group that the network interface belongs to.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -409,7 +412,7 @@ This cmdlet creates a network interface for the subnet that this parameter speci
 ```yaml
 Type: PSSubnet
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -424,7 +427,7 @@ Specifies the ID of the subnet for which to create a network interface.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -434,12 +437,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a dictionary of tags to associate with a network interface.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -495,5 +500,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmNetworkInterface](./Remove-AzureRmNetworkInterface.md)
 
 [Set-AzureRmNetworkInterface](./Set-AzureRmNetworkInterface.md)
-
-

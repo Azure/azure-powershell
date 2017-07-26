@@ -153,5 +153,27 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGatewayAuthKey</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Key1</Label>
+                <PropertyName>Key1</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Key2</Label>
+                <PropertyName>Key2</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

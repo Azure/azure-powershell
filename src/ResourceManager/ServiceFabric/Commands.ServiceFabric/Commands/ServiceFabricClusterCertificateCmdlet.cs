@@ -22,7 +22,6 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.KeyVault.Models;
@@ -155,7 +154,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             this.Validate();
-
         }
 
         protected virtual List<string> GetPfxSrcFiles()
@@ -298,7 +296,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             if (string.IsNullOrEmpty(this.KeyVaultName))
             {
-                this.KeyVaultName = this.ResourceGroupName;
+                this.KeyVaultName = CreateDefaultKeyVaultName(this.ResourceGroupName);
             }
 
             if (ParameterSetName != ExistingKeyVault)
@@ -471,7 +469,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 WriteVerboseWithTimestamp(string.Format("Key Vault is created: {0}", vault.Id));
             }
 
-            SetCertificateName();
+            this.keyVaultCertificateName = CreateDefaultCertificateName(this.ResourceGroupName);
 
             if (!string.IsNullOrEmpty(srcPfxPath))
             {
@@ -494,10 +492,68 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        protected void SetCertificateName()
+        protected static string CreateDefaultCertificateName(string resourceGroupName)
         {
-            this.keyVaultCertificateName = string.Format("{0}{1}", this.ResourceGroupName,
-                DateTime.Now.ToString("yyyyMMddHHmmss"));
+            StringBuilder sb = new StringBuilder();
+            foreach (var c in resourceGroupName)
+            {
+                if (IsValidKeyVaultObjectChar(c))
+                {
+                    sb.Append(c);
+                }
+            }
+
+            return string.Format("{0}{1}", sb.ToString(), DateTime.Now.ToString("yyyyMMddHHmmss"));
+        }
+
+        protected static string CreateDefaultKeyVaultName(string resourceGroupName)
+        {
+            StringBuilder sb = new StringBuilder();
+            var targetCopy = resourceGroupName;
+            while (sb.Length < 3)
+            {
+                foreach (var c in targetCopy)
+                {
+                    if (IsValidKeyVaultChar(c))
+                    {
+                        sb.Append(c);
+                    }
+                }
+
+                // resource group name can't be used for key vault name
+                // use random string instread
+                if (sb.Length == 0)
+                {
+                    targetCopy = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
+                }
+            }
+            
+            if (sb.Length > 24)
+            {
+                return sb.ToString().Substring(0, 24);
+            }
+
+            return sb.ToString();
+        }
+
+        private static bool IsValidKeyVaultChar(char name)
+        {
+            if (name >= 'a' && name <= 'z') return true;
+            if (name >= 'A' && name <= 'Z') return true;
+            if (name >= '0' && name <= '9') return true;
+            if (name == '-') return true;
+
+            return false;
+        }
+
+        private static bool IsValidKeyVaultObjectChar(char name)
+        {
+            if (name >= 'a' && name <= 'z') return true;
+            if (name >= 'A' && name <= 'Z') return true;
+            if (name >= '0' && name <= '9') return true;
+            if (name == '-') return true;
+
+            return false;
         }
 
         private string GetThumbprintFromSecret(string secretUrl)

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             {
                 DataSource = dataSource,
                 FailedLocationCount = this.FailedLocationCount,
-                WindowSize = this.WindowSize,
+                WindowSize = this.WindowSize
             };
         }
 
