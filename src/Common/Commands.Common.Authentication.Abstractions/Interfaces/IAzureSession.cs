@@ -79,6 +79,36 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         string ARMProfileFile { get; set; }
 
         /// <summary>
+        /// Try to get the shared component registered in this session with the given type and name
+        /// </summary>
+        /// <typeparam name="T">The type of the custom component</typeparam>
+        /// <param name="componentName">The name of the custom component</param>
+        /// <param name="component">If the component is found, the registered component, otherwise null</param>
+        /// <returns>True if the component is found, False otherwise</returns>
+        bool TryGetComponent<T>(string componentName, out T component) where T : class;
+
+        /// <summary>
+        /// Register the given shared component in this session, if it is not already registered
+        /// </summary>
+        /// <typeparam name="T">The type of the shared component</typeparam>
+        /// <param name="componentName">The name of the shared component</param>
+        /// <param name="componentInitializer"></param>
+        void RegisterComponent<T>(string componentName, Func<T> componentInitializer) where T : class;
+
+        /// <summary>
+        /// Register the given shared componente
+        /// </summary>
+        /// <typeparam name="T">The type of the shared component</typeparam>
+        /// <param name="componentName">The name of the shared component</param>
+        /// <param name="componentInitializer"></param>
+        /// <param name="overwrite"></param>
+        void RegisterComponent<T>(string componentName, Func<T> componentInitializer, bool overwrite) where T: class;
+
+        void UnregisterComponent<T>(string componentName) where T: class;
+
+        void ClearComponents();
+
+        /// <summary>
         /// The trace level for authentication
         /// </summary>
         TraceLevel AuthenticationLegacyTraceLevel { get; set; }
