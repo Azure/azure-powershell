@@ -240,5 +240,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Propert
                 return ResourceManager.GetString("SessionNotInitialized", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot read the file at &apos;{0}&apos;. Please ensure that you have appropriate access to this file and try executing this cmdlet again in a few minutes..
+        /// </summary>
+        internal static string UnreadableStream {
+            get {
+                return ResourceManager.GetString("UnreadableStream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot write to the file at &apos;{0}&apos;. Please ensure that you have appropriate access to this file and try executing this cmdlet again in a few minutes..
+        /// </summary>
+        internal static string UnwritableStream {
+            get {
+                return ResourceManager.GetString("UnwritableStream", resourceCulture);
+            }
+        }
     }
 }

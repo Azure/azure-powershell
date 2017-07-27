@@ -18,11 +18,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Xml.Serialization;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
 using System.Collections.Concurrent;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     [Serializable]
     public class AzureRmProfile : IAzureContextContainer
     {
-        public const string DefaultContextKey = "Default";
+        public string DefaultContextKey { get; set; } = "Default";
         /// <summary>
         /// Gets or sets Azure environments.
         /// </summary>
@@ -112,26 +112,38 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (AzureSession.Instance.DataStore.FileExists(ProfilePath))
             {
                 string contents = AzureSession.Instance.DataStore.ReadFileAsText(ProfilePath);
-                var oldProfile = JsonConvert.DeserializeObject<LegacyAzureRmProfile>(contents);
-                AzureRmProfile profile;
-                if (!oldProfile.TryConvert(out profile))
-                {
-                    profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents, new AzureRmProfileConverter()) as AzureRmProfile;
-                }
-                Debug.Assert(profile != null);
-                EnvironmentTable.Clear();
-                foreach (var environment in profile.EnvironmentTable)
-                {
-                    EnvironmentTable[environment.Key] = environment.Value;
-                }
-
-                Contexts.Clear();
-                foreach (var context in profile.Contexts)
-                {
-                    this.Contexts.Add(context.Key, context.Value);
-                }
+                LoadImpl(contents);
             }
         }
+
+        private void Load(IFileProvider provider)
+        {
+            this.ProfilePath = provider.FilePath;
+            LoadImpl(provider.Reader.ReadToEnd());
+        }
+
+        private void LoadImpl(string contents)
+        {
+            var oldProfile = JsonConvert.DeserializeObject<LegacyAzureRmProfile>(contents);
+            AzureRmProfile profile;
+            if (!oldProfile.TryConvert(out profile))
+            {
+                profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents, new AzureRmProfileConverter()) as AzureRmProfile;
+            }
+            Debug.Assert(profile != null);
+            EnvironmentTable.Clear();
+            foreach (var environment in profile.EnvironmentTable)
+            {
+                EnvironmentTable[environment.Key] = environment.Value;
+            }
+
+            Contexts.Clear();
+            foreach (var context in profile.Contexts)
+            {
+                this.Contexts.Add(context.Key, context.Value);
+            }
+        }
+
 
         /// <summary>
         /// Creates new instance of AzureRMProfile.
@@ -157,6 +169,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
+        /// Initializes a new instance of AzureRmProfile using a specialized file provider
+        /// </summary>
+        /// <param name="provider">The file provider that allows retrieving profile contents</param>
+        public AzureRmProfile(IFileProvider provider)
+        {
+            Load(provider);
+        }
+
+        /// <summary>
         /// Writes profile to the disk it was opened from disk.
         /// </summary>
         public void Save()
@@ -178,7 +199,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 return;
             }
 
-            // Removing predefined environments
+            using (var provider = ProtectedFileProvider.CreateFileProvider(path, FileProtection.ExclusiveWrite))
+            {
+                Save(provider);
+            }
+        }
+
+        /// <summary>
+        /// Writes the profile using the specified file provider
+        /// </summary>
+        /// <param name="provider">The file provider used to save the profile</param>
+        public void Save(IFileProvider provider)
+        {
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
             {
                 EnvironmentTable.Remove(env);
@@ -188,14 +220,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 string contents = ToString();
                 string diskContents = string.Empty;
-                if (AzureSession.Instance.DataStore.FileExists(path))
-                {
-                    diskContents = AzureSession.Instance.DataStore.ReadFileAsText(path);
-                }
+                diskContents = provider.Reader.ReadToEnd();
 
                 if (diskContents != contents)
                 {
-                    AzureSession.Instance.DataStore.WriteFile(path, contents);
+                    provider.Writer.Write(contents);
+                    provider.Writer.Flush();
                 }
             }
             finally

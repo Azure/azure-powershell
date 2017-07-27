@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="AzureRmProfile.cs" />
     <Compile Include="AzureRmProfileConverter.cs" />
+    <Compile Include="IFileProvider.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

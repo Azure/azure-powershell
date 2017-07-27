@@ -17,6 +17,7 @@ using System.IO;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
@@ -29,17 +30,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
     /// <summary>
     /// Protect access to a shared file.  File can be accessed in ReadOnly or ReadWrite mode
     /// </summary>
-    public abstract class ProtectedFileProvider : IDisposable
+    public abstract class ProtectedFileProvider : IFileProvider, IDisposable
     {
         const int MaxTries = 3;
         static readonly TimeSpan RetryInterval = TimeSpan.FromSeconds(5);
         protected Stream _stream;
         object _initializationLock = new object();
-        protected string FilePath { get; set; }
+        public string FilePath { get; set; }
 
         protected IDataStore DataStore { get; set; }
 
-        public Stream ProtectedStream {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Stream Stream {
             get
             {
                 if (_stream == null)
@@ -48,6 +52,40 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 }
 
                 return _stream;
+            }
+        }
+
+        /// <summary>
+        /// A reader for the stream associated with this file provider
+        /// </summary>
+        public StreamReader Reader
+        {
+            get
+            {
+                if (Stream == null || !Stream.CanRead || !Stream.CanSeek)
+                {
+                    throw new IOException(string.Format(Resources.UnreadableStream, FilePath));
+                }
+
+                Stream.Seek(0, SeekOrigin.Begin);
+                return new StreamReader(Stream, Encoding.UTF8);
+            }
+        }
+
+        /// <summary>
+        /// A reader for the stream associated with this file provider
+        /// </summary>
+        public StreamWriter Writer
+        {
+            get
+            {
+                if (Stream == null ||!Stream.CanWrite || !Stream.CanSeek)
+                {
+                    throw new IOException(string.Format(Resources.UnwritableStream, FilePath));
+                }
+
+                Stream.Seek(0, SeekOrigin.Begin);
+                return new StreamWriter(Stream, Encoding.UTF8);
             }
         }
 

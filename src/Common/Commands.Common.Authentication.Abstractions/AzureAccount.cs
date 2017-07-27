@@ -105,9 +105,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         AccessToken = "AccessToken",
 
         /// <summary>
+        /// Access token for AD Graph service.
+        /// </summary>
+        GraphAccessToken = "GraphAccessToken",
+
+        /// <summary>
+        /// Access token for KeyVault service.
+        /// </summary>
+        KeyVaultAccessToken = "KeyVault",
+
+        /// <summary>
         /// Thumbprint for associated certificate
         /// </summary>
         CertificateThumbprint = "CertificateThumbprint";
+
 
         }
     }

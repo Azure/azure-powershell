@@ -178,4 +178,12 @@
   <data name="SessionNotInitialized" xml:space="preserve">
     <value>The Azure PowerShell session has not been properly initialized.  Please import the module and try again.</value>
   </data>
+  <data name="UnreadableStream" xml:space="preserve">
+    <value>Cannot read the file at '{0}'. Please ensure that you have appropriate access to this file and try executing this cmdlet again in a few minutes.</value>
+    <comment>{0} is the file path</comment>
+  </data>
+  <data name="UnwritableStream" xml:space="preserve">
+    <value>Cannot write to the file at '{0}'. Please ensure that you have appropriate access to this file and try executing this cmdlet again in a few minutes.</value>
+    <comment>{0} is the file path</comment>
+  </data>
 </root>

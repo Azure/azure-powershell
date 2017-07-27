@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.AccessToken)
             {
-                return new TokenCloudCredentials(context.Subscription.Id.ToString(), context.Account.GetProperty(AzureAccount.Property.AccessToken));
+                return new TokenCloudCredentials(context.Subscription.Id.ToString(), GetEndpointToken(context.Account, targetEndpoint));
             }
 
             string tenant = null;
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             if (context.Account.Type == AzureAccount.AccountType.AccessToken)
             {
-                return new TokenCredentials(context.Account.GetProperty(AzureAccount.Property.AccessToken));
+                return new TokenCredentials(GetEndpointToken(context.Account, targetEndpoint));
             }
 
             string tenant = null;
@@ -345,6 +345,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 ValidateAuthority = !environment.OnPremise,
                 TokenCache = tokenCache
             };
+        }
+
+        private string GetEndpointToken(IAzureAccount account, string targetEndpoint)
+        {
+            string tokenKey = AzureAccount.Property.AccessToken;
+            if (targetEndpoint == AzureEnvironment.Endpoint.Graph)
+            { 
+                tokenKey = AzureAccount.Property.GraphAccessToken;
+            }
+
+            return account.GetProperty(tokenKey);
         }
     }
 }

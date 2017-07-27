@@ -36,23 +36,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 MemoryDataStore store = new MemoryDataStore();
                 string protectedFile = "myFile.txt";
-                using (var tempStream = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream)
-                using (var stream1 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream)
-                using (var stream2 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream)
-                using (var stream3 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream)
-                using (var stream4 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream)
+                using (var tempStream = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream)
+                using (var stream1 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream)
+                using (var stream2 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream)
+                using (var stream3 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream)
+                using (var stream4 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream)
                 {
                     Assert.NotNull(tempStream);
                     Assert.NotNull(stream1);
                     Assert.NotNull(stream2);
                     Assert.NotNull(stream3);
                     Assert.NotNull(stream4);
-                    Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).ProtectedStream);
-                    var stream5 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream;
+                    Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).Stream);
+                    var stream5 = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream;
                     stream5.Close();
                 }
 
-                Assert.NotNull(ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).ProtectedStream);
+                Assert.NotNull(ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).Stream);
             }
             finally
             {
@@ -70,13 +70,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 MemoryDataStore store = new MemoryDataStore();
                 string protectedFile = "myFile.txt";
-                using (var tempStream = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).ProtectedStream)
+                using (var tempStream = ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).Stream)
                 {
-                    Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).ProtectedStream);
-                    Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream);
+                    Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store).Stream);
+                    Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream);
                 }
 
-                Assert.NotNull(ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).ProtectedStream);
+                Assert.NotNull(ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store).Stream);
             }
             finally
             {
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             try
             {
 
-                Assert.Contains(protectedFile, Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store.Object).ProtectedStream).Message);
+                Assert.Contains(protectedFile, Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.SharedRead, store.Object).Stream).Message);
                 store.Verify(d => d.OpenForSharedRead(It.IsAny<string>()), Times.Exactly(4));
-                Assert.Contains(protectedFile, Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store.Object).ProtectedStream).Message);
+                Assert.Contains(protectedFile, Assert.Throws<UnauthorizedAccessException>(() => ProtectedFileProvider.CreateFileProvider(protectedFile, FileProtection.ExclusiveWrite, store.Object).Stream).Message);
                 store.Verify(d => d.OpenForExclusiveWrite(It.IsAny<string>()), Times.Exactly(4));
             }
             finally
