@@ -598,7 +598,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 			PSRoleDefinition fetchedRoleDefinition = null;
 			foreach (String scope in roleDefinition.AssignableScopes)
 			{
-				ValidateScope(scope);
 				fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
 				if (fetchedRoleDefinition != null)
 				{
@@ -724,10 +723,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }
 
-            foreach(String scope in roleDefinition.AssignableScopes)
-            {
-                ValidateScope(scope);
-            }
         }
 
         public static void ValidateScope(string scope)
