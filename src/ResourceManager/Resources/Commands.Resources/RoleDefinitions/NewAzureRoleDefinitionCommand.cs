@@ -61,11 +61,6 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 role = Role;
             }
-			
-			foreach(string scope in role.AssignableScopes)
-			{
-				AuthorizationClient.ValidateScope(scope);
-			}
 
             foreach(var scope in role.AssignableScopes) {
                 AuthorizationClient.ValidateScope(scope, false);
