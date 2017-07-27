@@ -32,7 +32,15 @@ This command imports data from the blob that is specified by the SAS URL into Az
 ## PARAMETERS
 
 ### -Files
-Specifies the SAS URLs of blobs whose content this cmdlet imports into the cache.
+Specifies the SAS URLs of blobs whose content this cmdlet imports into the cache. You can generate the SAS URLs using the following PowerShell commands:
+
+```
+$storageAccountContext = New-AzureStorageContext -StorageAccountName "storageName" -StorageAccountKey "key"
+
+$sasKeyForBlob = New-AzureStorageBlobSASToken -Container “containerName” -blob “blobName” -Permission "rwdl" -StartTime ([System.DateTime]::Now).AddMinutes(-15) -ExpiryTime ([System.DateTime]::Now).AddHours(5) -Context $storageAccountContext -FullUri
+
+Import-AzureRmRedisCache -ResourceGroupName "ResourceGroupName" -Name "cacheName" -Files ($sasKeyForBlob) -Force
+```
 
 ```yaml
 Type: String[]
