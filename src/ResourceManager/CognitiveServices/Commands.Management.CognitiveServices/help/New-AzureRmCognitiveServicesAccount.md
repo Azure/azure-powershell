@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -19,13 +19,14 @@ New-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <Strin
 ```
 
 ## DESCRIPTION
-The **New-AzureRmCognitiveServicesAccount** cmdlet creates a Cognitive Services account with the specified type (ComputerVision, Emotion, and so on) and SKU (that is, service tier).
+The **New-AzureRmCognitiveServicesAccount** cmdlet creates a Cognitive Services account with the
+specified type and SKU.
 
 ## EXAMPLES
 
 ### 1:
 ```
-
+New-AzureRmCognitiveServicesAccount -ResourceGroupName 'resourcegroup1' -name 'MyAccountName' -Type TextTranslation -SkuName F0 -Location 'usgovvirginia'
 ```
 
 ## PARAMETERS
@@ -36,7 +37,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -51,7 +52,7 @@ Specifies the location in which to create the account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -82,7 +83,7 @@ The resource group must already exist.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -102,12 +103,12 @@ The acceptable values for this parameter are:
 - S3
 - S4
 
-For more information, see Cognitive Service APIshttps://www.microsoft.com/cognitive-services/en-us/apis (https://www.microsoft.com/cognitive-services/en-us/apis).
+For more information, see [Cognitive Service APIs](https://www.microsoft.com/cognitive-services/en-us/apis).
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -202,5 +203,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmCognitiveServicesAccount](./Remove-AzureRmCognitiveServicesAccount.md)
 
 [Set-AzureRmCognitiveServicesAccount](./Set-AzureRmCognitiveServicesAccount.md)
-
-

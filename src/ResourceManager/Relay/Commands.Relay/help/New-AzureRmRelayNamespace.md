@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -17,14 +17,28 @@ New-AzureRmRelayNamespace [-ResourceGroupName] <String> [-NamespaceName] <String
 ```
 
 ## DESCRIPTION
-The **New-AzureRmRelayNamespace** cmdlet creates a new Relay namespace. Once created, the namespace resource manifest is immutable. This operation is idempotent.
+
+The **New-AzureRmRelayNamespace** cmdlet creates a new Relay namespace. Once created, the namespace
+resource manifest is immutable.
 
 ## EXAMPLES
 
 ### Example 1
 ```
 PS C:\> New-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Location "West US" -Tag @{Tag1="Tag1Value"}
+
+ProvisioningState  : Succeeded
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:testnamespace-relay1
+Location           : West US
+Tags               : {[tag1, Tag1Value]}
+Id                 : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
+Name               : TestNameSpace-Relay1
+Type               : Microsoft.Relay/namespaces
 ```
+
 Creates a new Relay namespace within the specified resource group.
 
 ## PARAMETERS
@@ -35,7 +49,7 @@ Relay Namespace Location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -50,7 +64,7 @@ Relay Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -65,7 +79,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -75,12 +89,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,20 +157,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
-
-ProvisioningState  : Succeeded
-CreatedAt          : 4/12/2017 12:38:47 AM
-UpdatedAt          : 4/12/2017 12:39:10 AM
-ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
-MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
-Location           : West US
-Tags               : {[tag1, Tag1Value]}
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
-Name               : TestNameSpace-Relay1
-Type               : Microsoft.Relay/namespaces
+Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-
