@@ -74,7 +74,7 @@ PS C:\> Write-Host "Secret Value is: " $secret.SecretValueText
 
 These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
 
-### Example 6: Get all the keys that have been deleted but not purged for this key vault.
+### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```
 PS C:\>Get-AzureKeyVaultSecret -VaultName 'Contoso' -InRemovedState
 ```
@@ -91,19 +91,6 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ## PARAMETERS
 
-### -InRemovedState
-Specifies whether to show the previously deleted secrets in the output.```yaml
-Type: SwitchParameter
-Parameter Sets: ByDeletedSecrets
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a secret.
 The current version of a secret is the first one on the list.
@@ -114,6 +101,19 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 ```yaml
 Type: SwitchParameter
 Parameter Sets: BySecretVersions
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output.```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedSecrets
 Aliases: 
 
 Required: True

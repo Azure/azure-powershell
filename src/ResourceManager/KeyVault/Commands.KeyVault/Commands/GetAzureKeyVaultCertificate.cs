@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
-        [Parameter( Mandatory = true,
-                   Position = 0,
-                   ValueFromPipelineByPropertyName = true,
-                   ParameterSetName = ByDeletedCertificateParameterSet,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -70,11 +65,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    ParameterSetName = ByCertificateVersionsParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
-        [Parameter( Mandatory = true,
-                   Position = 0,
-                   ValueFromPipelineByPropertyName = true,
-                   ParameterSetName = ByDeletedCertificateParameterSet,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }

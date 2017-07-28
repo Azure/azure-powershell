@@ -17,6 +17,11 @@ Gets a certificate from a key vault.
 Get-AzureKeyVaultCertificate [-VaultName] <String> [<CommonParameters>]
 ```
 
+### ByDeletedCertificates
+```
+Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-InRemovedState] [<CommonParameters>]
+```
+
 ### ByCertificateName
 ```
 Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [[-Version] <String>] [<CommonParameters>]
@@ -63,6 +68,21 @@ Updated     : 2/8/2016 11:21:45 PM
 
 This command gets the certificate named TestCert01 from the key vault named ContosoKV01.
 
+### Example 2: Get all the certificates that have been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -InRemovedState
+```
+
+This command gets all the certificates that have been previously deleted, but not purged, in the key vault named Contoso.
+
+### Example 3: Gets the certificate MyCert that has been deleted but not purged for this key vault.
+```
+PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
+```
+
+This command gets the certificate named 'MyCert' that has been previously deleted, but not purged, in the key vault named Contoso.
+This command will return metadata such as the deletion date, and the scheduled purging date of this deleted certificate.
+
 ## PARAMETERS
 
 ### -IncludeVersions
@@ -80,12 +100,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to include previously deleted certificates in the output.```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedCertificates
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the certificate to get.
 
 ```yaml
 Type: String
-Parameter Sets: ByCertificateName, ByCertificateVersions
+Parameter Sets: ByDeletedCertificates, ByCertificateName, ByCertificateVersions
 Aliases: CertificateName
 
 Required: True
@@ -140,3 +173,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Import-AzureKeyVaultCertificate](./Import-AzureKeyVaultCertificate.md)
 
+[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
+
+[Undo-AzureKeyVaultSecretCertificate](./Undo-AzureKeyVaultSecretCertificate.md)

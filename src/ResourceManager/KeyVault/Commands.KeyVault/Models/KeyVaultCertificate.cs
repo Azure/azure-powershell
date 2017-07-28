@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Created { get; internal set; }
         public DateTime? Updated { get; internal set; }
 
+        public string RecoveryLevel { get; private set; }
+
         public KeyVaultCertificate( CertificateBundle certificateBundle )
         {
             if ( certificateBundle == null )
@@ -67,6 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 Created = certificateBundle.Attributes.Created;
                 Enabled = certificateBundle.Attributes.Enabled;
                 Updated = certificateBundle.Attributes.Updated;
+                RecoveryLevel = certificateBundle.Attributes.RecoveryLevel;
             }
 
             if ( certificateBundle.Tags != null )
