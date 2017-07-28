@@ -190,7 +190,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.TestAzureRmRelayNameTests\CheckNameAvailability.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.WcfRelayTests\WcfRelayCRUD.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Relay.Test.ScenarioTests.WcfRelayTests\WcfRelayCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
