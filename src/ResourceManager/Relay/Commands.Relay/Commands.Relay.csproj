@@ -160,7 +160,6 @@
     <None Include="..\AzureRM.Relay.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="app.config" />
     <None Include="help\AzureRM.Relay.md" />
     <None Include="help\Get-AzureRmRelayAuthorizationRule.md" />
     <None Include="help\Get-AzureRmRelayHybridConnection.md" />
