@@ -171,7 +171,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (permissionsResult != null)
             {
-                return permissionsResult.Select(p => p.ToPSPermission()).ToList();
+                return permissionsResult
+#if !NETSTANDARD
+                    //.Permissions
+#endif
+                    .Select(p => p.ToPSPermission()).ToList();
             }
 
             return null;
