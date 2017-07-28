@@ -49,7 +49,17 @@ namespace Microsoft.Azure.Commands.Relay.Models
             Id = authorizationrule.Id;
             Name = authorizationrule.Name;
             Type = authorizationrule.Type;
-            Rights = authorizationrule.Rights;
+
+            Rights = new List<string>();
+
+            foreach (AccessRights teset in authorizationrule.Rights)
+            {
+                Rights.Add(teset.ToString());
+            }
+            //Rights = authorizationrule.Rights.Select(x => Enum.Parse(typeof(AccessRights?), x))
+            //                .Cast<AccessRights?>()
+            //                .ToList()
+           // Rights = authorizationrule.Rights;
         }
 
 

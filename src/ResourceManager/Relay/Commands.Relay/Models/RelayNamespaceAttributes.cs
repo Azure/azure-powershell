@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
             Name = relaynamespace.Name;
             Type = relaynamespace.Type;
             Tags = relaynamespace.Tags;
-            ProvisioningState = relaynamespace.ProvisioningState;
+            ProvisioningState = relaynamespace.ProvisioningState.ToString();
             CreatedAt = relaynamespace.CreatedAt;
             UpdatedAt = relaynamespace.UpdatedAt;
             ServiceBusEndpoint = relaynamespace.ServiceBusEndpoint;
