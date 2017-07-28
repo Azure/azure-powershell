@@ -24,6 +24,61 @@ function Test-ExpressRouteBGPServiceCommunities
 	Assert-NotNull $communities[0].BgpCommunities
 	Assert-AreEqual true $communities[0].BgpCommunities[0].IsAuthorizedToUse
 }
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitCRUD.
+#>
+function Test-ExpressRouteRouteFilters
+{
+	$rgname = "filter"
+    $location = "westus"
+    $filterName = "filter"
+    $ruleName = "rule"
+
+    try
+    {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location
+
+      # Create the route filter
+      $filter = New-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname -Location $location -Force
+
+      #verification
+      Assert-AreEqual $rgName $filter.ResourceGroupName
+      Assert-AreEqual $filterName $filter.Name
+      Assert-NotNull $filter.Location
+      Assert-AreEqual 0 @($filter.Rules).Count
+
+	  $rule = New-AzureRmRouteFilterRuleConfig -Name $ruleName -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010" -Force
+	  $filter = Get-AzureRmRouteFilter -Name filter -ResourceGroupName filter
+	  $filter.Rules.Add($rule)
+	  $filter = Set-AzureRmRouteFilter -RouteFilter $filter -Force
+
+	  #verification
+      Assert-AreEqual $rgName $filter.ResourceGroupName
+      Assert-AreEqual $filterName $filter.Name
+      Assert-NotNull $filter.Location
+      Assert-AreEqual 1 @($filter.Rules).Count
+
+	  $filter = Get-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname
+	  $filter.Rules.Clear()
+	  $filter = Set-AzureRmRouteFilter -RouteFilter $filter -Force
+
+	  #verification
+      Assert-AreEqual $rgName $filter.ResourceGroupName
+      Assert-AreEqual $filterName $filter.Name
+      Assert-NotNull $filter.Location
+      Assert-AreEqual 0 @($filter.Rules).Count
+
+    }
+    finally
+    {
+    # Cleanup
+      Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
@@ -263,14 +318,16 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
     $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
     $location = Get-ProviderLocation $resourceTypeParent
     $location = "brazilSouth"
+	$filterName = "filter"
+	$ruleName = "rule"
     try 
     {
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation    
         # Create the ExpressRouteCircuit with peering
         $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 223 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC -LegacyMode $true 
-        $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering
-    
+        $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering	
+
         #verification
         Assert-AreEqual $rgName $circuit.ResourceGroupName
         Assert-AreEqual $circuitName $circuit.Name
@@ -295,6 +352,15 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
 		Assert-AreEqual "AFRINIC" $circuit.Peerings[0].MicrosoftPeeringConfig.RoutingRegistryName
 		Assert-AreEqual 2 @($circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
 		Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+
+	    # create route filter 
+		$rule = New-AzureRmRouteFilterRuleConfig -Name $ruleName -Access Allow -RouteFilterRuleType Community -CommunityList "12076:5010" -Force	
+		$filter = New-AzureRmRouteFilter -Name $filterName -ResourceGroupName $rgname -Location $location -Rule $rule -Force
+		
+		# update circuit with filter 
+		$circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+		$circuit.Peerings[0].RouteFilter = $filter
+		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 
 		# get peering
 		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
