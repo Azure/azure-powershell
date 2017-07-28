@@ -59,11 +59,5 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResource",
             HelpMessage = "RouteTable")]
         public PSRouteTable RouteTable { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Private Access Service")]
-        public List<string> PrivateAccessService { get; set; }
     }
 }
