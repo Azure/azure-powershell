@@ -25,6 +25,7 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Security;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -201,16 +202,25 @@ namespace Microsoft.Azure.Commands.Profile
                     AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
                 }
 
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+                AzureRmProfile diskProfile = null;
+                using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
+                {
+                    if (this.GetAutosaveSetting())
+                    {
+                        diskProfile = new AzureRmProfile(provider);
+                    }
 
-                WriteObject((PSAzureProfile) profileClient.Login(
-					azureAccount, 
-					_environment, 
-					TenantId, 
-					subscriptionId,
-                    subscriptionName, 
-                    password, 
-                    (s) => WriteWarning(s)));
+                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>(), diskProfile);
+
+                    WriteObject((PSAzureProfile)profileClient.Login(
+                        azureAccount,
+                        _environment,
+                        TenantId,
+                        subscriptionId,
+                        subscriptionName,
+                        password,
+                        (s) => WriteWarning(s)));
+                }
             }
         }
 
@@ -224,7 +234,14 @@ namespace Microsoft.Azure.Commands.Profile
             {
 #endif
                 AzureSessionInitializer.InitializeAzureSession();
-                ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+                if (this.GetAutosaveSetting())
+                {
+                    ProtectedProfileProvider.InitializeResourceManagerProfile();
+                }
+                else
+                {
+                    ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+                }
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {

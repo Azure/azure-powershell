@@ -118,6 +118,7 @@
     <Compile Include="Interfaces\IAccessToken.cs" />
     <Compile Include="Interfaces\IExtensibleSettings.cs" />
     <Compile Include="Interfaces\IExtensibleModel.cs" />
+    <Compile Include="Interfaces\IFileProvider.cs" />
     <Compile Include="Interfaces\IHyakAuthenticationFactory.cs" />
     <Compile Include="Interfaces\IAzureSession.cs" />
     <Compile Include="Interfaces\IAuthenticationFactory.cs" />

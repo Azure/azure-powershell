@@ -23,6 +23,7 @@ using System.Xml.Serialization;
 using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
 using System.Collections.Concurrent;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     /// Represents Azure Resource Manager profile structure with default context, environments and token cache.
     /// </summary>
     [Serializable]
-    public class AzureRmProfile : IAzureContextContainer
+    public class AzureRmProfile : IAzureContextContainer, IProfileOperations
     {
         public string DefaultContextKey { get; set; } = "Default";
         /// <summary>
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        public IDictionary<string, string> ExtendedProperties { get; set;} = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        public IDictionary<string, string> ExtendedProperties { get; set; } = new ConcurrentDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
         private void Load(string path)
         {
@@ -140,6 +141,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             Contexts.Clear();
             foreach (var context in profile.Contexts)
             {
+                context.Value.TokenCache = AzureSession.Instance.TokenCache;
                 this.Contexts.Add(context.Key, context.Value);
             }
         }
@@ -259,6 +261,109 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 EnvironmentTable.Add(environment.Key, environment.Value);
             }
+        }
+
+        AzureRmProfile Profile { get { return this; } }
+
+        public bool TryAddContext(string name, IAzureContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            bool result = false;
+            if (!Contexts.ContainsKey(name))
+            {
+                Contexts[name] = context;
+                result = true;
+            }
+
+            return result;
+        }
+
+        public string GetContextName(IAzureContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            string name = null;
+            var foundContext = Contexts.FirstOrDefault((c) =>
+                c.Value != null
+                && (
+                    (c.Value.Account != null && context.Account != null && string.Equals(c.Value.Account.Id, context.Account.Id, StringComparison.OrdinalIgnoreCase))
+                    || (c.Value.Account == context.Account))
+                && (
+                    (c.Value.Tenant != null && context.Tenant != null && c.Value.Tenant.GetId() == context.Tenant.GetId())
+                    || (c.Value.Tenant == context.Tenant))
+                && (
+                    (c.Value.Subscription != null && context.Subscription != null && c.Value.Subscription.GetId() == context.Subscription.GetId())
+                    || (c.Value.Subscription == context.Subscription)));
+            if (!string.IsNullOrEmpty(foundContext.Key))
+            {
+                name = foundContext.Key;
+            }
+            else if ((context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id)) || context.Subscription != null)
+            {
+                List<string> components = new List<string>();
+                if (context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id))
+                {
+                    components.Add(context.Account.Id);
+                }
+
+                if (context.Subscription != null)
+                {
+                    components.Add(context.Subscription.GetId().ToString());
+                }
+
+                name = string.Format("[{0}]", string.Join(", ", components));
+            }
+
+            return name;
+        }
+
+        public bool TryRemoveContext(string name)
+        {
+            return Contexts.Remove(name);
+        }
+
+        public bool TryRenameContext(string sourceName, string targetName)
+        {
+            bool result = false;
+
+            if (Contexts.ContainsKey(sourceName) && !Contexts.ContainsKey(targetName))
+            {
+                Contexts[targetName] = Contexts[sourceName];
+                result = TryRemoveContext(sourceName);
+            }
+
+            return result;
+        }
+
+        public bool TrySetContext(string name, IAzureContext context)
+        {
+            bool result = false;
+            if (Contexts.ContainsKey(name))
+            {
+                Contexts[name] = context;
+                result = true;
+            }
+
+            return result;
+        }
+
+        public bool TrySetDefaultContext(string name)
+        {
+            bool result = false;
+            if (Contexts.ContainsKey(name))
+            {
+                DefaultContextKey = name;
+                result = true;
+            }
+
+            return result;
         }
     }
 }

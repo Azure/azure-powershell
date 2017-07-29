@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         static IAzureSession _instance;
         static bool _initialized = false;
         static ReaderWriterLockSlim sessionLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+
+        private ReaderWriterLockSlim _registryLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+        private IDictionary<ComponentKey, object> _componentRegistry = new Dictionary<ComponentKey, object>(new ComponentKeyComparer());
+        
         /// <summary>
         /// Gets or sets Azure client factory.
         /// </summary>
@@ -62,6 +66,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// Gets or sets profile file name.
         /// </summary>
         public string ProfileFile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the context container file for azure resource manager
+        /// </summary>
+        public string ResourceManagerContextFile { get; set; }
 
         /// <summary>
         /// Gets or sets file name for the migration backup.
@@ -166,6 +175,182 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static void Initialize(Func<IAzureSession> instanceCreator)
         {
             Initialize(instanceCreator, false);
+        }
+
+        public bool TryGetComponent<T>(string componentName, out T component) where T : class
+        {
+            try
+            {
+                _registryLock.EnterReadLock();
+                try
+                {
+                    var key = new ComponentKey(componentName, typeof(T));
+                    component = null;
+                    if (_componentRegistry.ContainsKey(key))
+                    {
+                        component = _componentRegistry[key] as T;
+                    }
+
+                    return component != null;
+                }
+                finally
+                {
+                    _registryLock.ExitReadLock();
+                }
+            }
+            catch (LockRecursionException lockException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockReadRecursion, lockException);
+            }
+            catch (ObjectDisposedException disposedException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockReadDisposed, disposedException);
+            }
+        }
+
+        public void RegisterComponent<T>(string componentName, Func<T> componentInitializer) where T : class
+        {
+            RegisterComponent(componentName, componentInitializer, false); ;
+        }
+
+        public void RegisterComponent<T>(string componentName, Func<T> componentInitializer, bool overwrite) where T : class
+        {
+            ChangeRegistry(
+                () =>
+                {
+                    var key = new ComponentKey(componentName, typeof(T));
+                    if (!_componentRegistry.ContainsKey(key) || overwrite)
+                    {
+                        _componentRegistry[key] = componentInitializer();
+                    }
+                });
+        }
+
+        public void UnregisterComponent<T>(string componentName) where T : class
+        {
+            ChangeRegistry(
+                () =>
+                {
+                    var key = new ComponentKey(componentName, typeof(T));
+                    if (_componentRegistry.ContainsKey(key))
+                    {
+                        _componentRegistry.Remove(key);
+                    }
+                });
+        }
+
+        public void ClearComponents()
+        {
+            ChangeRegistry(_componentRegistry.Clear);
+        }
+
+        void ChangeRegistry(Action changeAction)
+        {
+            try
+            {
+                _registryLock.EnterWriteLock();
+                try
+                {
+                    changeAction();
+                }
+                finally
+                {
+                    _registryLock.ExitWriteLock();
+                }
+            }
+            catch (LockRecursionException lockException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockWriteRecursion, lockException);
+            }
+            catch (ObjectDisposedException disposedException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.RegistryLockWriteDisposed, disposedException);
+            }
+        }
+
+        private class ComponentKey : IComparable<ComponentKey>, IEquatable<ComponentKey>
+        {
+            public string Name { get; private set; }
+
+            public string Type { get; private set; }
+
+            public ComponentKey(string name, Type type)
+            {
+                if (name == null)
+                {
+                    throw new ArgumentNullException(nameof(name));
+                }
+
+                if (type == null)
+                {
+                    throw new ArgumentNullException(nameof(type));
+                }
+
+                Name = name;
+                Type = type.FullName;
+            }
+
+            public override int GetHashCode()
+            {
+                return ToString().GetHashCode();
+            }
+
+            public override string ToString()
+            {
+                return string.Format($"{Name}-{Type}");
+            }
+
+            public override bool Equals(object obj)
+            {
+                var other = obj as ComponentKey;
+                return other != null
+                    && this.Equals(other);
+            }
+
+            public int CompareTo(ComponentKey other)
+            {
+               if ( other == null)
+                {
+                    return 1;
+                }
+
+                var stringCompare = this.Name.ToLowerInvariant().CompareTo(other.Name.ToLowerInvariant());
+                return (stringCompare != 0 ? stringCompare : this.Type.CompareTo(other.Type));
+            }
+
+            public bool Equals(ComponentKey other)
+            {
+                return other != null
+                    && string.Equals(this.Name, other.Name, StringComparison.OrdinalIgnoreCase)
+                    && string.Equals(this.Type, other.Type, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        private class ComponentKeyComparer : IComparer<ComponentKey>, IEqualityComparer<ComponentKey>
+        {
+            public int Compare(ComponentKey x, ComponentKey y)
+            {
+                if (x == null )
+                {
+                    throw new ArgumentNullException(nameof(x));
+                }
+                if (y == null)
+                {
+                    throw new ArgumentNullException(nameof(y));
+                }
+
+                return x.CompareTo(y);
+            }
+
+            public bool Equals(ComponentKey x, ComponentKey y)
+            {
+                return x != null && y != null && x.Equals(y);
+            }
+
+            public int GetHashCode(ComponentKey obj)
+            {
+                return obj.GetHashCode();
+            }
         }
     }
 }

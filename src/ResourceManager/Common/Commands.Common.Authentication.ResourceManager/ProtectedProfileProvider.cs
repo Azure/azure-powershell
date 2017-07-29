@@ -15,12 +15,22 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public class ResourceManagerProfileProvider : AzureRmProfileProvider
+    public class ProtectedProfileProvider : AzureRmProfileProvider
     {
         AzureRmProfile _profile = new AzureRmProfile { DefaultContext = new AzureContext { TokenCache = AzureSession.Instance.TokenCache } };
+
+        public ProtectedProfileProvider()
+        {
+            using (var fileProvider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile))
+            {
+                _profile = new AzureRmProfile(fileProvider);
+            }
+        }
+
         public override void ResetDefaultProfile()
         {
             foreach (var context in _profile.Contexts.Values)
@@ -59,12 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         public static void InitializeResourceManagerProfile(bool overwrite=false)
         {
-            SetInstance(() => new ResourceManagerProfileProvider(), overwrite);
-        }
-
-        public static void InitializeResourceManagerProfileWithAutoSave()
-        {
-
+            SetInstance(() => new ProtectedProfileProvider(), overwrite);
         }
 
     }

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
     {
-        private AzureRmProfile _profile;
+        private AzureRmProfile _profile, _diskProfile;
         private IAzureTokenCache _cache;
         public Action<string> WarningLog;
 
@@ -50,6 +50,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _cache = context.TokenCache;
             }
         }
+
+        public RMProfileClient(AzureRmProfile localProfile, AzureRmProfile diskProfile)
+        {
+            _profile = localProfile;
+            var context = _profile.DefaultContext;
+            if (_profile != null && context != null &&
+                context.TokenCache != null)
+            {
+                _cache = context.TokenCache;
+            }
+        }
+
 
         public AzureRmProfile Login(
             IAzureAccount account,

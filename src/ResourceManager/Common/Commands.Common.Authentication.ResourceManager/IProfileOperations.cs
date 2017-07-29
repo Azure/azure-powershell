@@ -11,20 +11,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
-    /// <summary>
-    /// Interface that allows abstracting away file access - allows for using specially protected files, or files from alternate sources
-    /// </summary>
-    public interface IFileProvider : IDisposable
+    public interface IProfileOperations
     {
-        string FilePath { get; }
-        Stream Stream { get; }
-        StreamReader Reader { get; }
-        StreamWriter Writer { get; }
+        AzureRmProfile Profile { get; }
+        bool TryAddContext(string name, IAzureContext context);
+        string GetContextName(IAzureContext context);
+        bool TryRemoveContext(string name);
+        bool TryRenameContext(string sourceName, string TargetName);
+        bool TrySetContext(string name, IAzureContext context);
+        bool TrySetDefaultContext(string name);
+
     }
 }

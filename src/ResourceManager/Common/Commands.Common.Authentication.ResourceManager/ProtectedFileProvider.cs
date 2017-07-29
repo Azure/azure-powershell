@@ -18,6 +18,7 @@ using System.Threading;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
 using System.Text;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {

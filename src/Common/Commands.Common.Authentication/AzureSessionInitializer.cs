@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 ProfileDirectory = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     Resources.AzureDirectoryName),
+                ResourceManagerContextFile = "AzureRmContext.json",
                 ProfileFile = "AzureProfile.json",
                 TokenCacheFile = "TokenCache.dat"
             };

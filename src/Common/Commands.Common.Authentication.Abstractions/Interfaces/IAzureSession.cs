@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         string ProfileFile { get; set; }
 
         /// <summary>
+        /// Gets or sets the profile name for Azure Resource Manager
+        /// </summary>
+        string ResourceManagerContextFile { get; set; }
+
+        /// <summary>
         /// Gets or sets file name for the migration backup.
         /// </summary>
         string OldProfileFileBackup { get; set; }
@@ -100,12 +105,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         /// <typeparam name="T">The type of the shared component</typeparam>
         /// <param name="componentName">The name of the shared component</param>
-        /// <param name="componentInitializer"></param>
-        /// <param name="overwrite"></param>
+        /// <param name="componentInitializer">The initializer for the component</param>
+        /// <param name="overwrite">Whether to overwrite an existing component with the new one</param>
         void RegisterComponent<T>(string componentName, Func<T> componentInitializer, bool overwrite) where T: class;
 
+        /// <summary>
+        /// Remove the provided component from the shared components registry
+        /// </summary>
+        /// <typeparam name="T">The type of the component</typeparam>
+        /// <param name="componentName">The component name</param>
         void UnregisterComponent<T>(string componentName) where T: class;
 
+        /// <summary>
+        /// Remove all components from the session shared component registry
+        /// </summary>
         void ClearComponents();
 
         /// <summary>
