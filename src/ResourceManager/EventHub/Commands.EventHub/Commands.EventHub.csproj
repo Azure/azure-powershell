@@ -51,8 +51,9 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.EventHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.1.2.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
@@ -100,21 +101,21 @@
     <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\AuthorizationRule\GetAzureEventhubAuthorizationRules.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\GetAzureEventhubKey.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\NewAzureEventhubAuthorizationRules.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\NewAzureEventhubKey.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\RemoveAzureEventhubAuthorizationRules.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\SetAzureEventhubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\AzureEventHubsCmdletBase.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\GetAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\NewAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\RemoveAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\SetAzureEventHubConsumerGroups.cs" />
-    <Compile Include="Cmdlets\EventHub\GetAzureEventHubAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\EventHub\GetAzureEventHubKey.cs" />
     <Compile Include="Cmdlets\EventHub\GetAzureEventHubs.cs" />
     <Compile Include="Cmdlets\EventHub\NewAzureEventHub.cs" />
-    <Compile Include="Cmdlets\EventHub\NewAzureEventHubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\EventHub\RemoveAzureEventHub.cs" />
-    <Compile Include="Cmdlets\EventHub\RemoveAzureEventHubAuthorizationRules.cs" />
     <Compile Include="Cmdlets\EventHub\SetAzureEventHub.cs" />
-    <Compile Include="Cmdlets\EventHub\SetAzureEventHubAuthorizationRules.cs" />
-    <Compile Include="Cmdlets\EventHub\NewAzureEventHubKey.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureEventHubNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureEventHubNamespaceKeys.cs" />
@@ -125,7 +126,12 @@
     <Compile Include="Cmdlets\Namespace\SetAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureEventHubNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Namespace\NewAzureEventHubNameSpaceKey.cs" />
+    <Compile Include="Models\AuthorizationRuleAttributes.cs" />
+    <Compile Include="Models\AuthorizationRuleKeysAttributes.cs" />
+    <Compile Include="Models\CaptureDescriptionAttributes.cs" />
     <Compile Include="Models\ConsumerGroupAttributes.cs" />
+    <Compile Include="Models\DestinationAttributes.cs" />
+    <Compile Include="Models\EnumEncodingCaptureDescription.cs" />
     <Compile Include="Models\EventHubsAttributes.cs" />
     <Compile Include="Models\NamespaceAttributes.cs" />
     <Compile Include="Models\NamespaceState.cs" />

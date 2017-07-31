@@ -75,18 +75,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             }
             else
             {
-                EventHubAttributes getEventHub = Client.GetEventHub(ResourceGroupName, NamespaceName, EventHubName);
-
-                IList<Management.EventHub.Models.AccessRights?> newListAry = new List<Management.EventHub.Models.AccessRights?>();
-
-                foreach(string test in Rights)
-                {
-                    newListAry.Add(ParseAccessRights(test));
-                }
-
-                sasRule.Name = AuthorizationRuleName;
-                sasRule.Rights = newListAry;
-                sasRule.Location = getEventHub.Location;
+                sasRule.Rights = new List<string>();
+                if (Rights != null && Rights.Length > 0)
+                    foreach (string test in Rights)
+                    {
+                        sasRule.Rights.Add(test);
+                    }
             }
 
             // Update a eventHub authorizationRule
