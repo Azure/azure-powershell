@@ -30,8 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
             var resourcesClient = GetResourcesClient();
+            var newResourcesClient = GetResourcesClient(context);
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient, newResourcesClient, authorizationClient);
         }
 
         public AuditingClassicStorageTests(ITestOutputHelper output) : base(output)

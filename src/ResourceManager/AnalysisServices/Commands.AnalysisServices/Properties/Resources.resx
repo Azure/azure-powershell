@@ -132,6 +132,9 @@
   <data name="InvalidDefaultSubscription" xml:space="preserve">
     <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
+  <data name="InvalidSku" xml:space="preserve">
+    <value>Invalid Sku: '{0}'. Available Skus are: '{1}'</value>
+  </data>
   <data name="LongRunningOperationFailed" xml:space="preserve">
     <value>AnalysisServices server operation failed with the following error code: {0} and message: {1}</value>
   </data>

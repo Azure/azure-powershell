@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01;
 using System;
 using System.Diagnostics;
 using System.IO;
