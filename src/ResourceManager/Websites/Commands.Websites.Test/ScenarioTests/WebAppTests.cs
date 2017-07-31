@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
         }
 
-        [Fact]
+        [Fact(Skip = "Test is being skipped until issue with cloning is resolved. See GitHub issue #3770 for more information.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppAndDeploymentSlots()
         {

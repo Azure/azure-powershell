@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Tags.Model
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
         {
             return new PSTag()
             {
-                Count = tag.Count.Value.HasValue ? tag.Count.Value.ToString() : null,
+                Count = tag.Count.Value.ToString(),
                 Name = tag.TagName,
                 Values = tag.Values.Select(v => v.ToPSTagValue()).ToList(),
                 ValuesTable = ConstructTagValuesTable(tag.Values.ToList())
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
         {
             return new PSTagValue()
             {
-                Count = value.Count.Value.HasValue ? value.Count.Value.ToString() : null,
+                Count = value.Count.Value.ToString(),
                 Name = value.TagValueProperty
             };
         }
@@ -54,8 +54,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
                     Id = string.Empty,
                     Count = new TagCount()
                     {
-                        Type = string.Empty,
-                        Value = null
+                        Type = string.Empty
                     }
                 };
             }
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
             if (tagValues.Count > 0)
             {
                 int maxNameLength = Math.Max("Name".Length, tagValues.Where(v => v.TagValueProperty != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.TagValueProperty.Length));
-                int maxCountLength = Math.Max("Count".Length, tagValues.Where(v => v.Count.Value != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.Count.Value.HasValue ? v.Count.Value.ToString().Length : 0));
+                int maxCountLength = Math.Max("Count".Length, tagValues.Where(v => v.Count.Value != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.Count.Value.ToString().Length));
 
                 string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxCountLength + "}\r\n";
                 tagValuesTable.AppendLine();
