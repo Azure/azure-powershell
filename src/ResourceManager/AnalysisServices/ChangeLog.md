@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add-AzureAnalysisServicesAccount to support login with Service Principal
 
 ## Version 0.4.2
 

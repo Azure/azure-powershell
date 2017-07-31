@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-help.xml
+external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
 online version: 
 schema: 2.0.0
 ---
@@ -11,9 +11,22 @@ Adds an authenticated account to use for Azure Analysis Services server cmdlet r
 
 ## SYNTAX
 
+### UserParameterSetName
 ```
 Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [[-Credential] <PSCredential>] [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ServicePrincipalWithPasswordParameterSetName
+```
+Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [-Credential] <PSCredential>
+ [-ServicePrincipal] -TenantId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ServicePrincipalWithCertificateParameterSetName
+```
+Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [-ServicePrincipal] -TenantId <String>
+ -ApplicationId <String> -CertificateThumbprint <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,15 +45,53 @@ This example will add the account specified by the $UserCredential variable to t
 
 ## PARAMETERS
 
+### -ApplicationId
+SPN```yaml
+Type: String
+Parameter Sets: ServicePrincipalWithCertificateParameterSetName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertificateThumbprint
+Certificate Hash (Thumbprint)```yaml
+Type: String
+Parameter Sets: ServicePrincipalWithCertificateParameterSetName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Credential
 Login credentials
 
 ```yaml
 Type: PSCredential
-Parameter Sets: (All)
+Parameter Sets: UserParameterSetName
 Aliases: 
 
 Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSCredential
+Parameter Sets: ServicePrincipalWithPasswordParameterSetName
+Aliases: 
+
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -57,6 +108,34 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServicePrincipal
+{{Fill ServicePrincipal Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ServicePrincipalWithPasswordParameterSetName, ServicePrincipalWithCertificateParameterSetName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TenantId
+Tenant name or ID```yaml
+Type: String
+Parameter Sets: ServicePrincipalWithPasswordParameterSetName, ServicePrincipalWithCertificateParameterSetName
+Aliases: 
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,6 +171,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
