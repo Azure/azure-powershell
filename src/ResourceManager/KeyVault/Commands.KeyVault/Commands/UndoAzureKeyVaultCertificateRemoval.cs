@@ -12,50 +12,51 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultKeyRemoval",
+    [Cmdlet( VerbsCommon.Undo, "AzureKeyVaultCertificateRemoval",
     SupportsShouldProcess = true,
     ConfirmImpact = ConfirmImpact.Low,
-    HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyBundle))]
-    public class UndoAzureKeyVaultKeyRemoval : KeyVaultCmdletBase
+    HelpUri = Constants.KeyVaultHelpUri )]
+    [OutputType( typeof( CertificateBundle ) )]
+    public class UndoAzureKeyVaultCertificateRemoval : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
 
         /// <summary>
         /// Vault name
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter( Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         /// <summary>
         /// Secret name
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter( Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.KeyName)]
+        [Alias( Constants.CertificateName )]
         public string Name { get; set; }
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet( )
         {
-            if (ShouldProcess(Name, Properties.Resources.RecoverKey))
+            if ( ShouldProcess( Name, Properties.Resources.RecoverCertificate ) )
             {
-                KeyBundle recoveredKey = DataServiceClient.RecoverKey(VaultName, Name);
+                CertificateBundle certificate = DataServiceClient.RecoverCertificate(VaultName, Name);
 
-                WriteObject(recoveredKey);
+                WriteObject( certificate );
             }
         }
     }

@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<CertificateIdentityItem>), typeof(KeyVaultCertificate))]
+    [OutputType(typeof(List<CertificateIdentityItem>), typeof(KeyVaultCertificate), typeof(DeletedCertificateBundle), typeof(List<DeletedCertificateIdentityItem>))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private const string ByCertificateNameParameterSet = "ByCertificateName";
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByCertificateVersionsParameterSet = "ByCertificateVersions";
+        private const string ByDeletedCertificateParameterSet = "ByDeletedCertificates";
 
         #endregion
 
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]        
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -64,6 +65,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    ParameterSetName = ByCertificateVersionsParameterSet,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
+        [Parameter( Mandatory = false,
+                   Position = 1,
+                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = ByDeletedCertificateParameterSet,
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
@@ -84,6 +90,13 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether to include the versions of the certificate in the output.")]
         public SwitchParameter IncludeVersions { get; set; }
 
+        /// <summary>
+        /// Switch specifying whether to apply the command to certificates in a deleted state.
+        /// </summary>
+        [Parameter( Mandatory = true,
+                    ParameterSetName = ByDeletedCertificateParameterSet,
+                    HelpMessage = "Specifies whether to show the previously deleted certificates in the output." )]
+        public SwitchParameter InRemovedState { get; set; }
         #endregion
 
         protected override void ProcessRecord()
@@ -109,6 +122,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 case ByVaultNameParameterSet:
                     GetAndWriteCertificates(VaultName);
+                    break;
+
+                case ByDeletedCertificateParameterSet:
+                    if ( Name == null )
+                    {
+                        GetAndWriteDeletedCertificates( VaultName );
+                        break;
+                    }
+
+                    DeletedCertificateBundle deletedCert = DataServiceClient.GetDeletedCertificate(VaultName, Name);
+                    WriteObject( deletedCert );
+
                     break;
 
                 default:
@@ -145,6 +170,21 @@ namespace Microsoft.Azure.Commands.KeyVault
                 var pageResults = DataServiceClient.GetCertificateVersions(options).Where(k => k.Version != currentCertificateVersion);
                 WriteObject(pageResults, true);
             } while (!string.IsNullOrEmpty(options.NextLink));
+        }
+
+        private void GetAndWriteDeletedCertificates( string vaultName )
+        {
+            KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
+            {
+                VaultName = VaultName,
+                NextLink = null
+            };
+
+            do
+            {
+                var pageResults = DataServiceClient.GetDeletedCertificates(options);
+                WriteObject( pageResults, true );
+            } while ( !string.IsNullOrEmpty( options.NextLink ) );
         }
     }
 }

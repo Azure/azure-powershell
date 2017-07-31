@@ -361,6 +361,7 @@ function Initialize-TemporaryState
     }
     $vaultProperties = @{
         "enabledForDeployment" = $false
+        "enableSoftDelete"=$global:softDeleteEnabled
         "tenantId" = $tenantId
         "sku" = @{
             "family" = "A"

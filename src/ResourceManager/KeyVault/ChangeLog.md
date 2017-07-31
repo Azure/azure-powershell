@@ -20,6 +20,10 @@
 ## Current Release
 
 ## Version 3.2.1
+* New/updated Cmdlets to support soft-delete for KeyVault certificates
+  * Get-AzureKeyVaultCertificate
+  * Remove-AzureKeyVaultCertificate
+  * Undo-AzureKeyVaultCertificateRemoval
 
 ## Version 3.2.0
 * Remove email address from the directory query when -UserPrincipalName is specified to the Set-AzureRMKeyVaultAccessPolicy and Remove-AzureRMKeyVaultAccessPolicy cmdlets.
@@ -44,10 +48,10 @@
 
 * Backup cmdlets for Keys and Secrets now accept a corresponding object as an input parameter
     - The caller may chain retrieval and backup operations: Get-AzureKeyVaultKey -VaultName myVault -Name myKey | Backup-AzureKeyVaultKey
-
+    
 * Backup cmdlets now support a -Force switch to overwrite an existing file
     - Note that attempting to overwrite an existing file will no longer throw, and will instead prompt the user for a choice on how to proceed.
-
+      
 ## Version 2.8.0
 
 ## Version 2.7.0

@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact]
+        [Fact(Skip = "The current SynchronizationContext may not be used as a TaskScheduler.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUnknownVaultFails()
         {
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         }
 
-        [Fact]
+        [Fact(Skip = "The current SynchronizationContext may not be used as a TaskScheduler.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVaultFromUnknownResourceGroupFails()
         {

@@ -74,7 +74,7 @@ PS C:\> Write-Host "Secret Value is: " $secret.SecretValueText
 
 These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.
 
-### Example 6: Get all the keys that have been deleted but not purged for this key vault.
+### Example 6: Get all the secrets that have been deleted but not purged for this key vault.
 ```
 PS C:\>Get-AzureKeyVaultSecret -VaultName 'Contoso' -InRemovedState
 ```
@@ -90,19 +90,6 @@ This command gets the secret ITSecret that has been previously deleted, but not 
 This command will return metadata such as the deletion date, and the scheduled purging date of this deleted secret.
 
 ## PARAMETERS
-
-### -InRemovedState
-Specifies whether to show the previously deleted secrets in the output.```yaml
-Type: SwitchParameter
-Parameter Sets: ByDeletedSecrets
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a secret.
@@ -123,6 +110,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output.```yaml
+Type: SwitchParameter
+Parameter Sets: ByDeletedSecrets
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the secret to get.
 
@@ -132,7 +132,7 @@ Parameter Sets: BySecretName, BySecretVersions
 Aliases: SecretName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -144,7 +144,7 @@ Parameter Sets: ByDeletedSecrets
 Aliases: SecretName
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -160,7 +160,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -176,7 +176,7 @@ Parameter Sets: BySecretName
 Aliases: SecretVersion
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

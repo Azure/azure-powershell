@@ -33,50 +33,59 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Created { get; internal set; }
         public DateTime? Updated { get; internal set; }
 
+        public string RecoveryLevel { get; private set; }
+
+        public KeyVaultCertificate( CertificateBundle certificateBundle )
+        {
+            if ( certificateBundle == null )
+            {
+                throw new ArgumentNullException( nameof( certificateBundle ) );
+            }
+
+            if ( certificateBundle.Id != null )
+            {
+                Id = certificateBundle.CertificateIdentifier.Identifier;
+                Name = certificateBundle.CertificateIdentifier.Name;
+            }
+
+            if ( certificateBundle.Cer != null )
+            {
+                Certificate = new X509Certificate2( certificateBundle.Cer );
+                Thumbprint = Certificate.Thumbprint;
+            }
+
+            if ( certificateBundle.KeyIdentifier != null )
+            {
+                KeyId = certificateBundle.KeyIdentifier.Identifier;
+            }
+
+            if ( certificateBundle.SecretIdentifier != null )
+            {
+                SecretId = certificateBundle.SecretIdentifier.Identifier;
+            }
+
+            if ( certificateBundle.Attributes != null )
+            {
+                Created = certificateBundle.Attributes.Created;
+                Enabled = certificateBundle.Attributes.Enabled;
+                Updated = certificateBundle.Attributes.Updated;
+                RecoveryLevel = certificateBundle.Attributes.RecoveryLevel;
+            }
+
+            if ( certificateBundle.Tags != null )
+            {
+                Tags = certificateBundle.Tags;
+            }
+        }
+
         internal static KeyVaultCertificate FromCertificateBundle(CertificateBundle certificateBundle)
         {
-            if (certificateBundle == null)
+            if ( certificateBundle == null )
             {
                 return null;
             }
 
-            var kvCertificate = new KeyVaultCertificate();
-
-            if (certificateBundle.Id != null)
-            {
-                kvCertificate.Id = certificateBundle.CertificateIdentifier.Identifier;
-                kvCertificate.Name = certificateBundle.CertificateIdentifier.Name;
-            }
-
-            if (certificateBundle.Cer != null)
-            {
-                kvCertificate.Certificate = new X509Certificate2(certificateBundle.Cer);
-                kvCertificate.Thumbprint = kvCertificate.Certificate.Thumbprint;
-            }
-
-            if (certificateBundle.KeyIdentifier != null)
-            {
-                kvCertificate.KeyId = certificateBundle.KeyIdentifier.Identifier;
-            }
-
-            if (certificateBundle.SecretIdentifier != null)
-            {
-                kvCertificate.SecretId = certificateBundle.SecretIdentifier.Identifier;
-            }
-
-            if (certificateBundle.Attributes != null)
-            {
-                kvCertificate.Created = certificateBundle.Attributes.Created;
-                kvCertificate.Enabled = certificateBundle.Attributes.Enabled;
-                kvCertificate.Updated = certificateBundle.Attributes.Updated;
-            }
-
-            if (certificateBundle.Tags != null)
-            {
-                kvCertificate.Tags = certificateBundle.Tags;
-            }
-
-            return kvCertificate;
+            return new KeyVaultCertificate( certificateBundle );
         }
 
         internal static List<KeyVaultCertificate> FromCertificateBundles(IEnumerable<CertificateBundle> certificateBundles)
