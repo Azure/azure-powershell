@@ -19,19 +19,19 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmDiskUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDiskUpdate))]
-    public class NewAzureRmDiskUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public partial class NewAzureRmDiskUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -57,46 +57,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  CreateOption cannot be changed during updating a disk." +
-            "To set CreateOption of a disk, use New-AzureRmDiskConfig command.",
-            false)]
-        public DiskCreateOption? CreateOption { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  StorageAccountId cannot be changed during updating a disk." +
-            "To set StorageAccountId of a disk, use New-AzureRmDiskConfig command.",
-            false)]
-        public string StorageAccountId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  ImageReference cannot be changed during updating a disk." +
-            "To set ImageReference of a disk, use New-AzureRmDiskConfig command.",
-            false)]
-        public ImageDiskReference ImageReference { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  SourceUri cannot be changed during updating a disk." +
-            "To set SourceUri of a disk, use New-AzureRmDiskConfig command.",
-            false)]
-        public string SourceUri { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.  SourceResourceId cannot be changed during updating a disk." +
-            "To set SourceResourceId of a disk, use New-AzureRmDiskConfig command.",
-            false)]
-        public string SourceResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,

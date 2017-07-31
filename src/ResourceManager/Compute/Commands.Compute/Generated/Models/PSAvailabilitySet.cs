@@ -24,7 +24,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSAvailabilitySet : AvailabilitySet
+    public partial class PSAvailabilitySet : AvailabilitySet
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName

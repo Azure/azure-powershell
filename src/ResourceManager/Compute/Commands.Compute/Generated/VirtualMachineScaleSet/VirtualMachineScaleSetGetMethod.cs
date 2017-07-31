@@ -83,9 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
             {
                 var result = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
-                var psObject = new PSVirtualMachineScaleSet();
-                Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -101,12 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -122,12 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSVirtualMachineScaleSetList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSetList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
         }
 
@@ -163,7 +151,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
                         var result = VirtualMachineScaleSetsClient.GetInstanceView(resourceGroupName, vmScaleSetName);
-                        WriteObject(result);
+                        var psObject = new PSVirtualMachineScaleSetInstanceView();
+                        Mapper.Map<VirtualMachineScaleSetInstanceView, PSVirtualMachineScaleSetInstanceView>(result, psObject);
+                        WriteObject(psObject);
                     }
                     else
                     {

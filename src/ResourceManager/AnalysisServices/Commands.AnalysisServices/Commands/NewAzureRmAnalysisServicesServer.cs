@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
-using Microsoft.Azure.Management.Analysis.Models;
 using Microsoft.Rest.Azure;
-using System.Collections;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
@@ -49,7 +50,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 "Name of the Sku used to create the server"
             )]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("B1", "B2", "S0", "S1", "S2", "S4", "D1")]
         public string Sku { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
@@ -57,10 +57,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
             HelpMessage = "A comma separated server names to set as administrators on the server")]
         [ValidateNotNull]
         public string Administrator { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+            HelpMessage = "The Uri of blob container for backing up the server")]
+        [ValidateNotNullOrEmpty]
+        public string BackupBlobContainerUri { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -92,7 +97,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     }
                 }
 
-                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator);
+                var availableSkus = AnalysisServicesClient.ListSkusForNew();
+                if (!availableSkus.Value.Any(v => v.Name == Sku))
+                {
+                    throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Name))));
+                }
+
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }
