@@ -60,7 +60,9 @@
     <SmartTestingTask  RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" MapFilePath=".\tools\BuildPackagesTask\Microsoft.Azure.Build.Tasks\map.json">
       <Output TaskParameter ="TestAssemblies" ItemName="XUnitTests"/>
     </SmartTestingTask>
-    <Message Text="Using these test assemblies: @(XUnitTests)"/>			
+	<Message Text="Using these test assemblies:"/>
+	<Message Text="%(XUnitTests.Identity)"/>
+	<Message Text="Total: @(XunitTests->Count())"/>			
 	</Target>
 
 	<Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
