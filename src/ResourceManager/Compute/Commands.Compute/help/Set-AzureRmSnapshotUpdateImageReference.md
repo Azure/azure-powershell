@@ -12,7 +12,7 @@ Sets the image reference properties on a snapshot update object.
 ## SYNTAX
 
 ```
-Set-AzureRmSnapshotUpdateImageReference [-SnapshotUpdate] <SnapshotUpdate> [[-Id] <String>] [[-Lun] <Int32>]
+Set-AzureRmSnapshotUpdateImageReference [-SnapshotUpdate] <PSSnapshotUpdate> [[-Id] <String>] [[-Lun] <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies a local snapshot update object.
 
 ```yaml
-Type: SnapshotUpdate
+Type: PSSnapshotUpdate
 Parameter Sets: (All)
 Aliases: 
 

@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -128,11 +129,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsSecurity.Grant, "AzureRmSnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(AccessUri))]
+    [OutputType(typeof(PSAccessUri))]
     public partial class GrantAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsSecurity.Grant))
@@ -144,7 +146,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     grantAccessData.DurationInSeconds = this.DurationInSecond;
 
                     var result = SnapshotsClient.GrantAccess(resourceGroupName, snapshotName, grantAccessData);
-                    WriteObject(result);
+                    var psObject = new PSAccessUri();
+                    Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }

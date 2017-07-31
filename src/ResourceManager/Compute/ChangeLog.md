@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
+* Set-AzureRmVMAEMExtension: Add support for M series
 
 ## Version 3.2.1
 - Fix issue with VM DIsk and VM Disk snapshot create and update cmdlets, (link)[https://github.com/azure/azure-powershell/issues/4309]

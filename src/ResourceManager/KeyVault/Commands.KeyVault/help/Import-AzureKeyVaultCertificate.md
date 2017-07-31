@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
 ## DESCRIPTION
 The **Import-AzureKeyVaultCertificate** cmdlet imports a certificate into a key vault.
 
-You can create the certificate to import by using one of the following methods: 
+You can create the certificate to import by using one of the following methods:
 
 - Use the New-AzureKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
 - Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
@@ -52,32 +52,33 @@ You can create the certificate to import by using one of the following methods:
 PS C:\>$Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
 PS C:\> Import-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
 Name        : importCert01
-Certificate : [Subject] 
+Certificate : [Subject]
                 CN=contoso.com
 
-              [Issuer] 
+              [Issuer]
                 CN=contoso.com
 
-              [Serial Number] 
+              [Serial Number]
                 05979C5A2F0741D5A3B6F97673E8A118
 
-              [Not Before] 
+              [Not Before]
                 2/8/2016 3:11:45 PM
 
-              [Not After] 
+              [Not After]
                 8/8/2016 4:21:45 PM
 
-              [Thumbprint] 
+              [Thumbprint]
                 3E9B6848AD1834284157D68B060F748037F663C8
 
 Thumbprint  : 3E9B6848AD1834284157D68B060F748037F663C8
-Tags        : 
+Tags        :
 Enabled     : True
 Created     : 2/8/2016 11:50:43 PM
 Updated     : 2/8/2016 11:50:43 PM
 ```
 
-The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then stores it in the $Password variable.
+The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
+stores it in the $Password variable.
 
 The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
 
@@ -89,7 +90,7 @@ Specifies the certificate collection to add to a key vault.
 ```yaml
 Type: X509Certificate2Collection
 Parameter Sets: ImportWithPrivateKeyFromCollection
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,7 +105,7 @@ Specifies a certificate string.
 ```yaml
 Type: String
 Parameter Sets: ImportWithPrivateKeyFromString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -134,7 +135,7 @@ Specifies the path of the certificate file that this cmdlet imports.
 ```yaml
 Type: String
 Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -144,8 +145,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the certificate name.
-This cmdlet constructs the fully qualified domain name (FQDN) of a certificate from key vault name, currently selected environment, and certificate name.
+Specifies the certificate name. This cmdlet constructs the fully qualified domain name (FQDN) of a
+certificate from key vault name, currently selected environment, and certificate name.
 
 ```yaml
 Type: String
@@ -165,7 +166,7 @@ Specifies the password for a certificate file.
 ```yaml
 Type: SecureString
 Parameter Sets: ImportWithPrivateKeyFromFile, ImportWithPrivateKeyFromString
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -175,12 +176,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a hash table that contains certificate tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -196,7 +199,7 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key vault bas
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -228,11 +231,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.CertificateBundle
+Microsoft.Azure.Commands.KeyVault.Models.CertificateBundle
 
 ## NOTES
 
 ## RELATED LINKS
 
 [Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
-
