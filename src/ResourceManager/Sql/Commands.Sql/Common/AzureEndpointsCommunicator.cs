@@ -14,10 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
@@ -36,15 +35,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
     public class AzureEndpointsCommunicator
     {
         /// <summary>
-        /// The Sql management client used by this communicator
-        /// </summary>
-        private static SqlManagementClient SqlClient { get; set; }
-
-        /// <summary>
         ///  The storage management client used by this communicator
         /// </summary>
-        private static Microsoft.WindowsAzure.Management.Storage.StorageManagementClient StorageClient { get; set; }
-
         private static Microsoft.Azure.Management.Storage.StorageManagementClient StorageV2Client { get; set; }
 
         /// <summary>
@@ -72,10 +64,15 @@ namespace Microsoft.Azure.Commands.Sql.Common
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                StorageClient = null;
                 ResourcesClient = null;
                 StorageV2Client = null;
             }
+        }
+
+        private static class StorageAccountType
+        {
+            public const string ClassicStorage = "Microsoft.ClassicStorage/storageAccounts";
+            public const string Storage = "Microsoft.Storage/storageAccounts";
         }
 
         /// <summary>
@@ -84,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <returns>A dictionary with two entries, one for each possible key type with the appropriate key</returns>
         public async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
         {
-            SqlManagementClient client = GetCurrentSqlClient("none");
+            Management.Storage.StorageManagementClient client = GetCurrentStorageV2Client(Context);
 
             string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             if (!url.EndsWith("/"))
@@ -111,21 +108,14 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 string primaryKey = (string)responseDoc["primaryKey"];
                 string secondaryKey = (string)responseDoc["secondaryKey"];
                 if (string.IsNullOrEmpty(primaryKey) || string.IsNullOrEmpty(secondaryKey))
-                    throw new Exception(); // this is caught by the synced wrapper 
+                    throw new Exception(); // this is caught by the synced wrapper
                 result.Add(StorageKeyKind.Primary, primaryKey);
                 result.Add(StorageKeyKind.Secondary, secondaryKey);
                 return result;
             }
             catch
             {
-                try
-                {
-                    return GetV2Keys(resourceGroupName, storageAccountName);
-                }
-                catch
-                {
-                    throw;
-                }
+                return GetV2Keys(resourceGroupName, storageAccountName);
             }
         }
 
@@ -142,18 +132,17 @@ namespace Microsoft.Azure.Commands.Sql.Common
         }
 
         /// <summary>
-        /// Gets the storage keys for the given storage account. 
+        /// Gets the storage keys for the given storage account.
         /// </summary>
         public Dictionary<StorageKeyKind, string> GetStorageKeys(string resourceGroupName, string storageAccountName)
         {
             try
             {
-                return Task.Factory.StartNew((object epc) => (((AzureEndpointsCommunicator)epc).GetStorageKeysAsync(resourceGroupName, storageAccountName)),
-                                                        this, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return this.GetStorageKeysAsync(resourceGroupName, storageAccountName).GetAwaiter().GetResult();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName), e);
             }
         }
 
@@ -163,37 +152,42 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public string GetStorageResourceGroup(string storageAccountName)
         {
             ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Context);
-            Func<string, string> getResourceGroupName =
-            resourceType =>
+
+            foreach (string storageAccountType in new[] { StorageAccountType.ClassicStorage, StorageAccountType.Storage })
             {
-                ResourceListResult res = resourcesClient.Resources.List(new ResourceListParameters
+                string resourceGroup = GetStorageResourceGroup(
+                    resourcesClient,
+                    storageAccountName,
+                    storageAccountType);
+
+                if (resourceGroup != null)
                 {
-                    ResourceGroupName = null,
-                    ResourceType = resourceType,
-                    TagName = null,
-                    TagValue = null
-                });
-                var allResources = new List<GenericResourceExtended>(res.Resources);
-                GenericResourceExtended account = allResources.Find(r => r.Name == storageAccountName);
-                if (account != null)
-                {
-                    String resId = account.Id;
-                    String[] segments = resId.Split('/');
-                    int indexOfResoureGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
-                    return segments[indexOfResoureGroup];
+                    return resourceGroup;
                 }
-                else
-                {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
-                }
-            };
-            try
-            {
-                return getResourceGroupName("Microsoft.ClassicStorage/storageAccounts");
             }
-            catch
+
+            throw new Exception(string.Format(Properties.Resources.StorageAccountNotFound, storageAccountName));
+        }
+
+        private string GetStorageResourceGroup(
+            ResourceManagementClient resourcesClient,
+            string storageAccountName,
+            string resourceType)
+        {
+            var query = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
+            Rest.Azure.IPage<GenericResource> res = resourcesClient.Resources.List(query);
+            var allResources = new List<GenericResource>(res);
+            GenericResource account = allResources.Find(r => r.Name == storageAccountName);
+            if (account != null)
             {
-                return getResourceGroupName("Microsoft.Storage/storageAccounts");
+                string resId = account.Id;
+                string[] segments = resId.Split('/');
+                int indexOfResoureGroup = new List<string>(segments).IndexOf("resourceGroups") + 1;
+                return segments[indexOfResoureGroup];
+            }
+            else
+            {
+                return null;
             }
         }
 
@@ -206,20 +200,12 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(IAzureContext context)
-        {
-            if (StorageClient == null)
-                StorageClient = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ServiceManagement);
-            return StorageClient;
-        }
-
-        /// <summary>
-        /// Lazy creation of a single instance of a storage client
-        /// </summary>
         private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(IAzureContext context)
         {
             if (StorageV2Client == null)
+            {
                 StorageV2Client = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            }
             return StorageV2Client;
         }
 
@@ -229,25 +215,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private ResourceManagementClient GetCurrentResourcesClient(IAzureContext context)
         {
             if (ResourcesClient == null)
-                ResourcesClient = AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            return ResourcesClient;
-        }
-
-        /// <summary>
-        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
-        /// id tracing headers for the current cmdlet invocation.
-        /// </summary>
-        /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
-        {
-            // Get the SQL management client for the current subscription
-            if (SqlClient == null)
             {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                ResourcesClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return SqlClient;
+            return ResourcesClient;
         }
     }
 }

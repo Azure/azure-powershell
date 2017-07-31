@@ -67,5 +67,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressIpVersion");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressVmss()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-PublicIpAddressVmss");
+        }
     }
 }

@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,8 +30,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmVmssConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -54,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
+        [Alias("AccountType")]
         public string SkuName { get; set; }
 
         [Parameter(
@@ -123,6 +125,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string PlanPromotionCode { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public RecoveryMode? RecoveryPolicyMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public BootDiagnostics BootDiagnostic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string LicenseType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public ResourceIdentityType? IdentityType { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -142,8 +164,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // UpgradePolicy
             Microsoft.Azure.Management.Compute.Models.UpgradePolicy vUpgradePolicy = null;
 
+            // RecoveryPolicy
+            Microsoft.Azure.Management.Compute.Models.RecoveryPolicy vRecoveryPolicy = null;
+
             // VirtualMachineProfile
             Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
+
+            // Identity
+            Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity vIdentity = null;
 
             if (this.SkuName != null)
             {
@@ -217,6 +245,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vUpgradePolicy.Mode = this.UpgradePolicyMode;
             }
 
+            if (this.RecoveryPolicyMode != null)
+            {
+                if (vRecoveryPolicy == null)
+                {
+                    vRecoveryPolicy = new Microsoft.Azure.Management.Compute.Models.RecoveryPolicy();
+                }
+                vRecoveryPolicy.Mode = this.RecoveryPolicyMode;
+            }
+
             if (this.OsProfile != null)
             {
                 if (vVirtualMachineProfile == null)
@@ -248,6 +285,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
             }
 
+            if (this.BootDiagnostic != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.DiagnosticsProfile == null)
+                {
+                    vVirtualMachineProfile.DiagnosticsProfile = new Microsoft.Azure.Management.Compute.Models.DiagnosticsProfile();
+                }
+                vVirtualMachineProfile.DiagnosticsProfile.BootDiagnostics = this.BootDiagnostic;
+            }
+
             if (this.Extension != null)
             {
                 if (vVirtualMachineProfile == null)
@@ -261,8 +311,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.ExtensionProfile.Extensions = this.Extension;
             }
 
+            if (this.LicenseType != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                vVirtualMachineProfile.LicenseType = this.LicenseType;
+            }
 
-            var vVirtualMachineScaleSet = new VirtualMachineScaleSet
+            if (this.IdentityType != null)
+            {
+                if (vIdentity == null)
+                {
+                    vIdentity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                vIdentity.Type = this.IdentityType;
+            }
+
+
+            var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.Overprovision,
                 SinglePlacementGroup = this.SinglePlacementGroup,
@@ -271,7 +339,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
+                RecoveryPolicy = vRecoveryPolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
+                Identity = vIdentity,
             };
 
             WriteObject(vVirtualMachineScaleSet);

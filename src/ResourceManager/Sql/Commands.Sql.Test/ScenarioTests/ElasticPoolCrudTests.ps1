@@ -20,7 +20,7 @@ function Test-CreateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$server = Create-ServerForTest $rg
 
     try
     {
@@ -39,11 +39,6 @@ function Test-CreateElasticPool
         $poolName = Get-ElasticPoolName
         $ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName
         Assert-NotNull $ep2
-        Assert-AreEqual 200 $ep2.Dtu 
-        Assert-AreEqual 204800 $ep2.StorageMB
-        Assert-AreEqual Standard $ep2.Edition
-        Assert-AreEqual 0 $ep2.DatabaseDtuMin
-        Assert-AreEqual 100 $ep2.DatabaseDtuMax
     }
     finally
     {
@@ -59,7 +54,7 @@ function Test-UpdateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -109,7 +104,7 @@ function Test-GetElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -137,7 +132,7 @@ function Test-GetElasticPool
         $gep2 = $ep2 | Get-AzureRmSqlElasticPool
         Assert-NotNull $ep2
         Assert-AreEqual 400 $ep2.Dtu 
-        Assert-AreEqual 204800 $ep2.StorageMB
+        Assert-AreEqual 409600 $ep2.StorageMB
         Assert-AreEqual Standard $ep2.Edition
         Assert-AreEqual 0 $ep2.DatabaseDtuMin
         Assert-AreEqual 100 $ep2.DatabaseDtuMax
@@ -153,40 +148,13 @@ function Test-GetElasticPool
 
 <# 
     .SYNOPSIS
-    Tests getting an elastic pool metric
-#>
-function Test-GetElasticPoolMetric
-{
-    # This test requires that an elastic pool has been created and has metrics ready
-    # To prevent requiring putting something like a Sleep(10 minutes) in the code
-    # this test requires the server/elastic pool be pre-created with metrics data available.
-    
-    # Setup and retrieve the existing pool
-    $rgName = "test-group"
-    $serverName = "groupserver1"
-    $elasticPoolName = "testpool2"
-
-    $ep1 = Get-AzureRmSqlElasticPool  -ServerName $serverName -ResourceGroupName $rgName `
-        -ElasticPoolName $elasticPoolName
-    Assert-NotNull $ep1
-    
-    # Get pool metrics with all values
-    # Introducing breaking change that requires -MetricNames csv-list as parameter for this call (disabling this part of the test as done before)
-    #$metrics = $ep1 | Get-AzureRmMetric -TimeGrain "0:5:0" -StartTime "2015-04-22T16:00:00Z" -EndTime "2015-04-22T17:00:00Z"
-    #Assert-NotNull $metrics
-    #Assert-True { $metrics.Count -gt 0 }
-}
-
-
-<# 
-    .SYNOPSIS
     Tests removing an elastic pool
 #>
 function Test-RemoveElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "12.0" "Japan East"
+	$server = Create-ServerForTest $rg
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `

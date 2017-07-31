@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
@@ -31,23 +31,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             get
             {
-                string result;
-                string resourceIdentifier = ResourceIdentifier.ToString();
-
                 if (!string.IsNullOrEmpty(scope))
                 {
-                    result = scope;
-                }
-                else if (!string.IsNullOrEmpty(resourceIdentifier))
-                {
-                    result = resourceIdentifier;
-                }
-                else
-                {
-                    result = null;
+                    return scope;
                 }
 
-                return result;
+                string resourceIdentifier = ResourceIdentifier.ToString();
+
+                if (!string.IsNullOrEmpty(resourceIdentifier))
+                {
+                    return resourceIdentifier;
+                }
+
+                return null;
             }
             set
             {

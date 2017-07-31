@@ -1,4 +1,6 @@
-﻿using Microsoft.Azure.Commands.Resources.Models;
+﻿using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Collections;
@@ -59,7 +61,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 kvp => kvp.Key.ToString(), kvp =>
                 {
                     var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
+#if !NETSTANDARD
                     var type = (DatabaseServerType?)Enum.Parse(typeof(DatabaseServerType), typeValuePair["Type"].ToString(), true);
+#else
+                    var type = (ConnectionStringType)Enum.Parse(typeof(ConnectionStringType), typeValuePair["Type"].ToString(), true);
+#endif
                     return new ConnStringValueTypePair
                     {
                         Type = type,
@@ -72,7 +78,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             bool result = false;
             qualifiedSiteName = webSiteName;
+#if !NETSTANDARD
             var siteNamePattern = "{0}({1})";
+#else
+            var siteNamePattern = "{0}/{1}";
+#endif
             if (!string.IsNullOrEmpty(slotName) && !string.Equals(slotName, "Production", StringComparison.OrdinalIgnoreCase))
             {
                 result = true;
@@ -86,12 +96,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var rg = string.IsNullOrEmpty(aseResourceGroupName) ? resourceGroupName : aseResourceGroupName;
             var aseResourceId = CmdletHelpers.GetApplicationServiceEnvironmentResourceId(subscriptionId, rg, aseName);
-            return new HostingEnvironmentProfile
-            {
-                Id = aseResourceId,
-                Type = CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
-                Name = aseName
-            };
+            return new HostingEnvironmentProfile(
+                aseResourceId,
+                CmdletHelpers.ApplicationServiceEnvironmentResourcesName,
+                aseName);
         }
 
         internal static string BuildMetricFilter(DateTime? startTime, DateTime? endTime, string timeGrain, IReadOnlyList<string> metricNames)
@@ -269,7 +277,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             resourceGroupName = GetResourceGroupFromResourceId(webapp.Id);
 
             string webAppNameTemp, slotNameTemp;
-            if (TryParseAppAndSlotNames(webapp.SiteName, out webAppNameTemp, out slotNameTemp))
+            if (TryParseAppAndSlotNames(
+#if !NETSTANDARD
+                webapp.SiteName, 
+#else
+                webapp.Name,
+#endif
+                out webAppNameTemp, 
+                out slotNameTemp))
             {
                 webAppName = webAppNameTemp;
                 slot = slotNameTemp;
@@ -281,9 +296,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        internal static Certificate[] GetCertificates(ResourcesClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string thumbPrint)
+        internal static Certificate[] GetCertificates(ResourceClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string thumbPrint)
         {
-            var certificateResources = resourceClient.FilterPSResources(new BasePSResourceParameters()
+            var certificateResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/Certificates"
             }).ToArray();
@@ -296,7 +311,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var certificates =
                 certificateResources.Select(
                     certificateResource =>
-                    websitesClient.GetCertificate(certificateResource.ResourceGroupName, certificateResource.Name));
+                    websitesClient.GetCertificate(certificateResource.ResourceGroupName ?? GetResourceGroupFromResourceId(certificateResource.Id), certificateResource.Name));
 
             if (!string.IsNullOrEmpty(thumbPrint))
             {

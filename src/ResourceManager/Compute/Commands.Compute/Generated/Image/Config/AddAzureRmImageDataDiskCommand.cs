@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,15 +30,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Add", "AzureRmImageDataDisk", SupportsShouldProcess = true)]
-    [OutputType(typeof(Image))]
-    public class AddAzureRmImageDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSImage))]
+    public partial class AddAzureRmImageDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public Image Image { get; set; }
+        public PSImage Image { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -61,6 +62,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public int? DiskSizeGB { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public StorageAccountTypes? StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -100,6 +106,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDataDisks.BlobUri = this.BlobUri;
             vDataDisks.Caching = this.Caching;
             vDataDisks.DiskSizeGB = this.DiskSizeGB;
+            vDataDisks.StorageAccountType = this.StorageAccountType;
             if (this.SnapshotId != null)
             {
                 // Snapshot

@@ -11,16 +11,16 @@ Updates a snapshot.
 
 ## SYNTAX
 
-### InvokeByDynamicParameters (Default)
+### DefaultParameter (Default)
 ```
-Update-AzureRmSnapshot [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-SnapshotName] <String>
- [-SnapshotUpdate] <SnapshotUpdate> [<CommonParameters>]
+Update-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String>
+ [-SnapshotUpdate] <PSSnapshotUpdate> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InvokeByDynamicParametersForFriendMethod
+### FriendMethod
 ```
-Update-AzureRmSnapshot [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-SnapshotName] <String>
- [-Snapshot] <Snapshot> [<CommonParameters>]
+Update-AzureRmSnapshot [-ResourceGroupName] <String> [-SnapshotName] <String> [-Snapshot] <PSSnapshot>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,8 +81,8 @@ Accept wildcard characters: False
 Specifies a local snapshot object.
 
 ```yaml
-Type: Snapshot
-Parameter Sets: InvokeByDynamicParametersForFriendMethod
+Type: PSSnapshot
+Parameter Sets: FriendMethod
 Aliases: 
 
 Required: True
@@ -111,8 +111,8 @@ Accept wildcard characters: False
 Specifies a local snapshot update object.
 
 ```yaml
-Type: SnapshotUpdate
-Parameter Sets: InvokeByDynamicParameters
+Type: PSSnapshotUpdate
+Parameter Sets: DefaultParameter
 Aliases: 
 
 Required: True

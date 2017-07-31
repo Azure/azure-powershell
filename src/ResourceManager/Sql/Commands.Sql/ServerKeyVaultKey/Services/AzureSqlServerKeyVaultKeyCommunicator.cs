@@ -17,11 +17,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
@@ -66,11 +65,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <param name="resourceGroupName">Resource Group</param>
         /// <param name="serverName">Sql Server name</param>
         /// <param name="keyName">Server Key Vault Key name</param>
-        /// <param name="clientRequestId">Client request Id</param>
         /// <returns>ServerKey with name keyName</returns>
-        public Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey Get(string resourceGroupName, string serverName, string keyName, string clientRequestId)
+        public Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey Get(string resourceGroupName, string serverName, string keyName)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerKey.Get(resourceGroupName, serverName, keyName).ServerKey;
+            return GetCurrentSqlClient().ServerKey.Get(resourceGroupName, serverName, keyName).ServerKey;
         }
 
         /// <summary>
@@ -78,11 +76,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// </summary>
         /// <param name="resourceGroupName">Resource Group</param>
         /// <param name="serverName">Sql Server name</param>
-        /// <param name="clientRequestId">Client request Id</param>
         /// <returns>List of ServerKeys on the server</returns>
-        public IList<Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerKey.List(resourceGroupName, serverName).ServerKeys;
+            return GetCurrentSqlClient().ServerKey.List(resourceGroupName, serverName).ServerKeys;
         }
 
         /// <summary>
@@ -91,12 +88,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <param name="resourceGroupName">Resource Group</param>
         /// <param name="serverName">Sql Server name</param>
         /// <param name="keyName">Server Key Vault Key name</param>
-        /// <param name="clientRequestId">Client request Id</param>
         /// <param name="parameters">CreateOrUpdateParameters for ServerKey</param>
         /// <returns>Created ServerKey</returns>
-        public Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey CreateOrUpdate(string resourceGroupName, string serverName, string keyName, string clientRequestId, ServerKeyCreateOrUpdateParameters parameters)
+        public Microsoft.Azure.Management.Sql.LegacySdk.Models.ServerKey CreateOrUpdate(string resourceGroupName, string serverName, string keyName, ServerKeyCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).ServerKey.CreateOrUpdate(resourceGroupName, serverName, keyName, parameters).ServerKey;
+            return GetCurrentSqlClient().ServerKey.CreateOrUpdate(resourceGroupName, serverName, keyName, parameters).ServerKey;
         }
 
         /// <summary>
@@ -105,27 +101,23 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Services
         /// <param name="resourceGroupName">Resource Group</param>
         /// <param name="serverName">Sql Server name</param>
         /// <param name="keyName">Server Key Vault Key name</param>
-        /// <param name="clientRequestId">Client request Id</param>
-        public void Delete(string resourceGroupName, string serverName, string keyName, string clientRequestId)
+        public void Delete(string resourceGroupName, string serverName, string keyName)
         {
-            GetCurrentSqlClient(clientRequestId).ServerKey.Delete(resourceGroupName, serverName, keyName);
+            GetCurrentSqlClient().ServerKey.Delete(resourceGroupName, serverName, keyName);
         }
 
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
-        /// <param name="clientRequestId">Client request Id</param>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

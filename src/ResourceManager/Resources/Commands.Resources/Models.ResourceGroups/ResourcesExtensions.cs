@@ -21,13 +21,16 @@ using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Resources.Models.Gallery;
+#if !NETSTANDARD
+using Microsoft.Azure.Management.Resources.Models;
+#else
+using Microsoft.Azure.Management.ResourceManager.Models;
+#endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -221,26 +224,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (properties != null)
             {
-                deploymentObject.Mode = properties.Mode;
+                deploymentObject.Mode = properties.Mode();
+                deploymentObject.Timestamp = properties.Timestamp();
                 deploymentObject.ProvisioningState = properties.ProvisioningState;
                 deploymentObject.TemplateLink = properties.TemplateLink;
-                deploymentObject.Timestamp = properties.Timestamp;
                 deploymentObject.CorrelationId = properties.CorrelationId;
 
-                if (properties.DebugSettingResponse != null && !string.IsNullOrEmpty(properties.DebugSettingResponse.DeploymentDebugDetailLevel))
+                if (properties.DebugSetting() != null && !string.IsNullOrEmpty(properties.DebugSetting().DetailLevel()))
                 {
-                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSettingResponse.DeploymentDebugDetailLevel;
+                    deploymentObject.DeploymentDebugLogLevel = properties.DebugSetting().DetailLevel();
                 }
 
-                if (!string.IsNullOrEmpty(properties.Outputs))
+                if (properties.Outputs != null && !string.IsNullOrEmpty(properties.Outputs.ToString()))
                 {
-                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs);
+                    Dictionary<string, DeploymentVariable> outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
                     deploymentObject.Outputs = outputs;
                 }
 
-                if (!string.IsNullOrEmpty(properties.Parameters))
+                if (properties.Parameters != null && !string.IsNullOrEmpty(properties.Parameters.ToString()))
                 {
-                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters);
+                    Dictionary<string, DeploymentVariable> parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
                     deploymentObject.Parameters = parameters;
                 }
 

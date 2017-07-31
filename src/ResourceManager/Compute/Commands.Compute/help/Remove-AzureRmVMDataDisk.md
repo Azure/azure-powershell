@@ -13,7 +13,7 @@ Removes a data disk from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-DataDiskNames] <String[]> [-WhatIf] [-Confirm]
+Remove-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-DataDiskNames] <String[]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **Remove-AzureRmVMDataDisk** cmdlet removes a data disk from a virtual machi
 
 ### Example 1: Remove a data disk from a virtual machine
 ```
-PS C:\>$VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
+PS C:\> $VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" 
 PS C:\> Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "Disk3"
 PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
@@ -46,10 +46,10 @@ Type: String[]
 Parameter Sets: (All)
 Aliases: Name
 
-Required: True
+Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

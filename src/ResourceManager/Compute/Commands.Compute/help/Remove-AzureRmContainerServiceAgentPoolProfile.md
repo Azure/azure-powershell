@@ -13,7 +13,7 @@ Removes an agent pool profile from a container service.
 ## SYNTAX
 
 ```
-Remove-AzureRmContainerServiceAgentPoolProfile [-ContainerService] <ContainerService> [-Name] <String>
+Remove-AzureRmContainerServiceAgentPoolProfile [-ContainerService] <PSContainerService> [-Name] <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **Remove-AzureRmContainerServiceAgentPoolProfile** cmdlet removes an agent p
 
 ### Example 1: Remove a profile from a container service
 ```
-PS C:\>$Container = Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" 
+PS C:\> $Container = Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" 
 PS C:\> Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Container -Name "AgentPool01"
 ```
 
@@ -39,7 +39,7 @@ The second command removes the profile named AgentPool01 from the container serv
 Specifies the container service object from which this cmdlet removes an agent pool profile.
 
 ```yaml
-Type: ContainerService
+Type: PSContainerService
 Parameter Sets: (All)
 Aliases: 
 

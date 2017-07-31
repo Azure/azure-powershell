@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$location = 'centraluseuap'
+
 <#
 	.SYNOPSIS
 	Tests updating a database transparent data encryption
@@ -20,7 +22,7 @@ function Test-UpdateTransparentDataEncryption
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
@@ -51,7 +53,7 @@ function Test-GetTransparentDataEncryption
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $location
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
@@ -61,21 +63,21 @@ function Test-GetTransparentDataEncryption
 	try
 	{
 		$tde1 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
-		Assert-AreEqual $tde1.State Disabled
+		Assert-AreEqual $tde1.State Enabled
 
 		$tde2 = $tde1 | Get-AzureRmSqlDatabaseTransparentDataEncryption
-		Assert-AreEqual $tde2.State Disabled
+		Assert-AreEqual $tde2.State Enabled
 
 		# Alter all properties
 		$tde3 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-State Enabled 
-		Assert-AreEqual $tde3.State Enabled
+			-State Disabled
+		Assert-AreEqual $tde3.State Disabled
 
 		$tdeActivity = Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
-		Assert-AreEqual $tdeActivity.Status Encrypting
+		Assert-AreEqual $tdeActivity.Status Decrypting
 
 		$tde4 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
-		Assert-AreEqual $tde4.State Enabled
+		Assert-AreEqual $tde4.State Disabled
 	}
 	finally
 	{
@@ -85,20 +87,13 @@ function Test-GetTransparentDataEncryption
 
 <#
 	.SYNOPSIS
-	Tests Getting a server transparent data encryption protector
+	Tests Getting a server transpagrent data encryption protector
 #>
 function Test-GetTransparentDataEncryptionProtector
 {
 	# Setup
-	$location = "Southeast Asia"
-	$rgName = Get-ResourceGroupName
-	$rg = New-AzureRmResourceGroup -Name $rgName -Location $location -Force
-	$serverName = Get-ServerName
-	$serverLogin = "testusername"
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
-	
-	$server = New-AzureRmSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{

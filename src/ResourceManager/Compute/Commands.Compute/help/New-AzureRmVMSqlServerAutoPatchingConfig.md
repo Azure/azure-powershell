@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureVMSqlServerAutoPatchingConfig
+# New-AzureRmVMSqlServerAutoPatchingConfig
 
 ## SYNOPSIS
 Creates a configuration object for automatic patching on a virtual machine.
@@ -13,18 +13,18 @@ Creates a configuration object for automatic patching on a virtual machine.
 ## SYNTAX
 
 ```
-New-AzureVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
+New-AzureRmVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
  [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureVMSqlServerAutoPatchingConfig** cmdlet creates a configuration object for automatic patching on a virtual machine.
+The **New-AzureRmVMSqlServerAutoPatchingConfig** cmdlet creates a configuration object for automatic patching on a virtual machine.
 
 ## EXAMPLES
 
 ### Example 1: Create a configuration object to configure automatic patching
 ```
-PS C:\>$AutoPatchingConfig = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+PS C:\> $AutoPatchingConfig = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 Enable                        : True
 DayOfWeek                     : Thursday
 MaintenanceWindowStartingHour : 11

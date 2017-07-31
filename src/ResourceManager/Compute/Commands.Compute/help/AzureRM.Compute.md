@@ -68,6 +68,9 @@ Disables encryption on an IaaS virtual machine.
 ### [Get-AzureRmAvailabilitySet](Get-AzureRmAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
 
+### [Get-AzureRmComputeResourceSku](Get-AzureRmComputeResourceSku.md)
+List all compute resource Skus
+
 ### [Get-AzureRmContainerService](Get-AzureRmContainerService.md)
 Gets a container service.
 
@@ -200,13 +203,13 @@ Creates a virtual machine.
 ### [New-AzureRmVMConfig](New-AzureRmVMConfig.md)
 Creates a configurable virtual machine object.
 
-### [New-AzureRmVMSqlServerAutoBackupConfig](New-AzureRmVMSqlServerAutoBackupConfig.md)
+### [New-AzureVMSqlServerAutoBackupConfig](New-AzureVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
 
-### [New-AzureRmVMSqlServerAutoPatchingConfig](New-AzureRmVMSqlServerAutoPatchingConfig.md)
+### [New-AzureVMSqlServerAutoPatchingConfig](New-AzureVMSqlServerAutoPatchingConfig.md)
 Creates a configuration object for automatic patching on a virtual machine.
 
-### [New-AzureRmVMSqlServerKeyVaultCredentialConfig](New-AzureRmVMSqlServerKeyVaultCredentialConfig.md)
+### [New-AzureVMSqlServerKeyVaultCredentialConfig](New-AzureVMSqlServerKeyVaultCredentialConfig.md)
 Creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ### [New-AzureRmVmss](New-AzureRmVmss.md)
@@ -411,13 +414,16 @@ Sets the operating system disk properties on a virtual machine.
 Sets the Marketplace plan information on a virtual machine.
 
 ### [Set-AzureRmVMSourceImage](Set-AzureRmVMSourceImage.md)
-Specifies the platform image for a virtual machine.
+Specifies the image for a virtual machine.
 
 ### [Set-AzureRmVMSqlServerExtension](Set-AzureRmVMSqlServerExtension.md)
 Sets the Azure SQL Server extension on a virtual machine.
 
 ### [Set-AzureRmVmss](Set-AzureRmVmss.md)
 Sets specific actions on a specified VMSS.
+
+### [Set-AzureRmVmssBootDiagnostic](Set-AzureRmVmssBootDiagnostic.md)
+Sets the virtual machine scale set boot diagnostics profile.
 
 ### [Set-AzureRmVmssOsProfile](Set-AzureRmVmssOsProfile.md)
 Sets the VMSS operating system profile properties.

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -118,8 +119,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 enableHttpsTrafficOnly = value;
             }
         }
-
         private bool? enableHttpsTrafficOnly = null;
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(HelpMessage = "Storage Account NetworkRule",
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkRuleSet NetworkRule
+        {
+            get; set;
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -159,6 +172,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (this.EnableEncryptionService != null)
             {
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
+                createParameters.Encryption.KeySource = "Microsoft.Storage";
             }
 
             if (this.AccessTier != null)
@@ -168,6 +182,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (enableHttpsTrafficOnly != null)
             {
                 createParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
+            }
+
+            if (AssignIdentity.IsPresent)
+            {
+                createParameters.Identity = new Identity();
+            }
+            if (NetworkRule != null)
+            {
+                createParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRule);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

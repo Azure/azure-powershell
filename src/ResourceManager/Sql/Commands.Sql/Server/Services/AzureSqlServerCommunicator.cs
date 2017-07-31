@@ -16,11 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -64,33 +63,41 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// <summary>
         /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName, string clientRequestId)
+        public Management.Sql.Models.Server Get(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient(clientRequestId).Servers.Get(resourceGroupName, serverName);
+            return GetCurrentSqlClient().Servers.Get(resourceGroupName, serverName);
         }
 
         /// <summary>
-        /// Lists Azure Sql Database Servers
+        /// Lists Azure Sql Servers in a resource group
         /// </summary>
-        public IList<Management.Sql.Models.Server> List(string resourceGroupName, string clientRequestId)
+        public IList<Management.Sql.Models.Server> ListByResourceGroup(string resourceGroupName)
         {
-            return GetCurrentSqlClient(clientRequestId).Servers.ListByResourceGroup(resourceGroupName).ToList();
+            return GetCurrentSqlClient().Servers.ListByResourceGroup(resourceGroupName).ToList();
+        }
+
+        /// <summary>
+        /// Lists Azure Sql Servers
+        /// </summary>
+        public IList<Management.Sql.Models.Server> List()
+        {
+            return GetCurrentSqlClient().Servers.List().ToList();
         }
 
         /// <summary>
         /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, string clientRequestId, Management.Sql.Models.Server parameters)
+        public Management.Sql.Models.Server CreateOrUpdate(string resourceGroupName, string serverName, Management.Sql.Models.Server parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).Servers.CreateOrUpdate(resourceGroupName, serverName, parameters);
+            return GetCurrentSqlClient().Servers.CreateOrUpdate(resourceGroupName, serverName, parameters);
         }
 
         /// <summary>
         /// Deletes a Azure Sql Database SErver
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName)
         {
-            GetCurrentSqlClient(clientRequestId).Servers.Delete(resourceGroupName, serverName);
+            GetCurrentSqlClient().Servers.Delete(resourceGroupName, serverName);
         }
 
         /// <summary>
@@ -98,15 +105,13 @@ namespace Microsoft.Azure.Commands.Sql.Server.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

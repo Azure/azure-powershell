@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <returns>The server</returns>
         public AzureSqlServerUpgradeModel GetUpgrade(string resourceGroupName, string serverName)
         {
-            var upgradeDetails = Communicator.GetUpgrade(resourceGroupName, serverName, Util.GenerateTracingId());
+            var upgradeDetails = Communicator.GetUpgrade(resourceGroupName, serverName);
             ServerUpgradeStatus status;
             if (!Enum.TryParse(upgradeDetails.Status, out status))
             {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
                     ElasticPoolCollection = model.ElasticPoolCollection
                 }
             };
-            Communicator.Start(model.ResourceGroupName, model.ServerName, parameters, Util.GenerateTracingId());
+            Communicator.Start(model.ResourceGroupName, model.ServerName, parameters);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <param name="serverName">The name of the server to cancel upgrade</param>
         public void Cancel(string resourceGroupName, string serverName)
         {
-            Communicator.Cancel(resourceGroupName, serverName, Util.GenerateTracingId());
+            Communicator.Cancel(resourceGroupName, serverName);
         }
     }
 }

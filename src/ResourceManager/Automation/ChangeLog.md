@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+
+## Version 3.2.0
+* Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
+    - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
+
+## Version 3.1.0
+
+## Version 3.0.1
+
 ## Version 3.0.0
 
 ## Version 2.8.0

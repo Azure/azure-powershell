@@ -26,11 +26,11 @@ function Test-CreateStretchDatabase
 	.SYNOPSIS
 	Helper for testing creating a database
 #>
-function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
+function Test-CreateDatabaseInternal ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
@@ -66,11 +66,11 @@ function Test-UpdateStretchDatabase
 	.SYNOPSIS
 	Helper for testing updating a database
 #>
-function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
+function Test-UpdateDatabaseInternal ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 		$rg = Create-ResourceGroupForTest $location
-		$server = Create-ServerForTest $rg $serverVersion $location
+		$server = Create-ServerForTest $rg $location
 	try {
 		# Create stretch database
 		$databaseName = Get-DatabaseName
@@ -109,11 +109,11 @@ function Test-GetStretchDatabase
 	.SYNOPSIS
 	Helper for testing getting a database
 #>
-function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
+function Test-GetDatabaseInternal  ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{
@@ -153,11 +153,11 @@ function Test-RemoveStretchDatabase
 	.SYNOPSIS
 	Helper for testing deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
+function Test-RemoveDatabaseInternal  ($serverVersion, $location = "westcentralus")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	try
 	{

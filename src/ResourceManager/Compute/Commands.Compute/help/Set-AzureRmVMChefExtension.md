@@ -16,8 +16,9 @@ Adds a Chef extension to a virtual machine.
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
  -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
- [-ChefDaemonInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
- [-OrganizationName <String>] [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
+ [-ChefDaemonInterval <String>] [-Daemon <String>] [-Secret <String>] [-SecretFile <String>]
+ [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
+ [-BootstrapVersion <String>] [-Linux] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,8 +26,9 @@ Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-T
 ```
 Set-AzureRmVMChefExtension [-ResourceGroupName] <String> [-VMName] <String> [[-TypeHandlerVersion] <String>]
  -ValidationPem <String> [-ClientRb <String>] [-BootstrapOptions <String>] [-JsonAttribute <String>]
- [-ChefDaemonInterval <String>] [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>]
- [-OrganizationName <String>] [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
+ [-ChefDaemonInterval <String>] [-Daemon <String>] [-Secret <String>] [-SecretFile <String>]
+ [-RunList <String>] [-ChefServerUrl <String>] [-ValidationClientName <String>] [-OrganizationName <String>]
+ [-BootstrapVersion <String>] [-Windows] [[-Location] <String>] [[-Name] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +39,7 @@ The **Set-AzureVMChefExtension** cmdlet adds the Chef extension to the virtual m
 
 ### Example 1: Add a Chef extension to a Windows virtual machine
 ```
-PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Daemon "service" -SecretFile "C:\my_encrypted_data_bag_secret" -Windows
+PS C:\> Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Daemon "service" -SecretFile "C:\my_encrypted_data_bag_secret" -Windows
 ```
 
 This command adds a Chef extension to a Windows virtual machine named WindowsVM001.
@@ -45,7 +47,7 @@ When the virtual machine starts, Chef bootstraps the virtual machine to run Apac
 
 ### Example 2: Add a Chef extension to a Linux virtual machine
 ```
-PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Secret "my_secret" -Linux
+PS C:\> Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup002" -VMName "LinuxVM001" -ValidationPem "C:\my-org-validator.pem" -ClientRb "C:\client.rb" -RunList "Apache" -Secret "my_secret" -Linux
 ```
 
 This command adds a Chef extension to a Linux virtual machine named LinuxVM001.
@@ -53,7 +55,7 @@ When the virtual machine starts, Chef bootstraps the virtual machine to run Apac
 
 ### Example 3: Add a Chef extension to a Windows virtual machine with bootstrap options
 ```
-PS C:\>Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup003" -VMName "WindowsVM002" -ValidationPem C:\my-org-validator.pem -ClientRb C:\client.rb -BootstrapOptions '{"chef_node_name":"your_node_name","chef_server_url":"https://api.opscode.com/organizations/some-org", "validation_client_name":"some-org-validator"}' -RunList "Apache" -Windows
+PS C:\> Set-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup003" -VMName "WindowsVM002" -ValidationPem C:\my-org-validator.pem -ClientRb C:\client.rb -BootstrapOptions '{"chef_node_name":"your_node_name","chef_server_url":"https://api.opscode.com/organizations/some-org", "validation_client_name":"some-org-validator"}' -RunList "Apache" -Windows
 ```
 
 This command adds the Chef extension to a Windows virtual machine named WindowsVM002.
@@ -105,13 +107,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ChefServerUrl
-Specifies the Chef server link, as a URL.
-
-```yaml
+### -ChefDaemonInterval
+Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ChefServiceInterval
 
 Required: False
 Position: Named
@@ -120,8 +120,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ChefDaemonInterval
-Specifies the frequency (in minutes) at which the chef-service runs. If in case you don't want the chef-service to be installed on the Azure VM then set value as 0 in this field.```yaml
+### -ChefServerUrl
+Specifies the Chef server link, as a URL.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

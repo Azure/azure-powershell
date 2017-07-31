@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.Network
 
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Management.Network;
+    using Microsoft.Azure.Management.Network.Models;
+    using Microsoft.Rest.Azure;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmRouteFilter"), OutputType(typeof(PSRouteFilter))]
     public class GetAzureRouteFilterCommand: RouteFilterBaseCmdlet
@@ -67,24 +69,20 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(routeFilter);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var routeFilterList = this.RouteFilterClient.ListByResourceGroup(this.ResourceGroupName);
-
-                var psRouteFilters = new List<PSRouteFilter>();
-
-                foreach (var routeFilter in routeFilterList)
-                {
-                    var psRouteFilter = this.ToPsRouteFilter(routeFilter);
-                    psRouteFilter.ResourceGroupName = this.ResourceGroupName;
-                    psRouteFilters.Add(psRouteFilter);
-                }
-
-                WriteObject(psRouteFilters, true);
-            }
             else
             {
-                var routeFilterList = this.RouteFilterClient.List();
+                IPage<RouteFilter> routeFilterPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    routeFilterPage = this.RouteFilterClient.ListByResourceGroup(this.ResourceGroupName);
+                }
+                else
+                {
+                    routeFilterPage = this.RouteFilterClient.List();
+                }
+
+                // Get all resources by polling on next page link
+                var routeFilterList = ListNextLink<RouteFilter>.GetAllResourcesByPollingNextLink(routeFilterPage, this.RouteFilterClient.ListNext);
 
                 var psRouteFilters = new List<PSRouteFilter>();
 
@@ -95,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
                     psRouteFilters.Add(psRouteFilter);
                 }
 
-                WriteObject(psRouteFilters, true);
+                WriteObject(psRouteFilters, true);                
             }
         }
     }

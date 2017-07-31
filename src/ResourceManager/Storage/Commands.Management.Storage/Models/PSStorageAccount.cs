@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTier = storageAccount.AccessTier;
             this.CreationTime = storageAccount.CreationTime;
             this.CustomDomain = storageAccount.CustomDomain;
+            this.Identity = storageAccount.Identity;
             this.LastGeoFailoverTime = storageAccount.LastGeoFailoverTime;
             this.PrimaryEndpoints = storageAccount.PrimaryEndpoints;
             this.PrimaryLocation = storageAccount.PrimaryLocation;
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.StatusOfSecondary = storageAccount.StatusOfSecondary;
             this.Tags = storageAccount.Tags;
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
+            this.NetworkRule = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkAcls);
         }
 
         public string ResourceGroupName { get; set; }
@@ -66,6 +68,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public DateTime? CreationTime { get; set; }
 
         public CustomDomain CustomDomain { get; set; }
+
+        public Identity Identity { get; set; }
 
         public DateTime? LastGeoFailoverTime { get; set; }
 
@@ -86,6 +90,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public IDictionary<string, string> Tags { get; set; }
 
         public bool? EnableHttpsTrafficOnly { get; set; }
+
+        public PSNetworkRuleSet NetworkRule { get; set; }
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {

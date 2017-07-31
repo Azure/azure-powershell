@@ -13,21 +13,21 @@ Adds a secret to a VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssSecret [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-SourceVaultId] <String>]
+Add-AzureRmVmssSecret [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-SourceVaultId] <String>]
  [[-VaultCertificate] <VaultCertificate[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Add-AzureRmVmssSecret** cmdlet adds a secret to the Virtual Machine Scale Set (VMSS).
 The secret must be stored in an Azure Key Vault.
-For more information relating to Key Vault, see What is Azure Key Vault?https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/ (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
-For more information about the cmdlets, see Azure Key Vault Cmdletshttps://msdn.microsoft.com/library/azure/dn868052.aspx(https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the Set-AzureKeyVaultSecret cmdlet.
+For more information relating to Key Vault, see [What is Azure Key Vault?](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/) (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
+For more information about the cmdlets, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) (https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the [Set-AzureKeyVaultSecret](./Set-AzureKeyVaultSecret.md) cmdlet.
 
 ## EXAMPLES
 
 ### Example 1: Add a secret to the VMSS
 ```
-PS C:\>$Vault = Get-AzureRmKeyVault -VaultName "ContosoVault"
+PS C:\> $Vault = Get-AzureRmKeyVault -VaultName "ContosoVault"
 PS C:\> $CertConfig = New-AzureRmVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "Certificates"
 PS C:\> $VMSS = New-AzureRmVmssConfig
 PS C:\> Add-AzureRmVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId $Vault.ResourceId -VaultCertificate $CertConfig
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 
 ### -VaultCertificate
 Specifies the Vault **Certificate** object that contains the certificate URL and certificate name.
-You can use the New-AzureRmVmssVaultCertificateConfig cmdlet to create this object.
+You can use the [New-AzureRmVmssVaultCertificateConfig](./New-AzureRmVmssVaultCertificateConfig.md) cmdlet to create this object.
 
 ```yaml
 Type: VaultCertificate[]
@@ -76,10 +76,10 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create this object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create this object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
@@ -137,5 +137,3 @@ This cmdlet does not generate any output.
 [New-AzureRmVmssVaultCertificateConfig](./New-AzureRmVmssVaultCertificateConfig.md)
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-

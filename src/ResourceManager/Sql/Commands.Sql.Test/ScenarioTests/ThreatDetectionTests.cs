@@ -28,24 +28,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
-            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            var resourcesClient = GetResourcesClient();
+            var newResourcesClient = GetResourcesClient(context);
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient,
-                authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, resourcesClient,
+                newResourcesClient, authorizationClient);
         }
 
         public ThreatDetectionTests(ITestOutputHelper output) : base(output)
         {
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ThreatDetectionUpdatePolicyWithClassicStorage()
-        {
-            RunPowerShellTest("Test-ThreatDetectionUpdatePolicyWithClassicStorage");
         }
 
         [Fact]
