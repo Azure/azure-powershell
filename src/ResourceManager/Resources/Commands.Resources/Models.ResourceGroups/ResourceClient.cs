@@ -31,6 +31,7 @@ using System.Net;
 #if !NETSTANDARD
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using RMProviderOperationsMetadata = Microsoft.Azure.Management.Resources.Models.ProviderOperationsMetadata;
 #else
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 #if !NETSTANDARD
                 AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 new GalleryTemplatesClient(context),
-                AzureSession.Instance.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
 #else
                 AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
@@ -157,7 +158,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
             var permissionsResult = AuthorizationManagementClient.Permissions.ListForResource(
                     identity.ResourceGroupName,
 #if !NETSTANDARD
-                    resourceIdentity);
+                    identity.ResourceProviderNamespace,
+                    identity.ParentResource,
+                    identity.ResourceType,
+                    identity.ResourceName);
 #else
                     resourceIdentity.ResourceProviderNamespace,
                     resourceIdentity.ParentResourcePath??"",
@@ -169,7 +173,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 return permissionsResult
 #if !NETSTANDARD
-                    .Permissions
+                    //.Permissions
 #endif
                     .Select(p => p.ToPSPermission()).ToList();
             }
@@ -378,19 +382,19 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return resources;
         }
 
-        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+        public RMProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
         {
             ProviderOperationsMetadataGetResult result = this.ResourceManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
             return result.Provider;
         }
 
-        public IList<ProviderOperationsMetadata> ListProviderOperationsMetadata()
+        public IList<RMProviderOperationsMetadata> ListProviderOperationsMetadata()
         {
             ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
             return result.Providers;
         }
 #else
-        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+         public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
         {
             return AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "2015-07-01");
         }

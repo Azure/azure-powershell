@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public string ResourceGroupName { get; set; }
 
+        public string ResourceProviderNamespace { get; set; }
+
         public string ResourceName { get; set; }
 
         public string ParentResource { get; set; }
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
                 List<string> resourceTypeBuilder = new List<string>();
                 resourceTypeBuilder.Add(tokens[5]);
+                ResourceProviderNamespace = tokens[5];
 
                 List<string> parentResourceBuilder = new List<string>();
                 for (int i = 6; i <= tokens.Length - 3; i++)

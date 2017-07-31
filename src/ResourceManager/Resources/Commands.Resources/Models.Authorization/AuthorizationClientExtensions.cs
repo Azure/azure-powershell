@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 assignment.Properties.RoleDefinitionId = assignment.Properties.RoleDefinitionId.GuidFromFullyQualifiedId();
 #if !NETSTANDARD
-                PSADObject adObject = adObjects.SingleOrDefault(o => 
-                    o.Id == assignment.Properties.PrincipalId) ?? 
-                    new PSADObject() { Id = assignment.Properties.PrincipalId };
+                PSADObject adObject = adObjects.SingleOrDefault(o =>
+                    o.Id.ToString() == assignment.Properties.PrincipalId) ??
+                    new PSADObject() { Id = Guid.Parse(assignment.Properties.PrincipalId)};
 #else
                 PSADObject adObject = adObjects.SingleOrDefault(o =>
                     o.Id == Guid.Parse(assignment.Properties.PrincipalId)) ??

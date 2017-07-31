@@ -147,7 +147,7 @@ function Test-RaByResource
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("78D6502F-74FC-4800-BB0A-0E1A7BEBECA4")
     $newAssignment = New-AzureRmRoleAssignment `
-                        -ObjectId $groups[0].Id.Guid `
+                        -ObjectId $groups[0].Id `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resource.ResourceGroupName `
                         -ResourceType $resource.ResourceType `
