@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network;
+using Microsoft.Azure.Management.Internal.Network.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     public class VirtualMachineRemoteDesktopBaseCmdlet : VirtualMachineBaseCmdlet
     {
-
         private NetworkClient networkClient;
 
         public NetworkClient NetworkClient
