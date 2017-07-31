@@ -53,9 +53,6 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
-      <Private>True</Private>
-    <Reference Include="Microsoft.Azure.Management.EventHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.1.2.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
     </Reference>
     <Reference Include="System.Management.Automation" />
   </ItemGroup>
