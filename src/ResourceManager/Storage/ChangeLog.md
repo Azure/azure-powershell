@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add NeworkRule support to resource mode storage account cmdlets
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+    - Get-AzureStorageAccountNetworkRuleSet
+    - Update-AzureStorageAccountNetworkRuleSet
+    - Add-AzureStorageAccountNetworkRule
+    - Remove-AzureStorageAccountNetworkRule
 
 ## Version 3.2.1
 

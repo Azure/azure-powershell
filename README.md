@@ -5,7 +5,7 @@
 This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.
 
 * For documentation on how to build and deploy applications to Microsoft Azure please see the [Microsoft Azure Documentation Center](https://docs.microsoft.com/en-us/azure/).
-* For comprehensive documentation on the developer cmdlets see the [overview of Azure PowerShell](aka.ms/azpsdocs).
+* For comprehensive documentation on the developer cmdlets see the [overview of Azure PowerShell](https://aka.ms/azpsdocs).
 * For suggesting improvements, join our improvement discussion ([Issue #3692](https://github.com/Azure/azure-powershell/issues/3692)).
 
 ## Features
