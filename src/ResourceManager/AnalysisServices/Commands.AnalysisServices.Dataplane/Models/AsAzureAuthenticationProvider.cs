@@ -20,6 +20,8 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
@@ -52,7 +54,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 AsAzureClientSession.TokenCache);
 
             AuthenticationResult result = null;
-            if (password == null)
+            if (password == null && asAzureContext.Account.Type == AsAzureAccount.AccountType.User)
             {
                 if (asAzureContext.Account.Id != null)
                 {
@@ -74,13 +76,34 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             }
             else
             {
-                UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
-                result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
-            }
+                if (asAzureContext.Account.Type == AsAzureAccount.AccountType.User)
+                {
+                    UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
+                    result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
 
-            asAzureContext.Account.Id = result.UserInfo.DisplayableId;
-            asAzureContext.Account.Tenant = result.TenantId;
-            asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
+                    asAzureContext.Account.Id = result.UserInfo.DisplayableId;
+                    asAzureContext.Account.Tenant = result.TenantId;
+                    asAzureContext.Account.UniqueId = result.UserInfo.UniqueId;
+                }
+                else if (asAzureContext.Account.Type == AsAzureAccount.AccountType.ServicePrincipal)
+                {
+                    if (string.IsNullOrEmpty(asAzureContext.Account.CertificateThumbprint))
+                    {
+                        ClientCredential credential = new ClientCredential(asAzureContext.Account.Id, password);
+                        result = authenticationContext.AcquireToken(resourceUri, credential);
+                    }
+                    else
+                    {
+                        var certificate = AzureSession.Instance.DataStore.GetCertificate(asAzureContext.Account.CertificateThumbprint);
+                        if (certificate == null)
+                        {
+                            throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, asAzureContext.Account.CertificateThumbprint));
+                        }
+
+                        result = authenticationContext.AcquireToken(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate));
+                    }
+                }
+            }
 
             return result.AccessToken;
         }
