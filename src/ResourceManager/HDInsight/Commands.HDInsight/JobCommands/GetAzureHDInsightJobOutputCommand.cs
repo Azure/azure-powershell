@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System.IO;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -133,25 +134,38 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         internal IStorageAccess GetDefaultStorageAccess(string resourceGroupName, string clusterName)
         {
+            var StorageAccountSuffix = "";
             if (DefaultContainer == null && DefaultStorageAccountName == null && DefaultStorageAccountKey == null)
             {
-                var DefaultStorageAccount = GetDefaultStorageAccount(resourceGroupName, clusterName);
-
+                var DefaultStorageAccount = GetDefaultStorageAccount(resourceGroupName, clusterName);              
                 var wasbAccount = DefaultStorageAccount as AzureHDInsightWASBDefaultStorageAccount;
                 if (wasbAccount != null)
                 {
                     DefaultContainer = wasbAccount.StorageContainerName;
                     DefaultStorageAccountName = wasbAccount.StorageAccountName;
                     DefaultStorageAccountKey = wasbAccount.StorageAccountKey;
+
+                    if (DefaultStorageAccountName != null)
+                    {
+                        string[] SplitArray = DefaultStorageAccountName.Split(new string[] { "blob." }, StringSplitOptions.None);
+
+                        if (SplitArray.Length == 2)
+                        {
+                            StorageAccountSuffix = SplitArray[1];
+                        }
+                        else
+                        {
+                            throw new CloudException("Storage Account Name in Invalid format");
+                        }
+                    }
                 }
                 else
                 {
                     throw new CloudException("Unsupported default storage account type");
                 }
-
             }
 
-            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
+            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer, StorageAccountSuffix);
         }
     }
 }
