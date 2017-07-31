@@ -52,14 +52,10 @@ namespace Microsoft.Azure.Commands.Relay.Models
 
             Rights = new List<string>();
 
-            foreach (AccessRights teset in authorizationrule.Rights)
+            foreach (AccessRights rights in authorizationrule.Rights)
             {
-                Rights.Add(teset.ToString());
-            }
-            //Rights = authorizationrule.Rights.Select(x => Enum.Parse(typeof(AccessRights?), x))
-            //                .Cast<AccessRights?>()
-            //                .ToList()
-           // Rights = authorizationrule.Rights;
+                Rights.Add(rights.ToString());
+            }            
         }
 
 
