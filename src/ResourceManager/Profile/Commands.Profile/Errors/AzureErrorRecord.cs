@@ -25,13 +25,10 @@ namespace Microsoft.Azure.Commands.Profile.Errors
     {
         public AzureErrorRecord(ErrorRecord record)
         {
-            if (record != null)
-            {
-                InvocationInfo = record.InvocationInfo;
-                ScriptStackTrace = record.ScriptStackTrace;
-                ErrorCategory = record.CategoryInfo;
-                ErrorDetails = record.ErrorDetails;
-            }
+            InvocationInfo = record.InvocationInfo;
+            ScriptStackTrace = record.ScriptStackTrace;
+            ErrorCategory = record.CategoryInfo;
+            ErrorDetails = record.ErrorDetails;
         }
 
         public ErrorDetails ErrorDetails { get; set; }

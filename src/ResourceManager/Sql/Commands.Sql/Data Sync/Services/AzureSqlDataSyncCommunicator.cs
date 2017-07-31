@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.WindowsAzure.Management.Storage;
