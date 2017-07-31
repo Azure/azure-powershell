@@ -14,7 +14,7 @@ Creates a configurable virtual machine object.
 
 ```
 New-AzureRmVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <String>]
- [-LicenseType <String>] [-IdentityType <ResourceIdentityType>] [-Tags <Hashtable>] [<CommonParameters>]
+ [[-LicenseType] <String>] [[-IdentityType] <ResourceIdentityType>] [-Tags <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,9 +61,10 @@ The identity of the virtual machine, if configured.
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -78,7 +79,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -90,7 +91,7 @@ The tags attached to the resource.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tag
 
 Required: False
 Position: Named

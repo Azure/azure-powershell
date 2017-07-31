@@ -56,6 +56,7 @@ namespace StaticAnalysis.DependencyAnalyzer
         private ReportLogger<SharedAssemblyConflict> _sharedConflictLogger;
         private ReportLogger<MissingAssembly> _missingAssemblyLogger;
         private ReportLogger<ExtraAssembly> _extraAssemblyLogger;
+        private ReportLogger<DependencyMap> _dependencyMapLogger;
 
         public DependencyAnalyzer()
         {
@@ -76,6 +77,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             _sharedConflictLogger = Logger.CreateLogger<SharedAssemblyConflict>("SharedAssemblyConflict.csv");
             _missingAssemblyLogger = Logger.CreateLogger<MissingAssembly>("MissingAssemblies.csv");
             _extraAssemblyLogger = Logger.CreateLogger<ExtraAssembly>("ExtraAssemblies.csv");
+            _dependencyMapLogger = Logger.CreateLogger<DependencyMap>("DependencyMap.csv");
             foreach (var baseDirectory in directories)
             {
                 foreach (var directoryPath in Directory.EnumerateDirectories(baseDirectory))
@@ -90,10 +92,12 @@ namespace StaticAnalysis.DependencyAnalyzer
                     _versionConflictLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
                     _missingAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
                     _extraAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
+                    _dependencyMapLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
                     ProcessDirectory(directoryPath);
                     _versionConflictLogger.Decorator.Remove("Directory");
                     _missingAssemblyLogger.Decorator.Remove("Directory");
                     _extraAssemblyLogger.Decorator.Remove("Directory");
+                    _dependencyMapLogger.Decorator.Remove("Directory");
                 }
             }
         }
@@ -242,11 +246,25 @@ namespace StaticAnalysis.DependencyAnalyzer
                 {
                     AddSharedAssembly(assembly);
                 }
+
             }
 
             // Now check for assembly mismatches
             foreach (var assembly in _assemblies.Values)
             {
+                foreach (var parent in assembly.ReferencingAssembly)
+                {
+                    _dependencyMapLogger.LogRecord(
+                        new DependencyMap
+                        {
+                            AssemblyName = assembly.Name,
+                            AssemblyVersion = assembly.Version.ToString(),
+                            ReferencingAssembly = parent.Name,
+                            ReferencingAssemblyVersion = parent.Version.ToString(),
+                            Severity = 3
+                        });
+                }
+
                 foreach (var reference in assembly.Children)
                 {
                     CheckAssemblyReference(reference, assembly);

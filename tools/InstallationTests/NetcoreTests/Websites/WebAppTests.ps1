@@ -542,8 +542,8 @@ function Test-SetWebApp
 	$rgname = Get-ResourceGroupName
 	$webAppName = Get-WebsiteName
 	$location = Get-Location
-	$appServicePlanName1 = Get-WebHostPlanName
-	$appServicePlanName2 = Get-WebHostPlanName
+	$appServicePlanName1 = (Get-WebHostPlanName) + "One"
+	$appServicePlanName2 = (Get-WebHostPlanName) + "Two"
 	$tier1 = "Shared"
 	$tier2 = "Standard"
 	$apiversion = "2015-08-01"
@@ -586,9 +586,8 @@ function Test-SetWebApp
 		# set app settings and connection strings
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
-
 		$webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -ConnectionStrings $connectionStrings -NumberofWorkers $capacity
-
+		
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $appSettings.Keys.Count $webApp.SiteConfig.AppSettings.Count
