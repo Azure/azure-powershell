@@ -19,27 +19,11 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSDiskUpdate : DiskUpdate
+    public partial class PSDiskUpdate : DiskUpdate
     {
-		[Obsolete("This property is deprecated and will be removed in a future release")]
-		public string AccountType
-		{
-			get
-			{
-				return Sku.Name.ToString();
-			}
-			set
-			{
-				Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value);
-			}
-		}
-
-		[Obsolete("This property is deprecated and will be removed in a future release")]
-		public CreationData CreationData { get; set; }
-	}
+    }
 }

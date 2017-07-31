@@ -15,20 +15,20 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.WebApps.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {
     public abstract class WebAppBaseClientCmdLet : AzureRMCmdlet
     {
-        private PSResourceManagerModels.ResourcesClient _resourcesClient;
-        public PSResourceManagerModels.ResourcesClient ResourcesClient
+        private ResourceClient _resourcesClient;
+        public ResourceClient ResourcesClient
         {
             get
             {
                 if (_resourcesClient == null)
                 {
-                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.DefaultContext)
+                    _resourcesClient = new ResourceClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
