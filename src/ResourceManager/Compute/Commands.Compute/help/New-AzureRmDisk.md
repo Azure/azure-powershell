@@ -12,7 +12,7 @@ Creates a managed disk.
 ## SYNTAX
 
 ```
-New-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <Disk> [-WhatIf] [-Confirm]
+New-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <PSDisk> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ The last command takes the disk object and creates a disk with name 'Disk01' in 
 Specifies a local disk object.
 
 ```yaml
-Type: Disk
+Type: PSDisk
 Parameter Sets: (All)
 Aliases: 
 

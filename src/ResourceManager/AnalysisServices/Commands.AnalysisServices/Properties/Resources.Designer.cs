@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Sku: &apos;{0}&apos;. Available Skus are: &apos;{1}&apos;.
+        /// </summary>
+        internal static string InvalidSku {
+            get {
+                return ResourceManager.GetString("InvalidSku", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AnalysisServices server operation failed with the following error code: {0} and message: {1}.
         /// </summary>
         internal static string LongRunningOperationFailed {

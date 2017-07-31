@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: 2D5B16F0-0662-4D9F-A13F-808CE5EEBBA3
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -20,8 +20,9 @@ New-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Lo
 ## DESCRIPTION
 The **New-AzureRmAutomationAccount** cmdlet creates an Azure Automation account in a resource group.
 
-An Automation account is a container for Automation resources that is isolated from the resources of other Automation accounts.
-Automation resources include runbooks, Desired State Configuration (DSC) configurations, jobs, and assets.
+An Automation account is a container for Automation resources that is isolated from the resources
+of other Automation accounts. Automation resources include runbooks, Desired State Configuration
+(DSC) configurations, jobs, and assets.
 
 ## EXAMPLES
 
@@ -41,7 +42,7 @@ To obtain valid locations, use the Get-AzureRMLocation cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -67,15 +68,15 @@ Accept wildcard characters: False
 
 ### -Plan
 Specifies the plan for the Automation account.
-Valid values are: 
+Valid values are:
 
-- Basic 
+- Basic
 - Free
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Free, Basic
 
 Required: False
@@ -91,7 +92,7 @@ Specifies the name of a resource group to which this cmdlet adds an Automation a
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -101,7 +102,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies tags for the Automation account.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -131,5 +134,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmAutomationAccount](./Remove-AzureRmAutomationAccount.md)
 
 [Set-AzureRmAutomationAccount](./Set-AzureRmAutomationAccount.md)
-
-
