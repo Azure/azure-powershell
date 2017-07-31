@@ -26,28 +26,22 @@ namespace Microsoft.Azure.Commands.Profile.Errors
     {
         public HttpMessageInfo(CloudHttpErrorInfo message)
         {
-            if (message != null)
+            foreach (var header in message.Headers)
             {
-                foreach (var header in message.Headers)
-                {
-                    Headers[header.Key] = header.Value;
-                }
-
-                Body = message.Content;
+                Headers[header.Key] = header.Value;
             }
+
+            Body = message.Content;
         }
 
         public HttpMessageInfo(HttpMessageWrapper message)
         {
-            if (message != null)
+            foreach (var header in message.Headers)
             {
-                foreach (var header in message.Headers)
-                {
-                    Headers[header.Key] = header.Value;
-                }
-
-                Body = message.Content;
+                Headers[header.Key] = header.Value;
             }
+
+            Body = message.Content;
         }
         public IDictionary<string, IEnumerable<string>> Headers { get; } = new Dictionary<string, IEnumerable<string>>(StringComparer.OrdinalIgnoreCase);
 
