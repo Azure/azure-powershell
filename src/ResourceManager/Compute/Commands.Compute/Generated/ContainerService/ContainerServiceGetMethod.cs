@@ -83,9 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(containerServiceName))
             {
                 var result = ContainerServicesClient.Get(resourceGroupName, containerServiceName);
-                var psObject = new PSContainerService();
-                Mapper.Map<ContainerService, PSContainerService>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -101,12 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSContainerServiceList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -122,12 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSContainerServiceList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
         }
 
