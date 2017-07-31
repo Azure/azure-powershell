@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Resources;
@@ -48,6 +48,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private const string SubscriptionIdKey = "SubscriptionId";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -157,12 +159,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
+            NewResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
+                NewResourceManagementClient,
                 SubscriptionClient,
                 KeyVaultManagementClient,
                 AuthorizationManagementClient,
@@ -180,6 +184,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private ResourceManagementClient GetResourceManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+        }
+
+        private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)

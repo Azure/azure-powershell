@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             private set;
         }
 
+        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
+
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
@@ -176,6 +178,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
+            NewResourceManagementClient = GetNewResourceManagementClient(context);
 
             helper.SetupManagementClients(
                 ResourcesResourceManagementClient,
@@ -188,7 +191,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 ResourceManagerResourceManagementClient,
                 KeyVaultManagementClient,
                 StorageManagementClient,
-                NetworkManagementClient);
+                NetworkManagementClient,
+                NewResourceManagementClient);
         }
 
         private ResourceManagementClient GetResourceManagementClient()
@@ -244,6 +248,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         private NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetNewResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
         
     }
