@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -96,9 +95,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmName))
             {
                 var result = VirtualMachinesClient.Get(resourceGroupName, vmName, expand);
-                var psObject = new PSVirtualMachine();
-                Mapper.Map<VirtualMachine, PSVirtualMachine>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -114,12 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSVirtualMachineList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<VirtualMachine, PSVirtualMachineList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -135,12 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSVirtualMachineList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<VirtualMachine, PSVirtualMachineList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
         }
 

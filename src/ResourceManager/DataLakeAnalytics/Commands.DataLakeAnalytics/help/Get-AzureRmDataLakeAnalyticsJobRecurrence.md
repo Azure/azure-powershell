@@ -75,7 +75,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubmittedAfter
-An optional filter which returns job recurrence(s) only submitted after the specified time.```yaml
+An optional filter which returns job recurrence(s) only submitted after the specified time.
+
+```yaml
 Type: DateTimeOffset
 Parameter Sets: (All)
 Aliases: 
@@ -88,7 +90,9 @@ Accept wildcard characters: False
 ```
 
 ### -SubmittedBefore
-An optional filter which returns job recurrence(s) only submitted before the specified time.```yaml
+An optional filter which returns job recurrence(s) only submitted before the specified time.
+
+```yaml
 Type: DateTimeOffset
 Parameter Sets: (All)
 Aliases: 
@@ -110,8 +114,7 @@ System.Guid
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation, Microsoft.Azure.Commands.DataLakeAnalytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobRecurrenceInformation
 
 ## NOTES
 

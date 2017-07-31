@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzureKeyVaultManagedStorageSasDefinition
 
 ## SYNOPSIS
-Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account. 
+Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account.
 
 ## SYNTAX
 
@@ -123,7 +123,10 @@ Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName
 ```
 
 ## DESCRIPTION
-Sets a Shared Access Signature (SAS) definition with a given Key Vault managed Azure Storage Account. This also sets a secret which can be used to get the SAS token per this SAS definition. SAS token is generated using these parameters and the active key of the Key Vault managed Azure Storage Account.
+Sets a Shared Access Signature (SAS) definition with a given Key Vault managed Azure Storage
+Account. This also sets a secret which can be used to get the SAS token per this SAS definition.
+SAS token is generated using these parameters and the active key of the Key Vault managed Azure
+Storage Account.
 
 ## EXAMPLES
 
@@ -132,27 +135,29 @@ Sets a Shared Access Signature (SAS) definition with a given Key Vault managed A
 PS C:\> Set-AzureKeyVaultManagedStorageSasDefinition -Blob 'blob1' -Container 'container1' -VaultName 'vault1' -AccountName 'account1' -Name 'sas1' -ValidityPeriod ([System.Timespan]::FromDays(30)) -Permission Read,Add -SharedAccessHeader CacheControl,ContentDisposition -Protocol HttpsOnly -IPAddressOrRange '168.1.5.60-168.1.5.70'
 ```
 
-Sets an ad hoc service blob sas definition 'sas1' with key vault managed storage account 'account1' in vault 'vault1'. 
+Sets an ad hoc service blob sas definition 'sas1' with key vault managed storage account 'account1' in vault 'vault1'.
 
 ### Example 2 : Set an ad hoc account sas definition
 ```
 PS C:\> Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob,File -ResourceType Container,Service -VaultName 'vault1' -AccountName 'account1' -Name 'sas1' -Protocol HttpsOrHttp -IPAddressOrRange '168.1.5.60' -ValidityPeriod ([System.Timespan]::FromDays(30)) -Permission Read,Add
 ```
 
-Sets an ad hoc blob sas definition 'sas1' with key vault managed storage account 'account1' in vault 'vault1'. 
+Sets an ad hoc blob sas definition 'sas1' with key vault managed storage account 'account1' in vault 'vault1'.
 
 ### Example 3 : Set a sas definition using a hashtable
 ```
-PS C:\> Set-AzureKeyVaultManagedStorageSasDefinition -VaultName vault1 -AccountName account1 -Name sas1 -Parameter @{"sasType"="blob";"signedVersion"="2016-05-31";"signedProtocols"="https";"signedIp"="168.1.5.60-168.1.5.70";"validityPeriod"="P30D";"signedPermissions"="ra";"blobName"="blob1";"containerName"="container1";"rscd"="";"rscc"=""}
+PS C:\> $parameters = @{"sasType"="blob";"signedVersion"="2016-05-31";"signedProtocols"="https";"signedIp"="168.1.5.60-168.1.5.70";"validityPeriod"="P30D";"signedPermissions"="ra";"blobName"="blob1";"containerName"="container1";"rscd"="";"rscc"=""}
+PS C:\> Set-AzureKeyVaultManagedStorageSasDefinition -VaultName vault1 -AccountName account1 -Name sas1 -Parameter $parameters
 ```
 
-Sets an ad hoc blob sas definition 'sas1' with key vault managed storage account 'account1' in vault 'vault1' using a hashtable. 
+Sets an ad hoc blob sas definition 'sas1' with key vault managed storage account 'account1' in
+vault 'vault1' using a hashtable.
 
 ## PARAMETERS
 
 ### -AccountName
-Key Vault managed storage account name.
-Cmdlet constructs the FQDN of a managed storage account name from vault name, currently selected environment and manged storage account name.
+Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account
+name from vault name, currently selected environment and manged storage account name.
 
 ```yaml
 Type: String
@@ -172,7 +177,7 @@ Specifies the storage service version to use to execute the request made using t
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -187,7 +192,7 @@ Blob Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceBlobSas, StoredPolicyServiceBlobSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -217,7 +222,7 @@ Container Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceBlobSas, AdhocServiceContainerSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -232,7 +237,7 @@ Disables the use of sas definition for generation of sas token.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -277,7 +282,7 @@ IP, or IP range ACL (access control list) of the request that would be accepted 
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -287,8 +292,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Storage sas definition name.
-Cmdlet constructs the FQDN of a storage sas definition from vault name, currently selected environment, storage account name and sas definition name.
+Storage sas definition name. Cmdlet constructs the FQDN of a storage sas definition from vault
+name, currently selected environment, storage account name and sas definition name.
 
 ```yaml
 Type: String
@@ -303,10 +308,12 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Sas definition parameters that will be used to create the sas token.```yaml
+Sas definition parameters that will be used to create the sas token.
+
+```yaml
 Type: Hashtable
 Parameter Sets: RawSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -321,7 +328,7 @@ Path to the cloud file to generate sas token against.
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceFileSas, StoredPolicyServiceFileSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -331,10 +338,12 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Permission. Values include 'Query','Add','Update','Process'```yaml
+Permission. Values include 'Query','Add','Update','Process'
+
+```yaml
 Type: String[]
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas
-Aliases: 
+Aliases:
 Accepted values: Add, Create, Delete, List, Process, Read, Query, Update, Write
 
 Required: True
@@ -350,7 +359,7 @@ Policy Identifier
 ```yaml
 Type: String
 Parameter Sets: StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -365,7 +374,7 @@ Protocol can be used in the request with the SAS token.
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -381,7 +390,7 @@ Queue Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceQueueSas, StoredPolicyServiceQueueSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -391,10 +400,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceType
-Resource types that this SAS token applies to. Values include 'Service','Container','Object'```yaml
+Resource types that this SAS token applies to. Values include 'Service','Container','Object'
+
+```yaml
 Type: String[]
 Parameter Sets: AdhocAccountSas
-Aliases: 
+Aliases:
 Accepted values: Service, Container, Object
 
 Required: True
@@ -405,10 +416,12 @@ Accept wildcard characters: False
 ```
 
 ### -Service
-Service types that this SAS token applies to. Values include 'Blob','File','Queue','Table'```yaml
+Service types that this SAS token applies to. Values include 'Blob','File','Queue','Table'
+
+```yaml
 Type: String[]
 Parameter Sets: AdhocAccountSas
-Aliases: 
+Aliases:
 Accepted values: Blob, File, Queue, Table
 
 Required: True
@@ -424,7 +437,7 @@ Share Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceFileSas, AdhocServiceShareSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -434,10 +447,12 @@ Accept wildcard characters: False
 ```
 
 ### -SharedAccessHeader
-Specifies the query parameters to override response headers.```yaml
+Specifies the query parameters to override response headers.
+
+```yaml
 Type: String[]
 Parameter Sets: AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas
-Aliases: 
+Aliases:
 Accepted values: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentType
 
 Required: False
@@ -483,7 +498,7 @@ Table Name
 ```yaml
 Type: String
 Parameter Sets: AdhocServiceTableSas, StoredPolicyServiceTableSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -493,7 +508,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable representing tags of sas definition.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -513,7 +530,7 @@ Specifies the signed storage service version to use to authenticate requests mad
 ```yaml
 Type: String
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas, StoredPolicyServiceBlobSas, StoredPolicyServiceContainerSas, StoredPolicyServiceFileSas, StoredPolicyServiceShareSas, StoredPolicyServiceQueueSas, StoredPolicyServiceTableSas
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -528,7 +545,7 @@ Validity period that will get used to set the expiry time of sas token from the 
 ```yaml
 Type: TimeSpan
 Parameter Sets: AdhocAccountSas, AdhocServiceBlobSas, AdhocServiceContainerSas, AdhocServiceFileSas, AdhocServiceShareSas, AdhocServiceQueueSas, AdhocServiceTableSas
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -544,7 +561,7 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -574,17 +591,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Collections.Hashtable
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
+Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
 
 ## NOTES
 
 ## RELATED LINKS
 
-[https://msdn.microsoft.com/en-us/library/dn868052.aspx](https://msdn.microsoft.com/en-us/library/dn868052.aspx)
-
+[Azure​RM.​Key​Vault](/powershell/module/azurerm.keyvault/)

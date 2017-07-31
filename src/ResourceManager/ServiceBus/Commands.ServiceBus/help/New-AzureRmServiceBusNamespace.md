@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -24,6 +24,17 @@ The **New-AzureRmServiceBusNamespace** cmdlet creates a new Service Bus namespac
 ### Example 1
 ```
 PS C:\> New-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUS -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
+
+Name               : SB-Example1
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Location           : West US
+Sku                : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState  : Succeeded
+Status             : Active
+CreatedAt          : 1/20/2017 2:07:33 AM
+UpdatedAt          : 1/20/2017 2:07:56 AM
+ServiceBusEndpoint : https://SB-Example1.servicebus.windows.net:443/
+Enabled            : True
 ```
 
 Creates a new Service Bus namespace within the specified resource group.
@@ -36,7 +47,7 @@ The Service Bus namespace location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -51,7 +62,7 @@ The Service Bus namespace name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -66,7 +77,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -81,7 +92,7 @@ The Service Bus namespace SKU name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Basic, Standard, Premium
 
 Required: False
@@ -92,12 +103,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtable that represents resource tags.
+Key-value pairs in the form of a hash table set as tags on the server. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -158,19 +171,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
-Name               : SB-Example2
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example2
-Location           : West US
-Sku                : Name : Standard , Capacity : 1 , Tier : Standard
-ProvisioningState  : Succeeded
-Status             : Active
-CreatedAt          : 1/20/2017 2:07:33 AM
-UpdatedAt          : 1/20/2017 2:07:56 AM
-ServiceBusEndpoint : https://SB-Example2.servicebus.windows.net:443/
-Enabled            : True
+Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-
