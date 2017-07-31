@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest.Mocks;
-using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
@@ -32,6 +31,7 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
+    using Graph.RBAC;
     using Common.Authentication.Abstractions;
     using ResourceManager.Common;
     using System.IO;
@@ -58,11 +58,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var storageClient = GetStorageClient();
-            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, resourcesClient, authorizationClient);
+            var resourcesClient = GetResourcesClient();
+            var newResourcesClient = GetResourcesClient(context);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, newResourcesClient);
         }
         
         protected void RunPowerShellTest(params string[] scripts)
@@ -76,7 +74,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient", "1.42-previewInternal");
+            providersToIgnore.Add("Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal");
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
@@ -144,6 +142,17 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected Management.Internal.Resources.ResourceManagementClient GetResourcesClient(RestTestFramework.MockContext context)
+        {
+            Management.Internal.Resources.ResourceManagementClient client = 
+                context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;

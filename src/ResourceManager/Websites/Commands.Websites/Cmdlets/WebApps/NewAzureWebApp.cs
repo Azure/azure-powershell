@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Management.WebSites;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
@@ -139,9 +139,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             var hostingEnvironmentProfile = WebsitesClient.CreateHostingEnvironmentProfile(ResourceGroupName, AseResourceGroupName, AseName);
             var template = DeploymentTemplateHelper.CreateSlotCloneDeploymentTemplate(Location, AppServicePlan, Name, SourceWebApp.Id,
-                slotNames, hostingEnvironmentProfile, WebsitesClient.WrappedWebsitesClient.ApiVersion);
+                slotNames, hostingEnvironmentProfile, WebsitesClient.WrappedWebsitesClient.ApiVersion());
 
-            var deployment = new Management.Resources.Models.Deployment
+            var deployment = new Management.Internal.Resources.Models.Deployment
             {
                 Properties = new DeploymentProperties
                 {

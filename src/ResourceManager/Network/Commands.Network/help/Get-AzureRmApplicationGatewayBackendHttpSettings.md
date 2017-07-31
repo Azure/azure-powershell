@@ -1,6 +1,5 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-ms.assetid: A0DDD773-7AF3-45F4-A863-936749C4CEAF
 online version: 
 schema: 2.0.0
 ---
@@ -18,7 +17,7 @@ Get-AzureRmApplicationGatewayBackendHttpSettings [-Name <String>] -ApplicationGa
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmApplicationGatewayBackendHttpSettings** cmdlet gets the back-end HTTP settings of an application gateway.
+The Get-AzureRmApplicationGatewayBackendHttpSettings cmdlet gets the back-end HTTP settings of an application gateway.
 
 ## EXAMPLES
 
@@ -85,12 +84,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Add-AzureRmApplicationGatewayBackendHttpSettings](./Add-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Add-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[New-AzureRmApplicationGatewayBackendHttpSettings](./New-AzureRmApplicationGatewayBackendHttpSettings.md)
+[New-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Remove-AzureRmApplicationGatewayBackendHttpSettings](./Remove-AzureRmApplicationGatewayBackendHttpSettings.md)
+[Remove-AzureRmApplicationGatewayBackendHttpSettings]()
 
-[Set-AzureRmApplicationGatewayBackendHttpSettings](./Set-AzureRmApplicationGatewayBackendHttpSettings.md)
-
+[Set-AzureRmApplicationGatewayBackendHttpSettings]()
 

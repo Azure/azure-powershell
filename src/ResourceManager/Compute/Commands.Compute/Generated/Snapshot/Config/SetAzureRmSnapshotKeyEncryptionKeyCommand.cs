@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,15 +30,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set", "AzureRmSnapshotKeyEncryptionKey", SupportsShouldProcess = true)]
-    [OutputType(typeof(Snapshot))]
-    public class SetAzureRmSnapshotKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSSnapshot))]
+    public partial class SetAzureRmSnapshotKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public Snapshot Snapshot { get; set; }
+        public PSSnapshot Snapshot { get; set; }
 
         [Parameter(
             Mandatory = false,

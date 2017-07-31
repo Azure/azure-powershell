@@ -13,7 +13,7 @@ Adds a WinRM listener to the VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssWinRMListener [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Protocol] <ProtocolTypes>]
+Add-AzureRmVmssWinRMListener [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Protocol] <ProtocolTypes>]
  [[-CertificateUrl] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **Add-AzureRmVmssWinRMListener** cmdlet adds a Windows Remote Management (Wi
 
 ### Example 1: Add a WinRM listener to the VMSS
 ```
-PS C:\>$VMSS = New-AzureRmVmssConfig
+PS C:\> $VMSS = New-AzureRmVmssConfig
 PS C:\> Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol Https -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion"
 ```
 
@@ -75,7 +75,7 @@ Specifies the VMSS object.
 You can use the New-AzureRmVmssConfig cmdlet to create the object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 

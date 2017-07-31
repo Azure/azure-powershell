@@ -24,14 +24,14 @@ The **Get-AzureRmVMCustomScriptExtension** cmdlet gets information about a custo
 
 ### Example 1: Get a custom script extension
 ```
-PS C:\>$VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript"
+PS C:\> $VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript"
 ```
 
 This command gets the custom script extension named ContosoCustomScript for the virtual machine named VirtualMachine07.
 
 ### Example 2: Get the instance view of a custom script extension
 ```
-PS C:\>$VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript" -Status
+PS C:\> $VMCustomScriptExtension = Get-AzureRmVMCustomScriptExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoCustomScript" -Status
 ```
 
 This command gets the instance view of the custom script extension named ContosoCustomScript for the virtual machine named VirtualMachine07.

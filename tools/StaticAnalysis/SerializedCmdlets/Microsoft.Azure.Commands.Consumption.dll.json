@@ -13,8 +13,8 @@
         {
           "Type": {
             "Namespace": "System.Collections.Generic",
-            "Name": "List",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail]",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -32,7 +32,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -48,7 +48,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "String",
+            "Name": "System.String",
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -64,7 +64,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.Int32]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -82,7 +82,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -98,7 +98,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
-            "Name": "SwitchParameter",
+            "Name": "System.Management.Automation.SwitchParameter",
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
@@ -114,7 +114,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.DateTime]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -132,7 +132,7 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "Nullable",
+            "Name": "System.Nullable`1[System.DateTime]",
             "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
@@ -156,7 +156,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -178,7 +178,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -202,7 +202,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -224,7 +224,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -246,7 +246,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -270,7 +270,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -299,7 +299,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "String",
+                  "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -321,7 +321,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -345,7 +345,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -367,7 +367,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -389,7 +389,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -413,7 +413,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -442,7 +442,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.Int32]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -466,7 +466,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -488,7 +488,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
-                  "Name": "SwitchParameter",
+                  "Name": "System.Management.Automation.SwitchParameter",
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
@@ -510,7 +510,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -534,7 +534,7 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "Nullable",
+                  "Name": "System.Nullable`1[System.DateTime]",
                   "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
@@ -673,35 +673,61 @@
     },
     "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail": {
       "Namespace": "Microsoft.Azure.Commands.Consumption.Models",
-      "Name": "PSUsageDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "MeterDetails": "Microsoft.Azure.Management.Consumption.Models.MeterDetails",
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "IsEstimated": "System.Nullable`1[System.Boolean]",
+        "UsageStart": "System.Nullable`1[System.DateTime]",
+        "UsageEnd": "System.Nullable`1[System.DateTime]",
+        "PretaxCost": "System.Nullable`1[System.Decimal]",
         "BillableQuantity": "System.Nullable`1[System.Decimal]",
-        "BillingPeriodName": "System.String",
+        "UsageQuantity": "System.Nullable`1[System.Decimal]",
+        "MeterId": "System.String",
         "Currency": "System.String",
-        "Id": "System.String",
         "InstanceId": "System.String",
-        "InstanceLocation": "System.String",
         "InstanceName": "System.String",
         "InvoiceName": "System.String",
-        "IsEstimated": "System.Nullable`1[System.Boolean]",
-        "MeterDetails": "Microsoft.Azure.Management.Consumption.Models.MeterDetails",
-        "MeterId": "System.String",
-        "Name": "System.String",
-        "PretaxCost": "System.Nullable`1[System.Decimal]",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "BillingPeriodName": "System.String",
         "Type": "System.String",
-        "UsageEnd": "System.Nullable`1[System.DateTime]",
-        "UsageQuantity": "System.Nullable`1[System.Decimal]",
-        "UsageStart": "System.Nullable`1[System.DateTime]"
+        "Name": "System.String",
+        "InstanceLocation": "System.String",
+        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": []
     },
+    "Microsoft.Azure.Management.Consumption.Models.MeterDetails": {
+      "Namespace": "Microsoft.Azure.Management.Consumption.Models",
+      "Name": "Microsoft.Azure.Management.Consumption.Models.MeterDetails",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Consumption.Models.MeterDetails, Microsoft.Azure.Management.Consumption, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "TotalIncludedQuantity": "System.Nullable`1[System.Decimal]",
+        "PretaxStandardRate": "System.Nullable`1[System.Decimal]",
+        "MeterName": "System.String",
+        "MeterCategory": "System.String",
+        "MeterSubCategory": "System.String",
+        "Unit": "System.String",
+        "MeterLocation": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": []
+    },
+    "System.Nullable`1[System.Decimal]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Decimal]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Decimal"
+      ]
+    },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "IDictionary",
+      "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
       "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -710,19 +736,9 @@
         "System.String"
       ]
     },
-    "System.Nullable`1[System.Decimal]": {
-      "Namespace": "System",
-      "Name": "Nullable",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Decimal"
-      ]
-    },
     "System.Nullable`1[System.Boolean]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.Boolean]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -730,25 +746,9 @@
         "System.Boolean"
       ]
     },
-    "Microsoft.Azure.Management.Consumption.Models.MeterDetails": {
-      "Namespace": "Microsoft.Azure.Management.Consumption.Models",
-      "Name": "MeterDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Consumption.Models.MeterDetails, Microsoft.Azure.Management.Consumption, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "MeterCategory": "System.String",
-        "MeterLocation": "System.String",
-        "MeterName": "System.String",
-        "MeterSubCategory": "System.String",
-        "PretaxStandardRate": "System.Nullable`1[System.Decimal]",
-        "TotalIncludedQuantity": "System.Nullable`1[System.Decimal]",
-        "Unit": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": []
-    },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
-      "Name": "Nullable",
+      "Name": "System.Nullable`1[System.DateTime]",
       "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
@@ -758,7 +758,7 @@
     },
     "System.DateTime": {
       "Namespace": "System",
-      "Name": "DateTime",
+      "Name": "System.DateTime",
       "AssemblyQualifiedName": "System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,

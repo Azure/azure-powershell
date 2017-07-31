@@ -24,13 +24,14 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json.Linq;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -41,6 +42,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private const string BackendAddressIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/backendAddressPools/{3}";
         private const string FrontendIDFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/frontendIPConfigurations/{3}";
         private const string ProbeIDFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/probes/{3}";
+        private readonly HashSet<string> skusSupportGoldDurability =
+         new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Standard_D15_v2", "Standard_G5" };
 
         private string sku;
         private string diagnosticsStorageName;
@@ -94,7 +97,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string tier;
         [Parameter(Mandatory = false, ValueFromPipeline = true,
-                   HelpMessage = "Tier")]
+                   HelpMessage = "Vm Sku Tier")]
         [ValidateNotNullOrEmpty()]
         public string Tier
         {
@@ -102,8 +105,26 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { this.tier = value; }
         }
 
+        private DurabilityLevel durabilityLevel = DurabilityLevel.Bronze;
+        [Parameter(Mandatory = false, ValueFromPipeline = true,
+                   HelpMessage = "Specify the durability level of the NodeType.")]
+        [ValidateNotNullOrEmpty()]
+        public DurabilityLevel DurabilityLevel
+        {
+            get { return this.durabilityLevel; }
+            set
+            {
+                this.durabilityLevel = value;
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
+            if (this.DurabilityLevel == DurabilityLevel.Gold && !skusSupportGoldDurability.Contains(this.VmSku))
+            {
+                throw new PSArgumentException("Only Standard_D15_v2 and Standard_G5 supports Gold durability,please specify -VmSku to right value");
+            }
+
             if (CheckNodeTypeExistence())
             {
                 throw new PSArgumentException(string.Format("{0} exists", this.NodeType));
@@ -160,7 +181,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     EndPort = Constants.DefaultApplicationEndPort
                 },
                 ClientConnectionEndpointPort = Constants.DefaultClientConnectionEndpoint,
-                DurabilityLevel = Constants.DefaultDurabilityLevel,
+                DurabilityLevel = this.DurabilityLevel.ToString(),
                 EphemeralPorts = new Management.ServiceFabric.Models.EndpointRangeDescription()
                 {
                     StartPort = Constants.DefaultEphemeralStart,
@@ -219,7 +240,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetLocation()
         {
-            return this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName).ResourceGroup.Location;
+            return this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName).Location;
         }
 
         private void GetProfiles(
@@ -327,6 +348,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             settings["nodeTypeRef"] = this.NodeType;
+            settings["durabilityLevel"] = this.DurabilityLevel.ToString();
 
             if (settings["nicPrefixOverride"] != null)
             {
@@ -423,13 +445,27 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetStorageRandomName()
         {
-            var name = string.Empty;
+            var name = this.NodeType.ToLower();
 
             if (!dontRandom)
             {
-                name = string.Concat(
-                    this.NodeType,
-                    System.IO.Path.GetFileNameWithoutExtension(System.IO.Path.GetRandomFileName()));
+                do
+                {
+                    name = string.Concat(
+                        name,
+                        System.IO.Path.GetFileNameWithoutExtension(System.IO.Path.GetRandomFileName()));
+
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var n in name)
+                    {
+                        if ((n >= 'a' && n <= 'z') || (n >= '0' && n <= '9'))
+                        {
+                            sb.Append(n);
+                        }
+                    }
+
+                    name = sb.ToString();
+                } while (name.Length < 3);
             }
             else
             {

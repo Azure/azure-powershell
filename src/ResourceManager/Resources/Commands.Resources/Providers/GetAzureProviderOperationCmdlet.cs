@@ -15,12 +15,13 @@
 namespace Microsoft.Azure.Commands.Resources
 {
     using Microsoft.Azure.Commands.Resources.Models;
-    using Microsoft.Azure.Management.Resources.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Management.Resources.Models;
 
     /// <summary>
     /// Get an existing resource.
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.Resources
         {
             string providerFullName = operationString.Split(Separator).First();
 
-            ProviderOperationsMetadata providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
+            var providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
             IEnumerable<PSResourceProviderOperation> flattenedProviderOperations = GetAzureProviderOperationCommand.GetPSOperationsFromProviderOperationsMetadata(providerOperations);
             return flattenedProviderOperations.Where(op => string.Equals(op.Operation, operationString, StringComparison.OrdinalIgnoreCase)).ToList();
         }
@@ -135,7 +136,6 @@ namespace Microsoft.Azure.Commands.Resources
         {
             return operation.Origin == null || operation.Origin.Contains("user");
         }
-
         private static PSResourceProviderOperation ToPSResourceProviderOperation(Operation operation, string provider, string resource = null)
         {
             PSResourceProviderOperation psOperation = new PSResourceProviderOperation();

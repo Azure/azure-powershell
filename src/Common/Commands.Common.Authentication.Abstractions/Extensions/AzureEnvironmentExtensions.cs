@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.Endpoint.GraphEndpointResourceId:
                     endpoint = new Uri(environment.GraphEndpointResourceId);
                     break;
+                case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
+                    endpoint = new Uri(environment.DataLakeEndpointResourceId);
+                    break;
                 default:
                     result = false;
                     break;
@@ -220,6 +223,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix:
                         environment.AzureDataLakeStoreFileSystemEndpointSuffix = propertyValue;
                         break;
+                    case AzureEnvironment.Endpoint.DataLakeEndpointResourceId:
+                        environment.DataLakeEndpointResourceId = propertyValue;
+                        break;
                     case AzureEnvironment.Endpoint.ActiveDirectory:
                         environment.ActiveDirectoryAuthority = propertyValue;
                         break;
@@ -257,6 +263,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             if (targetEndpoint == AzureEnvironment.Endpoint.Graph)
             {
                 resource = AzureEnvironment.Endpoint.GraphEndpointResourceId;
+            }
+            else if (targetEndpoint == AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix ||
+                targetEndpoint == AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix ||
+                targetEndpoint == AzureEnvironment.Endpoint.DataLakeEndpointResourceId)
+            {
+                resource = AzureEnvironment.Endpoint.DataLakeEndpointResourceId;
             }
 
             return resource;

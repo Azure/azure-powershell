@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
 ms.assetid: DE31891A-0EF7-44D7-B955-A3279D27CC21
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -15,7 +15,9 @@ Creates a Traffic Manager profile.
 ```
 New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-ProfileStatus <String>]
  -RelativeDnsName <String> -Ttl <UInt32> -TrafficRoutingMethod <String> -MonitorProtocol <String>
- -MonitorPort <UInt32> -MonitorPath <String> [-Tag <Hashtable>] [<CommonParameters>]
+ -MonitorPort <UInt32> [-MonitorPath <String>] [-MonitorIntervalInSeconds <Int32>]
+ [-MonitorTimeoutInSeconds <Int32>] [-MonitorToleratedNumberOfFailures <Int32>] [-Tag <Hashtable>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +42,21 @@ The DNS FQDN is contosoapp.trafficmanager.net.
 
 ## PARAMETERS
 
+### -MonitorIntervalInSeconds
+The interval (in seconds) at which Traffic Manager will check the health of each endpoint in this profile. The default is 30.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: IntervalInSecondsForMonitor
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitorPath
 Specifies the path that is used to monitor endpoint health.
 Specify a value relative to the endpoint domain name.
@@ -48,9 +65,9 @@ This value must begin with a slash (/).
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: PathForMonitor
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -64,7 +81,7 @@ Valid values are integers from 1 through 65535.
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases: PortForMonitor
 
 Required: True
 Position: Named
@@ -75,7 +92,7 @@ Accept wildcard characters: False
 
 ### -MonitorProtocol
 Specifies the protocol to use to monitor endpoint health.
-Valid values are: 
+Valid values are:
 
 - HTTP
 - HTTPS
@@ -83,10 +100,40 @@ Valid values are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: HTTP, HTTPS
+Aliases: ProtocolForMonitor
+Accepted values: HTTP, HTTPS, TCP
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorTimeoutInSeconds
+The time (in seconds) that Traffic Manager allows endpoints in this profile to respond to the health check. The default is 10.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: TimeoutInSecondsForMonitor
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MonitorToleratedNumberOfFailures
+The number of consecutive failed health checks that Traffic Manager tolerates before declaring an endpoint in this profile Degraded after the next consecutive failed health check. The default is 3.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: ToleratedNumberOfFailuresForMonitor
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +146,7 @@ Specifies a name for the Traffic Manager profile that this cmdlet creates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,7 +162,7 @@ Valid values are: Enabled and Disabled.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -132,7 +179,7 @@ Traffic Manager combines this value and the DNS domain name that Azure Traffic M
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -148,7 +195,7 @@ This cmdlet creates a Traffic Manager profile in the group that this parameter s
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -158,7 +205,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies tags as an array of hash tables.
+Key-value pairs in the form of a hash table set as tags on the server. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -175,17 +224,17 @@ Accept wildcard characters: False
 ### -TrafficRoutingMethod
 Specifies the traffic routing method.
 This method determines which endpoint Traffic Manager returns in response to incoming DNS queries.
-Valid values are: 
+Valid values are:
 
-- Performance 
-- Weighted 
+- Performance
+- Weighted
 - Priority
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Performance, Weighted, Priority
+Aliases:
+Accepted values: Performance, Weighted, Priority, Geographic
 
 Required: True
 Position: Named
@@ -200,7 +249,7 @@ Specifies the DNS Time to Live (TTL) value.
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

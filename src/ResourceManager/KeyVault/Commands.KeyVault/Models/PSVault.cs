@@ -14,8 +14,7 @@
 
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Linq;

@@ -13,7 +13,7 @@ Adds SSH public keys to the VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssSshPublicKey [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Path] <String>]
+Add-AzureRmVmssSshPublicKey [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Path] <String>]
  [[-KeyData] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ The **Add-AzureRmVmssSshPublicKey** cmdlet adds the public keys that you can use
 
 ### Example 1: Add an SSH public key to the VMSS
 ```
-PS C:\>$VMSS = New-AzureRmVmssConfig
+PS C:\> $VMSS = New-AzureRmVmssConfig
 PS C:\> Add-AzureRmVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSq12Ib3DQEB21QUAMEUxCzAJBgNV" -Path "/home/admin/.ssh/authorized_keys"
 ```
 
@@ -68,10 +68,10 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSet
 Specifies the VMSS object.
-You can use the New-AzureRmVmssConfig cmdlet to create the object.
+You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to create the object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
@@ -127,5 +127,3 @@ This cmdlet does not generate any output.
 ## RELATED LINKS
 
 [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md)
-
-

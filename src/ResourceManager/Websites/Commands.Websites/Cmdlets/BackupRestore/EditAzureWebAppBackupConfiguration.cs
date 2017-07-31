@@ -53,7 +53,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             base.ExecuteCmdlet();
             var freq = BackupRestoreUtils.StringToFrequencyUnit(FrequencyUnit);
-            BackupSchedule schedule = new BackupSchedule(freq, FrequencyInterval, KeepAtLeastOneBackup.IsPresent,
+            BackupSchedule schedule = new BackupSchedule(
+#if !NETSTANDARD
+                freq, FrequencyInterval, 
+#else
+                FrequencyInterval, freq,
+#endif
+                KeepAtLeastOneBackup.IsPresent,
                 RetentionPeriodInDays, StartTime);
             BackupRequest request = new BackupRequest()
             {

@@ -12,18 +12,48 @@ Submits a job.
 
 ## SYNTAX
 
-### Submit job with script path for SQL-IP
+### Submit job with script path for U-SQL
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
  [[-Priority] <Int32>] [<CommonParameters>]
 ```
 
-### Submit SQL-IP Job
+### Submit U-SQL Job
 ```
 Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
  [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
  [[-Priority] <Int32>] [<CommonParameters>]
+```
+
+### Submit job with script path for U-SQL with reucurrence information
+```
+Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] [<CommonParameters>]
+```
+
+### Submit U-SQL Job with recurrence information
+```
+Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] [<CommonParameters>]
+```
+
+### Submit job with script path for U-SQL with reucurrence and pipeline information
+```
+Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-ScriptPath] <String>
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] -PipelineId <Guid>
+ [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>] [<CommonParameters>]
+```
+
+### Submit U-SQL Job with recurrence and pipeline information
+```
+Submit-AzureRmDataLakeAnalyticsJob [-Account] <String> [-Name] <String> [-Script] <String>
+ [[-Runtime] <String>] [[-CompileMode] <String>] [-CompileOnly] [[-DegreeOfParallelism] <Int32>]
+ [[-Priority] <Int32>] -RecurrenceId <Guid> [-RecurrenceName <String>] -PipelineId <Guid>
+ [-PipelineName <String>] [-PipelineUri <String>] [-RunId <Guid>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +114,7 @@ Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
+
 Required: False
 Position: 5
 Default value: None
@@ -121,10 +152,55 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PipelineId
+An ID that indicates the submission of this job is a part of a set of recurring jobs and also associated with a job pipeline.
+
+```yaml
+Type: Guid
+Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PipelineName
+An optional friendly name for the pipeline associated with this job.
+
+```yaml
+Type: String
+Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PipelineUri
+An optional uri that links to the originating service associated with this pipeline.
+
+```yaml
+Type: String
+Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Priority
 Specifies the priority of the job.
 If not specified, the priority is 1000.
-A lower the number indicates a higher job priority.
+A low number indicates a higher job priority.
 
 ```yaml
 Type: Int32
@@ -133,6 +209,51 @@ Aliases:
 
 Required: False
 Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RecurrenceId
+An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.
+
+```yaml
+Type: Guid
+Parameter Sets: Submit job with script path for U-SQL with reucurrence information, Submit U-SQL Job with recurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RecurrenceName
+An optional friendly name for the recurrence correlation between jobs.
+
+```yaml
+Type: String
+Parameter Sets: Submit job with script path for U-SQL with reucurrence information, Submit U-SQL Job with recurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RunId
+An ID that identifies this specific run iteration of the pipeline.
+
+```yaml
+Type: Guid
+Parameter Sets: Submit job with script path for U-SQL with reucurrence and pipeline information, Submit U-SQL Job with recurrence and pipeline information
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -158,7 +279,7 @@ Specifies the contents of the script to run.
 
 ```yaml
 Type: String
-Parameter Sets: Submit SQL-IP Job
+Parameter Sets: Submit U-SQL Job, Submit U-SQL Job with recurrence information, Submit U-SQL Job with recurrence and pipeline information
 Aliases: 
 
 Required: True
@@ -173,7 +294,7 @@ Specifies the local file path to the script to run.
 
 ```yaml
 Type: String
-Parameter Sets: Submit job with script path for SQL-IP
+Parameter Sets: Submit job with script path for U-SQL, Submit job with script path for U-SQL with reucurrence information, Submit job with script path for U-SQL with reucurrence and pipeline information
 Aliases: 
 
 Required: True

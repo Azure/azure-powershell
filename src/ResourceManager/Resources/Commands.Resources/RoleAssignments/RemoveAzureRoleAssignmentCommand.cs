@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -178,6 +178,8 @@ namespace Microsoft.Azure.Commands.Resources
                 // never include classic administrators in the Delete scenario
                 IncludeClassicAdministrators = false
             };
+
+            AuthorizationClient.ValidateScope(options.Scope, true);
 
             ConfirmAction(
                 ProjectResources.RemovingRoleAssignment,

@@ -13,8 +13,8 @@ Starts the VMSS or a set of virtual machines within the VMSS.
 ## SYNTAX
 
 ```
-Start-AzureRmVmss [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [[-InstanceId] <String[]>] [<CommonParameters>]
+Start-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,14 +25,14 @@ You can use the *InstanceId* parameter to select a set of virtual machines.
 
 ### Example 1: Start a specific set of virtual machines within the VMSS
 ```
-PS C:\>Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"-InstanceId "0", "1"
+PS C:\> Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"-InstanceId "0", "1"
 ```
 
 This command starts a specific set of virtual machines specified by the instance ID string array that belong to the VMSS named ContosoVMSS.
 
 ### Example 2: Start all virtual machines within the VMSS
 ```
-PS C:\>Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"
+PS C:\> Start-AzureRmVmss -ResourceGroupName "ContosOrg" -VMScaleSetName "ContosoVMSS"
 ```
 
 This command starts all virtual machines that belong to the VMSS named ContosoVMSS.

@@ -13,7 +13,7 @@ Sets the VMSS operating system profile properties.
 ## SYNTAX
 
 ```
-Set-AzureRmVmssOsProfile [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-ComputerNamePrefix] <String>]
+Set-AzureRmVmssOsProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-ComputerNamePrefix] <String>]
  [[-AdminUsername] <String>] [[-AdminPassword] <String>] [[-CustomData] <String>]
  [[-WindowsConfigurationProvisionVMAgent] <Boolean>] [[-WindowsConfigurationEnableAutomaticUpdate] <Boolean>]
  [[-TimeZone] <String>] [[-AdditionalUnattendContent] <AdditionalUnattendContent[]>]
@@ -28,7 +28,7 @@ The **Set-AzureRmVmssOsProfile** cmdlet sets the Virtual Machine Scale Set opera
 
 ### Example 1: Set the operating system profile properties for a VMSS
 ```
-PS C:\>Set-AzureRmVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
+PS C:\> Set-AzureRmVmssOSProfile -VirtualMachineScaleSet "ContosoVMSS" -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
 ```
 
 This command sets operating system profile properties for the virtual machines that belong to the VMSS named ContosoVMSS.
@@ -199,7 +199,7 @@ Specifies the VMSS object.
 You can use the New-AzureRmVmssConfig cmdlet to create the object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 

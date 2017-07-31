@@ -16,6 +16,11 @@ Param(
   [string]$location,
 
   [Parameter(Mandatory = $true,
+             HelpMessage="Identifier of the Azure subscription to be used")]
+  [ValidateNotNullOrEmpty()]
+  [string]$subscriptionId,
+
+  [Parameter(Mandatory = $true,
              HelpMessage="Name of the AAD application that will be used to write secrets to KeyVault. A new application with this name will be created if one doesn't exist. If this app already exists, pass aadClientSecret parameter to the script")]
   [ValidateNotNullOrEmpty()]
   [string]$aadAppName,
@@ -26,29 +31,21 @@ Param(
   [string]$aadClientSecret,
 
   [Parameter(Mandatory = $false,
-             HelpMessage="Identifier of the Azure subscription to be used. Default subscription will be used if not specified.")]
-  [ValidateNotNullOrEmpty()]
-  [string]$subscriptionId,
-
-  [Parameter(Mandatory = $false,
              HelpMessage="Name of optional key encryption key in KeyVault. A new key with this name will be created if one doesn't exist")]
   [ValidateNotNullOrEmpty()]
   [string]$keyEncryptionKeyName
 
 )
 
+$VerbosePreference = "Continue"
+$ErrorActionPreference = “Stop”
+
 ########################################################################################################################
 # Section1:  Log-in to Azure and select appropriate subscription. 
 ########################################################################################################################
   
 
-    Write-Host 'Please log into Azure now' -foregroundcolor Green;
-    Login-AzureRmAccount -ErrorAction "Stop" 1> $null;
-
-    if($subscriptionId)
-    {
-        Select-AzureRmSubscription -SubscriptionId $subscriptionId;
-    }
+    Select-AzureRmSubscription -SubscriptionId $subscriptionId;
 
 
 ########################################################################################################################
@@ -182,5 +179,5 @@ Param(
 ########################################################################################################################
 # For each VM you want to encrypt, run the below cmdlet
 #    $vmName = 'Name of VM to encrypt';
-#    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId;
+#    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType $volumeType
 ########################################################################################################################

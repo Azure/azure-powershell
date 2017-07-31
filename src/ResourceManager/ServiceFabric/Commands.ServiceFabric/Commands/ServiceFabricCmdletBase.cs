@@ -26,22 +26,23 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 AzureEnvironment.Endpoint.ResourceManager));
 
             resourcesClient = new Lazy<IResourceManagementClient>(() =>
-            AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(
+            AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
@@ -249,16 +250,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected string GetResourceGroupName(string vaultName)
         {
-            var localResourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultContext)
-            {
-                VerboseLogger = WriteVerboseWithTimestamp,
-                ErrorLogger = WriteVerboseWithTimestamp,
-                WarningLogger = WriteWarningWithTimestamp
-            };
-
             string rg = null;
-            var resourcesByName = localResourcesClient.FilterResources(
-                new PSResourceManagerModels.FilterResourcesOptions()
+            var resourcesByName = this.ResourcesClient.FilterResources(
+                new FilterResourcesOptions()
                 {
                     ResourceType = Constants.KeyVaultType
                 });
@@ -269,7 +263,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)
                 {
-                    rg = new PSResourceManagerModels.ResourceIdentifier(vault.Id).ResourceGroupName;
+                    rg = new ResourceIdentifier(vault.Id).ResourceGroupName;
                 }
             }
 
@@ -503,6 +497,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 GetTenantId(DefaultContext).ToString(),
                 null,
                 ShowDialog.Never,
+                null,
                 AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId);
             var tokenStr = string.Empty;
             accesstoken.AuthorizeRequest((tokenType, tokenValue) =>

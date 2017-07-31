@@ -19,6 +19,25 @@
 -->
 ## Current Release
 
+## Version 4.2.1
+- Fix issue with non-interactive user authentication (link)[https://github.com/Azure/azure-powershell/issues/4299]
+
+## Version 4.2.0
+For ExpressRoute:
+* Updated New-AzureBgpPeering cmdlet to add following new options :
+    - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to create a BGP Peering of the corresponding address family type	
+* Updated Set-AzureBgpPeering cmdlet to add following new options :
+    - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to update BGP Peering of the corresponding address family type
+* Updated Remove-AzureBgpPeering cmdlet to add following new options :
+    - PeerAddressType : Values of "IPv4", "IPv6" or All can be specified to remove BGP Peering of the corresponding address family type or all of them
+
+## Version 4.1.0
+* Add-AzureVhd: The size limit on vhd is increased to 4TB.
+* Application Gateway classic, fixed certificate list to work with certificate collections
+* New-AzureBGPPeering: Support LegacyMode
+
+## Version 4.0.2
+
 ## Version 4.0.0
 
 ## Version 3.8.0

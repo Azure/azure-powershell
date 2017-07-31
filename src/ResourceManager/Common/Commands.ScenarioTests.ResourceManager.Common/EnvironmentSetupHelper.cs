@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -25,15 +24,24 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading;
+
+#if !NETSTANDARD
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
+#else
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+#endif
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -53,16 +61,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         protected List<string> modules;
 
         public XunitTracingInterceptor TracingInterceptor { get; set; }
-
+#if !NETSTANDARD
         protected ProfileClient ProfileClient { get; set; }
-
+#endif
         public EnvironmentSetupHelper()
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
             var datastore = new MemoryDataStore();
             AzureSession.Instance.DataStore = datastore;
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.EnvironmentTable["foo"], new AzureTenant());
@@ -73,13 +79,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             AzureSession.Instance.DataStore = datastore;
-            ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
 
+#if !NETSTANDARD
+            ServiceManagementProfileProvider.InitializeServiceManagementProfile();
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
+            ProfileClient = new ProfileClient(profile);
             AdalTokenCache.ClearCookies();
-
+#endif
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
         }
@@ -167,8 +176,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void SetupEnvironment(AzureModule mode)
         {
             SetupAzureEnvironmentFromEnvironmentVariables(mode);
-
+#if !NETSTANDARD
             ProfileClient.Profile.Save();
+#endif
         }
 
         private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
@@ -176,11 +186,19 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             TestEnvironment currentEnvironment = null;
             if (mode == AzureModule.AzureResourceManager)
             {
+#if !NETSTANDARD
                 currentEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
+#else
+                currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+#endif
             }
             else
             {
+#if !NETSTANDARD
                 currentEnvironment = new RDFETestEnvironmentFactory().GetTestEnvironment();
+#else
+                throw new NotSupportedException("RDFE environment is not supported in .Net Core");
+#endif
             }
 
             if (currentEnvironment.UserName == null)
@@ -200,12 +218,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
-
+#if !NETSTANDARD
             if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 ProfileClient.AddOrSetEnvironment(environment);
             }
-
+#endif
             if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
@@ -231,11 +249,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 };
 
                 testAccount.SetSubscriptions(currentEnvironment.SubscriptionId);
-
+#if !NETSTANDARD
                 ProfileClient.Profile.SubscriptionTable[testSubscription.GetId()] = testSubscription;
                 ProfileClient.Profile.AccountTable[testAccount.Id] = testAccount;
                 ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.GetAccount());
-
+#endif
                 var testTenant = new AzureTenant() { Id = Guid.NewGuid().ToString() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
@@ -251,6 +269,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetAuthenticationFactory(AzureModule mode, TestEnvironment environment)
         {
+#if !NETSTANDARD
             if(environment.AuthorizationContext.Certificate != null)
             {
                 AzureSession.Instance.AuthenticationFactory = new MockCertificateAuthenticationFactory(environment.UserName,
@@ -269,6 +288,21 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     environment.UserName,
                     httpMessage.Headers.Authorization.Parameter);
             }
+#else
+            if(environment.TokenInfo.ContainsKey(TokenAudience.Management))
+            {
+                var httpMessage = new HttpRequestMessage();
+                environment.TokenInfo[TokenAudience.Management]
+                    .ProcessHttpRequestAsync(httpMessage, CancellationToken.None)
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+
+                AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(
+                    environment.UserName,
+                    httpMessage.Headers.Authorization.Parameter);
+            }
+#endif
         }
 
         public void SetupModules(AzureModule mode, params string[] modules)
@@ -390,9 +424,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
             powershell.AddScript("$error.clear()");
-            powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", AppDomain.CurrentDomain.BaseDirectory));
+            powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
-            powershell.AddScript(string.Format("cd \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
+            powershell.AddScript(string.Format("cd \"{0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
 
             foreach (string moduleName in modules)
             {
@@ -400,8 +434,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             powershell.AddScript(
-                string.Format("set-location \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
-            powershell.AddScript(string.Format(@"$TestOutputRoot='{0}'", AppDomain.CurrentDomain.BaseDirectory));
+                string.Format("set-location \"{0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
+            powershell.AddScript(string.Format(@"$TestOutputRoot='{0}'", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript("$VerbosePreference='Continue'");
             powershell.AddScript("$DebugPreference='Continue'");
             powershell.AddScript("$ErrorActionPreference='Stop'");

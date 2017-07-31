@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,8 +30,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmContainerServiceConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(ContainerService))]
-    public class NewAzureRmContainerServiceConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSContainerService))]
+    public partial class NewAzureRmContainerServiceConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public ContainerServiceOchestratorTypes? OrchestratorType { get; set; }
+        public ContainerServiceOrchestratorTypes? OrchestratorType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -260,7 +261,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDiagnosticsProfile.VmDiagnostics.Enabled = this.VmDiagnosticsEnabled;
 
 
-            var vContainerService = new ContainerService
+            var vContainerService = new PSContainerService
             {
                 Location = this.Location,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),

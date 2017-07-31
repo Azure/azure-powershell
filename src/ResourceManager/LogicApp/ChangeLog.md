@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 3.2.1
+
+## Version 3.2.0
+
+## Version 3.1.0
+
+## Version 3.0.1
+
 ## Version 3.0.0
 * New parameters for Interchange Control Number disaster recovery cmdlets:
     - Optional -AgreementType parameter ("X12", or "Edifact") to specify the relevant control numbers

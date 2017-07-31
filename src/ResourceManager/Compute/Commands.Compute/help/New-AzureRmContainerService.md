@@ -13,8 +13,8 @@ Creates a container service.
 ## SYNTAX
 
 ```
-New-AzureRmContainerService [-WhatIf] [-Confirm] [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <ContainerService> [<CommonParameters>]
+New-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
+ [-ContainerService] <PSContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Specify a container service object that you can create by using the New-AzureRmC
 
 ### Example 1: Create a container service
 ```
-PS C:\>New-AzureRMResourceGroup -Name "ResourceGroup17" -Location "Australia Southeast" -Force
+PS C:\> New-AzureRMResourceGroup -Name "ResourceGroup17" -Location "Australia Southeast" -Force
 PS C:\> $Container = New-AzureRmContainerServiceConfig -Location "Australia Southeast" -OrchestratorType "DCOS" -MasterDnsPrefix "MasterResourceGroup17" -AdminUsername "AcsLinuxAdmin" -SshPublicKey "<ssh-key>" | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPool01" -VmSize "Standard_A1" -DnsPrefix "APResourceGroup17"
 PS C:\> New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "CSResourceGroup17" -ContainerService $Container
 ```
@@ -46,7 +46,7 @@ Specifies a container service object that contains the properties for the new se
 To obtain a **ContainerService** object, use the New-AzureRmContainerServiceConfig cmdlet.
 
 ```yaml
-Type: ContainerService
+Type: PSContainerService
 Parameter Sets: (All)
 Aliases: 
 

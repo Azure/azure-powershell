@@ -60,8 +60,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The server</returns>
         public AzureSqlServerModel GetServer(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, Util.GenerateTracingId());
-            return CreateServerModelFromResponse(resourceGroupName, resp);
+            var resp = Communicator.Get(resourceGroupName, serverName);
+            return CreateServerModelFromResponse(resp);
+        }
+
+        /// <summary>
+        /// Gets a list of all the servers in a subscription
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <returns>A list of all the servers</returns>
+        public List<AzureSqlServerModel> ListServers()
+        {
+            var resp = Communicator.List();
+            return resp.Select((s) =>
+            {
+                return CreateServerModelFromResponse(s);
+            }).ToList();
         }
 
         /// <summary>
@@ -69,12 +83,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <returns>A list of all the servers</returns>
-        public List<AzureSqlServerModel> GetServers(string resourceGroupName)
+        public List<AzureSqlServerModel> ListServersByResourceGroup(string resourceGroupName)
         {
-            var resp = Communicator.List(resourceGroupName, Util.GenerateTracingId());
+            var resp = Communicator.ListByResourceGroup(resourceGroupName);
             return resp.Select((s) =>
             {
-                return CreateServerModelFromResponse(resourceGroupName, s);
+                return CreateServerModelFromResponse(s);
             }).ToList();
         }
 
@@ -85,16 +99,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns>The updated server model</returns>
         public AzureSqlServerModel UpsertServer(AzureSqlServerModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, Util.GenerateTracingId(), new Management.Sql.Models.Server()
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, new Management.Sql.Models.Server()
             {
                 Location = model.Location,
                 Tags = model.Tags,
                 AdministratorLogin = model.SqlAdministratorLogin,
                 AdministratorLoginPassword = model.SqlAdministratorPassword != null ? Decrypt(model.SqlAdministratorPassword) : null,
                 Version = model.ServerVersion,
+                Identity = model.Identity
             });
 
-            return CreateServerModelFromResponse(model.ResourceGroupName, resp);
+            return CreateServerModelFromResponse(resp);
         }
 
         /// <summary>
@@ -104,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="serverName">The name of the server to delete</param>
         public void RemoveServer(string resourceGroupName, string serverName)
         {
-            Communicator.Remove(resourceGroupName, serverName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName);
         }
 
         /// <summary>
@@ -113,16 +128,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted server model</returns>
-        private static AzureSqlServerModel CreateServerModelFromResponse(string resourceGroupName, Management.Sql.Models.Server resp)
+        private static AzureSqlServerModel CreateServerModelFromResponse(Management.Sql.Models.Server resp)
         {
             AzureSqlServerModel server = new AzureSqlServerModel();
 
-            server.ResourceGroupName = resourceGroupName;
+            // Extract the resource group name from the ID.
+            // ID is in the form:
+            // /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.Sql/servers/serverName
+            string[] segments = resp.Id.Split('/');
+            server.ResourceGroupName = segments[4];
+
             server.ServerName = resp.Name;
             server.ServerVersion = resp.Version;
             server.SqlAdministratorLogin = resp.AdministratorLogin;
             server.Location = resp.Location;
             server.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false);
+            server.Identity = resp.Identity;
 
             return server;
         }

@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     public class AsAzureClientSession
     {
         public const string RestartEndpointPathFormat = "/webapi/servers/{0}/restart?api-version=2016-10-01";
+        public const string LogfileEndpointPathFormat = "/webapi/servers/{0}/logfileHere";
         public const string AsAzureClientId = "cf710c6e-dfcc-4fa8-a093-d47294e44c66";
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
@@ -35,10 +36,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>()
             {
              { "asazure.windows.net", new AsAzureAuthInfo()
-             {
+                {
                  AuthorityUrl = "https://login.windows.net" ,
                  DefaultResourceUriSuffix = "*.asazure.windows.net"
-             }},
+                }
+             },
+             { "asazure-int.windows.net", new AsAzureAuthInfo()
+                {
+                    AuthorityUrl = "https://login.windows-ppe.net" ,
+                    DefaultResourceUriSuffix = "*.asazure-int.windows.net"
+                }
+             }
             };
 
         /// <summary>

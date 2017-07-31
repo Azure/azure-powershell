@@ -20,11 +20,11 @@ Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGate
 ## DESCRIPTION
 The **Resize-AzureRmVirtualNetworkGateway** cmdlet enables you to change the stock-keeping unit (SKU) for a virtual network gateway.
 SKUs determine the capabilities of a gateway, including such things as throughput and the maximum number of IP tunnels that are allowed.
-Azure supports Basic, Standard, and High-Performance SKUs (sometimes referred to as Small, Medium, and Large SKUs).
-For detailed information about the capabilities of each SKU type, see https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.
+Azure supports Basic, Standard, High-Performance, VpnGw1, VpnGw2 and VpnGw3 SKUs (sometimes referred to as Small, Medium, and Large SKUs).
+For detailed information about the capabilities of each SKU type, see https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-about-vpngateways/.
 
 Keep in mind that SKUs differ in pricing as well as capabilities.
-For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/.
+For more information, see https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/.
 
 ## EXAMPLES
 
@@ -49,12 +49,15 @@ The acceptable values for this parameter are:
 - Basic
 - Standard
 - High Performance
+- VpnGw1
+- VpnGw2
+- VpnGw3
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3
 
 Required: True
 Position: Named

@@ -15,13 +15,13 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
 using System.Diagnostics;
 using System.Security.Cryptography;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -35,21 +35,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         public static void InitializeAzureSession()
         {
-            AzureSession.Initialize(CreateInstance);
+            AzureSession.Initialize(() => CreateInstance());
         }
 
-        static IAzureSession CreateInstance()
+        /// <summary>
+        /// Create a new session and replace any existing session
+        /// </summary>
+        public static void CreateOrReplaceSession()
+        {
+            CreateOrReplaceSession(new DiskDataStore());
+        }
+
+        /// <summary>
+        /// Create a new session and replace any existing session
+        /// </summary>
+        public static void CreateOrReplaceSession(IDataStore dataStore)
+        {
+            AzureSession.Initialize(() => CreateInstance(dataStore), true);
+        }
+
+        static IAzureSession CreateInstance(IDataStore dataStore = null)
         {
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
                 AuthenticationFactory = new AuthenticationFactory(),
-                DataStore = new DiskDataStore(),
+                DataStore = dataStore?? new DiskDataStore(),
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
                 ProfileDirectory = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                Resources.AzureDirectoryName),
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    Resources.AzureDirectoryName),
                 ProfileFile = "AzureProfile.json",
                 TokenCacheFile = "TokenCache.dat"
             };
@@ -58,18 +74,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 FileUtilities.DataStore = session.DataStore;
                 FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
                 var cacheFile = Path.Combine(session.ProfileDirectory, session.TokenCacheFile);
-                var contents = new byte[0];
-                if (session.DataStore.FileExists(cacheFile))
-                {
-                    contents = session.DataStore.ReadFileAsBytes(cacheFile);
-                }
-
-                if (contents != null  && contents.Length > 0)
-                {
-                    contents = ProtectedData.Unprotect(contents, null, DataProtectionScope.CurrentUser);
-                }
-
-                session.TokenCache = new ProtectedFileTokenCache(contents);
+                session.TokenCache = new ProtectedFileTokenCache(cacheFile, session.DataStore);
             }
             catch
             {
@@ -81,6 +86,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public class AdalSession : AzureSession
         {
+#if !NETSTANDARD
             public override TraceLevel AuthenticationLegacyTraceLevel
             {
                 get
@@ -114,6 +120,38 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     AdalTrace.TraceSource.Switch.Level = value;
                 }
             }
+#else
+            public AdalSession()
+                : base()
+            {
+            }
+
+            public override TraceLevel AuthenticationLegacyTraceLevel
+            {
+                get
+                {
+                    return TraceLevel.Off;
+                }
+                set
+                {
+
+                }
+            }
+
+            public override TraceListenerCollection AuthenticationTraceListeners { get => Trace.Listeners; }
+
+            public override SourceLevels AuthenticationTraceSourceLevel
+            {
+                get
+                {
+                    return SourceLevels.Off;
+                }
+                set
+                {
+
+                }
+            }
+#endif
         }
     }
 }
