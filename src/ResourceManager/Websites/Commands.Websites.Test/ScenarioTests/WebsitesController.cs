@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.WebSites;
@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -167,13 +169,15 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
+            NewResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             WebsitesManagementClient = GetWebsitesManagementClient(context);
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
+            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             GalleryClient = GetGalleryClient();
 
             var armStorageManagementClient = GetArmStorageManagementClient();
             helper.SetupManagementClients(ResourceManagementClient,
+                NewResourceManagementClient,
                 SubscriptionClient,
                 WebsitesManagementClient,
                 AuthorizationManagementClient,
@@ -187,14 +191,19 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ResourceManagementClient GetResourceManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+        }
+
+        private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private WebSiteManagementClient GetWebsitesManagementClient(MockContext context)

@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private string GetLocation()
         {
-            return this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName).ResourceGroup.Location;
+            return this.ResourcesClient.ResourceGroups.Get(this.ResourceGroupName).Location;
         }
 
         private void GetProfiles(

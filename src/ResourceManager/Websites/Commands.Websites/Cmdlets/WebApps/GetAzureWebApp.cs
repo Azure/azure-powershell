@@ -15,11 +15,12 @@
 
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 #if NETSTANDARD
 using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             WriteProgress(progressRecord);
 
-            var sites = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
+            var sites = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/Sites"
             }).Where(s => string.Equals(s.Name, Name, StringComparison.OrdinalIgnoreCase)).ToArray();
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             WriteProgress(progressRecord);
 
-            var resourceGroups = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
+            var resourceGroups = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/Sites"
             }).Select(s => s.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
@@ -182,7 +183,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             WriteProgress(progressRecord);
 
-            var sites = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
+            var sites = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/Sites"
             }).Where(s => string.Equals(s.Location, Location.Replace(" ", string.Empty), StringComparison.OrdinalIgnoreCase)).ToArray();
