@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group Name.")][Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "ServiceBus Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
-
+        public string Name { get; set; }
         
         /// <summary>
         /// Namespace Sku Name.
@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             // Create a new ServiceBus namespace
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
-            if (ShouldProcess(target: NamespaceName, action: string.Format("Create New NameSpace:{0} for ResourceGroup:{1}", NamespaceName, ResourceGroupName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
             {
-                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, tagDictionary));
+                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary));
             }
         }
     }

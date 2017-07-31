@@ -37,28 +37,32 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ServiceBus Topic AuthorizationRule Object.")]
         [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes AuthRuleObj { get; set; }
+        [Alias(AliasAuthRuleObj)]
+        public SharedAccessAuthorizationRuleAttributes InputObj { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "AuthorizationRule Name - Required if 'AuthruleObj' not specified.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -71,13 +75,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         {
             SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
 
-            if (AuthRuleObj != null)
+            if (InputObj != null)
             {
-                sasRule = AuthRuleObj;
+                sasRule = InputObj;
             }
             else
             {
-                NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, NamespaceName);
+                NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, Namespace);
 
                 IList<Management.ServiceBus.Models.AccessRights?> newListAry = new List<Management.ServiceBus.Models.AccessRights?>();
 
@@ -86,16 +90,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
                     newListAry.Add(ParseAccessRights(accRights));
                 }
 
-                sasRule.Name = AuthorizationRuleName;
+                sasRule.Name = Name;
                 sasRule.Rights = newListAry;
                 sasRule.Location = getNameSpace.Location;
             }
 
             // Update a Servicebus Topic authorizationRule
             
-            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Update AuthorizationRule:{0} of Topic:{1} of NameSpace:{2}",AuthorizationRuleName,TopicName,NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format("Update AuthorizationRule:{0} of Topic:{1} of NameSpace:{2}",Name,Topic,Namespace)))
             {
-                WriteObject(Client.CreateOrUpdateServiceBusTopicAuthorizationRules(ResourceGroup, NamespaceName, TopicName, sasRule.Name, sasRule));
+                WriteObject(Client.CreateOrUpdateServiceBusTopicAuthorizationRules(ResourceGroup, Namespace, Topic, sasRule.Name, sasRule));
             }
         }
     }
