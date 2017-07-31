@@ -12,7 +12,7 @@ Sets the image reference properties on a disk object.
 ## SYNTAX
 
 ```
-Set-AzureRmDiskImageReference [-Disk] <Disk> [[-Id] <String>] [[-Lun] <Int32>] [-WhatIf] [-Confirm]
+Set-AzureRmDiskImageReference [-Disk] <PSDisk> [[-Id] <String>] [[-Lun] <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ The last command takes the disk object and creates a disk with name 'Disk01' in 
 Specifies a local disk object.
 
 ```yaml
-Type: Disk
+Type: PSDisk
 Parameter Sets: (All)
 Aliases: 
 
