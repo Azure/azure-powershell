@@ -117,7 +117,9 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateAccessService
-Private Access Service```yaml
+Specifies private access services associated with the subnet configuration.
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 

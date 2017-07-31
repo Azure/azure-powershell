@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,8 +30,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmVmssVaultCertificateConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VaultCertificate))]
+    public partial class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,

@@ -77,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -LegacyMode
-The legacy mode of the Peering```yaml
+The legacy mode of the Peering
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 

@@ -32,7 +32,9 @@ The **Set-AzureRmVirtualNetworkGatewayConnection** cmdlet configures a virtual n
 ## PARAMETERS
 
 ### -EnableBgp
-Whether to use a BGP session over a S2S VPN tunnel```yaml
+Whether to use a BGP session over a S2S VPN tunnel
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 
@@ -60,7 +62,9 @@ Accept wildcard characters: False
 ```
 
 ### -IpsecPolicies
-A list of IPSec policies.```yaml
+A list of IPSec policies.
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
 Parameter Sets: (All)
 Aliases: 
@@ -73,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -UsePolicyBasedTrafficSelectors
-Whether to use policy-based traffic selectors for a S2S connection```yaml
+Whether to use policy-based traffic selectors for a S2S connection
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 

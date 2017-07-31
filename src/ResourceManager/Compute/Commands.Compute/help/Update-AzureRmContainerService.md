@@ -14,7 +14,7 @@ Updates the state of a container service.
 
 ```
 Update-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <ContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ContainerService] <PSContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ The current cmdlet updates the container service to reflect the changes that wer
 Specifies a local **ContainerService** object that contains changes.
 
 ```yaml
-Type: ContainerService
+Type: PSContainerService
 Parameter Sets: (All)
 Aliases: 
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 ms.assetid: B6E35D4D-B2C1-4527-94A6-E7E3488F510B
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -39,7 +39,7 @@ Specifies the name of the Automation account in which this cmdlet creates a runb
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -54,7 +54,7 @@ Specifies a description for the runbook.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -69,7 +69,7 @@ Specifies whether the runbook logs progress.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +84,7 @@ Specifies whether logging includes detailed information.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +114,7 @@ Specifies the name of the resource group for which this cmdlet creates a runbook
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -124,7 +124,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags for the new runbook.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: IDictionary
@@ -140,13 +142,13 @@ Accept wildcard characters: False
 
 ### -Type
 Specifies the type of runbook that this cmdlet creates.
-Valid values are: 
+Valid values are:
 
 - PowerShell
 - GraphicalPowerShell
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
-- Graph 
+- Graph
 
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
@@ -154,7 +156,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph
 
 Required: True
@@ -171,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Automation.Model.Job
+Microsoft.Azure.Commands.Automation.Model.Job
 
 ## NOTES
 
@@ -190,5 +192,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzureRmAutomationRunbook](./Set-AzureRMAutomationRunbook.md)
 
 [Start-AzureRmAutomationRunbook](./Start-AzureRMAutomationRunbook.md)
-
-

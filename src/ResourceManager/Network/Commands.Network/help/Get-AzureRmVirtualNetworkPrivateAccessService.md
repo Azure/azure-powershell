@@ -34,7 +34,7 @@ Gets available private access services in westus region.
 ## PARAMETERS
 
 ### -Location
-The location.
+The location to retrieve the private access services from.
 
 ```yaml
 Type: String
