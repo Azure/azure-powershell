@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pSnapshot = new RuntimeDefinedParameter();
             pSnapshot.Name = "Snapshot";
-            pSnapshot.ParameterType = typeof(PSSnapshot);
+            pSnapshot.ParameterType = typeof(Snapshot);
             pSnapshot.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            PSSnapshot snapshot = (PSSnapshot)ParseParameter(invokeMethodInputParameters[2]);
+            Snapshot snapshot = (Snapshot)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
             WriteObject(result);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string snapshotName = string.Empty;
-            PSSnapshot snapshot = new PSSnapshot();
+            Snapshot snapshot = new Snapshot();
 
             return ConvertFromObjectsToArguments(
                  new string[] { "ResourceGroupName", "SnapshotName", "Snapshot" },
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            ComputeAutomationAutoMapperProfile.Initialize();
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsCommon.New))
@@ -129,10 +129,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Mapper.Map<PSSnapshot, Snapshot>(this.Snapshot, snapshot);
 
                     var result = SnapshotsClient.CreateOrUpdate(resourceGroupName, snapshotName, snapshot);
-
-                    PSSnapshot psResult = new PSSnapshot();
-                    Mapper.Map<Snapshot, PSSnapshot>(result, psResult);
-                    WriteObject(psResult);
+                    var psObject = new PSSnapshot();
+                    Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }
