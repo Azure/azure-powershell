@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -117,11 +118,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsLifecycle.Restart, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(OperationStatusResponse))]
+    [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RestartAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsLifecycle.Restart))
@@ -131,7 +133,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
 
                     var result = VirtualMachineScaleSetsClient.Restart(resourceGroupName, vmScaleSetName, instanceIds);
-                    WriteObject(result);
+                    var psObject = new PSOperationStatusResponse();
+                    Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }

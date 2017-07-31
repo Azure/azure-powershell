@@ -25,17 +25,46 @@ namespace Microsoft.Azure.Commands.Profile.Errors
     {
         public AzureRestExceptionRecord(Hyak.Common.CloudException exception, ErrorRecord record, bool inner = false) : base(exception, record, inner)
         {
-            ServerMessage = string.Format($"{exception.Error.Code}: {exception.Error.Message} ({exception.Error.OriginalMessage})");
-            ServerResponse = new HttpResponseInfo(exception.Response);
-            RequestMessage = new HttpRequestInfo(exception.Request);
+            if (exception != null)
+            {
+                if (exception.Error != null)
+                {
+                    ServerMessage = string.Format($"{exception.Error.Code}: {exception.Error.Message} ({exception.Error.OriginalMessage})");
+                }
+
+                if (exception.Response != null)
+                {
+                    ServerResponse = new HttpResponseInfo(exception.Response);
+                }
+
+                if (exception.Request != null)
+                {
+                    RequestMessage = new HttpRequestInfo(exception.Request);
+                }
+            }
         }
 
         public AzureRestExceptionRecord(Microsoft.Rest.Azure.CloudException exception, ErrorRecord record, bool inner = false) : base(exception, record, inner)
         {
-            ServerMessage = string.Format($"{exception.Body.Code}: {exception.Body.Message} ({exception.Body.Details})");
-            ServerResponse = new HttpResponseInfo(exception.Response);
-            RequestMessage = new HttpRequestInfo(exception.Request);
-            RequestId = exception.RequestId;
+            if (exception != null)
+            {
+                if (exception.Body != null)
+                {
+                    ServerMessage = string.Format($"{exception.Body.Code}: {exception.Body.Message} ({exception.Body.Details})");
+                }
+
+                if (exception.Response != null)
+                {
+                    ServerResponse = new HttpResponseInfo(exception.Response);
+                }
+
+                if (exception.Request != null)
+                {
+                    RequestMessage = new HttpRequestInfo(exception.Request);
+                }
+
+                RequestId = exception.RequestId;
+            }
         }
         public string ServerMessage { get; set; }
 

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ The New-AzureRmNetworkWatcher cmdlet creates a new Network Watcher resource.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Create a Network Watcher  --------------------------
+### Example 1: Create a Network Watcher
 ```
 New-AzureRmResourceGroup -Name NetworkWatcherRG -Location westcentralus
 New-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
@@ -30,11 +30,12 @@ Name              : NetworkWatcher_westcentralus
 Id                : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus
 Etag              : W/"7cf1f2fe-8445-4aa7-9bf5-c15347282c39"
 Location          : westcentralus
-Tags              : 
+Tags              :
 ProvisioningState : Succeeded
 ```
 
-This example creates a new Network Watcher inside a newly created Resource Group. Note that only one Network Watcher can be created per region per subscription.
+This example creates a new Network Watcher inside a newly created Resource Group. Note that only
+one Network Watcher can be created per region per subscription.
 
 ## PARAMETERS
 
@@ -44,7 +45,7 @@ Location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,7 +75,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,12 +85,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-A hashtable which represents resource tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

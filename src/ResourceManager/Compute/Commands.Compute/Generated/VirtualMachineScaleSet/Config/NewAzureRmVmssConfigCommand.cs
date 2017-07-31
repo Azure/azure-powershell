@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -29,8 +30,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New", "AzureRmVmssConfig", SupportsShouldProcess = true)]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -329,7 +330,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            var vVirtualMachineScaleSet = new VirtualMachineScaleSet
+            var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.Overprovision,
                 SinglePlacementGroup = this.SinglePlacementGroup,

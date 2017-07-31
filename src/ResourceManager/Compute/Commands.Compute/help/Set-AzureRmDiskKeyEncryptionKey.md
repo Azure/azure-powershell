@@ -12,7 +12,7 @@ Sets the key encryption key properties on a disk object.
 ## SYNTAX
 
 ```
-Set-AzureRmDiskKeyEncryptionKey [-Disk] <Disk> [[-KeyUrl] <String>] [[-SourceVaultId] <String>] [-WhatIf]
+Set-AzureRmDiskKeyEncryptionKey [-Disk] <PSDisk> [[-KeyUrl] <String>] [[-SourceVaultId] <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ The last command takes the disk object and creates a disk with name 'Disk01' in 
 Specifies a local disk object.
 
 ```yaml
-Type: Disk
+Type: PSDisk
 Parameter Sets: (All)
 Aliases: 
 
