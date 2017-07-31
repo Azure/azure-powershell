@@ -51,8 +51,9 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.0.2.0-preview\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.0.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.8\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
@@ -102,7 +103,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\AuthorizationRule\GetAzureServiceBusAuthorizationRule.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\GetAzureServiceBusKey.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\NewAzureServiceBusAuthorizationRule.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\NewAzureServiceBusKey.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\RemoveAzureServiceBusAuthorizationRule.cs" />
+    <Compile Include="Cmdlets\AuthorizationRule\SetAzureServiceBusAuthorizationRule.cs" />
     <Compile Include="Cmdlets\AzureServiceBusCmdletBase.cs" />
+    <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespaceKey.cs" />
@@ -113,6 +121,7 @@
     <Compile Include="Cmdlets\Namespace\RemoveAzureServiceBusNamespaceAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureServiceBusNamespaceAuthorizationRules.cs" />
+    <Compile Include="Cmdlets\Operations\GetAzureServiceBusOperations.cs" />
     <Compile Include="Cmdlets\Queue\GetAzureServiceBusQueue.cs" />
     <Compile Include="Cmdlets\Queue\GetAzureServiceBusQueueAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Queue\GetAzureServiceBusQueueKey.cs" />
@@ -123,6 +132,10 @@
     <Compile Include="Cmdlets\Queue\RemoveAzureServiceBusQueueAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Queue\SetAzureServiceBusQueue.cs" />
     <Compile Include="Cmdlets\Queue\SetAzureServiceBusQueueAuthorizationRules.cs" />
+    <Compile Include="Cmdlets\Rule\GetAzureServiceBusRule.cs" />
+    <Compile Include="Cmdlets\Rule\NewAzureServiceBusRule.cs" />
+    <Compile Include="Cmdlets\Rule\RemoveAzureServiceBusRule.cs" />
+    <Compile Include="Cmdlets\Rule\SetAzureServiceBusRule.cs" />
     <Compile Include="Cmdlets\Subscription\GetAzureServiceBusSubscription.cs" />
     <Compile Include="Cmdlets\Subscription\NewAzureServiceBusSubscription.cs" />
     <Compile Include="Cmdlets\Subscription\RemoveAzureServiceBusSubscription.cs" />
@@ -137,18 +150,32 @@
     <Compile Include="Cmdlets\Topic\RemoveAzureServiceBusTopicAuthorizationRules.cs" />
     <Compile Include="Cmdlets\Topic\SetAzureServiceBusTopic.cs" />
     <Compile Include="Cmdlets\Topic\SetAzureServiceBusTopicAuthorizationRules.cs" />
+    <Compile Include="Models\ActionAttributes.cs" />
+    <Compile Include="Models\CheckNameAvailabilityAttributes.cs" />
+    <Compile Include="Models\CheckNameAvailabilityResultAttributes.cs" />
+    <Compile Include="Models\CorrelationFilterAttributes.cs" />
+    <Compile Include="Models\FilterTypeEnum.cs" />
+    <Compile Include="Models\ListKeysAttributes.cs" />
     <Compile Include="Models\NamespaceAttributes.cs" />
     <Compile Include="Models\NamespaceLongRunningOperation.cs" />
     <Compile Include="Models\NamespaceState.cs" />
-    <Compile Include="Models\ListKeysAttributes.cs" />
+    <Compile Include="Models\OperationAttributes.cs" />
+    <Compile Include="Models\OperationDisplayAttributes.cs" />
     <Compile Include="Models\QueueAttributes.cs" />
     <Compile Include="Models\RegenerateKeysAttributes.cs" />
     <Compile Include="Models\ResourceAttributes.cs" />
+    <Compile Include="Models\RulesAttributes.cs" />
     <Compile Include="Models\SharedAccessAuthorizationRuleAttributes.cs" />
+    <Compile Include="Models\SQLFilterAttributes.cs" />
     <Compile Include="Models\SubscriptionAttributes.cs" />
     <Compile Include="Models\TopicAttributes.cs" />
+    <Compile Include="Models\UnavailableReasonAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources.Designer.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\ServiceBusClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,9 +191,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
@@ -179,6 +203,12 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
