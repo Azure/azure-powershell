@@ -263,7 +263,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
         }
 
-        AzureRmProfile Profile { get { return this; } }
+        public AzureRmProfile Profile { get { return this; } }
+
+        public bool TryAddContext(IAzureContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            bool result = false;
+            string contextName;
+            if (!TryFindContext(context, out contextName) && TryGetContextName(context, out contextName))
+            {
+                Contexts[contextName] = context;
+                result = TryAddContext(contextName, context);
+            }
+
+            return result;
+        }
 
         public bool TryAddContext(string name, IAzureContext context)
         {
@@ -282,14 +300,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
-        public string GetContextName(IAzureContext context)
+        public bool TryFindContext(IAzureContext context, out string name)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            string name = null;
+            bool result = false;
+            name = null;
             var foundContext = Contexts.FirstOrDefault((c) =>
                 c.Value != null
                 && (
@@ -304,8 +318,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (!string.IsNullOrEmpty(foundContext.Key))
             {
                 name = foundContext.Key;
+                result = true;
             }
-            else if ((context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id)) || context.Subscription != null)
+
+            return result;
+        }
+
+        public bool TryGetContextName(IAzureContext context, out string name)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            bool result = false;
+            name = null;
+            if ((context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id)) || context.Subscription != null)
             {
                 List<string> components = new List<string>();
                 if (context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id))
@@ -319,9 +347,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
 
                 name = string.Format("[{0}]", string.Join(", ", components));
+                result = true;
             }
 
-            return name;
+            return result;
         }
 
         public bool TryRemoveContext(string name)
@@ -349,6 +378,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 Contexts[name] = context;
                 result = true;
+            }
+
+            return result;
+        }
+
+        public bool TrySetContext(IAzureContext context)
+        {
+            bool result = false;
+            string contextName;
+            if (!TryFindContext(context, out contextName))
+            {
+                result = TryAddContext(context);
             }
 
             return result;

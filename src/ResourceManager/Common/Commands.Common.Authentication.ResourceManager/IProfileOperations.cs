@@ -25,11 +25,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
     {
         AzureRmProfile Profile { get; }
         bool TryAddContext(string name, IAzureContext context);
-        string GetContextName(IAzureContext context);
+        bool TryAddContext(IAzureContext context);
+        bool TryFindContext(IAzureContext context, out string name);
+        bool TryGetContextName(IAzureContext context, out string name);
         bool TryRemoveContext(string name);
         bool TryRenameContext(string sourceName, string TargetName);
         bool TrySetContext(string name, IAzureContext context);
+        bool TrySetContext(IAzureContext context);
         bool TrySetDefaultContext(string name);
-
     }
 }
