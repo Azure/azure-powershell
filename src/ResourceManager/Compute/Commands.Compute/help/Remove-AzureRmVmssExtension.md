@@ -14,13 +14,13 @@ Removes an extension from the VMSS.
 
 ### NameParameterSet
 ```
-Remove-AzureRmVmssExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-Name] <String> [-WhatIf]
+Remove-AzureRmVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-Name] <String> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Remove-AzureRmVmssExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-Id] <String> [-WhatIf]
+Remove-AzureRmVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-Id] <String> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Specifies the VMSS from which to remove the extension from.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 

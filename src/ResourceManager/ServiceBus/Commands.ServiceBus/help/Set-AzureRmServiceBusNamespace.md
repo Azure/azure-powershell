@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -24,6 +24,17 @@ The **Set-AzureRmServiceBusNamespace** cmdlet updates the description of the spe
 ### Example 1
 ```
 PS C:\> Set-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 10 -Tag @{Tag2="Tag2Value"}
+
+Name               : SB-Example1
+Id                 : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Location           : West US
+Sku                : Name : Standard , Capacity : 10 , Tier : Standard
+ProvisioningState  : Succeeded
+Status             :
+CreatedAt          :
+UpdatedAt          :
+ServiceBusEndpoint :
+Enabled            : False
 ```
 
 Updates the Service Bus namespace with a new description.
@@ -36,7 +47,7 @@ The Service Bus namespace location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -51,7 +62,7 @@ The Service Bus namespace name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -66,7 +77,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -79,7 +90,7 @@ Accept wildcard characters: False
 Namespace Sku Capacity.```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -94,7 +105,7 @@ The namespace SKU name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Basic, Standard, Premium
 
 Required: False
@@ -105,12 +116,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables that represent resource tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Updates the Service Bus namespace with the specified information. 
+Updates the Service Bus namespace with the specified information.
 
 ```yaml
 Type: SwitchParameter
@@ -172,19 +185,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
-Name               : SB-Example1
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
-Location           : West US
-Sku                : Name : Standard , Capacity : 10 , Tier : Standard
-ProvisioningState  : Succeeded
-Status             : 
-CreatedAt          : 
-UpdatedAt          : 
-ServiceBusEndpoint : 
-Enabled            : False
+Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -24,7 +24,19 @@ The **Set-AzureRmRelayNamespace** cmdlet updates the description of the specifie
 ### Example 1
 ```
 PS C:\> Set-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Tag @{Tag2="Tag2Value"}
+
+ProvisioningState  :
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           :
+Location           :
+Tags               : {[tag2, Tag2Value]}
+Id                 :
+Name               :
+Type               :
 ```
+
 Updates the Relay namespace with a new description.
 
 ## PARAMETERS
@@ -35,7 +47,7 @@ Relay Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -50,7 +62,7 @@ Relay Namespace object.
 ```yaml
 Type: RelayNamespaceAttirbutesUpdateParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,7 +77,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -75,12 +87,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tag.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,20 +152,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
  System.Collections.Hashtable
 
 ## OUTPUTS
-### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
 
-ProvisioningState  :
-CreatedAt          : 4/12/2017 12:38:47 AM
-UpdatedAt          : 4/12/2017 12:39:10 AM
-ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
-MetricId           :
-Location           :
-Tags               : {[tag2, Tag2Value]}
-Id                 :
-Name               :
-Type               :
+Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-

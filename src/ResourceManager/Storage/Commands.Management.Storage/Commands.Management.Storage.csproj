@@ -62,7 +62,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.4.0-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.5.0-preview\lib\net452\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -138,13 +138,18 @@
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs">
       <Link>Common\LazyAzureStorageContext.cs</Link>
     </Compile>
+    <Compile Include="Models\PSNetworkRule.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StorageAccount\RemoveAzureStorageAccountNetworkRule.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccountNameAvailability.cs" />
     <Compile Include="StorageAccount\GetAzureStorageUsage.cs" />
+    <Compile Include="StorageAccount\AddAzureStorageAccountNetworkRule.cs" />
+    <Compile Include="StorageAccount\GetAzureStorageAccountNetworkRuleSet.cs" />
+    <Compile Include="StorageAccount\UpdateAzureStorageAccountNetworkRuleSet.cs" />
     <Compile Include="StorageAccount\NewAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\NewAzureStorageAccountKey.cs" />
     <Compile Include="StorageAccount\RemoveAzureStorageAccount.cs" />
@@ -163,6 +168,7 @@
     </None>
     <None Include="Microsoft.Azure.Commands.Management.Storage.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">

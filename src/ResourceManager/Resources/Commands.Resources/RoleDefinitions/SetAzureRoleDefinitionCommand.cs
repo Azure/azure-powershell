@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Commands.Resources
             }
 
             role = role ?? Role;
+
+            foreach (var scope in role.AssignableScopes) {
+                AuthorizationClient.ValidateScope(scope, false);
+            }
+
             WriteObject(PoliciesClient.UpdateRoleDefinition(role));
         }
     }

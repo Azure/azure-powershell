@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 ms.assetid: 818D5D85-B6D5-458C-A26E-E4DE8E111A10
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -18,8 +18,9 @@ Get-AzureRmBatchAccount [[-AccountName] <String>] [[-ResourceGroupName] <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmBatchAccount** cmdlet gets an Azure Batch account in the current subscription.
-You can use the *AccountName* parameter to get a single account, or you can use the *ResourceGroupName* parameter to get accounts under that resource group.
+The **Get-AzureRmBatchAccount** cmdlet gets an Azure Batch account in the current subscription. You
+can use the *AccountName* parameter to get a single account, or you can use the *ResourceGroupName*
+parameter to get accounts under that resource group.
 
 ## EXAMPLES
 
@@ -27,18 +28,12 @@ You can use the *AccountName* parameter to get a single account, or you can use 
 ```
 PS C:\>Get-AzureRmBatchAccount -AccountName "pfuller"
 AccountName                  : pfuller
-
 Location                     : westus
-
 ResourceGroupName            : CmdletExampleRG
-
 CoreQuota                    : 20
-
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
-Tags                         : 
+Tags                         :
 TaskTenantUrl                : https://pfuller.westus.batch.azure.com
 ```
 
@@ -48,37 +43,20 @@ This command gets the batch account named pfuller.
 ```
 PS C:\>Get-AzureRmBatchAccount -ResourceGroupName "CmdletExampleRG"
 AccountName                  : cmdletexample
-
 Location                     : westus
-
 ResourceGroupName            : CmdletExampleRG
-
 CoreQuota                    : 20
-
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
-Tags                         : 
-
+Tags                         :
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
-
-
-
-
 AccountName                  : cmdletexample2
-
 Location                     : westus
-
 ResourceGroupName            : CmdletExampleRG
-
 CoreQuota                    : 20
-
 PoolQuota                    : 20
-
 ActiveJobAndJobScheduleQuota : 20
-
-Tags                         : 
+Tags                         :
 TaskTenantUrl                : https://cmdletexample.westus.batch.azure.com
 ```
 
@@ -109,7 +87,7 @@ If you specify a resource group, this cmdlet gets the accounts under the specifi
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -119,13 +97,16 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies tags as a hash table.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
 This cmdlet gets accounts that contain the tags that this parameter specifies.
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -152,5 +133,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzureRmBatchAccount](./Set-AzureRmBatchAccount.md)
 
 [Azure Batch Cmdlets](./AzureRM.Batch.md)
-
-
