@@ -13,13 +13,13 @@ Removes a data disk from the VMSS.
 
 ### NameParameterSet
 ```
-Remove-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-Name] <String> [-WhatIf]
+Remove-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-Name] <String> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### LunParameterSet
 ```
-Remove-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-Lun] <Int32> [-WhatIf]
+Remove-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-Lun] <Int32> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Specify the VMSS object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 

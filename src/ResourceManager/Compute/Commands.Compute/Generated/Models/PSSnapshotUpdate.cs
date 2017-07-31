@@ -20,26 +20,10 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-	public class PSSnapshotUpdate : SnapshotUpdate
-	{
-		[Obsolete("This property is deprecated and will be removed in a future release")]
-		public string AccountType
-		{
-			get
-			{
-				return Sku.Name.ToString();
-			}
-			set
-			{
-				Sku.Name = (StorageAccountTypes)Enum.Parse(typeof(StorageAccountTypes), value);
-			}
-		}
-
-		[Obsolete("This property is deprecated and will be removed in a future release")]
-		public CreationData CreationData { get; set; }
-	}
+    public partial class PSSnapshotUpdate : SnapshotUpdate
+    {
+    }
 }
