@@ -235,7 +235,9 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkRule
-Storage Account NetworkRule```yaml
+Storage Account NetworkRule
+
+```yaml
 Type: PSNetworkRuleSet
 Parameter Sets: (All)
 Aliases: 
