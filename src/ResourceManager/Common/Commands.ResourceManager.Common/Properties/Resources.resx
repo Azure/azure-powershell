@@ -140,8 +140,8 @@
 The data is anonymous and does not include commandline argument values.
 The data is collected by Microsoft.
 
-Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &amp;gt; Disable-AzureRmDataCollection.
-Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection: PS &amp;gt; Enable-AzureRmDataCollection.</value>
+Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection: PS &gt; Enable-AzureRmDataCollection.</value>
   </data>
   <data name="DataCollectionSaveFileInformation" xml:space="preserve">
     <value>The setting profile has been saved to the following path '{0}'.</value>
@@ -201,7 +201,7 @@ Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet c
 The data is anonymous and does not include commandline argument values.
 The data is collected by Microsoft.
 
-Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &amp;gt; Disable-AzureDataCollection.
-Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &amp;gt; Enable-AzureDataCollection.</value>
+Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
+Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enable-AzureDataCollection.</value>
   </data>
 </root>
