@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CanNotDeleteTag" xml:space="preserve">
+    <value>Can not remove tag/tag value because it's being referenced by other resources.</value>
+  </data>
   <data name="ContextCannotBeNull" xml:space="preserve">
     <value>Context cannot be null.  Please log in using Add-AzureRmAccount.</value>
   </data>
@@ -160,6 +163,12 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="ProfileCannotBeNull" xml:space="preserve">
     <value>Profile cannot be null.  Please run Add-AzureRmAccount.</value>
   </data>
+  <data name="RemoveTagMessage" xml:space="preserve">
+    <value>Removing tag ....</value>
+  </data>
+  <data name="RemovingTag" xml:space="preserve">
+    <value>Are you sure you want to remove tag '{0}'</value>
+  </data>
   <data name="ProfileNotInitialized" xml:space="preserve">
     <value>The Azure PowerShell context has not been properly initialized.  Please import the module and try again.</value>
   </data>
@@ -185,6 +194,9 @@ Select Y to enable data collection [Y/N]:</value>
   </data>
   <data name="SubscriptionNameNotFound" xml:space="preserve">
     <value>The provided account {0} does not have access to subscription name "{1}". Please try logging in with different credentials or a different subscription name.</value>
+  </data>
+  <data name="TagNotFoundMessage" xml:space="preserve">
+    <value>Tag '{0}' not found</value>
   </data>
   <data name="TenantNotFound" xml:space="preserve">
     <value>Tenant '{0}' was not found. Please verify that your account has access to this tenant.</value>

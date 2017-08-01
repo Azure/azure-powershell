@@ -31,6 +31,7 @@
 	- Deprecating Use-AzureRmSqlServerAuditingPolicy
 	- Deprecating Remove-AzureRmSqlDatabaseAuditing
 	- Deprecating Remove-AzureRmSqlServerAuditing
+* Schema file parsing for Update-AzureRmSqlSyncGroup is now case insensitive.
 
 ## Version 3.2.1
 
