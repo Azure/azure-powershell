@@ -144,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction,
 
 ## OUTPUTS
 
-PSAzureSubscription
+### PSAzureSubscription
 
 ## NOTES
 
