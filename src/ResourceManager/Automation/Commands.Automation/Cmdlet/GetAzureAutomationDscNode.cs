@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
                 do
                 {
-                    ret = this.AutomationClient.ListDscNodesByNodeConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, nodeStatus, ref nextLink);
+                    ret = this.AutomationClient.ListDscNodesByConfiguration(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, nodeStatus, ref nextLink);
                     if (ret != null)
                     {
                         this.GenerateCmdletOutput(ret);
