@@ -74,7 +74,6 @@ function EventHubsTests
     Write-Debug "  Create new eventhub namespace"
     Write-Debug " Namespace name : $namespaceName"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
 
 	# Assert
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -125,7 +124,6 @@ function EventHubsTests
 	$createdEventHub.CaptureDescription.Destination.ArchiveNameFormat = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
 	$createdEventHub.CaptureDescription.Destination.StorageAccountResourceId = "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/default-servicebus-westus/providers/Microsoft.Storage/storageAccounts/eventhubteststorage011"
     $result = Set-AzureRmEventHub -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $createdEventHub.Name  -EventHubObj $createdEventHub
-    Wait-Seconds 15
 	
 	# Assert
 	Assert-True {$result.MessageRetentionInDays -eq $createdEventHub.MessageRetentionInDays}
@@ -168,7 +166,6 @@ function EventHubsTests_New
 	Write-Debug "  Create new eventhub namespace"
 	Write-Debug " Namespace name : $namespaceName"
 	$result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
-	Wait-Seconds 15
 
 	# Assert
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -218,7 +215,6 @@ function EventHubsTests_New
 	$createdEventHub.CaptureDescription.Destination.StorageAccountResourceId = "/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/default-servicebus-westus/providers/Microsoft.Storage/storageAccounts/eventhubteststorage011"
 		
 	$result = Set-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
-	Wait-Seconds 15
 	
 	# Assert
 	Assert-True {$result.MessageRetentionInDays -eq $createdEventHub.MessageRetentionInDays}
@@ -262,7 +258,6 @@ function EventHubsAuthTests
 	Write-Debug " Create new Eventhub namespace"
 	Write-Debug "Namespace name : $namespaceName"
 	$result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-	Wait-Seconds 15
 	
 	# Assert
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -295,7 +290,6 @@ function EventHubsAuthTests
 	Assert-AreEqual 2 $result.Rights.Count
 	Assert-True { $result.Rights -Contains "Listen" }
 	Assert-True { $result.Rights -Contains "Send" }
-	Wait-Seconds 15
 
 	# Get Created Eventhub Authorization Rule
 	Write-Debug "Get created authorizationRule"
@@ -329,7 +323,6 @@ function EventHubsAuthTests
 	Write-Debug "Update eventHub AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
 	$updatedAuthRule = Set-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -AuthRuleObj $createdAuthRule
-	Wait-Seconds 15
 
 	# Assert
 	Assert-AreEqual $authRuleName $updatedAuthRule.Name
@@ -403,8 +396,7 @@ function EventHubsAuth_NewTests
 	Write-Debug " Create new Eventhub namespace"
 	Write-Debug "Namespace name : $namespaceName"
 	$result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
-	Wait-Seconds 15
-	
+
 	# Assert
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
@@ -436,7 +428,6 @@ function EventHubsAuth_NewTests
 	Assert-AreEqual 2 $result.Rights.Count
 	Assert-True { $result.Rights -Contains "Listen" }
 	Assert-True { $result.Rights -Contains "Send" }
-	Wait-Seconds 15
 
 	# Get Created Eventhub Authorization Rule
 	Write-Debug "Get created authorizationRule"
@@ -470,7 +461,6 @@ function EventHubsAuth_NewTests
 	Write-Debug "Update eventHub AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
 	$updatedAuthRule = Set-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -InputObj $createdAuthRule
-	Wait-Seconds 15
 
 	# Assert
 	Assert-AreEqual $authRuleName $updatedAuthRule.Name
