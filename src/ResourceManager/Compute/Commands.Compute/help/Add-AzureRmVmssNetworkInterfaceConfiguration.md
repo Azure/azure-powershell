@@ -15,8 +15,9 @@ Adds a network interface configuration to the VMSS.
 ```
 Add-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-Name] <String>] [[-Primary] <Boolean>] [[-Id] <String>]
- [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-NetworkSecurityGroupId <String>]
- [-DnsSettingsDnsServer <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-EnableAcceleratedNetworking <Boolean>]
+ [-NetworkSecurityGroupId <String>] [-DnsSettingsDnsServer <String[]>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,21 @@ List of dns server IP addresses for dns settings.
 Type: String[]
 Parameter Sets: (All)
 Aliases: DnsServer
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableAcceleratedNetworking
+Specifies whether the network interface is accelerated networking-enabled.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named

@@ -162,7 +162,10 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'New-AzureRmImageConfig', 'Set-AzureRmImageOsDisk', 
                'Add-AzureRmImageDataDisk', 'Remove-AzureRmImageDataDisk', 
                'ConvertTo-AzureRmVMManagedDisk', 'Set-AzureRmVmssBootDiagnostic', 
-               'Get-AzureRmComputeResourceSku'
+               'Get-AzureRmComputeResourceSku',
+               'Set-AzureRmVMRunCommand', 'Get-AzureRmVMRunCommand',
+               'New-AzureRmVMRunCommandInputConfig',
+               'Add-AzureRmVMRunCommandInputParameter', 'Remove-AzureRmVMRunCommandInputParameter'
 
 # Variables to export from this module
 # VariablesToExport = @()
