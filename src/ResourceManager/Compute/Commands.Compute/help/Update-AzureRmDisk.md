@@ -164,7 +164,7 @@ Microsoft.Azure.Management.Compute.Models.Disk
 
 ## OUTPUTS
 
-### System.Object
+Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## NOTES
 

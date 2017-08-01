@@ -280,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Management.Compute.Models.Snapshot
+Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
 
 ## NOTES
 

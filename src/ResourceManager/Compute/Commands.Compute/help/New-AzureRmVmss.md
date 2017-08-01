@@ -13,7 +13,7 @@ Creates a VMSS.
 ## SYNTAX
 
 ```
-New-AzureRmVmss [-ResourceGroupName] <String> -VMScaleSetName <String>
+New-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

@@ -116,4 +116,58 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                  new object[] { location, commandId });
         }
     }
+
+    [Cmdlet(VerbsCommon.Get, "AzureRmVMRunCommand", DefaultParameterSetName = "DefaultParameter")]
+    [OutputType(typeof(PSRunCommandDocument))]
+    public partial class GetAzureRmVMRunCommand : ComputeAutomationBaseCmdlet
+    {
+        protected override void ProcessRecord()
+        {
+            ExecuteClientAction(() =>
+            {
+                string location = this.Location;
+                string commandId = this.CommandId;
+
+                if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(commandId))
+                {
+                    var result = VirtualMachineRunCommandsClient.Get(location, commandId);
+                    WriteObject(result);
+                }
+                else if (!string.IsNullOrEmpty(location))
+                {
+                    var result = VirtualMachineRunCommandsClient.List(location);
+                    var resultList = result.ToList();
+                    var nextPageLink = result.NextPageLink;
+                    while (!string.IsNullOrEmpty(nextPageLink))
+                    {
+                        var pageResult = VirtualMachineRunCommandsClient.ListNext(nextPageLink);
+                        foreach (var pageItem in pageResult)
+                        {
+                            resultList.Add(pageItem);
+                        }
+                        nextPageLink = pageResult.NextPageLink;
+                    }
+                    WriteObject(resultList, true);
+                }
+            });
+        }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string Location { get; set; }
+
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string CommandId { get; set; }
+    }
 }

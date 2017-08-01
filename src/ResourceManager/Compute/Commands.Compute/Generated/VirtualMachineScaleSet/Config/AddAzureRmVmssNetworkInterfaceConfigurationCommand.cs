@@ -67,6 +67,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        public bool? EnableAcceleratedNetworking { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public string NetworkSecurityGroupId { get; set; }
 
         [Parameter(
@@ -107,6 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vNetworkInterfaceConfigurations.Name = this.Name;
             vNetworkInterfaceConfigurations.Primary = this.Primary;
+            vNetworkInterfaceConfigurations.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking;
             vNetworkInterfaceConfigurations.Id = this.Id;
             if (this.NetworkSecurityGroupId != null)
             {
