@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Schema file parsing for Update-AzureRmSqlSyncGroup is now case insensitive.
+
+## Version 3.2.1
 
 ## Version 3.2.0
 * Add Data Sync PowerShell Cmdlets to AzureRM.Sql

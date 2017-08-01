@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Set-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Remove-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+
+* Added support for private access services to Virtual Network Subnets
+    - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
+    - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
+    - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
+* Added cmdlet to list private access services available in the location
+    - Get-AzureRmVirtualNetworkPrivateAccessService
+
+## Version 4.2.1
 
 ## Version 4.2.0
 * New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters

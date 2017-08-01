@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -45,43 +46,63 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         /// </summary>
         /// <param name="filePath">The path of the schema file</param>
         /// <returns>A schema object of member database</returns>
-        protected AzureSqlSyncGroupSchemaModel ConstructSchemaFromFile(string filePath)
+        protected static AzureSqlSyncGroupSchemaModel ConstructSchemaFromFile(string filePath)
         {
-            AzureSqlSyncGroupSchemaModel schema = new AzureSqlSyncGroupSchemaModel();
             try
             {
                 JObject jSchema = JObject.Parse(File.ReadAllText(filePath));
-                schema.MasterSyncMemberName = jSchema["masterSyncMemberName"] == null ? null : jSchema["masterSyncMemberName"].ToString();
-                List<AzureSqlSyncGroupSchemaTableModel> tables = new List<AzureSqlSyncGroupSchemaTableModel>();
-                JArray jTables = (JArray)jSchema["tables"];
-                if (jTables != null)
+                return ConstructSchemaFromJObject(jSchema);
+            }
+            catch (Newtonsoft.Json.JsonReaderException)
+            {
+                throw new PSArgumentException("The schema file is empty or invalid!", "SchemaFile");
+            }
+        }
+
+        /// <summary>
+        /// Construct schema for schema object
+        /// </summary>
+        /// <param name="jSchema">JObject containing description of the schema</param>
+        /// <returns>A schema object of member database</returns>
+        public static AzureSqlSyncGroupSchemaModel ConstructSchemaFromJObject(JObject jSchema)
+        {
+            AzureSqlSyncGroupSchemaModel schema = new AzureSqlSyncGroupSchemaModel();
+            JToken masterSyncMemberName = jSchema.GetValue("masterSyncMemberName", StringComparison.InvariantCultureIgnoreCase);
+            schema.MasterSyncMemberName = masterSyncMemberName == null ? null : masterSyncMemberName.ToString();
+            List<AzureSqlSyncGroupSchemaTableModel> tables = new List<AzureSqlSyncGroupSchemaTableModel>();
+            JArray jTables = (JArray)jSchema.GetValue("tables", StringComparison.InvariantCultureIgnoreCase);
+            if (jTables != null)
+            {
+                foreach (var jTableToken in jTables.Children())
                 {
-                    foreach (var jTable in jTables.Children())
+                    if (jTableToken.Type == JTokenType.Object)
                     {
+                        JObject jTable = (JObject)jTableToken;
                         AzureSqlSyncGroupSchemaTableModel table = new AzureSqlSyncGroupSchemaTableModel();
-                        table.QuotedName = jTable["quotedName"] == null ? null : jTable["quotedName"].ToString();
+                        JToken tableQuotedNameToken = jTable.GetValue("quotedName", StringComparison.InvariantCultureIgnoreCase);
+                        table.QuotedName = tableQuotedNameToken == null ? null : tableQuotedNameToken.ToString();
                         List<AzureSqlSyncGroupSchemaColumnModel> columns = new List<AzureSqlSyncGroupSchemaColumnModel>();
-                        JArray jColumns = (JArray)jTable["columns"];
+                        JArray jColumns = (JArray)jTable.GetValue("columns", StringComparison.InvariantCultureIgnoreCase);
                         if (jColumns != null)
                         {
-                            foreach (var jColumn in jColumns.Children())
+                            foreach (var jColumnToken in jColumns.Children())
                             {
-                                AzureSqlSyncGroupSchemaColumnModel column = new AzureSqlSyncGroupSchemaColumnModel();
-                                column.QuotedName = jColumn["quotedName"] == null ? null : jColumn["quotedName"].ToString();
-                                columns.Add(column);
+                                if (jColumnToken.Type == JTokenType.Object)
+                                {
+                                    AzureSqlSyncGroupSchemaColumnModel column = new AzureSqlSyncGroupSchemaColumnModel();
+                                    JToken columnQuotedNameToken = ((JObject)jColumnToken).GetValue("quotedName", StringComparison.InvariantCultureIgnoreCase);
+                                    column.QuotedName = columnQuotedNameToken == null ? null : columnQuotedNameToken.ToString();
+                                    columns.Add(column);
+                                }
                             }
                         }
                         table.Columns = columns;
                         tables.Add(table);
                     }
                 }
-                schema.Tables = tables;
-                return schema;
             }
-            catch (Newtonsoft.Json.JsonReaderException)
-            {
-                throw new PSArgumentException("The schema file is empty or invalid!", "SchemaFile");
-            }
+            schema.Tables = tables;
+            return schema;
         }
     }
 }
