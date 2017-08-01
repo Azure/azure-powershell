@@ -71,7 +71,7 @@ function Test-RdNegativeScenarios
 
     $rdId = '85E460B3-89E9-48BA-9DCD-A8A99D64A674'
 	
-    $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $rdId + "' does not exist."
+    $badIdException = "The specified role definition with ID '" + $rdId + "' does not exist."
 
     # Throws on trying to update the a role that does not exist
     Assert-Throws { Set-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json } $badIdException

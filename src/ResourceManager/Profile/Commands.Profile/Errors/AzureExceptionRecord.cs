@@ -21,13 +21,9 @@ namespace Microsoft.Azure.Commands.Profile.Errors
     {
         public AzureExceptionRecord(Exception exception, ErrorRecord record, bool inner = false) : base(record)
         {
-            if (exception != null)
-            {
-                Message = exception.Message;
-                HelpLink = exception.HelpLink;
-                StackTrace = exception.StackTrace;
-            }
-
+            Message = exception.Message;
+            HelpLink = exception.HelpLink;
+            StackTrace = exception.StackTrace;
             Exception = exception;
         }
 
