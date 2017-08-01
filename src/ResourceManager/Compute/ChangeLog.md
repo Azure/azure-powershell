@@ -20,6 +20,18 @@
 ## Current Release
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series
+* VM Run Command cmdlets
+  - Set-AzureRmVMRunCommand
+  - Get-AzureRmVMRunCommand
+  - New-AzureRmVMRunCommandInputConfig
+  - Add-AzureRmVMRunCommandInputParameter
+  - Remove-AzureRmVMRunCommandInputParameter
+* Add ForceUpdateTag parameter to Add-AzureRmVmssExtension
+* Add Primary parameter to New-AzureRmVmssIpConfig
+* Add EnableAcceleratedNetworking parameter to Add-AzureRmVmssNetworkInterfaceConfig
+* Add InstanceId to Set-AzureRmVmss
+* Expose MaintenanceRedeployStatus to Get-AzureRmVM -Status output
+* Expose Restriction and Capability to the table format of Get-AzureRmComputeResourceSku
 
 ## Version 3.2.1
 - Fix issue with VM DIsk and VM Disk snapshot create and update cmdlets, (link)[https://github.com/azure/azure-powershell/issues/4309]
