@@ -21,6 +21,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
@@ -62,15 +63,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 if (_hashMacAddress == string.Empty)
                 {
                     _hashMacAddress = null;
-                    var nics = NetworkInterface.GetAllNetworkInterfaces();
-                    foreach (var nic in nics)
+                    var macAddress = NetworkInterface.GetAllNetworkInterfaces()
+                        .FirstOrDefault(nic => nic.OperationalStatus == OperationalStatus.Up)?
+                        .GetPhysicalAddress().ToString();
+                    if (macAddress != null)
                     {
-                        if (nic.OperationalStatus == OperationalStatus.Up)
-                        {
-                            var macAddress = nic.GetPhysicalAddress().ToString();
-                            _hashMacAddress = GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
-                            break;
-                        }
+                        _hashMacAddress = GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
                     }
                 }
 

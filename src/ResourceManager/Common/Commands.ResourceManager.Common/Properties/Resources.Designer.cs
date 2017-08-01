@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
         ///
-        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &amp;gt; Disable-AzureRmDataCollection.
-        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enab [rest of string was truncated]&quot;;.
+        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ARMDataCollectionMessage {
             get {
@@ -187,8 +187,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///The data is anonymous and does not include commandline argument values.
         ///The data is collected by Microsoft.
         ///
-        ///Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &amp;gt; Disable-AzureDataCollection.
-        ///Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &amp;gt [rest of string was truncated]&quot;;.
+        ///Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
+        ///Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enab [rest of string was truncated]&quot;;.
         /// </summary>
         public static string RDFEDataCollectionMessage {
             get {
