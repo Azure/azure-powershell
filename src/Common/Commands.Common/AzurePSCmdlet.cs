@@ -150,11 +150,20 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             // If the environment value is null or empty, or not correctly set, try to read the setting from default file location.
             if (_dataCollectionProfile == null)
             {
+                // If it exists, remove the old AzureDataCollectionProfile.json file
+                string oldFileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
+                    AzurePSDataCollectionProfile.OldDefaultFileName);
+                if (AzureSession.Instance.DataStore.FileExists(oldFileFullPath))
+                {
+                    AzureSession.Instance.DataStore.DeleteFile(oldFileFullPath);
+                }
+
+                // Try and read from the new AzurePSDataCollectionProfile.json file
                 string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
                     AzurePSDataCollectionProfile.DefaultFileName);
-                if (File.Exists(fileFullPath))
+                if (AzureSession.Instance.DataStore.FileExists(fileFullPath))
                 {
-                    string contents = File.ReadAllText(fileFullPath);
+                    string contents = AzureSession.Instance.DataStore.ReadFileAsText(fileFullPath);
                     _dataCollectionProfile =
                         JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
                 }
@@ -234,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Prompt for the current data collection profile
         /// </summary>
-        protected abstract void PromptForDataCollectionProfileIfNotExists();
+        protected abstract void SetDataCollectionProfileIfNotExists();
 
         protected virtual void LogCmdletStartInvocationInfo()
         {
@@ -294,7 +303,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
-            PromptForDataCollectionProfileIfNotExists();
+            SetDataCollectionProfileIfNotExists();
             InitializeQosEvent();
             LogCmdletStartInvocationInfo();
             SetupDebuggingTraces();

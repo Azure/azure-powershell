@@ -182,46 +182,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
-        protected override void PromptForDataCollectionProfileIfNotExists()
+        protected override void SetDataCollectionProfileIfNotExists()
         {
-            // Initialize it from the environment variable or profile file.
             InitializeDataCollectionProfile();
 
-            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
+            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue || !CheckIfInteractive())
             {
-                WriteWarning(Resources.DataCollectionPrompt);
-
-                const double timeToWaitInSeconds = 60;
-                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
-                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
-
-                var startTime = DateTime.Now;
-                var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
-
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
-                {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
-                    endTime = DateTime.Now;
-
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
-                    WriteProgress(record);
-                }
-
-                bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC | ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
-
-                _dataCollectionProfile.EnableAzureDataCollection = enabled;
-
-                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
-
-                SaveDataCollectionProfile();
+                return;
             }
+
+            WriteWarning(Resources.ARMDataCollectionMessage);
+
+            _dataCollectionProfile.EnableAzureDataCollection = true;
+            SaveDataCollectionProfile();
         }
 
         protected override void InitializeQosEvent()

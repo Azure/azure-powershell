@@ -135,18 +135,13 @@
   <data name="DataCollectionConfirmYes" xml:space="preserve">
     <value>You choose to participate in Microsoft Azure PowerShell data collection.</value>
   </data>
-  <data name="DataCollectionPrompt" xml:space="preserve">
-    <value>Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
- 
-If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module
-To disable data collection: PS &gt; Disable-AzureDataCollection
+  <data name="ARMDataCollectionMessage" xml:space="preserve">
+    <value>Azure PowerShell collects usage data in order to improve your experience.
+The data is anonymous and does not include commandline argument values.
+The data is collected by Microsoft.
 
-If you choose to not participate, you can enable at any time by using Azure PowerShell as follows:
-1.	Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module
-To enable data collection: PS &gt; Enable-AzureDataCollection
- 
-Select Y to enable data collection [Y/N]:</value>
+Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &amp;gt; Disable-AzureRmDataCollection.
+Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable data collection: PS &amp;gt; Enable-AzureRmDataCollection.</value>
   </data>
   <data name="DataCollectionSaveFileInformation" xml:space="preserve">
     <value>The setting profile has been saved to the following path '{0}'.</value>
@@ -200,5 +195,13 @@ Select Y to enable data collection [Y/N]:</value>
   </data>
   <data name="TenantNotFound" xml:space="preserve">
     <value>Tenant '{0}' was not found. Please verify that your account has access to this tenant.</value>
+  </data>
+  <data name="RDFEDataCollectionMessage" xml:space="preserve">
+    <value>Azure PowerShell collects usage data in order to improve your experience.
+The data is anonymous and does not include commandline argument values.
+The data is collected by Microsoft.
+
+Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &amp;gt; Disable-AzureDataCollection.
+Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &amp;gt; Enable-AzureDataCollection.</value>
   </data>
 </root>
