@@ -313,6 +313,7 @@
     <Compile Include="UnitTests\AzureSqlDatabaseServerAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseIndexRecommendationAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlCapabilityAttributeTests.cs" />
+    <Compile Include="UnitTests\AzureSqlDataSyncTests.cs" />
     <Compile Include="UnitTests\AzureSqlServerUpgradeAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlServerDisasterRecoveryConfigurationTests.cs" />
     <Compile Include="UnitTests\AzureSqlServiceTierAdvisorAttributeTests.cs" />
@@ -828,7 +829,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestDatabaseTransparentDataEncryptionUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestServerTransparentDataEncryptionProtectorGet.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestServerTransparentDataEncryptionProtectorGet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestServerTransparentDataEncryptionProtectorSet.json">
