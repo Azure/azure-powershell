@@ -23,8 +23,8 @@ Run a command on the VM.
 
 ### Example 1
 ```
-PS C:\> $runParameter = New-AzureRmVMRunCommandInputConfig -CommandId $commandId -Script $script `
-                       | Add-AzureRmVMRunCommandInputParameter -Name $arg1 -Value $value1 `
+PS C:\> $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId -Script $script `
+                       | Add-AzureRmVMRunCommandParameter -Name $arg1 -Value $value1 `
 PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
 ```
 

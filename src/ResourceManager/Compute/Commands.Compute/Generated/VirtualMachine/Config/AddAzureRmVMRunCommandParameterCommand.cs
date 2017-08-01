@@ -29,9 +29,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVMRunCommandInputParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Add", "AzureRmVMRunCommandParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSRunCommandInput))]
-    public partial class AddAzureRmVMRunCommandInputParameterCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public partial class AddAzureRmVMRunCommandParameterCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,

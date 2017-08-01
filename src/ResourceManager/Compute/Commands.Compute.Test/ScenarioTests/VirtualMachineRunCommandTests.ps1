@@ -100,9 +100,9 @@ function Test-VirtualMachineSetRunCommand
 
         $vm = Get-AzureRmVM -ResourceGroupName $rgname
         $commandId = "RunPowerShellScript"
-        $runParameter = New-AzureRmVMRunCommandInputConfig -CommandId $commandId `
-                      | Add-AzureRmVMRunCommandInputParameter -Name "arg1" -Value "dir" `
-                      | Add-AzureRmVMRunCommandInputParameter -Name "arg2" -Value '-Depth 0' `
+        $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId `
+                      | Add-AzureRmVMRunCommandParameter -Name "arg1" -Value "dir" `
+                      | Add-AzureRmVMRunCommandParameter -Name "arg2" -Value '-Depth 0' `
 
         Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
 

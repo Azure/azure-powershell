@@ -29,9 +29,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmVMRunCommandInputParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", "AzureRmVMRunCommandParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSRunCommandInput))]
-    public partial class RemoveAzureRmVMRunCommandInputParameterCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public partial class RemoveAzureRmVMRunCommandParameterCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
