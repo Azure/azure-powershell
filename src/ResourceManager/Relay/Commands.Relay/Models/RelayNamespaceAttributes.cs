@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using Azure.Management.Relay.Models;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Description of a Namespace resource.
@@ -63,7 +64,14 @@ namespace Microsoft.Azure.Commands.Relay.Models
             UpdatedAt = relaynamespace.UpdatedAt;
             ServiceBusEndpoint = relaynamespace.ServiceBusEndpoint;
             MetricId = relaynamespace.MetricId;
+            ResourceGroup = Regex.Split(relaynamespace.Id, @"/")[4];
         }
+
+
+        /// <summary>
+        /// Gets the resourcegroup name
+        /// </summary>
+        public string ResourceGroup { get; }
 
         /// <summary>
         /// Static constructor for RelayNamespaceAttributes class.
