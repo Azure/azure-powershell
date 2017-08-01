@@ -21,6 +21,7 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -51,6 +52,31 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// Lock used to synchronize mutation of the tracing interceptors.
         /// </summary>
         private readonly object _lock = new object();
+
+        private static string _hashMacAddress = string.Empty;
+
+        private static string HashMacAddress
+        {
+            get
+            {
+                if (_hashMacAddress == string.Empty)
+                {
+                    _hashMacAddress = null;
+                    var nics = NetworkInterface.GetAllNetworkInterfaces();
+                    foreach (var nic in nics)
+                    {
+                        if (nic.OperationalStatus == OperationalStatus.Up)
+                        {
+                            var macAddress = nic.GetPhysicalAddress().ToString();
+                            _hashMacAddress = GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
+                            break;
+                        }
+                    }
+                }
+
+                return _hashMacAddress;
+            }
+        }
 
         public MetricHelper()
         {
@@ -177,6 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("UserId", qos.Uid);
             eventProperties.Add("x-ms-client-request-id", qos.ClientRequestId);
             eventProperties.Add("UserAgent", AzurePowerShell.UserAgentValue.ToString());
+            eventProperties.Add("HashMacAddress", HashMacAddress);
             if (qos.InputFromPipeline != null)
             {
                 eventProperties.Add("InputFromPipeline", qos.InputFromPipeline.Value.ToString());
