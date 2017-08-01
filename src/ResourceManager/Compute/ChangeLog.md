@@ -23,9 +23,9 @@
 * VM Run Command cmdlets
   - Set-AzureRmVMRunCommand
   - Get-AzureRmVMRunCommand
-  - New-AzureRmVMRunCommandInputConfig
-  - Add-AzureRmVMRunCommandInputParameter
-  - Remove-AzureRmVMRunCommandInputParameter
+  - New-AzureRmVMRunCommandConfig
+  - Add-AzureRmVMRunCommandParameter
+  - Remove-AzureRmVMRunCommandParameter
 * Add ForceUpdateTag parameter to Add-AzureRmVmssExtension
 * Add Primary parameter to New-AzureRmVmssIpConfig
 * Add EnableAcceleratedNetworking parameter to Add-AzureRmVmssNetworkInterfaceConfig

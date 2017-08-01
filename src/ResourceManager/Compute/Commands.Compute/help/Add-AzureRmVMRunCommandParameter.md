@@ -4,7 +4,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Add-AzureRmVMRunCommandInputParameter
+# Add-AzureRmVMRunCommandParameter
 
 ## SYNOPSIS
 Add a parameter to a Run command input object.
@@ -12,7 +12,7 @@ Add a parameter to a Run command input object.
 ## SYNTAX
 
 ```
-Add-AzureRmVMRunCommandInputParameter [-RunCommandInput] <PSRunCommandInput> [[-Name] <String>]
+Add-AzureRmVMRunCommandParameter [-RunCommandInput] <PSRunCommandInput> [[-Name] <String>]
  [[-Value] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,8 +23,8 @@ Add a parameter to a Run command input object.
 
 ### Example 1
 ```
-PS C:\> $runParameter = New-AzureRmVMRunCommandInputConfig -CommandId $commandId -Script $script `
-                       | Add-AzureRmVMRunCommandInputParameter -Name $arg1 -Value $value1 `
+PS C:\> $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId -Script $script `
+                       | Add-AzureRmVMRunCommandParameter -Name $arg1 -Value $value1 `
 PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
 ```
 

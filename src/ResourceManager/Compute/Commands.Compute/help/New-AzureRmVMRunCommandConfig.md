@@ -4,62 +4,76 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmVMRunCommandInputParameter
+# New-AzureRmVMRunCommandConfig
 
 ## SYNOPSIS
-Remove a parameter from a Run command input object.
+Create an input object for Run command.
 
 ## SYNTAX
 
 ```
-Remove-AzureRmVMRunCommandInputParameter [-RunCommandInput] <PSRunCommandInput> [-Name] <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmVMRunCommandConfig [[-CommandId] <String>] [[-Script] <String[]>]
+ [[-Parameter] <RunCommandInputParameter[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove a parameter from a Run command input object.
+Create an input object for Run command.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $runParameter = New-AzureRmVMRunCommandInputConfig -CommandId $commandId -Script $script `
-                       | Add-AzureRmVMRunCommandInputParameter -Name $arg1 -Value $value1 `
-PS C:\> $runParameter = Remove-AzureVMRunCommandInputParameter -RunCommandInput $runParameter -Name $arg1
+PS C:\> $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId -Script $script `
+                       | Add-AzureRmVMRunCommandParameter -Name $arg1 -Value $value1 `
 PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
 ```
 
-Run the command on the given VM with the command ID and the script after removing the parameter.
+Run the command on the given VM with the command ID, the script, and the parameters.
 
 ## PARAMETERS
 
-### -Name
-The run command parameter name.
+### -CommandId
+The run command id.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 1
+Required: False
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RunCommandInput
-Input object for Run command.
+### -Parameter
+The run command parameters.
 
 ```yaml
-Type: PSRunCommandInput
+Type: RunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
-Position: 0
+Required: False
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Script
+Optional. The script to be executed.  When this value is given, the given script will override the default script of the command.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -99,8 +113,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandInput
-System.String
+### System.String
+System.String[]
+Microsoft.Azure.Management.Compute.Models.RunCommandInputParameter[]
 
 ## OUTPUTS
 

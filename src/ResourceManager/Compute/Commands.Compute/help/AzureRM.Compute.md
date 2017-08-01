@@ -29,7 +29,7 @@ Adds a data disk to a virtual machine.
 ### [Add-AzureRmVMNetworkInterface](Add-AzureRmVMNetworkInterface.md)
 Adds a network interface to a virtual machine.
 
-### [Add-AzureRmVMRunCommandInputParameter](Add-AzureRmVMRunCommandInputParameter.md)
+### [Add-AzureRmVMRunCommandParameter](Add-AzureRmVMRunCommandParameter.md)
 Add a parameter to a Run command input object.
 
 ### [Add-AzureRmVMSecret](Add-AzureRmVMSecret.md)
@@ -209,7 +209,7 @@ Creates a virtual machine.
 ### [New-AzureRmVMConfig](New-AzureRmVMConfig.md)
 Creates a configurable virtual machine object.
 
-### [New-AzureRmVMRunCommandInputConfig](New-AzureRmVMRunCommandInputConfig.md)
+### [New-AzureRmVMRunCommandConfig](New-AzureRmVMRunCommandConfig.md)
 Create an input object for Run command.
 
 ### [New-AzureRmVMSqlServerAutoBackupConfig](New-AzureRmVMSqlServerAutoBackupConfig.md)
@@ -293,7 +293,7 @@ Removes an extension from a virtual machine.
 ### [Remove-AzureRmVMNetworkInterface](Remove-AzureRmVMNetworkInterface.md)
 Removes a network interface from a virtual machine.
 
-### [Remove-AzureRmVMRunCommandInputParameter](Remove-AzureRmVMRunCommandInputParameter.md)
+### [Remove-AzureRmVMRunCommandParameter](Remove-AzureRmVMRunCommandParameter.md)
 Remove a parameter from a Run command input object.
 
 ### [Remove-AzureRmVMSecret](Remove-AzureRmVMSecret.md)
