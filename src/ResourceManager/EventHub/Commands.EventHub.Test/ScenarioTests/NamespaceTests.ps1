@@ -141,8 +141,7 @@ function NamespaceAuthTests
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
-    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }   
-    Wait-Seconds 15
+    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
     
     Write-Debug "Get updated Namespace AuthorizationRules"
     $updatedAuthRule = Get-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
@@ -204,7 +203,6 @@ function NamespaceAuthTests_New
     Write-Debug "Namespace name : $namespaceName"
 	
     $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
-    Wait-Seconds 15
     
 	Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
@@ -277,8 +275,7 @@ function NamespaceAuthTests_New
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
-    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }   
-    Wait-Seconds 15
+    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
     
     Write-Debug "Get updated Namespace AuthorizationRules"
     $updatedAuthRule = Get-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
@@ -345,7 +342,6 @@ function NamespaceTests
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1"
-    Wait-Seconds 15
 	
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -359,7 +355,6 @@ function NamespaceTests
     
     Write-Debug "Namespace name : $namespaceName2" 
     $result = New-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -NamespaceName $namespaceName2 -Location $location
-    Wait-Seconds 15
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup 
@@ -405,7 +400,6 @@ function NamespaceTests_New
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1" -EnableAutoInflate -MaximumThroughputUnits 10
-    Wait-Seconds 15
 	
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
@@ -419,7 +413,6 @@ function NamespaceTests_New
     
     Write-Debug "Namespace name : $namespaceName2" 
     $result = New-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location
-    Wait-Seconds 15
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup 

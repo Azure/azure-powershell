@@ -131,7 +131,6 @@ function ConsumerGroupsTests_New
 	Write-Debug "  Create new Evnethub namespace"
     Write-Debug " Namespace name : $namespaceName"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
-    Wait-Seconds 15
     
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
