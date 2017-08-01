@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -98,11 +99,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsSecurity.Revoke, "AzureRmSnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(OperationStatusResponse))]
+    [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RevokeAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsSecurity.Revoke))
@@ -111,7 +113,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string snapshotName = this.SnapshotName;
 
                     var result = SnapshotsClient.RevokeAccess(resourceGroupName, snapshotName);
-                    WriteObject(result);
+                    var psObject = new PSOperationStatusResponse();
+                    Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }

@@ -26,7 +26,7 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Skip until necessary fixes done")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteServiceProviderList()
         {

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 ms.assetid: A00160B9-831F-4A20-8D9D-9E89BC4F5C91
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ Specify a resource to modify by name and type or by ID.
 
 ### Example 1: Modify a resource
 ```
-PS C:\>$Resource = Get-AzureRmResource -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11" -ResourceName "ContosoSite" 
+PS C:\>$Resource = Get-AzureRmResource -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11" -ResourceName "ContosoSite"
 PS C:\> $Resource.Properties.Enabled = "False"
 PS C:\> $Resource | Set-AzureRmResource -Force
 ```
@@ -63,7 +63,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -74,14 +74,14 @@ Accept wildcard characters: False
 
 ### -ExtensionResourceName
 Specifies the name of an extension resource for the resource.
-For instance, to specify a database, use the following format: 
+For instance, to specify a database, use the following format:
 
 server name`/`database name
 
 ```yaml
 Type: String
 Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,14 +92,14 @@ Accept wildcard characters: False
 
 ### -ExtensionResourceType
 Specifies the resource type for an extension resource.
-For instance, if the extension resource is a database specify the following: 
+For instance, if the extension resource is a database specify the following:
 
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
 Type: String
 Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +114,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ Specifies the resource kind for the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,7 +145,7 @@ This cmdlet appends this value to the request in addition to any other filters.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -205,7 +205,7 @@ Specifies the name of the resource group where this cmdlet modifies the resource
 ```yaml
 Type: String
 Parameter Sets: Resource that resides at the subscription level.
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the fully qualified resource ID, including the subscription, as in the following example: 
+Specifies the fully qualified resource ID, including the subscription, as in the following example:
 
 `/subscriptions/`subscription ID`/providers/Microsoft.Sql/servers/ContosoServer/databases/ContosoDatabase`
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 
 ### -ResourceName
 Specifies the name of the resource.
-For instance, to specify a database, use the following format: 
+For instance, to specify a database, use the following format:
 
 `ContosoServer/ContosoDatabase`
 
@@ -251,14 +251,14 @@ Accept wildcard characters: False
 
 ### -ResourceType
 Specifies the type of the resource.
-For instance, for a database, the resource type is as follows: 
+For instance, for a database, the resource type is as follows:
 
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
 Type: String
 Parameter Sets: Resource that resides at the subscription level., Resource that resides at the tenant level.
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -283,7 +283,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies resource tags as an array of hash tables.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -303,7 +305,7 @@ Indicates that this cmdlet operates at the tenant level.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Resource that resides at the tenant level.
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -318,7 +320,7 @@ Indicates that this cmdlet uses an HTTP PATCH to update the object, instead of a
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -378,5 +380,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmResource](./New-AzureRmResource.md)
 
 [Remove-AzureRmResource](./Remove-AzureRmResource.md)
-
-

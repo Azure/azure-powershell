@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed bug in Set-AzureRmAnalysisServciesServer
+    - When admin was not provided, the admin will be removed.
+* Added BackupBlobContainerUri in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer
+    - Enable to set/disable backup blob container for backup/restore Azure Analysis Services Server
+* Updated Sku lookup in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer
+    - Changed hard coded Sku into dynamic lookup.
+
+## Version 0.4.2
 
 ## Version 0.4.1
 * Add new dataplane API

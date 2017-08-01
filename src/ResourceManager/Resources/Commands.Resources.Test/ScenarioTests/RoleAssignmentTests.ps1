@@ -57,11 +57,6 @@ function Test-RaNegativeScenarios
     # Bad SPN
     $badSpn = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'
     Assert-Throws { Get-AzureRmRoleAssignment -ServicePrincipalName $badSpn } $badObjectResult
-    
-    # Bad Scope
-    $badScope = '/subscriptions/'+ $subscription[0].Id +'/providers/nonexistent'
-    $badScopeException = "InvalidResourceNamespace: The resource namespace 'nonexistent' is invalid."
-    Assert-Throws { Get-AzureRmRoleAssignment -Scope $badScope } $badScopeException
 }
 
 <#
@@ -81,7 +76,7 @@ function Test-RaByScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f747531e-da33-43b9-b726-04675abf1939")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -115,7 +110,7 @@ function Test-RaByResourceGroup
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("7a750d57-9d92-4be1-ad66-f099cecffc01")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8748e3e7-2cc7-41a9-81ed-b704b6d328a5")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -150,7 +145,7 @@ function Test-RaByResource
     Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("78D6502F-74FC-4800-BB0A-0E1A7BEBECA4")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("db6e0231-1be9-4bcd-bf16-79de537439fe")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -173,7 +168,7 @@ function Test-RaByResource
 .SYNOPSIS
 Tests validate input parameters 
 #>
-function Test-RaValidateInputParameters
+function Test-RaValidateInputParameters ($cmdName)
 {
     # Setup
     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
@@ -190,32 +185,31 @@ function Test-RaValidateInputParameters
     # Check if Scope is valid.
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
-    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { invoke-expression ($cmdName + " -Scope `"" + $scope  + "`" -ObjectId " + $groups[0].Id.Guid + " -RoleDefinitionName " + $definitionName) } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
-    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
-    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
-    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
     $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
-    Assert-Throws { New-AzureRmRoleAssignment -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
+    Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     # Check if ResourceType is valid
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("4FAB3AF0-E7CF-4305-97D1-23A65EDCE8E6")
-    Assert-AreEqual $resource.ResourceType "Microsoft.Sql/servers"
+    Assert-AreEqual $resource.ResourceType "Microsoft.KeyVault/vaults"
     
     # Below invalid resource type should not return 'Not supported api version'.
-    $resource.ResourceType = "Microsoft.Sql/"
-    $invalidResourceType = "Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testrg16987/providers/Microsoft.Sql/testserver13673' should have even number of parts."
-    Assert-Throws { New-AzureRmRoleAssignment `
+    $resource.ResourceType = "Microsoft.KeyVault/"
+    $invalidResourceType = "Scope '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/zzzzlastgroupzz/providers/Microsoft.KeyVault/zzzzlastgroupzz' should have even number of parts."
+    Assert-Throws { &$cmdName `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resource.ResourceGroupName `
@@ -240,7 +234,7 @@ function Test-RaByServicePrincipal
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("a4b82891-ebee-4568-b606-632899bf9453")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0b018870-59ba-49ca-9405-9ba5dce77311")
     $newAssignment = New-AzureRmRoleAssignment `
                         -ServicePrincipalName $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
@@ -275,7 +269,7 @@ function Test-RaByUpn
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8E052D34-3F84-4083-BA00-5E8772F7D46D")
+	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f8dac632-b879-42f9-b4ab-df2aab22a149")
     $newAssignment = New-AzureRmRoleAssignment `
                         -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `

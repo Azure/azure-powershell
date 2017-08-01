@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerRegistry.dll-Help.xml
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -155,7 +155,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -170,7 +170,7 @@ The name of an existing storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -180,7 +180,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Container Registry Tags.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -232,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
+Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
 
 ## NOTES
 
@@ -243,4 +245,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzureRmContainerRegistry](./Get-AzureRmContainerRegistry.md)
 
 [Remove-AzureRmContainerRegistry](./Remove-AzureRmContainerRegistry.md)
-

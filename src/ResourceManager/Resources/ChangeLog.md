@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Support for validation of scopes for the following roledefinition and roleassignment commandlets before sending the request to ARM
+    - Get-AzureRMRoleAssignment
+    - New-AzureRMRoleAssignment
+    - Remove-AzureRMRoleAssignment
+    - Get-AzureRMRoleDefinition
+    - New-AzureRMRoleDefinition
+    - Remove-AzureRMRoleDefinition
+    - Set-AzureRMRoleDefinition
+
+## Version 4.2.1
 
 ## Version 4.2.0
 

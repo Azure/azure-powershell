@@ -19,7 +19,8 @@ using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using ResourcesNS = Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -65,25 +66,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 identity.ResourceProviderApiVersion = "2015-12-01";
                 identity.ResourceType = string.Empty;
 
-                ResourcesNS.Models.ResourceGetResult resource = null;
+                GenericResource resource = null;
                 try
                 {
                     WriteDebug(string.Format("Query Microsoft.ClassicStorage with name = {0}",
                         StorageAccountName));
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
-                        identity, CancellationToken.None).Result;
+                    resource = RmClient.Resources.GetAsync(
+                        StorageAccountResourceGroupName,
+                        identity.ResourceProviderNamespace,
+                        identity.ParentResourcePath,
+                        identity.ResourceType,
+                        identity.ResourceName,
+                        identity.ResourceProviderApiVersion,
+                        CancellationToken.None).Result;
                 }
                 catch (Exception)
                 {
                     identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
                     identity.ResourceProviderApiVersion = "2016-01-01";
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
-                        identity, CancellationToken.None).Result;
+                    resource = RmClient.Resources.GetAsync(
+                        StorageAccountResourceGroupName,
+                        identity.ResourceProviderNamespace,
+                        identity.ParentResourcePath,
+                        identity.ResourceType,
+                        identity.ResourceName,
+                        identity.ResourceProviderApiVersion,
+                        CancellationToken.None).Result;
                 }
 
-                string storageAccountId = resource.Resource.Id;
-                string storageAccountlocation = resource.Resource.Location;
-                string storageAccountType = resource.Resource.Type;
+                string storageAccountId = resource.Id;
+                string storageAccountlocation = resource.Location;
+                string storageAccountType = resource.Type;
 
                 WriteDebug(string.Format("StorageId = {0}", storageAccountId));
 

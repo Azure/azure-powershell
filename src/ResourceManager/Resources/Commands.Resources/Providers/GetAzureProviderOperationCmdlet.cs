@@ -20,15 +20,8 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Linq;
     using System.Management.Automation;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-    #if !NETSTANDARD
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
-    #else
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.Azure.Management.Authorization.Models;
-    using Operation = Microsoft.Azure.Management.Authorization.Models.ProviderOperation;
-    #endif    
 
     /// <summary>
     /// Get an existing resource.

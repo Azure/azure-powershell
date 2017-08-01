@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: 5784FD44-91D4-4537-84F3-4F03CCBA355F
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -26,9 +26,13 @@ New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Loc
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
 
-The **New-AzureRmVirtualNetworkGateway** cmdlet creates the object of your gateway in Azure based on the Name, Resource Group Name, Location, and IP configuration, as well as the Gateway Type and if VPN, the VPN Type. You can also name the Gateway SKU.
+The **New-AzureRmVirtualNetworkGateway** cmdlet creates the object of your gateway in Azure based
+on the Name, Resource Group Name, Location, and IP configuration, as well as the Gateway Type and
+if VPN, the VPN Type. You can also name the Gateway SKU.
 
-If this Gateway is being used for Point-to-Site connections, you will also need to include the VPN Client Address Pool from which to assign addresses to connecting clients and the VPN Client Root Certificate used to authenticate VPN clients connecting to the Gateway.
+If this Gateway is being used for Point-to-Site connections, you will also need to include the VPN
+Client Address Pool from which to assign addresses to connecting clients and the VPN Client Root
+Certificate used to authenticate VPN clients connecting to the Gateway.
 
 You can also choose to include other features like BGP and Active-Active.
 
@@ -46,10 +50,13 @@ $ngwipconfig = New-AzureRMVirtualNetworkGatewayIpConfig -Name ngwipconfig -Subne
 
 New-AzureRmVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Basic"
 ```
-The above will create a resource group, request a Public IP Address, create a Virtual Network and subnet and create a Virtual Network Gateway in Azure. 
 
-The gateway will be called "vngw" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic."
+The above will create a resource group, request a Public IP Address, create a Virtual Network and
+subnet and create a Virtual Network Gateway in Azure.
 
+The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK
+West" with the previously created IP configurations saved in the variable "ngwIPConfig," the
+gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic."
 
 ## PARAMETERS
 
@@ -57,7 +64,7 @@ The gateway will be called "vngw" within the resource group "vnet-gateway" in th
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -72,7 +79,7 @@ Enables the active-active feature.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,7 +92,7 @@ Accept wildcard characters: False
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -100,7 +107,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,7 +120,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSLocalNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +133,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3
 
 Required: False
@@ -140,7 +147,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Vpn, ExpressRoute
 
 Required: False
@@ -154,7 +161,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,7 +174,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -193,7 +200,7 @@ Accept wildcard characters: False
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -206,7 +213,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -216,10 +223,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
+
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -232,7 +243,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -245,7 +256,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -258,7 +269,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -271,7 +282,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: PolicyBased, RouteBased
 
 Required: False
@@ -332,5 +343,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Resize-AzureRmVirtualNetworkGateway](./Resize-AzureRmVirtualNetworkGateway.md)
 
 [Set-AzureRmVirtualNetworkGateway](./Set-AzureRmVirtualNetworkGateway.md)
-
-
