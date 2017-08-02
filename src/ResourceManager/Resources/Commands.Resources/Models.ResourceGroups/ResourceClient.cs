@@ -29,6 +29,7 @@ using System.Linq;
 using System.Net;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using RMProviderOperationsMetadata = Microsoft.Azure.Management.Resources.Models.ProviderOperationsMetadata;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -321,13 +322,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return newOperations;
         }
 
-        public Management.Resources.Models.ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+        public RMProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
         {
             ProviderOperationsMetadataGetResult result = this.ResourceManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
             return result.Provider;
         }
 
-        public IList<Management.Resources.Models.ProviderOperationsMetadata> ListProviderOperationsMetadata()
+        public IList<RMProviderOperationsMetadata> ListProviderOperationsMetadata()
         {
             ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
             return result.Providers;
