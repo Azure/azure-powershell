@@ -41,7 +41,9 @@ RetentionInDays        : 0
 ## PARAMETERS
 
 ### -DatabaseName
-SQL Database name.```yaml
+SQL Database name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -54,7 +56,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.```yaml
+The name of the resource group.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -67,7 +71,9 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.```yaml
+SQL Database server name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

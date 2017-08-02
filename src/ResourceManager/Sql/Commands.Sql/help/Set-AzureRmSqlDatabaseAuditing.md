@@ -46,7 +46,9 @@ PS C:\>Set-AzureRmSqlDatabaseAuditing -State Disabled -ResourceGroupName "Resour
 ## PARAMETERS
 
 ### -AuditAction
-The set of the audit actions```yaml
+The set of the audit actions
+
+```yaml
 Type: String[]
 Parameter Sets: (All)
 Aliases: 
@@ -59,7 +61,9 @@ Accept wildcard characters: False
 ```
 
 ### -AuditActionGroup
-The set of the audit action groups```yaml
+The set of the audit action groups
+
+```yaml
 Type: AuditActionGroups[]
 Parameter Sets: (All)
 Aliases: 
@@ -73,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-SQL Database name.```yaml
+SQL Database name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -101,7 +107,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.```yaml
+The name of the resource group.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -114,7 +122,9 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs```yaml
+The number of retention days for the audit logs
+
+```yaml
 Type: UInt32
 Parameter Sets: (All)
 Aliases: 
@@ -127,7 +137,9 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.```yaml
+SQL Database server name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -140,7 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -State
-The state of the auditing policy```yaml
+The state of the auditing policy
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -154,7 +168,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-The name of the storage account```yaml
+The name of the storage account
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -167,7 +183,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageKeyType
-The type of the storage key```yaml
+The type of the storage key
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
