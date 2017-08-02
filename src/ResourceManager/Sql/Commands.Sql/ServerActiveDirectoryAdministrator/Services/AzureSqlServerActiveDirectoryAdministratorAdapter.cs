@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-extern alias MicrosoftAzureCommandsResources;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;

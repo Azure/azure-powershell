@@ -62,9 +62,7 @@ This command does not modify any other setting.
 ## PARAMETERS
 
 ### -AuditActionGroup
-You can specify several event types.
-You can specify All to audit all of the event types or None to specify that no events will be audited.
-If you specify All or None at the same time, the command fails.
+Specify one or more audit action groups.
 
 ```yaml
 Type: AuditActionGroups[]
@@ -80,9 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuditType
-You can specify several event types.
-You can specify All to audit all of the event types or None to specify that no events will be audited.
-If you specify All or None at the same time, the command fails.
+Specify the audit type. Audit logs can be written to Table storage or Blob storage. Blob auditing provides higher performance and supports object-level auditing.
 
 ```yaml
 Type: AuditType

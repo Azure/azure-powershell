@@ -53,14 +53,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>();
                 cfg.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
                 cfg.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
-                cfg.CreateMap<CNM.PSPrivateAccessService, MNM.PrivateAccessServicePropertiesFormat>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
                 cfg.CreateMap<MNM.Subnet, CNM.PSSubnet>();
                 cfg.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
                 cfg.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
-                cfg.CreateMap<MNM.PrivateAccessServicePropertiesFormat, CNM.PSPrivateAccessService>();
 
                 // TestPrivateIpAddressAvailability
                 // CNM to MNM
@@ -68,13 +66,6 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
-
-                // Avaliable private access services
-                // CNM to MNM
-                cfg.CreateMap<CNM.PSPrivateAccessServiceResult, MNM.PrivateAccessServiceResult>();
-
-                // MNM to CNM
-                cfg.CreateMap<MNM.PrivateAccessServiceResult, CNM.PSPrivateAccessServiceResult>();
 
                 // VirtualNetwork Peering
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();

@@ -24,13 +24,6 @@
 	- PeerAddressType
 * Remove-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
 	- PeerAddressType
-
-* Added support for private access services to Virtual Network Subnets
-    - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
-    - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
-    - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
-* Added cmdlet to list private access services available in the location
-    - Get-AzureRmVirtualNetworkPrivateAccessService
 * Marked parameter -ProbeEnabled as obsolete
     - Add-AzureRmApplicationGatewayBackendHttpSettings
     - New-AzureRmApplicationGatewayBackendHttpSettings

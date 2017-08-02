@@ -14,7 +14,7 @@ Creates a container service.
 
 ```
 New-AzureRmContainerService [-ResourceGroupName] <String> [-Name] <String>
- [-ContainerService] <ContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ContainerService] <PSContainerService> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ Specifies a container service object that contains the properties for the new se
 To obtain a **ContainerService** object, use the New-AzureRmContainerServiceConfig cmdlet.
 
 ```yaml
-Type: ContainerService
+Type: PSContainerService
 Parameter Sets: (All)
 Aliases: 
 
