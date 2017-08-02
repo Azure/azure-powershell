@@ -18,16 +18,16 @@ Tests retrieval of classic administrators
 #>
 function Test-RaClassicAdmins
 {
-	# Setup
-	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-	$subscription = Get-AzureRmSubscription
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+    $subscription = Get-AzureRmSubscription
 
-	# Test
-	$classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
-	
-	# Assert
-	Assert-NotNull $classic
-	Assert-True { $classic.Length -ge 1 }
+    # Test
+    $classic =  Get-AzureRmRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription[0].Id) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
+    
+    # Assert
+    Assert-NotNull $classic
+    Assert-True { $classic.Length -ge 1 }
 }
 
 <#
@@ -44,11 +44,11 @@ function Test-RaNegativeScenarios
     # Bad OID returns zero role assignments
     $badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
     $badObjectResult = "Cannot find principal using the specified options"
-	$assignments = Get-AzureRmRoleAssignment -ObjectId $badOid
+    $assignments = Get-AzureRmRoleAssignment -ObjectId $badOid
     Assert-AreEqual 0 $assignments.Count
 
-	# Bad OID throws if Expand Principal Groups included
-	Assert-Throws { Get-AzureRmRoleAssignment -ObjectId $badOid -ExpandPrincipalGroups } $badObjectResult
+    # Bad OID throws if Expand Principal Groups included
+    Assert-Throws { Get-AzureRmRoleAssignment -ObjectId $badOid -ExpandPrincipalGroups } $badObjectResult
 
     # Bad UPN
     $badUpn = 'nonexistent@provider.com'
@@ -204,11 +204,11 @@ function Test-RaValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
     
     # Check if ResourceType is valid
-    Assert-AreEqual $resource.ResourceType "Microsoft.KeyVault/vaults"
+    Assert-AreEqual $resource.ResourceType "Microsoft.ServiceBus/namespaces"
     
     # Below invalid resource type should not return 'Not supported api version'.
     $resource.ResourceType = "Microsoft.KeyVault/"
-    $invalidResourceType = "Scope '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/zzzzlastgroupzz/providers/Microsoft.KeyVault/zzzzlastgroupzz' should have even number of parts."
+    $invalidResourceType = "Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/testservicebusaccount1/providers/Microsoft.KeyVault/testservicebusaccount1' should have even number of parts."
     Assert-Throws { &$cmdName `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -269,7 +269,7 @@ function Test-RaByUpn
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f8dac632-b879-42f9-b4ab-df2aab22a149")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f8dac632-b879-42f9-b4ab-df2aab22a149")
     $newAssignment = New-AzureRmRoleAssignment `
                         -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `
@@ -295,11 +295,11 @@ function Test-RaUserPermissions
     
     # Test 
     $rg = Get-AzureRmResourceGroup
-	$errorMsg = "User should have access to only 1 RG. Found: {0}" -f $rg.Count
-	Assert-AreEqual 1 $rg.Count $errorMsg
+    $errorMsg = "User should have access to only 1 RG. Found: {0}" -f $rg.Count
+    Assert-AreEqual 1 $rg.Count $errorMsg
 
-	# User should not be able to create another RG as he doesnt have access to the subscription.
-	Assert-Throws{ New-AzureRmResourceGroup -Name 'NewGroupFromTest' -Location 'WestUS'}        
+    # User should not be able to create another RG as he doesnt have access to the subscription.
+    Assert-Throws{ New-AzureRmResourceGroup -Name 'NewGroupFromTest' -Location 'WestUS'}        
 }
 
 <#
@@ -308,10 +308,10 @@ Tests verifies Get-AzureRmAuthorizationChangeLog
 #>
 function Test-RaAuthorizationChangeLog
 {
-	$log1 = Get-AzureRmAuthorizationChangeLog -startTime 2016-07-28 -EndTime 2016-07-28T22:30:00Z
+    $log1 = Get-AzureRmAuthorizationChangeLog -startTime 2016-07-28 -EndTime 2016-07-28T22:30:00Z
 
-	# Assert
-	Assert-True { $log1.Count -ge 1 } "At least one record should be returned for the user"
+    # Assert
+    Assert-True { $log1.Count -ge 1 } "At least one record should be returned for the user"
 }
 
 

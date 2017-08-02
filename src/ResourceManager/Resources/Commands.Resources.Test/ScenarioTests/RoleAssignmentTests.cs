@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
         {
-           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
+            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
@@ -149,8 +149,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                             .List()
                                             .First();
 
-                    // Wait to allow newly created object changes to propagate
-                    TestMockSupport.Delay(20000);
+                        // Wait to allow newly created object changes to propagate
+                        TestMockSupport.Delay(20000);
 
                         return new[]
                         {
@@ -175,8 +175,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     // scriptBuilder
                     () =>
                     {
-                    // Wait to allow for the role assignment to propagate
-                    TestMockSupport.Delay(20000);
+                        // Wait to allow for the role assignment to propagate
+                        TestMockSupport.Delay(20000);
 
                         return new[]
                         {
@@ -219,12 +219,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                         if (resourceGroup != null)
                         {
-                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId).ToString());
-                        }                        
+                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId).ToString();
+                        }
                     },
                     TestUtilities.GetCallingClass(),
                     TestUtilities.GetCurrentMethodName() + "_Cleanup");
-            }                       
+            }
         }
     }
 }
