@@ -15,13 +15,9 @@
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     /// <summary>
-    /// A class representing A server's auditing policy
+    /// The class that defines the model of server blob auditing policy
     /// </summary>
-    public class ServerAuditingPolicyModel : BaseTableAuditingPolicyModel
+    public class ServerBlobAuditingSettingsModel : BaseBlobAuditingPolicyModel
     {
-        /// <summary>
-        /// Gets or sets the audit type
-        /// </summary>
-        public AuditType AuditType { get; set; }
     }
 }

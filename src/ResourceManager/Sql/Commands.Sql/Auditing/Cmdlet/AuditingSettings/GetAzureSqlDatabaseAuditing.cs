@@ -13,24 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database server.
+    /// Returns the auditing settings of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof (AuditingPolicyModel))]
-    [Alias("Get-AzureRmSqlDatabaseServerAuditingPolicy")]
-    [Obsolete("Get-AzureRmSqlServerAuditingPolicy is obsolete. It will be removed in a future release. Please use the Get-AzureSqlServerAuditing cmdlet instead.", false)]
-    public class GetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof (DatabaseBlobAuditingSettingsModel))]
+    public class GetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
+        protected override DatabaseBlobAuditingSettingsModel PersistChanges(DatabaseBlobAuditingSettingsModel model)
         {
             return null;
         }
