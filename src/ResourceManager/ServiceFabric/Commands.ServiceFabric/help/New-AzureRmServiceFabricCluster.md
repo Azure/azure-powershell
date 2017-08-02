@@ -53,25 +53,25 @@ The four options are detailed below. Scroll down for explanations of each of the
 
 ### Example 1: Specify only the cluster size, the cert subject name, and the OS to deploy a cluster.
 ```
-$pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
-$RGname="chacko09"
+$pass="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$RGname="test01"
 $clusterloc="SouthCentralUS"
-$subname="$RGname.$clusterloc.cloudapp.azure.com"
-$pfxfolder="c:\Mycertificates\"
+$subname="{0}.{1}.cloudapp.azure.com" -f $RGname, $clusterloc
+$pfxfolder="~\Documents"
 
 Write-Output "create cluster in " $clusterloc "subject name for cert " $subname "and output the cert into " $pfxfolder
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pwd -CertificateSubjectName $subname -CertificateOutputFolder $pfxfolder -CertificatePassword $pwd
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pwd -CertificateSubjectName $subname -CertificateOutputFolder $pfxfolder -CertificatePassword $pwd -OS WindowsServer2016Datacenter
 ```
 
 This command specifies only the cluster size, the cert subject name, and the OS to deploy a cluster.
 
 ### Example 2: Specify an existing Certificate resource in a key vault and a custom template to deploy a cluster
 ```
-$RGname="chacko20"
+$RGname="test20"
 $templateParmfile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
 $templateFile="C:\azure-quickstart-templates\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
-$secertId="https://chackokv1.vault.azure.net:443/secrets/chackdantestcertificate4/56ec774dc61a462bbc645ffc9b4b225f"
+$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/56ec774dc61a462bbc645ffc9b4b225f"
 
 New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -SecretIdentifier $secertId
 ```
@@ -81,15 +81,15 @@ This command specifies an existing Certificate resource in a key vault and a cus
 ### Example 3: Create a new cluster using a custom template. Specify the different RG name for the key vault and have the system upload the certificate to it
 ```
 $pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
-$RGname="chacko20"
-$keyVaultRG="chacko20kvrg"
-$keyVault="chacko20kv"
+$RGname="test20"
+$keyVaultRG="test20kvrg"
+$keyVault="test20kv"
 $clusterloc="SouthCentralUS"
-$subname="$RGname.$clusterloc.cloudapp.azure.com"
-$pfxfolder="c:\Mycertificates\"
+$subname="{0}.{1}.$clusterloc.cloudapp.azure.com" -f $RGName, $clusterloc
+$pfxfolder="~\Documents"
 $templateParmfile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
 $templateFile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
-$secertId="https://chackokv1.vault.azure.net:443/secrets/chackdantestcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 $thumprint="C2D7E11DD35153A702A51D10A424A3014B9B6E8B"
 
 New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateOutputFolder $pfxfolder -CertificatePassword $pwd -KeyVaultResouceGroupName $keyVaultRG  -KeyVaultName $keyVault -CertificateSubjectName $subname
@@ -100,13 +100,13 @@ This command creates a new cluster using a custom template. Specify the differen
 ### Example 4: Bring your own Certificate and custom template and create a new cluster
 ```
 $certPwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
-$RGname="chacko20"
-$keyVaultRG="chacko20kvrg"
-$keyVault="chacko20kv"
+$RGname="test20"
+$keyVaultRG="test20kvrg"
+$keyVault="test20kv"
 $clusterloc="SouthCentralUS"
 $pfxsourcefile="c:\Mycertificates\my2017Prodcert.pfx"
-$templateParmfile="C:\Users\chackdan\Documents\GitHub\azure-quickstart-templates-parms\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
-$templateFile="C:\Users\chackdan\Documents\GitHub\azure-quickstart-templates\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
+$templateParmfile="~\Documents\GitHub\azure-quickstart-templates-parms\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
+$templateFile="~\GitHub\azure-quickstart-templates\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
 
 New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateSourceFile $pfxsourcefile -CertificatePassword $certpwd -KeyVaultResouceGroupName $keyVaultRG -KeyVaultName $keyVault
 ```
@@ -448,4 +448,3 @@ Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
 ## NOTES
 
 ## RELATED LINKS
-
