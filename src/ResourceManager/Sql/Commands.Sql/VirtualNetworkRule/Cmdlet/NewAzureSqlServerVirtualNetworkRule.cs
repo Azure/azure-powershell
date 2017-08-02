@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
             List<Model.AzureSqlServerVirtualNetworkRuleModel> newEntity = new List<Model.AzureSqlServerVirtualNetworkRuleModel>();
             newEntity.Add(new Model.AzureSqlServerVirtualNetworkRuleModel()
             {
-                ResourceGroupName = this.ResourceGroupName,
-                ServerName = this.ServerName,
-                VirtualNetworkRuleName = this.VirtualNetworkRuleName,
-                VirtualNetworkSubnetId = this.VirtualNetworkSubnetId
+                ResourceGroupName = this.ResourceGroupName.Trim(),
+                ServerName = this.ServerName.Trim(),
+                VirtualNetworkRuleName = this.VirtualNetworkRuleName.Trim(),
+                VirtualNetworkSubnetId = this.VirtualNetworkSubnetId.Trim()
             });
             return newEntity;
         }

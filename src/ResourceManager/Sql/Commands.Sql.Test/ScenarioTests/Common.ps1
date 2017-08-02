@@ -236,6 +236,22 @@ function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 
 <#
 .SYNOPSIS
+Gets the virtual network subnet id used in the virtual network rules tests
+#>
+function Get-VirtualNetworkSubnetId ($vnetName)
+{
+	$vnetSubscriptionId = "d513e2e9-97db-40f6-8d1a-ab3b340cc81a"
+	$vnetResourceGroupName = "vnetRg"
+	$subnetName = "subnet1"
+	
+	# vnetsubnetid is of form - "/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/naduttacvnetrg/providers/Microsoft.Network/virtualNetworks/vnetND3/subnets/subnet1"
+	$vnetSubnetId = "/subscriptions/$vnetSubscriptionId/resourceGroups/$vnetResourceGroupName/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+
+	return $vnetSubnetId
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Server Key Vault Key tests
 #>
 function Create-ServerKeyVaultKeyTestEnvironment ($params)
@@ -305,6 +321,15 @@ function Get-FailoverGroupName
 
 <#
 .SYNOPSIS
+Gets valid virtual network rule name
+#>
+function Get-VirtualNetworkRuleName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the location for a provider, if not found return East US
 #>
 function Get-ProviderLocation($provider)
@@ -352,18 +377,6 @@ function Create-ResourceGroupForTest ($location = "westcentralus")
 function Remove-ResourceGroupForTest ($rg)
 {
 	Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
-}
-
-<#
-	.SYNOPSIS
-	Gets the server credential
-#>
-function Create-ServerForTest ($resourceGroup, $location = "westcentralus")
-{
-	$serverLogin = "testusername"
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	return $credentials
 }
 
 <#

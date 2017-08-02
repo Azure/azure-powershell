@@ -14,65 +14,41 @@
 
 <#
 	.SYNOPSIS
-	Tests creating a virtual network rule
+	Tests creating and updating a virtual network rule
 #>
-
-function Test-CreateVirtualNetworkRule
+function Test-CreateAndUpdateVirtualNetworkRule
 {
 	# Setup
 	$location = "East US 2 EUAP"
-	$serverVersion = "12.0"
 	$rg = Create-ResourceGroupForTest $location 	
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	$virtualNetworkRuleName = Get-VirtualNetworkRuleName
-	$virtualNetworkSubnetId = "/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/naduttacvnetrg/providers/Microsoft.Network/virtualNetworks/vnetND2/subnets/subnet1"
 
-	try
-	{
-		$virtualNetworkRule = New-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -VirtualNetworkSubnetId $virtualNetworkSubnetId
-		Assert-AreEqual $virtualNetworkRule.ServerName $server.ServerName
-		Assert-AreEqual $virtualNetworkRule.VirtualNetworkRuleName $virtualNetworkRuleName
-		Assert-AreEqual $virtualNetworkRule.VirtualNetworkSubnetId $virtualNetworkSubnetId
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
+	$vnetName1 = "vnet1"
+	$virtualNetworkSubnetId1 = Get-VirtualNetworkSubnetId $vnetName1
 
-<#
-	.SYNOPSIS
-	Tests updating a virtual network rule
-#>
-function Test-UpdateVirtualNetworkRule
-{
-	# Setup
-	$location = "East US 2 EUAP"
-	$serverVersion = "12.0"
-	$rg = Create-ResourceGroupForTest $location 	
-	$server = Create-ServerForTest $rg $serverVersion $location
-
-	$virtualNetworkRuleName = Get-VirtualNetworkRuleName
-	$virtualNetworkSubnetId1 = "/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/naduttacvnetrg/providers/Microsoft.Network/virtualNetworks/vnetND2/subnets/subnet1"
-	$virtualNetworkSubnetId2 = "/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/naduttacvnetrg/providers/Microsoft.Network/virtualNetworks/vnetND3/subnets/subnet1"
+	$vnetName2 = "vnet2"
+	$virtualNetworkSubnetId2 = Get-VirtualNetworkSubnetId $vnetName2
 
 	try
 	{
 		# Create rule
-		$virtualNetworkRule1 = New-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -VirtualNetworkSubnetId $virtualNetworkSubnetId1
-		Assert-AreEqual $virtualNetworkRule1.ServerName $server.ServerName
-		Assert-AreEqual $virtualNetworkRule1.VirtualNetworkRuleName $virtualNetworkRuleName
-		Assert-AreEqual $virtualNetworkRule1.VirtualNetworkSubnetId $virtualNetworkSubnetId1
+		$virtualNetworkRule = New-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -VirtualNetworkSubnetId $virtualNetworkSubnetId1
+		Assert-AreEqual $virtualNetworkRule.ServerName $server.ServerName
+		Assert-AreEqual $virtualNetworkRule.VirtualNetworkRuleName $virtualNetworkRuleName
+		Assert-AreEqual $virtualNetworkRule.VirtualNetworkSubnetId $virtualNetworkSubnetId1
 		
 		# Update existing rule
-		$virtualNetworkRule2 = Set-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -VirtualNetworkSubnetId $virtualNetworkSubnetId2
-		Assert-AreEqual $virtualNetworkRule2.ServerName $server.ServerName
-		Assert-AreEqual $virtualNetworkRule2.VirtualNetworkRuleName $virtualNetworkRuleName
-		Assert-AreEqual $virtualNetworkRule2.VirtualNetworkSubnetId $virtualNetworkSubnetId2
+		$virtualNetworkRule = Set-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -VirtualNetworkSubnetId $virtualNetworkSubnetId2
+		Assert-AreEqual $virtualNetworkRule.ServerName $server.ServerName
+		Assert-AreEqual $virtualNetworkRule.VirtualNetworkRuleName $virtualNetworkRuleName
+		Assert-AreEqual $virtualNetworkRule.VirtualNetworkSubnetId $virtualNetworkSubnetId2
 	}
 	finally
 	{
+		# Clean the enviroment 
+		Remove-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -Force
 		Remove-ResourceGroupForTest $rg
 	}
 }
@@ -85,27 +61,44 @@ function Test-GetVirtualNetworkRule
 {
 	# Setup
 	$location = "East US 2 EUAP"
-	$serverVersion = "12.0"
 	$rg = Create-ResourceGroupForTest $location 	
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
-	$virtualNetworkRuleName = Get-VirtualNetworkRuleName
-	$virtualNetworkSubnetId = "/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/naduttacvnetrg/providers/Microsoft.Network/virtualNetworks/vnetND2/subnets/subnet1"
+	$virtualNetworkRuleName1 = Get-VirtualNetworkRuleName
+	$vnetName1 = "vnet1"
+	$virtualNetworkSubnetId1 = Get-VirtualNetworkSubnetId $vnetName1
+
+	$virtualNetworkRuleName2 = Get-VirtualNetworkRuleName
+	$vnetName2 = "vnet2"
+	$virtualNetworkSubnetId2 = Get-VirtualNetworkSubnetId $vnetName2
 
 	try
 	{
-		# Create rule
-		$virtualNetworkRule = New-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -VirtualNetworkSubnetId $virtualNetworkSubnetId
-		Assert-AreEqual $virtualNetworkRule.ServerName $server.ServerName
-		Assert-AreEqual $virtualNetworkRule.VirtualNetworkRuleName $virtualNetworkRuleName
-		Assert-AreEqual $virtualNetworkRule.VirtualNetworkSubnetId $virtualNetworkSubnetId
+		# Create rule 1
+		$virtualNetworkRule1 = New-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName1 -VirtualNetworkSubnetId $virtualNetworkSubnetId1
+		Assert-AreEqual $virtualNetworkRule1.ServerName $server.ServerName
+		Assert-AreEqual $virtualNetworkRule1.VirtualNetworkRuleName $virtualNetworkRuleName1
+		Assert-AreEqual $virtualNetworkRule1.VirtualNetworkSubnetId $virtualNetworkSubnetId1
+
+		# Create rule 2
+		$virtualNetworkRule2 = New-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName2 -VirtualNetworkSubnetId $virtualNetworkSubnetId2
+		Assert-AreEqual $virtualNetworkRule2.ServerName $server.ServerName
+		Assert-AreEqual $virtualNetworkRule2.VirtualNetworkRuleName $virtualNetworkRuleName2
+		Assert-AreEqual $virtualNetworkRule2.VirtualNetworkSubnetId $virtualNetworkSubnetId2
 		
 		# Get rule
-		$resp = Get-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName
-		Assert-AreEqual $resp.VirtualNetworkSubnetId $virtualNetworkSubnetId
+		$resp = Get-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName1
+		Assert-AreEqual $resp.VirtualNetworkSubnetId $virtualNetworkSubnetId1
+
+		# Get list of rules
+		$resp = Get-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $resp.Count 2
 	}
 	finally
 	{
+		# Clean the enviroment 
+		Remove-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName1 -Force
+		Remove-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName2 -Force
 		Remove-ResourceGroupForTest $rg
 	}
 }
@@ -118,12 +111,12 @@ function Test-RemoveVirtualNetworkRule
 {
 	# Setup
 	$location = "East US 2 EUAP"
-	$serverVersion = "12.0"
 	$rg = Create-ResourceGroupForTest $location 	
-	$server = Create-ServerForTest $rg $serverVersion $location
+	$server = Create-ServerForTest $rg $location
 
 	$virtualNetworkRuleName = Get-VirtualNetworkRuleName
-	$virtualNetworkSubnetId = "/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/naduttacvnetrg/providers/Microsoft.Network/virtualNetworks/vnetND2/subnets/subnet1"
+	$vnetName = "vnet1"
+	$virtualNetworkSubnetId = Get-VirtualNetworkSubnetId $vnetName
 
 	try
 	{
@@ -133,7 +126,7 @@ function Test-RemoveVirtualNetworkRule
 		Assert-AreEqual $virtualNetworkRule.VirtualNetworkRuleName $virtualNetworkRuleName
 		Assert-AreEqual $virtualNetworkRule.VirtualNetworkSubnetId $virtualNetworkSubnetId
 		
-		# Remove rule
+		# Remove rule and check if rule is deleted
 		$resp = Remove-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName -Force
 		$all = Get-AzureRmSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 		Assert-AreEqual $all.Count 0
