@@ -199,14 +199,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter Reimage { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter ReimageAll { get; set; }
