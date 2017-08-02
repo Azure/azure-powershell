@@ -30,6 +30,12 @@ function Test-SearchGetSearchResultsAndUpdate
 	Assert-NotNull $searchResult.Value
 	Assert-AreEqual $searchResult.Value.Count $top
 
+	# Makesure we return each doc as string for backward compatiable.
+	$stringType = "string".GetType()
+	$valueType = $searchResult.Value.GetType()
+	$valueIsString = $valueType.GenericTypeArguments.Contains($stringType)
+	Assert-AreEqual $true $valueIsString
+
 	$idArray = $searchResult.Id.Split("/")
 	$id = $idArray[$idArray.Length-1]
 	$updatedResult = Get-AzureRmOperationalInsightsSearchResults -ResourceGroupName $rgname -WorkspaceName $wsname -Id $id
