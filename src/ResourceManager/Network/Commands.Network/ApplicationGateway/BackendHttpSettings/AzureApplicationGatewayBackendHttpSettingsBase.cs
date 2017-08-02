@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -96,6 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag if probe should be enabled.")]
+        [Obsolete("This parameter is ignored and will be removed in the future.")]
         public SwitchParameter ProbeEnabled { get; set; }
 
         [Parameter(
@@ -160,10 +162,6 @@ namespace Microsoft.Azure.Commands.Network
             if (this.AffinityCookieName != null)
             {
                 backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
-            }
-            if (this.ProbeEnabled.IsPresent)
-            {
-                backendHttpSettings.ProbeEnabled = true;
             }
             if (this.Path != null)
             {

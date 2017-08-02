@@ -31,6 +31,10 @@
     - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
 * Added cmdlet to list private access services available in the location
     - Get-AzureRmVirtualNetworkPrivateAccessService
+* Marked parameter -ProbeEnabled as obsolete
+    - Add-AzureRmApplicationGatewayBackendHttpSettings
+    - New-AzureRmApplicationGatewayBackendHttpSettings
+    - Set-AzureRmApplicationGatewayBackendHttpSettings 
 
 ## Version 4.2.1
 
