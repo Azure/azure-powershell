@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
-            ValueFromPipeline = false)]
+            ValueFromPipeline = true)]
         [AllowNull]
         public PSRunCommandInput RunCommandInput { get; set; }
     }
