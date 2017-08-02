@@ -86,7 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             return null;
         }
 
-
         private AuditingPolicyModel GetEntityHelper()
         {
             if (AuditType == AuditType.Table)
