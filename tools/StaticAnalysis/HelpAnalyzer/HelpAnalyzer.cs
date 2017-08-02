@@ -194,40 +194,31 @@ namespace StaticAnalysis.HelpAnalyzer
                                     " -FileName " + psd1FileName +
                                     " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
                 var cmdletResult = powershell.Invoke();
-				
-				if (cmdletResult.Count > 1)
-				{
-                    var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
-                    if (cmdletFiles.Any())
-                    {
-                        List<CmdletHelpMetadata> allCmdlets = new List<CmdletHelpMetadata>();
-                        foreach (var cmdletFileName in cmdletFiles)
-                        {
-                            var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
-                            if (File.Exists(cmdletFileFullPath))
-                            {
-                                helpLogger.Decorator.AddDecorator((h) =>
-                                {
-                                    h.HelpFile = cmdletFileFullPath;
-                                    h.Assembly = cmdletFileFullPath;
-                                }, "Cmdlet");
-                                processedHelpFiles.Add(cmdletFileName);
-                                var proxy =
-                                    EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-                                var cmdlets = proxy.GetCmdlets(cmdletFileFullPath);
-                                allCmdlets.AddRange(cmdlets);
-                                helpLogger.Decorator.Remove("Cmdlet");
-                                AppDomain.Unload(_appDomain);
-                            }
-                        }
-
-                        ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
-                    }
-                }
-
-				if (cmdletResult.Count == 0)
+                var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
+                if (cmdletFiles.Any())
                 {
-                    return;
+                    List<CmdletHelpMetadata> allCmdlets = new List<CmdletHelpMetadata>();
+                    foreach (var cmdletFileName in cmdletFiles)
+                    {
+                        var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
+                        if (File.Exists(cmdletFileFullPath))
+                        {
+                            helpLogger.Decorator.AddDecorator((h) =>
+                            {
+                                h.HelpFile = cmdletFileFullPath;
+                                h.Assembly = cmdletFileFullPath;
+                            }, "Cmdlet");
+                            processedHelpFiles.Add(cmdletFileName);
+                            var proxy =
+                                EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                            var cmdlets = proxy.GetCmdlets(cmdletFileFullPath);
+                            allCmdlets.AddRange(cmdlets);
+                            helpLogger.Decorator.Remove("Cmdlet");
+                            AppDomain.Unload(_appDomain);
+                        }
+                    }
+
+                    ValidateHelpRecords(allCmdlets, helpFiles, helpLogger);
                 }
 
                 Directory.SetCurrentDirectory(savedDirectory);
