@@ -114,12 +114,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             var toReturn = _client.Account.Create(resourceGroupName, accountName, parameters);
 
-            // enable the key vault for the user so they don't have to run an additional command.
-            if (encryptionType.HasValue && encryptionType.Value == EncryptionConfigType.UserManaged)
-            {
-                this.EnableKeyVault(resourceGroupName, accountName);
-            }
-
             return toReturn;
         }
 
@@ -157,12 +151,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             var toReturn = _client.Account.Update(resourceGroupName, accountName, parameters);
-
-            // auto enable the key vault for the user if they updated it.
-            if (userConfig != null)
-            {
-                this.EnableKeyVault(resourceGroupName, accountName);
-            }
 
             return toReturn;
         }
