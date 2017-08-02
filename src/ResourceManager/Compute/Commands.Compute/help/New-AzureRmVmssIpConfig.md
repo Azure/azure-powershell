@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -Primary
-{{Fill Primary Description}}
+Specifies the primary IP Configuration in case the network interface has more than one IP Configuration.
 
 ```yaml
 Type: Boolean

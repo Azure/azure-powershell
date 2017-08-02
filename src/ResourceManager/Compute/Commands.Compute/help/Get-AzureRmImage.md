@@ -98,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ## NOTES
 

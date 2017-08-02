@@ -131,6 +131,8 @@ Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
+
 ### System.Object
 
 ## NOTES

@@ -125,6 +125,8 @@ Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
+
 ### System.Object
 
 ## NOTES
