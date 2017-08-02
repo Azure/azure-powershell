@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         /// <summary>
+        /// Gets or sets the new ResourceManagementClient
+        /// </summary>
+        public Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
+
+        /// <summary>
         /// Gets or sets the SubscriptionClient.
         /// </summary>
         public SubscriptionClient SubscriptionClient { get; private set; }
@@ -123,7 +128,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
             providers.Add("Microsoft.Storage", null);
 
             var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-02-01");
 
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(ignoreResourcesClient: true, providers: providers, userAgents: providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
@@ -183,6 +188,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             this.ResourceManagementClient = GetResourceManagementClient();
+            this.NewResourceManagementClient = GetResourceManagementClient(context);
             this.SubscriptionClient = GetSubscriptionClient();
             this.AuthorizationManagementClient = GetAuthorizationManagementClient();
             this.GalleryClient = GetGalleryClient();
@@ -190,6 +196,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
 
             this._helper.SetupManagementClients(
                 ResourceManagementClient,
+                NewResourceManagementClient,
                 SubscriptionClient,
                 AuthorizationManagementClient,
                 GalleryClient,
@@ -203,6 +210,16 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
         private ResourceManagementClient GetResourceManagementClient()
         {
            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this._csmTestFactory);
+        }
+
+        /// <summary>
+        /// Creates a new ResourceManagementClient instance.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns>New ResourceManagementClient instance.</returns>
+        private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         /// <summary>

@@ -19,22 +19,16 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-
-#if !NETSTANDARD
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-#else
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
-#endif
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -58,9 +52,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
-#if !NETSTANDARD
+
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
-#endif
+
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -73,14 +67,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="context">Profile containing resources to manipulate</param>
         public ResourcesClient(IAzureContext context)
             : this(
-#if !NETSTANDARD
                 AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 new GalleryTemplatesClient(context),
-                AzureSession.Instance.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
-#else
-                AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                 AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
-#endif
         {
 
         }
@@ -93,14 +82,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
-#if !NETSTANDARD
             GalleryTemplatesClient galleryTemplatesClient,
-#endif
             IAuthorizationManagementClient authorizationManagementClient)
         {
-#if !NETSTANDARD
             GalleryTemplatesClient = galleryTemplatesClient;
-#endif
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
         }
@@ -156,22 +141,14 @@ namespace Microsoft.Azure.Commands.Resources.Models
             var resourceIdentity = identity.ToResourceIdentity();
             var permissionsResult = AuthorizationManagementClient.Permissions.ListForResource(
                     identity.ResourceGroupName,
-#if !NETSTANDARD
-                    resourceIdentity);
-#else
                     resourceIdentity.ResourceProviderNamespace,
                     resourceIdentity.ParentResourcePath??"",
                     resourceIdentity.ResourceType,
                     resourceIdentity.ResourceName);
-#endif
 
             if (permissionsResult != null)
             {
-                return permissionsResult
-#if !NETSTANDARD
-                    .Permissions
-#endif
-                    .Select(p => p.ToPSPermission()).ToList();
+                return permissionsResult.Select(p => p.ToPSPermission()).ToList();
             }
 
             return null;
@@ -343,72 +320,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             return newOperations;
         }
-#if !NETSTANDARD
-        /// <summary>
-        /// Filters a given resource group resources.
-        /// </summary>
-        /// <param name="options">The filtering options</param>
-        /// <returns>The filtered set of resources matching the filter criteria</returns>
-        public virtual List<GenericResourceExtended> FilterResources(FilterResourcesOptions options)
-        {
-            List<GenericResourceExtended> resources = new List<GenericResourceExtended>();
 
-            if (!string.IsNullOrEmpty(options.ResourceGroup) && !string.IsNullOrEmpty(options.Name))
-            {
-                resources.Add(ResourceManagementClient.Resources.Get(options.ResourceGroup,
-                    new ResourceIdentity { ResourceName = options.Name }).Resource);
-            }
-            else
-            {
-                ResourceListResult result = ResourceManagementClient.Resources.List(new ResourceListParameters
-                {
-                    ResourceGroupName = options.ResourceGroup,
-                    ResourceType = options.ResourceType
-                });
-
-                resources.AddRange(result.Resources);
-
-                while (!string.IsNullOrEmpty(result.NextLink))
-                {
-                    result = ResourceManagementClient.Resources.ListNext(result.NextLink);
-                    resources.AddRange(result.Resources);
-                }
-            }
-
-            return resources;
-        }
-
-        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
+        public Management.Resources.Models.ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
         {
             ProviderOperationsMetadataGetResult result = this.ResourceManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
             return result.Provider;
         }
 
-        public IList<ProviderOperationsMetadata> ListProviderOperationsMetadata()
+        public IList<Management.Resources.Models.ProviderOperationsMetadata> ListProviderOperationsMetadata()
         {
             ProviderOperationsMetadataListResult result = this.ResourceManagementClient.ProviderOperationsMetadata.List();
             return result.Providers;
         }
-#else
-        public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace)
-        {
-            return AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "2015-07-01");
-        }
-
-        public IList<ProviderOperationsMetadata> ListProviderOperationsMetadata()
-        {
-            List<ProviderOperationsMetadata> operations = new List<ProviderOperationsMetadata>();
-            var result =
-                AuthorizationManagementClient.ProviderOperationsMetadata.List("2015-07-01");
-            operations.AddRange(result);
-            while (!string.IsNullOrWhiteSpace(result.NextPageLink))
-            {
-                result = AuthorizationManagementClient.ProviderOperationsMetadata.ListNext(result.NextPageLink);
-                operations.AddRange(result);
-            }
-
-            return operations;
-        }
-#endif
     }
 }

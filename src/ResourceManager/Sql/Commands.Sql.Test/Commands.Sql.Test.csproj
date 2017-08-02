@@ -210,6 +210,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScenarioTests\BlobAuditingTests.cs" />
+    <Compile Include="ScenarioTests\BlobAuditingClassicStorageTests.cs" />
     <Compile Include="ScenarioTests\AuditingClassicStorageTests.cs" />
     <Compile Include="ScenarioTests\ReadScaleCrudTests.cs" />
     <Compile Include="ScenarioTests\DataSyncTests.cs" />
@@ -224,6 +226,12 @@
     <Compile Include="ScenarioTests\DatabaseReplicationTests.cs" />
     <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
+    <None Include="ScenarioTests\BlobAuditingTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\BlobAuditingClassicStorageTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AuditingClassicStorageTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -314,6 +322,7 @@
     <Compile Include="UnitTests\AzureSqlDatabaseServerAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlDatabaseIndexRecommendationAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlCapabilityAttributeTests.cs" />
+    <Compile Include="UnitTests\AzureSqlDataSyncTests.cs" />
     <Compile Include="UnitTests\AzureSqlServerUpgradeAttributeTests.cs" />
     <Compile Include="UnitTests\AzureSqlServerDisasterRecoveryConfigurationTests.cs" />
     <Compile Include="UnitTests\AzureSqlServiceTierAdvisorAttributeTests.cs" />
@@ -340,14 +349,6 @@
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
-      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
-      <Name>Commands.Resources.Rest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
-      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
-      <Name>Commands.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
@@ -527,6 +528,69 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestServerAuditingTypeMigration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingClassicStorageTests\TestAuditingUpdatePolicyWithClassicStorage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingDatabaseRetentionKeepProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingDatabaseStorageKeyRotation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingDatabaseUpdatePolicyKeepPreviousStorage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingDatabaseUpdatePolicyWithStorage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingDisableDatabaseAuditing.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingDisableServerAuditing.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingFailedDatabaseUpdatePolicyWithNoStorage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingFailedServerUpdatePolicyWithNoStorage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingFailWithBadDatabaseIndentity.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingFailWithBadServerIndentity.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingOnDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingOnServer.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingServerRetentionKeepProperties.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingServerStorageKeyRotation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingServerUpdatePolicyKeepPreviousStorage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingServerUpdatePolicyWithStorage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestBlobAuditingWithAuditActionGroups.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestDeprecatedDatabaseAuditingCmdletToBlobAuditingNewCmdlet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.BlobAuditingTests\TestDeprecatedServerAuditingCmdletToBlobAuditingNewCmdlet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseActivationTests\TestDatabasePauseResume.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -840,7 +904,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestDatabaseTransparentDataEncryptionUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestServerTransparentDataEncryptionProtectorGet.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestServerTransparentDataEncryptionProtectorGet.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TransparentDataEncryptionCrudTests\TestServerTransparentDataEncryptionProtectorSet.json">

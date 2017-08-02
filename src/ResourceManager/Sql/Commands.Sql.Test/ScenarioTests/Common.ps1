@@ -22,8 +22,22 @@ function Get-SqlAuditingTestEnvironmentParameters ($testSuffix)
 			  serverName = "sql-audit-cmdlet-server" +$testSuffix;
 			  databaseName = "sql-audit-cmdlet-db" + $testSuffix;
 			  storageAccount = "auditcmdlets" +$testSuffix
-			  }
+		}
 }
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used at the blob auditing tests
+#>
+function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "blob-audit-cmdlet-test-rg" + $testSuffix;
+			  serverName = "blob-audit-cmdlet-server" + $testSuffix;
+			  databaseName = "blob-audit-cmdlet-db" + $testSuffix;
+			  storageAccount = "blobaudit" + $testSuffix
+		}
+}
+
 
 <#
 .SYNOPSIS
@@ -71,11 +85,31 @@ function Create-AuditingTestEnvironment ($testSuffix, $location = "West Central 
 
 <#
 .SYNOPSIS
+Creates the test environment needed to perform the Sql blob auditing tests
+#>
+function Create-BlobAuditingTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+{
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
+	Create-TestEnvironmentWithParams $params $location $serverVersion
+}
+
+<#
+.SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests with classic storage
 #>
 function Create-AuditingClassicTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	Create-ClassicTestEnvironmentWithParams $params $location $serverVersion
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the Sql auditing tests with classic storage
+#>
+function Create-BlobAuditingClassicTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+{
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	Create-ClassicTestEnvironmentWithParams $params $location $serverVersion
 }
 
@@ -430,6 +464,16 @@ Removes the test environment that was needed to perform the Sql auditing tests
 function Remove-AuditingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	Remove-AzureRmResourceGroup -Name $params.rgname -Force
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the Sql blob auditing tests
+#>
+function Remove-BlobAuditingTestEnvironment ($testSuffix)
+{
+	$params = Get-SqlBlobAuditingTestEnvironmentParameters $testSuffix
 	Remove-AzureRmResourceGroup -Name $params.rgname -Force
 }
 
