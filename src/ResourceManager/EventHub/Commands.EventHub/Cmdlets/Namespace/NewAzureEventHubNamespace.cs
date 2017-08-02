@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             HelpMessage = "EventHub Namespace Name.",
             ParameterSetName = NamespaceParameterSet
             )]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "EventHub Namespace Name.",
+            ParameterSetName = AutoInflateParameterSet
+            )]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
@@ -60,6 +67,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Position = 2,
             HelpMessage = "EventHub Namespace Location.",
             ParameterSetName = NamespaceParameterSet
+            )]        
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "EventHub Namespace Location.",
+            ParameterSetName = AutoInflateParameterSet
             )]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -78,6 +92,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
           SKU.Standard,
           SKU.Premium,
           IgnoreCase = true)]
+        [Parameter(
+          Mandatory = false,
+            Position = 3,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Namespace Sku Name.",
+          ParameterSetName = AutoInflateParameterSet
+            )]
         public string SkuName { get; set; }
 
         /// <summary>
@@ -90,6 +111,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
           HelpMessage = "The eventhub throughput units.",
           ParameterSetName = NamespaceParameterSet
             )]
+        [Parameter(Mandatory = false,
+            Position = 4,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The eventhub throughput units.",
+          ParameterSetName = AutoInflateParameterSet)]
         public int? SkuCapacity { get; set; }
         
         /// <summary>
@@ -101,6 +127,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Hashtables which represents resource Tags.",
             ParameterSetName = NamespaceParameterSet
+            )]
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Hashtables which represents resource Tags.",
+            ParameterSetName = AutoInflateParameterSet
             )]
         public Hashtable Tag { get; set; }
 
@@ -130,7 +163,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, Position = 7, ParameterSetName = NamespaceParameterSet)]
         [ValidateRange(0,20)]
         public int? MaximumThroughputUnits { get; set; }
-
 
         /// <summary>
         /// 
