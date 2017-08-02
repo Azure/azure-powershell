@@ -45,7 +45,9 @@ PS C:\>Set-AzureRmSqlServerAuditing -State Disabled -ResourceGroupName "Resource
 ## PARAMETERS
 
 ### -AuditActionGroup
-The set of the audit action groups```yaml
+The set of the audit action groups
+
+```yaml
 Type: AuditActionGroups[]
 Parameter Sets: (All)
 Aliases: 
@@ -74,7 +76,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.```yaml
+The name of the resource group.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -87,7 +91,9 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs```yaml
+The number of retention days for the audit logs
+
+```yaml
 Type: UInt32
 Parameter Sets: (All)
 Aliases: 
@@ -100,7 +106,9 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL server name.```yaml
+SQL server name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -113,7 +121,9 @@ Accept wildcard characters: False
 ```
 
 ### -State
-The state of the auditing policy```yaml
+The state of the auditing policy
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -127,7 +137,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-The name of the storage account```yaml
+The name of the storage account
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -140,7 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageKeyType
-The type of the storage key```yaml
+The type of the storage key
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
