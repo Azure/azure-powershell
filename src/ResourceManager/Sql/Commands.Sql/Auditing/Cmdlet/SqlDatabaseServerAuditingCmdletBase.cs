@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
 using Microsoft.Azure.Commands.Sql.Common;

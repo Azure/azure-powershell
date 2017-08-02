@@ -60,12 +60,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkUsage");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualNetworkSubnetPrivateAccess()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkSubnetPrivateAccess");
-        }
     }
 }
