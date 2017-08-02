@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag if probe should be enabled.")]
-        [Obsolete("This parameter is ignored and will be removed in the future.")]
+        [Obsolete("Parameter is ignored and will be removed in a future release")]
         public SwitchParameter ProbeEnabled { get; set; }
 
         [Parameter(

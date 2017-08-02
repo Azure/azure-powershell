@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string HostName { get; set; }
         public bool? PickHostNameFromBackendAddress { get; set; }
         public string AffinityCookieName { get; set; }
-        [Obsolete("This property is ignored and will be removed in the future.")]
+        [Obsolete("Property 'ProbeEnabled' is ignored and will be removed from the 'PSApplicationGatewayBackendHttpSettings' type in a future release.")]
         public bool ProbeEnabled { get; set; }
         public string Path { get; set; }
         public string ProvisioningState { get; set; }
