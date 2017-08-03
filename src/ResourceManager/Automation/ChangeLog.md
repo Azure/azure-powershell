@@ -21,8 +21,6 @@
 * Made changes to AutomationDSC* cmdlets to pull more than 100 records
 * Resolved the issue where the Verbose streams stop working after calling some Automation cmdlets (for example Get-AzureRmAutomationVariable, Get-AzureRmAutomationJob).
 ## Version 3.2.1
-
->>>>>>> 299c84a7882ca09e064fc82d51ff75bbfffbd275
 ## Version 3.2.0
 * Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
     - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
