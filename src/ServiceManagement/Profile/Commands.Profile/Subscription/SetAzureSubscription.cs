@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         [Parameter(HelpMessage = "Current storage account connection details.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext Context { get; set; }
+        public IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "Environment name.")]
         [ValidateNotNullOrEmpty]
