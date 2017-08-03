@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'Remove-AzureRmServiceBusRule' Cmdlet removes the specified Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusRuleVerb, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ServicebusRuleVerb, SupportsShouldProcess = true) OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true,

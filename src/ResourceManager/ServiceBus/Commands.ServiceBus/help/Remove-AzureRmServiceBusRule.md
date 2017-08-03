@@ -143,7 +143,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 
