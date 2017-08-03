@@ -18,12 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added support for private access services to Virtual Network Subnets
-    - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
-    - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
-    - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -PrivateAccessService
-* Added cmdlet to list private access services available in the location
-    - Get-AzureRmVirtualNetworkPrivateAccessService
+* New-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Set-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Remove-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Marked parameter -ProbeEnabled as obsolete
+    - Add-AzureRmApplicationGatewayBackendHttpSettings
+    - New-AzureRmApplicationGatewayBackendHttpSettings
+    - Set-AzureRmApplicationGatewayBackendHttpSettings 
 
 ## Version 4.2.1
 
