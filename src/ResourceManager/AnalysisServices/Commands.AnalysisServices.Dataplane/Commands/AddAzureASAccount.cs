@@ -118,6 +118,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             // nothing to do here.
         }
 
+        protected override void SetupDebuggingTraces()
+        {
+            // nothing to do here.
+        }
+
+        protected override void TearDownDebuggingTraces()
+        {
+            // nothing to do here.
+        }
+
+        protected override void SetupHttpClientPipeline()
+        {
+            // nothing to do here.
+        }
+
+        protected override void TearDownHttpClientPipeline()
+        {
+            // nothing to do here.
+        }
+
         public override void ExecuteCmdlet()
         {
             AsAzureAccount azureAccount = new AsAzureAccount();
@@ -173,7 +193,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             try
             {
-                AzureSessionInitializer.InitializeAzureSession();
                 System.Management.Automation.PowerShell invoker = null;
                 invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(

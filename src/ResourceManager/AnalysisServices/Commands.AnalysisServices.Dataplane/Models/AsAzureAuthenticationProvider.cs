@@ -20,8 +20,8 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
@@ -94,7 +94,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                     }
                     else
                     {
-                        var certificate = AzureSession.Instance.DataStore.GetCertificate(asAzureContext.Account.CertificateThumbprint);
+                        DiskDataStore dataStore = new DiskDataStore();
+                        var certificate = dataStore.GetCertificate(asAzureContext.Account.CertificateThumbprint);
                         if (certificate == null)
                         {
                             throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, asAzureContext.Account.CertificateThumbprint));
