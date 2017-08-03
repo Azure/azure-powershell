@@ -13,11 +13,12 @@
 // limitations under the License.
 //
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
+
     public class PSApplicationGatewayBackendHttpSettings : PSChildResource
     {
         public int Port { get; set; }
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string HostName { get; set; }
         public bool? PickHostNameFromBackendAddress { get; set; }
         public string AffinityCookieName { get; set; }
+        [Obsolete("Property 'ProbeEnabled' is ignored and will be removed from the 'PSApplicationGatewayBackendHttpSettings' type in a future release.")]
         public bool ProbeEnabled { get; set; }
         public string Path { get; set; }
         public string ProvisioningState { get; set; }

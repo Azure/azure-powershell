@@ -12,7 +12,7 @@ Creates a configurable disk object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskConfig [-SkuName <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmDiskConfig [[-SkuName] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Tag <Hashtable>] [-CreateOption <DiskCreateOption>]
  [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
@@ -52,7 +52,7 @@ creates an empty disk, or attaches an existing disk.
 Type: DiskCreateOption
 Parameter Sets: (All)
 Aliases:
-Accepted values: Empty, Attach, FromImage, Import, Copy, Restore
+Accepted values: Empty, Attach, FromImage, Import, Copy
 
 Required: False
 Position: Named
@@ -174,9 +174,10 @@ Specifies the Sku name of the storage account.
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: AccountType
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

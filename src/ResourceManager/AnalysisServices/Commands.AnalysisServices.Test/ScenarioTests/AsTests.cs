@@ -39,6 +39,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestAnalysisServicesServerDisableBackup()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerDisableBackup");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAnalysisServicesServer()
         {

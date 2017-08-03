@@ -62,6 +62,7 @@ The type of identity used for the virtual machine. Currently, the only supported
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named
