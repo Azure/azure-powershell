@@ -40,6 +40,20 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientAddressPool { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S External Radius Server Address")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S External Radius Server Address")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerSecret { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -55,6 +69,18 @@ namespace Microsoft.Azure.Commands.Network
             }
             this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool = new PSAddressSpace();
             this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
+
+            if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
+                (this.RadiusServerAddress == null && this.RadiusServerSecret != null))
+            {
+                throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+            }
+
+            if (this.RadiusServerAddress != null)
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = this.RadiusServerSecret;
+            }
 
             // Map to the sdk object
             var virtualnetGatewayModel = Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);

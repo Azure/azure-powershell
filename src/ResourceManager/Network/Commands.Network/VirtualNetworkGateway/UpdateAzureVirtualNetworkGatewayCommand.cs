@@ -94,6 +94,20 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to disable Active Active feature on virtual network gateway")]
         public SwitchParameter DisableActiveActiveFeature { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Radius server address.")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Radius server secret.")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerSecret { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -147,7 +161,12 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
             }
 
-            if ((this.VpnClientAddressPool != null || this.VpnClientRootCertificates != null || this.VpnClientRevokedCertificates != null) && this.VirtualNetworkGateway.VpnClientConfiguration == null)
+            if ((this.VpnClientAddressPool != null || 
+                this.VpnClientRootCertificates != null || 
+                this.VpnClientRevokedCertificates != null ||
+                this.RadiusServerAddress != null ||
+                this.RadiusServerSecret != null) && 
+                this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
             }
@@ -166,6 +185,18 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VpnClientRevokedCertificates != null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+            }
+
+            if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
+                (this.RadiusServerAddress == null && this.RadiusServerSecret != null))
+            {
+                throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+            }
+
+            if (this.RadiusServerAddress != null)
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
+                this.VirtualNetworkGateway.VpnClientConfiguration.RadiusServerSecret = this.RadiusServerSecret;
             }
 
             if ((this.Asn > 0 || this.PeerWeight > 0) && this.VirtualNetworkGateway.BgpSettings == null)

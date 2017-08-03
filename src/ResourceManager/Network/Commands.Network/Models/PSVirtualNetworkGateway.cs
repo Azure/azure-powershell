@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId GatewayDefaultSite { get; set; }
 
         public string ProvisioningState { get; set; }
+
         public PSVirtualNetworkGatewaySku Sku { get; set; }
 
         public PSVpnClientConfiguration VpnClientConfiguration { get; set; }

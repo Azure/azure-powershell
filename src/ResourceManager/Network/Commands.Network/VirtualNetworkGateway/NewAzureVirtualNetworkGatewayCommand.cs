@@ -152,6 +152,20 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Radius server address.")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Radius server secret.")]
+        [ValidateNotNullOrEmpty]
+        public string RadiusServerSecret { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -265,7 +279,10 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.GatewayDefaultSite = null;
             }
 
-            if (this.VpnClientAddressPool != null || this.VpnClientRootCertificates != null || this.VpnClientRevokedCertificates != null)
+            if (this.VpnClientAddressPool != null || 
+                this.VpnClientRootCertificates != null || 
+                this.VpnClientRevokedCertificates != null ||
+                this.RadiusServerAddress != null)
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -289,6 +306,18 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.VpnClientRevokedCertificates != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+                }
+
+                if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||
+                    (this.RadiusServerAddress == null && this.RadiusServerSecret != null))
+                {
+                    throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+                }
+
+                if (this.RadiusServerAddress != null)
+                {
+                    vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
+                    vnetGateway.VpnClientConfiguration.RadiusServerSecret = this.RadiusServerSecret;
                 }
             }
             else
