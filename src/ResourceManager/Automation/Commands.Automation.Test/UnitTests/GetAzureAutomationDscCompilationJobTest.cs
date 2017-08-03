@@ -27,7 +27,6 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
-    [TestClass]
     public class GetAzureAutomationDscCompilationJobTest : RMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
