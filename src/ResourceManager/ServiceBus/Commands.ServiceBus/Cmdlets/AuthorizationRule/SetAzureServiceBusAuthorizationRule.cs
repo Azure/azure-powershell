@@ -71,9 +71,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             Position = 4,
             ParameterSetName = AuthoRuleInputObjectParameterSet,
             HelpMessage = "ServiceBus AuthorizationRule Object.")]
-        [Parameter(ParameterSetName = NamespaceAuthoRuleParameterSet)]
-        [Parameter(ParameterSetName = QueueAuthoRuleParameterSet)]
-        [Parameter(ParameterSetName = TopicAuthoRuleParameterSet)]
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            Position = 4,
+            ParameterSetName = NamespaceAuthoRuleParameterSet,
+            HelpMessage = "ServiceBus AuthorizationRule Object.")]
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            Position = 4,
+            ParameterSetName = QueueAuthoRuleParameterSet,
+            HelpMessage = "ServiceBus AuthorizationRule Object.")]
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            Position = 4,
+            ParameterSetName = TopicAuthoRuleParameterSet,
+            HelpMessage = "ServiceBus AuthorizationRule Object.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
         public SharedAccessAuthorizationRuleAttributes InputObject { get; set; }
@@ -83,9 +95,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             ParameterSetName = AuthoRulePropertiesParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
-        [Parameter(ParameterSetName = NamespaceAuthoRuleParameterSet)]
-        [Parameter(ParameterSetName = QueueAuthoRuleParameterSet)]
-        [Parameter(ParameterSetName = TopicAuthoRuleParameterSet)]
+        [Parameter(Mandatory = false,
+            Position = 4,
+            ParameterSetName = NamespaceAuthoRuleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = false,
+            Position = 4,
+            ParameterSetName = QueueAuthoRuleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = false,
+            Position = 4,
+            ParameterSetName = TopicAuthoRuleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Listen", "Send", "Manage",
             IgnoreCase = true)]
