@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 "The Azure Storage Context that provides the security settings used to access the configuration script")
         ]
         [ValidateNotNullOrEmpty]
-        public AzureStorageContext StorageContext { get; set; }
+        public IStorageContext StorageContext { get; set; }
 
         /// <summary>
         /// The specific version of the DSC extension that Set-AzureVMDSCExtension will 
