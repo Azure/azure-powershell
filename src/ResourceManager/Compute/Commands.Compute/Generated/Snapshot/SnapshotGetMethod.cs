@@ -83,9 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(snapshotName))
             {
                 var result = SnapshotsClient.Get(resourceGroupName, snapshotName);
-                var psObject = new PSSnapshot();
-                Mapper.Map<Snapshot, PSSnapshot>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -101,12 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSSnapshotList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<Snapshot, PSSnapshotList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -122,12 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSSnapshotList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<Snapshot, PSSnapshotList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
         }
 

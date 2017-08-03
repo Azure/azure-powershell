@@ -62,6 +62,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can not remove tag/tag value because it&apos;s being referenced by other resources..
+        /// </summary>
+        public static string CanNotDeleteTag {
+            get {
+                return ResourceManager.GetString("CanNotDeleteTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
         /// </summary>
         public static string ContextCannotBeNull {
@@ -164,6 +173,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing tag .....
+        /// </summary>
+        public static string RemoveTagMessage {
+            get {
+                return ResourceManager.GetString("RemoveTagMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove tag &apos;{0}&apos;.
+        /// </summary>
+        public static string RemovingTag {
+            get {
+                return ResourceManager.GetString("RemovingTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Azure PowerShell context has not been properly initialized.  Please import the module and try again..
         /// </summary>
         public static string ProfileNotInitialized {
@@ -232,6 +259,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string SubscriptionNameNotFound {
             get {
                 return ResourceManager.GetString("SubscriptionNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tag &apos;{0}&apos; not found.
+        /// </summary>
+        public static string TagNotFoundMessage {
+            get {
+                return ResourceManager.GetString("TagNotFoundMessage", resourceCulture);
             }
         }
         

@@ -15,11 +15,12 @@
 
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Management.WebSites;
 
 #if NETSTANDARD
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             WriteProgress(progressRecord);
 
-            var serverFarmResources = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
+            var serverFarmResources = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Where(sf => string.Equals(sf.Name, Name, StringComparison.OrdinalIgnoreCase)).ToArray();
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             WriteProgress(progressRecord);
 
-            var resourceGroups = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
+            var resourceGroups = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Select(sf => sf.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
@@ -177,7 +178,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
             WriteProgress(progressRecord);
 
-            var serverFarmResources = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
+            var serverFarmResources = this.ResourcesClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Where(sf => string.Equals(sf.Location, Location.Replace(" ", string.Empty), StringComparison.OrdinalIgnoreCase)).ToArray();

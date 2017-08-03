@@ -93,13 +93,16 @@ namespace Microsoft.Azure.Commands.Profile.Errors
 
         private void HandleError(ErrorRecord record)
         {
-            if (record.Exception != null)
+            if (record != null)
             {
-                HandleException(record.Exception, record);
-            }
-            else
-            {
-                WriteObject(new AzureErrorRecord(record));
+                if (record.Exception != null)
+                {
+                    HandleException(record.Exception, record);
+                }
+                else
+                {
+                    WriteObject(new AzureErrorRecord(record));
+                }
             }
         }
 
@@ -110,7 +113,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
             var restException = exception as Microsoft.Rest.Azure.CloudException;
             if (aggregate != null)
             {
-                foreach (var innerException in aggregate.InnerExceptions)
+                foreach (var innerException in aggregate.InnerExceptions.Where(e => e!=null))
                 {
                     HandleException(innerException, record, true);
                 }

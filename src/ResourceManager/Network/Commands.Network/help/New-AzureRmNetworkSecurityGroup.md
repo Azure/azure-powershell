@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 ms.assetid: A420B3E7-2FE9-4D0B-803E-AC28E5F23C59
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -32,22 +32,21 @@ This command ceates a new Azure network security group named "nsg1" in resource 
 
 ### 2: Create a detailed network security group
 ```
-$rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" 
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix 
+$rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP"
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
-    
-$rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" 
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix 
+
+$rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP"
+    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix
     Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
-    
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name 
+
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name
     "NSG-FrontEnd" -SecurityRules $rule1,$rule2
 ```
 
 Step:1 Create a security rule allowing access from the Internet to port 3389.
 Step:2 Create a security rule allowing access from the Internet to port 80.
 Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.
-    
 
 ## PARAMETERS
 
@@ -57,7 +56,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -72,7 +71,7 @@ Specifies the region for which to create a network security group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -103,7 +102,7 @@ This cmdlet creates a network security group in the resource group that this par
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -118,7 +117,7 @@ Specifies a list of network security rule objects to create in a network securit
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecurityRule]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,12 +127,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies a dictionary of tags to associate with a network security group.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -189,5 +190,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzureRmNetworkSecurityGroup](./Remove-AzureRmNetworkSecurityGroup.md)
 
 [Set-AzureRmNetworkSecurityGroup](./Set-AzureRmNetworkSecurityGroup.md)
-
-
