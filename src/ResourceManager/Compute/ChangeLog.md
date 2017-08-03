@@ -20,12 +20,6 @@
 ## Current Release
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series
-* VM Run Command cmdlets
-  - Set-AzureRmVMRunCommand
-  - Get-AzureRmVMRunCommand
-  - New-AzureRmVMRunCommandConfig
-  - Add-AzureRmVMRunCommandParameter
-  - Remove-AzureRmVMRunCommandParameter
 * Add ForceUpdateTag parameter to Add-AzureRmVmssExtension
 * Add Primary parameter to New-AzureRmVmssIpConfig
 * Add EnableAcceleratedNetworking parameter to Add-AzureRmVmssNetworkInterfaceConfig

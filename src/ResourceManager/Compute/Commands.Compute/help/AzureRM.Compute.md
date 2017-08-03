@@ -29,9 +29,6 @@ Adds a data disk to a virtual machine.
 ### [Add-AzureRmVMNetworkInterface](Add-AzureRmVMNetworkInterface.md)
 Adds a network interface to a virtual machine.
 
-### [Add-AzureRmVMRunCommandParameter](Add-AzureRmVMRunCommandParameter.md)
-Add a parameter to a Run command input object.
-
 ### [Add-AzureRmVMSecret](Add-AzureRmVMSecret.md)
 Adds a secret to a virtual machine.
 
@@ -143,9 +140,6 @@ Gets the VMImage publishers.
 ### [Get-AzureRmVMImageSku](Get-AzureRmVMImageSku.md)
 Gets VMImage SKUs.
 
-### [Get-AzureRmVMRunCommand](Get-AzureRmVMRunCommand.md)
-Get or list available Run command(s).
-
 ### [Get-AzureRmVMSize](Get-AzureRmVMSize.md)
 Gets available virtual machine sizes.
 
@@ -208,9 +202,6 @@ Creates a virtual machine.
 
 ### [New-AzureRmVMConfig](New-AzureRmVMConfig.md)
 Creates a configurable virtual machine object.
-
-### [New-AzureRmVMRunCommandConfig](New-AzureRmVMRunCommandConfig.md)
-Create an input object for Run command.
 
 ### [New-AzureRmVMSqlServerAutoBackupConfig](New-AzureRmVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
@@ -292,9 +283,6 @@ Removes an extension from a virtual machine.
 
 ### [Remove-AzureRmVMNetworkInterface](Remove-AzureRmVMNetworkInterface.md)
 Removes a network interface from a virtual machine.
-
-### [Remove-AzureRmVMRunCommandParameter](Remove-AzureRmVMRunCommandParameter.md)
-Remove a parameter from a Run command input object.
 
 ### [Remove-AzureRmVMSecret](Remove-AzureRmVMSecret.md)
 Removes (a) secret(s) from a virtual machine object
@@ -424,9 +412,6 @@ Sets the operating system disk properties on a virtual machine.
 
 ### [Set-AzureRmVMPlan](Set-AzureRmVMPlan.md)
 Sets the Marketplace plan information on a virtual machine.
-
-### [Set-AzureRmVMRunCommand](Set-AzureRmVMRunCommand.md)
-Run a command on the VM.
 
 ### [Set-AzureRmVMSourceImage](Set-AzureRmVMSourceImage.md)
 Specifies the image for a virtual machine.
