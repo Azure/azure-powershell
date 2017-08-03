@@ -466,56 +466,6 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
-    /// Class to define backup vault credentials
-    /// </summary>
-    [DataContract]
-    public class BackupVaultCreds : VaultCreds
-    {
-        /// <summary>
-        /// Gets or sets the agent links
-        /// </summary>
-        [DataMember(Order = 0)]
-        public string AgentLinks { get; set; }
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of the BackupVaultCreds class
-        /// </summary>
-        public BackupVaultCreds() { }
-
-        /// <summary>
-        /// Initializes a new instance of the BackupVaultCreds class
-        /// </summary>
-        /// <param name="subscriptionId">subscription Id</param>
-        /// <param name="resourceType">resource type</param>
-        /// <param name="resourceName">resource name</param>
-        /// <param name="managementCert">management cert</param>
-        /// <param name="acsNamespace">acs namespace</param>
-        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
-            AcsNamespace acsNamespace)
-            : base(subscriptionId, resourceName, managementCert, acsNamespace, Constants.BackupVaultType) { }
-
-        /// <summary>
-        /// Initializes a new instance of the BackupVaultCreds class
-        /// </summary>
-        /// <param name="subscriptionId">subscription Id</param>
-        /// <param name="resourceType">resource type</param>
-        /// <param name="resourceName">resource name</param>
-        /// <param name="managementCert">management cert</param>
-        /// <param name="acsNamespace">acs namespace</param>
-        /// <param name="agentLinks">agent links</param>
-        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
-            AcsNamespace acsNamespace, string agentLinks)
-            : this(subscriptionId, resourceName, managementCert, acsNamespace)
-        {
-            AgentLinks = agentLinks;
-        }
-
-        #endregion
-    }
-
-    /// <summary>
     /// Class to define ACS name space
     /// </summary>
     [SuppressMessage(
