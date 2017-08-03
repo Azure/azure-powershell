@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
+external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-help.xml
 online version: 
 schema: 2.0.0
 ---
@@ -11,7 +11,7 @@ Adds an authenticated account to use for Azure Analysis Services server cmdlet r
 
 ## SYNTAX
 
-### UserParameterSetName
+### UserParameterSetName (Default)
 ```
 Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [[-Credential] <PSCredential>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -43,10 +43,28 @@ Credential: $UserCredential
 
 This example will add the account specified by the $UserCredential variable to the westcentralus.asazure.windows.net Analysis Services environment.
 
+### Example 2
+```
+PS C:\>$ApplicationCredential = Get-Credential
+PS C:\>Add-AzureAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -Credential $ApplicationCredential -TenantId "xxxx-xxxx-xxxx-xxxx"
+```
+
+The first command gets the application service principal credentials, and then stores them in the $ApplicationCredential variable.
+The second command add the application service principal account specified by the $ApplicationCredential variable and TenantId to the westcentralus.asazure.windows.net Analysis Services environment.
+
+### Example 3
+```
+PS C:\>Add-AzureAnalysisServicesAccount -RolloutEnvironment 'westcentralus.asazure.windows.net' -ServicePrincipal -ApplicationId "yyyy-yyyy-yyyy-yyyy" -CertificateThumbprint 'zzzzzzzzzzzzzzzz' -TenantId "xxxx-xxxx-xxxx-xxxx"
+```
+
+This example will add the application service principal account specified by the ApplicationId, TenantId and CertificateThumbprint to the westcentralus.asazure.windows.net Analysis Services environment.
+
 ## PARAMETERS
 
 ### -ApplicationId
-SPN```yaml
+The application ID.
+
+```yaml
 Type: String
 Parameter Sets: ServicePrincipalWithCertificateParameterSetName
 Aliases: 
@@ -59,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -CertificateThumbprint
-Certificate Hash (Thumbprint)```yaml
+Certificate Hash (Thumbprint)
+
+```yaml
 Type: String
 Parameter Sets: ServicePrincipalWithCertificateParameterSetName
 Aliases: 
@@ -114,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServicePrincipal
-{{Fill ServicePrincipal Description}}
+Indicates that this account authenticates by providing service principal credentials.
 
 ```yaml
 Type: SwitchParameter
@@ -129,7 +149,9 @@ Accept wildcard characters: False
 ```
 
 ### -TenantId
-Tenant name or ID```yaml
+Tenant name or ID
+
+```yaml
 Type: String
 Parameter Sets: ServicePrincipalWithPasswordParameterSetName, ServicePrincipalWithCertificateParameterSetName
 Aliases: 

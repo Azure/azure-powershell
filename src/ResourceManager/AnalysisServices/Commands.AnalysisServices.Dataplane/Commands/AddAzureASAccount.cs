@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet("Add", "AzureAnalysisServicesAccount", SupportsShouldProcess=true)]
+    [Cmdlet("Add", "AzureAnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [Alias("Login-AzureAsAccount")]
     [OutputType(typeof(AsAzureProfile))]
     public class AddAzureASAccountCommand : AzurePSCmdlet, IModuleAssemblyInitializer
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public string TenantId { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalWithCertificateParameterSet,
-            Mandatory = true, HelpMessage = "SPN")]
+            Mandatory = true, HelpMessage = "The application ID.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
