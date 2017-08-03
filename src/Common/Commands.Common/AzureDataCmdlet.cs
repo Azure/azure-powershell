@@ -115,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             InitializeDataCollectionProfile();
 
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue || !CheckIfInteractive())
+            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
                 return;
             }
