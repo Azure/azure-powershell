@@ -24,6 +24,10 @@
 	- PeerAddressType
 * Remove-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
 	- PeerAddressType
+* Marked parameter -ProbeEnabled as obsolete
+    - Add-AzureRmApplicationGatewayBackendHttpSettings
+    - New-AzureRmApplicationGatewayBackendHttpSettings
+    - Set-AzureRmApplicationGatewayBackendHttpSettings 
 
 ## Version 4.2.1
 
