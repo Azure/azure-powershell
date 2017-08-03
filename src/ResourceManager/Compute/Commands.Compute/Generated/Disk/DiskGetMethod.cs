@@ -83,9 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(diskName))
             {
                 var result = DisksClient.Get(resourceGroupName, diskName);
-                var psObject = new PSDisk();
-                Mapper.Map<Disk, PSDisk>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName))
             {
@@ -101,12 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSDiskList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
             else
             {
@@ -122,12 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSDiskList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<Disk, PSDiskList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
         }
 

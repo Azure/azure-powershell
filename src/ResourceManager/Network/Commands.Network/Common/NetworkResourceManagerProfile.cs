@@ -53,14 +53,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>();
                 cfg.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
                 cfg.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
-                cfg.CreateMap<CNM.PSPrivateAccessService, MNM.PrivateAccessServicePropertiesFormat>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
                 cfg.CreateMap<MNM.Subnet, CNM.PSSubnet>();
                 cfg.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
                 cfg.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
-                cfg.CreateMap<MNM.PrivateAccessServicePropertiesFormat, CNM.PSPrivateAccessService>();
 
                 // TestPrivateIpAddressAvailability
                 // CNM to MNM
@@ -68,13 +66,6 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
-
-                // Avaliable private access services
-                // CNM to MNM
-                cfg.CreateMap<CNM.PSPrivateAccessServiceResult, MNM.PrivateAccessServiceResult>();
-
-                // MNM to CNM
-                cfg.CreateMap<MNM.PrivateAccessServiceResult, CNM.PSPrivateAccessServiceResult>();
 
                 // VirtualNetwork Peering
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
@@ -329,10 +320,12 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSPeering, MNM.ExpressRouteCircuitPeering>();
                 cfg.CreateMap<CNM.PSPeeringConfig, MNM.ExpressRouteCircuitPeeringConfig>();
+                cfg.CreateMap<CNM.PSIpv6PeeringConfig, MNM.Ipv6ExpressRouteCircuitPeeringConfig>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRouteCircuitPeering, CNM.PSPeering>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
+                cfg.CreateMap<MNM.Ipv6ExpressRouteCircuitPeeringConfig, CNM.PSIpv6PeeringConfig>();
 
                 // ExpressRouteServiceProvider
                 // CNM to MNM
@@ -404,7 +397,8 @@ namespace Microsoft.Azure.Commands.Network
                     });
                 cfg.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
-                cfg.CreateMap<CNM.PSApplicationGatewayProbeHealthResponseMatch, MNM.ApplicationGatewayProbeHealthResponseMatch>();
+                cfg.CreateMap<CNM.PSApplicationGatewayProbeHealthResponseMatch, MNM.ApplicationGatewayProbeHealthResponseMatch>()
+                    .AfterMap((src, dest) => dest.StatusCodes = (src.StatusCodes == null) ? null : dest.StatusCodes);
                 cfg.CreateMap<CNM.PSApplicationGatewayProbe, MNM.ApplicationGatewayProbe>();
                 cfg.CreateMap<CNM.PSApplicationGatewayBackendAddress, MNM.ApplicationGatewayBackendAddress>();
                 cfg.CreateMap<CNM.PSApplicationGatewayBackendAddressPool, MNM.ApplicationGatewayBackendAddressPool>();
@@ -444,7 +438,8 @@ namespace Microsoft.Azure.Commands.Network
                     });
                 cfg.CreateMap<MNM.ApplicationGatewayPathRule, CNM.PSApplicationGatewayPathRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayUrlPathMap, CNM.PSApplicationGatewayUrlPathMap>();
-                cfg.CreateMap<MNM.ApplicationGatewayProbeHealthResponseMatch, CNM.PSApplicationGatewayProbeHealthResponseMatch>();
+                cfg.CreateMap<MNM.ApplicationGatewayProbeHealthResponseMatch, CNM.PSApplicationGatewayProbeHealthResponseMatch>()
+                    .AfterMap((src, dest) => dest.StatusCodes = (src.StatusCodes == null) ? null : dest.StatusCodes);
                 cfg.CreateMap<MNM.ApplicationGatewayProbe, CNM.PSApplicationGatewayProbe>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendAddress, CNM.PSApplicationGatewayBackendAddress>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendAddressPool, CNM.PSApplicationGatewayBackendAddressPool>();

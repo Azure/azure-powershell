@@ -366,4 +366,7 @@
   <data name="RemoveAzureSqlSyncMemberWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Sync Member '{0}' for Sync Group '{1}'?</value>
   </data>
+  <data name="SetAzureSqlServerTransparentDataEncryptionProtectorWarning" xml:space="preserve">
+    <value>Warning: Cutting off access to the key '{0}' may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
+  </data>
 </root>

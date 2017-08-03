@@ -70,6 +70,7 @@
     <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadataHelper.cs" />
     <Compile Include="BreakingChangeAnalyzer\TypeMetadata.cs" />
     <Compile Include="BreakingChangeAnalyzer\TypeMetadataHelper.cs" />
+    <Compile Include="DependencyAnalyzer\DependencyMap.cs" />
     <Compile Include="Loggers\AnalysisLogger.cs" />
     <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="EnvironmentHelpers.cs" />

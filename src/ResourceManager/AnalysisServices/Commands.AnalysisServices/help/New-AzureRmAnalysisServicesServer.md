@@ -13,7 +13,8 @@ Creates a new Analysis Services server
 
 ```
 New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 4
+Position: 5
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackupBlobContainerUri
+The blob container Uri for backup the Analysis Services server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -99,7 +115,6 @@ The supported values are 'S0', 'S1', 'S2', 'S4' for the Standard tier; 'B1', 'B2
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: S1, S2, S4, D1
 
 Required: True
 Position: 3
