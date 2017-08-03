@@ -341,6 +341,9 @@ Specifies that a database uses the auditing policy of its host server.
 ### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
 Creates an Azure SQL Database Sync Group.
 
+### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
+Updates an Azure SQL Database Sync Group.
+
 ### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
 Returns information about Azure SQL Database Sync Groups.
 
@@ -358,6 +361,9 @@ Returns the logs of an Azure SQL Database Sync Group.
 
 ### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
 Creates an Azure SQL Database Sync Member.
+
+### [Update-AzureRmSqlSyncMember](Update-AzureRmSqlSyncMember.md)
+Updates an Azure SQL Database Sync Member.
 
 ### [Get-AzureRmSqlSyncMember](Get-AzureRmSqlSyncMember.md)
 Returns information about Azure SQL Database Sync Members.
