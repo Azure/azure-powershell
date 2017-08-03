@@ -125,9 +125,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// Indicates whether AutoInflate is enabled.
         /// </summary>
         [Parameter(
-            Mandatory = false,
-            Position = 7,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Indicates whether AutoInflate is enabled",
             ParameterSetName = AutoInflateParameterSet
             )]
@@ -138,7 +136,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// </summary>
         [Parameter(
             Mandatory = false,
-            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.",
             ParameterSetName = AutoInflateParameterSet
