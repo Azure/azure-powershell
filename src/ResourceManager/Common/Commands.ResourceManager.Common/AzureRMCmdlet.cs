@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             InitializeDataCollectionProfile();
 
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue || !CheckIfInteractive())
+            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
                 return;
             }

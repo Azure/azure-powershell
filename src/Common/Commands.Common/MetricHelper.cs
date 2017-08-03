@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 {
                     var macAddress = NetworkInterface.GetAllNetworkInterfaces()
                         .FirstOrDefault(nic => nic.OperationalStatus == OperationalStatus.Up)?
-                        .GetPhysicalAddress().ToString();
+                        .GetPhysicalAddress()?.ToString();
                     _hashMacAddress = macAddress == null ? null : GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
                 }
 

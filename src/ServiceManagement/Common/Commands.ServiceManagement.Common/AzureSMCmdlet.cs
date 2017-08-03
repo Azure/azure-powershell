@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             InitializeDataCollectionProfile();
 
-            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue || !CheckIfInteractive())
+            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
                 return;
             }
