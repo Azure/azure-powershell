@@ -62,8 +62,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             Position = 4,
             ParameterSetName = AuthoRuleInputObjectParameterSet,
             HelpMessage = "Relay AuthorizationRule Object.")]
-        [Parameter(ParameterSetName = NamespaceAuthoRuleParameterSet)]
-        [Parameter(ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 4,
+            ParameterSetName = NamespaceAuthoRuleParameterSet,
+            HelpMessage = "Relay AuthorizationRule Object.")]
+        [Parameter(Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 4,
+            ParameterSetName = EventhubAuthoRuleParameterSet,
+            HelpMessage = "Relay AuthorizationRule Object.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
         public SharedAccessAuthorizationRuleAttributes InputObject { get; set; }
@@ -73,8 +81,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             ParameterSetName = AuthoRulePropertiesParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
-        [Parameter(ParameterSetName = NamespaceAuthoRuleParameterSet)]
-        [Parameter(ParameterSetName = EventhubAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 4,
+            ParameterSetName = NamespaceAuthoRuleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = true,
+            Position = 4,
+            ParameterSetName = EventhubAuthoRuleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Listen", "Send", "Manage",
             IgnoreCase = true)]
