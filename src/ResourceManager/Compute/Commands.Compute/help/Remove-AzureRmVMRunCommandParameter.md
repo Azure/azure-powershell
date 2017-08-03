@@ -12,8 +12,8 @@ Remove a parameter from a Run command input object.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMRunCommandParameter [-RunCommandInput] <PSRunCommandInput> [-Name] <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmVMRunCommandParameter -InputObject <PSRunCommandInput> [-Name] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,13 +25,28 @@ Remove a parameter from a Run command input object.
 ```
 PS C:\> $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId -Script $script `
                        | Add-AzureRmVMRunCommandParameter -Name $arg1 -Value $value1 `
-PS C:\> $runParameter = Remove-AzureVMRunCommandParameter -RunCommandInput $runParameter -Name $arg1
-PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
+PS C:\> $runParameter = Remove-AzureVMRunCommandParameter -InputObject $runParameter -Name $arg1
+PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -InputObject $runParameter
 ```
 
 Run the command on the given VM with the command ID and the script after removing the parameter.
 
 ## PARAMETERS
+
+### -InputObject
+Input object for Run command.
+
+```yaml
+Type: PSRunCommandInput
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
 
 ### -Name
 The run command parameter name.
@@ -45,21 +60,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RunCommandInput
-Input object for Run command.
-
-```yaml
-Type: PSRunCommandInput
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

@@ -12,8 +12,8 @@ Add a parameter to a Run command input object.
 ## SYNTAX
 
 ```
-Add-AzureRmVMRunCommandParameter [-RunCommandInput] <PSRunCommandInput> [[-Name] <String>]
- [[-Value] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmVMRunCommandParameter -InputObject <PSRunCommandInput> [[-Name] <String>] [[-Value] <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,12 +25,27 @@ Add a parameter to a Run command input object.
 ```
 PS C:\> $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId -Script $script `
                        | Add-AzureRmVMRunCommandParameter -Name $arg1 -Value $value1 `
-PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
+PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -InputObject $runParameter
 ```
 
 Run the command on the given VM with the command ID, the script, and the parameters.
 
 ## PARAMETERS
+
+### -InputObject
+Input object for Run command.
+
+```yaml
+Type: PSRunCommandInput
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
 
 ### -Name
 The run command parameter name.
@@ -44,21 +59,6 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RunCommandInput
-Input object for Run command.
-
-```yaml
-Type: PSRunCommandInput
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

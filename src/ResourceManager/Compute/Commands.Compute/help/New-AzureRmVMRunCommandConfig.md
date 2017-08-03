@@ -25,7 +25,7 @@ Create an input object for Run command.
 ```
 PS C:\> $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId -Script $script `
                        | Add-AzureRmVMRunCommandParameter -Name $arg1 -Value $value1 `
-PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
+PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -InputObject $runParameter
 ```
 
 Run the command on the given VM with the command ID, the script, and the parameters.

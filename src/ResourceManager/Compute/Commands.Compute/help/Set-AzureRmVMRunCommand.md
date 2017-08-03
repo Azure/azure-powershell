@@ -12,7 +12,7 @@ Run a command on the VM.
 ## SYNTAX
 
 ```
-Set-AzureRmVMRunCommand [-ResourceGroupName] <String> [-VMName] <String> [-RunCommandInput] <PSRunCommandInput>
+Set-AzureRmVMRunCommand [-ResourceGroupName] <String> [-VMName] <String> -InputObject <PSRunCommandInput>
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,12 +25,27 @@ Run a command on the VM.
 ```
 PS C:\> $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId -Script $script `
                        | Add-AzureRmVMRunCommandParameter -Name $arg1 -Value $value1 `
-PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
+PS C:\> Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -InputObject $runParameter
 ```
 
 Run the command on the given VM with the command ID, the script, and the parameters.
 
 ## PARAMETERS
+
+### -InputObject
+Parameters supplied to the Run command operation.
+
+```yaml
+Type: PSRunCommandInput
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 Specifies the name of the resource group of the virtual machine.
@@ -44,21 +59,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RunCommandInput
-Parameters supplied to the Run command operation.
-
-```yaml
-Type: PSRunCommandInput
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
