@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.")][Alias("ResourceGroup")]
+            HelpMessage = "Resource Group Name.")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
