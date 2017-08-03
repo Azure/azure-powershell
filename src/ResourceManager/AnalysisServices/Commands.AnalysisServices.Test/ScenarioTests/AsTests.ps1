@@ -10,6 +10,8 @@ function Test-AnalysisServicesServer
 		$location = Get-Location
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
+		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
+
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
@@ -17,6 +19,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+		Assert-AreEqual 2 $serverCreated.AsAdministrators.Count
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
 	
@@ -41,11 +44,12 @@ function Test-AnalysisServicesServer
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tag $tagsToUpdate -PassThru
 		Assert-NotNull $serverUpdated.Tag "Tag do not exists"
 		Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
+		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
 
 		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrator list is empty"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
-    
+
 		Assert-AreEqual $serverName $serverUpdated.Name
 		Assert-AreEqual $location $serverUpdated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverUpdated.Type
@@ -134,7 +138,6 @@ function Test-AnalysisServicesServerScaleUpDown
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
-    
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
@@ -176,13 +179,77 @@ function Test-AnalysisServicesServerScaleUpDown
 
 <#
 .SYNOPSIS
+Tests disable backup blob container
+In order to run this test successfully, Following environment variables need to be set.
+AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest?<serviceSasToken1>'
+AAS_SECOND_BACKUP_BLOB_CONTAINER_URI e.x. value 'https://aassdk1.blob.core.windows.net/azsdktest2?<serviceSasToken2>'
+#>
+function Test-AnalysisServicesServerDisableBackup
+{
+	try
+	{  
+		# Creating server
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$serverName = Get-AnalysisServicesServerName
+		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net' -BackupBlobContainerUri $backupBlobContainerUri
+		Assert-AreEqual $serverName $serverCreated.Name
+		Assert-AreEqual $location $serverCreated.Location
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
+		Assert-AreEqual B1 $serverCreated.Sku.Name
+		Assert-True {$backupBlobContainerUri.Contains($serverCreated.BackupBlobContainerUri)}
+		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
+		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
+	
+		# Check server was created successfully
+		[array]$serverGet = Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
+		$serverGetItem = $serverGet[0]
+
+		Assert-True {$serverGetItem.ProvisioningState -like "Succeeded"}
+		Assert-True {$serverGetItem.State -like "Succeeded"}
+		Assert-True {$backupBlobContainerUri.Contains($serverGetItem.BackupBlobContainerUri)}
+		
+		Assert-AreEqual $serverName $serverGetItem.Name
+		Assert-AreEqual $location $serverGetItem.Location
+		Assert-AreEqual B1 $serverGetItem.Sku.Name
+		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverGetItem.Type
+		Assert-True {$serverGetItem.Id -like "*$resourceGroupName*"}
+		
+		# Update backup container
+		$backupBlobContainerUriToUpdate = $env:AAS_SECOND_BACKUP_BLOB_CONTAINER_URI
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -BackupBlobContainerUri "$backupBlobContainerUriToUpdate" -PassThru
+		Assert-NotNull $serverUpdated.BackupBlobContainerUri "The backup blob container Uri is empty"
+		Assert-True {$backupBlobContainerUriToUpdate.contains($serverUpdated.BackupBlobContainerUri)}
+		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
+
+		# Disable Backup
+		$serverUpdated = Set-AzureRmAnalysisServicesServer -Name $serverName -DisableBackup -PassThru
+		Assert-True {[string]::IsNullOrEmpty($serverUpdated.BackupBlobContainerUri)}
+		
+		# Delete Analysis Servicesserver
+		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
+
+<#
+.SYNOPSIS
 Tests Analysis Services server lifecycle  Failure scenarios (Create, Update, Get, Delete).
 #>
 function Test-NegativeAnalysisServicesServer
 {
     param
 	(
-		$fakeserverName = "psfakeservertest"
+		$fakeserverName = "psfakeservertest",
+		$invalidSku = "INVALID"
 	)
 	
 	try
@@ -193,12 +260,12 @@ function Test-NegativeAnalysisServicesServer
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
-    
+
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
 		Assert-True {$serverCreated.Id -like "*$resourceGroupName*"}
-       
+
 		# attempt to recreate the already created server
 		Assert-Throws {New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location}
 
@@ -208,6 +275,12 @@ function Test-NegativeAnalysisServicesServer
 
 		# attempt to get a non-existent server
 		Assert-Throws {Get-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName}
+
+		# attempt to create a server with invalid Sku
+		Assert-Throws {New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'}
+
+		# attempt to scale a server to invalid Sku
+		Assert-Throws {Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Sku $invalidSku}
 
 		# Delete Analysis Servicesserver
 		Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
@@ -237,7 +310,7 @@ function Test-AnalysisServicesServerLogExport
 {
     param
 	(
-		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+		$rolloutEnvironment = $env:ASAZURE_TEST_ROLLOUT
 	)
     try
     {
@@ -246,12 +319,13 @@ function Test-AnalysisServicesServerLogExport
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators $env:ASAZURE_TEST_ADMUSERS
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$serverCreated.State -like "Succeeded"}
 
-        $secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
-		$cred = New-Object System.Management.Automation.PSCredential ('aztest1@aspaastestloop1.ccsctp.net', $secpasswd)
+		$secpasswd = ConvertTo-SecureString $env:ASAZURE_TESTUSER_PWD -AsPlainText -Force
+		$admuser0 = $env:ASAZURE_TEST_ADMUSERS.Split(',')[0]
+		$cred = New-Object System.Management.Automation.PSCredential ($admuser0, $secpasswd)
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
 
@@ -275,14 +349,15 @@ function Test-AnalysisServicesServerLogExport
 .SYNOPSIS
 Tests Analysis Services server Login and restart.
 In order to run this test successfully, Following environment variables need to be set.
-ASAZURE_TEST_ROLLOUT e.x. value 'aspaaswestusloop1.asazure-int.windows.net'
-ASAZURE_TESTUSER_PWD e.x. value 'samplepwd'
+ASAZURE_TEST_ROLLOUT e.x. value 'aspaasnightly1.asazure-int.windows.net'
+ASAZURE_TESTUSER_PWD e.x. value 'aztest0password'
+ASAZURE_TEST_ADMUSERS e.x. value 'aztest0@asazure.ccsctp.net,aztest1@asazure.ccsctp.net'
 #>
 function Test-AnalysisServicesServerRestart
 {
     param
 	(
-		$rolloutEnvironment = $env.ASAZURE_TEST_ROLLOUT
+		$rolloutEnvironment = $env:ASAZURE_TEST_ROLLOUT
 	)
 	try
 	{
@@ -292,25 +367,20 @@ function Test-AnalysisServicesServerRestart
 		$serverName = Get-AnalysisServicesServerName
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@aspaastestloop1.ccsctp.net,aztest1@aspaastestloop1.ccsctp.net'
+		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator $env:ASAZURE_TEST_ADMUSERS
 		Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
 		Assert-True {$serverCreated.State -like "Succeeded"}
 
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
 
-		$secpasswd = ConvertTo-SecureString $env.ASAZURE_TESTUSER_PWD -AsPlainText -Force
-		$cred = New-Object System.Management.Automation.PSCredential ('aztest1@aspaastestloop1.ccsctp.net', $secpasswd)
+		$secpasswd = ConvertTo-SecureString $env:ASAZURE_TESTUSER_PWD -AsPlainText -Force
+		$admuser0 = $env:ASAZURE_TEST_ADMUSERS.Split(',')[0]
+		$cred = New-Object System.Management.Automation.PSCredential ($admuser0, $secpasswd)
 
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
-		Restart-AzureAsInstance -Instance $serverName
-
-		$asAzureProfile = Login-AzureAsAccount
-		Assert-NotNull $asAzureProfile "Login-AzureAsAccount for empty rolloutname must not return null"
-
-		$asAzureProfile = Login-AzureAsAccount -Credential $cred
-		Assert-NotNull $asAzureProfile "Login-AzureAsAccount for empty rolloutname must not return null"
+		Assert-True { Restart-AzureAsInstance -Instance $serverName -PassThru }
 
 		$rolloutEnvironment = 'asazure-int.windows.net'
 		$asAzureProfile = Login-AzureAsAccount $rolloutEnvironment
@@ -319,6 +389,7 @@ function Test-AnalysisServicesServerRestart
 		$rolloutEnvironment = 'asazure.windows.net'
 		$asAzureProfile = Login-AzureAsAccount $rolloutEnvironment
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
+
 	}
 	finally
 	{

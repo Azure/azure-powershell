@@ -81,7 +81,7 @@ Parameter Sets: PerformMaintenanceResourceGroupNameParameterSetName, PerformMain
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

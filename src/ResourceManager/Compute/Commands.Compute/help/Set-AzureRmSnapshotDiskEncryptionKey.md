@@ -12,8 +12,8 @@ Sets the disk encryption key properties on a snapshot object.
 ## SYNTAX
 
 ```
-Set-AzureRmSnapshotDiskEncryptionKey [-Snapshot] <Snapshot> [[-SecretUrl] <String>] [[-SourceVaultId] <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmSnapshotDiskEncryptionKey [-Snapshot] <PSSnapshot> [[-SecretUrl] <String>]
+ [[-SourceVaultId] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies a local snapshot object.
 
 ```yaml
-Type: Snapshot
+Type: PSSnapshot
 Parameter Sets: (All)
 Aliases: 
 
