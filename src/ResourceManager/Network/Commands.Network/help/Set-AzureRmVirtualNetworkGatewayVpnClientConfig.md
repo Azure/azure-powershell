@@ -14,7 +14,8 @@ Sets the VPN client address pool for a virtual network gateway.
 
 ```
 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> [<CommonParameters>]
+ -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +37,32 @@ The first command creates an object reference to the gateway and the object is s
 The second command in the example then uses the **Set-AzureRmVirtualNetworkGatewayVpnClientConfig** cmdlet to assign the address pool 10.0.0.0/16 to ContosoVirtualGateway.
 
 ## PARAMETERS
+
+### -RadiusServerAddress
+P2S External Radius Server Address```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RadiusServerSecret
+P2S External Radius Server Address```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -VirtualNetworkGateway
 Specifies an object reference to the virtual network gateway that contains the VPN client configuration settings that this cmdlet modifies.

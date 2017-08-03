@@ -19,7 +19,7 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway
  [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
  [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
- [<CommonParameters>]
+ [-RadiusServerAddress <String>] [-RadiusServerSecret <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +130,32 @@ Specifies the weight added to routes learned over BGP from this virtual network 
 
 ```yaml
 Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RadiusServerAddress
+Radius server address.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RadiusServerSecret
+Radius server secret.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
