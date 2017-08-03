@@ -103,8 +103,9 @@ function Test-VirtualMachineSetRunCommand
         $runParameter = New-AzureRmVMRunCommandConfig -CommandId $commandId `
                       | Add-AzureRmVMRunCommandParameter -Name "arg1" -Value "dir" `
                       | Add-AzureRmVMRunCommandParameter -Name "arg2" -Value '-Depth 0' `
+                      | Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname;
 
-        Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -RunCommandInput $runParameter
+        #Set-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -InputObject $runParameter
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;

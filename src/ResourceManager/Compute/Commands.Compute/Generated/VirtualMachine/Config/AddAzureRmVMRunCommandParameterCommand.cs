@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public PSRunCommandInput RunCommandInput { get; set; }
+        public PSRunCommandInput InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -63,17 +63,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private void Run()
         {
             // Parameters
-            if (this.RunCommandInput.Parameters == null)
+            if (this.InputObject.Parameters == null)
             {
-                this.RunCommandInput.Parameters = new List<Microsoft.Azure.Management.Compute.Models.RunCommandInputParameter>();
+                this.InputObject.Parameters = new List<Microsoft.Azure.Management.Compute.Models.RunCommandInputParameter>();
             }
 
             var vParameters = new Microsoft.Azure.Management.Compute.Models.RunCommandInputParameter();
 
             vParameters.Name = this.Name;
             vParameters.Value = this.Value;
-            this.RunCommandInput.Parameters.Add(vParameters);
-            WriteObject(this.RunCommandInput);
+            this.InputObject.Parameters.Add(vParameters);
+            WriteObject(this.InputObject);
         }
     }
 }

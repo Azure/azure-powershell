@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string vmName = this.VMName;
                     RunCommandInput parameters = new RunCommandInput();
-                    Mapper.Map<PSRunCommandInput, RunCommandInput>(this.RunCommandInput, parameters);
+                    Mapper.Map<PSRunCommandInput, RunCommandInput>(this.InputObject, parameters);
 
                     var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
                     var psObject = new PSRunCommandResult();
@@ -162,6 +162,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
         [AllowNull]
-        public PSRunCommandInput RunCommandInput { get; set; }
+        public PSRunCommandInput InputObject { get; set; }
     }
 }

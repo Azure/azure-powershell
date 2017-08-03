@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public PSRunCommandInput RunCommandInput { get; set; }
+        public PSRunCommandInput InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -50,26 +50,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             // Parameters
-            if (this.RunCommandInput.Parameters == null)
+            if (this.InputObject.Parameters == null)
             {
-                WriteObject(this.RunCommandInput);
+                WriteObject(this.InputObject);
                 return;
             }
-            var vParameters = this.RunCommandInput.Parameters.First
+            var vParameters = this.InputObject.Parameters.First
                 (e =>
                     (this.Name != null && e.Name == this.Name)
                 );
 
             if (vParameters != null)
             {
-                this.RunCommandInput.Parameters.Remove(vParameters);
+                this.InputObject.Parameters.Remove(vParameters);
             }
 
-            if (this.RunCommandInput.Parameters.Count == 0)
+            if (this.InputObject.Parameters.Count == 0)
             {
-                this.RunCommandInput.Parameters = null;
+                this.InputObject.Parameters = null;
             }
-            WriteObject(this.RunCommandInput);
+            WriteObject(this.InputObject);
         }
     }
 }
