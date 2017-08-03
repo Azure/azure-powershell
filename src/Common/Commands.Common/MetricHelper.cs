@@ -54,22 +54,18 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// </summary>
         private readonly object _lock = new object();
 
-        private static string _hashMacAddress = string.Empty;
+        private string _hashMacAddress = string.Empty;
 
-        private static string HashMacAddress
+        private string HashMacAddress
         {
             get
             {
                 if (_hashMacAddress == string.Empty)
                 {
-                    _hashMacAddress = null;
                     var macAddress = NetworkInterface.GetAllNetworkInterfaces()
                         .FirstOrDefault(nic => nic.OperationalStatus == OperationalStatus.Up)?
                         .GetPhysicalAddress().ToString();
-                    if (macAddress != null)
-                    {
-                        _hashMacAddress = GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
-                    }
+                    _hashMacAddress = macAddress == null ? null : GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
                 }
 
                 return _hashMacAddress;
