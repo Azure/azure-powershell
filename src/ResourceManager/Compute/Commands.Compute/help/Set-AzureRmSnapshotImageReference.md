@@ -12,8 +12,8 @@ Sets the image reference properties on a snapshot object.
 ## SYNTAX
 
 ```
-Set-AzureRmSnapshotImageReference [-Snapshot] <Snapshot> [[-Id] <String>] [[-Lun] <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmSnapshotImageReference [-Snapshot] <PSSnapshot> [[-Id] <String>] [[-Lun] <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies a local snapshot object.
 
 ```yaml
-Type: Snapshot
+Type: PSSnapshot
 Parameter Sets: (All)
 Aliases: 
 

@@ -14,7 +14,6 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
