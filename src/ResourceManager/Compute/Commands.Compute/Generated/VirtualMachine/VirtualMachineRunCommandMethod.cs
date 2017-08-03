@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -110,58 +109,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                  new string[] { "ResourceGroupName", "VMName", "Parameters" },
                  new object[] { resourceGroupName, vmName, parameters });
         }
-    }
-
-    [Cmdlet(VerbsCommon.Set, "AzureRmVMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSRunCommandResult))]
-    public partial class SetAzureRmVMRunCommand : ComputeAutomationBaseCmdlet
-    {
-        protected override void ProcessRecord()
-        {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
-            ExecuteClientAction(() =>
-            {
-                if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Set))
-                {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string vmName = this.VMName;
-                    RunCommandInput parameters = new RunCommandInput();
-                    Mapper.Map<PSRunCommandInput, RunCommandInput>(this.InputObject, parameters);
-
-                    var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
-                    var psObject = new PSRunCommandResult();
-                    Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
-                    WriteObject(psObject);
-                }
-            });
-        }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [Alias("Name")]
-        [AllowNull]
-        public string VMName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 3,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
-            ValueFromPipeline = true)]
-        [AllowNull]
-        public PSRunCommandInput InputObject { get; set; }
     }
 }
