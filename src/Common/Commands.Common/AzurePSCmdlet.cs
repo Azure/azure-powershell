@@ -138,12 +138,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 if (string.Equals(value, bool.FalseString, StringComparison.OrdinalIgnoreCase))
                 {
                     // Disable data collection only if it is explicitly set to 'false'.
-                    _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
                 }
                 else if (string.Equals(value, bool.TrueString, StringComparison.OrdinalIgnoreCase))
                 {
                     // Enable data collection only if it is explicitly set to 'true'.
-                    _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
                 }
             }
 
