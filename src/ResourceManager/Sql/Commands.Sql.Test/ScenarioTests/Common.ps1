@@ -270,22 +270,6 @@ function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 
 <#
 .SYNOPSIS
-Gets the virtual network subnet id used in the virtual network rules tests
-#>
-function Get-VirtualNetworkSubnetId ($vnetName)
-{
-	$vnetSubscriptionId = "d513e2e9-97db-40f6-8d1a-ab3b340cc81a"
-	$vnetResourceGroupName = "vnetRg"
-	$subnetName = "subnet1"
-	
-	# vnetsubnetid is of form - "/subscriptions/d513e2e9-97db-40f6-8d1a-ab3b340cc81a/resourceGroups/naduttacvnetrg/providers/Microsoft.Network/virtualNetworks/vnetND3/subnets/subnet1"
-	$vnetSubnetId = "/subscriptions/$vnetSubscriptionId/resourceGroups/$vnetResourceGroupName/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
-
-	return $vnetSubnetId
-}
-
-<#
-.SYNOPSIS
 Creates the test environment needed to perform the Server Key Vault Key tests
 #>
 function Create-ServerKeyVaultKeyTestEnvironment ($params)

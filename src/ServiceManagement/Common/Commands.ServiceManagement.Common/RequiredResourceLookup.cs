@@ -91,6 +91,11 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                 return new[] { StorageProviderNamespace };
             }
 
+            if (typeof(T).FullName.Equals("Microsoft.Azure.Management.Network.NetworkManagementClient"))
+            {
+                return new[] { NetworkProviderNamespace };
+            }
+
             return new string[0];
         }
     }
