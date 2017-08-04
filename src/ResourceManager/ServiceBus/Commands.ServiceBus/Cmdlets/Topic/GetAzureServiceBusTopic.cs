@@ -31,33 +31,36 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias(AliasResourceGroup)]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            Position = 1,
            HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(TopicName))
+            if (!string.IsNullOrEmpty(Name))
             {
-                TopicAttributes topicAttributes = Client.GetTopic(ResourceGroup, NamespaceName, TopicName);
+                TopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
                 WriteObject(topicAttributes);
             }
             else
             {
-               IEnumerable<TopicAttributes> topicAttributes = Client.ListTopics(ResourceGroup, NamespaceName);
-               WriteObject(topicAttributes);
+               IEnumerable<TopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
+               WriteObject(topicAttributes,true);
             }
 
             
