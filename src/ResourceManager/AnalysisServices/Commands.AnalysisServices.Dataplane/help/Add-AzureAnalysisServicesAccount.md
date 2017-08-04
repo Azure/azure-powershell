@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-help.xml
+external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
 online version: 
 schema: 2.0.0
 ---
@@ -13,7 +13,7 @@ Adds an authenticated account to use for Azure Analysis Services server cmdlet r
 
 ### UserParameterSetName (Default)
 ```
-Add-AzureAnalysisServicesAccount [-RolloutEnvironment] <String> [[-Credential] <PSCredential>] [-WhatIf]
+Add-AzureAnalysisServicesAccount [[-RolloutEnvironment] <String>] [[-Credential] <PSCredential>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -123,7 +123,19 @@ Name of the Azure Analysis Services environment to which to logon to. Given the 
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: UserParameterSetName
+Aliases: 
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ServicePrincipalWithPasswordParameterSetName, ServicePrincipalWithCertificateParameterSetName
 Aliases: 
 
 Required: True
