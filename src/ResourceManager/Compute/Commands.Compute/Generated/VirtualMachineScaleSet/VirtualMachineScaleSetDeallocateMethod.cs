@@ -202,18 +202,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = false)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
             Mandatory = false)]
         [AllowNull]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 5,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter StayProvisioned { get; set; }

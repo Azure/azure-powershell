@@ -14,14 +14,14 @@ Sets specific actions on a specified VMSS.
 
 ### DefaultParameter (Default)
 ```
-Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-Reimage] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId <String[]>] [-Reimage]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
-Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-ReimageAll] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId <String[]>] [-ReimageAll]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +38,21 @@ PS C:\> Set-AzureRmVmss -Reimage -ResourceGroupName "ContosoGroup" -VMScaleSetNa
 This command reimages the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
 
 ## PARAMETERS
+
+### -InstanceId
+The instance ID of the virtual machine.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Reimage
 Indicates that the cmdlet reimages the VMSS.
