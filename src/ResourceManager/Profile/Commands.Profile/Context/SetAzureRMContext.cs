@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -28,90 +28,94 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to change current Azure context.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName = SubscriptionNameParameterSet, 
-        SupportsShouldProcess=true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName = SubscriptionParameterSet,
+        SupportsShouldProcess = true)]
     [Alias("Select-AzureRmSubscription")]
     [OutputType(typeof(PSAzureContext))]
     public class SetAzureRMContextCommand : AzureRMCmdlet
     {
-        private const string SubscriptionNameParameterSet = "SubscriptionName";
-        private const string SubscriptionIdParameterSet = "SubscriptionId";
+        private const string SubscriptionParameterSet = "Subscription";
+        private const string TenantOnlyParameterSet = "Tenant";
         private const string ContextParameterSet = "Context";
-
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string SubscriptionName { get; set; }
 
         [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true)]
         public PSAzureContext Context { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false,
-                    HelpMessage = "Tenant name or ID", ValueFromPipelineByPropertyName = true)]
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false,
-                    HelpMessage = "Tenant name or ID", ValueFromPipelineByPropertyName = true)]
-        [Alias("Domain")]
-        public string TenantId { get; set; }
+        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
+                    HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = TenantOnlyParameterSet, Mandatory = true,
+                    HelpMessage = "Tenant name or ID")]
+        [Alias("Domain", "TenantId")]
+        [ValidateNotNullOrEmpty]
+        public string Tenant { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false,
-                    HelpMessage = "Subscription Identifer (GUID)", ValueFromPipelineByPropertyName = true)]
-        public string SubscriptionId { get; set; }
+        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = true,
+                    HelpMessage = "Subscription Name or Id")]
+        [Alias("SubscriptionId", "SubscriptionName")]
+        [ValidateNotNullOrEmpty]
+        public string Subscription { get; set; }
+
+        [Parameter(Mandatory =false, HelpMessage ="Additional context properties")]
+        public IDictionary<string, string> ExtendedProperty { get; set;}
+
+        [Parameter(Mandatory = false, HelpMessage = "Name of the context")]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ContextParameterSet)
+            AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+            IProfileOperations profile = localProfile;
+            using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
             {
-                if (ShouldProcess(string.Format(Resources.ChangingContextUsingPipeline, Context.Tenant, Context.Subscription), 
-                    Resources.ContextChangeWarning, string.Empty))
+                if (this.GetAutosaveSetting())
                 {
-                    AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription,
-                        Context.Account,
-                        Context.Environment, Context.Tenant));
-                    CompleteContextProcessing();
-                }
-            }
-            else if (ParameterSetName == SubscriptionNameParameterSet || ParameterSetName == SubscriptionIdParameterSet)
-            {
-                if (string.IsNullOrWhiteSpace(SubscriptionId)
-                    && string.IsNullOrWhiteSpace(SubscriptionName)
-                    && string.IsNullOrWhiteSpace(TenantId))
-                {
-                    throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
+                    profile = new AzureRmAutosaveProfile(localProfile, provider);
                 }
 
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
-                    if (!string.IsNullOrWhiteSpace(SubscriptionId) || !string.IsNullOrWhiteSpace(SubscriptionName))
+                var profileClient = new RMProfileClient(profile);
+                if (ParameterSetName == ContextParameterSet)
+                {
+                    if (ShouldProcess(string.Format(Resources.ChangingContextUsingPipeline, Context.Tenant, Context.Subscription),
+                        Resources.ContextChangeWarning, string.Empty))
                     {
-                        if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, 
-                            SubscriptionName ?? SubscriptionId), 
-                            Resources.SubscriptionChangeWarning , string.Empty))
-                        {
-                            profileClient.SetCurrentContext(SubscriptionId, SubscriptionName, TenantId);
-                            CompleteContextProcessing();
-                        }
+                        AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription,
+                            Context.Account,
+                            Context.Environment, Context.Tenant));
+                        CompleteContextProcessing(profile);
                     }
-                    else
+                }
+                else if (ParameterSetName == TenantOnlyParameterSet)
+                {
+                    if (ShouldProcess(string.Format(Resources.ChangingContextTenant, Tenant),
+                        Resources.TenantChangeWarning, string.Empty))
                     {
-                        if (ShouldProcess(string.Format(Resources.ChangingContextTenant, TenantId),
-                            Resources.TenantChangeWarning, string.Empty))
-                        {
-                            profileClient.SetCurrentContext(TenantId);
-                            CompleteContextProcessing();
-                        }
+                        profileClient.SetCurrentContext(null, Tenant);
+                        CompleteContextProcessing(profile);
                     }
+                }
+                else if (ParameterSetName == SubscriptionParameterSet)
+                {
+                    if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, Subscription),
+                        Resources.SubscriptionChangeWarning, string.Empty))
+                    {
+                        profileClient.SetCurrentContext(Subscription, Tenant);
+                        CompleteContextProcessing(profile);
+                    }
+                }
+                else
+                {
+                    CompleteContextProcessing(profile);
+                }
             }
-            else
-            {
-                CompleteContextProcessing();
-            }
-
         }
 
-        private void CompleteContextProcessing()
+        private void CompleteContextProcessing(IProfileOperations profile)
         {
-            if (AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State != null &&
-                !AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State.Equals(
+            var context = profile.DefaultContext;
+            if (context != null &&
+                context.Subscription != null &&
+                context.Subscription.State != null &&
+                !context.Subscription.State.Equals(
                 "Enabled",
                 StringComparison.OrdinalIgnoreCase))
             {
@@ -119,7 +123,19 @@ namespace Microsoft.Azure.Commands.Profile
                                Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
                                AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
             }
-            WriteObject(new PSAzureContext(AzureRmProfileProvider.Instance.Profile.DefaultContext));
+
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ExtendedProperty)))
+            {
+                foreach (var property in ExtendedProperty)
+                {
+                    if (ShouldProcess(string.Format("Context '{0}'", Name??"default"), string.Format("Setting property '{0}'='{1}' ", property.Key, property.Value)))
+                    {
+                        context.SetProperty(property.Key, property.Value);
+                    }
+                }
+            }
+
+            WriteObject(new PSAzureContext(context));
         }
     }
 }

@@ -132,6 +132,10 @@
   <data name="BothSubscriptionIdAndNameProvided" xml:space="preserve">
     <value>Please provide either a subscription ID or a subscription name.</value>
   </data>
+  <data name="CannotSetDefaultContext" xml:space="preserve">
+    <value>Unable to set default context '{0}'.</value>
+    <comment>{0} is the context</comment>
+  </data>
   <data name="ChangingContextSubscription" xml:space="preserve">
     <value>Switching targeted subscription in the context to '{0}'</value>
     <comment>{0} is subscription (name or id)</comment>
@@ -242,17 +246,21 @@
   <data name="SendFeedbackRecommendationQuestion" xml:space="preserve">
     <value>With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?</value>
   </data>
-  <data name="SetAzureRmContextNoParameterSet" xml:space="preserve">
-    <value>Please provide either a subscription ID, subscription name, tenant Id or domain.</value>
-  </data>
   <data name="SubscriptionChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets in this session at a different subscription</value>
   </data>
   <data name="SubscriptionNameNotFoundError" xml:space="preserve">
     <value>Unable to find subscription with name '{0}'.</value>
   </data>
+  <data name="SubscriptionNameOrIdNotFound" xml:space="preserve">
+    <value>Provided subscription '{0}' does not exist.</value>
+    <comment>{0} = subscription name or subscription id</comment>
+  </data>
   <data name="SubscriptionNotFoundError" xml:space="preserve">
     <value>Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant.</value>
+  </data>
+  <data name="SubscriptionOrTenantRequired" xml:space="preserve">
+    <value>Please provide tenant or subscription.</value>
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>

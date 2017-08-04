@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
@@ -36,11 +37,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
     {
-        private AzureRmProfile _profile, _diskProfile;
+        private IProfileOperations _profile;
         private IAzureTokenCache _cache;
         public Action<string> WarningLog;
 
-        public RMProfileClient(AzureRmProfile profile)
+        public RMProfileClient(IProfileOperations profile)
         {
             _profile = profile;
             var context = _profile.DefaultContext;
@@ -50,18 +51,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _cache = context.TokenCache;
             }
         }
-
-        public RMProfileClient(AzureRmProfile localProfile, AzureRmProfile diskProfile)
-        {
-            _profile = localProfile;
-            var context = _profile.DefaultContext;
-            if (_profile != null && context != null &&
-                context.TokenCache != null)
-            {
-                _cache = context.TokenCache;
-            }
-        }
-
 
         public AzureRmProfile Login(
             IAzureAccount account,
@@ -176,11 +165,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionNameNotFound, account.Id, subscriptionName));
                 }
 
-                _profile.DefaultContext = new AzureContext(account, environment, newTenant);
+                var newContext = new AzureContext(account, environment, newTenant);
+                if (!_profile.TrySetDefaultContext(newContext))
+                {
+                    WriteWarningMessage(string.Format(ProfileMessages.CannotSetDefaultContext, newContext.ToString()));
+                }
             }
             else
             {
-                _profile.DefaultContext = new AzureContext(newSubscription, account, environment, newTenant);
+                var newContext = new AzureContext(newSubscription, account, environment, newTenant);
+                if (!_profile.TrySetDefaultContext(newContext))
+                {
+                    WriteWarningMessage(string.Format(ProfileMessages.CannotSetDefaultContext, newContext.ToString()));
+                }
+
                 if (!newSubscription.State.Equals("Enabled", StringComparison.OrdinalIgnoreCase))
                 {
                     WriteWarningMessage(string.Format(
@@ -191,89 +189,48 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             _profile.DefaultContext.TokenCache = _cache;
 
-            return _profile;
+            return _profile.ToProfile();
         }
 
-        public IAzureContext SetCurrentContext(string tenantId)
+        public IAzureContext SetCurrentContext(string subscriptionNameOrId, string tenantId)
         {
-            IAzureSubscription firstSubscription = GetFirstSubscription(tenantId);
-
-            if (firstSubscription != null)
+            IAzureSubscription subscription = null;
+            IAzureTenant tenant = null;
+            Guid subscriptionId;
+            IAzureContext context = new AzureContext();
+            context.CopyFrom(_profile.DefaultContext);
+            if (!string.IsNullOrWhiteSpace(subscriptionNameOrId))
             {
-                SwitchSubscription(firstSubscription);
-            }
-            else
-            {
-                if (_profile.DefaultContext.Account != null)
+                if (!Guid.TryParse(subscriptionNameOrId, out subscriptionId))
                 {
-                    _profile.DefaultContext.Account.SetTenants(tenantId);
+                    TryGetSubscriptionById(tenantId, subscriptionNameOrId, out subscription);
                 }
-                //TODO: should not we clean up this field? It could be a bogus subscription we are leaving behind...
-                if (_profile.DefaultContext.Subscription != null)
+                else
                 {
-                    _profile.DefaultContext.Subscription.SetTenant(tenantId);
+                    TryGetSubscriptionByName(tenantId, subscriptionNameOrId, out subscription);
                 }
-                _profile.SetContextWithCache(new AzureContext(
-                     _profile.DefaultContext.Account,
-                     _profile.DefaultContext.Environment,
-                     CreateTenant(tenantId)));
-            }
-            return _profile.DefaultContext;
-        }
 
-        public IAzureContext SetCurrentContext(string subscriptionId, string subscriptionName, string tenantId)
-        {
-            IAzureSubscription subscription;
+                if (subscription == null)
+                {
+                    throw new ArgumentException(ProfileMessages.SubscriptionOrTenantRequired);
+                }
 
-            if (!string.IsNullOrWhiteSpace(subscriptionId))
-            {
-                TryGetSubscriptionById(tenantId, subscriptionId, out subscription);
+                tenant = string.IsNullOrWhiteSpace(tenantId) ? context.Tenant : CreateTenant(tenantId);
             }
-            else if (!string.IsNullOrWhiteSpace(subscriptionName))
+            else if (!string.IsNullOrWhiteSpace(tenantId))
             {
-                TryGetSubscriptionByName(tenantId, subscriptionName, out subscription);
+                subscription = GetFirstSubscription(tenantId);
+                tenant = CreateTenant(tenantId);
             }
             else
             {
-                throw new ArgumentException(string.Format(
-                    "Please provide either subscriptionId or subscriptionName"));
+                throw new ArgumentException(ProfileMessages.SubscriptionOrTenantRequired);
             }
 
-            if (subscription == null)
-            {
-                string subscriptionFilter = string.IsNullOrWhiteSpace(subscriptionId) ? subscriptionName : subscriptionId;
-                throw new ArgumentException(string.Format(
-                    "Provided subscription {0} does not exist", subscriptionFilter));
-            }
-            else
-            {
-                SwitchSubscription(subscription);
-            }
+            context.WithTenant(tenant).WithSubscription(subscription);
+            _profile.TrySetDefaultContext(context);
 
-            return _profile.DefaultContext;
-        }
-
-        private void SwitchSubscription(IAzureSubscription subscription)
-        {
-            string tenantId = subscription.GetTenant();
-
-            if (_profile.DefaultContext.Account != null)
-            {
-                _profile.DefaultContext.Account.SetTenants(tenantId);
-            }
-            if (_profile.DefaultContext.Subscription != null)
-            {
-                _profile.DefaultContext.Subscription.SetTenant(tenantId);
-            }
-
-            var newSubscription = new AzureSubscription();
-            newSubscription.CopyFrom(subscription);
-
-            _profile.SetContextWithCache(new AzureContext(
-                newSubscription,
-                _profile.DefaultContext.Account,
-                _profile.DefaultContext.Environment,
-                CreateTenant(tenantId)));
+            return context;
         }
 
         public List<AzureTenant> ListTenants(string tenant = "")
@@ -329,30 +286,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     string.Format(AuthenticationMessages.ChangingDefaultEnvironmentNotSupported, "environment"));
             }
 
-            if (_profile.EnvironmentTable.ContainsKey(environment.Name))
-            {
-                _profile.EnvironmentTable[environment.Name] =
-                    MergeEnvironmentProperties(environment, _profile.EnvironmentTable[environment.Name]);
-            }
-            else
-            {
-                _profile.EnvironmentTable[environment.Name] = environment;
-            }
-
-            return _profile.EnvironmentTable[environment.Name];
+            IAzureEnvironment result = null;
+            _profile.TrySetEnvironment(environment, out result);
+            return result;
         }
 
         public List<IAzureEnvironment> ListEnvironments(string name)
         {
             var result = new List<IAzureEnvironment>();
-
+            IAzureEnvironment environment;
             if (string.IsNullOrWhiteSpace(name))
             {
                 result.AddRange(_profile.Environments);
             }
-            else if (_profile.EnvironmentTable.ContainsKey(name))
+            else if (_profile.TryGetEnvironment(name, out environment))
             {
-                result.Add(_profile.EnvironmentTable[name]);
+                result.Add(environment);
             }
 
             return result;
@@ -369,10 +318,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 throw new ArgumentException(AuthenticationMessages.RemovingDefaultEnvironmentsNotSupported, "name");
             }
 
-            if (_profile.EnvironmentTable.ContainsKey(name))
+            IAzureEnvironment environment;
+            if (_profile.TryRemoveEnvironment(name, out environment))
             {
-                var environment = _profile.EnvironmentTable[name];
-                _profile.EnvironmentTable.Remove(name);
                 return environment;
             }
             else
@@ -429,50 +377,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 tenant.Directory = tenantIdOrDomain;
             }
             return tenant;
-        }
-
-        private IAzureEnvironment MergeEnvironmentProperties(IAzureEnvironment environment1, IAzureEnvironment environment2)
-        {
-            if (environment1 == null || environment2 == null)
-            {
-                throw new ArgumentNullException("environment1");
-            }
-            if (!string.Equals(environment1.Name, environment2.Name, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new ArgumentException("Environment names do not match.");
-            }
-
-            AzureEnvironment mergedEnvironment = new AzureEnvironment
-            {
-                Name = environment1.Name,
-                ActiveDirectoryAuthority = environment1.ActiveDirectoryAuthority ?? environment2.ActiveDirectoryAuthority,
-                ActiveDirectoryServiceEndpointResourceId = environment1.ActiveDirectoryServiceEndpointResourceId ?? environment2.ActiveDirectoryServiceEndpointResourceId,
-                AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = environment1.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix ?? environment2.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
-                AzureKeyVaultDnsSuffix = environment1.AzureKeyVaultDnsSuffix ?? environment2.AzureKeyVaultDnsSuffix,
-                GalleryUrl = environment1.GalleryUrl ?? environment2.GalleryUrl,
-                GraphEndpointResourceId = environment1.GraphEndpointResourceId ?? environment2.GraphEndpointResourceId,
-                AdTenant = environment1.AdTenant ?? environment2.AdTenant,
-                AzureDataLakeStoreFileSystemEndpointSuffix = environment1.AzureDataLakeStoreFileSystemEndpointSuffix ?? environment2.AzureDataLakeStoreFileSystemEndpointSuffix,
-                AzureKeyVaultServiceEndpointResourceId = environment1.AzureKeyVaultServiceEndpointResourceId ?? environment2.AzureKeyVaultServiceEndpointResourceId,
-                DataLakeEndpointResourceId = environment1.DataLakeEndpointResourceId ?? environment2.DataLakeEndpointResourceId,
-                GraphUrl = environment1.GraphUrl ?? environment2.GraphUrl,
-                ManagementPortalUrl = environment1.ManagementPortalUrl ?? environment2.ManagementPortalUrl,
-                OnPremise = environment1.OnPremise || environment2.OnPremise,
-                PublishSettingsFileUrl = environment1.PublishSettingsFileUrl ?? environment2.PublishSettingsFileUrl,
-                ResourceManagerUrl = environment1.ResourceManagerUrl ?? environment2.ResourceManagerUrl,
-                ServiceManagementUrl = environment1.ServiceManagementUrl ?? environment2.ServiceManagementUrl,
-                SqlDatabaseDnsSuffix = environment1.SqlDatabaseDnsSuffix ?? environment2.SqlDatabaseDnsSuffix,
-                StorageEndpointSuffix = environment1.StorageEndpointSuffix ?? environment2.StorageEndpointSuffix,
-                TrafficManagerDnsSuffix = environment1.TrafficManagerDnsSuffix ?? environment2.TrafficManagerDnsSuffix
-            };
-
-            foreach (var property in environment1.ExtendedProperties.Keys.Union(environment2.ExtendedProperties.Keys))
-            {
-                mergedEnvironment.ExtendedProperties[property] = environment1.ExtendedProperties.ContainsKey(property) ?
-                    environment1.ExtendedProperties[property] : environment2.ExtendedProperties[property];
-            }
-
-            return mergedEnvironment;
         }
 
         private IAccessToken AcquireAccessToken(

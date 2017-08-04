@@ -16,6 +16,7 @@ using System;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
@@ -41,19 +42,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             _current = currentProfile;
             _provider = defaultProvider;
         }
+        AzureRmProfile Profile
+        {
+            get { return _current; }
+        }
 
-        public AzureRmProfile Profile
+        public IAzureContext DefaultContext
         {
             get
             {
-                return _current;
+                return Profile.DefaultContext;
             }
         }
 
-        public bool TryAddContext(IAzureContext context)
+        public IEnumerable<IAzureEnvironment> Environments
         {
-            bool local = Profile.TryAddContext(context);
-            bool remote = DefaultProfile.TryAddContext(context);
+            get
+            {
+                return Profile.Environments;
+            }
+        }
+
+        public bool TryAddContext(IAzureContext context, out string name)
+        {
+            bool local = Profile.TryAddContext(context, out name);
+            string remoteName;
+            bool remote = DefaultProfile.TryAddContext(context, out remoteName);
             return local || remote;
         }
 
@@ -103,10 +117,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             return result;
         }
 
-        public bool TrySetContext(IAzureContext context)
+        public bool TrySetContext(IAzureContext context, out string name)
         {
-            bool local = Profile.TrySetContext(context);
-            bool remote = DefaultProfile.TrySetContext(context);
+
+            bool local = Profile.TrySetContext(context, out name);
+            string remoteName;
+            bool remote = DefaultProfile.TrySetContext(context, out remoteName);
             return local || remote;
         }
 
@@ -134,6 +150,44 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             return result;
         }
 
+        public bool TrySetDefaultContext(IAzureContext context)
+        {
+            bool result = false;
+            if (Profile.TrySetDefaultContext(context))
+            {
+                result = true;
+                DefaultProfile.TrySetDefaultContext(context);
+            }
+
+            return result;
+        }
+
+        public bool TrySetEnvironment(IAzureEnvironment environment, out IAzureEnvironment mergedEnvironment)
+        {
+            bool result = Profile.TrySetEnvironment(environment, out mergedEnvironment);
+            IAzureEnvironment other;
+            DefaultProfile.TrySetEnvironment(environment, out other);
+            return result;
+        }
+
+        public bool HasEnvironment(string name)
+        {
+            return Profile.HasEnvironment(name);
+        }
+
+        public bool TryGetEnvironment(string name, out IAzureEnvironment environment)
+        {
+            return Profile.TryGetEnvironment(name, out environment);
+        }
+
+        public bool TryRemoveEnvironment(string name, out IAzureEnvironment environment)
+        {
+            bool result = Profile.TryRemoveEnvironment(name, out environment);
+            IAzureEnvironment other;
+            DefaultProfile.TryRemoveEnvironment(name, out other);
+            return result;
+        }
+
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -145,9 +199,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 }
             }
         }
+        public AzureRmProfile ToProfile()
+        {
+            return Profile;
+        }
+
         public void Dispose()
         {
             Dispose(true);
         }
+
     }
 }

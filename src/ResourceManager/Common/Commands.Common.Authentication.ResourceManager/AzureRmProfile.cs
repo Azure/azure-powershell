@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public AzureRmProfile Profile { get { return this; } }
 
-        public bool TryAddContext(IAzureContext context)
+        public bool TryAddContext(IAzureContext context, out string name)
         {
             if (context == null)
             {
@@ -273,11 +273,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
 
             bool result = false;
-            string contextName;
-            if (!TryFindContext(context, out contextName) && TryGetContextName(context, out contextName))
+            if (!TryFindContext(context, out name) && TryGetContextName(context, out name))
             {
-                Contexts[contextName] = context;
-                result = TryAddContext(contextName, context);
+                result = TryAddContext(name, context);
             }
 
             return result;
@@ -383,13 +381,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
-        public bool TrySetContext(IAzureContext context)
+        public bool TrySetContext(IAzureContext context, out string name)
         {
             bool result = false;
-            string contextName;
-            if (!TryFindContext(context, out contextName))
+            if (!TryFindContext(context, out name))
             {
-                result = TryAddContext(context);
+                result = TryAddContext(context, out name);
             }
 
             return result;
@@ -405,6 +402,71 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
 
             return result;
+        }
+
+        public bool TrySetDefaultContext(IAzureContext context)
+        {
+            bool result = false;
+            string contextName;
+            if (TryFindContext(context, out contextName) || TryAddContext(context, out contextName))
+            {
+                result = TrySetDefaultContext(contextName);
+            }
+
+            return result;
+        }
+
+        public bool TrySetEnvironment(IAzureEnvironment environment, out IAzureEnvironment mergedEnvironment)
+        {
+            bool result = false;
+            mergedEnvironment = environment;
+            if (environment != null && !AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
+            {
+
+                if (Profile.EnvironmentTable.ContainsKey(environment.Name))
+                {
+                    mergedEnvironment = mergedEnvironment.Merge( Profile.EnvironmentTable[environment.Name]);
+                }
+
+                Profile.EnvironmentTable[environment.Name] = mergedEnvironment;
+                result = true;
+            }
+
+            return result;
+        }
+
+        public bool HasEnvironment(string name)
+        {
+            return EnvironmentTable.ContainsKey(name);
+        }
+
+        public bool TryGetEnvironment(string name, out IAzureEnvironment environment)
+        {
+            bool result = false;
+            environment = null;
+            if (HasEnvironment(name))
+            {
+                environment = EnvironmentTable[name];
+                result = true;
+            }
+
+            return result;
+        }
+
+        public bool TryRemoveEnvironment(string name, out IAzureEnvironment environment)
+        {
+            bool result = false;
+            if (TryGetEnvironment(name, out environment))
+            {
+                result = EnvironmentTable.Remove(name);
+            }
+
+            return result;
+        }
+
+        public AzureRmProfile ToProfile()
+        {
+            return this;
         }
     }
 }

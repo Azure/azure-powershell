@@ -23,15 +23,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
     public interface IProfileOperations
     {
-        AzureRmProfile Profile { get; }
+        AzureRmProfile ToProfile();
         bool TryAddContext(string name, IAzureContext context);
-        bool TryAddContext(IAzureContext context);
+        bool TryAddContext(IAzureContext context, out string name);
         bool TryFindContext(IAzureContext context, out string name);
         bool TryGetContextName(IAzureContext context, out string name);
         bool TryRemoveContext(string name);
         bool TryRenameContext(string sourceName, string TargetName);
         bool TrySetContext(string name, IAzureContext context);
-        bool TrySetContext(IAzureContext context);
+        bool TrySetContext(IAzureContext context, out string name);
         bool TrySetDefaultContext(string name);
+        bool TrySetDefaultContext(IAzureContext context);
+        bool TrySetEnvironment(IAzureEnvironment environment, out IAzureEnvironment mergedEnvironment);
+        IAzureContext DefaultContext { get; }
+        bool HasEnvironment(string name);
+        bool TryGetEnvironment(string name, out IAzureEnvironment environment);
+        bool TryRemoveEnvironment(string name, out IAzureEnvironment environment);
+        IEnumerable<IAzureEnvironment> Environments { get; }
     }
 }

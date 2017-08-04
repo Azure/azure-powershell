@@ -71,9 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureRmAutosaveProfile.cs" />
-    <Compile Include="AzureRmCmdletExtensions.cs" />
     <Compile Include="AzureRmProfile.cs" />
     <Compile Include="AzureRmProfileConverter.cs" />
+    <Compile Include="ContextModelExtensions.cs" />
     <Compile Include="IProfileOperations.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -111,10 +111,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

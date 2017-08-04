@@ -128,11 +128,7 @@ namespace Microsoft.Azure.Commands.Profile
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Environment)))
             {
                 var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-                if (profile.EnvironmentTable.ContainsKey(Environment))
-                {
-                    _environment = profile.EnvironmentTable[Environment];
-                }
-                else
+                if (!profile.TryGetEnvironment(Environment, out _environment))
                 {
                     throw new PSInvalidOperationException(
                         string.Format(Resources.UnknownEnvironment, Environment));
@@ -202,15 +198,16 @@ namespace Microsoft.Azure.Commands.Profile
                     AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
                 }
 
-                AzureRmProfile diskProfile = null;
+                AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+                IProfileOperations defaultProfile = localProfile;
                 using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
                 {
                     if (this.GetAutosaveSetting())
                     {
-                        diskProfile = new AzureRmProfile(provider);
+                        defaultProfile = new AzureRmAutosaveProfile(localProfile, provider);
                     }
 
-                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>(), diskProfile);
+                    var profileClient = new RMProfileClient(defaultProfile);
 
                     WriteObject((PSAzureProfile)profileClient.Login(
                         azureAccount,

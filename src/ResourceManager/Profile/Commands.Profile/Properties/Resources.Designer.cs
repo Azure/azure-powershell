@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Profile.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Profile.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Profile.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -103,6 +102,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string BothSubscriptionIdAndNameProvided {
             get {
                 return ResourceManager.GetString("BothSubscriptionIdAndNameProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to set default context &apos;{0}&apos;..
+        /// </summary>
+        internal static string CannotSetDefaultContext {
+            get {
+                return ResourceManager.GetString("CannotSetDefaultContext", resourceCulture);
             }
         }
         
@@ -404,15 +412,6 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide either a subscription ID, subscription name, tenant Id or domain..
-        /// </summary>
-        internal static string SetAzureRmContextNoParameterSet {
-            get {
-                return ResourceManager.GetString("SetAzureRmContextNoParameterSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Targeting all subsequent cmdlets in this session at a different subscription.
         /// </summary>
         internal static string SubscriptionChangeWarning {
@@ -431,11 +430,29 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided subscription &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string SubscriptionNameOrIdNotFound {
+            get {
+                return ResourceManager.GetString("SubscriptionNameOrIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant..
         /// </summary>
         internal static string SubscriptionNotFoundError {
             get {
                 return ResourceManager.GetString("SubscriptionNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide tenant or subscription..
+        /// </summary>
+        internal static string SubscriptionOrTenantRequired {
+            get {
+                return ResourceManager.GetString("SubscriptionOrTenantRequired", resourceCulture);
             }
         }
         

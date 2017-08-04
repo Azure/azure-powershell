@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 catch (IOException)
                 {
                     tries++;
-                    TestMockSupport.Delay(RetryInterval);
+                    //TestMockSupport.Delay(RetryInterval);
                 }
             }
             while (tries <= MaxTries && stream == null);

@@ -19,6 +19,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -41,12 +43,22 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
+            AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+            IProfileOperations defaultProfile = localProfile;
+            using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
+            {
+                if (this.GetAutosaveSetting())
+                {
+                    defaultProfile = new AzureRmAutosaveProfile(localProfile, provider);
+                }
 
-            ConfirmAction(
+                var profileClient = new RMProfileClient(defaultProfile);
+
+                ConfirmAction(
                 "removing environment",
                 Name,
                 () => WriteObject(new PSAzureEnvironment(profileClient.RemoveEnvironment(Name))));
+            }
         }
     }
 }
