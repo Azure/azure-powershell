@@ -165,7 +165,7 @@ param
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = "WEST US 2"
+    $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
     $location = Get-ProviderLocation $resourceTypeParent
 	$vpnclientAuthMethod = "EAPTLS"

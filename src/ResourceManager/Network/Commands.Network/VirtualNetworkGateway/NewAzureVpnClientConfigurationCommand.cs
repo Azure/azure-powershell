@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Comma separated list of client root certificates")]
-        public string ClientRootCertificates { get; set; }
+            HelpMessage = "A list of client root certificate paths")]
+        public List<string> ClientRootCertificates { get; set; }
 
         public override void Execute()
         {
@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Read the radius server root certificate if present
-            if (!string.IsNullOrWhiteSpace(this.ClientRootCertificates))
+            if (this.ClientRootCertificates != null)
             {
-                foreach (string clientRootCertPath in this.ClientRootCertificates.Split(','))
+                foreach (string clientRootCertPath in this.ClientRootCertificates)
                 {
                     vpnClientParams.ClientRootCertificates = new List<string>();
                     if (File.Exists(clientRootCertPath))
@@ -138,10 +138,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
-
-            //TODO:- This code is added just for current release of P2S feature as Generatevpnclientpackage API is broken & need to be fixed on server 
-            //side as well as in overall Poweshell flow
-            //string packageUrl = this.VirtualNetworkGatewayClient.Generatevpnclientpackage(ResourceGroupName, VirtualNetworkGatewayName, vnetVpnClientParametersModel);
 
             string packageUrl = this.NetworkClient.GenerateVpnProfile(ResourceGroupName, VirtualNetworkGatewayName, vnetVpnClientParametersModel);
 

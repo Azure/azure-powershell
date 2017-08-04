@@ -211,7 +211,8 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerAddress
-Radius server address.```yaml
+Radius server address.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -224,7 +225,8 @@ Accept wildcard characters: False
 ```
 
 ### -RadiusServerSecret
-Radius server secret.```yaml
+Radius server secret.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
