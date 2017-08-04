@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         private const string ServicePrincipalWithCertificateParameterSet = "ServicePrincipalWithCertificateParameterSetName";
 
         [Parameter(ParameterSetName = UserParameterSet,
-            Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to", Position = 0)]
+            Mandatory = false, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to", Position = 0)]
         [Parameter(ParameterSetName = ServicePrincipalWithPasswordParameterSet,
             Mandatory = true, HelpMessage = "Name of the Azure Analysis Services environment to which to logon to")]
         [Parameter(ParameterSetName = ServicePrincipalWithCertificateParameterSet,
