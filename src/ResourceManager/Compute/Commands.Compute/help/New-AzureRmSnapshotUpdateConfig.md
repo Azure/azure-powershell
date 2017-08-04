@@ -275,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshotUpdate
 
 ## NOTES
 

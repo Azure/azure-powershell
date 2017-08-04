@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
             // The FilterRoleAssignments takes care of paging internally
             IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: subscriptionId)
-                                                .Where(ra => ra.Scope == options.Scope.TrimEnd('/'));
+                                                .Where(ra => ra.Scope.Equals(options.Scope.TrimEnd('/'), StringComparison.OrdinalIgnoreCase));
 
             if (roleAssignments == null || !roleAssignments.Any())
             {
@@ -424,7 +424,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             ValidateRoleDefinition(roleDefinition);
 
-            PSRoleDefinition fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, roleDefinition.AssignableScopes.First());
+			PSRoleDefinition fetchedRoleDefinition = null;
+			foreach (String scope in roleDefinition.AssignableScopes)
+			{
+				fetchedRoleDefinition = this.GetRoleDefinition(roleDefinitionId, scope);
+				if (fetchedRoleDefinition != null)
+				{
+					break;
+				}
+			}
+
             if (fetchedRoleDefinition == null)
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, roleDefinition.Id));
@@ -509,6 +518,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }
+
         }
 
         public static void ValidateScope(string scope, bool allowEmpty)

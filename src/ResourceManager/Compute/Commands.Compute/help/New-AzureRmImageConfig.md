@@ -160,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Management.Compute.Models.Image
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ## NOTES
 
