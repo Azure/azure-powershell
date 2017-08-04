@@ -15,7 +15,7 @@ Adds a network interface configuration to the VMSS.
 ```
 Add-AzureRmVmssNetworkInterfaceConfiguration [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-Name] <String>] [[-Primary] <Boolean>] [[-Id] <String>]
- [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-EnableAcceleratedNetworking <Boolean>]
+ [[-IpConfiguration] <VirtualMachineScaleSetIPConfiguration[]>] [-EnableAcceleratedNetworking]
  [-NetworkSecurityGroupId <String>] [-DnsSettingsDnsServer <String[]>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 Specifies whether the network interface is accelerated networking-enabled.
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 

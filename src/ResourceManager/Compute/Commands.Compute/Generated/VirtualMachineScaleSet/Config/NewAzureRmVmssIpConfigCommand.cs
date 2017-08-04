@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public bool? Primary { get; set; }
+        public SwitchParameter Primary { get; set; }
 
         [Parameter(
             Mandatory = false,
