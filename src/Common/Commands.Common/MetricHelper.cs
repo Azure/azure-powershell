@@ -54,9 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// </summary>
         private readonly object _lock = new object();
 
-        private string _hashMacAddress = string.Empty;
+        private static string _hashMacAddress = string.Empty;
 
-        private string HashMacAddress
+        private static string HashMacAddress
         {
             get
             {
