@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public bool? EnableAcceleratedNetworking { get; set; }
+        public SwitchParameter EnableAcceleratedNetworking { get; set; }
 
         [Parameter(
             Mandatory = false,
