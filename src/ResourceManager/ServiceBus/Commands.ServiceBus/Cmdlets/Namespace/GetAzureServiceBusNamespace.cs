@@ -32,13 +32,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
-        public string ResourceGroup { get; set; }
+        [Alias("ResourceGroup")]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets a Namespace from the service.
@@ -46,16 +48,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <returns>A single Namespace</returns>
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(NamespaceName))
+            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {
                 // Get a namespace
-                NamespaceAttributes attributes = Client.GetNamespace(ResourceGroup, NamespaceName);
+                NamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
                 WriteObject(attributes);
             }
-            else if (!string.IsNullOrEmpty(ResourceGroup) && string.IsNullOrEmpty(NamespaceName))
+            else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
             {
                 // List all namespaces in given resource group 
-                IEnumerable<NamespaceAttributes> namespaceList = Client.ListNamespaces(ResourceGroup);
+                IEnumerable<NamespaceAttributes> namespaceList = Client.ListNamespaces(ResourceGroupName);
                 WriteObject(namespaceList.ToList(), true);
             }
             else
