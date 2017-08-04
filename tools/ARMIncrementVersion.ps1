@@ -30,7 +30,7 @@ function ReplaceVersion([string]$key, [string]$line)
                     $version[2] = "0"
                 }
                 
-                if ($cMinor -eq $true)
+                if ($cMinor -eq $true -or $cPatch -eq $true)
                 {
                     $version[2] = 1 + $version[2]
                 }
