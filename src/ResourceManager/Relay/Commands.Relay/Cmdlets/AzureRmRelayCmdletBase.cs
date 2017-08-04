@@ -131,7 +131,6 @@ namespace Microsoft.Azure.Commands.Relay.Commands
 
             return default(T);
         }
-
         #region TagsHelper
 
         public Dictionary<string, string> ConvertTagsToDictionary(Hashtable tags)
