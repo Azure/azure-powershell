@@ -155,6 +155,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AutomationScenarioTestsBase.cs" />
     <Compile Include="ScenarioTests\AutomationTests.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeReportTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscCompilationJobTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationConfigurationTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCertificateTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationConnectionTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCredentialTest.cs" />

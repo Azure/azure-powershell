@@ -31,41 +31,45 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            Position = 2,
            HelpMessage = "Topic Name.")]
+        [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = false,
          ValueFromPipelineByPropertyName = false,
          Position = 3,
          HelpMessage = "Subscription Name.")]
+        [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(SubscriptionName))
+            if (!string.IsNullOrEmpty(Name))
             {
-                SubscriptionAttributes subscriptionAttributes = Client.GetSubscription(ResourceGroup, NamespaceName, TopicName, SubscriptionName);
+                SubscriptionAttributes subscriptionAttributes = Client.GetSubscription(ResourceGroupName, Namespace, Topic, Name);
                 WriteObject(subscriptionAttributes);
             }
             else
             {
-                IEnumerable<SubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroup, NamespaceName, TopicName);
-                WriteObject(subscriptionAttributes);
+                IEnumerable<SubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
+                WriteObject(subscriptionAttributes,true);
             }
             
         }

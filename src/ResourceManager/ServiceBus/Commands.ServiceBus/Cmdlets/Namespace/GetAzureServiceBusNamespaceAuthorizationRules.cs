@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
+    [ObsoleteAttribute("'Get-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Get-AzureRmServiceBusAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Get, ServiceBusNamespaceAuthorizationRuleVerb), OutputType(typeof(List<SharedAccessAuthorizationRuleAttributes>))]
     public class GetAzureRmServiceBusNamespaceAuthorizationRule : AzureServiceBusCmdletBase
     {
@@ -39,26 +41,28 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             Position = 1,
             HelpMessage = "ServiceBus Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "ServiceBus Namespace AuthorizationRule Name.")]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(AuthorizationRuleName))
+            if (!string.IsNullOrEmpty(Name))
             {
                 // Get a ServiceBus namespace AuthorizationRules
-                var authRule = Client.GetNamespaceAuthorizationRules(ResourceGroup, NamespaceName, AuthorizationRuleName);
+                var authRule = Client.GetNamespaceAuthorizationRules(ResourceGroup, Namespace, Name);
                 WriteObject(authRule);
             }
             else
             {
                 // Get all ServiceBus namespace AuthorizationRules
-                var authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroup, NamespaceName);
+                var authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroup, Namespace);
                 WriteObject(authRuleList.ToList(), true);
             }
         }

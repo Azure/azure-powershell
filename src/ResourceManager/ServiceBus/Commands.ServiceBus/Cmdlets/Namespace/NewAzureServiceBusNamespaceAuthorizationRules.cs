@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
     /// 'New-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is create a new ServiceBus Namespace AuthorizationRule
     /// </summary>
+    [ObsoleteAttribute("'New-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.New, ServiceBusNamespaceAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class NewAzureRmServiceBusNamespaceAuthorizationRule : AzureServiceBusCmdletBase
     {
@@ -37,27 +39,31 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             Position = 1,
             HelpMessage = "ServiceBus Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            Position = 2,
            HelpMessage = "AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("Listen", "Send", "Manage",
+            IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {
             SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
 
-            NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, NamespaceName);
+            NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, Namespace);
 
             IList<Management.ServiceBus.Models.AccessRights?> newListAry = new List<Management.ServiceBus.Models.AccessRights?>();
 
@@ -66,14 +72,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
                 newListAry.Add(ParseAccessRights(test));
             }
 
-            sasRule.Name = AuthorizationRuleName;
+            sasRule.Name = Name;
             sasRule.Rights = newListAry;
             sasRule.Location = getNameSpace.Location;
 
             // Create a new ServiceBus namespace authorizationRule
-            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Create new Authorizationrule:{0} for NameSpace:{1} of ResourceGroup:{2}", AuthorizationRuleName, NamespaceName, ResourceGroup)))
+            if (ShouldProcess(target: Name, action: string.Format("Create new Authorizationrule:{0} for NameSpace:{1} of ResourceGroup:{2}", Name, Namespace, ResourceGroup)))
             {
-                WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, NamespaceName, sasRule.Name, sasRule));
+                WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, Namespace, sasRule.Name, sasRule));
             }
         }
     }

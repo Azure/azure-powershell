@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 		[Obsolete("This property is deprecated and will be removed in a future release")]
 		public string OwnerId
 		{
-			get
-			{
-				return ManagedBy;
-			}
-			set
-			{
-				ManagedBy = value;
-			}
-		}
+            get
+            {
+                return ManagedBy;
+            }
+            set
+            {
+                OwnerId = value;
+            }
+        }
 	}
 }
