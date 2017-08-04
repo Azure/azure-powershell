@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+- Data collection has been enabled by default. Usage data is collected by Microsoft in order to improve the user experience. The data is anonymous and does not include command-line argument values.
+    - Use the Disable-AzureRmDataCollection cmdlet to turn the feature off
+    - Use the Enable-AzureRmDataCollection cmdlet to turn this feature on
 
 ## Version 3.2.1
 - Fix issue with non-interactive user authentication in RDFE (link)[https://github.com/Azure/azure-powershell/issues/4299]
