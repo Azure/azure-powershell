@@ -9,6 +9,8 @@ schema: 2.0.0
 ## SYNOPSIS
 Updates the specified Event Hubs namespace.
 
+## SYNTAX
+
 ### NamespaceParameterSet (Default)
 ```
 Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
