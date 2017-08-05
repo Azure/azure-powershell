@@ -107,8 +107,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (PassThru.IsPresent)
             {
-                var certificate = KeyVaultCertificate.FromCertificateBundle(certBundle);
-                this.WriteObject(certificate);
+                WriteObject( certBundle );
             }
         }
     }
