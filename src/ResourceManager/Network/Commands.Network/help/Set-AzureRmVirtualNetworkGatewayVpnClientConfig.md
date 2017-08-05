@@ -14,7 +14,8 @@ Sets the VPN client address pool for a virtual network gateway.
 
 ```
 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway <PSVirtualNetworkGateway>
- -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> [<CommonParameters>]
+ -VpnClientAddressPool <System.Collections.Generic.List`1[System.String]> [-RadiusServerAddress <String>]
+ [-RadiusServerSecret <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,47 @@ The first command creates an object reference to the gateway and the object is s
 
 The second command in the example then uses the **Set-AzureRmVirtualNetworkGatewayVpnClientConfig** cmdlet to assign the address pool 10.0.0.0/16 to ContosoVirtualGateway.
 
+### Example 2: Assign a VPN client address pool to a virtual network gateway with externally configured radius
+```
+PS C:\>$Gateway = Get-AzureRmVirtualNetworkGateway -Name "ContosoVirtualGateway"
+PS C:\> Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $Gateway -VpnClientAddressPool "10.0.0.0/16" -RadiusServerAddress "192.168.0.1" -RadiusServerSecret "test123"
+```
+
+This example assigns a VPN client address pool to a virtual network gateway named ContosoVirtualGateway with an externally configured radius server with IP 192.160.0.1.
+
+The first command creates an object reference to the gateway and the object is stored in a variable named $Gateway.
+
+The second command in the example then uses the **Set-AzureRmVirtualNetworkGatewayVpnClientConfig** cmdlet to assign the address pool 10.0.0.0/16 and the external radius server details to ContosoVirtualGateway.
+
 ## PARAMETERS
+
+### -RadiusServerAddress
+P2S External Radius Server Address
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RadiusServerSecret
+P2S External Radius Server Secret
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -VirtualNetworkGateway
 Specifies an object reference to the virtual network gateway that contains the VPN client configuration settings that this cmdlet modifies.

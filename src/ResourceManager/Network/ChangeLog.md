@@ -29,6 +29,14 @@
     - New-AzureRmApplicationGatewayBackendHttpSettings
     - Set-AzureRmApplicationGatewayBackendHttpSettings 
 
+* Added the ability to configure external radius based P2S authentication to the following commandlets
+    - New-AzureVirtualNetworkGateway
+    - Update-AzureVirtualNetworkGateway
+    - New-AzureRmVirtualNetworkGatewayVpnClientConfig
+    - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+* Added cmdlet to allow generation of VpnProfiles for external radius based P2S
+    - New-AzureRmVpnClientConfiguration
+
 ## Version 4.2.1
 
 ## Version 4.2.0
