@@ -26,19 +26,20 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureRmVpnClientConfiguration"), OutputType(typeof(string))]
     public class NewAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
     {
+        [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "ResourceGroup name")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "VirtualNetworkGateway name")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
-        public string VirtualNetworkGatewayName { get; set; }
+        public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -64,13 +65,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Radius server root certificate path")]
-        public string RadiusRootCert { get; set; }
+        public string RadiusRootCertificateFile { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of client root certificate paths")]
-        public List<string> ClientRootCertificates { get; set; }
+        public List<string> ClientRootCertificateFile { get; set; }
 
         public override void Execute()
         {
@@ -87,32 +88,30 @@ namespace Microsoft.Azure.Commands.Network
                 : this.AuthenticationMethod;
 
             // Read the radius server root certificate if present
-            if (!string.IsNullOrWhiteSpace(RadiusRootCert))
+            if (!string.IsNullOrWhiteSpace(this.RadiusRootCertificateFile))
             {
-                if (File.Exists(RadiusRootCert))
+                if (File.Exists(this.RadiusRootCertificateFile))
                 {
                     try
                     {
-                        X509Certificate2 radiusRootCertificate = new X509Certificate2(RadiusRootCert);
+                        X509Certificate2 radiusRootCertificate = new X509Certificate2(this.RadiusRootCertificateFile);
                         vpnClientParams.RadiusServerAuthCertificate = Convert.ToBase64String(radiusRootCertificate.Export(X509ContentType.Cert));
                     }
                     catch (Exception)
                     {
-                        WriteWarning("Invalid radius root certificate specified at path " +
-                                     RadiusRootCert);
+                        WriteWarning("Invalid radius root certificate specified at path " + this.RadiusRootCertificateFile);
                     }
                 }
                 else
                 {
-                    WriteWarning("Cannot find radius root certificate with path " +
-                                 RadiusRootCert);
+                    WriteWarning("Cannot find radius root certificate with path " + this.RadiusRootCertificateFile);
                 }
             }
 
             // Read the radius server root certificate if present
-            if (this.ClientRootCertificates != null)
+            if (this.ClientRootCertificateFile != null)
             {
-                foreach (string clientRootCertPath in this.ClientRootCertificates)
+                foreach (string clientRootCertPath in this.ClientRootCertificateFile)
                 {
                     vpnClientParams.ClientRootCertificates = new List<string>();
                     if (File.Exists(clientRootCertPath))
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var vnetVpnClientParametersModel = Mapper.Map<MNM.VpnClientParameters>(vpnClientParams);
 
-            string packageUrl = this.NetworkClient.GenerateVpnProfile(ResourceGroupName, VirtualNetworkGatewayName, vnetVpnClientParametersModel);
+            string packageUrl = this.NetworkClient.GenerateVpnProfile(this.ResourceGroupName, this.Name, vnetVpnClientParametersModel);
 
             WriteObject(packageUrl);
         }
