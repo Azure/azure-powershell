@@ -19,7 +19,6 @@ Tests retrieval of classic administrators
 function Test-RaClassicAdmins
 {
 	# Setup
-	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 	$subscription = Get-AzureRmSubscription
 
 	# Test
@@ -37,8 +36,6 @@ Tests verifies negative scenarios for RoleAssignments
 function Test-RaNegativeScenarios
 {
     # Setup
-     Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $subscription = Get-AzureRmSubscription
 
     # Bad OID returns zero role assignments
@@ -66,8 +63,6 @@ Tests verifies creation and deletion of a RoleAssignments by Scope
 function Test-RaByScope
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
     $subscription = Get-AzureRmSubscription
@@ -101,8 +96,6 @@ Tests verifies creation and deletion of a RoleAssignments by Resource Group
 function Test-RaByResourceGroup
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Contributor'
     $users = Get-AzureRmADUser | Select-Object -Last 1 -Wait
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
@@ -134,8 +127,6 @@ Tests verifies creation and deletion of a RoleAssignments by Resource
 function Test-RaByResource
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Owner'
     $groups = Get-AzureRmADGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
@@ -171,8 +162,6 @@ Tests validate input parameters
 function Test-RaValidateInputParameters ($cmdName)
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Owner'
     $groups = Get-AzureRmADGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
@@ -224,8 +213,6 @@ Tests verifies creation and deletion of a RoleAssignments for Service principal 
 function Test-RaByServicePrincipal
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Reader'
     $servicePrincipals = Get-AzureRmADServicePrincipal | Select-Object -Last 1 -Wait
     $subscription = Get-AzureRmSubscription
@@ -260,8 +247,6 @@ Tests verifies creation and deletion of a RoleAssignments for User Principal Nam
 function Test-RaByUpn
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Contributor'
     $users = Get-AzureRmADUser | Select-Object -Last 1 -Wait
     $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
@@ -290,9 +275,6 @@ function Test-RaByUpn
 function Test-RaUserPermissions 
 { 
     param([string]$rgName, [string]$action) 
-    
-    # Setup 
-    
     # Test 
     $rg = Get-AzureRmResourceGroup
 	$errorMsg = "User should have access to only 1 RG. Found: {0}" -f $rg.Count
@@ -321,8 +303,6 @@ Tests verifies creation and deletion of a RoleAssignments by Scope irrespective 
 function Test-RaDeletionByScope
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     $definitionName = 'Reader'
     $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
     $subscription = Get-AzureRmSubscription
@@ -357,8 +337,6 @@ Creates role assignment
 function CreateRoleAssignment
 {
     param([string]$roleAssignmentId, [string]$userId, [string]$definitionName, [string]$resourceGroupName) 
-
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue($roleAssignmentId)
     $newAssignment = New-AzureRmRoleAssignment `

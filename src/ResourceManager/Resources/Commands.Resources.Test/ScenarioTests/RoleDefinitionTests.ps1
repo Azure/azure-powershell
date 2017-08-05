@@ -19,8 +19,6 @@ Tests verify scenarios for RoleDefinitions creation.
 function Test-RoleDefinitionCreateTests
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     # Basic positive case - read from file
     $rdName = 'CustomRole Tests Role'
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
@@ -62,8 +60,6 @@ Tests verify negative scenarios for RoleDefinitions
 function Test-RdNegativeScenarios
 {
 	# Setup
-	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     # Does not throw when getting a non-existing role assignment
     $rdName = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
     $rdNull = Get-AzureRmRoleDefinition -Name $rdName
@@ -104,8 +100,6 @@ Tests verify positive scenarios for RoleDefinitions.
 function Test-RDPositiveScenarios
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     # Create a role definition with Name rdNamme.
     $rdName = 'Another tests role'
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
@@ -133,8 +127,6 @@ Verify positive and negative scenarios for RoleDefinition remove.
 function Test-RDRemove
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     # Create a role definition at RG Scope.
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("65E1D983-ECF4-42D4-8C08-5B1FD6E86335")
 
@@ -174,8 +166,6 @@ Verify positive and negative scenarios for RoleDefinition Get.
 function Test-RDGet
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-	
 	$subscription = Get-AzureRmSubscription
 
 	$resource = Get-AzureRmResource | Select-Object -Last 1 -Wait
@@ -246,8 +236,6 @@ Tests validate input parameters
 function Test-RdValidateInputParameters ($cmdName)
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     # Note: All below scenarios are invalid, we'll expect an exception during scope validation so the ID parameter doesn't need to be a valid one. 
 
     # Test
@@ -281,8 +269,6 @@ Tests validate input parameters
 function Test-RdValidateInputParameters2 ($cmdName)
 {
     # Setup
-    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-
     # Note: All below scenarios are invalid, we'll expect an exception during scope validation so the ID parameter doesn't need to be a valid one. 
 
 	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
