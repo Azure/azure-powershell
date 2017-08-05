@@ -20,6 +20,9 @@ Adds a contact for certificate notifications.
 ### [Add-AzureKeyVaultKey](Add-AzureKeyVaultKey.md)
 Creates a key in a key vault or imports a key into a key vault.
 
+### [Add-AzureKeyVaultManagedStorageAccount](Add-AzureKeyVaultManagedStorageAccount.md) 
+Adds a KeyVault-managed storage account to a key vault.
+
 ### [Backup-AzureKeyVaultKey](Backup-AzureKeyVaultKey.md)
 Backs up a key in a key vault.
 
