@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public Object ProtectedSetting { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string ForceUpdateTag { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Add"))
@@ -113,6 +118,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vExtensions = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
 
             vExtensions.Name = this.Name;
+            vExtensions.ForceUpdateTag = this.ForceUpdateTag;
             vExtensions.Publisher = this.Publisher;
             vExtensions.Type = this.Type;
             vExtensions.TypeHandlerVersion = this.TypeHandlerVersion;

@@ -202,6 +202,7 @@ namespace Microsoft.Azure.Commands.Compute
                         if (state == null)
                         {
                             psItem.PowerState = InfoNotAvailable;
+                            psItem.MaintenanceRedeployStatus = null;
                         }
                         else
                         {
@@ -214,6 +215,7 @@ namespace Microsoft.Azure.Commands.Compute
                             {
                                 psItem.PowerState = InfoNotAvailable;
                             }
+                            psItem.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
                         }
                     }
                     psItem.DisplayHint = this.DisplayHint;

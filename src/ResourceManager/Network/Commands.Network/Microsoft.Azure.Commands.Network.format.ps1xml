@@ -652,10 +652,6 @@
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>PrivateAccessServices</Label>
-                <PropertyName>PrivateAccessServicesText</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

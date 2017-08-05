@@ -130,9 +130,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var runtime = new MockCommandRuntime();
             var hyakException = new TestHyakException(null, null, null);
-
+ 
             var autorestException = new Microsoft.Rest.Azure.CloudException();
-
+ 
             var cmdlet = new ResolveError
             {
                 Error = new[]
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 },
                 CommandRuntime = runtime
             };
-
+ 
             cmdlet.ExecuteCmdlet();
             Assert.NotNull(runtime.OutputPipeline);
             Assert.Equal(3, runtime.OutputPipeline.Count);
