@@ -20,6 +20,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
     public static class ContextModelExtensions
     {
+        public static bool HasTokenCache(this IAzureContextContainer container)
+        {
+            return container != null 
+                && container.DefaultContext != null 
+                && container.DefaultContext.TokenCache != null 
+                && container.DefaultContext.TokenCache.CacheData != null 
+                && container.DefaultContext.TokenCache.CacheData.Length > 0;
+        }
+
+        public static IAzureTokenCache GetTokenCache(this IAzureContextContainer container)
+        {
+            IAzureTokenCache result = null;
+            if (HasTokenCache(container))
+            {
+                result = container.DefaultContext.TokenCache;
+            }
+
+            return result;
+        }
+
         public static IAzureContext WithAccount(this IAzureContext context, IAzureAccount account)
         {
             if (account != null && !string.IsNullOrWhiteSpace(account.Id) && context != null)

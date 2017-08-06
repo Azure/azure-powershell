@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
@@ -29,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureRmEnvironment", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureEnvironment))]
-    public class AddAzureRMEnvironmentCommand : AzureRMCmdlet
+    public class AddAzureRMEnvironmentCommand : AzureContextModificationCmdlet
     {
         // Currently, this is the only resource endpoint used for both AzureCloud and all dogfood for Data Lake
         // This ensures that existing scripts will automatically pick up the right environment with no changes.
@@ -135,16 +131,8 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction("adding environment", Name,
                 () =>
                 {
-                    AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-                    IProfileOperations defaultProfile = localProfile;
-                    using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
+                    ModifyContext((Profile, client) =>
                     {
-                        if (this.GetAutosaveSetting())
-                        {
-                            defaultProfile = new AzureRmAutosaveProfile(localProfile, provider);
-                        }
-
-                        var profileClient = new RMProfileClient(defaultProfile);
 
                         var newEnvironment = new AzureEnvironment
                         {
@@ -177,8 +165,8 @@ namespace Microsoft.Azure.Commands.Profile
                         newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.AdTenant, AdTenant);
                         newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId, GraphAudience);
                         newEnvironment.SetEndpoint(AzureEnvironment.Endpoint.DataLakeEndpointResourceId, DataLakeAudience);
-                        WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
-                    }
+                        WriteObject(new PSAzureEnvironment(client.AddOrSetEnvironment(newEnvironment)));
+                    });
                 });
         }
     }

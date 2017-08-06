@@ -464,9 +464,36 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return result;
         }
 
+        public bool TryCopyProfile(AzureRmProfile other)
+        {
+            this.Clear();
+            foreach (var environment in other.EnvironmentTable)
+            {
+                this.EnvironmentTable.Add(environment.Key, environment.Value);
+            }
+
+            foreach (var context in other.Contexts)
+            {
+                this.Contexts.Add(context.Key, context.Value);
+            }
+
+            this.CopyPropertiesFrom(other);
+            return true;
+        }
+
         public AzureRmProfile ToProfile()
         {
             return this;
+        }
+
+        protected virtual void Dispose( bool disposing)
+        {
+            // do nothing
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
         }
     }
 }

@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Profile.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmEnvironment", SupportsShouldProcess=true)]
     [OutputType(typeof(PSAzureEnvironment))]
-    public class RemoveAzureRMEnvironmentCommand : AzureRMCmdlet
+    public class RemoveAzureRMEnvironmentCommand : AzureContextModificationCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The environment name")]
@@ -43,22 +44,11 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-            IProfileOperations defaultProfile = localProfile;
-            using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
-            {
-                if (this.GetAutosaveSetting())
-                {
-                    defaultProfile = new AzureRmAutosaveProfile(localProfile, provider);
-                }
-
-                var profileClient = new RMProfileClient(defaultProfile);
 
                 ConfirmAction(
                 "removing environment",
                 Name,
-                () => WriteObject(new PSAzureEnvironment(profileClient.RemoveEnvironment(Name))));
-            }
+                () => ModifyContext((profile, profileClient) => WriteObject(new PSAzureEnvironment(profileClient.RemoveEnvironment(Name)))));
         }
     }
 }

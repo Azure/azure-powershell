@@ -11,15 +11,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
-    public static class AzureRmCmdletExtensions
+    public static class AzureRmProfileConstants
     {
-        const string ProfileAutoSaveVariable = "AzureRmContextAutoSave";
-        const string AutoSaveDisabled = "Disabled";
+        public const string ProfileAutoSaveVariable = "AzureRmContextAutoSave";
+        public const string AutoSaveDisabled = "Disabled";
 
         public static bool GetAutosaveSetting(this AzureRMCmdlet cmdlet)
         {

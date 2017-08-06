@@ -160,6 +160,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No autosave setting detected in variable {0}.  Using default autosave setting (autosave enabled)..
+        /// </summary>
+        internal static string CouldNotRetrieveAutosaveSetting {
+            get {
+                return ResourceManager.GetString("CouldNotRetrieveAutosaveSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current tenant with Id &apos;{0}&apos; will be used..
         /// </summary>
         internal static string CurrentTenantInUse {
@@ -201,6 +210,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string EnableDataCollection {
             get {
                 return ResourceManager.GetString("EnableDataCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to retrieve variable value &apos;{0}&apos; to determine AutoSaveSetting, received exception &apos;{1}&apos; setting AutoSave to true..
+        /// </summary>
+        internal static string ErrorRetrievingAutosaveSetting {
+            get {
+                return ResourceManager.GetString("ErrorRetrievingAutosaveSetting", resourceCulture);
             }
         }
         
@@ -516,6 +534,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string UnknownEnvironment {
             get {
                 return ResourceManager.GetString("UnknownEnvironment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using autosave setting from session variable &apos;{0}&apos;=&apos;{1}&apos;..
+        /// </summary>
+        internal static string UsingAutoSaveSettins {
+            get {
+                return ResourceManager.GetString("UsingAutoSaveSettins", resourceCulture);
             }
         }
     }

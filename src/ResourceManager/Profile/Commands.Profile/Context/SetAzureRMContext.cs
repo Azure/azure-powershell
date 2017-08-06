@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
         SupportsShouldProcess = true)]
     [Alias("Select-AzureRmSubscription")]
     [OutputType(typeof(PSAzureContext))]
-    public class SetAzureRMContextCommand : AzureRMCmdlet
+    public class SetAzureRMContextCommand : AzureContextModificationCmdlet
     {
         private const string SubscriptionParameterSet = "Subscription";
         private const string TenantOnlyParameterSet = "Tenant";
@@ -63,49 +62,50 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-            IProfileOperations profile = localProfile;
-            using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
+            if (ParameterSetName == ContextParameterSet)
             {
-                if (this.GetAutosaveSetting())
+                if (ShouldProcess(string.Format(Resources.ChangingContextUsingPipeline, Context.Tenant, Context.Subscription),
+                    Resources.ContextChangeWarning, string.Empty))
                 {
-                    profile = new AzureRmAutosaveProfile(localProfile, provider);
+                    ModifyContext((profile, client) =>
+                        {
+                            AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription,
+                              Context.Account,
+                              Context.Environment, Context.Tenant));
+                            CompleteContextProcessing(profile);
+                        });
                 }
-
-                var profileClient = new RMProfileClient(profile);
-                if (ParameterSetName == ContextParameterSet)
+            }
+            else if (ParameterSetName == TenantOnlyParameterSet)
+            {
+                if (ShouldProcess(string.Format(Resources.ChangingContextTenant, Tenant),
+                    Resources.TenantChangeWarning, string.Empty))
                 {
-                    if (ShouldProcess(string.Format(Resources.ChangingContextUsingPipeline, Context.Tenant, Context.Subscription),
-                        Resources.ContextChangeWarning, string.Empty))
+                    ModifyContext((profile, client) =>
                     {
-                        AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription,
-                            Context.Account,
-                            Context.Environment, Context.Tenant));
+                        client.SetCurrentContext(null, Tenant);
                         CompleteContextProcessing(profile);
-                    }
+                    });
                 }
-                else if (ParameterSetName == TenantOnlyParameterSet)
-                {
-                    if (ShouldProcess(string.Format(Resources.ChangingContextTenant, Tenant),
-                        Resources.TenantChangeWarning, string.Empty))
-                    {
-                        profileClient.SetCurrentContext(null, Tenant);
-                        CompleteContextProcessing(profile);
-                    }
-                }
-                else if (ParameterSetName == SubscriptionParameterSet)
-                {
-                    if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, Subscription),
+            }
+            else if (ParameterSetName == SubscriptionParameterSet)
+            {
+                if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, Subscription),
                         Resources.SubscriptionChangeWarning, string.Empty))
+                {
+                    ModifyContext((profile, client) =>
                     {
-                        profileClient.SetCurrentContext(Subscription, Tenant);
+                        client.SetCurrentContext(Subscription, Tenant);
                         CompleteContextProcessing(profile);
-                    }
+                    });
                 }
-                else
+            }
+            else
+            {
+                ModifyContext((profile, client) =>
                 {
                     CompleteContextProcessing(profile);
-                }
+                });
             }
         }
 
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Commands.Profile
                 StringComparison.OrdinalIgnoreCase))
             {
                 WriteWarning(string.Format(
-                               Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
-                               AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.State));
+                              Resources.SelectedSubscriptionNotActive,
+                               context.Subscription.State));
             }
 
             if (MyInvocation.BoundParameters.ContainsKey(nameof(ExtendedProperty)))

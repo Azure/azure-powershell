@@ -26,6 +26,7 @@ using System.Reflection;
 using System.Security;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Profile.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile
     [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
+    public class AddAzureRMAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
         private const string UserParameterSet = "UserWithSubscriptionId";
         private const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
@@ -195,21 +196,12 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
                 {
-                    AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
+                    InitializeProfileProvider();
                 }
 
-                AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-                IProfileOperations defaultProfile = localProfile;
-                using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
-                {
-                    if (this.GetAutosaveSetting())
-                    {
-                        defaultProfile = new AzureRmAutosaveProfile(localProfile, provider);
-                    }
-
-                    var profileClient = new RMProfileClient(defaultProfile);
-
-                    WriteObject((PSAzureProfile)profileClient.Login(
+                ModifyContext((localProfile, profileClient) =>
+               {
+                   WriteObject((PSAzureProfile)profileClient.Login(
                         azureAccount,
                         _environment,
                         TenantId,
@@ -217,7 +209,7 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionName,
                         password,
                         (s) => WriteWarning(s)));
-                }
+               });
             }
         }
 
@@ -231,14 +223,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
 #endif
                 AzureSessionInitializer.InitializeAzureSession();
-                if (this.GetAutosaveSetting())
-                {
-                    ProtectedProfileProvider.InitializeResourceManagerProfile();
-                }
-                else
-                {
-                    ResourceManagerProfileProvider.InitializeResourceManagerProfile();
-                }
+                InitializeProfileProvider();
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {

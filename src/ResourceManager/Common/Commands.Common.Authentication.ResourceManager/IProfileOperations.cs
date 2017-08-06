@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 {
-    public interface IProfileOperations
+    public interface IProfileOperations : IDisposable
     {
         AzureRmProfile ToProfile();
         bool TryAddContext(string name, IAzureContext context);
@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
         bool HasEnvironment(string name);
         bool TryGetEnvironment(string name, out IAzureEnvironment environment);
         bool TryRemoveEnvironment(string name, out IAzureEnvironment environment);
+
+        bool TryCopyProfile(AzureRmProfile other);
         IEnumerable<IAzureEnvironment> Environments { get; }
     }
 }

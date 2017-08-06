@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureEnvironment))]
-    public class SetAzureRMEnvironmentCommand : AzureRMCmdlet
+    public class SetAzureRMEnvironmentCommand : AzureContextModificationCmdlet
     {
         // Currently, this is the only resource endpoint used for both AzureCloud and all dogfood for Data Lake
         // This ensures that existing scripts will automatically pick up the right environment with no changes.
@@ -137,16 +138,8 @@ namespace Microsoft.Azure.Commands.Profile
             ConfirmAction("updating environment", Name,
                 () =>
                 {
-                    AzureRmProfile localProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
-                    IProfileOperations defaultProfile = localProfile;
-                    using (IFileProvider provider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite))
+                    ModifyContext((profile, profileClient) =>
                     {
-                        if (this.GetAutosaveSetting())
-                        {
-                            defaultProfile = new AzureRmAutosaveProfile(localProfile, provider);
-                        }
-
-                        var profileClient = new RMProfileClient(defaultProfile);
 
                         if (AzureEnvironment.PublicEnvironments.Keys.Any((k) => string.Equals(k, Name, StringComparison.CurrentCultureIgnoreCase)))
                         {
@@ -156,7 +149,6 @@ namespace Microsoft.Azure.Commands.Profile
                         else
                         {
                             IAzureEnvironment newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-                            var profile = DefaultProfile as AzureRmProfile;
                             if (profile.EnvironmentTable.ContainsKey(Name))
                             {
                                 newEnvironment = profile.EnvironmentTable[Name];
@@ -201,7 +193,7 @@ namespace Microsoft.Azure.Commands.Profile
                             profileClient.AddOrSetEnvironment(newEnvironment);
                             WriteObject(new PSAzureEnvironment(newEnvironment));
                         }
-                    }
+                    });
                 });
         }
 

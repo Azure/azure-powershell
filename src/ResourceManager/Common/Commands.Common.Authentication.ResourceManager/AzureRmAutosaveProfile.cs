@@ -193,11 +193,34 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             if (disposing)
             {
                 IFileProvider disposable = Interlocked.Exchange(ref _provider, null);
-                if (disposable != null)
+                if (disposable != null && _default != null)
                 {
+                    _default.Save(disposable);
+                    _default = null;
                     disposable.Dispose();
                 }
             }
+        }
+
+        public bool TryCopyProfile(AzureRmProfile other)
+        {
+            bool result = _current.TryCopyProfile(other);
+            foreach (var environment in other.EnvironmentTable)
+            {
+                if (!AzureEnvironment.PublicEnvironments.ContainsKey(environment.Key))
+                {
+                    IAzureEnvironment merged;
+                    result &= TrySetEnvironment(environment.Value, out merged);
+                }
+            }
+
+            foreach (var context in other.Contexts)
+            {
+                result &= TryAddContext(context.Key, context.Value);
+            }
+
+            _default.CopyPropertiesFrom(other);
+            return result;
         }
         public AzureRmProfile ToProfile()
         {
