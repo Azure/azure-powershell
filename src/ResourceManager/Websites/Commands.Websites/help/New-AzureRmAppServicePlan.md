@@ -132,7 +132,9 @@ Accept wildcard characters: False
 ```
 
 ### -PerSiteScaling
-Whether or not to enable Per Site Scaling```yaml
+Whether or not to enable Per Site Scaling
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 
@@ -195,6 +197,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### ServerFarmWithRichSku
+
+Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
 
 ## OUTPUTS
 

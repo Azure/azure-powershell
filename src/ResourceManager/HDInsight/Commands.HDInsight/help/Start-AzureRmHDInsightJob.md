@@ -109,6 +109,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### AzureHDInsightJobDefinition
+
+Parameter 'JobDefinition' accepts value of type 'AzureHDInsightJobDefinition' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

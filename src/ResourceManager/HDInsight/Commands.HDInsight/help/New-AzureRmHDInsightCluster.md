@@ -342,7 +342,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultStorageAccountType
-Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore. Defaults to AzureStorage if not specified.```yaml
+Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore. Defaults to AzureStorage if not specified.
+
+```yaml
 Type: StorageType
 Parameter Sets: (All)
 Aliases: 
@@ -372,7 +374,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultStorageRootPath
-Specifies the path-prefix in the Data Lake Store Account that the HDInsight cluster will use as the default filesystem.```yaml
+Specifies the path-prefix in the Data Lake Store Account that the HDInsight cluster will use as the default filesystem.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -385,7 +389,9 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeNodeSize
-Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.```yaml
+Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -701,6 +707,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### AzureHDInsightConfig
+
+Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
 
 ## OUTPUTS
 

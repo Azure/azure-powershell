@@ -173,6 +173,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSRouteFilter
+
+Parameter 'RouteFilter' accepts value of type 'PSRouteFilter' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

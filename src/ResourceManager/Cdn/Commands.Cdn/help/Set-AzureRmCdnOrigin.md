@@ -48,6 +48,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSOrigin
+
+Parameter 'CdnOrigin' accepts value of type 'PSOrigin' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

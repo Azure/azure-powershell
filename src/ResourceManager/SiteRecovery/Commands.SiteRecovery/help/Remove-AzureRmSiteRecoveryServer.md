@@ -90,6 +90,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRServer
+
+Parameter 'Server' accepts value of type 'ASRServer' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

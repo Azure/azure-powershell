@@ -110,6 +110,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PolicyBase
+
+Parameter 'Policy' accepts value of type 'PolicyBase' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

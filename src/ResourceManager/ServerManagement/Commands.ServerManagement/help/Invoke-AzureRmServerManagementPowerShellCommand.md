@@ -149,6 +149,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Session
+
+Parameter 'Session' accepts value of type 'Session' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

@@ -97,6 +97,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRProtectionContainer
+
+Parameter 'ProtectionContainer' accepts value of type 'ASRProtectionContainer' from the pipeline
+
+### ASRProtectionContainer
+
+Parameter 'ProtectionContainer' accepts value of type 'ASRProtectionContainer' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

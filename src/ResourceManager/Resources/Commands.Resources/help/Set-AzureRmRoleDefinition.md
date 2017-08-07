@@ -103,6 +103,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSRoleDefinition
+
+Parameter 'Role' accepts value of type 'PSRoleDefinition' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

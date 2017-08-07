@@ -163,6 +163,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSCustomDomain
+
+Parameter 'CdnCustomDomain' accepts value of type 'PSCustomDomain' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

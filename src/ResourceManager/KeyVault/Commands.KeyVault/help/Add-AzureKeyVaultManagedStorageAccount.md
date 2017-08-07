@@ -66,7 +66,9 @@ Accept wildcard characters: False
 ```
 
 ### -AccountResourceId
-Azure resource id of the storage account.```yaml
+Azure resource id of the storage account.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: StorageAccountResourceId
@@ -212,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
+### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
 
 ## NOTES
 

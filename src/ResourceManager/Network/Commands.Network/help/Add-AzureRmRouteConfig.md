@@ -181,6 +181,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSRouteTable
+
+Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

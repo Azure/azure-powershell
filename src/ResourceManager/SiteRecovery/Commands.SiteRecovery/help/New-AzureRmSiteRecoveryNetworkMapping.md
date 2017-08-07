@@ -94,6 +94,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRNetwork
+
+Parameter 'PrimaryNetwork' accepts value of type 'ASRNetwork' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

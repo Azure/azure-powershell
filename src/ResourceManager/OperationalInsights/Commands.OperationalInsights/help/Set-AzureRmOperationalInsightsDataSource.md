@@ -48,6 +48,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSDataSource
+
+Parameter 'DataSource' accepts value of type 'PSDataSource' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES
