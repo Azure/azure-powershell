@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            Environment.SetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName, "false");
         }
 
         [Fact]
@@ -75,6 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DisableDataCollection();
             var profile = AzureRmProfileProvider.Instance.Profile;
             AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
 
