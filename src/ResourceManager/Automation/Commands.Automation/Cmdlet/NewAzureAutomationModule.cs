@@ -39,8 +39,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The url to a module zip package.")]
+        [Alias("ContentLink")]
         [ValidateNotNullOrEmpty]
-        public Uri ContentLink { get; set; }
+        public Uri ContentLinkUri { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var createdModule = this.AutomationClient.CreateModule(this.ResourceGroupName, this.AutomationAccountName, ContentLink, Name);
+            var createdModule = this.AutomationClient.CreateModule(this.ResourceGroupName, this.AutomationAccountName, ContentLinkUri, Name);
             this.WriteObject(createdModule);
         }
     }

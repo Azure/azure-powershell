@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
     /// 'Set-AzureRmEventHubNamespaceAuthorizationRule' Cmdlet updates specified Eventhub Namespace AuthorizationRule
     /// </summary>
+    [ObsoleteAttribute("'Set-AzureRmEventHubNamespaceAuthorizationRule' cmdlet is marked as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Set-AzureRmEventHubAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Set, EventHubNamespaceAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class SetAzureEventHubNamespaceAuthorizationRule : AzureEventHubsCmdletBase
     {
@@ -71,15 +73,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroupName, NamespaceName);
 
-                IList<Management.EventHub.Models.AccessRights?> newListAry = new List<Management.EventHub.Models.AccessRights?>();
-
-                foreach (string test in Rights)
-                {
-                    newListAry.Add(ParseAccessRights(test));
-                }
+                sasRule.Rights = new List<string>();
+                if (Rights != null && Rights.Length > 0)
+                    foreach (string test in Rights)
+                    {
+                        sasRule.Rights.Add(test);
+                    }
 
                 sasRule.Name = AuthorizationRuleName;
-                sasRule.Rights = newListAry;
                 sasRule.Location = getNameSpace.Location;
             }
 

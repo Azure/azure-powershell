@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public SharedAccessAuthorizationRuleAttributes()
         { }
 
-        public SharedAccessAuthorizationRuleAttributes(SharedAccessAuthorizationRuleResource authRuleResource)
+        public SharedAccessAuthorizationRuleAttributes(SBAuthorizationRule authRuleResource)
         {
             if (authRuleResource != null)
             {

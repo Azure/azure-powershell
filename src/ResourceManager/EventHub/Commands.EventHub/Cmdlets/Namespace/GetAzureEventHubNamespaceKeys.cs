@@ -15,12 +15,14 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
     /// 'Get-AzureRmEventHubNamespaceKey' Cmdlet gives key detials for the given EventHub Namespace Authorization Rule
     /// </summary>
+    [ObsoleteAttribute("'Get-AzureRmEventHubNamespaceKey' cmdlet is marked as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Get-AzureRmEventHubKey'", false)]
     [Cmdlet(VerbsCommon.Get, EventHubNamespaceKeyVerb), OutputType(typeof(ListKeysAttributes))]
     public class GetAzureRmEventHubNamespaceKey : AzureEventHubsCmdletBase
     {

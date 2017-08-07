@@ -159,12 +159,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
-Microsoft.Azure.Management.Compute.Models.Snapshot
+Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshotUpdate
+Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
 
 ## NOTES
 

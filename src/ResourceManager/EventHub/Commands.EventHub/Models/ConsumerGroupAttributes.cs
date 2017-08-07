@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
 {
@@ -24,13 +25,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public ConsumerGroupAttributes()
         { }
 
-        public ConsumerGroupAttributes(ConsumerGroupResource consumerGroupResourceResource)
+        public ConsumerGroupAttributes(ConsumerGroup consumerGroupResourceResource)
         {
             if (consumerGroupResourceResource != null)
             {
                 Name = consumerGroupResourceResource.Name;
                 CreatedAt = consumerGroupResourceResource.CreatedAt;
-                EventHubPath = consumerGroupResourceResource.EventHubPath;
                 UpdatedAt = consumerGroupResourceResource.UpdatedAt;
                 UserMetadata = consumerGroupResourceResource.UserMetadata;
             }
@@ -56,6 +56,8 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// </summary>
         public DateTime? UpdatedAt { get; set; }
 
+
+        [ObsoleteAttribute("EventHubPath property is mark as obsolete and will be remved in Breaking changes build", false)]
         /// <summary>
         /// The path of the event hub.
         /// </summary>
