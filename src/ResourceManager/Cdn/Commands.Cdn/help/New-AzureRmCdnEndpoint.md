@@ -372,6 +372,8 @@ Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
+
 ## NOTES
 
 ## RELATED LINKS

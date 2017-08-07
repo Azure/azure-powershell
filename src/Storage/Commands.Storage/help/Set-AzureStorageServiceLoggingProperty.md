@@ -157,6 +157,8 @@ Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties
+
 ## NOTES
 
 ## RELATED LINKS

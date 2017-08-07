@@ -56,6 +56,8 @@ Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' fr
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+
 ## NOTES
 
 ## RELATED LINKS

@@ -99,6 +99,8 @@ Parameter 'Queue' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Storage.Queue.SharedAccessQueuePolicy
+
 ## NOTES
 
 ## RELATED LINKS

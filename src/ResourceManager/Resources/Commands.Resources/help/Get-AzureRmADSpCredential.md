@@ -74,6 +74,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADCredential
+
 ## NOTES
 
 ## RELATED LINKS

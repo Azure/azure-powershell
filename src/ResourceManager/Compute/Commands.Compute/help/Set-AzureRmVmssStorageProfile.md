@@ -313,6 +313,8 @@ This cmdlet does not generate any output.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+
 ## NOTES
 
 ## RELATED LINKS

@@ -92,6 +92,10 @@ Parameter 'Job' accepts value of type 'Object' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
+
+### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase]
+
 ## NOTES
 
 ## RELATED LINKS

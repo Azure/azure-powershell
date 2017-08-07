@@ -188,6 +188,8 @@ Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+
 ## NOTES
 
 ## RELATED LINKS

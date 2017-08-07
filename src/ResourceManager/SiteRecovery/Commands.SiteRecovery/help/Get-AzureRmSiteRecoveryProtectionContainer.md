@@ -105,6 +105,8 @@ Parameter 'Fabric' accepts value of type 'ASRFabric' from the pipeline
 
 ## OUTPUTS
 
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.SiteRecovery.ASRProtectionContainer]
+
 ## NOTES
 
 ## RELATED LINKS

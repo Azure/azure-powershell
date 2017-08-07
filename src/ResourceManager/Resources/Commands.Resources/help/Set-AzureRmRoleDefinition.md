@@ -109,6 +109,8 @@ Parameter 'Role' accepts value of type 'PSRoleDefinition' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 

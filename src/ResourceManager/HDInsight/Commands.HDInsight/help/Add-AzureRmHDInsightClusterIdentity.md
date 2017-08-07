@@ -186,6 +186,8 @@ Parameter 'ObjectId' accepts value of type 'Guid' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+
 ## NOTES
 
 ## RELATED LINKS

@@ -195,6 +195,8 @@ Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint
 
 ## OUTPUTS
 
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

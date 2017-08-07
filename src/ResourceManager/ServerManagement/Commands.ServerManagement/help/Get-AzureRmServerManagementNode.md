@@ -90,6 +90,8 @@ Parameter 'Node' accepts value of type 'Node' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ServerManagement.Model.Node
+
 ## NOTES
 
 ## RELATED LINKS

@@ -108,6 +108,8 @@ Parameter 'JobId' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob
+
 ## NOTES
 
 ## RELATED LINKS

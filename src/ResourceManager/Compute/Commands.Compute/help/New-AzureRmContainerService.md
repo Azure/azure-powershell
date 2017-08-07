@@ -130,6 +130,8 @@ Parameter 'ContainerService' accepts value of type 'ContainerService' from the p
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
+
 ## NOTES
 
 ## RELATED LINKS

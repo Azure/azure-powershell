@@ -84,6 +84,8 @@ Parameter 'Name' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue
+
 ## NOTES
 
 ## RELATED LINKS

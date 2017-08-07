@@ -75,6 +75,8 @@ Parameter 'ASRVault' accepts value of type 'ASRVault' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRVaultSettings
+
 ## NOTES
 
 ## RELATED LINKS

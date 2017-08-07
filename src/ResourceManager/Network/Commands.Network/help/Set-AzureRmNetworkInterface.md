@@ -110,6 +110,8 @@ Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
+
 ## NOTES
 
 ## RELATED LINKS

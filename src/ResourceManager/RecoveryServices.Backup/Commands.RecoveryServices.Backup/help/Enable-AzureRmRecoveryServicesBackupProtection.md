@@ -141,6 +141,8 @@ Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
+
 ## NOTES
 
 ## RELATED LINKS

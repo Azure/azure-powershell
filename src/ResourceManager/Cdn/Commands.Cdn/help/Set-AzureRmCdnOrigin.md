@@ -54,6 +54,8 @@ Parameter 'CdnOrigin' accepts value of type 'PSOrigin' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
+
 ## NOTES
 
 ## RELATED LINKS

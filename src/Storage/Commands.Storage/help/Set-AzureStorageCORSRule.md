@@ -197,6 +197,8 @@ Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule
+
 ## NOTES
 
 ## RELATED LINKS

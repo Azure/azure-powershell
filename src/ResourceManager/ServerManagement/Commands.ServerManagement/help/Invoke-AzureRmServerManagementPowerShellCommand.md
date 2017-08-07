@@ -155,6 +155,8 @@ Parameter 'Session' accepts value of type 'Session' from the pipeline
 
 ## OUTPUTS
 
+### System.Object
+
 ## NOTES
 
 ## RELATED LINKS

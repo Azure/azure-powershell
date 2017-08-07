@@ -108,6 +108,8 @@ Parameter 'Gateway' accepts value of type 'Gateway' from the pipeline
 
 ## OUTPUTS
 
+### System.IO.FileInfo
+
 ## NOTES
 
 ## RELATED LINKS

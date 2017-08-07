@@ -98,6 +98,8 @@ Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
+
 ## NOTES
 
 ## RELATED LINKS

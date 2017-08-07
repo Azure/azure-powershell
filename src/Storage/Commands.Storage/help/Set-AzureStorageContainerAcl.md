@@ -183,6 +183,8 @@ Parameter 'Name' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer
+
 ## NOTES
 
 ## RELATED LINKS

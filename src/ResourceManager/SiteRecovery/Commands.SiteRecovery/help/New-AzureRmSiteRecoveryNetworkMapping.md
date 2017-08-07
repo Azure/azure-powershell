@@ -100,6 +100,8 @@ Parameter 'PrimaryNetwork' accepts value of type 'ASRNetwork' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS

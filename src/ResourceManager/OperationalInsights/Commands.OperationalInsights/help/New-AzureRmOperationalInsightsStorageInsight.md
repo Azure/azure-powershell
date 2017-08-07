@@ -247,6 +247,8 @@ Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight
+
 ## NOTES
 
 ## RELATED LINKS

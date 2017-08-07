@@ -92,6 +92,8 @@ Parameter 'ProtectionContainer' accepts value of type 'ASRProtectionContainer' f
 
 ## OUTPUTS
 
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.SiteRecovery.ASRProtectionEntity]
+
 ## NOTES
 
 ## RELATED LINKS

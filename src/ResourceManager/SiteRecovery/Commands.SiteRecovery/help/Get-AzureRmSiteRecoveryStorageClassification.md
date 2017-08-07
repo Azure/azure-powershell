@@ -115,6 +115,8 @@ Parameter 'Server' accepts value of type 'ASRServer' from the pipeline
 
 ## OUTPUTS
 
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.SiteRecovery.ASRStorageClassification]
+
 ## NOTES
 
 ## RELATED LINKS

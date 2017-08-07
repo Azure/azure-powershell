@@ -84,6 +84,8 @@ Parameter 'PublicIpAddress' accepts value of type 'PSPublicIpAddress' from the p
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+
 ## NOTES
 
 ## RELATED LINKS

@@ -49,6 +49,8 @@ Parameter 'NetworkMapping' accepts value of type 'ASRNetworkMapping' from the pi
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS

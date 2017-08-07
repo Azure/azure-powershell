@@ -189,6 +189,8 @@ Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipelin
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+
 ## NOTES
 
 ## RELATED LINKS

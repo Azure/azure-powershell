@@ -150,6 +150,8 @@ Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipel
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+
 ## NOTES
 * The cmdlet writes updated **PsApiManagement** instance to pipeline.
 

@@ -523,6 +523,8 @@ Parameter 'SrcFile' accepts value of type 'CloudFile' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob
+
 ## NOTES
 
 ## RELATED LINKS

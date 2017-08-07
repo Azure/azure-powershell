@@ -70,6 +70,8 @@ Parameter 'OperationSearchString' accepts value of type 'String' from the pipeli
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 

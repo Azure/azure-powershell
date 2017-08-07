@@ -143,6 +143,8 @@ Parameter 'Session' accepts value of type 'Session' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ServerManagement.Model.Session
+
 ## NOTES
 
 ## RELATED LINKS

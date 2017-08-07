@@ -123,6 +123,8 @@ Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource
+
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, operational, insights
 

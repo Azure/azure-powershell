@@ -50,6 +50,8 @@ Parameter 'StorageClassificationMapping' accepts value of type 'ASRStorageClassi
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS

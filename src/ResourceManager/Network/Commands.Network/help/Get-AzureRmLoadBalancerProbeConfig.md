@@ -74,6 +74,8 @@ Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipelin
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSProbe
+
 ## NOTES
 
 ## RELATED LINKS

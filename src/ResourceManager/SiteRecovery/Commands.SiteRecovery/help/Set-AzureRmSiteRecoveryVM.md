@@ -161,6 +161,8 @@ Parameter 'VirtualMachine' accepts value of type 'ASRVirtualMachine' from the pi
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS

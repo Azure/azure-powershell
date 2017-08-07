@@ -135,6 +135,8 @@ Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
+
 ## NOTES
 
 ## RELATED LINKS

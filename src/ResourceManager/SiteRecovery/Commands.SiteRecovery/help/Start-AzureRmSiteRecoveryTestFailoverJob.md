@@ -223,6 +223,8 @@ Parameter 'ReplicationProtectedItem' accepts value of type 'ASRReplicationProtec
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS
