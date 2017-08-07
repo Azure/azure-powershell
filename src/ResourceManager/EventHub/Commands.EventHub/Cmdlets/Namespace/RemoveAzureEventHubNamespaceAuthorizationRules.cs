@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
     /// 'Remove-AzureRmEventHubNamespaceAuthorizationRule' Cmdlet deletes specified Eventhub Namespace AuthorizationRule
     /// </summary>
+    [ObsoleteAttribute("'Remove-AzureRmEventHubNamespaceAuthorizationRule' cmdlet is marked as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Remove-AzureRmEventHubAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Remove, EventHubNamespaceAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmEventHubNamespaceAuthorizationRule : AzureEventHubsCmdletBase
     {
