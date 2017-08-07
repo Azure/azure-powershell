@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     helper.RMResourceModule,
                     helper.RMResourceManagerStartup,
                     helper.RMInsightsModule);
-                Environment.SetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName, "false");
+
                 try
                 {
                     if (scriptBuilder != null)
