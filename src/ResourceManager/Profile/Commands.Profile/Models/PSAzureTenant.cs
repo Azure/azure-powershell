@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             this.CopyFrom(other);
         }
         /// <summary>
-        /// The subscription id.
+        /// The tenant id.
         /// </summary>
         public string Id { get; set; }
 
@@ -79,6 +79,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The name of the subscription.
         /// </summary>
         public string Directory { get; set; }
+
+        /// <summary>
+        /// For legacy support - the tenant id
+        /// </summary>
+        public string TenantId { get { return Id; } }
 
         /// <summary>
         /// Extended proeprties of the tenant

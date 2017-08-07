@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.EventHub.Properties
-{
+namespace Microsoft.Azure.Commands.EventHub {
     using System;
     
     
@@ -62,11 +61,182 @@ namespace Microsoft.Azure.Commands.EventHub.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding a new Consumer Group {0} under Eventhub {1}.
+        /// </summary>
+        internal static string CreateConsumerGroup {
+            get {
+                return ResourceManager.GetString("CreateConsumerGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new EventHub:{0} under NameSpace:{1}.
+        /// </summary>
+        internal static string CreateEventHub {
+            get {
+                return ResourceManager.GetString("CreateEventHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new AuthorizationRule named:{0} for EventHub: {1}.
+        /// </summary>
+        internal static string CreateEventHubAuthorizationrule {
+            get {
+                return ResourceManager.GetString("CreateEventHubAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new EvetntHub-Namespace:{0} under Resource Group:{1}.
+        /// </summary>
+        internal static string CreateNamespace {
+            get {
+                return ResourceManager.GetString("CreateNamespace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new AuthorizationRule named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string CreateNamespaceAuthorizationrule {
+            get {
+                return ResourceManager.GetString("CreateNamespaceAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File {0} does not exist.
         /// </summary>
         internal static string FileDoesNotExist {
             get {
                 return ResourceManager.GetString("FileDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of EventHub: {1}.
+        /// </summary>
+        internal static string RegenerateKeyEventHub {
+            get {
+                return ResourceManager.GetString("RegenerateKeyEventHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Namespace:{1}.
+        /// </summary>
+        internal static string RegenerateKeyNamesapce {
+            get {
+                return ResourceManager.GetString("RegenerateKeyNamesapce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting ConsumerGrop:{0} from Eventhub:{1}.
+        /// </summary>
+        internal static string RemoveConsumerGroup {
+            get {
+                return ResourceManager.GetString("RemoveConsumerGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removeing AtuhorizationRule:{0} from EventHub:{1} of Namespace: {2}.
+        /// </summary>
+        internal static string RemoveEventHubAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemoveEventHubAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing AtuhorizationRule:{0} of Namespace: {1}.
+        /// </summary>
+        internal static string RemoveNamespaceAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemoveNamespaceAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string RemoveNamespaces {
+            get {
+                return ResourceManager.GetString("RemoveNamespaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting EventHub: {0} of NnameSpace{1}.
+        /// </summary>
+        internal static string RemovingEventHub {
+            get {
+                return ResourceManager.GetString("RemovingEventHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove AtuhorizationRule:{0} from EventHub: {1} of Namespace: {2}.
+        /// </summary>
+        internal static string RemovingEventHubAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemovingEventHubAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}.
+        /// </summary>
+        internal static string RemovingNamespaceAuthorizationRule {
+            get {
+                return ResourceManager.GetString("RemovingNamespaceAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating ConsumerGroup: {0} for the Eventhub:{1}.
+        /// </summary>
+        internal static string UpdateConsumerGroup {
+            get {
+                return ResourceManager.GetString("UpdateConsumerGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating EventHub:{0} of NameSpace:{1}.
+        /// </summary>
+        internal static string UpdateEventHub {
+            get {
+                return ResourceManager.GetString("UpdateEventHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating AuthorizationRule named:{0} for EventHub: {1}.
+        /// </summary>
+        internal static string UpdateEventHubAuthorizationrule {
+            get {
+                return ResourceManager.GetString("UpdateEventHubAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update NameSpace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string UpdateNamespace {
+            get {
+                return ResourceManager.GetString("UpdateNamespace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating  AuthorizationRule named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string UpdateNamespaceAuthorizationrule {
+            get {
+                return ResourceManager.GetString("UpdateNamespaceAuthorizationrule", resourceCulture);
             }
         }
     }
