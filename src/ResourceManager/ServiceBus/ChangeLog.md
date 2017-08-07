@@ -20,6 +20,8 @@
 -->
 ## Current Release
 
+## Version 0.4.3
+
 * Added below new commandlets for AuthorizationRules for NameSpace, Queue and Topic. according to parameter set the authorization rule orperations are perfomed. 
  - New-AzureRmServiceBusAuthorizationRule
    - Adds a new AuthorizationRule to the existing ServiceBus NameSpace/Queue/Topic.

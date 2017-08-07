@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.4.3
 * Fixed bug in Set-AzureRmAnalysisServciesServer
     - When admin was not provided, the admin will be removed.
 * Added BackupBlobContainerUri in New-AzureRmAnalysisServicesServer and Set-AzureRmAnalysisServicesServer

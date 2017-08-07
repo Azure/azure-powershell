@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.3.0
+
 ## Version 3.2.1
 - Fix issue with non-interactive user authentication in RDFE (link)[https://github.com/Azure/azure-powershell/issues/4299]
 
