@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             DateTimeOffset expiryTime = DateTimeOffset.Now.AddDays(1);
 
             this.mockAutomationClient.Setup(
-                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null));
+                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null, null));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
             // Assert
             this.mockAutomationClient.Verify(
-                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null),
+                f => f.CreateWebhook(resourceGroupName, accountName, name, runbookName, true, expiryTime, null, null),
                 Times.Once());
         }
     }
