@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 			{
 				return ManagedBy;
 			}
-			set
-			{
-				ManagedBy = value;
-			}
-		}
+            set
+            {
+                OwnerId = value;
+            }
+        }
 	}
 }

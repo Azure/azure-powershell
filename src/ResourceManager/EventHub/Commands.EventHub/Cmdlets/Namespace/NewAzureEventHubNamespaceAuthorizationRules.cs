@@ -16,13 +16,15 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
     /// 'New-AzureRmEventHubNamespaceAuthorizationRule' Cmdlet creates a new Eventhub Namespace AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubNamespaceAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [ObsoleteAttribute("'New-AzureRmEventHubNamespaceAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'New-AzureRmEventHubAuthorizationRule'", false)]
+    [Cmdlet(VerbsCommon.New, EventHubNamespaceAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]    
     public class NewAzureEventHubNamespaceAuthorizationRule : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -51,22 +53,24 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Position = 3,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("Listen","Send","Manage",
+            IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
-        {   
+        {
             SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
             NamespaceAttributes getNamespace = Client.GetNamespace(ResourceGroupName, NamespaceName);
 
-            IList<Management.EventHub.Models.AccessRights?> newListAry = new List<Management.EventHub.Models.AccessRights?>();
+            sasRule.Rights = new List<string>();
 
-            foreach (string test in Rights)
-            {
-                newListAry.Add(ParseAccessRights(test));
-            }
+            if (Rights != null && Rights.Length > 0)
+                foreach (string test in Rights)
+                {
+                    sasRule.Rights.Add(test);
+                }
 
             sasRule.Name = AuthorizationRuleName;
-            sasRule.Rights = newListAry;
             sasRule.Location = getNamespace.Location;
 
             // Create a new eventHub authorizationRule
