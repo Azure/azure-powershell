@@ -65,9 +65,8 @@ namespace Microsoft.Azure.Commands.Profile
                         var newProfile = new AzureRmProfile(Path);
                         profile.TryCopyProfile(newProfile);
                         AzureRmProfileProvider.Instance.SetTokenCacheForProfile(newProfile);
+                        executionComplete = true;
                     });
-
-                    executionComplete = true;
                 });
             }
             else

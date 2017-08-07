@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public ProtectedProfileProvider()
         {
-            using (var fileProvider = ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile))
+            using (var fileProvider = ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ResourceManagerContextFile)))
             {
                 _profile = new AzureRmProfile(fileProvider);
             }
@@ -41,26 +42,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             base.ResetDefaultProfile();
         }
 
-        public override void SetTokenCacheForProfile(IAzureContextContainer profile)
-        {
-            base.SetTokenCacheForProfile(profile);
-            if (profile.HasTokenCache())
-            {
-                var cache = AzureSession.Instance.TokenCache as ProtectedFileTokenCache;
-                if (cache == null)
-                {
-                    AzureSession.Instance.TokenCache = new ProtectedFileTokenCache(profile.GetTokenCache().CacheData);
-                }
-                else
-                {
-                    cache.Deserialize(profile.GetTokenCache().CacheData);
-                }
-            }
-        }
-
         public override T GetProfile<T>()
         {
             return Profile as T;
+        }
+
+        public override void SetTokenCacheForProfile(IAzureContextContainer profile)
+        {
+            // do not update the token cache in this case
         }
 
         public override IAzureContextContainer Profile

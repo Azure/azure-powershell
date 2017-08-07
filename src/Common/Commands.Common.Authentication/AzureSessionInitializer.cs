@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         static IAzureSession CreateInstance(IDataStore dataStore = null)
         {
+            string profilePath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    Resources.AzureDirectoryName);
             var session = new AdalSession
             {
                 ClientFactory = new ClientFactory(),
@@ -63,10 +66,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 DataStore = dataStore?? new DiskDataStore(),
                 OldProfileFile = "WindowsAzureProfile.xml",
                 OldProfileFileBackup = "WindowsAzureProfile.xml.bak",
-                ProfileDirectory = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    Resources.AzureDirectoryName),
+                ProfileDirectory = profilePath,
+                ARMProfileDirectory = profilePath,
                 ResourceManagerContextFile = "AzureRmContext.json",
+                ARMProfileFile = "AzureRmContext.json",
                 ProfileFile = "AzureProfile.json",
                 TokenCacheFile = "TokenCache.dat"
             };

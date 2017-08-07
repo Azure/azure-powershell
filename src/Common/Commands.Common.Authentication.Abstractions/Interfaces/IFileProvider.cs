@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// A reader for the file
         /// </summary>
-        StreamReader Reader { get; }
+        StreamReader CreateReader();
 
         /// <summary>
         /// A writer for the file
         /// </summary>
-        StreamWriter Writer { get; }
+        StreamWriter CreateWriter();
     }
 }

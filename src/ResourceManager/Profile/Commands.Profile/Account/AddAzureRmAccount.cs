@@ -223,7 +223,6 @@ namespace Microsoft.Azure.Commands.Profile
             {
 #endif
                 AzureSessionInitializer.InitializeAzureSession();
-                InitializeProfileProvider();
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {
@@ -232,12 +231,21 @@ namespace Microsoft.Azure.Commands.Profile
 #if DEBUG
                 }
 #endif
-                System.Management.Automation.PowerShell invoker = null;
-                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                var invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
                 invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     "AzureRmProfileStartup.ps1")));
-                invoker.Invoke();
+                var result = invoker.Invoke();
+                
+                bool autoSaveEnabled = true;
+                foreach (var output in result)
+                {
+                    if (bool.TryParse(output.ToString(), out autoSaveEnabled))
+                    {
+                        break;
+                    }
+                }
+                InitializeProfileProvider(autoSaveEnabled);
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

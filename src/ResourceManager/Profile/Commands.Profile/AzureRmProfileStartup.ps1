@@ -12,10 +12,32 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Setup-Profile
+{
+	[CmdletBinding()]
+	param()
+
+	PROCESS 
+	{
+	    if ((Test-Path -Path "Variable:\AzureRmAutoSaveSetting") -and (Get-Variable "AzureRmAutoSaveSetting").Value -eq "Disabled")
+	    {
+		    Write-Debug "Set up in-memory profile at user request."
+			Write-Output $false
+	    }
+	    else
+	    {
+		    Write-Debug "Set up AutoSave profile by default."
+		    Write-Output $true
+	    }
+    }
+}
+
 @{
     "Login-AzureRmAccount" = "Add-AzureRmAccount";
     "Select-AzureRmSubscription" = "Set-AzureRmContext";
 	"Save-AzureRmProfile" = "Save-AzureRmContext";
 	"Select-AzureRmProfile" = "Import-AzureRmContext";
 	"Resolve-Error" = "Resolve-AzureRmError";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias" | Out-Null
+
+Setup-Profile

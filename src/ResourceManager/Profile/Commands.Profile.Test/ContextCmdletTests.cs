@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             account.SetProperty(AzureAccount.Property.Tenants, allowedTenants);
             account.SetProperty(AzureAccount.Property.Subscriptions, new string[0]);
 
-            cmdlt.TenantId = tenantToSet;
+            cmdlt.Tenant = tenantToSet;
 
             // Act
             cmdlt.InvokeBeginProcessing();

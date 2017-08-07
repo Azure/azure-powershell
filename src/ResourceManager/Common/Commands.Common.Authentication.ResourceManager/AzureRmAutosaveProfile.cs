@@ -195,7 +195,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 IFileProvider disposable = Interlocked.Exchange(ref _provider, null);
                 if (disposable != null && _default != null)
                 {
-                    _default.Save(disposable);
+                    // do not serialize the cache when autosaving the profile
+                    _default.Save(disposable, false);
                     _default = null;
                     disposable.Dispose();
                 }

@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Common
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     result = currentProfile;
                     break;
                 case ContextModificationScope.CurrentUser:
-                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(AzureSession.Instance.ResourceManagerContextFile, FileProtection.ExclusiveWrite));
+                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ResourceManagerContextFile), FileProtection.ExclusiveWrite));
                     break;
             }
 
@@ -92,20 +93,27 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// <summary>
         /// Initialize the profile provider based on the autosave setting
         /// </summary>
-        internal void InitializeProfileProvider()
+        internal void InitializeProfileProvider(bool useAutoSaveProfile = true)
         {
 #if DEBUG
             if (!TestMockSupport.RunningMocked)
             {
 #endif
-                switch (GetContextModificationScope())
+                if (!useAutoSaveProfile)
                 {
-                    case ContextModificationScope.Process:
-                        ResourceManagerProfileProvider.InitializeResourceManagerProfile();
-                        break;
-                    case ContextModificationScope.CurrentUser:
-                        ProtectedProfileProvider.InitializeResourceManagerProfile();
-                        break;
+                    ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+                }
+                else
+                {
+                    switch (GetContextModificationScope())
+                    {
+                        case ContextModificationScope.Process:
+                            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+                            break;
+                        case ContextModificationScope.CurrentUser:
+                            ProtectedProfileProvider.InitializeResourceManagerProfile();
+                            break;
+                    }
                 }
 #if DEBUG
             }

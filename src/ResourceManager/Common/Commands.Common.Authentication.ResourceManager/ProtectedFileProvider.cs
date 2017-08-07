@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
         /// <summary>
         /// 
         /// </summary>
-        public Stream Stream {
+        public Stream Stream
+        {
             get
             {
                 if (_stream == null)
@@ -59,40 +60,34 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
         /// <summary>
         /// A reader for the stream associated with this file provider
         /// </summary>
-        public StreamReader Reader
+        public StreamReader CreateReader()
         {
-            get
+            if (Stream == null || !Stream.CanRead || !Stream.CanSeek)
             {
-                if (Stream == null || !Stream.CanRead || !Stream.CanSeek)
-                {
-                    throw new IOException(string.Format(Resources.UnreadableStream, FilePath));
-                }
-
-                Stream.Seek(0, SeekOrigin.Begin);
-                return new StreamReader(Stream, Encoding.UTF8);
+                throw new IOException(string.Format(Resources.UnreadableStream, FilePath));
             }
+
+            Stream.Seek(0, SeekOrigin.Begin);
+            return new StreamReader(Stream, Encoding.UTF8);
         }
 
         /// <summary>
         /// A reader for the stream associated with this file provider
         /// </summary>
-        public StreamWriter Writer
+        public StreamWriter CreateWriter()
         {
-            get
+            if (Stream == null || !Stream.CanWrite || !Stream.CanSeek)
             {
-                if (Stream == null ||!Stream.CanWrite || !Stream.CanSeek)
-                {
-                    throw new IOException(string.Format(Resources.UnwritableStream, FilePath));
-                }
-
-                Stream.Seek(0, SeekOrigin.Begin);
-                return new StreamWriter(Stream, Encoding.UTF8);
+                throw new IOException(string.Format(Resources.UnwritableStream, FilePath));
             }
+
+            Stream.Seek(0, SeekOrigin.Begin);
+            return new StreamWriter(Stream, Encoding.UTF8);
         }
 
         protected virtual void InitializeStream()
         {
-           lock(_initializationLock)
+            lock (_initializationLock)
             {
                 if (_stream == null)
                 {
@@ -111,7 +106,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
 
         static bool TryGetStreamLock(Func<string, Stream> acquireLock, string filePath, out Stream stream)
         {
-           stream = null;
+            stream = null;
             int tries = 0;
             do
             {
@@ -122,7 +117,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 catch (IOException)
                 {
                     tries++;
-                    //TestMockSupport.Delay(RetryInterval);
+                    // TestMockSupport.Delay(RetryInterval);
                 }
             }
             while (tries <= MaxTries && stream == null);
@@ -136,6 +131,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 var stream = Interlocked.Exchange(ref _stream, null);
                 if (stream != null)
                 {
+                    FileStream file = stream as FileStream;
+                    if (file != null)
+                    {
+                        file.Flush(true);
+                    }
+                    else
+                    {
+                        stream.Flush();
+                    }
+
                     stream.Close();
                 }
             }

@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             context.CopyFrom(_profile.DefaultContext);
             if (!string.IsNullOrWhiteSpace(subscriptionNameOrId))
             {
-                if (!Guid.TryParse(subscriptionNameOrId, out subscriptionId))
+                if (Guid.TryParse(subscriptionNameOrId, out subscriptionId))
                 {
                     TryGetSubscriptionById(tenantId, subscriptionNameOrId, out subscription);
                 }
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (account.Type == AzureAccount.AccountType.AccessToken)
             {
-                tenantId = tenantId ?? AuthenticationFactory.CommonAdTenant;
+                tenantId = tenantId ?? GetCommonTenant(account);
                 return new SimpleAccessToken(account, tenantId);
             }
 
@@ -500,6 +500,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        private string GetCommonTenant(IAzureAccount account)
+        {
+            string result = AuthenticationFactory.CommonAdTenant;
+            if (account.IsPropertySet(AzureAccount.Property.Tenants))
+            {
+                var candidate = account.GetTenants().FirstOrDefault();
+                if (!string.IsNullOrWhiteSpace(candidate))
+                {
+                    result = candidate;
+                }
+            }
+
+            return result;
+        }
         private List<AzureTenant> ListAccountTenants(
 			IAzureAccount account, 
 			IAzureEnvironment environment, 
@@ -508,12 +522,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 			Action<string> promptAction)
         {
             List<AzureTenant> result = new List<AzureTenant>();
+            var commonTenant = GetCommonTenant(account);
             try
             {
                 var commonTenantToken = AcquireAccessToken(
                     account, 
                     environment, 
-                    AuthenticationFactory.CommonAdTenant,
+                    commonTenant,
                     password, 
                     promptBehavior,
                     promptAction);
@@ -540,7 +555,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             catch
             {
-                WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, AuthenticationFactory.CommonAdTenant));
+                WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, commonTenant));
                 if (account.IsPropertySet(AzureAccount.Property.Tenants))
                 {
                     result =

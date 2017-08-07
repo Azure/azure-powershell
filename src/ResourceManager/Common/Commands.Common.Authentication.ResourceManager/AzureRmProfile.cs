@@ -113,25 +113,54 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (AzureSession.Instance.DataStore.FileExists(ProfilePath))
             {
                 string contents = AzureSession.Instance.DataStore.ReadFileAsText(ProfilePath);
-                LoadImpl(contents);
+                LegacyAzureRmProfile oldProfile;
+                AzureRmProfile profile = null;
+                if (!SafeDeserializeObject<LegacyAzureRmProfile>(contents, out oldProfile)
+                    || !oldProfile.TryConvert(out profile)
+                    || !SafeDeserializeObject<AzureRmProfile>(contents, out profile, new AzureRmProfileConverter()))
+                {
+                    return;
+                }
+
+                Initialize(profile);
             }
         }
 
         private void Load(IFileProvider provider)
         {
             this.ProfilePath = provider.FilePath;
-            LoadImpl(provider.Reader.ReadToEnd());
+            string contents = provider.CreateReader().ReadToEnd();
+            LegacyAzureRmProfile oldProfile;
+            AzureRmProfile profile = null;
+            if (!(SafeDeserializeObject<LegacyAzureRmProfile>(contents, out oldProfile)
+                && oldProfile.TryConvert(out profile))
+                && !SafeDeserializeObject<AzureRmProfile>(contents, out profile, new AzureRmProfileConverter(false)))
+            {
+                return;
+            }
+
+            Initialize(profile);
         }
 
-        private void LoadImpl(string contents)
+        bool SafeDeserializeObject<T>(string serialization, out T result, JsonConverter converter = null)
         {
-            var oldProfile = JsonConvert.DeserializeObject<LegacyAzureRmProfile>(contents);
-            AzureRmProfile profile;
-            if (!oldProfile.TryConvert(out profile))
+            result = default(T);
+            bool success = false;
+            try
             {
-                profile = JsonConvert.DeserializeObject<IAzureContextContainer>(contents, new AzureRmProfileConverter()) as AzureRmProfile;
+                result = converter == null? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
+                success = true;
             }
-            Debug.Assert(profile != null);
+            catch (JsonException)
+            {
+
+            }
+
+            return success;
+        }
+
+        private void Initialize(AzureRmProfile profile)
+        {
             EnvironmentTable.Clear();
             foreach (var environment in profile.EnvironmentTable)
             {
@@ -144,6 +173,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 context.Value.TokenCache = AzureSession.Instance.TokenCache;
                 this.Contexts.Add(context.Key, context.Value);
             }
+
+            DefaultContextKey = profile.DefaultContextKey ?? "Default";
+        }
+
+        private void LoadImpl(string contents)
+        {
         }
 
 
@@ -211,7 +246,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// Writes the profile using the specified file provider
         /// </summary>
         /// <param name="provider">The file provider used to save the profile</param>
-        public void Save(IFileProvider provider)
+        public void Save(IFileProvider provider, bool serializeCache = true)
         {
             foreach (string env in AzureEnvironment.PublicEnvironments.Keys)
             {
@@ -220,14 +255,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             try
             {
-                string contents = ToString();
+                string contents = ToString(serializeCache);
                 string diskContents = string.Empty;
-                diskContents = provider.Reader.ReadToEnd();
+                diskContents = provider.CreateReader().ReadToEnd();
 
                 if (diskContents != contents)
                 {
-                    provider.Writer.Write(contents);
-                    provider.Writer.Flush();
+                    var writer = provider.CreateWriter();
+                    writer.Write(contents);
+                    writer.Flush();
+
+                    // When writing to a stream, ensure that the file is truncated 
+                    // so that previous data is overwritten
+                    provider.Stream.SetLength(provider.Stream.Position);
                 }
             }
             finally
@@ -243,10 +283,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         /// <summary>
         /// Serializes the current profile and return its contents.
         /// </summary>
-        /// <returns>The current string.</returns>
+        /// <returns>The serialization of the Profile.</returns>
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new AzureRmProfileConverter());
+            return ToString(true);
+        }
+
+        /// <summary>
+        /// Serializes the current profile, including or not including the token cache
+        /// </summary>
+        /// <param name="serializeCache">true if the TokenCache should be serialized, false otherwise</param>
+        /// <returns>The serialization of the Profile</returns>
+        public string ToString(bool serializeCache)
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new AzureRmProfileConverter(serializeCache));
         }
 
         /// <summary>
@@ -262,8 +312,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 EnvironmentTable.Add(environment.Key, environment.Value);
             }
         }
-
-        public AzureRmProfile Profile { get { return this; } }
 
         public bool TryAddContext(IAzureContext context, out string name)
         {
@@ -423,12 +471,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (environment != null && !AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
             {
 
-                if (Profile.EnvironmentTable.ContainsKey(environment.Name))
+                if (EnvironmentTable.ContainsKey(environment.Name))
                 {
-                    mergedEnvironment = mergedEnvironment.Merge( Profile.EnvironmentTable[environment.Name]);
+                    mergedEnvironment = mergedEnvironment.Merge( EnvironmentTable[environment.Name]);
                 }
 
-                Profile.EnvironmentTable[environment.Name] = mergedEnvironment;
+                EnvironmentTable[environment.Name] = mergedEnvironment;
                 result = true;
             }
 

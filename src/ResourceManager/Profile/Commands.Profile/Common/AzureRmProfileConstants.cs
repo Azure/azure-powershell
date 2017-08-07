@@ -21,33 +21,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
     {
         public const string ProfileAutoSaveVariable = "AzureRmContextAutoSave";
         public const string AutoSaveDisabled = "Disabled";
-
-        public static bool GetAutosaveSetting(this AzureRMCmdlet cmdlet)
-        {
-            bool autoSave = true;
-            try
-            {
-                var autoSaveVariable = cmdlet.SessionState.PSVariable.Get(ProfileAutoSaveVariable);
-                if (autoSaveVariable != null)
-                {
-                    string autoSaveSetting = autoSaveVariable.Value as string;
-                    if (autoSaveSetting != null)
-                    {
-                        if (string.Equals(autoSaveSetting, AutoSaveDisabled, StringComparison.OrdinalIgnoreCase) ||
-                            string.Equals(autoSaveSetting, "False", StringComparison.OrdinalIgnoreCase))
-                        {
-                            autoSave = false;
-                        }
-                    }
-                }
-            }
-            catch (Exception exception)
-            {
-                cmdlet.WriteDebug(string.Format("Unable to retrieve variable value '{0}' to determine AutoSaveSetting, received exception '{1}' setting AutoSave to true", ProfileAutoSaveVariable, exception));
-            }
-
-            cmdlet.WriteDebug(string.Format("AUtosave set to '{0}'", autoSave));
-            return autoSave;
-        }
     }
 }
