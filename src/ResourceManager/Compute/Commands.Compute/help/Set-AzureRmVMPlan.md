@@ -118,6 +118,8 @@ Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
 ## NOTES
 
 ## RELATED LINKS

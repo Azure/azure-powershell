@@ -96,6 +96,8 @@ Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' 
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSSecurityRule
+
 ## NOTES
 
 ## RELATED LINKS

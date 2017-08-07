@@ -714,6 +714,8 @@ Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipelin
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight
 

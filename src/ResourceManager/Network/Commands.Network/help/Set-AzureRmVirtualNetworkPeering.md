@@ -118,6 +118,8 @@ Parameter 'VirtualNetworkPeering' accepts value of type 'PSVirtualNetworkPeering
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
+
 ## NOTES
 
 ## RELATED LINKS

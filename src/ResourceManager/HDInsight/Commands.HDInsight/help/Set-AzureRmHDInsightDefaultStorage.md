@@ -134,6 +134,8 @@ Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipelin
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+
 ## NOTES
 
 ## RELATED LINKS

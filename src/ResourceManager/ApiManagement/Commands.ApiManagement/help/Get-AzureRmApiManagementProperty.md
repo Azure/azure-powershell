@@ -105,6 +105,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty]
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty
+
 ## NOTES
 
 ## RELATED LINKS

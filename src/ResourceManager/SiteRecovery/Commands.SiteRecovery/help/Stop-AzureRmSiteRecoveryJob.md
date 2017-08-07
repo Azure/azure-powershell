@@ -70,6 +70,8 @@ Parameter 'Job' accepts value of type 'ASRJob' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS

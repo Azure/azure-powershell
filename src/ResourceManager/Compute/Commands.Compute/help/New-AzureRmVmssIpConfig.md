@@ -257,6 +257,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration
+
 ## NOTES
 
 ## RELATED LINKS

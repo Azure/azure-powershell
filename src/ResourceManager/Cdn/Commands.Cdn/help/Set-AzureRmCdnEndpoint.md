@@ -85,6 +85,8 @@ Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
+
 ## NOTES
 
 ## RELATED LINKS

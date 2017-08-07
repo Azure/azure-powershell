@@ -72,6 +72,10 @@ Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap
+
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap]
+
 ## NOTES
 
 ## RELATED LINKS

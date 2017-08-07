@@ -115,6 +115,8 @@ Parameter 'JobDefinition' accepts value of type 'AzureHDInsightJobDefinition' fr
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJob
+
 ## NOTES
 
 ## RELATED LINKS

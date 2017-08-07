@@ -209,6 +209,8 @@ Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pi
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Batch.Models.PSCertificate
+
 ## NOTES
 
 ## RELATED LINKS

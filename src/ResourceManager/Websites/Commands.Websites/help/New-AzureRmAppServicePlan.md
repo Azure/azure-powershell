@@ -204,6 +204,8 @@ Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from th
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku
+
 ## NOTES
 
 ## RELATED LINKS

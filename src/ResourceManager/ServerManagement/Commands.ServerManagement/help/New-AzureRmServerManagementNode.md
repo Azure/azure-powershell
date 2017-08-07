@@ -172,6 +172,8 @@ Parameter 'Gateway' accepts value of type 'Gateway' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ServerManagement.Model.Node
+
 ## NOTES
 
 ## RELATED LINKS

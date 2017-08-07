@@ -215,6 +215,8 @@ Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, network, networking
 

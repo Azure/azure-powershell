@@ -133,6 +133,8 @@ Parameter 'Gateway' accepts value of type 'Gateway' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ServerManagement.Model.Gateway
+
 ## NOTES
 * If this cmdlet is use without parameters, it will return all the gateways associated with the subscription.
 

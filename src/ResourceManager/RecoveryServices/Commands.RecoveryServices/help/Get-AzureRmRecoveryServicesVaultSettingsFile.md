@@ -154,6 +154,8 @@ Parameter 'Vault' accepts value of type 'ARSVault' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.RecoveryServices.VaultSettingsFilePath
+
 ## NOTES
 
 ## RELATED LINKS

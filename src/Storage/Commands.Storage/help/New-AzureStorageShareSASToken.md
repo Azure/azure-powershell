@@ -214,6 +214,8 @@ Parameter 'ShareName' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### System.String
+
 ## NOTES
 * Keywords: common, azure, services, data, storage, blob, queue, table
 

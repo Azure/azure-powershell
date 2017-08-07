@@ -140,6 +140,8 @@ Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from th
 
 ## OUTPUTS
 
+### Microsoft.Azure.AzureOperationResponse
+
 ## NOTES
 
 ## RELATED LINKS

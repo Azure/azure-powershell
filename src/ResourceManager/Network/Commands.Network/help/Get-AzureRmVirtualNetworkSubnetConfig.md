@@ -76,6 +76,8 @@ Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pip
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSSubnet
+
 ## NOTES
 
 ## RELATED LINKS

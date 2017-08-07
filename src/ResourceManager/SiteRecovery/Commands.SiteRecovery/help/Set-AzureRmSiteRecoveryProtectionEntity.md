@@ -218,6 +218,8 @@ Parameter 'ProtectionEntity' accepts value of type 'ASRProtectionEntity' from th
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS

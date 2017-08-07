@@ -164,6 +164,8 @@ Parameter 'SubscriptionId' accepts value of type 'Guid' from the pipeline
 
 ## OUTPUTS
 
+### System.Management.Automation.PSObject
+
 ## NOTES
 
 ## RELATED LINKS

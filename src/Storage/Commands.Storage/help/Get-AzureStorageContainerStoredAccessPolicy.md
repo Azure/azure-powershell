@@ -151,6 +151,8 @@ Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy
+
 ## NOTES
 
 ## RELATED LINKS

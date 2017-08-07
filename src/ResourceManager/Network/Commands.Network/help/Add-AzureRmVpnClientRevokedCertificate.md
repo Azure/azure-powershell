@@ -110,6 +110,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate
+
 ## NOTES
 
 ## RELATED LINKS

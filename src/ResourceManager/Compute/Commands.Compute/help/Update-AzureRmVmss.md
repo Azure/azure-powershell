@@ -121,6 +121,8 @@ Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+
 ## NOTES
 
 ## RELATED LINKS

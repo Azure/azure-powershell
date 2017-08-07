@@ -106,6 +106,8 @@ Parameter 'LocalNetworkGateway' accepts value of type 'PSLocalNetworkGateway' fr
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+
 ## NOTES
 
 ## RELATED LINKS

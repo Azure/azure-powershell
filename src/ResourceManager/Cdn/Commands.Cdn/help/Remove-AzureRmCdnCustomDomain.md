@@ -169,6 +169,8 @@ Parameter 'CdnCustomDomain' accepts value of type 'PSCustomDomain' from the pipe
 
 ## OUTPUTS
 
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

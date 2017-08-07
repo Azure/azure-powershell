@@ -200,6 +200,8 @@ Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
 
+### System.String
+
 ## NOTES
 
 ## RELATED LINKS

@@ -52,6 +52,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Models.PSUsage
+
 ## NOTES
 
 ## RELATED LINKS

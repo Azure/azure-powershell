@@ -122,6 +122,8 @@ Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.WebSites.Models.BackupItem
+
 ## NOTES
 
 ## RELATED LINKS

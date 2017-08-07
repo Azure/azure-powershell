@@ -70,6 +70,8 @@ Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+
 ## NOTES
 
 ## RELATED LINKS

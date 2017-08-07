@@ -152,6 +152,8 @@ Parameter 'ShareName' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Storage.File.SharedAccessFilePolicy
+
 ## NOTES
 
 ## RELATED LINKS

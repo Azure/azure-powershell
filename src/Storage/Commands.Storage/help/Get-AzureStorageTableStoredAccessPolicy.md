@@ -99,6 +99,8 @@ Parameter 'Table' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.WindowsAzure.Storage.Table.SharedAccessTablePolicy
+
 ## NOTES
 
 ## RELATED LINKS

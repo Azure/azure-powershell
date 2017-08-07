@@ -265,6 +265,8 @@ Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipel
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+
 ## NOTES
 
 ## RELATED LINKS

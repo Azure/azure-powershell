@@ -75,6 +75,8 @@ Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration
+
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, network, networking
 

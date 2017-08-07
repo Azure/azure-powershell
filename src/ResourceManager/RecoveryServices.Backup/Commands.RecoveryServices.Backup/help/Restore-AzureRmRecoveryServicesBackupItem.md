@@ -116,6 +116,8 @@ Parameter 'RecoveryPoint' accepts value of type 'RecoveryPointBase' from the pip
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
+
 ## NOTES
 
 ## RELATED LINKS

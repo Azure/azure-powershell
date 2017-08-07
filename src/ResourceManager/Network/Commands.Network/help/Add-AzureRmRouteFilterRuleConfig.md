@@ -179,6 +179,8 @@ Parameter 'RouteFilter' accepts value of type 'PSRouteFilter' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking
 

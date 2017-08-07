@@ -137,6 +137,8 @@ Parameter 'Queue' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
+### System.String
+
 ## NOTES
 
 ## RELATED LINKS

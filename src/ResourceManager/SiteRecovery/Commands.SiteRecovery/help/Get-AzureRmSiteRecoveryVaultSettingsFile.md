@@ -107,6 +107,8 @@ Parameter 'Vault' accepts value of type 'ASRVault' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.VaultSettingsFilePath
+
 ## NOTES
 
 ## RELATED LINKS

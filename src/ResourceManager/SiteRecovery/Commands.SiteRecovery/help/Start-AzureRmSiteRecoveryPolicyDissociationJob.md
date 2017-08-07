@@ -88,6 +88,8 @@ Parameter 'Policy' accepts value of type 'ASRPolicy' from the pipeline
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
+
 ## NOTES
 
 ## RELATED LINKS
