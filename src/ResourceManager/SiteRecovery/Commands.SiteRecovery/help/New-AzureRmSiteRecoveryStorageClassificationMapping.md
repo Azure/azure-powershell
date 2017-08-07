@@ -73,6 +73,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRStorageClassification
+
+Parameter 'PrimaryStorageClassification' accepts value of type 'ASRStorageClassification' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

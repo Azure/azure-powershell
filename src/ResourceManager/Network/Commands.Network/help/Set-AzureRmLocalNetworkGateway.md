@@ -100,6 +100,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSLocalNetworkGateway
+
+Parameter 'LocalNetworkGateway' accepts value of type 'PSLocalNetworkGateway' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

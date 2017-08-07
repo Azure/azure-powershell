@@ -148,6 +148,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PsApiManagement
+
+Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

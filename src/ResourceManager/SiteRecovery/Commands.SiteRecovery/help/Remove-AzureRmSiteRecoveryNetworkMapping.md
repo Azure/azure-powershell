@@ -43,6 +43,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRNetworkMapping
+
+Parameter 'NetworkMapping' accepts value of type 'ASRNetworkMapping' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

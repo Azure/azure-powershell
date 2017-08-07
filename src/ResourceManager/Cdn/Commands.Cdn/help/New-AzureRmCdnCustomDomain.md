@@ -162,6 +162,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSEndpoint
+
+Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

@@ -158,6 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Guid
+
+Parameter 'SubscriptionId' accepts value of type 'Guid' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

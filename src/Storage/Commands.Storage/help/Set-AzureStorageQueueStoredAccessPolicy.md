@@ -188,6 +188,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### String
+
+Parameter 'Queue' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

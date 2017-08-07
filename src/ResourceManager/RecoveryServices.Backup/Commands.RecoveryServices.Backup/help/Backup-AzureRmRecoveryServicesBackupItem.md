@@ -77,6 +77,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### DateTime
+
+Parameter 'ExpiryDateTimeUTC' accepts value of type 'DateTime' from the pipeline
+
+### ItemBase
+
+Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

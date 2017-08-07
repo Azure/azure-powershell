@@ -190,6 +190,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRProtectableItem
+
+Parameter 'ProtectableItem' accepts value of type 'ASRProtectableItem' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SiteRecovery.ASRJob

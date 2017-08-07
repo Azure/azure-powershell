@@ -110,6 +110,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### RecoveryPointBase
+
+Parameter 'RecoveryPoint' accepts value of type 'RecoveryPointBase' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

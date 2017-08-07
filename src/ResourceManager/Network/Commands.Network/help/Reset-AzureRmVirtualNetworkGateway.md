@@ -60,6 +60,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'GatewayVip' accepts value of type 'String' from the pipeline
+
+### PSVirtualNetworkGateway
+
+Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

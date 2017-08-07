@@ -42,7 +42,9 @@ The second command removes the network interface configuration named ContosoVmss
 ## PARAMETERS
 
 ### -Id
-Specifies the ID of the network interface configuration that this cmdlet removes.```yaml
+Specifies the ID of the network interface configuration that this cmdlet removes.
+
+```yaml
 Type: String
 Parameter Sets: IdParameterSet
 Aliases: 
@@ -118,6 +120,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### VirtualMachineScaleSet
+
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
 
 ## OUTPUTS
 

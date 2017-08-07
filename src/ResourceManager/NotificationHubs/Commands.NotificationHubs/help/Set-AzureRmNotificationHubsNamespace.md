@@ -138,7 +138,9 @@ Accept wildcard characters: False
 ```
 
 ### -SkuTier
-Sku tier of the namespace```yaml
+Sku tier of the namespace
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

@@ -49,7 +49,9 @@ This command restarts the virtual machine named VirtualMachine07 in ResourceGrou
 ## PARAMETERS
 
 ### -Id
-The resource group name.```yaml
+The resource group name.
+
+```yaml
 Type: String
 Parameter Sets: RestartIdParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 
@@ -62,7 +64,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The virtual machine name.```yaml
+The virtual machine name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -75,7 +79,9 @@ Accept wildcard characters: False
 ```
 
 ### -PerformMaintenance
-To perform the maintenance of virtual machine.```yaml
+To perform the maintenance of virtual machine.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: PerformMaintenanceResourceGroupNameParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 

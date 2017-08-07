@@ -175,6 +175,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRRecoveryPlan
+
+Parameter 'RecoveryPlan' accepts value of type 'ASRRecoveryPlan' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

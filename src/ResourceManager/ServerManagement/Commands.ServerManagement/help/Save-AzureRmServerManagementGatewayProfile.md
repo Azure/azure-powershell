@@ -102,6 +102,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Gateway
+
+Parameter 'Gateway' accepts value of type 'Gateway' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

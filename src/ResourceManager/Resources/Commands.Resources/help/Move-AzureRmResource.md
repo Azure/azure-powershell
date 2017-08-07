@@ -203,6 +203,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String[]
+
+Parameter 'ResourceId' accepts value of type 'String[]' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

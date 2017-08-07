@@ -155,6 +155,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRVirtualMachine
+
+Parameter 'VirtualMachine' accepts value of type 'ASRVirtualMachine' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

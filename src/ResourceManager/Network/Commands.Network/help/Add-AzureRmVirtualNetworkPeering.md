@@ -155,6 +155,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'RemoteVirtualNetworkId' accepts value of type 'String' from the pipeline
+
+### PSVirtualNetwork
+
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

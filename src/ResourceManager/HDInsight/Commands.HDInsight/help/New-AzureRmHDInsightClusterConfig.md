@@ -204,7 +204,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultStorageAccountType
-Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.```yaml
+Specifies the type of the default storage account that the HDInsight cluster will use. Possible values are AzureStorage and AzureDataLakeStore.
+
+```yaml
 Type: StorageType
 Parameter Sets: (All)
 Aliases: 
@@ -218,7 +220,9 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeNodeSize
-Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.```yaml
+Specifies the size of the virtual machine for the edge node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight's pricing page. This parameter is valid only for RServer clusters.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

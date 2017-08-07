@@ -44,6 +44,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRStorageClassificationMapping
+
+Parameter 'StorageClassificationMapping' accepts value of type 'ASRStorageClassificationMapping' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES
