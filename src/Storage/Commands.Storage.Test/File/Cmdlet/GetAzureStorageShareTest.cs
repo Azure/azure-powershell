@@ -19,6 +19,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
@@ -40,6 +41,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
         [TestMethod]
         public void GetNonExistingShareByNameTest()
         {
+            this.CmdletInstance.DisableDataCollection();
             this.CmdletInstance.RunCmdlet(
                 Constants.SpecificParameterSetName,
                 new KeyValuePair<string, object>("Name", "share"));
