@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        public CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData)
+        public CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData, bool incrementNodeConfigurationBuild)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -1030,7 +1030,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         {
                             Name = configurationName
                         },
-                        Parameters = this.ProcessConfigurationParameters(parameters, configurationData)
+                        Parameters = this.ProcessConfigurationParameters(parameters, configurationData),
+                        IncrementNodeConfigurationBuild = incrementNodeConfigurationBuild
                     }
                 };
 
@@ -1188,6 +1189,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string automationAccountName,
             string sourcePath,
             string configurationName,
+            bool incrementNodeConfigurationBuild,
             bool overWrite)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
@@ -1216,21 +1218,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                             Resources.ConfigurationSourcePathInvalid));
                 }
 
-                // if node configuration already exists, ensure overwrite flag is specified
-                var nodeConfigurationModel = this.TryGetNodeConfiguration(
-                    resourceGroupName,
-                    automationAccountName,
-                    nodeConfigurationName,
-                    null);
-                if (nodeConfigurationModel != null)
-                {
-                    if (!overWrite)
-                    {
-                        throw new ResourceCommonException(typeof(Model.NodeConfiguration),
-                            string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationAlreadyExists, nodeConfigurationName));
-                    }
-                }
-
                 // if configuration already exists, ensure overwrite flag is specified
                 var configurationModel = this.TryGetConfigurationModel(
                     resourceGroupName,
@@ -1256,6 +1243,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                         Name = configurationName
                     }
                 };
+                nodeConfigurationCreateParameters.IncrementNodeConfigurationBuild = incrementNodeConfigurationBuild;
 
                 var nodeConfiguration =
                     this.automationManagementClient.NodeConfigurations.CreateOrUpdate(
