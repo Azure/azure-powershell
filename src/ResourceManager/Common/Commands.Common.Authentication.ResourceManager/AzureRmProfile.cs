@@ -401,7 +401,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public bool TryRemoveContext(string name)
         {
-            return Contexts.Remove(name);
+            bool result = Contexts.Remove(name);
+            if (string.Equals(name, DefaultContextKey))
+            {
+                DefaultContextKey = Contexts.Keys.FirstOrDefault();
+            }
+
+            return result;
         }
 
         public bool TryRenameContext(string sourceName, string targetName)
@@ -411,6 +417,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (Contexts.ContainsKey(sourceName) && !Contexts.ContainsKey(targetName))
             {
                 Contexts[targetName] = Contexts[sourceName];
+                if (string.Equals(sourceName, DefaultContextKey, StringComparison.OrdinalIgnoreCase))
+                {
+                    DefaultContextKey = targetName;
+                }
+
                 result = TryRemoveContext(sourceName);
             }
 

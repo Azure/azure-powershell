@@ -202,6 +202,10 @@
   <data name="NoValidTenant" xml:space="preserve">
     <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
   </data>
+  <data name="OverwriteContextWarning" xml:space="preserve">
+    <value>Overwrite context '{0}' with context '{1}'</value>
+    <comment>{0} = target context name, {1} = source context name</comment>
+  </data>
   <data name="ProcessImportContextFromFile" xml:space="preserve">
     <value>Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}</value>
     <comment>{0} is file path</comment>
@@ -229,8 +233,29 @@
     <value>Personally identifiable information and secrets may be written to the file at '{0}'.  Please ensure that the saved file is assigned appropriate access controls</value>
     <comment>{0} is file path</comment>
   </data>
+  <data name="RemoveContextMessage" xml:space="preserve">
+    <value>Remove context '{0}'</value>
+    <comment>{0} = context name</comment>
+  </data>
+  <data name="RemoveContextTarget" xml:space="preserve">
+    <value>Context</value>
+  </data>
+  <data name="RemoveDefaultContextCaption" xml:space="preserve">
+    <value>Remove Default Context</value>
+  </data>
+  <data name="RemoveDefaultContextQuery" xml:space="preserve">
+    <value>'{0}' is the default context used for communicating with Azure.  Are you sure you want to remove the default context?</value>
+    <comment>{0} = context name</comment>
+  </data>
+  <data name="RenameContextMessage" xml:space="preserve">
+    <value>Rename context '{0}' to '{1}'</value>
+    <comment>{0} = source context name, {1} = target context name</comment>
+  </data>
   <data name="RmProfileNull" xml:space="preserve">
     <value>The Resource Manager context was not properly initialized.  Please load the module again.</value>
+  </data>
+  <data name="SelectContextPrompt" xml:space="preserve">
+    <value>Change the current context</value>
   </data>
   <data name="SelectedSubscriptionNotActive" xml:space="preserve">
     <value>Selected subscription is in '{0}' state. </value>

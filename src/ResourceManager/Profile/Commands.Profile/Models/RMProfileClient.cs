@@ -51,6 +51,53 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        /// <summary>
+        /// Set the default context
+        /// </summary>
+        /// <param name="contextName">The name of the context to set as the default</param>
+        /// <returns>true if successful, otherwise false</returns>
+        public bool TrySetDefaultContext(string contextName)
+        {
+            return _profile.TrySetDefaultContext(contextName);
+        }
+        /// <summary>
+        /// Rename the given named context
+        /// </summary>
+        /// <param name="sourceContext">The name of the context to change</param>
+        /// <param name="targetContext">The enw name for the context</param>
+        /// <returns>true if the rename was successful, otherwise falkse</returns>
+        public bool TryRenameContext(string sourceContext, string targetContext)
+        {
+            return _profile.TryRenameContext(sourceContext, targetContext);
+        }
+
+        /// <summary>
+        /// Remove the given named context
+        /// </summary>
+        /// <param name="contextName">The context name</param>
+        /// <returns>true if the context was found and removed, otherwise false</returns>
+        public bool TryRemoveContext(string contextName)
+        {
+            return _profile.TryRemoveContext(contextName);
+        }
+
+        /// <summary>
+        /// Remove the given context
+        /// </summary>
+        /// <param name="context">The context to remove</param>
+        /// <returns>true if the context was found and removed, otherwise false</returns>
+        public bool TryRemoveContext(IAzureContext context)
+        {
+            bool result = false;
+            string contextName;
+            if (_profile.TryFindContext(context, out contextName))
+            {
+                result = TryRemoveContext(contextName);
+            }
+
+            return result;
+        }
+
         public AzureRmProfile Login(
             IAzureAccount account,
             IAzureEnvironment environment,

@@ -125,9 +125,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoSave\EnableAzureRmContextAutosave.cs" />
     <Compile Include="Common\AzureContextModificationCmdlet.cs" />
     <Compile Include="Common\AzureRmProfileConstants.cs" />
     <Compile Include="Common\ContextModificationScope.cs" />
+    <Compile Include="Context\RemoveAzureRmContext.cs" />
+    <Compile Include="Context\RenameAzureRmContext.cs" />
     <Compile Include="Context\SelectAzureRmContext.cs" />
     <Compile Include="DataCollection\DisableAzureRMDataCollection.cs" />
     <Compile Include="DataCollection\EnableAzureRMDataCollection.cs" />

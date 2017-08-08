@@ -20,7 +20,9 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Common
@@ -122,6 +124,18 @@ namespace Microsoft.Azure.Commands.Profile.Common
                 ResourceManagerProfileProvider.InitializeResourceManagerProfile();
             }
 #endif
+        }
+
+        internal RuntimeDefinedParameter GetExistingContextNameParameter(string name)
+        {
+            return new RuntimeDefinedParameter(
+                name, typeof(string),
+                new Collection<Attribute>()
+                {
+                    new ParameterAttribute { Position =0, Mandatory=true, HelpMessage="The name of the context" },
+                    new ValidateSetAttribute((DefaultProfile as AzureRmProfile).Contexts.Keys.ToArray())
+                }
+            );
         }
     }
 }

@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overwrite context &apos;{0}&apos; with context &apos;{1}&apos;.
+        /// </summary>
+        internal static string OverwriteContextWarning {
+            get {
+                return ResourceManager.GetString("OverwriteContextWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}.
         /// </summary>
         internal static string ProcessImportContextFromFile {
@@ -358,11 +367,65 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove context &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveContextMessage {
+            get {
+                return ResourceManager.GetString("RemoveContextMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context.
+        /// </summary>
+        internal static string RemoveContextTarget {
+            get {
+                return ResourceManager.GetString("RemoveContextTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Default Context.
+        /// </summary>
+        internal static string RemoveDefaultContextCaption {
+            get {
+                return ResourceManager.GetString("RemoveDefaultContextCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is the default context used for communicating with Azure.  Are you sure you want to remove the default context?.
+        /// </summary>
+        internal static string RemoveDefaultContextQuery {
+            get {
+                return ResourceManager.GetString("RemoveDefaultContextQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
+        /// </summary>
+        internal static string RenameContextMessage {
+            get {
+                return ResourceManager.GetString("RenameContextMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Resource Manager context was not properly initialized.  Please load the module again..
         /// </summary>
         internal static string RmProfileNull {
             get {
                 return ResourceManager.GetString("RmProfileNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change the current context.
+        /// </summary>
+        internal static string SelectContextPrompt {
+            get {
+                return ResourceManager.GetString("SelectContextPrompt", resourceCulture);
             }
         }
         

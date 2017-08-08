@@ -16,14 +16,21 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Select, "AzureRmContext", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmContext", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureContext))]
-    public class SelectAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
+    public class RemoveAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
+        [Parameter(Mandatory = false, HelpMessage = "Remove context even if it is the defualt")]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Return the removed context")]
+        public SwitchParameter PassThrough { get; set; }
+
         public object GetDynamicParameters()
         {
             var parameters = new RuntimeDefinedParameterDictionary();
@@ -41,19 +48,30 @@ namespace Microsoft.Azure.Commands.Profile.Context
         {
             if (MyInvocation.BoundParameters.ContainsKey("Name"))
             {
-                ConfirmAction(Resources.SelectContextPrompt, "Context",
-                    () =>
-                    {
-                        string name = MyInvocation.BoundParameters["Name"] as string;
-                        if (name != null)
+                string name = MyInvocation.BoundParameters["Name"] as string;
+                if (name != null)
+                {
+                    var defaultProfile = DefaultProfile as AzureRmProfile;
+                    ConfirmAction(Force.IsPresent,
+                        string.Format(Resources.RemoveDefaultContextQuery, name),
+                        string.Format(Resources.RemoveContextMessage, name),
+                        Resources.RemoveContextTarget,
+                        () =>
                         {
                             ModifyContext((profile, client) =>
                             {
-                                client.TrySetDefaultContext(name);
-                                WriteObject(new PSAzureContext(profile.DefaultContext));
+                                if (profile.Contexts.ContainsKey(name))
+                                {
+                                    var removedContext = profile.Contexts[name];
+                                    if (client.TryRemoveContext(name) && PassThrough.IsPresent)
+                                    {
+                                        WriteObject(new PSAzureContext(removedContext));
+                                    }
+                                }
                             });
-                        }
-                    });
+                        },
+                        () => string.Equals(defaultProfile.DefaultContextKey, name, StringComparison.OrdinalIgnoreCase));
+                }
             }
         }
     }
