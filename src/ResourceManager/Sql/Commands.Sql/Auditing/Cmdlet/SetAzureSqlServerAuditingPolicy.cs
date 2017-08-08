@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Alias("Set-AzureRmSqlDatabaseServerAuditingPolicy")]
+    [Obsolete("Set-AzureRmSqlServerAuditingPolicy is obsolete. It will be removed in a future release. Please use the Set-AzureSqlDatabaseAuditing cmdlet instead.", false)]
     public class SetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {
         /// <summary>
