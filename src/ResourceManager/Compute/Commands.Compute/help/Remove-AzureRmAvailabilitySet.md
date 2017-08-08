@@ -47,7 +47,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The availability set name.```yaml
+The availability set name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, AvailabilitySetName
@@ -112,6 +114,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

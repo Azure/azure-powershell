@@ -66,7 +66,9 @@ Accept wildcard characters: False
 ```
 
 ### -InRemovedState
-Remove the previously deleted vault permanently.```yaml
+Remove the previously deleted vault permanently.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault
 Aliases: 
@@ -79,7 +81,9 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the deleted vault.```yaml
+The location of the deleted vault.
+
+```yaml
 Type: String
 Parameter Sets: ByAvailableVault
 Aliases: 

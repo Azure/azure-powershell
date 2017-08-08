@@ -257,6 +257,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAddAlertRuleOperationResponse
+
 ## NOTES
 
 ## RELATED LINKS

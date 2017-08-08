@@ -64,7 +64,9 @@ This command creates a backup of the key named $key.Name in the vault named $key
 ## PARAMETERS
 
 ### -Force
-Overwrite the given file if it exists```yaml
+Overwrite the given file if it exists
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

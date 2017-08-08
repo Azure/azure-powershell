@@ -105,6 +105,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+
 ## NOTES
 
 ## RELATED LINKS
