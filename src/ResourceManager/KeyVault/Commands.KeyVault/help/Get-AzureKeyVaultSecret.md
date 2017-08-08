@@ -92,7 +92,9 @@ This command will return metadata such as the deletion date, and the scheduled p
 ## PARAMETERS
 
 ### -InRemovedState
-Specifies whether to show the previously deleted secrets in the output.```yaml
+Specifies whether to show the previously deleted secrets in the output.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedSecrets
 Aliases: 

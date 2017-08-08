@@ -183,6 +183,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.PSVault
+
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem]
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault
+
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault]
+
 ## NOTES
 
 ## RELATED LINKS

@@ -367,7 +367,9 @@ Accept wildcard characters: False
 ```
 
 ### -PermissionsToStorage
-Specifies managed storage account and sas definition operation permissions to grant to a user or service principal.```yaml
+Specifies managed storage account and sas definition operation permissions to grant to a user or service principal.
+
+```yaml
 Type: String[]
 Parameter Sets: ByServicePrincipalName, ByUserPrincipalName, ByObjectId
 Aliases: 

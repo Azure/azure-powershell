@@ -114,7 +114,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSWorkspace
+
+Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+
 ## OUTPUTS
+
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight]
+
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSStorageInsight
 
 ## NOTES
 

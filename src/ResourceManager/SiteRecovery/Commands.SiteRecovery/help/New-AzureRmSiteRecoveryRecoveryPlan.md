@@ -215,6 +215,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRProtectionEntity[]
+
+Parameter 'ProtectionEntityList' accepts value of type 'ASRProtectionEntity[]' from the pipeline
+
+### ASRReplicationProtectedItem[]
+
+Parameter 'ReplicationProtectedItem' accepts value of type 'ASRReplicationProtectedItem[]' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

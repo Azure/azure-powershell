@@ -125,7 +125,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]
+
+Parameter 'NetworkInterface' accepts value of type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]' from the pipeline
+
+### PSVirtualMachine
+
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## NOTES
 

@@ -78,7 +78,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSPublicIpAddress
+
+Parameter 'PublicIpAddress' accepts value of type 'PSPublicIpAddress' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 
 ## NOTES
 

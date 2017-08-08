@@ -89,6 +89,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'ResourceGroupName' accepts value of type 'String' from the pipeline
+
+### String
+
+Parameter 'VirtualNetworkGatewayName' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
 
 ###  
