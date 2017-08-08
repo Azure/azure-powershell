@@ -131,6 +131,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSProbe
+
 ## NOTES
 
 ## RELATED LINKS
