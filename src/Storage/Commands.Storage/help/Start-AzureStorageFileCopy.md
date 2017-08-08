@@ -427,6 +427,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### CloudBlob
+
+Parameter 'SrcBlob' accepts value of type 'CloudBlob' from the pipeline
+
+### CloudFile
+
+Parameter 'SrcFile' accepts value of type 'CloudFile' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

@@ -34,5 +34,14 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             EventHubsController.NewInstance.RunPsTest("ConsumerGroupsTests");
         }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ConsumerGroupsCRUD_New()
+        {
+            EventHubsController.NewInstance.RunPsTest("ConsumerGroupsTests_New");
+        }
+        
     }
 }

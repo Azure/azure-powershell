@@ -134,6 +134,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineInstanceView
+
 ## NOTES
 
 ## RELATED LINKS

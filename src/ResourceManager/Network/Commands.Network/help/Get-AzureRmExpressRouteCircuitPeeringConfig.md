@@ -66,7 +66,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSExpressRouteCircuit
+
+Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSPeering
 
 ## NOTES
 

@@ -146,7 +146,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRJob
+
+Parameter 'Job' accepts value of type 'ASRJob' from the pipeline
+
 ## OUTPUTS
+
+### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.SiteRecovery.ASRJob]
 
 ## NOTES
 

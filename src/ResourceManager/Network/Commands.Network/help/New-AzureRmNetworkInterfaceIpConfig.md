@@ -298,6 +298,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration
+
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, network, networking
 

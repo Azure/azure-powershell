@@ -273,6 +273,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 

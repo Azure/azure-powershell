@@ -93,6 +93,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection
+
 ## NOTES
 
 ## RELATED LINKS

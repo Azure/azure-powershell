@@ -148,6 +148,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment
 

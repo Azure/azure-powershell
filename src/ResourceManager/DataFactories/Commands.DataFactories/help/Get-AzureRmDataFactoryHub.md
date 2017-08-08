@@ -116,6 +116,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.DataFactories.Models.PSHub]
+
+### Microsoft.Azure.Commands.DataFactories.Models.PSHub
+
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 

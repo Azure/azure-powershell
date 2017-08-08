@@ -157,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
+### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
 
 ## NOTES
 
