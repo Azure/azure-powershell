@@ -64,7 +64,9 @@ Accept wildcard characters: False
 ```
 
 ### -InRemovedState
-If present, removes the previously deleted secret permanently.```yaml
+If present, removes the previously deleted secret permanently.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

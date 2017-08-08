@@ -198,6 +198,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy
+
 ## NOTES
 
 ## RELATED LINKS

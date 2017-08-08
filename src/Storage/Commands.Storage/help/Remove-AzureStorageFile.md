@@ -264,6 +264,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### IStorageContext
+
+Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+
+### CloudFileDirectory
+
+Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
+
+### CloudFile
+
+Parameter 'File' accepts value of type 'CloudFile' from the pipeline
+
+### CloudFileShare
+
+Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

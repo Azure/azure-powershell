@@ -62,7 +62,9 @@ Accept wildcard characters: False
 ```
 
 ### -ExternalId
-For external groups, this property contains the id of the group from the external identity provider, e.g. Azure Active Directory aad://contoso5api.onmicrosoft.com/groups/12ad42b1-592f-4664-a77b4250-2f2e82579f4c; otherwise the value is null.```yaml
+For external groups, this property contains the id of the group from the external identity provider, e.g. Azure Active Directory aad://contoso5api.onmicrosoft.com/groups/12ad42b1-592f-4664-a77b4250-2f2e82579f4c; otherwise the value is null.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -105,7 +107,9 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Group Type. Custom Group is User defined Group. System Group includes Administrator, Developers and Guests. You cannot create or update a System Group.  External Group is groups from External Identity Provider like Azure Active Directory. This parameter is optional and by default assumed to be a Custom Group.```yaml
+Group Type. Custom Group is User defined Group. System Group includes Administrator, Developers and Guests. You cannot create or update a System Group.  External Group is groups from External Identity Provider like Azure Active Directory. This parameter is optional and by default assumed to be a Custom Group.
+
+```yaml
 Type: PsApiManagementGroupType
 Parameter Sets: (All)
 Aliases: 

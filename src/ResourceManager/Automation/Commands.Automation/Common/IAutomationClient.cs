@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                                     
         IEnumerable<CompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus, ref string nextLink);
 
-        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData);
+        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData, bool incrementNodeConfigurationBuild = false);
 
         IEnumerable<JobStream> GetDscCompilationJobStream(string resourceGroupName, string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
         #endregion
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus, ref string nextLink);
 
-        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
+        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool incrementNodeConfigurationBuild, bool overWrite);
 
         void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings);
         #endregion

@@ -74,7 +74,9 @@ Accept wildcard characters: False
 ```
 
 ### -InRemovedState
-Remove the previously deleted key permanently.```yaml
+Remove the previously deleted key permanently.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

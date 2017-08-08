@@ -37,7 +37,9 @@ This command starts the virtual machine named VirtualMachine07 in ResourceGroup1
 ## PARAMETERS
 
 ### -Id
-The resource group name.```yaml
+The resource group name.
+
+```yaml
 Type: String
 Parameter Sets: IdParameterSetName
 Aliases: 
@@ -50,7 +52,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The virtual machine name.```yaml
+The virtual machine name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -113,6 +117,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation
 
 ## NOTES
 

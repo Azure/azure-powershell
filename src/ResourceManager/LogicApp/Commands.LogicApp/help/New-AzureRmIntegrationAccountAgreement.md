@@ -143,7 +143,9 @@ Accept wildcard characters: False
 ```
 
 ### -GuestIdentityQualifierValue
-The integration account agreement guest identity qualifier value.```yaml
+The integration account agreement guest identity qualifier value.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -186,7 +188,9 @@ Accept wildcard characters: False
 ```
 
 ### -HostIdentityQualifierValue
-The integration account agreement host identity qualifier value.```yaml
+The integration account agreement host identity qualifier value.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 

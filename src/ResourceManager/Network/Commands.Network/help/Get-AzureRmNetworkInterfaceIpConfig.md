@@ -69,7 +69,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSNetworkInterface
+
+Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, network, networking
