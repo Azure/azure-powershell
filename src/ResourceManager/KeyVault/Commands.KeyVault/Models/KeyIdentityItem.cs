@@ -38,6 +38,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyItem.Attributes.Updated;
             RecoveryLevel = keyItem.Attributes.RecoveryLevel;
             Tags = (keyItem.Tags == null) ? null : keyItem.Tags.ConvertToHashtable();
+
+
+            // the PurgeDisabled field was deprecated, but is kept in the
+            // PSH SDK until the first breaking-change release.
+            PurgeDisabled = false;
         }
 
         internal KeyIdentityItem(KeyBundle keyBundle)
@@ -56,6 +61,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyBundle.Attributes.Updated;
             RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
             Tags = keyBundle.Attributes.Tags;
+
+            // the PurgeDisabled field was deprecated, but is kept in the
+            // PSH SDK until the first breaking-change release.
+            PurgeDisabled = false;
         }
 
         public bool? Enabled { get; set; }
@@ -67,6 +76,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
+
+        public bool PurgeDisabled { get; private set; }
 
         public string RecoveryLevel { get; private set; }
 
