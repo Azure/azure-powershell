@@ -125,7 +125,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* added ResourceGroup property to NamespaceAttributes
-    - 'ResourceGroup' Gets the name of the resource group the Namespace is in
+    - ''ResourceGroup'' Gets the name of the resource group the Namespace is in
 
 * updated commandlets with new parameter and parameter alias
     - below cmdlets updated with Parametersets for Namespace and EventHub for operation of AuthorizationRule
