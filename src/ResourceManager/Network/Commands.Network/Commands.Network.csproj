@@ -176,9 +176,6 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
-    <Compile Include="AvailablePrivateAccessService\AvailablePrivateAccessServiceListMethod.cs" />
-    <Compile Include="Models\PSPrivateAccessService.cs" />
-    <Compile Include="Models\PSPrivateAccessServiceResult.cs" />
     <Compile Include="Common\ListNextLink.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />

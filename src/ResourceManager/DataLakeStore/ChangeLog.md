@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix for issue: https://github.com/Azure/azure-powershell/issues/4323
 
 ## Version 4.2.1
 
