@@ -325,6 +325,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.Storage.Models.StorageAccount
+
 ## NOTES
 
 ## RELATED LINKS

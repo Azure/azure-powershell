@@ -212,12 +212,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###
-You can pipe instances of the **Database** object for the primary database to this cmdlet.
-
 ## OUTPUTS
 
-###
+### Microsoft.Azure.Commands.Sql.Replication.Model.AzureReplicationLinkModel
+
 This cmdlet returns **ReplicationLink** objects.
 
 ## NOTES

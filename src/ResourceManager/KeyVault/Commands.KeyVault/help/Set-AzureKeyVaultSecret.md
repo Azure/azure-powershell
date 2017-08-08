@@ -229,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.KeyVault.Models.Secret
+### Microsoft.Azure.Commands.KeyVault.Models.Secret
 
 ## NOTES
 

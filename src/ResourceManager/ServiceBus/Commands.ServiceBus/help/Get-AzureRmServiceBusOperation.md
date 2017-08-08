@@ -35,6 +35,9 @@ Lists ServiceBus supported operations
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.OperationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.4.2.0, Culture=neutral, PublicKeyToken=null]]
 
+## OUTPUTS
+
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.ServiceBus.Models.OperationAttributes]
 
 ## NOTES
 

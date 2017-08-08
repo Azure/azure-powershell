@@ -91,6 +91,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRRecoveryServicesProvider
+
+Parameter 'ServicesProvider' accepts value of type 'ASRRecoveryServicesProvider' from the pipeline
+
 ## OUTPUTS
 
 ### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.SiteRecovery.ASRJob, Microsoft.Azure.Commands.SiteRecovery, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null]]

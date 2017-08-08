@@ -112,7 +112,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '- Data collection has been enabled by default. Usage data is collected by Microsoft in order to improve the user experience. The data is anonymous and does not include command-line argument values.
+    - Use the Disable-AzureRmDataCollection cmdlet to turn the feature off
+    - Use the Enable-AzureRmDataCollection cmdlet to turn this feature on'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

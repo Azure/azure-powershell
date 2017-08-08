@@ -88,6 +88,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Batch.Models.PSApplication
+
 ## NOTES
 
 ## RELATED LINKS

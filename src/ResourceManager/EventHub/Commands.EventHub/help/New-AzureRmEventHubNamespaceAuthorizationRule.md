@@ -13,11 +13,11 @@ Creates a new authorization rule on the specified namespace.
 
 ```
 New-AzureRmEventHubNamespaceAuthorizationRule [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-AuthorizationRuleName] <String> [-Rights] <String[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthorizationRuleName] <String> [-Rights] <String[]> [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmEventHubNamespaceAuthorizationRule** cmdlet creates a new authorization rule on the specified Event Hubs namespace.
+The New-AzureRmEventHubNamespaceAuthorizationRule cmdlet creates a new authorization rule on the specified Event Hubs namespace.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The **New-AzureRmEventHubNamespaceAuthorizationRule** cmdlet creates a new autho
 PS C:\> New-AzureRmEventHubNamespaceAuthorizationRule -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AuthorizationRuleName MyAuthRuleName -Rights @("Listen","Send")
 ```
 
-Creates the authorization rule `MyAuthRuleName` with **Listen** and **Send** rights, for Event Hubs namespace `MyNamespaceName`, in resource group `MyResourceGroupName`.
+Creates the authorization rule \`MyAuthRuleName\` with Listen and Send rights, for Event Hubs namespace \`MyNamespaceName\`, in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 
@@ -76,8 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights;for example, 
-@("Listen","Send","Manage")
+Rights;for example,  @("Listen","Send","Manage")
 
 ```yaml
 Type: String[]
@@ -121,9 +120,6 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

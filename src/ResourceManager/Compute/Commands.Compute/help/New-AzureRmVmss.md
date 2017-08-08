@@ -210,6 +210,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### VirtualMachineScaleSet
+
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+
 ## OUTPUTS
 
 ### This cmdlet does not generate any output.

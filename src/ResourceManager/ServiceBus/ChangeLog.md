@@ -21,28 +21,20 @@
 ## Current Release
 
 ## Version 0.4.3
-
 * Added below new commandlets for AuthorizationRules for NameSpace, Queue and Topic. according to parameter set the authorization rule orperations are perfomed. 
  - New-AzureRmServiceBusAuthorizationRule
    - Adds a new AuthorizationRule to the existing ServiceBus NameSpace/Queue/Topic.
-
  - Get-AzureRmServiceBusAuthorizationRule
    - Gets AuthorizationRule / List of AuthorizationRules for the existing ServiceBus NameSpace/Queue/Topic.
-
  - Set-AzureRmServiceBusAuthorizationRule
    - Updates properties of existing AuthorizationRule of Servicebus NameSpace/Queue/Topic.
-
  - New-AzureRmServiceBusKey
    - Generates a new Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.
-
  - Get-AzureRmServiceBusKey
-   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.
-   
+   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.   
  - Remove-AzureRmServiceBusNamespaceAuthorizationRule
-   - Deletes the existing AuthorizationRule of ServiceBus NameSpace/Queue/Topic.
-   
+   - Deletes the existing AuthorizationRule of ServiceBus NameSpace/Queue/Topic.   
 * Added Resource Group property to NamespceAttributes
-
 
 ## Version 0.4.2
 
