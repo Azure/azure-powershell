@@ -88,6 +88,24 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Capacity must be an integer between minimum of 1 and maximum of 8..
+        /// </summary>
+        internal static string Exception_CapacityMustBeInRange {
+            get {
+                return ResourceManager.GetString("Exception_CapacityMustBeInRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capacity can be greater than 1 only if the Sku Tier is Standard.
+        /// </summary>
+        internal static string Exception_CapacityMustBeOneIfNotStandardTier {
+            get {
+                return ResourceManager.GetString("Exception_CapacityMustBeOneIfNotStandardTier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find server: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this server exists and that the current user has access to it..
         /// </summary>
         internal static string FailedToDiscoverResourceGroup {
