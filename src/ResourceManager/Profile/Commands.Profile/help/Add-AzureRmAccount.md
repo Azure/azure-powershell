@@ -359,6 +359,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'SubscriptionId' accepts value of type 'String' from the pipeline
+
+### String
+
+Parameter 'SubscriptionName' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
 
 ### PSAzureProfile

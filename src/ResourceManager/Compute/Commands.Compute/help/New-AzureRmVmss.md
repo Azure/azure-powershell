@@ -13,8 +13,8 @@ Creates a VMSS.
 ## SYNTAX
 
 ```
-New-AzureRmVmss [-ResourceGroupName] <String> -VMScaleSetName <String>
- [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the **VirtualMachineScaleSet** object that contains the properties of the VMSS that this cmdlet creates.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
@@ -167,7 +167,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -209,6 +209,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### VirtualMachineScaleSet
+
+Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
 
 ## OUTPUTS
 

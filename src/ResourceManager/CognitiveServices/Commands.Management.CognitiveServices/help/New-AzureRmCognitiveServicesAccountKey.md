@@ -132,6 +132,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys
+
 ## NOTES
 
 ## RELATED LINKS

@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -117,11 +118,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(OperationStatusResponse))]
+    [OutputType(typeof(PSOperationStatusResponse))]
     public partial class StopAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsLifecycle.Stop)
@@ -136,12 +138,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
                         var result = VirtualMachineScaleSetsClient.PowerOff(resourceGroupName, vmScaleSetName, instanceIds);
-                        WriteObject(result);
+                        var psObject = new PSOperationStatusResponse();
+                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        WriteObject(psObject);
                     }
                     else
                     {
                         var result = VirtualMachineScaleSetsClient.Deallocate(resourceGroupName, vmScaleSetName, instanceIds);
-                        WriteObject(result);
+                        var psObject = new PSOperationStatusResponse();
+                        Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        WriteObject(psObject);
                     }
 
                 }
@@ -196,18 +202,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = false)]
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
             Mandatory = false)]
         [AllowNull]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 5,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter StayProvisioned { get; set; }

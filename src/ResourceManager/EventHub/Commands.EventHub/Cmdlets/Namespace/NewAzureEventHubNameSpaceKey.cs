@@ -15,12 +15,14 @@
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
     /// 'New-AzureRmEventHubNamespaceKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given EventHub Namespace Authorization Rule
     /// </summary>
+    [ObsoleteAttribute("'New-AzureRmEventHubNamespaceKey' cmdlet is marked as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'New-AzureRmEventHubKey'", false)]
     [Cmdlet(VerbsCommon.New, EventHubNamespaceKeyVerb, SupportsShouldProcess = true), OutputType(typeof(ListKeysAttributes))]
     public class NewAzureRmEventHubNamespaceKey : AzureEventHubsCmdletBase
     {
@@ -56,7 +58,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         public override void ExecuteCmdlet()
         {
-            var regenKey = new RegenerateKeysParameters(ParsePolicyKey(RegenerateKeys));
+            var regenKey = new RegenerateAccessKeyParameters { Key = RegenerateKeys };
 
             // Get a EventHub List Keys for the specified AuthorizationRule
             if (ShouldProcess(target: RegenerateKeys, action: string.Format("Generating Key:{0} for AuthorizationRule:{1} of NameSpace:{2}", RegenerateKeys, AuthorizationRuleName, NamespaceName)))

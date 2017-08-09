@@ -11,14 +11,22 @@ Updates the specified Event Hubs namespace.
 
 ## SYNTAX
 
+### NamespaceParameterSet (Default)
 ```
-Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-NamespaceName] <String> [-Location] <String>
- [[-SkuName] <String>] [-SkuCapacity <Int32>] [-State <NamespaceState>] [-Tag <Hashtable>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
+ [-EnableAutoInflate] [[-MaximumThroughputUnits] <Int32>] [-WhatIf] [-Confirm]
+```
+
+### AutoInflateParameterSet
+```
+Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
+ [-EnableAutoInflate] [[-MaximumThroughputUnits] <Int32>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmEventHubNamespace** cmdlet updates the properties of the specified Event Hubs namespace.
+The Set-AzureRmEventHubNamespace cmdlet updates the properties of the specified Event Hubs namespace.
 
 ## EXAMPLES
 
@@ -27,7 +35,14 @@ The **Set-AzureRmEventHubNamespace** cmdlet updates the properties of the specif
 PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created
 ```
 
-Updates the state of namespace `MyNamespaceName` to **Created**.
+Updates the state of namespace \`MyNamespaceName\` to Created .
+
+### Example 2
+```
+PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
+```
+
+Updates the state of namespace \`MyNamespaceName\` with AutoInflate = enabled and MaximumThroughputUnits = 10
 
 ## PARAMETERS
 
@@ -41,21 +56,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-The Event Hubs namespace name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -169,8 +169,50 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+#### -EnableAutoInflate
+Indicates whether AutoInflate is enabled
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: NamespaceParameterSet
+Aliases: 
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaximumThroughputUnits
+Upper limit of throughput units when AutoInflate is enabled, vaule should be within 0 to 20 throughput units.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+EventHub Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: NamespaceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ## INPUTS
 

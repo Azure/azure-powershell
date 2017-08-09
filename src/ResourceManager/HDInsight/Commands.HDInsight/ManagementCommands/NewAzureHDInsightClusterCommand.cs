@@ -18,8 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -498,7 +497,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             graphClient.TenantID = DefaultProfile.DefaultContext.Tenant.Id.ToString();
 
-            Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
+            Microsoft.Azure.Graph.RBAC.Version1_6.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
 
             var applicationId = Guid.Empty;
             Guid.TryParse(sp.AppId, out applicationId);

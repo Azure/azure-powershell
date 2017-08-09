@@ -71,6 +71,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Gets or sets the optional hybrid agent friendly name upon which the runbook should be executed.
+        /// </summary>
+        [Parameter(Mandatory = false, 
+            HelpMessage = "Optional name of the hybrid agent which should execute the runbook")]
+        [Alias("HybridWorker")]
+        public string RunOn { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -90,7 +98,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                         this.RunbookName,
                         this.IsEnabled,
                         this.ExpiryTime,
-                        this.Parameters)));
+                        this.Parameters,
+                        this.RunOn)));
 
         }
     }

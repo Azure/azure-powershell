@@ -86,6 +86,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRProtectionContainer
+
+Parameter 'ProtectionContainer' accepts value of type 'ASRProtectionContainer' from the pipeline
+
 ## OUTPUTS
 
 ### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.SiteRecovery.ASRProtectableItem, Microsoft.Azure.Commands.SiteRecovery, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null]]

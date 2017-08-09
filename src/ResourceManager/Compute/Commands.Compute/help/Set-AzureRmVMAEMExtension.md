@@ -49,7 +49,9 @@ Accept wildcard characters: False
 ```
 
 ### -EnableWAD
-If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.```yaml
+If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -146,6 +148,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

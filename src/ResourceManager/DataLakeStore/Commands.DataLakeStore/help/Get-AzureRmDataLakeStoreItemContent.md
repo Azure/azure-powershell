@@ -112,7 +112,9 @@ Accept wildcard characters: False
 ```
 
 ### -Head
-The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.```yaml
+The number of rows (new line delimited) from the beginning of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.
+
+```yaml
 Type: Int32
 Parameter Sets: Preview file rows from the head of the file
 Aliases: 
@@ -170,7 +172,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tail
-The number of rows (new line delimited) from the end of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.```yaml
+The number of rows (new line delimited) from the end of the file to preview. If no new line is encountered in the first 4mb of data, only that data will be returned.
+
+```yaml
 Type: Int32
 Parameter Sets: Preview file rows from the tail of the file
 Aliases: 

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Model;
 using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerTransparentDataEncryptionProtector", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerTransparentDataEncryptionProtector", SupportsShouldProcess = true)]
     public class SetAzureSqlServerTransparentDataEncryptionProtector : AzureSqlServerTransparentDataEncryptionProtectorCmdletBase
     {
         /// <summary>
@@ -45,6 +46,12 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             HelpMessage = "The Azure Key Vault KeyId.")]
         [ValidateNotNullOrEmpty]
         public string KeyId { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of setting Transparent Data Encryption protector confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Get the Transparent Data Encryption to update
@@ -85,6 +92,21 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             return new List<Model.AzureSqlServerTransparentDataEncryptionProtectorModel>() {
                 ModelAdapter.CreateOrUpdateEncryptionProtector(entity.First())
             };
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (ShouldProcess(this.KeyId))
+            {
+                if (Force || this.Type == EncryptionProtectorType.ServiceManaged || ShouldContinue(
+                    string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetAzureSqlServerTransparentDataEncryptionProtectorWarning, this.KeyId), ""))
+                {
+                    base.ExecuteCmdlet();
+                }
+            }
         }
     }
 }

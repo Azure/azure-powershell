@@ -62,7 +62,9 @@ Accept wildcard characters: False
 ```
 
 ### -CommunityList
-The list of community value that route filter will filter on```yaml
+The list of community value that route filter will filter on
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases: 
@@ -75,7 +77,9 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation if you want to overrite a resource```yaml
+Do not ask for confirmation if you want to overrite a resource
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -169,7 +173,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSRouteFilter
+
+Parameter 'RouteFilter' accepts value of type 'PSRouteFilter' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking

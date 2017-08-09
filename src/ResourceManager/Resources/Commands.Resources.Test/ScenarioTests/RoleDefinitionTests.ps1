@@ -71,7 +71,7 @@ function Test-RdNegativeScenarios
 
     $rdId = '85E460B3-89E9-48BA-9DCD-A8A99D64A674'
 	
-    $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $rdId + "' does not exist."
+    $badIdException = "The specified role definition with ID '" + $rdId + "' does not exist."
 
     # Throws on trying to update the a role that does not exist
     Assert-Throws { Set-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json } $badIdException
@@ -126,6 +126,49 @@ function Test-RDPositiveScenarios
     Assert-Null $readRd
 }
 
+<#
+.SYNOPSIS
+Tests verify roledefinition update with interchanged assignablescopes.
+#>
+function Test-RDUpdate
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
+    # Create a role definition with Name rdNamme.
+    $rdName = 'Another tests role'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
+    $rd = New-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json
+    $rd = Get-AzureRmRoleDefinition -Name $rdName
+
+    # Update the role definition with action that was created in the step above.
+    $scopes = $rd.AssignableScopes | foreach { $_ }
+    $rd.AssignableScopes.Clear()
+	for($i = $scopes.Count - 1 ; $i -ge 0; $i--){
+		$rd.AssignableScopes.Add($scopes[$i])
+	}
+    $updatedRd = Set-AzureRmRoleDefinition -Role $rd
+    Assert-NotNull $updatedRd
+
+    # Cleanup
+    $deletedRd = Remove-AzureRmRoleDefinition -Id $rd.Id -Force -PassThru
+    Assert-AreEqual $rd.Name $deletedRd.Name
+}
+
+<#
+.SYNOPSIS
+Tests verify roledefinition create with invalid scope.
+#>
+function Test-RDCreateFromFile
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
+    # Create a role definition with invalid assignable scopes.
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
+    $badScopeException = "Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups' should have even number of parts."
+    Assert-Throws { $rd = New-AzureRmRoleDefinition -InputFile .\Resources\InvalidRoleDefinition.json } $badScopeException
+}
 <#
 .SYNOPSIS
 Verify positive and negative scenarios for RoleDefinition remove.
@@ -237,4 +280,82 @@ function Test-RDGet
 	# delete roles
 	$deletedRd = Remove-AzureRmRoleDefinition -Id $roleDefResourceScope.Id -Scope $resourceScope -Force -PassThru
 	Assert-AreEqual $roleDefResourceScope.Name $deletedRd.Name
+}
+
+<#
+.SYNOPSIS
+Tests validate input parameters 
+#>
+function Test-RdValidateInputParameters ($cmdName)
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
+    # Note: All below scenarios are invalid, we'll expect an exception during scope validation so the ID parameter doesn't need to be a valid one. 
+
+    # Test
+    # Check if Scope is valid.
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
+    Assert-Throws { invoke-expression ($cmdName + " -Scope `"" + $scope  + "`" -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25") } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
+    Assert-Throws { &$cmdName -Scope $scope -Id D46245F8-7E18-4499-8E1F-784A6DA5BE25} $invalidScope
+}
+
+
+<#
+.SYNOPSIS
+Tests validate input parameters 
+#>
+function Test-RdValidateInputParameters2 ($cmdName)
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
+    # Note: All below scenarios are invalid, we'll expect an exception during scope validation so the ID parameter doesn't need to be a valid one. 
+
+	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
+	$roleDef.Name = "CustomRole_99CC0F56-7395-4097-A31E-CC63874AC5EF"
+	$roleDef.Description = "Test Get RD"
+
+    # Test
+    # Check if Scope is valid.
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/Should be 'ResourceGroups'/any group name' should begin with '/subscriptions/<subid>/resourceGroups'."
+    $roleDef.AssignableScopes[0] = $scope;
+    Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups' should have even number of parts."
+    $roleDef.AssignableScopes[0] = $scope;
+    Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/' should not have any empty part."
+    $roleDef.AssignableScopes[0] = $scope;
+    Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Should be 'Providers'/any provider name' should begin with '/subscriptions/<subid>/resourceGroups/<groupname>/providers'."
+    $roleDef.AssignableScopes[0] = $scope;
+    Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
+    
+    $scope = "/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername"
+    $invalidScope = "Scope '/subscriptions/e9ee799d-6ab2-4084-b952-e7c86344bbab/ResourceGroups/groupname/Providers/providername' should have at least one pair of resource type and resource name. e.g. '/subscriptions/<subid>/resourceGroups/<groupname>/providers/<providername>/<resourcetype>/<resourcename>'."
+    $roleDef.AssignableScopes[0] = $scope;
+    Assert-Throws { &$cmdName -Role $roleDef } $invalidScope
 }

@@ -20,7 +20,7 @@ Add-AzureRmVMNetworkInterface [-VM] <PSVirtualMachine> [-Id] <String> [-Primary]
 ### GetNicFromNicObject
 ```
 Add-AzureRmVMNetworkInterface [-VM] <PSVirtualMachine>
- [-NetworkInterface] <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]>
+ [-NetworkInterface] <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference]>
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ The second command adds a network interface to the virtual machine stored in $Vi
 ```
 PS C:\> $VirtualMachine = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07"
 PS C:\> Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id "/subscriptions/46fc8ea4-2de6-4179-8ab1-365da4121af4/resourceGroups/contoso/providers/Microsoft.Network/networkInterfaces/sshNIC"
-PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualMachine07" -VM $VirtualMachine
+PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachine
 ```
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 Specifies the network interface.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference]
 Parameter Sets: GetNicFromNicObject
 Aliases: 
 
@@ -125,7 +125,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]
+
+Parameter 'NetworkInterface' accepts value of type 'System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSNetworkInterface]' from the pipeline
+
+### PSVirtualMachine
+
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## NOTES
 

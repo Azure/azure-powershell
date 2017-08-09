@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -64,6 +64,8 @@ namespace Microsoft.Azure.Commands.Resources
                 RoleDefinitionId = Id,
                 RoleDefinitionName = Name,
             };
+
+            AuthorizationClient.ValidateScope(options.Scope, true);
 
             WriteObject(PoliciesClient.FilterRoleDefinitions(options), enumerateCollection: true);
         }

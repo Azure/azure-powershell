@@ -71,5 +71,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetIdentity");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetNetworking()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetNetworking");
+        }
     }
 }

@@ -13,13 +13,13 @@ Updates a disk.
 
 ### DefaultParameter (Default)
 ```
-Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-DiskUpdate] <DiskUpdate> [-WhatIf]
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-DiskUpdate] <PSDiskUpdate> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
-Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <Disk> [-WhatIf] [-Confirm]
+Update-AzureRmDisk [-ResourceGroupName] <String> [-DiskName] <String> [-Disk] <PSDisk> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ These commands also update an existing disk with name 'Disk01' in resource group
 Specifies a local disk object.
 
 ```yaml
-Type: Disk
+Type: PSDisk
 Parameter Sets: FriendMethod
 Aliases: 
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specifies a local disk update object.
 
 ```yaml
-Type: DiskUpdate
+Type: PSDiskUpdate
 Parameter Sets: DefaultParameter
 Aliases: 
 
@@ -159,12 +159,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.Compute.Models.DiskUpdate
-Microsoft.Azure.Management.Compute.Models.Disk
+Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
+Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## NOTES
 

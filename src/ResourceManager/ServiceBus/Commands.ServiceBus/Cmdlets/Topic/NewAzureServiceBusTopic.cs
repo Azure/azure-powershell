@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
@@ -29,21 +30,24 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias(AliasResourceGroup)]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true,
              ValueFromPipelineByPropertyName = true,
@@ -61,7 +65,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Default Message TimeTo Live")]
+            HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
         [ValidateNotNullOrEmpty]
         public string DefaultMessageTimeToLive { get; set; }
 
@@ -125,7 +129,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             HelpMessage = "MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.")]
         [ValidateNotNullOrEmpty]
         public long? MaxSizeInMegabytes { get; set; }
-
         
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -153,11 +156,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         {
             TopicAttributes topicAttributes = new TopicAttributes();
 
-            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
-
-            topicAttributes.Location = getNamespaceLoc.Location;
+            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);            
             
-            topicAttributes.Name = TopicName;
+            topicAttributes.Name = Name;
 
             if(EnablePartitioning != null)
             topicAttributes.EnablePartitioning = EnablePartitioning;
@@ -176,23 +177,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             if (EnableBatchedOperations != null)
                 topicAttributes.EnableBatchedOperations = EnableBatchedOperations;
 
-            if (EnableSubscriptionPartitioning != null)
-                topicAttributes.EnableSubscriptionPartitioning = EnableSubscriptionPartitioning;
+            
 
             if (EnableExpress != null)
                 topicAttributes.EnableExpress = EnableExpress;
-
-            if (FilteringMessagesBeforePublishing != null)
-                topicAttributes.FilteringMessagesBeforePublishing = FilteringMessagesBeforePublishing;
-
-            if (IsAnonymousAccessible != null)
-                topicAttributes.IsAnonymousAccessible = IsAnonymousAccessible;
-
-            if (IsExpress != null)
-                topicAttributes.IsExpress = IsExpress;
+            
 
             if (MaxSizeInMegabytes != null)
-                topicAttributes.MaxSizeInMegabytes = MaxSizeInMegabytes;
+                topicAttributes.MaxSizeInMegabytes = (int?)MaxSizeInMegabytes;
 
             if (RequiresDuplicateDetection != null)
                 topicAttributes.RequiresDuplicateDetection = RequiresDuplicateDetection;
@@ -203,10 +195,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             if (SizeInBytes != null)
                 topicAttributes.SizeInBytes = SizeInBytes;
 
-
-            if (ShouldProcess(target: TopicName, action: string.Format("Create a new Topic:{0} for Namespace:{1}", TopicName, NamespaceName)))
+#pragma warning disable 612, 618
+            if (EnableSubscriptionPartitioning != null)
+                topicAttributes.EnableSubscriptionPartitioning = false;
+            if (FilteringMessagesBeforePublishing != null)
+                topicAttributes.FilteringMessagesBeforePublishing = false;
+            if (IsAnonymousAccessible != null)
+                topicAttributes.IsAnonymousAccessible = false;
+            if (IsExpress != null)
+                topicAttributes.IsExpress = false;
+                topicAttributes.Location = "";
+#pragma warning restore 612, 618
+            
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateTopic, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateTopic(ResourceGroup, NamespaceName, topicAttributes.Name, topicAttributes));
+                WriteObject(Client.CreateUpdateTopic(ResourceGroupName, Namespace, Name, topicAttributes));
             }
         }
     }

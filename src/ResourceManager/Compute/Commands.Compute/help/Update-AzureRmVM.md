@@ -62,6 +62,7 @@ The type of identity used for the virtual machine. Currently, the only supported
 Type: ResourceIdentityType
 Parameter Sets: (All)
 Aliases: 
+Accepted values: SystemAssigned
 
 Required: False
 Position: Named
@@ -156,7 +157,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualMachine
+
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 
