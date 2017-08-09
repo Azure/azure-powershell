@@ -19,6 +19,7 @@
 -->
 ## Current Release
 
+## Version 0.4.3
 * added ResourceGroup property to NamespaceAttributes
     - 'ResourceGroup' Gets the name of the resource group the Namespace is in
 
