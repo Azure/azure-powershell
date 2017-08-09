@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public IEnumerable<NamespaceAttributes> ListNamespacesBySubscription()
         {
-            var response = Client.Namespaces.ListBySubscription();
+            var response = Client.Namespaces.List();
             var resourceList = response.Select(resource => new NamespaceAttributes(resource));
             return resourceList;
         }
 
-        public NamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags)
+        public NamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits)
         {
-            NamespaceCreateOrUpdateParameters parameter = new NamespaceCreateOrUpdateParameters();
+            EHNamespace parameter = new EHNamespace();
             parameter.Location = location;
             
             if (tags != null)
@@ -87,22 +87,23 @@ namespace Microsoft.Azure.Commands.Eventhub
                 parameter.Sku.Capacity = skuCapacity;
             }
 
+            if (isAutoInflateEnabled.HasValue)
+                parameter.IsAutoInflateEnabled = isAutoInflateEnabled;
+
+            if (maximumThroughputUnits.HasValue)
+                parameter.MaximumThroughputUnits = maximumThroughputUnits;
+
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new NamespaceAttributes(response);
         }
 
-        public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Management.EventHub.Models.NamespaceState? state, Dictionary<string, string> tags)
+        public NamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, NamespaceState? state, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits)
         {
 
-            var parameter = new NamespaceCreateOrUpdateParameters()
+            var parameter = new EHNamespace()
             {
                 Location = location
             };
-            
-            if(state.HasValue)
-            {
-                parameter.Status = state;
-            }
 
             Sku tempSku = new Sku();
 
@@ -124,7 +125,14 @@ namespace Microsoft.Azure.Commands.Eventhub
                 parameter.Tags = new Dictionary<string, string>(tags);
             }
 
-            var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
+            if (isAutoInflateEnabled.HasValue)
+                parameter.IsAutoInflateEnabled = isAutoInflateEnabled;
+
+            if (maximumThroughputUnits.HasValue)
+                parameter.MaximumThroughputUnits = maximumThroughputUnits;
+
+            var response = Client.Namespaces.Update(resourceGroupName, namespaceName, parameter);
+
             return new NamespaceAttributes(response);
         }
 
@@ -148,9 +156,8 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public SharedAccessAuthorizationRuleAttributes CreateOrUpdateNamespaceAuthorizationRules(string resourceGroupName, string namespaceName, string authorizationRuleName, SharedAccessAuthorizationRuleAttributes parameter)
         {
-            var parameter1 = new SharedAccessAuthorizationRuleCreateOrUpdateParameters()
+            var parameter1 = new AuthorizationRule()
             {
-                Name = parameter.Name,
                 Rights = parameter.Rights.ToList()
             };
             var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authorizationRuleName, parameter1);
@@ -176,11 +183,11 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public ListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
         {
-            ResourceListKeys regenerateKeyslistKeys;
+            AccessKeys regenerateKeyslistKeys;
             if(regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateKeysParameters(Policykey.PrimaryKey));
+                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
             else
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateKeysParameters(Policykey.SecondaryKey));                       
+                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));                       
 
             return new ListKeysAttributes(regenerateKeyslistKeys);
         }
@@ -196,28 +203,38 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public IEnumerable<EventHubAttributes> ListAllEventHubs(string resourceGroupName, string namespaceName)
         {
-            var response = Client.EventHubs.ListAll(resourceGroupName, namespaceName);
+            var response = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName);
             var resourceList = response.Select(resource => new EventHubAttributes(resource));
             return resourceList;
         }
 
         public EventHubAttributes CreateOrUpdateEventHub(string resourceGroupName, string namespaceName,  string eventHubName, EventHubAttributes parameter)
         {
-            var Parameter1 = new EventHubCreateOrUpdateParameters()
-            {
-                Name = parameter.Name,
-                Location = parameter.Location
-            };
+            var Parameter1 = new Management.EventHub.Models.Eventhub();
 
             if (parameter.MessageRetentionInDays.HasValue)
                 Parameter1.MessageRetentionInDays = parameter.MessageRetentionInDays;
 
             if (parameter.PartitionCount.HasValue)
-                Parameter1.PartitionCount = parameter.PartitionCount;            
+                Parameter1.PartitionCount = parameter.PartitionCount;
 
             if (parameter.Status.HasValue)
                 Parameter1.Status = parameter.Status;
-            
+
+            if (parameter.CaptureDescription != null)
+            {
+                Parameter1.CaptureDescription = new CaptureDescription();
+                Parameter1.CaptureDescription.Destination = new Destination();
+                Parameter1.CaptureDescription.Enabled = parameter.CaptureDescription.Enabled;
+                Parameter1.CaptureDescription.Encoding = (Management.EventHub.Models.EncodingCaptureDescription?)parameter.CaptureDescription.Encoding;
+                Parameter1.CaptureDescription.IntervalInSeconds = parameter.CaptureDescription.IntervalInSeconds;
+                Parameter1.CaptureDescription.SizeLimitInBytes = parameter.CaptureDescription.SizeLimitInBytes;
+                Parameter1.CaptureDescription.Destination.Name = parameter.CaptureDescription.Destination.Name;
+                Parameter1.CaptureDescription.Destination.BlobContainer = parameter.CaptureDescription.Destination.BlobContainer;
+                Parameter1.CaptureDescription.Destination.ArchiveNameFormat = parameter.CaptureDescription.Destination.ArchiveNameFormat;
+                Parameter1.CaptureDescription.Destination.StorageAccountResourceId = parameter.CaptureDescription.Destination.StorageAccountResourceId;
+            }
+
             var response = Client.EventHubs.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, Parameter1);
             return new EventHubAttributes(response);
         }
@@ -243,9 +260,8 @@ namespace Microsoft.Azure.Commands.Eventhub
         
         public SharedAccessAuthorizationRuleAttributes CreateOrUpdateEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authorizationRuleName, SharedAccessAuthorizationRuleAttributes parameters)
         {
-            var parameter1 = new SharedAccessAuthorizationRuleCreateOrUpdateParameters()
+            var parameter1 = new AuthorizationRule()
             {
-                Name = parameters.Name,
                 Rights = parameters.Rights.ToList()
             };         
             
@@ -255,7 +271,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public bool DeleteEventHubAuthorizationRules(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName)
         {
-            if (string.Equals(SharedAccessAuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
+            if (string.Equals(AuthorizationRuleAttributes.DefaultNamespaceAuthorizationRule, authRuleName, StringComparison.InvariantCultureIgnoreCase))
             {
                 return false;
             }
@@ -272,11 +288,11 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public ListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string eventHubName, string authRuleName, string regenerateKeys)
         {           
-            ResourceListKeys regenerateKeyslistKeys;
+            AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, new RegenerateKeysParameters(Policykey.PrimaryKey));
+                regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
             else
-                regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, new RegenerateKeysParameters(Policykey.SecondaryKey));
+                regenerateKeyslistKeys = Client.EventHubs.RegenerateKeys(resourceGroupName, namespaceName, eventHubName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
             return new ListKeysAttributes(regenerateKeyslistKeys);
 
@@ -287,13 +303,11 @@ namespace Microsoft.Azure.Commands.Eventhub
         #region ConsumerGroup
         public ConsumerGroupAttributes CreateOrUpdateConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName,  ConsumerGroupAttributes parameter)
         {
-            var Parameter1 = new ConsumerGroupCreateOrUpdateParameters()
+            var Parameter1 = new ConsumerGroup()
             {
-                Name = parameter.Name,
-                Location = parameter.Location,
                 UserMetadata = parameter.UserMetadata
             };
-            var response = Client.ConsumerGroups.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, Parameter1.Name, Parameter1);
+            var response = Client.ConsumerGroups.CreateOrUpdate(resourceGroupName, namespaceName, eventHubName, consumerGroupName, Parameter1);
             return new ConsumerGroupAttributes(response);
         }
 
@@ -305,7 +319,7 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public IEnumerable<ConsumerGroupAttributes> ListAllConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName)
         {
-            var response = Client.ConsumerGroups.ListAll(resourceGroupName, namespaceName, eventHubName);
+            var response = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
             var resourceList = response.Select(resource => new ConsumerGroupAttributes(resource));
             return resourceList;
         }

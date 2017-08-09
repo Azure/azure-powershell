@@ -19,6 +19,18 @@
 -->
 ## Current Release
 
+## Version 4.3.0
+* New-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Set-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Remove-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
+	- PeerAddressType
+* Marked parameter -ProbeEnabled as obsolete
+    - Add-AzureRmApplicationGatewayBackendHttpSettings
+    - New-AzureRmApplicationGatewayBackendHttpSettings
+    - Set-AzureRmApplicationGatewayBackendHttpSettings 
+
 ## Version 4.2.1
 
 ## Version 4.2.0

@@ -59,16 +59,16 @@ function ServiceBusTests
      
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location -SkuName "Standard" 
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" 
+    
 	
 	# Assert 
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     
-	$UpdatedNameSpace = Set-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -Location $location -NamespaceName $namespaceName -SkuName "Standard" -SkuCapacity 10
+	$UpdatedNameSpace = Set-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 10
 
      $found = 0
      if ($UpdatedNameSpace.Name -eq $namespaceName)
@@ -84,11 +84,11 @@ function ServiceBusTests
 
 
     Write-Debug "Namespace name : $namespaceName2"
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2
+    
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
-    $allCreatedNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName
+    $allCreatedNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName
 
    $found = 0
     for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
@@ -131,8 +131,8 @@ function ServiceBusTests
     #Assert-True {$found -eq 0} "Namespaces created earlier is not found."
 
     Write-Debug " Delete namespaces"
-    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
-    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
+    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
@@ -157,11 +157,11 @@ function ServiceBusNameSpaceAuthTests
     Write-Debug " Create new ServiceBus namespace"
     Write-Debug "Namespace name : $namespaceName"
 	
-    $result = New-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
+    
     
 	Write-Debug " Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     Assert-True {$createdNamespace.Count -eq 1}
 
     $found = 0
@@ -182,7 +182,7 @@ function ServiceBusNameSpaceAuthTests
     Write-Debug "Create a Namespace Authorization Rule"
     $authRuleName = Get-AuthorizationRuleName
     Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName -Rights @("Listen","Send")
+    $result = New-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")
 																																	  
 
     Assert-AreEqual $authRuleName $result.Name
@@ -191,7 +191,7 @@ function ServiceBusNameSpaceAuthTests
     Assert-True { $result.Rights -Contains "Send" }
 
     Write-Debug "Get created authorizationRule"
-    $createdAuthRule = Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $createdAuthRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
     Assert-AreEqual $authRuleName $createdAuthRule.Name
     Assert-AreEqual 2 $createdAuthRule.Rights.Count
@@ -200,7 +200,7 @@ function ServiceBusNameSpaceAuthTests
 
     Write-Debug "Get the default Namespace AuthorizationRule"
     $defaultNamespaceAuthRule = "RootManageSharedAccessKey"
-    $result = Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $defaultNamespaceAuthRule
+    $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $defaultNamespaceAuthRule
 
     Assert-AreEqual $defaultNamespaceAuthRule $result.Name
     Assert-AreEqual 3 $result.Rights.Count
@@ -209,7 +209,7 @@ function ServiceBusNameSpaceAuthTests
     Assert-True { $result.Rights -Contains "Manage" }  
 
     Write-Debug "Get All Namespace AuthorizationRule"
-    $result = Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName 
+    $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName 
     $count = $result.Count
     Write-Debug "Auth Rule Count : $count"
 
@@ -241,17 +241,17 @@ function ServiceBusNameSpaceAuthTests
     
     $createdAuthRule.Rights.Add("Manage")
 
-    $updatedAuthRule = Set-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthRuleObj $createdAuthRule
+    $updatedAuthRule = Set-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -InputObject $createdAuthRule -Name $authRuleName
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }   
-    Wait-Seconds 15
+    
     
     Write-Debug "Get updated Namespace AuthorizationRules"
-    $updatedAuthRule = Get-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $updatedAuthRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
@@ -259,27 +259,26 @@ function ServiceBusNameSpaceAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
 
-
     Write-Debug "Get namespace authorizationRules connectionStrings"
-    $namespaceListKeys = Get-AzureRmServiceBusNamespaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $namespaceListKeys = Get-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
     Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
     Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
 	
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmServiceBusNamespaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRule $authRuleName -RegenerateKeys $policyKey
+	$namespaceRegenerateKeys = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmServiceBusNamespaceKey -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRule $authRuleName -RegenerateKeys $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmServiceBusNamespaceKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKeys $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
 
     Write-Debug "Delete the created Namespace AuthorizationRule"
-    $result = Remove-AzureRmServiceBusNamespaceAuthorizationRule -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -AuthorizationRuleName $authRuleName
+    $result = Remove-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Force
     
     Write-Debug " Delete namespaces"
-    Remove-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 	   
 }

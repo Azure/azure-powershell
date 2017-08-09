@@ -68,7 +68,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSLoadBalancer
+
+Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
 
 ## NOTES
 

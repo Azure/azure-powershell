@@ -407,7 +407,9 @@ Accept wildcard characters: False
 ```
 
 ### -SkipVmBackup
-Skip backup creation for Linux VMs```yaml
+Skip backup creation for Linux VMs
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -505,6 +507,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

@@ -23,7 +23,7 @@ Remove-AzureRmWebAppBackup [-BackupId] <String> [-WebApp] <Site> [<CommonParamet
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmWebAppBackup** cmdlet gets the specified backup of an Azure Web App.
+The **Remove-AzureRmWebAppBackup** cmdlet removes the specified backup of an Azure Web App.
 
 ## EXAMPLES
 
@@ -116,7 +116,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Site
+
+Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.BackupItem
 
 ## NOTES
 

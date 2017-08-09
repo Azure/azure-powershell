@@ -96,9 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && !string.IsNullOrEmpty(instanceId))
             {
                 var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId);
-                var psObject = new PSVirtualMachineScaleSetVM();
-                Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
-                WriteObject(psObject);
+                WriteObject(result);
             }
             else if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
             {
@@ -114,12 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                     nextPageLink = pageResult.NextPageLink;
                 }
-                var psObject = new List<PSVirtualMachineScaleSetVMList>();
-                foreach (var r in resultList)
-                {
-                    psObject.Add(Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
-                }
-                WriteObject(psObject, true);
+                WriteObject(resultList, true);
             }
         }
 
@@ -157,7 +150,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
                         var result = VirtualMachineScaleSetVMsClient.GetInstanceView(resourceGroupName, vmScaleSetName, instanceId);
-                        WriteObject(result);
+                        var psObject = new PSVirtualMachineScaleSetVMInstanceView();
+                        Mapper.Map<VirtualMachineScaleSetVMInstanceView, PSVirtualMachineScaleSetVMInstanceView>(result, psObject);
+                        WriteObject(psObject);
                     }
                     else
                     {
@@ -239,7 +234,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "FriendMethod",
-            Position = 4,
             Mandatory = true)]
         [AllowNull]
         public SwitchParameter InstanceView { get; set; }

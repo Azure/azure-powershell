@@ -28,7 +28,9 @@ Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGatew
 ## PARAMETERS
 
 ### -GatewayVip
-The gateway vip in order to reset particular gateway instance (e.g. in case of Active-Active feature enabled gateways.) By default, gateway primary instance will be reset if no value is passed.```yaml
+The gateway vip in order to reset particular gateway instance (e.g. in case of Active-Active feature enabled gateways.) By default, gateway primary instance will be reset if no value is passed.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -58,7 +60,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'GatewayVip' accepts value of type 'String' from the pipeline
+
+### PSVirtualNetworkGateway
+
+Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 
 ## NOTES
 

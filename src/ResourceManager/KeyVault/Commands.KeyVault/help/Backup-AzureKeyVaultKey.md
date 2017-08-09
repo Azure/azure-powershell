@@ -79,7 +79,9 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwrite the given file if it exists```yaml
+Overwrite the given file if it exists
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 

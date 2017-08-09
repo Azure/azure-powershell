@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             var certificateArgs = new CertificateRequest();
             certificateArgs.Properties = new RawCertificateData();
             certificateArgs.Properties.Certificate = managementCert.GetRawCertData();
-            certificateArgs.Properties.AuthType = AuthType.ACS;
+            certificateArgs.Properties.AuthType = AuthType.AAD;
 
             return GetRecoveryServicesClient.VaultCertificates.CreateWithHttpMessagesAsync(
                 vault.ResourceGroupName, 
