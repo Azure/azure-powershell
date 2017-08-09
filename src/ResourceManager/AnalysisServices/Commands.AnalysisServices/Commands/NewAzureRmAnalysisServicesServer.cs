@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Properties;
+using Microsoft.Azure.Management.Analysis.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
@@ -26,6 +27,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     [Alias("New-AzureAs")]
     public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
     {
+        private const int MinimumCapacity = 1;
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create the server.")]
         [ValidateNotNullOrEmpty]
@@ -67,6 +70,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string BackupBlobContainerUri { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+            HelpMessage = "Number of instances in the query pool")]
+        [ValidateRange(MinimumCapacity, 8), PSDefaultValue(Value = MinimumCapacity)]
+        public int? Capacity { get; set; } = null;
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 8, Mandatory = false,
+            HelpMessage = "Which server instances are included in the query pool")]
+        public ConnectionMode? QuerypoolConnectionMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Resources.CreateNewAnalysisServicesServer))
@@ -103,7 +115,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     throw new InvalidOperationException(string.Format(Resources.InvalidSku, Sku, String.Join(",", availableSkus.Value.Select(v => v.Name))));
                 }
 
-                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri);
+                Capacity = Capacity ?? MinimumCapacity;
+
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(
+                    resourceGroupName: ResourceGroupName,
+                    serverName: Name,
+                    location: Location,
+                    skuName: Sku,
+                    capacity: Capacity,
+                    customTags: Tag,
+                    administrators: Administrator,
+                    backupBlobContainerUri: BackupBlobContainerUri,
+                    querypoolConnectionMode: QuerypoolConnectionMode);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }

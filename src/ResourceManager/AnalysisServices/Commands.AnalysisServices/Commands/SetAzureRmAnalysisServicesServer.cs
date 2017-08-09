@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [ValidateNotNullOrEmpty]
         public string BackupBlobContainerUri { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "Number of instances in the query pool")]
+        [ValidateRange(1, 8)]
+        public int? Capacity { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "Which server instances are included in the query pool")]
+        public ConnectionMode? QuerypoolConnectionMode { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -101,7 +110,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     BackupBlobContainerUri = "-";
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri);
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(
+                    resourceGroupName: ResourceGroupName,
+                    serverName: Name,
+                    location: location,
+                    skuName: Sku,
+                    capacity: Capacity,
+                    customTags: Tag,
+                    administrators: Administrator,
+                    querypoolConnectionMode: QuerypoolConnectionMode,
+                    backupBlobContainerUri: BackupBlobContainerUri,
+                    existingServer: currentServer);
 
                 if(PassThru.IsPresent)
                 {

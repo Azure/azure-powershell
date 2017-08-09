@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string BackupBlobContainerUri { get; set; }
 
-        public ServerSku Sku { get; set; }
+        public ConnectionMode? QuerypoolConnectionMode { get; set; }
+
+        public ResourceSku Sku { get; set; }
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
 
@@ -63,7 +65,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ServerFullName = server.ServerFullName,
                 Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku): new Dictionary<string, string>(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
-                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri
+                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri,
+                QuerypoolConnectionMode = server.QuerypoolConnectionMode
             };
         }
 
@@ -82,6 +85,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
     public class AzureAnalysisServicesServerDetail : AzureAnalysisServicesServer
     {
-        public new System.Collections.Generic.IDictionary<string, string> Sku { get; set; }
+        public new IReadOnlyDictionary<string, string> Sku { get; set; }
     }
 }

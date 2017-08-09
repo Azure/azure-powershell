@@ -58,11 +58,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             string serverName,
             string location, 
             string skuName = null,
+            int? capacity = null,
             Hashtable customTags = null,
             string administrators = null,
-            AnalysisServicesServer existingServer = null,
-            string backupBlobContainerUri = null)
+            string backupBlobContainerUri = null,
+            ConnectionMode? querypoolConnectionMode = null,
+            AnalysisServicesServer existingServer = null)
         {
+            if (capacity < 1 || capacity > 8)
+            {
+                throw new ArgumentOutOfRangeException(Resources.Exception_CapacityMustBeInRange);
+            }
+
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByServer(serverName);
@@ -88,8 +95,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             {
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
                 {
-                    Sku = skuName == null ? existingServer.Sku : GetResourceSkuFromName(skuName),
+                    Sku = GetResourceSkuFromName(skuName ?? existingServer.Sku.Name, capacity: capacity ?? existingServer.Sku.Capacity),
                     Tags = tags,
+                    QuerypoolConnectionMode = querypoolConnectionMode ?? existingServer.QuerypoolConnectionMode
                 };
 
                 if (adminList.Count > 0)
@@ -114,8 +122,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         AsAdministrators = new ServerAdministrators(adminList),
                         BackupBlobContainerUri = backupBlobContainerUri,
                         Location = location,
-                        Sku = GetResourceSkuFromName(skuName),
-                        Tags = tags
+                        Sku = GetResourceSkuFromName(skuName, capacity: capacity),
+                        Tags = tags,
+                        QuerypoolConnectionMode = querypoolConnectionMode ?? ConnectionMode.All
                     });
             }
 
@@ -208,12 +217,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
         }
 
-        private ResourceSku GetResourceSkuFromName(string skuName)
+        private ResourceSku GetResourceSkuFromName(string skuName, int? capacity = 1)
         {
             var tier = skuName.StartsWith("D") ? SkuTier.Development
                 : skuName.StartsWith("B") ? SkuTier.Basic
                 : SkuTier.Standard;
-            return new ResourceSku(skuName, tier);
+
+            if (capacity > 1 && tier != SkuTier.Standard)
+            {
+                throw new ArgumentException(Properties.Resources.Exception_CapacityMustBeOneIfNotStandardTier);
+            }
+
+            return new ResourceSku(skuName, tier, capacity: capacity);
         }
 
         public void SuspendServer(string resourceGroupName, string serverName)

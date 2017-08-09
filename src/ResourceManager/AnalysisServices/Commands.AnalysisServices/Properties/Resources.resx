@@ -126,6 +126,12 @@
   <data name="DefaultAclWord" xml:space="preserve">
     <value>"default "</value>
   </data>
+  <data name="Exception_CapacityMustBeInRange" xml:space="preserve">
+    <value>Capacity must be an integer between minimum of 1 and maximum of 8.</value>
+  </data>
+  <data name="Exception_CapacityMustBeOneIfNotStandardTier" xml:space="preserve">
+    <value>Capacity can be greater than 1 only if the Sku Tier is Standard</value>
+  </data>
   <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
     <value>Could not find server: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this server exists and that the current user has access to it.</value>
   </data>

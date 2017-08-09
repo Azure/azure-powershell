@@ -220,6 +220,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestAnalysisServicesServer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestAnalysisServicesServerScaleOut.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests.AsTests\TestNegativeAnalysisServicesServer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
