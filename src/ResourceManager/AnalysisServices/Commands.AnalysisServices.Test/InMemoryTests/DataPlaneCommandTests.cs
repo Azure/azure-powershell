@@ -32,6 +32,7 @@ using Moq;
 using Xunit;
 using Xunit.Abstractions;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 {
@@ -369,6 +370,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var postResponse = new HttpResponseMessage(HttpStatusCode.OK);
             postResponse.Headers.Location = new Uri("https://1");
+            postResponse.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallPostAsync(
                     It.IsAny<Uri>(),
@@ -379,6 +381,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var getResponse1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
             getResponse1.Headers.Location = new Uri("https://done");
+            getResponse1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("1")),
@@ -453,6 +456,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var post1Response = new HttpResponseMessage(HttpStatusCode.OK);
             post1Response.Headers.Location = new Uri("https://get1");
+            post1Response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallPostAsync(
                     It.IsAny<Uri>(),
@@ -463,6 +467,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var get1Response1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
             get1Response1.Headers.Location = new Uri("https://db1done");
+            get1Response1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("get1")),
@@ -489,6 +494,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var post2Response = new HttpResponseMessage(HttpStatusCode.OK);
             post2Response.Headers.Location = new Uri("https://get2");
+            post2Response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallPostAsync(
                     It.IsAny<Uri>(),
@@ -499,6 +505,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var get2Response1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
             get2Response1.Headers.Location = new Uri("https://db2done");
+            get2Response1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("get2")),
@@ -573,6 +580,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var post1Response = new HttpResponseMessage(HttpStatusCode.OK);
             post1Response.Headers.Location = new Uri("https://get1");
+            post1Response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallPostAsync(
                     It.IsAny<Uri>(),
@@ -583,6 +591,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var get1Response1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
             get1Response1.Headers.Location = new Uri("https://db1done");
+            get1Response1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("get1")),
@@ -609,6 +618,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var post2Response = new HttpResponseMessage(HttpStatusCode.OK);
             post2Response.Headers.Location = new Uri("https://get2");
+            post2Response.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallPostAsync(
                     It.IsAny<Uri>(),
@@ -619,6 +629,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var get2Response1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
             get2Response1.Headers.Location = new Uri("https://db2done");
+            get2Response1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("get2")),
@@ -693,6 +704,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var postResponse = new HttpResponseMessage(HttpStatusCode.OK);
             postResponse.Headers.Location = new Uri("https://1");
+            postResponse.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallPostAsync(
                     It.IsAny<Uri>(),
@@ -703,6 +715,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             var getResponse1 = new HttpResponseMessage(HttpStatusCode.SeeOther);
             getResponse1.Headers.Location = new Uri("https://done");
+            getResponse1.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             mockAsAzureHttpClient
                 .Setup(obj => obj.CallGetAsync(
                     It.Is<Uri>(u => u.OriginalString.Contains("1")),

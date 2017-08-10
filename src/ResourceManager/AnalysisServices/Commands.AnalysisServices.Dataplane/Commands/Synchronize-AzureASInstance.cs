@@ -10,6 +10,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Net;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -21,6 +22,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [OutputType(typeof(bool))]
     public class SynchronizeAzureAzureAnalysisServer: AzurePSCmdlet
     {
+        private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(1);
+
         private string serverName;
 
         [Parameter(
@@ -166,7 +169,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
             return await Task.Run(async () =>
             {
-                Uri pollingUrl = await PostSyncRequestAsync(syncBaseUri, synchronize, accessToken);
+                var pollingUrlAndRetryAfter = await PostSyncRequestAsync(syncBaseUri, synchronize, accessToken);
+
+                Uri pollingUrl = pollingUrlAndRetryAfter.Item1;
+                var retryAfter = pollingUrlAndRetryAfter.Item2;
 
                 if (pollingUrl != null)
                 {
@@ -176,7 +182,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                         SyncState = DatabaseSyncStateDetail.Unknown
                     };
 
-                    ScaleOutServerDatabaseSyncResult result = await PollSyncStatusWithRetryAsync(accessToken, pollingUrl, maxNumberOfAttempts: maxNumberOfAttempts);
+                    ScaleOutServerDatabaseSyncResult result = await PollSyncStatusWithRetryAsync(accessToken, pollingUrl, retryAfter.Delta ?? DefaultPollingInterval,  maxNumberOfAttempts: maxNumberOfAttempts);
 
                     return result != null ? ScaleOutServerDatabaseSyncDetails.FromResult(result) : defaultSyncDetails;
                 }
@@ -187,7 +193,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             });
         }
 
-        private async Task<Uri> PostSyncRequestAsync(
+        private async Task<Tuple<Uri, RetryConditionHeaderValue>> PostSyncRequestAsync(
             Uri syncBaseUri, 
             string synchronize,
             string accessToken)
@@ -195,7 +201,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             return await Task.Run(async () =>
             {
                 Uri pollingUrl = null;
-
+                RetryConditionHeaderValue retryAfter = null;
                 using (HttpResponseMessage message = await AsAzureHttpClient.CallPostAsync(
                     syncBaseUri,
                     synchronize,
@@ -204,14 +210,15 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     if (message.IsSuccessStatusCode)
                     {
                         pollingUrl = message.Headers.Location;
+                        retryAfter = message.Headers.RetryAfter;
                     }
                 }
 
-                return pollingUrl;
+                return new Tuple<Uri, RetryConditionHeaderValue>(pollingUrl, retryAfter);
             });
         }
 
-        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string accessToken, Uri pollingUrl, int maxNumberOfAttempts = 3)
+        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string accessToken, Uri pollingUrl, TimeSpan pollingInterval, int maxNumberOfAttempts = 3)
         {
             return await Task.Run(async () =>
             {
@@ -245,6 +252,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                             else
                             {
                                 pollingUrl = message.Headers.Location;
+                                pollingInterval = message.Headers.RetryAfter.Delta ?? pollingInterval;
                             }
                         }
                     }
