@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +29,9 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
@@ -75,26 +77,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { this._activeDirectoryClient = value; }
         }
 
-        private PSResourceManagerModels.ResourcesClient _resourcesClient;
-        public PSResourceManagerModels.ResourcesClient ResourcesClient
+        private ResourceManagementClient _resourceClient;
+        public ResourceManagementClient ResourceClient
         {
             get
             {
-                this._resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultContext)
+                if (_resourceClient == null)
                 {
-                    VerboseLogger = WriteVerboseWithTimestamp,
-                    ErrorLogger = WriteErrorWithTimestamp,
-                    WarningLogger = WriteWarningWithTimestamp
-                };
-                return _resourcesClient;
+                    _resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                }
+
+                return _resourceClient;
             }
 
-            set { this._resourcesClient = value; }
+            set { this._resourceClient = value; }
         }
 
         protected List<PSKeyVaultModels.PSVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
         {
-            IResourceManagementClient armClient = this.ResourcesClient.ResourceManagementClient;
+            IResourceManagementClient armClient = this.ResourceClient;
 
             PSTagValuePair tagValuePair = new PSTagValuePair();
             if (tag != null && tag.Count > 0)
@@ -105,27 +106,46 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
                 }
             }
-            ResourceListResult listResult = armClient.Resources.List(new ResourceListParameters
+            IPage<GenericResource> listResult = null;
+            var resourceType = tag == null ? KeyVaultManagementClient.VaultsResourceType : null;
+            if (resourceGroupName != null)
             {
-                ResourceGroupName = resourceGroupName,
-                ResourceType = tag == null ? KeyVaultManagementClient.VaultsResourceType : null,
-                TagName = tagValuePair.Name,
-                TagValue = tagValuePair.Value
-            });
+                listResult = armClient.ResourceGroups.ListResources(resourceGroupName,
+                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
+                        r => r.ResourceType == resourceType &&
+                             r.Tagname == tagValuePair.Name &&
+                             r.Tagvalue == tagValuePair.Value));
+            }
+            else
+            {
+                listResult = armClient.Resources.List(
+                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
+                        r => r.ResourceType == resourceType &&
+                             r.Tagname == tagValuePair.Name &&
+                             r.Tagvalue == tagValuePair.Value));
+            }
 
             List<PSKeyVaultModels.PSVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSVaultIdentityItem>();
-            if (listResult.Resources != null)
+            if (listResult != null)
             {
-                vaults.AddRange(listResult.Resources.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
+                vaults.AddRange(listResult.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
                     .Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
             }
 
-            while (!string.IsNullOrEmpty(listResult.NextLink))
+            while (!string.IsNullOrEmpty(listResult.NextPageLink))
             {
-                listResult = armClient.Resources.ListNext(listResult.NextLink);
-                if (listResult.Resources != null)
+                if (resourceGroupName != null)
                 {
-                    vaults.AddRange(listResult.Resources.Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
+                    listResult = armClient.ResourceGroups.ListResourcesNext(listResult.NextPageLink);
+                }
+                else
+                {
+                    listResult = armClient.Resources.ListNext(listResult.NextPageLink);
+                }
+
+                if (listResult != null)
+                {
+                    vaults.AddRange(listResult.Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
                 }
             }
 
@@ -135,7 +155,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         protected string GetResourceGroupName(string vaultName)
         {
             string rg = null;
-            var resourcesByName = this.ResourcesClient.FilterResources(new PSResourceManagerModels.FilterResourcesOptions()
+            var resourcesByName = this.ResourceClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = KeyVaultManagementClient.VaultsResourceType
             });
@@ -144,7 +164,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 var vault = resourcesByName.FirstOrDefault(r => r.Name.Equals(vaultName, StringComparison.OrdinalIgnoreCase));
                 if (vault != null)
-                    rg = new PSResourceManagerModels.ResourceIdentifier(vault.Id).ResourceGroupName;
+                    rg = new ResourceIdentifier(vault.Id).ResourceGroupName;
             }
 
             return rg;

@@ -1,4 +1,6 @@
-﻿using Microsoft.Azure.Commands.Resources.Models;
+﻿using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Collections;
@@ -295,9 +297,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        internal static Certificate[] GetCertificates(ResourcesClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string thumbPrint)
+        internal static Certificate[] GetCertificates(ResourceClient resourceClient, WebsitesClient websitesClient, string resourceGroupName, string thumbPrint)
         {
-            var certificateResources = resourceClient.FilterPSResources(new BasePSResourceParameters()
+            var certificateResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions()
             {
                 ResourceType = "Microsoft.Web/Certificates"
             }).ToArray();
@@ -310,7 +312,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var certificates =
                 certificateResources.Select(
                     certificateResource =>
-                    websitesClient.GetCertificate(certificateResource.ResourceGroupName, certificateResource.Name));
+                    websitesClient.GetCertificate(certificateResource.ResourceGroupName ?? GetResourceGroupFromResourceId(certificateResource.Id), certificateResource.Name));
 
             if (!string.IsNullOrEmpty(thumbPrint))
             {

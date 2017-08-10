@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Commands.Profile.Errors
                 {
                     ServerMessage = string.Format($"{exception.Error.Code}: {exception.Error.Message} ({exception.Error.OriginalMessage})");
                 }
-
+ 
                 if (exception.Response != null)
                 {
                     ServerResponse = new HttpResponseInfo(exception.Response);
                 }
-
+ 
                 if (exception.Request != null)
                 {
                     RequestMessage = new HttpRequestInfo(exception.Request);
@@ -52,17 +52,17 @@ namespace Microsoft.Azure.Commands.Profile.Errors
                 {
                     ServerMessage = string.Format($"{exception.Body.Code}: {exception.Body.Message} ({exception.Body.Details})");
                 }
-
+ 
                 if (exception.Response != null)
                 {
                     ServerResponse = new HttpResponseInfo(exception.Response);
                 }
-
+ 
                 if (exception.Request != null)
                 {
                     RequestMessage = new HttpRequestInfo(exception.Request);
                 }
-
+ 
                 RequestId = exception.RequestId;
             }
         }

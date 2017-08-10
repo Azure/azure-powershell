@@ -29,8 +29,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var sqlLegacyClient = GetLegacySqlClient();
             var storageV2Client = GetStorageV2Client();
             var resourcesClient = GetResourcesClient();
+            var newResourcesClient = GetResourcesClient(context);
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, resourcesClient, authorizationClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, resourcesClient, newResourcesClient, authorizationClient);
         }
 
         public AuditingTests(ITestOutputHelper output) : base(output)

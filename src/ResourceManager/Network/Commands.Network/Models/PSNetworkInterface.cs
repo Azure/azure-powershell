@@ -14,10 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Microsoft.Azure.Management.Internal.Network.Common;
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class PSNetworkInterface : PSTopLevelResource
+    public class PSNetworkInterface : PSTopLevelResource, INetworkInterfaceReference
     {
         public PSResourceId VirtualMachine { get; set; }
 
