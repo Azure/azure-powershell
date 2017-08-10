@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 3.3.1
+* Made changes to AutomationDSC* cmdlets to pull more than 100 records
+* Resolved the issue where the Verbose streams stop working after calling some Automation cmdlets (for example Get-AzureRmAutomationVariable, Get-AzureRmAutomationJob).
+* Support for NodeConfiguration Build versioning added in StartAzureAutomationDscCompilationJob and ImportAzureAutomationDscNodeConfiguration.
+* Bug fixes for existing issues - Fixes the alias issue is #3775 and the runOn alias and support for HybridWorkers.
+
 ## Version 3.3.0
 * Made changes to AutomationDSC* cmdlets to pull more than 100 records
 * Resolved the issue where the Verbose streams stop working after calling some Automation cmdlets (for example Get-AzureRmAutomationVariable, Get-AzureRmAutomationJob).
@@ -26,9 +32,11 @@
 * Bug fixes for existing issues - Fixes the alias issue is #3775 and the runOn alias and support for HybridWorkers.
 
 ## Version 3.2.1
+
 ## Version 3.2.0
 * Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
     - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
+    
 ## Version 3.1.0
 
 ## Version 3.0.1

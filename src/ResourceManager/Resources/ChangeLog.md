@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.3.1
+
 ## Version 4.3.0
 * Add Support for validation of scopes for the following roledefinition and roleassignment commandlets before sending the request to ARM
     - Get-AzureRMRoleAssignment
