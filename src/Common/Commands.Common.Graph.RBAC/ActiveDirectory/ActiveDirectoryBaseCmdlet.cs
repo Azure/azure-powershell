@@ -17,7 +17,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System;
 using System.Management.Automation;
 using System.Net;
-using ProjectResources = Commands.Common.Graph.RBAC.Properties.Resources;
+using ProjectResources = Microsoft.Azure.Commands.Common.Graph.RBAC.Properties.Resources;
 
 namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 {

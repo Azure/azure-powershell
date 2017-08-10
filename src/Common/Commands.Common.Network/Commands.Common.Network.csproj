@@ -7,8 +7,8 @@
     <ProjectGuid>{1338F7AE-7111-4ED3-8916-2D0FECC876F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.Common.Network</RootNamespace>
-    <AssemblyName>Commands.Common.Network</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Network</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Network</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
