@@ -8,6 +8,8 @@ using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Net;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -63,9 +65,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             this.TokenCacheItemProvider = TokenCacheItemProvider;
         }
 
-        public async override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Instance, Resources.RestartingAnalysisServicesServer))
+            if (ShouldProcess(Instance, Resources.SynchronizingAnalysisServicesServer))
             {
                 var context = AsAzureClientSession.Instance.Profile.Context;
                 AsAzureClientSession.Instance.Login(context, null);
@@ -73,11 +75,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
                 Uri syncBaseUri = new Uri(string.Format("{0}{1}{2}", Uri.UriSchemeHttps, Uri.SchemeDelimiter, context.Environment.Name));
 
-                var syncResults = await Task.WhenAll(Databases.Select(databaseName => SynchronizeDatabaseAsync(context, syncBaseUri, databaseName, accessToken)));
+                var syncResults = Task.WhenAll(Databases.Select(databaseName => SynchronizeDatabaseAsync(context, syncBaseUri, databaseName, accessToken))).Result;
 
-                if (PassThru.IsPresent)
+                if (syncResults.Any(syncResult => !syncResult.SyncState.Equals(DatabaseSyncStateDetail.Succeeded)))
                 {
-                    WriteObject(syncResults, false);
+                    var e = new ApplicationFailedException(Resources.SynchronizationFailedException);
+                    WriteError(GenerateErrorRecordFromSyncDetails(syncResults));
+                    throw e;
+                }
+                else if (PassThru.IsPresent)
+                {
+                    WriteObject(syncResults, true);
                 }
             }
         }
@@ -145,77 +153,105 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             // No data collection for this commandlet
         }
 
-        private async Task<SynchronizationResult> SynchronizeDatabaseAsync(AsAzureContext context, Uri syncBaseUri, string databaseName, string accessToken)
+        private static ErrorRecord GenerateErrorRecordFromSyncDetails(IEnumerable<ScaleOutServerDatabaseSyncDetails> syncResults)
+        {
+            var errorRecord = new ErrorRecord(new ApplicationException(Resources.SynchronizationFailedException), "SynchronizeDatabasesUnsuccessful", ErrorCategory.OperationTimeout, syncResults);
+
+            return errorRecord;
+        }
+
+        private async Task<ScaleOutServerDatabaseSyncDetails> SynchronizeDatabaseAsync(AsAzureContext context, Uri syncBaseUri, string databaseName, string accessToken, int maxNumberOfAttempts = 3)
         {
             var synchronize = string.Format((string)context.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.SynchronizeEndpointFormat], serverName, databaseName);
 
-            var syncResult = new SynchronizationResult
-            {
-                DatabaseName = databaseName,
-                Synchronized = false
-            };
-
             return await Task.Run(async () =>
             {
-                Uri pollingUrl;
-                using (HttpResponseMessage message = AsAzureHttpClient.CallPostAsync(
+                Uri pollingUrl = await PostSyncRequestAsync(syncBaseUri, synchronize, accessToken);
+
+                if (pollingUrl != null)
+                {
+                    var defaultSyncDetails = new ScaleOutServerDatabaseSyncDetails
+                    {
+                        Database = databaseName,
+                        SyncState = DatabaseSyncStateDetail.Unknown
+                    };
+
+                    ScaleOutServerDatabaseSyncResult result = await PollSyncStatusWithRetryAsync(accessToken, pollingUrl, maxNumberOfAttempts: maxNumberOfAttempts);
+
+                    return result != null ? ScaleOutServerDatabaseSyncDetails.FromResult(result) : defaultSyncDetails;
+                }
+                else
+                {
+                    throw new HttpRequestException();
+                }
+            });
+        }
+
+        private async Task<Uri> PostSyncRequestAsync(
+            Uri syncBaseUri, 
+            string synchronize,
+            string accessToken)
+        {
+            return await Task.Run(async () =>
+            {
+                Uri pollingUrl = null;
+
+                using (HttpResponseMessage message = await AsAzureHttpClient.CallPostAsync(
                     syncBaseUri,
                     synchronize,
-                    accessToken).Result)
+                    accessToken))
                 {
-
                     if (message.IsSuccessStatusCode)
                     {
                         pollingUrl = message.Headers.Location;
                     }
-                    else
-                    {
-                        return syncResult;
-                    }
                 }
 
-                if (pollingUrl != null)
-                {
-                    syncResult.Synchronized = await PollSyncStatusAsync(accessToken, pollingUrl);
-                }
-
-                return syncResult;
+                return pollingUrl;
             });
         }
 
-        private async Task<bool> PollSyncStatusAsync(string accessToken, Uri pollingUrl)
+        private async Task<ScaleOutServerDatabaseSyncResult> PollSyncStatusWithRetryAsync(string accessToken, Uri pollingUrl, int maxNumberOfAttempts = 3)
         {
             return await Task.Run(async () =>
             {
+                ScaleOutServerDatabaseSyncResult response = null;
                 bool done = false;
                 do
                 {
-                    using (HttpResponseMessage message = await AsAzureHttpClient.CallGetAsync(
-                        pollingUrl,
-                        string.Empty,
-                        accessToken))
+                    IList<Exception> exceptions = new List<Exception>();
+
+                    int numberOfAttempts = 0;
+                    while (numberOfAttempts < maxNumberOfAttempts)
                     {
-                        done = !message.StatusCode.Equals(HttpStatusCode.SeeOther);
-                        if (done)
+                        using (HttpResponseMessage message = await AsAzureHttpClient.CallGetAsync(
+                            pollingUrl,
+                            string.Empty,
+                            accessToken))
                         {
-                            return message.IsSuccessStatusCode;
-                        }
-                        else
-                        {
-                            pollingUrl = message.Headers.Location;
+                            done = !message.StatusCode.Equals(HttpStatusCode.SeeOther);
+                            if (done)
+                            {
+                                if (message.IsSuccessStatusCode)
+                                {
+                                    response = JsonConvert.DeserializeObject<ScaleOutServerDatabaseSyncResult>(await message.Content.ReadAsStringAsync());
+                                    break;
+                                }
+                                else
+                                {
+                                    numberOfAttempts++;
+                                }
+                            }
+                            else
+                            {
+                                pollingUrl = message.Headers.Location;
+                            }
                         }
                     }
                 } while (!done);
 
-                return false;
+                return response;
             });
-        }
-
-        class SynchronizationResult
-        {
-            public string DatabaseName { get; set; }
-
-            public bool Synchronized { get; set; }
         }
     }
 }

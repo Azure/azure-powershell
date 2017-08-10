@@ -3,7 +3,8 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
-    public sealed class ScaleOutServerDatabaseSyncResult
+    [DataContract]
+    sealed class ScaleOutServerDatabaseSyncResult
     {
         [DataMember]
         public string OperationId { get; set; }
@@ -22,11 +23,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
         [DataMember(Name = "details")]
         public string Details { get; set; }
-    }
-
-    public enum DatabaseSyncState
-    {
-        Succeeded,
-        Failed
     }
 }

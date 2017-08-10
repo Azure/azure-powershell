@@ -144,4 +144,7 @@
   <data name="SynchronizingAnalysisServicesServer" xml:space="preserve">
     <value>Replicate databases from the processing server to the query scale-out servers</value>
   </data>
+  <data name="SynchronizationFailedException" xml:space="preserve">
+    <value>Synchronization failed. Check above </value>
+  </data>
 </root>

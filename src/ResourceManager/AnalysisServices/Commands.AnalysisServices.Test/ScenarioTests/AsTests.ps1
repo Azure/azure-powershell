@@ -433,7 +433,7 @@ function Test-AnalysisServicesServerSynchronizeSingle
 
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
-		Synchronize-AzureAsInstance -Instance $serverName -Databases "database1"
+		Synchronize-AzureAsInstance -Instance $serverName -Databases "database1" -PassThru
 	}
 	finally
 	{
@@ -476,7 +476,7 @@ function Test-AnalysisServicesServerSynchronizeMany
 
 		$asAzureProfile = Login-AzureAsAccount -RolloutEnvironment $rolloutEnvironment -Credential $cred
 		Assert-NotNull $asAzureProfile "Login-AzureAsAccount $rolloutEnvironment must not return null"
-		Synchronize-AzureAsInstance -Instance $serverName -Databases @( "database1" , "database2" )
+		Synchronize-AzureAsInstance -Instance $serverName -Databases @( "database1" , "database2" )  -PassThru
 	}
 	finally
 	{
