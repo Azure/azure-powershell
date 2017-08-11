@@ -62,10 +62,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 if (_hashMacAddress == string.Empty)
                 {
-                    var macAddress = NetworkInterface.GetAllNetworkInterfaces()
-                        .FirstOrDefault(nic => nic.OperationalStatus == OperationalStatus.Up)?
+                    var macAddress = NetworkInterface.GetAllNetworkInterfaces()?
+                        .FirstOrDefault(nic => nic != null && 
+                                               nic.OperationalStatus == OperationalStatus.Up &&
+                                               nic.GetPhysicalAddress() != null &&
+                                               !string.IsNullOrWhiteSpace(nic.GetPhysicalAddress().ToString()))?
                         .GetPhysicalAddress()?.ToString();
-                    _hashMacAddress = macAddress == null ? null : GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
+                    _hashMacAddress = string.IsNullOrWhiteSpace(macAddress) ? null : GenerateSha256HashString(macAddress)?.Replace("-", string.Empty)?.ToLowerInvariant();
                 }
 
                 return _hashMacAddress;
@@ -246,7 +249,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             if (string.IsNullOrWhiteSpace(originInput))
             {
-                throw new ArgumentNullException("originInput");
+                return string.Empty;
             }
 
             using (var sha256 = new SHA256CryptoServiceProvider())

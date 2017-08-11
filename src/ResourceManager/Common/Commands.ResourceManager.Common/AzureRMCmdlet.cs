@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (this.DefaultProfile != null &&
                 this.DefaultProfile.DefaultContext != null &&
                 this.DefaultProfile.DefaultContext.Account != null &&
-                this.DefaultProfile.DefaultContext.Account.Id != null)
+                !string.IsNullOrWhiteSpace(this.DefaultProfile.DefaultContext.Account.Id))
             {
                 _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
                     this.DefaultProfile.DefaultContext.Account.Id.ToString());
