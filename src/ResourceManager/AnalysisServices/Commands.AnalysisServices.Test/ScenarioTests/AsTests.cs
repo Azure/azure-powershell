@@ -65,5 +65,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerRestart");
         }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerSynchronizeSingle()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerSynchronizeSingle");
+        }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerSynchronizeMany()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerSynchronizeMany");
+        }
     }
 }
