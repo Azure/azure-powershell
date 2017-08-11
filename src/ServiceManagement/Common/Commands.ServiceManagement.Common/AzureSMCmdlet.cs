@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (this.DefaultContext != null &&
                 this.DefaultContext.Account != null &&
-                this.DefaultContext.Account.Id != null)
+                !string.IsNullOrEmpty(this.DefaultContext.Account.Id))
             {
                 _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
                     this.DefaultContext.Account.Id.ToString());
