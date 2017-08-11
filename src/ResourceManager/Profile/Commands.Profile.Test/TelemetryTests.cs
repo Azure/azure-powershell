@@ -14,7 +14,9 @@
 
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System;
+using System.Net.NetworkInformation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
@@ -23,9 +25,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void HashOfNullValueThrowsAppropriateException()
+        public void HashOfNullOrWhitespaceValueReturnsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => MetricHelper.GenerateSha256HashString(null));
+            Assert.Null(MetricHelper.GenerateSha256HashString(null));
+            Assert.Null(MetricHelper.GenerateSha256HashString(string.Empty));
+            Assert.Null(MetricHelper.GenerateSha256HashString(" "));
         }
 
         [Fact]
@@ -37,6 +41,26 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(hash);
             Assert.True(hash.Length > 0);
             Assert.NotEqual<string>(inputValue, hash, StringComparer.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NetworkInterfaceWithEmptyAddressReturnsNull()
+        {
+            var networkInterfaceMock = new Mock<NetworkInterface>();
+            networkInterfaceMock.Setup(t => t.GetPhysicalAddress())
+                .Returns(
+                    () =>
+                        {
+                            return new PhysicalAddress(new byte[] { });
+                        }
+                );
+
+            var address = networkInterfaceMock.Object.GetPhysicalAddress();
+            Assert.NotNull(address);
+            Assert.Equal(string.Empty, address.ToString());
+            var hashAddress = MetricHelper.GenerateSha256HashString(address.ToString());
+            Assert.Null(hashAddress);
         }
     }
 }
