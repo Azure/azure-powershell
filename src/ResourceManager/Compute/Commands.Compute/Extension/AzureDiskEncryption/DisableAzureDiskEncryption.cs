@@ -272,13 +272,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         !string.IsNullOrEmpty(VolumeType) &&
                         VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var result = Mapper.Map<PSAzureOperationResponse>(opExt);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
                         WriteObject(result);
                     }
                     else
                     {
                         var opVm = UpdateVmEncryptionSettings();
-                        var result = Mapper.Map<PSAzureOperationResponse>(opVm);
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opVm);
                         WriteObject(result);
                     }
                 }

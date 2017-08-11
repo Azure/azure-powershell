@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
 
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var psObject = new List<PSResourceSku>();
                 foreach (var r in resultList)
                 {
-                    psObject.Add(Mapper.Map<ResourceSku, PSResourceSku>(r));
+                    psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<ResourceSku, PSResourceSku>(r));
                 }
                 WriteObject(psObject, true);
             });

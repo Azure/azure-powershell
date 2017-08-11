@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.ResourceGroupName,
                         this.VM.Name,
                         parameters).GetAwaiter().GetResult();
-                    var psResult = Mapper.Map<PSAzureOperationResponse>(result);
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                     {
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute
                                 this.VM.Name,
                                 VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                                 extensionParameters).GetAwaiter().GetResult();
-                            psResult = Mapper.Map<PSAzureOperationResponse>(op2);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
                     }
                     WriteObject(psResult);

@@ -104,7 +104,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         protected override void ProcessRecord()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Remove)
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = SnapshotsClient.Delete(resourceGroupName, snapshotName);
                     var psObject = new PSOperationStatusResponse();
-                    Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                     WriteObject(psObject);
                 }
             });

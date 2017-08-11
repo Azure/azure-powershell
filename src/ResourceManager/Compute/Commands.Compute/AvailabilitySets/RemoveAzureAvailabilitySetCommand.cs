@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.AvailabilitySetClient.DeleteWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 }
             });

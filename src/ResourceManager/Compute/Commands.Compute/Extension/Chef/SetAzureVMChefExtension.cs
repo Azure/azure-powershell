@@ -382,7 +382,7 @@ validation_client_name 	'{1}'
                         this.Name,
                         parameters).GetAwaiter().GetResult();
 
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 });
         }

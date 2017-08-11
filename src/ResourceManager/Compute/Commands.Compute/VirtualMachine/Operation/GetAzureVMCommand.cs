@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var psResultList = new List<PSVirtualMachineList>();
                         foreach (var item in psResultListStatus)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachineList>(item);
+                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
                             psResultList.Add(psItem);
                         }
                         WriteObject(psResultList, true);
@@ -140,10 +140,10 @@ namespace Microsoft.Azure.Commands.Compute
                         var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
                             this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
 
-                        var psResult = Mapper.Map<PSVirtualMachine>(result);
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                         if (result.Body != null)
                         {
-                            psResult = Mapper.Map(result.Body, psResult);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
                         }
                         psResult.DisplayHint = this.DisplayHint;
                         WriteObject(psResult);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Compute
                         var psResultList = new List<PSVirtualMachineList>();
                         foreach (var item in psResultListStatus)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachineList>(item);
+                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
                             psResultList.Add(psItem);
                         }
                         WriteObject(psResultList, true);
@@ -184,8 +184,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 foreach (var item in vmListResult.Body)
                 {
-                    var psItem = Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
-                    psItem = Mapper.Map(item, psItem);
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                    psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
                     if (this.Status.IsPresent)
                     {
                         VirtualMachine state = null;
