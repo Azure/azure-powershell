@@ -64,7 +64,7 @@
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="AutoMapper.Net4">
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.Net4.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
