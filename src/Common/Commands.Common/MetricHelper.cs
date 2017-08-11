@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                                                nic.GetPhysicalAddress() != null &&
                                                !string.IsNullOrWhiteSpace(nic.GetPhysicalAddress().ToString()))?
                         .GetPhysicalAddress()?.ToString();
-                    _hashMacAddress = string.IsNullOrWhiteSpace(macAddress) ? null : GenerateSha256HashString(macAddress).Replace("-", string.Empty).ToLowerInvariant();
+                    _hashMacAddress = string.IsNullOrWhiteSpace(macAddress) ? null : GenerateSha256HashString(macAddress)?.Replace("-", string.Empty)?.ToLowerInvariant();
                 }
 
                 return _hashMacAddress;
@@ -249,7 +249,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             if (string.IsNullOrWhiteSpace(originInput))
             {
-                return null;
+                return string.Empty;
             }
 
             using (var sha256 = new SHA256CryptoServiceProvider())
