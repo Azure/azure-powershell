@@ -155,7 +155,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     AzurePSDataCollectionProfile.OldDefaultFileName);
                 if (AzureSession.Instance.DataStore.FileExists(oldFileFullPath))
                 {
-                    AzureSession.Instance.DataStore.DeleteFile(oldFileFullPath);
+                    try
+                    {
+                        AzureSession.Instance.DataStore.DeleteFile(oldFileFullPath);
+                    }
+                    catch
+                    {
+                        // do not throw if the old file cannot be deleted
+                    }
                 }
 
                 // Try and read from the new AzurePSDataCollectionProfile.json file
@@ -163,9 +170,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     AzurePSDataCollectionProfile.DefaultFileName);
                 if (AzureSession.Instance.DataStore.FileExists(fileFullPath))
                 {
-                    string contents = AzureSession.Instance.DataStore.ReadFileAsText(fileFullPath);
-                    _dataCollectionProfile =
-                        JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
+                    try
+                    {
+                        string contents = AzureSession.Instance.DataStore.ReadFileAsText(fileFullPath);
+                        _dataCollectionProfile =
+                            JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
+                    }
+                    catch
+                    {
+                        // do not throw if the data collection profile cannot be serialized
+                    }
                 }
             }
 
@@ -472,41 +486,48 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         private void RecordDebugMessages()
         {
-            // Create 'ErrorRecords' folder under profile directory, if not exists
-            if (string.IsNullOrEmpty(_errorRecordFolderPath)
-                || !Directory.Exists(_errorRecordFolderPath))
+            try
             {
-                _errorRecordFolderPath = Path.Combine(AzurePowerShell.ProfileDirectory,
-                    "ErrorRecords");
-                Directory.CreateDirectory(_errorRecordFolderPath);
+                // Create 'ErrorRecords' folder under profile directory, if not exists
+                if (string.IsNullOrEmpty(_errorRecordFolderPath)
+                    || !Directory.Exists(_errorRecordFolderPath))
+                {
+                    _errorRecordFolderPath = Path.Combine(AzurePowerShell.ProfileDirectory,
+                        "ErrorRecords");
+                    Directory.CreateDirectory(_errorRecordFolderPath);
+                }
+
+                CommandInfo cmd = this.MyInvocation.MyCommand;
+
+                string filePrefix = cmd.Name;
+                string timeSampSuffix = DateTime.Now.ToString(_fileTimeStampSuffixFormat);
+                string fileName = filePrefix + "_" + timeSampSuffix + ".log";
+                string filePath = Path.Combine(_errorRecordFolderPath, fileName);
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Module : ").AppendLine(cmd.ModuleName);
+                sb.Append("Cmdlet : ").AppendLine(cmd.Name);
+
+                sb.AppendLine("Parameters");
+                foreach (var item in this.MyInvocation.BoundParameters)
+                {
+                    sb.Append(" -").Append(item.Key).Append(" : ");
+                    sb.AppendLine(item.Value == null ? "null" : item.Value.ToString());
+                }
+
+                sb.AppendLine();
+
+                foreach (var content in DebugMessages)
+                {
+                    sb.AppendLine(content);
+                }
+
+                AzureSession.Instance.DataStore.WriteFile(filePath, sb.ToString());
             }
-
-            CommandInfo cmd = this.MyInvocation.MyCommand;
-
-            string filePrefix = cmd.Name;
-            string timeSampSuffix = DateTime.Now.ToString(_fileTimeStampSuffixFormat);
-            string fileName = filePrefix + "_" + timeSampSuffix + ".log";
-            string filePath = Path.Combine(_errorRecordFolderPath, fileName);
-
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Module : ").AppendLine(cmd.ModuleName);
-            sb.Append("Cmdlet : ").AppendLine(cmd.Name);
-
-            sb.AppendLine("Parameters");
-            foreach (var item in this.MyInvocation.BoundParameters)
+            catch
             {
-                sb.Append(" -").Append(item.Key).Append(" : ");
-                sb.AppendLine(item.Value == null ? "null" : item.Value.ToString());
+                // do not throw an error if recording debug messages fails
             }
-
-            sb.AppendLine();
-
-            foreach (var content in DebugMessages)
-            {
-                sb.AppendLine(content);
-            }
-
-            AzureSession.Instance.DataStore.WriteFile(filePath, sb.ToString());
         }
 
         /// <summary>
