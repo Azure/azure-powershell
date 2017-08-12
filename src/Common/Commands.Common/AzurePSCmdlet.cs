@@ -73,8 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             get
             {
                 if (string.IsNullOrEmpty(_psVersion))
-                {   
-                    if(this.Host != null)
+                {
+                    if (this.Host != null)
                     {
                         _psVersion = this.Host.Version.ToString();
                     }
@@ -153,33 +153,33 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 // If it exists, remove the old AzureDataCollectionProfile.json file
                 string oldFileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
                     AzurePSDataCollectionProfile.OldDefaultFileName);
-                if (AzureSession.Instance.DataStore.FileExists(oldFileFullPath))
+                try
                 {
-                    try
+                    if (AzureSession.Instance.DataStore.FileExists(oldFileFullPath))
                     {
                         AzureSession.Instance.DataStore.DeleteFile(oldFileFullPath);
                     }
-                    catch
-                    {
-                        // do not throw if the old file cannot be deleted
-                    }
+                }
+                catch
+                {
+                    // do not throw if the old file cannot be deleted
                 }
 
                 // Try and read from the new AzurePSDataCollectionProfile.json file
                 string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
                     AzurePSDataCollectionProfile.DefaultFileName);
-                if (AzureSession.Instance.DataStore.FileExists(fileFullPath))
+                try
                 {
-                    try
+                    if (AzureSession.Instance.DataStore.FileExists(fileFullPath))
                     {
                         string contents = AzureSession.Instance.DataStore.ReadFileAsText(fileFullPath);
                         _dataCollectionProfile =
                             JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
                     }
-                    catch
-                    {
-                        // do not throw if the data collection profile cannot be serialized
-                    }
+                }
+                catch
+                {
+                    // do not throw if the data collection profile cannot be serialized
                 }
             }
 
@@ -298,7 +298,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
+            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));
             AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, string.Format("v{0}", PSVersion)));
 
             AzureSession.Instance.ClientFactory.AddHandler(
