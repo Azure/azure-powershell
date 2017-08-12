@@ -102,11 +102,60 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 GetAzureRMContextCommand command = new GetAzureRMContextCommand();
                 command.CommandRuntime = new MockCommandRuntime();
                 command.InvokeBeginProcessing();
+                command.InvokeEndProcessing();
             }
             finally
             {
                 AzureSession.Instance.DataStore = oldDataStore;
             }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionHandlesFileExistenceErrors()
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            Mock<IDataStore> mock = new Mock<IDataStore>();
+            mock.Setup(f => f.DirectoryExists(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.FileExists(It.IsAny<string>())).Throws(new IOException("This should not be raised"));
+            mock.Setup(f => f.DeleteFile(It.IsAny<string>()));
+            var oldDataStore = AzureSession.Instance.DataStore;
+            AzureSession.Instance.DataStore = mock.Object;
+            try
+            {
+                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
+                command.CommandRuntime = new MockCommandRuntime();
+                command.InvokeBeginProcessing();
+                command.InvokeEndProcessing();
+            }
+            finally
+            {
+                AzureSession.Instance.DataStore = oldDataStore;
+            }
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionHandlesDirectoryExistenceErrors()
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            Mock<IDataStore> mock = new Mock<IDataStore>();
+            mock.Setup(f => f.DirectoryExists(It.IsAny<string>())).Throws(new IOException("This should not be raised"));
+            mock.Setup(f => f.FileExists(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.DeleteFile(It.IsAny<string>()));
+            var oldDataStore = AzureSession.Instance.DataStore;
+            AzureSession.Instance.DataStore = mock.Object;
+            try
+            {
+                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
+                command.CommandRuntime = new MockCommandRuntime();
+                command.InvokeBeginProcessing();
+                command.InvokeEndProcessing();
+            }
+            finally
+            {
+                AzureSession.Instance.DataStore = oldDataStore;
+            }
+
         }
     }
 }
