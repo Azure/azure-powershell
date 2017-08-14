@@ -82,6 +82,7 @@
     <Compile Include="Errors\ResolveError.cs" />
     <Compile Include="Feedback\SendFeedback.cs" />
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
+    <Compile Include="Models\MetadataResponse.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\PSAzureContext.cs" />
     <Compile Include="Models\PSAzureEnvironment.cs" />
@@ -105,6 +106,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Tenant\GetAzureRMTenant.cs" />
+    <Compile Include="Utilities\EnvironmentHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
