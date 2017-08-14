@@ -15,8 +15,8 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
@@ -174,15 +174,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
             string storageAccountName,
             string resourceType)
         {
-            ResourceListResult res = resourcesClient.Resources.List(new ResourceListParameters
-            {
-                ResourceGroupName = null,
-                ResourceType = resourceType,
-                TagName = null,
-                TagValue = null
-            });
-            var allResources = new List<GenericResourceExtended>(res.Resources);
-            GenericResourceExtended account = allResources.Find(r => r.Name == storageAccountName);
+            var query = new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
+            Rest.Azure.IPage<GenericResource> res = resourcesClient.Resources.List(query);
+            var allResources = new List<GenericResource>(res);
+            GenericResource account = allResources.Find(r => r.Name == storageAccountName);
             if (account != null)
             {
                 string resId = account.Id;
@@ -221,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             if (ResourcesClient == null)
             {
-                ResourcesClient = AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                ResourcesClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             return ResourcesClient;
         }

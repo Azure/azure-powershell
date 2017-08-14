@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
@@ -236,6 +236,8 @@ namespace Microsoft.Azure.Commands.Resources
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
                 ExcludeAssignmentsForDeletedPrincipals = true
             };
+
+            AuthorizationClient.ValidateScope(options.Scope, true);
 
             List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString());
 

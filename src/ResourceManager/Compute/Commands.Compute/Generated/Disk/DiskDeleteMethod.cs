@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -98,11 +99,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(OperationStatusResponse))]
+    [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RemoveAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         protected override void ProcessRecord()
         {
+            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.ResourceGroupName, VerbsCommon.Remove)
@@ -114,7 +116,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string diskName = this.DiskName;
 
                     var result = DisksClient.Delete(resourceGroupName, diskName);
-                    WriteObject(result);
+                    var psObject = new PSOperationStatusResponse();
+                    Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                    WriteObject(psObject);
                 }
             });
         }

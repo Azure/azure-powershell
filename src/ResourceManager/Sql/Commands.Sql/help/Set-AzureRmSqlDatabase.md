@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -36,16 +36,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 268435456000
 Status                        : Online
 CreationDate                  : 7/3/2015 7:33:37 AM
 CurrentServiceObjectiveId     : 455330e1-00cd-488b-b5fa-177c226f28b7
 CurrentServiceObjectiveName   : S2
 RequestedServiceObjectiveId   : 455330e1-00cd-488b-b5fa-177c226f28b7
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -61,16 +61,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 268435456000
 Status                        : Online
 CreationDate                  : 7/3/2015 7:33:37 AM
 CurrentServiceObjectiveId     : d1737d22-a8ea-4de7-9bd0-33395d2a7419
 CurrentServiceObjectiveName   : ElasticPool
 RequestedServiceObjectiveId   : d1737d22-a8ea-4de7-9bd0-33395d2a7419
-RequestedServiceObjectiveName : 
+RequestedServiceObjectiveName :
 ElasticPoolName               : elasticpool01
-EarliestRestoreDate           : 
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -107,7 +107,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: DatabaseEdition
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
@@ -123,7 +123,7 @@ Specifies name of the elastic pool in which to move the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -140,7 +140,7 @@ See the *MaxSizeGB* parameter for acceptable values per edition.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,7 +155,7 @@ The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
 ```yaml
 Type: DatabaseReadScale
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Disabled, Enabled
 
 Required: False
@@ -166,13 +166,14 @@ Accept wildcard characters: False
 ```
 
 ### -RequestedServiceObjectiveName
-Specifies the name of the service objective to assign to the database.
-For information about service objectives, see Azure SQL Database Service Tiers and Performance Levelshttps://msdn.microsoft.com/en-us/library/azure/dn741336.aspx (https://msdn.microsoft.com/en-us/library/azure/dn741336.aspx) in the Microsoft Developer Network Library.
+Specifies the name of the service objective to assign to the database. For information about
+service objectives, see [Azure SQL Database Service Tiers and Performance Levels](https://msdn.microsoft.com/en-us/library/azure/dn741336.aspx)
+in the Microsoft Developer Network Library.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -187,7 +188,7 @@ Specifies the name of resource group to which the server is assigned.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -202,7 +203,7 @@ Specifies the name of the server that hosts the database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -212,7 +213,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies a dictionary of tags that this cmdlet associates with the new server.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -281,5 +284,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-
-

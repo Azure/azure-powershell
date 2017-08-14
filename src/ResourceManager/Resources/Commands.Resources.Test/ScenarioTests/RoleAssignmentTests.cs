@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -83,7 +83,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaValidateInputParameters()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaValidateInputParameters");
+            var instance = ResourcesController.NewInstance;
+            instance.RunPsTest("Test-RaValidateInputParameters Get-AzureRmRoleAssignment");
+            instance.RunPsTest("Test-RaValidateInputParameters New-AzureRmRoleAssignment");
+            instance.RunPsTest("Test-RaValidateInputParameters Remove-AzureRmRoleAssignment");
         }
 
         [Fact]
@@ -93,6 +96,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
         
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
@@ -216,7 +226,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                         if (resourceGroup != null)
                         {
-                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId));
+                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId).ToString());
                         }                        
                     },
                     TestUtilities.GetCallingClass(),

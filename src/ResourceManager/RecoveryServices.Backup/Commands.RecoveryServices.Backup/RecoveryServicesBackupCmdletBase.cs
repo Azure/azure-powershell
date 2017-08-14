@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using AzureRestNS = Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using ResourcesNS = Microsoft.Azure.Management.Resources;
+using ResourcesNS = Microsoft.Azure.Management.Internal.Resources;
 using SystemNet = System.Net;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ServiceClientAdapter = new ServiceClientAdapter(DefaultContext);
 
             WriteDebug("InsideRestore. going to create ResourceManager Client");
-            RmClient = AzureSession.Instance.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            RmClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             WriteDebug("Client Created successfully");
 
