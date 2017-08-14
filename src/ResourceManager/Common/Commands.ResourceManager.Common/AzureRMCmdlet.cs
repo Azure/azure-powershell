@@ -173,13 +173,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
+            try
             {
-                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
+                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+                if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
+                {
+                    AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
+                }
+
+                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
+                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
             }
-            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+            catch
+            {
+                // do not throw on errors writing to the data store
+            }
         }
 
         protected override void SetDataCollectionProfileIfNotExists()
@@ -215,7 +223,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 IsSuccess = true,
             };
 
-            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null 
+                && this.MyInvocation.BoundParameters.Keys != null)
             {
                 _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
