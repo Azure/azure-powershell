@@ -304,18 +304,6 @@ function Test-RaUserPermissions
 
 <#
 .SYNOPSIS
-Tests verifies Get-AzureRmAuthorizationChangeLog
-#>
-function Test-RaAuthorizationChangeLog
-{
-	$log1 = Get-AzureRmAuthorizationChangeLog -startTime 2016-07-28 -EndTime 2016-07-28T22:30:00Z
-
-	# Assert
-	Assert-True { $log1.Count -ge 1 } "At least one record should be returned for the user"
-}
-
-<#
-.SYNOPSIS
 Tests verifies creation and deletion of a RoleAssignments by Scope irrespective of the case
 #>
 function Test-RaDeletionByScope
