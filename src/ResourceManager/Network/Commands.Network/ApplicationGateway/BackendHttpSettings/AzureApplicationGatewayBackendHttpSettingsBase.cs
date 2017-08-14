@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -84,6 +85,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Sets host header to be sent to the backend servers.")]
+        public string HostName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Cookie name to use for the affinity cookie")]
         [ValidateNotNullOrEmpty]
         public string AffinityCookieName { get; set; }
@@ -91,6 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag if probe should be enabled.")]
+        [Obsolete("Parameter is ignored and will be removed in a future release")]
         public SwitchParameter ProbeEnabled { get; set; }
 
         [Parameter(
@@ -148,13 +155,13 @@ namespace Microsoft.Azure.Commands.Network
             {
                 backendHttpSettings.PickHostNameFromBackendAddress = true;
             }
+            if(this.HostName != null)
+            {
+                backendHttpSettings.HostName = this.HostName;
+            }
             if (this.AffinityCookieName != null)
             {
                 backendHttpSettings.AffinityCookieName = this.AffinityCookieName;
-            }
-            if (this.ProbeEnabled.IsPresent)
-            {
-                backendHttpSettings.ProbeEnabled = true;
             }
             if (this.Path != null)
             {

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.2.1
+
+## Version 3.2.0
 * Add support for Compute Policy CRUD through the following commands:
     - New-AzureRMDataLakeAnalyticsComputePolicy
     - Get-AzureRMDataLakeAnalyticsComputePolicy

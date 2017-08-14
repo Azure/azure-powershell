@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 

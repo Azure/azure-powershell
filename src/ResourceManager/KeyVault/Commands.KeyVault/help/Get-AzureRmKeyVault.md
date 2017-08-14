@@ -38,10 +38,12 @@ Get-AzureRmKeyVault [-Tag <Hashtable>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmKeyVault** cmdlet gets information about the key vaults in a subscription.
-You can view all key vaults instances in a subscription, or filter your results by a resource group or a particular key vault.
+The **Get-AzureRmKeyVault** cmdlet gets information about the key vaults in a subscription. You can
+view all key vaults instances in a subscription, or filter your results by a resource group or a
+particular key vault.
 
-Note that although specifying the resource group is optional for this cmdlet when you get a single key vault, you should do so for better performance.
+Note that although specifying the resource group is optional for this cmdlet when you get a single
+key vault, you should do so for better performance.
 
 ## EXAMPLES
 
@@ -57,8 +59,9 @@ This command gets all the key vaults in your current subscription.
 PS C:\>$MyVault = Get-AzureRMKeyVault -VaultName 'Contoso03Vault'
 ```
 
-This command gets the key vault named Contoso03Vault in your current subscription, and then stores it in the $MyVault variable.
-You can inspect the properties of $MyVault to get details about the key vault.
+This command gets the key vault named Contoso03Vault in your current subscription, and then stores
+it in the $MyVault variable. You can inspect the properties of $MyVault to get details about the
+key vault.
 
 ### Example 3: Get key vaults in a resource group
 ```
@@ -79,15 +82,18 @@ This command gets all the deleted key vaults in your current subscription.
 PS C:\>Get-AzureRMKeyVault -VaultName 'Contoso03Vault'  -Location 'eastus2' -InRemovedState
 ```
 
-This command gets the deleted key vault information named Contoso03Vault in your current subscription and in eastus2 region.
+This command gets the deleted key vault information named Contoso03Vault in your current
+subscription and in eastus2 region.
 
 ## PARAMETERS
 
 ### -InRemovedState
-Specifies whether to show the previously deleted vaults in the output.```yaml
+Specifies whether to show the previously deleted vaults in the output.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,10 +103,12 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the deleted vault.```yaml
+The location of the deleted vault.
+
+```yaml
 Type: String
 Parameter Sets: ByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -115,7 +123,7 @@ Specifies the name of the resource group associated with the key vault or key va
 ```yaml
 Type: String
 Parameter Sets: GetVaultByName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -127,7 +135,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ListVaultsByResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -137,12 +145,14 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Specifies the key and value of the specified tag to filter the list of key vaults by hash table.
+Key-value pairs in the form of a hash table. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
 Parameter Sets: ListAllVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -180,4 +190,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzureRmKeyVault](./New-AzureRmKeyVault.md)
 
 [Remove-AzureRmKeyVault](./Remove-AzureRmKeyVault.md)
-

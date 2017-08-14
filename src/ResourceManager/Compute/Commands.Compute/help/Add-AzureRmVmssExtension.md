@@ -13,7 +13,7 @@ Adds an extension to the VMSS.
 ## SYNTAX
 
 ```
-Add-AzureRmVmssExtension [-VirtualMachineScaleSet] <VirtualMachineScaleSet> [[-Name] <String>]
+Add-AzureRmVmssExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
  [[-Publisher] <String>] [[-Type] <String>] [[-TypeHandlerVersion] <String>]
  [[-AutoUpgradeMinorVersion] <Boolean>] [[-Setting] <Object>] [[-ProtectedSetting] <Object>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -149,7 +149,7 @@ Specify the VMSS object.
 You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) to create the object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 

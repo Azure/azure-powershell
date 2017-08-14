@@ -60,7 +60,7 @@ Specifies a range of IP addresses for a subnet configuration.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -75,7 +75,7 @@ Specifies the name of the subnet configuration to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -90,7 +90,7 @@ Specifies a NetworkSecurityGroup object.
 ```yaml
 Type: PSNetworkSecurityGroup
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,7 +105,7 @@ Specifies the ID of a network security group.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,7 +120,7 @@ Specifies the route table associated with the subnet configuration.
 ```yaml
 Type: PSRouteTable
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -135,7 +135,7 @@ Specifies the ID of the route table associated with the subnet configuration.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

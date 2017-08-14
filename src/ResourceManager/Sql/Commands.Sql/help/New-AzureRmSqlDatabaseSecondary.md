@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 ms.assetid: BEE99039-35F7-4E9D-9308-090EAE68292D
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -20,14 +20,16 @@ New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjec
 ```
 
 ## DESCRIPTION
-The **New-AzureRMSqlDatabaseSecondary** cmdlet replaces the Start-AzureSqlDatabaseCopy cmdlet when used for setting up geo-replication for a database.
-It returns the geo-replication link object from the primary to the secondary database.
+The **New-AzureRMSqlDatabaseSecondary** cmdlet replaces the Start-AzureSqlDatabaseCopy cmdlet when
+used for setting up geo-replication for a database. It returns the geo-replication link object from
+the primary to the secondary database.
 
 ## EXAMPLES
 
-### 1:
+### 1: Establish Active Geo-Replication
 ```
-
+$database = Get-AzureRmSqlDatabase -DatabaseName $databasename -ResourceGroupName $primaryresourcegroupname -ServerName $primaryservername
+$database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName $secondaryresourcegroupname -PartnerServerName $secondaryservername -AllowConnections "All"
 ```
 
 ## PARAMETERS
@@ -42,7 +44,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: AllowConnections
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: No, All
 
 Required: False
@@ -58,7 +60,7 @@ Specifies the name of the database to act as primary.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -73,7 +75,7 @@ Specifies the name of the Azure Resource Group to which this cmdlet assigns the 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -88,7 +90,7 @@ Specifies the name of the Azure SQL database server to act as secondary.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -103,7 +105,7 @@ Specifies the name of the Azure Resource Group to which this cmdlet assigns the 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -118,7 +120,7 @@ Specifies the name of the elastic pool in which to put the secondary database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,7 +135,7 @@ Specifies the name of the service objective to assign to the secondary database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -148,7 +150,7 @@ Specifies the name of the SQL Server of the primary  SQL Database.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -158,7 +160,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tags
-Specifies the tags to associate with the SQL Database replication link.
+Specifies the Key-value pairs in the form of a hash table to associate with the SQL Database replication link. For example:
+
+@{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
 Type: Hashtable
@@ -208,12 +212,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
+###
 You can pipe instances of the **Database** object for the primary database to this cmdlet.
 
 ## OUTPUTS
 
-###  
+###
 This cmdlet returns **ReplicationLink** objects.
 
 ## NOTES
@@ -225,4 +229,3 @@ This cmdlet returns **ReplicationLink** objects.
 [Set-AzureRmSqlDatabaseSecondary](./Set-AzureRmSqlDatabaseSecondary.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-
