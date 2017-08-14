@@ -104,30 +104,30 @@ Remove-AzureRmRoleAssignment
         [DateTime] $EndTime
     ) 
     PROCESS { 
-         # Get all events for the "Microsoft.Authorization" provider by calling the Insights commandlet
+         #Get all events for the "Microsoft.Authorization" provider by calling the Insights commandlet
          $events = Get-AzureRmLog -ResourceProvider "Microsoft.Authorization" -DetailedOutput -StartTime $StartTime -EndTime $EndTime
              
          $startEvents = @{}
          $endEvents = @{}
          $offlineEvents = @()
 
-         # StartEvents and EndEvents will contain matching pairs of logs for when role assignments (and definitions) were created or deleted. 
-         # i.e. A PUT on roleassignments will have a Start-End event combination and a DELETE on roleassignments will have another Start-End event combination
+         #StartEvents and EndEvents will contain matching pairs of logs for when role assignments (and definitions) were created or deleted. 
+         #i.e. A PUT on roleassignments will have a Start-End event combination and a DELETE on roleassignments will have another Start-End event combination
          $startEvents = $events | ? { $_.httpRequest -and $_.Status -ieq "Started" }
          $events | ? { $_.httpRequest -and $_.Status -ne "Started" } | % { $endEvents[$_.OperationId] = $_ }
-         # This filters non-RBAC events like classic administrator write or delete
+         #This filters non-RBAC events like classic administrator write or delete
          $events | ? { $_.httpRequest -eq $null } | % { $offlineEvents += $_ } 
 
          $output = @()
 
-         # Get all role definitions once from the service and cache to use for all 'startevents'
+         #Get all role definitions once from the service and cache to use for all 'startevents'
          $azureRoleDefinitionCache = @{}
          Get-AzureRmRoleDefinition | % { $azureRoleDefinitionCache[$_.Id] = $_ }
 
          $principalDetailsCache = @{}
 
-         # Process StartEvents
-         # Find matching EndEvents that succeeded and relating to role assignments only
+         #Process StartEvents
+         #Find matching EndEvents that succeeded and relating to role assignments only
          $startEvents | ? { $endEvents.ContainsKey($_.OperationId) `
              -and $endEvents[$_.OperationId] -ne $null `
              -and $endevents[$_.OperationId].OperationName.StartsWith("Microsoft.Authorization/roleAssignments", [System.StringComparison]::OrdinalIgnoreCase)  `
@@ -135,7 +135,7 @@ Remove-AzureRmRoleAssignment
        
          $endEvent = $endEvents[$_.OperationId];
         
-         # Create the output structure
+         #Create the output structure
          $out = "" | select Timestamp, Caller, Action, PrincipalId, PrincipalName, PrincipalType, Scope, ScopeName, ScopeType, RoleDefinitionId, RoleName
 				 
          $out.Timestamp = Get-Date -Date $endEvent.EventTimestamp -Format u
@@ -156,16 +156,16 @@ Remove-AzureRmRoleAssignment
         }
 
         if ($messageBody) {
-            # Process principal details
+            #Process principal details
             $out.PrincipalId = $messageBody.properties.principalId
             if ($out.PrincipalId -ne $null) { 
-				# Get principal details by querying Graph. Cache principal details and read from cache if present
+				#Get principal details by querying Graph. Cache principal details and read from cache if present
 				$principalId = $out.PrincipalId 
                 
 				if($principalDetailsCache.ContainsKey($principalId)) {
-					# Found in cache
+					#Found in cache
                     $principalDetails = $principalDetailsCache[$principalId]
-                } else { # not in cache
+                } else { #not in cache
 		            $principalDetails = "" | select Name, Type
                     $user = Get-AzureRmADUser -ObjectId $principalId
                     if ($user) {
@@ -184,7 +184,7 @@ Remove-AzureRmRoleAssignment
                             }
                         }
                     }              
-					# add principal details to cache
+					#add principal details to cache
                     $principalDetailsCache.Add($principalId, $principalDetails);
 	            }
 
@@ -192,10 +192,10 @@ Remove-AzureRmRoleAssignment
                 $out.PrincipalType = $principalDetails.Type
             }
 
-			# Process scope details
+			#Process scope details
             if ([string]::IsNullOrEmpty($out.Scope)) { $out.Scope = $messageBody.properties.Scope }
             if ($out.Scope -ne $null) {
-				# Remove the authorization provider details from the scope, if present
+				#Remove the authorization provider details from the scope, if present
 			    if ($out.Scope.ToLower().Contains("/providers/microsoft.authorization")) {
 					$index = $out.Scope.ToLower().IndexOf("/providers/microsoft.authorization") 
 					$out.Scope = $out.Scope.Substring(0, $index) 
@@ -221,7 +221,7 @@ Remove-AzureRmRoleAssignment
                 $out.ScopeType = $resourceDetails.Type
             }
 
-			# Process Role definition details
+			#Process Role definition details
             $out.RoleDefinitionId = $messageBody.properties.roleDefinitionId
 			
             if ($out.RoleDefinitionId -ne $null) {
@@ -237,9 +237,9 @@ Remove-AzureRmRoleAssignment
             }
         }
         $output += $out
-    } # start event processing complete
+    } #start event processing complete
 
-    # Filter classic admins events
+    #Filter classic admins events
     $offlineEvents | % {
         if($_.Status -ne $null -and $_.Status -ieq "Succeeded" -and $_.OperationName -ne $null -and $_.operationName.StartsWith("Microsoft.Authorization/ClassicAdministrators", [System.StringComparison]::OrdinalIgnoreCase)) {
             
@@ -268,9 +268,9 @@ Remove-AzureRmRoleAssignment
                      
             $output += $out
         }
-    } # end offline events
+    } #end offline events
 
     $output | Sort Timestamp
 } 
-} # End commandlet
+} #End commandlet
  
