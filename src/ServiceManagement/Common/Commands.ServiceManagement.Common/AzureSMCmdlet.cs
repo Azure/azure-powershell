@@ -64,9 +64,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+            try
+            {
+                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
+                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+            }
+            catch
+            {
+                // do not throw if serializing or writing the file fails
+            }
         }
 
         protected override void SetDataCollectionProfileIfNotExists()
@@ -102,7 +109,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 IsSuccess = true,
             };
 
-            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null 
+                && this.MyInvocation.BoundParameters.Keys != null)
             {
                 _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
