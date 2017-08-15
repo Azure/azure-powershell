@@ -15,6 +15,7 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -30,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public class MetricHelper
     {
+        protected INetworkHelper _networkHelper;
         private const int FlushTimeoutInMilli = 5000;
 
         /// <summary>
@@ -52,31 +54,47 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <summary>
         /// Lock used to synchronize mutation of the tracing interceptors.
         /// </summary>
-        private readonly object _lock = new object();
+        private static readonly object _lock = new object();
 
         private static string _hashMacAddress = string.Empty;
 
-        private static string HashMacAddress
+        public string HashMacAddress
         {
             get
             {
-                if (_hashMacAddress == string.Empty)
+                lock(_hashMacAddress)
                 {
-                    var macAddress = NetworkInterface.GetAllNetworkInterfaces()?
-                        .FirstOrDefault(nic => nic != null && 
-                                               nic.OperationalStatus == OperationalStatus.Up &&
-                                               nic.GetPhysicalAddress() != null &&
-                                               !string.IsNullOrWhiteSpace(nic.GetPhysicalAddress().ToString()))?
-                        .GetPhysicalAddress()?.ToString();
-                    _hashMacAddress = string.IsNullOrWhiteSpace(macAddress) ? null : GenerateSha256HashString(macAddress)?.Replace("-", string.Empty)?.ToLowerInvariant();
-                }
+                    if (_hashMacAddress == string.Empty)
+                    {
+                       _hashMacAddress = null;
 
-                return _hashMacAddress;
+                        try
+                        {
+                            var macAddress = _networkHelper.GetMACAddress();
+                            _hashMacAddress = string.IsNullOrWhiteSpace(macAddress) 
+                                ? null : GenerateSha256HashString(macAddress)?.Replace("-", string.Empty)?.ToLowerInvariant();
+                        }
+                        catch
+                        {
+                            // ignore exceptions in getting the network address
+                        }
+                    }
+
+                    return _hashMacAddress;
+                }
             }
+
+            // Add test hook to reset
+            set { lock(_lock) { _hashMacAddress = value; } }
         }
 
-        public MetricHelper()
+        public MetricHelper() : this(new NetworkHelper())
         {
+        }
+
+        public MetricHelper(INetworkHelper network)
+        {
+            _networkHelper = network;
 #if DEBUG
             if (TestMockSupport.RunningMocked)
             {
@@ -266,11 +284,21 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 return string.Empty;
             }
 
-            using (var sha256 = new SHA256CryptoServiceProvider())
+            string result = null;
+            try
             {
-                var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
-                return BitConverter.ToString(bytes);
+                using (var sha256 = new SHA256CryptoServiceProvider())
+                {
+                    var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
+                    result = BitConverter.ToString(bytes);
+                }
             }
+            catch
+            {
+                // do not throw if CryptoProvider is not provided
+            }
+
+            return result;
         }
 
         /// <summary>

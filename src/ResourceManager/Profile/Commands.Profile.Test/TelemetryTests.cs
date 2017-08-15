@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
@@ -35,6 +36,63 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(string.Empty, MetricHelper.GenerateSha256HashString(null));
             Assert.Equal(string.Empty, MetricHelper.GenerateSha256HashString(string.Empty));
             Assert.Equal(string.Empty, MetricHelper.GenerateSha256HashString(" "));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HashofNullNetworkMACAddressIsNull()
+        {
+            Mock<INetworkHelper> helper = new Mock<INetworkHelper>();
+            helper.Setup((f) => f.GetMACAddress()).Returns(() => null);
+            var metricHelper = new MetricHelper(helper.Object);
+            metricHelper.HashMacAddress = string.Empty;
+            try
+            {
+                Assert.Null(metricHelper.HashMacAddress);
+                helper.Verify((f) => f.GetMACAddress(), Times.Once);
+            }
+            finally
+            {
+                metricHelper.HashMacAddress = string.Empty;
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HashofEmptyNetworkMACAddressIsNull()
+        {
+            Mock<INetworkHelper> helper = new Mock<INetworkHelper>();
+            helper.Setup((f) => f.GetMACAddress()).Returns(string.Empty);
+            var metricHelper = new MetricHelper(helper.Object);
+            metricHelper.HashMacAddress = string.Empty;
+            try
+            {
+                Assert.Null(metricHelper.HashMacAddress);
+                helper.Verify((f) => f.GetMACAddress(), Times.Once);
+            }
+            finally
+            {
+                metricHelper.HashMacAddress = string.Empty;
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HashMacAddressOnThrowIsNull()
+        {
+            Mock<INetworkHelper> helper = new Mock<INetworkHelper>();
+            helper.Setup((f) => f.GetMACAddress()).Throws(new InvalidOperationException("This exception should be handled"));
+            var metricHelper = new MetricHelper(helper.Object);
+            metricHelper.HashMacAddress = string.Empty;
+            try
+            {
+                Assert.Null(metricHelper.HashMacAddress);
+                helper.Verify((f) => f.GetMACAddress(), Times.Once);
+            }
+            finally
+            {
+                metricHelper.HashMacAddress = string.Empty;
+            }
         }
 
         [Fact]
