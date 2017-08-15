@@ -191,6 +191,13 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
+    <ItemGroup>  
+        <OutFiles Include="$(OutDir)\**\*.*"/>  
+    </ItemGroup>  
+    <Copy  
+            SourceFiles="@(OutFiles)"  
+            DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Resources\%(RecursiveDir)%(Filename)%(Extension)')"  
+     />  	
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
 </Project>

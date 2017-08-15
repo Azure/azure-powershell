@@ -223,6 +223,13 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
+    <ItemGroup>  
+        <OutFiles Include="$(OutDir)\**\*.*"/>  
+    </ItemGroup>  
+    <Copy  
+            SourceFiles="@(OutFiles)"  
+            DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\%(RecursiveDir)%(Filename)%(Extension)')"  
+     />  
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
   </Target>
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
