@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             get
             {
-                lock(_hashMacAddress)
+                lock(_lock)
                 {
                     if (_hashMacAddress == string.Empty)
                     {
