@@ -43,6 +43,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRVault
+
+Parameter 'Vault' accepts value of type 'ASRVault' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

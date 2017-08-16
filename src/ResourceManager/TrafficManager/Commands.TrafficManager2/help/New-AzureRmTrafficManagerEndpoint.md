@@ -266,6 +266,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
+
 ## NOTES
 
 ## RELATED LINKS

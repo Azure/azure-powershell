@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public const string DefaultClaimValue = "None";
         internal const string DefaultNamespaceAuthorizationRule = "RootManageSharedAccessKey";
 
-        public ListKeysAttributes(ResourceListKeys listKeysResource)
+        public ListKeysAttributes(AccessKeys listKeysResource)
         {
             if (listKeysResource != null)
             {

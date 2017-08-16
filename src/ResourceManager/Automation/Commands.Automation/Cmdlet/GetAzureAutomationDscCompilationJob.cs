@@ -76,19 +76,39 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 // ByJobId 
                 jobs = new List<CompilationJob> { this.AutomationClient.GetCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.Id) };
+
+                this.GenerateCmdletOutput(jobs);
             }
             else if (this.ConfigurationName != null)
             {
-                // ByConfiguration 
-                jobs = this.AutomationClient.ListCompilationJobsByConfigurationName(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.StartTime, this.EndTime, this.Status);
+                var nextLink = string.Empty;
+
+                do
+                {
+                    // ByConfiguration 
+                    jobs = this.AutomationClient.ListCompilationJobsByConfigurationName(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.StartTime, this.EndTime, this.Status, ref nextLink);
+                    if (jobs != null)
+                    {
+                        this.GenerateCmdletOutput(jobs);
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
             }
             else
             {
-                // ByAll 
-                jobs = this.AutomationClient.ListCompilationJobs(this.ResourceGroupName, this.AutomationAccountName, this.StartTime, this.EndTime, this.Status);
-            }
+                var nextLink = string.Empty;
 
-            this.WriteObject(jobs, true);
+                do
+                {
+                    // ByAll 
+                    jobs = this.AutomationClient.ListCompilationJobs(this.ResourceGroupName, this.AutomationAccountName, this.StartTime, this.EndTime, this.Status, ref nextLink);
+                    if (jobs != null)
+                    {
+                        this.GenerateCmdletOutput(jobs);
+                    }
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

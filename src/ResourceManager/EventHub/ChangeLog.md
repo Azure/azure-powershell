@@ -19,8 +19,28 @@
 -->
 ## Current Release
 
-## Version 0.4.2
+## Version 0.4.3
+* added ResourceGroup property to NamespaceAttributes
+    - 'ResourceGroup' Gets the name of the resource group the Namespace is in
 
+* updated commandlets with new parameter and parameter alias
+	- below cmdlets updated with Parametersets for Namespace and EventHub for operation of AuthorizationRule
+
+    - New-AzureRmEventHubAuthorizationRule
+        - Adds a new AuthorizationRule to the existing NameSpace or EventHub.
+    - Get-AzureRmEventHubAuthorizationRule
+        - Gets AuthorizationRule / List of AuthorizationRules for the existing NameSpace or EventHub.
+    - Set-AzureRmEventHubAuthorizationRule
+        - Updates properties of existing AuthorizationRule of EventHub NameSpace.
+    - Remove-AzureRmEventHubAuthorizationRule
+        - Deletes the existing AuthorizationRule of existing NameSpace or EventHub.    
+    - New-AzureRmEventHubKey
+        - Generates a new Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
+    - Get-AzureRmEventHubKey
+        - Gets Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
+
+## Version 0.4.2
+		
 ## Version 0.4.1
 
 ## Version 0.4.0

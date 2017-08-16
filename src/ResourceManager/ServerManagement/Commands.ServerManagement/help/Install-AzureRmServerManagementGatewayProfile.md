@@ -51,6 +51,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### FileInfo
+
+Parameter 'InputFile' accepts value of type 'FileInfo' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

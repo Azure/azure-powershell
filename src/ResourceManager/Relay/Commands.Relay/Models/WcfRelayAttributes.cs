@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         {
             Id = wcfRelay.Id;
             Name = wcfRelay.Name;
-            RelayType = wcfRelay.RelayType;
+            RelayType = wcfRelay.RelayType.ToString();
             Type = wcfRelay.Type;
             CreatedAt = wcfRelay.CreatedAt;
             UpdatedAt = wcfRelay.UpdatedAt;
