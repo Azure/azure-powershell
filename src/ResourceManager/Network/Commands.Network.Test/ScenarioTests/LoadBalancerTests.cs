@@ -144,5 +144,33 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-SetLoadBalancerObjectAssignment");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetLoadBalancerCRUDPublicBasicSku()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicBasicSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetLoadBalancerCRUDInternalBasicSku()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalBasicSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetLoadBalancerCRUDPublicStandardSku()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicStandardSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetLoadBalancerCRUDInternalStandardSku()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalStandardSku");
+        }
     }
 }
