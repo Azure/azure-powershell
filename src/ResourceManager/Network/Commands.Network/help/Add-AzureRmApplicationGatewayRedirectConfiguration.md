@@ -34,6 +34,7 @@ Add-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway <PSApplic
 
 ## DESCRIPTION
 The **Add-AzureRmApplicationGatewayRedirectConfiguration** cmdlet adds a redirect configuration to an Application Gateway.
+
 ## EXAMPLES
 
 ### Example 1
@@ -41,6 +42,7 @@ The **Add-AzureRmApplicationGatewayRedirectConfiguration** cmdlet adds a redirec
 PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\>$Appgw = Add-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $AppGw -Name "Redirect01" -RedirectType Permanent -TargetListener $listener01
 ```
+
 The first command gets the application gateway and stores it in the $AppGw variable.
 The second command adds the redirect configuration to the application gateway.
 
