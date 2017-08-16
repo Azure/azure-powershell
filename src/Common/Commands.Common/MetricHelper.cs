@@ -22,8 +22,6 @@ using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -62,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             get
             {
-                lock(_hashMacAddress)
+                lock(_lock)
                 {
                     if (_hashMacAddress == string.Empty)
                     {

@@ -48,6 +48,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             metricHelper.HashMacAddress = string.Empty;
             try
             {
+                // verify that initialization happens only once and
+                // there are no issues with retrieving the value
+                Assert.Null(metricHelper.HashMacAddress);
                 Assert.Null(metricHelper.HashMacAddress);
                 helper.Verify((f) => f.GetMACAddress(), Times.Once);
             }
@@ -68,6 +71,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             try
             {
                 Assert.Null(metricHelper.HashMacAddress);
+                Assert.Null(metricHelper.HashMacAddress);
                 helper.Verify((f) => f.GetMACAddress(), Times.Once);
             }
             finally
@@ -86,6 +90,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             metricHelper.HashMacAddress = string.Empty;
             try
             {
+                Assert.Null(metricHelper.HashMacAddress);
                 Assert.Null(metricHelper.HashMacAddress);
                 helper.Verify((f) => f.GetMACAddress(), Times.Once);
             }
