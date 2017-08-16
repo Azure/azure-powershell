@@ -95,6 +95,8 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
+### System.Boolean
+
 ## NOTES
 Alias: Restart-AzureAsInstance
 

@@ -25,29 +25,32 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Queue Name.")]
+        [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a Queue 
-            if (ShouldProcess(target: QueueName, action: string.Format("Deleting Queue:{0} of NameSpace:{1}", QueueName, NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveQueue, Name, Namespace)))
             {
-                WriteObject(Client.DeleteQueue(ResourceGroup, NamespaceName, QueueName));
+                WriteObject(Client.DeleteQueue(ResourceGroupName, Namespace, Name));
             }
         }
     }

@@ -356,7 +356,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' -and -not ($_ -like '*HUB')  };
+    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*WindowsServer*' -and -not ($_ -like '*HUB')  };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;

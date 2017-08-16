@@ -28,44 +28,47 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Queue Name.")]
+        [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "ServiceBus definition.")]
+        [Alias(AliasQueueObj)]
         [ValidateNotNullOrEmpty]
-        public QueueAttributes QueueObj { get; set; }
+        public QueueAttributes InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             QueueAttributes queueAttributes = new QueueAttributes();
 
-            if (QueueObj != null)
+            if (InputObject != null)
                {
-                NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
-                QueueObj.Location = getNamespaceLoc.Location;
-                queueAttributes = QueueObj;
+                NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
+                queueAttributes = InputObject;
                }
 
-            if (ShouldProcess(target: QueueName, action: string.Format("Updating Queue:{0} of the NameSpace:{1}", QueueName, NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateQueue, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateQueue(ResourceGroup, NamespaceName, queueAttributes.Name, queueAttributes));
+                WriteObject(Client.CreateUpdateQueue(ResourceGroupName, Namespace, queueAttributes.Name, queueAttributes));
             }
         }
     }
