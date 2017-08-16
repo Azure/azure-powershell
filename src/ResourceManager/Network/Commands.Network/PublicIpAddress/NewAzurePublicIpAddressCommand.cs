@@ -51,6 +51,17 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The public IP Sku name.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.PublicIPAddressSkuName.Basic,
+            MNM.PublicIPAddressSkuName.Standard,
+            IgnoreCase = true)]
+        public string Sku { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The public IP address allocation method.")]
@@ -126,6 +137,12 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Location = this.Location;
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
+
+            if (!string.IsNullOrEmpty(this.Sku))
+            {
+                publicIp.Sku = new PSPublicIpAddressSku();
+                publicIp.Sku.Name = this.Sku;
+            }
 
             if (this.IdleTimeoutInMinutes > 0)
             {
