@@ -14,7 +14,7 @@ Removes an ExpressRoute circuit peering configuration.
 
 ```
 Remove-AzureRmExpressRouteCircuitPeeringConfig [-Name <String>] -ExpressRouteCircuit <PSExpressRouteCircuit>
- [<CommonParameters>]
+ [-PeerAddressType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,22 @@ The name of the peering configuration to be removed.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeerAddressType
+The Address family of the peering
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: IPv4, IPv6, All
 
 Required: False
 Position: Named
