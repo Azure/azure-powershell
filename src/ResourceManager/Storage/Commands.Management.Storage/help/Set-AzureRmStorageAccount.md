@@ -18,7 +18,7 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [[-AccessTier] <String>] [[-CustomDomainName] <String>] [[-UseSubDomain] <Boolean>]
  [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
  [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-NetworkRule <PSNetworkRuleSet>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force
  [[-EnableEncryptionService] <EncryptionSupportServiceEnum>]
  [[-DisableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRule <PSNetworkRuleSet>]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -97,9 +97,9 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 
 This command disables encryption on File Services with KeySource set to "Microsoft.Storage"
 
-### Example 7: Set NetworkRule property of a Storage Account with JSON
+### Example 7: Set NetworkRuleSet property of a Storage Account with JSON
 ```
-PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -NetworkRule (@{bypass="Logging,Metrics";
+PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
     virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
@@ -107,15 +107,15 @@ PS C:\>Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
     defaultAction="allow"})
 ```
 
-This command sets NetworkRule property of a Storage Account with JSON
+This command sets NetworkRuleSet property of a Storage Account with JSON
 
-### Example 8: Get NetworkRule property from a Storage Account, and set it to another storage account
+### Example 8: Get NetworkRuleSet property from a Storage Account, and set it to another storage account
 ```
-PS C:\> $networkRule = (Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount").NetworkRule 
-PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount2" -NetworkRule $networkRule
+PS C:\> $networkRuleSet = (Get-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount").NetworkRuleSet 
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount2" -NetworkRuleSet $networkRuleSet
 ```
 
-This first command gets NetworkRule property from a Storage Account, and the second command sets it to another storage account 
+This first command gets NetworkRuleSet property from a Storage Account, and the second command sets it to another Storage Account 
 
 ## PARAMETERS
 
@@ -349,8 +349,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NetworkRule
-Storage Account NetworkRule
+### -NetworkRuleSet
+Storage Account NetworkRuleSet
 
 ```yaml
 Type: PSNetworkRuleSet
@@ -488,6 +488,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.Storage.Models.StorageAccount
 
 ## NOTES
 

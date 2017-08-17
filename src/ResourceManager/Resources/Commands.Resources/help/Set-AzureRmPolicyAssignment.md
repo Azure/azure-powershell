@@ -184,6 +184,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Management.Automation.PSObject
+
 ## NOTES
 
 ## RELATED LINKS

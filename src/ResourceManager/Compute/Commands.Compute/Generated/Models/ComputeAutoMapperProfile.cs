@@ -89,6 +89,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             Mapper.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
             Mapper.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
             Mapper.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
+            Mapper.CreateMap<FROM.RunCommandInput, TO.PSRunCommandInput>();
+            Mapper.CreateMap<TO.PSRunCommandInput, FROM.RunCommandInput>();
             Mapper.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
             Mapper.CreateMap<TO.PSAvailabilitySet, FROM.AvailabilitySet>();
             Mapper.CreateMap<FROM.OperationStatusResponse, TO.PSOperationStatusResponse>();

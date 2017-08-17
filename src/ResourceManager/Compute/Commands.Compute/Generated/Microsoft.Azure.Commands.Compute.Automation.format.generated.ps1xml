@@ -195,15 +195,19 @@
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Tier</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Size</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Locations</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Restriction</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Capability</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
         </TableHeaders>
@@ -217,13 +221,16 @@
                 <ScriptBlock>$_.Name</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Tier</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Size</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
                 <ScriptBlock>$_.Locations</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Restrictions[0].ReasonCode</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Capabilities[0].Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Capabilities[0].Value</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

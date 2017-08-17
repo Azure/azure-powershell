@@ -143,6 +143,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
+
 ## NOTES
 
 ## RELATED LINKS

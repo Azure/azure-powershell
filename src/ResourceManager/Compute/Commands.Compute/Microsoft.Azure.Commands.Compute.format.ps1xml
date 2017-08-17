@@ -675,6 +675,10 @@
             <Label>PowerState</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaintenanceAllowed</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -708,6 +712,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.PowerState.Replace("VM ", "")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

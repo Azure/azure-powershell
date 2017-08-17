@@ -21,6 +21,8 @@ New-AzureRmSqlElasticPool -ElasticPoolName <String> [-Edition <DatabaseEdition>]
 ## DESCRIPTION
 The **New-AzureRmSqlElasticPool** cmdlet creates an elastic database pool for an Azure SQL Database.
 
+Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the value being set is from the list of valid values for that parameter. For example, -DatabaseDtuMax for a Standard 100 eDTU pool can only be set to 10, 20, 50, or 100.  For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+
 ## EXAMPLES
 
 ### Example 1: Create an elastic pool
@@ -55,6 +57,9 @@ The default values for the different editions are as follows:
 - Standard. 100 DTUs
 - Premium. 125 DTUs
 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) 
+
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -70,6 +75,8 @@ Accept wildcard characters: False
 ### -DatabaseDtuMin
 Specifies the minimum number of DTUs that the elastic pool guarantees to all the databases in the pool.
 The default value is zero (0).
+
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
 
 ```yaml
 Type: Int32
@@ -94,6 +101,8 @@ The default values for the different editions are as follows:
 - Premium.
 125 DTUs
 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+
 ```yaml
 Type: Int32
 Parameter Sets: (All)
@@ -113,6 +122,10 @@ The acceptable values for this parameter are:
 - Premium
 - Basic
 - Standard
+- DataWarehouse
+- Stretch
+- Free
+- PremiumRS
 
 ```yaml
 Type: DatabaseEdition
@@ -247,7 +260,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
+### Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
 
 ## NOTES
 
