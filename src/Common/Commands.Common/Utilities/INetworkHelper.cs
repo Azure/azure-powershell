@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using Xunit;
-
-[assembly: AssemblyTitle("Network Test Assembly")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Network Test Assembly")]
-[assembly: AssemblyCopyright("Copyright © Microsoft")]
-
-[assembly: ComVisible(false)]
-[assembly: CLSCompliant(false)]
-[assembly: Guid("3E5D3114-DEBB-4DC2-BB9D-CF2A2707F74D")]
-[assembly: AssemblyVersion("4.3.1")]
-[assembly: AssemblyFileVersion("4.3.1")]
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
+namespace Microsoft.WindowsAzure.Commands.Common.Utilities
+{
+    /// <summary>
+    /// Environment helper to allow mocking the network interface
+    /// </summary>
+    public interface INetworkHelper
+    {
+        /// <summary>
+        /// Get the mac address of the default nic
+        /// </summary>
+        /// <returns>A string respresnting the MAC address of the defualt nic, 
+        /// or null if none is found</returns>
+        string GetMACAddress();
+    }
+}
