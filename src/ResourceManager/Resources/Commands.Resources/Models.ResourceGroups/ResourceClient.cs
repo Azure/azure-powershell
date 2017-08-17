@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             var permissionsResult = AuthorizationManagementClient.Permissions.ListForResource(
                     identity.ResourceGroupName,
                     resourceIdentity.ResourceProviderNamespace,
-                    resourceIdentity.ParentResourcePath??"",
+                    resourceIdentity.ParentResourcePath ?? "",
                     resourceIdentity.ResourceType,
                     resourceIdentity.ResourceName);
 
