@@ -15,15 +15,13 @@ Creates a virtual network subnet configuration.
 ### SetByResource (Default)
 ```
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String> [-NetworkSecurityGroupId <String>]
- [-RouteTableId <String>] [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>]
- [<CommonParameters>]
+ [-RouteTableId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +60,7 @@ Specifies a range of IP addresses for a subnet configuration.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -77,7 +75,7 @@ Specifies the name of the subnet configuration to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -92,7 +90,7 @@ Specifies a NetworkSecurityGroup object.
 ```yaml
 Type: PSNetworkSecurityGroup
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -107,22 +105,7 @@ Specifies the ID of a network security group.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PrivateAccessService
-Specifies private access services associated with the subnet configuration.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +120,7 @@ Specifies the route table associated with the subnet configuration.
 ```yaml
 Type: PSRouteTable
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +135,7 @@ Specifies the ID of the route table associated with the subnet configuration.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,6 +150,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSSubnet
 
 ## NOTES
 

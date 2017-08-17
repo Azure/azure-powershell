@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// Initializes a new instance of the AuthorizationRuleKeysAttributes class with a Azure.Management.Relay.Models.AuthorizationRuleKeys
         /// </summary>
         /// <param name="authorizationruleskeys"></param>
-        public AuthorizationRuleKeysAttributes(AuthorizationRuleKeys authorizationruleskeys)
+        public AuthorizationRuleKeysAttributes(AccessKeys authorizationruleskeys)
         {
             PrimaryConnectionString = authorizationruleskeys.PrimaryConnectionString;
             SecondaryConnectionString = authorizationruleskeys.SecondaryConnectionString;

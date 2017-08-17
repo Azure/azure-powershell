@@ -10,7 +10,6 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.Common.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.WindowsAzure.Commands.Common.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -229,6 +228,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string AddTrafficManagerEndpointFailed {
             get {
                 return ResourceManager.GetString("AddTrafficManagerEndpointFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureRmDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the AzureRM.Profile module.  To disable data collection: PS &gt; Disable-AzureRmDataCollection.
+        ///Use the Enable-AzureRmDataCollection cmdlet to turn the feature On. The cmdlet can be found in the AzureRM.Profile module.  To enable  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ARMDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("ARMDataCollectionMessage", resourceCulture);
             }
         }
         
@@ -751,18 +764,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string DataCollectionConfirmYes {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
-        /// 
-        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
-        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string DataCollectionPrompt {
-            get {
-                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
             }
         }
         
@@ -2691,6 +2692,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure PowerShell collects usage data in order to improve your experience.
+        ///The data is anonymous and does not include commandline argument values.
+        ///The data is collected by Microsoft.
+        ///
+        ///Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The cmdlet can be found in the Azure module.  To disable data collection: PS &gt; Disable-AzureDataCollection.
+        ///Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can be found in the Azure module.  To enable data collection: PS &gt; Enab [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string RDFEDataCollectionMessage {
+            get {
+                return ResourceManager.GetString("RDFEDataCollectionMessage", resourceCulture);
             }
         }
         

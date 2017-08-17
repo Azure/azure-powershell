@@ -65,6 +65,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification
+
 ## NOTES
 
 ## RELATED LINKS

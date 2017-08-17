@@ -15,15 +15,13 @@ Adds a subnet configuration to a virtual network.
 ### SetByResource (Default)
 ```
 Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>]
- [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,21 +105,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PrivateAccessService
-Specifies private access services associated with the subnet configuration.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -RouteTable
 ```yaml
 Type: PSRouteTable
@@ -168,7 +151,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualNetwork
+
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 
 ## NOTES
 

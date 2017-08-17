@@ -141,6 +141,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSAzureContext
+
+Parameter 'Context' accepts value of type 'PSAzureContext' from the pipeline
+
 ## OUTPUTS
 
 ### PSAzureContext

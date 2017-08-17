@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             dynamicParameters.Add("VMName", pVMName);
 
             var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineRunCommandParameter";
+            pParameters.Name = "RunCommandInput";
             pParameters.ParameterType = typeof(RunCommandInput);
             pParameters.Attributes.Add(new ParameterAttribute
             {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Mandatory = true
             });
             pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineRunCommandParameter", pParameters);
+            dynamicParameters.Add("RunCommandInput", pParameters);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";

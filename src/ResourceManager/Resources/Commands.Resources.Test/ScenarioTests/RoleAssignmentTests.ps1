@@ -314,7 +314,41 @@ function Test-RaAuthorizationChangeLog
     Assert-True { $log1.Count -ge 1 } "At least one record should be returned for the user"
 }
 
+<#
+.SYNOPSIS
+Tests verifies creation and deletion of a RoleAssignments by Scope irrespective of the case
+#>
+function Test-RaDeletionByScope
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
 
+    $definitionName = 'Reader'
+    $users = Get-AzureRmADUser | Select-Object -First 1 -Wait
+    $subscription = Get-AzureRmSubscription
+    $resourceGroups = Get-AzureRmResourceGroup | Select-Object -Last 1 -Wait
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
+    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    
+    # Test
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
+    $newAssignment = New-AzureRmRoleAssignment `
+                        -ObjectId $users[0].Id.Guid `
+                        -RoleDefinitionName $definitionName `
+                        -Scope $scope 
+    $newAssignment.Scope = $scope.toUpper()
+    
+    # cleanup 
+    DeleteRoleAssignment $newAssignment
+
+    # Assert
+    Assert-NotNull $newAssignment
+    Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName 
+    Assert-AreEqual $scope $newAssignment.Scope 
+    Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
+    
+    VerifyRoleAssignmentDeleted $newAssignment
+}
 
 <#
 .SYNOPSIS

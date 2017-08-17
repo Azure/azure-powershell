@@ -16,7 +16,7 @@ Creates a Storage account.
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
  [-Location] <String> [[-Kind] <String>] [[-AccessTier] <String>] [[-CustomDomainName] <String>]
  [[-UseSubDomain] <Boolean>] [[-EnableEncryptionService] <EncryptionSupportServiceEnum>] [[-Tag] <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRule <PSNetworkRuleSet>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
@@ -48,9 +48,9 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
 This command creates a Storage account that enabled Storage Service encryption on Blob and File Services.  It also generates and assigns an identity that can be used to manage
 account keys through Azure KeyVault.
 
-### Example 4: Create a Storage Account with NetworkRule from JSON
+### Example 4: Create a Storage Account with NetworkRuleSet from JSON
 ```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -Type "Standard_LRS" -NetworkRule (@{bypass="Logging,Metrics";
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "MyStorageAccount" -Location "US West" -Type "Standard_LRS" -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
     virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
@@ -58,7 +58,7 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountNa
     defaultAction="Deny"})
 ```
 
-This command creates a Storage account that has NetworkRule property from JSON
+This command creates a Storage account that has NetworkRuleSet property from JSON
 
 ## PARAMETERS
 
@@ -234,8 +234,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NetworkRule
-Storage Account NetworkRule
+### -NetworkRuleSet
+Storage Account NetworkRuleSet
 
 ```yaml
 Type: PSNetworkRuleSet
@@ -324,6 +324,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.Storage.Models.StorageAccount
 
 ## NOTES
 

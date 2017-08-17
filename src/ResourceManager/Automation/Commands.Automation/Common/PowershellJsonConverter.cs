@@ -18,7 +18,6 @@ using System.Collections;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Automation.Common
@@ -72,40 +71,31 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <returns></returns>
         private static Collection<PSObject> InvokeScript(string scriptName, Hashtable parameters)
         {
-            using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
+            using (var powerShell = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
             {
-                Command scriptCommand = new Command(scriptName);
-
+                powerShell.AddCommand(scriptName);
                 foreach (DictionaryEntry parameter in parameters)
                 {
-                    CommandParameter commandParm = new CommandParameter(parameter.Key.ToString(), parameter.Value);
-                    scriptCommand.Parameters.Add(commandParm);
+                    powerShell.AddParameter(parameter.Key.ToString(), parameter.Value);
                 }
-                pipe.Commands.Add(scriptCommand);
 
-                var result = pipe.Invoke();
+
+                var result = powerShell.Invoke();
 
                 //Error handling
-                if (pipe.Error.Count > 0)
+                if (powerShell.HadErrors)
                 {
                     StringBuilder errorStringBuilder = new StringBuilder();
-                    while (!pipe.Error.EndOfPipeline)
+                    foreach (var error in powerShell.Streams.Error)
                     {
-                        var value = pipe.Error.Read() as PSObject;
-                        if (value != null)
-                        {
-                            var r = value.BaseObject as ErrorRecord;
-                            if (r != null)
-                            {
-                                errorStringBuilder.AppendLine(r.InvocationInfo.MyCommand.Name + " : " + r.Exception.Message);
-                                errorStringBuilder.AppendLine(r.InvocationInfo.PositionMessage);
-                            }
-                        }
+                        errorStringBuilder.AppendLine(error.InvocationInfo.MyCommand.Name + " : " + error.Exception.Message);
+                        errorStringBuilder.AppendLine(error.InvocationInfo.PositionMessage);
                     }
 
                     throw new AzureAutomationOperationException(string.Format(CultureInfo.CurrentCulture,
-                        Resources.PowershellJsonDecrypterFailed, errorStringBuilder.ToString()));
+                       Resources.PowershellJsonDecrypterFailed, errorStringBuilder.ToString()));
                 }
+
                 return result;
             }
         }

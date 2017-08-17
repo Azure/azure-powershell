@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
     /// 'Get-AzureRmServiceBusQueueKey' Cmdlet gives key detials for the given Queue Authorization Rule
     /// </summary>
+    [ObsoleteAttribute("'Get-AzureRmServiceBusQueueKey' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'", false)]
     [Cmdlet(VerbsCommon.Get, ServiceBusQueueKeyVerb), OutputType(typeof(ListKeysAttributes))]
     public class GetAzureRmServiceBusQueueKey : AzureServiceBusCmdletBase
     {
@@ -35,26 +37,29 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             Position = 1,
             HelpMessage = "ServiceBus Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "ServiceBus Queue Name.")]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        [Alias(AliasQueueName)]
+        public string Queue { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "ServiceBus Queue AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Get a ServiceBus namespace List Keys for the specified AuthorizationRule
-            ListKeysAttributes keys = Client.GetQueueKey(ResourceGroup, NamespaceName, QueueName, AuthorizationRuleName);
+            ListKeysAttributes keys = Client.GetQueueKey(ResourceGroup, Namespace, Queue, Name);
             WriteObject(keys);
         }
     }
