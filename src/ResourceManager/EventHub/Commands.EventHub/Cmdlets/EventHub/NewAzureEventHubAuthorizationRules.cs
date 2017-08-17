@@ -61,18 +61,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public override void ExecuteCmdlet()
         {            
             SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
-            EventHubAttributes getEventHub = Client.GetEventHub(ResourceGroupName, NamespaceName, EventHubName);
-
-            IList<Management.EventHub.Models.AccessRights?> newListAry = new List<Management.EventHub.Models.AccessRights?>();
+            sasRule.Rights = new List<string>();
 
             foreach (string test in Rights)
             {
-                newListAry.Add(ParseAccessRights(test));
-            }
+                sasRule.Rights.Add(test);
+            }            
            
             sasRule.Name = AuthorizationRuleName;
-            sasRule.Rights = newListAry;
-            sasRule.Location = getEventHub.Location;
 
             // Create a new eventHub authorizationRule
 

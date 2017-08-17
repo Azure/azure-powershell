@@ -102,7 +102,12 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         $exttype = 'BGInfo';
         $extver = '2.1';
 
+        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId -Primary;
+        Assert-True { $ipCfg.Primary };
+
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        Assert-False { $ipCfg.Primary };
+
         $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'automatic' -NetworkInterfaceConfiguration $netCfg -Overprovision $false `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
@@ -110,6 +115,11 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
             | Remove-AzureRmVmssExtension -Name $extname `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2' -IPConfiguration $ipCfg `
             | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test2'
+
+        $vmss | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test3' -IPConfiguration $ipCfg -EnableAcceleratedNetworking;
+        Assert-True { $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[1].EnableAcceleratedNetworking };
+        $vmss | Remove-AzureRmVmssNetworkInterfaceConfiguration -Name 'test3'
+
         if ($IsManaged -eq $true)
         {
             $vmss = $vmss | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `

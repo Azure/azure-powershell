@@ -17,6 +17,9 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
+                <PropertyName>ResourceGroup</PropertyName>
+              </ListItem>
+              <ListItem>
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>

@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             // No data collection for this commandlet 
         }
 
-        protected override void PromptForDataCollectionProfileIfNotExists()
+        protected override void SetDataCollectionProfileIfNotExists()
         {
             // No data collection for this commandlet 
         }
