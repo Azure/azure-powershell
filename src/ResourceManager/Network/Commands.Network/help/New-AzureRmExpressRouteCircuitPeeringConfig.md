@@ -16,23 +16,27 @@ Creates a new peering configuration to be added to an ExpressRoute circuit.
 ```
 New-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -PeeringType <String> -PeerASN <Int32>
  -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-RouteFilter <PSRouteFilter>] [-LegacyMode <Boolean>] [<CommonParameters>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
+ [-PeerAddressType <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
 ```
 
-### MicrosoftPeeringConfig
+### MicrosoftPeeringConfigRoutFilterId
 ```
 New-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -PeeringType <String> -PeerASN <Int32>
  -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] [-LegacyMode <Boolean>]
- [<CommonParameters>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String>
+ [-PeerAddressType <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
 ```
 
-### SetByResourceId
+### MicrosoftPeeringConfigRoutFilter
 ```
 New-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -PeeringType <String> -PeerASN <Int32>
  -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-RouteFilterId <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
+ [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
+ [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
+ -RouteFilter <PSRouteFilter> [-PeerAddressType <String>] [-LegacyMode <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +98,7 @@ a Routing Registry Name (RIR / IRR).
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: MicrosoftPeeringConfig
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -110,7 +114,7 @@ the AS number to which they are registered.
 
 ```yaml
 Type: Int32
-Parameter Sets: MicrosoftPeeringConfig
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -125,7 +129,7 @@ The Routing Registry Name (RIR / IRR) to which the AS number and prefixes are re
 
 ```yaml
 Type: String
-Parameter Sets: MicrosoftPeeringConfig
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -147,6 +151,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeerAddressType
+PeerAddressType
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: IPv4, IPv6
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -205,10 +225,10 @@ This is an existing RouteFilter object.
 
 ```yaml
 Type: PSRouteFilter
-Parameter Sets: SetByResource
+Parameter Sets: MicrosoftPeeringConfigRoutFilter
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -220,10 +240,10 @@ This is the resource Id of an existing RouteFilter object.
 
 ```yaml
 Type: String
-Parameter Sets: SetByResourceId
+Parameter Sets: MicrosoftPeeringConfigRoutFilterId
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -283,6 +303,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSPeering
 
 ## NOTES
 

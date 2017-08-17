@@ -55,6 +55,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSApplicationGateway
+
+Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration

@@ -700,6 +700,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warning: Cutting off access to the key &apos;{0}&apos; may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
+        /// </summary>
+        internal static string SetAzureSqlServerTransparentDataEncryptionProtectorWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlServerTransparentDataEncryptionProtectorWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule for the column does not exist.
         /// </summary>
         internal static string SetDataMaskingRuleIdDoesNotExistError {

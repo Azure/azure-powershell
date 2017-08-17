@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -21,11 +21,12 @@ New-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> -Location <Str
 The New-AzureRmRouteFilter cmdlet creates an Azure route filter.
 
 ## EXAMPLES
- 
+
 ### Example 1
 ```
 PS C:\> {{ Add example code here }}
 ```
+
  
 {{ Add example description here }}
 
@@ -37,7 +38,7 @@ Indicates that this cmdlet creates a route table even if a route filter that has
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -52,7 +53,7 @@ Specifies the Azure region in which this cmdlet creates a route filter.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -82,7 +83,7 @@ Specifies the name of the resource group in which this cmdlet creates a route fi
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -97,7 +98,7 @@ Specifies an array of Route Filter Rule objects to associate with the route filt
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -114,7 +115,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -159,6 +160,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking

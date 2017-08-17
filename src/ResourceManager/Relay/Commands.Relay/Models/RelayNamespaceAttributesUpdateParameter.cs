@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
             Tags = tags;
         }
 
-        public RelayNamespaceAttirbutesUpdateParameter(RelayNamespaceUpdateParameter relaynamespaceupdateparameter)
+        public RelayNamespaceAttirbutesUpdateParameter(RelayUpdateParameters relaynamespaceupdateparameter)
         {
             Tags = relaynamespaceupdateparameter.Tags;
         }

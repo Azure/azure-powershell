@@ -380,9 +380,39 @@ Suspends a SQL Data Warehouse database.
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
 
+<<<<<<< HEAD
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.
 
+=======
+### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
+Specifies that a database uses the auditing policy of its host server.
+
+### [New-AzureRmSqlSyncGroup](New-AzureRmSqlSyncGroup.md)
+Creates an Azure SQL Database Sync Group.
+
+### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
+Updates an Azure SQL Database Sync Group.
+
+### [Get-AzureRmSqlSyncGroup](Get-AzureRmSqlSyncGroup.md)
+Returns information about Azure SQL Database Sync Groups.
+
+### [Remove-AzureRmSqlSyncGroup](Remove-AzureRmSqlSyncGroup.md)
+Removes an Azure SQL Database Sync Group.
+
+### [Start-AzureRmSqlSyncGroupSync](Start-AzureRmSqlSyncGroupSync.md)
+Starts a sync group synchronization.
+
+### [Stop-AzureRmSqlSyncGroupSync](Stop-AzureRmSqlSyncGroupSync.md)
+Stops a sync group synchronization.
+
+### [Get-AzureRmSqlSyncGroupLog](Get-AzureRmSqlSyncGroupLog.md)
+Returns the logs of an Azure SQL Database Sync Group.
+
+### [New-AzureRmSqlSyncMember](New-AzureRmSqlSyncMember.md)
+Creates an Azure SQL Database Sync Member.
+
+>>>>>>> 4340077afa14b97844a6bf6aed48978d28b7dc96
 ### [Update-AzureRmSqlSyncMember](Update-AzureRmSqlSyncMember.md)
 Updates an Azure SQL Database Sync Member.
 
@@ -393,4 +423,3 @@ If "SyncMemberName" is specified, it will refresh the member database schema; if
 
 ### [Use-AzureRmSqlServerAuditingPolicy](Use-AzureRmSqlServerAuditingPolicy.md)
 Specifies that a database uses the auditing policy of its host server.
-

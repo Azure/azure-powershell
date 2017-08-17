@@ -185,7 +185,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
             Mandatory = false)]
         [AllowNull]
         public SwitchParameter Force { get; set; }

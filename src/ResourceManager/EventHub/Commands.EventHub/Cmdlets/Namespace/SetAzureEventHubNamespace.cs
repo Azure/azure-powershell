@@ -22,36 +22,62 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// 'Set-AzureRmEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventHubNamespaceVerb, SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet(VerbsCommon.Set, EventHubNamespaceVerb, SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(NamespaceAttributes))]
     public class SetAzureEventHubNamespace : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group Name.",
+          ParameterSetName = NamespaceParameterSet)]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "Resource Group Name.",
+          ParameterSetName = AutoInflateParameterSet)]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "EventHub Namespace Name.")]
+            HelpMessage = "EventHub Namespace Name.",
+          ParameterSetName = NamespaceParameterSet)]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "EventHub Namespace Name.",
+          ParameterSetName = AutoInflateParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "EventHub Namespace Location.")]
+            HelpMessage = "EventHub Namespace Location.",
+          ParameterSetName = NamespaceParameterSet)]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = "EventHub Namespace Location.",
+          ParameterSetName = AutoInflateParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
-          Position = 3,
           Mandatory = false,
+          Position = 3,          
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Namespace Sku Name.")]
-                [ValidateSet(SKU.Basic,
+          HelpMessage = "Namespace Sku Name.",
+          ParameterSetName = NamespaceParameterSet)]
+        [Parameter(
+          Mandatory = false,
+          Position = 3,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Namespace Sku Name.",
+          ParameterSetName = AutoInflateParameterSet)]
+        [ValidateSet(SKU.Basic,
           SKU.Standard,
           SKU.Premium,
           IgnoreCase = true)]
@@ -59,28 +85,75 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         [Parameter(          
           Mandatory = false,
+            Position = 4,
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The eventhub throughput units.")]
+          HelpMessage = "The eventhub throughput units.",
+          ParameterSetName = NamespaceParameterSet)]
+        [Parameter(
+          Mandatory = false,
+            Position = 4,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The eventhub throughput units.",
+          ParameterSetName = AutoInflateParameterSet)]
         public int? SkuCapacity { get; set; }
 
         [Parameter(Mandatory = false,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,            
-            HelpMessage = "Disable/Enable Namespace.")]
-        public Management.EventHub.Models.NamespaceState? State { get; set; }
+            HelpMessage = "Disable/Enable Namespace.",
+          ParameterSetName = NamespaceParameterSet)]
+        [Parameter(Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Disable/Enable Namespace.",
+          ParameterSetName = AutoInflateParameterSet)]
+        public Models.NamespaceState? State { get; set; }
 
         [Parameter(Mandatory = false,
+            Position = 6,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtables which represents resource Tag.")]
+            HelpMessage = "Hashtables which represents resource Tag.",
+          ParameterSetName = NamespaceParameterSet)]
+        [Parameter(Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Hashtables which represents resource Tag.",
+          ParameterSetName = AutoInflateParameterSet)]
         public Hashtable Tag { get; set; }
+
+        /// <summary>
+        /// Indicates whether AutoInflate is enabled.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Indicates whether AutoInflate is enabled",
+            ParameterSetName = AutoInflateParameterSet
+            )]
+        public SwitchParameter EnableAutoInflate { get; set; }
+
+        /// <summary>
+        /// Upper limit of throughput units when AutoInflate is enabled.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.",
+            ParameterSetName = AutoInflateParameterSet
+            )]        
+        [ValidateRange(0,20)]        
+        public int? MaximumThroughputUnits { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Update a EventHub namespace 
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);            
+            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
-            if (ShouldProcess(target: NamespaceName, action: string.Format("Update NameSpace:{0} from ResourceGroup:{1}", NamespaceName, ResourceGroupName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateNamespace, Name, ResourceGroupName)))
             {
-                WriteObject(Client.UpdateNamespace(ResourceGroupName, NamespaceName, Location, SkuName, SkuCapacity, State, tagDictionary));
+                if(EnableAutoInflate.IsPresent)
+                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, true, MaximumThroughputUnits));
+                else
+                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, false, MaximumThroughputUnits));
             }
         }
     }
