@@ -1,4 +1,7 @@
-﻿## 2017.08.07 - Version 4.3.0
+﻿## 2017.08.10 - Version 4.3.1
+  * Update to fix assembly signing issue
+        
+## 2017.08.07 - Version 4.3.0
 * AnalysisServices
     * Fixed bug in Set-AzureRmAnalysisServciesServer
         - When admin was not provided, the admin will be removed.

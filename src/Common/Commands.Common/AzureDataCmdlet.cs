@@ -102,13 +102,21 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
 
             string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
+            try
             {
-                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
+                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+                if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
+                {
+                    AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
+                }
+
+                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
+                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
             }
-            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+            catch
+            {
+                // do not throw if the profile cannot be written
+            }
         }
 
         protected override void SetDataCollectionProfileIfNotExists()
