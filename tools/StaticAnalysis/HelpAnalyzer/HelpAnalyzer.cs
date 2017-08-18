@@ -202,6 +202,7 @@ namespace StaticAnalysis.HelpAnalyzer
                 {
                     return;
                 }
+
                 var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
                 if (cmdletFiles.Any())
                 {
