@@ -128,6 +128,7 @@
     <Compile Include="Serialization\LegacyAzureSubscription.cs" />
     <Compile Include="Serialization\ModelConversionExtensions.cs" />
     <Compile Include="Utilities\FileUtilities.cs" />
+    <Compile Include="Utilities\INetworkHelper.cs" />
     <Compile Include="Utilities\JsonUtilities.cs" />
     <Compile Include="AzureDataCmdlet.cs" />
     <Compile Include="AzurePSCmdlet.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Utilities\ConversionUtilities.cs" />
     <Compile Include="DebugStreamTraceListener.cs" />
     <Compile Include="Utilities\GeneralUtilities.cs" />
+    <Compile Include="Utilities\NetworkHelper.cs" />
     <Compile Include="Utilities\PowerShellUtilities.cs" />
     <Compile Include="RecordingTracingInterceptor.cs" />
     <Compile Include="ClientCreatedArgs.cs" />

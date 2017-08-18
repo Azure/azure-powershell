@@ -12,9 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Moq;
 using System;
+using System.IO;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
@@ -23,9 +31,73 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void HashOfNullValueThrowsAppropriateException()
+        public void HashOfNullOrWhitespaceValueReturnsEmptyString()
         {
-            Assert.Throws<ArgumentNullException>(() => MetricHelper.GenerateSha256HashString(null));
+            Assert.Equal(string.Empty, MetricHelper.GenerateSha256HashString(null));
+            Assert.Equal(string.Empty, MetricHelper.GenerateSha256HashString(string.Empty));
+            Assert.Equal(string.Empty, MetricHelper.GenerateSha256HashString(" "));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HashofNullNetworkMACAddressIsNull()
+        {
+            Mock<INetworkHelper> helper = new Mock<INetworkHelper>();
+            helper.Setup((f) => f.GetMACAddress()).Returns(() => null);
+            var metricHelper = new MetricHelper(helper.Object);
+            metricHelper.HashMacAddress = string.Empty;
+            try
+            {
+                // verify that initialization happens only once and
+                // there are no issues with retrieving the value
+                Assert.Null(metricHelper.HashMacAddress);
+                Assert.Null(metricHelper.HashMacAddress);
+                helper.Verify((f) => f.GetMACAddress(), Times.Once);
+            }
+            finally
+            {
+                metricHelper.HashMacAddress = string.Empty;
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HashofEmptyNetworkMACAddressIsNull()
+        {
+            Mock<INetworkHelper> helper = new Mock<INetworkHelper>();
+            helper.Setup((f) => f.GetMACAddress()).Returns(string.Empty);
+            var metricHelper = new MetricHelper(helper.Object);
+            metricHelper.HashMacAddress = string.Empty;
+            try
+            {
+                Assert.Null(metricHelper.HashMacAddress);
+                Assert.Null(metricHelper.HashMacAddress);
+                helper.Verify((f) => f.GetMACAddress(), Times.Once);
+            }
+            finally
+            {
+                metricHelper.HashMacAddress = string.Empty;
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void HashMacAddressOnThrowIsNull()
+        {
+            Mock<INetworkHelper> helper = new Mock<INetworkHelper>();
+            helper.Setup((f) => f.GetMACAddress()).Throws(new InvalidOperationException("This exception should be handled"));
+            var metricHelper = new MetricHelper(helper.Object);
+            metricHelper.HashMacAddress = string.Empty;
+            try
+            {
+                Assert.Null(metricHelper.HashMacAddress);
+                Assert.Null(metricHelper.HashMacAddress);
+                helper.Verify((f) => f.GetMACAddress(), Times.Once);
+            }
+            finally
+            {
+                metricHelper.HashMacAddress = string.Empty;
+            }
         }
 
         [Fact]
@@ -37,6 +109,116 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(hash);
             Assert.True(hash.Length > 0);
             Assert.NotEqual<string>(inputValue, hash, StringComparer.OrdinalIgnoreCase);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionHandlesSerializationErrors()
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            MemoryDataStore dataStore;
+            string oldFileValue = null;
+            var dataCollectionPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            var oldDataStore = AzureSession.Instance.DataStore;
+            var memoryStore = oldDataStore as MemoryDataStore;
+            if (memoryStore != null)
+            {
+                dataStore = memoryStore;
+                if (dataStore.VirtualStore.ContainsKey(dataCollectionPath))
+                {
+                    oldFileValue = dataStore.VirtualStore[dataCollectionPath];
+                }
+            }
+            else
+            {
+                dataStore = new MemoryDataStore();
+            }
+
+            dataStore.VirtualStore.Add(dataCollectionPath, "{{{{{{{{{{}}}--badly-formatted-file");
+            AzureSession.Instance.DataStore = dataStore;
+            try
+            {
+                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
+                command.CommandRuntime = new MockCommandRuntime();
+                command.InvokeBeginProcessing();
+            }
+            finally
+            {
+                dataStore.VirtualStore[dataCollectionPath] = oldFileValue;
+                AzureSession.Instance.DataStore = oldDataStore;
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionHandlesIOErrors()
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            Mock<IDataStore> mock = new Mock<IDataStore>();
+            mock.Setup(f => f.DirectoryExists(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.FileExists(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.DeleteFile(It.IsAny<string>())).Throws(new IOException("This should not be raised"));
+            var oldDataStore = AzureSession.Instance.DataStore;
+            AzureSession.Instance.DataStore = mock.Object;
+            try
+            {
+                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
+                command.CommandRuntime = new MockCommandRuntime();
+                command.InvokeBeginProcessing();
+                command.InvokeEndProcessing();
+            }
+            finally
+            {
+                AzureSession.Instance.DataStore = oldDataStore;
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionHandlesFileExistenceErrors()
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            Mock<IDataStore> mock = new Mock<IDataStore>();
+            mock.Setup(f => f.DirectoryExists(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.FileExists(It.IsAny<string>())).Throws(new IOException("This should not be raised"));
+            mock.Setup(f => f.DeleteFile(It.IsAny<string>()));
+            var oldDataStore = AzureSession.Instance.DataStore;
+            AzureSession.Instance.DataStore = mock.Object;
+            try
+            {
+                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
+                command.CommandRuntime = new MockCommandRuntime();
+                command.InvokeBeginProcessing();
+                command.InvokeEndProcessing();
+            }
+            finally
+            {
+                AzureSession.Instance.DataStore = oldDataStore;
+            }
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DataCollectionHandlesDirectoryExistenceErrors()
+        {
+            TestExecutionHelpers.SetUpSessionAndProfile();
+            Mock<IDataStore> mock = new Mock<IDataStore>();
+            mock.Setup(f => f.DirectoryExists(It.IsAny<string>())).Throws(new IOException("This should not be raised"));
+            mock.Setup(f => f.FileExists(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.DeleteFile(It.IsAny<string>()));
+            var oldDataStore = AzureSession.Instance.DataStore;
+            AzureSession.Instance.DataStore = mock.Object;
+            try
+            {
+                GetAzureRMContextCommand command = new GetAzureRMContextCommand();
+                command.CommandRuntime = new MockCommandRuntime();
+                command.InvokeBeginProcessing();
+                command.InvokeEndProcessing();
+            }
+            finally
+            {
+                AzureSession.Instance.DataStore = oldDataStore;
+            }
+
         }
     }
 }

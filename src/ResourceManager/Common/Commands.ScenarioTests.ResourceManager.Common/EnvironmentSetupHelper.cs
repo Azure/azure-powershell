@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
@@ -25,16 +24,13 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading;
 
 #if !NETSTANDARD
@@ -108,16 +104,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 return Path.Combine(this.PackageDirectory,
                                     @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
-            }
-        }
-
-        // This ResourceManagerStartup.ps1 contains Get-AzureRmAuthorizationChangeLog script
-        public string RMResourceManagerStartup
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\ResourceManagerStartup.ps1");
             }
         }
 
