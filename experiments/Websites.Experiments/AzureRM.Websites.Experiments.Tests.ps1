@@ -431,7 +431,7 @@ InModuleScope AzureRM.Websites.Experiments {
         }                                    
     }
 
-    Describe "Get-Location" {
+    Describe "Get-AppLocation" {
         $defaultLocation = "West Europe"
         Mock Get-DefaultLocation {return $defaultLocation}
         Context "When a location is not provided and
@@ -439,7 +439,7 @@ InModuleScope AzureRM.Websites.Experiments {
             $groupName = "customGroup"
             $resourceGroupExists = $false
 
-            $result = Get-Location -ProvidedParameters @{} -ResourceGroupName $groupName -ResourceGroupExists $resourceGroupExists
+            $result = Get-AppLocation -ProvidedParameters @{} -ResourceGroupName $groupName -ResourceGroupExists $resourceGroupExists
 
             It "Returns a string with default location. " {
                 $result | Should BeOfType System.String
@@ -457,7 +457,7 @@ InModuleScope AzureRM.Websites.Experiments {
             $resourceGroupExists = $true
             Mock Get-AzureRmResourceGroup {return $groups | Where-Object {$_.ResourceGroupName -eq $Name}}
 
-            $result = Get-Location -ProvidedParameters @{} -ResourceGroupName $groupName -ResourceGroupExists $resourceGroupExists
+            $result = Get-AppLocation -ProvidedParameters @{} -ResourceGroupName $groupName -ResourceGroupExists $resourceGroupExists
 
             It "Returns a string with default location. " {
                 $result | Should BeOfType System.String
@@ -468,7 +468,7 @@ InModuleScope AzureRM.Websites.Experiments {
         Context "When a location is provided."{
             $providedLocation = "customLocation"
 
-            $result = Get-Location -ProvidedParameters @{Location=$providedLocation} 
+            $result = Get-AppLocation -ProvidedParameters @{Location=$providedLocation} 
 
             It "Returns a string with the provided location. " {
                 $result | Should BeOfType System.String
