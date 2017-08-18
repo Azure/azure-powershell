@@ -414,8 +414,9 @@ function Test-PublicIpAddressVmss
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
 
-	<#
+<#
 .SYNOPSIS
 Tests creating new simple publicIpAddress.
 #>
@@ -440,7 +441,7 @@ function Test-PublicIpAddressCRUD-BasicSku
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
-	  Assert-AreEqual $expected.Sku $actual.Sku
+      Assert-AreEqualObjectProperties $expected.Sku $actual.Sku
       Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
       Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
@@ -452,7 +453,7 @@ function Test-PublicIpAddressCRUD-BasicSku
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
       Assert-AreEqual $list[0].Location $actual.Location
-	  Assert-AreEqual $list[0].Sku $actual.Sku
+      Assert-AreEqualObjectProperties $list[0].Sku $actual.Sku
       Assert-AreEqual "Dynamic" $list[0].PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
@@ -524,5 +525,4 @@ function Test-PublicIpAddressCRUD-StandardSku
         # Cleanup
         Clean-ResourceGroup $rgname
     }
-}
 }
