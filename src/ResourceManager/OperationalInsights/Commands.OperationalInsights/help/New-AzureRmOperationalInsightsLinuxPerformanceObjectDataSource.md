@@ -209,7 +209,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSWorkspace
+
+Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource
 
 ## NOTES
 

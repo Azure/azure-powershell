@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.RunbookName = jobSchedule.Properties.Runbook.Name;
             this.ScheduleName = jobSchedule.Properties.Schedule.Name;
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            this.RunOn = jobSchedule.Properties.RunOn;
+            this.HybridWorker = jobSchedule.Properties.RunOn;
             foreach (var kvp in jobSchedule.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
                 CompareOptions.IgnoreCase)))
             {
@@ -92,5 +92,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the runbook parameters.
         /// </summary>
         public Hashtable Parameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HybridWorker.
+        /// </summary>
+        public string HybridWorker { get; set; }
     }
 }

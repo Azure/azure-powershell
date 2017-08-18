@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections;
 using System.Management.Automation;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
@@ -30,34 +31,37 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            Position = 1,
            HelpMessage = "Queue Name.")]
+        [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(QueueName))
+            if (!string.IsNullOrEmpty(Name))
             {
-                var eventHubAttributes = Client.GetQueue(ResourceGroup, NamespaceName, QueueName);
-                WriteObject(eventHubAttributes);
+                var queueAttributes = Client.GetQueue(ResourceGroupName, Namespace, Name);
+                WriteObject(queueAttributes);
             }
             else
             {
-                var eventHubAttributes = Client.ListQueues(ResourceGroup, NamespaceName);
-                WriteObject(eventHubAttributes);
+                IEnumerable<QueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
+                WriteObject(queueAttributes,true);
             }
 
             

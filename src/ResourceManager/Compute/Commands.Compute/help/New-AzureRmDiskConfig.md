@@ -282,7 +282,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Management.Compute.Models.Disk
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## NOTES
 

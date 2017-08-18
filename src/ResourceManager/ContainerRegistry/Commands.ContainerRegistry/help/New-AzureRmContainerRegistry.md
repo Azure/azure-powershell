@@ -235,7 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
+### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
 
 ## NOTES
 

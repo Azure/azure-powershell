@@ -443,4 +443,13 @@
     <value>For monthly occurrence, both day of week and occurrence need to be specified.</value>
     <comment>Automation</comment>
   </data>
+  <data name="NodeConfigurationAlreadyExistsCaption" xml:space="preserve">
+    <value>Node configuration creation operation.</value>
+  </data>
+  <data name="NodeConfigurationAlreadyExistsConfirmation" xml:space="preserve">
+    <value>This cmdlet will overwrite the existing NodeConfiguration. Do you want to Continue?</value>
+  </data>
+  <data name="HybridRunbookWorkerGroupNotFound" xml:space="preserve">
+    <value>Hybrid Runbook Worker Group Not Found</value>
+  </data>
 </root>

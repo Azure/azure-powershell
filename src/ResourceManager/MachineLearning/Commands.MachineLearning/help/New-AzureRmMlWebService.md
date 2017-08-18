@@ -193,6 +193,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### WebService
+
+Parameter 'NewWebServiceDefinition' accepts value of type 'WebService' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService

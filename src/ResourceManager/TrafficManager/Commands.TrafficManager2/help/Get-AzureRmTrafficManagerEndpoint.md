@@ -129,7 +129,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### TrafficManagerEndpoint
+
+Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
 
 ## NOTES
 
