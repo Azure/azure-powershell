@@ -1697,7 +1697,7 @@ function Test-SetLoadBalancerObjectAssignment
         Clean-ResourceGroup $rgname
     }
 }
-	
+
 
 <#
 .SYNOPSIS
@@ -1747,7 +1747,7 @@ function Test-LoadBalancerCRUD-PublicBasicSku
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
         Assert-AreEqual $expectedLb.Name $actualLb.Name
         Assert-AreEqual $expectedLb.Location $actualLb.Location
-		Assert-AreEqual $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-NotNull $expectedLb.ResourceGuid
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
@@ -1772,7 +1772,7 @@ function Test-LoadBalancerCRUD-PublicBasicSku
         $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $expectedLb.Etag $list[0].Etag
-		Assert-AreEqual $expectedLb.Sku $list[0].Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
         Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
@@ -1841,7 +1841,7 @@ function Test-LoadBalancerCRUD-InternalBasicSku
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
         Assert-AreEqual $expectedLb.Name $actualLb.Name
         Assert-AreEqual $expectedLb.Location $actualLb.Location
-		Assert-AreEqual $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
         
@@ -1865,7 +1865,7 @@ function Test-LoadBalancerCRUD-InternalBasicSku
         $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $expectedLb.Etag $list[0].Etag
-		Assert-AreEqual $expectedLb.Sku list[0].Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
         Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
@@ -1884,8 +1884,9 @@ function Test-LoadBalancerCRUD-InternalBasicSku
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
 
-	<#
+<#
 .SYNOPSIS
 Tests creating a public Load balancer with basic sku.
 #>
@@ -1925,7 +1926,7 @@ function Test-LoadBalancerCRUD-PublicStandardSku
         $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzureRmLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
         $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
-        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -Sku Basic
+        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -Sku Standard
         
         $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
@@ -1933,7 +1934,7 @@ function Test-LoadBalancerCRUD-PublicStandardSku
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
         Assert-AreEqual $expectedLb.Name $actualLb.Name
         Assert-AreEqual $expectedLb.Location $actualLb.Location
-		Assert-AreEqual $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-NotNull $expectedLb.ResourceGuid
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
@@ -1958,7 +1959,7 @@ function Test-LoadBalancerCRUD-PublicStandardSku
         $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $expectedLb.Etag $list[0].Etag
-		Assert-AreEqual $expectedLb.Sku $list[0].Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
         Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
@@ -2019,7 +2020,7 @@ function Test-LoadBalancerCRUD-InternalStandardSku
         $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzureRmLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
         $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
-        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -Sku Basic
+        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -Sku Standard
         
         $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
@@ -2027,7 +2028,7 @@ function Test-LoadBalancerCRUD-InternalStandardSku
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
         Assert-AreEqual $expectedLb.Name $actualLb.Name
         Assert-AreEqual $expectedLb.Location $actualLb.Location
-		Assert-AreEqual $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
         
@@ -2053,7 +2054,7 @@ function Test-LoadBalancerCRUD-InternalStandardSku
         $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
         Assert-AreEqual $expectedLb.Etag $list[0].Etag
-		Assert-AreEqual $expectedLb.Sku list[0].Sku
+        Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
         Assert-AreEqual $expectedLb.InboundNatRules[0].Etag $list[0].InboundNatRules[0].Etag
