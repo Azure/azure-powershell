@@ -300,6 +300,50 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         #endregion
 
+        #region DRConfiguration
+        public EventHubDRConfigurationAttributes GetEventHubDRConfiguration(string resourceGroupName, string namespaceName, string drConfigName)
+        {
+            var response = Client.DisasterRecoveryConfig.Get(resourceGroupName, namespaceName, drConfigName);
+            return new EventHubDRConfigurationAttributes(response);
+        }
+
+        public IEnumerable<EventHubDRConfigurationAttributes> ListAllEventHubDRConfiguration(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.DisasterRecoveryConfig.ListByNamespace(resourceGroupName, namespaceName);
+            var resourceList = response.Select(resource => new EventHubDRConfigurationAttributes(resource));
+            return resourceList;
+        }
+
+        public EventHubDRConfigurationAttributes CreateEventHubDRConfiguration(string resourceGroupName, string namespaceName, string eventHubDRConfigName, EventHubDRConfigurationAttributes parameter)
+        {
+            var Parameter1 = new Management.EventHub.Models.ArmDisasterRecovery();
+
+            if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
+                Parameter1.PartnerNamespace = parameter.PartnerNamespace;
+
+            var response = Client.DisasterRecoveryConfig.CreateOrUpdate(resourceGroupName, namespaceName, eventHubDRConfigName, Parameter1);
+            return new EventHubDRConfigurationAttributes(response);
+        }
+
+        public bool DeleteEventHubDRConfiguration(string resourceGroupName, string namespaceName, string eventHubDRConfigName)
+        {
+            Client.DisasterRecoveryConfig.Delete(resourceGroupName, namespaceName, eventHubDRConfigName);
+            return true;
+        }
+
+        public void SetEventHubDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string drConfigName)
+        {
+            Client.DisasterRecoveryConfig.BreakPairing(resourceGroupName, namespaceName, drConfigName);            
+        }
+
+        public void SetEventHubDRConfigurationFailOver(string resourceGroupName, string namespaceName, string drConfigName)
+        {
+            Client.DisasterRecoveryConfig.FailOver(resourceGroupName, namespaceName, drConfigName);
+        }
+
+
+        #endregion
+
         #region ConsumerGroup
         public ConsumerGroupAttributes CreateOrUpdateConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, string consumerGroupName,  ConsumerGroupAttributes parameter)
         {

@@ -58,6 +58,11 @@
     <Compile Include="Cmdlets\ConsumerGroup\NewAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\RemoveAzureEventHubConsumerGroups.cs" />
     <Compile Include="Cmdlets\ConsumerGroup\SetAzureEventHubConsumerGroups.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubDRConfigurationFailOver.cs" />
+    <Compile Include="Cmdlets\DRConfig\SetAzureEventHubDRConfigurationBreakPairing.cs" />
+    <Compile Include="Cmdlets\DRConfig\GetAzureEventHubDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\NewAzureEventHubDRConfiguration.cs" />
+    <Compile Include="Cmdlets\DRConfig\RemoveAzureEventHubDRConfiguration.cs" />
     <Compile Include="Cmdlets\EventHub\GetAzureEventHubs.cs" />
     <Compile Include="Cmdlets\EventHub\NewAzureEventHub.cs" />
     <Compile Include="Cmdlets\EventHub\RemoveAzureEventHub.cs" />
@@ -78,6 +83,7 @@
     <Compile Include="Models\ConsumerGroupAttributes.cs" />
     <Compile Include="Models\DestinationAttributes.cs" />
     <Compile Include="Models\EnumEncodingCaptureDescription.cs" />
+    <Compile Include="Models\EventHubDRConfigurationAttributes.cs" />
     <Compile Include="Models\EventHubsAttributes.cs" />
     <Compile Include="Models\NamespaceAttributes.cs" />
     <Compile Include="Models\NamespaceState.cs" />

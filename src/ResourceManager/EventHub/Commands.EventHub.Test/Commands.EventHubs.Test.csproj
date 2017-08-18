@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\ConsumerGroups.cs" />
+    <Compile Include="ScenarioTests\DRConfigurations.cs" />
     <Compile Include="ScenarioTests\Namespace.cs" />
     <Compile Include="ScenarioTests\EventHubsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,6 +169,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ConsumerGroupsTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\DRConfigurationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\NamespaceTests.ps1">

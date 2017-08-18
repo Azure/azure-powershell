@@ -53,6 +53,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected const string ConsumerGroupVerb = "AzureRmEventHubConsumerGroup";
 
+        protected const string EventHubDRConfigurationVerb = "AzureRmEventHubDRConfiguration";
+
 
         //AuthorizationRules
         //protected const string EventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
