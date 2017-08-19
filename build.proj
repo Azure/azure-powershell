@@ -57,11 +57,14 @@
                             Exclude=".\src\ResourceManager\Intune\*.sln"
                             Condition=" '$(Scope)' == 'all' "/>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln"
-                            Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
+                            Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' and '$(Scope)' != 'Stack' "/>
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
                             Condition=" '$(Scope)' == 'ServiceManagement'"/>
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
                             Condition=" '$(Scope)' == 'AzureStorage' "/>
+    <CmdletSolutionsToBuild Include=".\src\Stack.sln"
+                            Condition=" '$(Stack)' == 'true' "/>
+                            
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
   </ItemGroup>
@@ -186,7 +189,7 @@
 
     <MakeDir Directories="$(PackageDirectory)" />
     <Exec ContinueOnError="false" 
-      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\groupMapping.json -WarningFile $(PackageDirectory)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;" />
+      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateMappings.ps1 -RootPath $(LibrarySourceFolder) -OutputFile $(PackageDirectory)\groupMapping.json -WarningFile $(PackageDirectory)\groupMappingWarnings.json -RulesFile $(LibraryToolsFolder)\CreateMappings_rules.json &quot;" Condition="'$(Latest)' == 'true'"/>
 	
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
@@ -197,7 +200,7 @@
 
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
     	ContinueOnError="false"
-    	Condition=" '$(SkipHelp)' == 'false' "/>
+    	Condition=" '$(SkipHelp)' == 'false' and '$(Latest)' == 'true'"/>
     <CallTarget Targets="BuildSetupTest"/>
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />	
     <CallTarget Targets="BuildSetup" Condition=" '$(SkipHelp)' == 'false' "/>
@@ -455,7 +458,8 @@
       ContinueOnError="false" />
     
     <Message Importance="high" Text="Running Dependency Analysis..." />
-    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package"/>
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package" Condition="'$(Latest)' == 'true'"/>
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Stack\$(Configuration) $(MSBuildProjectDirectory)\src\Stack" Condition="'$(Stack)' == 'true'" ContinueOnError="True"/>
   </Target>
 
   <!-- Publish all packages -->

@@ -436,11 +436,11 @@
       <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
       <Name>Commands.Management.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="Sync\Sync.csproj">
+    <ProjectReference Include="..\Sync\Sync.csproj">
       <Project>{73820cbc-f4eb-4c5e-b4f0-cc4a93fbf157}</Project>
       <Name>Sync</Name>
     </ProjectReference>
-    <ProjectReference Include="VhdManagement\VhdManagement.csproj">
+    <ProjectReference Include="..\VhdManagement\VhdManagement.csproj">
       <Project>{80496b7b-068a-4a1e-b0bb-4b1fff3fa616}</Project>
       <Name>VhdManagement</Name>
     </ProjectReference>
