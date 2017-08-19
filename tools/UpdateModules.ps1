@@ -15,7 +15,10 @@ param(
     [Parameter(Mandatory = $false, Position = 0)]
     [string] $buildConfig,
     [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope
+    [string] $scope,
+    [Parameter(Mandatory=$false)]
+    [ValidateSet("Latest", "Stack")]
+    [string] $Profile = "Latest"
 )
 
 function Create-ModulePsm1
@@ -66,6 +69,11 @@ if ([string]::IsNullOrEmpty($scope))
 Write-Host "Updating $scope package(and its dependencies)" 
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
+
+if ($Profile -eq "Stack")
+{
+    $packageFolder = "$PSScriptRoot\..\src\Stack"
+}
 
 
 

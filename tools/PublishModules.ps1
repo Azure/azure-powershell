@@ -24,7 +24,10 @@ param(
     [Parameter(Mandatory = $false, Position = 4)]
     [string] $repositoryLocation,
     [Parameter(Mandatory = $false, Position = 5)]
-    [string] $nugetExe
+    [string] $nugetExe,
+    [Parameter(Mandatory=$false)]
+    [ValidateSet("Latest", "Stack")]
+    [string] $Profile = "Latest"
 )
 
 function Get-TargetModules
@@ -34,13 +37,18 @@ function Get-TargetModules
     (
       [string]$buildConfig,
       [string]$Scope,
-      [bool]$PublishLocal
+      [bool]$PublishLocal,
+      [string] $Profile = "Latest"
     )
 
     PROCESS 
     {
         $targets = @()
         $packageFolder = "$PSScriptRoot\..\src\Package"
+        if ($Profile -eq "Stack")
+        {
+            $packageFolder = "$PSScriptRoot\..\src\Stack"
+        }
     
         if($isNetCore -eq "true") {
             $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager"
@@ -298,8 +306,12 @@ Write-Host "Publishing $scope package(and its dependencies)"
 Get-PackageProvider -Name NuGet -Force
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
+if ($Profile -eq "Stack")
+{
+    $packageFolder = "$PSScriptRoot\..\src\Stack"
+}
 
-$repo = Get-PSRepository | where { $_.SourceLocation -eq $repositoryLocation }
+$repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $repositoryLocation }
 if ($repo -ne $null) {
     $repoName = $repo.Name
 } else {
@@ -309,6 +321,10 @@ if ($repo -ne $null) {
 
 $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
+if ($Profile -eq "Stack")
+{
+    $tempRepoPath = "$PSScriptRoot\..\src\stack"
+}
 if ($publishToLocal)
 {
     $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
@@ -318,7 +334,7 @@ Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -Publish
 $env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
 try {
-    $modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal
+    $modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal -Profile $Profile
     foreach ($modulePath in $modulesInScope) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
