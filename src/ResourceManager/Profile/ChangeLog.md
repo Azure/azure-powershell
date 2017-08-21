@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.3.1
+
 ## Version 3.3.0
 - Data collection has been enabled by default. Usage data is collected by Microsoft in order to improve the user experience. The data is anonymous and does not include command-line argument values.
     - Use the Disable-AzureRmDataCollection cmdlet to turn the feature off

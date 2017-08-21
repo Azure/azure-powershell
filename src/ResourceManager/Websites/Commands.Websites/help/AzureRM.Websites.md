@@ -128,9 +128,6 @@ Stops an Azure Web App.
 ### [Stop-AzureRmWebAppSlot](Stop-AzureRmWebAppSlot.md)
 Stops an Azure Web App slot.
 
-### [Stop-AzureRmWebAppSlot](Stop-AzureRmWebAppSlot.md)
-Stops an Azure Web App slot.
-
 ### [Switch-AzureRmWebAppSlot](Switch-AzureRmWebAppSlot.md)
 Swap two slots with a Web App
 
