@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 3.3.1
+* 
 ## Version 3.3.0
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series

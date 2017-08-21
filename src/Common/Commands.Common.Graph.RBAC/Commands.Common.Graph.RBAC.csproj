@@ -7,8 +7,8 @@
     <ProjectGuid>{269ACF73-0A34-42DC-AB9C-4B15931A489D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.Common.Graph.RBAC</RootNamespace>
-    <AssemblyName>Commands.Common.Graph.RBAC</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Graph.RBAC</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Graph.RBAC</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
