@@ -414,12 +414,12 @@
           DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true' "/>
-    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM.psd1"
+    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM\AzureRM.psd1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psd1" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
-    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM.psm1"
+    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM\AzureRM.psm1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psm1" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.Netcore.psd1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'true' "/>
+          DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(NetCore)' == 'true' "/>
   </Target>
 
   <Target Name="CodeSignInstaller">
