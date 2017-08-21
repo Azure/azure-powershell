@@ -181,6 +181,7 @@
 		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteSpPasswordCredentials.json</string>
         <string>ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\client.rb</string>
         <string>ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem</string>
+        <string>ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD.json</string>
 		<string>\\bin\\Debug\\</string>
 		<string>\\package[s]?\\</string>
       </Filters>
