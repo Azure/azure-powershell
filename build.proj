@@ -371,8 +371,8 @@
       Description="Microsoft Azure PowerShell"
       Keywords="Microsoft Azure PowerShell"
       UnsignedFiles="@(DelaySignedAssembliesToSign)"
-      DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
+      DestinationPath="$(LibrarySourceFolder)"
+      BasePath="$(LibrarySourceFolder)"
       Certificates="72, 401"
       SigningLogPath="$(LibraryRoot)\signing.log"
       ToolsPath="$(CIToolsPath)"
@@ -382,8 +382,8 @@
       Description="Microsoft Azure PowerShell"
       Keywords="Microsoft Azure PowerShell"
       UnsignedFiles="@(ScriptsToSign)"
-      DestinationPath="$(LibrarySourceFolder)\Package\$(Configuration)"
-      BasePath="$(LibrarySourceFolder)\Package\$(Configuration)"
+      DestinationPath="$(LibrarySourceFolder)"
+      BasePath="$(LibrarySourceFolder)"
       Certificates="400"
       SigningLogPath="$(LibraryRoot)\signing-scripts.log"
       ToolsPath="$(CIToolsPath)"
@@ -399,7 +399,11 @@
 
     <!-- We cannot verify .js files using Get-AuthenticodeSignature -->
     <VerifyAuthenticodeSignatureTask ProbingDirectory="$(PackageDirectory)\$(Configuration)"
-                    FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml;PowerShellSetup.Test.dll">
+                    FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml;PowerShellSetup.Test.dll" Condition="'$(Latest)' == 'true'">
+      <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
+    </VerifyAuthenticodeSignatureTask>
+    <VerifyAuthenticodeSignatureTask ProbingDirectory="$(LibrarySourceFolder)\Stack\$(Configuration)"
+                    FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1;*.ps1xml;PowerShellSetup.Test.dll" Condition="'$(Latest)' == 'true'">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
 

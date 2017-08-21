@@ -29,7 +29,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Compute</OutputPath>
+    <OutputPath>..\..\..\..\Stack\Release\ResourceManager\AzureResourceManager\AzureRM.Compute\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
