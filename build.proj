@@ -326,9 +326,9 @@
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true'"/>
     
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psd1"
-          DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM\AzureRM.psd1" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+          DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psm1"
-          DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM\AzureRM.psm1" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+          DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
 
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psd1"
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'true' "/>
@@ -414,10 +414,10 @@
           DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true' "/>
-    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM\AzureRM.psd1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psd1" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
-    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM\AzureRM.psm1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psm1" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM.psd1"
+          DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM.psm1"
+          DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.Netcore.psd1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(NetCore)' == 'true' "/>
   </Target>
