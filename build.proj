@@ -330,6 +330,13 @@
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psm1"
           DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
 
+    <Copy SourceFiles="$(LibraryRoot)setup\Setup\RemoveGalleryModules.ps1"
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)"
+      Condition=" '$(CodeSign)' == 'true' "/>
+    <Copy SourceFiles="$(LibraryRoot)setup\Setup\SetExecutionPolicy.ps1"
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)"
+      Condition=" '$(CodeSign)' == 'true' "/>
+
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psd1"
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'true' "/>
 
