@@ -36,6 +36,7 @@
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
     <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
+    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
@@ -66,11 +67,11 @@
   </ItemGroup>
 
   <!-- Tasks -->
-  <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll" />
-  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll" />
-  <UsingTask TaskName="DebugTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll" />
-  <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll" />
-  <UsingTask TaskName="SmartTestingTask" AssemblyFile="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\Debug\Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="DebugTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="SmartTestingTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >  
 	  <ParameterGroup>
 	    <EnvName ParameterType="System.String" Required="true" />
