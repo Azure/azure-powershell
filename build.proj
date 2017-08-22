@@ -36,7 +36,6 @@
     <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
     <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
     <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
-    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
     <!--Set this true only if you want to test the code sign workflow locally-->
@@ -50,6 +49,7 @@
     <Scope Condition=" $(Scope) == '' " >all</Scope>
     <NetCore Condition=" $(NetCore) == '' " >false</NetCore>
     <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
+    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
   </PropertyGroup>
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln;"
@@ -308,7 +308,7 @@
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
     <MSBuild Projects="@(LocalBuildTasks)"
              Targets="Build" 
-             Properties="Configuration=Debug;Platform=Any CPU" />
+             Properties="Configuration=$(Configuration);Platform=Any CPU" />
   </Target>
 
   <Target Name="CodeSignBinaries" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
