@@ -488,7 +488,7 @@
     <Message Importance="high" Text="Publishing Cmdlets using Latest profile" Condition="'$(Latest)' == 'true' "/>
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; -Profile Latest &quot; $(NuGetCommand)" Condition="'$(Latest)' == 'true' "/>
      <Message Importance="high" Text="Publishing Cmdlets using Stack profile" Condition="'$(Stack)' == 'true' "/>
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(StackPublishingSource)\&quot; -Profile Stack &quot; $(NuGetCommand)" Condition="'$(Stack)' == 'true' />
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(StackPublishingSource)\&quot; -Profile Stack &quot; $(NuGetCommand)" Condition="'$(Stack)' == 'true' " />
  </Target>
 
   <PropertyGroup>
