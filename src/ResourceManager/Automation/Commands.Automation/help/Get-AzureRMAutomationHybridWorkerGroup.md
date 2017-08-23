@@ -103,6 +103,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### String
+
+Parameter 'Name' accepts value of type 'String' from the pipeline
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker

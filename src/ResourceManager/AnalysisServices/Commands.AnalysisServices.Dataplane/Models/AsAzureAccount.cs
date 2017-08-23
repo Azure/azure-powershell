@@ -24,5 +24,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public string UniqueId { get; set; }
 
         public string Tenant { get; set; }
+
+        public string Type { get; set; }
+
+        public string CertificateThumbprint { get; set; }
+
+        /// <summary>
+        /// string constants for known credential types
+        /// </summary>
+        public static class AccountType
+        {
+            public const string User = "User",
+            ServicePrincipal = "ServicePrincipal";
+        }
     }
 }

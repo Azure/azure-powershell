@@ -155,6 +155,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AutomationScenarioTestsBase.cs" />
     <Compile Include="ScenarioTests\AutomationTests.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeReportTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscNodeTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationDscCompilationJobTest.cs" />
+    <Compile Include="UnitTests\GetAzureAutomationConfigurationTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCertificateTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationConnectionTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationCredentialTest.cs" />
@@ -164,6 +169,7 @@
     <Compile Include="UnitTests\GetAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationVariableTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationWebhookTest.cs" />
+    <Compile Include="UnitTests\ImportAzureAutomationDscNodeConfigurationTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationAccountTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationAccountTest.cs" />
     <Compile Include="UnitTests\NewAzureAutomationCertificateTest.cs" />
@@ -189,6 +195,7 @@
     <Compile Include="UnitTests\SetAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationScheduleTest.cs" />
     <Compile Include="UnitTests\SetAzureAutomationWebhookTest.cs" />
+    <Compile Include="UnitTests\StartAzureAutomationDscCompilationJobTest.cs" />
     <Compile Include="UnitTests\StartAzureAutomationRunbookTest.cs" />
     <Compile Include="UnitTests\StopAzureAutomationJobTest.cs" />
     <Compile Include="UnitTests\SuspendAzureAutomationJobTest.cs" />
@@ -234,6 +241,7 @@
     <None Include="ScenarioTests\Resources\fastjob.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\Resources\ContosoDscConfiguration.ps1" />
     <None Include="ScenarioTests\Resources\Test-Workflow.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

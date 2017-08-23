@@ -65,5 +65,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerRestart");
         }
+
+        [Fact]
+        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        public void TestAnalysisServicesServerLoginWithSPN()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerLoginWithSPN");
+        }
     }
 }

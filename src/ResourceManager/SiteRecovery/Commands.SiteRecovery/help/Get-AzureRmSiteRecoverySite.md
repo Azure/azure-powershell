@@ -71,6 +71,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.SiteRecovery.ASRSite]
+
 ## NOTES
 
 ## RELATED LINKS

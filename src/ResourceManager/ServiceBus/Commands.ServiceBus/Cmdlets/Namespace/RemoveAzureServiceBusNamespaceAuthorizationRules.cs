@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusNamespaceAuthorizationRule' Cmdlet deletes specified ServiceBus Namespace AuthorizationRule
     /// </summary>
+    [ObsoleteAttribute("'Remove-AzureRmServiceBusNamespaceAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Remove-AzureRmServiceBusAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.Remove, ServiceBusNamespaceAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusNamespaceAuthorizationRule : AzureServiceBusCmdletBase
     {
@@ -27,29 +29,32 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        [Alias(AliasResourceGroup)]
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Namespace AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Create a new namespace authorizationRule
             
-            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Delete AuthorizationRule:{0} of the Namespace:{1}", AuthorizationRuleName, NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format("Delete AuthorizationRule:{0} of the Namespace:{1}", Name, Namespace)))
             {
-                WriteObject(Client.DeleteNamespaceAuthorizationRules(ResourceGroup, NamespaceName, AuthorizationRuleName));
+                WriteObject(Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name));
             }
         }
     }

@@ -152,7 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -AgreementType
-The integration account agreement type.```yaml
+The integration account agreement type.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: MessageType

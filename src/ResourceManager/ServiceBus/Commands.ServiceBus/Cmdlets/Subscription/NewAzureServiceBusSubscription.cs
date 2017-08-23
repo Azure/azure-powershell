@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
@@ -28,35 +29,45 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Topic Name.")]
+        [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Subscription Name")]
+        [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionName { get; set; }
+        public string Name { get; set; }
                 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.")]
         [ValidateNotNullOrEmpty]
         public string AutoDeleteOnIdle { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
+        [ValidateNotNullOrEmpty]
+        public string DefaultMessageTimeToLive { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -114,17 +125,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             
             SubscriptionAttributes subAttributes = new SubscriptionAttributes();
 
-            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroup, NamespaceName);
-
-            subAttributes.Location = getNamespaceLoc.Location;
-
-            subAttributes.Name = SubscriptionName;
+            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
+            
+            subAttributes.Name = Name;
             
             if (AutoDeleteOnIdle != null)
                 subAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle;
 
-            if (DeadLetteringOnFilterEvaluationExceptions != null)
-                subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions;
+            if (DefaultMessageTimeToLive != null)
+                subAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive;
+
+            if (LockDuration != null)
+                subAttributes.LockDuration = LockDuration;
 
             if (DeadLetteringOnMessageExpiration != null)
                 subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
@@ -135,21 +147,23 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             if (DeadLetteringOnMessageExpiration != null)
                 subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
 
-            if (IsReadOnly != null)
-                subAttributes.IsReadOnly = IsReadOnly;
-
-            if (LockDuration != null)
-                subAttributes.LockDuration = LockDuration;
-
             if (MaxDeliveryCount != null)
                 subAttributes.MaxDeliveryCount = MaxDeliveryCount;
 
             if (RequiresSession != null)
                 subAttributes.RequiresSession = RequiresSession;
-            
-            if (ShouldProcess(target: SubscriptionName, action: string.Format("Create a new Subscription:{0} for Topic:{1} of Namsespae:{2}",SubscriptionName,TopicName,NamespaceName)))
+
+#pragma warning disable 612, 618
+            if (IsReadOnly != null)
+                subAttributes.IsReadOnly = IsReadOnly;
+            if (DeadLetteringOnFilterEvaluationExceptions != null)
+                subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions;
+            subAttributes.Location = getNamespaceLoc.Location;
+#pragma warning restore 612, 618
+
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CreateSubscription, Name, Topic,Namespace)))
             {
-                WriteObject(Client.CreateUpdateSubscription(ResourceGroup, NamespaceName, TopicName, subAttributes.Name, subAttributes));
+                WriteObject(Client.CreateUpdateSubscription(ResourceGroupName, Namespace, Topic, Name, subAttributes));
             }
         }
     }
