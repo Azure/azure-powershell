@@ -32,7 +32,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <OutputPath>..\..\..\Package\Release\Storage\Azure.Storage</OutputPath>
+    <OutputPath>..\..\..\Stack\Release\Storage\Azure.Storage\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
