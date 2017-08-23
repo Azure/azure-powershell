@@ -320,7 +320,13 @@ $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
 if ($publishToLocal)
 {
-    $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
+    if ($Profile -eq "Stack"){
+        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "stack")
+    }
+    else {
+       $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
+       
+    }
 }
 
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()

@@ -46,7 +46,7 @@
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
-    <StackPublishingSource Condition=" '$(StackPublishingSource)' == '' ">$(LibrarySourceFolder)\Stack</StackPublishingSource>
+    <StackPublishingSource Condition=" '$(StackPublishingSource)' == '' ">$(LibrarySourceFolder)</StackPublishingSource>
    <Scope Condition=" $(Scope) == '' " >all</Scope>
     <NetCore Condition=" $(NetCore) == '' " >false</NetCore>
     <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
