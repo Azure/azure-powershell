@@ -64,11 +64,11 @@ function Get-TargetModules
           }
         }
 
-        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") -and ($Profile -ne )) {
+        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") ) {
           $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         } 
 
-        if ((($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) -and ($isNetCore -eq "false")) {
+        if ((($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) -and ($isNetCore -eq "false") -and ($Profile -ne "Stack")) {
           $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
         } 
 
