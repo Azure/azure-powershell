@@ -65,7 +65,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ARSVault
+
+Parameter 'ARSVault' accepts value of type 'ARSVault' from the pipeline
+
+### ASRVault
+
+Parameter 'ASRVault' accepts value of type 'ASRVault' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.SiteRecovery.ASRVaultSettings
 
 ## NOTES
 

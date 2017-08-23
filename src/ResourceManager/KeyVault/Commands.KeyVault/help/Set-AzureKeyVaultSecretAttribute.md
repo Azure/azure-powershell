@@ -261,6 +261,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.Secret
+
 Returns Microsoft.Azure.Commands.KeyVault.Models.Secret object if PassThru is specified. Otherwise, returns nothing.
 
 ## NOTES

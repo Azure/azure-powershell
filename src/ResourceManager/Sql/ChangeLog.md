@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.3.1
+
+## Version 3.3.0
 * Updating Set-AzureRmSqlServerTransparentDataEncryptionProtector to display a warning and require confirmation if the Encryption Protector Type is being set to AzureKeyVault
 * Adding new updated cmdlets for Auditing settings
 	- Adding Get-AzureRmSqlDatabaseAuditing cmdlet which gets the auditing settings of an Azure SQL database.

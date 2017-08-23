@@ -336,6 +336,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile
+
 ## NOTES
 
 ## RELATED LINKS

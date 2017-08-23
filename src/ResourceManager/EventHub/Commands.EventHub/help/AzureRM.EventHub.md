@@ -51,7 +51,7 @@ Creates an Event Hubs namespace.
 Creates a new authorization rule on the specified namespace.
 
 ### [New-AzureRmEventHubNamespaceKey](New-AzureRmEventHubNamespaceKey.md)
-Creates a new primary or secondary key for the authorization rule on the specified Event Hubs namespace.
+Removes the specified Event Hub.
 
 ### [Remove-AzureRmEventHub](Remove-AzureRmEventHub.md)
 Removes the specified Event Hub.
@@ -60,13 +60,13 @@ Removes the specified Event Hub.
 Removes the specified Event Hub authorization rule.
 
 ### [Remove-AzureRmEventHubConsumerGroup](Remove-AzureRmEventHubConsumerGroup.md)
-Deletes the specified Event Hubs consumer group.
+Removes the specified Event Hubs consumer group.
 
 ### [Remove-AzureRmEventHubNamespace](Remove-AzureRmEventHubNamespace.md)
 Removes the specified Event Hubs namespace.
 
 ### [Remove-AzureRmEventHubNamespaceAuthorizationRule](Remove-AzureRmEventHubNamespaceAuthorizationRule.md)
-Deletes the specified authorization rule on the given Event Hubs namespace.
+Removes the specified authorization rule on the given Event Hubs namespace.
 
 ### [Set-AzureRmEventHub](Set-AzureRmEventHub.md)
 Updates the specified Event Hub.
@@ -82,4 +82,3 @@ Updates the specified Event Hubs namespace.
 
 ### [Set-AzureRmEventHubNamespaceAuthorizationRule](Set-AzureRmEventHubNamespaceAuthorizationRule.md)
 Updates the authorization rule on the specified Event Hubs namespace.
-

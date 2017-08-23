@@ -90,6 +90,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRSite
+
+Parameter 'Site' accepts value of type 'ASRSite' from the pipeline
+
 ## OUTPUTS
 
 ## NOTES

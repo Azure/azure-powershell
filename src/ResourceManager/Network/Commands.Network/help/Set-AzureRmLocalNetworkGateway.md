@@ -100,7 +100,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSLocalNetworkGateway
+
+Parameter 'LocalNetworkGateway' accepts value of type 'PSLocalNetworkGateway' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 
 ## NOTES
 

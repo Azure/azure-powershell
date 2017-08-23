@@ -18,6 +18,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Relay.Models;
+using Microsoft.Azure.Commands.Relay.Commands;
 using Microsoft.Azure.Management.Relay;
 using Microsoft.Azure.Management.Relay.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.Relay
         public RelayNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, RelayNamespaceAttirbutesUpdateParameter relaynamespace)
         {
 
-            var parameter = new RelayNamespaceUpdateParameter();
+            var parameter = new RelayUpdateParameters();
                        
 
             if (relaynamespace.Tags != null && relaynamespace.Tags.Count() > 0)
@@ -133,8 +134,11 @@ namespace Microsoft.Azure.Commands.Relay
         {
             var parameter1 = new AuthorizationRule()
             {
-                Rights = parameter.Rights.ToList()
+                Rights = parameter.Rights.Select(x => Enum.Parse(typeof(AccessRights), x))
+                             .Cast<AccessRights?>()
+                             .ToList()
             };
+
             var response = Client.Namespaces.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, authorizationRuleName, parameter1);
             return new AuthorizationRuleAttributes(response);
         }
@@ -152,11 +156,11 @@ namespace Microsoft.Azure.Commands.Relay
 
         public AuthorizationRuleKeysAttributes NamespaceRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
         {
-            AuthorizationRuleKeys regenerateKeyslistKeys;
+            AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateKeysParameters(PolicyKeyAttributes.PrimaryKey));
+                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
             else
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateKeysParameters(PolicyKeyAttributes.SecondaryKey));
+                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
             return new AuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
         }
@@ -183,7 +187,7 @@ namespace Microsoft.Azure.Commands.Relay
             var Parameter1 = new WcfRelay();
 
             if (!string.IsNullOrEmpty(parameter.RelayType))
-                Parameter1.RelayType = parameter.RelayType;
+                Parameter1.RelayType = (Relaytype?)Enum.Parse(typeof(Relaytype), parameter.RelayType);
 
             if (parameter.RequiresClientAuthorization.HasValue)
                 Parameter1.RequiresClientAuthorization = parameter.RequiresClientAuthorization;
@@ -233,7 +237,9 @@ namespace Microsoft.Azure.Commands.Relay
         {
             var parameter1 = new AuthorizationRule()
             {                
-                Rights = parameters.Rights.ToList()
+                Rights = parameters.Rights.Select(x => Enum.Parse(typeof(AccessRights), x))
+                             .Cast<AccessRights?>()
+                             .ToList()
             };
 
             var response = Client.WCFRelays.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, wcfRelayName, authorizationRuleName, parameter1);
@@ -253,11 +259,11 @@ namespace Microsoft.Azure.Commands.Relay
 
         public AuthorizationRuleKeysAttributes WcfRelayRegenerateKeys(string resourceGroupName, string namespaceName, string wcfRelayName, string authRuleName, string regenerateKeys)
         {
-            AuthorizationRuleKeys regenerateKeyslistKeys;
+            AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateKeysParameters(PolicyKeyAttributes.PrimaryKey));
+                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
             else
-                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateKeysParameters(PolicyKeyAttributes.SecondaryKey));
+                regenerateKeyslistKeys = Client.WCFRelays.RegenerateKeys(resourceGroupName, namespaceName, wcfRelayName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
             return new AuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
 
@@ -327,9 +333,12 @@ namespace Microsoft.Azure.Commands.Relay
         public AuthorizationRuleAttributes CreateOrUpdateHybridConnectionsAuthorizationRules(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authorizationRuleName, AuthorizationRuleAttributes parameters)
         {
             var parameter1 = new AuthorizationRule()
-            {
-                Rights = parameters.Rights.ToList()
-            };
+            {                
+                Rights = parameters.Rights.Select(x => Enum.Parse(typeof(AccessRights), x))
+                             .Cast<AccessRights?>()
+                             .ToList()
+        };
+
 
             var response = Client.HybridConnections.CreateOrUpdateAuthorizationRule(resourceGroupName, namespaceName, hybridConnectionsName, authorizationRuleName, parameter1);
             return new AuthorizationRuleAttributes(response);
@@ -348,11 +357,11 @@ namespace Microsoft.Azure.Commands.Relay
 
         public AuthorizationRuleKeysAttributes HybridConnectionsRegenerateKeys(string resourceGroupName, string namespaceName, string hybridConnectionsName, string authRuleName, string regenerateKeys)
         {
-            AuthorizationRuleKeys regenerateKeyslistKeys;
+            AccessKeys regenerateKeyslistKeys;
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateKeysParameters(PolicyKeyAttributes.PrimaryKey));
+                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
             else
-                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateKeysParameters(PolicyKeyAttributes.SecondaryKey));
+                regenerateKeyslistKeys = Client.HybridConnections.RegenerateKeys(resourceGroupName, namespaceName, hybridConnectionsName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
 
             return new AuthorizationRuleKeysAttributes(regenerateKeyslistKeys);
 
