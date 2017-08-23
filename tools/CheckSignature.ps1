@@ -1,11 +1,15 @@
 <#
-    Check (and recurse) current directory     .\CheckSignature.ps1
-    Check directory after MSI install         .\CheckSignature.ps1 -MsiInstall
-    Check directory after gallery install     .\CheckSignature.ps1 -GalleryInstall
+    Check (and recurse) current directory                   .\CheckSignature.ps1
+    Find and check directory of Azure PowerShell modules    .\CheckSignature.ps1 -AzurePowerShell
+    Check directory of MSI-installed modules                .\CheckSignature.ps1 -MsiInstall
+    Check directory of gallery-installed modules            .\CheckSignature.ps1 -GalleryInstall
+    Check files in provided path                            .\CheckSignature.ps1 -CustomPath $Path
 #>
 [CmdletBinding(DefaultParameterSetName="CurrentDirectory")]
 Param
 (
+    [Parameter(ParameterSetName="AzurePowerShell", Mandatory=$true)]
+    [switch]$AzurePowerShell,
     [Parameter(ParameterSetName="MsiInstall", Mandatory=$true)]
     [switch]$MsiInstall,
     [Parameter(ParameterSetName="GalleryInstall", Mandatory=$true)]
@@ -37,9 +41,15 @@ function Check-All {
     [CmdletBinding()]
     param([Parameter()][string]$path)
 
+    if (!(Get-Command "sn.exe" -ErrorAction SilentlyContinue))
+    {
+        Write-Error "Unable to find sn.exe; please ensure that the Windows SDK is installed and found in the PATH environment variable."
+        return
+    }
+
     $invalidList = @()
 
-    $files = Get-ChildItem $path\* -Include *.dll -Recurse | where { $_.FullName -like "*Azure*" }
+    $files = Get-ChildItem $path\* -Include *.dll -Recurse | Where-Object { $_.FullName -like "*Azure*" }
     Write-Host "Checking the strong name signature of $($files.Count) files (.dll)" -ForegroundColor Yellow
 
     $invalidStrongNameList = @()
@@ -60,11 +70,11 @@ function Check-All {
 
     # -------------------------------------
 
-    $files = Get-ChildItem $path\* -Include *.dll, *.ps1, *.psm1 -Recurse | where { $_.FullName -like "*Azure*" }
-    $files = $files | where { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
-                              ($_.FullName -notlike "*AutoMapper*") -and `
-                              ($_.FullName -notlike "*Security.Cryptography*") -and `
-                              ($_.FullName -notlike "*BouncyCastle.Crypto*")}
+    $files = Get-ChildItem $path\* -Include *.dll, *.ps1, *.psm1 -Recurse | Where-Object { $_.FullName -like "*Azure*" }
+    $files = $files | Where-Object { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
+                                     ($_.FullName -notlike "*AutoMapper*") -and `
+                                     ($_.FullName -notlike "*Security.Cryptography*") -and `
+                                     ($_.FullName -notlike "*BouncyCastle.Crypto*")}
     Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1)" -ForegroundColor Yellow
 
     $invalidAuthenticodeList = @()
@@ -91,14 +101,102 @@ function Check-All {
 
 $path = ".\"
 
-if ($PSCmdlet.ParameterSetName -eq "MsiInstall")
+if ($PSCmdlet.ParameterSetName -eq "AzurePowerShell")
 {
-    $path = "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell"
+    $ProfileModule = Get-Module -Name AzureRM.Profile -ListAvailable
+    if (!($ProfileModule))
+    {
+        Write-Error "Unable to find the AzureRM.Profile module. Please ensure that Azure PowerShell has been installed and the appropriate path is found in the PSModulePath environment variable."
+        return
+    }
+
+    if ($ProfileModule.Count -gt 1)
+    {
+        Write-Error "Mulitple versions of Azure PowerShell were found. Please use the -MsiInstall and -GalleryInstall switches to select the installed version you want to check."
+        return
+    }
+
+    $ModulePath = $ProfileModule.Path
+    if ($ModulePath -like "*Microsoft SDKs\Azure\PowerShell*")
+    {
+        $EndIdx = $ModulePath.IndexOf("PowerShell\ResourceManager", [System.StringComparison]::OrdinalIgnoreCase) + "PowerShell".Length
+    }
+    elseif ($ModulePath -like "*Modules\AzureRM.Profile*")
+    {
+        $EndIdx = $ModulePath.IndexOf("Modules\AzureRM.Profile", [System.StringComparison]::OrdinalIgnoreCase) + "Modules".Length
+    }
+
+    $path = $ModulePath.Substring(0, $EndIdx)
+    Write-Host "Found AzureRM module - checking all (Azure) files in $path" -ForegroundColor Yellow
+}
+elseif ($PSCmdlet.ParameterSetName -eq "MsiInstall")
+{
+    $ProfileModule = Get-Module -Name AzureRM.Profile -ListAvailable
+    if (!($ProfileModule))
+    {
+        Write-Error "Unable to find the AzureRM.Profile module. Please ensure that Azure PowerShell has been installed and the appropriate path is found in the PSModulePath environment variable."
+        return
+    }
+
+    $SearchString = "Microsoft SDKs\Azure\PowerShell"
+
+    $ModulePath = $ProfileModule.Path
+
+    if ($ProfileModule.Count -gt 1)
+    {
+        $ModulePath = $ProfileModule | Where-Object { $_.Path -like "*$($SearchString)*" }
+        if (!($ModulePath))
+        {
+            Write-Error "Unable to find path of MSI-installed modules from multiple locations found in PSModulePath."
+            return
+        }
+    }
+    else
+    {
+        if ($ModulePath -notlike "*$($SearchString)*")
+        {
+            Write-Error "Modules installed on the current machine were not from MSI. Consider using the -GalleryInstall switch."
+            return
+        }    
+    }
+
+    $EndIdx = $ModulePath.IndexOf("PowerShell\ResourceManager", [System.StringComparison]::OrdinalIgnoreCase) + "PowerShell".Length
+    $path = $ModulePath.Substring(0, $EndIdx)
     Write-Host "Installed Azure PowerShell from MSI - checking all (Azure) files in $path" -ForegroundColor Yellow
 }
 elseif ($PSCmdlet.ParameterSetName -eq "GalleryInstall")
 {
-    $path = "$($env:ProgramFiles)\WindowsPowerShell\Modules"
+    $ProfileModule = Get-Module -Name AzureRM.Profile -ListAvailable
+    if (!($ProfileModule))
+    {
+        Write-Error "Unable to find the AzureRM.Profile module. Please ensure that Azure PowerShell has been installed and the appropriate path is found in the PSModulePath environment variable."
+        return
+    }
+
+    $SearchString = "WindowsPowerShell\Modules"
+
+    $ModulePath = $ProfileModule.Path
+
+    if ($ProfileModule.Count -gt 1)
+    {
+        $ModulePath = $ProfileModule | Where-Object { $_.Path -like "*$($SearchString)*" }
+        if (!($ModulePath))
+        {
+            Write-Error "Unable to find path of gallery-installed modules from multiple locations found in PSModulePath."
+            return
+        }
+    }
+    else
+    {
+        if ($ModulePath -notlike "*$($SearchString)*")
+        {
+            Write-Error "Modules installed on the current machine were not from the gallery. Consider using the -MsiInstall switch."
+            return
+        }    
+    }
+
+    $EndIdx = $ModulePath.IndexOf("Modules\AzureRM.Profile", [System.StringComparison]::OrdinalIgnoreCase) + "Modules".Length
+    $path = $ModulePath.Substring(0, $EndIdx)
     Write-Host "Installed Azure PowerShell from the gallery - checking all (Azure) files in $path" -ForegroundColor Yellow
 }
 elseif ($PSCmdlet.ParameterSetName -eq "CustomPath")
