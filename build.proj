@@ -46,7 +46,8 @@
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
-    <Scope Condition=" $(Scope) == '' " >all</Scope>
+    <StackPublishingSource Condition=" '$(StackPublishingSource)' == '' ">$(LibrarySourceFolder)\Stack</StackPublishingSource>
+   <Scope Condition=" $(Scope) == '' " >all</Scope>
     <NetCore Condition=" $(NetCore) == '' " >false</NetCore>
     <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
     <Stack Condition = "'$(Scope)' == '' or '$(Scope)' == 'all' or '$(Scope)' == 'Stack' ">true</Stack>
@@ -325,9 +326,13 @@
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
           DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true'"/>
     
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psd1"
+    <Copy SourceFiles="$(LibrarySourceFolder)StackAdmin\AzureRM\AzureRM.psd1"
           DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
-    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Stack\AzureRM.psm1"
+    <Copy SourceFiles="$(LibrarySourceFolder)StackAdmin\AzureRM\AzureRM.psm1"
+          DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+    <Copy SourceFiles="$(LibrarySourceFolder)StackAdmin\AzureStack\AzureStack.psd1"
+          DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+    <Copy SourceFiles="$(LibrarySourceFolder)StackAdmin\AzureStack\AzureStack.psm1"
           DestinationFolder="$(LibrarySourceFolder)\Stack\$(Configuration)" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
 
     <Copy SourceFiles="$(LibraryRoot)setup\Setup\RemoveGalleryModules.ps1"
@@ -422,9 +427,13 @@
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM" Condition= " '$(NetCore)' == 'false' and '$(Latest)' == 'true' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM.psd1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+          DestinationFolder="$(LibrarySourceFolder)StackAdmin\AzureRM" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureRM.psm1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM.Stack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+          DestinationFolder="$(LibrarySourceFolder)StackAdmin\AzureRM" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureStack.psd1"
+          DestinationFolder="$(LibrarySourceFolder)StackAdmin\AzureStack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
+    <Copy SourceFiles="$(LibrarySourceFolder)\Stack\$(Configuration)\AzureStack.psm1"
+          DestinationFolder="$(LibrarySourceFolder)StackAdmin\AzureStack" Condition= " '$(NetCore)' == 'false' and '$(Stack)' == 'true' "/>
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.Netcore.psd1"
           DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(NetCore)' == 'true' "/>
   </Target>
@@ -477,9 +486,9 @@
   <Target Name="Publish">
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Message Importance="high" Text="Publishing Cmdlets using Latest profile" Condition="'$(Latest)' == 'true' "/>
-    <!-- <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; -Profile Latest &quot; $(NuGetCommand)" Condition="'$(Latest)' == 'true' "/> -->
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; -Profile Latest &quot; $(NuGetCommand)" Condition="'$(Latest)' == 'true' "/>
      <Message Importance="high" Text="Publishing Cmdlets using Stack profile" Condition="'$(Stack)' == 'true' "/>
-    <!-- <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; -Profile Stack &quot; $(NuGetCommand)" Condition="'$(Stack)' == 'true' /> -->
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(NetCore) $(Configuration) $(Scope) $(NuGetKey) \&quot;$(StackPublishingSource)\&quot; -Profile Stack &quot; $(NuGetCommand)" Condition="'$(Stack)' == 'true' />
  </Target>
 
   <PropertyGroup>

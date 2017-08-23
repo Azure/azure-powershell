@@ -64,7 +64,7 @@ function Get-TargetModules
           }
         }
 
-        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false")) {
+        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") -and ($Profile -ne )) {
           $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         } 
 
@@ -92,6 +92,11 @@ function Get-TargetModules
         }
 
         if (($Scope -eq 'All') -or ($Scope -eq 'AzureRM')) {
+            if ($Profile -eq "Stack")
+            {
+                $targets += "$PSScriptRoot\..\src\StackAdmin\AzureRM"
+                $targets += "$PSScriptRoot\..\src\StackAdmin\AzureStack"
+            }
             if($isNetCore -eq "false") {
                 # Publish AzureRM module    
                 $targets += "$PSScriptRoot\AzureRM"
@@ -311,26 +316,21 @@ if ($Profile -eq "Stack")
     $packageFolder = "$PSScriptRoot\..\src\Stack"
 }
 
-$repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $repositoryLocation }
-if ($repo -ne $null) {
-    $repoName = $repo.Name
-} else {
-    $repoName = $(New-Guid).ToString()
-    Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted
-}
-
 $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
-if ($Profile -eq "Stack")
-{
-    $tempRepoPath = "$PSScriptRoot\..\src\stack"
-}
 if ($publishToLocal)
 {
     $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
 }
+
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
-Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+$repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
+if ($repo -ne $null) {
+    $tempRepoName = $repo.Name
+} else {
+    Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+}
+
 $env:PSModulePath="$env:PSModulePath;$tempRepoPath"
 
 try {

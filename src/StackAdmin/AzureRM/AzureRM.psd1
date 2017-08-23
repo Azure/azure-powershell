@@ -50,7 +50,7 @@ ProcessorArchitecture = 'None'
 # Modules that must be imported into the global environment prior to importing this module  
 RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="3.3.1"},
   @{ModuleName="Azure.Storage"; RequiredVersion="1.0.4.4"}  
-  @{ModuleName="AzureRM.Compute"; RequiredVersion="1.2.2.4"},
+  @{ModuleName="AzureRM.Compute"; RequiredVersion="3.2.0"},
   @{ModuleName="AzureRM.KeyVault"; RequiredVersion="3.3.1"},
   @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.4.4"},
   @{ModuleName="AzureRM.Resources"; RequiredVersion="4.3.1"},
