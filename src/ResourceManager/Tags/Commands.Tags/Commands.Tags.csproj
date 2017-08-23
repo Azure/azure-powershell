@@ -101,6 +101,7 @@
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+      <OutFiles Include="$(OutDir)\**\*.*"/>
     </ItemGroup>
     <Copy
            SourceFiles="@(OutFiles)"
