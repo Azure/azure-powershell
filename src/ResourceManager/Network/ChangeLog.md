@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 4.3.1
+
 ## Version 4.3.0
 * New-AzureRmExpressRouteCircuitPeeringConfig: Added IPv6 support. New optional parameter added
 	- PeerAddressType
