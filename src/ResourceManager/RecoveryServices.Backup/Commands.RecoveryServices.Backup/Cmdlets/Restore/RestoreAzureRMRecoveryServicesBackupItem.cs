@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 identity.ResourceProviderNamespace = "Microsoft.ClassicStorage/storageAccounts";
                 identity.ResourceProviderApiVersion = "2015-12-01";
                 identity.ResourceType = string.Empty;
+                identity.ParentResourcePath = string.Empty;
 
                 GenericResource resource = null;
                 try
