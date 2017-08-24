@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}</ProjectGuid>
+    <ProjectGuid>{538D8E90-190E-44F4-B5F8-CB272422A844}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Storage</RootNamespace>
@@ -32,7 +32,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <OutputPath>..\..\..\Package\Release\Storage\Azure.Storage</OutputPath>
+    <OutputPath>..\..\..\Stack\Release\Storage\Azure.Storage\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -225,9 +225,9 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference> -->
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Storage.csproj">
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Stack.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
+      <Name>Commands.Common.Stack.Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
