@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}</ProjectGuid>
+    <ProjectGuid>{1C31C952-4A06-4A8B-9A20-56092086F323}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Compute</RootNamespace>
@@ -416,9 +416,9 @@
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Storage.csproj">
+    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Stack.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
+      <Name>Commands.Common.Stack.Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
@@ -428,21 +428,21 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Network\Stack\Commands.Network\Commands.Network.csproj">
+    <ProjectReference Include="..\..\..\Network\Stack\Commands.Network\Commands.Stack.Network.csproj">
       <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
-      <Name>Commands.Network</Name>
+      <Name>Commands.Stack.Network</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Storage\Stack\Commands.Management.Storage\Commands.Management.Storage.csproj">
+    <ProjectReference Include="..\..\..\Storage\Stack\Commands.Management.Storage\Commands.Management.Stack.Storage.csproj">
       <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
-      <Name>Commands.Management.Storage</Name>
+      <Name>Commands.Management.Stack.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Sync\Sync.csproj">
+    <ProjectReference Include="..\Sync\Stack.Sync.csproj">
       <Project>{73820cbc-f4eb-4c5e-b4f0-cc4a93fbf157}</Project>
-      <Name>Sync</Name>
+      <Name>Stack.Sync</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VhdManagement\VhdManagement.csproj">
+    <ProjectReference Include="..\VhdManagement\Stack.VhdManagement.csproj">
       <Project>{80496b7b-068a-4a1e-b0bb-4b1fff3fa616}</Project>
-      <Name>VhdManagement</Name>
+      <Name>Stack.VhdManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

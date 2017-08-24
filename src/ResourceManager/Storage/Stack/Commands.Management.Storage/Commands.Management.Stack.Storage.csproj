@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A50AB133-5C04-4A17-9054-F8343683EC23}</ProjectGuid>
+    <ProjectGuid>{2FB06DB3-5396-4C46-9E5D-02F0AA9AEDA9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Management.Storage</RootNamespace>
@@ -149,9 +149,9 @@
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Storage.csproj">
+    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Stack.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
+      <Name>Commands.Common.Stack.Storage</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>

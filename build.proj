@@ -54,8 +54,7 @@
     <Latest Condition = "'$(Scope)' == '' or '$(Scope)' != 'Stack'">true</Latest>
   </PropertyGroup>
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln;"
-                            Exclude=".\src\ResourceManager\Intune\*.sln"
+    <CmdletSolutionsToBuild Include=".\src\All.sln;.\src\ServiceManagement\ServiceManagement.sln;"
                             Condition=" '$(Scope)' == 'all' "/>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln"
                             Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' and '$(Scope)' != 'Stack' "/>
@@ -64,7 +63,9 @@
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
                             Condition=" '$(Scope)' == 'AzureStorage' "/>
     <CmdletSolutionsToBuild Include=".\src\Stack.sln"
-                            Condition=" '$(Stack)' == 'true' "/>
+                            Condition=" '$(Scope)' == 'Stack' "/>
+    <CmdletSolutionsToBuild Include=".\src\Latest.sln"
+                            Condition=" '$(Scope)' == 'Latest' "/>
                             
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}</ProjectGuid>
+    <ProjectGuid>{F7A3492D-0ACB-4964-A6E1-D687A2C06276}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Network</RootNamespace>

@@ -47,21 +47,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Network", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.KeyVault", "ResourceManager\KeyVault\Commands.KeyVault\Commands.KeyVault.csproj", "{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "Storage\Stack\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Stack.Storage", "Storage\Stack\Commands.Storage\Commands.Stack.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Storage", "ResourceManager\Storage\Stack\Commands.Management.Storage\Commands.Management.Storage.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Stack.Storage", "ResourceManager\Storage\Stack\Commands.Management.Storage\Commands.Management.Stack.Storage.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VhdManagement", "ResourceManager\Compute\Stack\VhdManagement\VhdManagement.csproj", "{80496B7B-068A-4A1E-B0BB-4B1FFF3FA616}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stack.VhdManagement", "ResourceManager\Compute\Stack\VhdManagement\Stack.VhdManagement.csproj", "{80496B7B-068A-4A1E-B0BB-4B1FFF3FA616}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync", "ResourceManager\Compute\Stack\Sync\Sync.csproj", "{73820CBC-F4EB-4C5E-B4F0-CC4A93FBF157}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stack.Sync", "ResourceManager\Compute\Stack\Sync\Stack.Sync.csproj", "{73820CBC-F4EB-4C5E-B4F0-CC4A93FBF157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network", "ResourceManager\Network\Stack\Commands.Network\Commands.Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Stack.Network", "ResourceManager\Network\Stack\Commands.Network\Commands.Stack.Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "ResourceManager\Compute\Stack\Commands.Compute\Commands.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Stack.Compute", "ResourceManager\Compute\Stack\Commands.Compute\Commands.Stack.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Common", "Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj", "{C1BDA476-A5CC-4394-914D-48B0EC31A710}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Common", "ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj", "{CFF09E81-1E31-444E-B4D4-A21E946C29E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Stack.Storage", "Common\Commands.Common.Storage\Stack\Commands.Common.Stack.Storage.csproj", "{09651EE3-1A47-4CFD-8C02-625CECF36B9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureStackAdmin", "StackAdmin\AzureStackAdmin\Commands.AzureStackAdmin\Commands.AzureStackAdmin.csproj", "{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}"
 EndProject
@@ -389,6 +391,18 @@ Global
 		{CFF09E81-1E31-444E-B4D4-A21E946C29E2}.Release|x64.Build.0 = Release|Any CPU
 		{CFF09E81-1E31-444E-B4D4-A21E946C29E2}.Release|x86.ActiveCfg = Release|Any CPU
 		{CFF09E81-1E31-444E-B4D4-A21E946C29E2}.Release|x86.Build.0 = Release|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Debug|x64.Build.0 = Debug|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Debug|x86.Build.0 = Debug|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Release|x64.ActiveCfg = Release|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Release|x64.Build.0 = Release|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Release|x86.ActiveCfg = Release|Any CPU
+		{09651EE3-1A47-4CFD-8C02-625CECF36B9B}.Release|x86.Build.0 = Release|Any CPU
 		{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B02390C-8AA9-4D99-8AA8-2A9D2D39682F}.Debug|x64.ActiveCfg = Debug|Any CPU

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}</ProjectGuid>
+    <ProjectGuid>{09651EE3-1A47-4CFD-8C02-625CECF36B9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Storage</RootNamespace>

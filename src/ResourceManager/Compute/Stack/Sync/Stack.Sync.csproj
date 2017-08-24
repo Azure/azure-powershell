@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{73820CBC-F4EB-4C5E-B4F0-CC4A93FBF157}</ProjectGuid>
+    <ProjectGuid>{BBA9252E-B624-4DF5-8C53-0F5FAD6A2979}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Sync</RootNamespace>
@@ -119,9 +119,9 @@
     <Compile Include="Upload\UploadOperationMetaData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VhdManagement\VhdManagement.csproj">
+    <ProjectReference Include="..\VhdManagement\Stack.VhdManagement.csproj">
       <Project>{80496B7B-068A-4A1E-B0BB-4B1FFF3FA616}</Project>
-      <Name>VhdManagement</Name>
+      <Name>Stack.VhdManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
