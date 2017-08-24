@@ -35,14 +35,14 @@ It does not apply any Virtual Hard Disk (VHD) format conversion.
 
 ### Example 1: Download an image
 ```
-PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
+PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd"
 ```
 
 This command downloads a .vhd file, and stores it in the local path C:\vhd\Win7Image.vhd.
 
 ### Example 2: Download an image and overwrite the local file
 ```
-PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
+PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -Overwrite
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -51,7 +51,7 @@ Therefore, if C:\vhd\Win7Image.vhd already exists, this command replaces it.
 
 ### Example 3: Download an image by using a specified number of threads
 ```
-PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32
+PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -NumberOfThreads 32
 ```
 
 This command downloads a .vhd file, and stores it in the local path.
@@ -60,7 +60,7 @@ Therefore, the cmdlet uses 32 threads for this action.
 
 ### Example 4: Download an image and specify the storage key
 ```
-PS C:\> Save-AzureRmVhd -Source "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw=="
+PS C:\> Save-AzureRmVhd -SourceUri "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd" -LocalFilePath "C:\vhd\Win7Image.vhd" -StorageKey "zNvcH0r5vAGmC5AbwEtpcyWCMyBd3eMDbdaa4ua6kwxq6vTZH3Y+sw=="
 ```
 
 This command downloads a .vhd file and specifies the storage key.
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group of the virtual machine.
+Specifies the name of the resource group of the storage account.
 
 ```yaml
 Type: String
