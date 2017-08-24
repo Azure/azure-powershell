@@ -671,7 +671,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 base.ProcessRecord();
                 ExecuteCmdlet();
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is PipelineStoppedException) && ex.InnerException != null)
             {
                 WriteExceptionError(ex);
             }
