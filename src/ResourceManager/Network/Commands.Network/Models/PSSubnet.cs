@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSRouteTable RouteTable { get; set; }
 
         [JsonProperty(Order = 1)]
+        public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
+
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -64,6 +67,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool ShouldSerializeIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
+        }
+
+         [JsonIgnore]
+        public string ServiceEndpointText
+        {
+            get { return JsonConvert.SerializeObject(ServiceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
