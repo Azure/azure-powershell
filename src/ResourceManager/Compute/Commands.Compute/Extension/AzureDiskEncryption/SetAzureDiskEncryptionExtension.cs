@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 15,
+            Position = 16,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Set if updating settings for a premium storage VM.")] // TODO: Parameter introduced only for testing. Pls make sure it doesn't make it into prod.
         public SwitchParameter PremiumStorage { get; set; }
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             AzureOperationResponse<VirtualMachine> updateResult;
 
-            // The 2nd pass. If something goes wrong here, try to revert to that backup you took.
+            // The 2nd pass. If something goes wrong here, try to revert to encryptionSettingsBackup.
             if (!PremiumStorage.IsPresent || encryptionSettingsBackup.Enabled != true)
             {
                 updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     .StartWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
                 if (!updateResult.Response.IsSuccessStatusCode || !startOp.Response.IsSuccessStatusCode)
                 {
-                    // in case or error: stop-revert-start
+                    // in case of error: stop-revert-start
                     this.ComputeClient.ComputeManagementClient.VirtualMachines
                         .DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter()
                         .GetResult();
