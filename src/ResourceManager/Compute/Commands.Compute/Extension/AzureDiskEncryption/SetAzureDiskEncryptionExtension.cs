@@ -174,6 +174,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "Skip backup creation for Linux VMs")]
         public SwitchParameter SkipVmBackup { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 15,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set if updating settings for a premium storage VM.")] // TODO: Parameter introduced only for testing. Pls make sure it doesn't make it into prod.
+        public SwitchParameter PremiumStorage { get; set; }
+
         private OperatingSystemTypes? currentOSType = null;
 
         private void ValidateInputParameters()
@@ -265,7 +272,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         /// <summary>
         /// This function gets the VM model, fills in the OSDisk properties with encryptionSettings and does an UpdateVM
         /// </summary>
-        private AzureOperationResponse<VirtualMachine> UpdateVmEncryptionSettings()
+        private AzureOperationResponse<VirtualMachine> UpdateVmEncryptionSettings(DiskEncryptionSettings encryptionSettingsBackup)
         {
             string statusMessage = GetExtensionStatusMessage();
 
@@ -280,14 +287,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));
-            }
-
-            DiskEncryptionSettings encryptionSettingsBackup = vmParameters.StorageProfile.OsDisk.EncryptionSettings;
-
-            if (encryptionSettingsBackup == null)
-            {
-                encryptionSettingsBackup = new DiskEncryptionSettings();
-                encryptionSettingsBackup.Enabled = false;
             }
 
             DiskEncryptionSettings encryptionSettings = new DiskEncryptionSettings();
@@ -315,21 +314,63 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Tags = vmParameters.Tags
             };
 
-            AzureOperationResponse<VirtualMachine> updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
-                this.ResourceGroupName,
-                vmParameters.Name,
-                parameters).GetAwaiter().GetResult();
+            AzureOperationResponse<VirtualMachine> updateResult;
 
-            if(!updateResult.Response.IsSuccessStatusCode)
+            // The 2nd pass. If something goes wrong here, try to revert to that backup you took.
+            if (!PremiumStorage.IsPresent || encryptionSettingsBackup.Enabled != true)
             {
-                vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
-                   this.ResourceGroupName, this.VMName));
-                vmParameters.StorageProfile.OsDisk.EncryptionSettings = encryptionSettingsBackup;
-
-                this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     vmParameters.Name,
                     parameters).GetAwaiter().GetResult();
+
+                if (!updateResult.Response.IsSuccessStatusCode)
+                {
+                    revertVm(encryptionSettingsBackup);
+                }
+            }
+            else
+            {
+                // For premium storage VMs, stop-update-start
+                // stop vm
+                this.ComputeClient.ComputeManagementClient.VirtualMachines
+                    .DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter()
+                    .GetResult();
+                
+                // update vm
+                vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                this.ResourceGroupName, this.VMName));
+                vmParameters.StorageProfile.OsDisk.EncryptionSettings = encryptionSettings;
+                parameters = new VirtualMachine
+                {
+                    DiagnosticsProfile = vmParameters.DiagnosticsProfile,
+                    HardwareProfile = vmParameters.HardwareProfile,
+                    StorageProfile = vmParameters.StorageProfile,
+                    NetworkProfile = vmParameters.NetworkProfile,
+                    OsProfile = vmParameters.OsProfile,
+                    Plan = vmParameters.Plan,
+                    AvailabilitySet = vmParameters.AvailabilitySet,
+                    Location = vmParameters.Location,
+                    Tags = vmParameters.Tags
+                };
+                updateResult = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    vmParameters.Name,
+                    parameters).GetAwaiter().GetResult();
+
+                // start vm
+                var startOp = this.ComputeClient.ComputeManagementClient.VirtualMachines
+                    .StartWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
+                if (!updateResult.Response.IsSuccessStatusCode || !startOp.Response.IsSuccessStatusCode)
+                {
+                    // in case or error: stop-revert-start
+                    this.ComputeClient.ComputeManagementClient.VirtualMachines
+                        .DeallocateWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter()
+                        .GetResult();
+                    revertVm(encryptionSettingsBackup);
+                    this.ComputeClient.ComputeManagementClient.VirtualMachines
+                        .StartWithHttpMessagesAsync(this.ResourceGroupName, this.VMName).GetAwaiter().GetResult();
+                }
             }
 
             return updateResult;
@@ -467,6 +508,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
+                    DiskEncryptionSettings encryptionSettingsBackup = virtualMachineResponse.StorageProfile.OsDisk.EncryptionSettings ??
+                                                                      new DiskEncryptionSettings { Enabled = false };
+
+                     // The "1st pass". If this goes wrong, just bubble up the error and abort.
                     AzureOperationResponse<VirtualMachineExtension> extensionPushResult = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VMName,
@@ -484,11 +529,26 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                               null));
                     }
 
-                    var op = UpdateVmEncryptionSettings();
+                    var op = UpdateVmEncryptionSettings(encryptionSettingsBackup);
+
                     var result = Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 }
             });
         }
+
+        private AzureOperationResponse<VirtualMachine> revertVm(DiskEncryptionSettings encryptionSettingsBackup)
+        {
+            var vmRevertParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                this.ResourceGroupName, this.VMName));
+            vmRevertParameters.StorageProfile.OsDisk.EncryptionSettings = encryptionSettingsBackup;
+
+            return this.ComputeClient.ComputeManagementClient.VirtualMachines
+                .CreateOrUpdateWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    vmRevertParameters.Name,
+                    vmRevertParameters).GetAwaiter().GetResult();
+        }
+
     }
 }
