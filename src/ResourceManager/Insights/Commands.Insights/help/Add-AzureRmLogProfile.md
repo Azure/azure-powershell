@@ -55,9 +55,8 @@ Accept wildcard characters: False
 ### -Locations
 Specifies the location of the log profile.
 Valid values: Run below cmdlet to get the latest list of locations. 
-```yaml
+
 Get-AzureLocation | Select DisplayName
-```
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -118,10 +117,8 @@ Accept wildcard characters: False
 
 ### -StorageAccountId
 Specifies the ID of the Storage account. ID is the fully qualified Resource ID of the storage account for example  
-```yaml
-/subscriptions/40gpe80s-9sb7-4f07-9042-b1b6a92ja9fk/resourceGroups/activitylogRG/providers/Microsoft.Storage/storageAccounts/activitylogstorageaccount
-```
 
+/subscriptions/40gpe80s-9sb7-4f07-9042-b1b6a92ja9fk/resourceGroups/activitylogRG/providers/Microsoft.Storage/storageAccounts/activitylogstorageaccount
 
 ```yaml
 Type: String
