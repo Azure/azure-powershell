@@ -49,7 +49,7 @@
     <Scope Condition=" $(Scope) == '' " >all</Scope>
     <NetCore Condition=" $(NetCore) == '' " >false</NetCore>
     <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
-	<BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
+    <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
   </PropertyGroup>
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln;.\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln;"
@@ -71,7 +71,11 @@
   <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="DebugTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+<<<<<<< HEAD
   <UsingTask TaskName="SmartTestingTask" AssemblyFile="$(BuildTasksPath)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\Debug\Microsoft.Azure.Build.Tasks.dll" />
+=======
+  <UsingTask TaskName="SmartTestingTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+>>>>>>> d0ea9aee3695ad6c499d2a9c935bf446abaf0b21
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >  
 	  <ParameterGroup>
 	    <EnvName ParameterType="System.String" Required="true" />
