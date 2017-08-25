@@ -19,9 +19,10 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificate
+    public class KeyVaultCertificate 
     {
         public string Name { get; set; }
+        public string VaultName { get; set; }
         public X509Certificate2 Certificate { get; set; }
         public string Id { get; internal set; }
         public string KeyId { get; internal set; }
@@ -46,6 +47,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 Id = certificateBundle.CertificateIdentifier.Identifier;
                 Name = certificateBundle.CertificateIdentifier.Name;
+
+                // TODO [dragosav] Bring Certificate classes on par with keys/secrets:
+                //  - inherit from ObjectIdentifier
+                //  - constructors should accept the VaultUriHelper as a parameter
+                var vaultUri = new Uri( certificateBundle.CertificateIdentifier.Vault );
+                VaultName = vaultUri.Host.Split( '.' ).First( );
             }
 
             if ( certificateBundle.Cer != null )

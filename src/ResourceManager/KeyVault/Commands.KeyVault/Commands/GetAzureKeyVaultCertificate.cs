@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<CertificateIdentityItem>), typeof(KeyVaultCertificate), typeof(DeletedCertificateBundle), typeof(List<DeletedCertificateIdentityItem>))]
+    [OutputType(typeof(List<CertificateIdentityItem>), typeof(KeyVaultCertificate), typeof(DeletedKeyVaultCertificate), typeof(List<DeletedCertificateIdentityItem>))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         break;
                     }
 
-                    DeletedCertificateBundle deletedCert = DataServiceClient.GetDeletedCertificate(VaultName, Name);
+                    DeletedKeyVaultCertificate deletedCert = DeletedKeyVaultCertificate.FromDeletedCertificateBundle( DataServiceClient.GetDeletedCertificate(VaultName, Name) );
                     WriteObject( deletedCert );
 
                     break;
