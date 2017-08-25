@@ -373,9 +373,9 @@ function Initialize-TemporaryState
                 "objectId" = $objectId
                 "applicationId" = ""
                 "permissions" = @{
-                    "keys" = @("all")
-                    "secrets" = @("all")
-                    "certificates" = @("all")
+                    "keys" = @("all", "purge")
+                    "secrets" = @("all", "purge")
+                    "certificates" = @("all", "purge")
                     "storage" = @("all")
                 }
             }
