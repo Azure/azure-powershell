@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: FD84D530-491B-4075-A6B4-2E1C46AD92D4
 online version: 
 schema: 2.0.0
@@ -17,7 +18,7 @@ Creates a rule configuration for a load balancer.
 New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfigurationId <String>]
  [-BackendAddressPoolId <String>] [-ProbeId <String>] [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-LoadDistribution <String>] [-EnableFloatingIP]
- [<CommonParameters>]
+ [-DisableOutboundSNAT] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -25,7 +26,7 @@ New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfigurationId <St
 New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfiguration <PSFrontendIPConfiguration>]
  [-BackendAddressPool <PSBackendAddressPool>] [-Probe <PSProbe>] [-Protocol <String>] [-FrontendPort <Int32>]
  [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-LoadDistribution <String>] [-EnableFloatingIP]
- [<CommonParameters>]
+ [-DisableOutboundSNAT] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +87,21 @@ Specifies the backend port for traffic that is matched by this load balancer rul
 
 ```yaml
 Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableOutboundSNAT
+DisableOutboundSNAT
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
