@@ -19,15 +19,20 @@ function Setup-Profile
 
 	PROCESS 
 	{
-	    if ((Test-Path -Path "Variable:\AzureRmAutoSaveSetting") -and (Get-Variable "AzureRmAutoSaveSetting").Value -eq "Disabled")
+	    if ((Test-Path -Path "Variable:\AzureRmAutoSaveSetting"))
 	    {
-		    Write-Debug "Set up in-memory profile at user request."
-			Write-Output $false
-	    }
-	    else
-	    {
-		    Write-Debug "Set up AutoSave profile by default."
-		    Write-Output $true
+			$auto = (Get-Variable "AzureRmAutoSaveSetting").Value 
+
+			if ($auto -eq "Disabled")
+			{
+		        Write-Debug "Set up in-memory profile at user request."
+			    Write-Output $false
+			}
+			elseif ($auto -eq "Enabled")
+			{
+		        Write-Debug "Set up AutoSave profile by default."
+		        Write-Output $true
+			}
 	    }
     }
 }

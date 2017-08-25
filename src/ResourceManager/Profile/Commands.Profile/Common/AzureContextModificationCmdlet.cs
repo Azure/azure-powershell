@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
                     result = currentProfile;
                     break;
                 case ContextModificationScope.CurrentUser:
-                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ResourceManagerContextFile), FileProtection.ExclusiveWrite));
+                    result = new AzureRmAutosaveProfile(currentProfile, ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile), FileProtection.ExclusiveWrite));
                     break;
             }
 
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
 
         public virtual ContextModificationScope GetContextModificationScope()
         {
-            ContextModificationScope scope = ContextModificationScope.CurrentUser;
+            ContextModificationScope scope = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.Process ? ContextModificationScope.Process : ContextModificationScope.CurrentUser;
             if (MyInvocation != null && MyInvocation.BoundParameters != null && MyInvocation.BoundParameters.ContainsKey(nameof(Scope)))
             {
                 scope = Scope;

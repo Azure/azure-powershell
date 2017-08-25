@@ -104,15 +104,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         private void Load(string path)
         {
             this.ProfilePath = path;
-
-            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
+            var session = AzureSession.Instance;
+            var store = session.DataStore;
+            if (!store.DirectoryExists(session.ProfileDirectory))
             {
-                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
+                store.CreateDirectory(session.ProfileDirectory);
             }
 
-            if (AzureSession.Instance.DataStore.FileExists(ProfilePath))
+            if (!store.DirectoryExists(session.ARMProfileDirectory))
             {
-                string contents = AzureSession.Instance.DataStore.ReadFileAsText(ProfilePath);
+                store.CreateDirectory(session.ARMProfileDirectory);
+            }
+
+            if (store.FileExists(ProfilePath))
+            {
+                string contents = store.ReadFileAsText(ProfilePath);
                 LegacyAzureRmProfile oldProfile;
                 AzureRmProfile profile = null;
                 if (!SafeDeserializeObject<LegacyAzureRmProfile>(contents, out oldProfile)
@@ -162,19 +168,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         private void Initialize(AzureRmProfile profile)
         {
             EnvironmentTable.Clear();
-            foreach (var environment in profile.EnvironmentTable)
-            {
-                EnvironmentTable[environment.Key] = environment.Value;
-            }
-
             Contexts.Clear();
-            foreach (var context in profile.Contexts)
+            DefaultContextKey = "Default";
+            if (profile != null)
             {
-                context.Value.TokenCache = AzureSession.Instance.TokenCache;
-                this.Contexts.Add(context.Key, context.Value);
-            }
+                foreach (var environment in profile.EnvironmentTable)
+                {
+                    EnvironmentTable[environment.Key] = environment.Value;
+                }
 
-            DefaultContextKey = profile.DefaultContextKey ?? "Default";
+                foreach (var context in profile.Contexts)
+                {
+                    context.Value.TokenCache = AzureSession.Instance.TokenCache;
+                    this.Contexts.Add(context.Key, context.Value);
+                }
+
+                DefaultContextKey = profile.DefaultContextKey ?? "Default";
+            }
         }
 
         private void LoadImpl(string contents)

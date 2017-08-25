@@ -103,6 +103,7 @@
     <Compile Include="AzureAccount.cs" />
     <Compile Include="AzureRmProfileProvider.cs" />
     <Compile Include="AzureSMProfileProvider.cs" />
+    <Compile Include="ContextSaveMode.cs" />
     <Compile Include="Extensions\AzureAccountExtensions.cs" />
     <Compile Include="AzureEnvironmentConstants.cs" />
     <Compile Include="Extensions\AzureContextExtensions.cs" />

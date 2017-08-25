@@ -12,49 +12,107 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
+using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Select, "AzureRmContext", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSAzureContext))]
-    public class SelectAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmContextAutosave", SupportsShouldProcess = true)]
+    [OutputType(typeof(ContextAutosaveSettings))]
+    public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
-        public object GetDynamicParameters()
-        {
-            var parameters = new RuntimeDefinedParameterDictionary();
-            AzureRmProfile localProfile = DefaultProfile as AzureRmProfile;
-            if (localProfile != null)
-            {
-                var nameParameter = GetExistingContextNameParameter("Name");
-                parameters.Add(nameParameter.Name, nameParameter);
-            }
-
-            return parameters;
-        }
-
         public override void ExecuteCmdlet()
         {
-            if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(Scope)) && Scope == ContextModificationScope.Process)
             {
-                ConfirmAction(Resources.SelectContextPrompt, "Context",
+                ConfirmAction("Autosave the context in the current session", "Current session", () =>
+                {
+                    ContextAutosaveSettings settings = null;
+                    AzureSession.Modify((session) => EnableAutosave(session, false, out settings));
+                    ProtectedProfileProvider.InitializeResourceManagerProfile(true);
+                    WriteObject(settings);
+                });
+            }
+            else
+            {
+                ConfirmAction("Always autosave the context for the current user", "Current user",
                     () =>
                     {
-                        string name = MyInvocation.BoundParameters["Name"] as string;
-                        if (name != null)
-                        {
-                            ModifyContext((profile, client) =>
-                            {
-                                client.TrySetDefaultContext(name);
-                                WriteObject(new PSAzureContext(profile.DefaultContext));
-                            });
-                        }
+                        ContextAutosaveSettings settings = null;
+                        AzureSession.Modify((session) => EnableAutosave(session, true, out settings));
+                        ProtectedProfileProvider.InitializeResourceManagerProfile(true);
+                        WriteObject(settings);
                     });
             }
+        }
+
+        void EnableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
+        {
+            var store = session.DataStore;
+            string contextPath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
+            string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+            if (!IsValidPath(contextPath))
+            {
+                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid context path"));
+            }
+
+            if (!IsValidPath(tokenPath))
+            {
+                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid token cache path"));
+            }
+
+            result = new ContextAutosaveSettings
+            {
+                CacheDirectory = session.TokenCacheDirectory,
+                CacheFile = session.TokenCacheFile,
+                ContextDirectory = session.ARMProfileDirectory,
+                ContextFile = session.ARMProfileFile,
+                Mode = ContextSaveMode.CurrentUser
+            };
+
+            FileUtilities.DataStore = session.DataStore;
+            session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
+            var diskCache = session.TokenCache as ProtectedFileTokenCache;
+            if (diskCache == null)
+            {
+                var memoryCache = session.TokenCache as AuthenticationStoreTokenCache;
+                FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
+
+                diskCache = new ProtectedFileTokenCache(tokenPath, store);
+                if (memoryCache != null && memoryCache.Count > 0)
+                {
+                    diskCache.Deserialize(memoryCache.Serialize());
+                }
+
+                session.TokenCache = diskCache;
+            }
+
+            if (writeAutoSaveFile)
+            {
+                FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+            }
+        }
+
+        bool IsValidPath(string path)
+        {
+            FileInfo valid = null;
+            try
+            {
+                valid = new FileInfo(path);
+            }
+            catch
+            {
+                // swallow any exception
+            }
+            return valid != null;
         }
     }
 }

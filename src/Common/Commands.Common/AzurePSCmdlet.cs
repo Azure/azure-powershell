@@ -275,8 +275,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupHttpClientPipeline()
         {
-            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(ModuleName, string.Format("v{0}", ModuleVersion)));            
-            AzureSession.Instance.ClientFactory.UserAgents.Add(new ProductInfoHeaderValue(PSVERSION, string.Format("v{0}", PSVersion)));
+            AzureSession.Instance.ClientFactory.AddUserAgent(ModuleName, string.Format("v{0}", ModuleVersion));            
+            AzureSession.Instance.ClientFactory.AddUserAgent(PSVERSION, string.Format("v{0}", PSVersion));
 
             AzureSession.Instance.ClientFactory.AddHandler(
                 new CmdletInfoHandler(this.CommandRuntime.ToString(),
@@ -286,7 +286,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void TearDownHttpClientPipeline()
         {
-            AzureSession.Instance.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
+            AzureSession.Instance.ClientFactory.RemoveUserAgent(ModuleName);
             AzureSession.Instance.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
         }
         /// <summary>

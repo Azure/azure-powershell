@@ -44,24 +44,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         IAzureTokenCache TokenCache { get; set; }
 
         /// <summary>
-        /// Gets or sets profile directory.
-        /// </summary>
-        string ProfileDirectory { get; set; }
-
-        /// <summary>
         /// Gets or sets token cache file path.
         /// </summary>
         string TokenCacheFile { get; set; }
 
         /// <summary>
+        /// The directory containing the disk token cache
+        /// </summary>
+        string TokenCacheDirectory { get; set; }
+
+        /// <summary>
+        /// Gets or sets profile directory.
+        /// </summary>
+        string ProfileDirectory { get; set; }
+
+        /// <summary>
         /// Gets or sets profile file name.
         /// </summary>
         string ProfileFile { get; set; }
-
-        /// <summary>
-        /// Gets or sets the profile name for Azure Resource Manager
-        /// </summary>
-        string ResourceManagerContextFile { get; set; }
 
         /// <summary>
         /// Gets or sets file name for the migration backup.
@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The file name of the ARM Profile file
         /// </summary>
         string ARMProfileFile { get; set; }
+
+        /// <summary>
+        /// The scope of context persistece, for now "Process" or "CurrentUser"
+        /// </summary>
+        string ARMContextSaveMode { get; set; }
 
         /// <summary>
         /// Try to get the shared component registered in this session with the given type and name

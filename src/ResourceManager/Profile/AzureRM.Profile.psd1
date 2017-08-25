@@ -72,18 +72,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmDataCollection', 'Enable-AzureRmDataCollection', 
+CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosave', 
+	             'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave',
                'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
                'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
                'Get-AzureRmSubscription', 'Add-AzureRmAccount', 'Get-AzureRmContext', 
                'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
-               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 'Select-AzureRmContext'
+               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 'Select-AzureRmContext',
+	           'Rename-AzureRmContext', 'Remove-AzureRmContext', 'Clear-AzureRmContext'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error'
+AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error', 'Logout-AzAccount', 'Logout-AzureRmAccount'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

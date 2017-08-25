@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public ProtectedProfileProvider()
         {
-            using (var fileProvider = ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ResourceManagerContextFile)))
+            using (var fileProvider = ProtectedFileProvider.CreateFileProvider(Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile)))
             {
                 _profile = new AzureRmProfile(fileProvider);
             }

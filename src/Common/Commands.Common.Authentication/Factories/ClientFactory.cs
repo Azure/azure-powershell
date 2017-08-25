@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             _actions = new Dictionary<Type, IClientAction>();
             _actionsLock = new ReaderWriterLockSlim();
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            UserAgents = new ConcurrentDictionary<ProductInfoHeaderValue, string>();
             _handlers = new OrderedDictionary();
             _handlersLock = new ReaderWriterLockSlim();
         }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents)
+            foreach (ProductInfoHeaderValue userAgent in UserAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents)
+            foreach (ProductInfoHeaderValue userAgent in UserAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="productVersion">Product version.</param>
         public void AddUserAgent(string productName, string productVersion)
         {
-            UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
+            UserAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion), productName);
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AddUserAgent(productName, "");
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        public ConcurrentDictionary<ProductInfoHeaderValue, string> UserAgents { get; set; }
 
         public DelegatingHandler[] GetCustomHandlers()
         {
@@ -379,6 +379,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             finally
             {
                 _handlersLock.ExitReadLock();
+            }
+        }
+
+        public void RemoveUserAgent(string name)
+        {
+            if (UserAgents!= null && UserAgents.Keys != null)
+            {
+                var agents = UserAgents.Keys.Where((k) => k.Product != null && string.Equals(k.Product.Name, name, StringComparison.OrdinalIgnoreCase));
+                foreach (var agent in agents)
+                {
+                    string value;
+                    UserAgents.TryRemove(agent, out value);
+                }
             }
         }
     }

@@ -237,11 +237,13 @@ namespace Microsoft.Azure.Commands.Profile
                     "AzureRmProfileStartup.ps1")));
                 var result = invoker.Invoke();
                 
-                bool autoSaveEnabled = true;
+                bool autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 foreach (var output in result)
                 {
-                    if (bool.TryParse(output.ToString(), out autoSaveEnabled))
+                    bool localAutosave;
+                    if (bool.TryParse(output.ToString(), out localAutosave))
                     {
+                        autoSaveEnabled = localAutosave;
                         break;
                     }
                 }

@@ -136,6 +136,7 @@
     <Compile Include="Authentication\ServicePrincipalTokenProvider.cs" />
     <Compile Include="Authentication\UserTokenProvider.cs" />
     <Compile Include="AzureSessionInitializer.cs" />
+    <Compile Include="ContextAutosaveSettings.cs" />
     <Compile Include="Extensions\CloudExceptionExtensions.cs" />
     <Compile Include="Factories\AuthenticationFactory.cs" />
     <Compile Include="Factories\ClientFactory.cs" />

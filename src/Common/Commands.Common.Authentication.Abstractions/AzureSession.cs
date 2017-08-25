@@ -135,6 +135,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public abstract SourceLevels AuthenticationTraceSourceLevel { get; set; }
 
+        public string TokenCacheDirectory { get; set; }
+
+        public string ARMContextSaveMode { get; set; }
+
         /// <summary>
         /// Initialize the AzureSession, avoid contention at startup
         /// </summary>
@@ -175,6 +179,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public static void Initialize(Func<IAzureSession> instanceCreator)
         {
             Initialize(instanceCreator, false);
+        }
+
+        public static void Modify(Action<IAzureSession> modifier)
+        {
+            try
+            {
+                sessionLock.EnterWriteLock();
+                try
+                {
+                    modifier(_instance);
+                }
+                finally
+                {
+                    sessionLock.ExitWriteLock();
+                }
+            }
+            catch (LockRecursionException lockException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockWriteRecursion, lockException);
+            }
+            catch (ObjectDisposedException disposedException)
+            {
+                throw new InvalidOperationException(Abstractions.Properties.Resources.SessionLockWriteDisposed, disposedException);
+            }
         }
 
         public bool TryGetComponent<T>(string componentName, out T component) where T : class

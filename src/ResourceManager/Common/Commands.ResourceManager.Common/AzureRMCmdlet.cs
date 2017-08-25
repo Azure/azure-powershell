@@ -71,6 +71,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         /// <summary>
+        /// Return a default context safely if it is available, without throwing if it is not setup
+        /// </summary>
+        /// <param name="context">The default context</param>
+        /// <returns>True if there is a valid default context, false otherwise</returns>
+        public virtual bool TryGetDefaultContext(out IAzureContext context)
+        {
+            bool result = false;
+            context = null;
+            if (DefaultProfile != null && DefaultProfile.DefaultContext != null && DefaultProfile.DefaultContext.Account != null)
+            {
+                context = DefaultProfile.DefaultContext;
+                result = true;
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Gets the current default context.
         /// </summary>
         protected override IAzureContext DefaultContext
@@ -249,13 +267,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
 
-            if (this.DefaultProfile != null &&
-                this.DefaultProfile.DefaultContext != null &&
-                this.DefaultProfile.DefaultContext.Account != null &&
-                this.DefaultProfile.DefaultContext.Account.Id != null)
+            IAzureContext context;
+            if (TryGetDefaultContext(out context) 
+                && context.Account != null 
+                && context.Account.Id != null)
             {
-                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
-                    this.DefaultProfile.DefaultContext.Account.Id.ToString());
+                _qosEvent.Uid = MetricHelper.GenerateSha256HashString(context.Account.Id.ToString());
             }
             else
             {
@@ -266,11 +283,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void LogCmdletStartInvocationInfo()
         {
             base.LogCmdletStartInvocationInfo();
-            if (DefaultContext != null && DefaultContext.Account != null
-                && DefaultContext.Account.Id != null)
+            IAzureContext context;
+            if (TryGetDefaultContext(out context)
+                && context.Account != null
+                && context.Account.Id != null)
             {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
-                    DefaultContext.Account.Id));
+                    WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
+                    context.Account.Id));
             }
         }
 
@@ -311,15 +330,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void BeginProcessing()
         {
             AzureSession.Instance.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
-            if (DefaultContext != null && DefaultContext.Subscription != null)
+            IAzureContext context;
+            if (TryGetDefaultContext(out context)
+                && context.Account != null
+                && context.Subscription != null)
             {
                 AzureSession.Instance.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
                     () =>
                     {
                         var client = new ResourceManagementClient(
-                            DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                            AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager));
-                        client.SubscriptionId = DefaultContext.Subscription.Id;
+                            context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                            AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager));
+                        client.SubscriptionId = context.Subscription.Id;
                         return client;
                     },
                     s => DebugMessages.Enqueue(s)));
