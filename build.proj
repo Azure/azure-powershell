@@ -381,7 +381,8 @@
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
 
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(LibrarySourceFolder)\Package\$(Configuration) &quot;"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(LibrarySourceFolder)\Package\$(Configuration) &quot;"
+        ContinueOnError="ErrorAndContinue" />
 
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1"
