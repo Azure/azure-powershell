@@ -173,55 +173,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             string fileFullPath = Path.Combine(AzureSession.Instance.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
-            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
-            if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
+            try
             {
-                AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
+                var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+                if (!AzureSession.Instance.DataStore.DirectoryExists(AzureSession.Instance.ProfileDirectory))
+                {
+                    AzureSession.Instance.DataStore.CreateDirectory(AzureSession.Instance.ProfileDirectory);
+                }
+
+                AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
+                WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
             }
-            AzureSession.Instance.DataStore.WriteFile(fileFullPath, contents);
-            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+            catch
+            {
+                // do not throw on errors writing to the data store
+            }
         }
 
-        protected override void PromptForDataCollectionProfileIfNotExists()
+        protected override void SetDataCollectionProfileIfNotExists()
         {
-            // Initialize it from the environment variable or profile file.
             InitializeDataCollectionProfile();
 
-            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
+            if (_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
-                WriteWarning(Resources.DataCollectionPrompt);
-
-                const double timeToWaitInSeconds = 60;
-                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
-                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
-
-                var startTime = DateTime.Now;
-                var endTime = DateTime.Now;
-                double elapsedSeconds = 0;
-
-                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
-                {
-                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
-                    endTime = DateTime.Now;
-
-                    elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
-                    WriteProgress(record);
-                }
-
-                bool enabled = false;
-                if (this.Host.UI.RawUI.KeyAvailable)
-                {
-                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC | ReadKeyOptions.IncludeKeyDown);
-                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
-                }
-
-                _dataCollectionProfile.EnableAzureDataCollection = enabled;
-
-                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
-
-                SaveDataCollectionProfile();
+                return;
             }
+
+            WriteWarning(Resources.ARMDataCollectionMessage);
+
+            _dataCollectionProfile.EnableAzureDataCollection = true;
+            SaveDataCollectionProfile();
         }
 
         protected override void InitializeQosEvent()
@@ -242,7 +223,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 IsSuccess = true,
             };
 
-            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
+            if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null 
+                && this.MyInvocation.BoundParameters.Keys != null)
             {
                 _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
@@ -252,7 +234,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (this.DefaultProfile != null &&
                 this.DefaultProfile.DefaultContext != null &&
                 this.DefaultProfile.DefaultContext.Account != null &&
-                this.DefaultProfile.DefaultContext.Account.Id != null)
+                !string.IsNullOrWhiteSpace(this.DefaultProfile.DefaultContext.Account.Id))
             {
                 _qosEvent.Uid = MetricHelper.GenerateSha256HashString(
                     this.DefaultProfile.DefaultContext.Account.Id.ToString());

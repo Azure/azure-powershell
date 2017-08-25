@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 ms.assetid: 100A5980-31E2-41F9-84D4-2F5F0CB78B8A
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -12,27 +12,28 @@ Gets an Azure Web App slot.
 
 ## SYNTAX
 
-### S1
+### Get by Name
 ```
 Get-AzureRmWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [<CommonParameters>]
 ```
 
-### S2
+### Get by Slot
 ```
 Get-AzureRmWebAppSlot [[-Slot] <String>] [-WebApp] <Site> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmWebApp** cmdlet gets information about an Azure Web App Slot.
+The **Get-AzureRmWebAppSlot** cmdlet gets information about an Azure Web App Slot.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmWebApp -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -Slot "Slot001"
+PS C:\> Get-AzureRmWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "WebAppStandard" -Slot "Slot001"
 ```
 
-This command gets the slot named Slot001 from the Web App named WebAppStandard that belongs to the resource group Default-Web-WestUS.
+This command gets the slot named Slot001 from the Web App named WebAppStandard that belongs to the
+resource group Default-Web-WestUS.
 
 ## PARAMETERS
 
@@ -42,7 +43,7 @@ WebApp Name
 ```yaml
 Type: String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -57,7 +58,7 @@ Resource Group Name
 ```yaml
 Type: String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -72,7 +73,7 @@ WebApp Slot Name
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -87,7 +88,7 @@ WebApp Object
 ```yaml
 Type: Site
 Parameter Sets: S2
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -97,7 +98,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see about_CommonParameters
+(http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
