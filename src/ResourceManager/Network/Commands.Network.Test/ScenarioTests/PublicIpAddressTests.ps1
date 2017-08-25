@@ -492,12 +492,12 @@ function Test-PublicIpAddressCRUD-StandardSku
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel
       $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
-      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
-      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $expected.Name $actual.Name
       Assert-AreEqual $expected.Location $actual.Location
-	  Assert-AreEqual $expected.Sku $actual.Sku
+      Assert-AreEqualObjectProperties $expected.Sku $actual.Sku
       Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
       Assert-NotNull $expected.IpAddress
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
@@ -505,10 +505,10 @@ function Test-PublicIpAddressCRUD-StandardSku
       # list
       $list = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
-      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
-      Assert-AreEqual $list[0].Name $actual.Name	
+      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $list[0].Name $actual.Name
       Assert-AreEqual $list[0].Location $actual.Location
-	  Assert-AreEqual $list[0].Sku $actual.Sku
+      Assert-AreEqualObjectProperties $list[0].Sku $actual.Sku
       Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
       Assert-NotNull $list[0].IpAddress
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
