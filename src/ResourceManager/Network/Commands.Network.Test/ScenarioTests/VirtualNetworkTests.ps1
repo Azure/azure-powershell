@@ -403,9 +403,9 @@ function Test-VirtualNetworkUsage
 
 <#
 .SYNOPSIS
-Tests checking Virtual Network Subnet Private Access feature.
+Tests checking Virtual Network Subnet Service Endpoint feature.
 #>
-function Test-VirtualNetworkSubnetPrivateAccess
+function Test-VirtualNetworkSubnetServiceEndpoint
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -414,7 +414,7 @@ function Test-VirtualNetworkSubnetPrivateAccess
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent
-    $privateAccess = "Microsoft.Storage"
+    $serviceEndpoint = "Microsoft.Storage"
 
     try
     {
@@ -422,7 +422,7 @@ function Test-VirtualNetworkSubnetPrivateAccess
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" };
 
         # Create the Virtual Network
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -PrivateAccessService $privateAccess;
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint;
         New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
         $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
 
@@ -430,13 +430,13 @@ function Test-VirtualNetworkSubnetPrivateAccess
         Assert-NotNull $vnet.Subnets;
 
         $subnet = $vnet.Subnets[0];
-        Assert-AreEqual $privateAccess $subnet.privateAccessServices[0].Service;
+        Assert-AreEqual $serviceEndpoint $subnet.serviceEndpoints[0].Service;
 
-        Set-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -PrivateAccessService $null;
+        Set-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $null;
         $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet;
         $subnet = $vnet.Subnets[0];
 
-        Assert-Null $subnet.privateAccessServices;
+        Assert-Null $subnet.serviceEndpoints;
     }
     finally
     {

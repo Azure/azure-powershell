@@ -34,6 +34,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity
+
 ## NOTES
 
 ## RELATED LINKS

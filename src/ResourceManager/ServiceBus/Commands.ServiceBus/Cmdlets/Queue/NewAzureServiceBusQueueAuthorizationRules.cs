@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 {
     /// <summary>
     /// 'New-AzureRmServiceBusQueueAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
+    [ObsoleteAttribute("'New-AzureRmServiceBusQueueAuthorizationRule' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'New-AzureRmServiceBusAuthorizationRule'", false)]
     [Cmdlet(VerbsCommon.New, ServiceBusQueueAuthorizationRuleVerb, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class NewAzureRmServiceBusQueueAuthorizationRule : AzureServiceBusCmdletBase
     {
@@ -37,34 +39,39 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Queue Name.")]
         [ValidateNotNullOrEmpty]
-        public string QueueName { get; set; }
+        [Alias(AliasQueueName)]
+        public string Queue { get; set; }
 
         [Parameter(Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            Position = 2,
            HelpMessage = "AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("Listen", "Send", "Manage",
+            IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {
             SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
 
-            NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, NamespaceName);
+            NamespaceAttributes getNameSpace = Client.GetNamespace(ResourceGroup, Namespace);
 
             IList<Management.ServiceBus.Models.AccessRights?> newListAry = new List<Management.ServiceBus.Models.AccessRights?>();
 
@@ -73,14 +80,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
                 newListAry.Add(ParseAccessRights(rights));
             }
 
-            sasRule.Name = AuthorizationRuleName;
+            sasRule.Name = Name;
             sasRule.Rights = newListAry;
             sasRule.Location = getNameSpace.Location;
 
             // Create a new ServiceBus namespace authorizationRule
-            if (ShouldProcess(target: AuthorizationRuleName, action: string.Format("Create new AuthorizationRule:{0} for Queue:{1} of NameSpace:{2}", AuthorizationRuleName, QueueName, NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format("Create new AuthorizationRule:{0} for Queue:{1} of NameSpace:{2}", Name, Queue, Namespace)))
             {
-                WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroup, NamespaceName, QueueName, sasRule.Name, sasRule));
+                WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroup, Namespace, Queue, sasRule.Name, sasRule));
             }
         }
     }

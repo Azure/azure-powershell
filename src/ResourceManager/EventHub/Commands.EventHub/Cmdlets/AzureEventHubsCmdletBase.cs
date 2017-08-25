@@ -46,9 +46,48 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string EventHubVerb = "AzureRmEventHub";
         protected const string EventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
         protected const string EventHubKeyVerb = "AzureRmEventHubKey";
-       
+
+        
+        protected const string NewEventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
+        protected const string NewEventHubKeyVerb = "AzureRmEventHubKey";
+
         protected const string ConsumerGroupVerb = "AzureRmEventHubConsumerGroup";
 
+
+        //AuthorizationRules
+        //protected const string EventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
+        //protected const string EventHubKeyVerb = "AzureRmEventHubKey";
+
+        //Parametersets for Authorizationrules
+        protected const string NamespaceAuthoRuleParameterSet = "NamespaceAuthorizationRuleSet";
+        protected const string EventhubAuthoRuleParameterSet = "EventhubAuthorizationRuleSet";
+        protected const string ConsumergroupAuthoRuleParameterSet = "ConsumergroupAuthorizationRuleSet";
+
+        //Parameter sets for InputObjects
+        protected const string NamespaceInputObjectParameterSet = "NamespaceInputObjectSet";
+        protected const string EventhubInputObjectParameterSet = "EventhubInputObjectSet";
+        protected const string ConsumergroupInputObjectParameterSet = "ConsumergroupInputObjectSet";
+        protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
+
+        //Parameter sets for Properties
+        protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
+        protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";
+        protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
+        protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
+
+        //Parametersets for Authorizationrules
+        protected const string NamespaceParameterSet = "NamespaceParameterSet";
+        protected const string AutoInflateParameterSet = "AutoInflateParameterSet";
+
+        //Alias - used in Cmdlets
+        protected const string AliasResourceGroup = "ResourceGroup";
+        protected const string AliasNamespaceName = "NamespaceName";
+        protected const string AliasEventHubName = "EventHubName";
+        protected const string AliasConsumerGroupName = "ConsumerGroupName";
+        protected const string AliasEventHubObj = "EventHubObj";
+        protected const string AliasAuthorizationRuleName = "AuthorizationRuleName";
+        protected const string AliasAuthRuleObj = "AuthRuleObj";
+        
         protected struct SKU
         {
             internal const string Basic = "Basic";
@@ -64,28 +103,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
-
-        protected static Policykey ParsePolicyKey(string policyKeyName)
-        {
-            Policykey returnPolicyKey;
-            if (!Enum.TryParse<Policykey>(policyKeyName, true, out returnPolicyKey))
-            {
-                throw new ArgumentOutOfRangeException("PolicyKey");
-            }
-            return returnPolicyKey;
-        }
-
-        protected static AccessRights ParseAccessRights(string rightsName)
-        {
-            AccessRights returnAccessRights;
-            if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-            {
-                throw new ArgumentOutOfRangeException("AccessRights");
-            }
-            return returnAccessRights;
-        }
-
-
+        
         public EventHubsClient Client
         {
             get
@@ -100,34 +118,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             {
                 _client = value;
             }
-        }
-
-        protected T ParseInputFile<T>(string InputFile)
-        {
-            T parsedObj;
-            string path = Directory.GetCurrentDirectory();
-            if (!string.IsNullOrEmpty(InputFile))
-            {
-                string fileName = this.TryResolvePath(InputFile);
-                if (!(new FileInfo(fileName)).Exists)
-                {
-                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,Properties.Resources.FileDoesNotExist, fileName));
-                }
-
-                try
-                {
-                    parsedObj = JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
-                    return parsedObj;
-                }
-                catch (JsonException)
-                {
-                    WriteVerbose("Deserializing the input role definition failed.");
-                    throw;
-                }
-            }
-
-            return default(T);
-        }
+        }        
 
         #region TagsHelper
 

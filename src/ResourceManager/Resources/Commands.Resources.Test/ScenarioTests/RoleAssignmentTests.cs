@@ -37,13 +37,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Test is failing in CI build for no matching request found but passes locally.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaAuthorizationChangeLog()
-        {
-           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
@@ -96,6 +89,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
         
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()

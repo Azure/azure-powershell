@@ -24,6 +24,9 @@ Azure SQL Database. This cmdlet can modify the minimum Database Throughput Units
 database in addition to the maximum DTUs per database, the number of DTUs for the pool, and the
 storage limit for the pool.
 
+Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the value being set is from the list of valid values for that parameter. For example, -DatabaseDtuMax for a Standard 100 eDTU pool can only be set to 10, 20, 50, or 100.  For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
+
+
 ## EXAMPLES
 
 ### Example 1: Modify properties for an elastic pool
@@ -71,12 +74,17 @@ storage for an elastic pool to 2 TB.
 ## PARAMETERS
 
 ### -DatabaseDtuMax
-Specifies the maximum number of DTUs that any single database in the pool can consume. The default
+Specifies the maximum number of DTUs that any single database in the pool can consume. 
+
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+
+The default
 values for different editions are as follows:
 
 - Basic.  5 DTUs
 - Standard. 100 DTUs
 - Premium. 125 DTUs
+
 
 ```yaml
 Type: Int32
@@ -92,6 +100,9 @@ Accept wildcard characters: False
 
 ### -DatabaseDtuMin
 Specifies the minimum number of DTUs that the elastic pool guarantees to all the databases in the pool.
+
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
+
 The default value is zero (0).
 
 ```yaml
@@ -107,7 +118,11 @@ Accept wildcard characters: False
 ```
 
 ### -Dtu
-Specifies the total number of shared DTUs for the elastic pool. The default values for different
+Specifies the total number of shared DTUs for the elastic pool. 
+
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+
+The default values for different
 editions are as follows:
 
 - Basic. 100 DTUs
@@ -267,7 +282,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
+### Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
 
 ## NOTES
 
