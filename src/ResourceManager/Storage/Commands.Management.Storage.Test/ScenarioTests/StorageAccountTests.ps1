@@ -526,12 +526,12 @@ function Test-NetworkRule
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 		
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -NetworkRule (@{bypass="Logging,Metrics,AzureServices";
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -NetworkRuleSet (@{bypass="Logging,Metrics,AzureServices";
 			ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
             @{IPAddressOrRange="$ip2";Action="allow"});
 			defaultAction="Deny"}) 
 
-		$stoacl = (Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname).NetworkRule
+		$stoacl = (Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname).NetworkRuleSet
         Assert-AreEqual $stoacl.Bypass 7;
         Assert-AreEqual $stoacl.DefaultAction Deny;
         Assert-AreEqual $stoacl.IpRules.Count 2
@@ -573,7 +573,7 @@ function Test-NetworkRule
         Assert-AreEqual $stoacl.IpRules[1].IPAddressOrRange $ip4;
         Assert-AreEqual $stoacl.VirtualNetworkRules $null
 		
-        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname  -NetworkRule (@{bypass="AzureServices";
+        Set-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname  -NetworkRuleSet (@{bypass="AzureServices";
 			ipRules=(@{IPAddressOrRange="$ip1";Action="allow"},
             @{IPAddressOrRange="$ip2";Action="allow"});
 			defaultAction="Allow"}) 

@@ -188,7 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
 ## NOTES
 

@@ -15,12 +15,14 @@
 using Microsoft.Azure.Management.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
 {
     /// <summary>
     /// 'Get-AzureRmServiceBusTopicKey' Cmdlet gives key detials for the given ServiceBus Topic Authorization Rule
     /// </summary>
+    [ObsoleteAttribute("'Get-AzureRmServiceBusTopicKey' cmdlet is mark as obsolete and will be depricated in upcoming breaking changes build. Please use the New cmdlet 'Get-AzureRmServiceBusKey'", false)]
     [Cmdlet(VerbsCommon.Get, ServiceBusTopicKeyVerb), OutputType(typeof(ListKeysAttributes))]
     public class GetAzureRmServiceBusTopicKey : AzureServiceBusCmdletBase
     {
@@ -36,26 +38,29 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        [Alias(AliasNamespaceName)]
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Topic Name.")]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        [Alias(AliasTopicName)]
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Topic AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        [Alias(AliasAuthorizationRuleName)]
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Get a notificationHub ConnectionString for the specified AuthorizationRule
-            ListKeysAttributes keys = Client.GetTopicKey(ResourceGroup, NamespaceName, TopicName, AuthorizationRuleName);
+            ListKeysAttributes keys = Client.GetTopicKey(ResourceGroup, Namespace, Topic, Name);
             WriteObject(keys);
         }
     }

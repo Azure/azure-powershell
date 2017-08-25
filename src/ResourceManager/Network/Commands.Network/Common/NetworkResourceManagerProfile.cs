@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>();
                 cfg.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
                 cfg.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
-                cfg.CreateMap<CNM.PSPrivateAccessService, MNM.PrivateAccessServicePropertiesFormat>();
+                cfg.CreateMap<CNM.PSServiceEndpoint, MNM.ServiceEndpointPropertiesFormat>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
                 cfg.CreateMap<MNM.Subnet, CNM.PSSubnet>();
                 cfg.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
                 cfg.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
-                cfg.CreateMap<MNM.PrivateAccessServicePropertiesFormat, CNM.PSPrivateAccessService>();
+                cfg.CreateMap<MNM.ServiceEndpointPropertiesFormat, CNM.PSServiceEndpoint>();
 
                 // TestPrivateIpAddressAvailability
                 // CNM to MNM
@@ -69,12 +69,13 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
 
-                // Avaliable private access services
+                // Avaliable endpoint services
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSPrivateAccessServiceResult, MNM.PrivateAccessServiceResult>();
+                cfg.CreateMap<CNM.PSEndpointServiceResult, MNM.EndpointServiceResult>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.PrivateAccessServiceResult, CNM.PSPrivateAccessServiceResult>();
+                cfg.CreateMap<MNM.EndpointServiceResult, CNM.PSEndpointServiceResult>();
+
 
                 // VirtualNetwork Peering
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
@@ -406,7 +407,8 @@ namespace Microsoft.Azure.Commands.Network
                     });
                 cfg.CreateMap<CNM.PSApplicationGatewayPathRule, MNM.ApplicationGatewayPathRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayUrlPathMap, MNM.ApplicationGatewayUrlPathMap>();
-                cfg.CreateMap<CNM.PSApplicationGatewayProbeHealthResponseMatch, MNM.ApplicationGatewayProbeHealthResponseMatch>();
+                cfg.CreateMap<CNM.PSApplicationGatewayProbeHealthResponseMatch, MNM.ApplicationGatewayProbeHealthResponseMatch>()
+                    .AfterMap((src, dest) => dest.StatusCodes = (src.StatusCodes == null) ? null : dest.StatusCodes);
                 cfg.CreateMap<CNM.PSApplicationGatewayProbe, MNM.ApplicationGatewayProbe>();
                 cfg.CreateMap<CNM.PSApplicationGatewayBackendAddress, MNM.ApplicationGatewayBackendAddress>();
                 cfg.CreateMap<CNM.PSApplicationGatewayBackendAddressPool, MNM.ApplicationGatewayBackendAddressPool>();
@@ -446,7 +448,8 @@ namespace Microsoft.Azure.Commands.Network
                     });
                 cfg.CreateMap<MNM.ApplicationGatewayPathRule, CNM.PSApplicationGatewayPathRule>();
                 cfg.CreateMap<MNM.ApplicationGatewayUrlPathMap, CNM.PSApplicationGatewayUrlPathMap>();
-                cfg.CreateMap<MNM.ApplicationGatewayProbeHealthResponseMatch, CNM.PSApplicationGatewayProbeHealthResponseMatch>();
+                cfg.CreateMap<MNM.ApplicationGatewayProbeHealthResponseMatch, CNM.PSApplicationGatewayProbeHealthResponseMatch>()
+                    .AfterMap((src, dest) => dest.StatusCodes = (src.StatusCodes == null) ? null : dest.StatusCodes);
                 cfg.CreateMap<MNM.ApplicationGatewayProbe, CNM.PSApplicationGatewayProbe>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendAddress, CNM.PSApplicationGatewayBackendAddress>();
                 cfg.CreateMap<MNM.ApplicationGatewayBackendAddressPool, CNM.PSApplicationGatewayBackendAddressPool>();

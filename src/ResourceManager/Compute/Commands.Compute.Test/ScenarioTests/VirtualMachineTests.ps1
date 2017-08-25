@@ -2830,6 +2830,7 @@ function Test-VirtualMachineGetStatus
         $a = $vms | Out-String;
         Write-Verbose($a);
         Assert-True {$a.Contains("PowerState");}
+        Assert-True {$a.Contains("Maintenance");}
 
         $vms = Get-AzureRmVM -Status;
         $a = $vms | Out-String;

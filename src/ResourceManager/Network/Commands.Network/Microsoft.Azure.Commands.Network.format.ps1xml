@@ -653,8 +653,8 @@
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PrivateAccessServices</Label>
-                <PropertyName>PrivateAccessServicesText</PropertyName>
+                <Label>ServiceEndpoints</Label>
+                <PropertyName>ServiceEndpointText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

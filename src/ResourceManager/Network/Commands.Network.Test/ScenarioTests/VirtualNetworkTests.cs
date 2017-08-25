@@ -63,9 +63,9 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualNetworkSubnetPrivateAccess()
+        public void TestVirtualNetworkSubnetServiceEndpoint()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkSubnetPrivateAccess");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkSubnetServiceEndpoint");
         }
     }
 }

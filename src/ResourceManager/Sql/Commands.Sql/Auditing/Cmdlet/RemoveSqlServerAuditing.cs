@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Alias("Remove-AzureRmSqlDatabaseServerAuditing")]
+    [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlServerAuditing' command to configure Blob auditing.", false)]
     public class RemoveSqlServerAuditing : SqlDatabaseServerAuditingCmdletBase
     {
         /// <summary>

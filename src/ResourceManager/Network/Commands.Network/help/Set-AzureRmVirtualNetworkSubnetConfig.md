@@ -16,14 +16,14 @@ Configures the goal state for a subnet configuration in a virtual network.
 ```
 Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
- [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
  [-NetworkSecurityGroupId <String>] [-RouteTableId <String>]
- [-PrivateAccessService <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,21 +140,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PrivateAccessService
-Specifies private access services associated with the subnet configuration.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -RouteTable
 Specifies the route table object that is associated with the network security group.
 
@@ -185,6 +170,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ServiceEndpoint
+Service Endpoint Value
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetwork
 Specifies the **VirtualNetwork** object that contains the subnet configuration.
 
@@ -205,7 +205,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSVirtualNetwork
+
+Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 
 ## NOTES
 
