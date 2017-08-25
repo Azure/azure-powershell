@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.15.3' 
+ModuleVersion = '0.15.4' 
   
 # ID used to uniquely identify this module  
 GUID = 'DA5816B5-97A6-4301-9AA0-72CC68C79F20'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.0'})
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.3.1'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -91,7 +91,7 @@ PrivateData = @{
         Tags = @("Azure", "ResourceManager", "ARM", "AzureStack")
 
         # A URL to the license for this module.
-        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/Azure/azure-powershell'
