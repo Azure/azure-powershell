@@ -151,6 +151,9 @@
   <data name="CommonTenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
   </data>
+  <data name="ContextCannotBeNull" xml:space="preserve">
+    <value>Context cannot be null.  Please log in using Add-AzureRmAccount.</value>
+  </data>
   <data name="ContextChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets at a different tenant and subscription</value>
   </data>

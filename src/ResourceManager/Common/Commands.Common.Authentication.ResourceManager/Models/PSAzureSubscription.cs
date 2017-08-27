@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -70,6 +72,18 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureSubscription(IAzureSubscription other)
         {
             this.CopyFrom(other);
+        }
+
+        /// <summary>
+        /// Convert a subscription from a PSObject
+        /// </summary>
+        /// <param name="other">ThePSObject to poulate this subscription from</param>
+        public PSAzureSubscription(PSObject other)
+        {
+            this.Id = other.GetProperty<string>(nameof(Id));
+            this.Name = other.GetProperty<string>(nameof(Name));
+            this.State = other.GetProperty<string>(nameof(State));
+            this.PopulateExtensions(other);
         }
 
         /// <summary>

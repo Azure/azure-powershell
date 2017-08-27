@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             bool result = Profile.TrySetDefaultContext(name);
             if (result)
             {
-                if (!!DefaultProfile.Contexts.ContainsKey(name))
+                if (!DefaultProfile.Contexts.ContainsKey(name))
                 {
                     var localContext = Profile.Contexts[name];
                     DefaultProfile.TrySetContext(name, localContext);

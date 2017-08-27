@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -69,6 +71,18 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureTenant(IAzureTenant other)
         {
             this.CopyFrom(other);
+        }
+
+        public PSAzureTenant(PSObject other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException(nameof(other));
+            }
+
+            this.Id = other.GetProperty<string>(nameof(Id));
+            this.Directory = other.GetProperty<string>(nameof(Directory));
+            this.PopulateExtensions(other);
         }
         /// <summary>
         /// The subscription id.

@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
+        /// </summary>
+        internal static string ContextCannotBeNull {
+            get {
+                return ResourceManager.GetString("ContextCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Targeting all subsequent cmdlets at a different tenant and subscription.
         /// </summary>
         internal static string ContextChangeWarning {

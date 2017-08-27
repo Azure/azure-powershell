@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Profile.Common
         public virtual IProfileOperations GetDefaultProfile()
         {
             IProfileOperations result = null;
-            var currentProfile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+            var currentProfile = DefaultProfile as AzureRmProfile;
             switch (GetContextModificationScope())
             {
                 case ContextModificationScope.Process:
@@ -61,7 +61,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
         public virtual ContextModificationScope GetContextModificationScope()
         {
             ContextModificationScope scope = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.Process ? ContextModificationScope.Process : ContextModificationScope.CurrentUser;
-            if (MyInvocation != null && MyInvocation.BoundParameters != null && MyInvocation.BoundParameters.ContainsKey(nameof(Scope)))
+            if (MyInvocation != null && MyInvocation.BoundParameters != null && MyInvocation.BoundParameters.ContainsKey(nameof(DefaultProfile)))
+            {
+                scope = ContextModificationScope.Process;
+            }
+            else if (MyInvocation != null && MyInvocation.BoundParameters != null && MyInvocation.BoundParameters.ContainsKey(nameof(Scope)))
             {
                 scope = Scope;
             }

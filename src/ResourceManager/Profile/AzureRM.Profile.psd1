@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+ RootModule = '.\Microsoft.Azure.Commands.Profile.dll'
 
 # Version number of this module.
 ModuleVersion = '3.2.1'
@@ -54,19 +54,19 @@ CLRVersion = '4.0'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = '.\Microsoft.Azure.Commands.Profile.types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Profile.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
+#NestedModules = @('')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

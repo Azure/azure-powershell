@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -96,6 +99,44 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 this.VersionProfile = context.VersionProfile;
                 this.CopyPropertiesFrom(context);
             }
+        }
+
+        /// <summary>
+        /// Convert a context from a PSObject
+        /// </summary>
+        /// <param name="other"></param>
+        public PSAzureContext(PSObject other)
+        {
+            if (other == null || other.Properties == null)
+            {
+                throw new ArgumentNullException(nameof(other));
+            }
+            PSObject property;
+            if (other.TryGetProperty(nameof(Account), out property))
+            {
+                Account = new PSAzureRmAccount(property);
+            }
+            if (other.TryGetProperty(nameof(Environment), out property))
+            {
+                Environment = new PSAzureEnvironment(property);
+            }
+            if (other.TryGetProperty(nameof(Subscription), out property))
+            {
+                Subscription = new PSAzureSubscription(property);
+            }
+            if (other.TryGetProperty(nameof(Tenant), out property))
+            {
+                Tenant = new PSAzureTenant(property);
+            }
+            if (other.TryGetProperty(nameof(TokenCache), out property))
+            {
+                AzureTokenCache cache = new AzureTokenCache();
+                cache.Populate(property);
+                TokenCache = new AuthenticationStoreTokenCache(cache);
+            }
+
+            VersionProfile = other.GetProperty<string>(nameof(VersionProfile));
+            this.PopulateExtensions(other);
         }
 
         /// <summary>

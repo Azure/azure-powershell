@@ -151,13 +151,6 @@
     <Compile Include="Feedback\SendFeedback.cs" />
     <Compile Include="Models\AzureRmProfileExtensions.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
-    <Compile Include="Models\PSAzureContext.cs" />
-    <Compile Include="Models\PSAzureEnvironment.cs" />
-    <Compile Include="Models\PSAzureFeedback.cs" />
-    <Compile Include="Models\PSAzureProfile.cs" />
-    <Compile Include="Models\PSAzureRmAccount.cs" />
-    <Compile Include="Models\PSAzureSubscription.cs" />
-    <Compile Include="Models\PSAzureTenant.cs" />
     <Compile Include="Models\RMProfileClient.cs" />
     <Compile Include="Models\SimpleAccessToken.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />
@@ -186,6 +179,10 @@
     <None Include="AzureRmProfileStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
