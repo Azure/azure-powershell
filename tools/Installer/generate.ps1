@@ -14,7 +14,10 @@
 
 param(
     [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig
+	[string] $buildConfig,
+	
+	[Parameter(Mandatory = $false, Position = 1)]
+	[string] $BuildProfile
 )
 
 $VerbosePreference = 'Continue'
@@ -23,6 +26,12 @@ if ([string]::IsNullOrEmpty($buildConfig))
 {
 	Write-Verbose "Setting build configuration to 'Release'"
 	$buildConfig = 'Release'
+}
+
+if ([string]::IsNullOrEmpty($BuildProfile))
+{
+	Write-Verbose "Setting build Profile to 'default'"
+	$BuildProfile = 'default'
 }
 
 if($env:AzurePSRoot -eq $null)
@@ -34,7 +43,15 @@ Write-Host $env:AzurePSRoot
 
 Write-Verbose "Build configuration is set to $buildConfig"
 
-$output = Join-Path $env:AzurePSRoot "src\Package\$buildConfig"
+if ($BuildProfile -eq "Stack")
+{
+	$output = Join-Path $env:AzurePSRoot "src\Stack\$buildConfig"
+}
+else
+{
+	$output = Join-Path $env:AzurePSRoot "src\Package\$buildConfig"	
+}
+
 Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
@@ -76,7 +93,13 @@ Get-ChildItem -Include $webdependencies -Recurse -Path $output | Remove-Item -Fo
 
 if (Get-Command "heat.exe" -ErrorAction SilentlyContinue)
 {
-	$azureFiles = Join-Path $env:AzurePSRoot 'setup\azurecmdfiles.wxi'
+	if ($BuildProfile -eq "Stack")
+	{
+		$azureFiles = Join-Path $env:AzurePSRoot 'setup\StackSetup\azurecmdfiles.wxi'
+	}
+	else {
+		$azureFiles = Join-Path $env:AzurePSRoot 'setup\azurecmdfiles.wxi'
+	}
     heat dir $output -srd -sfrag -sreg -ag -g1 -cg azurecmdfiles -dr PowerShellFolder -var var.sourceDir -o $azureFiles
     
 	# Replace <Wix> with <Include>

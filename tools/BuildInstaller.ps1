@@ -52,6 +52,7 @@ $env:path = $env:path + ";$wixInstallRoot"
 
 # Regenerate the installer files
 &"$env:AzurePSRoot\tools\Installer\generate.ps1" 'Debug'
+&"$env:AzurePSRoot\tools\Installer\generate.ps1" 'Debug' 'Stack'
 
 # Build the cmdlets and installer in debug mode
 msbuild "$env:AzurePSRoot\build.proj" /t:Build
