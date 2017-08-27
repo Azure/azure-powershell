@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -90,6 +91,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public List<ContainerBase> ListProtectionContainers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public AzureVmClientScriptInfo ProvisioninItemLevelRecovery(out string content)
+
         {
             throw new NotImplementedException();
         }

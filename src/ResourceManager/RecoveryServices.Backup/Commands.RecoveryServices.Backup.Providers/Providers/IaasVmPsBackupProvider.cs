@@ -27,6 +27,11 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using SystemNet = System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -277,6 +282,72 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             }
             return rp;
+        }
+
+        /// <summary>
+        /// Fetches the detail info for the given recovery point
+        /// </summary>
+        /// <returns>Recovery point detail as returned by the service</returns>
+        public AzureVmClientScriptInfo ProvisioninItemLevelRecovery(out string content)
+        {
+            AzureVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
+                as AzureVmRecoveryPoint;
+            content = string.Empty;
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
+
+            IaasVMILRRegistrationRequest registrationRequest =
+                new IaasVMILRRegistrationRequest();
+            registrationRequest.RecoveryPointId = rp.RecoveryPointId;
+            registrationRequest.VirtualMachineId = rp.SourceResourceId;
+            registrationRequest.RenewExistingRegistration = (rp.IlrSessionActive == false) ? false : true;
+
+            var ilRResponse = ServiceClientAdapter.ProvisioninItemLevelRecovery(
+                containerUri, protectedItemName, rp.RecoveryPointId, registrationRequest);
+
+            IEnumerable<string> ie =
+                    ilRResponse.Response.Headers.GetValues("Azure-AsyncOperation");
+            string asyncHeader = string.Empty;
+            foreach (string s in ie)
+            {
+                asyncHeader = s;
+            }
+
+            AzureVmClientScriptInfo result = null;
+            var response = TrackingHelpers.GetOperationStatus(
+                ilRResponse,
+                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(operationId));
+
+            if (response != null && response.Status != null &&
+                   response.Properties != null && ((OperationStatusProvisionILRExtendedInfo)
+                   response.Properties).RecoveryTarget != null)
+            {
+                InstantItemRecoveryTarget recoveryTarget =
+                    ((OperationStatusProvisionILRExtendedInfo)
+                    response.Properties).RecoveryTarget;
+
+                if (recoveryTarget.ClientScripts.Count != 0)
+                {
+                    if (recoveryTarget.ClientScripts.Count == 2)
+                    {
+                        // clientScriptForConnection.OsType == "Windows"
+                        result = this.GenerateILRResponseForWindowsVMs(
+                                recoveryTarget.ClientScripts[1], out content);
+                    }
+                    else
+                    {
+                        // clientScriptForConnection.OsType == "Linux"
+
+                        result =  this.GenerateILRResponseForLinuxVMs(
+                                recoveryTarget.ClientScripts[0],
+                                protectedItemName, rp.RecoveryPointTime.ToString(), out content);
+                    }
+                }
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -1057,5 +1128,161 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         #endregion
+
+        /// <summary>
+        /// Generates ILR Response object for Windows VMs
+        /// </summary>
+        /// <param name="clientScriptForConnection"></param>
+        /// <returns></returns>
+        private AzureVmClientScriptInfo GenerateILRResponseForWindowsVMs(
+            ClientScriptForConnect clientScriptForConnection, out string content)
+        {
+            try
+            {
+                SystemNet.HttpWebResponse webResponse =
+                    TrackingHelpers.RetryHttpWebRequest(
+                        "", //clientScriptForConnection.Url,
+                        3);
+
+                if (SystemNet.HttpStatusCode.OK == webResponse.StatusCode)
+                {
+                    using (Stream myResponseStream = webResponse.GetResponseStream())
+                    {
+                        byte[] myBuffer = new byte[4096];
+                        int bytesRead;
+                        MemoryStream memoryStream = new MemoryStream();
+                        while ((bytesRead =
+                            myResponseStream.Read(myBuffer, 0, myBuffer.Length)) > 0)
+                        {
+                            memoryStream.Write(myBuffer, 0, bytesRead);
+                        }
+                        content = Convert.ToBase64String(
+                            memoryStream.ToArray());
+                        string suffix = ""; //clientScriptForConnection.ScriptNameSuffix;
+                        string password = this.RemovePasswordFromSuffixAndReturn(ref suffix);
+                        string fileName = this.ConstructFileName(
+                            suffix, clientScriptForConnection.ScriptExtension);
+
+                        return new AzureVmClientScriptInfo(
+                            clientScriptForConnection.OsType, password, fileName);
+                    }
+                }
+                throw new Exception(
+                    "Error in Web Request to download center for ILR script" +
+                    webResponse.StatusCode);
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.WriteWarning(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Generates ILR Response object for Linux VMs.
+        /// </summary>
+        /// <param name="clientScriptForConnection"></param>
+        /// <param name="protectedItemName"></param>
+        /// <param name="recoveryPointTime"></param>
+        /// <returns></returns>
+        private AzureVmClientScriptInfo GenerateILRResponseForLinuxVMs(
+            ClientScriptForConnect clientScriptForConnection,
+            string protectedItemName, string recoveryPointTime, out string content)
+        {
+            try
+            {
+                content = clientScriptForConnection.ScriptContent;
+                string suffix = ""; // clientScriptForConnection.ScriptNameSuffix;
+                string fileName, password;
+                if (suffix != null)
+                {
+                    this.RemovePasswordFromSuffixAndReturn(ref suffix);
+                    fileName = this.ConstructFileName(
+                        suffix, clientScriptForConnection.ScriptExtension);
+                }
+                else
+                {
+                    string operatingSystemName = clientScriptForConnection.OsType;
+                    string vmName = protectedItemName.Split(';')[3];
+                    fileName = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "{0}_{1}_{2}" + clientScriptForConnection.ScriptExtension,
+                            operatingSystemName,
+                            vmName,
+                            recoveryPointTime);
+                }
+                password = this.ReplacePasswordInScriptContentAndReturn(ref content);
+
+                return new AzureVmClientScriptInfo(
+                    clientScriptForConnection.OsType, password, fileName);
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.WriteWarning(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Removes password from ScriptNameSuffix and returns it.
+        /// </summary>
+        /// <param name="suffix"></param>
+        /// <returns></returns>
+        private string RemovePasswordFromSuffixAndReturn(ref string suffix)
+        {
+            int lastIndexOfUnderScore = suffix.LastIndexOf('_');
+            int passwordOffset = lastIndexOfUnderScore +
+                33;
+            string password = suffix.Substring(
+                passwordOffset, 15);
+            suffix = suffix.Remove(
+                passwordOffset, 15);
+            return password;
+        }
+
+        /// <summary>
+        /// Constructs ILR script file name
+        /// </summary>
+        /// <param name="suffix"></param>
+        /// <param name="extension"></param>
+        /// <returns></returns>
+        private string ConstructFileName(string suffix, string extension)
+        {
+            string format = "{0}" + extension;
+            return string.Format(
+                    CultureInfo.InvariantCulture,
+                    format,
+                    suffix);
+        }
+
+        /// <summary>
+        /// Replaces password in ILR script with dummy password and returns it
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        private string ReplacePasswordInScriptContentAndReturn(ref string content)
+        {
+            // decode to text format from Base 64 encoded format
+            var contentBytes = Convert.FromBase64String(content);
+            content = Encoding.UTF8.GetString(contentBytes);
+
+            string targetPasswordString =
+                "TargetPassword=\"";
+            string password = content.Substring(
+                content.IndexOf(
+                    targetPasswordString) + targetPasswordString.Length, 15);
+
+            string pattern = targetPasswordString + ".*\"";
+            string replacement = 
+                targetPasswordString + "UserInput012345\"";
+            Regex rgx = new Regex(pattern);
+            content = rgx.Replace(content, replacement);
+
+            // ecode back to Base 64 format
+            contentBytes = Encoding.UTF8.GetBytes(content);
+            content = Convert.ToBase64String(contentBytes);
+
+            return password;
+        }
     }
 }

@@ -231,6 +231,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Client Script Details for Connection
+    /// </summary>
+    public class ClientScriptInfo : ObjectBase
+    {
+        public ClientScriptInfo()
+            : base()
+        {
+        }
+    }
+
+    /// <summary>
     /// Base class for backup policy.
     /// </summary>
     public class PolicyBase : ManagementContext
