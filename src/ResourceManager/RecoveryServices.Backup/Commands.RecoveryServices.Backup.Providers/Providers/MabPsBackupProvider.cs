@@ -22,6 +22,7 @@ using Microsoft.Rest.Azure.OData;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -86,6 +87,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public AzureVmClientScriptInfo ProvisioninItemLevelRecovery(out string content)
+
         {
             throw new NotImplementedException();
         }
