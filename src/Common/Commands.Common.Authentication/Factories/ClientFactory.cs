@@ -352,6 +352,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public ConcurrentDictionary<ProductInfoHeaderValue, string> UserAgents { get; set; }
 
+        ProductInfoHeaderValue[] IClientFactory.UserAgents
+        {
+            get
+            {
+                ProductInfoHeaderValue[] result = null;
+                if (UserAgents != null && UserAgents.Keys != null)
+                {
+                    result = UserAgents.Keys.ToArray();
+                }
+
+                return result;
+            }
+        }
+
         public DelegatingHandler[] GetCustomHandlers()
         {
             _handlersLock.EnterReadLock();

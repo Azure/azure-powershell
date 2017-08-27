@@ -112,5 +112,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// </summary>
         /// <param name="name">Name</param>
         void RemoveUserAgent(string name);
+
+        ProductInfoHeaderValue[] UserAgents { get; }
     }
 }
