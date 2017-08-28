@@ -13,7 +13,7 @@ Returns information about the sync schema of a member database or a hub database
 
 ```
 Get-AzureRmSqlSyncSchema [-SyncGroupName] <String> [-SyncMemberName <String>] [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+ [-DatabaseName] <String> [-ResourceGroupName] <String>
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,7 @@ Tables                     LastUpdateTime
 ```
 
 This command gets the sync schema for the hub database in the sync group syncGroup01.
+
 
 ### Example 1.2: Get the sync schema for a hub database, and expand Tables
 ```
@@ -49,13 +50,14 @@ QuotedName : [dbo].[Table_2]
 
 This command gets the sync schema for the hub database in the sync group syncGroup01 and expand Tables property.
 
+
 ### Example 2: Get the sync schema for a member database
 ```
 PS C:\>Get-AzureRmSqlSyncSchema -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "database01" -SyncGroupName "syncGroup01" -SyncMemberName "syncMember01"
 The schema payload is the same as Example 1.
 ```
-
 This command gets the sync schema for the member database in the sync member syncMember01.
+
 
 ## PARAMETERS
 
@@ -133,9 +135,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -37,13 +37,7 @@
 * Marked parameter -ProbeEnabled as obsolete
     - Add-AzureRmApplicationGatewayBackendHttpSettings
     - New-AzureRmApplicationGatewayBackendHttpSettings
-    - Set-AzureRmApplicationGatewayBackendHttpSettings 
-* Added support for endpoint services to Virtual Network Subnets
-    - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
-    - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
-    - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
-* Added cmdlet to list endpoint services available in the location
-    - Get-AzureRmVirtualNetworkAvailableEndpointService
+    - Set-AzureRmApplicationGatewayBackendHttpSettings
 
 ## Version 4.2.1
 

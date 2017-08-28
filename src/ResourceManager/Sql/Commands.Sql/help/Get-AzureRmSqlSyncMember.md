@@ -13,7 +13,7 @@ Returns information about Azure SQL Database Sync Members.
 
 ```
 Get-AzureRmSqlSyncMember [-Name <String>] [-SyncGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
+ [-DatabaseName] <String> [-ResourceGroupName] <String>
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
 MemberDatabaseUserName      : myAccount
 MemberDatabasePassword      :  
-SyncState                   : Good
+SyncState                   : Good 
 ```
 
 This command gets information about all the Azure SQL Database Sync Member assigned to the sync group SyncGroup01.
@@ -77,7 +77,7 @@ MemberServerName            : memberServer01.full.dns.name
 MemberDatabaseName          : memberDatabase01
 MemberDatabaseUserName      : myAccount
 MemberDatabasePassword      : 
-SyncState                   : Good
+SyncState                   : Good 
 ```
 
 This command gets information about the Azure SQL Database Sync Member with name "SyncMember01"
@@ -158,9 +158,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
