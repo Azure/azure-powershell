@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
         bool TrySetContext(IAzureContext context, out string name);
         bool TrySetDefaultContext(string name);
         bool TrySetDefaultContext(IAzureContext context);
+
+        bool TrySetDefaultContext(string name, IAzureContext context);
         bool TrySetEnvironment(IAzureEnvironment environment, out IAzureEnvironment mergedEnvironment);
         IAzureContext DefaultContext { get; }
         bool HasEnvironment(string name);

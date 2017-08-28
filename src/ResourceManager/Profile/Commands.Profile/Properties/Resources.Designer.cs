@@ -169,6 +169,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Context &apos;{0}&apos;.
+        /// </summary>
+        internal static string ContextNameTarget {
+            get {
+                return ResourceManager.GetString("ContextNameTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No autosave setting detected in variable {0}.  Using default autosave setting (autosave enabled)..
         /// </summary>
         internal static string CouldNotRetrieveAutosaveSetting {
@@ -421,6 +430,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overwrite existing context &apos;{0}&apos;.
+        /// </summary>
+        internal static string ReplaceContextCaption {
+            get {
+                return ResourceManager.GetString("ReplaceContextCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to replace existing context &apos;{0}&apos;?.
+        /// </summary>
+        internal static string ReplaceContextQuery {
+            get {
+                return ResourceManager.GetString("ReplaceContextQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Resource Manager context was not properly initialized.  Please load the module again..
         /// </summary>
         internal static string RmProfileNull {
@@ -498,6 +525,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SendFeedbackRecommendationQuestion {
             get {
                 return ResourceManager.GetString("SendFeedbackRecommendationQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting property &apos;{0}&apos;=&apos;{1}&apos;.
+        /// </summary>
+        internal static string SetPropertyAction {
+            get {
+                return ResourceManager.GetString("SetPropertyAction", resourceCulture);
             }
         }
         

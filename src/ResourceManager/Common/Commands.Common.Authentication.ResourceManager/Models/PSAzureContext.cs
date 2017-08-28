@@ -140,6 +140,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
         }
 
         /// <summary>
+        /// The name of the context. The context may be selected by name
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
         public IAzureAccount Account { get; set; }

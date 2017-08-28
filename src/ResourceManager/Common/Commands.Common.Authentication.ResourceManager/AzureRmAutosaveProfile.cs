@@ -162,6 +162,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             return result;
         }
 
+        public bool TrySetDefaultContext(string name, IAzureContext context)
+        {
+            bool result = false;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                result = TrySetDefaultContext(context);
+            }
+            else if (TrySetContext(name, context))
+            {
+                result = TrySetDefaultContext(name);
+            }
+
+            return result;
+        }
+
         public bool TrySetEnvironment(IAzureEnvironment environment, out IAzureEnvironment mergedEnvironment)
         {
             bool result = Profile.TrySetEnvironment(environment, out mergedEnvironment);
@@ -223,6 +238,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
             _default.CopyPropertiesFrom(other);
             return result;
         }
+
         public AzureRmProfile ToProfile()
         {
             return Profile;
@@ -232,6 +248,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
         {
             Dispose(true);
         }
-
     }
 }

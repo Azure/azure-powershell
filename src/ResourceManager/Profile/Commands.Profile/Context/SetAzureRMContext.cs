@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models;
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Profile
         private const string TenantOnlyParameterSet = "Tenant";
         private const string ContextParameterSet = "Context";
 
-        [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true, Position = 0)]
         public PSAzureContext Context { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string Tenant { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = true,
-                    HelpMessage = "Subscription Name or Id")]
+                    HelpMessage = "Subscription Name or Id", Position =0)]
         [Alias("SubscriptionId", "SubscriptionName")]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
@@ -58,7 +59,11 @@ namespace Microsoft.Azure.Commands.Profile
         public IDictionary<string, string> ExtendedProperty { get; set;}
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the context")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -67,11 +72,11 @@ namespace Microsoft.Azure.Commands.Profile
                 if (ShouldProcess(string.Format(Resources.ChangingContextUsingPipeline, Context.Tenant, Context.Subscription),
                     Resources.ContextChangeWarning, string.Empty))
                 {
-                    ModifyContext((profile, client) =>
+                    SetContextWithOverwritePrompt((profile, client, name) =>
                         {
-                            AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription,
+                            profile.SetContextWithCache(new AzureContext(Context.Subscription,
                               Context.Account,
-                              Context.Environment, Context.Tenant));
+                              Context.Environment, Context.Tenant), name);
                             CompleteContextProcessing(profile);
                         });
                 }
@@ -81,9 +86,9 @@ namespace Microsoft.Azure.Commands.Profile
                 if (ShouldProcess(string.Format(Resources.ChangingContextTenant, Tenant),
                     Resources.TenantChangeWarning, string.Empty))
                 {
-                    ModifyContext((profile, client) =>
+                    SetContextWithOverwritePrompt((profile, client, name) =>
                     {
-                        client.SetCurrentContext(null, Tenant);
+                        client.SetCurrentContext(null, Tenant, name);
                         CompleteContextProcessing(profile);
                     });
                 }
@@ -93,9 +98,9 @@ namespace Microsoft.Azure.Commands.Profile
                 if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, Subscription),
                         Resources.SubscriptionChangeWarning, string.Empty))
                 {
-                    ModifyContext((profile, client) =>
+                    SetContextWithOverwritePrompt((profile, client, name) =>
                     {
-                        client.SetCurrentContext(Subscription, Tenant);
+                        client.SetCurrentContext(Subscription, Tenant, name);
                         CompleteContextProcessing(profile);
                     });
                 }
@@ -128,14 +133,46 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 foreach (var property in ExtendedProperty)
                 {
-                    if (ShouldProcess(string.Format("Context '{0}'", Name??"default"), string.Format("Setting property '{0}'='{1}' ", property.Key, property.Value)))
+                    if (ShouldProcess(string.Format(Resources.ContextNameTarget, Name??"default"), 
+                        string.Format(Resources.SetPropertyAction, property.Key, property.Value)))
                     {
                         context.SetProperty(property.Key, property.Value);
                     }
                 }
             }
 
-            WriteObject(new PSAzureContext(context));
+            var psContext = new PSAzureContext(context);
+            string name = Name;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                profile.TryFindContext(context, out name);
+            }
+
+            psContext.Name = name;
+            WriteObject(psContext);
+        }
+
+        bool CheckForExistingContext(AzureRmProfile profile, string name)
+        {
+            return name != null && profile != null && profile.Contexts != null && profile.Contexts.ContainsKey(name);
+        }
+
+        void SetContextWithOverwritePrompt(Action<AzureRmProfile, RMProfileClient, string> setContextAction)
+        {
+            string name = null;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(Name)))
+            {
+                name = Name;
+            }
+
+            AzureRmProfile profile = DefaultProfile as AzureRmProfile;
+            if (!CheckForExistingContext(profile, name) 
+                || Force.IsPresent 
+                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name), 
+                string.Format(Resources.ReplaceContextCaption, name)))
+            {
+                ModifyContext((prof, client) => setContextAction(prof, client, name));
+            }
         }
     }
 }

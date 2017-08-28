@@ -60,50 +60,18 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public override bool CanConvertTo(object sourceValue, Type destinationType)
         {
-            bool result = false;
-            if (sourceValue != null && destinationType != null)
-            {
-                PSObject sourceObject = sourceValue as PSObject;
-                result = IsContainerType(sourceObject) || IsContextType(sourceObject) && destinationType == typeof(IAzureContextContainer);
-            }
-
-            return result;
+            return false;
         }
 
         public override bool CanConvertTo(PSObject sourceValue, Type destinationType)
         {
-            bool result = false;
-            if (sourceValue != null && destinationType != null)
-            {
-                PSObject sourceObject = sourceValue as PSObject;
-                result = IsContainerType(sourceObject) || IsContextType(sourceObject) && destinationType == typeof(IAzureContextContainer);
-            }
-
-            return result;
+            return false;
         }
 
         public override object ConvertFrom(PSObject sourceValue, Type destinationType, IFormatProvider formatProvider, bool ignoreCase)
         {
             object result = null;
             if (CanConvertFrom(sourceValue, destinationType))
-            {
-                if (IsContainerType(sourceValue))
-                {
-                    result = ConvertContainerObject(sourceValue);
-                }
-                else if (IsContextType(sourceValue))
-                {
-                    result = ConvertContextObject(sourceValue);
-                }
-            }
-
-            return result;
-        }
-
-        public override object ConvertTo(PSObject sourceValue, Type destinationType, IFormatProvider formatProvider, bool ignoreCase)
-        {
-            object result = null;
-            if (CanConvertTo(sourceValue, destinationType))
             {
                 if (IsContainerType(sourceValue))
                 {
@@ -137,46 +105,53 @@ namespace Microsoft.Azure.Commands.Profile.Models
             return result;
         }
 
+        public override object ConvertTo(PSObject sourceValue, Type destinationType, IFormatProvider formatProvider, bool ignoreCase)
+        {
+            return null;
+        }
+
+
         public override object ConvertTo(object sourceValue, Type destinationType, IFormatProvider formatProvider, bool ignoreCase)
         {
-            object result = null;
-            if (CanConvertTo(sourceValue, destinationType))
-            {
-                var sourceObject = sourceValue as PSObject;
-                if (IsContainerType(sourceObject))
-                {
-                    result = ConvertContainerObject(sourceObject);
-                }
-                else if (IsContextType(sourceObject))
-                {
-                    result = ConvertContextObject(sourceObject);
-                }
-            }
-
-            return result;
+            return null;
         }
 
         object ConvertContainerObject(PSObject source)
         {
-            PSAzureProfile result = new PSAzureProfile();
-            Hashtable envs;
-            if (source.TryGetProperty(nameof(PSAzureProfile.Environments), out envs))
+            PSAzureProfile result = source?.BaseObject as PSAzureProfile;
+            if (result == null)
             {
-                AddEnvironments(envs, result.Environments);
-            }
+                result = new PSAzureProfile();
+                Hashtable envs;
+                if (source.TryGetProperty(nameof(PSAzureProfile.Environments), out envs))
+                {
+                    AddEnvironments(envs, result.Environments);
+                }
 
-            PSObject context;
-            if (source.TryGetProperty(nameof(PSAzureProfile.Context), out context))
-            {
-                result.Context = new PSAzureContext(context);
+                PSObject context;
+                if (source.TryGetProperty(nameof(PSAzureProfile.Context), out context))
+                {
+                    result.Context = new PSAzureContext(context);
+                }
             }
 
             return (AzureRmProfile)result;
         }
+
         object ConvertContextObject(PSObject source)
         {
             PSAzureProfile result = new PSAzureProfile();
-            result.Context = new PSAzureContext(source);
+            var contextSource = source?.BaseObject as PSAzureContext;
+            if (contextSource != null)
+            {
+                result.Context = contextSource;
+            }
+            else
+            {
+                result.Context = new PSAzureContext(source);
+
+            }
+
             return (AzureRmProfile)result;
         }
 

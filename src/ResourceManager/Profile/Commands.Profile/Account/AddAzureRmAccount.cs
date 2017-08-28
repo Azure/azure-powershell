@@ -115,6 +115,13 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Name of the default context from this login")]
+        [ValidateNotNullOrEmpty]
+        public string ContextName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
+        public SwitchParameter Force { get; set; }
+
         protected override IAzureContext DefaultContext
         {
             get
@@ -199,7 +206,7 @@ namespace Microsoft.Azure.Commands.Profile
                     InitializeProfileProvider();
                 }
 
-                ModifyContext((localProfile, profileClient) =>
+                SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
                    WriteObject((PSAzureProfile)profileClient.Login(
                         azureAccount,
@@ -208,8 +215,32 @@ namespace Microsoft.Azure.Commands.Profile
                         subscriptionId,
                         subscriptionName,
                         password,
-                        (s) => WriteWarning(s)));
+                        (s) => WriteWarning(s),
+                        name));
                });
+            }
+        }
+
+        bool CheckForExistingContext(AzureRmProfile profile, string name)
+        {
+            return name != null && profile != null && profile.Contexts != null && profile.Contexts.ContainsKey(name);
+        }
+
+        void SetContextWithOverwritePrompt(Action<AzureRmProfile, RMProfileClient, string> setContextAction)
+        {
+            string name = null;
+            if (MyInvocation.BoundParameters.ContainsKey(nameof(ContextName)))
+            {
+                name = ContextName;
+            }
+
+            AzureRmProfile profile = DefaultProfile as AzureRmProfile;
+            if (!CheckForExistingContext(profile, name)
+                || Force.IsPresent
+                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
+                string.Format(Resources.ReplaceContextCaption, name)))
+            {
+                ModifyContext((prof, client) => setContextAction(prof, client, name));
             }
         }
 

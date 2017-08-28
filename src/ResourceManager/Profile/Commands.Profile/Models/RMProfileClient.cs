@@ -105,7 +105,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string subscriptionId,
             string subscriptionName,
             SecureString password, 
-            Action<string> promptAction)
+            Action<string> promptAction,
+            string name = null)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -212,7 +213,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
 
                 var newContext = new AzureContext(account, environment, newTenant);
-                if (!_profile.TrySetDefaultContext(newContext))
+                if (!_profile.TrySetDefaultContext(name, newContext))
                 {
                     WriteWarningMessage(string.Format(ProfileMessages.CannotSetDefaultContext, newContext.ToString()));
                 }
@@ -220,7 +221,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else
             {
                 var newContext = new AzureContext(newSubscription, account, environment, newTenant);
-                if (!_profile.TrySetDefaultContext(newContext))
+                if (!_profile.TrySetDefaultContext(name, newContext))
                 {
                     WriteWarningMessage(string.Format(ProfileMessages.CannotSetDefaultContext, newContext.ToString()));
                 }
@@ -238,7 +239,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return _profile.ToProfile();
         }
 
-        public IAzureContext SetCurrentContext(string subscriptionNameOrId, string tenantId)
+        public IAzureContext SetCurrentContext(string subscriptionNameOrId, string tenantId, string name = null)
         {
             IAzureSubscription subscription = null;
             IAzureTenant tenant = null;
@@ -261,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     throw new ArgumentException(ProfileMessages.SubscriptionOrTenantRequired);
                 }
 
-                tenant = string.IsNullOrWhiteSpace(tenantId) ? context.Tenant : CreateTenant(tenantId);
+                tenant = string.IsNullOrWhiteSpace(tenantId) ? (string.IsNullOrWhiteSpace(subscription.GetTenant())? context.Tenant : CreateTenant(subscription.GetTenant())):  CreateTenant(tenantId);
             }
             else if (!string.IsNullOrWhiteSpace(tenantId))
             {
@@ -274,8 +275,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             context.WithTenant(tenant).WithSubscription(subscription);
-            _profile.TrySetDefaultContext(context);
-
+            _profile.TrySetDefaultContext(name, context);
             return context;
         }
 

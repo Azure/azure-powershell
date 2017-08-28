@@ -157,6 +157,10 @@
   <data name="ContextChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets at a different tenant and subscription</value>
   </data>
+  <data name="ContextNameTarget" xml:space="preserve">
+    <value>Context '{0}'</value>
+    <comment>{0} = context name</comment>
+  </data>
   <data name="CouldNotRetrieveAutosaveSetting" xml:space="preserve">
     <value>No autosave setting detected in variable {0}.  Using default autosave setting (autosave enabled).</value>
     <comment>{0} = variable name</comment>
@@ -254,6 +258,14 @@
     <value>Rename context '{0}' to '{1}'</value>
     <comment>{0} = source context name, {1} = target context name</comment>
   </data>
+  <data name="ReplaceContextCaption" xml:space="preserve">
+    <value>Overwrite existing context '{0}'</value>
+    <comment>{0} = context name</comment>
+  </data>
+  <data name="ReplaceContextQuery" xml:space="preserve">
+    <value>Are you sure you want to replace existing context '{0}'?</value>
+    <comment>{0} = context name</comment>
+  </data>
   <data name="RmProfileNull" xml:space="preserve">
     <value>The Resource Manager context was not properly initialized.  Please load the module again.</value>
   </data>
@@ -281,6 +293,10 @@
   </data>
   <data name="SendFeedbackRecommendationQuestion" xml:space="preserve">
     <value>With zero (0) being the least and ten (10) being the most, how likely are you to recommend Azure PowerShell to a friend or colleague?</value>
+  </data>
+  <data name="SetPropertyAction" xml:space="preserve">
+    <value>Setting property '{0}'='{1}'</value>
+    <comment>{0} = key, {1} = value</comment>
   </data>
   <data name="SubscriptionChangeWarning" xml:space="preserve">
     <value>Targeting all subsequent cmdlets in this session at a different subscription</value>

@@ -15,6 +15,20 @@
     </Members>
   </Type>
   <Type>
+    <Name>Microsoft.Azure.Commands.Profile.Models.PSAzureContext</Name>
+    <Members>
+      <MemberSet>
+        <Name>PSStandardMembers</Name>
+        <Members>
+          <NoteProperty>
+            <Name>SerializationDepth</Name>
+            <Value>10</Value>
+          </NoteProperty>
+        </Members>
+      </MemberSet>
+    </Members>
+  </Type>
+  <Type>
     <Name>Microsoft.Azure.Commands.Common.Authentication.AuthenticationStoreTokenCache</Name>
     <Members>
       <MemberSet>
