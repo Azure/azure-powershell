@@ -32,7 +32,17 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         public virtual string RetrieveDomain(string portalEndpoint)
         {
             // Example format:: portal endpoint: "management.azure.com"; returns: "azure.com"
+            if (string.IsNullOrEmpty(portalEndpoint))
+            {
+                throw new ArgumentException("Invalid Endpoint provided. Portal Endpoint cannot be null.");
+            }
+
             string domainHost = new Uri(portalEndpoint).Host;
+            if (string.IsNullOrEmpty(domainHost))
+            {
+                throw new ApplicationException("Invalid Endpoint provided. Portal Endpoint cannot be null.");
+            }
+
             return domainHost.Replace(domainHost.Split('.')[0], "").TrimStart('.');
         }
 
@@ -52,8 +62,17 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
             MetadataResponse response = null;
             using (HttpClient client = new HttpClient())
             {
-                string responseJson = await client.GetStringAsync(url).ConfigureAwait(false);
-                response = JsonConvert.DeserializeObject<MetadataResponse>(responseJson);
+                HttpResponseMessage responseJson = await client.GetAsync(url).ConfigureAwait(false);
+                string content = responseJson.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
+
+                try
+                {
+                    response = JsonConvert.DeserializeObject<MetadataResponse>(content);
+                }
+                catch (Exception ex)
+                {
+                    throw new JsonException(ex.Message);
+                }
             }
 
             if ((null == response) || string.IsNullOrEmpty(response.GalleryEndpoint) || string.IsNullOrEmpty(response.GraphEndpoint)

@@ -159,14 +159,15 @@ namespace Microsoft.Azure.Commands.Profile
             		{
                         // Simply use built-in environments if the ARM endpoint matches the ARM endpoint for a built-in environment
                         ResourceManagerEndpoint = ARMEndpoint;
-                        bool isPublicArmEndpoint = AzureEnvironment.PublicEnvironments.Select
-                            (publicEnv => AzureRmProfileProvider.Instance.Profile.GetEnvironment(publicEnv.Key))
-                                                                   .Any(env => string.Equals(
-                                                                                      ARMEndpoint,
-                                                                                      env.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager),
-                                                                                      StringComparison.CurrentCultureIgnoreCase));
 
-                        if (!isPublicArmEndpoint)
+            		    var publicEnvironment =
+            		        AzureEnvironment.PublicEnvironments.FirstOrDefault(
+            		                                                           env =>
+            		                                                           AzureRmProfileProvider.Instance.Profile.GetEnvironment(env.Key)
+            		                                                                                 .GetEndpoint(AzureEnvironment.Endpoint.ResourceManager)
+            		                                                                                 .Equals(ARMEndpoint));
+
+                        if (publicEnvironment.Key == null)
                         {
                             try
                             {
