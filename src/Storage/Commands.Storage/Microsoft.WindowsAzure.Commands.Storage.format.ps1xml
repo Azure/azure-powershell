@@ -116,7 +116,7 @@
                 <ScriptBlock>$_.Uri</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Properties.LastModified</ScriptBlock>
+                <ScriptBlock>$_.Properties.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -149,6 +149,7 @@
           <TableColumnHeader>
             <Label>Length</Label>
             <Alignment>Left</Alignment>
+            <width>15</width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ContentType</Label>
@@ -157,12 +158,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastModified</Label>
-            <width>30</width>
+            <width>20</width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SnapshotTime</Label>
-            <width>30</width>
+            <width>20</width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
         </TableHeaders>
@@ -182,10 +183,10 @@
                 <ScriptBlock>$_.Properties.ContentType</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Properties.LastModified</ScriptBlock>
+                <ScriptBlock>$_.Properties.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.SnapshotTime</ScriptBlock>
+                <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -290,9 +291,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageContainer</Name>
+      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageContainer</TypeName>
+        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.CloudBlobContainer.ServiceClient.BaseUri</ScriptBlock>
@@ -324,7 +325,7 @@
                 <ScriptBlock>$_.PublicAccess</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.LastModified</ScriptBlock>
+                <ScriptBlock>$_.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -332,9 +333,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageBlob</Name>
+      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageBlob</TypeName>
+        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.ICloudBlob.Container.Uri</ScriptBlock>
@@ -345,27 +346,32 @@
           <TableColumnHeader>
             <Label>Name</Label>
             <Alignment>Left</Alignment>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>BlobType</Label>
             <Alignment>Left</Alignment>
-            <Width>10</Width>
+            <Width>9</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Length</Label>
             <Alignment>Left</Alignment>
+            <Width>15</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ContentType</Label>
             <Alignment>Left</Alignment>
+            <Width>30</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastModified</Label>
             <Alignment>Left</Alignment>
+            <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SnapshotTime</Label>
             <Alignment>Left</Alignment>
+            <Width>20</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -384,10 +390,10 @@
                 <ScriptBlock>$_.ContentType</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.LastModified</ScriptBlock>
+                <ScriptBlock>$_.LastModified.UtcDateTime.ToString("u")</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.SnapshotTime</ScriptBlock>
+                <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -395,9 +401,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageQueue</Name>
+      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageQueue</TypeName>
+        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageQueue</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.CloudQueue.ServiceClient.BaseUri</ScriptBlock>
@@ -443,9 +449,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageTable</Name>
+      <Name>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.AzureStorageTable</TypeName>
+        <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageTable</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.CloudTable.ServiceClient.BaseUri</ScriptBlock>
