@@ -17,9 +17,9 @@ using System;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Azure VM specific recovery point class.
+    /// Azure VM specific recovery point access info class.
     /// </summary>
-    public class AzureVmClientScriptInfo : ClientScriptInfo
+    public class AzureVmRecoveryPointAccessInfo : RecoveryPointAccessInfo
     {
         /// <summary>
         /// OS Type of the client script 
@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string OsType { get; set; }
 
         /// <summary>
-        /// Filename of the downloaded script
-        /// </summary>
-        public string Filename { get; set; }
-
-        /// <summary>
         /// Password required to run the script.
         /// </summary>
         public string Password { get; set; }
 
-        public AzureVmClientScriptInfo(string osType, string fileName, string password)
+        /// <summary>
+        /// Filename of the downloaded script
+        /// </summary>
+        public string Filename { get; set; }
+
+        public AzureVmRecoveryPointAccessInfo(string osType, string fileName, string password)
         {
             this.OsType = osType;
             this.Filename = fileName;

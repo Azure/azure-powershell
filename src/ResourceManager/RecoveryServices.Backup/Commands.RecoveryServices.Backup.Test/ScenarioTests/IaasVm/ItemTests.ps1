@@ -350,6 +350,14 @@ function Test-RestoreAzureVMRItemScenario
 	$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
 		-StartDate $backupStartTime -EndDate $backupEndTime -Item $item
 
+	# ACTION: Mount recovery point
+	$accessInfo = Mount-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-RecoveryPoint $recoveryPoint[0] `
+
+	# ACTION: Dismount recovery point
+	Dismount-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-RecoveryPoint $recoveryPoint[0] `
+
 	# ACTION: Trigger restore and wait for completion
 	$restoreJob = Restore-AzureRMRecoveryServicesBackupItem `
 		-RecoveryPoint $recoveryPoint[0] `

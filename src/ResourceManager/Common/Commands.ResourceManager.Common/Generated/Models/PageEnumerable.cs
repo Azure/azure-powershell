@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             Dispose(true);
         }
 
-        public virtual void Dispose(bool disposing)
-        {
+        public virtual void Dispose(bool disposing)        {
             if (disposing )
             {
                 ISubscriptionClient client = Interlocked.Exchange(ref _client, null);

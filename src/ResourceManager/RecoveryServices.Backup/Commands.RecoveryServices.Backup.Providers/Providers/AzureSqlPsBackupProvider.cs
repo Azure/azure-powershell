@@ -108,7 +108,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureVmClientScriptInfo ProvisioninItemLevelRecovery(out string content)
+        public AzureVmRecoveryPointAccessInfo ProvisionItemLevelRecoveryAccess()
+
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RevokeItemLevelRecoveryAccess()
 
         {
             throw new NotImplementedException();
@@ -494,14 +500,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ValidateAzureSqlContainerType(itemBase.ContainerType);
         }
 
-        private void ValidateAzureSqlContainerType(ContainerType type)
+        private void ValidateAzureSqlContainerType(CmdletModel.ContainerType type)
         {
-            if (type != ContainerType.AzureSQL)
+            if (type != CmdletModel.ContainerType.AzureSQL)
             {
                 throw new ArgumentException(
                     string.Format(
                         Resources.UnExpectedContainerTypeException,
-                        ContainerType.AzureSQL.ToString(),
+                        CmdletModel.ContainerType.AzureSQL.ToString(),
                         type.ToString()));
             }
         }
