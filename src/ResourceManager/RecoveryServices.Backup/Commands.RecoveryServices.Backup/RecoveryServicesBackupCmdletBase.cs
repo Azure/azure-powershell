@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             WriteDebug("Client Created successfully");
 
-            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
+            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, WriteError, ThrowTerminatingError);
         }
 
         /// <summary>

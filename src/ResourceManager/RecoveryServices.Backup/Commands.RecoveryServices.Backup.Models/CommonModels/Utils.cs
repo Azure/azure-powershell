@@ -196,10 +196,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <returns>PowerShell backup management type</returns>
         public static BackupManagementType GetPsBackupManagementType(string backupManagementType)
         {
-            ServiceClientModel.BackupManagementType providerType =
-                EnumUtils.GetEnum<ServiceClientModel.BackupManagementType>(backupManagementType);
-
-            switch (providerType)
+            switch (backupManagementType)
             {
                 case ServiceClientModel.BackupManagementType.AzureIaasVM:
                     return BackupManagementType.AzureVM;

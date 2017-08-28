@@ -95,7 +95,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public AzureVmClientScriptInfo ProvisioninItemLevelRecovery(out string content)
+        public AzureVmRecoveryPointAccessInfo ProvisionItemLevelRecoveryAccess()
+
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RevokeItemLevelRecoveryAccess()
 
         {
             throw new NotImplementedException();
@@ -109,8 +115,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string name = (string)ProviderData[ContainerParams.Name];
 
-            ODataQuery<ServiceClientModel.BMSBackupEngineQueryObject> queryParams =
-                new ODataQuery<ServiceClientModel.BMSBackupEngineQueryObject>();
+            ODataQuery<ServiceClientModel.BMSBackupEnginesQueryObject> queryParams =
+                new ODataQuery<ServiceClientModel.BMSBackupEnginesQueryObject>();
 
             var listResponse = ServiceClientAdapter.ListBackupEngines(queryParams);
 
