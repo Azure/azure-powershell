@@ -48,13 +48,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 AzureSession.Instance.AuthenticationFactory = authFactory;
                 var factory = new ClientFactory();
                 AzureSession.Instance.ClientFactory = factory;
-                factory.UserAgents.Clear();
+                foreach (var agent in factory.UserAgents)
+                {
+                    factory.RemoveUserAgent(agent.Product.Name);
+                }
+
                 factory.AddUserAgent("agent1");
                 factory.AddUserAgent("agent1", "1.0.0");
                 factory.AddUserAgent("agent1", "1.0.0");
                 factory.AddUserAgent("agent1", "1.9.8");
                 factory.AddUserAgent("agent2");
-                Assert.Equal(4, factory.UserAgents.Count);
+                Assert.Equal(4, factory.UserAgents.Length);
                 var sub = new AzureSubscription
                 {
                     Id = Guid.NewGuid().ToString(),

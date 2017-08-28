@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new AddAzureRMAccountCommand();
 
-            int preProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Count;
+            int preProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Length;
             Debug.WriteLine("UserAgents count prior to cmdLet processing = {0}", preProcessingUserAgentCount.ToString());
             foreach (ProductInfoHeaderValue hv in AzureSession.Instance.ClientFactory.UserAgents)
             {
@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             cmdlt.InvokeBeginProcessing();
-            int postProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Count;
+            int postProcessingUserAgentCount = AzureSession.Instance.ClientFactory.UserAgents.Length;
             Debug.WriteLine("UserAgents count prior to cmdLet post processing = {0}", postProcessingUserAgentCount.ToString());
-            Assert.True(AzureSession.Instance.ClientFactory.UserAgents.Count >= preProcessingUserAgentCount);
-            HashSet<ProductInfoHeaderValue> piHv = AzureSession.Instance.ClientFactory.UserAgents;
+            Assert.True(AzureSession.Instance.ClientFactory.UserAgents.Length >= preProcessingUserAgentCount);
+            IEnumerable<ProductInfoHeaderValue> piHv = AzureSession.Instance.ClientFactory.UserAgents;
             string psUserAgentString = string.Empty;
 
             foreach(ProductInfoHeaderValue hv in piHv)

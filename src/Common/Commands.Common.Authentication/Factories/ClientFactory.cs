@@ -37,12 +37,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private OrderedDictionary _handlers;
         private ReaderWriterLockSlim _actionsLock;
         private ReaderWriterLockSlim _handlersLock;
+        private ConcurrentDictionary<ProductInfoHeaderValue, string> _userAgents { get; set; }
 
         public ClientFactory()
         {
             _actions = new Dictionary<Type, IClientAction>();
             _actionsLock = new ReaderWriterLockSlim();
-            UserAgents = new ConcurrentDictionary<ProductInfoHeaderValue, string>();
+            _userAgents = new ConcurrentDictionary<ProductInfoHeaderValue, string>();
             _handlers = new OrderedDictionary();
             _handlersLock = new ReaderWriterLockSlim();
         }
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents.Keys)
+            foreach (ProductInfoHeaderValue userAgent in _userAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -189,7 +190,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = (TClient)constructor.Invoke(parameters);
 
-            foreach (ProductInfoHeaderValue userAgent in UserAgents.Keys)
+            foreach (ProductInfoHeaderValue userAgent in _userAgents.Keys)
             {
                 client.UserAgent.Add(userAgent);
             }
@@ -338,7 +339,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         /// <param name="productVersion">Product version.</param>
         public void AddUserAgent(string productName, string productVersion)
         {
-            UserAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion), productName);
+            _userAgents.TryAdd(new ProductInfoHeaderValue(productName, productVersion), productName);
         }
 
         /// <summary>
@@ -350,16 +351,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             AddUserAgent(productName, "");
         }
 
-        public ConcurrentDictionary<ProductInfoHeaderValue, string> UserAgents { get; set; }
-
-        ProductInfoHeaderValue[] IClientFactory.UserAgents
+        public ProductInfoHeaderValue[] UserAgents
         {
             get
             {
                 ProductInfoHeaderValue[] result = null;
-                if (UserAgents != null && UserAgents.Keys != null)
+                if (_userAgents != null && _userAgents.Keys != null)
                 {
-                    result = UserAgents.Keys.ToArray();
+                    result = _userAgents.Keys.ToArray();
                 }
 
                 return result;
@@ -398,13 +397,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public void RemoveUserAgent(string name)
         {
-            if (UserAgents!= null && UserAgents.Keys != null)
+            if (_userAgents != null && _userAgents.Keys != null)
             {
-                var agents = UserAgents.Keys.Where((k) => k.Product != null && string.Equals(k.Product.Name, name, StringComparison.OrdinalIgnoreCase));
+                var agents = _userAgents.Keys.Where((k) => k.Product != null && string.Equals(k.Product.Name, name, StringComparison.OrdinalIgnoreCase));
                 foreach (var agent in agents)
                 {
                     string value;
-                    UserAgents.TryRemove(agent, out value);
+                    _userAgents.TryRemove(agent, out value);
                 }
             }
         }
