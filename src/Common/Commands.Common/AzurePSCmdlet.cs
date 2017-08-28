@@ -700,7 +700,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public virtual bool IsTerminatingError(Exception ex)
         {
-            if (ex is PipelineStoppedException && ex.InnerException == null)
+            var pipelineStoppedEx = ex as PipelineStoppedException;
+            if (pipelineStoppedEx != null && pipelineStoppedEx.InnerException == null)
             {
                 return true;
             }
