@@ -12,18 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model;
 using Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Services;
-using Microsoft.Azure.Commands.Sql.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security;
-using System.Security.Permissions;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Adapter
 {

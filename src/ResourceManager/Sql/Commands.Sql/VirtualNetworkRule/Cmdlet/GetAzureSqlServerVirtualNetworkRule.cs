@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Collections.Generic;
-using System.IO;
 using System.Management.Automation;
-using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
@@ -76,6 +72,5 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         {
             return model;
         }
-
     }
 }

@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Security;
-
 
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
@@ -45,7 +41,6 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
             HelpMessage = "The Virtual Network Subnet Id for the rule.")]
         [ValidateNotNull]
         public string VirtualNetworkSubnetId { get; set; }
-
 
         /// <summary>
         /// Get the Virtual Network Rule to update

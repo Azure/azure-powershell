@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Rest.Azure;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no server with this name.
+                    // This is what we want.  We looked and there is no virtual network rule with this name.
                     return null;
                 }
 

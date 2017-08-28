@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model
 {
     /// <summary>
