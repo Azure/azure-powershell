@@ -20,6 +20,7 @@
 #   * WinServer2016 is hardcoded: add parameters to allow people to use the full image provider, etc.
 #   * Import image providers, etc. from the "aliases.json".
 #   * Integrate into Nelson's build semantics.
+#   * Integrate app insights instrumentation so we can get good telemetry.
 
 #Requires -Modules AzureRM.Compute
 
