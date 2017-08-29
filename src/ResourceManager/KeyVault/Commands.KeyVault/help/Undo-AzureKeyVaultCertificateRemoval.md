@@ -4,41 +4,42 @@ online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
 schema: 2.0.0
 ---
 
-# Undo-AzureKeyVaultKeyRemoval
+# Undo-AzureKeyVaultCertificateRemoval
 
 ## SYNOPSIS
-Recovers a deleted key in a key vault into an active state.
+Recovers a deleted certificate in a key vault into an active state.
 
 ## SYNTAX
 
 ```
-Undo-AzureKeyVaultKeyRemoval [-VaultName] <String> [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Undo-AzureKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Undo-AzureKeyVaultKeyRemoval** cmdlet will recover a previously deleted key.
-The recovered key will be active and can be used for all normal key operations.
+The **Undo-AzureKeyVaultCertificateRemoval** cmdlet will recover a previously deleted certificate.
+The recovered certificate will be active and can be used for all operations.
 Caller needs to have 'recover' permission in order to perform this operation.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\>Undo-AzureKeyVaultKeyRemoval -VaultName 'MyKeyVault' -Name 'MyKey'
+PS C:\> Undo-AzureKeyVaultCertificateRemoval -VaultName 'MyKeyVault' -Name 'MyCertificate'
 ```
 
-This command will recover the key 'MyKey' that was previously deleted, into an active and usable state.
+This command will recover the certificate 'MyCertificate' that was previously deleted, into an active and usable state.
 
 ## PARAMETERS
 
 ### -Name
-Key name.
-Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
+Certificate name.
+Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: KeyName
+Aliases: CertificateName
 
 Required: True
 Position: 1
@@ -103,15 +104,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.Certificate
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)
+[Remove-AzureKeyVaultCertificate](./Remove-AzureKeyVaultCertificate.md)
 
-[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
-
-[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
-
+[Get-AzureKeyVaultCertificate](./Get-AzureKeyVaultCertificate.md)

@@ -24,16 +24,16 @@ Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <
  -UserPrincipalName <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByUserEmailAddress
-```
-Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
- -EmailAddress <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByObjectId
 ```
 Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>] -ObjectId <String>
  [-ApplicationId <Guid>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByEmail
+```
+Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>] -EmailAddress <String>
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ForVault
@@ -98,18 +98,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -EmailAddress
+Specifies the user email address of the user whose access you want to remove.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: String
+Parameter Sets: ByEmail
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -199,7 +199,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -236,20 +236,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EmailAddress
-Specifies the user email address of the user whose access you want to remove.
-
-```yaml
-Type: String
-Parameter Sets: ByUserEmailAddress
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -VaultName
 Specifies the name of the key vault.
 This cmdlet removes permissions for the key vault that this parameter specifies.
@@ -263,6 +249,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
