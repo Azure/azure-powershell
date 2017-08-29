@@ -295,6 +295,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
                 }
+                else
+                {
+                    // set default
+                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = new List<string> { MNM.VpnClientProtocol.SSTP, MNM.VpnClientProtocol.IkeV2 };
+                }
 
                 if (this.VpnClientRootCertificates != null)
                 {
