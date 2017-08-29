@@ -104,12 +104,12 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
                'Find-AzureRmResource', 'Move-AzureRmResource', 
                'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
-               'Get-AzureRmPolicyDefinition', 'New-AzureRmPolicyAssignment', 
-               'New-AzureRmPolicyDefinition', 'Remove-AzureRmPolicyAssignment', 
-               'Remove-AzureRmPolicyDefinition', 'Set-AzureRmPolicyAssignment', 
-               'Set-AzureRmPolicyDefinition', 'Remove-AzureRmResource', 
-               'Remove-AzureRmResourceLock', 'Set-AzureRmResource', 
-               'New-AzureRmResource', 'Set-AzureRmResourceLock', 
+               'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition', 'New-AzureRmPolicyAssignment',
+               'New-AzureRmPolicyDefinition', 'New-AzureRmPolicySetDefinition', 'Remove-AzureRmPolicyAssignment',
+               'Remove-AzureRmPolicyDefinition', 'Remove-AzureRmPolicySetDefinition', 'Set-AzureRmPolicyAssignment',
+               'Set-AzureRmPolicyDefinition', 'Set-AzureRmPolicySetDefinition', 'Remove-AzureRmResource',
+               'Remove-AzureRmResourceLock', 'Set-AzureRmResource',
+               'New-AzureRmResource', 'Set-AzureRmResourceLock',
                'Get-AzureRmResource'
 
 # Variables to export from this module
