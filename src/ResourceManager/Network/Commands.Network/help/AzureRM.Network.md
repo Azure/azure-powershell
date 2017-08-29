@@ -273,7 +273,7 @@ Gets route tables.
 Gets a virtual network in a resource group.
 
 ### [Get-AzureRmVirtualNetworkAvailableEndpointService](Get-AzureRmVirtualNetworkAvailableEndpointService.md)
-Lists available endpoint services in a location.
+Lists available endpoint services for location.
 
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
 Gets a Virtual Network Gateway
