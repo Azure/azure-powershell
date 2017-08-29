@@ -93,8 +93,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
-
+        ProductInfoHeaderValue[] IClientFactory.UserAgents
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         public TClient CreateArmClient<TClient>(IAzureContext context, string endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
@@ -102,6 +107,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveUserAgent(string name)
         {
             throw new NotImplementedException();
         }
