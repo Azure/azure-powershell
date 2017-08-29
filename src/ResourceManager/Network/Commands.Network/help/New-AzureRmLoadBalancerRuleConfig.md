@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableOutboundSNAT
-DisableOutboundSNAT
+Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
 
 ```yaml
 Type: SwitchParameter
