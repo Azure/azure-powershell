@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added support for endpoint services to Virtual Network Subnets
+    - Updated Add-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    - Updated New-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+    - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
+* Added cmdlet to list endpoint services available in the location
+    - Get-AzureRmVirtualNetworkAvailableEndpointService
+* Added support for SKU parameter to Public IP Addresses and Load Balancers
+    - Updated New-AzureRMLoadBalancer: Added optional parameter -Sku
+    - Updated New-AzureRMPublicIpAddress: Added optional parameter -Sku
+* Added support for DisableOutboundSNAT to Load Balancer Rules
+    - Updated New-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    - Updated Add-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    - Updated Set-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
 
 ## Version 4.3.2
 * New-AzureRmVirtualNetworkGateway: Added IkeV2 P2S support. New optional parameter added

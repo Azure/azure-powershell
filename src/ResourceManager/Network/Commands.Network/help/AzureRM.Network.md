@@ -153,7 +153,7 @@ Gets an SSL certificate for an application gateway.
 Gets the SSL policy of an application gateway.
 
 ### [Get-AzureRmApplicationGatewaySslPredefinedPolicy](Get-AzureRmApplicationGatewaySslPredefinedPolicy.md)
-Gets Predefined SSl Policies provided by Application Gateway.
+Gets Predefined SSL Policies provided by Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayUrlPathMapConfig](Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Gets an array of URL path mappings to a backend server pool.
@@ -272,6 +272,9 @@ Gets route tables.
 ### [Get-AzureRmVirtualNetwork](Get-AzureRmVirtualNetwork.md)
 Gets a virtual network in a resource group.
 
+### [Get-AzureRmVirtualNetworkAvailableEndpointService](Get-AzureRmVirtualNetworkAvailableEndpointService.md)
+Lists available endpoint services for location.
+
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
 Gets a Virtual Network Gateway
 
@@ -311,8 +314,8 @@ Gets information about VPN root certificates.
 ### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
-### [New-AzureRmApplicationGateway](New-AzureRmApplicationGateway.md)
-Creates an application gateway.
+### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
+Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
 
 ### [New-AzureRmApplicationGatewayAuthenticationCertificate](New-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Creates an authentication certificate for an application gateway.

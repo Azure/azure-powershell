@@ -652,6 +652,10 @@
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ServiceEndpoints</Label>
+                <PropertyName>ServiceEndpointText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
