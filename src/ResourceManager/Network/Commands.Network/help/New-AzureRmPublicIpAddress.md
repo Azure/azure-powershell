@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 8D84F81A-F6B5-413D-B349-50947FCD5CFC
 online version: 
 schema: 2.0.0
@@ -13,7 +14,7 @@ Creates a public IP address.
 ## SYNTAX
 
 ```
-New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>]
+New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
  -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>] [-ReverseFqdn <String>]
  [-IdleTimeoutInMinutes <Int32>] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -177,6 +178,22 @@ Specifies a reverse fully qualified domain name (FQDN).
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Sku
+The public IP Sku name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: Basic, Standard
 
 Required: False
 Position: Named
