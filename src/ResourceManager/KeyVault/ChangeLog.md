@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New/updated Cmdlets to support soft-delete for KeyVault certificates
+  * Get-AzureKeyVaultCertificate
+  * Remove-AzureKeyVaultCertificate
+  * Undo-AzureKeyVaultCertificateRemoval
+
+## Version 3.3.1
 
 ## Version 3.3.0
 

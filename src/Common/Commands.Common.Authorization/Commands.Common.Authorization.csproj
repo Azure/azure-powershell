@@ -7,8 +7,8 @@
     <ProjectGuid>{24508E26-154D-47F1-80EE-439BF0710996}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.Common.Authorization</RootNamespace>
-    <AssemblyName>Commands.Common.Authorization</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Authorization</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Authorization</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
