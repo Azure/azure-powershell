@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "True");
         }
 
         [Fact]

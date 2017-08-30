@@ -35,28 +35,33 @@ namespace Microsoft.Azure.Commands.Profile
     public class SetAzureRMContextCommand : AzureContextModificationCmdlet
     {
         private const string SubscriptionParameterSet = "Subscription";
-        private const string TenantOnlyParameterSet = "Tenant";
         private const string ContextParameterSet = "Context";
+        private const string SubscriptionObjectParameterSet = "SubscriptionObject";
+        private const string TenantObjectParameterSet = "TenantObject";
 
         [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true, Position = 0)]
         public PSAzureContext Context { get; set; }
 
+        [Parameter(ParameterSetName = TenantObjectParameterSet, Mandatory = true, HelpMessage = "A Tenant Object", ValueFromPipeline = true, Position = 0)]
+        public PSAzureTenant TenantObject { get; set; }
+
+        [Parameter(ParameterSetName = SubscriptionObjectParameterSet, Mandatory = true, HelpMessage = "A subscription object", ValueFromPipeline = true, Position = 0)]
+        public PSAzureSubscription SubscriptionObject { get; set; }
+
         [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
-                    HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = TenantOnlyParameterSet, Mandatory = true,
                     HelpMessage = "Tenant name or ID")]
         [Alias("Domain", "TenantId")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = true,
-                    HelpMessage = "Subscription Name or Id", Position =0)]
+        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = false,
+                    HelpMessage = "Subscription Name or Id", Position = 0)]
         [Alias("SubscriptionId", "SubscriptionName")]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
 
-        [Parameter(Mandatory =false, HelpMessage ="Additional context properties")]
-        public IDictionary<string, string> ExtendedProperty { get; set;}
+        [Parameter(Mandatory = false, HelpMessage = "Additional context properties")]
+        public IDictionary<string, string> ExtendedProperty { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the context")]
         [ValidateNotNullOrEmpty]
@@ -81,37 +86,49 @@ namespace Microsoft.Azure.Commands.Profile
                         });
                 }
             }
-            else if (ParameterSetName == TenantOnlyParameterSet)
+            else if (TenantOnlyParameters())
             {
-                if (ShouldProcess(string.Format(Resources.ChangingContextTenant, Tenant),
+                var tenantId = Tenant ?? TenantObject?.Directory;
+                if (string.IsNullOrWhiteSpace(tenantId))
+                {
+                    throw new ArgumentException("You must supply a valid tenant object with a valid Id or a valid tenant id string. Please check the input tenant value and try again.");
+                }
+                if (ShouldProcess(string.Format(Resources.ChangingContextTenant, tenantId),
                     Resources.TenantChangeWarning, string.Empty))
                 {
                     SetContextWithOverwritePrompt((profile, client, name) =>
                     {
-                        client.SetCurrentContext(null, Tenant, name);
-                        CompleteContextProcessing(profile);
-                    });
-                }
-            }
-            else if (ParameterSetName == SubscriptionParameterSet)
-            {
-                if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, Subscription),
-                        Resources.SubscriptionChangeWarning, string.Empty))
-                {
-                    SetContextWithOverwritePrompt((profile, client, name) =>
-                    {
-                        client.SetCurrentContext(Subscription, Tenant, name);
+                        client.SetCurrentContext(null, tenantId, name);
                         CompleteContextProcessing(profile);
                     });
                 }
             }
             else
             {
-                ModifyContext((profile, client) =>
+                var tenantId = Tenant ?? TenantObject?.Directory;
+                var subscriptionId = Subscription ?? SubscriptionObject.Id ?? SubscriptionObject.Name;
+                if (string.IsNullOrWhiteSpace(subscriptionId))
                 {
-                    CompleteContextProcessing(profile);
-                });
+                    throw new ArgumentException("You must supply a valid subscription object with a valid Id or name, or a valid subscription id or name string. Please check the input subscription value and try again.");
+                }
+                if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, subscriptionId),
+                        Resources.SubscriptionChangeWarning, string.Empty))
+                {
+                    SetContextWithOverwritePrompt((profile, client, name) =>
+                    {
+                        client.SetCurrentContext(subscriptionId, tenantId, name);
+                        CompleteContextProcessing(profile);
+                    });
+                }
             }
+        }
+
+        bool TenantOnlyParameters()
+        {
+            return ParameterSetName == TenantObjectParameterSet
+                || (ParameterSetName == SubscriptionParameterSet
+                && MyInvocation != null
+                && !MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)));
         }
 
         private void CompleteContextProcessing(IProfileOperations profile)
@@ -133,7 +150,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 foreach (var property in ExtendedProperty)
                 {
-                    if (ShouldProcess(string.Format(Resources.ContextNameTarget, Name??"default"), 
+                    if (ShouldProcess(string.Format(Resources.ContextNameTarget, Name ?? "default"),
                         string.Format(Resources.SetPropertyAction, property.Key, property.Value)))
                     {
                         context.SetProperty(property.Key, property.Value);
@@ -166,9 +183,9 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             AzureRmProfile profile = DefaultProfile as AzureRmProfile;
-            if (!CheckForExistingContext(profile, name) 
-                || Force.IsPresent 
-                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name), 
+            if (!CheckForExistingContext(profile, name)
+                || Force.IsPresent
+                || ShouldContinue(string.Format(Resources.ReplaceContextQuery, name),
                 string.Format(Resources.ReplaceContextCaption, name)))
             {
                 ModifyContext((prof, client) => setContextAction(prof, client, name));

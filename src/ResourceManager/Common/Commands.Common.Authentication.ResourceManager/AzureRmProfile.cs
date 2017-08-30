@@ -405,6 +405,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 name = string.Format("[{0}]", string.Join(", ", components));
                 result = true;
             }
+            else
+            {
+                name = "Default";
+                result = true;
+            }
 
             return result;
         }
