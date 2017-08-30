@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSLoadBalancer : PSTopLevelResource
     {
+        public PSLoadBalancerSku Sku { get; set; }
+
         public List<PSFrontendIPConfiguration> FrontendIpConfigurations { get; set; }
 
         public List<PSBackendAddressPool> BackendAddressPools { get; set; }
