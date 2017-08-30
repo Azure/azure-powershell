@@ -1,6 +1,7 @@
 # Azure PowerShell specific
 src/Publish/
 src/Package/
+src/Stack/
 
 obj
 TestResults
