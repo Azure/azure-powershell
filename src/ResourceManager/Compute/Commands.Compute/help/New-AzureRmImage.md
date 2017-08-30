@@ -12,7 +12,7 @@ Creats an image.
 ## SYNTAX
 
 ```
-New-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <Image> [-WhatIf] [-Confirm]
+New-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSImage> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ The final command creates an image named 'ImageName01' in resource group 'Resour
 Specifies a local image object.
 
 ```yaml
-Type: Image
+Type: PSImage
 Parameter Sets: (All)
 Aliases: 
 
@@ -127,9 +127,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.Compute.Models.Image
+Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ### System.Object
 

@@ -82,7 +82,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRPolicy
+
+Parameter 'Policy' accepts value of type 'ASRPolicy' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
 
 ## NOTES
 

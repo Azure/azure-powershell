@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -35,13 +35,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public RoleAssignmentTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
-
-        [Fact(Skip = "Test is failing in CI build for no matching request found but passes locally.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RaAuthorizationChangeLog()
-        {
-           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
         [Fact]
@@ -96,6 +89,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
         
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                         if (resourceGroup != null)
                         {
-                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId));
+                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId).ToString());
                         }                        
                     },
                     TestUtilities.GetCallingClass(),

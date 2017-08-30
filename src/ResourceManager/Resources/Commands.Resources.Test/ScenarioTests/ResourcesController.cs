@@ -21,10 +21,9 @@ using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Insights;
-using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -38,6 +37,7 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Resources.Models.Gallery;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -147,7 +147,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.RMResourceManagerStartup,
                     helper.RMInsightsModule);
 
                 try
@@ -179,7 +178,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
+            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             GraphClient = GetGraphClient(context);
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient(context);
@@ -241,9 +240,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return client;
         }
 
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
+        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private FeatureClient GetFeatureClient(MockContext context)

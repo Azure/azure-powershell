@@ -147,7 +147,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### PSProfile
+
+Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
+
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

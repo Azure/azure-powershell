@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureVMSqlServerKeyVaultCredentialConfig
+# New-AzureRmVMSqlServerKeyVaultCredentialConfig
 
 ## SYNOPSIS
 Creates a configuration object for SQL server key vault credential on a virtual machine.
@@ -13,7 +13,7 @@ Creates a configuration object for SQL server key vault credential on a virtual 
 ## SYNTAX
 
 ```
-New-AzureVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable] [-CredentialName <String>]
+New-AzureRmVMSqlServerKeyVaultCredentialConfig [-ResourceGroupName] <String> [-Enable] [-CredentialName <String>]
  [-AzureKeyVaultUrl <String>] [-ServicePrincipalName <String>] [-ServicePrincipalSecret <SecureString>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -140,6 +140,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.KeyVaultCredentialSettings
 
 ## NOTES
 

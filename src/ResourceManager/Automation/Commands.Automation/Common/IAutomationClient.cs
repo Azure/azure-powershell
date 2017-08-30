@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         CompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid id);
 
-        IEnumerable<CompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
+        IEnumerable<CompilationJob> ListCompilationJobsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus, ref string nextLink);
+                                    
+        IEnumerable<CompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus, ref string nextLink);
 
-        IEnumerable<CompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
-
-        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData);
+        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData, bool incrementNodeConfigurationBuild = false);
 
         IEnumerable<JobStream> GetDscCompilationJobStream(string resourceGroupName, string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
         #endregion
@@ -57,18 +57,18 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #region NodeConfiguration
         NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus);
 
-        IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, string rollupStatus);
+        IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, string rollupStatus, ref string nextLink);
 
-        IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus);
+        IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus, ref string nextLink);
 
-        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
+        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool incrementNodeConfigurationBuild, bool overWrite);
 
         void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings);
         #endregion
 
         #region Configurations
 
-        IEnumerable<DscConfiguration> ListDscConfigurations(string resourceGroupName, string automationAccountName);
+        IEnumerable<DscConfiguration> ListDscConfigurations(string resourceGroupName, string automationAccountName, ref string nextLink);
 
         DscConfiguration GetConfiguration(string resourceGroupName, string automationAccountName, string configurationName);
 
@@ -94,16 +94,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         DscNode GetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId);
 
-        IEnumerable<DscNode> ListDscNodes(string resourceGroupName, string automationAccountName, string status);
+        IEnumerable<DscNode> ListDscNodes(string resourceGroupName, string automationAccountName, string status, ref string nextLink);
 
-        IEnumerable<DscNode> ListDscNodesByName(string resourceGroupName, string automationAccountName, string nodeName, string status);
-        IEnumerable<DscNode> ListDscNodesByNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string status);
+        IEnumerable<DscNode> ListDscNodesByName(string resourceGroupName, string automationAccountName, string nodeName, string status, ref string nextLink);
+
+        IEnumerable<DscNode> ListDscNodesByNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string status, ref string nextLink);
 
         IEnumerable<DscNode> ListDscNodesByConfiguration(
             string resourceGroupName,
             string automationAccountName,
             string configurationName,
-            string status);
+            string status,
+            ref string nextLink);
+
         DscNode SetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId, string nodeConfigurationName);
 
         void DeleteDscNode(string resourceGroupName, string automationAccountName, Guid nodeId);
@@ -130,7 +133,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         DscNodeReport GetLatestDscNodeReport(string resourceGroupName, string automationAccountName, Guid nodeId);
 
-        IEnumerable<DscNodeReport> ListDscNodeReports(string resourceGroupName, string automationAccountName, Guid nodeId, DateTimeOffset? startTime, DateTimeOffset? endTime);
+        IEnumerable<DscNodeReport> ListDscNodeReports(string resourceGroupName, string automationAccountName, Guid nodeId, DateTimeOffset? startTime, DateTimeOffset? endTime, ref string nextLink);
 
         DscNodeReport GetDscNodeReportByReportId(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId);
 
@@ -146,7 +149,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string runbookName,
             bool isEnabled,
             DateTimeOffset expiryTime,
-            IDictionary parameters);
+            IDictionary parameters,
+            string runOn);
 
         Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
 
@@ -292,8 +296,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<JobSchedule> ListJobSchedulesByRunbookName(string resourceGroupName, string automationAccountName, string runbookName);
 
         IEnumerable<JobSchedule> ListJobSchedulesByScheduleName(string resourceGroupName, string automationAccountName, string scheduleName);
-                
-        JobSchedule RegisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName, IDictionary parameters, string RunOn);
+        
+	JobSchedule RegisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName, IDictionary parameters, string runOn);
 
         void UnregisterScheduledRunbook(string resourceGroupName, string automationAccountName, Guid jobScheduleId);
 

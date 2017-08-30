@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string State { get; set; }
 
         /// <summary>
+        /// For legacy support - return the subscription Id
+        /// </summary>
+        public string SubscriptionId { get { return Id; } }
+
+        /// <summary>
         /// The tenant home for the subscription.
         /// </summary>
         public string TenantId

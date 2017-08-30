@@ -24,9 +24,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.OperationStatusResponse</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSOperationStatusResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.OperationStatusResponse</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSOperationStatusResponse</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -41,9 +41,9 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.VirtualMachineSize</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.VirtualMachineSize</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -163,9 +163,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.AccessUri</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSAccessUri</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.AccessUri</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSAccessUri</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -180,9 +180,9 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.ResourceSku</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSResourceSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.ResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSResourceSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -195,15 +195,19 @@
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Tier</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Size</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Locations</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Restriction</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Capability</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Value</Label>
             <Alignment>Right</Alignment>
           </TableColumnHeader>
         </TableHeaders>
@@ -217,13 +221,16 @@
                 <ScriptBlock>$_.Name</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_.Tier</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Size</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
                 <ScriptBlock>$_.Locations</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Restrictions[0].ReasonCode</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Capabilities[0].Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Capabilities[0].Value</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -231,9 +238,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.ResourceSku</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSResourceSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.ResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSResourceSku</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -248,9 +255,9 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.RunCommandDocument</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocument</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.RunCommandDocument</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocument</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -265,9 +272,9 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.RunCommandDocumentBase</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocumentBase</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.RunCommandDocumentBase</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocumentBase</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -415,9 +422,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetInstanceView</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetInstanceView</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetInstanceView</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -432,9 +439,9 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetSku</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetSku</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -469,9 +476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetSku</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetSku</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetSku</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -633,9 +640,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMInstanceView</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVMInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMInstanceView</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVMInstanceView</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -650,9 +657,9 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.VirtualMachineCaptureResult</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.VirtualMachineCaptureResult</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineCaptureResult</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -667,9 +674,9 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Management.Compute.Models.RunCommandResult</Name>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Management.Compute.Models.RunCommandResult</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>

@@ -20,6 +20,15 @@ New-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> -Location <Str
 ## DESCRIPTION
 The New-AzureRmRouteFilter cmdlet creates an Azure route filter.
 
+## EXAMPLES
+ 
+### Example 1
+```
+PS C:\> {{ Add example code here }}
+```
+ 
+{{ Add example description here }}
+
 ## PARAMETERS
 
 ### -Force
@@ -150,6 +159,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking

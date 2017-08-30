@@ -71,7 +71,7 @@ function Test-RdNegativeScenarios
 
     $rdId = '85E460B3-89E9-48BA-9DCD-A8A99D64A674'
 	
-    $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $rdId + "' does not exist."
+    $badIdException = "The specified role definition with ID '" + $rdId + "' does not exist."
 
     # Throws on trying to update the a role that does not exist
     Assert-Throws { Set-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json } $badIdException
@@ -126,6 +126,49 @@ function Test-RDPositiveScenarios
     Assert-Null $readRd
 }
 
+<#
+.SYNOPSIS
+Tests verify roledefinition update with interchanged assignablescopes.
+#>
+function Test-RDUpdate
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
+    # Create a role definition with Name rdNamme.
+    $rdName = 'Another tests role'
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
+    $rd = New-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json
+    $rd = Get-AzureRmRoleDefinition -Name $rdName
+
+    # Update the role definition with action that was created in the step above.
+    $scopes = $rd.AssignableScopes | foreach { $_ }
+    $rd.AssignableScopes.Clear()
+	for($i = $scopes.Count - 1 ; $i -ge 0; $i--){
+		$rd.AssignableScopes.Add($scopes[$i])
+	}
+    $updatedRd = Set-AzureRmRoleDefinition -Role $rd
+    Assert-NotNull $updatedRd
+
+    # Cleanup
+    $deletedRd = Remove-AzureRmRoleDefinition -Id $rd.Id -Force -PassThru
+    Assert-AreEqual $rd.Name $deletedRd.Name
+}
+
+<#
+.SYNOPSIS
+Tests verify roledefinition create with invalid scope.
+#>
+function Test-RDCreateFromFile
+{
+    # Setup
+    Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+
+    # Create a role definition with invalid assignable scopes.
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
+    $badScopeException = "Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups' should have even number of parts."
+    Assert-Throws { $rd = New-AzureRmRoleDefinition -InputFile .\Resources\InvalidRoleDefinition.json } $badScopeException
+}
 <#
 .SYNOPSIS
 Verify positive and negative scenarios for RoleDefinition remove.

@@ -46,6 +46,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.SiteRecovery.ASRVaultSettings
+
 ## NOTES
 
 ## RELATED LINKS

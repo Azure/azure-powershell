@@ -25,6 +25,7 @@ using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.DisableDataCollection();
             var profile = AzureRmProfileProvider.Instance.Profile;
             AzureRmProfileProvider.Instance.Profile = new AzureRmProfile();
 

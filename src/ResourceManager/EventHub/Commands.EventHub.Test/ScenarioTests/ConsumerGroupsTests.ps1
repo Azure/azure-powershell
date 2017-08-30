@@ -50,7 +50,7 @@ function Get-NamespaceName
 
 <#
 .SYNOPSIS
-Tests EventHub Namespace Create List Remove operations.
+Tests ConsumerGroup Create List Remove operations.
 #>
 function ConsumerGroupsTests
 { # Setup
@@ -69,8 +69,7 @@ function ConsumerGroupsTests
 	Write-Debug "  Create new Evnethub namespace"
     Write-Debug " Namespace name : $namespaceName"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -Location $location
-    Wait-Seconds 15
-    
+
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
     
@@ -94,7 +93,7 @@ function ConsumerGroupsTests
 	$CreatedConsumerGroup = Get-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -ConsumerGroupName $result_ConsumerGroup.Name
 	
 	Write-Debug " Get all created ConsumerGroup "
-	$CreatedConsumerGroups = Get-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $result.Name
+	$CreatedConsumerGroups = Get-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName
 	
 	# Cleanup
 	Write-Debug " Delete created ConsumerGroup "
@@ -105,6 +104,68 @@ function ConsumerGroupsTests
 
     Write-Debug " Delete namespaces"
     Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName
+
+	Write-Debug " Delete resourcegroup"
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}
+
+
+<#
+.SYNOPSIS
+Tests New Parameter for ConsumerGroup Create List Remove operations.
+#>
+function ConsumerGroupsTests_New
+{ # Setup
+
+
+    $location = Get-Location
+	$resourceGroupName = Get-ResourceGroupName
+	$namespaceName = Get-NamespaceName
+	$eventHubName = Get-EventHubName
+	$consumerGroupName = Get-ConsumerGroupName
+    
+    Write-Debug "  Create resource group"
+    Write-Debug " Resource Group Name : $resourceGroupName"
+    $Result11 = New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+	
+	Write-Debug "  Create new Evnethub namespace"
+    Write-Debug " Namespace name : $namespaceName"
+    $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
+    
+    Write-Debug " Get the created namespace within the resource group"
+    $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+    
+    Assert-True {$createdNamespace.Name -eq $namespaceName} "Namespace created earlier is not found."
+
+    Write-Debug " Create new eventHub "
+	$msgRetentionInDays = 3
+	$partionCount = 2
+    $result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -Name $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
+	
+    Write-Debug " Get the created eventHub "
+    $createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result.Name 
+	
+	$createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName
+    Assert-True {$createdEventHub.Name -eq $eventHubName} "Namespace created earlier is not found."	
+	
+	Write-Debug " Create a new ConsumerGroup "
+	$result_ConsumerGroup = New-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $consumerGroupName
+		
+	Write-Debug " Get created ConsumerGroup "
+	$CreatedConsumerGroup = Get-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $result_ConsumerGroup.Name
+	
+	Write-Debug " Get all created ConsumerGroup "
+	$CreatedConsumerGroups = Get-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $result.Name
+	
+	# Cleanup
+	Write-Debug " Delete created ConsumerGroup "
+	Remove-AzureRmEventHubConsumerGroup -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $result.Name -Name $CreatedConsumerGroup.Name
+	
+    Write-Debug " Delete the EventHub"
+    $delete1 = Remove-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result.Name  
+
+    Write-Debug " Delete namespaces"
+    Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force

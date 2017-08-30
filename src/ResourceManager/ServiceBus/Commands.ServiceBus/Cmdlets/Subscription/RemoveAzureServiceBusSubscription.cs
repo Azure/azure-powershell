@@ -25,36 +25,40 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
+        [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Topic Name.")]
+        [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
-        public string TopicName { get; set; }
+        public string Topic { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Subscription Name.")]
+        [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionName { get; set; }
+        public string Name { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // delete a Subscription 
-            if (ShouldProcess(target: SubscriptionName, action: string.Format("Deleting Subscription:{0} for Topic:{1} of NameSpace:{2}", SubscriptionName, TopicName, NamespaceName)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveSubscription, Name, Topic, Namespace)))
             {
-                WriteObject(Client.DeleteSubscription(ResourceGroup, NamespaceName, TopicName, SubscriptionName));
+                WriteObject(Client.DeleteSubscription(ResourceGroupName, Namespace, Topic, Name));
             }
         }
     }

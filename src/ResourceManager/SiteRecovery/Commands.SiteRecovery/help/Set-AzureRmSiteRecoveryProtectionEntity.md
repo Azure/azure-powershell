@@ -212,7 +212,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### ASRProtectionEntity
+
+Parameter 'ProtectionEntity' accepts value of type 'ASRProtectionEntity' from the pipeline
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.SiteRecovery.ASRJob
 
 ## NOTES
 
