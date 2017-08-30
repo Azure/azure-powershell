@@ -8,28 +8,216 @@ schema: 2.0.0
 # New-AzureRmContainerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a container group.
 
 ## SYNTAX
 
 ```
 New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> -Image <String> [-Location <String>]
  [-OsType <String>] [-Cpu <Double>] [-Memory <Double>] [-IpAddressType <String>] [-Port <Int32>]
- [-Command <String[]>] [-EnvrionmentVariables <Hashtable>] [-RegistryServer <String>]
+ [-Command <String[]>] [-EnvironmentVariables <Hashtable>] [-RegistryServer <String>]
  [-RegistryUsername <String>] [-RegistryPassword <SecureString>] [-Tags <Hashtable>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmContainerGroup** cmdlets creates a container group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Creates a container group with public IP address
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image nginx -OsType Linux -IpAddressType Public -Port 8000
+
+{
+  "ResourceGroupName": "MyResourceGroup",
+  "Id": "/subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/MyContainer",
+  "Name": "MyContainer",
+  "Type": "Microsoft.ContainerInstance/containerGroups",
+  "Location": "westus",
+  "Tags": null,
+  "ProvisioningState": "Creating",
+  "Containers": [
+    {
+      "Name": "MyContainer",
+      "Image": "nginx:",
+      "Command": [],
+      "Ports": [
+        8000
+      ],
+      "EnvironmentVariables": {},
+      "CurrentState": null,
+      "PreviousState": null,
+      "Events": [],
+      "Cpu": 1.0,
+      "MemoryInGb": 1.5,
+      "CpuLimit": null,
+      "MemoryLimitInGb": null,
+      "VolumeMounts": null
+    }
+  ],
+  "ImageRegistryCredentials": null,
+  "RestartPolicy": null,
+  "IpAddress": "13.64.118.11",
+  "Ports": [
+    {
+      "protocol": "TCP",
+      "port": 8000
+    }
+  ],
+  "OsType": "Linux",
+  "Volumes": null
+}
 ```
 
-{{ Add example description here }}
+This commands creates a container group using latest nginx image and requests a public IP address with opening port 8000.
+
+### Example 2: Creates a container group with container command and environment variables
+```
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image ubuntu -OsType Linux -Command @('/bin/sh', '-c', 'myscript.sh') -EnvironmentVariables @{'env1'='value1'; 'env2'='value2'}
+
+{
+  "ResourceGroupName": "MyResourceGroup",
+  "Id": "/subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/MyContainer",
+  "Name": "MyContainer",
+  "Type": "Microsoft.ContainerInstance/containerGroups",
+  "Location": "westus",
+  "Tags": null,
+  "ProvisioningState": "Creating",
+  "Containers": [
+    {
+      "Name": "MyContainer",
+      "Image": "ubuntu",
+      "Command": [
+        "/bin/sh",
+        "-c",
+        "myscript.sh"
+      ],
+      "Ports": [],
+      "EnvironmentVariables": {
+        "env1": "value1",
+        "env2": "value2"
+      },
+      "CurrentState": null,
+      "PreviousState": null,
+      "Events": null,
+      "Cpu": 1.0,
+      "MemoryInGb": 1.5,
+      "CpuLimit": null,
+      "MemoryLimitInGb": null,
+      "VolumeMounts": null
+    }
+  ],
+  "ImageRegistryCredentials": null,
+  "RestartPolicy": null,
+  "IpAddress": null,
+  "Ports": null,
+  "OsType": "Linux",
+  "Volumes": null
+}
+```
+
+This commands creates a container group and runs a custom script inside the container. Notice the `-Command` parameter is an array.
+
+### Example 3: Creates a container group using image in Azure Container Registry
+```
+PS C:\> $registryPassword = ConvertTo-SecureString <password> -AsPlainText -Force
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image azcloudconsoleregistry.azurecr.io/nginx:latest -IpAddressType Public -RegistryPassword $registryPassword
+
+{
+  "ResourceGroupName": "MyResourceGroup",
+  "Id": "/subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/MyContainer",
+  "Name": "MyContainer",
+  "Type": "Microsoft.ContainerInstance/containerGroups",
+  "Location": "westus",
+  "Tags": null,
+  "ProvisioningState": "Creating",
+  "Containers": [
+    {
+      "Name": "MyContainer",
+      "Image": "azcloudconsoleregistry.azurecr.io/nginx:latest",
+      "Command": null,
+      "Ports": [
+        80
+      ],
+      "EnvironmentVariables": {},
+      "CurrentState": null,
+      "PreviousState": null,
+      "Events": [],
+      "Cpu": 1.0,
+      "MemoryInGb": 1.5,
+      "CpuLimit": null,
+      "MemoryLimitInGb": null,
+      "VolumeMounts": null
+    }
+  ],
+  "ImageRegistryCredentials": [
+    {
+      "server": "azcloudconsoleregistry.azurecr.io",
+      "username": "azcloudconsoleregistry",
+      "password": null
+    }
+  ],
+  "RestartPolicy": null,
+  "IpAddress": "13.64.118.11",
+  "Ports": [
+    {
+      "protocol": "TCP",
+      "port": 80
+    }
+  ],
+  "OsType": "Linux",
+  "Volumes": null
+}
+```
+
+This commands creates a container group using the nginx image in Azure Container Registry.
+
+### Example 4: Creates a container group using image in custom container image registry
+```
+PS C:\> $registryPassword = ConvertTo-SecureString <password> -AsPlainText -Force
+PS C:\> New-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer -Image myserver.com/myimage:latest -RegistryServer myserver.com -RegistryUsername username -RegistryPassword $registryPassword
+
+{
+  "ResourceGroupName": "MyResourceGroup",
+  "Id": "/subscriptions/ae43b1e3-c35d-4c8c-bc0d-f148b4c52b78/resourceGroups/MyResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/MyContainer",
+  "Name": "MyContainer",
+  "Type": "Microsoft.ContainerInstance/containerGroups",
+  "Location": "westus",
+  "Tags": null,
+  "ProvisioningState": "Creating",
+  "Containers": [
+    {
+      "Name": "MyContainer",
+      "Image": "myserver.com/myimage:latest",
+      "Command": null,
+      "Ports": null,
+      "EnvironmentVariables": {},
+      "CurrentState": null,
+      "PreviousState": null,
+      "Events": [],
+      "Cpu": 1.0,
+      "MemoryInGb": 1.5,
+      "CpuLimit": null,
+      "MemoryLimitInGb": null,
+      "VolumeMounts": null
+    }
+  ],
+  "ImageRegistryCredentials": [
+    {
+      "server": "myserver.com",
+      "username": "username",
+      "password": null
+    }
+  ],
+  "RestartPolicy": null,
+  "IpAddress": "13.64.118.11",
+  "Ports": null,
+  "OsType": "Linux",
+  "Volumes": null
+}
+```
+
+This commands creates a container group using a custom image from a custom container image registry.
 
 ## PARAMETERS
 
@@ -66,7 +254,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvrionmentVariables
+### -EnvironmentVariables
 The container environment variables.
 
 ```yaml
@@ -263,6 +451,37 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
