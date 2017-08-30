@@ -106,19 +106,22 @@ namespace Microsoft.Azure.Commands.Profile
             else
             {
                 var tenantId = Tenant ?? TenantObject?.Directory;
-                var subscriptionId = Subscription ?? SubscriptionObject.Id ?? SubscriptionObject.Name;
-                if (string.IsNullOrWhiteSpace(subscriptionId))
+                var subscriptionId = Subscription ?? SubscriptionObject?.Id ?? SubscriptionObject?.Name;
+                if (!string.IsNullOrWhiteSpace(subscriptionId))
                 {
-                    throw new ArgumentException("You must supply a valid subscription object with a valid Id or name, or a valid subscription id or name string. Please check the input subscription value and try again.");
-                }
-                if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, subscriptionId),
-                        Resources.SubscriptionChangeWarning, string.Empty))
-                {
-                    SetContextWithOverwritePrompt((profile, client, name) =>
+                    if (ShouldProcess(string.Format(Resources.ChangingContextSubscription, subscriptionId),
+                           Resources.SubscriptionChangeWarning, string.Empty))
                     {
-                        client.SetCurrentContext(subscriptionId, tenantId, name);
-                        CompleteContextProcessing(profile);
-                    });
+                        SetContextWithOverwritePrompt((profile, client, name) =>
+                        {
+                            client.SetCurrentContext(subscriptionId, tenantId, name);
+                            CompleteContextProcessing(profile);
+                        });
+                    }
+                }
+                else
+                {
+                    ModifyContext((profile, client) => CompleteContextProcessing(profile));
                 }
             }
         }
