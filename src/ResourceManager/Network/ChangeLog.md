@@ -30,7 +30,14 @@
     - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
 * Added cmdlet to allow generation of VpnProfiles for external radius based P2S
     - New-AzureRmVpnClientConfiguration
-	- Get-AzureRmVpnClientConfiguration
+	  - Get-AzureRmVpnClientConfiguration
+* Added support for SKU parameter to Public IP Addresses and Load Balancers
+    - Updated New-AzureRMLoadBalancer: Added optional parameter -Sku
+    - Updated New-AzureRMPublicIpAddress: Added optional parameter -Sku
+* Added support for DisableOutboundSNAT to Load Balancer Rules
+    - Updated New-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    - Updated Add-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
+    - Updated Set-AzureRMLoadBalancerRuleConfig: Added optional parameter DisableOutboundSNAT
 
 ## Version 4.3.1
 

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: EC798838-1850-4E88-B17F-D2F00F2D4EE9
 online version: 
 schema: 2.0.0
@@ -79,7 +80,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSPublicIpAddress
-
 Parameter 'PublicIpAddress' accepts value of type 'PSPublicIpAddress' from the pipeline
 
 ## OUTPUTS

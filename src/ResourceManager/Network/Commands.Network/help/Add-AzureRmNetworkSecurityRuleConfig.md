@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 9160A21D-0F83-415B-830B-F35C8B863E90
 online version: 
 schema: 2.0.0
@@ -243,7 +244,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSNetworkSecurityGroup
-
 Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
 
 ## OUTPUTS

@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 online version: 
 schema: 2.0.0
 ---
@@ -27,7 +28,6 @@ PS C:\> Get-AzureRmVirtualNetworkAvailableEndpointService -Location westus
 -Name              Id                                                                                             Type
 -----              --                                                                                             ----
 -Microsoft.Storage /subscriptions/id/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Storage Microsoft.Network/virtualNetworkEndpointServices
-
 ```
 
 Gets available endpoint services in westus region.
