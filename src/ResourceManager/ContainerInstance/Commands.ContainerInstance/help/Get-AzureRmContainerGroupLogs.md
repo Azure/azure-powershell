@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmContainerGroupLogs
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get the logs of a container in the container group.
 
 ## SYNTAX
 
@@ -17,16 +17,36 @@ Get-AzureRmContainerGroupLogs [-ResourceGroupName] <String> [-Name] <String> [-C
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmContainerGroupLogs** cmdlet gets the logs of a container in a container group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Gets the logs of the container that has the same name as the container group
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmContainerGroupLogs -ResourceGroupName MyResourceGroup -Name MyContainer
+
+This is the log content.
 ```
 
-{{ Add example description here }}
+This command gets the logs of the container with name `MyContainer` in container group `MyContainer`.
+
+### Example 2: Gets the logs of the container
+```
+PS C:\> Get-AzureRmContainerGroupLogs -ResourceGroupName MyResourceGroup -Name MyContainerGroup -ContainerName container1
+
+This is the log content.
+```
+
+This command gets the logs of the container with name `container1` in container group `MyContainer`.
+
+### Example 3: Gets the logs of the container by piping
+```
+PS C:\> Get-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainerGroup | Get-AzureRmContainerGroupLogs
+
+This is the log content.
+```
+
+This command gets the logs of the container with name `MyContainer` in container group `MyContainer` by piping.
 
 ## PARAMETERS
 

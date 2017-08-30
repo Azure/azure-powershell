@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmContainerGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a container group.
 
 ## SYNTAX
 
@@ -17,16 +17,23 @@ Remove-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmContainerGroup** cmdlet removes a container group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Removes a container group
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer
 ```
 
-{{ Add example description here }}
+This command removes the specified container group.
+
+### Example 2: Removes a container group by piping
+```
+PS C:\> Get-AzureRmContainerGroup -ResourceGroupName MyResourceGroup -Name MyContainer | Remove-AzureRmContainerGroup
+```
+
+This command removes a container group by piping.
 
 ## PARAMETERS
 
@@ -57,6 +64,37 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

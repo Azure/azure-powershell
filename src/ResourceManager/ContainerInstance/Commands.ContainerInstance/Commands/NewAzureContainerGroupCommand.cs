@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// New-AzureRmContainerGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ContainerGroupNoun), OutputType(typeof(PSContainerGroup))]
+    [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true), OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
         [Parameter(
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             Mandatory = false,
             HelpMessage = "The container environment variables.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable EnvrionmentVariables { get; set; }
+        public Hashtable EnvironmentVariables { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     Port = this.Port ?? ContainerGroupCreationParameters.DefaultPort,
                     ContainerImage = this.Image,
                     ContainerCommand = this.Command,
-                    EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvrionmentVariables),
+                    EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvironmentVariables),
                     Cpu = this.Cpu ?? ContainerGroupCreationParameters.DefaultCpu,
                     MemoryInGb = this.Memory ?? ContainerGroupCreationParameters.DefaultMemory,
                     RegistryServer = this.RegistryServer,
