@@ -306,4 +306,8 @@
   <data name="InvalidManagementTokenAudience" xml:space="preserve">
     <value>No value was specified for the token audience for the management endpoint in environment '{0}'.  Please use Set-AzureRmEnvironment -Name {0} -ActiveDirectoryServiceEndpointResourceId token-audience-value</value>
   </data>
+  <data name="TokenIssuerTrace" xml:space="preserve">
+    <value>[Common.Authentication]: Parsed token '{0}' with json value '{1}' and decoded issuer '{2}'.</value>
+    <comment>0 = raw token; 1 = decoded token; 2 = issuer</comment>
+  </data>
 </root>
