@@ -24,6 +24,13 @@
     - Updated Set-AzureRmVirtualSubnetConfig: Added optional parameter -ServiceEndpoint
 * Added cmdlet to list endpoint services available in the location
     - Get-AzureRmVirtualNetworkAvailableEndpointService
+* Added the ability to configure external radius based P2S authentication to the following commandlets
+    - New-AzureVirtualNetworkGateway
+    - Set-AzureVirtualNetworkGateway
+    - Set-AzureRmVirtualNetworkGatewayVpnClientConfig
+* Added cmdlet to allow generation of VpnProfiles for external radius based P2S
+    - New-AzureRmVpnClientConfiguration
+	- Get-AzureRmVpnClientConfiguration
 
 ## Version 4.3.1
 

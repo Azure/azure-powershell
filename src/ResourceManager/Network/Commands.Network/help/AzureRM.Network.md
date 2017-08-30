@@ -273,7 +273,7 @@ Gets route tables.
 Gets a virtual network in a resource group.
 
 ### [Get-AzureRmVirtualNetworkAvailableEndpointService](Get-AzureRmVirtualNetworkAvailableEndpointService.md)
-Lists available endpoint services in a location.
+Lists available endpoint services for location.
 
 ### [Get-AzureRmVirtualNetworkGateway](Get-AzureRmVirtualNetworkGateway.md)
 Gets a Virtual Network Gateway
@@ -304,6 +304,9 @@ Gets virtual network current usage.
 
 ### [Get-AzureRmVpnClientPackage](Get-AzureRmVpnClientPackage.md)
 Gets information about a VPN client package.
+
+### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
+Gets URL to download a previously generated VpnClient package generated using the New-AzureRmVpnClientConfiguration command.
 
 ### [Get-AzureRmVpnClientRevokedCertificate](Get-AzureRmVpnClientRevokedCertificate.md)
 Gets information about VPN client-revocation certificates.
@@ -460,6 +463,9 @@ Creates an IP Configuration for a Virtual Network Gateway
 
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
+
+### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
+This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
 
 ### [New-AzureRmVpnClientRevokedCertificate](New-AzureRmVpnClientRevokedCertificate.md)
 Creates a new VPN client-revocation certificate.

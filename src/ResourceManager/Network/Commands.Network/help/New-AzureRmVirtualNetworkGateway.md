@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
+Module Name: AzureRM.Network
 ms.assetid: 5784FD44-91D4-4537-84F3-4F03CCBA355F
 online version: 
 schema: 2.0.0
@@ -12,6 +13,19 @@ Creates a Virtual Network Gateway
 
 ## SYNTAX
 
+### Empty (Default)
+```
+New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ [-IpConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]>]
+ [-GatewayType <String>] [-VpnType <String>] [-EnableBgp <Boolean>] [-EnableActiveActiveFeature]
+ [-GatewaySku <String>] [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
+ [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
+ [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-RadiusServerSecret <SecureString>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResource
 ```
 New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-IpConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]>]
@@ -21,6 +35,18 @@ New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Loc
  [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
  [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RadiusServerConfiguration
+```
+New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
+ [-IpConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]>]
+ [-GatewayType <String>] [-VpnType <String>] [-EnableBgp <Boolean>] [-EnableActiveActiveFeature]
+ [-GatewaySku <String>] [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
+ [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
+ [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
+ [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] -RadiusServerAddress <String>
+ -RadiusServerSecret <SecureString> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +83,25 @@ subnet and create a Virtual Network Gateway in Azure.
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK
 West" with the previously created IP configurations saved in the variable "ngwIPConfig," the
 gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic."
+
+### 2: Create a Virtual Network Gateway with External Radius Configuration
+```
+New-AzureRmResourceGroup -Location "UK West" -Name "vnet-gateway"
+New-AzureRMVirtualNetworkSubnetConfig -Name 'gatewaysubnet' -AddressPrefix '10.254.0.0/27'
+
+$ngwpip = New-AzureRMPublicIpAddress -Name ngwpip -ResourceGroupName "vnet-gateway" -Location "UK West" -AllocationMethod Dynamic
+$vnet = New-AzureRmVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" -Name vnet-gateway -ResourceGroupName "vnet-gateway" -Subnet $subnet
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
+$ngwipconfig = New-AzureRMVirtualNetworkGatewayIpConfig -Name ngwipconfig -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
+$Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
+
+New-AzureRmVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Basic" -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd
+```
+
+The above will create a resource group, request a Public IP Address, create a Virtual Network and
+subnet and create a Virtual Network Gateway in Azure.
+
+The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also adds an external radius server with address "TestRadiusServer"
 
 ## PARAMETERS
 
@@ -119,7 +164,7 @@ Accept wildcard characters: False
 ### -GatewayDefaultSite
 ```yaml
 Type: PSLocalNetworkGateway
-Parameter Sets: (All)
+Parameter Sets: SetByResource
 Aliases: 
 
 Required: False
@@ -203,6 +248,44 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RadiusServerAddress
+P2S External Radius server address.```yaml
+Type: String
+Parameter Sets: RadiusServerConfiguration
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RadiusServerSecret
+P2S External Radius server secret.```yaml
+Type: SecureString
+Parameter Sets: Empty
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: SecureString
+Parameter Sets: RadiusServerConfiguration
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

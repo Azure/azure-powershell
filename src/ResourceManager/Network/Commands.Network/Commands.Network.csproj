@@ -325,6 +325,7 @@
     <Compile Include="Models\PSVirtualNetworkPeering.cs" />
     <Compile Include="Models\PSTunnelConnectionHealth.cs" />
     <Compile Include="Models\PSVirtualNetworkUsageCustom.cs" />
+    <Compile Include="Models\PSVpnProfile.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveNetworkSecurityGroupCommand.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveRouteTableCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\AddAzureNetworkInterfaceIpConfigCommand.cs" />
@@ -370,6 +371,9 @@
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayAdvertisedRouteCommand.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayBgpPeerStatus.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayLearnedRouteCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVpnClientConfigurationCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureVpnClientConfigurationCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayParameterSets.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
