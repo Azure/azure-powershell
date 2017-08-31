@@ -17,13 +17,11 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Hyak.Common;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
-    using Properties;
-
     public class EnvironmentHelper
     {
         /// <summary>
