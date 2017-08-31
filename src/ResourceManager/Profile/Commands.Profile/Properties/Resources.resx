@@ -275,4 +275,7 @@
   <data name="UnknownEnvironment" xml:space="preserve">
     <value>Unable to find environment with name '{0}'</value>
   </data>
+  <data name="InvalidEndpointProvided" xml:space="preserve">
+    <value>Endpoint provided is invalid. Please check the value and retry again with the correct value.</value>
+  </data>
 </root>
