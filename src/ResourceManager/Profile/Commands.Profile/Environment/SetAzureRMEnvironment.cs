@@ -163,12 +163,10 @@ namespace Microsoft.Azure.Commands.Profile
                     if (this.ParameterSetName.Equals(MetadataParameterSet, StringComparison.Ordinal))
                     {
                         // Simply use built-in environments if the ARM endpoint matches the ARM endpoint for a built-in environment
-                        var publicEnvironment =
-                            AzureEnvironment.PublicEnvironments.FirstOrDefault(
-                                                                               env =>
-                                                                               AzureRmProfileProvider.Instance.Profile.GetEnvironment(env.Key)
-                                                                                                     .GetEndpoint(AzureEnvironment.Endpoint.ResourceManager)
-                                                                                                     .Equals(ARMEndpoint));
+                        var publicEnvironment = AzureEnvironment.PublicEnvironments.FirstOrDefault(
+                                                                                                   env =>
+                                                                                                   env.Value.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager)
+                                                                                                      .Equals(ARMEndpoint, StringComparison.CurrentCultureIgnoreCase));
 
                         if (publicEnvironment.Key == null)
                         {
@@ -178,7 +176,7 @@ namespace Microsoft.Azure.Commands.Profile
                             {
                                 EnvHelper = (EnvHelper == null ? new EnvironmentHelper() : EnvHelper);
                                 MetadataResponse metadataEndpoints = EnvHelper.RetrieveMetaDataEndpoints(ResourceManagerEndpoint).Result;
-                                string domain = EnvHelper.RetrieveDomain(metadataEndpoints.PortalEndpoint);
+                                string domain = EnvHelper.RetrieveDomain(ARMEndpoint);
                                 ActiveDirectoryEndpoint = metadataEndpoints.authentication.LoginEndpoint.TrimEnd('/') + '/';
                                 ActiveDirectoryServiceEndpointResourceId = metadataEndpoints.authentication.Audiences[0];
                                 GalleryEndpoint = metadataEndpoints.GalleryEndpoint;

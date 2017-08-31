@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Profile.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Profile.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Profile.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -229,6 +228,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ImportContextTarget {
             get {
                 return ResourceManager.GetString("ImportContextTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Endpoint provided is invalid. Please check the value and retry again with the correct value..
+        /// </summary>
+        internal static string InvalidEndpointProvided {
+            get {
+                return ResourceManager.GetString("InvalidEndpointProvided", resourceCulture);
             }
         }
         

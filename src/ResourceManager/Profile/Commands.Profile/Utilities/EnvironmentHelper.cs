@@ -22,25 +22,27 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Profile.Utilities
 {
+    using Properties;
+
     public class EnvironmentHelper
     {
         /// <summary>
         /// Retrieves the domain.
         /// </summary>
-        /// <param name="portalEndpoint">The portal endpoint.</param>
+        /// <param name="ArmEndpoint">The Resource Manager endpoint.</param>
         /// <returns>Domain</returns>
-        public virtual string RetrieveDomain(string portalEndpoint)
+        public virtual string RetrieveDomain(string ArmEndpoint)
         {
             // Example format:: portal endpoint: "management.azure.com"; returns: "azure.com"
-            if (string.IsNullOrEmpty(portalEndpoint))
+            if (string.IsNullOrEmpty(ArmEndpoint))
             {
-                throw new ArgumentException("Invalid Endpoint provided. Portal Endpoint cannot be null.");
+                throw new ArgumentNullException("ArmEndpoint", Resources.InvalidEndpointProvided);
             }
 
-            string domainHost = new Uri(portalEndpoint).Host;
+            string domainHost = new Uri(ArmEndpoint).Host;
             if (string.IsNullOrEmpty(domainHost))
             {
-                throw new ApplicationException("Invalid Endpoint provided. Portal Endpoint cannot be null.");
+                throw new ArgumentException(Resources.InvalidEndpointProvided, "ArmEndpoint");
             }
 
             return domainHost.Replace(domainHost.Split('.')[0], "").TrimStart('.');
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         {
             if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
             {
-                throw new ArgumentException("The ResourceManagement Endpoint provided was invalid.");
+                throw new ArgumentException(Resources.InvalidEndpointProvided, "url");
             }
 
             url = string.Concat(url.TrimEnd('/').ToLower(), "/metadata/endpoints?api-version=1.0");
@@ -69,22 +71,22 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {
                     response = JsonConvert.DeserializeObject<MetadataResponse>(content);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw new JsonException(ex.Message);
+                    throw new ArgumentException(Resources.InvalidEndpointProvided, "url");
                 }
             }
 
             if ((null == response) || string.IsNullOrEmpty(response.GalleryEndpoint) || string.IsNullOrEmpty(response.GraphEndpoint)
                 || string.IsNullOrEmpty(response.PortalEndpoint))
             {
-                throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
+                throw new ArgumentException(Resources.InvalidEndpointProvided, "url");
             }
 
             if (null == response.authentication || string.IsNullOrEmpty(response.authentication.LoginEndpoint)
                 || (response.authentication.Audiences.Any(string.IsNullOrEmpty)))
             {
-                throw new CloudException("An error occurred while trying to retrieve metadata endpoints. Please try again later.");
+                throw new ArgumentException(Resources.InvalidEndpointProvided, "url");
             }
 
             return response;
