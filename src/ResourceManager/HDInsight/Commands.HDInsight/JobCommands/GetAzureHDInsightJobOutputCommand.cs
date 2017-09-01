@@ -133,6 +133,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         internal IStorageAccess GetDefaultStorageAccess(string resourceGroupName, string clusterName)
         {
+            var StorageAccountSuffix = "";
+    
             if (DefaultContainer == null && DefaultStorageAccountName == null && DefaultStorageAccountKey == null)
             {
                 var DefaultStorageAccount = GetDefaultStorageAccount(resourceGroupName, clusterName);
@@ -143,6 +145,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                     DefaultContainer = wasbAccount.StorageContainerName;
                     DefaultStorageAccountName = wasbAccount.StorageAccountName;
                     DefaultStorageAccountKey = wasbAccount.StorageAccountKey;
+                    StorageAccountSuffix = DefaultContext.Environment.StorageEndpointSuffix;
                 }
                 else
                 {
@@ -151,7 +154,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             }
 
-            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
+            return new AzureStorageAccess(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer,StorageAccountSuffix);
         }
     }
 }
