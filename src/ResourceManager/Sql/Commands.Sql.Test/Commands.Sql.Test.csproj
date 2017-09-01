@@ -949,6 +949,15 @@
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerUpgradeTests\TestServerUpgradeWithUpgradeHint.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+	<None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VirtualNetworkRuleTest\TestVirtualNetworkRuleCreateAndUpdate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VirtualNetworkRuleTest\TestVirtualNetworkRuleGet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+	<None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.VirtualNetworkRuleTest\TestVirtualNetworkRuleRemove.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
