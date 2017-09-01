@@ -115,7 +115,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountType
-The virtual machine managed disk's account type.```yaml
+The virtual machine managed disk's account type.
+
+```yaml
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
