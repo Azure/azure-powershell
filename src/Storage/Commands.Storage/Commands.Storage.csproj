@@ -61,13 +61,11 @@
       <HintPath>..\..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\WindowsAzure.Storage.8.1.1\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WindowsAzure.Storage.8.4.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.5.1\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.6.1\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -81,19 +79,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs">
       <Link>Common\Cmdlet\AzureContextAdapterExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageBlob.cs">
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs">
       <Link>Common\AzureStorageBlob.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageContainer.cs">
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs">
       <Link>Common\AzureStorageContainer.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageQueue.cs">
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs">
       <Link>Common\AzureStorageQueue.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageTable.cs">
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs">
       <Link>Common\AzureStorageTable.cs</Link>
     </Compile>
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlob.cs" />
